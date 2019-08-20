@@ -1,7 +1,7 @@
 {
   "name": "teacher-moments",
   "version": "1.0.0",
-  "description": "Practice spaces for teacher preparation programs",
+  "description": "Teacher Moments: Practice spaces for teacher preparation programs",
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
