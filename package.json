@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH PASSWORD 'teachermoments'\"; psql -c \"ALTER ROLE tm WITH LOGIN\"",
     "db-create-dev": "db-migrate --env init db:create teachermoments",
-    "db-init-local": "npm run db-create-role-dev; npm run db-create-dev; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\""
+    "db-init-local": "npm run db-create-role-dev; npm run db-create-dev; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\"",
+    "create-migration": "db-migrate create",
+    "db-migrate-up": "db-migrate up",
+    "db-migrate-down": "db-migrate down"
   },
   "repository": {
     "type": "git",
