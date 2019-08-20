@@ -1,0 +1,19 @@
+{
+  "name": "teacher-moments",
+  "version": "1.0.0",
+  "description": "Practice spaces for teacher preparation programs",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bocoup/threeflows.git"
+  },
+  "author": "Bocoup, LLC - GAIA team (https://bocoup.com)",
+  "bugs": {
+    "url": "https://github.com/bocoup/threeflows/issues"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
