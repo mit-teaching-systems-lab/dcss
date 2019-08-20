@@ -1,0 +1,22 @@
+{
+  "name": "threeflows-v2",
+  "version": "0.0.1-prealpha.0",
+  "description": "Redesign of TSL threeflows app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH PASSWORD 'teachermoments'\"; psql -c \"ALTER ROLE tm WITH LOGIN\"",
+    "db-create-dev": "db-migrate --env init db:create teachermoments",
+    "db-init-local": "npm run db-create-role-dev; npm run db-create-dev; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
+  },
+  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme"
+}
