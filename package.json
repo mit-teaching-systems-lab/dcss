@@ -1,7 +1,7 @@
 {
-  "name": "threeflows-v2",
-  "version": "0.0.1-prealpha.0",
-  "description": "Redesign of TSL threeflows app",
+  "name": "threeflows",
+  "version": "2.0.0-prealpha.0",
+  "description": "Practice spaces for teacher preparation programs",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
