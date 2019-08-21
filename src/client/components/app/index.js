@@ -7,7 +7,7 @@ class App extends Component {
     render() {
         return (
             <div className="tm__app">
-                <h1>Hi Teachers!</h1>
+                <h1>Teacher Moments</h1>
             </div>
         );
     }

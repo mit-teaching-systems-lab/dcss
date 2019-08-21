@@ -27,7 +27,7 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, 'src/client/static'),
-    port: process.env.PORT || 3000,
+    port: process.env.CLIENT_PORT || 3000,
     publicPath: '/',
     hotOnly: true
   },
