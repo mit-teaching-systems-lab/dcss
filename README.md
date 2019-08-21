@@ -9,6 +9,7 @@
   - Mac:
   ```
   brew services start postgresql
+  createdb # creates a default database under your user name
   ```
 - Initialize local database
 ```
