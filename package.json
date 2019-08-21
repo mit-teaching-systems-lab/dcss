@@ -1,23 +1,28 @@
 {
-  "name": "teacher-moments",
-  "version": "1.0.0",
+  "name": "threeflows",
+  "version": "2.0.0-prealpha.0",
   "description": "Teacher Moments: Practice spaces for teacher preparation programs",
-  "license": "MIT",
   "main": "src/index.js",
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH PASSWORD 'teachermoments'\"; psql -c \"ALTER ROLE tm WITH LOGIN\"",
+    "db-create-dev": "db-migrate --env init db:create teachermoments",
+    "db-init-local": "npm run db-create-role-dev; npm run db-create-dev; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\"",
+    "create-migration": "db-migrate create",
+    "db-migrate-up": "db-migrate up",
+    "db-migrate-down": "db-migrate down"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bocoup/threeflows.git"
+    "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
   },
-  "author": "Bocoup, LLC - GAIA team (https://bocoup.com)",
   "bugs": {
-    "url": "https://github.com/bocoup/threeflows/issues"
+    "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
   },
-  "proxy": "localhost:3000/",
+  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
@@ -35,5 +40,9 @@
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
+  },
+  "devDependencies": {
+    "db-migrate": "^0.11.6",
+    "db-migrate-pg": "^1.0.0"
   }
 }
