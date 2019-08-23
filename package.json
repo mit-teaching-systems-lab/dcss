@@ -3,11 +3,16 @@
   "version": "2.0.0-prealpha.0",
   "description": "Teacher Moments: Practice spaces for teacher preparation programs",
   "main": "src/index.js",
+  "private": true,
+  "workspaces": [
+    "src/client",
+    "src/server"
+  ],
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
     "lint": "eslint src/**/*.js",
-    "dev": ". ./config/pg.dev; nodemon index.js",
+    "dev": ". ./config/pg.dev; nodemon ./src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH PASSWORD 'teachermoments'\"; psql -c \"ALTER ROLE tm WITH LOGIN\"; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\";",
     "db-create-dev": "db-migrate --env init db:create teachermoments;",
@@ -23,33 +28,5 @@
   "bugs": {
     "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
   },
-  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
-  "dependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.6",
-    "babel-polyfill": "^6.26.0",
-    "connect-pg-simple": "^6.0.0",
-    "copy-webpack-plugin": "^5.0.4",
-    "cors": "^2.8.5",
-    "css-loader": "^3.2.0",
-    "eslint": "^6.2.1",
-    "eslint-plugin-react": "^7.14.3",
-    "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "pg": "^7.12.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-hot-loader": "^4.12.11",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
-  },
-  "devDependencies": {
-    "db-migrate": "^0.11.6",
-    "db-migrate-pg": "^1.0.0",
-    "nodemon": "^1.19.1"
-  }
+  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme"
 }
