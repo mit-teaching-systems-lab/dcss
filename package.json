@@ -11,7 +11,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "lint": "eslint src/**/*.js",
+    "lint": "eslint --ext js,jsx src *.js",
     "dev": "nodemon ./src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
@@ -19,7 +19,8 @@
     "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
     "create-migration": "db-migrate create",
     "db-migrate-up": "db-migrate up",
-    "db-migrate-down": "db-migrate down"
+    "db-migrate-down": "db-migrate down",
+    "storybook": "yarn workspaces run storybook"
   },
   "repository": {
     "type": "git",

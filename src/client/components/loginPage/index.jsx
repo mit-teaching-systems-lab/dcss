@@ -6,7 +6,7 @@ export default class LoginPage extends Component {
 
         this.state = {
             username: ''
-        }
+        };
 
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
