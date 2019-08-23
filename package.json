@@ -12,7 +12,7 @@
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
     "lint": "eslint src/**/*.js",
-    "dev": ". ./config/pg.dev; nodemon index.js",
+    "dev": ". ./config/pg.dev; nodemon ./src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH PASSWORD 'teachermoments'\"; psql -c \"ALTER ROLE tm WITH LOGIN\"; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\";",
     "db-create-dev": "db-migrate --env init db:create teachermoments;",
