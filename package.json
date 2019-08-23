@@ -19,7 +19,8 @@
     "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
     "create-migration": "db-migrate create",
     "db-migrate-up": "db-migrate up",
-    "db-migrate-down": "db-migrate down"
+    "db-migrate-down": "db-migrate down",
+    "storybook": "yarn workspaces run storybook"
   },
   "repository": {
     "type": "git",
