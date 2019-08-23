@@ -1,5 +1,5 @@
-export PGUSER=tm
-export PGPASSWORD=teachermoments
-export PGDATABASE=teachermoments
-export PGHOST=localhost
-export PGPORT=5432
+PGUSER=tm
+PGPASSWORD=teachermoments
+PGDATABASE=teachermoments
+PGHOST=localhost
+PGPORT=5432
