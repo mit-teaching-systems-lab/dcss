@@ -11,10 +11,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH PASSWORD 'teachermoments'\"; psql -c \"ALTER ROLE tm WITH LOGIN\"; psql -c \"GRANT ALL PRIVILEGES ON DATABASE teachermoments to tm\";",
     "db-create-dev": "db-migrate --env init db:create teachermoments;",
-    "db-init-local": "npm run db-create-dev; npm run db-create-role-dev; npm run db-migrate-up",
-    "create-migration": "db-migrate create",
-    "db-migrate-up": "db-migrate up",
-    "db-migrate-down": "db-migrate down"
+    "db-init-local": "yarn db-create-dev; yarn db-create-role-dev; export $(cat ./config/pg.dev); yarn db-migrate-up",
+    "create-migration": "$(cat ./config/pg.dev); db-migrate create",
+    "db-migrate-up": "$(cat ./config/pg.dev); db-migrate up",
+    "db-migrate-down": "$(cat ./config/pg.dev); db-migrate down"
   },
   "repository": {
     "type": "git",
