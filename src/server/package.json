@@ -22,5 +22,9 @@
     "db-migrate": "^0.11.6",
     "db-migrate-pg": "^1.0.0",
     "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "lint": "npm-run-all lint:js",
+    "lint:js": "eslint --ext js . *.js"
   }
 }

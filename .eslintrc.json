@@ -20,7 +20,8 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "json"
     ],
     "rules": {
         "indent": [
