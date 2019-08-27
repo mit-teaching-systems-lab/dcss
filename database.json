@@ -1,12 +1,12 @@
 {
-    "init": {
-        "driver": "pg"
-    },
-    "dev": {
-        "driver": "pg",
-        "user": "tm",
-        "password": "teachermoments",
-        "host": "localhost",
-        "database": "teachermoments"
-    }
+  "init": {
+    "driver": "pg"
+  },
+  "dev": {
+    "driver": "pg",
+    "user": "tm",
+    "password": "teachermoments",
+    "host": "localhost",
+    "database": "teachermoments"
+  }
 }

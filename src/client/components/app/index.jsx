@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {hot} from 'react-hot-loader';
+import { hot } from 'react-hot-loader';
 import LoginPage from '../loginPage';
 
 import './App.css';
