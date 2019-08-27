@@ -2,6 +2,19 @@
 
 ## Development
 
+This is the list of all environment variables that should be exported prior to running the Teacher Moments app:
+```
+export PGUSER=
+export PGPASSWORD=
+export PGDATABASE=
+export PGHOST=
+export PGPORT=
+
+# If AWS credentials are stored in profiles
+export AWS_PROFILE=
+export S3_BUCKET=
+```
+
 ### Local Setup
 
 1) Install Dependencies
@@ -63,3 +76,17 @@ npm run db-migrate-down
 ```
 This command can be customized with the following options [https://db-migrate.readthedocs.io/en/latest/Getting%20Started/commands/#down]()
 
+### S3 Integration
+The AWS bucket used for development is called **v2-moments-dev**. For access, please contact the AWS administrator for TSL.
+
+The app uses for credentials either
+* **default** credential in your home directory at ~/.aws/credentials with this file format:
+```
+[default] #TSL
+aws_access_key_id = <your access key id>
+aws_secret_access_key = <your secret access key id>
+```
+* *or* set the environment variable **AWS_PROFILE**
+```
+export AWS_PROFILE=tsl
+```
