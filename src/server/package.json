@@ -11,9 +11,11 @@
   },
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
   "dependencies": {
+    "aws-sdk": "^2.518.0",
     "babel-polyfill": "^6.26.0",
     "connect-pg-simple": "^6.0.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "pg": "^7.12.1"
