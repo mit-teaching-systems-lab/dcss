@@ -17,8 +17,7 @@ app.use(session({
         pool: new Pool(),
         tableName: 'session'
     }),
-    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 }, // 30 days
-    secret: 'tsl cookie secret'
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
 }));
 
 app.post('/login', cors() , (req, res) => {
