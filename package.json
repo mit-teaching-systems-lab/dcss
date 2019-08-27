@@ -11,16 +11,19 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "lint": "eslint --ext js,jsx src *.js",
     "dev": "nodemon ./src/server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
     "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
     "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
     "create-migration": "db-migrate create",
     "db-migrate-up": "db-migrate up",
     "db-migrate-down": "db-migrate down",
-    "storybook": "yarn workspaces run storybook"
+    "lint": "npm-run-all lint:js && yarn workspaces run lint",
+    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern 'src/**/*.js'",
+    "prettier": "npm-run-all prettier:notSrc && yarn workspaces run prettier",
+    "prettier:notSrc": "prettier --write '**/*.js' --ignore-path 'src/**/*.js'",
+    "storybook": "yarn workspaces run storybook",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -29,5 +32,13 @@
   "bugs": {
     "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
   },
-  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme"
+  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2"
+  }
 }

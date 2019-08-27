@@ -23,6 +23,12 @@
   "devDependencies": {
     "db-migrate": "^0.11.6",
     "db-migrate-pg": "^1.0.0",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "nodemon": "^1.19.1"
+  },
+  "scripts": {
+    "lint": "eslint --ext js . *.js",
+    "prettier": "prettier --write '**/*.js'"
   }
 }

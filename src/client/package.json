@@ -22,7 +22,11 @@
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "eslint": "^6.2.1",
+    "eslint-config-prettier": "^6.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-hot-loader": "^4.12.11",
@@ -34,6 +38,10 @@
   "dependencies": {},
   "scripts": {
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "npm-run-all lint:css lint:js",
+    "lint:css": "prettier --check 'components/**/*.css'",
+    "lint:js": "eslint --ext js,jsx . *.js",
+    "prettier": "prettier --write '**/*.js' '**/*.jsx' '**/*.css'"
   }
 }

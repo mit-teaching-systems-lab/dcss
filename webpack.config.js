@@ -12,10 +12,7 @@ module.exports = {
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 options: {
-                    babelrcRoots: [
-                        '.',
-                        './src/client/*'
-                    ]
+                    babelrcRoots: ['.', './src/client/*']
                 }
             },
             {
@@ -38,9 +35,10 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new CopyWebpackPlugin([{
-            from: 'src/client/static',
-
-        }])
+        new CopyWebpackPlugin([
+            {
+                from: 'src/client/static'
+            }
+        ])
     ]
 };
