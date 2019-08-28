@@ -31,6 +31,6 @@
   "scripts": {
     "lint": "eslint --ext js . *.js",
     "prettier": "prettier --write '**/*.js'",
-    "test": "yarn workspace test run test:client"
+    "test": "yarn workspace test run test:server"
   }
 }
