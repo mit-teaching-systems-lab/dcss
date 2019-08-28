@@ -6,7 +6,8 @@
   "private": true,
   "workspaces": [
     "src/client",
-    "src/server"
+    "src/server",
+    "test"
   ],
   "scripts": {
     "start": "webpack-dev-server --mode development",
@@ -23,7 +24,7 @@
     "prettier": "npm-run-all prettier:notSrc && yarn workspaces run prettier",
     "prettier:notSrc": "prettier --write '**/*.js' --ignore-path 'src/**/*.js'",
     "storybook": "yarn workspaces run storybook",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "yarn workspace test run test"
   },
   "repository": {
     "type": "git",
