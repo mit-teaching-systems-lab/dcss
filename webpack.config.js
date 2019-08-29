@@ -21,7 +21,14 @@ module.exports = {
             }
         ]
     },
-    resolve: { extensions: ['*', '.js', '.jsx'] },
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname),
+            '@client': path.resolve(__dirname, 'src/client'),
+            '@server': path.resolve(__dirname, 'src/server')
+        },
+        extensions: ['*', '.js', '.jsx']
+    },
     output: {
         path: path.resolve(__dirname, 'dist/'),
         publicPath: '/dist/',
