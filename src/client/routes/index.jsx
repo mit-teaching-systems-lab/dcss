@@ -8,6 +8,21 @@ function Routes() {
     return (
         <Router>
             <div>
+                <ul>
+                    <li>
+                        <NavLink to="/">Home</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/login">Login</NavLink>
+                    </li>
+                    <li>
+                        <a href="https://github.com/mit-teaching-systems-lab/threeflows">
+                            Source Code
+                        </a>
+                    </li>
+                </ul>
+
+                <hr />
                 <Route path="/" component={App} />
                 <Route path="/login" component={Login} />
             </div>
