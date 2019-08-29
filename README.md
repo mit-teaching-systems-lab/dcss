@@ -2,7 +2,7 @@
 
 ## Development
 
-This is the list of all environment variables that should be exported prior to running the Teacher Moments app:
+This is the list of all environment variables that should be exported prior to running the Teacher Moments app in the command line:
 ```
 export PGUSER=
 export PGPASSWORD=
@@ -22,6 +22,11 @@ export S3_BUCKET=
 
 2. Start the dev server
    `yarn start`
+
+3) Start the backend server
+
+*Windows instructions TBD*
+If you are using Mac or Linux, export the environment variables first and then run dev server: `cat $(export config/dev); yarn dev`
 
 You should see your local site at http://localhost:3000/ or whatever port number you specify your CLIENT_PORT to be in your environment.
 
