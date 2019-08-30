@@ -1,19 +1,5 @@
 'use strict';
 
-var dbm;
-var type;
-var seed;
-
-/**
- * We receive the dbmigrate dependency from dbmigrate initially.
- * This enables us to not have to rely on NODE_PATH.
- */
-exports.setup = function(options, seedLink) {
-    dbm = options.dbmigrate;
-    type = dbm.dataType;
-    seed = seedLink;
-};
-
 exports.up = function(db) {
     // This is from https://github.com/voxpelli/node-connect-pg-simple/blob/HEAD/table.sql
     // It is a requirement to use the Postgres store

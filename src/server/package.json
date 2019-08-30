@@ -9,10 +9,22 @@
     "type": "git",
     "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
   },
+  "scripts": {
+    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
+    "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
+    "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
+    "create-migration": "db-migrate create",
+    "db-migrate-up": "db-migrate up",
+    "db-migrate-down": "db-migrate down",
+    "lint": "eslint --ext js . *.js",
+    "prettier": "prettier --write '**/*.js'",
+    "test": "yarn workspace test run test:server"
+  },
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
   "dependencies": {
     "aws-sdk": "^2.518.0",
     "babel-polyfill": "^6.26.0",
+    "body-parser": "^1.19.0",
     "connect-pg-simple": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^8.1.0",
@@ -27,10 +39,5 @@
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "nodemon": "^1.19.1"
-  },
-  "scripts": {
-    "lint": "eslint --ext js . *.js",
-    "prettier": "prettier --write '**/*.js'",
-    "test": "yarn workspace test run test:server"
   }
 }

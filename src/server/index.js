@@ -1,13 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+
+const authRouter = require('./service/authentication');
 const s3Router = require('./service/s3');
 
 const app = express();
 const port = process.env.SERVER_PORT || 5000;
 const pgSession = require('connect-pg-simple')(session);
 
+app.use(bodyParser.json());
 app.use(cors());
 
 app.use(
@@ -23,31 +27,7 @@ app.use(
     })
 );
 
-/**
- *  This is a stubbed endpoint for logging in.
- *  When a user hits this endpoint, the user 'boo'
- *  becomes the active session user.
- */
-app.post('/login', cors(), (req, res) => {
-    req.session.username = 'boo';
-    res.send({ ok: true, username: req.session.username });
-});
-
-app.get('/me', (req, res) => {
-    if (!req.session.username) res.send('Not logged in!');
-    res.send({ username: req.session.username });
-});
-
-/**
- *  This is a stubbed endpoint for logging out.
- *  When a user hits this endpoint, the user 'boo'
- *  is no longer the active session user.
- */
-app.post('/logout', (req, res) => {
-    delete req.session.username;
-    req.session.destroy(() => res.send('ok'));
-});
-
+app.use(authRouter);
 app.use('/media', s3Router);
 
 app.listen(port, () => {
