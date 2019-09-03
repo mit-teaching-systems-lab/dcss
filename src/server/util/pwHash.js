@@ -40,4 +40,8 @@ const saltHashPassword = function(userpassword) {
     return sha512(userpassword, salt);
 };
 
-module.exports = { saltHashPassword };
+const validateHashPassword = function(userpassword, salt) {
+    return sha512(userpassword, salt);
+};
+
+module.exports = { saltHashPassword, validateHashPassword };

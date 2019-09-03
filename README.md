@@ -26,7 +26,7 @@ export S3_BUCKET=
 3) Start the backend server
 
 *Windows instructions TBD*
-If you are using Mac or Linux, export the environment variables first and then run dev server: `cat $(export config/dev); yarn dev`
+If you are using Mac or Linux, export the environment variables first and then run dev server: `export $(cat config/dev); yarn dev`
 
 You should see your local site at http://localhost:3000/ or whatever port number you specify your CLIENT_PORT to be in your environment.
 
