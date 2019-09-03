@@ -4,7 +4,7 @@ export const logIn = username => ({
     type: LOG_IN,
     payload: {
         username,
-        loggedIn: true
+        isLoggedIn: true
     }
 });
 
@@ -12,6 +12,6 @@ export const logOut = username => ({
     type: LOG_OUT,
     payload: {
         username,
-        loggedIn: false
+        isLoggedIn: false
     }
 });

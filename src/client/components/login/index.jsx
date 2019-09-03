@@ -3,52 +3,63 @@ import { connect } from 'react-redux';
 
 import { logIn, logOut } from '@client/actions';
 
+const mapDispatchToProps = {
+  logIn,
+  logOut
+}
+
 class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            isLoggedIn: false,
             username: '',
-            isLoggedIn: false
+            input: ''
         };
 
+        this.updateInput = this.updateInput.bind(this);
         this.handleLogIn = this.handleLogIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
-    handleLogIn() {
-        this.props.logIn(this.state.username);
+    updateInput(input) {
+        this.setState({ input });
     }
 
-    handleLogOut() {
-        this.props.logOut(this.state.username);
+    async handleLogIn() {
+        const loginResponse= await (await fetch('http://localhost:5000/login', {
+            method: 'POST'
+        })).json();
+        const username = loginResponse.username;
+        if (loginResponse.ok) {
+            this.props.logIn(username);
+        }
     }
 
-    // async login() {
-    //     const loginData = await (await fetch('http://localhost:5000/login', {
-    //         method: 'POST'
-    //     })).json();
-    //     this.setState({ username: loginData.username });
-    // }
+    async handleLogOut() {
+        const logoutResponse = await fetch('http://localhost:5000/logout', {
+            method: 'POST'
+        });
+        const username = '';
 
-    // async logout() {
-    //     const logoutResponse = await fetch('http://localhost:5000/logout', {
-    //         method: 'POST'
-    //     });
-    //     if (logoutResponse.ok) {
-    //         this.setState({ username: '' });
-    //     }
-    // }
+        if (logoutResponse.ok) {
+            this.props.logOut(username);
+        }
+    }
 
     render() {
         return (
             <div>
-                <input />
+                <input
+                  onChange={e => this.updateInput(e.target.value)}
+                  value={this.state.input}
+                />
                 <span>
                     <button onClick={this.handleLogIn}>Login</button>
                     <button onClick={this.handleLogOut}>Logout</button>
                 </span>
-                {this.isLoggedIn ? (
+                {this.state.isLoggedIn ? (
                     <p>{this.state.username}</p>
                 ) : (
                     <p>Not logged in</p>
@@ -60,5 +71,5 @@ class Login extends Component {
 
 export default connect(
     null,
-    { logIn, logOut }
+    mapDispatchToProps
 )(Login);
