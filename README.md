@@ -8,7 +8,7 @@
    `yarn install`
 
 2. Set up local database  
-Follow the instructions here: [https://github.com/bocoup/threeflows#local-database-setup]()
+Follow the instructions here: [https://github.com/bocoup/threeflows#local-database-setup](https://github.com/bocoup/threeflows#local-database-setup)
 
 3. Start the dev server
    `yarn start`
