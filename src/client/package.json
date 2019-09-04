@@ -39,6 +39,7 @@
   },
   "dependencies": {},
   "scripts": {
+    "dev": "webpack-dev-server --mode development",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "npm-run-all lint:css lint:js",
