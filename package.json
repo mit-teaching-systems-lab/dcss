@@ -12,7 +12,9 @@
   "scripts": {
     "start": "webpack-dev-server --mode development",
     "build": "webpack --mode development",
-    "dev": "nodemon ./src/server/index.js",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "yarn workspace client run dev",
+    "dev:server": "yarn workspace server run dev",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
     "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
     "db-init-local": "yarn workspace server run db-init-local",
