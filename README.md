@@ -2,7 +2,20 @@
 
 ## Development
 
-This is the list of all environment variables that should be exported prior to running the Teacher Moments app in the command line:
+### Local Setup
+
+1. Install Dependencies
+   `yarn install`
+
+2. Set up local database  
+Follow the instructions here: [https://github.com/bocoup/threeflows#local-database-setup]()
+
+3. Start the dev server
+   `yarn start`
+
+4. Start the backend server
+
+This is the list of all environment variables that should be exported prior to running the Teacher Moments server in the command line:
 ```
 export PGUSER=
 export PGPASSWORD=
@@ -15,15 +28,7 @@ export AWS_PROFILE=
 export S3_BUCKET=
 ```
 
-### Local Setup
-
-1. Install Dependencies
-   `yarn install`
-
-2. Start the dev server
-   `yarn start`
-
-3) Start the backend server
+These variables are pre-populated in `config/dev`
 
 *Windows instructions TBD*
 If you are using Mac or Linux, export the environment variables first and then run dev server: `export $(cat config/dev); yarn dev`
