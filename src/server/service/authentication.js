@@ -28,11 +28,6 @@ authRouter.post(
     }
 );
 
-/**
- *  This is a stubbed endpoint for logging out.
- *  When a user hits this endpoint, the user 'boo'
- *  is no longer the active session user.
- */
 authRouter.post('/logout', (req, res) => {
     delete req.session.user;
     req.session.destroy(() => res.send('ok'));
