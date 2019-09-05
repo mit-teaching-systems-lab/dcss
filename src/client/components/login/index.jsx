@@ -59,8 +59,9 @@ class Login extends Component {
                     <button onClick={this.handleLogIn}>Login</button>
                     <button onClick={this.handleLogOut}>Logout</button>
                 </span>
-                {this.state.isLoggedIn ? (
-                    <p>{this.state.username}</p>
+                {
+                    this.props.isLoggedIn ? (
+                    <p>{this.props.username}</p>
                 ) : (
                     <p>Not logged in</p>
                 )}
@@ -69,7 +70,11 @@ class Login extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    const { isLoggedIn, username } = state.login;
+    return { isLoggedIn, username };
+}
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(Login);
