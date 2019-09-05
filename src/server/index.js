@@ -3,13 +3,15 @@ const cors = require('cors');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const { Pool } = require('pg');
+const pgSession = require('connect-pg-simple')(session);
 
 const authRouter = require('./service/authentication');
+const rolesRouter = require('./service/roles');
 const s3Router = require('./service/s3');
 
 const app = express();
 const port = process.env.SERVER_PORT || 5000;
-const pgSession = require('connect-pg-simple')(session);
+
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -28,6 +30,7 @@ app.use(
 );
 
 app.use(authRouter);
+app.use(rolesRouter);
 app.use('/media', s3Router);
 
 app.listen(port, () => {
