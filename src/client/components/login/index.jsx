@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { logIn, logOut } from '@client/actions';
 
 const mapDispatchToProps = {
-  logIn,
-  logOut
-}
+    logIn,
+    logOut
+};
 
 class Login extends Component {
     constructor(props) {
@@ -28,9 +29,12 @@ class Login extends Component {
     }
 
     async handleLogIn() {
-        const loginResponse= await (await fetch('http://localhost:5000/login', {
-            method: 'POST'
-        })).json();
+        const loginResponse = await (await fetch(
+            'http://localhost:5000/login',
+            {
+                method: 'POST'
+            }
+        )).json();
         const username = loginResponse.username;
         if (loginResponse.ok) {
             this.props.logIn(username);
@@ -52,15 +56,14 @@ class Login extends Component {
         return (
             <div>
                 <input
-                  onChange={e => this.updateInput(e.target.value)}
-                  value={this.state.input}
+                    onChange={e => this.updateInput(e.target.value)}
+                    value={this.state.input}
                 />
                 <span>
                     <button onClick={this.handleLogIn}>Login</button>
                     <button onClick={this.handleLogOut}>Logout</button>
                 </span>
-                {
-                    this.props.isLoggedIn ? (
+                {this.props.isLoggedIn ? (
                     <p>{this.props.username}</p>
                 ) : (
                     <p>Not logged in</p>
@@ -69,6 +72,13 @@ class Login extends Component {
         );
     }
 }
+
+Login.propTypes = {
+    logIn: PropTypes.func.isRequired,
+    logOut: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired
+};
 
 function mapStateToProps(state) {
     const { isLoggedIn, username } = state.login;
