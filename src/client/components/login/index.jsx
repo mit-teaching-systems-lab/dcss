@@ -15,28 +15,40 @@ class Login extends Component {
 
         this.state = {
             isLoggedIn: false,
+            loginError: '',
             username: '',
-            input: ''
+            usernameInput: ''
         };
 
-        this.updateInput = this.updateInput.bind(this);
+        this.updateUsernameInput = this.updateUsernameInput.bind(this);
         this.handleLogIn = this.handleLogIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
-    updateInput(input) {
-        this.setState({ input });
+    updateUsernameInput(usernameInput) {
+        this.setState({ usernameInput });
     }
 
     async handleLogIn() {
+        const data = JSON.stringify({ username: this.state.usernameInput });
         const loginResponse = await (await fetch(
             'http://localhost:5000/login',
             {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: data
             }
         )).json();
         const username = loginResponse.username;
-        if (loginResponse.ok) {
+        this.props.logIn(username);
+
+        if (loginResponse.error) {
+            this.setState({ loginError: loginResponse.message });
+            this.props.logOut('');
+        } else {
+            this.setState({ loginError: '' });
             this.props.logIn(username);
         }
     }
@@ -47,7 +59,7 @@ class Login extends Component {
         });
         const username = '';
 
-        if (logoutResponse.ok) {
+        if (!logoutResponse.error) {
             this.props.logOut(username);
         }
     }
@@ -55,19 +67,24 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <input
-                    onChange={e => this.updateInput(e.target.value)}
-                    value={this.state.input}
-                />
-                <span>
+                <div>
+                    <label htmlFor="name">username</label>
+                    <input
+                        name="username"
+                        onChange={e => this.updateUsernameInput(e.target.value)}
+                        value={this.state.usernameInput}
+                    />
+                </div>
+                <div>
                     <button onClick={this.handleLogIn}>Login</button>
                     <button onClick={this.handleLogOut}>Logout</button>
-                </span>
+                </div>
                 {this.props.isLoggedIn ? (
-                    <p>{this.props.username}</p>
+                    <p>Username: {this.props.username}</p>
                 ) : (
                     <p>Not logged in</p>
                 )}
+                {this.state.loginError}
             </div>
         );
     }

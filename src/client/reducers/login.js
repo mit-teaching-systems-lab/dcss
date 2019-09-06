@@ -8,7 +8,7 @@ export default function(state = initialState, action) {
     switch (action.type) {
         case LOG_IN: {
             const { isLoggedIn, username } = action.payload;
-            console.log('{ isLoggedIn,  username}', { isLoggedIn, username });
+
             return {
                 ...state,
                 username,
