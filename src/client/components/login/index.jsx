@@ -76,8 +76,8 @@ class Login extends Component {
 Login.propTypes = {
     logIn: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired,
-    isLoggedIn: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired
+    isLoggedIn: PropTypes.bool.isRequired,
+    username: PropTypes.string
 };
 
 function mapStateToProps(state) {
