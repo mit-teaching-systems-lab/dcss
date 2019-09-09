@@ -3,8 +3,9 @@ const cors = require('cors');
 
 const rolesRouter = Router();
 
-rolesRouter.get('/roles', (req, res) => {
-    res.send('test');
+rolesRouter.get('/roles/:user', (req, res) => {
+    const user = req.params.user;
+    res.json({user});
 });
 
 module.exports = rolesRouter;
