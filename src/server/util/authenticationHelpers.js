@@ -51,7 +51,7 @@ const loginUserBackend = async function(req, res, next) {
         if (!password && !hash && !salt) {
             // disabling to set req.session.user
             //eslint-disable-next-line require-atomic-updates
-            req.session.user = { anonymous: true, username: '', email: '' };
+            req.session.user = { anonymous: true, username, email: '' };
             return next();
         }
 
