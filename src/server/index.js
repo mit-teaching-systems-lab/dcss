@@ -12,7 +12,6 @@ const s3Router = require('./service/s3');
 const app = express();
 const port = process.env.SERVER_PORT || 5000;
 
-
 app.use(bodyParser.json());
 app.use(cors());
 

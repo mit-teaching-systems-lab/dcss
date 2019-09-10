@@ -1,9 +1,9 @@
 const { apiError } = require('./api');
 
 const validateRequestUsernameAndEmail = function(req, res, next) {
-    const { username, email } = req.body;
+    const { username, email, user } = req.body;
 
-    if (!username && !email) {
+    if (!username && !email && !user) {
         return apiError(res, new Error('Username or email must be defined.'));
     }
 
@@ -14,7 +14,8 @@ const validateRequestUsernameAndEmail = function(req, res, next) {
 };
 
 const validateRequestBody = function(req, res, next) {
-    if (!req.body) {
+    const validReqBody = Object.keys(req.body).length > 0;
+    if (!validReqBody) {
         return apiError(res, new Error('No request body!'));
     }
 
