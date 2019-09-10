@@ -17,7 +17,7 @@ const getUserInDatabase = async function(user) {
     return userId;
 };
 
-const getUserRolesInDatabase = async function(userId, roles) {
+const getUserRolesInDatabase = async function(userId) {
     const client = await pool.connect();
     const result = await client.query(
         sql`SELECT * FROM roles WHERE userid = ${userId};`
@@ -26,10 +26,64 @@ const getUserRolesInDatabase = async function(userId, roles) {
     return { roles: result.rows };
 };
 
-const getUserRolesBackend = async function(req, res, next) {
+const addUserRolesToDatabase = async function(userId, roles) {
     const client = await pool.connect();
+    const deduplicatedRoles = await deduplicateUserRoles(userId, roles);
+
+    for (const role of deduplicatedRoles) {
+        try {
+            await client.query('BEGIN');
+            await client.query(
+                sql`INSERT INTO roles(userid, role) VALUES(${userId}, ${role});`
+            );
+            await client.query('COMMIT');
+        } catch (e) {
+            const roleServerError = new Error('Role not created. Server error');
+            roleServerError.status = 500;
+            await client.query('ROLLBACK');
+            client.release();
+
+            return roleServerError;
+        }
+    }
+
+    client.release();
+    return { status: 201 };
+};
+
+const deleteUserRoleInDatabase = async function(userId, role) {
+    const client = await pool.connect();
+
+    try {
+        await client.query('BEGIN');
+        await client.query(
+            sql`DELETE FROM roles WHERE userid = ${userId} AND role = ${role};`
+        );
+        await client.query('COMMIT');
+    } catch (e) {
+        const roleServerError = new Error('Role not created. Server error');
+        roleServerError.status = 500;
+        await client.query('ROLLBACK');
+
+        return roleServerError;
+    }
+
+    client.release();
+    return { status: 200 };
+};
+
+const deduplicateUserRoles = async function(userId, roles) {
+    const userRolesData = await getUserRolesInDatabase(userId);
+    const userRoles = userRolesData.roles.map(userData => userData.role);
+    const deduplicatedRoles = roles.filter(role => !userRoles.includes(role));
+
+    return deduplicatedRoles;
+};
+
+const getUserRolesBackend = async function(req, res) {
     const user = req.body.user;
     const userId = await getUserInDatabase(user);
+    let userRoleData = null;
 
     if (userId) {
         userRoleData = await getUserRolesInDatabase(userId, req.body.roles);
@@ -46,52 +100,48 @@ const getUserRolesBackend = async function(req, res, next) {
     res.json(userRoleData);
 };
 
-const addUserRolesToDatabase = async function(req, res, next) {
+const addUserRolesBackend = async function(req, res) {
     const userId = await getUserInDatabase(req.body.user);
     const roles = req.body.roles;
 
-    if (!userId || !roles) {
+    if (!userId || !roles.length) {
         const roleCreateError = new Error('User and roles must be defined');
         roleCreateError.status = 409;
         return apiError(res, roleCreateError);
     }
 
-    const client = await pool.connect();
-    const deduplicatedRoles = await deduplicateUserRoles(userId, roles);
+    const result = await addUserRolesToDatabase(userId, roles);
 
-    for (const role of deduplicatedRoles) {
-        try {
-            await client.query('BEGIN');
-            const result = await client.query(
-                sql`INSERT INTO roles(userid, role) VALUES(${userId}, ${role});`
-            );
-            await client.query('COMMIT');
-            roleCreated = true;
-        } catch (e) {
-            console.log('e', e);
-            const roleServerError = new Error('Role not created. Server error');
-            roleServerError.status = 500;
-            await client.query('ROLLBACK');
-            client.release();
-
-            return apiError(res, roleServerError);
-        }
+    if (result.status !== 201) {
+        console.log('result', result);
+        return apiError(result);
     }
-    client.release();
-    res.sendStatus(201);
+
+    res.sendStatus(result.status);
 };
 
-const deduplicateUserRoles = async function(userId, roles) {
-    const client = await pool.connect();
-    const userRolesData = await getUserRolesInDatabase(userId);
-    const userRoles = userRolesData.roles.map(userData => userData.role);
-    const deduplicatedRoles = roles.filter(role => !userRoles.includes(role));
+const deleteUserRolesBackend = async function(req, res) {
+    const userId = await getUserInDatabase(req.body.user);
+    const roles = req.body.roles;
 
-    client.release();
-    return deduplicatedRoles;
+    if (!userId || !roles.length) {
+        const roleCreateError = new Error('User and roles must be defined');
+        roleCreateError.status = 409;
+        return apiError(res, roleCreateError);
+    }
+
+    for (const role of roles) {
+        const result = await deleteUserRoleInDatabase(userId, role);
+
+        if (result.status !== 200) {
+            return apiError(res, result);
+        }
+    }
+    res.sendStatus(200);
 };
 
 const getUserRoles = asyncMiddleware(getUserRolesBackend);
-const addUserRoles = asyncMiddleware(addUserRolesToDatabase);
+const addUserRoles = asyncMiddleware(addUserRolesBackend);
+const deleteUserRoles = asyncMiddleware(deleteUserRolesBackend);
 
-module.exports = { getUserRoles, addUserRoles };
+module.exports = { getUserRoles, addUserRoles, deleteUserRoles };

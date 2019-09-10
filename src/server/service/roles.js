@@ -1,11 +1,14 @@
 const { Router } = require('express');
-const cors = require('cors');
 
 const {
     validateRequestUsernameAndEmail,
     validateRequestBody
 } = require('../util/requestValidation');
-const { getUserRoles, addUserRoles } = require('../util/rolesHelpers');
+const {
+    getUserRoles,
+    addUserRoles,
+    deleteUserRoles
+} = require('../util/rolesHelpers');
 
 const rolesRouter = Router();
 
@@ -19,6 +22,12 @@ rolesRouter.post('/roles/add', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     addUserRoles
+]);
+
+rolesRouter.post('/roles/delete', [
+    validateRequestBody,
+    validateRequestUsernameAndEmail,
+    deleteUserRoles
 ]);
 
 module.exports = rolesRouter;
