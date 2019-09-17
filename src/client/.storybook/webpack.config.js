@@ -12,7 +12,15 @@ module.exports = {
     ],
     module: {
         rules: [
-            // add your custom rules.
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                // From https://github.com/Semantic-Org/Semantic-UI-CSS/issues/28
+                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+                loader: 'url-loader?limit=100000'
+            }
         ]
     }
 };
