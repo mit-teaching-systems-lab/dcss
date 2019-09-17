@@ -28,11 +28,13 @@ app.use(
     })
 );
 
-app.use(authRouter);
-app.use(rolesRouter);
+app.use('/auth', authRouter);
+app.use('/roles', rolesRouter);
 app.use('/media', s3Router);
 
-app.listen(port, () => {
+const listener = express();
+listener.use('/api', app);
+listener.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log(`Listening on ${port}`);
 });

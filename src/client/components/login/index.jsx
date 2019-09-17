@@ -31,16 +31,13 @@ class Login extends Component {
 
     async handleLogIn() {
         const data = JSON.stringify({ username: this.state.usernameInput });
-        const loginResponse = await (await fetch(
-            'http://localhost:5000/login',
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: data
-            }
-        )).json();
+        const loginResponse = await (await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: data
+        })).json();
         const username = loginResponse.username;
         this.props.logIn(username);
 
@@ -54,7 +51,7 @@ class Login extends Component {
     }
 
     async handleLogOut() {
-        const logoutResponse = await fetch('http://localhost:5000/logout', {
+        const logoutResponse = await fetch('/api/auth/logout', {
             method: 'POST'
         });
         const username = '';
