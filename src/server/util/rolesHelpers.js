@@ -3,15 +3,14 @@ const { Pool } = require('pg');
 const { apiError, asyncMiddleware } = require('./api');
 const { sql } = require('./sqlHelpers');
 
-// Do we want our own pool or should this be shared with the user authentication pool?
 const pool = new Pool();
 
 const getUserInDatabase = async function(user) {
     const client = await pool.connect();
     const result = await client.query(
-        sql`SELECT * FROM users WHERE email = ${user} OR username = ${user};`
+        sql`SELECT * FROM users WHERE email = ${user} OR username = ${user} LIMIT 1;`
     );
-    const userId = result.rows[0] ? result.rows[0].id : null; // Should we account for getting more than one user back?
+    const userId = result.rows[0] ? result.rows[0].id : null;
 
     client.release();
     return userId;
@@ -20,7 +19,7 @@ const getUserInDatabase = async function(user) {
 const getUserRolesInDatabase = async function(userId) {
     const client = await pool.connect();
     const result = await client.query(
-        sql`SELECT * FROM roles WHERE userid = ${userId};`
+        sql`SELECT * FROM roles WHERE user_id = ${userId};`
     );
 
     return { roles: result.rows };
@@ -30,11 +29,16 @@ const addUserRolesToDatabase = async function(userId, roles) {
     const client = await pool.connect();
     const deduplicatedRoles = await deduplicateUserRoles(userId, roles);
 
+    if (!deduplicatedRoles.length) {
+        client.release();
+        return { status: 204 };
+    }
+
     for (const role of deduplicatedRoles) {
         try {
             await client.query('BEGIN');
             await client.query(
-                sql`INSERT INTO roles(userid, role) VALUES(${userId}, ${role});`
+                sql`INSERT INTO roles(user_id, role) VALUES(${userId}, ${role});`
             );
             await client.query('COMMIT');
         } catch (e) {
@@ -57,7 +61,7 @@ const deleteUserRoleInDatabase = async function(userId, role) {
     try {
         await client.query('BEGIN');
         await client.query(
-            sql`DELETE FROM roles WHERE userid = ${userId} AND role = ${role};`
+            sql`DELETE FROM roles WHERE user_id = ${userId} AND role = ${role};`
         );
         await client.query('COMMIT');
     } catch (e) {
@@ -112,8 +116,7 @@ const addUserRolesBackend = async function(req, res) {
 
     const result = await addUserRolesToDatabase(userId, roles);
 
-    if (result.status !== 201) {
-        console.log('result', result);
+    if (result.status > 204) {
         return apiError(result);
     }
 
@@ -133,7 +136,7 @@ const deleteUserRolesBackend = async function(req, res) {
     for (const role of roles) {
         const result = await deleteUserRoleInDatabase(userId, role);
 
-        if (result.status !== 200) {
+        if (result.status > 204) {
             return apiError(res, result);
         }
     }

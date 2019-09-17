@@ -4,9 +4,9 @@ exports.up = function(db) {
     return db.runSql(
         `CREATE TABLE "roles" (
         id SERIAL PRIMARY KEY,
-        role varchar NOT NULL CHECK (role IN ('super_admin', 'admin', 'researcher', 'facilitator', 'participant')),
-        userid int NOT NULL,
-        FOREIGN KEY(userId) REFERENCES users(id)
+        role VARCHAR NOT NULL CHECK (role IN ('super_admin', 'admin', 'researcher', 'facilitator', 'participant')),
+        user_id INT NOT NULL,
+        FOREIGN KEY(user_id) REFERENCES users(id)
         )`
     );
 };
