@@ -1,7 +1,7 @@
 'use strict';
 
 exports.up = function(db) {
-      return db.runSql(
+    return db.runSql(
         `
 CREATE OR REPLACE FUNCTION updated_at() RETURNS TRIGGER AS $$
   BEGIN
@@ -29,9 +29,8 @@ CREATE TRIGGER updated_at BEFORE UPDATE ON scenario
 };
 
 exports.down = function(db) {
-
-  return db.runSql(
-    `
+    return db.runSql(
+        `
     DROP TABLE scenario;
     DROP FUNCTION updated_at();
     `
@@ -39,5 +38,5 @@ exports.down = function(db) {
 };
 
 exports._meta = {
-  "version": 1
+    version: 1
 };

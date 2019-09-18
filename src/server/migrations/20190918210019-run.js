@@ -3,18 +3,18 @@
 exports.up = function(db) {
     return db.runSql(
         `
-CREATE TABLE slide (
+CREATE TABLE run (
     id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL REFERENCES users(id),
     scenario_id INT NOT NULL REFERENCES scenario(id),
-    slide_order INT NOT NULL,
-    components JSONB
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
     `
     );
 };
 
 exports.down = function(db) {
-    return db.dropTable('slide');
+    return db.dropTable('run');
 };
 
 exports._meta = {
