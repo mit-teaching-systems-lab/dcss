@@ -14,6 +14,15 @@ const getUserInDatabase = async function(username, email) {
     return result.rows;
 };
 
+const getUserById = async function(id) {
+    const client = await pool.connect();
+    const result = await client.query(
+        sql`SELECT username, email FROM users WHERE id=${id}`
+    );
+    client.release();
+    return result.rows[0];
+};
+
 const userExistsInDatabase = async function(username, email) {
     const rows = await getUserInDatabase(username, email);
     let user = null;
@@ -139,4 +148,10 @@ const requireUser = (req, res, next) => {
     next();
 };
 
-module.exports = { createUser, duplicatedUser, loginUser, requireUser };
+module.exports = {
+    createUser,
+    duplicatedUser,
+    loginUser,
+    requireUser,
+    getUserById
+};
