@@ -39,7 +39,10 @@ module.exports = {
         port: process.env.CLIENT_PORT || 3000,
         publicPath: '/',
         historyApiFallback: true,
-        hotOnly: true
+        hotOnly: true,
+        proxy: {
+            '/api': 'http://localhost:5000/'
+        }
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),

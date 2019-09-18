@@ -12,19 +12,19 @@ const {
 
 const rolesRouter = Router();
 
-rolesRouter.get('/roles', [
+rolesRouter.get('/', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     getUserRoles
 ]);
 
-rolesRouter.post('/roles/add', [
+rolesRouter.post('/add', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     addUserRoles
 ]);
 
-rolesRouter.post('/roles/delete', [
+rolesRouter.post('/delete', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     deleteUserRoles
