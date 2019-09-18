@@ -6,7 +6,7 @@ exports.up = function(db) {
 CREATE TABLE slide (
     id SERIAL PRIMARY KEY,
     scenario_id INT NOT NULL REFERENCES scenario(id),
-    order INT NOT NULL,
+    slide_order INT NOT NULL,
     components JSONB
 );
     `
