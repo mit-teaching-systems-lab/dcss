@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import './editor.css';
 
-export const Editor = props => (
+export const Editor = () => (
     <Grid columns={2}>
         <Grid.Column width={4} color="orange">
             SLIDE HOLDER
