@@ -4,7 +4,8 @@ CREATE TABLE run_slide_response (
     slide_id INT NOT NULL REFERENCES slide(id),
     response JSONB,
     created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMPTZ
+    updated_at TIMESTAMPTZ,
+    ended_at TIMESTAMPTZ
 );
 
 ---
