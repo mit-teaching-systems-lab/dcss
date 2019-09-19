@@ -1,4 +1,4 @@
-CREATE TABLE "roles" (
+CREATE TABLE roles (
     id SERIAL PRIMARY KEY,
     role VARCHAR NOT NULL CHECK (role IN ('super_admin', 'admin', 'researcher', 'facilitator', 'participant')),
     user_id INT NOT NULL,
@@ -7,4 +7,4 @@ CREATE TABLE "roles" (
 
 ---
 
-DROP TABLE "roles";
+DROP TABLE roles;

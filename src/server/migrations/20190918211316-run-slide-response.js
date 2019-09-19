@@ -1,24 +1,12 @@
 'use strict';
 
+const sqlFile = require('./helpers/sql-file')(__filename);
 exports.up = function(db) {
-    return db.runSql(
-        `
-CREATE TABLE run_slide_response (
-    id SERIAL PRIMARY KEY,
-    run_id INT NOT NULL REFERENCES run(id),
-    slide_id INT NOT NULL REFERENCES slide(id),
-    response JSONB,
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMPTZ
-);
-    `
-    );
+    return db.runSql(sqlFile.up);
 };
-
 exports.down = function(db) {
-    return db.dropTable('run_slide_response');
+    return db.runSql(sqlFile.down);
 };
-
 exports._meta = {
     version: 1
 };

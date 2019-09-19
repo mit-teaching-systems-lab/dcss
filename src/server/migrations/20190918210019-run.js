@@ -1,22 +1,12 @@
 'use strict';
 
+const sqlFile = require('./helpers/sql-file')(__filename);
 exports.up = function(db) {
-    return db.runSql(
-        `
-CREATE TABLE run (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users(id),
-    scenario_id INT NOT NULL REFERENCES scenario(id),
-    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
-);
-    `
-    );
+    return db.runSql(sqlFile.up);
 };
-
 exports.down = function(db) {
-    return db.dropTable('run');
+    return db.runSql(sqlFile.down);
 };
-
 exports._meta = {
     version: 1
 };
