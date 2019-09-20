@@ -14,6 +14,15 @@ const getUserInDatabase = async function(username, email) {
     return result.rows;
 };
 
+const getUserById = async function(id) {
+    const client = await pool.connect();
+    const result = await client.query(
+        sql`SELECT username, email FROM users WHERE id=${id}`
+    );
+    client.release();
+    return result.rows[0];
+};
+
 const userExistsInDatabase = async function(username, email) {
     const rows = await getUserInDatabase(username, email);
     let user = null;
@@ -45,13 +54,13 @@ const loginUserBackend = async function(req, res, next) {
 
     // Case when user is found
     if (user) {
-        const { salt, hash } = user;
+        const { salt, hash, id } = user;
 
         // Case of anonymous user, where only the username / email stored
         if (!password && !hash && !salt) {
             // disabling to set req.session.user
             //eslint-disable-next-line require-atomic-updates
-            req.session.user = { anonymous: true, username, email: '' };
+            req.session.user = { anonymous: true, username, email: '', id };
             return next();
         }
 
@@ -77,7 +86,8 @@ const loginUserBackend = async function(req, res, next) {
             req.session.user = {
                 anonymous: false,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                id
             };
             return next();
         }
@@ -139,4 +149,10 @@ const requireUser = (req, res, next) => {
     next();
 };
 
-module.exports = { createUser, duplicatedUser, loginUser, requireUser };
+module.exports = {
+    createUser,
+    duplicatedUser,
+    loginUser,
+    requireUser,
+    getUserById
+};
