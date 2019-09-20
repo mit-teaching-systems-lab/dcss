@@ -27,7 +27,7 @@ exports.asyncMiddleware = middle => {
         // can have 3 arguments or 2 arguments and be treated the same
         return async function asyncMiddlewareWrapper(req, res, next) {
             try {
-                return await middle(req, res, next);
+                await middle(req, res, next);
             } catch (error) {
                 next(error);
             }
@@ -43,7 +43,7 @@ exports.asyncMiddleware = middle => {
             next
         ) {
             try {
-                return await middle(error, req, res, next);
+                await middle(error, req, res, next);
             } catch (error) {
                 next(error);
             }
