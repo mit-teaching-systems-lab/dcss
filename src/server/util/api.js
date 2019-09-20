@@ -1,5 +1,5 @@
 exports.apiError = (res, error) => {
-    const { status = 400, message } = error;
+    const { status = 500, message } = error;
     // TODO: turn on stack in DEV
     const result = {
         error: true,
