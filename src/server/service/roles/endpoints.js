@@ -12,7 +12,7 @@ exports.getUserRolesAsync = async function(req, res) {
     noUserFoundError.status = 409;
 
     if (!user) {
-        return apiError(res, noUserFoundError);
+        throw noUserFoundError;
     }
 
     const userRoleData = await db.getUserRoles(userId, req.body.roles);

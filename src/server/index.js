@@ -9,6 +9,8 @@ const authRouter = require('./service/authentication');
 const rolesRouter = require('./service/roles');
 const s3Router = require('./service/s3');
 
+const { errorHandler } = require('./util/api');
+
 const app = express();
 const port = process.env.SERVER_PORT || 5000;
 
@@ -31,6 +33,15 @@ app.use(
 app.use('/auth', authRouter);
 app.use('/roles', rolesRouter);
 app.use('/media', s3Router);
+
+// This handles 404 results from router -- answers all remaining requests
+app.use((req, res, next) => {
+    const e404 = new Error('API Endpoint not found');
+    e404.status = 404;
+    next(e404);
+});
+// This handles api errors that are thrown -- needs to be after all the endpoints
+app.use(errorHandler);
 
 const listener = express();
 listener.use('/api', app);
