@@ -54,13 +54,13 @@ const loginUserBackend = async function(req, res, next) {
 
     // Case when user is found
     if (user) {
-        const { salt, hash } = user;
+        const { salt, hash, id } = user;
 
         // Case of anonymous user, where only the username / email stored
         if (!password && !hash && !salt) {
             // disabling to set req.session.user
             //eslint-disable-next-line require-atomic-updates
-            req.session.user = { anonymous: true, username, email: '' };
+            req.session.user = { anonymous: true, username, email: '', id };
             return next();
         }
 
@@ -86,7 +86,8 @@ const loginUserBackend = async function(req, res, next) {
             req.session.user = {
                 anonymous: false,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                id
             };
             return next();
         }
