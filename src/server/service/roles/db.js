@@ -1,5 +1,5 @@
 const { sql } = require('../../util/sqlHelpers');
-const { withClient, withClientTransacation } = require('../../util/db');
+const { withClient, withClientTransaction } = require('../../util/db');
 
 exports.getUserRoles = async function getUserRoles(userId) {
     return withClient(async client => {
@@ -11,7 +11,7 @@ exports.getUserRoles = async function getUserRoles(userId) {
 };
 
 exports.addUserRoles = async function addUserRoles(userId, roles) {
-    return withClientTransacation(async client => {
+    return withClientTransaction(async client => {
         const result = await client.query(sql`
 INSERT INTO user_role (user_id, role)
     SELECT ${userId} as user_id, t.role FROM jsonb_array_elements_text(${roles}) AS t (role)
@@ -21,7 +21,7 @@ INSERT INTO user_role (user_id, role)
 };
 
 exports.setUserRoles = async function setUserRoles(userId, roles) {
-    return withClientTransacation(async client => {
+    return withClientTransaction(async client => {
         const add = await client.query(sql`
 INSERT INTO user_role (user_id, role)
     SELECT ${userId} as user_id, t.role FROM jsonb_array_elements_text(${roles}) AS t (role)
@@ -39,7 +39,7 @@ DELETE FROM user_role WHERE user_id = ${userId} AND role NOT IN (SELECT jsonb_ar
 };
 
 exports.deleteUserRoles = async function(userId, roles) {
-    return withClientTransacation(async client => {
+    return withClientTransaction(async client => {
         const result = await client.query(
             sql`DELETE FROM user_role WHERE user_id = ${userId} AND role IN (SELECT jsonb_array_elements_text(${roles}));`
         );
