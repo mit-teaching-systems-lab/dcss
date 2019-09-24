@@ -22,5 +22,5 @@ exports.usingTransaction = async (client, method) => {
     }
 };
 
-exports.withClientTransacation = method =>
+exports.withClientTransaction = method =>
     exports.withClient(client => exports.usingTransaction(client, method));
