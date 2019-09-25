@@ -2,13 +2,23 @@
   "name": "client",
   "version": "2.0.0-prealpha.0",
   "description": "Frontend for the Teacher Moments app",
-  "main": "index.js",
   "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
   },
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
+  "main": "index.js",
+  "scripts": {
+    "build-storybook": "build-storybook",
+    "dev": "webpack-dev-server --mode development",
+    "lint": "npm-run-all lint:css \"lint:js {@}\" --",
+    "lint:css": "prettier -l \"**/*.css\"",
+    "lint:js": "eslint --ext js,jsx .",
+    "prettier": "prettier --write \"**/*.{js,jsx,css}\"",
+    "storybook": "start-storybook -p 6006",
+    "test": "yarn workspace test run test:client"
+  },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
@@ -42,15 +52,5 @@
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",
     "webpack-dev-server": "^3.8.0"
-  },
-  "scripts": {
-    "dev": "webpack-dev-server --mode development",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "lint": "npm-run-all lint:css lint:js",
-    "lint:css": "prettier --check 'components/**/*.css'",
-    "lint:js": "eslint --ext js,jsx . *.js",
-    "prettier": "prettier --write '**/*.js' '**/*.jsx' '**/*.css'",
-    "test": "yarn workspace test run test:client"
   }
 }

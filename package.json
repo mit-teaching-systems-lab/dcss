@@ -2,34 +2,9 @@
   "name": "threeflows",
   "version": "2.0.0-prealpha.0",
   "description": "Teacher Moments: Practice spaces for teacher preparation programs",
-  "main": "src/index.js",
   "private": true,
   "engines": {
     "node": ">=10.0.0"
-  },
-  "workspaces": [
-    "src/client",
-    "src/server",
-    "test"
-  ],
-  "scripts": {
-    "start": "webpack-dev-server --mode development",
-    "build": "webpack --mode development",
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:client": "yarn workspace client run dev",
-    "dev:server": "yarn workspace server run dev",
-    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
-    "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
-    "db-init-local": "yarn workspace server run db-init-local",
-    "create-migration": "yarn workspace server run create-migration",
-    "db-migrate-up": "yarn workspace server run db-migrate-up",
-    "db-migrate-down": "yarn workspace server run db-migrate-down",
-    "lint": "npm-run-all lint:js && yarn workspaces run lint",
-    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern 'src/**/*.js'",
-    "prettier": "npm-run-all prettier:notSrc && yarn workspaces run prettier",
-    "prettier:notSrc": "prettier --write '**/*.js' --ignore-path 'src/**/*.js'",
-    "storybook": "yarn workspaces run storybook",
-    "test": "yarn workspace test run test"
   },
   "repository": {
     "type": "git",
@@ -39,6 +14,32 @@
     "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
   },
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
+  "main": "src/index.js",
+  "workspaces": [
+    "src/client",
+    "src/server",
+    "test"
+  ],
+  "scripts": {
+    "build": "webpack --mode development",
+    "create-migration": "yarn workspace server run create-migration",
+    "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
+    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
+    "db-init-local": "yarn workspace server run db-init-local",
+    "db-migrate-down": "yarn workspace server run db-migrate-down",
+    "db-migrate-up": "yarn workspace server run db-migrate-up",
+    "dev": "npm-run-all --parallel dev:*",
+    "dev:client": "yarn workspace client run dev",
+    "dev:server": "yarn workspace server run dev",
+    "jest": "yarn workspace test run test",
+    "lint": "npm-run-all \"lint:* {@}\" --",
+    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"src/**/*.js\"",
+    "lint:packages": "yarn workspaces run lint",
+    "prettier": "prettier --write \"**/*.{js,jsx,json,css}\" --ignore-path \"**/package.json\"",
+    "start": "webpack-dev-server --mode development",
+    "storybook": "yarn workspaces run storybook",
+    "test": "npm-run-all jest lint"
+  },
   "devDependencies": {
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
