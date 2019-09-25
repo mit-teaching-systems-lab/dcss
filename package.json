@@ -32,13 +32,13 @@
     "dev:client": "yarn workspace client run dev",
     "dev:server": "yarn workspace server run dev",
     "jest": "yarn workspace test run test",
-    "lint": "npm-run-all \"lint:* {@}\" --",
+    "lint": "npm-run-all \"lint:* {@}\" -c --",
     "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"src/**/*.js\"",
     "lint:packages": "yarn workspaces run lint",
     "prettier": "prettier --write \"**/*.{js,jsx,json,css}\"",
     "start": "webpack-dev-server --mode development",
     "storybook": "yarn workspaces run storybook",
-    "test": "npm-run-all jest lint"
+    "test": "npm-run-all jest lint -c"
   },
   "devDependencies": {
     "eslint": "^6.2.2",

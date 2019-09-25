@@ -12,7 +12,7 @@
   "scripts": {
     "build-storybook": "build-storybook",
     "dev": "webpack-dev-server --mode development",
-    "lint": "npm-run-all lint:css \"lint:js {@}\" --",
+    "lint": "npm-run-all lint:css \"lint:js {@}\" -c --",
     "lint:css": "prettier -l \"**/*.css\"",
     "lint:js": "eslint --ext js,jsx .",
     "prettier": "prettier --write \"**/*.{js,jsx,css}\"",
