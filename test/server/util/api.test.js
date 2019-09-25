@@ -65,6 +65,9 @@ describe('util/api', () => {
             const mockReq = {};
             const mockRes = {};
             const mockError = new Error('mock');
+            const mockNext = jest.fn(error => {
+                expect(error).toBe(mockError);
+            });
 
             expect.assertions(5);
 
@@ -74,10 +77,6 @@ describe('util/api', () => {
                 expect(next).toEqual(mockNext);
                 throw mockError;
             };
-
-            const mockNext = jest.fn(error => {
-                expect(error).toBe(mockError);
-            });
 
             const wrapped = asyncMiddleware(testMiddle);
 
@@ -91,6 +90,9 @@ describe('util/api', () => {
             const mockReq = {};
             const mockRes = {};
             const mockError = new Error('mock');
+            const mockNext = jest.fn(error => {
+                expect(error).toBe(mockError);
+            });
 
             expect.assertions(5);
 
@@ -100,10 +102,6 @@ describe('util/api', () => {
                 expect(next).toEqual(mockNext);
                 next(mockError);
             };
-
-            const mockNext = jest.fn(error => {
-                expect(error).toBe(mockError);
-            });
 
             const wrapped = asyncMiddleware(testMiddle);
 
@@ -117,6 +115,10 @@ describe('util/api', () => {
             const mockReq = {};
             const mockRes = {};
             const mockError = new Error('mock');
+            const mockNext = jest.fn(() => {
+                // this expect doesn't count toward assertions, it SHOULDNT assert
+                expect('Not called').toBe('But was');
+            });
 
             expect.assertions(5);
 
@@ -126,11 +128,6 @@ describe('util/api', () => {
                 expect(res).toEqual(mockRes);
                 expect(next).toEqual(mockNext);
             };
-
-            const mockNext = jest.fn(() => {
-                // this expect doesn't count toward assertions, it SHOULDNT assert
-                expect('Not called').toBe('But was');
-            });
 
             const wrapped = asyncMiddleware(testMiddle);
 
@@ -143,6 +140,10 @@ describe('util/api', () => {
             const mockRes = {};
             const mockError = new Error('mock');
 
+            const mockNext = jest.fn(error => {
+                expect(error).toBe(mockError);
+            });
+
             expect.assertions(6);
 
             const testMiddle = async (error, req, res, next) => {
@@ -152,10 +153,6 @@ describe('util/api', () => {
                 expect(next).toEqual(mockNext);
                 throw mockError;
             };
-
-            const mockNext = jest.fn(error => {
-                expect(error).toBe(mockError);
-            });
 
             const wrapped = asyncMiddleware(testMiddle);
 

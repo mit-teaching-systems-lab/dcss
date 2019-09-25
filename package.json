@@ -35,7 +35,7 @@
     "lint": "npm-run-all \"lint:* {@}\" --",
     "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"src/**/*.js\"",
     "lint:packages": "yarn workspaces run lint",
-    "prettier": "prettier --write \"**/*.{js,jsx,json,css}\" --ignore-path \"**/package.json\"",
+    "prettier": "prettier --write \"**/*.{js,jsx,json,css}\"",
     "start": "webpack-dev-server --mode development",
     "storybook": "yarn workspaces run storybook",
     "test": "npm-run-all jest lint"

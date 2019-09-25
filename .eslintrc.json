@@ -28,7 +28,8 @@
         "quotes": ["error", "single"],
         "semi": ["error", "always"],
         "eol-last": ["error", "always"],
-        "no-console": ["error", { "allow": ["warn", "error"] }]
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-use-before-define": ["error"]
     },
     "settings": {
         "react": {
