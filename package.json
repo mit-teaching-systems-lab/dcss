@@ -4,6 +4,9 @@
   "description": "Teacher Moments: Practice spaces for teacher preparation programs",
   "main": "src/index.js",
   "private": true,
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "workspaces": [
     "src/client",
     "src/server",
