@@ -14,10 +14,10 @@
     "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
   },
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
-  "main": "src/index.js",
+  "main": "server/index.js",
   "workspaces": [
-    "src/client",
-    "src/server",
+    "client",
+    "server",
     "test"
   ],
   "scripts": {
@@ -33,7 +33,7 @@
     "dev:server": "yarn workspace server run dev",
     "jest": "yarn workspace test run test",
     "lint": "npm-run-all \"lint:* {@}\" -c --",
-    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"src/**/*.js\"",
+    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"**/*.js\"",
     "lint:packages": "yarn workspaces run lint",
     "prettier": "prettier --write \"**/*.{js,jsx,json,css}\"",
     "start": "webpack-dev-server --mode development",

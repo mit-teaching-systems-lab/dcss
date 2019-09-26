@@ -1,4 +1,4 @@
-const { asyncMiddleware } = require('../../../src/server/util/api');
+const { asyncMiddleware } = require('../../../server/util/api');
 
 describe('util/api', () => {
     describe('asyncMiddleware', () => {

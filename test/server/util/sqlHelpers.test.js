@@ -1,4 +1,4 @@
-const { updateQuery } = require('../../../src/server/util/sqlHelpers');
+const { updateQuery } = require('../../../server/util/sqlHelpers');
 
 describe('sql helpers', () => {
     describe('updateQuery', () => {

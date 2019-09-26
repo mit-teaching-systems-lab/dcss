@@ -23,7 +23,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, '../..'),
+            '@': path.resolve(__dirname, '..'),
             '@client': __dirname,
             '@components': path.resolve(__dirname, 'components'),
             '@server': path.resolve(__dirname, '../server')
@@ -31,7 +31,7 @@ module.exports = {
         extensions: ['*', '.js', '.jsx']
     },
     output: {
-        path: path.resolve(__dirname, '../../dist/'),
+        path: path.resolve(__dirname, '../dist/'),
         publicPath: '/dist/',
         filename: 'bundle.js'
     },
