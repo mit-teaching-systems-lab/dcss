@@ -1,23 +1,13 @@
 const { asyncMiddleware } = require('../../util/api');
 
+const { reqScenario } = require('./middleware');
 const db = require('./db');
 
 exports.getScenario = asyncMiddleware(async function getScenarioAsync(
     req,
     res
 ) {
-    const scenarioId = Number(req.params.scenario_id);
-    const scenario = await db.getScenario(scenarioId);
-    const result = { scenario, status: 200 };
-
-    if (!scenario) {
-        const noScenarioFoundError = new Error('Invalid scenario id');
-        noScenarioFoundError.status = 404;
-
-        throw noScenarioFoundError;
-    }
-
-    res.send(result);
+    res.send({ scenario: reqScenario(req), status: 200 });
 });
 
 exports.addScenario = asyncMiddleware(async function addScenarioAsync(
