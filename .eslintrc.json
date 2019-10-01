@@ -28,7 +28,8 @@
         "semi": ["error", "always"],
         "eol-last": ["error", "always"],
         "no-console": ["error", { "allow": ["warn", "error"] }],
-        "no-use-before-define": ["error"]
+        "no-use-before-define": ["error"],
+        "react/display-name": ["off"]
     },
     "settings": {
         "react": {

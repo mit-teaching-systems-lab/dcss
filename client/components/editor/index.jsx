@@ -1,13 +1,16 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
-import { ThumbnailContainer } from '@components/thumbnailContainer';
+import { hot } from 'react-hot-loader';
+import { Tab } from 'semantic-ui-react';
+import ScenarioEditor from '@components/scenarioEditor';
+import { SlideEditor } from '@components/slideEditor';
+
 import './editor.css';
 
-export const Editor = () => (
-    <Grid divided="vertically" className="editor">
-        <ThumbnailContainer width={4} />
-        <Grid.Column width={12} color="blue">
-            SLIDE EDITOR
-        </Grid.Column>
-    </Grid>
-);
+const panes = [
+    { menuItem: 'Moment', render: () => <ScenarioEditor /> },
+    { menuItem: 'Slides', render: SlideEditor }
+];
+
+const Editor = () => <Tab panes={panes} />;
+
+export default hot(module)(Editor);

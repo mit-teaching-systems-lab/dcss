@@ -14,7 +14,8 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
     req,
     res
 ) {
-    const { userId, title, description } = req.body;
+    const userId = req.session.user.id;
+    const { title, description } = req.body;
 
     if (!userId || !title || !description) {
         const scenarioCreateError = new Error(
