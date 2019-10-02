@@ -1,4 +1,17 @@
-const { Pool } = require('pg');
+const { Pool, Client } = require('pg');
+
+const oldQuery = Client.prototype.query;
+
+if (String(process.env.DEBUG).includes('sql') || process.env.SQL_DEBUG) {
+    Client.prototype.query = function(...args) {
+        // eslint-disable-next-line no-console
+        console.log('QUERY');
+        // eslint-disable-next-line no-console
+        console.log(...args.filter(f => typeof f !== 'function'));
+        return oldQuery.apply(this, args);
+    };
+}
+
 const pool = new Pool();
 
 exports.withClient = async method => {

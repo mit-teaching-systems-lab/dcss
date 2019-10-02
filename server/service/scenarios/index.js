@@ -23,4 +23,9 @@ scenariosRouter.post('/:scenario_id', [
 
 scenariosRouter.delete('/:scenario_id', [lookupScenario(), deleteScenario]);
 
+scenariosRouter.use('/:scenario_id/slides', [
+    lookupScenario(),
+    require('./slides')
+]);
+
 module.exports = scenariosRouter;
