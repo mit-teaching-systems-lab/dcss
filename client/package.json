@@ -12,6 +12,7 @@
   "scripts": {
     "build": "webpack --mode development",
     "build-storybook": "build-storybook",
+    "build": "webpack --mode production",
     "dev": "webpack-dev-server --mode development",
     "lint": "npm-run-all lint:css \"lint:js {@}\" -c --",
     "lint:css": "prettier -l \"**/*.css\"",
