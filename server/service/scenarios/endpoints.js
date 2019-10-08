@@ -10,6 +10,23 @@ exports.getScenario = asyncMiddleware(async function getScenarioAsync(
     res.send({ scenario: reqScenario(req), status: 200 });
 });
 
+exports.getAllScenarios = asyncMiddleware(async function getAllScenariosAsync(
+    req,
+    res
+) {
+    try {
+        const scenarios = await db.getAllScenarios();
+        const result = { scenarios, status: 200 };
+
+        res.send(result);
+    } catch (apiError) {
+        const error = new Error('Error while getting all scenarios');
+        error.status = 500;
+        error.stack = apiError.stack;
+        throw error;
+    }
+});
+
 exports.addScenario = asyncMiddleware(async function addScenarioAsync(
     req,
     res

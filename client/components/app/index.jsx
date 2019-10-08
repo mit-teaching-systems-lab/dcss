@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
+import { Container } from 'semantic-ui-react';
+import 'semantic-ui-css/semantic.min.css';
 
-import './App.css';
+import ScenariosList from '@client/components/scenariosList';
 
 class App extends Component {
     render() {
         return (
-            <div className="tm__app">
-                <h1>Teacher Moments</h1>
-            </div>
+            <Container className="tm__app">
+                <ScenariosList />
+            </Container>
         );
     }
 }

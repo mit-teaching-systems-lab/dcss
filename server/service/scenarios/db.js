@@ -8,6 +8,11 @@ exports.getScenario = async function getScenario(scenarioId) {
     return results.rows[0];
 };
 
+exports.getAllScenarios = async function getAllScenarios() {
+    const results = await query(sql`SELECT * FROM scenario;`);
+    return results.rows;
+};
+
 exports.addScenario = async function addScenario(authorId, title, description) {
     const result = await query(sql`
 INSERT INTO scenario (author_id, title, description)

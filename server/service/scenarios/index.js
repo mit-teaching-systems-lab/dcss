@@ -6,11 +6,13 @@ const scenariosRouter = Router();
 
 const {
     getScenario,
+    getAllScenarios,
     addScenario,
     setScenario,
     deleteScenario
 } = require('./endpoints.js');
 
+scenariosRouter.get('/', getAllScenarios);
 scenariosRouter.get('/:scenario_id', [lookupScenario(), getScenario]);
 
 scenariosRouter.put('/', [validateRequestBody, addScenario]);
