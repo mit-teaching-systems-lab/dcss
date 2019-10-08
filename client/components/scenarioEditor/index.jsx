@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Container, Form, Grid } from 'semantic-ui-react';
+
+import { setScenario } from '@client/actions';
 
 import './ScenarioEditor.css';
 
@@ -8,25 +11,43 @@ class ScenarioEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: '',
-            description: '',
             saving: false,
             saveMessage: ''
         };
 
+        this.getScenarioData = this.getScenarioData.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+
+        if (this.props.scenarioId === 'new') {
+            this.props.setScenario({ title: '', description: '' });
+        } else {
+            this.getScenarioData();
+        }
+    }
+
+    async getScenarioData() {
+        const scenarioResponse = await (await fetch(
+            `/api/scenarios/${this.props.scenarioId}`
+        )).json();
+
+        if (scenarioResponse.status === 200) {
+            this.props.setScenario({
+                title: scenarioResponse.scenario.title,
+                description: scenarioResponse.scenario.description
+            });
+        }
     }
 
     handleChange(event) {
         this.setState({
-            [event.target.name]: event.target.value,
             saveMessage: ''
         });
+        this.props.setScenario({ [event.target.name]: event.target.value });
     }
 
     async handleSubmit() {
-        if (!this.state.title || !this.state.description) {
+        if (!this.props.title || !this.props.description) {
             this.setState({
                 saveMessage:
                     'A title and description are required for Teacher Moments'
@@ -34,21 +55,28 @@ class ScenarioEditor extends Component {
             return;
         }
         this.setState({ saving: true });
-        const data = JSON.stringify({
-            title: this.state.title,
-            description: this.state.description
-        });
-        const saveResponse = await (await fetch('/api/scenarios', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: data
-        })).json();
-        if (saveResponse.status === 201 || saveResponse.status === 200) {
-            this.setState({ saving: false, saveMessage: 'Saved!' });
-        } else if (saveResponse.error) {
-            this.setState({ saving: false, saveMessage: saveResponse.message });
+        const data = {
+            title: this.props.title,
+            description: this.props.description
+        };
+        const saveResponse = await (await this.props.submitCB(data)).json();
+
+        switch (saveResponse.status) {
+            case 200:
+                this.setState({ saving: false, saveMessage: 'Saved!' });
+                break;
+            case 201:
+                this.setState({ saving: false, saveMessage: 'Saved!' });
+                this.props.history.push(`/editor/${saveResponse.scenario.id}`);
+                break;
+            default:
+                if (saveResponse.error) {
+                    this.setState({
+                        saving: false,
+                        saveMessage: saveResponse.message
+                    });
+                }
+                break;
         }
     }
 
@@ -62,13 +90,15 @@ class ScenarioEditor extends Component {
                         required
                         label="Title"
                         name="title"
+                        value={this.props.title}
                         onChange={this.handleChange}
                     />
                     <Form.TextArea
-                        focus
+                        focus="true"
                         required
                         label="Moment Description"
                         name="description"
+                        value={this.props.description}
                         onChange={this.handleChange}
                     />
                     <Grid divided="vertically">
@@ -101,4 +131,27 @@ class ScenarioEditor extends Component {
     }
 }
 
-export default hot(module)(ScenarioEditor);
+function mapStateToProps(state) {
+    const { title, description } = state.scenario;
+    return { title, description };
+}
+
+const mapDispatchToProps = {
+    setScenario
+};
+
+ScenarioEditor.propTypes = {
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
+    scenarioId: PropTypes.node.isRequired,
+    setScenario: PropTypes.func.isRequired,
+    submitCB: PropTypes.func.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ScenarioEditor);

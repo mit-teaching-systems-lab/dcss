@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, List } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Button, Container, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -11,7 +12,17 @@ const ScenarioEntries = ({ scenarioData }) => {
 
     return scenarioData.map(({ id, title, description }) => {
         return (
-            <List.Item key={id}>
+            <List.Item fluid="true" key={id}>
+                <Button
+                    basic
+                    floated="right"
+                    color="black"
+                    as={Link}
+                    push="true"
+                    to={{ pathname: `/editor/${id}` }}
+                >
+                    Edit
+                </Button>
                 <List.Header as="h3">{title}</List.Header>
                 <List.Content>{description}</List.Content>
             </List.Item>

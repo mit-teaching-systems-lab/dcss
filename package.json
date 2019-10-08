@@ -21,7 +21,7 @@
     "test"
   ],
   "scripts": {
-    "build": "webpack --mode development",
+    "build": "yarn workspace client build",
     "create-migration": "yarn workspace server run create-migration",
     "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",

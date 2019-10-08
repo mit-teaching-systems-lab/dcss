@@ -15,7 +15,7 @@ function Routes() {
                         <NavLink to="/">Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/editor">TM Editor</NavLink>
+                        <NavLink to="/editor/new">TM Editor</NavLink>
                     </li>
                     <li>
                         <NavLink to="/login">Login</NavLink>
@@ -30,7 +30,7 @@ function Routes() {
                 <hr />
 
                 <Route exact path="/" component={App} />
-                <Route path="/editor" component={Editor} />
+                <Route path="/editor/:id" component={Editor} />
                 <Route path="/login" component={Login} />
             </div>
         </Router>

@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT } from './types';
+import { LOG_IN, LOG_OUT, SET_SCENARIO } from './types';
 
 export const logIn = username => ({
     type: LOG_IN,
@@ -14,4 +14,9 @@ export const logOut = username => ({
         username,
         isLoggedIn: false
     }
+});
+
+export const setScenario = scenarioData => ({
+    type: SET_SCENARIO,
+    payload: scenarioData
 });
