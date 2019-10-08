@@ -1,5 +1,8 @@
-.editor,
-#root {
-    height: 100%;
-    width: 100%;
+.login__form {
+    margin: 1rem;
+}
+
+.login__form--create-link {
+    margin-top: 1rem;
+    font-size: 1.1rem;
 }

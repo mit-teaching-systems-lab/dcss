@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Button, Form, Grid, Item } from 'semantic-ui-react';
 
 import { logIn, logOut } from '@client/actions';
 
@@ -16,18 +18,26 @@ class Login extends Component {
         this.state = {
             isLoggedIn: false,
             loginError: '',
+            buttonText: 'Login',
             username: '',
-            usernameInput: ''
+            usernameInput: '',
+            passwordInput: ''
         };
 
-        this.updateUsernameInput = this.updateUsernameInput.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
         this.handleLogIn = this.handleLogIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
-    updateUsernameInput(usernameInput) {
-        this.setState({ usernameInput });
+    handleChange(event) {
+        this.setState({ [`${event.target.name}Input`]: event.target.value });
     }
+
+    handleSubmit(event) {}
+
+    handleSignUp() {}
 
     async handleLogIn() {
         const data = JSON.stringify({ username: this.state.usernameInput });
@@ -63,26 +73,45 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <label htmlFor="name">username</label>
+            <Form className="login__form">
+                <Form.Field>
+                    <label htmlFor="name">Username</label>
                     <input
                         name="username"
-                        onChange={e => this.updateUsernameInput(e.target.value)}
+                        onChange={event => this.handleChange(event)}
                         value={this.state.usernameInput}
                     />
-                </div>
-                <div>
-                    <button onClick={this.handleLogIn}>Login</button>
-                    <button onClick={this.handleLogOut}>Logout</button>
-                </div>
-                {this.props.isLoggedIn ? (
-                    <p>Username: {this.props.username}</p>
-                ) : (
-                    <p>Not logged in</p>
-                )}
-                {this.state.loginError}
-            </div>
+                </Form.Field>
+                <Form.Field>
+                    <label htmlFor="password">Password</label>
+                    <input
+                        name="password"
+                        type="password"
+                        onChange={event => this.handleChange(event)}
+                        value={this.state.passwordInput}
+                    />
+                </Form.Field>
+                <Grid columns={2}>
+                    <Grid.Column>
+                        <Item>
+                            <Item.Extra>
+                                <Button
+                                    type="submit"
+                                    primary
+                                    size="large"
+                                    onClick={this.handleSubmit()}
+                                >
+                                    {this.state.buttonText}
+                                </Button>
+                            </Item.Extra>
+                            <Item.Extra className="login__form--create-link">
+                                <Link to="/login/new">Create an account</Link>
+                            </Item.Extra>
+                        </Item>
+                    </Grid.Column>
+                    <Grid.Column>{this.state.loginError}</Grid.Column>
+                </Grid>
+            </Form>
         );
     }
 }
