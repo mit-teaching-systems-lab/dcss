@@ -5,7 +5,7 @@ import { Container, Form, Grid } from 'semantic-ui-react';
 
 import { setScenario } from '@client/actions';
 
-import './ScenarioEditor.css';
+import './scenarioEditor.css';
 
 class ScenarioEditor extends Component {
     constructor(props) {
