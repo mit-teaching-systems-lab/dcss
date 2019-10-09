@@ -42,7 +42,10 @@ class Login extends Component {
     }
 
     async handleLogIn() {
-        const data = JSON.stringify({ username: this.state.usernameInput, password: this.state.passwordInput });
+        const data = JSON.stringify({
+            username: this.state.usernameInput,
+            password: this.state.passwordInput
+        });
         const loginResponse = await (await fetch('/api/auth/login', {
             method: 'POST',
             headers: {
@@ -103,7 +106,9 @@ class Login extends Component {
                                     size="large"
                                     onClick={this.handleSubmit}
                                 >
-                                    {this.props.isLoggedIn ? "Sign Out" : "Sign In"}
+                                    {this.props.isLoggedIn
+                                        ? 'Sign Out'
+                                        : 'Sign In'}
                                 </Button>
                             </Item.Extra>
                             <Item.Extra className="login__form--create-link">
