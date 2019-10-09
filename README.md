@@ -4,36 +4,31 @@
 
 ### Local Setup
 
-1. Install Dependencies
-   `yarn install`
+1. Install [Node.js](https://nodejs.org/en/download/) (version >=10.0.0).
+1. Install `yarn` (version >=1.19.x): 
+  `npm install yarn@latest -g`
+1. Install Dependencies: 
+  `yarn install`
+1. Set up local database: [Local Database Setup](#local-database-setup)
+1. Start the development server
+  - If you are using Mac or Linux, export the required environment variables first: `export $(cat config/dev)`
+  - And then run the dev server with: `yarn dev`
+  - You should see your local site at http://localhost:3000.
+  - This is the list of all environment variables that are are pre-populated in `config/dev`, need to be exported prior to running the Teacher Moments server:
+    ```
+    PGUSER=
+    PGPASSWORD=
+    PGDATABASE=
+    PGHOST=
+    PGPORT=
 
-2. Set up local database  
-Follow the instructions here: [https://github.com/bocoup/threeflows#local-database-setup](https://github.com/bocoup/threeflows#local-database-setup)
+    export AWS_PROFILE=
+    export S3_BUCKET=
+    ```
 
-3. Start the dev server
-   `yarn start`
+    `export $(cat config/dev); yarn dev`
 
-4. Start the backend server
 
-This is the list of all environment variables that should be exported prior to running the Teacher Moments server in the command line:
-```
-export PGUSER=
-export PGPASSWORD=
-export PGDATABASE=
-export PGHOST=
-export PGPORT=
-
-# If AWS credentials are stored in profiles
-export AWS_PROFILE=
-export S3_BUCKET=
-```
-
-These variables are pre-populated in `config/dev`
-
-*Windows instructions TBD*
-If you are using Mac or Linux, export the environment variables first and then run dev server: `export $(cat config/dev); yarn dev`
-
-You should see your local site at http://localhost:3000/ or whatever port number you specify your CLIENT_PORT to be in your environment.
 
 ### Build
 
@@ -49,21 +44,36 @@ This project uses [Eslint](https://eslint.org/) for linting. To catch syntax and
 
 - Install PostgreSQL
   - Mac:
-  ```
-  brew install postgres
-  ```
+    ```
+    brew install postgres
+    ```
+  - Ubuntu (based on https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
+    ```
+    sudo apt-get update && sudo apt-get install postgresql postgresql-contrib
+    ```
   Make sure that the Postgres version installed is 11.4.
-- Start PostgreSQL
+- Start PostgreSQL and make yourself a default database
   - Mac:
-  ```
-  brew services start postgresql
-  createdb # creates a default database under your user name
-  ```
+    ```
+    brew services start postgresql
+    createdb # creates a default database under your user name
+    ```
+  - Linux
+    ```
+    sudo su postgres
+    createuser --interactive # enter your username and make yourself a super user
+    su yourusername
+    createdb # creates a default database under the current user
+    ```
 - Initialize local database
+The following  should be run with a PGUSER/PGPASSWORD for a super user who can create databases and roles.
 
+On linux, you'll need to run `export PGUSE=${yourusername}`;
 ```
 yarn db-init-local
 ```
+
+This command creates a database called `teachermoments` and then sets up a role called tm and then creates all of the tables in `teachermoments`. To do this manually, create a database called `teachermoments`: `$createdb teachermoments`, then create the role `tm` with a password `teachermoments`, then run `db-migrate up`.
 
 ### Creating Database Migrations
 
