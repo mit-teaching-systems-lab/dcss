@@ -4,6 +4,7 @@ import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom';
 import App from '@client/components/app';
 import Editor from '@client/components/editor';
 import Login from '@client/components/login';
+import CreateAccount from '@client/components/createAccount';
 
 function Routes() {
     return (
@@ -31,7 +32,8 @@ function Routes() {
 
                 <Route exact path="/" component={App} />
                 <Route path="/editor/:id" component={Editor} />
-                <Route path="/login" component={Login} />
+                <Route exact path="/login" component={Login} />
+                <Route path="/login/new" component={CreateAccount} />
             </div>
         </Router>
     );

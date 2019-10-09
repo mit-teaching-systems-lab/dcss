@@ -18,7 +18,6 @@ class Login extends Component {
         this.state = {
             isLoggedIn: false,
             loginError: '',
-            buttonText: 'Login',
             username: '',
             usernameInput: '',
             passwordInput: ''
@@ -26,7 +25,6 @@ class Login extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSignUp = this.handleSignUp.bind(this);
         this.handleLogIn = this.handleLogIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
     }
@@ -35,12 +33,16 @@ class Login extends Component {
         this.setState({ [`${event.target.name}Input`]: event.target.value });
     }
 
-    handleSubmit(event) {}
-
-    handleSignUp() {}
+    handleSubmit() {
+        if (this.props.isLoggedIn) {
+            this.handleLogOut();
+        } else {
+            this.handleLogIn();
+        }
+    }
 
     async handleLogIn() {
-        const data = JSON.stringify({ username: this.state.usernameInput });
+        const data = JSON.stringify({ username: this.state.usernameInput, password: this.state.passwordInput });
         const loginResponse = await (await fetch('/api/auth/login', {
             method: 'POST',
             headers: {
@@ -99,9 +101,9 @@ class Login extends Component {
                                     type="submit"
                                     primary
                                     size="large"
-                                    onClick={this.handleSubmit()}
+                                    onClick={this.handleSubmit}
                                 >
-                                    {this.state.buttonText}
+                                    {this.props.isLoggedIn ? "Sign Out" : "Sign In"}
                                 </Button>
                             </Item.Extra>
                             <Item.Extra className="login__form--create-link">
