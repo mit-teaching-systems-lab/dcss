@@ -138,7 +138,7 @@ const createUserBackend = async function(req, res, next) {
         email: created.email,
         id: created.id
     };
-    // res.status(201);
+
     next();
 };
 

@@ -70,7 +70,8 @@ class ScenariosList extends Component {
 }
 
 ScenariosList.propTypes = {
-    scenarioData: PropTypes.array
+    scenarioData: PropTypes.array,
+    isLoggedIn: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {

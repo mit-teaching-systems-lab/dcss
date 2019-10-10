@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Button, Form, Grid } from 'semantic-ui-react';
 
-import { logIn, logOut } from '@client/actions';
+import { logIn } from '@client/actions';
 
 class CreateAccount extends Component {
     constructor(props) {
@@ -138,14 +139,23 @@ class CreateAccount extends Component {
     }
 }
 
+CreateAccount.propTypes = {
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
+    logIn: PropTypes.func.isRequired,
+    logOut: PropTypes.func.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    username: PropTypes.string
+};
+
 function mapStateToProps(state) {
     const { isLoggedIn, username } = state.login;
     return { isLoggedIn, username };
 }
 
 const mapDispatchToProps = {
-    logIn,
-    logOut
+    logIn
 };
 
 export default connect(
