@@ -51,7 +51,6 @@ const duplicatedUserInDatabase = async function(req, res, next) {
 const loginUserBackend = async function(req, res, next) {
     const { username, email, password } = req.body;
     const user = await userExistsInDatabase(username, email);
-
     // Case when user is found
     if (user) {
         const { salt, hash, id } = user;
@@ -110,9 +109,9 @@ const createUserInDatabase = async function(email, username, password) {
         }
         await client.query('BEGIN');
         const result = await client.query(sql`INSERT INTO users(email, username, hash, salt)
-            VALUES(${email}, ${username}, ${passwordHash}, ${salt});`);
+            VALUES(${email}, ${username}, ${passwordHash}, ${salt}) RETURNING *;`);
         await client.query('COMMIT');
-        created = result.rowCount === 1;
+        created = result.rows[0];
     } catch (e) {
         await client.query('ROLLBACK');
     } finally {
@@ -132,7 +131,14 @@ const createUserBackend = async function(req, res, next) {
         return apiError(res, userCreateError);
     }
 
-    res.sendStatus(201);
+    //eslint-disable-next-line require-atomic-updates
+    req.session.user = {
+        anonymous: false,
+        username: created.username,
+        email: created.email,
+        id: created.id
+    };
+    // res.status(201);
     next();
 };
 

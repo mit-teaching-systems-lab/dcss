@@ -17,16 +17,21 @@ authRouter.post('/signup', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     duplicatedUser,
-    createUser
+    createUser,
+    (req, res) => {
+        res.json({user: req.session.user});
+    }
 ]);
 
 authRouter.post(
-    '/login',
-    [cors(), validateRequestBody, validateRequestUsernameAndEmail, loginUser],
-    (req, res) => {
-        res.json(req.session.user);
-    }
-);
+    '/login', [
+        validateRequestBody,
+        validateRequestUsernameAndEmail,
+        loginUser,
+        (req, res) => {
+            res.json(req.session.user);
+        }
+]);
 
 authRouter.post('/logout', (req, res) => {
     delete req.session.user;
