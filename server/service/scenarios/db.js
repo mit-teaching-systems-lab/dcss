@@ -9,7 +9,9 @@ exports.getScenario = async function getScenario(scenarioId) {
 };
 
 exports.getAllScenarios = async function getAllScenarios() {
-    const results = await query(sql`SELECT * FROM scenario;`);
+    const results = await query(
+        sql`SELECT * FROM scenario ORDER BY created_at DESC;`
+    );
     return results.rows;
 };
 

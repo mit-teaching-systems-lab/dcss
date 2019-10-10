@@ -6,11 +6,6 @@ import { Button, Form, Grid, Item } from 'semantic-ui-react';
 
 import { logIn, logOut } from '@client/actions';
 
-const mapDispatchToProps = {
-    logIn,
-    logOut
-};
-
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -24,21 +19,12 @@ class Login extends Component {
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleLogIn = this.handleLogIn.bind(this);
         this.handleLogOut = this.handleLogOut.bind(this);
     }
 
     handleChange(event) {
         this.setState({ [`${event.target.name}Input`]: event.target.value });
-    }
-
-    handleSubmit() {
-        if (this.props.isLoggedIn) {
-            this.handleLogOut();
-        } else {
-            this.handleLogIn();
-        }
     }
 
     async handleLogIn() {
@@ -77,6 +63,19 @@ class Login extends Component {
     }
 
     render() {
+        if (this.props.isLoggedIn) {
+            return (
+                <Button
+                    type="submit"
+                    primary
+                    size="large"
+                    onClick={this.handleLogOut}
+                >
+                    Sign Out
+                </Button>
+            );
+        }
+
         return (
             <Form className="login__form">
                 <Form.Field>
@@ -104,11 +103,9 @@ class Login extends Component {
                                     type="submit"
                                     primary
                                     size="large"
-                                    onClick={this.handleSubmit}
+                                    onClick={this.handleLogIn}
                                 >
-                                    {this.props.isLoggedIn
-                                        ? 'Sign Out'
-                                        : 'Sign In'}
+                                    Sign In
                                 </Button>
                             </Item.Extra>
                             <Item.Extra className="login__form--create-link">
@@ -134,6 +131,12 @@ function mapStateToProps(state) {
     const { isLoggedIn, username } = state.login;
     return { isLoggedIn, username };
 }
+
+const mapDispatchToProps = {
+    logIn,
+    logOut
+};
+
 export default connect(
     mapStateToProps,
     mapDispatchToProps

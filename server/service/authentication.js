@@ -19,18 +19,17 @@ authRouter.post('/signup', [
     duplicatedUser,
     createUser,
     (req, res) => {
-        res.json({user: req.session.user});
+        res.json({ user: req.session.user });
     }
 ]);
 
-authRouter.post(
-    '/login', [
-        validateRequestBody,
-        validateRequestUsernameAndEmail,
-        loginUser,
-        (req, res) => {
-            res.json(req.session.user);
-        }
+authRouter.post('/login', [
+    validateRequestBody,
+    validateRequestUsernameAndEmail,
+    loginUser,
+    (req, res) => {
+        res.json(req.session.user);
+    }
 ]);
 
 authRouter.post('/logout', (req, res) => {

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Container, List } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import 'semantic-ui-css/semantic.min.css';
 
-const ScenarioEntries = ({ scenarioData }) => {
+const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
     if (!scenarioData.length) {
         return null;
     }
@@ -13,16 +14,18 @@ const ScenarioEntries = ({ scenarioData }) => {
     return scenarioData.map(({ id, title, description }) => {
         return (
             <List.Item fluid="true" key={id}>
-                <Button
-                    basic
-                    floated="right"
-                    color="black"
-                    as={Link}
-                    push="true"
-                    to={{ pathname: `/editor/${id}` }}
-                >
-                    Edit
-                </Button>
+                {isLoggedIn && (
+                    <Button
+                        basic
+                        floated="right"
+                        color="black"
+                        as={Link}
+                        push="true"
+                        to={{ pathname: `/editor/${id}` }}
+                    >
+                        Edit
+                    </Button>
+                )}
                 <List.Header as="h3">{title}</List.Header>
                 <List.Content>{description}</List.Content>
             </List.Item>
@@ -56,7 +59,10 @@ class ScenariosList extends Component {
             <Container>
                 <h2>Practice spaces for teacher preparation programs</h2>
                 <List relaxed>
-                    <ScenarioEntries scenarioData={this.state.scenarioData} />
+                    <ScenarioEntries
+                        scenarioData={this.state.scenarioData}
+                        isLoggedIn={this.props.isLoggedIn}
+                    />
                 </List>
             </Container>
         );
@@ -67,4 +73,12 @@ ScenariosList.propTypes = {
     scenarioData: PropTypes.array
 };
 
-export default ScenariosList;
+function mapStateToProps(state) {
+    const { isLoggedIn, username } = state.login;
+    return { isLoggedIn, username };
+}
+
+export default connect(
+    mapStateToProps,
+    null
+)(ScenariosList);

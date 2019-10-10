@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Button, Form, Grid } from 'semantic-ui-react';
+
+import { logIn, logOut } from '@client/actions';
 
 class CreateAccount extends Component {
     constructor(props) {
@@ -9,7 +12,7 @@ class CreateAccount extends Component {
             emailInput: '',
             passwordInput: '',
             confirmPasswordInput: '',
-            createError: ''
+            createMessage: ''
         };
 
         this.validFormInput = this.validFormInput.bind(this);
@@ -20,14 +23,15 @@ class CreateAccount extends Component {
     validFormInput() {
         if (!this.state.passwordInput || !this.state.confirmPasswordInput) {
             this.setState({
-                createError: 'Please enter and confirm your intended password.'
+                createMessage:
+                    'Please enter and confirm your intended password.'
             });
             return false;
         }
 
         if (this.state.passwordInput !== this.state.confirmPasswordInput) {
             this.setState({
-                createError:
+                createMessage:
                     'Password fields do not match. Please confirm your intended password.'
             });
             return false;
@@ -35,7 +39,7 @@ class CreateAccount extends Component {
 
         if (!this.state.username && this.state.email) {
             this.setState({
-                createError:
+                createMessage:
                     'Please enter a username or email address for your account.'
             });
             return false;
@@ -62,13 +66,17 @@ class CreateAccount extends Component {
         })).json();
 
         if (createResponse.error) {
-            this.setState({ createError: createResponse.message });
+            this.setState({ createMessage: createResponse.message });
+            return;
         }
+
+        this.props.logIn(createResponse.user.username);
+        this.props.history.push('/');
     }
 
     handleChange(event) {
-        if (this.state.createError) {
-            this.setState({ createError: '' });
+        if (this.state.createMessage) {
+            this.setState({ createMessage: '' });
         }
         this.setState({ [`${event.target.name}Input`]: event.target.value });
     }
@@ -123,11 +131,24 @@ class CreateAccount extends Component {
                             Create Account
                         </Button>
                     </Grid.Column>
-                    <Grid.Column>{this.state.createError}</Grid.Column>
+                    <Grid.Column>{this.state.createMessage}</Grid.Column>
                 </Grid>
             </Form>
         );
     }
 }
 
-export default CreateAccount;
+function mapStateToProps(state) {
+    const { isLoggedIn, username } = state.login;
+    return { isLoggedIn, username };
+}
+
+const mapDispatchToProps = {
+    logIn,
+    logOut
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CreateAccount);
