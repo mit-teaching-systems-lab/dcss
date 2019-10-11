@@ -11,3 +11,4 @@ script:
   - yarn db-migrate-down -c 999999
   - yarn db-migrate-up
   - yarn test
+  - yarn build
