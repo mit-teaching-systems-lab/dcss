@@ -11,22 +11,30 @@
   `yarn install`
 1. Set up local database: [Local Database Setup](#local-database-setup)
 1. Start the development server
-  - If you are using Mac or Linux, export the required environment variables first: `export $(cat config/dev)`
-  - And then run the dev server with: `yarn dev`
-  - You should see your local site at http://localhost:3000.
-  - This is the list of all environment variables that are are pre-populated in `config/dev`, need to be exported prior to running the Teacher Moments server:
-    ```
-    PGUSER=
-    PGPASSWORD=
-    PGDATABASE=
-    PGHOST=
-    PGPORT=
+    - This is the list of all environment variables that are are pre-populated in `config/dev`, need to be exported prior to running the Teacher Moments server:
+      ```
+      PGUSER=
+      PGPASSWORD=
+      PGDATABASE=
+      PGHOST=
+      PGPORT=
 
-    export AWS_PROFILE=
-    export S3_BUCKET=
-    ```
-
-    `export $(cat config/dev); yarn dev`
+      export AWS_PROFILE=
+      export S3_BUCKET=
+      ```
+    - If you are using Mac or Linux, export the required environment variables first: 
+      ```
+      export $(cat config/dev)
+      ```
+    - And then run the dev server with: 
+      ```
+      yarn dev
+      ```
+    - All at once:
+      ```
+      export $(cat config/dev); yarn dev
+      ```
+      ...You should see your local site at http://localhost:3000.
 
 
 
@@ -42,38 +50,54 @@ This project uses [Eslint](https://eslint.org/) for linting. To catch syntax and
 
 ### Local Database Setup
 
-- Install PostgreSQL
-  - Mac:
+1. Export `config/dev`
     ```
-    brew install postgres
+    export $(cat config/dev);
     ```
-  - Ubuntu (based on https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
+    You may need to run: 
     ```
-    sudo apt-get update && sudo apt-get install postgresql postgresql-contrib
+    export PGUSER=`whoami`;
     ```
-  Make sure that the Postgres version installed is 11.4.
-- Start PostgreSQL and make yourself a default database
-  - Mac:
-    ```
-    brew services start postgresql
-    createdb # creates a default database under your user name
-    ```
-  - Linux
-    ```
-    sudo su postgres
-    createuser --interactive # enter your username and make yourself a super user
-    su yourusername
-    createdb # creates a default database under the current user
-    ```
-- Initialize local database
-The following  should be run with a PGUSER/PGPASSWORD for a super user who can create databases and roles.
 
-On linux, you'll need to run `export PGUSE=${yourusername}`;
-```
-yarn db-init-local
-```
+2. Install PostgreSQL (unless already installed)
+    - Make sure that the Postgres version installed is 11.4
+    - Mac:
+      ```
+      brew install postgres
+      ```
+    - Ubuntu (based on https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
+      ```
+      sudo apt-get update && sudo apt-get install postgresql postgresql-contrib
+      ```
 
-This command creates a database called `teachermoments` and then sets up a role called tm and then creates all of the tables in `teachermoments`. To do this manually, create a database called `teachermoments`: `$createdb teachermoments`, then create the role `tm` with a password `teachermoments`, then run `db-migrate up`.
+3. Start PostgreSQL and make yourself a default database
+    - Mac:
+      ```
+      brew services start postgresql
+      createdb # creates a default database under your user name
+      ```
+    - Linux
+      ```
+      sudo su postgres
+      createuser --interactive # enter your username and make yourself a super user
+      su yourusername
+      createdb # creates a default database under the current user
+      ```
+4. Initialize local database
+    - The following  should be run with a `$PGUSER` & `$PGPASSWORD` for a super user who can create databases and roles (see step 1):
+      ```
+      yarn db-init-local
+      ```
+      This command creates a database called `teachermoments` and then sets up a role called tm and then creates all of the tables in `teachermoments`. 
+
+      To do this manually, create a database called `teachermoments`: 
+      ```
+      createdb teachermoments
+      ```
+      Then create the role `tm` with a password `teachermoments`, then run: 
+      ```
+      db-migrate up
+      ```
 
 ### Creating Database Migrations
 
