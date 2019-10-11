@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Container, Form, Grid } from 'semantic-ui-react';
-
 import { setScenario } from '@client/actions';
 
 import './scenarioEditor.css';

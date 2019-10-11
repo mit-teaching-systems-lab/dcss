@@ -3,7 +3,7 @@ import { Tab } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import ScenarioEditor from '@components/scenarioEditor';
-import { SlideEditor } from '@components/slideEditor';
+import Slides from './Slides';
 
 import './editor.css';
 
@@ -37,18 +37,23 @@ class Editor extends Component {
     }
 
     render() {
+        const scenarioId = this.props.match.params.id;
+
         this.panes = [
             {
                 menuItem: 'Moment',
                 render: () => (
                     <ScenarioEditor
-                        scenarioId={this.props.match.params.id}
+                        scenarioId={scenarioId}
                         submitCB={this.getSubmitCallback()}
                         history={this.props.history}
                     />
                 )
             },
-            { menuItem: 'Slides', render: SlideEditor }
+            scenarioId !== 'new' && {
+                menuItem: 'Slides',
+                render: () => <Slides scenarioId={scenarioId} />
+            }
         ];
 
         return <Tab panes={this.panes} />;

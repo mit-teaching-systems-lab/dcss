@@ -7,8 +7,8 @@ describe('sql helpers', () => {
                 .toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  test = $1,
-                  number = $2
+                SET  \\"test\\" = $1,
+                  \\"number\\" = $2
                 WHERE id = $3
                 RETURNING *;",
                   "values": Array [
@@ -29,10 +29,10 @@ describe('sql helpers', () => {
             ).toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  test = $1,
-                  number = $2
-                WHERE  some_id = $3 AND 
-                  author_id = $4
+                SET  \\"test\\" = $1,
+                  \\"number\\" = $2
+                WHERE  \\"some_id\\" = $3 AND 
+                  \\"author_id\\" = $4
 
                 RETURNING *;",
                   "values": Array [
@@ -49,8 +49,8 @@ describe('sql helpers', () => {
                 .toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  test = $1,
-                  number = $2
+                SET  \\"test\\" = $1,
+                  \\"number\\" = $2
                 WHERE id = $3
                 RETURNING *;",
                   "values": Array [
@@ -70,7 +70,7 @@ describe('sql helpers', () => {
             ).toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  test = $1
+                SET  \\"test\\" = $1
                 WHERE id = $2
                 RETURNING *;",
                   "values": Array [
@@ -86,8 +86,8 @@ describe('sql helpers', () => {
                 .toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  test = $1,
-                  null = NULL
+                SET  \\"test\\" = $1,
+                  \\"null\\" = NULL
                 WHERE id = $2
                 RETURNING *;",
                   "values": Array [
@@ -108,9 +108,9 @@ describe('sql helpers', () => {
             ).toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  test = $1,
-                  number = $2
-                WHERE  null IS NULL
+                SET  \\"test\\" = $1,
+                  \\"number\\" = $2
+                WHERE  \\"null\\" IS NULL
 
                 RETURNING *;",
                   "values": Array [
@@ -126,7 +126,7 @@ describe('sql helpers', () => {
                 .toMatchInlineSnapshot(`
                 Object {
                   "text": "UPDATE \\"test\\"
-                SET  arr = $1::jsonb
+                SET  \\"arr\\" = $1::jsonb
                 WHERE id = $2
                 RETURNING *;",
                   "values": Array [

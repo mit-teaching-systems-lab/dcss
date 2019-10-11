@@ -1,6 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import ScenariosList from '@components/scenariosList';
+import { Provider } from 'react-redux';
+import store from '@client/store';
 
 const scenarioTestData = [
     {
@@ -21,5 +23,7 @@ const scenarioTestData = [
 ];
 
 storiesOf('Scenario List', module).add('List View', () => (
-    <ScenariosList scenarioData={scenarioTestData} />
+    <Provider store={store}>
+        <ScenariosList scenarioData={scenarioTestData} isLoggedIn={true} />
+    </Provider>
 ));

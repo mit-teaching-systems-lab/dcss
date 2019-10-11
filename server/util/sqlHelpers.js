@@ -30,12 +30,12 @@ exports.updateQuery = function updateQuery(table, where, update) {
             continue;
         }
         if (inputValue === null) {
-            query += `  ${key} = NULL,\n`;
+            query += `  "${key}" = NULL,\n`;
             continue;
         }
         const { typecast, value } = encodeValue(inputValue);
         values.push(value);
-        query += `  ${key} = $${positionalParam++}${typecast},\n`;
+        query += `  "${key}" = $${positionalParam++}${typecast},\n`;
     }
 
     if (positionalParam == 1) {
@@ -57,12 +57,12 @@ exports.updateQuery = function updateQuery(table, where, update) {
                 continue;
             }
             if (inputValue === null) {
-                query += `  ${key} IS NULL${joiner}`;
+                query += `  "${key}" IS NULL${joiner}`;
                 continue;
             }
             const { typecast, value } = encodeValue(inputValue);
             values.push(value);
-            query += `  ${key} = $${positionalParam++}${typecast}${joiner}`;
+            query += `  "${key}" = $${positionalParam++}${typecast}${joiner}`;
         }
         query = query.substring(0, query.length - joiner.length) + '\n';
     } else {
