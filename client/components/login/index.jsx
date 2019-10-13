@@ -5,6 +5,9 @@ import PropTypes from 'prop-types';
 import { Button, Form, Grid, Item } from 'semantic-ui-react';
 
 import { logIn, logOut } from '@client/actions';
+import Session from '@client/util/session';
+
+const method = 'POST';
 
 class Login extends Component {
     constructor(props) {
@@ -12,54 +15,55 @@ class Login extends Component {
 
         this.state = {
             isLoggedIn: false,
-            loginError: '',
             username: '',
+            loginError: '',
             usernameInput: '',
             passwordInput: ''
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleLogIn = this.handleLogIn.bind(this);
-        this.handleLogOut = this.handleLogOut.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onLogIn = this.onLogIn.bind(this);
+        this.onLogOut = this.onLogOut.bind(this);
     }
 
-    handleChange(event) {
+    onChange(event) {
         this.setState({ [`${event.target.name}Input`]: event.target.value });
     }
 
-    async handleLogIn() {
-        const data = JSON.stringify({
+    async onLogIn() {
+        const body = JSON.stringify({
             username: this.state.usernameInput,
             password: this.state.passwordInput
         });
         const loginResponse = await (await fetch('/api/auth/login', {
-            method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: data
+            method,
+            body
         })).json();
-        const username = loginResponse.username;
-        this.props.logIn(username);
+        const { username, error, message: loginError = '' } = loginResponse;
 
-        if (loginResponse.error) {
-            this.setState({ loginError: loginResponse.message });
+        if (error) {
+            this.setState({ loginError });
             this.props.logOut('');
         } else {
-            this.setState({ loginError: '' });
+            this.setState({ loginError });
             this.props.logIn(username);
+            Session.create({ username, timeout: Date.now() });
         }
+        this.props.history.push('/');
     }
 
-    async handleLogOut() {
+    async onLogOut() {
         const logoutResponse = await fetch('/api/auth/logout', {
-            method: 'POST'
+            method
         });
-        const username = '';
-
         if (!logoutResponse.error) {
-            this.props.logOut(username);
+            this.props.logOut('');
+            Session.destroy();
         }
+        this.props.history.push('/login');
     }
 
     render() {
@@ -69,9 +73,9 @@ class Login extends Component {
                     type="submit"
                     primary
                     size="large"
-                    onClick={this.handleLogOut}
+                    onClick={this.onLogOut}
                 >
-                    Sign Out
+                    Log out
                 </Button>
             );
         }
@@ -82,7 +86,7 @@ class Login extends Component {
                     <label htmlFor="name">Username</label>
                     <input
                         name="username"
-                        onChange={event => this.handleChange(event)}
+                        onChange={event => this.onChange(event)}
                         value={this.state.usernameInput}
                     />
                 </Form.Field>
@@ -91,7 +95,7 @@ class Login extends Component {
                     <input
                         name="password"
                         type="password"
-                        onChange={event => this.handleChange(event)}
+                        onChange={event => this.onChange(event)}
                         value={this.state.passwordInput}
                     />
                 </Form.Field>
@@ -103,9 +107,9 @@ class Login extends Component {
                                     type="submit"
                                     primary
                                     size="large"
-                                    onClick={this.handleLogIn}
+                                    onClick={this.onLogIn}
                                 >
-                                    Sign In
+                                    Log in
                                 </Button>
                             </Item.Extra>
                             <Item.Extra className="login__form--create-link">
@@ -121,6 +125,9 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }).isRequired,
     logIn: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,

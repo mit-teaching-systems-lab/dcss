@@ -155,10 +155,15 @@ const requireUser = (req, res, next) => {
     next();
 };
 
+const respondWithUser = (req, res) => {
+    return res.json(req.session.user);
+};
+
 module.exports = {
     createUser,
     duplicatedUser,
+    getUserById,
     loginUser,
     requireUser,
-    getUserById
+    respondWithUser
 };

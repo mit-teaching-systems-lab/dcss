@@ -19,8 +19,8 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                         basic
                         floated="right"
                         color="black"
-                        as={Link}
                         push="true"
+                        as={Link}
                         to={{ pathname: `/editor/${id}` }}
                     >
                         Edit

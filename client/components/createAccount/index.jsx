@@ -17,8 +17,8 @@ class CreateAccount extends Component {
         };
 
         this.validFormInput = this.validFormInput.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
     validFormInput() {
@@ -49,7 +49,7 @@ class CreateAccount extends Component {
         return true;
     }
 
-    async handleSubmit() {
+    async onSubmit() {
         if (!this.validFormInput()) {
             return;
         }
@@ -75,7 +75,7 @@ class CreateAccount extends Component {
         this.props.history.push('/');
     }
 
-    handleChange(event) {
+    onChange(event) {
         if (this.state.createMessage) {
             this.setState({ createMessage: '' });
         }
@@ -89,7 +89,7 @@ class CreateAccount extends Component {
                     <label htmlFor="name">Username</label>
                     <input
                         name="username"
-                        onChange={event => this.handleChange(event)}
+                        onChange={event => this.onChange(event)}
                         value={this.state.usernameInput}
                     />
                 </Form.Field>
@@ -97,7 +97,7 @@ class CreateAccount extends Component {
                     <label htmlFor="email">Email Address</label>
                     <input
                         name="email"
-                        onChange={event => this.handleChange(event)}
+                        onChange={event => this.onChange(event)}
                         value={this.state.emailInput}
                     />
                 </Form.Field>
@@ -107,7 +107,7 @@ class CreateAccount extends Component {
                         name="password"
                         type="password"
                         required
-                        onChange={event => this.handleChange(event)}
+                        onChange={event => this.onChange(event)}
                         value={this.state.passwordInput}
                     />
                 </Form.Field>
@@ -117,7 +117,7 @@ class CreateAccount extends Component {
                         name="confirmPassword"
                         type="password"
                         required
-                        onChange={event => this.handleChange(event)}
+                        onChange={event => this.onChange(event)}
                         value={this.state.confirmPasswordInput}
                     />
                 </Form.Field>
@@ -127,7 +127,7 @@ class CreateAccount extends Component {
                             type="submit"
                             primary
                             size="large"
-                            onClick={this.handleSubmit}
+                            onClick={this.onSubmit}
                         >
                             Create Account
                         </Button>

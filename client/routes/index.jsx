@@ -6,6 +6,10 @@ import Editor from '@client/components/editor';
 import Login from '@client/components/login';
 import CreateAccount from '@client/components/createAccount';
 
+import Session from '@client/util/session';
+
+Session.timeout();
+
 function Routes() {
     return (
         <Router>
@@ -19,7 +23,11 @@ function Routes() {
                         <NavLink to="/editor/new">TM Editor</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/login">Login</NavLink>
+                        {Session.isSessionActive() ? (
+                            <NavLink to="/logout">Log out</NavLink>
+                        ) : (
+                            <NavLink to="/login">Log in</NavLink>
+                        )}
                     </li>
                     <li>
                         <a href="https://github.com/mit-teaching-systems-lab/threeflows">
@@ -32,6 +40,7 @@ function Routes() {
 
                 <Route exact path="/" component={App} />
                 <Route path="/editor/:id" component={Editor} />
+                <Route exact path="/logout" component={Login} />
                 <Route exact path="/login" component={Login} />
                 <Route path="/login/new" component={CreateAccount} />
             </div>

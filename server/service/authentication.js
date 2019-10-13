@@ -3,7 +3,8 @@ const {
     createUser,
     duplicatedUser,
     loginUser,
-    requireUser
+    requireUser,
+    respondWithUser
 } = require('../util/authenticationHelpers');
 const {
     validateRequestUsernameAndEmail,
@@ -12,32 +13,26 @@ const {
 
 const authRouter = Router();
 
+authRouter.get('/me', requireUser, respondWithUser);
+
 authRouter.post('/signup', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     duplicatedUser,
     createUser,
-    (req, res) => {
-        res.json({ user: req.session.user });
-    }
+    respondWithUser
 ]);
 
 authRouter.post('/login', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     loginUser,
-    (req, res) => {
-        res.json(req.session.user);
-    }
+    respondWithUser
 ]);
 
 authRouter.post('/logout', (req, res) => {
     delete req.session.user;
     req.session.destroy(() => res.send('ok'));
-});
-
-authRouter.get('/me', requireUser, (req, res) => {
-    return res.json(req.session.user);
 });
 
 module.exports = authRouter;
