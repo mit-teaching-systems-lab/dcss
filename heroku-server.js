@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const { listener, app } = require('./server');
+const { listener } = require('./server');
 
 listener.use(express.static('./dist'));
 

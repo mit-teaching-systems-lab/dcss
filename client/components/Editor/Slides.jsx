@@ -93,7 +93,7 @@ class Slides extends React.Component {
                 method: 'DELETE'
             }
         );
-        const json = await result.json();
+        await result.json();
         const slides = this.state.slides.filter(({ id }) => id !== slide.id);
         this.setState({ slides, currentSlideIndex: -1 });
     }
