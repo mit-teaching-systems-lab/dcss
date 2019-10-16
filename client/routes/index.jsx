@@ -29,11 +29,6 @@ function Routes() {
                             <NavLink to="/login">Log in</NavLink>
                         )}
                     </li>
-                    <li>
-                        <a href="https://github.com/mit-teaching-systems-lab/threeflows">
-                            Source Code
-                        </a>
-                    </li>
                 </ul>
 
                 <hr />
