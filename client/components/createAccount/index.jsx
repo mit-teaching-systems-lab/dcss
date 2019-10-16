@@ -71,8 +71,10 @@ class CreateAccount extends Component {
             return;
         }
 
-        this.props.logIn(createResponse.user.username);
-        this.props.history.push('/');
+        if (createResponse.username) {
+            this.props.logIn(createResponse.username);
+            this.props.history.push('/');
+        }
     }
 
     onChange(event) {
