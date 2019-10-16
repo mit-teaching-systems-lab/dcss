@@ -15,7 +15,7 @@ class Editor extends Component {
         super(props);
 
         this.state = {
-            isNewPost: this.props.match.params.id === 'new',
+            isNewScenario: this.props.match.params.id === 'new',
             activeIndex: SCENARIO_TAB_INDEX
         };
         this.onTabChange = this.onTabChange.bind(this);
@@ -30,7 +30,7 @@ class Editor extends Component {
         const scenarioId = this.props.match.params.id;
         let endpoint, method;
 
-        if (this.state.isNewPost) {
+        if (this.state.isNewScenario) {
             endpoint = '/api/scenarios';
             method = 'PUT';
         } else {
@@ -50,7 +50,7 @@ class Editor extends Component {
     }
 
     getPostSubmitCallback() {
-        if (this.state.isNewPost) {
+        if (this.state.isNewScenario) {
             return scenarioData => {
                 this.props.history.push(`/editor/${scenarioData.id}`);
                 this.setState({ activeIndex: SLIDE_TAB_INDEX });
