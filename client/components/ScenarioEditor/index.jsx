@@ -66,7 +66,6 @@ class ScenarioEditor extends Component {
                 break;
             case 201:
                 this.setState({ saving: false, saveMessage: 'Saved!' });
-                this.props.history.push(`/editor/${saveResponse.scenario.id}`);
                 break;
             default:
                 if (saveResponse.error) {
@@ -76,6 +75,10 @@ class ScenarioEditor extends Component {
                     });
                 }
                 break;
+        }
+
+        if (this.props.postSubmitCB) {
+            this.props.postSubmitCB(saveResponse.scenario);
         }
     }
 
@@ -140,12 +143,10 @@ const mapDispatchToProps = {
 };
 
 ScenarioEditor.propTypes = {
-    history: PropTypes.shape({
-        push: PropTypes.func.isRequired
-    }).isRequired,
     scenarioId: PropTypes.node.isRequired,
     setScenario: PropTypes.func.isRequired,
     submitCB: PropTypes.func.isRequired,
+    postSubmitCB: PropTypes.func,
     title: PropTypes.string,
     description: PropTypes.string
 };

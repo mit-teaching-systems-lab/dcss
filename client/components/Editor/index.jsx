@@ -7,17 +7,30 @@ import Slides from './Slides';
 
 import './editor.css';
 
+const SCENARIO_TAB_INDEX = 0;
+const SLIDE_TAB_INDEX = 1;
+
 class Editor extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            isNewPost: this.props.match.params.id === 'new',
+            activeIndex: SCENARIO_TAB_INDEX
+        };
+        this.onTabChange = this.onTabChange.bind(this);
         this.getSubmitCallback = this.getSubmitCallback.bind(this);
+    }
+
+    onTabChange(e, { activeIndex }) {
+        this.setState({ activeIndex });
     }
 
     getSubmitCallback() {
         const scenarioId = this.props.match.params.id;
         let endpoint, method;
 
-        if (scenarioId === 'new') {
+        if (this.state.isNewPost) {
             endpoint = '/api/scenarios';
             method = 'PUT';
         } else {
@@ -25,7 +38,7 @@ class Editor extends Component {
             method = 'POST';
         }
 
-        return function(scenarioData) {
+        return scenarioData => {
             return fetch(endpoint, {
                 method: method,
                 headers: {
@@ -34,6 +47,17 @@ class Editor extends Component {
                 body: JSON.stringify(scenarioData)
             });
         };
+    }
+
+    getPostSubmitCallback() {
+        if (this.state.isNewPost) {
+            return scenarioData => {
+                this.props.history.push(`/editor/${scenarioData.id}`);
+                this.setState({ activeIndex: SLIDE_TAB_INDEX });
+            };
+        }
+
+        return null;
     }
 
     render() {
@@ -46,17 +70,25 @@ class Editor extends Component {
                     <ScenarioEditor
                         scenarioId={scenarioId}
                         submitCB={this.getSubmitCallback()}
-                        history={this.props.history}
+                        postSubmitCB={this.getPostSubmitCallback()}
                     />
                 )
             },
             scenarioId !== 'new' && {
                 menuItem: 'Slides',
-                render: () => <Slides scenarioId={scenarioId} />
+                render: () => (
+                    <Slides scenarioId={scenarioId} className="active" />
+                )
             }
         ];
 
-        return <Tab panes={this.panes} />;
+        return (
+            <Tab
+                panes={this.panes}
+                onTabChange={this.onTabChange}
+                activeIndex={this.state.activeIndex}
+            />
+        );
     }
 }
 
