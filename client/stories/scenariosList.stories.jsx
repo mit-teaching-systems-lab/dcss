@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import ScenariosList from '@components/scenariosList';
+import ScenariosList from '@components/ScenariosList';
 import { Provider } from 'react-redux';
 import store from '@client/store';
 
