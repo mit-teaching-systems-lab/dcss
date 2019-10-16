@@ -20,7 +20,7 @@ function Routes() {
                         <NavLink to="/">Home</NavLink>
                     </li>
                     <li>
-                        <NavLink to="/editor/new">TM Editor</NavLink>
+                        <NavLink to="/editor/new">Create a Moment</NavLink>
                     </li>
                     <li>
                         {Session.isSessionActive() ? (
