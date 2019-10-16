@@ -24,6 +24,13 @@ exports.updateSlide = async (id, data) => {
     return result.rows[0];
 };
 
+exports.deleteSlide = async ({ scenario_id, id }) => {
+    const result = await query(
+        sql`DELETE FROM slide WHERE id=${id} and scenario_id=${scenario_id}`
+    );
+    return result.rowCount;
+};
+
 exports.updateSlideOrder = async ({ scenario_id, slide_ids }) => {
     const results = await query(
         sql`

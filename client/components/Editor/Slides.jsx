@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, Dropdown } from 'semantic-ui-react';
+import { Grid, Card, Dropdown, Button } from 'semantic-ui-react';
 import * as Components from '@components/Slide/Components';
 import SlideEditor from '@components/Slide/Editor';
+import './Slides.css';
 
 const dropDownValues = [
     {
@@ -83,6 +84,20 @@ class Slides extends React.Component {
         }, 250);
     }
 
+    async deleteSlide(index) {
+        const { scenarioId } = this.props;
+        const slide = this.state.slides[index];
+        const result = await fetch(
+            `/api/scenarios/${scenarioId}/slides/${slide.id}`,
+            {
+                method: 'DELETE'
+            }
+        );
+        const json = await result.json();
+        const slides = this.state.slides.filter(({ id }) => id !== slide.id);
+        this.setState({ slides, currentSlideIndex: -1 });
+    }
+
     async onChangeAddSlide(event, data) {
         const { scenarioId } = this.props;
         const newSlide = { title: data.value, components: [] };
@@ -137,6 +152,16 @@ class Slides extends React.Component {
                                         } = Components[type];
                                         return <Card key={index} />;
                                     })}
+                                    <p>
+                                        <Button
+                                            icon="trash alternate outline"
+                                            aria-label="Delete Slide"
+                                            className="Slides-delete-button"
+                                            onClick={() =>
+                                                this.deleteSlide(index)
+                                            }
+                                        />
+                                    </p>
                                 </Card.Content>
                             </Card>
                         </Grid.Row>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Label, Input, Menu, Tab } from 'semantic-ui-react';
+import { Grid, Label, Input, Menu, Tab, Button } from 'semantic-ui-react';
 
 import * as Components from '../Components';
 
@@ -17,6 +17,7 @@ export default class SlideEditor extends React.Component {
         };
 
         this.onTitleChange = this.onTitleChange.bind(this);
+        this.onDeleteComponent = this.onDeleteComponent.bind(this);
         this.updatedState = this.updatedState.bind(this);
     }
 
@@ -36,6 +37,12 @@ export default class SlideEditor extends React.Component {
     onComponentChange(index, value) {
         const components = this.state.components.slice();
         components[index] = value;
+        this.setState({ components }, this.updatedState);
+    }
+
+    onDeleteComponent(index) {
+        const components = this.state.components.slice();
+        components.splice(index, 1);
         this.setState({ components }, this.updatedState);
     }
 
@@ -79,6 +86,14 @@ export default class SlideEditor extends React.Component {
                                     }
                                 />
                             );
+                            const deleteButton = (
+                                <Button
+                                    icon="trash alternate outline icon"
+                                    onClick={() =>
+                                        this.onDeleteComponent(index)
+                                    }
+                                />
+                            );
                             const display = <Display {...value} />;
 
                             return (
@@ -96,6 +111,17 @@ export default class SlideEditor extends React.Component {
                                                 render: () => (
                                                     <Tab.Pane>
                                                         {display}
+                                                    </Tab.Pane>
+                                                )
+                                            },
+                                            {
+                                                menuItem: 'Delete',
+                                                render: () => (
+                                                    <Tab.Pane>
+                                                        Are you sure you want to
+                                                        delete this slide
+                                                        comoponent?
+                                                        {deleteButton}
                                                     </Tab.Pane>
                                                 )
                                             }

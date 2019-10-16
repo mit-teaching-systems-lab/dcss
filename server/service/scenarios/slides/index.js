@@ -6,12 +6,14 @@ const {
     getSlides,
     addSlide,
     orderSlides,
-    updateSlide
+    updateSlide,
+    deleteSlide
 } = require('./endpoints');
 
 slides.get('/', getSlides);
 slides.put('/', [validateRequestBody, addSlide]);
 slides.post('/order', [validateRequestBody, orderSlides]);
 slides.post('/:slide_id', [validateRequestBody, updateSlide]);
+slides.delete('/:slide_id', deleteSlide);
 
 module.exports = slides;
