@@ -1,5 +1,5 @@
 const parse = require('url-parse');
-const envConfig = require('dotenv').config().parsed;
+const envConfig = require('dotenv').config().parsed || {};
 const devConfig = require('../database.json').dev;
 
 exports.getDbConfig = function() {
