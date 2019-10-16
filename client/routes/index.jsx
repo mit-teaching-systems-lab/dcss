@@ -1,10 +1,10 @@
 import React from 'react';
 import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom';
 
-import App from '@client/components/app';
-import Editor from '@client/components/editor';
-import Login from '@client/components/login';
-import CreateAccount from '@client/components/createAccount';
+import App from '@client/components/App';
+import Editor from '@client/components/Editor';
+import Login from '@client/components/Login';
+import CreateAccount from '@client/components/CreateAccount';
 
 import Session from '@client/util/session';
 

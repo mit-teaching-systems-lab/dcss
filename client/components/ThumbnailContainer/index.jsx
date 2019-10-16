@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Dropdown } from 'semantic-ui-react';
-import { ThumbnailGallery } from '@components/thumbnailGallery';
-import { ThumbnailGroup } from '@components/thumbnailGroup';
-import { Thumbnail } from '@components/thumbnail';
+import { ThumbnailGallery } from '@components/ThumbnailGallery';
+import { ThumbnailGroup } from '@components/ThumbnailGroup';
+import { Thumbnail } from '@components/Thumbnail';
 import './thumbnailContainer.css';
 import 'semantic-ui-css/semantic.min.css';
 

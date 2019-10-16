@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader';
 import { Container } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
-import ScenariosList from '@client/components/scenariosList';
+import ScenariosList from '@client/components/ScenariosList';
 
 class App extends Component {
     render() {

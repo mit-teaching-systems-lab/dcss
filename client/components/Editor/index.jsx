@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Tab } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import ScenarioEditor from '@components/scenarioEditor';
+import ScenarioEditor from '@components/ScenarioEditor';
 import Slides from './Slides';
 
 import './editor.css';

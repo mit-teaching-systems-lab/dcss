@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from 'semantic-ui-react';
-import { ThumbnailGroupTitle } from '@components/thumbnailGroupTitle';
+import { ThumbnailGroupTitle } from '@components/ThumbnailGroupTitle';
 
 export const ThumbnailGroup = ({ title, children }) => (
     <Grid.Row>
