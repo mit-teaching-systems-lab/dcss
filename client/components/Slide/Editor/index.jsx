@@ -119,8 +119,7 @@ export default class SlideEditor extends React.Component {
                                                 render: () => (
                                                     <Tab.Pane>
                                                         Are you sure you want to
-                                                        delete this slide
-                                                        comoponent?
+                                                        delete this component?
                                                         {deleteButton}
                                                     </Tab.Pane>
                                                 )
