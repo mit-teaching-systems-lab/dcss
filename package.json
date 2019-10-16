@@ -26,8 +26,10 @@
     "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
     "db-init-local": "yarn workspace server run db-init-local",
+    "db-init-staging": "yarn workspace server run db-init-staging",
     "db-migrate-down": "yarn workspace server run db-migrate-down",
     "db-migrate-up": "yarn workspace server run db-migrate-up",
+    "deploy:staging": "git push heroku-staging staging-site:master",
     "dev": "npm-run-all --parallel dev:*",
     "dev:client": "yarn workspace client run dev",
     "dev:server": "yarn workspace server run dev",
@@ -36,7 +38,6 @@
     "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"**/*.js\"",
     "lint:packages": "yarn workspaces run lint",
     "prettier": "prettier --write \"**/*.{js,jsx,json,css}\"",
-    "start": "webpack-dev-server --mode development",
     "storybook": "yarn workspaces run storybook",
     "test": "npm-run-all jest lint -c"
   },

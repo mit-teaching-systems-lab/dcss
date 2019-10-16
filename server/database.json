@@ -8,5 +8,12 @@
         "password": "teachermoments",
         "host": "localhost",
         "database": "teachermoments"
+    },
+    "staging": {
+        "driver": "pg",
+        "user": "",
+        "password": "",
+        "host": "",
+        "database": ""
     }
 }

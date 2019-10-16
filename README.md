@@ -129,6 +129,36 @@ yarn db-migrate-down
 
 This command can be customized with the following options [https://db-migrate.readthedocs.io/en/latest/Getting%20Started/commands/#down]()
 
+## Deployment
+This app is deployed via Heroku. To run the deploy commands, please [install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+
+### Staging environment setup
+
+#### Initializing staging database
+Create a .env file in the root of the project directory and add the following info:
+```
+PGSSLMODE=require
+DATABASE_URL=< your Heroku database URL here>
+```
+DATABASE_URL is a value set in your Heroku environment, which you can find when you reveal config vars in Heroku's UI.
+
+If there isn't a staging database yet, you can initalize it with the following command:
+```
+yarn db-init-staging
+```
+#### Set Heroku as remote repo on local machine
+```
+heroku git:remote -a teacher-moments
+git remote rename heroku heroku-staging
+```
+
+#### Deploying App to staging
+```
+yarn deploy:staging
+```
+
+
 ### S3 Integration
 The AWS bucket used for development is called **v2-moments-dev**. For access, please contact the AWS administrator for TSL.
 

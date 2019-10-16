@@ -9,11 +9,14 @@ const authRouter = require('./service/authentication');
 const rolesRouter = require('./service/roles');
 const scenariosRouter = require('./service/scenarios');
 const s3Router = require('./service/s3');
+const { getDbConfig } = require('./util/dbConfig');
 
 const { errorHandler } = require('./util/api');
 
 const app = express();
-const port = process.env.SERVER_PORT || 5000;
+// Heroku uses $PORT
+const port = process.env.PORT || 5000;
+const poolConfig = getDbConfig();
 
 app.use(bodyParser.json());
 app.use(cors());
@@ -24,7 +27,7 @@ app.use(
         resave: false,
         saveUninitialized: true,
         store: new pgSession({
-            pool: new Pool(),
+            pool: new Pool(poolConfig),
             tableName: 'session'
         }),
         cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
@@ -51,3 +54,5 @@ listener.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log(`Listening on ${port}`);
 });
+
+module.exports = { listener, app };

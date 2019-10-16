@@ -15,12 +15,12 @@
     "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
     "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
+    "db-init-staging": "yarn db-migrate-up -e staging",
     "db-migrate-down": "db-migrate down",
     "db-migrate-up": "db-migrate up",
     "dev": "nodemon index.js",
     "lint": "eslint --ext js .",
     "prettier": "prettier --write \"**/*.js\"",
-    "start": "node index.js",
     "test": "yarn workspace test run test:server"
   },
   "dependencies": {
@@ -32,7 +32,8 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-session": "^1.16.2",
-    "pg": "^7.12.1"
+    "pg": "^7.12.1",
+    "url-parse": "^1.4.7"
   },
   "devDependencies": {
     "db-migrate": "^0.11.6",
