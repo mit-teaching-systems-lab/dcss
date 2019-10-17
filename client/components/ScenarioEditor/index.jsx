@@ -84,7 +84,7 @@ class ScenarioEditor extends Component {
 
     render() {
         return (
-            <Container fluid className="tm__scenario-editor">
+            <Container fluid className="tm__editor-tab">
                 <h2>Teacher Moment Details</h2>
                 <Form size={'big'}>
                     <Form.Input

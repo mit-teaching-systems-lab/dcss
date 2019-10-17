@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Tab } from 'semantic-ui-react';
+import { Menu, Segment, Tab } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import ScenarioEditor from '@components/ScenarioEditor';
@@ -7,30 +7,65 @@ import Slides from './Slides';
 
 import './editor.css';
 
-const SCENARIO_TAB_INDEX = 0;
-const SLIDE_TAB_INDEX = 1;
+const EditorMessage = message => {
+    return <div>{message}</div>;
+};
 
 class Editor extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            isNewScenario: this.props.match.params.id === 'new',
-            activeIndex: SCENARIO_TAB_INDEX
+            activeTab: 'moment',
+            editorMessage: '',
+            scenarioId: this.props.match.params.id,
+            tabs: {
+                moment: this.getTab('moment')
+            }
         };
-        this.onTabChange = this.onTabChange.bind(this);
+
+        this.onClick = this.onClick.bind(this);
         this.getSubmitCallback = this.getSubmitCallback.bind(this);
+        this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
+        this.getTab = this.getTab.bind(this);
+
+        if (this.props.match.params.id != 'new') {
+            const tabsObj = { ...this.state.tabs, slides: this.getTab('slides') };
+            this.state.tabs = tabsObj;
+        }
     }
 
-    onTabChange(e, { activeIndex }) {
-        this.setState({ activeIndex });
+    onClick(e, { name }) {
+        this.setState({ activeTab: name });
+    }
+
+    getTab(name) {
+        switch (name) {
+            case 'moment':
+                return (
+                    <ScenarioEditor
+                        scenarioId={this.props.match.params.id}
+                        submitCB={this.getSubmitCallback()}
+                        postSubmitCB={this.getPostSubmitCallback()}
+                    />
+                );
+            case 'slides':
+                return (
+                    <Slides
+                        scenarioId={this.props.match.params.id}
+                        className="active"
+                    />
+                );
+            default:
+                return null;
+        }
     }
 
     getSubmitCallback() {
-        const scenarioId = this.props.match.params.id;
         let endpoint, method;
+        const scenarioId = this.props.match.params.id;
 
-        if (this.state.isNewScenario) {
+        if (scenarioId === 'new') {
             endpoint = '/api/scenarios';
             method = 'PUT';
         } else {
@@ -50,10 +85,19 @@ class Editor extends Component {
     }
 
     getPostSubmitCallback() {
-        if (this.state.isNewScenario) {
+        if (this.props.match.params.id === 'new') {
             return scenarioData => {
                 this.props.history.push(`/editor/${scenarioData.id}`);
-                this.setState({ activeIndex: SLIDE_TAB_INDEX });
+                this.setState({
+                    activeTab: 'slides',
+                    scenarioId: scenarioData.id
+                });
+
+                if (!this.state.tabs.slides) {
+                    const tabsObj = this.state.tabs;
+                    tabsObj.slides = this.getTab('slides');
+                    this.setState({ tabs: tabsObj });
+                }
             };
         }
 
@@ -61,33 +105,30 @@ class Editor extends Component {
     }
 
     render() {
-        const scenarioId = this.props.match.params.id;
-
-        this.panes = [
-            {
-                menuItem: 'Moment',
-                render: () => (
-                    <ScenarioEditor
-                        scenarioId={scenarioId}
-                        submitCB={this.getSubmitCallback()}
-                        postSubmitCB={this.getPostSubmitCallback()}
-                    />
-                )
-            },
-            scenarioId !== 'new' && {
-                menuItem: 'Slides',
-                render: () => (
-                    <Slides scenarioId={scenarioId} className="active" />
-                )
-            }
-        ];
-
         return (
-            <Tab
-                panes={this.panes}
-                onTabChange={this.onTabChange}
-                activeIndex={this.state.activeIndex}
-            />
+            <div>
+                <Menu attached="top" tabular>
+                    <Menu.Item
+                        name='moment'
+                        active={this.state.activeTab === 'moment'}
+                        onClick={this.onClick}
+                    />
+                    {this.state.scenarioId !== 'new' && (
+                        <Menu.Item
+                            name="slides"
+                            active={this.state.activeTab === 'slides'}
+                            onClick={this.onClick}
+                        />
+                    )}
+                    <Menu.Menu position="right">
+                        <Menu.Item>
+                            <div>{this.state.editorMessage}</div>
+                        </Menu.Item>
+                    </Menu.Menu>
+                </Menu>
+
+                <div>{this.state.tabs[this.state.activeTab]}</div>
+            </div>
         );
     }
 }

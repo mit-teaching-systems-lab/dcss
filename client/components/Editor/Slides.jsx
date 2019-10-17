@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Card, Dropdown, Button } from 'semantic-ui-react';
+import { Container, Grid, Card, Dropdown, Button } from 'semantic-ui-react';
 import * as Components from '@components/Slide/Components';
 import SlideEditor from '@components/Slide/Editor';
 import './Slides.css';
@@ -127,56 +127,63 @@ class Slides extends React.Component {
         const { loading, slides, currentSlideIndex } = this.state;
         if (loading) return this.renderLoading();
         return (
-            <Grid>
-                <Grid.Column width={3}>
-                    <Grid.Row>
-                        <Dropdown
-                            selection
-                            placeholder="Add +"
-                            options={dropDownValues}
-                            onChange={onChangeAddSlide}
-                        />
-                    </Grid.Row>
-                    {slides.map((slide, index) => (
-                        <Grid.Row key={slide.id}>
-                            <Card
-                                onClick={() =>
-                                    this.setState({ currentSlideIndex: index })
-                                }
-                            >
-                                <Card.Header>{slide.title}</Card.Header>
-                                <Card.Content>
-                                    {slide.components.map(({ type }, index) => {
-                                        const {
-                                            Card = () => <b>{type}</b>
-                                        } = Components[type];
-                                        return <Card key={index} />;
-                                    })}
-                                    <p>
-                                        <Button
-                                            icon="trash alternate outline"
-                                            aria-label="Delete Slide"
-                                            className="Slides-delete-button"
-                                            onClick={() =>
-                                                this.deleteSlide(index)
-                                            }
-                                        />
-                                    </p>
-                                </Card.Content>
-                            </Card>
+            <Container fluid className="tm__editor-tab">
+                <h2>Teacher Moment Slides</h2>
+                <Grid>
+                    <Grid.Column width={3}>
+                        <Grid.Row>
+                            <Dropdown
+                                selection
+                                placeholder="Add +"
+                                options={dropDownValues}
+                                onChange={onChangeAddSlide}
+                            />
                         </Grid.Row>
-                    ))}
-                </Grid.Column>
-                <Grid.Column width={8}>
-                    {slides[currentSlideIndex] && (
-                        <SlideEditor
-                            key={currentSlideIndex}
-                            {...slides[currentSlideIndex]}
-                            onChange={onChangeSlide}
-                        />
-                    )}
-                </Grid.Column>
-            </Grid>
+                        {slides.map((slide, index) => (
+                            <Grid.Row key={slide.id}>
+                                <Card
+                                    onClick={() =>
+                                        this.setState({
+                                            currentSlideIndex: index
+                                        })
+                                    }
+                                >
+                                    <Card.Header>{slide.title}</Card.Header>
+                                    <Card.Content>
+                                        {slide.components.map(
+                                            ({ type }, index) => {
+                                                const {
+                                                    Card = () => <b>{type}</b>
+                                                } = Components[type];
+                                                return <Card key={index} />;
+                                            }
+                                        )}
+                                        <p>
+                                            <Button
+                                                icon="trash alternate outline"
+                                                aria-label="Delete Slide"
+                                                className="Slides-delete-button"
+                                                onClick={() =>
+                                                    this.deleteSlide(index)
+                                                }
+                                            />
+                                        </p>
+                                    </Card.Content>
+                                </Card>
+                            </Grid.Row>
+                        ))}
+                    </Grid.Column>
+                    <Grid.Column width={8}>
+                        {slides[currentSlideIndex] && (
+                            <SlideEditor
+                                key={currentSlideIndex}
+                                {...slides[currentSlideIndex]}
+                                onChange={onChangeSlide}
+                            />
+                        )}
+                    </Grid.Column>
+                </Grid>
+            </Container>
         );
     }
 }
