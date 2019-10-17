@@ -3,7 +3,7 @@ export { type };
 export const defaultValue = () => ({
     type,
     prompt: 'Text Prompt (displayed before input field as label)',
-    placeholder: 'Placehoder Text',
+    placeholder: 'Placeholder Text',
     responseId: 'response-1'
 });
 
