@@ -24,7 +24,10 @@ function makeDemo(name, Comp) {
                     <Header>Editor:</Header>
                     <Comp.Editor value={value} onChange={onChange} />
                     <Header>Display:</Header>
-                    <Comp.Display {...value} />
+                    <Comp.Display
+                        {...value}
+                        onResponseChange={action('onResponseChange')}
+                    />
                 </Container>
             );
         }
@@ -39,7 +42,7 @@ function makeDemo(name, Comp) {
         onChange: PropTypes.func.isRequired
     };
 
-    storiesOf(`Slide/Component/${name}`).add('Demo', () => (
+    storiesOf(`Slide/Component/${name}`, module).add('Demo', () => (
         <Demo onChange={action('onChange')} />
     ));
 }
@@ -50,6 +53,6 @@ for (const [type, Comp] of Object.entries(Components)) {
 }
 
 import Editor from '@components/Slide/Editor';
-storiesOf('Slide/Editor').add('Demo', () => (
+storiesOf('Slide/Editor', module).add('Demo', () => (
     <Editor onChange={action('onChange')} />
 ));

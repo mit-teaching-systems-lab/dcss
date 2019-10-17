@@ -4,7 +4,7 @@ import { Grid, Label, Input, Menu, Tab, Button } from 'semantic-ui-react';
 
 import * as Components from '../Components';
 
-const ComponentsMenuOrder = ['Text', 'TextResponse'];
+const ComponentsMenuOrder = ['Text', 'TextResponse', 'CheckResponse'];
 
 export default class SlideEditor extends React.Component {
     constructor(props) {
