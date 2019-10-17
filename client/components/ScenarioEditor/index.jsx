@@ -10,8 +10,7 @@ class ScenarioEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            saving: false,
-            saveMessage: ''
+            saving: false
         };
 
         this.getScenarioData = this.getScenarioData.bind(this);
@@ -39,18 +38,15 @@ class ScenarioEditor extends Component {
     }
 
     handleChange(event) {
-        this.setState({
-            saveMessage: ''
-        });
+        this.props.updateEditorMessage('');
         this.props.setScenario({ [event.target.name]: event.target.value });
     }
 
     async handleSubmit() {
         if (!this.props.title || !this.props.description) {
-            this.setState({
-                saveMessage:
-                    'A title and description are required for Teacher Moments'
-            });
+            this.props.updateEditorMessage(
+                'A title and description are required for Teacher Moments'
+            );
             return;
         }
         this.setState({ saving: true });
@@ -62,17 +58,17 @@ class ScenarioEditor extends Component {
 
         switch (saveResponse.status) {
             case 200:
-                this.setState({ saving: false, saveMessage: 'Saved!' });
+                this.setState({ saving: false });
+                this.props.updateEditorMessage('Teacher Moment saved');
                 break;
             case 201:
-                this.setState({ saving: false, saveMessage: 'Saved!' });
+                this.setState({ saving: false });
+                this.props.updateEditorMessage('Teacher Moment created');
                 break;
             default:
                 if (saveResponse.error) {
-                    this.setState({
-                        saving: false,
-                        saveMessage: saveResponse.message
-                    });
+                    this.setState({ saving: false });
+                    this.props.updateEditorMessage(saveResponse.message);
                 }
                 break;
         }
@@ -147,6 +143,7 @@ ScenarioEditor.propTypes = {
     setScenario: PropTypes.func.isRequired,
     submitCB: PropTypes.func.isRequired,
     postSubmitCB: PropTypes.func,
+    updateEditorMessage: PropTypes.func.isRequired,
     title: PropTypes.string,
     description: PropTypes.string
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Segment, Tab } from 'semantic-ui-react';
+import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import ScenarioEditor from '@components/ScenarioEditor';
@@ -7,7 +7,7 @@ import Slides from './Slides';
 
 import './editor.css';
 
-const EditorMessage = message => {
+const EditorMessage = ({ message }) => {
     return <div>{message}</div>;
 };
 
@@ -15,6 +15,11 @@ class Editor extends Component {
     constructor(props) {
         super(props);
 
+        this.onClick = this.onClick.bind(this);
+        this.getSubmitCallback = this.getSubmitCallback.bind(this);
+        this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
+        this.getTab = this.getTab.bind(this);
+        this.updateEditorMessage = this.updateEditorMessage.bind(this);
         this.state = {
             activeTab: 'moment',
             editorMessage: '',
@@ -24,19 +29,18 @@ class Editor extends Component {
             }
         };
 
-        this.onClick = this.onClick.bind(this);
-        this.getSubmitCallback = this.getSubmitCallback.bind(this);
-        this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
-        this.getTab = this.getTab.bind(this);
-
         if (this.props.match.params.id != 'new') {
-            const tabsObj = { ...this.state.tabs, slides: this.getTab('slides') };
+            const tabsObj = {
+                ...this.state.tabs,
+                slides: this.getTab('slides')
+            };
             this.state.tabs = tabsObj;
         }
     }
 
     onClick(e, { name }) {
         this.setState({ activeTab: name });
+        this.updateEditorMessage('');
     }
 
     getTab(name) {
@@ -47,6 +51,7 @@ class Editor extends Component {
                         scenarioId={this.props.match.params.id}
                         submitCB={this.getSubmitCallback()}
                         postSubmitCB={this.getPostSubmitCallback()}
+                        updateEditorMessage={this.updateEditorMessage}
                     />
                 );
             case 'slides':
@@ -54,6 +59,7 @@ class Editor extends Component {
                     <Slides
                         scenarioId={this.props.match.params.id}
                         className="active"
+                        updateEditorMessage={this.updateEditorMessage}
                     />
                 );
             default:
@@ -104,12 +110,16 @@ class Editor extends Component {
         return null;
     }
 
+    updateEditorMessage(message) {
+        this.setState({ editorMessage: message });
+    }
+
     render() {
         return (
             <div>
                 <Menu attached="top" tabular>
                     <Menu.Item
-                        name='moment'
+                        name="moment"
                         active={this.state.activeTab === 'moment'}
                         onClick={this.onClick}
                     />
@@ -122,7 +132,7 @@ class Editor extends Component {
                     )}
                     <Menu.Menu position="right">
                         <Menu.Item>
-                            <div>{this.state.editorMessage}</div>
+                            <EditorMessage message={this.state.editorMessage} />
                         </Menu.Item>
                     </Menu.Menu>
                 </Menu>
@@ -132,6 +142,10 @@ class Editor extends Component {
         );
     }
 }
+
+EditorMessage.propTypes = {
+    message: PropTypes.string
+};
 
 Editor.propTypes = {
     history: PropTypes.shape({

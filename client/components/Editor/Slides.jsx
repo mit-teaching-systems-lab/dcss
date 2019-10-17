@@ -60,6 +60,7 @@ class Slides extends React.Component {
         const { scenarioId } = this.props;
         const { slides, currentSlideIndex } = this.state;
         const slide = slides[currentSlideIndex];
+        this.props.updateEditorMessage('');
         clearTimeout(this.debounceSlideUpdate[slide.id]);
         this.debounceSlideUpdate[slide.id] = setTimeout(async () => {
             const newSlide = {
@@ -81,6 +82,7 @@ class Slides extends React.Component {
                 currSlide.id === savedSlide.id ? savedSlide : currSlide
             );
             this.setState({ slides });
+            this.props.updateEditorMessage('Slide saved');
         }, 250);
     }
 
@@ -96,9 +98,11 @@ class Slides extends React.Component {
         await result.json();
         const slides = this.state.slides.filter(({ id }) => id !== slide.id);
         this.setState({ slides, currentSlideIndex: -1 });
+        this.props.updateEditorMessage('Slide deleted');
     }
 
     async onChangeAddSlide(event, data) {
+        this.props.updateEditorMessage('');
         const { scenarioId } = this.props;
         const newSlide = { title: data.value, components: [] };
         const res = await fetch(`/api/scenarios/${scenarioId}/slides`, {
@@ -189,6 +193,7 @@ class Slides extends React.Component {
 }
 
 Slides.propTypes = {
-    scenarioId: PropTypes.string
+    scenarioId: PropTypes.string,
+    updateEditorMessage: PropTypes.func.isRequired
 };
 export default Slides;
