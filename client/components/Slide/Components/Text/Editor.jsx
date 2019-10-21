@@ -1,45 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { EditorState, convertToRaw, ContentState } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
+import Editor from 'nib-core';
+import { convertFromHTML, convertToHTML } from 'nib-converter';
 import { type } from './type';
 
 class TextEditor extends React.Component {
     constructor(props) {
         super(props);
-        this.onEditorStateChange = this.onEditorStateChange.bind(this);
-
-        const content = htmlToDraft(props.value.html);
-        let editorState;
-        if (content) {
-            const contentState = ContentState.createFromBlockArray(
-                content.contentBlocks
-            );
-            editorState = EditorState.createWithContent(contentState);
-        }
+        const defaultValue = convertFromHTML(props.value.html) || '';
+        this.onChange = this.onChange.bind(this);
         this.state = {
-            editorState
+            defaultValue
         };
     }
     render() {
-        const { editorState } = this.state;
-        return (
-            <Editor
-                editorState={editorState}
-                onEditorStateChange={this.onEditorStateChange}
-            />
-        );
+        const { defaultValue } = this.state;
+        return <Editor defaultValue={defaultValue} onChange={this.onChange} />;
     }
 
-    onEditorStateChange(editorState) {
-        this.setState({ editorState });
+    onChange(defaultValue) {
+        this.setState({ defaultValue });
         if (this.props.onChange) {
             this.props.onChange({
                 type,
-                html: draftToHtml(convertToRaw(editorState.getCurrentContent()))
+                html: convertToHTML(defaultValue.doc)
             });
         }
     }
