@@ -29,7 +29,7 @@
     "db-init-staging": "yarn workspace server run db-init-staging",
     "db-migrate-down": "yarn workspace server run db-migrate-down",
     "db-migrate-up": "yarn workspace server run db-migrate-up",
-    "deploy:staging": "git push heroku-staging staging-site:master",
+    "deploy:staging": "git push heroku-staging teacher-moments:master",
     "dev": "npm-run-all --parallel dev:*",
     "dev:client": "yarn workspace client run dev",
     "dev:server": "yarn workspace server run dev",
