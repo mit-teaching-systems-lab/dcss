@@ -72,8 +72,14 @@ class CheckResponseEditor extends React.Component {
 
     onTextAreaChange(event, { name, value }) {
         this.setState({ [name]: value }, () => {
-            const { prompt, placeholder, responseId } = this.state;
-            this.props.onChange({ type, prompt, placeholder, responseId });
+            const { prompt, checked, unchecked, responseId } = this.state;
+            this.props.onChange({
+                type,
+                prompt,
+                checked,
+                unchecked,
+                responseId
+            });
         });
     }
 }
