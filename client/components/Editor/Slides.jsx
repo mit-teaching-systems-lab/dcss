@@ -140,6 +140,7 @@ class Slides extends React.Component {
         const {
             slide: { id }
         } = await res.json();
+        this.props.updateEditorMessage('Slide added');
         await this.fetchSlides();
         const currentSlideIndex = this.state.slides.findIndex(
             slide => slide.id === id
