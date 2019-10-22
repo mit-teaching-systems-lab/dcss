@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Container, List } from 'semantic-ui-react';
+import { Button, Container, Header, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -13,11 +13,13 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
 
     return scenarioData.map(({ id, title, description }) => {
         return (
-            <List.Item fluid="true" key={id}>
+            <Grid.Column width={4} key={id}>
+                <Header as="h3">{title}</Header>
+                <p>{description}</p>
                 {isLoggedIn && (
                     <Button
                         basic
-                        floated="right"
+                        fluid
                         color="black"
                         push="true"
                         as={Link}
@@ -26,9 +28,7 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                         Edit
                     </Button>
                 )}
-                <List.Header as="h3">{title}</List.Header>
-                <List.Content>{description}</List.Content>
-            </List.Item>
+            </Grid.Column>
         );
     });
 };
@@ -58,12 +58,12 @@ class ScenariosList extends Component {
         return (
             <Container>
                 <h2>Practice spaces for teacher preparation programs</h2>
-                <List relaxed>
+                <Grid relaxed stackable>
                     <ScenarioEntries
                         scenarioData={this.state.scenarioData}
                         isLoggedIn={this.props.isLoggedIn}
                     />
-                </List>
+                </Grid>
             </Container>
         );
     }
