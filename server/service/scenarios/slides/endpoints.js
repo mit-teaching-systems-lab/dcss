@@ -20,7 +20,10 @@ exports.addSlide = asyncMiddleware(async (req, res) => {
 
 exports.orderSlides = asyncMiddleware(async (req, res) => {
     const { id: scenario_id } = reqScenario(req);
-    const slide_ids = req.body.slides;
+    const slide_ids = req.body.slides.map(id => {
+        if (typeof id === 'object') return id.id;
+        return id;
+    });
     res.json({
         slides: await db.updateSlideOrder({
             scenario_id,

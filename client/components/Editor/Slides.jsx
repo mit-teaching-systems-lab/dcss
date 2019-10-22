@@ -86,6 +86,31 @@ class Slides extends React.Component {
         }, 250);
     }
 
+    async moveSlide(fromIndex, toIndex) {
+        this.props.updateEditorMessage('Moving slides...');
+
+        const { scenarioId } = this.props;
+        const slides = this.state.slides.slice();
+        const from = slides[fromIndex];
+        const to = slides[toIndex];
+        if (from && to) {
+            slides[toIndex] = from;
+            slides[fromIndex] = to;
+        }
+        const result = await fetch(
+            `/api/scenarios/${scenarioId}/slides/order`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ slides })
+            }
+        );
+        await result.json();
+        this.setState({ slides, currentSlideIndex: toIndex });
+        this.props.updateEditorMessage('Slide moved');
+    }
     async deleteSlide(index) {
         const { scenarioId } = this.props;
         const slide = this.state.slides[index];
@@ -144,8 +169,12 @@ class Slides extends React.Component {
                             />
                         </Grid.Row>
                         {slides.map((slide, index) => (
-                            <Grid.Row key={slide.id}>
+                            <Grid.Row
+                                key={slide.id}
+                                className="Slides-slide-sidebar-container"
+                            >
                                 <Card
+                                    className="Slides-slide-sidebar-card"
                                     onClick={() =>
                                         this.setState({
                                             currentSlideIndex: index
@@ -157,21 +186,50 @@ class Slides extends React.Component {
                                         {slide.components.map(
                                             ({ type }, index) => {
                                                 const {
-                                                    Card = () => <b>{type}</b>
+                                                    Card: ComponentCard = () => (
+                                                        <b>{type}</b>
+                                                    )
                                                 } = Components[type];
-                                                return <Card key={index} />;
+                                                return (
+                                                    <ComponentCard
+                                                        key={index}
+                                                    />
+                                                );
                                             }
                                         )}
-                                        <p>
+                                        <div className="Slides-button-bar">
+                                            <Button
+                                                icon="arrow alternate circle up outline"
+                                                aria-label="Move up"
+                                                disabled={index === 0}
+                                                onClick={() =>
+                                                    this.moveSlide(
+                                                        index,
+                                                        index - 1
+                                                    )
+                                                }
+                                            />
+                                            <Button
+                                                icon="arrow alternate circle down outline"
+                                                aria-label="Move down"
+                                                disabled={
+                                                    index === slides.length - 1
+                                                }
+                                                onClick={() =>
+                                                    this.moveSlide(
+                                                        index,
+                                                        index + 1
+                                                    )
+                                                }
+                                            />
                                             <Button
                                                 icon="trash alternate outline"
                                                 aria-label="Delete Slide"
-                                                className="Slides-delete-button"
                                                 onClick={() =>
                                                     this.deleteSlide(index)
                                                 }
                                             />
-                                        </p>
+                                        </div>
                                     </Card.Content>
                                 </Card>
                             </Grid.Row>

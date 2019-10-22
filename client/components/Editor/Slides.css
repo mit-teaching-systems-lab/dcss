@@ -1,5 +1,14 @@
-.Slides-delete-button {
+.Slides-button-bar {
     position: absolute;
     top: 0;
     right: 0;
+    display: none;
+}
+
+.Slides-slide-sidebar-card:hover .Slides-button-bar {
+    display: block;
+}
+
+.Slides-slide-sidebar-container {
+    margin: 1em 0;
 }
