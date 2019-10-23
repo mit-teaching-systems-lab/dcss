@@ -1,15 +1,16 @@
 const { Router } = require('express');
+
 const {
-    createUser,
-    duplicatedUser,
-    loginUser,
     requireUser,
-    respondWithUser
-} = require('../util/authenticationHelpers');
+    respondWithUser,
+    createUser,
+    loginUser
+} = require('./middleware');
+const { checkForDuplicate } = require('./middleware');
 const {
     validateRequestUsernameAndEmail,
     validateRequestBody
-} = require('../util/requestValidation');
+} = require('../../util/requestValidation');
 
 const authRouter = Router();
 
@@ -18,7 +19,7 @@ authRouter.get('/me', requireUser, respondWithUser);
 authRouter.post('/signup', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
-    duplicatedUser,
+    checkForDuplicate,
     createUser,
     respondWithUser
 ]);

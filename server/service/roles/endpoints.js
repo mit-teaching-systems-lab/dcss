@@ -2,7 +2,7 @@ const { asyncMiddleware } = require('../../util/api');
 
 const db = require('./db');
 
-const { getUserById } = require('../../util/authenticationHelpers');
+const { getUserById } = require('../auth/db');
 
 exports.getUserRolesAsync = async function(req, res) {
     const userId = Number(req.params.user_id);

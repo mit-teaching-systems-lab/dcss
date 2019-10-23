@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const pgSession = require('connect-pg-simple')(session);
 
-const authRouter = require('./service/authentication');
+const authRouter = require('./service/auth');
 const rolesRouter = require('./service/roles');
 const scenariosRouter = require('./service/scenarios');
 const s3Router = require('./service/s3');
