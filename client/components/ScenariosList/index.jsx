@@ -5,6 +5,7 @@ import { Button, Container, Header, Grid } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import 'semantic-ui-css/semantic.min.css';
+import './ScenariosList.css';
 
 const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
     if (!scenarioData.length) {
@@ -13,9 +14,15 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
 
     return scenarioData.map(({ id, title, description }) => {
         return (
-            <Grid.Column width={4} key={id}>
+            <Grid.Column
+                mobile={16}
+                tablet={8}
+                computer={5}
+                key={id}
+                className="tm__scenario-entry"
+            >
                 <Header as="h3">{title}</Header>
-                <p>{description}</p>
+                <p className="tm__scenario-desc">{description}</p>
                 {isLoggedIn && (
                     <Button
                         basic
@@ -58,7 +65,7 @@ class ScenariosList extends Component {
         return (
             <Container>
                 <h2>Practice spaces for teacher preparation programs</h2>
-                <Grid relaxed stackable>
+                <Grid stackable>
                     <ScenarioEntries
                         scenarioData={this.state.scenarioData}
                         isLoggedIn={this.props.isLoggedIn}

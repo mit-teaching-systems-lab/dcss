@@ -1,0 +1,20 @@
+.tm__scenario-entry {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #888888;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+}
+
+.tm__scenario-entry:hover {
+    background-color: #f5f5f5;
+}
+
+.tm__scenario-entry:active {
+    transform: translate(1px, 1px);
+}
+
+.tm__scenario-desc {
+    height: 150px;
+    overflow-y: auto;
+}
