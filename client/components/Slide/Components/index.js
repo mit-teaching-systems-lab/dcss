@@ -6,3 +6,6 @@ export { TextResponse };
 
 import * as CheckResponse from './CheckResponse';
 export { CheckResponse };
+
+import * as AudioResponse from './AudioResponse';
+export { AudioResponse };
