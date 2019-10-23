@@ -3,6 +3,7 @@ import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom';
 
 import App from '@client/components/App';
 import Editor from '@client/components/Editor';
+import Facilitator from '@client/components/Facilitator';
 import Login from '@client/components/Login';
 import CreateAccount from '@client/components/CreateAccount';
 
@@ -23,6 +24,9 @@ function Routes() {
                         <NavLink to="/editor/new">Create a Moment</NavLink>
                     </li>
                     <li>
+                        <NavLink to="/facilitator">Facilitator</NavLink>
+                    </li>
+                    <li>
                         {Session.isSessionActive() ? (
                             <NavLink to="/logout">Log out</NavLink>
                         ) : (
@@ -35,6 +39,7 @@ function Routes() {
 
                 <Route exact path="/" component={App} />
                 <Route path="/editor/:id" component={Editor} />
+                <Route exact path="/facilitator" component={Facilitator} />
                 <Route exact path="/logout" component={Login} />
                 <Route exact path="/login" component={Login} />
                 <Route path="/login/new" component={CreateAccount} />
