@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, NavLink, BrowserRouter as Router } from 'react-router-dom';
 
 import App from '@client/components/App';
+import Scenario from '@client/components/Scenario';
 import Editor from '@client/components/Editor';
 import Facilitator from '@client/components/Facilitator';
 import Login from '@client/components/Login';
@@ -38,6 +39,7 @@ function Routes() {
                 <hr />
 
                 <Route exact path="/" component={App} />
+                <Route path="/moment/:id" component={Scenario} />
                 <Route path="/editor/:id" component={Editor} />
                 <Route exact path="/facilitator" component={Facilitator} />
                 <Route exact path="/logout" component={Login} />

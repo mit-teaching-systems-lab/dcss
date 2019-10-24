@@ -21,7 +21,16 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                 key={id}
                 className="tm__scenario-entry"
             >
-                <Header as="h3">{title}</Header>
+                <Header as="h3">
+                    <Link
+                        to={{
+                            pathname: `/moment/${id}`,
+                            state: { id, title, description }
+                        }}
+                    >
+                        {title}
+                    </Link>
+                </Header>
                 <p className="tm__scenario-desc">{description}</p>
                 {isLoggedIn && (
                     <Button
@@ -39,6 +48,7 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
         );
     });
 };
+
 
 class ScenariosList extends Component {
     constructor(props) {
