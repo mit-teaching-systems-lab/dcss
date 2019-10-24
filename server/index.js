@@ -7,10 +7,11 @@ const pgSession = require('connect-pg-simple')(session);
 
 const authRouter = require('./service/auth');
 const rolesRouter = require('./service/roles');
-const scenariosRouter = require('./service/scenarios');
+const runsRouter = require('./service/runs');
 const s3Router = require('./service/s3');
-const { getDbConfig } = require('./util/dbConfig');
+const scenariosRouter = require('./service/scenarios');
 
+const { getDbConfig } = require('./util/dbConfig');
 const { errorHandler } = require('./util/api');
 
 const app = express();
@@ -35,9 +36,10 @@ app.use(
 );
 
 app.use('/auth', authRouter);
-app.use('/roles', rolesRouter);
-app.use('/scenarios', scenariosRouter);
 app.use('/media', s3Router);
+app.use('/roles', rolesRouter);
+app.use('/runs', runsRouter);
+app.use('/scenarios', scenariosRouter);
 
 // This handles 404 results from router -- answers all remaining requests
 app.use((req, res, next) => {
