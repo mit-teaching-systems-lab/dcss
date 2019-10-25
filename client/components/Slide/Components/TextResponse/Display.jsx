@@ -1,7 +1,7 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Label, TextArea } from 'semantic-ui-react';
+import { Label, TextArea } from 'semantic-ui-react';
 
 import './TextResponse.css';
 

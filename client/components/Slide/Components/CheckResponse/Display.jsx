@@ -1,7 +1,7 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Label, Checkbox } from 'semantic-ui-react';
+import { Label, Checkbox } from 'semantic-ui-react';
 
 import './CheckResponse.css';
 

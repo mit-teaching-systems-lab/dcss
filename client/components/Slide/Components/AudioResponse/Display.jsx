@@ -1,7 +1,7 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Button, Label, Icon } from 'semantic-ui-react';
+import { Button, Label, Icon } from 'semantic-ui-react';
 
 import './AudioResponse.css';
 

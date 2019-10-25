@@ -132,7 +132,7 @@ export default class SlideEditor extends React.Component {
                         })}
                     </Grid.Row>
                 </Grid.Column>
-                <Grid.Column width={1}>
+                <Grid.Column width={2}>
                     <Menu vertical size="small" fluid={true} icon={true}>
                         Add:
                         {ComponentsMenuOrder.map(type => {

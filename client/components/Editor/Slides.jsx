@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Sortable from 'react-sortablejs';
 import { Container, Grid, Card, Dropdown, Button } from 'semantic-ui-react';
-import * as Components from '@components/Slide/Components';
 import SlideEditor from '@components/Slide/Editor';
 import SlideList from '@components/SlideList';
 import './Slides.css';

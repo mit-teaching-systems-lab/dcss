@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as Components from '@components/Slide/Components';
 import './SlideList.css';
 

@@ -1,7 +1,6 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'semantic-ui-react';
 
 const Display = ({ html: __html }) => (
     <React.Fragment>
