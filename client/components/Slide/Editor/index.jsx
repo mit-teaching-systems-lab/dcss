@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Grid, Label, Input, Menu, Tab, Button } from 'semantic-ui-react';
 
 import * as Components from '../Components';
+import './Editor.css';
 
 const ComponentsMenuOrder = [
     'Text',
@@ -93,7 +94,9 @@ export default class SlideEditor extends React.Component {
                             );
                             const deleteButton = (
                                 <Button
-                                    icon="trash alternate outline icon"
+                                    floated="right"
+                                    icon="close"
+                                    className="tm__component-delete-button"
                                     onClick={() =>
                                         this.onDeleteComponent(index)
                                     }
@@ -108,7 +111,10 @@ export default class SlideEditor extends React.Component {
                                             {
                                                 menuItem: 'Edit',
                                                 render: () => (
-                                                    <Tab.Pane>{edit}</Tab.Pane>
+                                                    <Tab.Pane className="tm__edit-pane">
+                                                        {edit}
+                                                        {deleteButton}
+                                                    </Tab.Pane>
                                                 )
                                             },
                                             {
@@ -116,16 +122,6 @@ export default class SlideEditor extends React.Component {
                                                 render: () => (
                                                     <Tab.Pane>
                                                         {display}
-                                                    </Tab.Pane>
-                                                )
-                                            },
-                                            {
-                                                menuItem: 'Delete',
-                                                render: () => (
-                                                    <Tab.Pane>
-                                                        Are you sure you want to
-                                                        delete this component?
-                                                        {deleteButton}
                                                     </Tab.Pane>
                                                 )
                                             }

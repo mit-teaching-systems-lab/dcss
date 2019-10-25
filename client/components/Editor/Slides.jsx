@@ -224,7 +224,7 @@ class Slides extends React.Component {
                                                 }
                                             />
                                             <Button
-                                                icon="trash alternate outline"
+                                                icon="close"
                                                 aria-label="Delete Slide"
                                                 onClick={() =>
                                                     this.deleteSlide(index)

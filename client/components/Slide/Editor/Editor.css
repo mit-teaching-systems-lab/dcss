@@ -1,0 +1,7 @@
+.tm__edit-pane {
+    overflow: auto;
+}
+
+.tm__component-delete-button {
+    margin-top: 5px !important;
+}
