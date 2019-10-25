@@ -154,7 +154,10 @@ class Slides extends React.Component {
     }
 
     async onChangeSlideOrder(...args) {
-        await this.moveSlide(args[2].oldDraggableIndex, args[2].newDraggableIndex);
+        await this.moveSlide(
+            args[2].oldDraggableIndex,
+            args[2].newDraggableIndex
+        );
     }
 
     renderLoading() {
@@ -179,48 +182,48 @@ class Slides extends React.Component {
                             />
                         </Grid.Row>
                         <Sortable onChange={onChangeSlideOrder}>
-                        {slides.map((slide, index) => (
-                            <Grid.Row
-                                key={slide.id}
-                                className="Slides-slide-sidebar-container"
-                            >
-                                <Card
-                                    className="Slides-slide-sidebar-card"
-                                    onClick={() =>
-                                        this.setState({
-                                            currentSlideIndex: index
-                                        })
-                                    }
+                            {slides.map((slide, index) => (
+                                <Grid.Row
+                                    key={slide.id}
+                                    className="Slides-slide-sidebar-container"
                                 >
-                                    <Card.Header>{slide.title}</Card.Header>
-                                    <Card.Content>
-                                        {slide.components.map(
-                                            ({ type }, index) => {
-                                                const {
-                                                    Card: ComponentCard = () => (
-                                                        <b>{type}</b>
-                                                    )
-                                                } = Components[type];
-                                                return (
-                                                    <ComponentCard
-                                                        key={index}
-                                                    />
-                                                );
-                                            }
-                                        )}
-                                        <div className="Slides-button-bar">
-                                            <Button
-                                                icon="close"
-                                                aria-label="Delete Slide"
-                                                onClick={() =>
-                                                    this.deleteSlide(index)
+                                    <Card
+                                        className="Slides-slide-sidebar-card"
+                                        onClick={() =>
+                                            this.setState({
+                                                currentSlideIndex: index
+                                            })
+                                        }
+                                    >
+                                        <Card.Header>{slide.title}</Card.Header>
+                                        <Card.Content>
+                                            {slide.components.map(
+                                                ({ type }, index) => {
+                                                    const {
+                                                        Card: ComponentCard = () => (
+                                                            <b>{type}</b>
+                                                        )
+                                                    } = Components[type];
+                                                    return (
+                                                        <ComponentCard
+                                                            key={index}
+                                                        />
+                                                    );
                                                 }
-                                            />
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                            </Grid.Row>
-                        ))}
+                                            )}
+                                            <div className="Slides-button-bar">
+                                                <Button
+                                                    icon="close"
+                                                    aria-label="Delete Slide"
+                                                    onClick={() =>
+                                                        this.deleteSlide(index)
+                                                    }
+                                                />
+                                            </div>
+                                        </Card.Content>
+                                    </Card>
+                                </Grid.Row>
+                            ))}
                         </Sortable>
                     </Grid.Column>
                     <Grid.Column width={8}>
