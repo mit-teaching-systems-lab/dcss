@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import { Container } from 'semantic-ui-react';
 
 const Display = ({ html: __html }) => (
-    <Container text>
+    <React.Fragment>
         <div
             dangerouslySetInnerHTML={{
                 __html
             }}
         ></div>
-    </Container>
+    </React.Fragment>
 );
 
 Display.propTypes = {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Card } from 'semantic-ui-react';
-import * as Components from '@components/Slide/Components';
+import { Container, Grid, Card } from 'semantic-ui-react';
+import SlideList from '@components/SlideList';
 
 class Scenario extends Component {
     constructor(props) {
@@ -23,32 +23,38 @@ class Scenario extends Component {
 
     render() {
         const { title, description, slides } = this.state;
-        console.log('slides', slides);
         return (
-            <Container>
-                <h1>{title}</h1>
-                <p>{description}</p>
-                {slides && slides.map((slide, index) => {
-                    return (
-                        <Card key={slide.id}>
-                            <Card.Header>{slide.title}</Card.Header>
-                            <Card.Content>
-                                {slide.components.map(
-                                    (value, index) => {
-                                        console.log('Components[type]', Components[type]);
-                                        const { type } = value;
-                                        const { Display } = Components[type];
-                                        return (
-                                            <Display {...value} />
-                                        );
-                                    }
-                                )}
-                            </Card.Content>
+            <Grid columns={1}>
+                <Grid.Column>
+                    <Grid.Row key="meta">
+                        <Card className="tm__scenario-card">
+                            <Card.Header as="h2">{title}</Card.Header>
+                            <Card.Content>{description}</Card.Content>
                         </Card>
-                    )
-                })
-                }
-            </Container>
+                    </Grid.Row>
+
+                    {slides &&
+                        slides.map((slide, index) => {
+                            return (
+                                <Grid.Row key={index}>
+                                    <Card className="tm__scenario-card">
+                                        <Card.Header
+                                            as="h3"
+                                            key={`header${index}`}
+                                        >
+                                            {slide.title}
+                                        </Card.Header>
+                                        <Card.Content key={`content${index}`}>
+                                            <SlideList
+                                                components={slide.components}
+                                            />
+                                        </Card.Content>
+                                    </Card>
+                                </Grid.Row>
+                            );
+                        })}
+                </Grid.Column>
+            </Grid>
         );
     }
 }

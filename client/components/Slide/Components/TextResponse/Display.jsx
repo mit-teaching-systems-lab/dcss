@@ -6,7 +6,7 @@ import { Container, Label, TextArea } from 'semantic-ui-react';
 import './TextResponse.css';
 
 const Display = ({ prompt, placeholder, responseId, onResponseChange }) => (
-    <Container text>
+    <React.Fragment>
         <Label as="label" className="TextResponse-label">
             <p>{prompt}</p>
             <TextArea
@@ -16,7 +16,7 @@ const Display = ({ prompt, placeholder, responseId, onResponseChange }) => (
                 className="TextResponse-input"
             />
         </Label>
-    </Container>
+    </React.Fragment>
 );
 
 Display.propTypes = {

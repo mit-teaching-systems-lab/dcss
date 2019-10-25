@@ -4,6 +4,7 @@ import Sortable from 'react-sortablejs';
 import { Container, Grid, Card, Dropdown, Button } from 'semantic-ui-react';
 import * as Components from '@components/Slide/Components';
 import SlideEditor from '@components/Slide/Editor';
+import SlideList from '@components/SlideList';
 import './Slides.css';
 
 const dropDownValues = [
@@ -172,7 +173,7 @@ class Slides extends React.Component {
             <Container fluid className="tm__editor-tab">
                 <h2>Teacher Moment Slides</h2>
                 <Grid>
-                    <Grid.Column width={3}>
+                    <Grid.Column width={6}>
                         <Grid.Row>
                             <Dropdown
                                 selection
@@ -197,23 +198,12 @@ class Slides extends React.Component {
                                     >
                                         <Card.Header>{slide.title}</Card.Header>
                                         <Card.Content>
-                                            {slide.components.map(
-                                                ({ type }, index) => {
-                                                    const {
-                                                        Card: ComponentCard = () => (
-                                                            <b>{type}</b>
-                                                        )
-                                                    } = Components[type];
-                                                    return (
-                                                        <ComponentCard
-                                                            key={index}
-                                                        />
-                                                    );
-                                                }
-                                            )}
+                                            <SlideList
+                                                components={slide.components}
+                                            />
                                             <div className="Slides-button-bar">
                                                 <Button
-                                                    icon="close"
+                                                    icon="trash alternate outline"
                                                     aria-label="Delete Slide"
                                                     onClick={() =>
                                                         this.deleteSlide(index)
@@ -226,7 +216,7 @@ class Slides extends React.Component {
                             ))}
                         </Sortable>
                     </Grid.Column>
-                    <Grid.Column width={8}>
+                    <Grid.Column width={10}>
                         {slides[currentSlideIndex] && (
                             <SlideEditor
                                 key={currentSlideIndex}

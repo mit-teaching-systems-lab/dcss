@@ -12,7 +12,7 @@ const Display = ({
     responseId,
     onResponseChange
 }) => (
-    <Container text>
+    <React.Fragment>
         <Label as="label" className="CheckResponse-label">
             <Checkbox
                 name={responseId}
@@ -29,7 +29,7 @@ const Display = ({
                 className="CheckResponse-input"
             />
         </Label>
-    </Container>
+    </React.Fragment>
 );
 
 Display.propTypes = {

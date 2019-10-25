@@ -7,7 +7,7 @@ import './AudioResponse.css';
 
 const Display = ({ prompt, isRecording = false, onClickResponse }) => {
     return (
-        <Container text>
+        <React.Fragment>
             <Label>
                 <p>{prompt}</p>
                 {!isRecording && (
@@ -34,7 +34,7 @@ const Display = ({ prompt, isRecording = false, onClickResponse }) => {
                     </Button>
                 )}
             </Label>
-        </Container>
+        </React.Fragment>
     );
 };
 
