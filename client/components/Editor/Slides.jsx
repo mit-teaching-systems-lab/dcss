@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Sortable from 'react-sortablejs';
 import { Container, Grid, Card, Dropdown, Button } from 'semantic-ui-react';
 import * as Components from '@components/Slide/Components';
 import SlideEditor from '@components/Slide/Editor';
@@ -41,6 +42,7 @@ class Slides extends React.Component {
 
         this.onChangeSlide = this.onChangeSlide.bind(this);
         this.onChangeAddSlide = this.onChangeAddSlide.bind(this);
+        this.onChangeSlideOrder = this.onChangeSlideOrder.bind(this);
     }
 
     componentDidMount() {
@@ -97,6 +99,9 @@ class Slides extends React.Component {
             slides[toIndex] = from;
             slides[fromIndex] = to;
         }
+        // This is to update the UI ASAP
+        this.setState({ slides, currentSlideIndex: toIndex });
+        this.props.updateEditorMessage('Slide moved');
         const result = await fetch(
             `/api/scenarios/${scenarioId}/slides/order`,
             {
@@ -109,7 +114,7 @@ class Slides extends React.Component {
         );
         await result.json();
         this.setState({ slides, currentSlideIndex: toIndex });
-        this.props.updateEditorMessage('Slide moved');
+        this.props.updateEditorMessage('');
     }
     async deleteSlide(index) {
         const { scenarioId } = this.props;
@@ -148,12 +153,16 @@ class Slides extends React.Component {
         this.setState({ currentSlideIndex });
     }
 
+    async onChangeSlideOrder(...args) {
+        await this.moveSlide(args[2].oldDraggableIndex, args[2].newDraggableIndex);
+    }
+
     renderLoading() {
         return <div>Loading...</div>;
     }
 
     render() {
-        const { onChangeSlide, onChangeAddSlide } = this;
+        const { onChangeSlide, onChangeAddSlide, onChangeSlideOrder } = this;
         const { loading, slides, currentSlideIndex } = this.state;
         if (loading) return this.renderLoading();
         return (
@@ -169,6 +178,7 @@ class Slides extends React.Component {
                                 onChange={onChangeAddSlide}
                             />
                         </Grid.Row>
+                        <Sortable onChange={onChangeSlideOrder}>
                         {slides.map((slide, index) => (
                             <Grid.Row
                                 key={slide.id}
@@ -200,30 +210,6 @@ class Slides extends React.Component {
                                         )}
                                         <div className="Slides-button-bar">
                                             <Button
-                                                icon="arrow alternate circle up outline"
-                                                aria-label="Move up"
-                                                disabled={index === 0}
-                                                onClick={() =>
-                                                    this.moveSlide(
-                                                        index,
-                                                        index - 1
-                                                    )
-                                                }
-                                            />
-                                            <Button
-                                                icon="arrow alternate circle down outline"
-                                                aria-label="Move down"
-                                                disabled={
-                                                    index === slides.length - 1
-                                                }
-                                                onClick={() =>
-                                                    this.moveSlide(
-                                                        index,
-                                                        index + 1
-                                                    )
-                                                }
-                                            />
-                                            <Button
                                                 icon="close"
                                                 aria-label="Delete Slide"
                                                 onClick={() =>
@@ -235,6 +221,7 @@ class Slides extends React.Component {
                                 </Card>
                             </Grid.Row>
                         ))}
+                        </Sortable>
                     </Grid.Column>
                     <Grid.Column width={8}>
                         {slides[currentSlideIndex] && (
