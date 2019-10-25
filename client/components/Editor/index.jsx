@@ -3,6 +3,7 @@ import { Menu } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import ScenarioEditor from '@components/ScenarioEditor';
+import Scenario from '@components/Scenario';
 import Slides from './Slides';
 
 import './editor.css';
@@ -32,7 +33,8 @@ class Editor extends Component {
         if (this.props.match.params.id != 'new') {
             const tabsObj = {
                 ...this.state.tabs,
-                slides: this.getTab('slides')
+                slides: this.getTab('slides'),
+                preview: this.getTab('preview')
             };
             this.state.tabs = tabsObj;
         }
@@ -58,10 +60,11 @@ class Editor extends Component {
                 return (
                     <Slides
                         scenarioId={this.props.match.params.id}
-                        className="active"
                         updateEditorMessage={this.updateEditorMessage}
                     />
                 );
+            case 'preview':
+                return <Scenario scenarioId={this.props.match.params.id} />;
             default:
                 return null;
         }
@@ -124,11 +127,18 @@ class Editor extends Component {
                         onClick={this.onClick}
                     />
                     {this.state.scenarioId !== 'new' && (
-                        <Menu.Item
-                            name="slides"
-                            active={this.state.activeTab === 'slides'}
-                            onClick={this.onClick}
-                        />
+                        <React.Fragment>
+                            <Menu.Item
+                                name="slides"
+                                active={this.state.activeTab === 'slides'}
+                                onClick={this.onClick}
+                            />
+                            <Menu.Item
+                                name="preview"
+                                active={this.state.activeTab === 'preview'}
+                                onClick={this.onClick}
+                            />
+                        </React.Fragment>
                     )}
                     <Menu.Menu position="right">
                         <Menu.Item>

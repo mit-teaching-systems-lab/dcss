@@ -39,7 +39,7 @@ function Routes() {
                 <hr />
 
                 <Route exact path="/" component={App} />
-                <Route path="/moment/:id" component={Scenario} />
+                <Route path="/moment/:scenarioId" component={Scenario} />
                 <Route path="/editor/:id" component={Editor} />
                 <Route exact path="/facilitator" component={Facilitator} />
                 <Route exact path="/logout" component={Login} />

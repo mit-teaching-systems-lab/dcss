@@ -7,25 +7,28 @@ import SlideList from '@components/SlideList';
 class Scenario extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            ...this.props.location.state,
-            ...this.props.match.params
-        };
+
+        this.state = Object.assign(
+            {},
+            this.props.location ? this.props.location.state : null,
+            this.props.match ? this.props.match.params : null,
+            { scenarioId: this.props.scenarioId }
+        );
 
         this.getScenarioData = this.getScenarioData.bind(this);
         this.getScenarioSlides = this.getScenarioSlides.bind(this);
-
-        this.getScenarioSlides();
 
         // Get data if it hasn't been passed by the router
         if (!this.state.title) {
             this.getScenarioData();
         }
+
+        this.getScenarioSlides();
     }
 
     async getScenarioData() {
         const scenarioResponse = await (await fetch(
-            `/api/scenarios/${this.state.id}`
+            `/api/scenarios/${this.state.scenarioId}`
         )).json();
 
         if (scenarioResponse.status === 200) {
@@ -37,8 +40,10 @@ class Scenario extends Component {
     }
 
     async getScenarioSlides() {
-        if (this.state.id) {
-            const res = await fetch(`/api/scenarios/${this.state.id}/slides`);
+        if (this.state.scenarioId) {
+            const res = await fetch(
+                `/api/scenarios/${this.state.scenarioId}/slides`
+            );
             const { slides } = await res.json();
 
             this.setState({ slides });
@@ -93,7 +98,8 @@ Scenario.propTypes = {
         params: PropTypes.shape({
             id: PropTypes.node
         }).isRequired
-    }).isRequired
+    }),
+    scenarioId: PropTypes.number
 };
 
 export default Scenario;
