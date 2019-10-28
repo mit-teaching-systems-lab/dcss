@@ -1,13 +1,12 @@
-const { sql } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 
 const TAG_TYPES = {
-    CATEGORY = 'category',
-    TOPIC = 'topic'
+    CATEGORY: 'category',
+    TOPIC: 'topic'
 }
 
 const getTagByType = async function(tagType) {
-    const result = await query(sql`SELECT t.id, t.name
+    const result = await query(`SELECT t.id, t.name
         FROM tag t
         INNER JOIN
         (
@@ -20,4 +19,8 @@ const getTagByType = async function(tagType) {
 
 exports.getCategories = async function(){
     return getTagByType(TAG_TYPES.CATEGORY);
+}
+
+exports.getTopics = async function(){
+    return getTagByType(TAG_TYPES.TOPIC);
 }
