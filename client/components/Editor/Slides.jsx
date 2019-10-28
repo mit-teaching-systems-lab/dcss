@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sortable from 'react-sortablejs';
-import { Container, Grid, Card, Dropdown, Button } from 'semantic-ui-react';
+import { Container, Grid, Card, Dropdown } from 'semantic-ui-react';
+import ConfirmableDeleteButton from '@components/Editor/ConfirmableDeleteButton';
 import SlideEditor from '@components/Slide/Editor';
 import SlideList from '@components/SlideList';
 import './Slides.css';
@@ -200,10 +201,9 @@ class Slides extends React.Component {
                                                 components={slide.components}
                                             />
                                             <div className="Slides-button-bar">
-                                                <Button
-                                                    icon="trash alternate outline"
-                                                    aria-label="Delete Slide"
-                                                    onClick={() =>
+                                                <ConfirmableDeleteButton
+                                                    what="Slide"
+                                                    onConfirm={() =>
                                                         this.deleteSlide(index)
                                                     }
                                                 />

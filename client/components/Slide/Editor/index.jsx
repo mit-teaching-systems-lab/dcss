@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Label, Input, Menu, Tab, Button } from 'semantic-ui-react';
-
+import { Grid, Label, Input, Menu, Tab } from 'semantic-ui-react';
+import ConfirmableDeleteButton from '@components/Editor/ConfirmableDeleteButton';
 import * as Components from '../Components';
 import './Editor.css';
 
@@ -93,11 +93,9 @@ export default class SlideEditor extends React.Component {
                                 />
                             );
                             const deleteButton = (
-                                <Button
-                                    floated="right"
-                                    icon="close"
-                                    className="tm__component-delete-button"
-                                    onClick={() =>
+                                <ConfirmableDeleteButton
+                                    what="Component"
+                                    onConfirm={() =>
                                         this.onDeleteComponent(index)
                                     }
                                 />
