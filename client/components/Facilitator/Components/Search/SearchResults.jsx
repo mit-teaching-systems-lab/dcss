@@ -1,9 +1,13 @@
 import React from 'react';
-import { List } from 'semantic-ui-react';
+import { Image, List } from 'semantic-ui-react';
 
 export default ({ view, results }) => {
     if (!results.length) {
-        return null;
+        return (
+            <List.Item fluid="true" key="empty-results">
+                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+            </List.Item>
+        );
     }
     return results.map(record => {
         const {

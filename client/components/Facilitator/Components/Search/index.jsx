@@ -1,5 +1,13 @@
 import React from 'react';
-import { Dropdown, Form, Grid, Input, List } from 'semantic-ui-react';
+import {
+    Container,
+    Dropdown,
+    Form,
+    Grid,
+    Icon,
+    Input,
+    List
+} from 'semantic-ui-react';
 import Search from '@client/components/Search';
 import SearchResults from './SearchResults';
 const availableViews = [
@@ -64,43 +72,54 @@ class FacilitatorSearch extends Search {
     }
 
     render() {
+        const { onChange, onSubmit } = this;
         return (
-            <Grid columns={2} divided stackable>
-                <Grid.Column width={3}>
-                    <Form
-                        onSubmit={this.onSubmit}
-                        className="facilitator-search__form"
-                    >
-                        <Form.Field>
-                            <Dropdown
-                                fluid
-                                selection
-                                placeholder="Lookup..."
-                                options={availableViews}
-                                defaultValue={defaultAvailableViewValue}
-                                onChange={this.onDropdownChange}
+            <Container fluid className="tm__editor-tab">
+                <Grid columns={2} divided stackable>
+                    <Grid.Column width={3}>
+                        <Form
+                            onSubmit={onSubmit}
+                            className="facilitator-search__form"
+                        >
+                            <Form.Field>
+                                <Dropdown
+                                    fluid
+                                    selection
+                                    placeholder="Lookup..."
+                                    options={availableViews}
+                                    defaultValue={defaultAvailableViewValue}
+                                    onChange={this.onDropdownChange}
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <label htmlFor="keyword">Keyword</label>
+                                <Input
+                                    name="keyword"
+                                    value={this.state.keyword}
+                                    icon={
+                                        <Icon
+                                            name="search"
+                                            inverted
+                                            circular
+                                            link
+                                            onClick={onChange}
+                                        />
+                                    }
+                                    onChange={onChange}
+                                />
+                            </Form.Field>
+                        </Form>
+                    </Grid.Column>
+                    <Grid.Column stretched>
+                        <List relaxed>
+                            <SearchResults
+                                view={this.state.view}
+                                results={this.state.results}
                             />
-                        </Form.Field>
-                        <Form.Field>
-                            <label htmlFor="keyword">Keyword</label>
-                            <Input
-                                action="Search"
-                                name="keyword"
-                                value={this.state.keyword}
-                                onChange={this.onChange}
-                            />
-                        </Form.Field>
-                    </Form>
-                </Grid.Column>
-                <Grid.Column stretched>
-                    <List relaxed>
-                        <SearchResults
-                            view={this.state.view}
-                            results={this.state.results}
-                        />
-                    </List>
-                </Grid.Column>
-            </Grid>
+                        </List>
+                    </Grid.Column>
+                </Grid>
+            </Container>
         );
     }
 }
