@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Form, Grid } from 'semantic-ui-react';
+import { Container, Dropdown, Form, Grid } from 'semantic-ui-react';
 import { setScenario } from '@client/actions';
 
 import './scenarioEditor.css';
@@ -10,12 +10,21 @@ class ScenarioEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            saving: false
+            saving: false,
+            // TODO: these need to be populated
+            //       by the data stored in the
+            //       "tag" table, grouped by
+            //       "tag_type"...
+            categories: [
+                { id: 1, name: 'Official' },
+                { id: 2, name: 'Community' }
+            ],
+            topics: []
         };
 
         this.getScenarioData = this.getScenarioData.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
 
         if (this.props.scenarioId === 'new') {
             this.props.setScenario({ title: '', description: '' });
@@ -32,17 +41,29 @@ class ScenarioEditor extends Component {
         if (scenarioResponse.status === 200) {
             this.props.setScenario({
                 title: scenarioResponse.scenario.title,
-                description: scenarioResponse.scenario.description
+                description: scenarioResponse.scenario.description,
+                // TODO: These need to be added to the scenario data
+                // coming from the API as:
+                //
+                // scenarioResponse.scenario.categories
+                // scenarioResponse.scenario.topics
+                //
+                // ...where the values are just arrays of
+                // tag (category or topic) ids
+                //
+                // The list [2] is for mockup purposes.
+                categories: scenarioResponse.scenario.categories || [2],
+                topics: scenarioResponse.scenario.topics || []
             });
         }
     }
 
-    handleChange(event) {
+    onChange(event) {
         this.props.updateEditorMessage('');
         this.props.setScenario({ [event.target.name]: event.target.value });
     }
 
-    async handleSubmit() {
+    async onSubmit() {
         if (!this.props.title || !this.props.description) {
             this.props.updateEditorMessage(
                 'A title and description are required for Teacher Moments'
@@ -52,7 +73,9 @@ class ScenarioEditor extends Component {
         this.setState({ saving: true });
         const data = {
             title: this.props.title,
-            description: this.props.description
+            description: this.props.description,
+            categories: this.props.categories,
+            topics: this.props.topics
         };
         const saveResponse = await (await this.props.submitCB(data)).json();
 
@@ -80,28 +103,28 @@ class ScenarioEditor extends Component {
 
     render() {
         return (
-            <Container fluid className="tm__editor-tab">
-                <h2>Teacher Moment Details</h2>
-                <Form size={'big'}>
-                    <Form.Input
-                        focus
-                        required
-                        label="Title"
-                        name="title"
-                        value={this.props.title}
-                        onChange={this.handleChange}
-                    />
-                    <Form.TextArea
-                        focus="true"
-                        required
-                        label="Moment Description"
-                        name="description"
-                        value={this.props.description}
-                        onChange={this.handleChange}
-                    />
-                    <Grid divided="vertically">
-                        <Grid.Row columns={2}>
+            <Form size={'big'}>
+                <Container fluid className="tm__editor-tab">
+                    <Grid columns={2} divided>
+                        <Grid.Row>
                             <Grid.Column width={3}>
+                                <Form.Input
+                                    focus
+                                    required
+                                    label="Title"
+                                    name="title"
+                                    value={this.props.title}
+                                    onChange={this.onChange}
+                                />
+                                <Form.TextArea
+                                    focus="true"
+                                    required
+                                    label="Description"
+                                    name="description"
+                                    value={this.props.description}
+                                    onChange={this.onChange}
+                                />
+
                                 {this.state.saving ? (
                                     <Form.Button
                                         type="submit"
@@ -114,24 +137,52 @@ class ScenarioEditor extends Component {
                                         type="submit"
                                         className="tm__scenario-save"
                                         primary
-                                        onClick={this.handleSubmit}
+                                        onClick={this.onSubmit}
                                     >
-                                        Submit
+                                        Save
                                     </Form.Button>
                                 )}
                             </Grid.Column>
-                            <Grid.Column>{this.state.saveMessage}</Grid.Column>
+                            <Grid.Column width={8}>
+                                {this.state.categories.length && (
+                                    <Form.Field>
+                                        <label>Categories</label>
+                                        <Dropdown
+                                            label="Categories"
+                                            placeholder="Select..."
+                                            fluid
+                                            multiple
+                                            selection
+                                            options={this.state.categories.map(
+                                                category => ({
+                                                    key: category.id,
+                                                    text: category.name,
+                                                    value: category.id
+                                                })
+                                            )}
+                                            defaultValue={this.props.categories}
+                                        />
+                                    </Form.Field>
+                                )}
+                                {/*
+                                    TODO: create the same Dropdown style thing
+                                            for displaying and selecting
+                                            available topics (if any exist)
+
+                                */}
+                            </Grid.Column>
                         </Grid.Row>
                     </Grid>
-                </Form>
-            </Container>
+                </Container>
+            </Form>
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { title, description } = state.scenario;
-    return { title, description };
+    // TODO: Presently "categories" and "topics" are missing.
+    const { title, description, categories, topics } = state.scenario;
+    return { title, description, categories, topics };
 }
 
 const mapDispatchToProps = {
@@ -145,7 +196,9 @@ ScenarioEditor.propTypes = {
     postSubmitCB: PropTypes.func,
     updateEditorMessage: PropTypes.func.isRequired,
     title: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
+    categories: PropTypes.array,
+    topics: PropTypes.array
 };
 
 export default connect(

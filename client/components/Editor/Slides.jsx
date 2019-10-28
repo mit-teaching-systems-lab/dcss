@@ -170,7 +170,6 @@ class Slides extends React.Component {
         if (loading) return this.renderLoading();
         return (
             <Container fluid className="tm__editor-tab">
-                <h2>Teacher Moment Slides</h2>
                 <Grid>
                     <Grid.Column width={6}>
                         <Grid.Row>
