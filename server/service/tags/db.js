@@ -3,7 +3,7 @@ const { query } = require('../../util/db');
 const TAG_TYPES = {
     CATEGORY: 'category',
     TOPIC: 'topic'
-}
+};
 
 const getTagByType = async function(tagType) {
     const result = await query(`SELECT t.id, t.name
@@ -17,10 +17,10 @@ const getTagByType = async function(tagType) {
     return result.rows || [];
 };
 
-exports.getCategories = async function(){
+exports.getCategories = async function() {
     return getTagByType(TAG_TYPES.CATEGORY);
-}
+};
 
-exports.getTopics = async function(){
+exports.getTopics = async function() {
     return getTagByType(TAG_TYPES.TOPIC);
-}
+};
