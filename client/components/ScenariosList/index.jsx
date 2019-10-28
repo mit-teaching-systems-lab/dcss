@@ -49,7 +49,6 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
     });
 };
 
-
 class ScenariosList extends Component {
     constructor(props) {
         super(props);
