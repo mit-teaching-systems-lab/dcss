@@ -4,7 +4,7 @@ import Sortable from 'react-sortablejs';
 import { Container, Grid, Card, Dropdown } from 'semantic-ui-react';
 import ConfirmableDeleteButton from '@components/Editor/ConfirmableDeleteButton';
 import SlideEditor from '@components/Slide/Editor';
-import SlideList from '@components/SlideList';
+import SlideComponentsList from '@components/SlideComponentsList';
 import './Slides.css';
 
 const dropDownValues = [
@@ -197,7 +197,8 @@ class Slides extends React.Component {
                                     >
                                         <Card.Header>{slide.title}</Card.Header>
                                         <Card.Content>
-                                            <SlideList
+                                            <SlideComponentsList
+                                                asSVG={true}
                                                 components={slide.components}
                                             />
                                             <div className="Slides-button-bar">

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Grid, Card } from 'semantic-ui-react';
 
-import SlideList from '@components/SlideList';
+import SlideComponentsList from '@components/SlideComponentsList';
 import { setScenario, setSlides } from '@client/actions';
 
 class Scenario extends Component {
@@ -84,7 +84,7 @@ class Scenario extends Component {
                                             {slide.title}
                                         </Card.Header>
                                         <Card.Content key={`content${index}`}>
-                                            <SlideList
+                                            <SlideComponentsList
                                                 components={slide.components}
                                             />
                                         </Card.Content>
