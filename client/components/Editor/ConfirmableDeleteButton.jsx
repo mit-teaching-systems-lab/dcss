@@ -16,8 +16,8 @@ class ConfirmableDeleteButton extends React.Component {
         const ariaLabel = `Delete ${what}`.trim();
         // TODO: figure out a nicer way to do this :|
         const content = what
-            ? `Deleting cannot be undone! Are you sure you want to delete this ${what}?`
-            : `Deleting cannot be undone! Are you sure you want to delete?`;
+            ? `Are you sure you want to delete this ${what}?`
+            : `Are you sure you want to delete?`;
 
         return (
             <React.Fragment>
@@ -29,8 +29,8 @@ class ConfirmableDeleteButton extends React.Component {
                 <Confirm
                     open={this.state.open}
                     content={content}
-                    cancelButton="No, thanks"
-                    confirmButton="Yes, I understand!"
+                    cancelButton="No Thanks"
+                    confirmButton="Confirm Delete"
                     onCancel={() => this.setState({ open: false })}
                     onConfirm={() => {
                         onConfirm();
