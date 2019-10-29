@@ -107,7 +107,7 @@ class ScenarioEditor extends Component {
                 <Container fluid className="tm__editor-tab">
                     <Grid columns={2} divided>
                         <Grid.Row>
-                            <Grid.Column width={3}>
+                            <Grid.Column width={8}>
                                 <Form.Input
                                     focus
                                     required
@@ -143,7 +143,7 @@ class ScenarioEditor extends Component {
                                     </Form.Button>
                                 )}
                             </Grid.Column>
-                            <Grid.Column width={8}>
+                            <Grid.Column width={3}>
                                 {this.state.categories.length && (
                                     <Form.Field>
                                         <label>Categories</label>
