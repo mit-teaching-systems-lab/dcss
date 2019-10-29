@@ -11,12 +11,12 @@ class ConfirmableDeleteButton extends React.Component {
     }
 
     render() {
-        const { onConfirm, what } = this.props;
+        const { onConfirm, itemType } = this.props;
 
-        const ariaLabel = `Delete ${what}`.trim();
+        const ariaLabel = `Delete ${itemType}`.trim();
         // TODO: figure out a nicer way to do this :|
-        const content = what
-            ? `Are you sure you want to delete this ${what}?`
+        const content = itemType
+            ? `Are you sure you want to delete this ${itemType}?`
             : `Are you sure you want to delete?`;
 
         return (
@@ -43,7 +43,7 @@ class ConfirmableDeleteButton extends React.Component {
 }
 
 ConfirmableDeleteButton.propTypes = {
-    what: PropTypes.string,
+    itemType: PropTypes.string,
     onConfirm: PropTypes.func.isRequired
 };
 export default ConfirmableDeleteButton;

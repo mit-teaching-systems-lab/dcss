@@ -202,7 +202,7 @@ class Slides extends React.Component {
                                             />
                                             <div className="Slides-button-bar">
                                                 <ConfirmableDeleteButton
-                                                    what="Slide"
+                                                    itemType="slide"
                                                     onConfirm={() =>
                                                         this.deleteSlide(index)
                                                     }
