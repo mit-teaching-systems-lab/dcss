@@ -172,7 +172,7 @@ class Slides extends React.Component {
         return (
             <Container fluid className="tm__editor-tab">
                 <Grid>
-                    <Grid.Column width={6}>
+                    <Grid.Column width={3}>
                         <Grid.Row>
                             <Dropdown
                                 selection
@@ -214,7 +214,7 @@ class Slides extends React.Component {
                             ))}
                         </Sortable>
                     </Grid.Column>
-                    <Grid.Column width={10}>
+                    <Grid.Column width={12}>
                         {slides[currentSlideIndex] && (
                             <SlideEditor
                                 key={currentSlideIndex}

@@ -131,20 +131,22 @@ export default class SlideEditor extends React.Component {
                     </Grid.Row>
                 </Grid.Column>
                 <Grid.Column width={2}>
-                    <Menu vertical size="small" fluid={true} icon={true}>
-                        Add:
-                        {ComponentsMenuOrder.map(type => {
-                            const { Card } = Components[type];
-                            return (
-                                <Menu.Item
-                                    key={type}
-                                    onClick={this.clickHandle(type)}
-                                >
-                                    <Card />
-                                </Menu.Item>
-                            );
-                        })}
-                    </Menu>
+                    <Grid.Row>
+                        <Menu vertical size="small" fluid={true} icon={true}>
+                            Add:
+                            {ComponentsMenuOrder.map(type => {
+                                const { Card } = Components[type];
+                                return (
+                                    <Menu.Item
+                                        key={type}
+                                        onClick={this.clickHandle(type)}
+                                    >
+                                        <Card />
+                                    </Menu.Item>
+                                );
+                            })}
+                        </Menu>
+                    </Grid.Row>
                 </Grid.Column>
             </Grid>
         );
