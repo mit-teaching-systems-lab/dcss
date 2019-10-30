@@ -59,7 +59,7 @@ exports.setScenario = asyncMiddleware(async function setScenarioAsync(
     req,
     res
 ) {
-    const { author_id, title, description } = req.body;
+    const { author_id, title, description, categories } = req.body;
     const scenarioId = req.params.scenario_id;
 
     if (!author_id && !title && !description) {
@@ -76,6 +76,9 @@ exports.setScenario = asyncMiddleware(async function setScenarioAsync(
             title,
             description
         });
+
+        await db.setScenarioCategories(scenarioId, categories);
+
         const result = { scenario, status: 200 };
 
         res.send(result);

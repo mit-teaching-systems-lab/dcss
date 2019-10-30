@@ -11,14 +11,7 @@ class ScenarioEditor extends Component {
         super(props);
         this.state = {
             saving: false,
-            // TODO: these need to be populated
-            //       by the data stored in the
-            //       "tag" table, grouped by
-            //       "tag_type"...
-            categories: [
-                { id: 1, name: 'Official' },
-                { id: 2, name: 'Community' }
-            ],
+            categories: [],
             topics: []
         };
 
@@ -27,10 +20,19 @@ class ScenarioEditor extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         if (this.props.scenarioId === 'new') {
-            this.props.setScenario({ title: '', description: '' });
+            this.props.setScenario({
+                title: '',
+                description: '',
+                categories: []
+            });
         } else {
             this.getScenarioData();
         }
+    }
+
+    async componentDidMount() {
+        const categories = await (await fetch('/api/tags/categories')).json();
+        this.setState({ categories });
     }
 
     async getScenarioData() {
@@ -42,25 +44,14 @@ class ScenarioEditor extends Component {
             this.props.setScenario({
                 title: scenarioResponse.scenario.title,
                 description: scenarioResponse.scenario.description,
-                // TODO: These need to be added to the scenario data
-                // coming from the API as:
-                //
-                // scenarioResponse.scenario.categories
-                // scenarioResponse.scenario.topics
-                //
-                // ...where the values are just arrays of
-                // tag (category or topic) ids
-                //
-                // The list [2] is for mockup purposes.
-                categories: scenarioResponse.scenario.categories || [2],
-                topics: scenarioResponse.scenario.topics || []
+                categories: scenarioResponse.scenario.categories
             });
         }
     }
 
-    onChange(event) {
+    onChange(event, { name, value }) {
         this.props.updateEditorMessage('');
-        this.props.setScenario({ [event.target.name]: event.target.value });
+        this.props.setScenario({ [name]: value });
     }
 
     async onSubmit() {
@@ -74,9 +65,9 @@ class ScenarioEditor extends Component {
         const data = {
             title: this.props.title,
             description: this.props.description,
-            categories: this.props.categories,
-            topics: this.props.topics
+            categories: this.props.categories
         };
+
         const saveResponse = await (await this.props.submitCB(data)).json();
 
         switch (saveResponse.status) {
@@ -149,6 +140,7 @@ class ScenarioEditor extends Component {
                                         <label>Categories</label>
                                         <Dropdown
                                             label="Categories"
+                                            name="categories"
                                             placeholder="Select..."
                                             fluid
                                             multiple
@@ -157,10 +149,11 @@ class ScenarioEditor extends Component {
                                                 category => ({
                                                     key: category.id,
                                                     text: category.name,
-                                                    value: category.id
+                                                    value: category.name
                                                 })
                                             )}
                                             defaultValue={this.props.categories}
+                                            onChange={this.onChange}
                                         />
                                     </Form.Field>
                                 )}
@@ -180,9 +173,8 @@ class ScenarioEditor extends Component {
 }
 
 function mapStateToProps(state) {
-    // TODO: Presently "categories" and "topics" are missing.
-    const { title, description, categories, topics } = state.scenario;
-    return { title, description, categories, topics };
+    const { title, description, categories } = state.scenario;
+    return { title, description, categories };
 }
 
 const mapDispatchToProps = {
