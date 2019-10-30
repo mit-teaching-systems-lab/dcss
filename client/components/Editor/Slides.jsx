@@ -9,6 +9,11 @@ import './Slides.css';
 
 const dropDownValues = [
     {
+        key: 'empty',
+        value: 'empty',
+        text: 'Empty'
+    },
+    {
         key: 'context',
         value: 'context',
         text: 'Context'
@@ -135,7 +140,8 @@ class Slides extends React.Component {
     async onChangeAddSlide(event, data) {
         this.props.updateEditorMessage('');
         const { scenarioId } = this.props;
-        const newSlide = { title: data.value, components: [] };
+        const title = data.value === 'empty' ? '' : data.value;
+        const newSlide = { title, components: [] };
         const res = await fetch(`/api/scenarios/${scenarioId}/slides`, {
             method: 'PUT',
             headers: {
