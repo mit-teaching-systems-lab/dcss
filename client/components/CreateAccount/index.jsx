@@ -38,10 +38,9 @@ class CreateAccount extends Component {
             return false;
         }
 
-        if (!this.state.username && this.state.email) {
+        if (!this.state.usernameInput) {
             this.setState({
-                createMessage:
-                    'Please enter a username or email address for your account.'
+                createMessage: 'Please enter a username for your account.'
             });
             return false;
         }
@@ -90,8 +89,10 @@ class CreateAccount extends Component {
                 <Form.Field>
                     <label htmlFor="name">Username</label>
                     <input
+                        required
                         name="username"
-                        onChange={event => this.onChange(event)}
+                        autoComplete="username"
+                        onChange={this.onChange}
                         value={this.state.usernameInput}
                     />
                 </Form.Field>
@@ -99,35 +100,39 @@ class CreateAccount extends Component {
                     <label htmlFor="email">Email Address</label>
                     <input
                         name="email"
-                        onChange={event => this.onChange(event)}
+                        autoComplete="email"
+                        placeholder="(Optional)"
+                        onChange={this.onChange}
                         value={this.state.emailInput}
                     />
                 </Form.Field>
                 <Form.Field>
                     <label htmlFor="password">Password</label>
                     <input
+                        required
                         name="password"
                         type="password"
-                        required
-                        onChange={event => this.onChange(event)}
+                        autoComplete="new-password"
+                        onChange={this.onChange}
                         value={this.state.passwordInput}
                     />
                 </Form.Field>
                 <Form.Field>
                     <label htmlFor="confirmPassword">Confirm Password</label>
                     <input
+                        required
                         name="confirmPassword"
                         type="password"
-                        required
-                        onChange={event => this.onChange(event)}
+                        autoComplete="new-password"
+                        onChange={this.onChange}
                         value={this.state.confirmPasswordInput}
                     />
                 </Form.Field>
                 <Grid columns={2}>
                     <Grid.Column>
                         <Button
-                            type="submit"
                             primary
+                            type="submit"
                             size="large"
                             onClick={this.onSubmit}
                         >

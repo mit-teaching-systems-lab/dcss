@@ -86,7 +86,8 @@ class Login extends Component {
                     <label htmlFor="name">Username</label>
                     <input
                         name="username"
-                        onChange={event => this.onChange(event)}
+                        autoComplete="username"
+                        onChange={this.onChange}
                         value={this.state.usernameInput}
                     />
                 </Form.Field>
@@ -95,7 +96,8 @@ class Login extends Component {
                     <input
                         name="password"
                         type="password"
-                        onChange={event => this.onChange(event)}
+                        autoComplete="current-password"
+                        onChange={this.onChange}
                         value={this.state.passwordInput}
                     />
                 </Form.Field>
