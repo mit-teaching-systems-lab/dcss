@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 import './SlideComponentsList.css';
 
-const SVGSlideComponentsList = ({ asSVG = false, components }) => {
+const SlideComponentsList = ({ asSVG = false, components }) => {
     const style = {
         height: '150px',
         overflow: 'hidden'
@@ -34,8 +34,8 @@ const SVGSlideComponentsList = ({ asSVG = false, components }) => {
     );
 };
 
-SVGSlideComponentsList.propTypes = {
-    asSVG: PropTypes.boolean,
+SlideComponentsList.propTypes = {
+    asSVG: PropTypes.bool,
     components: PropTypes.array
 };
-export default SVGSlideComponentsList;
+export default SlideComponentsList;
