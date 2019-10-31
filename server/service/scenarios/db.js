@@ -7,7 +7,7 @@ exports.getScenario = async function getScenario(scenarioId) {
     );
 
     const scenarioCategoriesResults = await query(
-        sql` 
+        sql`
             SELECT c.name as name
             FROM scenario_tag s
             INNER JOIN categories c
@@ -56,12 +56,12 @@ async function addScenarioCategory(scenarioId, category) {
 
 async function deleteScenarioCategory(scenarioId, category) {
     const deletedRow = await query(sql`
-        DELETE 
-        FROM scenario_tag s 
+        DELETE
+        FROM scenario_tag s
         USING categories c
-        WHERE 
+        WHERE
             s.tag_id = c.id AND
-            s.scenario_id=${scenarioId} AND 
+            s.scenario_id=${scenarioId} AND
             c.name=${category};
     `);
 
@@ -115,8 +115,20 @@ exports.setScenarioCategories = async function setScenarioCategories(
 };
 
 exports.deleteScenario = async function deleteScenario(scenarioId) {
-    const result = await query(
-        sql`DELETE FROM scenario WHERE id = ${scenarioId};`
+    let result;
+
+    result = await query(
+        sql`DELETE FROM scenario_tag WHERE scenario_id = ${scenarioId};`
     );
+
+    // TODO: need to handle the previous result
+
+    result = await query(
+        sql`DELETE FROM slide WHERE scenario_id = ${scenarioId};`
+    );
+
+    // TODO: need to handle the previous result
+
+    result = await query(sql`DELETE FROM scenario WHERE id = ${scenarioId};`);
     return { deletedCount: result.rowCount };
 };

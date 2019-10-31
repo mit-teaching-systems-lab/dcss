@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+import EditorMenu from '@components/EditorMenu';
 import ScenarioEditor from '@components/ScenarioEditor';
 import Scenario from '@components/Scenario';
 import Slides from './Slides';
@@ -17,6 +18,7 @@ class Editor extends Component {
         super(props);
 
         this.onClick = this.onClick.bind(this);
+        this.onClickScenarioAction = this.onClickScenarioAction.bind(this);
         this.getSubmitCallback = this.getSubmitCallback.bind(this);
         this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
         this.getTab = this.getTab.bind(this);
@@ -43,6 +45,29 @@ class Editor extends Component {
     onClick(e, { name }) {
         this.setState({ activeTab: name });
         this.updateEditorMessage('');
+    }
+
+    onClickScenarioAction(event, data) {
+        if (data.name === 'save-scenario') {
+            // TODO: Determine if we need to actually
+            //       save the scenario, or if the
+            //       auto-save is sufficient.
+            this.updateEditorMessage('Teacher Moment saved');
+        }
+    }
+
+    async deleteScenario(scenarioId) {
+        const result = await fetch(`/api/scenarios/${scenarioId}`, {
+            method: 'DELETE'
+        });
+        await result.json();
+
+        this.setState({
+            scenarioId: 'new',
+            activeTab: 'moment'
+        });
+
+        this.props.history.push('/');
     }
 
     getTab(name) {
@@ -103,9 +128,9 @@ class Editor extends Component {
                 });
 
                 if (!this.state.tabs.slides) {
-                    const tabsObj = this.state.tabs;
-                    tabsObj.slides = this.getTab('slides');
-                    this.setState({ tabs: tabsObj });
+                    const tabs = this.state.tabs;
+                    tabs.slides = this.getTab('slides');
+                    this.setState({ tabs });
                 }
             };
         }
@@ -146,8 +171,28 @@ class Editor extends Component {
                         </Menu.Item>
                     </Menu.Menu>
                 </Menu>
-
-                <div>{this.state.tabs[this.state.activeTab]}</div>
+                <Segment attached="bottom">
+                    {this.state.scenarioId !== 'new' && (
+                        <EditorMenu
+                            type="scenario"
+                            items={{
+                                save: {
+                                    onClick: (...args) => {
+                                        this.onClickScenarioAction(...args);
+                                    }
+                                },
+                                delete: {
+                                    onConfirm: () => {
+                                        this.deleteScenario(
+                                            this.state.scenarioId
+                                        );
+                                    }
+                                }
+                            }}
+                        />
+                    )}
+                    <div>{this.state.tabs[this.state.activeTab]}</div>
+                </Segment>
             </div>
         );
     }

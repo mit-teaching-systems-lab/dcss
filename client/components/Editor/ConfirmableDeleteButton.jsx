@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Confirm } from 'semantic-ui-react';
+import { Confirm, Menu, Icon } from 'semantic-ui-react';
 
 class ConfirmableDeleteButton extends React.Component {
     constructor(props) {
@@ -8,33 +8,47 @@ class ConfirmableDeleteButton extends React.Component {
         this.state = {
             open: false
         };
+
+        this.onClick = this.onClick.bind(this);
+        this.onCancel = this.onCancel.bind(this);
+        this.onComplete = this.onCancel;
+    }
+
+    onClick() {
+        this.setState({ open: true });
+    }
+
+    onCancel() {
+        this.setState({ open: false });
     }
 
     render() {
-        const { onConfirm, itemType } = this.props;
+        const {
+            onCancel,
+            onClick,
+            onComplete,
+            props: { itemType, onConfirm }
+        } = this;
 
         const ariaLabel = `Delete ${itemType}`.trim();
-        // TODO: figure out a nicer way to do this :|
         const content = itemType
             ? `Are you sure you want to delete this ${itemType}?`
             : `Are you sure you want to delete?`;
 
         return (
             <React.Fragment>
-                <Button
-                    icon="trash alternate outline"
-                    aria-label={ariaLabel}
-                    onClick={() => this.setState({ open: true })}
-                />
+                <Menu.Item onClick={onClick}>
+                    <Icon name="trash" aria-label={ariaLabel} />
+                </Menu.Item>
                 <Confirm
                     open={this.state.open}
                     content={content}
                     cancelButton="No Thanks"
                     confirmButton="Confirm Delete"
-                    onCancel={() => this.setState({ open: false })}
+                    onCancel={onCancel}
                     onConfirm={() => {
                         onConfirm();
-                        this.setState({ open: false });
+                        onComplete();
                     }}
                 />
             </React.Fragment>

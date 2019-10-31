@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Sortable from 'react-sortablejs';
 import { Container, Grid, Card, Dropdown } from 'semantic-ui-react';
-import ConfirmableDeleteButton from '@components/Editor/ConfirmableDeleteButton';
 import SlideEditor from '@components/Slide/Editor';
 import SlideComponentsList from '@components/SlideComponentsList';
 import './Slides.css';
@@ -49,6 +48,7 @@ class Slides extends React.Component {
         this.onChangeSlide = this.onChangeSlide.bind(this);
         this.onChangeAddSlide = this.onChangeAddSlide.bind(this);
         this.onChangeSlideOrder = this.onChangeSlideOrder.bind(this);
+        this.deleteSlide = this.deleteSlide.bind(this);
     }
 
     componentDidMount() {
@@ -172,7 +172,12 @@ class Slides extends React.Component {
     }
 
     render() {
-        const { onChangeSlide, onChangeAddSlide, onChangeSlideOrder } = this;
+        const {
+            onChangeSlide,
+            onChangeAddSlide,
+            onChangeSlideOrder,
+            deleteSlide
+        } = this;
         const { loading, slides, currentSlideIndex } = this.state;
         if (loading) return this.renderLoading();
         return (
@@ -207,14 +212,6 @@ class Slides extends React.Component {
                                                 asSVG={true}
                                                 components={slide.components}
                                             />
-                                            <div className="Slides-button-bar">
-                                                <ConfirmableDeleteButton
-                                                    itemType="slide"
-                                                    onConfirm={() =>
-                                                        this.deleteSlide(index)
-                                                    }
-                                                />
-                                            </div>
                                         </Card.Content>
                                     </Card>
                                 </Grid.Row>
@@ -225,8 +222,10 @@ class Slides extends React.Component {
                         {slides[currentSlideIndex] && (
                             <SlideEditor
                                 key={currentSlideIndex}
+                                index={currentSlideIndex}
                                 {...slides[currentSlideIndex]}
                                 onChange={onChangeSlide}
+                                deleteSlide={deleteSlide}
                             />
                         )}
                     </Grid.Column>

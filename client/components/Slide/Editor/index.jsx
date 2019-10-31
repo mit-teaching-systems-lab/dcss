@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Label, Input, Menu, Tab } from 'semantic-ui-react';
-import ConfirmableDeleteButton from '@components/Editor/ConfirmableDeleteButton';
+import { Grid, Input, Menu, Tab } from 'semantic-ui-react';
+import EditorMenu from '@components/EditorMenu';
 import * as Components from '../Components';
 import './Editor.css';
 
@@ -73,14 +73,36 @@ export default class SlideEditor extends React.Component {
             <Grid columns={2}>
                 <Grid.Column stretched width={12}>
                     <Grid.Row>
-                        <Label as="label">
-                            Slide Title:{' '}
-                            <Input
-                                name="title"
-                                value={title}
-                                onChange={onTitleChange}
-                            />
-                        </Label>
+                        <EditorMenu
+                            type="slide"
+                            items={{
+                                left: [
+                                    <Menu.Item
+                                        key="menu-item-title"
+                                        name="title"
+                                    >
+                                        <Input
+                                            name="title"
+                                            placeholder="Slide Title"
+                                            value={title}
+                                            onChange={onTitleChange}
+                                        />
+                                    </Menu.Item>
+                                ],
+                                save: {
+                                    onClick: (...args) => {
+                                        this.updatedState(...args);
+                                    }
+                                },
+                                delete: {
+                                    onConfirm: () => {
+                                        this.props.deleteSlide(
+                                            this.props.index
+                                        );
+                                    }
+                                }
+                            }}
+                        />
                         {components.map((value, index) => {
                             const { type } = value;
                             const { Editor, Display } = Components[type];
@@ -92,12 +114,21 @@ export default class SlideEditor extends React.Component {
                                     }
                                 />
                             );
-                            const deleteButton = (
-                                <ConfirmableDeleteButton
-                                    what="Component"
-                                    onConfirm={() =>
-                                        this.onDeleteComponent(index)
-                                    }
+                            const componentMenu = (
+                                <EditorMenu
+                                    type="component"
+                                    items={{
+                                        save: {
+                                            onClick: (...args) => {
+                                                this.updatedState(...args);
+                                            }
+                                        },
+                                        delete: {
+                                            onConfirm: () => {
+                                                this.onDeleteComponent(index);
+                                            }
+                                        }
+                                    }}
                                 />
                             );
                             const display = <Display {...value} />;
@@ -110,8 +141,8 @@ export default class SlideEditor extends React.Component {
                                                 menuItem: 'Edit',
                                                 render: () => (
                                                     <Tab.Pane className="tm__edit-pane">
+                                                        {componentMenu}
                                                         {edit}
-                                                        {deleteButton}
                                                     </Tab.Pane>
                                                 )
                                             },
@@ -154,7 +185,9 @@ export default class SlideEditor extends React.Component {
 }
 
 SlideEditor.propTypes = {
+    index: PropTypes.number,
     title: PropTypes.string,
     components: PropTypes.arrayOf(PropTypes.object),
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    deleteSlide: PropTypes.func
 };
