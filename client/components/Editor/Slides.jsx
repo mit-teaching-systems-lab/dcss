@@ -1,38 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sortable from 'react-sortablejs';
-import { Container, Grid, Card, Dropdown } from 'semantic-ui-react';
+import { Card, Container, Grid, Icon, Menu } from 'semantic-ui-react';
 import SlideEditor from '@components/Slide/Editor';
 import SlideComponentsList from '@components/SlideComponentsList';
 import './Slides.css';
-
-const dropDownValues = [
-    {
-        key: 'empty',
-        value: 'empty',
-        text: 'Empty'
-    },
-    {
-        key: 'context',
-        value: 'context',
-        text: 'Context'
-    },
-    {
-        key: 'anticipate',
-        value: 'anticipate',
-        text: 'Anticipate'
-    },
-    {
-        key: 'enact',
-        value: 'enact',
-        text: 'Enact'
-    },
-    {
-        key: 'reflect',
-        value: 'reflect',
-        text: 'Reflect'
-    }
-];
 
 class Slides extends React.Component {
     constructor(props) {
@@ -137,11 +109,10 @@ class Slides extends React.Component {
         this.props.updateEditorMessage('Slide deleted');
     }
 
-    async onChangeAddSlide(event, data) {
+    async onChangeAddSlide() {
         this.props.updateEditorMessage('');
         const { scenarioId } = this.props;
-        const title = data.value === 'empty' ? '' : data.value;
-        const newSlide = { title, components: [] };
+        const newSlide = { title: '', components: [] };
         const res = await fetch(`/api/scenarios/${scenarioId}/slides`, {
             method: 'PUT',
             headers: {
@@ -185,12 +156,19 @@ class Slides extends React.Component {
                 <Grid>
                     <Grid.Column width={3}>
                         <Grid.Row>
-                            <Dropdown
-                                selection
-                                placeholder="Add +"
-                                options={dropDownValues}
-                                onChange={onChangeAddSlide}
-                            />
+                            <Menu icon>
+                                <Menu.Item
+                                    name="Add a slide"
+                                    onClick={onChangeAddSlide}
+                                >
+                                    <Icon
+                                        name="plus square outline"
+                                        size="large"
+                                        style={{ marginRight: '0.5rem' }}
+                                    />
+                                    Add a slide
+                                </Menu.Item>
+                            </Menu>
                         </Grid.Row>
                         <Sortable onChange={onChangeSlideOrder}>
                             {slides.map((slide, index) => (
