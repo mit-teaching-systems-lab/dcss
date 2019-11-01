@@ -33,12 +33,11 @@ class Editor extends Component {
         };
 
         if (this.props.match.params.id != 'new') {
-            const tabsObj = {
-                ...this.state.tabs,
+            Object.assign(this.state.tabs, {
                 slides: this.getTab('slides'),
                 preview: this.getTab('preview')
-            };
-            this.state.tabs = tabsObj;
+            });
+            this.state.activeTab = 'slides';
         }
     }
 
