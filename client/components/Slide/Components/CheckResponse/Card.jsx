@@ -6,10 +6,13 @@ const TextResponseCard = () => (
         content="A checkbox response"
         header="Checkbox Response"
         trigger={
-            <Icon
-                name="check square outline"
-                aria-label="Checkbox Response Component"
-            />
+            <React.Fragment>
+                <Icon
+                    name="check square outline"
+                    aria-label="Checkbox Response"
+                />
+                Checkbox Response
+            </React.Fragment>
         }
     />
 );

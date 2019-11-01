@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Grid, Input, Menu, Tab } from 'semantic-ui-react';
+import { Dropdown, Grid, Input, Menu, Tab } from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
 import * as Components from '../Components';
 import './Editor.css';
@@ -70,7 +70,7 @@ export default class SlideEditor extends React.Component {
             state: { title, components }
         } = this;
         return (
-            <Grid columns={2}>
+            <Grid>
                 <Grid.Column stretched width={12}>
                     <Grid.Row>
                         <EditorMenu
@@ -83,7 +83,7 @@ export default class SlideEditor extends React.Component {
                                     >
                                         <Input
                                             name="title"
-                                            placeholder="Slide Title"
+                                            placeholder="Slide title"
                                             value={title}
                                             onChange={onTitleChange}
                                         />
@@ -100,7 +100,35 @@ export default class SlideEditor extends React.Component {
                                             this.props.index
                                         );
                                     }
-                                }
+                                },
+                                right: [
+                                    <Menu.Menu
+                                        key="menu-item-components"
+                                        position="right"
+                                    >
+                                        <Dropdown item text="Add to slide">
+                                            <Dropdown.Menu>
+                                                {ComponentsMenuOrder.map(
+                                                    type => {
+                                                        const {
+                                                            Card
+                                                        } = Components[type];
+                                                        return (
+                                                            <Dropdown.Item
+                                                                key={type}
+                                                                onClick={this.clickHandle(
+                                                                    type
+                                                                )}
+                                                            >
+                                                                <Card />
+                                                            </Dropdown.Item>
+                                                        );
+                                                    }
+                                                )}
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </Menu.Menu>
+                                ]
                             }}
                         />
                         {components.map((value, index) => {
@@ -159,24 +187,6 @@ export default class SlideEditor extends React.Component {
                                 </React.Fragment>
                             );
                         })}
-                    </Grid.Row>
-                </Grid.Column>
-                <Grid.Column width={2}>
-                    <Grid.Row>
-                        <Menu vertical size="small" fluid={true} icon={true}>
-                            Add:
-                            {ComponentsMenuOrder.map(type => {
-                                const { Card } = Components[type];
-                                return (
-                                    <Menu.Item
-                                        key={type}
-                                        onClick={this.clickHandle(type)}
-                                    >
-                                        <Card />
-                                    </Menu.Item>
-                                );
-                            })}
-                        </Menu>
                     </Grid.Row>
                 </Grid.Column>
             </Grid>

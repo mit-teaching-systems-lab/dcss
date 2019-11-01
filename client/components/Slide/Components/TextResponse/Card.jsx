@@ -6,10 +6,10 @@ const TextResponseCard = () => (
         content="A simple text area for users to respond"
         header="Text Response"
         trigger={
-            <Icon
-                name="question circle outline"
-                aria-label="Text Response Component"
-            />
+            <React.Fragment>
+                <Icon name="keyboard" aria-label="Text Response" />
+                Text Response
+            </React.Fragment>
         }
     />
 );

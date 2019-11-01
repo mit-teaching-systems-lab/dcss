@@ -12,9 +12,7 @@ export default class EditorMenu extends React.Component {
         const { type, items } = this.props;
         return (
             <Menu icon>
-                {items.left && (
-                    <React.Fragment>{items.left.map(c => c)}</React.Fragment>
-                )}
+                {items.left && <React.Fragment>{items.left}</React.Fragment>}
                 {items.save && (
                     <Menu.Item
                         name={`save-${type}`}
@@ -30,6 +28,7 @@ export default class EditorMenu extends React.Component {
                         onConfirm={items.delete.onConfirm}
                     />
                 )}
+                {items.right && <React.Fragment>{items.right}</React.Fragment>}
             </Menu>
         );
     }

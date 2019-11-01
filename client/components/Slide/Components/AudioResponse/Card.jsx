@@ -6,7 +6,10 @@ const AudioResponseCard = () => (
         content="An audio recorder for users to record responses."
         header="Audio Response"
         trigger={
-            <Icon name="microphone" aria-label="Audio Response Component" />
+            <React.Fragment>
+                <Icon name="microphone" aria-label="Audio Response" />
+                Audio Response
+            </React.Fragment>
         }
     />
 );

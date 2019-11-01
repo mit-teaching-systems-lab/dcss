@@ -5,7 +5,12 @@ const TextCard = () => (
     <Popup
         content="A rich text display area, used for titles, text, and many other things."
         header="Text"
-        trigger={<Icon name="file text" aria-label="Text Component" />}
+        trigger={
+            <React.Fragment>
+                <Icon name="edit text" aria-label="Rich Text" />
+                Rich Text
+            </React.Fragment>
+        }
     />
 );
 
