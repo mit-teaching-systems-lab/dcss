@@ -95,7 +95,7 @@ class ScenarioEditor extends Component {
     render() {
         return (
             <Form size={'big'}>
-                <Container fluid className="tm__editor-tab">
+                <Container fluid>
                     <Grid columns={2} divided>
                         <Grid.Row>
                             <Grid.Column width={8}>

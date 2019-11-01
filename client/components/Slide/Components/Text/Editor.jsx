@@ -15,7 +15,17 @@ class TextEditor extends React.Component {
     }
     render() {
         const { defaultValue } = this.state;
-        return <Editor defaultValue={defaultValue} onChange={this.onChange} />;
+        return (
+            <Editor
+                defaultValue={defaultValue}
+                onChange={this.onChange}
+                styleConfig={{
+                    editor: () => ({
+                        height: '400px'
+                    })
+                }}
+            />
+        );
     }
 
     onChange(defaultValue) {

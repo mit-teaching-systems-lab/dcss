@@ -74,7 +74,7 @@ class FacilitatorSearch extends Search {
     render() {
         const { onChange, onSubmit } = this;
         return (
-            <Container fluid className="tm__editor-tab">
+            <Container fluid>
                 <Grid columns={2} divided stackable>
                     <Grid.Column width={3}>
                         <Form

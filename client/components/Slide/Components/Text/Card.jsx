@@ -7,7 +7,7 @@ const TextCard = () => (
         header="Text"
         trigger={
             <React.Fragment>
-                <Icon name="edit text" aria-label="Rich Text" />
+                <Icon name="edit" aria-label="Rich Text" />
                 Rich Text
             </React.Fragment>
         }

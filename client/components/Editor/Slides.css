@@ -12,3 +12,18 @@
 .Slides-slide-sidebar-container {
     margin: 1em 0;
 }
+
+.Slides-slide-sidebar-container:first-of-type {
+    margin: 3px 0 0 0;
+}
+
+.Slides-list-container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 65vh;
+    max-height: 100%;
+    padding: 1px !important;
+    border: 0 !important;
+    box-shadow: 0 0 0 0 !important;
+    -webkit-box-shadow: 0 0 0 0 !important;
+}

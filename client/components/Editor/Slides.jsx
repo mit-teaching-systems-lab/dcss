@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sortable from 'react-sortablejs';
-import { Card, Container, Grid, Icon, Menu } from 'semantic-ui-react';
+import {
+    Card,
+    Container,
+    Grid,
+    Icon,
+    Menu,
+    Message,
+    Segment
+} from 'semantic-ui-react';
 import SlideEditor from '@components/Slide/Editor';
 import SlideComponentsList from '@components/SlideComponentsList';
 import './Slides.css';
@@ -152,7 +160,7 @@ class Slides extends React.Component {
         const { loading, slides, currentSlideIndex } = this.state;
         if (loading) return this.renderLoading();
         return (
-            <Container fluid className="tm__editor-tab">
+            <Container fluid>
                 <Grid>
                     <Grid.Column width={3}>
                         <Grid.Row>
@@ -170,31 +178,43 @@ class Slides extends React.Component {
                                 </Menu.Item>
                             </Menu>
                         </Grid.Row>
-                        <Sortable onChange={onChangeSlideOrder}>
-                            {slides.map((slide, index) => (
-                                <Grid.Row
-                                    key={slide.id}
-                                    className="Slides-slide-sidebar-container"
-                                >
-                                    <Card
-                                        className="Slides-slide-sidebar-card"
-                                        onClick={() =>
-                                            this.setState({
-                                                currentSlideIndex: index
-                                            })
-                                        }
+                        <Segment className="Slides-list-container">
+                            {slides.length === 0 && (
+                                <Message size="big">
+                                    Start creating a Teacher Moment by adding
+                                    your first slide!
+                                </Message>
+                            )}
+                            <Sortable onChange={onChangeSlideOrder}>
+                                {slides.map((slide, index) => (
+                                    <Grid.Row
+                                        key={slide.id}
+                                        className="Slides-slide-sidebar-container"
                                     >
-                                        <Card.Header>{slide.title}</Card.Header>
-                                        <Card.Content>
-                                            <SlideComponentsList
-                                                asSVG={true}
-                                                components={slide.components}
-                                            />
-                                        </Card.Content>
-                                    </Card>
-                                </Grid.Row>
-                            ))}
-                        </Sortable>
+                                        <Card
+                                            className="Slides-slide-sidebar-card"
+                                            onClick={() =>
+                                                this.setState({
+                                                    currentSlideIndex: index
+                                                })
+                                            }
+                                        >
+                                            <Card.Header>
+                                                {slide.title}
+                                            </Card.Header>
+                                            <Card.Content>
+                                                <SlideComponentsList
+                                                    asSVG={true}
+                                                    components={
+                                                        slide.components
+                                                    }
+                                                />
+                                            </Card.Content>
+                                        </Card>
+                                    </Grid.Row>
+                                ))}
+                            </Sortable>
+                        </Segment>
                     </Grid.Column>
                     <Grid.Column width={12}>
                         {slides[currentSlideIndex] && (

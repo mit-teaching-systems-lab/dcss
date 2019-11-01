@@ -5,3 +5,14 @@
 .tm__component-delete-button {
     margin-top: 5px !important;
 }
+
+.Editor-slide-view {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 65vh;
+    max-height: 100%;
+    padding: 1px !important;
+    border: 0 !important;
+    box-shadow: 0 0 0 0 !important;
+    -webkit-box-shadow: 0 0 0 0 !important;
+}

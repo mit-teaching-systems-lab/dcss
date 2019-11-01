@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Grid, Header, List } from 'semantic-ui-react';
 
 export default () => (
-    <Container fluid className="tm__editor-tab">
+    <Container fluid>
         <Grid columns={2} divided stackable>
             <Grid.Column width={3}>Menu of things to do.</Grid.Column>
             <Grid.Column stretched>

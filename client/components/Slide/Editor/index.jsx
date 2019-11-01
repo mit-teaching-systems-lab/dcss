@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Grid, Input, Menu, Tab } from 'semantic-ui-react';
+import { Dropdown, Grid, Input, Menu, Segment, Tab } from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
 import * as Components from '../Components';
 import './Editor.css';
@@ -84,6 +84,8 @@ export default class SlideEditor extends React.Component {
                                         <Input
                                             name="title"
                                             placeholder="Slide title"
+                                            label={{ content: 'Slide title:' }}
+                                            labelPosition="left"
                                             value={title}
                                             onChange={onTitleChange}
                                         />
@@ -131,62 +133,66 @@ export default class SlideEditor extends React.Component {
                                 ]
                             }}
                         />
-                        {components.map((value, index) => {
-                            const { type } = value;
-                            const { Editor, Display } = Components[type];
-                            const edit = (
-                                <Editor
-                                    value={value}
-                                    onChange={v =>
-                                        this.onComponentChange(index, v)
-                                    }
-                                />
-                            );
-                            const componentMenu = (
-                                <EditorMenu
-                                    type="component"
-                                    items={{
-                                        save: {
-                                            onClick: (...args) => {
-                                                this.updatedState(...args);
-                                            }
-                                        },
-                                        delete: {
-                                            onConfirm: () => {
-                                                this.onDeleteComponent(index);
-                                            }
+                        <Segment className="Editor-slide-view">
+                            {components.map((value, index) => {
+                                const { type } = value;
+                                const { Editor, Display } = Components[type];
+                                const edit = (
+                                    <Editor
+                                        value={value}
+                                        onChange={v =>
+                                            this.onComponentChange(index, v)
                                         }
-                                    }}
-                                />
-                            );
-                            const display = <Display {...value} />;
-
-                            return (
-                                <React.Fragment key={index}>
-                                    <Tab
-                                        panes={[
-                                            {
-                                                menuItem: 'Edit',
-                                                render: () => (
-                                                    <Tab.Pane className="tm__edit-pane">
-                                                        {componentMenu}
-                                                        {edit}
-                                                    </Tab.Pane>
-                                                )
-                                            },
-                                            {
-                                                menuItem: 'Preview',
-                                                render: () => (
-                                                    <Tab.Pane>
-                                                        {display}
-                                                    </Tab.Pane>
-                                                )
-                                            }
-                                        ]}
                                     />
-                                </React.Fragment>
-                            );
-                        })}
+                                );
+                                const componentMenu = (
+                                    <EditorMenu
+                                        type="component"
+                                        items={{
+                                            save: {
+                                                onClick: (...args) => {
+                                                    this.updatedState(...args);
+                                                }
+                                            },
+                                            delete: {
+                                                onConfirm: () => {
+                                                    this.onDeleteComponent(
+                                                        index
+                                                    );
+                                                }
+                                            }
+                                        }}
+                                    />
+                                );
+                                const display = <Display {...value} />;
+
+                                return (
+                                    <React.Fragment key={index}>
+                                        <Tab
+                                            panes={[
+                                                {
+                                                    menuItem: 'Edit',
+                                                    render: () => (
+                                                        <Tab.Pane className="tm__edit-pane">
+                                                            {componentMenu}
+                                                            {edit}
+                                                        </Tab.Pane>
+                                                    )
+                                                },
+                                                {
+                                                    menuItem: 'Preview',
+                                                    render: () => (
+                                                        <Tab.Pane>
+                                                            {display}
+                                                        </Tab.Pane>
+                                                    )
+                                                }
+                                            ]}
+                                        />
+                                    </React.Fragment>
+                                );
+                            })}
+                        </Segment>
                     </Grid.Row>
                 </Grid.Column>
             </Grid>
