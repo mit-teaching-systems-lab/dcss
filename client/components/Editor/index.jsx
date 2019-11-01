@@ -126,11 +126,14 @@ class Editor extends Component {
                     scenarioId: scenarioData.id
                 });
 
-                if (!this.state.tabs.slides) {
-                    const tabs = this.state.tabs;
-                    tabs.slides = this.getTab('slides');
-                    this.setState({ tabs });
-                }
+                // Clear cached new scenario values from tabs
+                const tabs = Object.assign({}, this.state.tabs, {
+                    moment: this.getTab('moment'),
+                    slides: this.getTab('slides'),
+                    preview: this.getTab('preview')
+                });
+
+                this.setState({ tabs });
             };
         }
 
