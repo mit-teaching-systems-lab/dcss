@@ -7,13 +7,13 @@ import './TextResponse.css';
 
 const Display = ({ prompt, placeholder, responseId, onResponseChange }) => (
     <React.Fragment>
-        <Label as="label" className="TextResponse-label">
+        <Label as="label" className="textresponse__label">
             <p>{prompt}</p>
             <TextArea
                 name={responseId}
                 placeholder={placeholder}
                 onChange={onResponseChange}
-                className="TextResponse-input"
+                className="textresponse__input"
             />
         </Label>
     </React.Fragment>

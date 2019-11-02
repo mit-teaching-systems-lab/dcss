@@ -133,7 +133,7 @@ export default class SlideEditor extends React.Component {
                                 ]
                             }}
                         />
-                        <Segment className="Editor-slide-view">
+                        <Segment className="editor__component-layout-pane">
                             {components.map((value, index) => {
                                 const { type } = value;
                                 const { Editor, Display } = Components[type];
@@ -173,7 +173,7 @@ export default class SlideEditor extends React.Component {
                                                 {
                                                     menuItem: 'Edit',
                                                     render: () => (
-                                                        <Tab.Pane className="tm__edit-pane">
+                                                        <Tab.Pane>
                                                             {componentMenu}
                                                             {edit}
                                                         </Tab.Pane>

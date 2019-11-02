@@ -13,7 +13,7 @@ const Display = ({
     onResponseChange
 }) => (
     <React.Fragment>
-        <Label as="label" className="CheckResponse-label">
+        <Label as="label" className="checkresponse__label">
             <Checkbox
                 name={responseId}
                 value={checked}
@@ -26,7 +26,7 @@ const Display = ({
                     }
                     if (onResponseChange) onResponseChange(event, values);
                 }}
-                className="CheckResponse-input"
+                className="checkresponse__input"
             />
         </Label>
     </React.Fragment>

@@ -66,7 +66,7 @@ class Scenario extends Component {
             <Grid columns={1}>
                 <Grid.Column>
                     <Grid.Row key="meta">
-                        <Card className="tm__scenario-card">
+                        <Card className="scenario__card">
                             <Card.Header as="h2">{title}</Card.Header>
                             <Card.Content>{description}</Card.Content>
                         </Card>
@@ -76,7 +76,7 @@ class Scenario extends Component {
                         slides.map((slide, index) => {
                             return (
                                 <Grid.Row key={index}>
-                                    <Card className="tm__scenario-card">
+                                    <Card className="scenario__card">
                                         <Card.Header
                                             as="h3"
                                             key={`header${index}`}

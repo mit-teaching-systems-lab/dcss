@@ -1,23 +1,12 @@
-.Slides-button-bar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: none;
-}
-
-.Slides-slide-sidebar-card:hover .Slides-button-bar {
-    display: block;
-}
-
-.Slides-slide-sidebar-container {
+.slides__list-row {
     margin: 1em 0;
 }
 
-.Slides-slide-sidebar-container:first-of-type {
+.slides__list-row:first-of-type {
     margin: 3px 0 0 0;
 }
 
-.Slides-list-container {
+.slides__list-container {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 65vh;

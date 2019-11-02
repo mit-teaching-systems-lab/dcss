@@ -173,7 +173,7 @@ class Editor extends Component {
                         </Menu.Item>
                     </Menu.Menu>
                 </Menu>
-                <Segment attached="bottom" className="Editor-pane">
+                <Segment attached="bottom" className="editor__content-pane">
                     {this.state.scenarioId !== 'new' && (
                         <EditorMenu
                             type="scenario"

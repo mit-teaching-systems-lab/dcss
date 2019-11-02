@@ -178,7 +178,7 @@ class Slides extends React.Component {
                                 </Menu.Item>
                             </Menu>
                         </Grid.Row>
-                        <Segment className="Slides-list-container">
+                        <Segment className="slides__list-container">
                             {slides.length === 0 && (
                                 <Message size="big">
                                     Start creating a Teacher Moment by adding
@@ -189,10 +189,9 @@ class Slides extends React.Component {
                                 {slides.map((slide, index) => (
                                     <Grid.Row
                                         key={slide.id}
-                                        className="Slides-slide-sidebar-container"
+                                        className="slides__list-row"
                                     >
                                         <Card
-                                            className="Slides-slide-sidebar-card"
                                             onClick={() =>
                                                 this.setState({
                                                     currentSlideIndex: index

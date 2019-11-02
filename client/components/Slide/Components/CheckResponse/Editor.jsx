@@ -29,40 +29,40 @@ class CheckResponseEditor extends React.Component {
         return (
             <React.Fragment>
                 <Form>
-                    <Label as="label" className="CheckResponse-label">
+                    <Label as="label" className="checkresponse__label">
                         <p>Response ID:</p>
                         <Input
                             name="responseId"
                             value={responseId}
                             onChange={onTextAreaChange}
-                            className="CheckResponse-input"
+                            className="checkresponse__input"
                         />
                     </Label>
-                    <Label as="label" className="CheckResponse-label">
+                    <Label as="label" className="checkresponse__label">
                         <p>Label:</p>
                         <TextArea
                             name="prompt"
                             value={prompt}
                             onChange={onTextAreaChange}
-                            className="CheckResponse-input"
+                            className="checkresponse__input"
                         />
                     </Label>
-                    <Label as="label" className="CheckResponse-label">
+                    <Label as="label" className="checkresponse__label">
                         <p>Unchecked (default) value:</p>
                         <TextArea
                             name="unchecked"
                             value={unchecked}
                             onChange={onTextAreaChange}
-                            className="CheckResponse-input"
+                            className="checkresponse__input"
                         />
                     </Label>
-                    <Label as="label" className="CheckResponse-label">
+                    <Label as="label" className="checkresponse__label">
                         <p>Checked value:</p>
                         <TextArea
                             name="checked"
                             value={checked}
                             onChange={onTextAreaChange}
-                            className="CheckResponse-input"
+                            className="checkresponse__input"
                         />
                     </Label>
                 </Form>
