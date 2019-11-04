@@ -27,31 +27,31 @@ class TextResponseEditor extends React.Component {
         return (
             <React.Fragment>
                 <Form>
-                    <Label as="label" className="TextResponse-label">
+                    <Label as="label" className="textresponse__label">
                         <p>Text Prompt:</p>
                         <TextArea
                             name="prompt"
                             value={prompt}
                             onChange={onTextAreaChange}
-                            className="TextResponse-input"
+                            className="textresponse__input"
                         />
                     </Label>
-                    <Label as="label" className="TextResponse-label">
+                    <Label as="label" className="textresponse__label">
                         <p>Text Placeholder:</p>
                         <TextArea
                             name="placeholder"
                             value={placeholder}
                             onChange={onTextAreaChange}
-                            className="TextResponse-input"
+                            className="textresponse__input"
                         />
                     </Label>
-                    <Label as="label" className="TextResponse-label">
+                    <Label as="label" className="textresponse__label">
                         <p>Response ID:</p>
                         <Input
                             name="responseId"
                             value={responseId}
                             onChange={onTextAreaChange}
-                            className="TextResponse-input"
+                            className="textresponse__input"
                         />
                     </Label>
                 </Form>
