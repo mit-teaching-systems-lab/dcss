@@ -71,7 +71,7 @@ export default class SlideEditor extends React.Component {
         } = this;
         return (
             <Grid>
-                <Grid.Column stretched width={12}>
+                <Grid.Column stretched>
                     <Grid.Row>
                         <EditorMenu
                             type="slide"

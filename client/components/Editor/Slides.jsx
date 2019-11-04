@@ -215,7 +215,7 @@ class Slides extends React.Component {
                             </Sortable>
                         </Segment>
                     </Grid.Column>
-                    <Grid.Column width={12}>
+                    <Grid.Column width={13}>
                         {slides[currentSlideIndex] && (
                             <SlideEditor
                                 key={currentSlideIndex}

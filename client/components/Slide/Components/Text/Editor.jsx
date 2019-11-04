@@ -21,7 +21,7 @@ class TextEditor extends React.Component {
                 onChange={this.onChange}
                 styleConfig={{
                     editor: () => ({
-                        height: '400px'
+                        height: '300px'
                     })
                 }}
             />

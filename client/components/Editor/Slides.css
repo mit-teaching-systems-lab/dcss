@@ -9,9 +9,8 @@
 .slides__list-container {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 65vh;
-    max-height: 100%;
-    padding: 1px !important;
+    height: 61vh;
+    padding: 0 5px 0 1px !important;
     border: 0 !important;
     box-shadow: 0 0 0 0 !important;
     -webkit-box-shadow: 0 0 0 0 !important;
