@@ -30,7 +30,11 @@ class Login extends Component {
         this.setState({ [`${event.target.name}Input`]: event.target.value });
     }
 
-    async onLogIn() {
+    onLogIn(event) {
+        event.preventDefault();
+        this.handleLogin();
+    }
+    async handleLogin() {
         const body = JSON.stringify({
             username: this.state.usernameInput,
             password: this.state.passwordInput
@@ -51,8 +55,8 @@ class Login extends Component {
             this.setState({ loginError });
             this.props.logIn(username);
             Session.create({ username, timeout: Date.now() });
+            this.props.history.push('/');
         }
-        this.props.history.push('/');
     }
 
     async onLogOut() {
@@ -81,7 +85,7 @@ class Login extends Component {
         }
 
         return (
-            <Form className="login__form">
+            <Form className="login__form" onSubmit={this.onLogIn}>
                 <Form.Field>
                     <label htmlFor="name">Username</label>
                     <input
@@ -105,12 +109,7 @@ class Login extends Component {
                     <Grid.Column>
                         <Item>
                             <Item.Extra>
-                                <Button
-                                    type="submit"
-                                    primary
-                                    size="large"
-                                    onClick={this.onLogIn}
-                                >
+                                <Button type="submit" primary size="large">
                                     Log in
                                 </Button>
                             </Item.Extra>
