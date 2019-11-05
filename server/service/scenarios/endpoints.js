@@ -32,7 +32,7 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
     res
 ) {
     const userId = req.session.user.id;
-    const { title, description } = req.body;
+    const { title, description, categories } = req.body;
 
     if (!userId || !title || !description) {
         const scenarioCreateError = new Error(
@@ -44,6 +44,7 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
 
     try {
         const scenario = await db.addScenario(userId, title, description);
+        await db.setScenarioCategories(scenario.id, categories);
         const result = { scenario, status: 201 };
 
         res.send(result);
