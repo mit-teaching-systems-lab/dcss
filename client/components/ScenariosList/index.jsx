@@ -12,6 +12,7 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
         return null;
     }
 
+    // only filter out scenario if there is a path
     return scenarioData.map(({ id, title, description }) => {
         return (
             <Card key={id}>
@@ -69,6 +70,7 @@ class ScenariosList extends Component {
     }
 
     render() {
+        const category = this.props.location.pathname.slice(1);
         return (
             <div>
                 <Grid>
@@ -84,7 +86,13 @@ class ScenariosList extends Component {
                             {this.state.scenarioData.length ? (
                                 <Card.Group>
                                     <ScenarioEntries
-                                        scenarioData={this.state.scenarioData}
+                                        scenarioData={this.state.scenarioData.filter(
+                                            result =>
+                                                (!category && result) ||
+                                                result.categories.includes(
+                                                    category
+                                                )
+                                        )}
                                         isLoggedIn={this.props.isLoggedIn}
                                     />
                                 </Card.Group>
@@ -101,7 +109,8 @@ class ScenariosList extends Component {
 
 ScenariosList.propTypes = {
     scenarioData: PropTypes.array,
-    isLoggedIn: PropTypes.bool.isRequired
+    isLoggedIn: PropTypes.bool.isRequired,
+    location: PropTypes.object
 };
 
 function mapStateToProps(state) {

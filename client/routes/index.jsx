@@ -40,6 +40,12 @@ const GeneralRoutes = () => {
                 <Menu.Item>
                     <NavLink to="/">Home</NavLink>
                 </Menu.Item>
+                <Menu.Item>
+                    <NavLink to="/official">Official</NavLink>
+                </Menu.Item>
+                <Menu.Item>
+                    <NavLink to="/community">Community</NavLink>
+                </Menu.Item>
                 {Session.isSessionActive() && (
                     <React.Fragment>
                         <Menu.Item>
@@ -60,6 +66,8 @@ const GeneralRoutes = () => {
             </Menu>
 
             <Route exact path="/" component={ScenariosList} />
+            <Route exact path="/official" component={ScenariosList} />
+            <Route exact path="/community" component={ScenariosList} />
             <Route path="/moment/:scenarioId" component={Scenario} />
             <Route path="/editor/:id" component={Editor} />
             <Route exact path="/facilitator" component={Facilitator} />

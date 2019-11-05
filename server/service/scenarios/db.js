@@ -1,11 +1,7 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 
-exports.getScenario = async function getScenario(scenarioId) {
-    const results = await query(
-        sql` SELECT * FROM scenario WHERE id = ${scenarioId};`
-    );
-
+async function getScenarioCategories(scenarioId) {
     const scenarioCategoriesResults = await query(
         sql`
             SELECT c.name as name
@@ -15,9 +11,19 @@ exports.getScenario = async function getScenario(scenarioId) {
             where scenario_id = ${scenarioId};`
     );
 
+    return scenarioCategoriesResults.rows.map(r => r.name);
+}
+
+exports.getScenario = async function getScenario(scenarioId) {
+    const results = await query(
+        sql` SELECT * FROM scenario WHERE id = ${scenarioId};`
+    );
+
+    const categories = await getScenarioCategories(scenarioId);
+
     return {
         ...results.rows[0],
-        categories: scenarioCategoriesResults.rows.map(r => r.name)
+        categories
     };
 };
 
@@ -25,7 +31,14 @@ exports.getAllScenarios = async function getAllScenarios() {
     const results = await query(
         sql`SELECT * FROM scenario ORDER BY created_at DESC;`
     );
-    return results.rows;
+
+    let resultsWithCategories = [];
+    for (let r of results.rows) {
+        let categories = await getScenarioCategories(r.id);
+        resultsWithCategories.push({ ...r, categories });
+    }
+
+    return resultsWithCategories;
 };
 
 exports.addScenario = async function addScenario(authorId, title, description) {
