@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Container, Header, Grid } from 'semantic-ui-react';
+import { Button, Card, Grid, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import 'semantic-ui-css/semantic.min.css';
@@ -14,37 +14,35 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
 
     return scenarioData.map(({ id, title, description }) => {
         return (
-            <Grid.Column
-                mobile={16}
-                tablet={8}
-                computer={5}
-                key={id}
-                className="tm__scenario-entry"
-            >
-                <Header as="h3">
-                    <Link
-                        to={{
-                            pathname: `/moment/${id}`,
-                            state: { id, title, description }
-                        }}
-                    >
-                        {title}
-                    </Link>
-                </Header>
-                <p className="tm__scenario-desc">{description}</p>
+            <Card key={id}>
+                <Card.Content>
+                    <Card.Header>
+                        <Link
+                            to={{
+                                pathname: `/moment/${id}`,
+                                state: { id, title, description }
+                            }}
+                        >
+                            {title}
+                        </Link>
+                    </Card.Header>
+                    <Card.Description>{description}</Card.Description>
+                </Card.Content>
                 {isLoggedIn && (
-                    <Button
-                        basic
-                        fluid
-                        color="black"
-                        push="true"
-                        as={Link}
-                        to={{ pathname: `/editor/${id}` }}
-                    >
-                        Edit
-                    </Button>
+                    <Card.Content extra>
+                        <Button
+                            basic
+                            fluid
+                            color="black"
+                            push="true"
+                            as={Link}
+                            to={{ pathname: `/editor/${id}` }}
+                        >
+                            Edit
+                        </Button>
+                    </Card.Content>
                 )}
-            </Grid.Column>
+            </Card>
         );
     });
 };
@@ -72,15 +70,31 @@ class ScenariosList extends Component {
 
     render() {
         return (
-            <Container>
-                <h2>Practice spaces for teacher preparation programs</h2>
-                <Grid stackable>
-                    <ScenarioEntries
-                        scenarioData={this.state.scenarioData}
-                        isLoggedIn={this.props.isLoggedIn}
-                    />
+            <div>
+                <Grid>
+                    <Grid.Row>
+                        <Grid.Column stretched>
+                            <h2>
+                                Practice spaces for teacher preparation programs
+                            </h2>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column stretched>
+                            {this.state.scenarioData.length ? (
+                                <Card.Group>
+                                    <ScenarioEntries
+                                        scenarioData={this.state.scenarioData}
+                                        isLoggedIn={this.props.isLoggedIn}
+                                    />
+                                </Card.Group>
+                            ) : (
+                                <Loader inverted content="Loading" />
+                            )}
+                        </Grid.Column>
+                    </Grid.Row>
                 </Grid>
-            </Container>
+            </div>
         );
     }
 }
