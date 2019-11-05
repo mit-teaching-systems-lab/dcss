@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
-import './SlideComponentsList.css';
 
 const SlideComponentsList = ({ asSVG = false, components }) => {
     const style = {

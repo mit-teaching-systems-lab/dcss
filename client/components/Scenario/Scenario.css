@@ -1,0 +1,21 @@
+.ui.card.scenario__card {
+    width: 80%;
+    max-width: 500px;
+}
+
+.ui.card.scenario__card--run {
+    width: 80vw;
+    height: 85vh;
+    max-width: 500px;
+    margin-top: 2vh;
+}
+
+.scenario__card .scenario__card--button {
+    padding: 5% 40% 2% 40%;
+}
+
+.ui.card.scenario__card--run .scenario__card--button {
+    position: absolute;
+    bottom: 0;
+    padding: 10% 40%;
+}
