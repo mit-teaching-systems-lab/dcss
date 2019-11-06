@@ -154,10 +154,13 @@ git remote rename heroku heroku-staging
 ```
 
 #### Deploying App to staging
+
+We currently have Github intergrated with Heroku, so merges into the `teacher-moments` branch will deploy automatically to our staging site, [https://teacher-moments.herokuapp.com/](https://teacher-moments.herokuapp.com/). However, if you want or need to deploy manually, you can use the command below.
+
 ```
 yarn deploy:staging
 ```
-
+NB: This command will deploy your local `teacher-moments` branch, so make sure you have pulled down the latest changes from Github.
 
 ### S3 Integration
 The AWS bucket used for development is called **v2-moments-dev**. For access, please contact the AWS administrator for TSL.
