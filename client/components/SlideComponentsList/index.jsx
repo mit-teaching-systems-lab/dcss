@@ -22,6 +22,14 @@ const SlideComponentsList = ({ asSVG = false, components }) => {
                         return <Display key={`slide${index}`} {...value} />;
                     })}
                 </foreignObject>
+                <rect
+                    x="0"
+                    y="0"
+                    transform="scale(0.5)"
+                    width="500"
+                    height="400"
+                    fill="transparent"
+                />
             </svg>
         </div>
     ) : (

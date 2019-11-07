@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Confirm, Menu, Icon } from 'semantic-ui-react';
+import { Confirm, Icon, Menu, Popup } from 'semantic-ui-react';
 
 class ConfirmableDeleteButton extends React.Component {
     constructor(props) {
@@ -37,9 +37,14 @@ class ConfirmableDeleteButton extends React.Component {
 
         return (
             <React.Fragment>
-                <Menu.Item onClick={onClick}>
-                    <Icon name="trash" aria-label={ariaLabel} />
-                </Menu.Item>
+                <Popup
+                    content={ariaLabel}
+                    trigger={
+                        <Menu.Item onClick={onClick}>
+                            <Icon name="trash" aria-label={ariaLabel} />
+                        </Menu.Item>
+                    }
+                />
                 <Confirm
                     open={this.state.open}
                     content={content}

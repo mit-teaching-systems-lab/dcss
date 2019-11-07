@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Grid, Input, Menu, Segment, Tab } from 'semantic-ui-react';
+import { Dropdown, Grid, Input, Menu, Segment } from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
 import * as Components from '../Components';
 import './Editor.css';
@@ -20,7 +20,8 @@ export default class SlideEditor extends React.Component {
         const { title = 'Slide', components = [] } = props;
         this.state = {
             title,
-            components
+            components,
+            mode: 'edit'
         };
 
         this.onTitleChange = this.onTitleChange.bind(this);
@@ -80,7 +81,7 @@ export default class SlideEditor extends React.Component {
                                 left: [
                                     <Menu.Item
                                         key="menu-item-title"
-                                        name="title"
+                                        name="Slide title"
                                     >
                                         <Input
                                             name="title"
@@ -104,10 +105,16 @@ export default class SlideEditor extends React.Component {
                                         );
                                     }
                                 },
+                                editable: {
+                                    onToggle: (event, data, { mode }) => {
+                                        this.setState({ mode });
+                                    }
+                                },
                                 right: [
                                     <Menu.Menu
                                         key="menu-item-components"
                                         position="right"
+                                        name="Add content to slide"
                                     >
                                         <Dropdown item text="Add to slide">
                                             <Dropdown.Menu>
@@ -167,29 +174,14 @@ export default class SlideEditor extends React.Component {
                                 );
                                 const display = <Display {...value} />;
 
-                                return (
+                                return this.state.mode === 'edit' ? (
+                                    <Segment key={index}>
+                                        {componentMenu}
+                                        {edit}
+                                    </Segment>
+                                ) : (
                                     <React.Fragment key={index}>
-                                        <Tab
-                                            panes={[
-                                                {
-                                                    menuItem: 'Edit',
-                                                    render: () => (
-                                                        <Tab.Pane>
-                                                            {componentMenu}
-                                                            {edit}
-                                                        </Tab.Pane>
-                                                    )
-                                                },
-                                                {
-                                                    menuItem: 'Preview',
-                                                    render: () => (
-                                                        <Tab.Pane>
-                                                            {display}
-                                                        </Tab.Pane>
-                                                    )
-                                                }
-                                            ]}
-                                        />
+                                        {display}
                                     </React.Fragment>
                                 );
                             })}
