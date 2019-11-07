@@ -7,6 +7,7 @@ import './Editor.css';
 
 const ComponentsMenuOrder = [
     'Text',
+    'Suggestion',
     'TextResponse',
     'CheckResponse',
     'AudioResponse'

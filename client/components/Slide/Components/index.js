@@ -1,6 +1,9 @@
 import * as Text from './Text';
 export { Text };
 
+import * as Suggestion from './Suggestion';
+export { Suggestion };
+
 import * as TextResponse from './TextResponse';
 export { TextResponse };
 

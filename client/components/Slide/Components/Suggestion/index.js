@@ -2,7 +2,8 @@ import { type } from './type';
 export { type };
 export const defaultValue = () => ({
     type,
-    html: '<h1>Slide title</h1><p>Type your slide content</p>'
+    html: '<Message color="grey"><p>Type your suggestion here</p></Message>',
+    color: 'grey'
 });
 
 export { default as Display } from './Display';

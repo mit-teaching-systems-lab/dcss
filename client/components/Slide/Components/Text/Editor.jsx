@@ -17,6 +17,7 @@ class TextEditor extends React.Component {
         const { defaultValue } = this.state;
         return (
             <Editor
+                autoFocus
                 defaultValue={defaultValue}
                 onChange={this.onChange}
                 styleConfig={{
