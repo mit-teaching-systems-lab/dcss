@@ -18,7 +18,8 @@ WITH stat AS (SELECT id AS status_id FROM status LIMIT 1)
 UPDATE scenario SET status = (SELECT status_id FROM stat);
 
 ALTER TABLE scenario
-    ALTER COLUMN status SET NOT NULL;
+    ALTER COLUMN status SET NOT NULL,
+    ALTER COLUMN status SET DEFAULT 1;
 -- Up above
 ---
 -- Down below
