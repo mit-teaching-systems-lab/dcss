@@ -4,8 +4,10 @@ import Sortable from 'react-sortablejs';
 import {
     Card,
     Container,
+    Dropdown,
     Grid,
     Icon,
+    Loader,
     Menu,
     Message,
     Segment
@@ -26,9 +28,10 @@ class Slides extends React.Component {
         this.debounceSlideUpdate = {};
 
         this.onChangeSlide = this.onChangeSlide.bind(this);
-        this.onChangeAddSlide = this.onChangeAddSlide.bind(this);
         this.onChangeSlideOrder = this.onChangeSlideOrder.bind(this);
+        this.addSlide = this.addSlide.bind(this);
         this.deleteSlide = this.deleteSlide.bind(this);
+        this.duplicateSlide = this.duplicateSlide.bind(this);
     }
 
     componentDidMount() {
@@ -102,6 +105,7 @@ class Slides extends React.Component {
         this.setState({ slides, currentSlideIndex: toIndex });
         this.props.updateEditorMessage('');
     }
+
     async deleteSlide(index) {
         const { scenarioId } = this.props;
         const slide = this.state.slides[index];
@@ -113,30 +117,64 @@ class Slides extends React.Component {
         );
         await result.json();
         const slides = this.state.slides.filter(({ id }) => id !== slide.id);
-        this.setState({ slides, currentSlideIndex: -1 });
+
+        let currentSlideIndex;
+
+        // The slide was at the end...
+        if (index > slides.length) {
+            currentSlideIndex = slides.length - 1;
+        }
+
+        // The slide was at the beginning...
+        if (index === 0) {
+            currentSlideIndex = 0;
+        } else {
+            // The slide was somewhere in between...
+            currentSlideIndex = index - 1;
+        }
+
+        this.setState({ slides, currentSlideIndex });
         this.props.updateEditorMessage('Slide deleted');
     }
 
-    async onChangeAddSlide() {
+    async duplicateSlide(index) {
+        const { title, components } = this.state.slides[index];
+        await this.storeSlide({
+            title,
+            components
+        });
+    }
+
+    async addSlide() {
+        await this.storeSlide({
+            title: '',
+            components: []
+        });
+    }
+
+    async storeSlide(slide) {
         this.props.updateEditorMessage('');
         const { scenarioId } = this.props;
-        const newSlide = { title: '', components: [] };
         const res = await fetch(`/api/scenarios/${scenarioId}/slides`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newSlide)
+            body: JSON.stringify(slide)
         });
         const {
             slide: { id }
         } = await res.json();
         this.props.updateEditorMessage('Slide added');
         await this.fetchSlides();
-        const currentSlideIndex = this.state.slides.findIndex(
+        const orderIndex = this.state.slides.findIndex(
             slide => slide.id === id
         );
-        this.setState({ currentSlideIndex });
+        const correctedIndex = this.state.currentSlideIndex + 1;
+
+        if (orderIndex !== correctedIndex) {
+            this.moveSlide(orderIndex, correctedIndex);
+        }
     }
 
     async onChangeSlideOrder(...args) {
@@ -146,19 +184,22 @@ class Slides extends React.Component {
         );
     }
 
-    renderLoading() {
-        return <div>Loading...</div>;
-    }
-
     render() {
         const {
             onChangeSlide,
-            onChangeAddSlide,
             onChangeSlideOrder,
-            deleteSlide
+            addSlide,
+            deleteSlide,
+            duplicateSlide
         } = this;
         const { loading, slides, currentSlideIndex } = this.state;
-        if (loading) return this.renderLoading();
+        if (loading) {
+            return (
+                <Segment>
+                    <Loader />
+                </Segment>
+            );
+        }
         return (
             <Container fluid>
                 <Grid>
@@ -167,7 +208,9 @@ class Slides extends React.Component {
                             <Menu icon>
                                 <Menu.Item
                                     name="Add a slide"
-                                    onClick={onChangeAddSlide}
+                                    onClick={() => {
+                                        addSlide(this.state.currentSlideIndex);
+                                    }}
                                 >
                                     <Icon
                                         name="plus square outline"
@@ -176,6 +219,27 @@ class Slides extends React.Component {
                                     />
                                     Add a slide
                                 </Menu.Item>
+                                <Menu.Menu
+                                    key="menu-item-slide-options"
+                                    position="right"
+                                >
+                                    <Dropdown item text="Options">
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item
+                                                key={1}
+                                                onClick={() => {
+                                                    duplicateSlide(
+                                                        this.state
+                                                            .currentSlideIndex
+                                                    );
+                                                }}
+                                            >
+                                                <Icon name="copy outline" />
+                                                Duplicate selected slide
+                                            </Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Menu.Menu>
                             </Menu>
                         </Grid.Row>
                         <Segment className="slides__list-container">
@@ -192,6 +256,12 @@ class Slides extends React.Component {
                                         className="slides__list-row"
                                     >
                                         <Card
+                                            className={
+                                                index ===
+                                                this.state.currentSlideIndex
+                                                    ? 'slides__list-row-selected'
+                                                    : ''
+                                            }
                                             onClick={() =>
                                                 this.setState({
                                                     currentSlideIndex: index
