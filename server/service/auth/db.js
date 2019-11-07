@@ -12,11 +12,6 @@ exports.getUserByProps = async function({ id, username, email }) {
     return result.rows[0];
 };
 
-exports.getUserById = async function(id) {
-    const result = await query(sql`SELECT * FROM users WHERE id = ${id};`);
-    return result.rows[0];
-};
-
 exports.createUser = async function({ email, username, password }) {
     let salt, passwordHash;
     if (password) {

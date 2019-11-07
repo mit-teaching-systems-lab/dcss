@@ -2,26 +2,38 @@ const { asyncMiddleware } = require('../../util/api');
 
 const db = require('./db');
 
-const { getUserById } = require('../auth/db');
+exports.getAllUsers = asyncMiddleware(async function getAllUserRolesAsync(
+    req,
+    res
+) {
+    const users = await db.getAllUsers();
+    const noUsersFoundError = new Error('No users found');
+    noUsersFoundError.status = 409;
 
-exports.getUserRolesAsync = async function(req, res) {
+    if (!users) throw noUsersFoundError;
+
+    res.json(users);
+});
+
+exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
+    req,
+    res
+) {
     const userId = Number(req.params.user_id);
-    const user = await getUserById(userId);
-
+    const user = await db.getUserById(userId);
     const noUserFoundError = new Error('Invalid user id.');
     noUserFoundError.status = 409;
 
-    if (!user) {
-        throw noUserFoundError;
-    }
+    if (!user) throw noUserFoundError;
 
     const userRoleData = await db.getUserRoles(userId, req.body.roles);
     res.json(userRoleData);
-};
+});
 
-exports.getUserRoles = asyncMiddleware(exports.getUserRolesAsync);
-
-exports.addUserRolesAsync = async function(req, res) {
+exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
+    req,
+    res
+) {
     const userId = Number(req.params.user_id);
     const roles = req.body.roles;
     if (!userId || !roles.length) {
@@ -41,11 +53,12 @@ exports.addUserRolesAsync = async function(req, res) {
         error.stack = apiError.stack;
         throw error;
     }
-};
+});
 
-exports.addUserRoles = asyncMiddleware(exports.addUserRolesAsync);
-
-exports.deleteUserRolesAsync = async function(req, res) {
+exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
+    req,
+    res
+) {
     const userId = Number(req.params.user_id);
     const roles = req.body.roles;
     if (!userId || !roles.length) {
@@ -65,11 +78,12 @@ exports.deleteUserRolesAsync = async function(req, res) {
         error.stack = apiError.stack;
         throw error;
     }
-};
+});
 
-exports.deleteUserRoles = asyncMiddleware(exports.deleteUserRolesAsync);
-
-exports.setUserRolesAsync = async function(req, res) {
+exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
+    req,
+    res
+) {
     const userId = Number(req.params.user_id);
     const roles = req.body.roles;
     if (!userId || !roles.length) {
@@ -89,6 +103,4 @@ exports.setUserRolesAsync = async function(req, res) {
         error.stack = apiError.stack;
         throw error;
     }
-};
-
-exports.setUserRoles = asyncMiddleware(exports.setUserRolesAsync);
+});

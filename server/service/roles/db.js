@@ -1,6 +1,22 @@
 const { sql } = require('../../util/sqlHelpers');
 const { withClient, withClientTransaction } = require('../../util/db');
 
+exports.getUserById = async function getUserById(id) {
+    return withClient(async client => {
+        const result = await client.query(
+            sql`SELECT * FROM users WHERE id = ${id};`
+        );
+        return result.rows[0];
+    });
+};
+
+exports.getAllUsers = async function getAllUsers() {
+    return withClient(async client => {
+        const result = await client.query(sql`SELECT * FROM users`);
+        return result.rows;
+    });
+};
+
 exports.getUserRoles = async function getUserRoles(userId) {
     return withClient(async client => {
         const result = await client.query(

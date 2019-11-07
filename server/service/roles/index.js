@@ -6,12 +6,17 @@ const { requireUserRole, checkCanEditUserRoles } = require('./middleware');
 const rolesRouter = Router();
 
 const {
+    getAllUsers,
     getUserRoles,
     addUserRoles,
     deleteUserRoles,
     setUserRoles
 } = require('./endpoints');
+
+rolesRouter.get('/', [requireUserRole('admin'), getAllUsers]);
+
 rolesRouter.get('/:user_id', [requireUserRole('admin'), getUserRoles]);
+
 rolesRouter.put('/:user_id', [
     checkCanEditUserRoles(req => req.params.user_id),
     validateRequestBody,
