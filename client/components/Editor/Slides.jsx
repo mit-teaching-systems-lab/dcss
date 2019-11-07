@@ -203,7 +203,10 @@ class Slides extends React.Component {
         return (
             <Container fluid>
                 <Grid>
-                    <Grid.Column width={3}>
+                    <Grid.Column
+                        width={3}
+                        className="slides__list-outer-container"
+                    >
                         <Grid.Row>
                             <Menu icon>
                                 <Menu.Item
@@ -242,7 +245,7 @@ class Slides extends React.Component {
                                 </Menu.Menu>
                             </Menu>
                         </Grid.Row>
-                        <Segment className="slides__list-container">
+                        <Segment className="slides__list-inner-container">
                             {slides.length === 0 && (
                                 <Message size="big">
                                     Start creating a Teacher Moment by adding

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Menu, Segment } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
 import EditorMenu from '@components/EditorMenu';
 import ScenarioEditor from '@components/ScenarioEditor';
+import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
 import Slides from './Slides';
+import { setScenario } from '@client/actions';
 
 import './editor.css';
 
@@ -17,6 +20,9 @@ class Editor extends Component {
     constructor(props) {
         super(props);
 
+        this.fetchScenario = this.fetchScenario.bind(this);
+        this.deleteScenario = this.deleteScenario.bind(this);
+        this.updateScenario = this.updateScenario.bind(this);
         this.onClick = this.onClick.bind(this);
         this.onClickScenarioAction = this.onClickScenarioAction.bind(this);
         this.getSubmitCallback = this.getSubmitCallback.bind(this);
@@ -26,6 +32,7 @@ class Editor extends Component {
         this.state = {
             activeTab: 'moment',
             editorMessage: '',
+            saving: false,
             scenarioId: this.props.match.params.id,
             tabs: {
                 moment: this.getTab('moment')
@@ -38,6 +45,7 @@ class Editor extends Component {
                 preview: this.getTab('preview')
             });
             this.state.activeTab = 'slides';
+            this.fetchScenario();
         }
     }
 
@@ -48,10 +56,22 @@ class Editor extends Component {
 
     onClickScenarioAction(event, data) {
         if (data.name === 'save-scenario') {
-            // TODO: Determine if we need to actually
-            //       save the scenario, or if the
-            //       auto-save is sufficient.
-            this.updateEditorMessage('Teacher Moment saved');
+            this.updateScenario();
+        }
+
+        if (data.name === 'save-status') {
+            this.updateScenario({ status: data.id });
+        }
+    }
+
+    async fetchScenario() {
+        const response = await (await fetch(
+            `/api/scenarios/${this.state.scenarioId}`
+        )).json();
+
+        const { scenario } = response;
+        if (response.status === 200) {
+            this.props.setScenario(scenario);
         }
     }
 
@@ -67,6 +87,43 @@ class Editor extends Component {
         });
 
         this.props.history.push('/');
+    }
+
+    async updateScenario(updates = {}) {
+        if (this.state.saving) {
+            return;
+        }
+
+        this.setState({ saving: true });
+
+        // NOTE: this is to support saving the whole
+        //       scenario when clicking the [save icon]
+        //       that's displayed via EditorMenu.
+        const data = {
+            title: this.props.title,
+            description: this.props.description,
+            categories: this.props.categories,
+            status: this.props.status
+        };
+
+        Object.assign(data, updates);
+
+        const submitCallback = this.getSubmitCallback();
+        const response = await (await submitCallback(data)).json();
+
+        this.setState({ saving: false });
+
+        switch (response.status) {
+            case 200:
+                this.props.setScenario(response.scenario);
+                this.updateEditorMessage('Teacher Moment saved');
+                break;
+            default:
+                if (response.error) {
+                    this.updateEditorMessage(response.message);
+                }
+                break;
+        }
     }
 
     getTab(name) {
@@ -108,7 +165,7 @@ class Editor extends Component {
 
         return scenarioData => {
             return fetch(endpoint, {
-                method: method,
+                method,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -145,6 +202,14 @@ class Editor extends Component {
     }
 
     render() {
+        const scenarioStatusMenuItem = this.props.status !== undefined && (
+            <ScenarioStatusMenuItem
+                key="scenario-status-menu-item"
+                status={this.props.status}
+                onClick={this.onClickScenarioAction}
+            />
+        );
+
         return (
             <div>
                 <Menu attached="top" tabular>
@@ -189,7 +254,8 @@ class Editor extends Component {
                                             this.state.scenarioId
                                         );
                                     }
-                                }
+                                },
+                                right: [scenarioStatusMenuItem]
                             }}
                         />
                     )}
@@ -200,6 +266,10 @@ class Editor extends Component {
         );
     }
 }
+
+// Note: this silences the warning about "text={}" receiving
+// an object, instead of a string.
+Dropdown.propTypes.text = PropTypes.any;
 
 EditorMessage.propTypes = {
     message: PropTypes.string
@@ -213,7 +283,25 @@ Editor.propTypes = {
         params: PropTypes.shape({
             id: PropTypes.node
         }).isRequired
-    }).isRequired
+    }).isRequired,
+    setScenario: PropTypes.func.isRequired,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    categories: PropTypes.array,
+    slides: PropTypes.array,
+    status: PropTypes.number
 };
 
-export default Editor;
+function mapStateToProps(state) {
+    const { title, description, categories, status } = state.scenario;
+    return { title, description, categories, status };
+}
+
+const mapDispatchToProps = {
+    setScenario
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Editor);

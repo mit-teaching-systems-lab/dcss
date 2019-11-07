@@ -10,7 +10,7 @@
     border: 1px solid gold !important;
 }
 
-.slides__list-container {
+.slides__list-inner-container {
     overflow-y: scroll;
     overflow-x: hidden;
     height: 61vh;
@@ -18,4 +18,8 @@
     border: 0 !important;
     box-shadow: 0 0 0 0 !important;
     -webkit-box-shadow: 0 0 0 0 !important;
+}
+
+.slides__list-outer-container {
+    min-width: 261px !important;
 }

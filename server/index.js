@@ -11,6 +11,7 @@ const runsRouter = require('./service/runs');
 const s3Router = require('./service/s3');
 const scenariosRouter = require('./service/scenarios');
 const searchRouter = require('./service/search');
+const statusRouter = require('./service/status');
 const tagsRouter = require('./service/tags');
 
 const { getDbConfig } = require('./util/dbConfig');
@@ -43,6 +44,7 @@ app.use('/roles', rolesRouter);
 app.use('/runs', runsRouter);
 app.use('/scenarios', scenariosRouter);
 app.use('/search', searchRouter);
+app.use('/status', statusRouter);
 app.use('/tags', tagsRouter);
 
 // This handles 404 results from router -- answers all remaining requests

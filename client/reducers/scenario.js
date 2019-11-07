@@ -3,7 +3,8 @@ import { SET_SCENARIO, SET_SLIDES } from '@client/actions/types';
 const initialState = {
     title: '',
     description: '',
-    slides: null
+    slides: null,
+    status: undefined
 };
 
 export default function(state = initialState, action) {

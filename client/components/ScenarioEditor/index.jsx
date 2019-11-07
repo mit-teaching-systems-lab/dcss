@@ -11,11 +11,11 @@ class ScenarioEditor extends Component {
         super(props);
         this.state = {
             saving: false,
-            categories: [],
-            topics: []
+            categories: []
         };
 
-        this.getScenarioData = this.getScenarioData.bind(this);
+        this.fetchScenario = this.fetchScenario.bind(this);
+
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -23,10 +23,11 @@ class ScenarioEditor extends Component {
             this.props.setScenario({
                 title: '',
                 description: '',
-                categories: []
+                categories: [],
+                status: 1
             });
         } else {
-            this.getScenarioData();
+            this.fetchScenario();
         }
     }
 
@@ -35,7 +36,12 @@ class ScenarioEditor extends Component {
         this.setState({ categories });
     }
 
-    async getScenarioData() {
+    onChange(event, { name, value }) {
+        this.props.updateEditorMessage('');
+        this.props.setScenario({ [name]: value });
+    }
+
+    async fetchScenario() {
         const scenarioResponse = await (await fetch(
             `/api/scenarios/${this.props.scenarioId}`
         )).json();
@@ -49,11 +55,6 @@ class ScenarioEditor extends Component {
         }
     }
 
-    onChange(event, { name, value }) {
-        this.props.updateEditorMessage('');
-        this.props.setScenario({ [name]: value });
-    }
-
     async onSubmit() {
         if (!this.props.title || !this.props.description) {
             this.props.updateEditorMessage(
@@ -65,7 +66,8 @@ class ScenarioEditor extends Component {
         const data = {
             title: this.props.title,
             description: this.props.description,
-            categories: this.props.categories
+            categories: this.props.categories,
+            status: this.props.status
         };
 
         const saveResponse = await (await this.props.submitCB(data)).json();
@@ -173,8 +175,8 @@ class ScenarioEditor extends Component {
 }
 
 function mapStateToProps(state) {
-    const { title, description, categories } = state.scenario;
-    return { title, description, categories };
+    const { title, description, categories, status } = state.scenario;
+    return { title, description, categories, status };
 }
 
 const mapDispatchToProps = {
@@ -190,7 +192,7 @@ ScenarioEditor.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     categories: PropTypes.array,
-    topics: PropTypes.array
+    status: PropTypes.number
 };
 
 export default connect(

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Menu } from 'semantic-ui-react';
-import ConfirmableDeleteButton from '@components/Editor/ConfirmableDeleteButton';
+import ConfirmableDeleteButton from './ConfirmableDeleteButton';
 
 export default class EditorMenu extends React.Component {
     constructor(props) {

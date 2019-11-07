@@ -185,7 +185,9 @@ Scenario.propTypes = {
     setSlides: PropTypes.func.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,
-    slides: PropTypes.array
+    categories: PropTypes.array,
+    slides: PropTypes.array,
+    status: PropTypes.number
 };
 
 export default connect(
