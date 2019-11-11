@@ -20,6 +20,10 @@ class Editor extends Component {
     constructor(props) {
         super(props);
 
+        if (!this.props.match.params.id) {
+            this.props.match.params.id = 'new';
+        }
+
         this.fetchScenario = this.fetchScenario.bind(this);
         this.deleteScenario = this.deleteScenario.bind(this);
         this.updateScenario = this.updateScenario.bind(this);
@@ -39,7 +43,7 @@ class Editor extends Component {
             }
         };
 
-        if (this.props.match.params.id != 'new') {
+        if (this.props.match.params.id !== 'new') {
             Object.assign(this.state.tabs, {
                 slides: this.getTab('slides'),
                 preview: this.getTab('preview')

@@ -25,7 +25,6 @@ function Routes() {
             <h1>
                 <NavLink to="/">Teacher Moments</NavLink>
             </h1>
-
             <Switch>
                 <GeneralRoutes />
             </Switch>
@@ -49,7 +48,9 @@ const GeneralRoutes = () => {
                 {Session.isSessionActive() && (
                     <React.Fragment>
                         <Menu.Item>
-                            <NavLink to="/editor/new">Create a Moment</NavLink>
+                            <NavLink exact to="/create">
+                                Create a Moment
+                            </NavLink>
                         </Menu.Item>
                         <Menu.Item>
                             <NavLink to="/facilitator">Facilitator</NavLink>
@@ -72,6 +73,7 @@ const GeneralRoutes = () => {
             <Route exact path="/official" component={ScenariosList} />
             <Route exact path="/community" component={ScenariosList} />
             <Route path="/run/:scenarioId" component={Run} />
+            <Route exact path="/create" component={Editor} />
             <Route path="/editor/:id" component={Editor} />
             <Route exact path="/facilitator" component={Facilitator} />
             <Route exact path="/admin" component={AccountAdmin} />
