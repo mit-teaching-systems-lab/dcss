@@ -151,7 +151,6 @@ CreateAccount.propTypes = {
         push: PropTypes.func.isRequired
     }).isRequired,
     logIn: PropTypes.func.isRequired,
-    logOut: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
     username: PropTypes.string
 };

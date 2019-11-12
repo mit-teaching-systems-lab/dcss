@@ -10,9 +10,9 @@ exports.getUserById = async function getUserById(id) {
     });
 };
 
-exports.getAllUsers = async function getAllUsers() {
+exports.getAllUsersRoles = async function getAllUsersRoles() {
     return withClient(async client => {
-        const result = await client.query(sql`SELECT * FROM users`);
+        const result = await client.query(sql`SELECT * FROM user_role_detail`);
         return result.rows;
     });
 };

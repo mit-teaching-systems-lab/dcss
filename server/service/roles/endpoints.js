@@ -1,25 +1,26 @@
 const { asyncMiddleware } = require('../../util/api');
 
 const db = require('./db');
+const { getUserByProps } = require('../auth/db');
 
-exports.getAllUsers = asyncMiddleware(async function getAllUserRolesAsync(
+exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
     req,
     res
 ) {
-    const users = await db.getAllUsers();
+    const users = await db.getAllUsersRoles();
     const noUsersFoundError = new Error('No users found');
     noUsersFoundError.status = 409;
 
     if (!users) throw noUsersFoundError;
 
-    res.json(users);
+    res.json({ users, status: 200 });
 });
 
 exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
     req,
     res
 ) {
-    const userId = Number(req.params.user_id);
+    const userId = req.session.user.id;
     const user = await db.getUserById(userId);
     const noUserFoundError = new Error('Invalid user id.');
     noUserFoundError.status = 409;
@@ -34,8 +35,9 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
     req,
     res
 ) {
-    const userId = Number(req.params.user_id);
-    const roles = req.body.roles;
+    const { username, email, roles } = req.body;
+    const user = await getUserByProps({ username, email });
+    const userId = user.id;
     if (!userId || !roles.length) {
         const roleCreateError = new Error('User and roles must be defined');
         roleCreateError.status = 409;
@@ -59,8 +61,9 @@ exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
     req,
     res
 ) {
-    const userId = Number(req.params.user_id);
-    const roles = req.body.roles;
+    const { username, email, roles } = req.body;
+    const user = await getUserByProps({ username, email });
+    const userId = user.id;
     if (!userId || !roles.length) {
         const error = new Error('User and roles must be defined');
         error.status = 409;
@@ -84,7 +87,7 @@ exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
     req,
     res
 ) {
-    const userId = Number(req.params.user_id);
+    const userId = req.session.user.id;
     const roles = req.body.roles;
     if (!userId || !roles.length) {
         const roleCreateError = new Error('User and roles must be defined');

@@ -10,6 +10,7 @@ import { Menu } from 'semantic-ui-react';
 import ScenariosList from '@client/components/ScenariosList';
 import Editor from '@client/components/Editor';
 import Facilitator from '@client/components/Facilitator';
+import AccountAdmin from '@client/components/AccountAdmin';
 import Login from '@client/components/Login';
 import CreateAccount from '@client/components/CreateAccount';
 import Run from '@client/components/Run';
@@ -53,6 +54,9 @@ const GeneralRoutes = () => {
                         <Menu.Item>
                             <NavLink to="/facilitator">Facilitator</NavLink>
                         </Menu.Item>
+                        <Menu.Item>
+                            <NavLink to="/admin">Admin</NavLink>
+                        </Menu.Item>
                     </React.Fragment>
                 )}
                 <Menu.Item position="right">
@@ -70,6 +74,7 @@ const GeneralRoutes = () => {
             <Route path="/run/:scenarioId" component={Run} />
             <Route path="/editor/:id" component={Editor} />
             <Route exact path="/facilitator" component={Facilitator} />
+            <Route exact path="/admin" component={AccountAdmin} />
             <Route exact path="/logout" component={Login} />
             <Route exact path="/login" component={Login} />
             <Route path="/login/new" component={CreateAccount} />
