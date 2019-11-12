@@ -8,11 +8,11 @@ import {
 import { Menu } from 'semantic-ui-react';
 
 import ScenariosList from '@client/components/ScenariosList';
-import Scenario from '@client/components/Scenario';
 import Editor from '@client/components/Editor';
 import Facilitator from '@client/components/Facilitator';
 import Login from '@client/components/Login';
 import CreateAccount from '@client/components/CreateAccount';
+import Run from '@client/components/Run';
 
 import Session from '@client/util/session';
 
@@ -26,7 +26,6 @@ function Routes() {
             </h1>
 
             <Switch>
-                <Route path="/moment/:scenarioId" component={Scenario} />
                 <GeneralRoutes />
             </Switch>
         </Router>
@@ -68,7 +67,7 @@ const GeneralRoutes = () => {
             <Route exact path="/" component={ScenariosList} />
             <Route exact path="/official" component={ScenariosList} />
             <Route exact path="/community" component={ScenariosList} />
-            <Route path="/moment/:scenarioId" component={Scenario} />
+            <Route path="/run/:scenarioId" component={Run} />
             <Route path="/editor/:id" component={Editor} />
             <Route exact path="/facilitator" component={Facilitator} />
             <Route exact path="/logout" component={Login} />

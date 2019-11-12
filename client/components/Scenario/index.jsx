@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Grid } from 'semantic-ui-react';
+import { withRouter } from 'react-router';
 
 import DescriptionSlide from './DescriptionSlide';
 import ContentSlide from './ContentSlide';
@@ -34,7 +35,7 @@ class Scenario extends Component {
     }
 
     isScenarioRun() {
-        return location.pathname.includes('/moment/');
+        return location.pathname.includes('/moment/') || this.props.runId;
     }
 
     getSlideButton(type) {
@@ -187,10 +188,13 @@ Scenario.propTypes = {
     description: PropTypes.string,
     categories: PropTypes.array,
     slides: PropTypes.array,
-    status: PropTypes.number
+    status: PropTypes.number,
+    runId: PropTypes.number
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Scenario);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Scenario)
+);

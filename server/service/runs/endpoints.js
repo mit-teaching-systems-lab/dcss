@@ -5,7 +5,9 @@ const { runForRequest } = require('./middleware');
 exports.createRun = asyncMiddleware(async function createRun(req, res) {
     const { scenario_id } = req.params;
     const { id: user_id } = req.session.user;
-    res.json(await db.createRun({ scenario_id, user_id }));
+    const result = await db.createRun({ scenario_id, user_id });
+    result.status = 200;
+    res.json(result);
 });
 
 exports.postResponseData = asyncMiddleware(async function postResponseData(

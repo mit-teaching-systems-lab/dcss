@@ -17,16 +17,7 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
         return (
             <Card key={id}>
                 <Card.Content>
-                    <Card.Header>
-                        <Link
-                            to={{
-                                pathname: `/moment/${id}`,
-                                state: { id, title, description }
-                            }}
-                        >
-                            {title}
-                        </Link>
-                    </Card.Header>
+                    <Card.Header>{title}</Card.Header>
                     <Card.Description>{description}</Card.Description>
                 </Card.Content>
                 {isLoggedIn && (
@@ -40,6 +31,20 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                             to={{ pathname: `/editor/${id}` }}
                         >
                             Edit
+                        </Button>
+                    </Card.Content>
+                )}
+                {isLoggedIn && (
+                    <Card.Content extra>
+                        <Button
+                            basic
+                            fluid
+                            color="black"
+                            push="true"
+                            as={Link}
+                            to={{ pathname: `/run/${id}` }}
+                        >
+                            Run
                         </Button>
                     </Card.Content>
                 )}
