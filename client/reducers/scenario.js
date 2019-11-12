@@ -4,7 +4,7 @@ const initialState = {
     title: '',
     description: '',
     slides: null,
-    status: undefined
+    status: 1
 };
 
 export default function(state = initialState, action) {

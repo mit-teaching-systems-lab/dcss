@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Grid, Input, Menu, Segment } from 'semantic-ui-react';
+import {
+    Dropdown,
+    Grid,
+    Icon,
+    Input,
+    Menu,
+    Message,
+    Segment
+} from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
 import * as Components from '../Components';
 import './Editor.css';
@@ -71,6 +79,42 @@ export default class SlideEditor extends React.Component {
             onTitleChange,
             state: { title, components }
         } = this;
+
+        const showComponentDropdown =
+            components.length === 0 ? { open: true } : {};
+
+        const slideComponentDropDown = (
+            <Dropdown
+                {...showComponentDropdown}
+                item
+                text={
+                    <React.Fragment>
+                        <Icon
+                            name="content"
+                            style={{
+                                marginRight: '0.5rem'
+                            }}
+                        />
+                        Add to slide
+                    </React.Fragment>
+                }
+            >
+                <Dropdown.Menu>
+                    {ComponentsMenuOrder.map(type => {
+                        const { Card } = Components[type];
+                        return (
+                            <Dropdown.Item
+                                key={type}
+                                onClick={this.clickHandle(type)}
+                            >
+                                <Card />
+                            </Dropdown.Item>
+                        );
+                    })}
+                </Dropdown.Menu>
+            </Dropdown>
+        );
+
         return (
             <Grid>
                 <Grid.Column stretched>
@@ -116,32 +160,32 @@ export default class SlideEditor extends React.Component {
                                         position="right"
                                         name="Add content to slide"
                                     >
-                                        <Dropdown item text="Add to slide">
-                                            <Dropdown.Menu>
-                                                {ComponentsMenuOrder.map(
-                                                    type => {
-                                                        const {
-                                                            Card
-                                                        } = Components[type];
-                                                        return (
-                                                            <Dropdown.Item
-                                                                key={type}
-                                                                onClick={this.clickHandle(
-                                                                    type
-                                                                )}
-                                                            >
-                                                                <Card />
-                                                            </Dropdown.Item>
-                                                        );
-                                                    }
-                                                )}
-                                            </Dropdown.Menu>
-                                        </Dropdown>
+                                        {slideComponentDropDown}
                                     </Menu.Menu>
                                 ]
                             }}
                         />
                         <Segment className="editor__component-layout-pane">
+                            {components.length === 0 && (
+                                <Message
+                                    floating
+                                    icon={
+                                        <Icon.Group
+                                            size="huge"
+                                            style={{ marginRight: '0.5rem' }}
+                                        >
+                                            <Icon name="content" />
+                                            <Icon
+                                                corner="top right"
+                                                name="add"
+                                                color="green"
+                                            />
+                                        </Icon.Group>
+                                    }
+                                    header="Add content to this slide!"
+                                    content="Using the 'Add to slide' menu on the right, select content components to add to your slide."
+                                />
+                            )}
                             {components.map((value, index) => {
                                 const { type } = value;
                                 const { Editor, Display } = Components[type];

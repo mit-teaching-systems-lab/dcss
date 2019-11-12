@@ -205,6 +205,7 @@ class Editor extends Component {
         const scenarioStatusMenuItem = this.props.status !== undefined && (
             <ScenarioStatusMenuItem
                 key="scenario-status-menu-item"
+                name="Set scenario status"
                 status={this.props.status}
                 onClick={this.onClickScenarioAction}
             />

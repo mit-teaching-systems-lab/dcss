@@ -50,7 +50,8 @@ class ScenarioEditor extends Component {
             this.props.setScenario({
                 title: scenarioResponse.scenario.title,
                 description: scenarioResponse.scenario.description,
-                categories: scenarioResponse.scenario.categories
+                categories: scenarioResponse.scenario.categories,
+                status: scenarioResponse.scenario.status
             });
         }
     }

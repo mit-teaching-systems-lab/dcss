@@ -10,6 +10,7 @@ import {
     Loader,
     Menu,
     Message,
+    Popup,
     Segment
 } from 'semantic-ui-react';
 import SlideEditor from '@components/Slide/Editor';
@@ -73,12 +74,12 @@ class Slides extends React.Component {
                 currSlide.id === savedSlide.id ? savedSlide : currSlide
             );
             this.setState({ slides });
-            this.props.updateEditorMessage('Slide saved');
+            this.props.updateEditorMessage('Slide saved!');
         }, 250);
     }
 
     async moveSlide(fromIndex, toIndex) {
-        this.props.updateEditorMessage('Moving slides...');
+        this.props.updateEditorMessage('Moving slide...');
 
         const { scenarioId } = this.props;
         const slides = this.state.slides.slice();
@@ -90,7 +91,6 @@ class Slides extends React.Component {
         }
         // This is to update the UI ASAP
         this.setState({ slides, currentSlideIndex: toIndex });
-        this.props.updateEditorMessage('Slide moved');
         const result = await fetch(
             `/api/scenarios/${scenarioId}/slides/order`,
             {
@@ -103,7 +103,7 @@ class Slides extends React.Component {
         );
         await result.json();
         this.setState({ slides, currentSlideIndex: toIndex });
-        this.props.updateEditorMessage('');
+        this.props.updateEditorMessage('Slide saved!');
     }
 
     async deleteSlide(index) {
@@ -170,10 +170,20 @@ class Slides extends React.Component {
         const orderIndex = this.state.slides.findIndex(
             slide => slide.id === id
         );
-        const correctedIndex = this.state.currentSlideIndex + 1;
+        let currentSlideIndex = this.state.currentSlideIndex + 1;
 
-        if (orderIndex !== correctedIndex) {
-            this.moveSlide(orderIndex, correctedIndex);
+        if (this.state.slides.length > 1 && orderIndex !== currentSlideIndex) {
+            this.moveSlide(orderIndex, currentSlideIndex);
+        } else {
+            // If this is the very first slide, the currentSlideIndex
+            // needs to be corrected to 0
+            if (this.state.slides.length === 1) {
+                currentSlideIndex = 0;
+            }
+
+            // This is necessary when adding a slide that doesn't need
+            // any special ordering changes, but still must be highlighted.
+            this.setState({ currentSlideIndex });
         }
     }
 
@@ -209,48 +219,82 @@ class Slides extends React.Component {
                     >
                         <Grid.Row>
                             <Menu icon>
-                                <Menu.Item
-                                    name="Add a slide"
-                                    onClick={() => {
-                                        addSlide(this.state.currentSlideIndex);
-                                    }}
-                                >
-                                    <Icon
-                                        name="plus square outline"
-                                        size="large"
-                                        style={{ marginRight: '0.5rem' }}
-                                    />
-                                    Add a slide
-                                </Menu.Item>
-                                <Menu.Menu
-                                    key="menu-item-slide-options"
-                                    position="right"
-                                >
-                                    <Dropdown item text="Options">
-                                        <Dropdown.Menu>
-                                            <Dropdown.Item
-                                                key={1}
-                                                onClick={() => {
-                                                    duplicateSlide(
-                                                        this.state
-                                                            .currentSlideIndex
-                                                    );
+                                <Popup
+                                    content="Add a slide"
+                                    trigger={
+                                        <Menu.Item
+                                            name="Add a slide"
+                                            onClick={() => {
+                                                addSlide(
+                                                    this.state.currentSlideIndex
+                                                );
+                                            }}
+                                        >
+                                            <Icon
+                                                name="plus square outline"
+                                                size="large"
+                                                style={{
+                                                    marginRight: '0.5rem'
                                                 }}
+                                            />
+                                            Add a slide
+                                        </Menu.Item>
+                                    }
+                                />
+                                {slides.length > 0 && (
+                                    <Popup
+                                        content="Slide options"
+                                        trigger={
+                                            <Menu.Menu
+                                                key="menu-item-slide-options"
+                                                position="right"
                                             >
-                                                <Icon name="copy outline" />
-                                                Duplicate selected slide
-                                            </Dropdown.Item>
-                                        </Dropdown.Menu>
-                                    </Dropdown>
-                                </Menu.Menu>
+                                                <Dropdown item text="Options">
+                                                    <Dropdown.Menu>
+                                                        <Dropdown.Item
+                                                            key={1}
+                                                            onClick={() => {
+                                                                duplicateSlide(
+                                                                    this.state
+                                                                        .currentSlideIndex
+                                                                );
+                                                            }}
+                                                        >
+                                                            <Icon name="copy outline" />
+                                                            Duplicate selected
+                                                            slide
+                                                        </Dropdown.Item>
+                                                    </Dropdown.Menu>
+                                                </Dropdown>
+                                            </Menu.Menu>
+                                        }
+                                    />
+                                )}
                             </Menu>
                         </Grid.Row>
                         <Segment className="slides__list-inner-container">
                             {slides.length === 0 && (
-                                <Message size="big">
-                                    Start creating a Teacher Moment by adding
-                                    your first slide!
-                                </Message>
+                                <Message
+                                    floating
+                                    icon={
+                                        <Icon.Group
+                                            size="huge"
+                                            style={{ marginRight: '0.5rem' }}
+                                        >
+                                            <Icon name="plus square outline" />
+                                            <Icon
+                                                corner="top right"
+                                                name="add"
+                                                color="green"
+                                            />
+                                        </Icon.Group>
+                                    }
+                                    header="Add a slide!"
+                                    content="Click the 'Add a slide' button to add your first slide!"
+                                    onClick={() => {
+                                        addSlide(this.state.currentSlideIndex);
+                                    }}
+                                />
                             )}
                             <Sortable onChange={onChangeSlideOrder}>
                                 {slides.map((slide, index) => (

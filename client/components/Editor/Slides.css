@@ -21,5 +21,7 @@
 }
 
 .slides__list-outer-container {
+    /* Disable until bug can be fixed
     min-width: 261px !important;
+    */
 }
