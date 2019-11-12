@@ -27,7 +27,7 @@ app.use(cors());
 
 app.use(
     session({
-        secret: 'mit tsl teacher moments',
+        secret: process.env['SESSION_SECRET'] || 'mit tsl teacher moments',
         resave: false,
         saveUninitialized: true,
         store: new pgSession({

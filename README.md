@@ -135,6 +135,15 @@ This app is deployed via Heroku. To run the deploy commands, please [install Her
 
 ### Staging environment setup
 
+#### Session Secret
+
+To provide a session secret, set an environment variable on your deployment server: 
+
+```
+SESSION_SECRET=<the secret>
+```
+
+
 #### Initializing staging database
 Create a .env file in the root of the project directory and add the following info:
 ```
