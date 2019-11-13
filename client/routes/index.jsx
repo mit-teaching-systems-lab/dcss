@@ -19,15 +19,19 @@ import Session from '@client/util/session';
 
 Session.timeout();
 
+// Special case component for solving new scenario routing issue.
+// Previously the route wouldn't update to the same Editor component.
+const NewScenario = props => {
+    return <Editor {...props} isNewScenario={true} />;
+};
+
 function Routes() {
     return (
         <Router>
             <h1>
                 <NavLink to="/">Teacher Moments</NavLink>
             </h1>
-            <Switch>
-                <GeneralRoutes />
-            </Switch>
+            <GeneralRoutes />
         </Router>
     );
 }
@@ -48,7 +52,7 @@ const GeneralRoutes = () => {
                 {Session.isSessionActive() && (
                     <React.Fragment>
                         <Menu.Item>
-                            <NavLink exact to="/create">
+                            <NavLink exact to="/editor/new">
                                 Create a Moment
                             </NavLink>
                         </Menu.Item>
@@ -69,17 +73,19 @@ const GeneralRoutes = () => {
                 </Menu.Item>
             </Menu>
 
-            <Route exact path="/" component={ScenariosList} />
-            <Route exact path="/official" component={ScenariosList} />
-            <Route exact path="/community" component={ScenariosList} />
-            <Route path="/run/:scenarioId" component={Run} />
-            <Route exact path="/create" component={Editor} />
-            <Route path="/editor/:id" component={Editor} />
-            <Route exact path="/facilitator" component={Facilitator} />
-            <Route exact path="/admin" component={AccountAdmin} />
-            <Route exact path="/logout" component={Login} />
-            <Route exact path="/login" component={Login} />
-            <Route path="/login/new" component={CreateAccount} />
+            <Switch>
+                <Route exact path="/" component={ScenariosList} />
+                <Route exact path="/official" component={ScenariosList} />
+                <Route exact path="/community" component={ScenariosList} />
+                <Route path="/run/:scenarioId" component={Run} />
+                <Route exact path="/editor/new" component={NewScenario} />
+                <Route exact path="/editor/:id" component={Editor} />
+                <Route exact path="/facilitator" component={Facilitator} />
+                <Route exact path="/admin" component={AccountAdmin} />
+                <Route exact path="/logout" component={Login} />
+                <Route exact path="/login" component={Login} />
+                <Route path="/login/new" component={CreateAccount} />
+            </Switch>
         </React.Fragment>
     );
 };
