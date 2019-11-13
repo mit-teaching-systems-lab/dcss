@@ -55,15 +55,19 @@ class Scenario extends Component {
             return null;
         }
 
+        const { onSubmit } = this.props;
+
         switch (type) {
             case 'next':
                 return () => {
                     let activeSlideIndex = this.state.activeSlideIndex;
                     activeSlideIndex++;
                     this.setState({ activeSlideIndex });
+                    if (onSubmit) onSubmit();
                 };
             case 'finish':
                 return () => {
+                    if (onSubmit) onSubmit();
                     this.props.history.push('/');
                 };
             default:
@@ -128,13 +132,20 @@ class Scenario extends Component {
         );
         const scenarioSlides = [];
 
+        const { onResponseChange } = this.props;
+
         scenarioSlides.push(descriptionSlide);
         contentData.map((slide, index) => {
             const isLastSlide = index === contentData.length - 1;
             const slideButton = isLastSlide
                 ? this.getSlideButton('finish')
                 : this.getSlideButton('next');
-            const displaySlide = ContentSlide(slide, cardClass, slideButton);
+            const displaySlide = ContentSlide(
+                slide,
+                cardClass,
+                slideButton,
+                onResponseChange
+            );
             scenarioSlides.push(displaySlide);
         });
 
@@ -189,7 +200,9 @@ Scenario.propTypes = {
     categories: PropTypes.array,
     slides: PropTypes.array,
     status: PropTypes.number,
-    runId: PropTypes.number
+    runId: PropTypes.number,
+    onResponseChange: PropTypes.func,
+    onSubmit: PropTypes.func
 };
 
 export default withRouter(

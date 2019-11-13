@@ -14,6 +14,7 @@ const Display = ({ prompt, placeholder, responseId, onResponseChange }) => (
                 placeholder={placeholder}
                 onChange={onResponseChange}
                 className="textresponse__input"
+                type="text" // adding type to mark a text response in the onResponseChange
             />
         </Label>
     </React.Fragment>

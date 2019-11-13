@@ -8,7 +8,7 @@ const pgSession = require('connect-pg-simple')(session);
 const authRouter = require('./service/auth');
 const rolesRouter = require('./service/roles');
 const runsRouter = require('./service/runs');
-const s3Router = require('./service/s3');
+const mediaRouter = require('./service/media');
 const scenariosRouter = require('./service/scenarios');
 const searchRouter = require('./service/search');
 const statusRouter = require('./service/status');
@@ -39,7 +39,7 @@ app.use(
 );
 
 app.use('/auth', authRouter);
-app.use('/media', s3Router);
+app.use('/media', mediaRouter);
 app.use('/roles', rolesRouter);
 app.use('/runs', runsRouter);
 app.use('/scenarios', scenariosRouter);

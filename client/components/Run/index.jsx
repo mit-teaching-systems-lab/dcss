@@ -9,8 +9,12 @@ class Run extends Component {
         this.state = {
             runId: undefined,
             scenarioId:
-                this.props.scenarioId || this.props.match.params.scenarioId
+                this.props.scenarioId || this.props.match.params.scenarioId,
+            responses: new Map()
         };
+
+        this.onResponseChange = this.onResponseChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
     }
 
     async componentDidMount() {
@@ -28,12 +32,52 @@ class Run extends Component {
         }
     }
 
+    onResponseChange(event, { name, value, type }) {
+        this.setState(prevState => {
+            let responses = prevState.responses;
+            if (!responses.has(name)) {
+                responses.set(name, { type, value });
+            } else {
+                let response = responses.get(name);
+                response['value'] = value;
+            }
+        });
+    }
+
+    async onSubmit() {
+        const { runId } = this.state;
+        for (let [name, { type, value }] of this.state.responses) {
+            const url = `/api/runs/${runId}/response/${name}`;
+            const body = {
+                type,
+                value
+            };
+
+            // TODO: feedback for when response is saved
+            await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(body)
+            });
+        }
+
+        // clear the responses for the next slide
+        this.setState(prevState => {
+            let responses = prevState.responses;
+            responses.clear();
+        });
+    }
+
     render() {
         return (
             (this.state.runId && (
                 <Scenario
                     scenarioId={this.state.scenarioId}
                     runId={this.state.runId}
+                    onResponseChange={this.onResponseChange}
+                    onSubmit={this.onSubmit}
                 />
             )) ||
             'Loading...'

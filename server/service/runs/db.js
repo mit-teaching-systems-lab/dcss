@@ -13,12 +13,11 @@ exports.createRun = async function({ scenario_id, user_id }) {
     return result.rows[0];
 };
 
-exports.upsertResponse = async ({ run_id, response_id, response }) => {
+exports.upsertResponse = async ({ run_id, response_id, response, user_id }) => {
     const result = await query(
         sql`
-        INSERT INTO run_response (run_id, response_id, response) 
-           VALUES (${run_id}, ${response_id}, ${response})
-        ON CONFLICT (run_id, response_id) DO UPDATE SET response = EXCLUDED.response RETURNING *;
+        INSERT INTO run_response (run_id, response_id, response, user_id) 
+           VALUES (${run_id}, ${response_id}, ${response}, ${user_id});
         `
     );
     return result.rows[0];

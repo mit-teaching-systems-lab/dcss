@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 
-const SlideComponentsList = ({ asSVG = false, components }) => {
+const SlideComponentsList = ({
+    asSVG = false,
+    components,
+    onResponseChange
+}) => {
     const style = {
         height: '150px',
         overflow: 'hidden'
@@ -36,13 +40,20 @@ const SlideComponentsList = ({ asSVG = false, components }) => {
         components.map((value, index) => {
             const { type } = value;
             const { Display } = Components[type];
-            return <Display key={`slide${index}`} {...value} />;
+            return (
+                <Display
+                    key={`slide${index}`}
+                    {...value}
+                    onResponseChange={onResponseChange}
+                />
+            );
         })
     );
 };
 
 SlideComponentsList.propTypes = {
     asSVG: PropTypes.bool,
-    components: PropTypes.array
+    components: PropTypes.array,
+    onResponseChange: PropTypes.func
 };
 export default SlideComponentsList;

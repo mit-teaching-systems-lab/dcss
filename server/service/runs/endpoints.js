@@ -14,10 +14,12 @@ exports.postResponseData = asyncMiddleware(async function postResponseData(
     req,
     res
 ) {
-    const { id: run_id } = await runForRequest(req);
+    const { id: run_id, user_id } = await runForRequest(req);
     const { response_id } = req.params;
     const response = req.body;
-    res.json(await db.upsertResponse({ run_id, response_id, response }));
+    res.json(
+        await db.upsertResponse({ run_id, response_id, response, user_id })
+    );
 });
 
 exports.finishRun = asyncMiddleware(async function createRun(req, res) {
