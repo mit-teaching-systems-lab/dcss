@@ -8,5 +8,5 @@
 }
 
 .editor__content-pane {
-    height: 80vh;
+    height: 83vh !important;
 }

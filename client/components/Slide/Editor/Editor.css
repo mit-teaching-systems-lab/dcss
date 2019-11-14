@@ -1,7 +1,7 @@
 .editor__component-layout-pane {
     overflow-y: scroll;
     overflow-x: hidden;
-    height: 61vh;
+    height: 65vh !important;
     padding: 1px !important;
     border: 0 !important;
     box-shadow: 0 0 0 0 !important;

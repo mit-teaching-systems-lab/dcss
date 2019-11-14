@@ -5,7 +5,7 @@ import {
     NavLink,
     BrowserRouter as Router
 } from 'react-router-dom';
-import { Menu } from 'semantic-ui-react';
+import { Dropdown, Menu } from 'semantic-ui-react';
 
 import ScenariosList from '@client/components/ScenariosList';
 import Editor from '@client/components/Editor';
@@ -25,69 +25,74 @@ const NewScenario = props => {
     return <Editor {...props} isNewScenario={true} />;
 };
 
-function Routes() {
+const Navigation = () => {
     return (
-        <Router>
-            <h1>
+        <Menu className="nav">
+            <Menu.Item>
                 <NavLink to="/">Teacher Moments</NavLink>
-            </h1>
-            <GeneralRoutes />
-        </Router>
-    );
-}
+            </Menu.Item>
 
-const GeneralRoutes = () => {
-    return (
-        <React.Fragment>
-            <Menu className="nav">
-                <Menu.Item>
-                    <NavLink to="/">Home</NavLink>
-                </Menu.Item>
-                <Menu.Item>
-                    <NavLink to="/official">Official</NavLink>
-                </Menu.Item>
-                <Menu.Item>
-                    <NavLink to="/community">Community</NavLink>
-                </Menu.Item>
-                {Session.isSessionActive() && (
-                    <React.Fragment>
-                        <Menu.Item>
-                            <NavLink exact to="/editor/new">
-                                Create a Moment
-                            </NavLink>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <NavLink to="/facilitator">Facilitator</NavLink>
-                        </Menu.Item>
-                        <Menu.Item>
-                            <NavLink to="/admin">Admin</NavLink>
-                        </Menu.Item>
-                    </React.Fragment>
+            <Menu.Menu>
+                <Dropdown simple item text="Curated">
+                    <Dropdown.Menu>
+                        <Dropdown.Item>
+                            <NavLink to="/official">Official</NavLink>
+                        </Dropdown.Item>
+                        <Dropdown.Item>
+                            <NavLink to="/community">Community</NavLink>
+                        </Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+            </Menu.Menu>
+            {Session.isSessionActive() && (
+                <React.Fragment>
+                    <Menu.Item>
+                        <NavLink exact to="/editor/new">
+                            Create a Moment
+                        </NavLink>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <NavLink to="/facilitator">Facilitator</NavLink>
+                    </Menu.Item>
+                    <Menu.Item>
+                        <NavLink to="/admin">Admin</NavLink>
+                    </Menu.Item>
+                </React.Fragment>
+            )}
+            <Menu.Item position="right">
+                {Session.isSessionActive() ? (
+                    <NavLink to="/logout">Log out</NavLink>
+                ) : (
+                    <NavLink to="/login">Log in</NavLink>
                 )}
-                <Menu.Item position="right">
-                    {Session.isSessionActive() ? (
-                        <NavLink to="/logout">Log out</NavLink>
-                    ) : (
-                        <NavLink to="/login">Log in</NavLink>
-                    )}
-                </Menu.Item>
-            </Menu>
-
-            <Switch>
-                <Route exact path="/" component={ScenariosList} />
-                <Route exact path="/official" component={ScenariosList} />
-                <Route exact path="/community" component={ScenariosList} />
-                <Route path="/run/:scenarioId" component={Run} />
-                <Route exact path="/editor/new" component={NewScenario} />
-                <Route exact path="/editor/:id" component={Editor} />
-                <Route exact path="/facilitator" component={Facilitator} />
-                <Route exact path="/admin" component={AccountAdmin} />
-                <Route exact path="/logout" component={Login} />
-                <Route exact path="/login" component={Login} />
-                <Route path="/login/new" component={CreateAccount} />
-            </Switch>
-        </React.Fragment>
+            </Menu.Item>
+        </Menu>
+    );
+};
+const Routes = () => {
+    return (
+        <Switch>
+            <Route exact path="/" component={ScenariosList} />
+            <Route exact path="/official" component={ScenariosList} />
+            <Route exact path="/community" component={ScenariosList} />
+            <Route path="/run/:scenarioId" component={Run} />
+            <Route exact path="/editor/new" component={NewScenario} />
+            <Route path="/editor/:id" component={Editor} />
+            <Route exact path="/facilitator" component={Facilitator} />
+            <Route exact path="/admin" component={AccountAdmin} />
+            <Route exact path="/logout" component={Login} />
+            <Route exact path="/login" component={Login} />
+            <Route path="/login/new" component={CreateAccount} />
+        </Switch>
     );
 };
 
-export default Routes;
+function App() {
+    return (
+        <Router>
+            <Navigation />
+            <Routes />
+        </Router>
+    );
+}
+export default App;
