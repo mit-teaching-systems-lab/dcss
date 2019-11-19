@@ -46,9 +46,12 @@ class ScenarioEditor extends Component {
 
         // Only auto-save after initial
         // save of new scenario
-        if (this.props.scenarioId !== 'new') {
-            this.onSubmit();
-        }
+        // NOTE: temporarily disabling this until we
+        // have a better strategy for auto saving details
+        // on this page.
+        // if (this.props.scenarioId !== 'new') {
+        //     this.onSubmit();
+        // }
     }
 
     onConsentChange(event, { value }) {
