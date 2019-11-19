@@ -47,7 +47,12 @@ class ScenarioEditor extends Component {
     onChange(event, { name, value }) {
         this.props.updateEditorMessage('');
         this.props.setScenario({ [name]: value });
-        this.onSubmit();
+
+        // Only auto-save after initial
+        // save of new scenario
+        if (this.props.scenarioId !== 'new') {
+            this.onSubmit();
+        }
     }
 
     onConsentChange(event, { value }) {
