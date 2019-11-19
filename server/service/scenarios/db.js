@@ -2,35 +2,77 @@ const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 
 async function getScenarioCategories(scenarioId) {
-    const scenarioCategoriesResults = await query(
-        sql`
-            SELECT c.name as name
-            FROM scenario_tag s
-            INNER JOIN categories c
-            ON s.tag_id = c.id
-            where scenario_id = ${scenarioId};`
-    );
+    const scenarioCategoriesResults = await query(sql`
+        SELECT c.name as name
+        FROM scenario_tag s
+        INNER JOIN categories c
+        ON s.tag_id = c.id
+        where scenario_id = ${scenarioId};
+    `);
 
     return scenarioCategoriesResults.rows.map(r => r.name);
 }
 
-exports.getScenario = async function getScenario(scenarioId) {
-    const results = await query(
-        sql` SELECT * FROM scenario WHERE id = ${scenarioId};`
-    );
+async function addConsent(consent) {
+    const result = await query(sql`
+        INSERT INTO consent (prose)
+        VALUES (${consent.prose})
+        RETURNING *;
+    `);
+
+    return result.rowCount && result.rows[0];
+}
+
+async function setScenarioConsent(scenarioId, consent) {
+    const result = await query(sql`
+        INSERT INTO scenario_consent (scenario_id, consent_id)
+        VALUES (${scenarioId}, ${consent.id})
+        RETURNING *;
+    `);
+
+    return result.rowCount && result.rows[0];
+}
+
+async function getScenarioConsent(scenarioId) {
+    let results = await query(sql`
+        SELECT c.id as id, c.prose as prose
+        FROM scenario_consent s
+        INNER JOIN consent c
+        ON s.consent_id = c.id
+        WHERE s.scenario_id = ${scenarioId}
+        ORDER BY s.created_at DESC
+        LIMIT 1;
+    `);
+
+    if (!results.rowCount) {
+        results = await query(sql`
+            INSERT INTO scenario_consent (scenario_id, consent_id)
+            SELECT ${scenarioId}, id FROM consent WHERE is_default LIMIT 1
+            RETURNING *;
+        `);
+    }
+
+    return results.rows[0] || { id: null, prose: '' };
+}
+
+async function getScenario(scenarioId) {
+    const results = await query(sql`
+        SELECT * FROM scenario WHERE id = ${scenarioId};
+    `);
 
     const categories = await getScenarioCategories(scenarioId);
+    const consent = await getScenarioConsent(scenarioId);
 
     return {
         ...results.rows[0],
-        categories
+        categories,
+        consent
     };
-};
+}
 
-exports.getAllScenarios = async function getAllScenarios() {
-    const results = await query(
-        sql`SELECT * FROM scenario ORDER BY created_at DESC;`
-    );
+async function getAllScenarios() {
+    const results = await query(sql`SELECT * FROM scenario ORDER BY created_at DESC;
+    `);
 
     let resultsWithCategories = [];
     for (let r of results.rows) {
@@ -39,23 +81,34 @@ exports.getAllScenarios = async function getAllScenarios() {
     }
 
     return resultsWithCategories;
-};
+}
 
-exports.addScenario = async function addScenario(authorId, title, description) {
-    const result = await query(sql`
-INSERT INTO scenario (author_id, title, description)
-    VALUES (${authorId}, ${title}, ${description})
-    RETURNING *;
-        `);
-    return result.rows[0];
-};
+async function addScenario(authorId, title, description) {
+    const scenarioInsert = await query(sql`
+        INSERT INTO scenario (author_id, title, description)
+            VALUES (${authorId}, ${title}, ${description})
+            RETURNING *;
+    `);
 
-exports.setScenario = async function setScenario(scenarioId, scenarioData) {
+    const consentSelect = await query(sql`
+        SELECT id FROM consent WHERE is_default
+    `);
+    const consentDefault = consentSelect.rows[0];
+    const scenario = scenarioInsert.rows[0];
+    const consent = await setScenarioConsent(scenario.id, consentDefault);
+
+    return {
+        ...scenario,
+        consent
+    };
+}
+
+async function setScenario(scenarioId, scenario) {
     const result = await query(
-        updateQuery('scenario', { id: scenarioId }, scenarioData)
+        updateQuery('scenario', { id: scenarioId }, scenario)
     );
     return result.rows[0];
-};
+}
 
 async function addScenarioCategory(scenarioId, category) {
     const insertedRow = await query(sql`
@@ -81,18 +134,13 @@ async function deleteScenarioCategory(scenarioId, category) {
     return deletedRow;
 }
 
-exports.setScenarioCategories = async function setScenarioCategories(
-    scenarioId,
-    categories
-) {
-    const currentCategoriesResults = await query(
-        sql`
+async function setScenarioCategories(scenarioId, categories) {
+    const currentCategoriesResults = await query(sql`
         SELECT s.scenario_id, c.name as category
         FROM scenario_tag s
         INNER JOIN categories c on s.tag_id = c.id
         WHERE scenario_id=${scenarioId};
-        `
-    );
+    `);
 
     // This is the list of categories that already exist in current categories
     const currentCategories = currentCategoriesResults.rows.map(
@@ -125,23 +173,45 @@ exports.setScenarioCategories = async function setScenarioCategories(
     }
 
     return Promise.all(promises);
-};
+}
 
-exports.deleteScenario = async function deleteScenario(scenarioId) {
+async function deleteScenario(scenarioId) {
     let result;
 
-    result = await query(
-        sql`DELETE FROM scenario_tag WHERE scenario_id = ${scenarioId};`
-    );
+    result = await query(sql`
+        DELETE FROM scenario_consent WHERE scenario_id = ${scenarioId};
+    `);
+
+    result = await query(sql`
+        DELETE FROM scenario_tag WHERE scenario_id = ${scenarioId};
+    `);
 
     // TODO: need to handle the previous result
 
-    result = await query(
-        sql`DELETE FROM slide WHERE scenario_id = ${scenarioId};`
-    );
+    result = await query(sql`
+        DELETE FROM slide WHERE scenario_id = ${scenarioId};
+    `);
 
     // TODO: need to handle the previous result
 
-    result = await query(sql`DELETE FROM scenario WHERE id = ${scenarioId};`);
+    result = await query(sql`
+        DELETE FROM scenario WHERE id = ${scenarioId};
+    `);
+
     return { deletedCount: result.rowCount };
-};
+}
+
+// Scenario
+exports.addScenario = addScenario;
+exports.setScenario = setScenario;
+exports.getScenario = getScenario;
+exports.deleteScenario = deleteScenario;
+exports.getAllScenarios = getAllScenarios;
+
+// Scenario Consent
+exports.addConsent = addConsent;
+exports.setScenarioConsent = setScenarioConsent;
+exports.getScenarioConsent = getScenarioConsent;
+
+// Scenario Categories
+exports.setScenarioCategories = setScenarioCategories;

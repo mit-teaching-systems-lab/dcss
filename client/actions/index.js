@@ -1,4 +1,11 @@
-import { LOG_IN, LOG_OUT, SET_SCENARIO, SET_SLIDES, SET_USERS } from './types';
+import {
+    LOG_IN,
+    LOG_OUT,
+    SET_RUN,
+    SET_SCENARIO,
+    SET_SLIDES,
+    SET_USERS
+} from './types';
 
 export const logIn = username => ({
     type: LOG_IN,
@@ -16,17 +23,22 @@ export const logOut = username => ({
     }
 });
 
-export const setScenario = scenarioData => ({
+export const setRun = payload => ({
+    type: SET_RUN,
+    payload
+});
+
+export const setScenario = payload => ({
     type: SET_SCENARIO,
-    payload: scenarioData
+    payload
 });
 
-export const setSlides = slidesData => ({
+export const setSlides = payload => ({
     type: SET_SLIDES,
-    payload: slidesData
+    payload
 });
 
-export const setUsers = userData => ({
+export const setUsers = payload => ({
     type: SET_USERS,
-    payload: userData
+    payload
 });

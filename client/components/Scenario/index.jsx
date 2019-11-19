@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Button, Grid } from 'semantic-ui-react';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
+import { Grid } from 'semantic-ui-react';
 
-import DescriptionSlide from './DescriptionSlide';
+import EntrySlide from './EntrySlide';
 import ContentSlide from './ContentSlide';
 import { setScenario, setSlides } from '@client/actions';
 import './Scenario.css';
@@ -21,54 +21,69 @@ class Scenario extends Component {
                 activeSlideIndex: 0
             },
             this.props.location ? this.props.location.state : null,
+
+            // If there is an activeSlideIndex, it will be here
             this.props.match ? this.props.match.params : null
         );
 
-        this.isScenarioRun = this.isScenarioRun.bind(this);
-        this.getOnClickHandler = this.getOnClickHandler.bind(this);
-        this.getSlideButton = this.getSlideButton.bind(this);
-        this.getScenarioMetaData = this.getScenarioMetaData.bind(this);
-        this.getScenarioContent = this.getScenarioContent.bind(this);
-        this.getScenarioSlides = this.getScenarioSlides.bind(this);
+        // ...but this.props.match.params.activeSlideIndex is
+        // a string and we don't want that.
+        this.state.activeSlideIndex = Number(this.state.activeSlideIndex);
 
         this.getScenarioSlides();
+
+        if (this.isScenarioRun) {
+            const pathToSlide = `/run/${this.props.scenarioId}/${this.state.activeSlideIndex}`;
+
+            if (location.pathname !== pathToSlide) {
+                this.props.history.push(pathToSlide);
+            }
+        }
     }
 
-    isScenarioRun() {
-        return location.pathname.includes('/moment/') || this.props.runId;
-    }
-
-    getSlideButton(type) {
-        const onClick = this.getOnClickHandler(type);
-
-        return (
-            <div className="scenario__card--button">
-                <Button basic color="black" onClick={onClick}>
-                    {type[0].toUpperCase() + type.slice(1)}
-                </Button>
-            </div>
-        );
+    get isScenarioRun() {
+        return location.pathname.includes('/run/');
     }
 
     getOnClickHandler(type) {
-        if (!this.isScenarioRun()) {
+        if (!this.isScenarioRun) {
             return null;
         }
 
         const { onSubmit } = this.props;
-
         switch (type) {
+            case 'back':
+                return () => {
+                    let activeSlideIndex = this.state.activeSlideIndex - 1;
+                    this.setState({ activeSlideIndex });
+
+                    const pathToSlide = `/run/${this.props.scenarioId}/${activeSlideIndex}`;
+
+                    if (location.pathname !== pathToSlide) {
+                        this.props.history.push(pathToSlide);
+                    }
+                };
             case 'next':
                 return () => {
-                    let activeSlideIndex = this.state.activeSlideIndex;
-                    activeSlideIndex++;
+                    if (onSubmit) {
+                        onSubmit();
+                    }
+
+                    let activeSlideIndex = this.state.activeSlideIndex + 1;
                     this.setState({ activeSlideIndex });
-                    if (onSubmit) onSubmit();
+
+                    const pathToSlide = `/run/${this.props.scenarioId}/${activeSlideIndex}`;
+
+                    if (location.pathname !== pathToSlide) {
+                        this.props.history.push(pathToSlide);
+                    }
                 };
             case 'finish':
                 return () => {
-                    if (onSubmit) onSubmit();
-                    this.props.history.push('/');
+                    alert('FINISHED!');
+                    if (onSubmit) {
+                        onSubmit();
+                    }
                 };
             default:
                 return null;
@@ -76,87 +91,81 @@ class Scenario extends Component {
     }
 
     async getScenarioMetaData() {
-        let title, description;
+        let title, description, consent, status;
 
         if (this.state.title && this.state.description) {
             this.props.setScenario({
                 title: this.state.title,
-                description: this.state.description
+                description: this.state.description,
+                consent: this.state.consent
             });
             title = this.state.title;
             description = this.state.description;
+            consent = this.state.consent;
+            status = this.state.status;
         } else {
-            const scenarioResponse = await (await fetch(
+            const response = await (await fetch(
                 `/api/scenarios/${this.state.scenarioId}`
             )).json();
-            const scenario = scenarioResponse.scenario;
+            const scenario = response.scenario;
 
-            if (scenarioResponse.status === 200) {
-                this.props.setScenario({
-                    title: scenario.title,
-                    description: scenario.description
-                });
+            if (response.status === 200) {
+                this.props.setScenario(scenario);
                 title = scenario.title;
                 description = scenario.description;
+                consent = scenario.consent;
+                status = scenario.status;
             }
         }
 
-        return { title, description };
+        return { title, description, consent, status };
     }
 
     async getScenarioContent() {
         if (this.state.scenarioId) {
-            const res = await fetch(
+            const response = await fetch(
                 `/api/scenarios/${this.state.scenarioId}/slides`
             );
-            const { slides } = await res.json();
+            const { slides } = await response.json();
             return slides;
         }
         return null;
     }
 
     async getScenarioSlides() {
-        const cardClass = this.isScenarioRun()
-            ? 'scenario__card--run'
-            : 'scenario__card';
         const metaData = await this.getScenarioMetaData();
-        const contentData = await this.getScenarioContent();
-        // Check if the description slide is the last one
-        const descriptionSlideButton = !contentData.length
-            ? this.getSlideButton('finish')
-            : this.getSlideButton('next');
-        const descriptionSlide = DescriptionSlide(
-            metaData,
-            cardClass,
-            descriptionSlideButton
-        );
-        const scenarioSlides = [];
+        const contents = await this.getScenarioContent();
 
-        const { onResponseChange } = this.props;
+        const slides = [
+            <EntrySlide
+                key="entry-slide"
+                scenario={metaData}
+                onChange={this.props.onRunChange}
+                onClickNext={this.getOnClickHandler('next')}
+            />
+        ];
 
-        scenarioSlides.push(descriptionSlide);
-        contentData.map((slide, index) => {
-            const isLastSlide = index === contentData.length - 1;
-            const slideButton = isLastSlide
-                ? this.getSlideButton('finish')
-                : this.getSlideButton('next');
-            const displaySlide = ContentSlide(
-                slide,
-                cardClass,
-                slideButton,
-                onResponseChange
+        contents.forEach((slide, index) => {
+            const isLastSlide = index === contents.length - 1;
+            slides.push(
+                <ContentSlide
+                    key={index}
+                    slide={slide}
+                    isLastSlide={isLastSlide}
+                    onClickBack={this.getOnClickHandler('back')}
+                    onClickNext={this.getOnClickHandler(
+                        isLastSlide ? 'finish' : 'next'
+                    )}
+                />
             );
-            scenarioSlides.push(displaySlide);
         });
 
-        this.props.setSlides({
-            slides: [...(scenarioSlides || [])]
-        });
+        this.props.setSlides({ slides });
     }
 
     render() {
         const { slides } = this.props;
-        return this.isScenarioRun() ? (
+        return this.isScenarioRun ? (
             <Grid columns={1}>
                 <Grid.Column>
                     {slides && slides[this.state.activeSlideIndex]}
@@ -171,8 +180,8 @@ class Scenario extends Component {
 }
 
 function mapStateToProps(state) {
-    const { title, description, slides } = state.scenario;
-    return { title, description, slides };
+    const { title, description, consent, slides } = state.scenario;
+    return { title, description, consent, slides };
 }
 
 const mapDispatchToProps = {
@@ -200,8 +209,9 @@ Scenario.propTypes = {
     categories: PropTypes.array,
     slides: PropTypes.array,
     status: PropTypes.number,
-    runId: PropTypes.number,
+    run: PropTypes.object,
     onResponseChange: PropTypes.func,
+    onRunChange: PropTypes.func,
     onSubmit: PropTypes.func
 };
 

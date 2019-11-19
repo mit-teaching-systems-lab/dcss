@@ -75,6 +75,7 @@ const Routes = () => {
             <Route exact path="/" component={ScenariosList} />
             <Route exact path="/official" component={ScenariosList} />
             <Route exact path="/community" component={ScenariosList} />
+            <Route path="/run/:scenarioId/:activeSlideIndex" component={Run} />
             <Route path="/run/:scenarioId" component={Run} />
             <Route exact path="/editor/new" component={NewScenario} />
             <Route path="/editor/:id" component={Editor} />

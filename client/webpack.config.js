@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: ['babel-polyfill', './index.js'],
     mode: 'development',
+    devtool: 'inline-source-map',
     module: {
         rules: [
             {

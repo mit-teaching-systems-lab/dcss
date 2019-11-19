@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
+import { Loader } from 'semantic-ui-react';
 import Scenario from '@components/Scenario';
+import { setRun } from '@client/actions';
 
 class Run extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            runId: undefined,
             scenarioId:
                 this.props.scenarioId || this.props.match.params.scenarioId,
             responses: new Map()
         };
 
+        this.onChange = this.onChange.bind(this);
         this.onResponseChange = this.onResponseChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+
+        this.fetchRun();
     }
 
-    async componentDidMount() {
-        const runData = await (await fetch(
-            `/api/runs/create/scenario/${this.state.scenarioId}`,
+    async fetchRun() {
+        const { run, status } = await (await fetch(
+            `/api/runs/new-or-existing/scenario/${this.state.scenarioId}`,
             {
                 method: 'PUT',
                 headers: {
@@ -27,8 +33,27 @@ class Run extends Component {
                 }
             }
         )).json();
-        if (runData.status === 200) {
-            this.setState({ runId: runData.id });
+
+        if (status === 200) {
+            this.props.setRun({ run });
+        }
+    }
+
+    async updateRun(updates) {
+        const body = JSON.stringify(updates);
+        const { run, status } = await (await fetch(
+            `/api/runs/${this.props.run.id}/update`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body
+            }
+        )).json();
+
+        if (status === 200) {
+            this.props.setRun({ run });
         }
     }
 
@@ -39,9 +64,13 @@ class Run extends Component {
                 responses.set(name, { type, value });
             } else {
                 let response = responses.get(name);
-                response['value'] = value;
+                response.value = value;
             }
         });
+    }
+
+    async onChange(event, data) {
+        await this.updateRun(data);
     }
 
     async onSubmit() {
@@ -71,22 +100,25 @@ class Run extends Component {
     }
 
     render() {
-        return (
-            (this.state.runId && (
-                <Scenario
-                    scenarioId={this.state.scenarioId}
-                    runId={this.state.runId}
-                    onResponseChange={this.onResponseChange}
-                    onSubmit={this.onSubmit}
-                />
-            )) ||
-            'Loading...'
+        const { onChange, onResponseChange, onSubmit } = this;
+
+        return this.props.run ? (
+            <Scenario
+                scenarioId={this.state.scenarioId}
+                onResponseChange={onResponseChange}
+                onRunChange={onChange}
+                onSubmit={onSubmit}
+            />
+        ) : (
+            <Loader>Loading</Loader>
         );
     }
 }
 
 Run.propTypes = {
     scenarioId: PropTypes.number,
+    run: PropTypes.object,
+    setRun: PropTypes.func,
     match: PropTypes.shape({
         params: PropTypes.shape({
             scenarioId: PropTypes.node
@@ -97,4 +129,18 @@ Run.propTypes = {
     })
 };
 
-export default Run;
+function mapStateToProps(state) {
+    const { run } = state.run;
+    return { run };
+}
+
+const mapDispatchToProps = {
+    setRun
+};
+
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Run)
+);

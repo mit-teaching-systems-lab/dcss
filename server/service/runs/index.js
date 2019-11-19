@@ -2,18 +2,35 @@ const { Router } = require('express');
 const { validateRequestBody } = require('../../util/requestValidation');
 const { requireUser } = require('../auth/middleware');
 const { requireUserForRun } = require('./middleware');
-const { createRun, postResponseData, finishRun } = require('./endpoints');
+const {
+    finishRun,
+    newOrExistingRun,
+    revokeConsentForRun,
+    updateRun,
+    upsertResponse
+} = require('./endpoints');
 
 const runs = new Router();
 
-runs.put('/create/scenario/:scenario_id', requireUser, createRun);
-runs.post(
-    '/:run_id/response/:response_id',
+runs.put('/new-or-existing/scenario/:scenario_id', [
+    requireUser,
+    newOrExistingRun
+]);
+
+runs.put('/:run_id/finish', [requireUserForRun, finishRun]);
+
+runs.post('/:run_id/update', [
     requireUserForRun,
     validateRequestBody,
-    postResponseData
-);
+    updateRun
+]);
 
-runs.put('/:run_id/finish', requireUserForRun, finishRun);
+runs.get('/:run_id/consent/revoke', [requireUserForRun, revokeConsentForRun]);
+
+runs.post('/:run_id/response/:response_id', [
+    requireUserForRun,
+    validateRequestBody,
+    upsertResponse
+]);
 
 module.exports = runs;

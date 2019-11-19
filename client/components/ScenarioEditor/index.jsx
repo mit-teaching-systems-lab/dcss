@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Dropdown, Form, Grid } from 'semantic-ui-react';
+import {
+    Button,
+    Container,
+    Dropdown,
+    Form,
+    Grid,
+    Popup
+} from 'semantic-ui-react';
 import { setScenario } from '@client/actions';
 
 import './scenarioEditor.css';
@@ -17,6 +24,7 @@ class ScenarioEditor extends Component {
         this.fetchScenario = this.fetchScenario.bind(this);
 
         this.onChange = this.onChange.bind(this);
+        this.onConsentChange = this.onConsentChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         if (this.props.scenarioId === 'new') {
@@ -39,19 +47,47 @@ class ScenarioEditor extends Component {
     onChange(event, { name, value }) {
         this.props.updateEditorMessage('');
         this.props.setScenario({ [name]: value });
+        this.onSubmit();
+    }
+
+    onConsentChange(event, { value }) {
+        this.props.updateEditorMessage('');
+
+        let { id, prose } = this.props.consent;
+
+        if (prose !== value) {
+            id = null;
+            prose = value;
+            this.onChange(event, {
+                name: 'consent',
+                value: {
+                    id,
+                    prose
+                }
+            });
+        }
     }
 
     async fetchScenario() {
-        const scenarioResponse = await (await fetch(
+        const { scenario, status } = await (await fetch(
             `/api/scenarios/${this.props.scenarioId}`
         )).json();
 
-        if (scenarioResponse.status === 200) {
+        if (status === 200) {
+            const {
+                title,
+                description,
+                categories,
+                consent,
+                status
+            } = scenario;
+
             this.props.setScenario({
-                title: scenarioResponse.scenario.title,
-                description: scenarioResponse.scenario.description,
-                categories: scenarioResponse.scenario.categories,
-                status: scenarioResponse.scenario.status
+                title,
+                description,
+                categories,
+                consent,
+                status
             });
         }
     }
@@ -68,6 +104,7 @@ class ScenarioEditor extends Component {
             title: this.props.title,
             description: this.props.description,
             categories: this.props.categories,
+            consent: this.props.consent,
             status: this.props.status
         };
 
@@ -118,23 +155,32 @@ class ScenarioEditor extends Component {
                                     value={this.props.description}
                                     onChange={this.onChange}
                                 />
+                                {this.props.scenarioId !== 'new' && (
+                                    <Popup
+                                        content="Enter Consent Agreement prose here, or use the default provided Consent Agreement."
+                                        trigger={
+                                            <Form.TextArea
+                                                focus="true"
+                                                required
+                                                label="Consent Agreement"
+                                                name="consentprose"
+                                                value={this.props.consent.prose}
+                                                onChange={this.onConsentChange}
+                                            />
+                                        }
+                                    />
+                                )}
 
                                 {this.state.saving ? (
-                                    <Form.Button
-                                        type="submit"
-                                        className="tm__scenario-save"
-                                        primary
-                                        loading
-                                    />
+                                    <Button type="submit" primary loading />
                                 ) : (
-                                    <Form.Button
+                                    <Button
                                         type="submit"
-                                        className="tm__scenario-save"
                                         primary
                                         onClick={this.onSubmit}
                                     >
                                         Save
-                                    </Form.Button>
+                                    </Button>
                                 )}
                             </Grid.Column>
                             <Grid.Column width={3}>
@@ -176,8 +222,8 @@ class ScenarioEditor extends Component {
 }
 
 function mapStateToProps(state) {
-    const { title, description, categories, status } = state.scenario;
-    return { title, description, categories, status };
+    const { title, description, categories, consent, status } = state.scenario;
+    return { title, description, categories, consent, status };
 }
 
 const mapDispatchToProps = {
@@ -193,6 +239,10 @@ ScenarioEditor.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     categories: PropTypes.array,
+    consent: PropTypes.shape({
+        id: PropTypes.number,
+        prose: PropTypes.string
+    }),
     status: PropTypes.number
 };
 

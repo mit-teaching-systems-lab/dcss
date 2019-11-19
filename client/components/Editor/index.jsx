@@ -69,12 +69,11 @@ class Editor extends Component {
     }
 
     async fetchScenario() {
-        const response = await (await fetch(
+        const { status, scenario } = await (await fetch(
             `/api/scenarios/${this.state.scenarioId}`
         )).json();
 
-        const { scenario } = response;
-        if (response.status === 200) {
+        if (status === 200) {
             this.props.setScenario(scenario);
         }
     }
@@ -107,6 +106,7 @@ class Editor extends Component {
             title: this.props.title,
             description: this.props.description,
             categories: this.props.categories,
+            consent: this.props.consent,
             status: this.props.status
         };
 
@@ -293,13 +293,16 @@ Editor.propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     categories: PropTypes.array,
-    slides: PropTypes.array,
+    consent: PropTypes.shape({
+        id: PropTypes.number,
+        prose: PropTypes.string
+    }),
     status: PropTypes.number
 };
 
 function mapStateToProps(state) {
-    const { title, description, categories, status } = state.scenario;
-    return { title, description, categories, status };
+    const { title, description, categories, consent, status } = state.scenario;
+    return { title, description, categories, consent, status };
 }
 
 const mapDispatchToProps = {

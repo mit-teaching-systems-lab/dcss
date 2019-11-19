@@ -56,11 +56,15 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
     }
 });
 
-exports.setScenario = asyncMiddleware(async function setScenarioAsync(
-    req,
-    res
-) {
-    const { author_id, title, description, categories, status } = req.body;
+async function setScenarioAsync(req, res) {
+    const {
+        author_id,
+        title,
+        description,
+        categories,
+        consent,
+        status
+    } = req.body;
     const scenarioId = req.params.scenario_id;
 
     if (!author_id && !title && !description) {
@@ -81,16 +85,30 @@ exports.setScenario = asyncMiddleware(async function setScenarioAsync(
 
         await db.setScenarioCategories(scenarioId, categories);
 
-        const result = { scenario, status: 200 };
+        // If the client set the id to null, that indicates that
+        // this is a new consent agreement and the new prose
+        // must be stored, then linked to the scenario.
+        if (consent.id === null) {
+            const { id, prose } = await db.addConsent(consent);
 
-        res.send(result);
+            await db.setScenarioConsent(
+                scenarioId,
+                Object.assign(consent, { id, prose })
+            );
+        }
+
+        Object.assign(scenario, {
+            consent
+        });
+
+        res.send({ scenario, status: 200 });
     } catch (apiError) {
         const error = new Error('Error while updating scenario');
         error.status = 500;
         error.stack = apiError.stack;
         throw error;
     }
-});
+}
 
 exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
     req,
@@ -118,3 +136,5 @@ exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
         throw error;
     }
 });
+
+exports.setScenario = asyncMiddleware(setScenarioAsync);
