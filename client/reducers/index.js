@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
+import admin from './admin';
+import cohort from './cohort';
 import login from './login';
 import scenario from './scenario';
-import admin from './admin';
 
-export default combineReducers({ login, scenario, admin });
+export default combineReducers({ login, scenario, admin, cohort });

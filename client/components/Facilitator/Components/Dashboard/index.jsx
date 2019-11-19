@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Grid, Header, List } from 'semantic-ui-react';
+import Cohorts from '../Cohorts';
 
 export default () => (
     <Container fluid>
@@ -23,6 +24,8 @@ export default () => (
                         Students participate and complete
                     </List.Item>
                 </List>
+                Temp Workspace:
+                <Cohorts />
             </Grid.Column>
         </Grid>
     </Container>

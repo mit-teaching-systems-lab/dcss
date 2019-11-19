@@ -51,6 +51,7 @@
     "react-router-dom": "^5.0.1",
     "react-sortablejs": "^1.5.1",
     "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.1",
     "sortablejs": "^1.10.1",
