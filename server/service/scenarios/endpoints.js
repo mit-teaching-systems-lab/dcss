@@ -1,6 +1,7 @@
 const { asyncMiddleware } = require('../../util/api');
 
 const { reqScenario } = require('./middleware');
+const { getSlidesForScenario, setAllSlides } = require('./slides/db');
 const db = require('./db');
 
 exports.getScenario = asyncMiddleware(async function getScenarioAsync(
@@ -110,6 +111,8 @@ async function setScenarioAsync(req, res) {
     }
 }
 
+exports.setScenario = asyncMiddleware(setScenarioAsync);
+
 exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
     req,
     res
@@ -137,4 +140,42 @@ exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
     }
 });
 
-exports.setScenario = asyncMiddleware(setScenarioAsync);
+exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
+    req,
+    res
+) {
+    const scenarioId = req.params.scenario_id;
+
+    if (!scenarioId) {
+        const scenarioCopyError = new Error(
+            'Original scenario id required for creating a copy'
+        );
+        scenarioCopyError.status = 409;
+        throw scenarioCopyError;
+    }
+
+    try {
+        const userId = req.session.user.id;
+        const originalScenario = reqScenario(req);
+        const originalSlides = await getSlidesForScenario(scenarioId);
+        const scenarioCopy = await db.addScenario(
+            userId,
+            `${originalScenario.title} COPY`,
+            originalScenario.description
+        );
+        const result = { scenario: scenarioCopy, status: 201 };
+
+        await db.setScenarioCategories(
+            scenarioCopy.id,
+            originalScenario.categories
+        );
+        await setAllSlides(scenarioCopy.id, originalSlides);
+
+        res.send(result);
+    } catch (apiError) {
+        const error = new Error('Error while copying scenario');
+        error.status = 500;
+        error.stack = apiError.stack;
+        throw error;
+    }
+});

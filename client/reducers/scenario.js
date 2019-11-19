@@ -3,7 +3,7 @@ import { SET_SCENARIO, SET_SLIDES } from '@client/actions/types';
 const initialState = {
     title: '',
     description: '',
-    slides: null,
+    slides: [],
     status: 1
 };
 

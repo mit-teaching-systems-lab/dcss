@@ -20,11 +20,10 @@ class Editor extends Component {
     constructor(props) {
         super(props);
 
-        if (!this.props.match.params.id) {
-            this.props.match.params.id = 'new';
-        }
+        const scenarioId = this.props.match.params.id || 'new';
 
         this.fetchScenario = this.fetchScenario.bind(this);
+        this.copyScenario = this.copyScenario.bind(this);
         this.deleteScenario = this.deleteScenario.bind(this);
         this.updateScenario = this.updateScenario.bind(this);
         this.onClick = this.onClick.bind(this);
@@ -32,24 +31,24 @@ class Editor extends Component {
         this.getSubmitCallback = this.getSubmitCallback.bind(this);
         this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
         this.getTab = this.getTab.bind(this);
+        this.getAllTabs = this.getAllTabs.bind(this);
         this.updateEditorMessage = this.updateEditorMessage.bind(this);
         this.state = {
             activeTab: 'moment',
             editorMessage: '',
             saving: false,
-            scenarioId: this.props.match.params.id,
-            tabs: {
-                moment: this.getTab('moment')
-            }
+            scenarioId: scenarioId,
+            tabs: this.getAllTabs(scenarioId)
         };
 
-        if (this.props.match.params.id !== 'new') {
-            Object.assign(this.state.tabs, {
-                slides: this.getTab('slides'),
-                preview: this.getTab('preview')
-            });
-            this.state.activeTab = 'slides';
-            this.fetchScenario();
+        switch (scenarioId) {
+            case 'new':
+            case 'copy':
+                break;
+            default:
+                this.state.activeTab = 'slides';
+                this.fetchScenario();
+                break;
         }
     }
 
@@ -68,6 +67,12 @@ class Editor extends Component {
         }
     }
 
+    componentDidMount() {
+        if (this.state.scenarioId === 'copy') {
+            this.copyScenario();
+        }
+    }
+
     async fetchScenario() {
         const { status, scenario } = await (await fetch(
             `/api/scenarios/${this.state.scenarioId}`
@@ -76,6 +81,27 @@ class Editor extends Component {
         if (status === 200) {
             this.props.setScenario(scenario);
         }
+    }
+
+    async copyScenario() {
+        const { scenarioCopyId } = this.props.location.state;
+        if (!scenarioCopyId) return;
+
+        const postSubmitCB = this.getPostSubmitCallback();
+        const copyResponse = await (await fetch(
+            `/api/scenarios/${scenarioCopyId}/copy`,
+            {
+                method: 'POST'
+            }
+        )).json();
+
+        if (copyResponse.status !== 201) {
+            this.updateEditorMessage('Error saving copy.');
+            return;
+        }
+
+        this.props.setScenario(copyResponse.scenario);
+        postSubmitCB(copyResponse.scenario);
     }
 
     async deleteScenario(scenarioId) {
@@ -130,12 +156,12 @@ class Editor extends Component {
         }
     }
 
-    getTab(name) {
+    getTab(name, scenarioId) {
         switch (name) {
             case 'moment':
                 return (
                     <ScenarioEditor
-                        scenarioId={this.props.match.params.id}
+                        scenarioId={scenarioId || this.props.match.params.id}
                         submitCB={this.getSubmitCallback()}
                         postSubmitCB={this.getPostSubmitCallback()}
                         updateEditorMessage={this.updateEditorMessage}
@@ -144,14 +170,42 @@ class Editor extends Component {
             case 'slides':
                 return (
                     <Slides
-                        scenarioId={this.props.match.params.id}
+                        scenarioId={scenarioId || this.props.match.params.id}
                         updateEditorMessage={this.updateEditorMessage}
                     />
                 );
             case 'preview':
-                return <Scenario scenarioId={this.props.match.params.id} />;
+                return (
+                    <Scenario
+                        scenarioId={scenarioId || this.props.match.params.id}
+                    />
+                );
             default:
                 return null;
+        }
+    }
+
+    getAllTabs(scenarioId) {
+        if (!scenarioId) return {};
+        let copyId;
+        switch (scenarioId) {
+            case 'new':
+                return {
+                    moment: this.getTab('moment', 'new')
+                };
+            case 'copy':
+                copyId = String(this.props.location.state.scenarioCopyId);
+                return {
+                    moment: this.getTab('moment', copyId),
+                    slides: this.getTab('slides', copyId),
+                    preview: this.getTab('preview', copyId)
+                };
+            default:
+                return {
+                    moment: this.getTab('moment'),
+                    slides: this.getTab('slides'),
+                    preview: this.getTab('preview')
+                };
         }
     }
 
@@ -159,14 +213,13 @@ class Editor extends Component {
         let endpoint, method;
         const scenarioId = this.props.match.params.id;
 
-        if (scenarioId === 'new') {
+        if (this.props.isNewScenario || scenarioId === 'copy') {
             endpoint = '/api/scenarios';
             method = 'PUT';
         } else {
             endpoint = `/api/scenarios/${scenarioId}`;
             method = 'POST';
         }
-
         return scenarioData => {
             return fetch(endpoint, {
                 method,
@@ -179,21 +232,16 @@ class Editor extends Component {
     }
 
     getPostSubmitCallback() {
-        if (this.props.match.params.id === 'new') {
+        if (this.props.isNewScenario || this.props.match.params.id === 'copy') {
             return scenarioData => {
                 this.props.history.push(`/editor/${scenarioData.id}`);
                 this.setState({
-                    activeTab: 'slides',
+                    activeTab: 'moment',
                     scenarioId: scenarioData.id
                 });
 
                 // Clear cached new scenario values from tabs
-                const tabs = Object.assign({}, this.state.tabs, {
-                    moment: this.getTab('moment'),
-                    slides: this.getTab('slides'),
-                    preview: this.getTab('preview')
-                });
-
+                const tabs = this.getAllTabs(scenarioData.id);
                 this.setState({ tabs });
             };
         }
@@ -214,35 +262,28 @@ class Editor extends Component {
                 onClick={this.onClickScenarioAction}
             />
         );
+        const editTabMenu = Object.keys(this.state.tabs).map(tabType => {
+            return (
+                <Menu.Item
+                    key={tabType}
+                    name={tabType}
+                    active={this.state.activeTab === tabType}
+                    onClick={this.onClick}
+                />
+            );
+        });
 
         return (
             <div>
                 <Menu attached="top" tabular>
-                    <Menu.Item
-                        name="moment"
-                        active={this.state.activeTab === 'moment'}
-                        onClick={this.onClick}
-                    />
-                    {this.state.scenarioId !== 'new' && (
-                        <React.Fragment>
-                            <Menu.Item
-                                name="slides"
-                                active={this.state.activeTab === 'slides'}
-                                onClick={this.onClick}
-                            />
-                            <Menu.Item
-                                name="preview"
-                                active={this.state.activeTab === 'preview'}
-                                onClick={this.onClick}
-                            />
-                        </React.Fragment>
-                    )}
+                    {editTabMenu}
                     <Menu.Menu position="right">
                         <Menu.Item>
                             <EditorMessage message={this.state.editorMessage} />
                         </Menu.Item>
                     </Menu.Menu>
                 </Menu>
+
                 <Segment attached="bottom" className="editor__content-pane">
                     {this.state.scenarioId !== 'new' && (
                         <EditorMenu
@@ -289,6 +330,12 @@ Editor.propTypes = {
             id: PropTypes.node
         }).isRequired
     }).isRequired,
+    location: PropTypes.shape({
+        state: PropTypes.shape({
+            scenarioCopyId: PropTypes.node
+        })
+    }).isRequired,
+    isNewScenario: PropTypes.bool,
     setScenario: PropTypes.func.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,

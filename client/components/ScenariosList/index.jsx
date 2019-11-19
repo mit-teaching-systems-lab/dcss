@@ -26,26 +26,41 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                             basic
                             fluid
                             color="black"
-                            push="true"
                             as={Link}
-                            to={{ pathname: `/editor/${id}` }}
+                            to={{ pathname: `/run/${id}` }}
+                            className="scenario__entry--button"
                         >
-                            Edit
+                            Run
                         </Button>
                     </Card.Content>
                 )}
                 {isLoggedIn && (
                     <Card.Content extra>
-                        <Button
-                            basic
-                            fluid
-                            color="black"
-                            push="true"
-                            as={Link}
-                            to={{ pathname: `/run/${id}` }}
-                        >
-                            Run
-                        </Button>
+                        <Button.Group className="scenario__entry--edit-buttons">
+                            <Button
+                                basic
+                                color="black"
+                                className="scenario__entry--button"
+                                as={Link}
+                                to={{ pathname: `/editor/${id}` }}
+                            >
+                                Edit
+                            </Button>
+                            <Button
+                                basic
+                                color="black"
+                                className="scenario__entry--button"
+                                as={Link}
+                                to={{
+                                    pathname: `/editor/copy`,
+                                    state: {
+                                        scenarioCopyId: id
+                                    }
+                                }}
+                            >
+                                Copy
+                            </Button>
+                        </Button.Group>
                     </Card.Content>
                 )}
             </Card>
@@ -69,6 +84,7 @@ class ScenariosList extends Component {
 
     async getScenarios() {
         const scenariosResponse = await (await fetch('api/scenarios')).json();
+
         if (scenariosResponse.status === 200) {
             this.setState({ scenarioData: scenariosResponse.scenarios });
         }

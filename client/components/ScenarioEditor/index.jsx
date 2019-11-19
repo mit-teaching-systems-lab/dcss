@@ -21,8 +21,6 @@ class ScenarioEditor extends Component {
             categories: []
         };
 
-        this.fetchScenario = this.fetchScenario.bind(this);
-
         this.onChange = this.onChange.bind(this);
         this.onConsentChange = this.onConsentChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -34,8 +32,6 @@ class ScenarioEditor extends Component {
                 categories: [],
                 status: 1
             });
-        } else {
-            this.fetchScenario();
         }
     }
 
@@ -69,30 +65,6 @@ class ScenarioEditor extends Component {
                     id,
                     prose
                 }
-            });
-        }
-    }
-
-    async fetchScenario() {
-        const { scenario, status } = await (await fetch(
-            `/api/scenarios/${this.props.scenarioId}`
-        )).json();
-
-        if (status === 200) {
-            const {
-                title,
-                description,
-                categories,
-                consent,
-                status
-            } = scenario;
-
-            this.props.setScenario({
-                title,
-                description,
-                categories,
-                consent,
-                status
             });
         }
     }

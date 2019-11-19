@@ -43,6 +43,15 @@ exports.updateSlide = asyncMiddleware(async (req, res) => {
     });
 });
 
+exports.setAllSlides = asyncMiddleware(async (req, res) => {
+    const { id: scenario_id } = reqScenario(req);
+    const { slides } = req.body;
+    res.json({
+        slides: await db.setAllSlides(scenario_id, slides),
+        status: 200
+    });
+});
+
 exports.deleteSlide = asyncMiddleware(async (req, res) => {
     // TODO: ensure slide id is part of scenario / author permissions / etc
     const { id: scenario_id } = reqScenario(req);

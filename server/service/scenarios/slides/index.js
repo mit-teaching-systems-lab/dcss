@@ -7,10 +7,12 @@ const {
     addSlide,
     orderSlides,
     updateSlide,
+    setAllSlides,
     deleteSlide
 } = require('./endpoints');
 
 slides.get('/', getSlides);
+slides.post('/', [validateRequestBody, setAllSlides]);
 slides.put('/', [validateRequestBody, addSlide]);
 slides.post('/order', [validateRequestBody, orderSlides]);
 slides.post('/:slide_id', [validateRequestBody, updateSlide]);

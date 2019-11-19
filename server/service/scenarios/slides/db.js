@@ -24,6 +24,17 @@ exports.updateSlide = async (id, data) => {
     return result.rows[0];
 };
 
+exports.setAllSlides = async (scenario_id, slides) => {
+    const results = await query(sql`
+INSERT INTO slide (scenario_id, title, components)
+    SELECT ${scenario_id} as scenario_id, s.title, s.components FROM
+    jsonb_array_elements(${slides}) AS t(slide),
+    jsonb_to_record(t.slide) AS s (id int, title text, components jsonb)
+    ON CONFLICT DO NOTHING;
+    `);
+    return { addedCount: results.rowCount };
+};
+
 exports.deleteSlide = async ({ scenario_id, id }) => {
     const result = await query(
         sql`DELETE FROM slide WHERE id=${id} and scenario_id=${scenario_id}`

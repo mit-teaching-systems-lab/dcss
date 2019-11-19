@@ -9,7 +9,8 @@ const {
     getAllScenarios,
     addScenario,
     setScenario,
-    deleteScenario
+    deleteScenario,
+    copyScenario
 } = require('./endpoints.js');
 
 scenariosRouter.get('/', getAllScenarios);
@@ -22,6 +23,8 @@ scenariosRouter.post('/:scenario_id', [
     validateRequestBody,
     setScenario
 ]);
+
+scenariosRouter.post('/:scenario_id/copy', [lookupScenario(), copyScenario]);
 
 scenariosRouter.delete('/:scenario_id', [lookupScenario(), deleteScenario]);
 
