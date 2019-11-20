@@ -54,6 +54,7 @@ const SlideComponentsList = ({
 SlideComponentsList.propTypes = {
     asSVG: PropTypes.bool,
     components: PropTypes.array,
-    onResponseChange: PropTypes.func
+    onResponseChange: PropTypes.func,
+    runId: PropTypes.number
 };
 export default SlideComponentsList;

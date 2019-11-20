@@ -156,6 +156,7 @@ class Scenario extends Component {
                     onClickNext={this.getOnClickHandler(
                         isLastSlide ? 'finish' : 'next'
                     )}
+                    onResponseChange={this.props.onResponseChange}
                 />
             );
         });

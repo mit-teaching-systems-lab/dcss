@@ -6,3 +6,4 @@ PGPORT=5432
 
 AWS_PROFILE=tsl
 S3_BUCKET=v2-moments-dev
+ENV=dev

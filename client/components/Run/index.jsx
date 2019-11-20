@@ -12,11 +12,12 @@ class Run extends Component {
 
         this.state = {
             scenarioId:
-                this.props.scenarioId || this.props.match.params.scenarioId,
-            responses: new Map()
+                this.props.scenarioId || this.props.match.params.scenarioId
         };
 
         this.onChange = this.onChange.bind(this);
+        this.responses = new Map();
+
         this.onResponseChange = this.onResponseChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
@@ -58,15 +59,12 @@ class Run extends Component {
     }
 
     onResponseChange(event, { name, value, type }) {
-        this.setState(prevState => {
-            let responses = prevState.responses;
-            if (!responses.has(name)) {
-                responses.set(name, { type, value });
-            } else {
-                let response = responses.get(name);
-                response.value = value;
-            }
-        });
+        if (!this.responses.has(name)) {
+            this.responses.set(name, { type, value });
+        } else {
+            let response = this.responses.get(name);
+            response['value'] = value;
+        }
     }
 
     async onChange(event, data) {
@@ -74,29 +72,27 @@ class Run extends Component {
     }
 
     async onSubmit() {
-        const { runId } = this.state;
-        for (let [name, { type, value }] of this.state.responses) {
-            const url = `/api/runs/${runId}/response/${name}`;
-            const body = {
-                type,
-                value
-            };
+        if (this.props.run) {
+            for (let [name, { type, value }] of this.responses) {
+                const url = `/api/runs/${this.props.run.id}/response/${name}`;
+                const body = {
+                    type,
+                    value
+                };
 
-            // TODO: feedback for when response is saved
-            await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(body)
-            });
+                // TODO: feedback for when response is saved
+                await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(body)
+                });
+            }
+
+            // clear the responses for the next slide
+            this.responses.clear();
         }
-
-        // clear the responses for the next slide
-        this.setState(prevState => {
-            let responses = prevState.responses;
-            responses.clear();
-        });
     }
 
     render() {
