@@ -1,23 +1,25 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Label, TextArea } from 'semantic-ui-react';
+import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
 
 import './TextResponse.css';
 
 const Display = ({ prompt, placeholder, responseId, onResponseChange }) => (
-    <React.Fragment>
-        <Label as="label" className="textresponse__label">
-            <p>{prompt}</p>
-            <TextArea
-                name={responseId}
-                placeholder={placeholder}
-                onChange={onResponseChange}
-                className="textresponse__input"
-                type="text" // adding type to mark a text response in the onResponseChange
-            />
-        </Label>
-    </React.Fragment>
+    <Segment>
+        <Form>
+            <Form.Field>
+                <Label as="label" className="textresponse__label">
+                    <p>{prompt}</p>
+                </Label>
+                <TextArea
+                    name={responseId}
+                    placeholder={placeholder}
+                    onChange={onResponseChange}
+                />
+            </Form.Field>
+        </Form>
+    </Segment>
 );
 
 Display.propTypes = {

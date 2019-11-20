@@ -4,6 +4,7 @@ const { requireUser } = require('../auth/middleware');
 const { requireUserForRun } = require('./middleware');
 const {
     finishRun,
+    getResponse,
     newOrExistingRun,
     revokeConsentForRun,
     updateRun,
@@ -32,5 +33,7 @@ runs.post('/:run_id/response/:response_id', [
     validateRequestBody,
     upsertResponse
 ]);
+
+runs.get('/:run_id/response/:response_id', [requireUserForRun, getResponse]);
 
 module.exports = runs;

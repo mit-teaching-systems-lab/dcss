@@ -13,7 +13,8 @@ import {
     Popup,
     Segment
 } from 'semantic-ui-react';
-import SlideEditor from '@components/Slide/Editor';
+import generateResponseId from '@components/Slide/util/generate-response-id';
+import SlideEditor from '@components/Slide/SlideEditor';
 import SlideComponentsList from '@components/SlideComponentsList';
 import './Slides.css';
 
@@ -139,6 +140,19 @@ class Slides extends React.Component {
 
     async duplicateSlide(index) {
         const { title, components } = this.state.slides[index];
+
+        // Check through all components of this slide
+        // for any that are response components...
+        for (const component of components) {
+            // ...When a response component has been
+            // found, assign it a newly generated responseId,
+            // to prevent duplicate responseId values from
+            // being created.
+            if (Object.prototype.hasOwnProperty.call(component, 'responseId')) {
+                component.responseId = generateResponseId(component.type);
+            }
+        }
+
         await this.storeSlide({
             title,
             components
@@ -202,6 +216,7 @@ class Slides extends React.Component {
             deleteSlide,
             duplicateSlide
         } = this;
+        const { scenarioId } = this.props;
         const { loading, slides, currentSlideIndex } = this.state;
         if (loading) {
             return (
@@ -336,6 +351,7 @@ class Slides extends React.Component {
                         {slides[currentSlideIndex] && (
                             <SlideEditor
                                 key={currentSlideIndex}
+                                scenarioId={scenarioId}
                                 index={currentSlideIndex}
                                 {...slides[currentSlideIndex]}
                                 onChange={onChangeSlide}

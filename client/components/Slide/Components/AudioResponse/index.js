@@ -1,8 +1,9 @@
 import { type } from './type';
 export { type };
-export const defaultValue = () => ({
-    type,
-    prompt: 'Provide a prompt for users to respond to here.'
+export const defaultValue = ({ responseId }) => ({
+    prompt: 'Provide a prompt for users to respond to here.',
+    responseId,
+    type
 });
 
 export { default as Display } from './Display';

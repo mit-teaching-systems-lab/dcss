@@ -5,12 +5,15 @@ import * as Components from '@components/Slide/Components';
 const SlideComponentsList = ({
     asSVG = false,
     components,
-    onResponseChange
+    onResponseChange,
+    run
 }) => {
     const style = {
         height: '150px',
         overflow: 'hidden'
     };
+    const runOnly = run ? { run } : {};
+
     return asSVG ? (
         <div style={style}>
             <svg width="500" height="400">
@@ -43,8 +46,9 @@ const SlideComponentsList = ({
             return (
                 <Display
                     key={`slide${index}`}
-                    {...value}
                     onResponseChange={onResponseChange}
+                    {...runOnly}
+                    {...value}
                 />
             );
         })
@@ -55,6 +59,6 @@ SlideComponentsList.propTypes = {
     asSVG: PropTypes.bool,
     components: PropTypes.array,
     onResponseChange: PropTypes.func,
-    runId: PropTypes.number
+    run: PropTypes.object
 };
 export default SlideComponentsList;

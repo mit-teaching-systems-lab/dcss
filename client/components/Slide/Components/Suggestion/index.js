@@ -1,9 +1,9 @@
 import { type } from './type';
 export { type };
 export const defaultValue = () => ({
-    type,
+    color: 'grey',
     html: '<Message color="grey"><p>Type your suggestion here</p></Message>',
-    color: 'grey'
+    type
 });
 
 export { default as Display } from './Display';

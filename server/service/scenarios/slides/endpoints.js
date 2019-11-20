@@ -9,6 +9,28 @@ exports.getSlides = asyncMiddleware(async (req, res) => {
     res.json({ slides, status: 200 });
 });
 
+exports.getSlidesResponseComponents = asyncMiddleware(async (req, res) => {
+    const { id } = reqScenario(req);
+    const slides = await db.getSlidesForScenario(id);
+    const components = slides.reduce((accum, slide) => {
+        if (slide.components && slide.components.length) {
+            accum.push(
+                ...slide.components.reduce((accum, component) => {
+                    if (component.responseId) {
+                        accum.push({
+                            slide,
+                            ...component
+                        });
+                    }
+                    return accum;
+                }, [])
+            );
+        }
+        return accum;
+    }, []);
+    res.json({ components, status: 200 });
+});
+
 exports.addSlide = asyncMiddleware(async (req, res) => {
     const { id: scenario_id } = reqScenario(req);
     const { title, order, components } = req.body;

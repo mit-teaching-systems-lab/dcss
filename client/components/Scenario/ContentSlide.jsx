@@ -15,7 +15,7 @@ class ContentSlide extends React.Component {
         const { isLastSlide, onResponseChange, run, slide } = this.props;
         const nextButtonLabel = isLastSlide ? 'Finish' : 'Next';
         const cardClass = run ? 'scenario__card--run' : 'scenario__card';
-
+        const runOnly = run ? { run } : {};
         return (
             <Card id={slide.id} key={slide.id} centered className={cardClass}>
                 <Card.Content style={{ flexGrow: '0' }}>
@@ -25,6 +25,7 @@ class ContentSlide extends React.Component {
                 </Card.Content>
                 <Card.Content key={`content${slide.id}`}>
                     <SlideComponentsList
+                        {...runOnly}
                         components={slide.components}
                         onResponseChange={onResponseChange}
                     />

@@ -85,6 +85,7 @@ class CheckResponseEditor extends React.Component {
 }
 
 CheckResponseEditor.propTypes = {
+    scenarioId: PropTypes.string,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
         prompt: PropTypes.string,

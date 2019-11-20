@@ -85,6 +85,7 @@ class SuggestionEditor extends React.Component {
 }
 
 SuggestionEditor.propTypes = {
+    scenarioId: PropTypes.string,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
         html: PropTypes.string,

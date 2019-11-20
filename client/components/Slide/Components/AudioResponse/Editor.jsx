@@ -43,6 +43,7 @@ class AudioResponseEditor extends Component {
 }
 
 AudioResponseEditor.propTypes = {
+    scenarioId: PropTypes.string,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
         prompt: PropTypes.string

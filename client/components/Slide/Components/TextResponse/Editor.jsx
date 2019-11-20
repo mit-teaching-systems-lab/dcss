@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, TextArea, Label, Input } from 'semantic-ui-react';
+import { Container, Form } from 'semantic-ui-react';
 import { type } from './type';
 import './TextResponse.css';
 
@@ -10,7 +10,7 @@ class TextResponseEditor extends React.Component {
         const {
             prompt = 'Text Prompt (displayed before input field as label)',
             placeholder = 'Placeholder Text',
-            responseId = 'response-1'
+            responseId = ''
         } = props.value;
         this.state = {
             prompt,
@@ -22,40 +22,25 @@ class TextResponseEditor extends React.Component {
     }
 
     render() {
-        const { prompt, placeholder, responseId } = this.state;
+        const { prompt, placeholder } = this.state;
         const { onTextAreaChange } = this;
         return (
-            <React.Fragment>
-                <Form>
-                    <Label as="label" className="textresponse__label">
-                        <p>Text Prompt:</p>
-                        <TextArea
-                            name="prompt"
-                            value={prompt}
-                            onChange={onTextAreaChange}
-                            className="textresponse__input"
-                        />
-                    </Label>
-                    <Label as="label" className="textresponse__label">
-                        <p>Text Placeholder:</p>
-                        <TextArea
-                            name="placeholder"
-                            value={placeholder}
-                            onChange={onTextAreaChange}
-                            className="textresponse__input"
-                        />
-                    </Label>
-                    <Label as="label" className="textresponse__label">
-                        <p>Response ID:</p>
-                        <Input
-                            name="responseId"
-                            value={responseId}
-                            onChange={onTextAreaChange}
-                            className="textresponse__input"
-                        />
-                    </Label>
-                </Form>
-            </React.Fragment>
+            <Form>
+                <Container fluid>
+                    <Form.TextArea
+                        label="Prompt"
+                        name="prompt"
+                        value={prompt}
+                        onChange={onTextAreaChange}
+                    />
+                    <Form.TextArea
+                        label="Placeholder"
+                        name="placeholder"
+                        value={placeholder}
+                        onChange={onTextAreaChange}
+                    />
+                </Container>
+            </Form>
         );
     }
 
@@ -68,6 +53,7 @@ class TextResponseEditor extends React.Component {
 }
 
 TextResponseEditor.propTypes = {
+    scenarioId: PropTypes.string,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
         prompt: PropTypes.string,

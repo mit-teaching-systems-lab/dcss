@@ -41,6 +41,7 @@ class TextEditor extends React.Component {
 }
 
 TextEditor.propTypes = {
+    scenarioId: PropTypes.string,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
         html: PropTypes.string

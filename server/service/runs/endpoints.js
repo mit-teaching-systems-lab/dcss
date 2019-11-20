@@ -15,7 +15,7 @@ async function newOrExistingRunAsync(req, res) {
         run = await db.createRun({ scenario_id, user_id, consent_id });
     }
 
-    res.json({ status: 200, run });
+    res.json({ run, status: 200 });
 }
 
 async function upsertResponseAsync(req, res) {
@@ -27,12 +27,21 @@ async function upsertResponseAsync(req, res) {
     );
 }
 
+async function getResponseAsync(req, res) {
+    const { id: run_id, user_id } = await runForRequest(req);
+    const { response_id } = req.params;
+
+    const response = await db.getResponse({ run_id, response_id, user_id });
+
+    res.json({ response, status: 200 });
+}
+
 async function updateRunAsync(req, res) {
     const { id } = await runForRequest(req);
     const body = req.body;
     const run = await db.updateRun(id, body);
 
-    res.json({ status: 200, run });
+    res.json({ run, status: 200 });
 }
 
 async function revokeConsentForRunAsync(req, res) {
@@ -47,6 +56,7 @@ async function finishRunAsync(req, res) {
 }
 
 exports.finishRun = asyncMiddleware(finishRunAsync);
+exports.getResponse = asyncMiddleware(getResponseAsync);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);
 exports.updateRun = asyncMiddleware(updateRunAsync);

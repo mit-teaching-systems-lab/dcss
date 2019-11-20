@@ -10,13 +10,16 @@ import {
     Segment
 } from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
+import generateResponseId from '../util/generate-response-id';
 import * as Components from '../Components';
-import './Editor.css';
+import './SlideEditor.css';
 
 const ComponentsMenuOrder = [
     'Text',
     'Suggestion',
+    'ResponseRecall',
     'TextResponse',
+    'MultiButtonResponse',
     'CheckResponse',
     'AudioResponse'
 ];
@@ -65,7 +68,9 @@ export default class SlideEditor extends React.Component {
     onMenuClick(type) {
         const components = [
             ...this.state.components,
-            Components[type].defaultValue()
+            Components[type].defaultValue({
+                responseId: generateResponseId(type)
+            })
         ];
         this.setState({ components }, this.updatedState);
     }
@@ -79,6 +84,8 @@ export default class SlideEditor extends React.Component {
             onTitleChange,
             state: { title, components }
         } = this;
+
+        const { scenarioId } = this.props;
 
         const showComponentDropdown =
             components.length === 0 ? { open: true } : {};
@@ -186,11 +193,14 @@ export default class SlideEditor extends React.Component {
                                     content="Using the 'Add to slide' menu on the right, select content components to add to your slide."
                                 />
                             )}
+
                             {components.map((value, index) => {
                                 const { type } = value;
                                 const { Editor, Display } = Components[type];
                                 const edit = (
                                     <Editor
+                                        slideIndex={index}
+                                        scenarioId={scenarioId}
                                         value={value}
                                         onChange={v =>
                                             this.onComponentChange(index, v)
@@ -238,6 +248,7 @@ export default class SlideEditor extends React.Component {
 }
 
 SlideEditor.propTypes = {
+    scenarioId: PropTypes.string,
     index: PropTypes.number,
     title: PropTypes.string,
     components: PropTypes.arrayOf(PropTypes.object),
