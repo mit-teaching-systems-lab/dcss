@@ -158,20 +158,30 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
         const userId = req.session.user.id;
         const originalScenario = reqScenario(req);
         const originalSlides = await getSlidesForScenario(scenarioId);
-        const scenarioCopy = await db.addScenario(
+        const scenario = await db.addScenario(
             userId,
             `${originalScenario.title} COPY`,
             originalScenario.description
         );
-        const result = { scenario: scenarioCopy, status: 201 };
 
         await db.setScenarioCategories(
-            scenarioCopy.id,
+            scenario.id,
             originalScenario.categories
         );
-        await setAllSlides(scenarioCopy.id, originalSlides);
+        await setAllSlides(scenario.id, originalSlides);
 
-        res.send(result);
+        const consent = await db.getScenarioConsent(scenarioId);
+        const { id, prose } = await db.addConsent(consent);
+
+        await db.setScenarioConsent(
+            scenario.id,
+            Object.assign(consent, { id, prose })
+        );
+
+        Object.assign(scenario, {
+            consent
+        });
+        res.send({ scenario, status: 201 });
     } catch (apiError) {
         const error = new Error('Error while copying scenario');
         error.status = 500;
