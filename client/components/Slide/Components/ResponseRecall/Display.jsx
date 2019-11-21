@@ -39,7 +39,7 @@ class Display extends React.Component {
                 : 'Loading your previous response'
             : 'Participant response will appear here.';
 
-        return <Message content={content} />;
+        return <Message style={{ whiteSpace: 'pre-wrap' }} content={content} />;
     }
 }
 
