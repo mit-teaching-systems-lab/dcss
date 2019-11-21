@@ -25,6 +25,8 @@ const SlideComponentsList = ({
                 >
                     {components.map((value, index) => {
                         const { type } = value;
+                        if (!Components[type]) return;
+
                         const { Display } = Components[type];
                         return <Display key={`slide${index}`} {...value} />;
                     })}
@@ -42,6 +44,8 @@ const SlideComponentsList = ({
     ) : (
         components.map((value, index) => {
             const { type } = value;
+            if (!Components[type]) return;
+
             const { Display } = Components[type];
             return (
                 <Display

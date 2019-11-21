@@ -20,7 +20,6 @@ const ComponentsMenuOrder = [
     'ResponseRecall',
     'TextResponse',
     'MultiButtonResponse',
-    'CheckResponse',
     'AudioResponse'
 ];
 
@@ -196,6 +195,8 @@ export default class SlideEditor extends React.Component {
 
                             {components.map((value, index) => {
                                 const { type } = value;
+                                if (!Components[type]) return;
+
                                 const { Editor, Display } = Components[type];
                                 const edit = (
                                     <Editor

@@ -10,9 +10,6 @@ export { ResponseRecall };
 import * as AudioResponse from './AudioResponse';
 export { AudioResponse };
 
-import * as CheckResponse from './CheckResponse';
-export { CheckResponse };
-
 import * as MultiButtonResponse from './MultiButtonResponse';
 export { MultiButtonResponse };
 
