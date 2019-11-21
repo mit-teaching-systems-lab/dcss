@@ -132,6 +132,15 @@ This command can be customized with the following options [https://db-migrate.re
 ## Deployment
 This app is deployed via Heroku. To run the deploy commands, please [install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
+### Required Environment Variables
+The following environment variables must be set in Heroku:
+
+* AWS_ACCESS_KEY_ID
+* AWS_SECRET_ACCESS_KEY
+* DATABASE_URL
+  * In the following format: postgres://[username]:[password]@[host]:[port]/[database]
+* S3_BUCKET
+* ENV
 
 ### Staging environment setup
 
