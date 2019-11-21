@@ -1,3 +1,4 @@
+const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
 
 const { reqScenario } = require('./middleware');
@@ -168,6 +169,26 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
             scenario.id,
             originalScenario.categories
         );
+
+        // Check through all components of this slide
+        // for any that are response components...
+        for (const slide of originalSlides) {
+            for (const component of slide.components) {
+                // ...When a response component has been
+                // found, assign it a newly generated responseId,
+                // to prevent duplicate responseId values from
+                // being created.
+                if (
+                    Object.prototype.hasOwnProperty.call(
+                        component,
+                        'responseId'
+                    )
+                ) {
+                    component.responseId = `${component.type}-${uuid()}`;
+                }
+            }
+        }
+
         await setAllSlides(scenario.id, originalSlides);
 
         const consent = await db.getScenarioConsent(scenarioId);
