@@ -216,7 +216,7 @@ class Slides extends React.Component {
             deleteSlide,
             duplicateSlide
         } = this;
-        const { scenarioId } = this.props;
+        const { scenarioId, updateEditorMessage } = this.props;
         const { loading, slides, currentSlideIndex } = this.state;
         if (loading) {
             return (
@@ -356,6 +356,7 @@ class Slides extends React.Component {
                                 {...slides[currentSlideIndex]}
                                 onChange={onChangeSlide}
                                 deleteSlide={deleteSlide}
+                                updateEditorMessage={updateEditorMessage}
                             />
                         )}
                     </Grid.Column>

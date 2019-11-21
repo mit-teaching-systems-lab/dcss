@@ -9,6 +9,7 @@ import {
     Message,
     Segment
 } from 'semantic-ui-react';
+import Sortable from 'react-sortablejs';
 import EditorMenu from '@components/EditorMenu';
 import generateResponseId from '../util/generate-response-id';
 import * as Components from '../Components';
@@ -27,19 +28,23 @@ export default class SlideEditor extends React.Component {
     constructor(props) {
         super(props);
         this.clickHandlers = {};
+        const mode = 'edit';
+        const currentComponentIndex = 0;
         const { title = 'Slide', components = [] } = props;
         this.state = {
-            title,
             components,
-            mode: 'edit'
+            currentComponentIndex,
+            mode,
+            title
         };
 
+        this.onChangeComponentOrder = this.onChangeComponentOrder.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onDeleteComponent = this.onDeleteComponent.bind(this);
-        this.updatedState = this.updatedState.bind(this);
+        this.updateState = this.updateState.bind(this);
     }
 
-    updatedState() {
+    updateState() {
         if (this.props.onChange) {
             this.props.onChange(this.state);
         }
@@ -55,13 +60,54 @@ export default class SlideEditor extends React.Component {
     onComponentChange(index, value) {
         const components = this.state.components.slice();
         components[index] = value;
-        this.setState({ components }, this.updatedState);
+        this.setState({ components }, this.updateState);
+    }
+
+    onChangeComponentOrder(...args) {
+        const {
+            oldDraggableIndex: fromIndex,
+            newDraggableIndex: toIndex
+        } = args[2];
+
+        this.props.updateEditorMessage('Moving component...');
+
+        const components = this.state.components.slice();
+        const from = components[fromIndex];
+        const to = components[toIndex];
+        if (from && to) {
+            components[toIndex] = from;
+            components[fromIndex] = to;
+        }
+
+        const currentComponentIndex = toIndex;
+
+        this.setState({ components, currentComponentIndex }, this.updateState);
+        this.props.updateEditorMessage('Component moved!');
     }
 
     onDeleteComponent(index) {
         const components = this.state.components.slice();
         components.splice(index, 1);
-        this.setState({ components }, this.updatedState);
+        this.setState({ components }, () => {
+            let currentComponentIndex;
+
+            // The components was at the end...
+            if (index > components.length) {
+                currentComponentIndex = components.length - 1;
+            }
+
+            // The components was at the beginning...
+            if (index === 0) {
+                currentComponentIndex = 0;
+            } else {
+                // The components was somewhere in between...
+                currentComponentIndex = index - 1;
+            }
+
+            this.setState({ currentComponentIndex });
+            this.props.updateEditorMessage('Component deleted');
+            this.updateState();
+        });
     }
 
     onMenuClick(type) {
@@ -71,17 +117,23 @@ export default class SlideEditor extends React.Component {
                 responseId: generateResponseId(type)
             })
         ];
-        this.setState({ components }, this.updatedState);
+        const currentComponentIndex = components.length - 1;
+        this.setState({ components, currentComponentIndex }, () => {
+            this.props.updateEditorMessage('Component added');
+            this.updateState();
+        });
     }
 
     onTitleChange(event, { value: title }) {
-        this.setState({ title }, this.updatedState);
+        this.setState({ title }, this.updateState);
     }
 
     render() {
         const {
+            onChangeComponentOrder,
             onTitleChange,
-            state: { title, components }
+            state: { title, components },
+            updateState
         } = this;
 
         const { scenarioId } = this.props;
@@ -144,9 +196,7 @@ export default class SlideEditor extends React.Component {
                                     </Menu.Item>
                                 ],
                                 save: {
-                                    onClick: (...args) => {
-                                        this.updatedState(...args);
-                                    }
+                                    onClick: updateState
                                 },
                                 delete: {
                                     onConfirm: () => {
@@ -193,53 +243,67 @@ export default class SlideEditor extends React.Component {
                                 />
                             )}
 
-                            {components.map((value, index) => {
-                                const { type } = value;
-                                if (!Components[type]) return;
+                            <Sortable onChange={onChangeComponentOrder}>
+                                {components.map((value, index) => {
+                                    const { type } = value;
+                                    if (!Components[type]) return;
 
-                                const { Editor, Display } = Components[type];
-                                const edit = (
-                                    <Editor
-                                        slideIndex={index}
-                                        scenarioId={scenarioId}
-                                        value={value}
-                                        onChange={v =>
-                                            this.onComponentChange(index, v)
-                                        }
-                                    />
-                                );
-                                const componentMenu = (
-                                    <EditorMenu
-                                        type="component"
-                                        items={{
-                                            save: {
-                                                onClick: (...args) => {
-                                                    this.updatedState(...args);
-                                                }
-                                            },
-                                            delete: {
-                                                onConfirm: () => {
-                                                    this.onDeleteComponent(
-                                                        index
-                                                    );
-                                                }
+                                    const { Editor, Display } = Components[
+                                        type
+                                    ];
+                                    const edit = (
+                                        <Editor
+                                            slideIndex={index}
+                                            scenarioId={scenarioId}
+                                            value={value}
+                                            onChange={v =>
+                                                this.onComponentChange(index, v)
                                             }
-                                        }}
-                                    />
-                                );
-                                const display = <Display {...value} />;
-
-                                return this.state.mode === 'edit' ? (
-                                    <Segment key={index}>
-                                        {componentMenu}
-                                        {edit}
-                                    </Segment>
-                                ) : (
-                                    <React.Fragment key={index}>
-                                        {display}
-                                    </React.Fragment>
-                                );
-                            })}
+                                        />
+                                    );
+                                    const onDeleteComponentCurriedWithIndex = this.onDeleteComponent.bind(
+                                        this,
+                                        index
+                                    );
+                                    const componentMenu = (
+                                        <EditorMenu
+                                            type="component"
+                                            items={{
+                                                save: {
+                                                    onClick: this.updateState
+                                                },
+                                                delete: {
+                                                    onConfirm: onDeleteComponentCurriedWithIndex
+                                                }
+                                            }}
+                                        />
+                                    );
+                                    const display = <Display {...value} />;
+                                    return this.state.mode === 'edit' ? (
+                                        <Segment
+                                            key={index}
+                                            className={
+                                                index ===
+                                                this.state.currentComponentIndex
+                                                    ? 'editor__component-selected'
+                                                    : ''
+                                            }
+                                            onClick={() =>
+                                                this.setState({
+                                                    currentComponentIndex: index
+                                                })
+                                            }
+                                        >
+                                            {componentMenu}
+                                            {edit}
+                                        </Segment>
+                                    ) : (
+                                        <React.Fragment key={index}>
+                                            {display}
+                                        </React.Fragment>
+                                    );
+                                })}
+                            </Sortable>
                         </Segment>
                     </Grid.Row>
                 </Grid.Column>
@@ -254,5 +318,6 @@ SlideEditor.propTypes = {
     title: PropTypes.string,
     components: PropTypes.arrayOf(PropTypes.object),
     onChange: PropTypes.func,
-    deleteSlide: PropTypes.func
+    deleteSlide: PropTypes.func,
+    updateEditorMessage: PropTypes.func
 };
