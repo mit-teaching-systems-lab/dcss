@@ -33,10 +33,17 @@ exports.updateRun = async function(id, data) {
     return result.rows[0];
 };
 
-exports.upsertResponse = async ({ run_id, response_id, response, user_id }) => {
+exports.upsertResponse = async ({
+    run_id,
+    response_id,
+    response,
+    user_id,
+    created_at,
+    ended_at
+}) => {
     const result = await query(sql`
-        INSERT INTO run_response (run_id, response_id, response, user_id)
-        VALUES (${run_id}, ${response_id}, ${response}, ${user_id});
+        INSERT INTO run_response (run_id, response_id, response, user_id, created_at, ended_at)
+        VALUES (${run_id}, ${response_id}, ${response}, ${user_id}, ${created_at}, ${ended_at});
     `);
     return result.rows[0];
 };

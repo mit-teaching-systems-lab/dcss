@@ -58,12 +58,15 @@ class Run extends Component {
         }
     }
 
-    onResponseChange(event, { name, value, type }) {
-        if (!this.responses.has(name)) {
-            this.responses.set(name, { type, value });
+    onResponseChange(event, { name, value, type, createdAt, endedAt }) {
+        const key = `${name}${createdAt}`;
+        if (!this.responses.has(key)) {
+            this.responses.set(key, { name, type, value, createdAt, endedAt });
         } else {
-            let response = this.responses.get(name);
+            let response = this.responses.get(key);
             response['value'] = value;
+            response['endedAt'] = endedAt;
+            response['createdAt'] = createdAt;
         }
     }
 
@@ -73,11 +76,14 @@ class Run extends Component {
 
     async onSubmit() {
         if (this.props.run) {
-            for (let [name, { type, value }] of this.responses) {
+            for (let [name, { type, value, createdAt, endedAt }] of this
+                .responses) {
                 const url = `/api/runs/${this.props.run.id}/response/${name}`;
                 const body = {
                     type,
-                    value
+                    value,
+                    createdAt,
+                    endedAt
                 };
 
                 // TODO: feedback for when response is saved

@@ -16,7 +16,8 @@ class Display extends Component {
         this.state = {
             isRecording: false,
             type: '',
-            blobURL: ''
+            blobURL: '',
+            createdAt: ''
         };
 
         this.mp3Recorder = new MicRecorder({ bitRate: 128 });
@@ -29,12 +30,18 @@ class Display extends Component {
     }
 
     onClick() {
-        this.setState(prevState => ({ isRecording: !prevState.isRecording }));
+        this.setState(prevState => ({
+            isRecording: !prevState.isRecording,
+            createdAt: new Date().toISOString()
+        }));
     }
 
     async onStart() {
         await this.mp3Recorder.start();
-        this.setState({ isRecording: true });
+        this.setState({
+            isRecording: true,
+            createdAt: new Date().toISOString()
+        });
     }
 
     async onStop() {
@@ -67,10 +74,16 @@ class Display extends Component {
             return { blobURL, isRecording: false };
         });
 
-        this.props.onResponseChange(
-            {},
-            { name: this.props.responseId, value: s3Location, type: 'audio' }
-        );
+        const responseChangeOptions = {
+            name: this.props.responseId,
+            value: s3Location,
+            type: 'audio',
+            createdAt: this.state.createdAt,
+            endedAt: new Date().toISOString()
+        };
+
+        // This saves every recording that the user creates
+        this.props.onResponseChange({}, responseChangeOptions);
     }
 
     render() {

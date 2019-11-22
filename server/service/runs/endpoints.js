@@ -21,9 +21,20 @@ async function newOrExistingRunAsync(req, res) {
 async function upsertResponseAsync(req, res) {
     const { id: run_id, user_id } = await runForRequest(req);
     const { response_id } = req.params;
-    const response = req.body;
+    const {
+        createdAt: created_at = new Date().toISOString(), // setting created_at to conform to not null constraint
+        endedAt: ended_at,
+        ...response
+    } = req.body;
     res.json(
-        await db.upsertResponse({ run_id, response_id, response, user_id })
+        await db.upsertResponse({
+            run_id,
+            response_id,
+            response,
+            user_id,
+            created_at,
+            ended_at
+        })
     );
 }
 
