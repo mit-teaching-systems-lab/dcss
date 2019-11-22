@@ -9,13 +9,38 @@ import SlideComponentsList from '@components/SlideComponentsList';
 class ContentSlide extends React.Component {
     constructor(props) {
         super(props);
+        this.onSkip = this.onSkip.bind(this);
+    }
+
+    onSkip(event) {
+        const { onClickNext, onResponseChange, slide } = this.props;
+
+        slide.components.forEach(component => {
+            if (component.responseId) {
+                onResponseChange(event, {
+                    name: component.responseId,
+                    value: 'Participant Skipped',
+                    type: component.type
+                });
+            }
+        });
+
+        onClickNext();
     }
 
     render() {
         const { isLastSlide, onResponseChange, run, slide } = this.props;
-        const nextButtonLabel = isLastSlide ? 'Finish' : 'Next';
         const cardClass = run ? 'scenario__card--run' : 'scenario__card';
         const runOnly = run ? { run } : {};
+        const hasPrompt = slide.components.some(
+            component => component.responseId
+        );
+
+        const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next';
+        const finishOrProceedLabel = isLastSlide
+            ? 'Finish'
+            : proceedButtonLabel;
+
         return (
             <Card id={slide.id} key={slide.id} centered className={cardClass}>
                 <Card.Content style={{ flexGrow: '0' }}>
@@ -39,8 +64,18 @@ class ContentSlide extends React.Component {
                         <Button
                             color="green"
                             onClick={this.props.onClickNext}
-                            content={nextButtonLabel}
+                            content={finishOrProceedLabel}
                         />
+                        {hasPrompt && (
+                            <React.Fragment>
+                                <Button.Or />
+                                <Button
+                                    color="yellow"
+                                    onClick={this.onSkip}
+                                    content="Skip"
+                                />
+                            </React.Fragment>
+                        )}
                     </Button.Group>
                 </Card.Content>
             </Card>
