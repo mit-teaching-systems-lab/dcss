@@ -15,6 +15,10 @@ const NewScenario = props => {
     return <Editor {...props} isNewScenario={true} />;
 };
 
+const Logout = props => {
+    return <Login {...props} mode="logout" />;
+};
+
 const Routes = () => {
     return (
         <Switch>
@@ -27,7 +31,7 @@ const Routes = () => {
             <Route path="/editor/:id" component={Editor} />
             <Route exact path="/facilitator" component={Facilitator} />
             <Route exact path="/admin" component={AccountAdmin} />
-            <Route exact path="/logout" component={Login} />
+            <Route exact path="/logout" component={Logout} />
             <Route exact path="/login" component={Login} />
             <Route path="/login/new" component={CreateAccount} />
         </Switch>

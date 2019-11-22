@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Item } from 'semantic-ui-react';
@@ -13,96 +14,112 @@ class Login extends Component {
     constructor(props) {
         super(props);
 
+        const mode =
+            this.props.mode || this.props.location.pathname.includes('logout')
+                ? 'logout'
+                : 'login';
+        const isLoggedIn = false;
+        const loginError = '';
+        const username = '';
+        const password = '';
+
         this.state = {
-            isLoggedIn: false,
-            username: '',
-            loginError: '',
-            usernameInput: '',
-            passwordInput: ''
+            isLoggedIn,
+            loginError,
+            mode,
+            username,
+            password
         };
 
         this.onChange = this.onChange.bind(this);
-        this.onLogIn = this.onLogIn.bind(this);
-        this.onLogOut = this.onLogOut.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
+        this.doLogin = this.doLogin.bind(this);
+        this.doLogout = this.doLogout.bind(this);
+
+        if (mode === 'logout') {
+            this.doLogout();
+        }
     }
 
-    onChange(event) {
-        this.setState({ [`${event.target.name}Input`]: event.target.value });
+    onChange(event, { name, value }) {
+        this.setState({ [name]: value });
     }
 
-    onLogIn(event) {
+    onSubmit(event) {
         event.preventDefault();
-        this.handleLogin();
+        this.doLogin();
     }
-    async handleLogin() {
+
+    async doLogin() {
+        const { username, password } = this.state;
+
         const body = JSON.stringify({
-            username: this.state.usernameInput,
-            password: this.state.passwordInput
+            username,
+            password
         });
-        const loginResponse = await (await fetch('/api/auth/login', {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method,
-            body
-        })).json();
-        const { username, error, message: loginError = '' } = loginResponse;
+        const { error, message: loginError = '' } = await (await fetch(
+            '/api/auth/login',
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method,
+                body
+            }
+        )).json();
 
         if (error) {
             this.setState({ loginError });
             this.props.logOut('');
         } else {
             this.setState({ loginError });
-            this.props.logIn(username);
+            this.props.logIn({ username, isLoggedIn: true });
             Session.create({ username, timeout: Date.now() });
-            this.props.history.push('/');
+
+            // Step outside of react to force a real reload
+            // force a real request after log-in.
+            location.href = '/';
         }
     }
 
-    async onLogOut() {
-        const logoutResponse = await fetch('/api/auth/logout', {
+    async doLogout() {
+        await fetch('/api/auth/logout', {
             method
         });
-        if (!logoutResponse.error) {
-            this.props.logOut('');
-            Session.destroy();
-        }
-        this.props.history.push('/login');
+        Session.destroy();
+        // Step outside of react and react-router to
+        // force a real request after logout.
+        location.href = '/';
     }
 
     render() {
-        if (this.props.isLoggedIn) {
-            return (
-                <Button
-                    type="submit"
-                    primary
-                    size="large"
-                    onClick={this.onLogOut}
-                >
-                    Log out
-                </Button>
-            );
+        const { loginError, mode, password, username } = this.state;
+        const { onChange, onSubmit } = this;
+
+        if (mode === 'logout') {
+            return null;
         }
 
         return (
-            <Form className="login__form" onSubmit={this.onLogIn}>
+            <Form className="login__form" onSubmit={onSubmit}>
                 <Form.Field>
                     <label htmlFor="name">Username</label>
-                    <input
+                    <Form.Input
                         name="username"
                         autoComplete="username"
-                        onChange={this.onChange}
-                        value={this.state.usernameInput}
+                        onChange={onChange}
+                        value={username}
                     />
                 </Form.Field>
                 <Form.Field>
                     <label htmlFor="password">Password</label>
-                    <input
+                    <Form.Input
                         name="password"
                         type="password"
                         autoComplete="current-password"
-                        onChange={this.onChange}
-                        value={this.state.passwordInput}
+                        onChange={onChange}
+                        value={password}
                     />
                 </Form.Field>
                 <Grid columns={2}>
@@ -118,7 +135,7 @@ class Login extends Component {
                             </Item.Extra>
                         </Item>
                     </Grid.Column>
-                    <Grid.Column>{this.state.loginError}</Grid.Column>
+                    <Grid.Column>{loginError}</Grid.Column>
                 </Grid>
             </Form>
         );
@@ -129,9 +146,11 @@ Login.propTypes = {
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+    location: PropTypes.object,
     logIn: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired,
-    isLoggedIn: PropTypes.bool.isRequired,
+    mode: PropTypes.string,
     username: PropTypes.string
 };
 
@@ -145,7 +164,9 @@ const mapDispatchToProps = {
     logOut
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Login);
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Login)
+);

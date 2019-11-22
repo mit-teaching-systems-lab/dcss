@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
+import ConfirmableLogoutMenuItem from '@client/components/Login/ConfirmableLogoutMenuItem';
 
 import Session from '@client/util/session';
 const MOBILE_WIDTH = 767;
@@ -64,15 +65,14 @@ const Navigation = () => {
                             <Menu.Item>
                                 <NavLink to="/admin">Admin</NavLink>
                             </Menu.Item>
+                            <ConfirmableLogoutMenuItem />
                         </React.Fragment>
                     )}
-                    <Menu.Item position="right">
-                        {Session.isSessionActive() ? (
-                            <NavLink to="/logout">Log out</NavLink>
-                        ) : (
+                    {!Session.isSessionActive() && (
+                        <Menu.Item position="right">
                             <NavLink to="/login">Log in</NavLink>
-                        )}
-                    </Menu.Item>
+                        </Menu.Item>
+                    )}
                 </Menu>
             )}
         </React.Fragment>
