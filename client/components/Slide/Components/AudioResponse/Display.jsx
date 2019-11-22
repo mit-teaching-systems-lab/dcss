@@ -1,7 +1,7 @@
 import { type } from './type';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Label, Icon } from 'semantic-ui-react';
+import { Button, Form, Icon, Segment, TextArea } from 'semantic-ui-react';
 import MicRecorder from 'mic-recorder-to-mp3';
 import { detect } from 'detect-browser';
 import { connect } from 'react-redux';
@@ -75,40 +75,46 @@ class Display extends Component {
 
     render() {
         const { isRecording } = this.state;
-        const { prompt } = this.props;
-        return (
-            (this.browserSupported && (
-                <React.Fragment>
-                    <Label>
-                        <p>{prompt}</p>
-                        {!isRecording && (
-                            <Button
-                                basic
-                                color="black"
-                                toggle
-                                onClick={this.onStart}
-                            >
-                                <Icon
-                                    name="circle"
-                                    aria-label="Record an Audio Response"
-                                />
-                                Record Response
-                            </Button>
-                        )}
-                        {isRecording && (
-                            <Button basic negative onClick={this.onStop}>
-                                <Icon
-                                    name="stop circle"
-                                    aria-label="Record an Audio Response"
-                                />
-                                Stop Recording
-                            </Button>
-                        )}
-                    </Label>
+        const { prompt, responseId, onResponseChange } = this.props;
+        return this.browserSupported ? (
+            <React.Fragment>
+                <Segment>
+                    {!isRecording && (
+                        <Button basic toggle onClick={this.onStart}>
+                            <Icon
+                                name="circle"
+                                aria-label="Record an Audio Response"
+                            />
+                            {prompt}
+                        </Button>
+                    )}
+                    {isRecording && (
+                        <Button basic negative onClick={this.onStop}>
+                            <Icon
+                                name="stop circle"
+                                aria-label="Record an Audio Response"
+                            />
+                            Done
+                        </Button>
+                    )}
+                </Segment>
 
+                {this.state.blobURL && (
                     <audio src={this.state.blobURL} controls="controls" />
-                </React.Fragment>
-            )) || <p>Please switch to Chrome or Firefox to record audio.</p>
+                )}
+            </React.Fragment>
+        ) : (
+            <Segment>
+                <Form>
+                    <Form.Field>
+                        <TextArea
+                            name={responseId}
+                            placeholder="Type your response here"
+                            onChange={onResponseChange}
+                        />
+                    </Form.Field>
+                </Form>
+            </Segment>
         );
     }
 }

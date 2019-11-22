@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label, TextArea } from 'semantic-ui-react';
+import { Container, Form, Input, Message, Popup } from 'semantic-ui-react';
 import { type } from './type';
 import './AudioResponse.css';
 
@@ -26,18 +26,23 @@ class AudioResponseEditor extends Component {
         const { prompt } = this.state;
         const { onTextAreaChange } = this;
         return (
-            <React.Fragment>
-                <Form>
-                    <Label>
-                        Audio Prompt:
-                        <TextArea
-                            name="prompt"
-                            value={prompt}
-                            onChange={onTextAreaChange}
-                        />
-                    </Label>
-                </Form>
-            </React.Fragment>
+            <Form>
+                <Container fluid>
+                    <Popup
+                        content="This is the label that will appear on the Audio Prompt button."
+                        trigger={
+                            <Input
+                                label="Audio Prompt:"
+                                name="prompt"
+                                value={prompt}
+                                onChange={onTextAreaChange}
+                            />
+                        }
+                    />
+
+                    <Message content="Note: This component will fallback to a text input prompt when Audio recording is not supported." />
+                </Container>
+            </Form>
         );
     }
 }

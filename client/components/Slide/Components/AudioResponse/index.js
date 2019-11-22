@@ -1,7 +1,7 @@
 import { type } from './type';
 export { type };
 export const defaultValue = ({ responseId }) => ({
-    prompt: 'Provide a prompt for users to respond to here.',
+    prompt: 'Click then speak',
     responseId,
     type
 });
