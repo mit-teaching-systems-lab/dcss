@@ -1,0 +1,11 @@
+@media not all and (max-device-width: 767px) {
+    .ui.fluid.button.nav__mobile {
+        display: none;
+    }
+}
+
+@media not all and (min-width: 767px) {
+    .ui.fluid.button.nav__mobile {
+        display: block;
+    }
+}

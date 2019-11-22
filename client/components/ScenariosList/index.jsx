@@ -16,7 +16,7 @@ const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
     return scenarios.map(({ id, title, description, deleted_at }) => {
         const strike = deleted_at ? { textDecoration: 'line-through' } : {};
         return (
-            <Card key={id}>
+            <Card className="scenario__entry" key={id}>
                 <Card.Content>
                     <Card.Header style={strike}>{title}</Card.Header>
                     <Card.Description style={strike}>

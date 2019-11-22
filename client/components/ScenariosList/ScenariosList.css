@@ -5,3 +5,7 @@
 .ui.basic.button.scenario__entry--button:hover {
     background-color: #cacbcd !important;
 }
+
+.ui.card.scenario__entry {
+    margin: 1rem auto;
+}
