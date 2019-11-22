@@ -7,20 +7,23 @@ import PropTypes from 'prop-types';
 import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
 
-const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
-    if (!scenarioData.length) {
+const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
+    if (!scenarios.length) {
         return null;
     }
 
     // only filter out scenario if there is a path
-    return scenarioData.map(({ id, title, description }) => {
+    return scenarios.map(({ id, title, description, deleted_at }) => {
+        const strike = deleted_at ? { textDecoration: 'line-through' } : {};
         return (
             <Card key={id}>
                 <Card.Content>
-                    <Card.Header>{title}</Card.Header>
-                    <Card.Description>{description}</Card.Description>
+                    <Card.Header style={strike}>{title}</Card.Header>
+                    <Card.Description style={strike}>
+                        {description}
+                    </Card.Description>
                 </Card.Content>
-                {isLoggedIn && (
+                {!deleted_at && isLoggedIn && (
                     <Card.Content extra>
                         <Button
                             basic
@@ -34,7 +37,7 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                         </Button>
                     </Card.Content>
                 )}
-                {isLoggedIn && (
+                {!deleted_at && isLoggedIn && (
                     <Card.Content extra>
                         <Button.Group className="scenario__entry--edit-buttons">
                             <Button
@@ -63,6 +66,13 @@ const ScenarioEntries = ({ scenarioData, isLoggedIn }) => {
                         </Button.Group>
                     </Card.Content>
                 )}
+                {deleted_at && isLoggedIn && (
+                    <Card.Content extra>
+                        <Button.Group className="scenario__entry--edit-buttons">
+                            <Button>Restore</Button>
+                        </Button.Group>
+                    </Card.Content>
+                )}
             </Card>
         );
     });
@@ -72,26 +82,43 @@ class ScenariosList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            scenarioData: props.scenarioData || []
+            scenarios: props.scenarios || []
         };
 
         this.getScenarios = this.getScenarios.bind(this);
 
-        if (!this.state.scenarioData.length) {
+        if (!this.state.scenarios.length) {
             this.getScenarios();
         }
     }
 
     async getScenarios() {
-        const scenariosResponse = await (await fetch('api/scenarios')).json();
+        const { scenarios, status } = await (await fetch(
+            'api/scenarios'
+        )).json();
 
-        if (scenariosResponse.status === 200) {
-            this.setState({ scenarioData: scenariosResponse.scenarios });
+        if (status === 200) {
+            this.setState({ scenarios });
         }
     }
 
     render() {
         const category = this.props.location.pathname.slice(1);
+        let scenarios = this.state.scenarios.filter(({ categories }) => {
+            return !category || categories.includes(category);
+        });
+
+        // TODO: Expose deleted scenarios these to Admin only
+        // This pushes "deleted" scenarios to the end of the list of Scenarios,
+        // as a temporary means of addressing the display of "deleted"
+        // scenarios.
+        scenarios.forEach((scenario, index, scenarios) => {
+            if (scenario.deleted_at) {
+                scenarios.splice(index, 1);
+                scenarios.push(scenario);
+            }
+        });
+
         return (
             <div>
                 <Grid>
@@ -104,16 +131,10 @@ class ScenariosList extends Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column stretched>
-                            {this.state.scenarioData.length ? (
+                            {this.state.scenarios.length ? (
                                 <Card.Group>
                                     <ScenarioEntries
-                                        scenarioData={this.state.scenarioData.filter(
-                                            result =>
-                                                (!category && result) ||
-                                                result.categories.includes(
-                                                    category
-                                                )
-                                        )}
+                                        scenarios={scenarios}
                                         isLoggedIn={this.props.isLoggedIn}
                                     />
                                 </Card.Group>
@@ -129,7 +150,7 @@ class ScenariosList extends Component {
 }
 
 ScenariosList.propTypes = {
-    scenarioData: PropTypes.array,
+    scenarios: PropTypes.array,
     isLoggedIn: PropTypes.bool.isRequired,
     location: PropTypes.object
 };

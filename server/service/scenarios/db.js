@@ -201,11 +201,22 @@ async function deleteScenario(scenarioId) {
     return { deletedCount: result.rowCount };
 }
 
+async function softDeleteScenario(scenarioId) {
+    const result = await query(sql`
+        UPDATE scenario
+        SET deleted_at = CURRENT_TIMESTAMP
+        WHERE id=${scenarioId}
+        RETURNING *;
+    `);
+    return result.rows[0];
+}
+
 // Scenario
 exports.addScenario = addScenario;
 exports.setScenario = setScenario;
 exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
+exports.softDeleteScenario = softDeleteScenario;
 exports.getAllScenarios = getAllScenarios;
 
 // Scenario Consent

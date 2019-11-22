@@ -141,6 +141,31 @@ exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
     }
 });
 
+exports.softDeleteScenario = asyncMiddleware(
+    async function softDeleteScenarioAsync(req, res) {
+        const scenarioId = req.params.scenario_id;
+
+        if (!scenarioId) {
+            const scenarioDeleteError = new Error(
+                'Scenario id required for scenario deletion'
+            );
+            scenarioDeleteError.status = 409;
+            throw scenarioDeleteError;
+        }
+
+        try {
+            const scenario = await db.softDeleteScenario(scenarioId);
+
+            res.send({ scenario, status: 200 });
+        } catch (apiError) {
+            const error = new Error('Error while soft deleting scenario');
+            error.status = 500;
+            error.stack = apiError.stack;
+            throw error;
+        }
+    }
+);
+
 exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
     req,
     res

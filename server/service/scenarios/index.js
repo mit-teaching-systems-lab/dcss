@@ -2,35 +2,34 @@ const { Router } = require('express');
 const { validateRequestBody } = require('../../util/requestValidation');
 const { lookupScenario } = require('./middleware');
 
-const scenariosRouter = Router();
+const router = Router();
 
 const {
-    getScenario,
-    getAllScenarios,
     addScenario,
-    setScenario,
+    copyScenario,
     deleteScenario,
-    copyScenario
+    getAllScenarios,
+    getScenario,
+    setScenario,
+    softDeleteScenario
 } = require('./endpoints.js');
 
-scenariosRouter.get('/', getAllScenarios);
-scenariosRouter.get('/:scenario_id', [lookupScenario(), getScenario]);
+router.get('/', getAllScenarios);
+router.get('/:scenario_id', [lookupScenario(), getScenario]);
 
-scenariosRouter.put('/', [validateRequestBody, addScenario]);
+router.put('/', [validateRequestBody, addScenario]);
 
-scenariosRouter.post('/:scenario_id', [
+router.post('/:scenario_id', [
     lookupScenario(),
     validateRequestBody,
     setScenario
 ]);
 
-scenariosRouter.post('/:scenario_id/copy', [lookupScenario(), copyScenario]);
+router.post('/:scenario_id/copy', [lookupScenario(), copyScenario]);
 
-scenariosRouter.delete('/:scenario_id', [lookupScenario(), deleteScenario]);
+router.delete('/:scenario_id', [lookupScenario(), softDeleteScenario]);
+router.delete('/:scenario_id/hard', [lookupScenario(), deleteScenario]);
 
-scenariosRouter.use('/:scenario_id/slides', [
-    lookupScenario(),
-    require('./slides')
-]);
+router.use('/:scenario_id/slides', [lookupScenario(), require('./slides')]);
 
-module.exports = scenariosRouter;
+module.exports = router;
