@@ -4,14 +4,14 @@ import { Popup, Icon } from 'semantic-ui-react';
 const MultiButtonResponseCard = () => (
     <Popup
         content="A multiple button response"
-        header="Multiple Button Response"
+        header="Multiple Button Prompt"
         trigger={
             <React.Fragment>
                 <Icon
                     name="hand pointer outline"
-                    aria-label="Multiple Button Response"
+                    aria-label="Multiple Button Prompt"
                 />
-                Multiple Button Response
+                Multiple Button Prompt
             </React.Fragment>
         }
     />

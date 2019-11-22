@@ -3,7 +3,7 @@ import { Popup, Icon } from 'semantic-ui-react';
 
 const TextCard = () => (
     <Popup
-        content="A rich text display area, used for titles, text, and many other things."
+        content="A rich text display area, used for titles, text, images, video and many other things."
         header="Text"
         trigger={
             <React.Fragment>

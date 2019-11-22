@@ -3,12 +3,12 @@ import { Popup, Icon } from 'semantic-ui-react';
 
 const TextResponseCard = () => (
     <Popup
-        content="A simple text area for users to respond"
-        header="Text Response"
+        content="A simple text input prompt"
+        header="Text Input Prompt"
         trigger={
             <React.Fragment>
-                <Icon name="keyboard" aria-label="Text Response" />
-                Text Response
+                <Icon name="keyboard" aria-label="Text Input Prompt" />
+                Text Input Prompt
             </React.Fragment>
         }
     />
