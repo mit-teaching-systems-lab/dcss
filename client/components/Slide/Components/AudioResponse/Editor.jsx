@@ -7,9 +7,10 @@ import './AudioResponse.css';
 class AudioResponseEditor extends Component {
     constructor(props) {
         super(props);
-        const { prompt } = props.value;
+        const { prompt, responseId } = props.value;
         this.state = {
-            prompt
+            prompt,
+            responseId
         };
 
         this.onTextAreaChange = this.onTextAreaChange.bind(this);
@@ -17,8 +18,8 @@ class AudioResponseEditor extends Component {
 
     onTextAreaChange(event, { name, value }) {
         this.setState({ [name]: value }, () => {
-            const { prompt } = this.state;
-            this.props.onChange({ type, prompt });
+            const { prompt, responseId } = this.state;
+            this.props.onChange({ type, prompt, responseId });
         });
     }
 
@@ -51,7 +52,8 @@ AudioResponseEditor.propTypes = {
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
-        prompt: PropTypes.string
+        prompt: PropTypes.string,
+        responseId: PropTypes.string
     }),
     onChange: PropTypes.func.isRequired
 };

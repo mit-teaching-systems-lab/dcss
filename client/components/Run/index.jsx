@@ -58,15 +58,27 @@ class Run extends Component {
         }
     }
 
-    onResponseChange(event, { name, value, type, createdAt, endedAt }) {
-        const key = `${name}${createdAt}`;
-        if (!this.responses.has(key)) {
-            this.responses.set(key, { name, type, value, createdAt, endedAt });
-        } else {
-            let response = this.responses.get(key);
-            response['value'] = value;
-            response['endedAt'] = endedAt;
-            response['createdAt'] = createdAt;
+    onResponseChange(event, data) {
+        const {
+            created_at,
+            ended_at = new Date().toISOString(),
+            isSkip = false,
+            name,
+            type,
+            value
+        } = data;
+        const record = {
+            created_at,
+            ended_at,
+            isSkip,
+            type,
+            value
+        };
+        const isRecordable =
+            !this.responses.has(name) || (this.responses.has(name) && !isSkip);
+
+        if (isRecordable) {
+            this.responses.set(name, record);
         }
     }
 
@@ -76,17 +88,10 @@ class Run extends Component {
 
     async onSubmit() {
         if (this.props.run) {
-            for (let [name, { type, value, createdAt, endedAt }] of this
-                .responses) {
+            for (let [name, body] of this.responses) {
                 const url = `/api/runs/${this.props.run.id}/response/${name}`;
-                const body = {
-                    type,
-                    value,
-                    createdAt,
-                    endedAt
-                };
-
                 // TODO: feedback for when response is saved
+
                 await fetch(url, {
                     method: 'POST',
                     headers: {

@@ -16,31 +16,23 @@ class Display extends Component {
         this.state = {
             isRecording: false,
             type: '',
-            blobURL: '',
-            createdAt: ''
+            blobURL: ''
         };
 
+        this.created_at = new Date().toISOString();
         this.mp3Recorder = new MicRecorder({ bitRate: 128 });
 
-        this.onClick = this.onClick.bind(this);
         this.onStart = this.onStart.bind(this);
         this.onStop = this.onStop.bind(this);
 
         this.browserSupported = SUPPORTED_BROWSERS.includes(detect().name);
     }
 
-    onClick() {
-        this.setState(prevState => ({
-            isRecording: !prevState.isRecording,
-            createdAt: new Date().toISOString()
-        }));
-    }
-
     async onStart() {
         await this.mp3Recorder.start();
+        this.created_at = new Date().toISOString();
         this.setState({
-            isRecording: true,
-            createdAt: new Date().toISOString()
+            isRecording: true
         });
     }
 
@@ -53,18 +45,20 @@ class Display extends Component {
             lastModified: Date.now()
         });
 
-        let data = new FormData();
-        data.append('name', 'audio-response');
-        data.append('recording', file);
-        data.append('responseId', this.props.responseId);
+        const { responseId, responseId: name, run } = this.props;
 
-        if (this.props.run) {
-            data.append('runId', this.props.run.id);
+        let body = new FormData();
+        body.append('name', 'audio-response');
+        body.append('recording', file);
+        body.append('responseId', responseId);
+
+        if (run) {
+            body.append('runId', run.id);
         }
 
-        const { s3Location } = await (await fetch('/api/media/audio', {
+        const { s3Location: value } = await (await fetch('/api/media/audio', {
             method: 'POST',
-            body: data
+            body
         })).json();
 
         this.setState(prevState => {
@@ -74,16 +68,19 @@ class Display extends Component {
             return { blobURL, isRecording: false };
         });
 
-        const responseChangeOptions = {
-            name: this.props.responseId,
-            value: s3Location,
-            type: 'audio',
-            createdAt: this.state.createdAt,
-            endedAt: new Date().toISOString()
-        };
+        const { created_at } = this;
 
         // This saves every recording that the user creates
-        this.props.onResponseChange({}, responseChangeOptions);
+        this.props.onResponseChange(
+            {},
+            {
+                created_at,
+                ended_at: new Date().toISOString(),
+                name,
+                type,
+                value
+            }
+        );
     }
 
     render() {

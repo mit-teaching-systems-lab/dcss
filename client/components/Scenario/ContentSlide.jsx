@@ -14,13 +14,19 @@ class ContentSlide extends React.Component {
 
     onSkip(event) {
         const { onClickNext, onResponseChange, slide } = this.props;
+        const isSkip = true;
+        const value = '';
 
-        slide.components.forEach(component => {
-            if (component.responseId) {
+        slide.components.forEach(({ responseId, type }) => {
+            if (responseId) {
+                const name = responseId;
                 onResponseChange(event, {
-                    name: component.responseId,
-                    value: 'Participant Skipped',
-                    type: component.type
+                    created_at: new Date().toISOString(),
+                    ended_at: new Date().toISOString(),
+                    isSkip,
+                    name,
+                    type,
+                    value
                 });
             }
         });

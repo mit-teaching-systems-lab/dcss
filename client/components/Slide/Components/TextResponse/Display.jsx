@@ -9,52 +9,30 @@ class Display extends Component {
     constructor(props) {
         super(props);
 
-        this.createdAt = false;
-
-        this.lastValueChanged = '';
-
+        this.created_at = '';
+        this.onFocus = this.onFocus.bind(this);
         this.onChange = this.onChange.bind(this);
     }
 
+    onFocus() {
+        if (!this.created_at) {
+            this.created_at = new Date().toISOString();
+        }
+    }
+
     onChange(event, data) {
-        if (!this.createdAt) {
-            this.createdAt = new Date().toISOString();
-        }
-
-        const now = new Date();
-        const createdAt = new Date(this.createdAt);
-        const isOneSecondOrLonger = (now - createdAt) / 1000 > 1;
-
-        // This saves the text response every second
-        if (isOneSecondOrLonger) {
-            this.props.onResponseChange(
-                {},
-                {
-                    createdAt: this.createdAt,
-                    endedAt: now.toISOString(),
-                    ...data
-                }
-            );
-            this.createdAt = false;
-            this.lastValueChanged = data.value;
-        }
-
-        // This condition handles the text area value on submit
-        if (this.lastValueChanged !== data.value) {
-            this.props.onResponseChange(
-                {},
-                {
-                    createdAt: this.createdAt,
-                    endedAt: now.toISOString(),
-                    ...data
-                }
-            );
-            this.lastValueChanged = data.value;
-        }
+        const { created_at } = this;
+        this.props.onResponseChange(event, {
+            ...data,
+            created_at,
+            ended_at: new Date().toISOString(),
+            type
+        });
     }
 
     render() {
         const { prompt, placeholder, responseId } = this.props;
+        const { onFocus, onChange } = this;
         return (
             <Segment>
                 <Form>
@@ -65,7 +43,8 @@ class Display extends Component {
                         <TextArea
                             name={responseId}
                             placeholder={placeholder}
-                            onChange={this.onChange}
+                            onFocus={onFocus}
+                            onChange={onChange}
                         />
                     </Form.Field>
                 </Form>

@@ -7,10 +7,18 @@ class Display extends React.Component {
     constructor(props) {
         super(props);
         this.onClick = this.onClick.bind(this);
+        this.created_at = new Date().toISOString();
     }
 
     onClick(event, { name, value }) {
-        this.props.onResponseChange(event, { name, value, type });
+        const { created_at } = this;
+        this.props.onResponseChange(event, {
+            created_at,
+            ended_at: new Date().toISOString(),
+            name,
+            value,
+            type
+        });
     }
 
     render() {

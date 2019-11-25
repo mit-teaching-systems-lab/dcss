@@ -32,12 +32,31 @@ class Display extends React.Component {
     }
     render() {
         const { response } = this.state;
-
+        // If the scenario is an active "Run":
+        //      If there is a response object, but
+        //      the response was skipped,
+        //      display:
+        //      "Prompt skipped"
+        //
+        //      Otherwise, display the value
+        //      that was entered by the participant
+        //
+        //      In case we're waiting for the response
+        //      to load from the server, display:
+        //      "Loading your previous response"
+        //
+        // Otherwise, we're in a preview, so there
+        // won't actually be a participant response
+        // to display, so display:
+        // "Participant response will appear here"
+        //
         const content = this.isScenarioRun
             ? response
-                ? response.response.value
+                ? response.response.isSkip
+                    ? 'Prompt skipped'
+                    : response.response.value
                 : 'Loading your previous response'
-            : 'Participant response will appear here.';
+            : 'Participant response will appear here';
 
         return <Message style={{ whiteSpace: 'pre-wrap' }} content={content} />;
     }
