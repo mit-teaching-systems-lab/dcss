@@ -211,6 +211,18 @@ async function softDeleteScenario(scenarioId) {
     return result.rows[0];
 }
 
+async function getScenarioResearchData(scenarioId) {
+    const result = await query(sql`
+        SELECT run_response.*
+        FROM run
+        INNER JOIN run_response on run.id = run_response.run_id
+        WHERE run.consent_granted_by_user = true
+        AND run.scenario_id = ${scenarioId};
+    `);
+
+    return result.rows;
+}
+
 // Scenario
 exports.addScenario = addScenario;
 exports.setScenario = setScenario;
@@ -218,6 +230,7 @@ exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
 exports.softDeleteScenario = softDeleteScenario;
 exports.getAllScenarios = getAllScenarios;
+exports.getScenarioResearchData = getScenarioResearchData;
 
 // Scenario Consent
 exports.addConsent = addConsent;

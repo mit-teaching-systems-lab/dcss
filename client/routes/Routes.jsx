@@ -8,6 +8,7 @@ import AccountAdmin from '@client/components/AccountAdmin';
 import Login from '@client/components/Login';
 import CreateAccount from '@client/components/CreateAccount';
 import Run from '@client/components/Run';
+import Researcher from '@client/components/Researcher';
 
 // Special case component for solving new scenario routing issue.
 // Previously the route wouldn't update to the same Editor component.
@@ -34,6 +35,7 @@ const Routes = () => {
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/login" component={Login} />
             <Route path="/login/new" component={CreateAccount} />
+            <Route exact path="/researcher" component={Researcher} />
         </Switch>
     );
 };

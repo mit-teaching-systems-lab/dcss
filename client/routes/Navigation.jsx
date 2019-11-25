@@ -63,6 +63,9 @@ const Navigation = () => {
                                 <NavLink to="/facilitator">Facilitator</NavLink>
                             </Menu.Item>
                             <Menu.Item>
+                                <NavLink to="/researcher">Researcher</NavLink>
+                            </Menu.Item>
+                            <Menu.Item>
                                 <NavLink to="/admin">Admin</NavLink>
                             </Menu.Item>
                             <ConfirmableLogoutMenuItem />

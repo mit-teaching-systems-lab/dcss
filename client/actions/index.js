@@ -3,6 +3,7 @@ import {
     LOG_OUT,
     SET_RUN,
     SET_SCENARIO,
+    SET_SCENARIOS,
     SET_SLIDES,
     SET_USERS
 } from './types';
@@ -30,6 +31,11 @@ export const setRun = payload => ({
 
 export const setScenario = payload => ({
     type: SET_SCENARIO,
+    payload
+});
+
+export const setScenarios = payload => ({
+    type: SET_SCENARIOS,
     payload
 });
 

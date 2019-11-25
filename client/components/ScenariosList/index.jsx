@@ -81,32 +81,16 @@ const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
 class ScenariosList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            scenarios: props.scenarios || []
-        };
-
-        this.getScenarios = this.getScenarios.bind(this);
-
-        if (!this.state.scenarios.length) {
-            this.getScenarios();
-        }
-    }
-
-    async getScenarios() {
-        const { scenarios, status } = await (await fetch(
-            'api/scenarios'
-        )).json();
-
-        if (status === 200) {
-            this.setState({ scenarios });
-        }
     }
 
     render() {
         const category = this.props.location.pathname.slice(1);
-        let scenarios = this.state.scenarios.filter(({ categories }) => {
-            return !category || categories.includes(category);
-        });
+        let scenarios =
+            (this.props.scenarios &&
+                this.props.scenarios.filter(({ categories }) => {
+                    return !category || categories.includes(category);
+                })) ||
+            [];
 
         // TODO: Expose deleted scenarios these to Admin only
         // This pushes "deleted" scenarios to the end of the list of Scenarios,
@@ -131,7 +115,7 @@ class ScenariosList extends Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column stretched>
-                            {this.state.scenarios.length ? (
+                            {scenarios.length ? (
                                 <Card.Group>
                                     <ScenarioEntries
                                         scenarios={scenarios}
@@ -157,7 +141,8 @@ ScenariosList.propTypes = {
 
 function mapStateToProps(state) {
     const { isLoggedIn, username } = state.login;
-    return { isLoggedIn, username };
+    const { scenarios } = state.scenario;
+    return { isLoggedIn, username, scenarios };
 }
 
 export default connect(
