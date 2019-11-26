@@ -1,12 +1,36 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
-import ConfirmableLogoutMenuItem from '@client/components/Login/ConfirmableLogoutMenuItem';
 
+import ConfirmAuth from '@client/components/ConfirmAuth';
+import ConfirmableLogoutMenuItem from '@client/components/Login/ConfirmableLogoutMenuItem';
 import Session from '@client/util/session';
-const MOBILE_WIDTH = 767;
 
 Session.timeout();
+
+const MOBILE_WIDTH = 767;
+const restrictedNav = [
+    {
+        text: 'Create a Moment',
+        path: '/editor/new',
+        permission: 'create_scenario'
+    },
+    {
+        text: 'Cohorts Management',
+        path: '/cohorts',
+        permission: 'view_run_data'
+    },
+    {
+        text: 'Data Export',
+        path: '/cohorts',
+        permission: 'view_run_data'
+    },
+    {
+        text: 'Account Administration',
+        path: '/account-administration',
+        permission: 'edit_permissions'
+    }
+];
 
 const Navigation = () => {
     const [menuExpanded, setMenuExpanded] = useState(
@@ -18,6 +42,17 @@ const Navigation = () => {
             setMenuExpanded(true);
         }
     };
+    const authorizedNav = restrictedNav.map(
+        ({ text, path, permission }, index) => {
+            return (
+                <ConfirmAuth key={index} requiredPermission={permission}>
+                    <Menu.Item>
+                        <NavLink to={path}>{text}</NavLink>
+                    </Menu.Item>
+                </ConfirmAuth>
+            );
+        }
+    );
 
     return (
         <React.Fragment>
@@ -56,30 +91,12 @@ const Navigation = () => {
                             </Dropdown.Menu>
                         </Dropdown>
                     </Menu.Menu>
-                    {Session.isSessionActive() && (
-                        <React.Fragment>
-                            <Menu.Item>
-                                <NavLink exact to="/editor/new">
-                                    Create a Moment
-                                </NavLink>
-                            </Menu.Item>
-                            <Menu.Item>
-                                <NavLink to="/cohorts">
-                                    Cohorts Management
-                                </NavLink>
-                            </Menu.Item>
-                            <Menu.Item>
-                                <NavLink to="/researcher">Data Export</NavLink>
-                            </Menu.Item>
-                            <Menu.Item>
-                                <NavLink to="/account-administration">
-                                    Account Administration
-                                </NavLink>
-                            </Menu.Item>
-                            <ConfirmableLogoutMenuItem />
-                        </React.Fragment>
-                    )}
-                    {!Session.isSessionActive() && (
+
+                    {authorizedNav}
+
+                    {Session.isSessionActive() ? (
+                        <ConfirmableLogoutMenuItem />
+                    ) : (
                         <Menu.Item position="right">
                             <NavLink to="/login">Log in</NavLink>
                         </Menu.Item>

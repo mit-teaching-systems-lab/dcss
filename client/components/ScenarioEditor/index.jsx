@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 import { setScenario } from '@client/actions/scenario';
 
+import ConfirmAuth from '@client/components/ConfirmAuth';
 import './scenarioEditor.css';
 
 class ScenarioEditor extends Component {
@@ -79,6 +80,7 @@ class ScenarioEditor extends Component {
             );
             return;
         }
+
         this.setState({ saving: true });
         const data = {
             title: this.props.title,
@@ -165,26 +167,30 @@ class ScenarioEditor extends Component {
                             </Grid.Column>
                             <Grid.Column width={3}>
                                 {this.state.categories.length && (
-                                    <Form.Field>
-                                        <label>Categories</label>
-                                        <Dropdown
-                                            label="Categories"
-                                            name="categories"
-                                            placeholder="Select..."
-                                            fluid
-                                            multiple
-                                            selection
-                                            options={this.state.categories.map(
-                                                category => ({
-                                                    key: category.id,
-                                                    text: category.name,
-                                                    value: category.name
-                                                })
-                                            )}
-                                            defaultValue={this.props.categories}
-                                            onChange={this.onChange}
-                                        />
-                                    </Form.Field>
+                                    <ConfirmAuth requiredPermission="edit_scenario">
+                                        <Form.Field>
+                                            <label>Categories</label>
+                                            <Dropdown
+                                                label="Categories"
+                                                name="categories"
+                                                placeholder="Select..."
+                                                fluid
+                                                multiple
+                                                selection
+                                                options={this.state.categories.map(
+                                                    category => ({
+                                                        key: category.id,
+                                                        text: category.name,
+                                                        value: category.name
+                                                    })
+                                                )}
+                                                defaultValue={
+                                                    this.props.categories
+                                                }
+                                                onChange={this.onChange}
+                                            />
+                                        </Form.Field>
+                                    </ConfirmAuth>
                                 )}
                                 {/*
                                     TODO: create the same Dropdown style thing

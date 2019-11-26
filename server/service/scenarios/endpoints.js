@@ -18,8 +18,12 @@ exports.getAllScenarios = asyncMiddleware(async function getAllScenariosAsync(
 ) {
     try {
         const scenarios = await db.getAllScenarios();
+        scenarios.forEach(scenario => {
+            scenario.user_is_author = req.session.user
+                ? scenario.author_id === req.session.user.id
+                : false;
+        });
         const result = { scenarios, status: 200 };
-
         res.send(result);
     } catch (apiError) {
         const error = new Error('Error while getting all scenarios');
@@ -182,18 +186,15 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
 
     try {
         const userId = req.session.user.id;
-        const originalScenario = reqScenario(req);
+        const { title, description, categories } = reqScenario(req);
         const originalSlides = await getSlidesForScenario(scenarioId);
         const scenario = await db.addScenario(
             userId,
-            `${originalScenario.title} COPY`,
-            originalScenario.description
+            `${title} COPY`,
+            description
         );
 
-        await db.setScenarioCategories(
-            scenario.id,
-            originalScenario.categories
-        );
+        await db.setScenarioCategories(scenario.id, categories);
 
         // Check through all components of this slide
         // for any that are response components...
@@ -225,7 +226,8 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
         );
 
         Object.assign(scenario, {
-            consent
+            consent,
+            categories
         });
         res.send({ scenario, status: 201 });
     } catch (apiError) {

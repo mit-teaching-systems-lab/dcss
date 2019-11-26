@@ -62,3 +62,33 @@ exports.deleteUserRoles = async function(userId, roles) {
         return { deletedCount: result.rowCount };
     });
 };
+
+exports.addRolePermissions = async function addRolePermissions(
+    role,
+    permission
+) {
+    return withClientTransaction(async client => {
+        const result = await client.query(sql`
+INSERT INTO role_permission (role, permission)
+    VALUES (${role}, ${permission})
+    ON CONFLICT DO NOTHING;
+        `);
+        return { addedCount: result.rowCount || 0 };
+    });
+};
+
+exports.getUserPermissions = async function getUserPermissions(userId) {
+    const { roles } = await this.getUserRoles(userId);
+
+    return withClient(async client => {
+        const permissions = new Set();
+        const result = await client.query(
+            sql`SELECT * FROM role_permission WHERE role IN (SELECT jsonb_array_elements_text(${roles}));`
+        );
+
+        result.rows.map(({ permission }) => {
+            permissions.add(permission);
+        });
+        return { permissions: [...permissions] };
+    });
+};

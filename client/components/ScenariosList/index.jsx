@@ -1,83 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Button, Card, Grid, Loader } from 'semantic-ui-react';
+import { Card, Grid, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { getScenarios } from '@client/actions/scenario';
 
+import ScenarioEntries from './ScenarioEntries';
 import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
-
-const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
-    if (!scenarios.length) {
-        return null;
-    }
-
-    // only filter out scenario if there is a path
-    return scenarios.map(({ id, title, description, deleted_at }) => {
-        const strike = deleted_at ? { textDecoration: 'line-through' } : {};
-        return (
-            <Card className="scenario__entry" key={id}>
-                <Card.Content>
-                    <Card.Header style={strike}>{title}</Card.Header>
-                    <Card.Description style={strike}>
-                        {description}
-                    </Card.Description>
-                </Card.Content>
-                {!deleted_at && (
-                    <Card.Content extra>
-                        <Button
-                            basic
-                            fluid
-                            color="black"
-                            as={Link}
-                            to={{ pathname: `/run/${id}` }}
-                            className="scenario__entry--button"
-                        >
-                            Run
-                        </Button>
-                    </Card.Content>
-                )}
-                {!deleted_at && isLoggedIn && (
-                    <Card.Content extra>
-                        <Button.Group className="scenario__entry--edit-buttons">
-                            <Button
-                                basic
-                                color="black"
-                                className="scenario__entry--button"
-                                as={Link}
-                                to={{ pathname: `/editor/${id}` }}
-                            >
-                                Edit
-                            </Button>
-                            <Button
-                                basic
-                                color="black"
-                                className="scenario__entry--button"
-                                as={Link}
-                                to={{
-                                    pathname: `/editor/copy`,
-                                    state: {
-                                        scenarioCopyId: id
-                                    }
-                                }}
-                            >
-                                Copy
-                            </Button>
-                        </Button.Group>
-                    </Card.Content>
-                )}
-                {deleted_at && isLoggedIn && (
-                    <Card.Content extra>
-                        <Button.Group className="scenario__entry--edit-buttons">
-                            <Button>Restore</Button>
-                        </Button.Group>
-                    </Card.Content>
-                )}
-            </Card>
-        );
-    });
-};
 
 class ScenariosList extends Component {
     constructor(props) {

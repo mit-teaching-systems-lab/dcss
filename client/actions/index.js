@@ -1,17 +1,17 @@
 import { LOG_IN, LOG_OUT, SET_RUN, SET_USERS } from './types';
 
-export const logIn = username => ({
+export const logIn = userData => ({
     type: LOG_IN,
     payload: {
-        username,
+        ...userData,
         isLoggedIn: true
     }
 });
 
-export const logOut = username => ({
+export const logOut = userData => ({
     type: LOG_OUT,
     payload: {
-        username,
+        ...userData,
         isLoggedIn: false
     }
 });

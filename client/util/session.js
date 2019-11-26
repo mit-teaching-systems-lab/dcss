@@ -1,16 +1,20 @@
 const TIMEOUT = 1000 * 60 * 60;
 
 const getSession = () => {
-    const { timestamp = Date.now(), username = '' } = JSON.parse(
-        localStorage.getItem('session')
-    ) || {
+    const {
+        timestamp = Date.now(),
+        username = '',
+        permissions = []
+    } = JSON.parse(localStorage.getItem('session')) || {
         timestamp: '',
-        username: ''
+        username: '',
+        permissions: []
     };
 
     return {
         timestamp,
-        username
+        username,
+        permissions
     };
 };
 

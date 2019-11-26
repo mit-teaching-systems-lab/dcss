@@ -72,11 +72,25 @@ class Login extends Component {
             }
         )).json();
 
+        const { permissions } = await (await fetch(
+            '/api/roles/permission'
+        )).json();
+
         if (error) {
             this.setState({ loginError });
             this.props.logOut('');
         } else {
-            Session.create({ username, timeout: Date.now() });
+            this.props.logIn({
+                username,
+                isLoggedIn: true,
+                permissions
+            });
+            Session.create({
+                username,
+                timeout: Date.now(),
+                permissions
+            });
+
             // Step outside of react to force a real reload
             // after login and session create
             location.href = from ? from.pathname : '/';
@@ -155,8 +169,8 @@ Login.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { isLoggedIn, username } = state.login;
-    return { isLoggedIn, username };
+    const { isLoggedIn, username, permissions } = state.login;
+    return { isLoggedIn, username, permissions };
 }
 
 const mapDispatchToProps = {

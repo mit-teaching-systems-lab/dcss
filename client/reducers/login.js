@@ -1,20 +1,24 @@
 import { LOG_IN, LOG_OUT } from '@client/actions/types';
 import Session from '@client/util/session';
 
-const { username = '' } = Session.isSessionActive() ? Session.getSession() : {};
+const { username = '', permissions = [] } = Session.isSessionActive()
+    ? Session.getSession()
+    : {};
 const initialState = {
     isLoggedIn: !!username,
-    username
+    username,
+    permissions
 };
 
 export default function(state = initialState, action) {
     switch (action.type) {
         case LOG_IN: {
-            const { isLoggedIn, username } = action.payload;
+            const { isLoggedIn, username, permissions } = action.payload;
 
             return {
                 ...state,
                 username,
+                permissions,
                 isLoggedIn
             };
         }
@@ -24,6 +28,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 username,
+                permissions,
                 isLoggedIn
             };
         }
