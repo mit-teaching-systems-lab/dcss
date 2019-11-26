@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { Confirm, Menu } from 'semantic-ui-react';
+import Session from '@client/util/session';
 import './ConfirmableLogoutMenuItem.css';
 
 class ConfirmableLogoutMenuItem extends Component {
@@ -27,17 +28,20 @@ class ConfirmableLogoutMenuItem extends Component {
     render() {
         const { open } = this.state;
         const { onCancel, onClick, onConfirm } = this;
+        const { username } = Session.isSessionActive()
+            ? Session.getSession()
+            : {};
 
         return (
             <React.Fragment>
                 <Menu.Item
                     className="confirmablelogoutmenuitem__anchor-style"
-                    content="Log out"
+                    content={`Log out (${username})`}
                     onClick={onClick}
                     position="right"
                 />
                 <Confirm
-                    content="Are you sure you want to log out?"
+                    content={`You are currently logged in as "${username}". Are you sure you want to log out?`}
                     header="Log out confirmation"
                     onCancel={onCancel}
                     onConfirm={onConfirm}

@@ -23,7 +23,7 @@ const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
                         {description}
                     </Card.Description>
                 </Card.Content>
-                {!deleted_at && isLoggedIn && (
+                {!deleted_at && (
                     <Card.Content extra>
                         <Button
                             basic

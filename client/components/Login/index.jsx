@@ -14,6 +14,8 @@ class Login extends Component {
     constructor(props) {
         super(props);
 
+        const from =
+            this.props.location.state && this.props.location.state.from;
         const mode =
             this.props.mode || this.props.location.pathname.includes('logout')
                 ? 'logout'
@@ -24,6 +26,7 @@ class Login extends Component {
         const password = '';
 
         this.state = {
+            from,
             isLoggedIn,
             loginError,
             mode,
@@ -52,7 +55,7 @@ class Login extends Component {
     }
 
     async doLogin() {
-        const { username, password } = this.state;
+        const { from, username, password } = this.state;
 
         const body = JSON.stringify({
             username,
@@ -73,13 +76,10 @@ class Login extends Component {
             this.setState({ loginError });
             this.props.logOut('');
         } else {
-            this.setState({ loginError });
-            this.props.logIn({ username, isLoggedIn: true });
             Session.create({ username, timeout: Date.now() });
-
             // Step outside of react to force a real reload
-            // force a real request after log-in.
-            location.href = '/';
+            // after login and session create
+            location.href = from ? from.pathname : '/';
         }
     }
 

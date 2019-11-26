@@ -1,10 +1,10 @@
 const { Router } = require('express');
 
 const {
-    requireUser,
-    respondWithUser,
     createUser,
-    loginUser
+    loginUser,
+    requireUser,
+    respondWithUser
 } = require('./middleware');
 const { checkForDuplicate } = require('./middleware');
 const {
@@ -12,11 +12,11 @@ const {
     validateRequestBody
 } = require('../../util/requestValidation');
 
-const authRouter = Router();
+const router = Router();
 
-authRouter.get('/me', requireUser, respondWithUser);
+router.get('/me', requireUser, respondWithUser);
 
-authRouter.post('/signup', [
+router.post('/signup', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     checkForDuplicate,
@@ -24,16 +24,23 @@ authRouter.post('/signup', [
     respondWithUser
 ]);
 
-authRouter.post('/login', [
+router.get('/signup/usernames/:username/exists', [
+    checkForDuplicate,
+    (req, res) => {
+        return res.json({ username: req.params.username });
+    }
+]);
+
+router.post('/login', [
     validateRequestBody,
     validateRequestUsernameAndEmail,
     loginUser,
     respondWithUser
 ]);
 
-authRouter.post('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
     delete req.session.user;
     req.session.destroy(() => res.send('ok'));
 });
 
-module.exports = authRouter;
+module.exports = router;

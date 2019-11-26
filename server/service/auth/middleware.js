@@ -21,8 +21,8 @@ exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(
     res,
     next
 ) {
-    const { username, email } = req.body;
-    const user = await db.getUserByProps({ username, email });
+    const username = req.body.username || req.params.username;
+    const user = await db.getUserByProps({ username });
     if (user) {
         const duplicatedUserError = new Error('User exists.');
         duplicatedUserError.status = 409;
