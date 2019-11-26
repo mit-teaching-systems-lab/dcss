@@ -41,7 +41,7 @@ const Navigation = () => {
                     </Menu.Item>
 
                     <Menu.Menu>
-                        <Dropdown simple item text="Curated">
+                        <Dropdown simple item text="Moments">
                             <Dropdown.Menu>
                                 <Dropdown.Item>
                                     <NavLink to="/official">Official</NavLink>
@@ -60,13 +60,13 @@ const Navigation = () => {
                                 </NavLink>
                             </Menu.Item>
                             <Menu.Item>
-                                <NavLink to="/facilitator">Facilitator</NavLink>
+                                <NavLink to="/cohorts">Cohorts Management</NavLink>
                             </Menu.Item>
                             <Menu.Item>
-                                <NavLink to="/researcher">Researcher</NavLink>
+                                <NavLink to="/researcher">Data Export (to be merged with cohorts)</NavLink>
                             </Menu.Item>
                             <Menu.Item>
-                                <NavLink to="/admin">Admin</NavLink>
+                                <NavLink to="/account-administration">Account Administration</NavLink>
                             </Menu.Item>
                             <ConfirmableLogoutMenuItem />
                         </React.Fragment>
