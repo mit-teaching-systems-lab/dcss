@@ -2,7 +2,8 @@ import { type } from './type';
 export { type };
 export const defaultValue = ({ responseId }) => ({
     placeholder: 'Placeholder Text',
-    prompt: 'Text Prompt (displayed before input field as label)',
+    prompt: 'Prompt (displayed before input field as label)',
+    required: true,
     responseId,
     type
 });

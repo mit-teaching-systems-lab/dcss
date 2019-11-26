@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Icon, Input, List, Menu } from 'semantic-ui-react';
+import {
+    Checkbox,
+    Button,
+    Form,
+    Icon,
+    Input,
+    List,
+    Menu
+} from 'semantic-ui-react';
 import { type } from './type';
 import Sortable from 'react-sortablejs';
 import EditorMenu from '@components/EditorMenu';
@@ -18,12 +26,14 @@ class MultiButtonResponseEditor extends React.Component {
                 */
             ],
             prompt = '',
+            required,
             responseId = ''
         } = props.value;
 
         this.state = {
             buttons,
             prompt,
+            required,
             responseId
         };
 
@@ -33,18 +43,24 @@ class MultiButtonResponseEditor extends React.Component {
         this.onChangePrompt = this.onChangePrompt.bind(this);
         this.onDeleteButton = this.onDeleteButton.bind(this);
         this.onFocusButtonDetail = this.onFocusButtonDetail.bind(this);
+        this.onRequirementChange = this.onRequirementChange.bind(this);
 
         this.updateState = this.updateState.bind(this);
     }
 
     updateState() {
-        const { prompt, buttons, responseId } = this.state;
+        const { prompt, buttons, required, responseId } = this.state;
         this.props.onChange({
             type,
             prompt,
             buttons,
+            required,
             responseId
         });
+    }
+
+    onRequirementChange(event, { name, checked }) {
+        this.setState({ [name]: checked }, this.updateState);
     }
 
     onAddButton() {
@@ -101,7 +117,7 @@ class MultiButtonResponseEditor extends React.Component {
     }
 
     render() {
-        const { buttons, prompt } = this.state;
+        const { buttons, prompt, required } = this.state;
         const {
             onAddButton,
             onChangeButtonDetail,
@@ -109,6 +125,7 @@ class MultiButtonResponseEditor extends React.Component {
             onChangePrompt,
             onDeleteButton,
             onFocusButtonDetail,
+            onRequirementChange,
             updateState
         } = this;
         return (
@@ -181,20 +198,27 @@ class MultiButtonResponseEditor extends React.Component {
                         })}
                     </Sortable>
                 </List>
+                <Checkbox
+                    name="required"
+                    label="Required?"
+                    checked={required}
+                    onChange={onRequirementChange}
+                />
             </Form>
         );
     }
 }
 
 MultiButtonResponseEditor.propTypes = {
+    onChange: PropTypes.func.isRequired,
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
         buttons: PropTypes.array,
         prompt: PropTypes.string,
+        required: PropTypes.bool,
         responseId: PropTypes.string,
         type: PropTypes.oneOf([type])
-    }),
-    onChange: PropTypes.func.isRequired
+    })
 };
 
 export default MultiButtonResponseEditor;

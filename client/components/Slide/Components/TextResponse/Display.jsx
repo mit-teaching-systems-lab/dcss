@@ -1,14 +1,17 @@
 import { type } from './type';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label, Segment, TextArea } from 'semantic-ui-react';
-
+import { Form, Header, Segment } from 'semantic-ui-react';
+import PromptRequiredLabel from '../PromptRequiredLabel';
 import './TextResponse.css';
 
 class Display extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            value: ''
+        };
         this.created_at = '';
         this.onFocus = this.onFocus.bind(this);
         this.onChange = this.onChange.bind(this);
@@ -20,33 +23,41 @@ class Display extends Component {
         }
     }
 
-    onChange(event, data) {
+    onChange(event, { name, value }) {
         const { created_at } = this;
         this.props.onResponseChange(event, {
-            ...data,
             created_at,
             ended_at: new Date().toISOString(),
-            type
+            name,
+            type,
+            value
         });
+
+        this.setState({ value });
     }
 
     render() {
-        const { prompt, placeholder, responseId } = this.props;
+        const { prompt, placeholder, required, responseId } = this.props;
+        const { value } = this.state;
         const { onFocus, onChange } = this;
+        const fulfilled = value ? true : false;
+        const header = (
+            <React.Fragment>
+                {prompt}{' '}
+                {required && <PromptRequiredLabel fulfilled={fulfilled} />}
+            </React.Fragment>
+        );
+
         return (
             <Segment>
+                <Header as="h3">{header}</Header>
                 <Form>
-                    <Form.Field>
-                        <Label as="label" className="textresponse__label">
-                            <p>{prompt}</p>
-                        </Label>
-                        <TextArea
-                            name={responseId}
-                            placeholder={placeholder}
-                            onFocus={onFocus}
-                            onChange={onChange}
-                        />
-                    </Form.Field>
+                    <Form.TextArea
+                        name={responseId}
+                        placeholder={placeholder}
+                        onFocus={onFocus}
+                        onChange={onChange}
+                    />
                 </Form>
             </Segment>
         );
@@ -54,10 +65,11 @@ class Display extends Component {
 }
 
 Display.propTypes = {
-    prompt: PropTypes.string,
-    placeholder: PropTypes.string,
-    responseId: PropTypes.string,
     onResponseChange: PropTypes.func,
+    placeholder: PropTypes.string,
+    prompt: PropTypes.string,
+    required: PropTypes.bool,
+    responseId: PropTypes.string,
     type: PropTypes.oneOf([type]).isRequired
 };
 

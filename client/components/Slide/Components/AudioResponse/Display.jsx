@@ -1,7 +1,8 @@
 import { type } from './type';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Icon, Segment, TextArea } from 'semantic-ui-react';
+import { Button, Form, Header, Icon, Segment } from 'semantic-ui-react';
+import PromptRequiredLabel from '../PromptRequiredLabel';
 import MicRecorder from 'mic-recorder-to-mp3';
 import { detect } from 'detect-browser';
 import { connect } from 'react-redux';
@@ -22,6 +23,8 @@ class Display extends Component {
         this.created_at = new Date().toISOString();
         this.mp3Recorder = new MicRecorder({ bitRate: 128 });
 
+        this.onChange = this.onChange.bind(this);
+        this.onFocus = this.onFocus.bind(this);
         this.onStart = this.onStart.bind(this);
         this.onStop = this.onStop.bind(this);
 
@@ -83,46 +86,72 @@ class Display extends Component {
         );
     }
 
-    render() {
-        const { isRecording } = this.state;
-        const { prompt, responseId, onResponseChange } = this.props;
-        return this.browserSupported ? (
-            <React.Fragment>
-                <Segment>
-                    {!isRecording && (
-                        <Button basic toggle onClick={this.onStart}>
-                            <Icon
-                                name="circle"
-                                aria-label="Record an Audio Response"
-                            />
-                            {prompt}
-                        </Button>
-                    )}
-                    {isRecording && (
-                        <Button basic negative onClick={this.onStop}>
-                            <Icon
-                                name="stop circle"
-                                aria-label="Record an Audio Response"
-                            />
-                            Done
-                        </Button>
-                    )}
-                </Segment>
+    onFocus() {
+        if (!this.created_at) {
+            this.created_at = new Date().toISOString();
+        }
+    }
 
+    onChange(event, data) {
+        const { created_at } = this;
+        this.props.onResponseChange(event, {
+            ...data,
+            created_at,
+            ended_at: new Date().toISOString(),
+            type
+        });
+    }
+
+    render() {
+        const { isRecording, blobURL } = this.state;
+        const { prompt, responseId, required } = this.props;
+        const { onChange, onFocus } = this;
+        const fulfilled = blobURL ? true : false;
+        const header = this.browserSupported ? (
+            required && <PromptRequiredLabel fulfilled={fulfilled} />
+        ) : (
+            <React.Fragment>
+                Type your response here:{' '}
+                {required && <PromptRequiredLabel fulfilled={fulfilled} />}
+            </React.Fragment>
+        );
+
+        return this.browserSupported ? (
+            <Segment>
+                {!isRecording && (
+                    <Button basic toggle onClick={this.onStart}>
+                        <Icon
+                            name="circle"
+                            aria-label="Record an Audio Response"
+                        />
+                        {prompt}
+                    </Button>
+                )}
+                {isRecording && (
+                    <Button basic negative onClick={this.onStop}>
+                        <Icon
+                            name="stop circle"
+                            aria-label="Record an Audio Response"
+                        />
+                        Done
+                    </Button>
+                )}
                 {this.state.blobURL && (
                     <audio src={this.state.blobURL} controls="controls" />
                 )}
-            </React.Fragment>
+
+                {header}
+            </Segment>
         ) : (
             <Segment>
+                <Header as="h3">{header}</Header>
                 <Form>
-                    <Form.Field>
-                        <TextArea
-                            name={responseId}
-                            placeholder="Type your response here"
-                            onChange={onResponseChange}
-                        />
-                    </Form.Field>
+                    <Form.TextArea
+                        name={responseId}
+                        placeholder="..."
+                        onFocus={onFocus}
+                        onChange={onChange}
+                    />
                 </Form>
             </Segment>
         );
@@ -135,13 +164,14 @@ function mapStateToProps(state) {
 }
 
 Display.propTypes = {
-    prompt: PropTypes.string,
-    placeholder: PropTypes.string,
     isRecording: PropTypes.bool,
     onResponseChange: PropTypes.func,
-    type: PropTypes.oneOf([type]).isRequired,
+    placeholder: PropTypes.string,
+    prompt: PropTypes.string,
+    required: PropTypes.bool,
     responseId: PropTypes.string,
-    run: PropTypes.object
+    run: PropTypes.object,
+    type: PropTypes.oneOf([type]).isRequired
 };
 
 export default connect(mapStateToProps)(React.memo(Display));

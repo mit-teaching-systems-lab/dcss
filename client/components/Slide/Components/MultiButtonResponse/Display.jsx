@@ -1,13 +1,18 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, List, Message } from 'semantic-ui-react';
+import { Button, Header, List, Segment } from 'semantic-ui-react';
+import PromptRequiredLabel from '../PromptRequiredLabel';
 
 class Display extends React.Component {
     constructor(props) {
         super(props);
-        this.onClick = this.onClick.bind(this);
+
+        this.state = {
+            value: ''
+        };
         this.created_at = new Date().toISOString();
+        this.onClick = this.onClick.bind(this);
     }
 
     onClick(event, { name, value }) {
@@ -19,33 +24,41 @@ class Display extends React.Component {
             value,
             type
         });
+
+        this.setState({ value });
     }
 
     render() {
-        const { buttons, prompt, responseId } = this.props;
+        const { buttons, prompt, required, responseId } = this.props;
+        const { value } = this.state;
         const { onClick } = this;
-
+        const fulfilled = value ? true : false;
+        const header = (
+            <React.Fragment>
+                {prompt}{' '}
+                {required && <PromptRequiredLabel fulfilled={fulfilled} />}
+            </React.Fragment>
+        );
         return (
-            <Message
-                header={prompt}
-                content={
-                    <List>
-                        {buttons &&
-                            buttons.map(({ display, value }, index) => (
-                                <List.Item key={`list.item-${index}`}>
-                                    <Button
-                                        fluid
-                                        key={`button-${index}`}
-                                        content={display}
-                                        name={responseId}
-                                        value={value}
-                                        onClick={onClick}
-                                    />
-                                </List.Item>
-                            ))}
-                    </List>
-                }
-            />
+            <Segment>
+                <Header as="h3">{header}</Header>
+
+                <List>
+                    {buttons &&
+                        buttons.map(({ display, value }, index) => (
+                            <List.Item key={`list.item-${index}`}>
+                                <Button
+                                    fluid
+                                    key={`button-${index}`}
+                                    content={display}
+                                    name={responseId}
+                                    value={value}
+                                    onClick={onClick}
+                                />
+                            </List.Item>
+                        ))}
+                </List>
+            </Segment>
         );
     }
 }
@@ -53,6 +66,7 @@ class Display extends React.Component {
 Display.propTypes = {
     buttons: PropTypes.array,
     prompt: PropTypes.string,
+    required: PropTypes.bool,
     responseId: PropTypes.string,
     onResponseChange: PropTypes.func,
     type: PropTypes.oneOf([type]).isRequired

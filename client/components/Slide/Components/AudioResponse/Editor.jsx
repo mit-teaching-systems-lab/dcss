@@ -1,31 +1,45 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Form, Input, Message, Popup } from 'semantic-ui-react';
+import {
+    Checkbox,
+    Container,
+    Form,
+    Input,
+    Message,
+    Popup
+} from 'semantic-ui-react';
 import { type } from './type';
 import './AudioResponse.css';
 
 class AudioResponseEditor extends Component {
     constructor(props) {
         super(props);
-        const { prompt, responseId } = props.value;
+        const { prompt, required, responseId } = props.value;
         this.state = {
             prompt,
+            required,
             responseId
         };
-
-        this.onTextAreaChange = this.onTextAreaChange.bind(this);
+        this.onPromptChange = this.onPromptChange.bind(this);
+        this.onRequirementChange = this.onRequirementChange.bind(this);
     }
 
-    onTextAreaChange(event, { name, value }) {
-        this.setState({ [name]: value }, () => {
-            const { prompt, responseId } = this.state;
-            this.props.onChange({ type, prompt, responseId });
-        });
+    updateState() {
+        const { prompt, required, responseId } = this.state;
+        this.props.onChange({ prompt, required, responseId, type });
+    }
+
+    onRequirementChange(event, { checked }) {
+        this.setState({ required: checked }, this.updateState);
+    }
+
+    onPromptChange(event, { value }) {
+        this.setState({ prompt: value }, this.updateState);
     }
 
     render() {
-        const { prompt } = this.state;
-        const { onTextAreaChange } = this;
+        const { prompt, required } = this.state;
+        const { onPromptChange, onRequirementChange } = this;
         return (
             <Form>
                 <Container fluid>
@@ -36,12 +50,19 @@ class AudioResponseEditor extends Component {
                                 label="Audio Prompt:"
                                 name="prompt"
                                 value={prompt}
-                                onChange={onTextAreaChange}
+                                onChange={onPromptChange}
                             />
                         }
                     />
 
                     <Message content="Note: This component will fallback to a text input prompt when Audio recording is not supported." />
+
+                    <Checkbox
+                        name="required"
+                        label="Required?"
+                        checked={required}
+                        onChange={onRequirementChange}
+                    />
                 </Container>
             </Form>
         );
@@ -49,13 +70,14 @@ class AudioResponseEditor extends Component {
 }
 
 AudioResponseEditor.propTypes = {
+    onChange: PropTypes.func.isRequired,
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
-        type: PropTypes.oneOf([type]),
         prompt: PropTypes.string,
-        responseId: PropTypes.string
-    }),
-    onChange: PropTypes.func.isRequired
+        required: PropTypes.bool,
+        responseId: PropTypes.string,
+        type: PropTypes.oneOf([type])
+    })
 };
 
 export default AudioResponseEditor;
