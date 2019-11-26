@@ -34,9 +34,9 @@ const Navigation = () => {
                 <Icon name="content" />
                 MENU
             </Button>
-            {menuExpanded && (
+            {(
                 <Menu id="nav" className="nav" stackable>
-                    <Menu.Item>
+                    <Menu.Item className="logo">
                         <NavLink to="/">Teacher Moments</NavLink>
                     </Menu.Item>
 

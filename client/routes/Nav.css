@@ -9,3 +9,16 @@
         display: block;
     }
 }
+
+.ui.menu .item.logo {
+  padding: 0px;
+}
+.ui.menu .item.logo a {
+  padding: 10px;
+  background-image: url('https://tsl.mit.edu/wp-content/uploads/brizy/339/assets/images/iW=120&iH=38&oX=0&oY=0&cW=120&cH=38/MIT-TSL-Logo-Icons.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  text-indent: -999em;
+  min-width: 130px;
+  background-position-x: center;
+}
