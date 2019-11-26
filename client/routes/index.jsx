@@ -28,7 +28,7 @@ class App extends Component {
 
     async getScenarios() {
         const { scenarios, status } = await (await fetch(
-            'api/scenarios'
+            '/api/scenarios'
         )).json();
 
         if (status === 200) {
