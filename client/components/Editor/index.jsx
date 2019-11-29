@@ -8,7 +8,7 @@ import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
 import Slides from './Slides';
-import { setScenario } from '@client/actions';
+import { getScenario, setScenario } from '@client/actions/scenario';
 
 import './editor.css';
 
@@ -22,7 +22,6 @@ class Editor extends Component {
 
         const scenarioId = this.props.match.params.id || 'new';
 
-        this.fetchScenario = this.fetchScenario.bind(this);
         this.copyScenario = this.copyScenario.bind(this);
         this.deleteScenario = this.deleteScenario.bind(this);
         this.updateScenario = this.updateScenario.bind(this);
@@ -47,7 +46,7 @@ class Editor extends Component {
                 break;
             default:
                 this.state.activeTab = 'slides';
-                this.fetchScenario();
+                this.props.getScenario(scenarioId);
                 break;
         }
     }
@@ -70,16 +69,6 @@ class Editor extends Component {
     componentDidMount() {
         if (this.state.scenarioId === 'copy') {
             this.copyScenario();
-        }
-    }
-
-    async fetchScenario() {
-        const { status, scenario } = await (await fetch(
-            `/api/scenarios/${this.state.scenarioId}`
-        )).json();
-
-        if (status === 200) {
-            this.props.setScenario(scenario);
         }
     }
 
@@ -336,6 +325,7 @@ Editor.propTypes = {
         })
     }).isRequired,
     isNewScenario: PropTypes.bool,
+    getScenario: PropTypes.func.isRequired,
     setScenario: PropTypes.func.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,
@@ -353,6 +343,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
+    getScenario,
     setScenario
 };
 

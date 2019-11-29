@@ -6,7 +6,7 @@ import { Grid } from 'semantic-ui-react';
 
 import EntrySlide from './EntrySlide';
 import ContentSlide from './ContentSlide';
-import { setScenario, setSlides } from '@client/actions';
+import { getScenario, setScenario, setSlides } from '@client/actions/scenario';
 import './Scenario.css';
 
 class Scenario extends Component {
@@ -91,34 +91,31 @@ class Scenario extends Component {
     }
 
     async getScenarioMetaData() {
-        let title, description, consent, status;
-
         if (this.state.title && this.state.description) {
+            const { title, description, consent, status } = this.state;
+
             this.props.setScenario({
-                title: this.state.title,
-                description: this.state.description,
-                consent: this.state.consent
+                title,
+                description,
+                consent,
+                status
             });
-            title = this.state.title;
-            description = this.state.description;
-            consent = this.state.consent;
-            status = this.state.status;
+
+            return {
+                title,
+                description,
+                consent,
+                status
+            };
         } else {
-            const response = await (await fetch(
-                `/api/scenarios/${this.state.scenarioId}`
-            )).json();
-            const scenario = response.scenario;
+            const scenario = await this.props.getScenario(
+                this.state.scenarioId
+            );
 
-            if (response.status === 200) {
-                this.props.setScenario(scenario);
-                title = scenario.title;
-                description = scenario.description;
-                consent = scenario.consent;
-                status = scenario.status;
-            }
+            this.props.setScenario(scenario);
+
+            return scenario;
         }
-
-        return { title, description, consent, status };
     }
 
     async getScenarioContent() {
@@ -180,16 +177,6 @@ class Scenario extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    const { title, description, consent, slides } = state.scenario;
-    return { title, description, consent, slides };
-}
-
-const mapDispatchToProps = {
-    setScenario,
-    setSlides
-};
-
 Scenario.propTypes = {
     location: PropTypes.shape({
         state: PropTypes.object
@@ -203,6 +190,7 @@ Scenario.propTypes = {
         push: PropTypes.func.isRequired
     }),
     scenarioId: PropTypes.node,
+    getScenario: PropTypes.func.isRequired,
     setScenario: PropTypes.func.isRequired,
     setSlides: PropTypes.func.isRequired,
     title: PropTypes.string,
@@ -214,6 +202,17 @@ Scenario.propTypes = {
     onResponseChange: PropTypes.func,
     onRunChange: PropTypes.func,
     onSubmit: PropTypes.func
+};
+
+function mapStateToProps(state) {
+    const { title, description, consent, slides } = state.scenario;
+    return { title, description, consent, slides };
+}
+
+const mapDispatchToProps = {
+    getScenario,
+    setScenario,
+    setSlides
 };
 
 export default withRouter(

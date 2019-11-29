@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dropdown, Grid, Button } from 'semantic-ui-react';
 import { Parser } from 'json2csv';
+import { getScenarios } from '@client/actions/scenario';
 
 class Researcher extends Component {
     constructor(props) {
@@ -14,7 +15,11 @@ class Researcher extends Component {
         };
 
         this.downloadCSV = this.downloadCSV.bind(this);
-        this.setScenarioStateData = this.setScenarioStateData.bind(this);
+        this.onSelectScenario = this.onSelectScenario.bind(this);
+    }
+
+    async componentDidMount() {
+        await this.props.getScenarios();
     }
 
     async downloadCSV() {
@@ -45,11 +50,12 @@ class Researcher extends Component {
         tempLink.click();
     }
 
-    setScenarioStateData(event, { value, options }) {
-        const scenarioTitle = options
-            .filter(option => option.value === value)
-            .pop().text;
-        this.setState({ scenarioId: value, scenarioTitle });
+    onSelectScenario(event, { value: scenarioId, options }) {
+        const { text: scenarioTitle } = options.find(
+            option => option.value === scenarioId
+        );
+
+        this.setState({ scenarioId, scenarioTitle });
     }
 
     render() {
@@ -70,7 +76,7 @@ class Researcher extends Component {
                         search
                         selection
                         options={momentOptions}
-                        onChange={this.setScenarioStateData}
+                        onChange={this.onSelectScenario}
                     />
                 </Grid.Column>
                 <Grid.Column width={4}>
@@ -88,12 +94,20 @@ class Researcher extends Component {
 }
 
 Researcher.propTypes = {
-    scenarios: PropTypes.array
+    scenarios: PropTypes.array,
+    getScenarios: PropTypes.func
 };
 
 const mapStateToProps = state => {
-    const { scenarios } = state.scenario;
+    const { scenarios } = state;
     return { scenarios };
 };
 
-export default connect(mapStateToProps)(Researcher);
+const mapDispatchToProps = {
+    getScenarios
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Researcher);

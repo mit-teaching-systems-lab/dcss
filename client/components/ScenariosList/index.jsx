@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Card, Grid, Loader } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { getScenarios } from '@client/actions/scenario';
 
 import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
@@ -81,6 +82,15 @@ const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
 class ScenariosList extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+            scenarios: []
+        };
+    }
+
+    async componentDidMount() {
+        const scenarios = await this.props.getScenarios();
+        this.setState({ scenarios });
     }
 
     render() {
@@ -135,17 +145,24 @@ class ScenariosList extends Component {
 
 ScenariosList.propTypes = {
     scenarios: PropTypes.array,
+    getScenarios: PropTypes.func,
     isLoggedIn: PropTypes.bool.isRequired,
     location: PropTypes.object
 };
 
 function mapStateToProps(state) {
-    const { isLoggedIn, username } = state.login;
-    const { scenarios } = state.scenario;
+    const {
+        login: { isLoggedIn, username },
+        scenarios
+    } = state;
     return { isLoggedIn, username, scenarios };
 }
 
+const mapDispatchToProps = {
+    getScenarios
+};
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(ScenariosList);

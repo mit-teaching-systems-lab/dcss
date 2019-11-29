@@ -9,7 +9,7 @@ import {
     Grid,
     Popup
 } from 'semantic-ui-react';
-import { setScenario } from '@client/actions';
+import { setScenario } from '@client/actions/scenario';
 
 import './scenarioEditor.css';
 
