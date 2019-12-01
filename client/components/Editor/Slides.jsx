@@ -227,7 +227,7 @@ class Slides extends React.Component {
         }
         return (
             <Container fluid>
-                <Grid>
+                <Grid className="slides__editor-all-outer-container">
                     <Grid.Column
                         width={3}
                         className="slides__list-outer-container"
@@ -264,7 +264,7 @@ class Slides extends React.Component {
                                                 key="menu-item-slide-options"
                                                 position="right"
                                             >
-                                                <Dropdown item text="Options">
+                                                <Dropdown item icon="options">
                                                     <Dropdown.Menu>
                                                         <Dropdown.Item
                                                             key={1}
@@ -347,7 +347,10 @@ class Slides extends React.Component {
                             </Sortable>
                         </Segment>
                     </Grid.Column>
-                    <Grid.Column width={13}>
+                    <Grid.Column
+                        width={13}
+                        className="slides__editor-outer-container"
+                    >
                         {slides[currentSlideIndex] && (
                             <SlideEditor
                                 key={currentSlideIndex}

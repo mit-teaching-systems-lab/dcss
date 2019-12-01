@@ -21,7 +21,13 @@
 }
 
 .slides__list-outer-container {
-    /* Disable until bug can be fixed
-    min-width: 261px !important;
-    */
+    min-width: 220px !important;
+}
+
+.slides__editor-outer-container {
+    flex-wrap: nowrap !important;
+}
+
+.slides__editor-all-outer-container {
+    flex-wrap: nowrap !important;
 }
