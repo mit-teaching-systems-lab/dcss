@@ -60,13 +60,17 @@ const Navigation = () => {
                                 </NavLink>
                             </Menu.Item>
                             <Menu.Item>
-                                <NavLink to="/cohorts">Cohorts Management</NavLink>
+                                <NavLink to="/cohorts">
+                                    Cohorts Management
+                                </NavLink>
                             </Menu.Item>
                             <Menu.Item>
-                                <NavLink to="/researcher">Data Export (to be merged with cohorts)</NavLink>
+                                <NavLink to="/researcher">Data Export</NavLink>
                             </Menu.Item>
                             <Menu.Item>
-                                <NavLink to="/account-administration">Account Administration</NavLink>
+                                <NavLink to="/account-administration">
+                                    Account Administration
+                                </NavLink>
                             </Menu.Item>
                             <ConfirmableLogoutMenuItem />
                         </React.Fragment>

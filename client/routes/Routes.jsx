@@ -61,7 +61,11 @@ const Routes = () => {
             <Route exact path="/editor/new" component={NewScenario} />
             <Route path="/editor/:id" component={Editor} />
             <Route exact path="/cohorts" component={Facilitator} />
-            <Route exact path="/account-administration" component={AccountAdmin} />
+            <Route
+                exact
+                path="/account-administration"
+                component={AccountAdmin}
+            />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/login/new" component={CreateAccount} />
