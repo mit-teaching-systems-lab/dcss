@@ -41,7 +41,11 @@ const Navigation = () => {
                     </Menu.Item>
 
                     <Menu.Menu>
-                        <Dropdown simple item text="Moments">
+                        <Dropdown
+                            simple
+                            item
+                            text={<NavLink to="/">Moments</NavLink>}
+                        >
                             <Dropdown.Menu>
                                 <Dropdown.Item>
                                     <NavLink to="/official">Official</NavLink>
