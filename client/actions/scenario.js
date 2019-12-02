@@ -25,6 +25,7 @@ export const getScenarios = () => async dispatch => {
         }
 
         dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+        return scenarios;
     } catch (error) {
         const { message, status, stack } = error;
         dispatch({ type: GET_SCENARIOS_ERROR, status, message, stack });
@@ -42,6 +43,7 @@ export const getScenario = id => async dispatch => {
             throw error;
         }
         dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
+        return scenario;
     } catch (error) {
         const { message, status, stack } = error;
         dispatch({ type: GET_SCENARIO_ERROR, status, message, stack });
