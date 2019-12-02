@@ -19,3 +19,13 @@
     bottom: 0;
     padding: 10% 40%;
 }
+
+.scenario__slide-preview-pane {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 73vh !important;
+    padding: 1px !important;
+    border: 0 !important;
+    box-shadow: 0 0 0 0 !important;
+    -webkit-box-shadow: 0 0 0 0 !important;
+}

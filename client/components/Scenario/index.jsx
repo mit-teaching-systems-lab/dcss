@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Segment } from 'semantic-ui-react';
 
 import EntrySlide from './EntrySlide';
 import ContentSlide from './ContentSlide';
@@ -170,9 +170,7 @@ class Scenario extends Component {
                 </Grid.Column>
             </Grid>
         ) : (
-            <Grid columns={1}>
-                <Grid.Column>{slides}</Grid.Column>
-            </Grid>
+            <Segment className="scenario__slide-preview-pane">{slides}</Segment>
         );
     }
 }
