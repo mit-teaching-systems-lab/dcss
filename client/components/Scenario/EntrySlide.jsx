@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Message } from 'semantic-ui-react';
-import { setRun } from '@client/actions';
 import './EntrySlide.css';
 
 class EntrySlide extends React.Component {
@@ -135,15 +134,8 @@ EntrySlide.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { run } = state.run;
+    const { run } = state;
     return { run };
 }
 
-const mapDispatchToProps = {
-    setRun
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(EntrySlide);
+export default connect(mapStateToProps)(EntrySlide);

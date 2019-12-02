@@ -8,12 +8,13 @@ const SlideComponentsList = ({
     onResponseChange,
     run
 }) => {
+    const emptyValue = '{"value":""}';
+    const runOnly = run ? { run } : {};
     const style = {
         height: '150px',
         overflow: 'hidden',
         margin: '-1rem !important'
     };
-    const runOnly = run ? { run } : {};
 
     return asSVG ? (
         <div style={style}>
@@ -29,7 +30,13 @@ const SlideComponentsList = ({
                         if (!Components[type]) return;
 
                         const { Display } = Components[type];
-                        return <Display key={`slide${index}`} {...value} />;
+                        return (
+                            <Display
+                                key={`slide${index}`}
+                                persisted={{}}
+                                {...value}
+                            />
+                        );
                     })}
                 </foreignObject>
                 <rect
@@ -44,13 +51,19 @@ const SlideComponentsList = ({
         </div>
     ) : (
         components.map((value, index) => {
-            const { type } = value;
+            const { type, responseId = null } = value;
             if (!Components[type]) return;
 
             const { Display } = Components[type];
+            const persisted = JSON.parse(
+                run && responseId
+                    ? localStorage.getItem(responseId) || emptyValue
+                    : emptyValue
+            );
             return (
                 <Display
                     key={`slide${index}`}
+                    persisted={persisted}
                     onResponseChange={onResponseChange}
                     {...runOnly}
                     {...value}

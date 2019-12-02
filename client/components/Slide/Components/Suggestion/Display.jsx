@@ -7,7 +7,7 @@ class Display extends React.Component {
     constructor(props) {
         super(props);
 
-        const { color, html: __html, open } = this.props;
+        const { color, html: __html, open = false } = this.props;
 
         this.state = {
             color,
@@ -55,7 +55,7 @@ class Display extends React.Component {
 Display.propTypes = {
     color: PropTypes.string.isRequired,
     html: PropTypes.string.isRequired,
-    open: PropTypes.bool.isRequired,
+    open: PropTypes.bool,
     type: PropTypes.oneOf([type]).isRequired
 };
 

@@ -4,18 +4,52 @@ import PropTypes from 'prop-types';
 import { Form, Header, Segment } from 'semantic-ui-react';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
+import { connect } from 'react-redux';
+import { getResponse } from '@client/actions/response';
+
 import './TextResponse.css';
 
 class Display extends Component {
     constructor(props) {
         super(props);
 
+        const { persisted } = this.props;
+
         this.state = {
-            value: ''
+            value: persisted.value
         };
+
         this.created_at = '';
         this.onFocus = this.onFocus.bind(this);
         this.onChange = this.onChange.bind(this);
+    }
+
+    async componentDidMount() {
+        let {
+            getResponse,
+            onResponseChange,
+            persisted = {},
+            responseId,
+            run
+        } = this.props;
+
+        let { name = responseId, value = '' } = persisted;
+
+        if (!value) {
+            const previous = await getResponse({
+                id: run.id,
+                responseId
+            });
+
+            if (previous && previous.response) {
+                value = previous.response.value;
+            }
+        }
+
+        if (value) {
+            onResponseChange({}, { name, value, isFulfilled: true });
+            this.setState({ value });
+        }
     }
 
     onFocus() {
@@ -26,6 +60,7 @@ class Display extends Component {
 
     onChange(event, { name, value }) {
         const { created_at } = this;
+
         this.props.onResponseChange(event, {
             created_at,
             ended_at: new Date().toISOString(),
@@ -66,6 +101,7 @@ class Display extends Component {
                         placeholder={placeholder}
                         onFocus={onFocus}
                         onChange={onChange}
+                        defaultValue={value}
                     />
                 </Form>
             </Segment>
@@ -74,7 +110,9 @@ class Display extends Component {
 }
 
 Display.propTypes = {
+    getResponse: PropTypes.func,
     onResponseChange: PropTypes.func,
+    persisted: PropTypes.object,
     placeholder: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
@@ -84,4 +122,16 @@ Display.propTypes = {
     type: PropTypes.oneOf([type]).isRequired
 };
 
-export default React.memo(Display);
+function mapStateToProps(state) {
+    const { run } = state;
+    return { run };
+}
+
+const mapDispatchToProps = dispatch => ({
+    getResponse: params => dispatch(getResponse(params))
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Display);

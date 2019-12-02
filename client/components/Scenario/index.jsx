@@ -54,6 +54,9 @@ class Scenario extends Component {
         switch (type) {
             case 'back':
                 return () => {
+                    if (onSubmit) {
+                        onSubmit();
+                    }
                     let activeSlideIndex = this.state.activeSlideIndex - 1;
                     this.setState({ activeSlideIndex });
 

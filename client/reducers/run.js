@@ -1,15 +1,18 @@
-import { SET_RUN } from '@client/actions/types';
+import { GET_RUN_SUCCESS, SET_RUN_SUCCESS } from '@client/actions/types';
 
 const initialState = {};
 
-export default function(state = initialState, action) {
-    switch (action.type) {
-        case SET_RUN:
+export const run = (state = initialState, action) => {
+    const { run, type } = action;
+
+    switch (type) {
+        case GET_RUN_SUCCESS:
+        case SET_RUN_SUCCESS:
             return {
                 ...state,
-                ...action.payload
+                ...run
             };
         default:
             return state;
     }
-}
+};

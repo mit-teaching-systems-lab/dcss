@@ -4,7 +4,8 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react';
 import Scenario from '@components/Scenario';
-import { setRun } from '@client/actions';
+import { getRun, setRun } from '@client/actions/run';
+import { getResponse, setResponses } from '@client/actions/response';
 
 class Run extends Component {
     constructor(props) {
@@ -20,42 +21,10 @@ class Run extends Component {
 
         this.onResponseChange = this.onResponseChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
-
-        this.fetchRun();
     }
 
-    async fetchRun() {
-        const { run, status } = await (await fetch(
-            `/api/runs/new-or-existing/scenario/${this.state.scenarioId}`,
-            {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        )).json();
-
-        if (status === 200) {
-            this.props.setRun({ run });
-        }
-    }
-
-    async updateRun(updates) {
-        const body = JSON.stringify(updates);
-        const { run, status } = await (await fetch(
-            `/api/runs/${this.props.run.id}/update`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body
-            }
-        )).json();
-
-        if (status === 200) {
-            this.props.setRun({ run });
-        }
+    async componentDidMount() {
+        await this.props.getRun(this.state.scenarioId);
     }
 
     onResponseChange(event, data) {
@@ -83,25 +52,14 @@ class Run extends Component {
     }
 
     async onChange(event, data) {
-        await this.updateRun(data);
+        await this.props.setRun(this.props.run.id, data);
     }
 
     async onSubmit() {
         if (this.props.run) {
-            for (let [name, body] of this.responses) {
-                const url = `/api/runs/${this.props.run.id}/response/${name}`;
-                // TODO: feedback for when response is saved
-
-                await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(body)
-                });
-            }
-
-            // clear the responses for the next slide
+            await this.props.setResponses(this.props.run.id, [
+                ...this.responses
+            ]);
             this.responses.clear();
         }
     }
@@ -123,8 +81,11 @@ class Run extends Component {
 }
 
 Run.propTypes = {
+    getResponse: PropTypes.func,
+    setResponses: PropTypes.func,
     scenarioId: PropTypes.number,
     run: PropTypes.object,
+    getRun: PropTypes.func,
     setRun: PropTypes.func,
     match: PropTypes.shape({
         params: PropTypes.shape({
@@ -137,13 +98,16 @@ Run.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { run } = state.run;
-    return { run };
+    const { responses, run } = state;
+    return { responses, run };
 }
 
-const mapDispatchToProps = {
-    setRun
-};
+const mapDispatchToProps = dispatch => ({
+    getResponse: params => dispatch(getResponse(params)),
+    setResponses: (...params) => dispatch(setResponses(...params)),
+    getRun: (...args) => dispatch(getRun(...args)),
+    setRun: (...args) => dispatch(setRun(...args))
+});
 
 export default withRouter(
     connect(

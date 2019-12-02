@@ -1,13 +1,20 @@
 import { type } from './type';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header, Icon, Segment } from 'semantic-ui-react';
+import {
+    Button,
+    Form,
+    Header,
+    Icon,
+    Message,
+    Segment
+} from 'semantic-ui-react';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import MicRecorder from 'mic-recorder-to-mp3';
 import { detect } from 'detect-browser';
 import { connect } from 'react-redux';
-
+import { getResponse } from '@client/actions/response';
 import './AudioResponse.css';
 
 const SUPPORTED_BROWSERS = ['chrome', 'firefox'];
@@ -15,10 +22,14 @@ const SUPPORTED_BROWSERS = ['chrome', 'firefox'];
 class Display extends Component {
     constructor(props) {
         super(props);
+
+        const { persisted } = this.props;
+
         this.state = {
+            blobURL: '',
             isRecording: false,
             type: '',
-            blobURL: ''
+            value: persisted.value
         };
 
         this.created_at = new Date().toISOString();
@@ -30,6 +41,34 @@ class Display extends Component {
         this.onStop = this.onStop.bind(this);
 
         this.browserSupported = SUPPORTED_BROWSERS.includes(detect().name);
+    }
+
+    async componentDidMount() {
+        let {
+            getResponse,
+            onResponseChange,
+            persisted = {},
+            responseId,
+            run
+        } = this.props;
+
+        let { name = responseId, value = '' } = persisted;
+
+        if (!value) {
+            const previous = await getResponse({
+                id: run.id,
+                responseId
+            });
+
+            if (previous && previous.response) {
+                value = previous.response.value;
+            }
+        }
+
+        if (value) {
+            onResponseChange({}, { name, value, isFulfilled: true });
+            this.setState({ value });
+        }
     }
 
     async onStart() {
@@ -69,13 +108,12 @@ class Display extends Component {
             if (prevState.blobURL) {
                 URL.revokeObjectURL(prevState.blobURL);
             }
-            return { blobURL, isRecording: false };
+            return { blobURL, value, isRecording: false };
         });
 
         const { created_at } = this;
         const { recallId } = this.props;
 
-        // This saves every recording that the user creates
         this.props.onResponseChange(
             {},
             {
@@ -87,6 +125,8 @@ class Display extends Component {
                 value
             }
         );
+
+        this.setState({ value });
     }
 
     onFocus() {
@@ -95,23 +135,26 @@ class Display extends Component {
         }
     }
 
-    onChange(event, data) {
+    onChange(event, { name, value }) {
         const { created_at } = this;
         const { recallId } = this.props;
         this.props.onResponseChange(event, {
-            ...data,
             created_at,
             ended_at: new Date().toISOString(),
             recallId,
-            type
+            name,
+            type,
+            value
         });
+
+        this.setState({ value });
     }
 
     render() {
-        const { isRecording, blobURL } = this.state;
+        const { isRecording, blobURL, value } = this.state;
         const { prompt, recallId, responseId, required, run } = this.props;
         const { onChange, onFocus } = this;
-        const fulfilled = blobURL ? true : false;
+        const fulfilled = value || blobURL ? true : false;
         const header = this.browserSupported ? (
             required && <PromptRequiredLabel fulfilled={fulfilled} />
         ) : (
@@ -143,8 +186,16 @@ class Display extends Component {
                         Done
                     </Button>
                 )}
-                {this.state.blobURL && (
-                    <audio src={this.state.blobURL} controls="controls" />
+
+                {(blobURL || value) && (
+                    <Message
+                        content={
+                            <audio
+                                src={blobURL || `/api/media/${value}`}
+                                controls="controls"
+                            />
+                        }
+                    />
                 )}
             </Segment>
         ) : (
@@ -163,14 +214,11 @@ class Display extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    const { run } = state.run;
-    return { run };
-}
-
 Display.propTypes = {
+    getResponse: PropTypes.func,
     isRecording: PropTypes.bool,
     onResponseChange: PropTypes.func,
+    persisted: PropTypes.object,
     placeholder: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,
@@ -180,4 +228,16 @@ Display.propTypes = {
     type: PropTypes.oneOf([type]).isRequired
 };
 
-export default connect(mapStateToProps)(React.memo(Display));
+function mapStateToProps(state) {
+    const { run } = state;
+    return { run };
+}
+
+const mapDispatchToProps = dispatch => ({
+    getResponse: params => dispatch(getResponse(params))
+});
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Display);

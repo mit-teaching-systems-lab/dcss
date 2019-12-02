@@ -17,6 +17,7 @@ class Display extends React.Component {
     }
 
     async componentDidMount() {
+        // TODO: replace this with call to getResponse
         const { run, recallId } = this.props;
         if (run) {
             const { response, status } = await (await fetch(
@@ -50,6 +51,7 @@ class Display extends React.Component {
         // to display, so display:
         // "Participant response will appear here"
         //
+
         const content = this.isScenarioRun
             ? response
                 ? response.response.isSkip
@@ -59,7 +61,11 @@ class Display extends React.Component {
             : 'Participant response will appear here';
 
         return content.endsWith('mp3') ? (
-            <audio src={content} controls="controls" />
+            <Message
+                content={
+                    <audio src={`/api/media/${content}`} controls="controls" />
+                }
+            />
         ) : (
             <Message style={{ whiteSpace: 'pre-wrap' }} content={content} />
         );

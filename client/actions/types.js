@@ -1,9 +1,30 @@
 export const LOG_IN = 'LOG_IN';
 export const LOG_OUT = 'LOG_OUT';
 
-export const SET_RUN = 'SET_RUN';
-
 export const SET_USERS = 'SET_USERS';
+
+export const GET_RESPONSE = 'GET_RESPONSE';
+export const GET_RESPONSE_SUCCESS = 'GET_RESPONSE_SUCCESS';
+export const GET_RESPONSE_ERROR = 'GET_RESPONSE_ERROR';
+
+export const GET_RESPONSES = 'GET_RESPONSES';
+export const GET_RESPONSES_SUCCESS = 'GET_RESPONSES_SUCCESS';
+export const GET_RESPONSES_ERROR = 'GET_RESPONSE_ERROR';
+
+export const SET_RESPONSE = 'SET_RESPONSE';
+export const SET_RESPONSE_SUCCESS = 'SET_RESPONSE_SUCCESS';
+export const SET_RESPONSE_ERROR = 'SET_RESPONSE_ERROR';
+
+export const SET_RESPONSES = 'SET_RESPONSES';
+export const SET_RESPONSES_SUCCESS = 'SET_RESPONSES_SUCCESS';
+export const SET_RESPONSES_ERROR = 'SET_RESPONSES_ERROR';
+
+export const GET_RUN = 'GET_RUN';
+export const GET_RUN_SUCCESS = 'GET_RUN_SUCCESS';
+export const GET_RUN_ERROR = 'GET_RUN_ERROR';
+export const SET_RUN = 'SET_RUN';
+export const SET_RUN_SUCCESS = 'SET_RUN_SUCCESS';
+export const SET_RUN_ERROR = 'SET_RUN_ERROR';
 
 export const GET_SCENARIO = 'GET_SCENARIO';
 export const GET_SCENARIO_SUCCESS = 'GET_SCENARIO_SUCCESS';

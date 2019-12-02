@@ -1,6 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
 const multer = require('multer');
-const { uploadToS3 } = require('./s3');
+const { uploadToS3, requestFromS3 } = require('./s3');
 const uuid = require('uuid/v4');
 
 async function uploadAudio(req, res) {
@@ -33,4 +33,9 @@ async function uploadAudio(req, res) {
     });
 }
 
+async function requestAudio(req, res, next) {
+    return requestFromS3(req, res, next);
+}
+
 exports.uploadAudio = asyncMiddleware(uploadAudio);
+exports.requestAudio = asyncMiddleware(requestAudio);

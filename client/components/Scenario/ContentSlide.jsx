@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
-import { setRun } from '@client/actions';
 
 import SlideComponentsList from '@components/SlideComponentsList';
 
@@ -27,7 +26,10 @@ class ContentSlide extends React.Component {
             // changes.
             required,
             // Tracks prompt input, but must be a copy
-            pending: required.slice()
+            pending: required.slice(),
+            // Skip button display
+            skipButton: 'Choose to Skip',
+            skipOrKeep: 'skip'
         };
 
         this.onSkip = this.onSkip.bind(this);
@@ -36,24 +38,34 @@ class ContentSlide extends React.Component {
         );
     }
 
-    onSkip(event) {
+    onSkip(event, { name }) {
         const { onClickNext, onResponseChange, slide } = this.props;
         const isSkip = true;
         const value = '';
 
-        slide.components.forEach(({ responseId, type }) => {
-            if (responseId) {
-                const name = responseId;
-                onResponseChange(event, {
-                    created_at: new Date().toISOString(),
-                    ended_at: new Date().toISOString(),
-                    isSkip,
-                    name,
-                    type,
-                    value
-                });
-            }
-        });
+        if (!this.props.run) {
+            // TODO: implement some kind of feedback to
+            // make previewer aware that Preview mode
+            // does not function like Run mode.
+            // alert('Slides cannot be skipped in Preview');
+            return null;
+        }
+
+        if (name === 'skip') {
+            slide.components.forEach(({ responseId, type }) => {
+                if (responseId) {
+                    const name = responseId;
+                    onResponseChange(event, {
+                        created_at: new Date().toISOString(),
+                        ended_at: new Date().toISOString(),
+                        isSkip,
+                        name,
+                        type,
+                        value
+                    });
+                }
+            });
+        }
 
         onClickNext();
     }
@@ -61,6 +73,14 @@ class ContentSlide extends React.Component {
     onInterceptResponseChange(event, data) {
         const { name, value } = data;
         const { pending, required } = this.state;
+
+        if (!this.props.run) {
+            // TODO: implement some kind of feedback to
+            // make previewer aware that Preview mode
+            // does not function like Run mode.
+            // alert('Slides cannot accept responses in Preview');
+            return null;
+        }
 
         // If we have a response change for a responseId that
         // was marked required, and the value isn't empty,
@@ -78,11 +98,24 @@ class ContentSlide extends React.Component {
         }
 
         this.setState({ pending });
-        this.props.onResponseChange(event, data);
+
+        if (!data.isFulfilled) {
+            this.props.onResponseChange(event, data);
+            localStorage.setItem(name, JSON.stringify(data));
+            this.setState({
+                skipButton: 'Choose to Skip',
+                skipOrKeep: 'skip'
+            });
+        } else {
+            this.setState({
+                skipButton: 'Keep and continue',
+                skipOrKeep: 'keep'
+            });
+        }
     }
 
     render() {
-        const { pending } = this.state;
+        const { pending, skipButton, skipOrKeep } = this.state;
         const {
             isLastSlide,
             onClickNext,
@@ -117,7 +150,11 @@ class ContentSlide extends React.Component {
             content,
             onClick
         };
-        let fwdButtonTip = `Submit response and go to next slide`;
+        let fwdButtonTip = 'Submit response and go to next slide';
+        let skipButtonTip =
+            skipOrKeep === 'skip'
+                ? 'Skip these prompts and go to next slide'
+                : 'Keep these responses and go to next slide';
 
         fwdButtonTip += pending.length
             ? ` (${pending.length} required responses are not complete)`
@@ -156,12 +193,13 @@ class ContentSlide extends React.Component {
                             <React.Fragment>
                                 <Button.Or />
                                 <Popup
-                                    content="Skip these prompts and go to next slide."
+                                    content={skipButtonTip}
                                     trigger={
                                         <Button
                                             color="yellow"
+                                            name={skipOrKeep}
                                             onClick={onSkip}
-                                            content="Choose to Skip"
+                                            content={skipButton}
                                         />
                                     }
                                 />
@@ -184,15 +222,8 @@ ContentSlide.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { run } = state.run;
+    const { run } = state;
     return { run };
 }
 
-const mapDispatchToProps = {
-    setRun
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ContentSlide);
+export default connect(mapStateToProps)(ContentSlide);
