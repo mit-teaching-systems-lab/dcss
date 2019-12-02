@@ -66,8 +66,10 @@ class ContentSlide extends React.Component {
         // was marked required, and the value isn't empty,
         // then it can be removed from the list.
         if (required.includes(name)) {
-            if (value !== '' && pending.includes(name)) {
-                pending.splice(pending.indexOf(name), 1);
+            if (value !== '') {
+                if (pending.includes(name)) {
+                    pending.splice(pending.indexOf(name), 1);
+                }
             } else {
                 // Otherwise, if it is not empty, but was
                 // previously removed, add it back.
