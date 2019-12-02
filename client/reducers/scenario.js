@@ -3,6 +3,10 @@ import { SET_SCENARIO, SET_SLIDES, SET_SCENARIOS } from '@client/actions/types';
 const initialState = {
     title: '',
     description: '',
+    consent: {
+        id: null,
+        prose: ''
+    },
     slides: [],
     status: 1
 };
