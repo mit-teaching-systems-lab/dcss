@@ -2,6 +2,7 @@ import { type } from './type';
 export { type };
 export const defaultValue = ({ responseId }) => ({
     prompt: 'Click then speak',
+    recallId: '',
     required: true,
     responseId,
     type

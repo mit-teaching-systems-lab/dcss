@@ -47,27 +47,31 @@ class ResponseRecallEditor extends React.Component {
         const { components, recallId } = this.state;
         const { onChange } = this;
 
-        const responseIdList = components.reduce((accum, component, index) => {
+        const prompts = components.reduce((accum, component, index) => {
             const { prompt, responseId } = component;
-            const text = `Slide: "${component.slide.title}", Prompt: ${prompt}`;
+            const text = `Slide: "${component.slide.title}", Prompt: "${prompt}"`;
             accum.push({ key: index, text, value: responseId });
             return accum;
         }, []);
 
+        prompts.unshift({
+            key: '',
+            text: 'No Response Embed',
+            value: ''
+        });
+
         return (
-            responseIdList && (
-                <React.Fragment>
-                    <p>Embed Participant response for prompt:</p>
-                    <Dropdown
-                        defaultValue={recallId}
-                        header="'Slide title', Prompt: '...')"
-                        inline
-                        name="recallId"
-                        onChange={onChange}
-                        options={responseIdList}
-                        scrolling
-                    />
-                </React.Fragment>
+            prompts && (
+                <Dropdown
+                    style={{ marginBottom: '1rem' }}
+                    label="Embed Participant response for prompt:"
+                    defaultValue={recallId}
+                    selection
+                    fluid
+                    name="recallId"
+                    onChange={onChange}
+                    options={prompts}
+                />
             )
         );
     }

@@ -58,7 +58,11 @@ class Display extends React.Component {
                 : 'Loading your previous response'
             : 'Participant response will appear here';
 
-        return <Message style={{ whiteSpace: 'pre-wrap' }} content={content} />;
+        return content.endsWith('mp3') ? (
+            <audio src={content} controls="controls" />
+        ) : (
+            <Message style={{ whiteSpace: 'pre-wrap' }} content={content} />
+        );
     }
 }
 
@@ -68,7 +72,7 @@ Display.propTypes = {
     // from being mis-indentified as a "Response" component.
     recallId: PropTypes.string,
     run: PropTypes.object,
-    type: PropTypes.oneOf([type]).isRequired
+    type: PropTypes.oneOf([type])
 };
 
 export default React.memo(Display);

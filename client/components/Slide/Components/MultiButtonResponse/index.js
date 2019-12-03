@@ -1,6 +1,7 @@
 import { type } from './type';
 export { type };
 export const defaultValue = ({ responseId }) => ({
+    recallId: '',
     required: true,
     responseId,
     type

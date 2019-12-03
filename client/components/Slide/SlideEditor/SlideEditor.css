@@ -11,3 +11,7 @@
 .editor__component-selected {
     border: 1px solid gold !important;
 }
+
+.responserecall__margin-bottom {
+    margin-bottom: 1rem !important;
+}

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Header, Segment } from 'semantic-ui-react';
 import PromptRequiredLabel from '../PromptRequiredLabel';
+import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import './TextResponse.css';
 
 class Display extends Component {
@@ -37,7 +38,14 @@ class Display extends Component {
     }
 
     render() {
-        const { prompt, placeholder, required, responseId } = this.props;
+        const {
+            prompt,
+            placeholder,
+            recallId,
+            required,
+            responseId,
+            run
+        } = this.props;
         const { value } = this.state;
         const { onFocus, onChange } = this;
         const fulfilled = value ? true : false;
@@ -51,6 +59,7 @@ class Display extends Component {
         return (
             <Segment>
                 <Header as="h3">{header}</Header>
+                {recallId && <ResponseRecall run={run} recallId={recallId} />}
                 <Form>
                     <Form.TextArea
                         name={responseId}
@@ -68,8 +77,10 @@ Display.propTypes = {
     onResponseChange: PropTypes.func,
     placeholder: PropTypes.string,
     prompt: PropTypes.string,
+    recallId: PropTypes.string,
     required: PropTypes.bool,
     responseId: PropTypes.string,
+    run: PropTypes.object,
     type: PropTypes.oneOf([type]).isRequired
 };
 

@@ -17,7 +17,7 @@ const SlideComponentsList = ({
 
     return asSVG ? (
         <div style={style}>
-            <svg width="290" height="400">
+            <svg width="500" height="400">
                 {/* intentionally break out */}
                 <foreignObject
                     transform="scale(0.5)"
@@ -36,7 +36,7 @@ const SlideComponentsList = ({
                     x="0"
                     y="0"
                     transform="scale(0.5)"
-                    width="290"
+                    width="500"
                     height="400"
                     fill="transparent"
                 />
