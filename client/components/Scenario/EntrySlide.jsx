@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Message } from 'semantic-ui-react';
 import { setRun } from '@client/actions';
+import './EntrySlide.css';
 
 class EntrySlide extends React.Component {
     constructor(props) {
@@ -38,13 +39,22 @@ class EntrySlide extends React.Component {
             (run && run.consent_granted_by_user
                 ? { negative: true }
                 : { positive: true });
+
+        // TODO: Create a table that contains system settings
+        // for storage of options like this.
+        //
+        // Set this to `true` to enable revocable consent.
+        const consentIsRevocable = false;
+
         return (
             <Card id="entry" key="entry" centered className={className}>
                 <Card.Content style={{ flexGrow: '0' }}>
                     <Card.Header>{title}</Card.Header>
                 </Card.Content>
                 <Card.Content>
-                    <p>{description}</p>
+                    <p className="entryslide__description-inner-container">
+                        {description}
+                    </p>
 
                     {run && run.updated_at !== null && (
                         <Message
@@ -59,9 +69,11 @@ class EntrySlide extends React.Component {
                             size="large"
                             color="yellow"
                             header="Consent Agreement"
+                            className="entryslide__consent-outer-container"
                             content={
                                 <div>
                                     <p
+                                        className="entryslide__consent-inner-container"
                                         dangerouslySetInnerHTML={{
                                             __html
                                         }}
@@ -85,15 +97,19 @@ class EntrySlide extends React.Component {
                                         </Button.Group>
                                     ) : (
                                         <Button.Group fluid>
-                                            <Button
-                                                onClick={this.onClick}
-                                                {...revokeOrRestore}
-                                            >
-                                                {revokeOrRestore.negative
-                                                    ? 'Revoke my consent'
-                                                    : 'Restore my consent'}
-                                            </Button>
-                                            <Button.Or />
+                                            {consentIsRevocable && (
+                                                <React.Fragment>
+                                                    <Button
+                                                        onClick={this.onClick}
+                                                        {...revokeOrRestore}
+                                                    >
+                                                        {revokeOrRestore.negative
+                                                            ? 'Revoke my consent'
+                                                            : 'Restore my consent'}
+                                                    </Button>
+                                                    <Button.Or />
+                                                </React.Fragment>
+                                            )}
                                             <Button
                                                 color="green"
                                                 onClick={this.props.onClickNext}
