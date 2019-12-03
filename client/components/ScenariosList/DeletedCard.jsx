@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import './ScenariosList.css';
 
 const strike = { textDecoration: 'line-through' };
 
@@ -9,7 +10,10 @@ const DeletedCard = ({ id, title, description }) => {
         <Card className="scenario__entry" key={id}>
             <Card.Content>
                 <Card.Header style={strike}>{title}</Card.Header>
-                <Card.Description style={strike}>
+                <Card.Description
+                    className="scenario__entry--description"
+                    style={strike}
+                >
                     {description}
                 </Card.Description>
             </Card.Content>

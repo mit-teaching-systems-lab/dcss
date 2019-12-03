@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
+import './ScenariosList.css';
 
 const ScenarioCard = ({ scenario, isLoggedIn }) => {
     const { id, title, description, deleted_at, user_is_author } = scenario;
@@ -20,7 +21,9 @@ const ScenarioCard = ({ scenario, isLoggedIn }) => {
         <Card className="scenario__entry" key={id}>
             <Card.Content>
                 <Card.Header>{title}</Card.Header>
-                <Card.Description>{description}</Card.Description>
+                <Card.Description className="scenario__entry--description">
+                    {description}
+                </Card.Description>
             </Card.Content>
             <Card.Content extra>
                 <Button

@@ -9,3 +9,8 @@
 .ui.card.scenario__entry {
     margin: 1rem auto;
 }
+
+.scenario__entry--description {
+    max-height: 10rem !important;
+    overflow-y: auto !important;
+}
