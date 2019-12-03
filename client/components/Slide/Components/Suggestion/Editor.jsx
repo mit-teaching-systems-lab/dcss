@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Message } from 'semantic-ui-react';
+import { Checkbox, Dropdown, Message } from 'semantic-ui-react';
 import Editor from 'nib-core';
 import { convertFromHTML, convertToHTML } from 'nib-converter';
 import { type } from './type';
@@ -23,17 +23,50 @@ class SuggestionEditor extends React.Component {
     constructor(props) {
         super(props);
 
-        const color = props.value.color || 'grey';
-        const defaultValue = convertFromHTML(props.value.html || '');
+        const { color = 'grey', html = '', open = false } = props.value;
 
-        this.onChange = this.onChange.bind(this);
+        const defaultValue = convertFromHTML(html);
+
         this.state = {
+            color,
             defaultValue,
-            color
+            open
         };
+
+        this.onColorChange = this.onColorChange.bind(this);
+        this.onVisibilityChange = this.onVisibilityChange.bind(this);
+        this.onTextareaChange = this.onTextareaChange.bind(this);
+        this.updateState = this.updateState.bind(this);
     }
+
+    updateState() {
+        const { color, defaultValue, open } = this.state;
+
+        const html = convertToHTML(defaultValue.doc);
+
+        this.props.onChange({
+            type,
+            html,
+            color,
+            open
+        });
+    }
+
+    onTextareaChange(defaultValue) {
+        this.setState({ defaultValue }, this.updateState);
+    }
+
+    onVisibilityChange(event, { checked: open }) {
+        this.setState({ open }, this.updateState);
+    }
+
+    onColorChange(event, { value: color }) {
+        this.setState({ color }, this.updateState);
+    }
+
     render() {
-        const { color, defaultValue } = this.state;
+        const { color, open, defaultValue } = this.state;
+        const { onColorChange, onTextareaChange, onVisibilityChange } = this;
         const selectedOption = options.find(option => option.key === color);
         return (
             <React.Fragment>
@@ -43,21 +76,13 @@ class SuggestionEditor extends React.Component {
                     searchInput={{ type: 'string' }}
                     options={options}
                     defaultValue={selectedOption.key}
-                    onChange={(event, data) => {
-                        this.setState({ color: data.value }, () => {
-                            this.onChange(this.state);
-                        });
-                    }}
+                    onChange={onColorChange}
                 />
-                <Message color={this.state.color}>
+                <Message color={color}>
                     <Editor
                         autoFocus
                         defaultValue={defaultValue}
-                        onChange={defaultValue => {
-                            this.setState({ defaultValue }, () => {
-                                this.onChange(this.state);
-                            });
-                        }}
+                        onChange={onTextareaChange}
                         styleConfig={{
                             editor: () => ({
                                 height: '150px'
@@ -68,30 +93,26 @@ class SuggestionEditor extends React.Component {
                         }}
                     />
                 </Message>
+                <Checkbox
+                    name="open"
+                    label="Default to visible?"
+                    checked={open}
+                    onChange={onVisibilityChange}
+                />
             </React.Fragment>
         );
-    }
-
-    onChange({ color, defaultValue }) {
-        const html = convertToHTML(defaultValue.doc);
-        if (this.props.onChange) {
-            this.props.onChange({
-                type,
-                html,
-                color
-            });
-        }
     }
 }
 
 SuggestionEditor.propTypes = {
+    onChange: PropTypes.func.isRequired,
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
-        type: PropTypes.oneOf([type]),
+        color: PropTypes.string,
         html: PropTypes.string,
-        color: PropTypes.string
-    }),
-    onChange: PropTypes.func.isRequired
+        open: PropTypes.bool,
+        type: PropTypes.oneOf([type])
+    })
 };
 
 export default SuggestionEditor;
