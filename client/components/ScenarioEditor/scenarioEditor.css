@@ -1,3 +1,7 @@
-.tm__scenario-save {
-    margin: 1rem 0;
+.scenarioeditor__categories-minwidth {
+    min-width: 18rem !important;
+}
+
+.scenarioeditor__grid-nowrap {
+    flex-wrap: nowrap !important;
 }

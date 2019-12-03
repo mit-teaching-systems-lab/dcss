@@ -119,8 +119,8 @@ class ScenarioEditor extends Component {
             <Form size={'big'}>
                 <Container fluid>
                     <Grid columns={2} divided>
-                        <Grid.Row>
-                            <Grid.Column width={8}>
+                        <Grid.Row className="scenarioeditor__grid-nowrap">
+                            <Grid.Column width={9}>
                                 <Form.Input
                                     focus
                                     required
@@ -165,7 +165,10 @@ class ScenarioEditor extends Component {
                                     </Button>
                                 )}
                             </Grid.Column>
-                            <Grid.Column width={3}>
+                            <Grid.Column
+                                width={3}
+                                className="scenarioeditor__categories-minwidth"
+                            >
                                 {this.state.categories.length && (
                                     <ConfirmAuth requiredPermission="edit_scenario">
                                         <Form.Field>
