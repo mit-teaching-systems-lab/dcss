@@ -69,7 +69,6 @@ class EntrySlide extends React.Component {
                             size="large"
                             color="yellow"
                             header="Consent Agreement"
-                            className="entryslide__consent-outer-container"
                             content={
                                 <div>
                                     <p

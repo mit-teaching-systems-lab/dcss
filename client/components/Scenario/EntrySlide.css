@@ -3,10 +3,6 @@
     overflow-y: auto;
 }
 
-.entryslide__consent-outer-container {
-    max-height: 43vh;
-}
-
 .entryslide__consent-inner-container {
     max-height: 16rem;
     overflow-y: auto;
