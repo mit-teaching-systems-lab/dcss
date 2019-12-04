@@ -11,11 +11,13 @@ const {
     getAllScenarios,
     getScenario,
     getScenarioDataResearcher,
+    getScenarioByRun,
     setScenario,
     softDeleteScenario
 } = require('./endpoints.js');
 
 router.get('/', getAllScenarios);
+router.get('/run', getScenarioByRun);
 router.get('/:scenario_id', [lookupScenario(), getScenario]);
 
 // TODO: there should be a middleware here to check for permissions

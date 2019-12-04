@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, Grid, Loader } from 'semantic-ui-react';
+import changeCase from 'change-case';
 import PropTypes from 'prop-types';
 import { getScenarios } from '@client/actions/scenario';
 import ScenarioEntries from './ScenarioEntries';
@@ -11,37 +12,91 @@ class ScenariosList extends Component {
     constructor(props) {
         super(props);
 
-        const category = this.props.location.pathname.slice(1);
+        const { category } = this.props;
 
         this.state = {
-            category
+            category,
+            listHeading: '',
+            reducedScenarios: []
         };
+
+        this.sortDeletedScenarios = this.sortDeletedScenarios.bind(this);
+        this.reduceScenarios = this.reduceScenarios.bind(this);
     }
 
     async componentDidMount() {
         await this.props.getScenarios();
+        await this.reduceScenarios();
     }
 
-    render() {
-        const { category } = this.state;
-        const { scenarios } = this.props;
-        const displayableScenarios =
-            (scenarios &&
-                scenarios.filter(({ categories }) => {
-                    return !category || categories.includes(category);
-                })) ||
-            [];
-
-        // TODO: Expose deleted scenarios these to Admin only
-        // This pushes "deleted" scenarios to the end of the list of Scenarios,
-        // as a temporary means of addressing the display of "deleted"
-        // scenarios.
-        displayableScenarios.forEach((scenario, index, scenarios) => {
+    sortDeletedScenarios(scenarios) {
+        scenarios.forEach((scenario, index, scenarios) => {
             if (scenario.deleted_at) {
                 scenarios.splice(index, 1);
                 scenarios.push(scenario);
             }
         });
+
+        return scenarios;
+    }
+
+    async reduceScenarios() {
+        const { category } = this.state;
+        let filteredScenarios = [];
+        let listHeading = '';
+        let authorUsername = '';
+
+        switch (category) {
+            case 'all':
+                filteredScenarios = this.props.scenarios;
+                listHeading = 'All Teacher Moments';
+                break;
+            case 'author':
+                authorUsername = this.props.match.params.username;
+                // Currently we're only showing author views for the current user
+                if (this.props.username !== authorUsername) return;
+
+                listHeading = ` Teacher Moments by ${changeCase.titleCase(
+                    authorUsername
+                )}`;
+                filteredScenarios = this.props.scenarios.filter(
+                    ({ user_is_author }) => {
+                        return user_is_author;
+                    }
+                );
+                break;
+            case 'official':
+            case 'community':
+                filteredScenarios = this.props.scenarios.filter(
+                    ({ categories }) => {
+                        return !category || categories.includes(category);
+                    }
+                );
+                listHeading = `${changeCase.titleCase(
+                    category
+                )} Teacher Moments`;
+                break;
+            case 'continue':
+                // eslint-disable-next-line no-case-declarations
+                const { scenarios } = await (await fetch(
+                    'api/scenarios/run'
+                )).json();
+                filteredScenarios = scenarios;
+                listHeading = filteredScenarios.length
+                    ? 'In-progress and Completed Teacher Moments'
+                    : 'No Teacher Moments Completed Yet';
+                break;
+        }
+
+        filteredScenarios = this.sortDeletedScenarios(filteredScenarios);
+        this.setState({
+            reducedScenarios: filteredScenarios,
+            listHeading
+        });
+    }
+
+    render() {
+        const { listHeading, reducedScenarios } = this.state;
 
         return (
             <div>
@@ -51,14 +106,15 @@ class ScenariosList extends Component {
                             <h2>
                                 Practice spaces for teacher preparation programs
                             </h2>
+                            {listHeading && <h3>{listHeading}</h3>}
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column stretched>
-                            {displayableScenarios.length ? (
+                            {reducedScenarios.length ? (
                                 <Card.Group>
                                     <ScenarioEntries
-                                        scenarios={displayableScenarios}
+                                        scenarios={reducedScenarios}
                                         isLoggedIn={this.props.isLoggedIn}
                                     />
                                 </Card.Group>
@@ -74,10 +130,17 @@ class ScenariosList extends Component {
 }
 
 ScenariosList.propTypes = {
-    scenarios: PropTypes.array,
+    category: PropTypes.string,
     getScenarios: PropTypes.func,
     isLoggedIn: PropTypes.bool.isRequired,
-    location: PropTypes.object
+    location: PropTypes.object,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            username: PropTypes.string
+        })
+    }),
+    scenarios: PropTypes.array,
+    username: PropTypes.string
 };
 
 function mapStateToProps(state) {

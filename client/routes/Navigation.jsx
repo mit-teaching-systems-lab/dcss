@@ -53,6 +53,7 @@ const Navigation = () => {
             );
         }
     );
+    const { username } = Session.getSession();
 
     return (
         <React.Fragment>
@@ -82,6 +83,26 @@ const Navigation = () => {
                             text={<NavLink to="/">Moments</NavLink>}
                         >
                             <Dropdown.Menu>
+                                {Session.isSessionActive() && (
+                                    <React.Fragment>
+                                        <ConfirmAuth requiredPermission="create_scenario">
+                                            <Dropdown.Item>
+                                                <NavLink
+                                                    to={{
+                                                        pathname: `/author/${username}`
+                                                    }}
+                                                >
+                                                    My Moments
+                                                </NavLink>
+                                            </Dropdown.Item>
+                                        </ConfirmAuth>
+                                        <Dropdown.Item>
+                                            <NavLink to="/continue">
+                                                Continue Moments
+                                            </NavLink>
+                                        </Dropdown.Item>
+                                    </React.Fragment>
+                                )}
                                 <Dropdown.Item>
                                     <NavLink to="/official">Official</NavLink>
                                 </Dropdown.Item>

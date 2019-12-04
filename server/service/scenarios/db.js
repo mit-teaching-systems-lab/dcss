@@ -225,6 +225,20 @@ async function getScenarioResearchData(scenarioId) {
     return result.rows;
 }
 
+async function getScenarioByRun(userId) {
+    const result = await query(sql`
+        SELECT DISTINCT * FROM scenario
+        WHERE id IN
+        (
+            SELECT scenario_id
+            FROM run
+            WHERE user_id = ${userId}
+        );
+    `);
+
+    return result.rows;
+}
+
 // Scenario
 exports.addScenario = addScenario;
 exports.setScenario = setScenario;
@@ -233,6 +247,7 @@ exports.deleteScenario = deleteScenario;
 exports.softDeleteScenario = softDeleteScenario;
 exports.getAllScenarios = getAllScenarios;
 exports.getScenarioResearchData = getScenarioResearchData;
+exports.getScenarioByRun = getScenarioByRun;
 
 // Scenario Consent
 exports.addConsent = addConsent;

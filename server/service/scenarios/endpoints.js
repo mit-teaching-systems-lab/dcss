@@ -245,3 +245,9 @@ exports.getScenarioDataResearcher = asyncMiddleware(async function(req, res) {
     const data = await db.getScenarioResearchData(scenarioId);
     res.send({ data });
 });
+
+exports.getScenarioByRun = asyncMiddleware(async function(req, res) {
+    const userId = req.session.user.id;
+    const scenarios = await db.getScenarioByRun(userId);
+    res.send({ scenarios, status: 200 });
+});
