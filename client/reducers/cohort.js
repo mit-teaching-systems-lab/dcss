@@ -1,96 +1,90 @@
 import { combineReducers } from 'redux';
 
 import {
-    COHORT_REQUEST_LIST,
-    COHORT_REQUEST_LIST_ERROR,
-    COHORT_REQUEST_LIST_SUCCESS,
-    COHORT_CREATE_SUCCESS
+    CREATE_COHORT_SUCCESS,
+    SET_COHORT,
+
+    //
+    //
+    //
+    // TODO
+    //
+    //
+    //
+    // SET_COHORT_ERROR,
+    // SET_COHORT_SUCCESS,
+    // GET_COHORT,
+    // GET_COHORT_ERROR,
+    GET_COHORT_SUCCESS,
+    // GET_USER_COHORTS,
+    GET_USER_COHORTS_SUCCESS
+    // GET_USER_COHORTS_ERROR
 } from '../actions/types';
 
-const defaultState = {
-    index: {},
-    indexOrder: [],
-    indexRequest: {
-        lastRequest: 0,
-        lastResponse: 0,
-        status: 'init'
-    }
+const initialState = {
+    id: null,
+    created_at: '',
+    name: '',
+    role: '',
+    runs: [],
+    scenarios: [],
+    users: []
 };
 
-const index = (state = defaultState.index, action) => {
+const currentCohort = (state = initialState, action) => {
+    const { type, cohort } = action;
+
+    if (type === SET_COHORT || type === GET_COHORT_SUCCESS) {
+        return {
+            ...state,
+            ...cohort
+        };
+    }
+
+    if (type === CREATE_COHORT_SUCCESS) {
+        return {
+            ...state,
+            ...cohort,
+            role: 'owner'
+        };
+    }
+
+    return state;
+};
+
+const userCohorts = (state = [], action) => {
     const { type, cohorts } = action;
-
-    if (type === COHORT_REQUEST_LIST_SUCCESS) {
-        const newState = { ...state };
-        for (const cohort of cohorts) {
-            newState[cohort.id] = cohort;
-        }
-        return newState;
-    }
-
-    if (type === COHORT_CREATE_SUCCESS) {
-        const { cohort } = action;
-        return {
-            ...state,
-            [cohort.id]: {
-                ...cohort,
-                role: 'owner'
-            }
-        };
+    if (type === GET_USER_COHORTS_SUCCESS) {
+        return cohorts.slice();
     }
 
     return state;
 };
 
-export const selectCohort = (state, id) =>
-    state.cohort.index[id] || { name: 'Error: Missing Cohort', role: 'error' };
-
-const indexOrder = (state = defaultState.indexOrder, action) => {
+const getCohorts = (state = [], action) => {
     const { type, cohorts } = action;
+    if (type === GET_USER_COHORTS_SUCCESS) {
+        return cohorts.slice();
+    }
 
-    if (type === COHORT_REQUEST_LIST_SUCCESS) {
-        return cohorts.map(({ id }) => id);
-    }
-    if (type === COHORT_CREATE_SUCCESS) {
-        return [...state, action.cohort.id];
-    }
     return state;
 };
 
-export const selectCohortIds = state => state.cohort.indexOrder;
-
-const indexRequest = (state = defaultState.indexRequest, action) => {
-    const { type } = action;
-    if (type === COHORT_REQUEST_LIST_SUCCESS) {
+const getCohort = (state = initialState, action) => {
+    const { type, cohort } = action;
+    if (type === SET_COHORT || type === GET_COHORT_SUCCESS) {
         return {
             ...state,
-            status: 'success',
-            lastResponse: new Date().getTime(),
-            error: undefined
+            ...cohort
         };
     }
 
-    if (type === COHORT_REQUEST_LIST_ERROR) {
-        const { status, message, stack } = action;
-        return {
-            ...state,
-            status: 'error',
-            lastResponse: new Date().getTime(),
-            error: { status, message, stack }
-        };
-    }
-
-    if (type === COHORT_REQUEST_LIST) {
-        return {
-            ...state,
-            status: 'requesting',
-            lastRequest: new Date().getTime(),
-            error: undefined
-        };
-    }
     return state;
 };
 
-export const selectIndexRequest = state => state.cohort.indexRequest;
-
-export default combineReducers({ index, indexRequest, indexOrder });
+export default combineReducers({
+    currentCohort,
+    userCohorts,
+    getCohorts,
+    getCohort
+});

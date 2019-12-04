@@ -1,0 +1,32 @@
+.cohort__content-pane {
+    height: 83vh !important;
+}
+
+.cohort__scrolling-tbody {
+    display: block;
+    height: 175px;
+    overflow: auto;
+}
+
+.cohort__table-container {
+    margin-bottom: 1rem;
+}
+
+.cohort__table-thead-tbody-tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.cohort__table-cell-first {
+    width: 40px;
+}
+
+.cohort__button-transparent {
+    background: none !important;
+}
+
+.cohort__menu-item--padding {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+}

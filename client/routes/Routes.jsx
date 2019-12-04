@@ -1,17 +1,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
 import AccountAdmin from '@client/components/AccountAdmin';
+import Cohort from '@client/components/Facilitator/Components/Cohorts/Cohort';
+import ConfirmAuth from '@client/components/ConfirmAuth';
 import CreateAccount from '@client/components/CreateAccount';
 import CreateAnonymousAccount from '@client/components/CreateAccount/CreateAnonymousAccount';
-import ConfirmAuth from '@client/components/ConfirmAuth';
 import Editor from '@client/components/Editor';
 import Facilitator from '@client/components/Facilitator';
 import Login from '@client/components/Login';
 import LoginRoutePromptModal from '@client/components/Login/LoginRoutePromptModal';
-import Run from '@client/components/Run';
 import Researcher from '@client/components/Researcher';
+import Run from '@client/components/Run';
 import ScenariosList from '@client/components/ScenariosList';
 
 import Session from '@client/util/session';
@@ -60,6 +60,67 @@ const Routes = () => {
             <InterceptAnonymizableRoute path="/run/:scenarioId">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>
+
+            <ConfirmAuth
+                exact
+                path="/account-administration"
+                requiredPermission="edit_permissions"
+            >
+                <Route component={AccountAdmin} />
+            </ConfirmAuth>
+            <ConfirmAuth
+                exact
+                path="/cohorts"
+                requiredPermission="view_run_data"
+            >
+                <Route
+                    component={props => (
+                        <Facilitator {...props} activeTab="cohorts" />
+                    )}
+                />
+            </ConfirmAuth>
+            <ConfirmAuth
+                exact
+                path="/facilitator/cohorts"
+                requiredPermission="view_run_data"
+            >
+                <Route
+                    component={props => (
+                        <Facilitator {...props} activeTab="cohorts" />
+                    )}
+                />
+            </ConfirmAuth>
+            <ConfirmAuth
+                exact
+                path="/facilitator/search"
+                requiredPermission="view_run_data"
+            >
+                <Route
+                    component={props => (
+                        <Facilitator {...props} activeTab="search" />
+                    )}
+                />
+            </ConfirmAuth>
+            <ConfirmAuth
+                exact
+                path="/cohort/:id"
+                requiredPermission="view_run_data"
+            >
+                <Route
+                    component={props => (
+                        <Cohort {...props} activeTab="cohort" />
+                    )}
+                />
+            </ConfirmAuth>
+            <ConfirmAuth
+                exact
+                path="/cohort/:id/runs"
+                requiredPermission="view_run_data"
+            >
+                <Route
+                    component={props => <Cohort {...props} activeTab="runs" />}
+                />
+            </ConfirmAuth>
             <ConfirmAuth
                 path="/editor/new"
                 requiredPermission="create_scenario"
@@ -72,19 +133,8 @@ const Routes = () => {
             >
                 <Route component={Editor} />
             </ConfirmAuth>
-            <ConfirmAuth
-                exact
-                path="/cohorts"
-                requiredPermission="view_run_data"
-            >
-                <Route component={Facilitator} />
-            </ConfirmAuth>
-            <ConfirmAuth
-                exact
-                path="/account-administration"
-                requiredPermission="edit_permissions"
-            >
-                <Route component={AccountAdmin} />
+            <ConfirmAuth path="/researcher" requiredPermission="view_run_data">
+                <Route component={Researcher} />
             </ConfirmAuth>
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/login" component={Login} />
@@ -94,7 +144,6 @@ const Routes = () => {
                 path="/login/anonymous"
                 component={CreateAnonymousAccount}
             />
-            <Route exact path="/researcher" component={Researcher} />
         </Switch>
     );
 };

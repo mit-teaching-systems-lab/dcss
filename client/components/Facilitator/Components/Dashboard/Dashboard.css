@@ -1,0 +1,13 @@
+.dashboard__content-pane {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 83vh !important;
+    padding: 1px !important;
+    border: 0 !important;
+    box-shadow: 0 0 0 0 !important;
+    -webkit-box-shadow: 0 0 0 0 !important;
+}
+
+.dashboard__cohort-selected {
+    border: 1px solid gold !important;
+}

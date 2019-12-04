@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
-import { Menu } from 'semantic-ui-react';
-import Dashboard from '@client/components/Facilitator/Components/Dashboard';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
+import { Menu, Segment } from 'semantic-ui-react';
+
+import Cohorts from '@client/components/Facilitator/Components/Cohorts';
 import Search from '@client/components/Facilitator/Components/Search';
+
+import './Facilitator.css';
 
 class Facilitator extends Component {
     constructor(props) {
         super(props);
 
-        this.onClick = this.onClick.bind(this);
+        const { activeTab } = this.props;
 
         this.state = {
-            activeTab: 'dashboard',
+            activeTab,
             tabs: {
-                dashboard: this.getTab('dashboard'),
+                cohorts: this.getTab('cohorts'),
                 runs: this.getTab('runs')
             }
         };
+        this.onClick = this.onClick.bind(this);
+        this.getTab = this.getTab.bind(this);
     }
 
     onClick(e, { name: activeTab }) {
@@ -24,8 +31,8 @@ class Facilitator extends Component {
 
     getTab(name) {
         switch (name) {
-            case 'dashboard':
-                return <Dashboard />;
+            case 'cohorts':
+                return <Cohorts />;
             case 'runs':
                 return <Search />;
             default:
@@ -34,28 +41,45 @@ class Facilitator extends Component {
     }
 
     render() {
+        const { activeTab } = this.state;
+        const { onClick } = this;
+
         return (
             <div>
                 <Menu attached="top" tabular>
                     <Menu.Item
-                        content="Dashboard"
-                        name="dashboard"
-                        active={this.state.activeTab === 'dashboard'}
-                        onClick={this.onClick}
+                        content="Cohorts"
+                        name="cohorts"
+                        active={activeTab === 'cohorts'}
+                        onClick={onClick}
                     />
                     <Menu.Item
                         content="Search"
                         name="runs"
-                        active={this.state.activeTab === 'runs'}
-                        onClick={this.onClick}
+                        active={activeTab === 'runs'}
+                        onClick={onClick}
                     />
                 </Menu>
-                <div>{this.state.tabs[this.state.activeTab]}</div>
+
+                <Segment
+                    attached="bottom"
+                    className="facilitator__content-pane"
+                >
+                    {this.state.tabs[this.state.activeTab]}
+                </Segment>
             </div>
         );
     }
 }
 
-Facilitator.propTypes = {};
+Facilitator.propTypes = {
+    activeTab: PropTypes.string,
+    match: PropTypes.shape({
+        path: PropTypes.string,
+        params: PropTypes.shape({
+            id: PropTypes.node
+        }).isRequired
+    }).isRequired
+};
 
-export default Facilitator;
+export default withRouter(Facilitator);

@@ -5,7 +5,7 @@ export default ({ view, results }) => {
     if (!results.length) {
         return (
             <List.Item fluid="true" key="empty-results">
-                <Image src="https://react.semantic-ui.com/images/wireframe/media-paragraph.png" />
+                <Image src="/images/wireframe/media-paragraph.png" />
             </List.Item>
         );
     }
