@@ -5,9 +5,9 @@
 ### Local Setup
 
 1. Install [Node.js](https://nodejs.org/en/download/) (version >=10.0.0).
-1. Install `yarn` (version >=1.19.x): 
+1. Install `yarn` (version >=1.19.x):
   `npm install yarn@latest -g`
-1. Install Dependencies: 
+1. Install Dependencies:
   `yarn install`
 1. Set up local database: [Local Database Setup](#local-database-setup)
 1. Start the development server
@@ -22,11 +22,11 @@
       export AWS_PROFILE=
       export S3_BUCKET=
       ```
-    - If you are using Mac or Linux, export the required environment variables first: 
+    - If you are using Mac or Linux, export the required environment variables first:
       ```
       export $(cat config/dev)
       ```
-    - And then run the dev server with: 
+    - And then run the dev server with:
       ```
       yarn dev
       ```
@@ -54,7 +54,7 @@ This project uses [Eslint](https://eslint.org/) for linting. To catch syntax and
     ```
     export $(cat config/dev);
     ```
-    You may need to run: 
+    You may need to run:
     ```
     export PGUSER=`whoami`;
     ```
@@ -88,15 +88,15 @@ This project uses [Eslint](https://eslint.org/) for linting. To catch syntax and
       ```
       yarn db-init-local
       ```
-      This command creates a database called `teachermoments` and then sets up a role called tm and then creates all of the tables in `teachermoments`. 
+      This command creates a database called `teachermoments` and then sets up a role called tm and then creates all of the tables in `teachermoments`.
 
-      To do this manually, create a database called `teachermoments`: 
+      To do this manually, create a database called `teachermoments`:
       ```
       createdb teachermoments
       ```
-      Then create the role `tm` with a password `teachermoments`, then run: 
+      Then create the role `tm` with a password `teachermoments`, then run:
       ```
-      db-migrate up
+      yarn db-migrate-up
       ```
 
 ### Creating Database Migrations
@@ -129,6 +129,17 @@ yarn db-migrate-down
 
 This command can be customized with the following options [https://db-migrate.readthedocs.io/en/latest/Getting%20Started/commands/#down]()
 
+### Seeding a super_admin
+* start teacher moments via `yarn dev` with the correct env vars set
+* make a new user account
+* enter `psql` as the tm user by typing `psql` with the correct env vars
+* type: `SELECT * FROM users;` to find the id find the "id" of the user you created
+* type: `INSERT INTO user_role(role, user_id) VALUES ('super_admin', 1);` replacing 1 wit the id is of the user you just created.
+* exit psql with a \q
+* with the correct env vars for the project run `cd server && yarn seed:permissions`
+* `cd ../`
+* `yarn dev`
+
 ## Deployment
 This app is deployed via Heroku. To run the deploy commands, please [install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
 
@@ -146,7 +157,7 @@ The following environment variables must be set in Heroku:
 
 #### Session Secret
 
-To provide a session secret, set an environment variable on your deployment server: 
+To provide a session secret, set an environment variable on your deployment server:
 
 ```
 SESSION_SECRET=<the secret>
