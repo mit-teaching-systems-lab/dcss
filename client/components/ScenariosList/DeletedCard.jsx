@@ -5,7 +5,7 @@ import './ScenariosList.css';
 
 const strike = { textDecoration: 'line-through' };
 
-const DeletedCard = ({ id, title, description }) => {
+const DeletedCard = ({ id, title, description, onClick }) => {
     return (
         <Card className="scenario__entry" key={id}>
             <Card.Content>
@@ -19,7 +19,9 @@ const DeletedCard = ({ id, title, description }) => {
             </Card.Content>
             <Card.Content extra>
                 <Button.Group className="scenario__entry--edit-buttons">
-                    <Button>Restore</Button>
+                    <Button name="restore" onClick={onClick}>
+                        Restore
+                    </Button>
                 </Button.Group>
             </Card.Content>
         </Card>
@@ -27,9 +29,10 @@ const DeletedCard = ({ id, title, description }) => {
 };
 
 DeletedCard.propTypes = {
+    description: PropTypes.string.isRequired,
     id: PropTypes.node.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    onClick: PropTypes.func.isRequired,
+    title: PropTypes.string.isRequired
 };
 
 export default DeletedCard;

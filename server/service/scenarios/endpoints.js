@@ -65,11 +65,12 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
 async function setScenarioAsync(req, res) {
     const {
         author_id,
-        title,
+        deleted_at,
         description,
         categories,
         consent,
-        status
+        status,
+        title
     } = req.body;
     const scenarioId = req.params.scenario_id;
 
@@ -84,9 +85,10 @@ async function setScenarioAsync(req, res) {
     try {
         const scenario = await db.setScenario(scenarioId, {
             author_id,
-            title,
+            deleted_at,
             description,
-            status
+            status,
+            title
         });
 
         await db.setScenarioCategories(scenarioId, categories);

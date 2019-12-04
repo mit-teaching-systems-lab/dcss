@@ -71,16 +71,18 @@ async function getScenario(scenarioId) {
 }
 
 async function getAllScenarios() {
-    const results = await query(sql`SELECT * FROM scenario ORDER BY created_at DESC;
+    const results = await query(sql`
+        SELECT * FROM scenario ORDER BY created_at DESC;
     `);
 
-    let resultsWithCategories = [];
-    for (let r of results.rows) {
-        let categories = await getScenarioCategories(r.id);
-        resultsWithCategories.push({ ...r, categories });
+    const scenarios = [];
+    for (const row of results.rows) {
+        const categories = await getScenarioCategories(row.id);
+        const consent = await getScenarioConsent(row.id);
+        scenarios.push({ ...row, categories, consent });
     }
 
-    return resultsWithCategories;
+    return scenarios;
 }
 
 async function addScenario(authorId, title, description) {
