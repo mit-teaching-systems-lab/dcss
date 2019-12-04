@@ -98,20 +98,22 @@ class ScenarioCard extends React.Component {
                                     Edit
                                 </Button>
                             </ConfirmAuth>
-                            <Button
-                                basic
-                                color="black"
-                                className="scenario__entry--button"
-                                as={Link}
-                                to={{
-                                    pathname: `/editor/copy`,
-                                    state: {
-                                        scenarioCopyId: id
-                                    }
-                                }}
-                            >
-                                Copy
-                            </Button>
+                            <ConfirmAuth requiredPermission="create_scenario">
+                                <Button
+                                    basic
+                                    color="black"
+                                    className="scenario__entry--button"
+                                    as={Link}
+                                    to={{
+                                        pathname: `/editor/copy`,
+                                        state: {
+                                            scenarioCopyId: id
+                                        }
+                                    }}
+                                >
+                                    Copy
+                                </Button>
+                            </ConfirmAuth>
                         </Button.Group>
                     </Card.Content>
                 )}
