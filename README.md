@@ -129,16 +129,36 @@ yarn db-migrate-down
 
 This command can be customized with the following options [https://db-migrate.readthedocs.io/en/latest/Getting%20Started/commands/#down]()
 
-### Seeding a super_admin
-* start teacher moments via `yarn dev` with the correct env vars set
-* make a new user account
-* enter `psql` as the tm user by typing `psql` with the correct env vars
-* type: `SELECT * FROM users;` to find the id find the "id" of the user you created
-* type: `INSERT INTO user_role(role, user_id) VALUES ('super_admin', 1);` replacing 1 wit the id is of the user you just created.
-* exit psql with a \q
-* with the correct env vars for the project run `cd server && yarn seed:permissions`
-* `cd ../`
-* `yarn dev`
+### Seeding a super_admin for local development
+
+
+* In the terminal, start teacher moments with the correct env vars, db migrations and sql debugging enabled: 
+    ```
+    export $(cat config/dev); yarn db-migrate-up; SQL_DEBUG=1 yarn dev;
+    ```
+* In a browser, `http://localhost:3000/login/new` and create a new user account
+* Back in the terminal, create a new terminal window or tab, and type: 
+    ```
+    export $(cat config/dev); psql;
+    ```
+* Copy and paste the following sql command into your preferred editor and replace `YOUR USER NAME` with the username that you just created. 
+    ```sql
+    DO $$ 
+    DECLARE
+        seeduser TEXT := 'YOUR USER NAME';
+    BEGIN 
+        WITH me AS (SELECT id FROM users WHERE username = seeduser)
+        INSERT INTO user_role (role, user_id)
+        SELECT 'super_admin', id FROM me;
+    END $$;
+    ```
+* Copy and paste the entire command into the `psql` terminal and hit "enter"
+* Exit `psql` with a `\q`
+* Seed the permissions table by typing: 
+    ```
+    export $(cat config/dev); cd server/; yarn seed:permissions; cd ../;
+    ```
+
 
 ## Deployment
 This app is deployed via Heroku. To run the deploy commands, please [install Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
