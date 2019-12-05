@@ -103,7 +103,7 @@ class ContentSlide extends React.Component {
             this.props.onResponseChange(event, data);
             localStorage.setItem(name, JSON.stringify(data));
             this.setState({
-                skipButton: 'Choose to Skip',
+                skipButton: 'Choose to skip',
                 skipOrKeep: 'skip'
             });
         } else {
@@ -160,6 +160,15 @@ class ContentSlide extends React.Component {
             ? ` (${pending.length} required responses are not complete)`
             : '';
 
+        let skipButtonContent = skipButton;
+
+        if (isLastSlide) {
+            skipButtonContent =
+                skipOrKeep === 'skip' ? 'Skip and finish' : 'Keep and finish';
+            skipButtonTip = skipButtonTip.replace('go to next slide', 'finish');
+            fwdButtonTip = fwdButtonTip.replace('go to next slide', 'finish');
+        }
+
         return (
             <Card id={slide.id} key={slide.id} centered className={cardClass}>
                 <Card.Content style={{ flexGrow: '0' }}>
@@ -199,7 +208,7 @@ class ContentSlide extends React.Component {
                                             color="yellow"
                                             name={skipOrKeep}
                                             onClick={onSkip}
-                                            content={skipButton}
+                                            content={skipButtonContent}
                                         />
                                     }
                                 />

@@ -1,5 +1,6 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
+const slidesdb = require('./slides/db');
 
 async function getScenarioCategories(scenarioId) {
     const scenarioCategoriesResults = await query(sql`
@@ -62,11 +63,15 @@ async function getScenario(scenarioId) {
 
     const categories = await getScenarioCategories(scenarioId);
     const consent = await getScenarioConsent(scenarioId);
+    const finish = (await slidesdb.getSlidesForScenario(scenarioId)).find(
+        slide => slide.is_finish
+    );
 
     return {
         ...results.rows[0],
         categories,
-        consent
+        consent,
+        finish
     };
 }
 
@@ -99,9 +104,19 @@ async function addScenario(authorId, title, description) {
     const scenario = scenarioInsert.rows[0];
     const consent = await setScenarioConsent(scenario.id, consentDefault);
 
+    // Create the default finish slide
+    const finish = await slidesdb.addSlide({
+        scenario_id: scenario.id,
+        title: scenario.title,
+        is_finish: true,
+        components:
+            '[{"html": "<h2>Thanks for participating!</h2>","type": "Text"}]'
+    });
+
     return {
         ...scenario,
-        consent
+        consent,
+        finish
     };
 }
 

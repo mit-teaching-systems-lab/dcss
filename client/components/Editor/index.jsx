@@ -117,12 +117,22 @@ class Editor extends Component {
         // NOTE: this is to support saving the whole
         //       scenario when clicking the [save icon]
         //       that's displayed via EditorMenu.
+        const {
+            categories,
+            consent,
+            description,
+            finish,
+            status,
+            title
+        } = this.props;
+
         const data = {
-            title: this.props.title,
-            description: this.props.description,
-            categories: this.props.categories,
-            consent: this.props.consent,
-            status: this.props.status
+            categories,
+            consent,
+            description,
+            finish,
+            status,
+            title
         };
 
         Object.assign(data, updates);
@@ -334,12 +344,27 @@ Editor.propTypes = {
         id: PropTypes.number,
         prose: PropTypes.string
     }),
+    finish: PropTypes.object,
     status: PropTypes.number
 };
 
 function mapStateToProps(state) {
-    const { title, description, categories, consent, status } = state.scenario;
-    return { title, description, categories, consent, status };
+    const {
+        categories,
+        consent,
+        description,
+        finish,
+        status,
+        title
+    } = state.scenario;
+    return {
+        categories,
+        consent,
+        description,
+        finish,
+        status,
+        title
+    };
 }
 
 const mapDispatchToProps = {

@@ -7,7 +7,13 @@ import { type } from './type';
 class TextEditor extends React.Component {
     constructor(props) {
         super(props);
-        const defaultValue = convertFromHTML(props.value.html) || '';
+
+        const defaultHtml = (props.value && props.value.html) || '';
+        const hasWrapper = /^(<.+>.*<\/.+>)$/gm.test(defaultHtml);
+        const defaultValue = convertFromHTML(
+            hasWrapper ? defaultHtml : `<p>${defaultHtml}</p>`
+        );
+
         this.onChange = this.onChange.bind(this);
         this.state = {
             defaultValue
@@ -15,16 +21,23 @@ class TextEditor extends React.Component {
     }
     render() {
         const { defaultValue } = this.state;
+        const config = this.props.config ? { config: this.props.config } : {};
+
+        const defaultStyleConfig = {
+            editor: () => ({
+                height: '300px'
+            })
+        };
+        const styleConfig = this.props.styleConfig
+            ? { styleConfig: this.props.styleConfig }
+            : { styleConfig: defaultStyleConfig };
         return (
             <Editor
-                autoFocus
+                {...config}
                 defaultValue={defaultValue}
                 onChange={this.onChange}
-                styleConfig={{
-                    editor: () => ({
-                        height: '300px'
-                    })
-                }}
+                spellCheck={true}
+                {...styleConfig}
             />
         );
     }
@@ -41,12 +54,13 @@ class TextEditor extends React.Component {
 }
 
 TextEditor.propTypes = {
-    scenarioId: PropTypes.string,
+    config: PropTypes.object,
+    onChange: PropTypes.func.isRequired,
+    styleConfig: PropTypes.object,
     value: PropTypes.shape({
         type: PropTypes.oneOf([type]),
         html: PropTypes.string
-    }),
-    onChange: PropTypes.func.isRequired
+    })
 };
 
 export default TextEditor;

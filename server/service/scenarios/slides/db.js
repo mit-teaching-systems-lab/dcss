@@ -2,18 +2,35 @@ const { sql, updateQuery } = require('../../../util/sqlHelpers');
 const { query } = require('../../../util/db');
 
 exports.getSlidesForScenario = async scenarioId => {
-    const results = await query(
-        sql` SELECT id, title, components FROM slide WHERE scenario_id = ${scenarioId} ORDER BY "order";`
-    );
+    const results = await query(sql`
+        SELECT id, title, components, is_finish
+        FROM slide
+        WHERE scenario_id = ${scenarioId}
+        ORDER BY "order";
+    `);
     return results.rows;
 };
 
-exports.addSlide = async ({ scenario_id, title, components, order }) => {
+exports.addSlide = async ({
+    scenario_id,
+    title,
+    components,
+    order,
+    is_finish = false
+}) => {
     let q;
     if (!order) {
-        q = sql`INSERT INTO slide (scenario_id, title, components) VALUES (${scenario_id}, ${title}, ${components}) RETURNING *;`;
+        q = sql`
+            INSERT INTO slide (scenario_id, title, components, is_finish)
+            VALUES (${scenario_id}, ${title}, ${components}, ${is_finish})
+            RETURNING *;
+        `;
     } else {
-        q = sql`INSERT INTO slide (scenario_id, title, components, "order") VALUES (${scenario_id}, ${title}, ${components}, ${order}) RETURNING *;`;
+        q = sql`
+            INSERT INTO slide (scenario_id, title, components, "order", is_finish)
+            VALUES (${scenario_id}, ${title}, ${components}, ${order}, ${is_finish})
+            RETURNING *;
+        `;
     }
     const results = await query(q);
     return results.rows[0];
@@ -26,10 +43,10 @@ exports.updateSlide = async (id, data) => {
 
 exports.setAllSlides = async (scenario_id, slides) => {
     const results = await query(sql`
-INSERT INTO slide (scenario_id, title, components)
-    SELECT ${scenario_id} as scenario_id, s.title, s.components FROM
+INSERT INTO slide (scenario_id, title, components, is_finish)
+    SELECT ${scenario_id} as scenario_id, s.title, s.components, s.is_finish FROM
     jsonb_array_elements(${slides}) AS t(slide),
-    jsonb_to_record(t.slide) AS s (id int, title text, components jsonb)
+    jsonb_to_record(t.slide) AS s (id int, title text, components jsonb, is_finish boolean)
     ON CONFLICT DO NOTHING;
     `);
     return { addedCount: results.rowCount };

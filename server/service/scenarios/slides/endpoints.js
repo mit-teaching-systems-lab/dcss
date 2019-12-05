@@ -33,9 +33,15 @@ exports.getSlidesResponseComponents = asyncMiddleware(async (req, res) => {
 
 exports.addSlide = asyncMiddleware(async (req, res) => {
     const { id: scenario_id } = reqScenario(req);
-    const { title, order, components } = req.body;
+    const { title, order, components, is_finish = false } = req.body;
     res.json({
-        slide: await db.addSlide({ scenario_id, title, order, components }),
+        slide: await db.addSlide({
+            scenario_id,
+            title,
+            order,
+            components,
+            is_finish
+        }),
         status: 200
     });
 });
@@ -58,9 +64,14 @@ exports.orderSlides = asyncMiddleware(async (req, res) => {
 exports.updateSlide = asyncMiddleware(async (req, res) => {
     // TODO: ensure slide id is part of scenario / author permissions / etc
     const { slide_id } = req.params;
-    const { title, order, components } = req.body;
+    const { title, order, components, is_finish = false } = req.body;
     res.json({
-        slide: await db.updateSlide(slide_id, { title, order, components }),
+        slide: await db.updateSlide(slide_id, {
+            title,
+            order,
+            components,
+            is_finish
+        }),
         status: 200
     });
 });

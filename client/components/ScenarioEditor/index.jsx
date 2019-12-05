@@ -9,10 +9,28 @@ import {
     Grid,
     Popup
 } from 'semantic-ui-react';
-import { setScenario } from '@client/actions/scenario';
+import { getScenario, setScenario } from '@client/actions/scenario';
 
 import ConfirmAuth from '@client/components/ConfirmAuth';
+import { Text } from '@client/components/Slide/Components';
 import './scenarioEditor.css';
+
+const { Editor: TextEditor } = Text;
+
+const configTextEditor = {
+    plugins: {
+        options: 'inline link list image video help'
+    },
+    toolbar: {
+        options: 'top',
+        top: {
+            options: 'inline link list image video history help',
+            inline: {
+                options: 'strong em underline strike'
+            }
+        }
+    }
+};
 
 class ScenarioEditor extends Component {
     constructor(props) {
@@ -24,12 +42,22 @@ class ScenarioEditor extends Component {
 
         this.onChange = this.onChange.bind(this);
         this.onConsentChange = this.onConsentChange.bind(this);
+        this.onFinishSlideChange = this.onFinishSlideChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         if (this.props.scenarioId === 'new') {
             this.props.setScenario({
                 title: '',
                 description: '',
+                finish: {
+                    components: [
+                        {
+                            html: '<h2>Thanks for participating!</h2>'
+                        }
+                    ],
+                    is_finish: true,
+                    title: ''
+                },
                 categories: [],
                 status: 1
             });
@@ -39,6 +67,9 @@ class ScenarioEditor extends Component {
     async componentDidMount() {
         const categories = await (await fetch('/api/tags/categories')).json();
         this.setState({ categories });
+        if (this.props.scenarioId !== 'new') {
+            await this.props.getScenario(this.props.scenarioId);
+        }
     }
 
     onChange(event, { name, value }) {
@@ -55,9 +86,8 @@ class ScenarioEditor extends Component {
         // }
     }
 
-    onConsentChange(event, { value }) {
+    onConsentChange({ html: value }) {
         this.props.updateEditorMessage('');
-
         let { id, prose } = this.props.consent;
 
         if (prose !== value) {
@@ -73,82 +103,168 @@ class ScenarioEditor extends Component {
         }
     }
 
+    onFinishSlideChange({ html }) {
+        const {
+            components: [existing],
+            id,
+            is_finish,
+            title
+        } = this.props.finish;
+
+        if (!existing || (existing && existing.html !== html)) {
+            this.onChange(event, {
+                name: 'finish',
+                value: {
+                    components: [{ html, type: 'Text' }],
+                    id,
+                    is_finish,
+                    title
+                }
+            });
+        }
+    }
+
     async onSubmit() {
-        if (!this.props.title || !this.props.description) {
-            this.props.updateEditorMessage(
+        const {
+            categories,
+            consent,
+            description,
+            finish,
+            postSubmitCB,
+            status,
+            submitCB,
+            title,
+            updateEditorMessage
+        } = this.props;
+
+        if (!title || !description) {
+            updateEditorMessage(
                 'A title and description are required for Teacher Moments'
             );
             return;
         }
 
         this.setState({ saving: true });
+
         const data = {
-            title: this.props.title,
-            description: this.props.description,
-            categories: this.props.categories,
-            consent: this.props.consent,
-            status: this.props.status
+            categories,
+            consent,
+            description,
+            finish,
+            status,
+            title
         };
 
-        const saveResponse = await (await this.props.submitCB(data)).json();
+        const response = await (await submitCB(data)).json();
 
-        switch (saveResponse.status) {
-            case 200:
-                this.setState({ saving: false });
-                this.props.updateEditorMessage('Teacher Moment saved');
+        let editorMessage = '';
+        switch (response.status) {
+            case 200: {
+                editorMessage = 'Scenario saved';
                 break;
-            case 201:
-                this.setState({ saving: false });
-                this.props.updateEditorMessage('Teacher Moment created');
+            }
+            case 201: {
+                editorMessage = 'Scenario created';
                 break;
+            }
             default:
-                if (saveResponse.error) {
-                    this.setState({ saving: false });
-                    this.props.updateEditorMessage(saveResponse.message);
+                if (response.message) {
+                    editorMessage = response.message;
                 }
                 break;
         }
-
-        if (this.props.postSubmitCB) {
-            this.props.postSubmitCB(saveResponse.scenario);
+        updateEditorMessage(editorMessage);
+        this.setState({ saving: false });
+        if (postSubmitCB) {
+            postSubmitCB(response.scenario);
         }
     }
 
     render() {
+        const {
+            onChange,
+            onConsentChange,
+            onFinishSlideChange,
+            onSubmit
+        } = this;
+        const {
+            categories,
+            consent,
+            description,
+            finish,
+            scenarioId,
+            title
+        } = this.props;
+
+        const consentAgreementValue = {
+            type: 'Text',
+            html: consent.prose || ''
+        };
+
         return (
             <Form size={'big'}>
                 <Container fluid>
                     <Grid columns={2} divided>
                         <Grid.Row className="scenarioeditor__grid-nowrap">
-                            <Grid.Column width={9}>
-                                <Form.Input
-                                    focus
-                                    required
-                                    label="Title"
-                                    name="title"
-                                    value={this.props.title}
-                                    onChange={this.onChange}
+                            <Grid.Column
+                                width={6}
+                                className="scenarioeditor__grid-column-min-width"
+                            >
+                                <Popup
+                                    content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
+                                    trigger={
+                                        <Form.Input
+                                            focus
+                                            required
+                                            label="Title"
+                                            name="title"
+                                            value={title}
+                                            onChange={onChange}
+                                        />
+                                    }
                                 />
-                                <Form.TextArea
-                                    focus="true"
-                                    required
-                                    label="Description"
-                                    name="description"
-                                    value={this.props.description}
-                                    onChange={this.onChange}
+                                <Popup
+                                    content="Enter a description for your scenario. This will appear on the scenario 'entry' slide."
+                                    trigger={
+                                        <Form.TextArea
+                                            focus="true"
+                                            required
+                                            label="Description"
+                                            name="description"
+                                            value={description}
+                                            onChange={onChange}
+                                        />
+                                    }
                                 />
-                                {this.props.scenarioId !== 'new' && (
+
+                                {scenarioId !== 'new' && (
                                     <Popup
-                                        content="Enter Consent Agreement prose here, or use the default provided Consent Agreement."
+                                        content="Enter Consent Agreement prose here, or use the default provided Consent Agreement. This will appear on the scenario 'entry' slide."
                                         trigger={
-                                            <Form.TextArea
-                                                focus="true"
-                                                required
-                                                label="Consent Agreement"
-                                                name="consentprose"
-                                                value={this.props.consent.prose}
-                                                onChange={this.onConsentChange}
-                                            />
+                                            <Form.Field required>
+                                                <label>Consent Agreement</label>
+                                                {consentAgreementValue.html && (
+                                                    <TextEditor
+                                                        onChange={
+                                                            onConsentChange
+                                                        }
+                                                        scenarioId={scenarioId}
+                                                        name="consentprose"
+                                                        value={
+                                                            consentAgreementValue
+                                                        }
+                                                        spellCheck={true}
+                                                        styleConfig={{
+                                                            editor: () => ({
+                                                                height: '100px'
+                                                            })
+                                                        }}
+                                                        config={
+                                                            configTextEditor
+                                                        }
+                                                    />
+                                                )}
+                                            </Form.Field>
                                         }
                                     />
                                 )}
@@ -159,15 +275,15 @@ class ScenarioEditor extends Component {
                                     <Button
                                         type="submit"
                                         primary
-                                        onClick={this.onSubmit}
+                                        onClick={onSubmit}
                                     >
                                         Save
                                     </Button>
                                 )}
                             </Grid.Column>
                             <Grid.Column
-                                width={3}
-                                className="scenarioeditor__categories-minwidth"
+                                width={6}
+                                className="scenarioeditor__grid-column-min-width"
                             >
                                 {this.state.categories.length && (
                                     <ConfirmAuth requiredPermission="edit_scenario">
@@ -187,10 +303,8 @@ class ScenarioEditor extends Component {
                                                         value: category.name
                                                     })
                                                 )}
-                                                defaultValue={
-                                                    this.props.categories
-                                                }
-                                                onChange={this.onChange}
+                                                defaultValue={categories}
+                                                onChange={onChange}
                                             />
                                         </Form.Field>
                                     </ConfirmAuth>
@@ -201,6 +315,35 @@ class ScenarioEditor extends Component {
                                             available topics (if any exist)
 
                                 */}
+
+                                {scenarioId !== 'new' && finish && (
+                                    <Popup
+                                        content="This will appear on the slide that's shown after the scenario has been completed."
+                                        trigger={
+                                            <Form.Field>
+                                                <label>
+                                                    After a scenario has been
+                                                    completed, the participant
+                                                    will be shown this:
+                                                </label>
+                                                <TextEditor
+                                                    onChange={
+                                                        onFinishSlideChange
+                                                    }
+                                                    scenarioId={scenarioId}
+                                                    value={finish.components[0]}
+                                                    spellCheck={true}
+                                                    styleConfig={{
+                                                        editor: () => ({
+                                                            height: '200px'
+                                                        })
+                                                    }}
+                                                    config={configTextEditor}
+                                                />
+                                            </Form.Field>
+                                        }
+                                    />
+                                )}
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
@@ -211,27 +354,37 @@ class ScenarioEditor extends Component {
 }
 
 function mapStateToProps(state) {
-    const { title, description, categories, consent, status } = state.scenario;
-    return { title, description, categories, consent, status };
+    const {
+        categories,
+        consent,
+        description,
+        finish,
+        status,
+        title
+    } = state.scenario;
+    return { categories, consent, description, finish, status, title };
 }
 
 const mapDispatchToProps = {
+    getScenario,
     setScenario
 };
 
 ScenarioEditor.propTypes = {
+    getScenario: PropTypes.func.isRequired,
     scenarioId: PropTypes.node.isRequired,
     setScenario: PropTypes.func.isRequired,
     submitCB: PropTypes.func.isRequired,
     postSubmitCB: PropTypes.func,
     updateEditorMessage: PropTypes.func.isRequired,
     title: PropTypes.string,
-    description: PropTypes.string,
     categories: PropTypes.array,
     consent: PropTypes.shape({
         id: PropTypes.number,
         prose: PropTypes.string
     }),
+    description: PropTypes.string,
+    finish: PropTypes.object,
     status: PropTypes.number
 };
 

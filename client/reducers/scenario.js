@@ -21,6 +21,11 @@ const initialState = {
         id: null,
         prose: ''
     },
+    finish: {
+        components: [],
+        is_finish: true,
+        title: ''
+    },
     slides: [],
     status: 1
 };

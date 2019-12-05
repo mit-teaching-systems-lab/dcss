@@ -44,7 +44,14 @@ class Display extends Component {
         this.browserSupported = SUPPORTED_BROWSERS.includes(detect().name);
     }
 
+    get isScenarioRun() {
+        return location.pathname.includes('/run/');
+    }
+
     async componentDidMount() {
+        if (!this.isScenarioRun) {
+            return;
+        }
         let {
             getResponse,
             onResponseChange,

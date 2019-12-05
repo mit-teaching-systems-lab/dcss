@@ -44,9 +44,15 @@ class Slides extends React.Component {
         const { scenarioId } = this.props;
         const res = await fetch(`/api/scenarios/${scenarioId}/slides`);
         const { slides } = await res.json();
-        return new Promise(resolve =>
-            this.setState({ loading: false, slides }, resolve)
-        );
+        return new Promise(resolve => {
+            this.setState(
+                {
+                    loading: false,
+                    slides: slides.filter(slide => !slide.is_finish)
+                },
+                resolve
+            );
+        });
     }
 
     onChangeSlide(val) {
@@ -312,38 +318,40 @@ class Slides extends React.Component {
                                 />
                             )}
                             <Sortable onChange={onChangeSlideOrder}>
-                                {slides.map((slide, index) => (
-                                    <Grid.Row
-                                        key={slide.id}
-                                        className="slides__list-row"
-                                    >
-                                        <Card
-                                            className={
-                                                index ===
-                                                this.state.currentSlideIndex
-                                                    ? 'slides__list-row-selected'
-                                                    : ''
-                                            }
-                                            onClick={() =>
-                                                this.setState({
-                                                    currentSlideIndex: index
-                                                })
-                                            }
+                                {slides
+                                    .filter(slide => !slide.is_finish)
+                                    .map((slide, index) => (
+                                        <Grid.Row
+                                            key={slide.id}
+                                            className="slides__list-row"
                                         >
-                                            <Card.Header>
-                                                {slide.title}
-                                            </Card.Header>
-                                            <Card.Content>
-                                                <SlideComponentsList
-                                                    asSVG={true}
-                                                    components={
-                                                        slide.components
-                                                    }
-                                                />
-                                            </Card.Content>
-                                        </Card>
-                                    </Grid.Row>
-                                ))}
+                                            <Card
+                                                className={
+                                                    index ===
+                                                    this.state.currentSlideIndex
+                                                        ? 'slides__list-row-selected'
+                                                        : ''
+                                                }
+                                                onClick={() =>
+                                                    this.setState({
+                                                        currentSlideIndex: index
+                                                    })
+                                                }
+                                            >
+                                                <Card.Header>
+                                                    {slide.title}
+                                                </Card.Header>
+                                                <Card.Content>
+                                                    <SlideComponentsList
+                                                        asSVG={true}
+                                                        components={
+                                                            slide.components
+                                                        }
+                                                    />
+                                                </Card.Content>
+                                            </Card>
+                                        </Grid.Row>
+                                    ))}
                             </Sortable>
                         </Segment>
                     </Grid.Column>

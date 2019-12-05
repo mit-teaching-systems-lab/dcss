@@ -24,7 +24,15 @@ class Display extends Component {
         this.onChange = this.onChange.bind(this);
     }
 
+    get isScenarioRun() {
+        return location.pathname.includes('/run/');
+    }
+
     async componentDidMount() {
+        if (!this.isScenarioRun) {
+            return;
+        }
+
         let {
             getResponse,
             onResponseChange,
@@ -35,7 +43,7 @@ class Display extends Component {
 
         let { name = responseId, value = '' } = persisted;
 
-        if (!value) {
+        if (!value && run.id) {
             const previous = await getResponse({
                 id: run.id,
                 responseId

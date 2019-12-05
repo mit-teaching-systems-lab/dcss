@@ -4,8 +4,9 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Segment } from 'semantic-ui-react';
 
-import EntrySlide from './EntrySlide';
 import ContentSlide from './ContentSlide';
+import EntrySlide from './EntrySlide';
+import FinishSlide from './FinishSlide';
 import { getScenario, setScenario, setSlides } from '@client/actions/scenario';
 import './Scenario.css';
 
@@ -67,6 +68,7 @@ class Scenario extends Component {
                     }
                 };
             case 'next':
+            case 'finish':
                 return () => {
                     if (onSubmit) {
                         onSubmit();
@@ -79,13 +81,6 @@ class Scenario extends Component {
 
                     if (location.pathname !== pathToSlide) {
                         this.props.history.push(pathToSlide);
-                    }
-                };
-            case 'finish':
-                return () => {
-                    alert('FINISHED!');
-                    if (onSubmit) {
-                        onSubmit();
                     }
                 };
             default:
@@ -133,14 +128,20 @@ class Scenario extends Component {
     }
 
     async getScenarioSlides() {
+        const { onResponseChange, onRunChange, scenarioId } = this.props;
         const metaData = await this.getScenarioMetaData();
         const contents = await this.getScenarioContent();
+        const finish = contents.find(slide => slide.is_finish);
+        // remove the "finish" slide from the returned slides,
+        // to prevent it from being treated like a regular
+        // content slide.
+        contents.splice(contents.indexOf(finish), 1);
 
         const slides = [
             <EntrySlide
                 key="entry-slide"
                 scenario={metaData}
-                onChange={this.props.onRunChange}
+                onChange={onRunChange}
                 onClickNext={this.getOnClickHandler('next')}
             />
         ];
@@ -156,10 +157,20 @@ class Scenario extends Component {
                     onClickNext={this.getOnClickHandler(
                         isLastSlide ? 'finish' : 'next'
                     )}
-                    onResponseChange={this.props.onResponseChange}
+                    onResponseChange={onResponseChange}
                 />
             );
         });
+
+        // Add the "finish" slide to the very end of the scenario
+        slides.push(
+            <FinishSlide
+                key="finish-slide"
+                back={`/run/${scenarioId}/${slides.length - 1}`}
+                slide={finish}
+                onChange={onRunChange}
+            />
+        );
 
         this.props.setSlides({ slides });
     }

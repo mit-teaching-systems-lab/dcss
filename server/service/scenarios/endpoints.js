@@ -2,7 +2,12 @@ const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
 
 const { reqScenario } = require('./middleware');
-const { getSlidesForScenario, setAllSlides } = require('./slides/db');
+const {
+    addSlide,
+    getSlidesForScenario,
+    setAllSlides,
+    updateSlide
+} = require('./slides/db');
 const db = require('./db');
 
 exports.getScenario = asyncMiddleware(async function getScenarioAsync(
@@ -69,6 +74,7 @@ async function setScenarioAsync(req, res) {
         description,
         categories,
         consent,
+        finish,
         status,
         title
     } = req.body;
@@ -96,7 +102,7 @@ async function setScenarioAsync(req, res) {
         // If the client set the id to null, that indicates that
         // this is a new consent agreement and the new prose
         // must be stored, then linked to the scenario.
-        if (consent.id === null) {
+        if (!consent.id) {
             const { id, prose } = await db.addConsent(consent);
 
             await db.setScenarioConsent(
@@ -105,8 +111,29 @@ async function setScenarioAsync(req, res) {
             );
         }
 
+        if (!finish.id) {
+            const { components, id, is_finish } = await addSlide({
+                components:
+                    finish.components ||
+                    '[{"html": "<h2>Thanks for participating!</h2>","type": "Text"}]',
+                is_finish: true,
+                scenario_id: scenarioId,
+                title: finish.title || ''
+            });
+
+            Object.assign(finish, {
+                components,
+                id,
+                is_finish
+            });
+        } else {
+            await updateSlide(finish.id, finish);
+        }
+
         Object.assign(scenario, {
-            consent
+            categories,
+            consent,
+            finish
         });
 
         res.send({ scenario, status: 200 });

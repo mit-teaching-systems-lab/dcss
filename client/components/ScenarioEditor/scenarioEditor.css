@@ -1,7 +1,7 @@
-.scenarioeditor__categories-minwidth {
-    min-width: 18rem !important;
-}
-
 .scenarioeditor__grid-nowrap {
     flex-wrap: nowrap !important;
+}
+
+.scenarioeditor__grid-column-min-width {
+    min-width: 48vw !important;
 }
