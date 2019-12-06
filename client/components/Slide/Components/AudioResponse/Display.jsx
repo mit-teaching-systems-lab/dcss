@@ -28,6 +28,7 @@ class Display extends Component {
         this.state = {
             blobURL: '',
             isRecording: false,
+            transcript: persisted.transcript,
             type: '',
             value: persisted.value
         };
@@ -52,9 +53,9 @@ class Display extends Component {
             run
         } = this.props;
 
-        let { name = responseId, value = '' } = persisted;
+        let { name = responseId, transcript = '', value = '' } = persisted;
 
-        if (!value) {
+        if (!value || !transcript) {
             const previous = await getResponse({
                 id: run.id,
                 responseId
@@ -62,12 +63,16 @@ class Display extends Component {
 
             if (previous && previous.response) {
                 value = previous.response.value;
+                transcript = previous.response.transcript;
             }
         }
 
         if (value) {
-            onResponseChange({}, { name, value, isFulfilled: true });
-            this.setState({ value });
+            onResponseChange(
+                {},
+                { name, transcript, value, isFulfilled: true }
+            );
+            this.setState({ transcript, value });
         }
     }
 
@@ -113,6 +118,7 @@ class Display extends Component {
 
         const { created_at } = this;
         const { recallId } = this.props;
+        const transcript = '';
 
         this.props.onResponseChange(
             {},
@@ -121,12 +127,13 @@ class Display extends Component {
                 ended_at: new Date().toISOString(),
                 name,
                 recallId,
+                transcript,
                 type,
                 value
             }
         );
 
-        this.setState({ value });
+        this.setState({ transcript, value });
     }
 
     onFocus() {
@@ -138,20 +145,22 @@ class Display extends Component {
     onChange(event, { name, value }) {
         const { created_at } = this;
         const { recallId } = this.props;
+        const transcript = '';
         this.props.onResponseChange(event, {
             created_at,
             ended_at: new Date().toISOString(),
             recallId,
             name,
+            transcript,
             type,
             value
         });
 
-        this.setState({ value });
+        this.setState({ transcript, value });
     }
 
     render() {
-        const { isRecording, blobURL, value } = this.state;
+        const { isRecording, blobURL, transcript, value } = this.state;
         const { prompt, recallId, responseId, required, run } = this.props;
         const { onChange, onFocus } = this;
         const fulfilled = value || blobURL ? true : false;
@@ -190,10 +199,17 @@ class Display extends Component {
                 {(blobURL || value) && (
                     <Message
                         content={
-                            <audio
-                                src={blobURL || `/api/media/${value}`}
-                                controls="controls"
-                            />
+                            <React.Fragment>
+                                <audio
+                                    src={blobURL || `/api/media/${value}`}
+                                    controls="controls"
+                                />
+
+                                <blockquote className="audiotranscript__blockquote">
+                                    {transcript ||
+                                        '(Transcription in progress. This may take a few minutes, depending on the length of your audio recording.)'}
+                                </blockquote>
+                            </React.Fragment>
                         }
                     />
                 )}

@@ -1,7 +1,10 @@
-const { asyncMiddleware } = require('../../util/api');
 const multer = require('multer');
-const { uploadToS3, requestFromS3 } = require('./s3');
 const uuid = require('uuid/v4');
+
+const db = require('./db');
+const { asyncMiddleware } = require('../../util/api');
+const { uploadToS3, requestFromS3 } = require('./s3');
+const { requestTranscriptionAsync } = require('./transcript');
 
 async function uploadAudio(req, res) {
     const storage = multer.memoryStorage();
@@ -21,15 +24,20 @@ async function uploadAudio(req, res) {
         const buffer = req.file.buffer;
         const { runId, responseId } = req.body;
         const userId = req.session.user.id;
+        const key = `audio/${runId}/${responseId}/${userId}/${uuid()}.mp3`;
 
-        const s3Location = await uploadToS3(
-            `audio/${runId}/${responseId}/${userId}/${uuid()}.mp3`,
-            buffer
-        );
+        const s3Location = await uploadToS3(key, buffer);
+
         res.status = 200;
         res.send({
             s3Location
         });
+
+        const { response, transcript } = await requestTranscriptionAsync(
+            buffer
+        );
+
+        db.addAudioTranscript({ key, response, transcript });
     });
 }
 

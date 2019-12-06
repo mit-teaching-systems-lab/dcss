@@ -1,0 +1,7 @@
+blockquote.audiotranscript__blockquote {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+    padding-left: 15px;
+    border-left: 0.5rem solid #ccc;
+}

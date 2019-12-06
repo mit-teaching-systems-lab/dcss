@@ -2,6 +2,7 @@ import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
+import '../AudioResponse/AudioResponse.css';
 
 class Display extends React.Component {
     constructor(props) {
@@ -19,6 +20,7 @@ class Display extends React.Component {
     async componentDidMount() {
         // TODO: replace this with call to getResponse
         const { run, recallId } = this.props;
+
         if (run) {
             const { response, status } = await (await fetch(
                 `/api/runs/${run.id}/response/${recallId}`
@@ -60,14 +62,27 @@ class Display extends React.Component {
                 : 'Loading your previous response'
             : 'Participant response will appear here';
 
-        return content.endsWith('mp3') ? (
+        return (
             <Message
+                floating
+                style={{ whiteSpace: 'pre-wrap' }}
                 content={
-                    <audio src={`/api/media/${content}`} controls="controls" />
+                    content.endsWith('mp3') ? (
+                        <React.Fragment>
+                            <audio
+                                src={`/api/media/${content}`}
+                                controls="controls"
+                            />
+                            <blockquote className="audiotranscript__blockquote">
+                                {response.response.transcript ||
+                                    '(Transcription in progress. This may take a few minutes, depending on the length of your audio recording.)'}
+                            </blockquote>
+                        </React.Fragment>
+                    ) : (
+                        content
+                    )
                 }
             />
-        ) : (
-            <Message style={{ whiteSpace: 'pre-wrap' }} content={content} />
         );
     }
 }

@@ -40,6 +40,15 @@ async function getResponseAsync(req, res) {
     const { response_id } = req.params;
 
     const response = await db.getResponse({ run_id, response_id, user_id });
+    const transcript = await db.getAudioTranscript({
+        run_id,
+        response_id,
+        user_id
+    });
+
+    if (transcript) {
+        Object.assign(response.response, transcript);
+    }
 
     res.json({ response, status: 200 });
 }

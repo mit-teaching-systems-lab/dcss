@@ -60,6 +60,23 @@ exports.getResponse = async ({ run_id, response_id, user_id }) => {
     return result.rows[0];
 };
 
+exports.getAudioTranscript = async ({ run_id, response_id, user_id }) => {
+    const result = await query(sql`
+        SELECT transcript
+        FROM audio_transcript
+        JOIN (
+            SELECT response->>'value' as audio_key
+            FROM run_response
+            WHERE response_id = ${response_id}
+            AND run_id = ${run_id}
+            AND user_id = ${user_id}
+            ORDER BY created_at DESC
+            LIMIT 1
+        ) AS audio_keys ON audio_keys.audio_key = audio_transcript.key
+    `);
+    return result.rows[0];
+};
+
 exports.finishRun = async function(id) {
     const result = await query(sql`
         UPDATE run
