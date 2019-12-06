@@ -208,6 +208,11 @@ export class CohortScenarios extends React.Component {
                             className="cohort__scrolling-tbody"
                             onChange={onChangeOrder}
                             ref={this.tableBody}
+                            options={{
+                                direction: 'vertical',
+                                swapThreshold: 0.5,
+                                animation: 150
+                            }}
                         >
                             {orderCorrectedScenarios.map((scenario, index) => {
                                 if (!scenario) {

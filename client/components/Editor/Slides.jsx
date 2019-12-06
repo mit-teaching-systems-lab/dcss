@@ -317,7 +317,14 @@ class Slides extends React.Component {
                                     }}
                                 />
                             )}
-                            <Sortable onChange={onChangeSlideOrder}>
+                            <Sortable
+                                onChange={onChangeSlideOrder}
+                                options={{
+                                    direction: 'vertical',
+                                    swapThreshold: 0.5,
+                                    animation: 150
+                                }}
+                            >
                                 {slides
                                     .filter(slide => !slide.is_finish)
                                     .map((slide, index) => (

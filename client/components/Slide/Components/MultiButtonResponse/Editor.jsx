@@ -189,7 +189,14 @@ class MultiButtonResponseEditor extends React.Component {
                     Add A Button
                 </Button>
                 <List>
-                    <Sortable onChange={onChangeButtonOrder}>
+                    <Sortable
+                        onChange={onChangeButtonOrder}
+                        options={{
+                            direction: 'vertical',
+                            swapThreshold: 0.5,
+                            animation: 150
+                        }}
+                    >
                         {buttons.map(({ display, value }, index) => {
                             const onFocusButtonDetailWithCurriedIndex = onFocusButtonDetail.bind(
                                 this,

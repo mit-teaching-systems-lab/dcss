@@ -243,7 +243,14 @@ export default class SlideEditor extends React.Component {
                                 />
                             )}
 
-                            <Sortable onChange={onChangeComponentOrder}>
+                            <Sortable
+                                onChange={onChangeComponentOrder}
+                                options={{
+                                    direction: 'vertical',
+                                    swapThreshold: 0.5,
+                                    animation: 150
+                                }}
+                            >
                                 {components.map((value, index) => {
                                     const { type } = value;
                                     if (!Components[type]) return;
