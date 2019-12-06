@@ -21,11 +21,6 @@ const restrictedNav = [
         permission: 'view_run_data'
     },
     {
-        text: 'Data Export',
-        path: '/cohorts',
-        permission: 'view_run_data'
-    },
-    {
         text: 'Account Administration',
         path: '/account-administration',
         permission: 'edit_permissions'
