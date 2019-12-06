@@ -16,9 +16,14 @@ const restrictedNav = [
         permission: 'create_scenario'
     },
     {
-        text: 'Cohorts Management',
+        text: 'Cohorts',
         path: '/cohorts',
-        permission: 'view_run_data'
+        permission: 'create_cohort'
+    },
+    {
+        text: 'My Cohort',
+        path: '/cohort',
+        permission: 'view_invited_cohorts'
     },
     {
         text: 'Account Administration',

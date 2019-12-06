@@ -17,7 +17,8 @@ import {
     // GET_COHORT_ERROR,
     GET_COHORT_SUCCESS,
     // GET_USER_COHORTS,
-    GET_USER_COHORTS_SUCCESS
+    GET_USER_COHORTS_SUCCESS,
+    SET_COHORT_USER_ROLE_SUCCESS
     // GET_USER_COHORTS_ERROR
 } from '../actions/types';
 
@@ -82,9 +83,22 @@ const getCohort = (state = initialState, action) => {
     return state;
 };
 
+const setCohortUserRole = (state = initialState, action) => {
+    const { type, users } = action;
+    if (type === SET_COHORT_USER_ROLE_SUCCESS) {
+        return {
+            ...state,
+            users
+        };
+    }
+
+    return state;
+};
+
 export default combineReducers({
     currentCohort,
     userCohorts,
     getCohorts,
-    getCohort
+    getCohort,
+    setCohortUserRole
 });

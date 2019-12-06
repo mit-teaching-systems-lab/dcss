@@ -1,21 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
     Button,
     Checkbox,
     Container,
-    Dimmer,
+    // Dimmer,
     Icon,
-    Image,
-    Loader,
+    // Image,
+    Input,
+    // Loader,
+    Popup,
     Table
 } from 'semantic-ui-react';
 import Sortable from 'react-sortablejs';
 import copy from 'copy-text-to-clipboard';
+import _ from 'lodash';
+import ConfirmAuth from '@client/components/ConfirmAuth';
+
 import { getCohort, setCohort } from '@client/actions/cohort';
-import { getScenarios } from '@client/actions/scenario';
+import { getScenarios, setScenarios } from '@client/actions/scenario';
 import './Cohort.css';
 
 export class CohortScenarios extends React.Component {
@@ -35,9 +41,14 @@ export class CohortScenarios extends React.Component {
                 id
             }
         };
+        // This is used as a back up copy of
+        // scenarios when the list is filtered
+        // by searching.
+        this.scenarios = [];
         this.tableBody = React.createRef();
         this.onChangeOrder = this.onChangeOrder.bind(this);
         this.onCheckboxClick = this.onCheckboxClick.bind(this);
+        this.onSearchScenarios = this.onSearchScenarios.bind(this);
     }
 
     async componentDidMount() {
@@ -47,6 +58,14 @@ export class CohortScenarios extends React.Component {
 
         await this.props.getCohort(Number(id));
         await this.props.getScenarios();
+
+        // See note above, re: scenarios list backup
+        this.scenarios = this.props.scenarios.slice();
+    }
+
+    async componentWillUnmount() {
+        // Restore from the backup of all available scenarios
+        await this.props.setScenarios(this.scenarios);
     }
 
     async saveScenarios() {
@@ -116,9 +135,30 @@ export class CohortScenarios extends React.Component {
         );
     }
 
+    async onSearchScenarios(event, { value }) {
+        const { scenarios } = this;
+
+        await this.props.setScenarios([]);
+
+        const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+
+        const filtered = scenarios.filter(scenario => {
+            if (escapedRegExp.test(scenario.title)) {
+                return true;
+            }
+
+            if (escapedRegExp.test(scenario.description)) {
+                return true;
+            }
+            return false;
+        });
+
+        await this.props.setScenarios(filtered);
+    }
+
     render() {
         const { cohort, scenarios = [] } = this.props;
-        const { onChangeOrder, onCheckboxClick } = this;
+        const { onChangeOrder, onCheckboxClick, onSearchScenarios } = this;
 
         // This is the list of scenarios that are IN the
         // cohort. The order MUST be preserved.
@@ -143,22 +183,26 @@ export class CohortScenarios extends React.Component {
 
         return (
             <Container fluid className="cohort__table-container">
-                {scenarios.length ? (
-                    <Table
-                        celled
-                        striped
-                        selectable
-                        role="grid"
-                        aria-labelledby="header"
-                    >
-                        <Table.Header className="cohort__table-thead-tbody-tr">
-                            <Table.Row>
-                                <Table.HeaderCell colSpan={4}>
-                                    Scenarios
-                                </Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-
+                <Table
+                    celled
+                    striped
+                    selectable
+                    role="grid"
+                    aria-labelledby="header"
+                    className="cohort__table--constraints"
+                >
+                    <Table.Header className="cohort__table-thead-tbody-tr">
+                        <Table.Row>
+                            <Table.HeaderCell colSpan={4}>
+                                Scenarios{'  '}
+                                <Input
+                                    className="cohort__table--search"
+                                    onChange={onSearchScenarios}
+                                />
+                            </Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    {scenarios.length ? (
                         <Sortable
                             tag="tbody"
                             className="cohort__scrolling-tbody"
@@ -166,57 +210,85 @@ export class CohortScenarios extends React.Component {
                             ref={this.tableBody}
                         >
                             {orderCorrectedScenarios.map((scenario, index) => {
+                                if (!scenario) {
+                                    return null;
+                                }
                                 const checked = cohort.scenarios.includes(
                                     scenario.id
                                 );
-                                const url = `${location.origin}/cohort/${cohort.id}/run/${scenario.id}`;
+                                const pathname = `/cohort/${cohort.id}/run/${scenario.id}`;
+                                const url = `${location.origin}${pathname}`;
+
+                                const requiredPermission = checked
+                                    ? 'view_scenarios_in_cohort'
+                                    : 'edit_scenarios_in_cohort';
+
                                 return (
-                                    <Table.Row
-                                        key={`row-${index}`}
-                                        className="cohort__table-thead-tbody-tr"
-                                        style={{ cursor: 'pointer' }}
+                                    <ConfirmAuth
+                                        key={`confirm-${index}`}
+                                        requiredPermission={requiredPermission}
                                     >
-                                        <Table.Cell
-                                            key={`cell-checkbox-${index}`}
-                                            className="cohort__table-cell-first"
+                                        <Table.Row
+                                            key={`row-${index}`}
+                                            className="cohort__table-thead-tbody-tr"
+                                            style={{ cursor: 'pointer' }}
                                         >
-                                            <Checkbox
-                                                key={`checkbox-${index}`}
-                                                value={scenario.id}
-                                                checked={checked}
-                                                onClick={onCheckboxClick}
-                                            />
-                                        </Table.Cell>
-                                        <Table.Cell>
-                                            {scenario.title}
-                                        </Table.Cell>
-                                        <Table.Cell>
-                                            {scenario.description}
-                                        </Table.Cell>
-                                        <Table.Cell>
-                                            {url}
-                                            <Button
-                                                icon
-                                                className="cohort__button-transparent"
-                                                content={
-                                                    <Icon name="clipboard outline" />
-                                                }
-                                                onClick={() => copy(url)}
-                                            />
-                                        </Table.Cell>
-                                    </Table.Row>
+                                            <ConfirmAuth requiredPermission="edit_all_cohorts">
+                                                <Table.Cell
+                                                    key={`cell-checkbox-${index}`}
+                                                    className="cohort__table-cell-first"
+                                                >
+                                                    <Checkbox
+                                                        key={`checkbox-${index}`}
+                                                        value={scenario.id}
+                                                        checked={checked}
+                                                        onClick={
+                                                            onCheckboxClick
+                                                        }
+                                                    />
+                                                </Table.Cell>
+                                            </ConfirmAuth>
+                                            <Table.Cell>
+                                                <NavLink to={pathname}>
+                                                    {scenario.title}
+                                                </NavLink>
+                                                <Popup
+                                                    content="Copy cohort link to clipboard"
+                                                    trigger={
+                                                        <Button
+                                                            icon
+                                                            className="cohort__button--transparent"
+                                                            content={
+                                                                <Icon name="clipboard outline" />
+                                                            }
+                                                            onClick={() =>
+                                                                copy(url)
+                                                            }
+                                                        />
+                                                    }
+                                                />
+                                            </Table.Cell>
+                                            <Table.Cell className="cohort__table-cell--description">
+                                                {scenario.description}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    </ConfirmAuth>
                                 );
                             })}
                         </Sortable>
-                    </Table>
-                ) : (
-                    <React.Fragment>
-                        <Dimmer active>
-                            <Loader />
-                        </Dimmer>
-                        <Image src="/images/wireframe/short-paragraph.png" />
-                    </React.Fragment>
-                )}
+                    ) : (
+                        <Table.Body className="cohort__scrolling-tbody">
+                            <Table.Row
+                                key={`row-empty-results`}
+                                className="cohort__table-thead-tbody-tr"
+                            >
+                                <Table.Cell>
+                                    No scenarios match your search
+                                </Table.Cell>
+                            </Table.Row>
+                        </Table.Body>
+                    )}
+                </Table>
             </Container>
         );
     }
@@ -245,6 +317,7 @@ CohortScenarios.propTypes = {
     getCohort: PropTypes.func,
     setCohort: PropTypes.func,
     getScenarios: PropTypes.func,
+    setScenarios: PropTypes.func,
     scenarios: PropTypes.array
 };
 
@@ -257,7 +330,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
     getCohort: id => dispatch(getCohort(id)),
     setCohort: params => dispatch(setCohort(params)),
-    getScenarios: () => dispatch(getScenarios())
+    getScenarios: () => dispatch(getScenarios()),
+    setScenarios: scenarios => dispatch(setScenarios(scenarios))
 });
 
 export default withRouter(

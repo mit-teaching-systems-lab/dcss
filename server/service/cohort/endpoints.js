@@ -21,6 +21,42 @@ exports.getCohorts = asyncMiddleware(async function getCohorts(req, res) {
     res.json({ cohorts });
 });
 
+exports.joinCohort = asyncMiddleware(async function joinCohortAsync(req, res) {
+    const user_id = req.session.user.id;
+    const { id: cohort_id, role } = req.params;
+    const result = await db.setCohortUserRole({
+        cohort_id,
+        user_id,
+        role,
+        action: 'join'
+    });
+    res.json(result.rows);
+});
+
+exports.quitCohort = asyncMiddleware(async function quitCohortAsync(req, res) {
+    const user_id = req.session.user.id;
+    const { id: cohort_id, role } = req.params;
+    const result = await db.setCohortUserRole({
+        cohort_id,
+        user_id,
+        role,
+        action: 'quit'
+    });
+    res.json(result.rows);
+});
+
+exports.doneCohort = asyncMiddleware(async function doneCohortAsync(req, res) {
+    const user_id = req.session.user.id;
+    const { id: cohort_id, role } = req.params;
+    const result = await db.setCohortUserRole({
+        cohort_id,
+        user_id,
+        role,
+        action: 'done'
+    });
+    res.json(result.rows);
+});
+
 exports.setCohort = asyncMiddleware(async function setCohort(req, res) {
     //
     //

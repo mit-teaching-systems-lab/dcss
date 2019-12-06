@@ -41,6 +41,10 @@ const Routes = () => {
                 <Route component={Run} />
             </InterceptAnonymizableRoute>
 
+            <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId">
+                <Route component={props => <Run {...props} />} />
+            </InterceptAnonymizableRoute>
+
             <ConfirmAuth
                 exact
                 path="/account-administration"
@@ -51,7 +55,7 @@ const Routes = () => {
             <ConfirmAuth
                 exact
                 path="/cohorts"
-                requiredPermission="view_run_data"
+                requiredPermission="view_all_cohorts"
             >
                 <Route
                     component={props => (
@@ -62,7 +66,7 @@ const Routes = () => {
             <ConfirmAuth
                 exact
                 path="/facilitator/cohorts"
-                requiredPermission="view_run_data"
+                requiredPermission="view_all_cohorts"
             >
                 <Route
                     component={props => (
@@ -81,10 +85,18 @@ const Routes = () => {
                     )}
                 />
             </ConfirmAuth>
+
+            <InterceptAnonymizableRoute exact path="/cohort/:id">
+                <Route
+                    component={props => (
+                        <Cohort {...props} activeTab="cohort" />
+                    )}
+                />
+            </InterceptAnonymizableRoute>
+
             <ConfirmAuth
-                exact
-                path="/cohort/:id"
-                requiredPermission="view_run_data"
+                path="/cohort"
+                requiredPermission="view_invited_cohorts"
             >
                 <Route
                     component={props => (
@@ -92,6 +104,7 @@ const Routes = () => {
                     )}
                 />
             </ConfirmAuth>
+
             <ConfirmAuth
                 exact
                 path="/cohort/:id/runs"

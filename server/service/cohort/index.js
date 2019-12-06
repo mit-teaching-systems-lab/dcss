@@ -5,12 +5,15 @@ const { requireUser } = require('../auth/middleware');
 const router = Router();
 
 const {
+    createCohort,
     getCohort,
     getCohorts,
+    listUserCohorts,
     setCohort,
     setCohortScenarios,
-    createCohort,
-    listUserCohorts
+    joinCohort,
+    quitCohort,
+    doneCohort
 } = require('./endpoints');
 
 router.put('/', [requireUser, validateRequestBody, createCohort]);
@@ -23,5 +26,9 @@ router.post('/:id/scenarios', [
 ]);
 router.get('/my', [requireUser, getCohorts]);
 router.get('/:id', [requireUser, getCohort]);
+
+router.get('/:id/join/:role', [requireUser, joinCohort]);
+router.get('/:id/quit', [requireUser, quitCohort]);
+router.get('/:id/done', [requireUser, doneCohort]);
 
 module.exports = router;

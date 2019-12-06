@@ -3,3 +3,14 @@
     text-decoration: none !important;
     cursor: pointer !important;
 }
+
+.confirmablelogoutmenuitem__button {
+    margin-bottom: 1rem !important;
+    font-size: 1.5rem !important;
+    color: black !important;
+    padding: 1rem;
+}
+
+.confirmablelogoutmenuitem__container--padding {
+    padding: 1rem;
+}

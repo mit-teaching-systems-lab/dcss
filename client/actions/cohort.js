@@ -10,7 +10,10 @@ import {
     GET_COHORT_ERROR,
     GET_USER_COHORTS,
     GET_USER_COHORTS_SUCCESS,
-    GET_USER_COHORTS_ERROR
+    GET_USER_COHORTS_ERROR,
+    SET_COHORT_USER_ROLE,
+    SET_COHORT_USER_ROLE_SUCCESS,
+    SET_COHORT_USER_ROLE_ERROR
 } from './types';
 
 export const createCohort = ({ name }) => async dispatch => {
@@ -75,5 +78,18 @@ export const getCohorts = params => async dispatch => {
     } catch (error) {
         const { message, status, stack } = error;
         dispatch({ type: GET_USER_COHORTS_ERROR, status, message, stack });
+    }
+};
+
+export const setCohortUserRole = ({ id, role }) => async dispatch => {
+    dispatch({ type: SET_COHORT_USER_ROLE });
+    try {
+        const users = await (await fetch(
+            `/api/cohort/${id}/join/${role}`
+        )).json();
+        dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
+    } catch (error) {
+        const { message, status, stack } = error;
+        dispatch({ type: SET_COHORT_USER_ROLE_ERROR, status, message, stack });
     }
 };

@@ -4,7 +4,8 @@
 
 .cohort__scrolling-tbody {
     display: block;
-    height: 175px;
+    height: 300px;
+    min-height: 300px;
     overflow: auto;
 }
 
@@ -22,11 +23,38 @@
     width: 40px;
 }
 
-.cohort__button-transparent {
+.cohort__button--transparent {
     background: none !important;
+}
+
+.cohort__button--spacing {
+    padding-top: 0rem !important;
+    padding-right: 0.5rem !important;
+    padding-bottom: 0rem !important;
+    padding-left: 0.5rem !important;
+    margin: 0 !important;
 }
 
 .cohort__menu-item--padding {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
+}
+
+.cohort__table--constraints {
+    width: 100%;
+    white-space: nowrap;
+    table-layout: fixed;
+}
+
+.cohort__table-cell--description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cohort__table--search {
+    margin-left: 0.5rem !important;
+}
+
+.cohort__table-cell--title-button {
+    background: none;
 }

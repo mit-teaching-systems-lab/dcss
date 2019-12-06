@@ -143,6 +143,45 @@ exports.setCohortScenarios = async ({ id, scenarios }) => {
     });
 };
 
+exports.setCohortUserRole = async ({ cohort_id, user_id, role, action }) => {
+    if (!(cohort_id && user_id)) {
+        throw new Error(
+            'Setting a cohort user role requires a cohort id and a user_id'
+        );
+    }
+
+    return await withClientTransaction(async client => {
+        let result;
+        if (action === 'join') {
+            result = await client.query(sql`
+                INSERT INTO cohort_user_role (cohort_id, user_id, role)
+                VALUES (${cohort_id}, ${user_id}, ${role})
+                RETURNING *;
+            `);
+        }
+
+        if (action === 'done') {
+            const ended_at = new Date().toISOString();
+            result = await client.query(sql`
+                UPDATE cohort_user_role
+                SET ended_at = ${ended_at}
+                WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
+                RETURNING *;
+            `);
+        }
+
+        if (action === 'quit') {
+            result = await client.query(sql`
+                DELETE FROM cohort_user_role
+                WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
+                RETURNING *;
+            `);
+        }
+
+        return result && result.rows.length && getCohortUsers(cohort_id);
+    });
+};
+
 exports.listUserCohorts = async ({ user_id }) => {
     const result = await query(
         sql`SELECT cohort.id, cohort.name, cohort_user_role.role

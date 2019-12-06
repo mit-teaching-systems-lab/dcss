@@ -5,7 +5,7 @@ const { saltHashPassword } = require('../../util/pwHash');
 exports.getUserByProps = async function({ id, username, email }) {
     // This query looks a little ugly, but it allows us to pass in empty stuff for id, username or email!
     const result = await query(
-        sql`SELECT * FROM users WHERE id = ${id} 
+        sql`SELECT * FROM users WHERE id = ${id}
             OR (email = ${email} AND email != '')
             OR (username = ${username} AND username != '');`
     );
@@ -19,7 +19,21 @@ exports.createUser = async function({ email, username, password }) {
         salt = passwordObj.salt;
         passwordHash = passwordObj.passwordHash;
     }
-    const result = await query(sql`INSERT INTO users(email, username, hash, salt)
-            VALUES(${email}, ${username}, ${passwordHash}, ${salt}) RETURNING *;`);
-    return result.rows[0];
+
+    const {
+        rows: [user]
+    } = await query(sql`
+        INSERT INTO users(email, username, hash, salt)
+        VALUES(${email}, ${username}, ${passwordHash}, ${salt})
+        RETURNING *;
+    `);
+
+    // All new users are a "participant" by default.
+    await query(sql`
+        INSERT INTO user_role (role, user_id)
+        VALUES('participant', ${user.id})
+        RETURNING *;
+    `);
+
+    return user;
 };

@@ -5,11 +5,14 @@ import PropTypes from 'prop-types';
 import {
     Checkbox,
     Container,
-    Dimmer,
-    Image,
-    Loader,
+    // Dimmer,
+    // Image,
+    Input,
+    // Loader,
+    Popup,
     Table
 } from 'semantic-ui-react';
+import _ from 'lodash';
 import { getCohort, setCohort } from '@client/actions/cohort';
 import './Cohort.css';
 
@@ -31,7 +34,15 @@ export class CohortParticipants extends React.Component {
             }
         };
 
+        this.refreshInterval = null;
+
+        // This is used as a back up copy of
+        // participants when the list is filtered
+        // by searching.
+        this.participants = [];
+        this.tableBody = React.createRef();
         this.onCheckboxClick = this.onCheckboxClick.bind(this);
+        this.onSearchParticipants = this.onSearchParticipants.bind(this);
     }
 
     async componentDidMount() {
@@ -39,34 +50,69 @@ export class CohortParticipants extends React.Component {
             cohort: { id }
         } = this.state;
 
-        await this.props.getCohort(Number(id));
+        this.refreshInterval = setInterval(async () => {
+            await this.props.getCohort(Number(id));
+
+            // See note above, re: participants list backup
+            this.participants = this.props.cohort.users.slice();
+        }, 1000);
+    }
+
+    async componentWillUnmount() {
+        clearInterval(this.refreshInterval);
     }
 
     onCheckboxClick() {}
 
+    async onSearchParticipants(event, { value }) {
+        const { participants } = this;
+        const { cohort } = this.props;
+        const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+
+        const filtered = participants.filter(scenario => {
+            if (escapedRegExp.test(scenario.username)) {
+                return true;
+            }
+
+            if (escapedRegExp.test(scenario.email)) {
+                return true;
+            }
+            return false;
+        });
+
+        await this.props.setCohort({
+            ...cohort,
+            users: filtered
+        });
+    }
+
     render() {
         const { cohort } = this.props;
-        const { onCheckboxClick } = this;
+        const { onCheckboxClick, onSearchParticipants } = this;
 
         return (
             <Container fluid className="cohort__table-container">
-                {cohort.users.length ? (
-                    <Table
-                        celled
-                        striped
-                        selectable
-                        role="grid"
-                        aria-labelledby="header"
-                    >
-                        <Table.Header className="cohort__table-thead-tbody-tr">
-                            <Table.Row>
-                                <Table.HeaderCell colSpan={3}>
-                                    Participants
-                                </Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-                        <Table.Body className="cohort__scrolling-tbody">
-                            {cohort.users.map((user, index) => {
+                <Table
+                    celled
+                    striped
+                    selectable
+                    role="grid"
+                    aria-labelledby="header"
+                >
+                    <Table.Header className="cohort__table-thead-tbody-tr">
+                        <Table.Row>
+                            <Table.HeaderCell colSpan={3}>
+                                Participants{'  '}
+                                <Input
+                                    className="cohort__table--search"
+                                    onChange={onSearchParticipants}
+                                />
+                            </Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body className="cohort__scrolling-tbody">
+                        {cohort.users.length ? (
+                            cohort.users.map((user, index) => {
                                 return (
                                     <Table.Row
                                         key={`row-${index}`}
@@ -77,27 +123,37 @@ export class CohortParticipants extends React.Component {
                                             key={`cell-checkbox-${index}`}
                                             className="cohort__table-cell-first"
                                         >
-                                            <Checkbox
-                                                key={`checkbox-${index}`}
-                                                value={user.id}
-                                                onClick={onCheckboxClick}
+                                            <Popup
+                                                content="Adding participants is not available in this version of Cohorts"
+                                                trigger={
+                                                    <Checkbox
+                                                        disabled
+                                                        key={`checkbox-${index}`}
+                                                        value={user.id}
+                                                        onClick={
+                                                            onCheckboxClick
+                                                        }
+                                                    />
+                                                }
                                             />
                                         </Table.Cell>
                                         <Table.Cell>{user.username}</Table.Cell>
                                         <Table.Cell>{user.email}</Table.Cell>
                                     </Table.Row>
                                 );
-                            })}
-                        </Table.Body>
-                    </Table>
-                ) : (
-                    <React.Fragment>
-                        <Dimmer active>
-                            <Loader />
-                        </Dimmer>
-                        <Image src="/images/wireframe/short-paragraph.png" />
-                    </React.Fragment>
-                )}
+                            })
+                        ) : (
+                            <Table.Row
+                                key={`row-empty-results`}
+                                className="cohort__table-thead-tbody-tr"
+                            >
+                                <Table.Cell>
+                                    No participants match your search
+                                </Table.Cell>
+                            </Table.Row>
+                        )}
+                    </Table.Body>
+                </Table>
             </Container>
         );
     }

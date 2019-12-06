@@ -4,16 +4,24 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react';
 import Scenario from '@components/Scenario';
-import { getRun, setRun } from '@client/actions/run';
+import { getCohort } from '@client/actions/cohort';
+import { getUser } from '@client/actions/user';
 import { getResponse, setResponses } from '@client/actions/response';
+import { getRun, setRun } from '@client/actions/run';
 
 class Run extends Component {
     constructor(props) {
         super(props);
 
+        const {
+            cohortId,
+            match: { params },
+            scenarioId
+        } = this.props;
+
         this.state = {
-            scenarioId:
-                this.props.scenarioId || this.props.match.params.scenarioId
+            cohortId: Number(cohortId || params.cohortId),
+            scenarioId: Number(scenarioId || params.scenarioId)
         };
 
         this.onChange = this.onChange.bind(this);
@@ -81,6 +89,8 @@ class Run extends Component {
 }
 
 Run.propTypes = {
+    cohortId: PropTypes.number,
+    getUser: PropTypes.func,
     getResponse: PropTypes.func,
     setResponses: PropTypes.func,
     scenarioId: PropTypes.number,
@@ -89,6 +99,7 @@ Run.propTypes = {
     setRun: PropTypes.func,
     match: PropTypes.shape({
         params: PropTypes.shape({
+            cohortId: PropTypes.node,
             scenarioId: PropTypes.node
         }).isRequired
     }),
@@ -103,6 +114,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => ({
+    getCohort: params => dispatch(getCohort(params)),
+    getUser: params => dispatch(getUser(params)),
     getResponse: params => dispatch(getResponse(params)),
     setResponses: (...params) => dispatch(setResponses(...params)),
     getRun: (...args) => dispatch(getRun(...args)),

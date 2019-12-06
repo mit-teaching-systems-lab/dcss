@@ -131,11 +131,14 @@ class Scenario extends Component {
         const { onResponseChange, onRunChange, scenarioId } = this.props;
         const metaData = await this.getScenarioMetaData();
         const contents = await this.getScenarioContent();
-        const finish = contents.find(slide => slide.is_finish);
-        // remove the "finish" slide from the returned slides,
-        // to prevent it from being treated like a regular
-        // content slide.
-        contents.splice(contents.indexOf(finish), 1);
+        let finish = contents.find(slide => slide.is_finish) || null;
+
+        if (finish) {
+            // remove the "finish" slide from the returned slides,
+            // to prevent it from being treated like a regular
+            // content slide.
+            contents.splice(contents.indexOf(finish), 1);
+        }
 
         const slides = [
             <EntrySlide
