@@ -163,7 +163,7 @@ export class Cohort extends React.Component {
                         active={activeTab === 'cohort'}
                         onClick={onClick}
                     />
-                    <ConfirmAuth requiredPermission="view_own_data">
+                    <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
                         <Menu.Item
                             content="Runs"
                             name="runs"
@@ -173,57 +173,58 @@ export class Cohort extends React.Component {
                     </ConfirmAuth>
                 </Menu>
                 <Segment attached="bottom" className="cohort__content-pane">
-                    <Message
-                        content={
-                            <Header as="h3">
-                                {cohort.id ? (
-                                    <React.Fragment>
-                                        <code>{cohortUrl}</code>
-                                        <Button.Group className="cohort__button--transparent cohort__button--spacing">
-                                            <Popup
-                                                content="Copy cohort link to clipboard"
-                                                trigger={
-                                                    <Button
-                                                        icon
-                                                        content={
-                                                            <Icon name="clipboard outline" />
-                                                        }
-                                                        onClick={() =>
-                                                            copy(cohortUrl)
-                                                        }
-                                                    />
-                                                }
-                                            />
-                                            <Popup
-                                                content="View this cohort as a participant"
-                                                trigger={
-                                                    <Button
-                                                        icon
-                                                        content={
-                                                            <Icon name="play" />
-                                                        }
-                                                        onClick={() => {
-                                                            alert(
-                                                                'view cohort as participant. this is just a placeholder.'
-                                                            );
-                                                        }}
-                                                    />
-                                                }
-                                            />
-                                        </Button.Group>
-                                    </React.Fragment>
-                                ) : (
-                                    <Placeholder>
-                                        <Placeholder.Header image>
-                                            <Placeholder.Line />
-                                            <Placeholder.Line />
-                                        </Placeholder.Header>
-                                    </Placeholder>
-                                )}
-                            </Header>
-                        }
-                    />
-
+                    <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                        <Message
+                            content={
+                                <Header as="h3">
+                                    {cohort.id ? (
+                                        <React.Fragment>
+                                            <code>{cohortUrl}</code>
+                                            <Button.Group className="cohort__button--transparent cohort__button--spacing">
+                                                <Popup
+                                                    content="Copy cohort link to clipboard"
+                                                    trigger={
+                                                        <Button
+                                                            icon
+                                                            content={
+                                                                <Icon name="clipboard outline" />
+                                                            }
+                                                            onClick={() =>
+                                                                copy(cohortUrl)
+                                                            }
+                                                        />
+                                                    }
+                                                />
+                                                <Popup
+                                                    content="View this cohort as a participant"
+                                                    trigger={
+                                                        <Button
+                                                            icon
+                                                            content={
+                                                                <Icon name="play" />
+                                                            }
+                                                            onClick={() => {
+                                                                alert(
+                                                                    'view cohort as participant. this is just a placeholder.'
+                                                                );
+                                                            }}
+                                                        />
+                                                    }
+                                                />
+                                            </Button.Group>
+                                        </React.Fragment>
+                                    ) : (
+                                        <Placeholder>
+                                            <Placeholder.Header image>
+                                                <Placeholder.Line />
+                                                <Placeholder.Line />
+                                            </Placeholder.Header>
+                                        </Placeholder>
+                                    )}
+                                </Header>
+                            }
+                        />
+                    </ConfirmAuth>
                     {this.state.tabs[this.state.activeTab]}
                 </Segment>
             </div>

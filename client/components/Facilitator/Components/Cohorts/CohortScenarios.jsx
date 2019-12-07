@@ -195,10 +195,12 @@ export class CohortScenarios extends React.Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={4}>
                                 Scenarios{'  '}
-                                <Input
-                                    className="cohort__table--search"
-                                    onChange={onSearchScenarios}
-                                />
+                                <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                                    <Input
+                                        className="cohort__table--search"
+                                        onChange={onSearchScenarios}
+                                    />
+                                </ConfirmAuth>
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
@@ -257,21 +259,23 @@ export class CohortScenarios extends React.Component {
                                                 <NavLink to={pathname}>
                                                     {scenario.title}
                                                 </NavLink>
-                                                <Popup
-                                                    content="Copy cohort link to clipboard"
-                                                    trigger={
-                                                        <Button
-                                                            icon
-                                                            className="cohort__button--transparent"
-                                                            content={
-                                                                <Icon name="clipboard outline" />
-                                                            }
-                                                            onClick={() =>
-                                                                copy(url)
-                                                            }
-                                                        />
-                                                    }
-                                                />
+                                                <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                                                    <Popup
+                                                        content="Copy cohort link to clipboard"
+                                                        trigger={
+                                                            <Button
+                                                                icon
+                                                                className="cohort__button--transparent"
+                                                                content={
+                                                                    <Icon name="clipboard outline" />
+                                                                }
+                                                                onClick={() =>
+                                                                    copy(url)
+                                                                }
+                                                            />
+                                                        }
+                                                    />
+                                                </ConfirmAuth>
                                             </Table.Cell>
                                             <Table.Cell className="cohort__table-cell--description">
                                                 {scenario.description}
