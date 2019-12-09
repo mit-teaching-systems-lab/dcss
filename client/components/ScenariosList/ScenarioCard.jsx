@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card } from 'semantic-ui-react';
+import { Button, Card, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getScenarios } from '@client/actions/scenario';
@@ -47,7 +47,17 @@ class ScenarioCard extends React.Component {
         const { onClick } = this;
         const { isLoggedIn } = this.props;
         const { scenario } = this.state;
-        const { id, title, description, deleted_at, user_is_author } = scenario;
+        const {
+            categories,
+            id,
+            description,
+            deleted_at,
+            title,
+            user_is_author
+        } = scenario;
+        const officialCheckmark = categories.includes('official') ? (
+            <Icon name="check" />
+        ) : null;
 
         return deleted_at ? (
             <ConfirmAuth
@@ -64,7 +74,9 @@ class ScenarioCard extends React.Component {
         ) : (
             <Card className="scenario__entry" key={id}>
                 <Card.Content>
-                    <Card.Header>{title}</Card.Header>
+                    <Card.Header>
+                        {title} {officialCheckmark}
+                    </Card.Header>
                     <Card.Description className="scenario__entry--description">
                         {description}
                     </Card.Description>
