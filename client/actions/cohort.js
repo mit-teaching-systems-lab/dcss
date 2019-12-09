@@ -8,6 +8,9 @@ import {
     GET_COHORT,
     GET_COHORT_SUCCESS,
     GET_COHORT_ERROR,
+    GET_COHORT_PARTICIPANTS,
+    GET_COHORT_PARTICIPANTS_SUCCESS,
+    GET_COHORT_PARTICIPANTS_ERROR,
     GET_USER_COHORTS,
     GET_USER_COHORTS_SUCCESS,
     GET_USER_COHORTS_ERROR,
@@ -91,5 +94,33 @@ export const setCohortUserRole = ({ id, role }) => async dispatch => {
     } catch (error) {
         const { message, status, stack } = error;
         dispatch({ type: SET_COHORT_USER_ROLE_ERROR, status, message, stack });
+    }
+};
+
+export const getCohortParticipants = id => async dispatch => {
+    dispatch({ type: GET_COHORT_PARTICIPANTS });
+    try {
+        const {
+            cohort: { users },
+            error
+        } = await (await fetch(`/api/cohort/${id}`)).json();
+
+        if (error) {
+            throw error;
+        }
+
+        dispatch({ type: GET_COHORT_PARTICIPANTS_SUCCESS, users });
+        // return the cohort to the promise action for redirection purposes
+        return users;
+    } catch (error) {
+        const { message, stack, status } = error;
+        dispatch({
+            type: GET_COHORT_PARTICIPANTS_ERROR,
+            message,
+            stack,
+            status
+        });
+        // pass along the error to the promise action
+        throw error;
     }
 };

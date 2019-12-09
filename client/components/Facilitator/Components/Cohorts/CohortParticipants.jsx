@@ -7,13 +7,17 @@ import {
     Container,
     // Dimmer,
     // Image,
-    Input,
+    // Input,
     // Loader,
     Popup,
     Table
 } from 'semantic-ui-react';
 import _ from 'lodash';
-import { getCohort, setCohort } from '@client/actions/cohort';
+import {
+    getCohort,
+    getCohortParticipants,
+    setCohort
+} from '@client/actions/cohort';
 import './Cohort.css';
 
 export class CohortParticipants extends React.Component {
@@ -51,7 +55,7 @@ export class CohortParticipants extends React.Component {
         } = this.state;
 
         this.refreshInterval = setInterval(async () => {
-            await this.props.getCohort(Number(id));
+            await this.props.getCohortParticipants(Number(id));
 
             // See note above, re: participants list backup
             this.participants = this.props.cohort.users.slice();
@@ -88,7 +92,7 @@ export class CohortParticipants extends React.Component {
 
     render() {
         const { cohort } = this.props;
-        const { onCheckboxClick, onSearchParticipants } = this;
+        const { onCheckboxClick } = this;
 
         return (
             <Container fluid className="cohort__table-container">
@@ -103,10 +107,12 @@ export class CohortParticipants extends React.Component {
                         <Table.Row>
                             <Table.HeaderCell colSpan={3}>
                                 Participants{'  '}
+                                {/*
                                 <Input
                                     className="cohort__table--search"
                                     onChange={onSearchParticipants}
                                 />
+                                */}
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
@@ -180,6 +186,7 @@ CohortParticipants.propTypes = {
     }).isRequired,
     onChange: PropTypes.func,
     getCohort: PropTypes.func,
+    getCohortParticipants: PropTypes.func,
     setCohort: PropTypes.func,
     scenarios: PropTypes.array
 };
@@ -192,6 +199,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
     getCohort: id => dispatch(getCohort(id)),
+    getCohortParticipants: id => dispatch(getCohortParticipants(id)),
     setCohort: params => dispatch(setCohort(params))
 });
 

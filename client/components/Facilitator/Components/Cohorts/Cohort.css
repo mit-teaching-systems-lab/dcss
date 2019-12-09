@@ -4,8 +4,8 @@
 
 .cohort__scrolling-tbody {
     display: block;
-    height: 300px;
-    min-height: 300px;
+    height: 197px;
+    min-height: 143px;
     overflow: auto;
 }
 

@@ -83,6 +83,18 @@ const getCohort = (state = initialState, action) => {
     return state;
 };
 
+const getCohortParticipants = (state = initialState, action) => {
+    const { type, users } = action;
+    if (type === GET_COHORT_SUCCESS) {
+        return {
+            ...state,
+            users
+        };
+    }
+
+    return state;
+};
+
 const setCohortUserRole = (state = initialState, action) => {
     const { type, users } = action;
     if (type === SET_COHORT_USER_ROLE_SUCCESS) {
@@ -100,5 +112,6 @@ export default combineReducers({
     userCohorts,
     getCohorts,
     getCohort,
+    getCohortParticipants,
     setCohortUserRole
 });

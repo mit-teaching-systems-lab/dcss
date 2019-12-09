@@ -42,7 +42,7 @@ const Routes = () => {
             </InterceptAnonymizableRoute>
 
             <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId">
-                <Route component={props => <Run {...props} />} />
+                <Route render={props => <Run {...props} />} />
             </InterceptAnonymizableRoute>
 
             <ConfirmAuth
