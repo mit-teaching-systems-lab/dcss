@@ -1,6 +1,6 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
-const slidesdb = require('./slides/db');
+const { addSlide, getSlidesForScenario } = require('./slides/db');
 
 async function getScenarioCategories(scenarioId) {
     const scenarioCategoriesResults = await query(sql`
@@ -56,6 +56,16 @@ async function getScenarioConsent(scenarioId) {
     return results.rows[0] || { id: null, prose: '' };
 }
 
+async function addFinishSlide(scenario_id, title = '') {
+    return await addSlide({
+        scenario_id,
+        title,
+        is_finish: true,
+        components:
+            '[{"html": "<h2>Thanks for participating!</h2>","type": "Text"}]'
+    });
+}
+
 async function getScenario(scenarioId) {
     const results = await query(sql`
         SELECT * FROM scenario WHERE id = ${scenarioId};
@@ -63,9 +73,10 @@ async function getScenario(scenarioId) {
 
     const categories = await getScenarioCategories(scenarioId);
     const consent = await getScenarioConsent(scenarioId);
-    const finish = (await slidesdb.getSlidesForScenario(scenarioId)).find(
-        slide => slide.is_finish
-    );
+    const finish =
+        (await getSlidesForScenario(scenarioId)).find(
+            slide => slide.is_finish
+        ) || (await addFinishSlide(scenarioId));
 
     return {
         ...results.rows[0],
@@ -84,7 +95,11 @@ async function getAllScenarios() {
     for (const row of results.rows) {
         const categories = await getScenarioCategories(row.id);
         const consent = await getScenarioConsent(row.id);
-        scenarios.push({ ...row, categories, consent });
+        const finish =
+            (await getSlidesForScenario(row.id)).find(
+                slide => slide.is_finish
+            ) || (await addFinishSlide(row.id));
+        scenarios.push({ ...row, categories, consent, finish });
     }
 
     return scenarios;
@@ -103,15 +118,7 @@ async function addScenario(authorId, title, description) {
     const consentDefault = consentSelect.rows[0];
     const scenario = scenarioInsert.rows[0];
     const consent = await setScenarioConsent(scenario.id, consentDefault);
-
-    // Create the default finish slide
-    const finish = await slidesdb.addSlide({
-        scenario_id: scenario.id,
-        title: scenario.title,
-        is_finish: true,
-        components:
-            '[{"html": "<h2>Thanks for participating!</h2>","type": "Text"}]'
-    });
+    const finish = await addFinishSlide(scenario.id);
 
     return {
         ...scenario,
