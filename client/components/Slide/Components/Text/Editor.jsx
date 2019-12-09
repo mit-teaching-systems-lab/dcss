@@ -45,9 +45,13 @@ class TextEditor extends React.Component {
     onChange(defaultValue) {
         this.setState({ defaultValue });
         if (this.props.onChange) {
+            const html = convertToHTML(defaultValue.doc).replace(
+                /<p><\/p>/g,
+                '<br>'
+            );
             this.props.onChange({
                 type,
-                html: convertToHTML(defaultValue.doc)
+                html
             });
         }
     }

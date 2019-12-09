@@ -8169,17 +8169,17 @@ nib-converter@^2.2.5:
     nib-schema "^2.2.5"
     prosemirror-model "^1.0.0"
 
-nib-core@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.3.0.tgz#adb68a6d3880cc4d5854f32cfc514b2bca96a5d3"
-  integrity sha512-oXj+cfZ3R8U9y0iEJ9jnFGwrXqUF42uwDwVGJj4OCbcfGfgvAnAUubeZbAmvYgQfLeSRjj2udcMZVBNoC8Uc7Q==
+nib-core@^2.3.8:
+  version "2.3.8"
+  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.3.8.tgz#0ea26fd0e4d1dff6b834c7b461ddc381f9ab872d"
+  integrity sha512-WXc4GXsXvdLCqa7bsOZhBntQiGPYMxNf7U88jrWHyUw68EJe3T3VRccbrrfjH5Hos85SI2lv26OeuaQT/udlYw==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     emotion-theming "^10.0.14"
     nib-embed "2.1.6"
     nib-schema "2.2.6"
-    nib-ui "2.3.0"
+    nib-ui "2.3.2"
     nib-upload "2.1.6"
     prosemirror-commands "^1.0.7"
     prosemirror-history "^1.0.3"
@@ -8205,10 +8205,10 @@ nib-schema@2.2.6, nib-schema@^2.2.5:
   dependencies:
     prosemirror-tables "^0.8.1"
 
-nib-ui@2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.3.0.tgz#abb0b8cf8aa814b2cf56add5b2ba224c9745fd4e"
-  integrity sha512-jq3F65ubCfpT84MPM08hU5+T+hifFpUO3NTjtJ/ieyr1Q/cJlXxyM9a4sWdvfdFcf6vWkd4N4MBAiaKjEHVX/Q==
+nib-ui@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/nib-ui/-/nib-ui-2.3.2.tgz#6ff9a4d7f2807f5b611402d6ea750eec98d6b04d"
+  integrity sha512-2kiPYVCxjOK+/IERHvw2fdMMLVsGqNMazx8vpLDwXbz1kdOM74CUueQBE6f/XYPzr0QdVqytzH4NXmFnMVOcVQ==
   dependencies:
     react-select "^3.0.4"
 
