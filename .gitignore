@@ -7,3 +7,4 @@ yarn-error.log
 *.tsv
 *.xlsx
 *.xls
+!test/load/payload/*.csv

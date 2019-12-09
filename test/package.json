@@ -10,9 +10,11 @@
     "prettier": "prettier --write \"**/*.js\"",
     "test": "jest client/ server/",
     "test:client": "jest client",
-    "test:server": "jest server"
+    "test:server": "jest server",
+    "test:load": "artillery run"
   },
   "devDependencies": {
+    "artillery": "^1.6.0-29",
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",

@@ -1,0 +1,36 @@
+config:
+  target: 'https://teacher-moments.herokuapp.com'
+  payload:
+      # path is relative to the location of the test script
+      -
+        path: "./payload/test-users.csv"
+        fields:
+          - "username"
+          - "password"
+      -
+        path: "./payload/scenario-urls.csv"
+        fields:
+          - "scenarioUrl"
+          - "scenarioId"
+  phases:
+    - duration: 60
+      arrivalRate: 5
+    - duration: 120
+      arrivalRate: 5
+      rampTo: 20
+    - duration: 600
+      arrivalRate: 30
+scenarios:
+  - name: "Get scenarios on the front end"
+    flow:
+    - get:
+        url: "{{ scenarioUrl }}"
+  - name: "Create participants and then their run"
+    flow:
+    - post:
+        url: "/api/auth/signup"
+        json:
+          username: "{{ username }}"
+          password: "{{ password }}"
+    - put:
+        url: "/api/runs/new-or-existing/scenario/{{ scenarioId }}"

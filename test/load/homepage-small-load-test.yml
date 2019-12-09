@@ -1,0 +1,9 @@
+config:
+  target: 'https://teacher-moments.herokuapp.com/'
+  phases:
+    - duration: 60
+      arrivalRate: 2
+scenarios:
+  - flow:
+    - get:
+        url: "/"
