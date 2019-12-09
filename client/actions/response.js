@@ -36,6 +36,10 @@ export const setResponses = (id, responses) => async dispatch => {
                 },
                 body: JSON.stringify(body)
             });
+
+            if (localStorage[name]) {
+                localStorage.removeItem(name);
+            }
         }
 
         dispatch({ type: SET_RESPONSES_SUCCESS, responses });
