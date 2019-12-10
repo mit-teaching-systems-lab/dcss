@@ -5,16 +5,18 @@ import AccountAdmin from '@client/components/AccountAdmin';
 import Cohort from '@client/components/Facilitator/Components/Cohorts/Cohort';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import CreateAccount from '@client/components/CreateAccount';
+import LoginRoutePromptModal from '@client/components/Login/LoginRoutePromptModal';
 import CreateAnonymousAccount from '@client/components/CreateAccount/CreateAnonymousAccount';
 import Editor from '@client/components/Editor';
 import Facilitator from '@client/components/Facilitator';
-import { InterceptAnonymizableRoute } from './RouteComponents';
 import Login from '@client/components/Login';
 import { Logout } from './RouteComponents';
 import { NewScenario } from './RouteComponents';
 import Researcher from '@client/components/Researcher';
 import Run from '@client/components/Run';
 import {
+    InterceptAnonymizableRoute,
+    RedirectRouteForActiveSession,
     ScenariosListAll,
     ScenariosListAuthor,
     ScenariosListCommunity,
@@ -108,7 +110,13 @@ const Routes = () => {
             </ConfirmAuth>
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/login/new" component={CreateAccount} />
+
+            <RedirectRouteForActiveSession exact path="/login/create-account">
+                <Route component={LoginRoutePromptModal} />
+            </RedirectRouteForActiveSession>
+            <RedirectRouteForActiveSession exact path="/login/new">
+                <Route component={CreateAccount} />
+            </RedirectRouteForActiveSession>
             <Route
                 exact
                 path="/login/anonymous"

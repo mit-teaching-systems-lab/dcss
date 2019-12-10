@@ -63,3 +63,25 @@ InterceptAnonymizableRoute.propTypes = {
         PropTypes.node
     ]).isRequired
 };
+
+export const RedirectRouteForActiveSession = ({ children, ...rest }) => {
+    return (
+        <Route
+            {...rest}
+            render={() => {
+                if (!Session.isSessionActive()) {
+                    return children;
+                }
+
+                location.href = '/';
+            }}
+        />
+    );
+};
+
+RedirectRouteForActiveSession.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired
+};

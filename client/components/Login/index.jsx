@@ -145,7 +145,9 @@ class Login extends Component {
                                 </Button>
                             </Item.Extra>
                             <Item.Extra className="login__form--create-link">
-                                <Link to="/login/new">Create an account</Link>
+                                <Link to="/login/create-account">
+                                    Create an account
+                                </Link>
                             </Item.Extra>
                         </Item>
                     </Grid.Column>
