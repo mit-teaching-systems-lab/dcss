@@ -137,12 +137,17 @@ export class Cohort extends React.Component {
     render() {
         const {
             cohort,
-            cohort: { id, name }
+            cohort: { id, name },
+            user: { username, permissions }
         } = this.props;
         const { activeTabKey, tabs } = this.state;
         const { onClick, onTabClick, onDataTableClick } = this;
         const cohortUrl = `${location.origin}/cohort/${cohort.id}`;
         const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
+        const currentUserInCohort = cohort.users.find(cohortMember => {
+            return cohortMember.username === username;
+        });
+
         return (
             <div>
                 <Menu
@@ -232,6 +237,21 @@ export class Cohort extends React.Component {
                                 onClick={onClick}
                             />
                         </ConfirmAuth>
+                        {currentUserInCohort && (
+                            <ConfirmAuth
+                                isAuthorized={
+                                    !permissions.includes('edit_all_cohorts')
+                                }
+                            >
+                                <CohortDataTable
+                                    source={{
+                                        cohortId: id,
+                                        participantId: currentUserInCohort.id
+                                    }}
+                                    onClick={onDataTableClick}
+                                />
+                            </ConfirmAuth>
+                        )}
                     </Segment>
                 ) : (
                     <Segment key={activeTabKey} attached="bottom">
