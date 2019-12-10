@@ -175,7 +175,7 @@ class Display extends Component {
             required && <PromptRequiredLabel fulfilled={fulfilled} />
         ) : (
             <React.Fragment>
-                Type your response here:{' '}
+                {prompt}{' '}
                 {required && <PromptRequiredLabel fulfilled={fulfilled} />}
             </React.Fragment>
         );
@@ -224,6 +224,7 @@ class Display extends Component {
         ) : (
             <Segment>
                 <Header as="h3">{header}</Header>
+
                 <Form>
                     <Form.TextArea
                         name={responseId}
