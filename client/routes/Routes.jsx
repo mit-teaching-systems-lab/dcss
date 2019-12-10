@@ -34,11 +34,15 @@ const Routes = () => {
             <Route exact path="/continue" component={ScenariosListContinue} />
             <Route exact path="/official" component={ScenariosListOfficial} />
             <Route exact path="/community" component={ScenariosListCommunity} />
-            <InterceptAnonymizableRoute path="/run/:scenarioId/:activeSlideIndex">
+            <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeSlideIndex">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>
             <InterceptAnonymizableRoute path="/run/:scenarioId">
                 <Route component={Run} />
+            </InterceptAnonymizableRoute>
+
+            <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId/slide/:activeSlideIndex">
+                <Route render={props => <Run {...props} />} />
             </InterceptAnonymizableRoute>
 
             <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId">
@@ -63,34 +67,9 @@ const Routes = () => {
                     )}
                 />
             </ConfirmAuth>
-            <ConfirmAuth
-                exact
-                path="/facilitator/cohorts"
-                requiredPermission="view_all_cohorts"
-            >
-                <Route
-                    component={props => (
-                        <Facilitator {...props} activeTab="cohorts" />
-                    )}
-                />
-            </ConfirmAuth>
-            <ConfirmAuth
-                exact
-                path="/facilitator/search"
-                requiredPermission="view_run_data"
-            >
-                <Route
-                    component={props => (
-                        <Facilitator {...props} activeTab="search" />
-                    )}
-                />
-            </ConfirmAuth>
-
             <InterceptAnonymizableRoute exact path="/cohort/:id">
                 <Route
-                    component={props => (
-                        <Cohort {...props} activeTab="cohort" />
-                    )}
+                    render={props => <Cohort {...props} activeTab="cohort" />}
                 />
             </InterceptAnonymizableRoute>
 
@@ -99,9 +78,7 @@ const Routes = () => {
                 requiredPermission="view_invited_cohorts"
             >
                 <Route
-                    component={props => (
-                        <Cohort {...props} activeTab="cohort" />
-                    )}
+                    render={props => <Cohort {...props} activeTab="cohort" />}
                 />
             </ConfirmAuth>
 

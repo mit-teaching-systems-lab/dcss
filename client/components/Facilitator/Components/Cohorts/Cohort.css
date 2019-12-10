@@ -1,7 +1,3 @@
-.cohort__content-pane {
-    height: 83vh !important;
-}
-
 .cohort__scrolling-tbody {
     display: block;
     height: 197px;
@@ -24,6 +20,10 @@
 }
 
 .cohort__button--transparent {
+    background: none !important;
+}
+
+.cohort__button-group--transparent {
     background: none !important;
 }
 
@@ -57,4 +57,20 @@
 
 .cohort__table-cell--title-button {
     background: none;
+}
+
+.cohort__tab-menu--overflow {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.cohort__tab-menu--button-transparent {
+    background-color: none !important;
+    margin: -2.5em 0 !important;
+}
+
+.wrapped {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

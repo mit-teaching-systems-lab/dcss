@@ -11,9 +11,15 @@ import {
     GET_COHORT_PARTICIPANTS,
     GET_COHORT_PARTICIPANTS_SUCCESS,
     GET_COHORT_PARTICIPANTS_ERROR,
+    GET_COHORT_DATA,
+    GET_COHORT_DATA_SUCCESS,
+    GET_COHORT_DATA_ERROR,
     GET_USER_COHORTS,
     GET_USER_COHORTS_SUCCESS,
     GET_USER_COHORTS_ERROR,
+    LINK_COHORT_TO_RUN,
+    LINK_COHORT_TO_RUN_SUCCESS,
+    LINK_COHORT_TO_RUN_ERROR,
     SET_COHORT_USER_ROLE,
     SET_COHORT_USER_ROLE_SUCCESS,
     SET_COHORT_USER_ROLE_ERROR
@@ -50,6 +56,9 @@ export const setCohort = cohort => ({
 });
 
 export const getCohort = id => async dispatch => {
+    if (Number.isNaN(id)) {
+        return;
+    }
     dispatch({ type: GET_COHORT, payload: { id } });
     try {
         const { cohort, error } = await (await fetch(
@@ -101,6 +110,7 @@ export const getCohortParticipants = id => async dispatch => {
     dispatch({ type: GET_COHORT_PARTICIPANTS });
     try {
         const {
+            cohort,
             cohort: { users },
             error
         } = await (await fetch(`/api/cohort/${id}`)).json();
@@ -109,7 +119,9 @@ export const getCohortParticipants = id => async dispatch => {
             throw error;
         }
 
-        dispatch({ type: GET_COHORT_PARTICIPANTS_SUCCESS, users });
+        // Dispatch the entire "cohort", but only the "users" property
+        // will be used in the reducer.
+        dispatch({ type: GET_COHORT_PARTICIPANTS_SUCCESS, cohort });
         // return the cohort to the promise action for redirection purposes
         return users;
     } catch (error) {
@@ -122,5 +134,52 @@ export const getCohortParticipants = id => async dispatch => {
         });
         // pass along the error to the promise action
         throw error;
+    }
+};
+
+export const getCohortData = params => async dispatch => {
+    const { cohortId, participantId, scenarioId } = params;
+    dispatch({ type: GET_COHORT_DATA });
+    try {
+        const endpoint = scenarioId
+            ? `/api/cohort/${cohortId}/scenario/${scenarioId}`
+            : `/api/cohort/${cohortId}/participant/${participantId}`;
+
+        const { prompts, responses, error } = await (await fetch(
+            endpoint
+        )).json();
+
+        if (error) {
+            throw error;
+        }
+
+        dispatch({ type: GET_COHORT_DATA_SUCCESS, prompts, responses });
+        return { prompts, responses };
+    } catch (error) {
+        const { message, stack, status } = error;
+        dispatch({
+            type: GET_COHORT_DATA_ERROR,
+            message,
+            stack,
+            status
+        });
+        // pass along the error to the promise action
+        throw error;
+    }
+};
+
+export const linkCohortToRun = (cohortId, runId) => async dispatch => {
+    dispatch({ type: LINK_COHORT_TO_RUN });
+    try {
+        const { cohort } = await (await fetch(
+            `/api/cohort/${cohortId}/run/${runId}`
+        )).json();
+
+        dispatch({ type: LINK_COHORT_TO_RUN_SUCCESS });
+        dispatch({ type: GET_COHORT_SUCCESS, cohort });
+        return cohort;
+    } catch (error) {
+        const { message, status, stack } = error;
+        dispatch({ type: LINK_COHORT_TO_RUN_ERROR, status, message, stack });
     }
 };

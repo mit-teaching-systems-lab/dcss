@@ -2,19 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import {
-    Button,
-    Header,
-    Dimmer,
-    Icon,
-    Image,
-    Loader,
-    Menu,
-    Message,
-    Placeholder,
-    Popup,
-    Segment
-} from 'semantic-ui-react';
+import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
 import {
     getCohort,
@@ -23,6 +11,7 @@ import {
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
+import CohortDataTable from './CohortDataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';
 import './Cohort.css';
@@ -51,31 +40,18 @@ export class Cohort extends React.Component {
             }
         }
 
-        const { activeTab } = this.props;
-
         this.state = {
-            activeTab,
+            activeTabKey: 'cohort',
             cohort: {
                 id
             },
-            tabs: {
-                cohort: null,
-                runs: null
-            }
+            tabs: []
         };
 
-        // Initializing the tabs happens after this.state is
-        // created, so that this.state can be accessed within
-        // this.getTab(...)
-        //
-        // We don't want to call setState, so we assign
-        // the values directly to this.state.tabs[...].
-        Object.keys(this.state.tabs).forEach(tab => {
-            this.state.tabs[tab] = this.getTab(tab);
-        });
-
         this.onClick = this.onClick.bind(this);
-        this.getTab = this.getTab.bind(this);
+        // TODO: This will be used in a follow up changeset
+        this.onDataTableClick = this.onDataTableClick.bind(this);
+        this.onTabClick = this.onTabClick.bind(this);
     }
 
     async componentDidMount() {
@@ -101,139 +77,177 @@ export class Cohort extends React.Component {
         }
     }
 
-    onClick(e, { name: activeTab }) {
-        const { tabs } = this.state;
+    onClick(event, { source, type }) {
+        let { activeTabKey } = this.state;
+        const {
+            cohort,
+            cohort: { id },
+            tabs
+        } = this.state;
+        const isScenario = type === 'scenario';
+        const content = source[isScenario ? 'title' : 'username'];
+        const icon = isScenario ? 'content' : 'user outline';
+        const key = `cohort-${id}-${type}-${source.id}`;
+        const tab = tabs.find(tab => tab.menuItem.key === key);
+
+        if (!tab) {
+            tabs.push({
+                menuItem: {
+                    content,
+                    key,
+                    icon
+                },
+                data: {
+                    cohortId: cohort.id,
+                    [`${type}Id`]: source.id
+                }
+            });
+            activeTabKey = key;
+        } else {
+            activeTabKey = tab.menuItem.key;
+        }
+
         this.setState({
-            activeTab,
-            tabs: {
-                ...tabs,
-                [activeTab]: this.getTab(activeTab)
-            }
+            activeTabKey,
+            tabs
         });
     }
 
-    getTab(name) {
-        const {
-            cohort: { id }
-        } = this.state;
+    onTabClick(event, { name: activeTabKey }) {
+        this.setState({ activeTabKey });
+    }
 
-        switch (name) {
-            case 'cohort':
-                return id ? (
-                    <React.Fragment>
-                        <CohortScenarios id={id} />
-                        <ConfirmAuth requiredPermission="edit_all_cohorts">
-                            <CohortParticipants id={id} />
-                        </ConfirmAuth>
-                    </React.Fragment>
-                ) : (
-                    <React.Fragment>
-                        <Dimmer active>
-                            <Loader />
-                        </Dimmer>
-                        <Image src="/short-paragraph.png" />
-                    </React.Fragment>
-                );
-            case 'runs':
-                return (
-                    <ConfirmAuth requiredPermission="edit_all_cohorts">
-                        <React.Fragment>Runs {id}</React.Fragment>
-                    </ConfirmAuth>
-                );
-            default:
-                return null;
+    onDataTableClick(event, { name, key }) {
+        const { tabs } = this.state;
+
+        // If the button name was "close"...
+        if (name === 'close') {
+            // Move to the main cohort tab
+            this.setState({ activeTabKey: 'cohort' });
+
+            // Remove the tab from the tabs list
+            tabs.splice(
+                tabs.indexOf(tabs.find(tab => tab.menuItem.key === key)),
+                1
+            );
+            this.setState({ tabs });
         }
     }
 
     render() {
         const {
             cohort,
-            cohort: { name }
+            cohort: { id, name }
         } = this.props;
-        const { activeTab } = this.state;
-        const { onClick } = this;
+        const { activeTabKey, tabs } = this.state;
+        const { onClick, onTabClick, onDataTableClick } = this;
         const cohortUrl = `${location.origin}/cohort/${cohort.id}`;
-
+        const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
         return (
             <div>
-                <Menu attached="top" tabular>
+                <Menu
+                    attached="top"
+                    tabular
+                    className="cohort__tab-menu--overflow"
+                >
                     <Menu.Item
+                        active={activeTabKey === 'cohort'}
                         content={name}
+                        key="cohort"
                         name="cohort"
-                        active={activeTab === 'cohort'}
-                        onClick={onClick}
+                        onClick={onTabClick}
                     />
-                    <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-                        <Menu.Item
-                            content="Runs"
-                            name="runs"
-                            active={activeTab === 'runs'}
+
+                    {tabs.map(({ menuItem }) => {
+                        const { content, key, icon } = menuItem;
+                        return (
+                            <Menu.Item
+                                active={activeTabKey === key}
+                                content={content}
+                                key={key}
+                                name={key}
+                                icon={icon}
+                                onClick={onTabClick}
+                            />
+                        );
+                    })}
+                </Menu>
+
+                {activeTabKey === 'cohort' ? (
+                    <Segment attached="bottom">
+                        <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                            <Menu icon>
+                                <Popup
+                                    content="Copy cohort link to clipboard"
+                                    trigger={
+                                        <Menu.Item
+                                            icon
+                                            content={
+                                                <Icon name="clipboard outline" />
+                                            }
+                                            onClick={() => copy(cohortUrl)}
+                                        />
+                                    }
+                                />
+                                <Popup
+                                    content="Run this cohort as a participant"
+                                    trigger={
+                                        <Menu.Item
+                                            icon
+                                            content={<Icon name="play" />}
+                                            onClick={() => {
+                                                alert(
+                                                    'View cohort as participant. (Feature not available in this version)'
+                                                );
+                                            }}
+                                        />
+                                    }
+                                />
+
+                                <Popup
+                                    content="Download the data from this data table tab"
+                                    trigger={
+                                        <Menu.Item
+                                            icon
+                                            content={<Icon name="download" />}
+                                            onClick={() => {
+                                                alert(
+                                                    'Download all data from this cohort. (Feature not available in this version)'
+                                                );
+                                            }}
+                                        />
+                                    }
+                                />
+                            </Menu>
+                        </ConfirmAuth>
+                        <CohortScenarios
+                            key={`cohort-scenarios`}
+                            id={id}
                             onClick={onClick}
                         />
-                    </ConfirmAuth>
-                </Menu>
-                <Segment attached="bottom" className="cohort__content-pane">
-                    <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-                        <Message
-                            content={
-                                <Header as="h3">
-                                    {cohort.id ? (
-                                        <React.Fragment>
-                                            <code>{cohortUrl}</code>
-                                            <Button.Group className="cohort__button--transparent cohort__button--spacing">
-                                                <Popup
-                                                    content="Copy cohort link to clipboard"
-                                                    trigger={
-                                                        <Button
-                                                            icon
-                                                            content={
-                                                                <Icon name="clipboard outline" />
-                                                            }
-                                                            onClick={() =>
-                                                                copy(cohortUrl)
-                                                            }
-                                                        />
-                                                    }
-                                                />
-                                                <Popup
-                                                    content="View this cohort as a participant"
-                                                    trigger={
-                                                        <Button
-                                                            icon
-                                                            content={
-                                                                <Icon name="play" />
-                                                            }
-                                                            onClick={() => {
-                                                                alert(
-                                                                    'view cohort as participant. this is just a placeholder.'
-                                                                );
-                                                            }}
-                                                        />
-                                                    }
-                                                />
-                                            </Button.Group>
-                                        </React.Fragment>
-                                    ) : (
-                                        <Placeholder>
-                                            <Placeholder.Header image>
-                                                <Placeholder.Line />
-                                                <Placeholder.Line />
-                                            </Placeholder.Header>
-                                        </Placeholder>
-                                    )}
-                                </Header>
-                            }
+                        <ConfirmAuth requiredPermission="edit_all_cohorts">
+                            <CohortParticipants
+                                key={`cohort-participants`}
+                                id={id}
+                                onClick={onClick}
+                            />
+                        </ConfirmAuth>
+                    </Segment>
+                ) : (
+                    <Segment key={activeTabKey} attached="bottom">
+                        <CohortDataTable
+                            source={source && source.data}
+                            onClick={onDataTableClick}
                         />
-                    </ConfirmAuth>
-                    {this.state.tabs[this.state.activeTab]}
-                </Segment>
+                    </Segment>
+                )}
             </div>
         );
     }
 }
 
 Cohort.propTypes = {
-    activeTab: PropTypes.string,
+    activeTabKey: PropTypes.string,
     scenarios: PropTypes.array,
     runs: PropTypes.array,
     users: PropTypes.array,

@@ -1,6 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
-
 const db = require('./db');
+const { getSlidesForScenario } = require('../scenarios/slides/db');
 
 exports.createCohort = asyncMiddleware(async function createCohort(req, res) {
     const user_id = req.session.user.id;
@@ -15,10 +15,23 @@ exports.getCohort = asyncMiddleware(async function getCohort(req, res) {
     res.json({ cohort });
 });
 
-exports.getCohorts = asyncMiddleware(async function getCohorts(req, res) {
+exports.getMyCohorts = asyncMiddleware(async function getMyCohorts(req, res) {
     const user_id = req.session.user.id;
-    const cohorts = await db.getCohorts({ user_id });
+    const cohorts = await db.getMyCohorts({ user_id });
     res.json({ cohorts });
+});
+
+exports.linkCohortToRun = asyncMiddleware(async function joinCohortAsync(
+    req,
+    res
+) {
+    const { id, run_id } = req.params;
+
+    await db.linkCohortToRun({ id, run_id });
+
+    const cohort = await db.getCohort({ id });
+
+    res.json({ cohort, status: 200 });
 });
 
 exports.joinCohort = asyncMiddleware(async function joinCohortAsync(req, res) {
@@ -81,6 +94,60 @@ exports.setCohortScenarios = asyncMiddleware(async function setCohortScenarios(
     await db.setCohortScenarios({ id, scenarios });
     res.json({ scenarios });
 });
+
+async function getScenarioPrompts(scenario_id) {
+    const slides = await getSlidesForScenario(scenario_id);
+    const components = slides.reduce((accum, slide) => {
+        if (slide.components && slide.components.length) {
+            accum.push(
+                ...slide.components.reduce((accum, component) => {
+                    if (component.responseId) {
+                        accum.push(component);
+                    }
+                    return accum;
+                }, [])
+            );
+        }
+        return accum;
+    }, []);
+
+    return components;
+}
+
+exports.getCohortData = asyncMiddleware(async function getCohortDataAsync(
+    req,
+    res
+) {
+    const { id, scenario_id } = req.params;
+
+    const prompts = await getScenarioPrompts(scenario_id);
+    const responses = await db.getCohortRunResponses({ id, scenario_id });
+
+    res.json({ prompts, responses });
+});
+
+exports.getCohortParticipantData = asyncMiddleware(
+    async function getCohortDataAsync(req, res) {
+        const { id, participant_id } = req.params;
+
+        const responses = await db.getCohortRunResponses({
+            id,
+            participant_id
+        });
+
+        const prompts = {};
+
+        for (const response of responses) {
+            if (!prompts[response.scenario_id]) {
+                prompts[response.scenario_id] = [
+                    await getScenarioPrompts(response.scenario_id)
+                ];
+            }
+        }
+
+        res.json({ prompts, responses });
+    }
+);
 
 exports.listUserCohorts = asyncMiddleware(async function listUserCohorts(
     req,

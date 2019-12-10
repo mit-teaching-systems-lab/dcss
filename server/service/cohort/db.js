@@ -88,7 +88,7 @@ exports.getCohort = async ({ id }) => {
     });
 };
 
-exports.getCohorts = async ({ user_id }) => {
+exports.getMyCohorts = async ({ user_id }) => {
     return await withClientTransaction(async client => {
         const result = await client.query(sql`
             SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
@@ -140,6 +140,80 @@ exports.setCohortScenarios = async ({ id, scenarios }) => {
             `);
         }
         return scenarios;
+    });
+};
+
+exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
+    return await withClientTransaction(async client => {
+        let responses = [];
+
+        if (participant_id) {
+            const result = await client.query(sql`
+                SELECT
+                    run.user_id as user_id,
+                    username,
+                    scenario.id as scenario_id,
+                    scenario.title as scenario_title,
+                    cohort_run.run_id as run_id,
+                    response_id,
+                    run_response.response,
+                    run_response.created_at as response_created_at,
+                    run_response.ended_at as response_ended_at
+                FROM run_response
+                JOIN cohort_run ON run_response.run_id = cohort_run.run_id
+                JOIN run ON run.id = cohort_run.run_id
+                JOIN users ON users.id = run.user_id
+                JOIN scenario ON scenario.id = run.scenario_id
+                WHERE cohort_run.cohort_id = ${id}
+                AND run.user_id = ${participant_id}
+                ORDER BY cohort_run.run_id DESC
+            `);
+
+            responses.push(...result.rows);
+        } else {
+            const result = await client.query(sql`
+                SELECT
+                    run.user_id as user_id,
+                    username,
+                    scenario.id as scenario_id,
+                    scenario.title as scenario_title,
+                    cohort_run.run_id as run_id,
+                    response_id,
+                    run_response.response,
+                    run_response.created_at as response_created_at,
+                    run_response.ended_at as response_ended_at
+                FROM run_response
+                JOIN cohort_run ON run_response.run_id = cohort_run.run_id
+                JOIN run ON run.id = cohort_run.run_id
+                JOIN users ON users.id = run.user_id
+                JOIN scenario ON scenario.id = run.scenario_id
+                WHERE cohort_run.cohort_id = ${id}
+                AND run.scenario_id = ${scenario_id}
+                ORDER BY cohort_run.run_id DESC
+            `);
+
+            responses.push(...result.rows);
+        }
+
+        return responses;
+    });
+};
+
+exports.linkCohortToRun = async ({ id, run_id }) => {
+    if (!(id && run_id)) {
+        throw new Error(
+            'Link a cohort to a run requires a cohort id, run id and user id'
+        );
+    }
+
+    return await withClientTransaction(async client => {
+        const result = await client.query(sql`
+            INSERT INTO cohort_run (cohort_id, run_id)
+            VALUES (${id}, ${run_id})
+            ON CONFLICT DO NOTHING;
+        `);
+
+        return result;
     });
 };
 

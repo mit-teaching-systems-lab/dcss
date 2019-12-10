@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react';
 import Scenario from '@components/Scenario';
-import { getCohort } from '@client/actions/cohort';
+import { linkCohortToRun, setCohortUserRole } from '@client/actions/cohort';
 import { getUser } from '@client/actions/user';
 import { getResponse, setResponses } from '@client/actions/response';
 import { getRun, setRun } from '@client/actions/run';
@@ -15,24 +15,46 @@ class Run extends Component {
 
         const {
             cohortId,
-            match: { params },
+            match: { params, url },
             scenarioId
         } = this.props;
 
         this.state = {
+            baseurl: url.replace(/\/slide\/\d.*$/g, ''),
             cohortId: Number(cohortId || params.cohortId),
             scenarioId: Number(scenarioId || params.scenarioId)
         };
 
-        this.onChange = this.onChange.bind(this);
         this.responses = new Map();
 
+        this.onChange = this.onChange.bind(this);
         this.onResponseChange = this.onResponseChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
 
     async componentDidMount() {
-        await this.props.getRun(this.state.scenarioId);
+        const { cohortId, scenarioId } = this.state;
+        const run = await this.props.getRun(scenarioId);
+
+        if (cohortId && run) {
+            const cohort = await this.props.linkCohortToRun(cohortId, run.id);
+
+            if (cohort) {
+                const { id, users } = cohort;
+                const {
+                    user: { username }
+                } = this.props;
+
+                if (!users.find(user => username === user.username)) {
+                    // For now we'll default all unknown
+                    // users as "participant".
+                    await this.props.setCohortUserRole({
+                        id,
+                        role: 'participant'
+                    });
+                }
+            }
+        }
     }
 
     onResponseChange(event, data) {
@@ -74,9 +96,11 @@ class Run extends Component {
 
     render() {
         const { onChange, onResponseChange, onSubmit } = this;
+        const { baseurl } = this.state;
 
         return this.props.run ? (
             <Scenario
+                baseurl={baseurl}
                 scenarioId={this.state.scenarioId}
                 onResponseChange={onResponseChange}
                 onRunChange={onChange}
@@ -89,37 +113,45 @@ class Run extends Component {
 }
 
 Run.propTypes = {
-    cohortId: PropTypes.number,
+    cohort: PropTypes.object,
+    cohortId: PropTypes.node,
+    setCohortUserRole: PropTypes.func,
     getUser: PropTypes.func,
     getResponse: PropTypes.func,
     setResponses: PropTypes.func,
-    scenarioId: PropTypes.number,
+    scenarioId: PropTypes.node,
     run: PropTypes.object,
     getRun: PropTypes.func,
     setRun: PropTypes.func,
+    linkCohortToRun: PropTypes.func,
     match: PropTypes.shape({
         params: PropTypes.shape({
             cohortId: PropTypes.node,
             scenarioId: PropTypes.node
-        }).isRequired
+        }).isRequired,
+        url: PropTypes.string
     }),
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
-    })
+    }),
+    user: PropTypes.object
 };
 
 function mapStateToProps(state) {
+    const { id, username, permissions } = state.login;
+    const { currentCohort: cohort } = state.cohort;
     const { responses, run } = state;
-    return { responses, run };
+    return { cohort, responses, run, user: { id, username, permissions } };
 }
 
 const mapDispatchToProps = dispatch => ({
-    getCohort: params => dispatch(getCohort(params)),
+    setCohortUserRole: params => dispatch(setCohortUserRole(params)),
     getUser: params => dispatch(getUser(params)),
     getResponse: params => dispatch(getResponse(params)),
     setResponses: (...params) => dispatch(setResponses(...params)),
-    getRun: (...args) => dispatch(getRun(...args)),
-    setRun: (...args) => dispatch(setRun(...args))
+    getRun: params => dispatch(getRun(params)),
+    setRun: (...params) => dispatch(setRun(...params)),
+    linkCohortToRun: (...params) => dispatch(linkCohortToRun(...params))
 });
 
 export default withRouter(

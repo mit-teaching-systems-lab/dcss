@@ -1,0 +1,67 @@
+.cohortdatatable__scroll {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin: auto;
+    margin-bottom: 1rem;
+    overflow: auto;
+    max-height: 100vh;
+}
+.cohortdatatable__scroll table {
+    width: 100%;
+    max-width: 1280px;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+.table-wrap {
+    position: relative;
+}
+.cohortdatatable__scroll tbody th {
+    min-width: 100px;
+    max-width: 150px;
+}
+.cohortdatatable__scroll tbody td {
+    /*min-width: 100px;*/
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.cohortdatatable__scroll thead th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+/* safari and ios need the tfoot itself to be position:sticky also */
+.cohortdatatable__scroll tfoot,
+.cohortdatatable__scroll tfoot th,
+.cohortdatatable__scroll tfoot td {
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    background: #f9fafb;
+    z-index: 4;
+}
+
+.cohortdatatable__scroll th:first-child {
+    background: #e0e6eb;
+    padding: 0.78571429em 0.78571429em;
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+.cohortdatatable__scroll thead th:first-child,
+.cohortdatatable__scroll tfoot th:first-child {
+    z-index: 5;
+}
+
+.cohortdatatable__cell-data-missing {
+    background-image: linear-gradient(
+        to top right,
+        transparent calc(50% - 1px),
+        #e0e6eb,
+        transparent calc(50% + 1px)
+    );
+}

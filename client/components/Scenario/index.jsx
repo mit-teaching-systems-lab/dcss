@@ -14,30 +14,28 @@ class Scenario extends Component {
     constructor(props) {
         super(props);
 
-        // Check for data from route or props
-        this.state = Object.assign(
-            {},
-            {
-                scenarioId: this.props.scenarioId,
-                activeSlideIndex: 0
-            },
-            this.props.location ? this.props.location.state : null,
+        const {
+            baseurl,
+            history,
+            scenarioId,
+            location,
+            match: { params = {} }
+        } = this.props;
 
-            // If there is an activeSlideIndex, it will be here
-            this.props.match ? this.props.match.params : null
-        );
+        const activeSlideIndex = Number(params.activeSlideIndex) || 0;
 
-        // ...but this.props.match.params.activeSlideIndex is
-        // a string and we don't want that.
-        this.state.activeSlideIndex = Number(this.state.activeSlideIndex);
+        this.state = {
+            activeSlideIndex,
+            scenarioId
+        };
 
         this.getScenarioSlides();
 
         if (this.isScenarioRun) {
-            const pathToSlide = `/run/${this.props.scenarioId}/${this.state.activeSlideIndex}`;
+            const pathToSlide = `${baseurl}/slide/${activeSlideIndex}`;
 
             if (location.pathname !== pathToSlide) {
-                this.props.history.push(pathToSlide);
+                history.push(pathToSlide);
             }
         }
     }
@@ -51,7 +49,7 @@ class Scenario extends Component {
             return null;
         }
 
-        const { onSubmit } = this.props;
+        const { baseurl, history, onSubmit } = this.props;
         switch (type) {
             case 'back':
                 return () => {
@@ -61,10 +59,10 @@ class Scenario extends Component {
                     let activeSlideIndex = this.state.activeSlideIndex - 1;
                     this.setState({ activeSlideIndex });
 
-                    const pathToSlide = `/run/${this.props.scenarioId}/${activeSlideIndex}`;
+                    const pathToSlide = `${baseurl}/slide/${activeSlideIndex}`;
 
                     if (location.pathname !== pathToSlide) {
-                        this.props.history.push(pathToSlide);
+                        history.push(pathToSlide);
                     }
                 };
             case 'next':
@@ -77,10 +75,10 @@ class Scenario extends Component {
                     let activeSlideIndex = this.state.activeSlideIndex + 1;
                     this.setState({ activeSlideIndex });
 
-                    const pathToSlide = `/run/${this.props.scenarioId}/${activeSlideIndex}`;
+                    const pathToSlide = `${baseurl}/slide/${activeSlideIndex}`;
 
                     if (location.pathname !== pathToSlide) {
-                        this.props.history.push(pathToSlide);
+                        history.push(pathToSlide);
                     }
                 };
             default:
@@ -128,7 +126,7 @@ class Scenario extends Component {
     }
 
     async getScenarioSlides() {
-        const { onResponseChange, onRunChange, scenarioId } = this.props;
+        const { baseurl, onResponseChange, onRunChange } = this.props;
         const metaData = await this.getScenarioMetaData();
         const contents = await this.getScenarioContent();
         let finish = contents.find(slide => slide.is_finish) || null;
@@ -169,7 +167,7 @@ class Scenario extends Component {
         slides.push(
             <FinishSlide
                 key="finish-slide"
-                back={`/run/${scenarioId}/${slides.length - 1}`}
+                back={`${baseurl}/${slides.length - 1}`}
                 slide={finish}
                 onChange={onRunChange}
             />
@@ -193,7 +191,9 @@ class Scenario extends Component {
 }
 
 Scenario.propTypes = {
+    baseurl: PropTypes.string,
     location: PropTypes.shape({
+        pathname: PropTypes.string,
         state: PropTypes.object
     }),
     match: PropTypes.shape({

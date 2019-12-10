@@ -15,6 +15,9 @@ import {
     // SET_COHORT_SUCCESS,
     // GET_COHORT,
     // GET_COHORT_ERROR,
+    // TODO: These will be used in a follow up changeset
+    GET_COHORT_DATA_SUCCESS,
+    GET_COHORT_PARTICIPANTS_SUCCESS,
     GET_COHORT_SUCCESS,
     // GET_USER_COHORTS,
     GET_USER_COHORTS_SUCCESS,
@@ -22,7 +25,7 @@ import {
     // GET_USER_COHORTS_ERROR
 } from '../actions/types';
 
-const initialState = {
+const cohortInitialState = {
     id: null,
     created_at: '',
     name: '',
@@ -32,7 +35,7 @@ const initialState = {
     users: []
 };
 
-const currentCohort = (state = initialState, action) => {
+const currentCohort = (state = cohortInitialState, action) => {
     const { type, cohort } = action;
 
     if (type === SET_COHORT || type === GET_COHORT_SUCCESS) {
@@ -71,31 +74,42 @@ const getCohorts = (state = [], action) => {
     return state;
 };
 
-const getCohort = (state = initialState, action) => {
+const getCohort = (state = cohortInitialState, action) => {
     const { type, cohort } = action;
-    if (type === SET_COHORT || type === GET_COHORT_SUCCESS) {
+
+    switch (type) {
+        case SET_COHORT:
+        case GET_COHORT_SUCCESS:
+            return {
+                ...state,
+                ...cohort
+            };
+        case GET_COHORT_PARTICIPANTS_SUCCESS:
+            return {
+                ...state,
+                users: cohort.users
+            };
+        default:
+            return state;
+    }
+};
+
+const cohortDataInitialState = { prompts: [], responses: [] };
+
+const getCohortData = (state = cohortDataInitialState, action) => {
+    const { type, prompts, responses } = action;
+    if (type === GET_COHORT_DATA_SUCCESS) {
         return {
             ...state,
-            ...cohort
+            prompts,
+            responses
         };
     }
 
     return state;
 };
 
-const getCohortParticipants = (state = initialState, action) => {
-    const { type, users } = action;
-    if (type === GET_COHORT_SUCCESS) {
-        return {
-            ...state,
-            users
-        };
-    }
-
-    return state;
-};
-
-const setCohortUserRole = (state = initialState, action) => {
+const setCohortUserRole = (state = cohortInitialState, action) => {
     const { type, users } = action;
     if (type === SET_COHORT_USER_ROLE_SUCCESS) {
         return {
@@ -112,6 +126,6 @@ export default combineReducers({
     userCohorts,
     getCohorts,
     getCohort,
-    getCohortParticipants,
+    getCohortData,
     setCohortUserRole
 });

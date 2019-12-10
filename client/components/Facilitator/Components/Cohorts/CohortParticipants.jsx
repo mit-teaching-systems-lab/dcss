@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import {
-    Checkbox,
+    Button,
+    // NOTE: The checkbox is temporarily disabled
+    // Checkbox,
     Container,
     // Dimmer,
-    // Image,
-    // Input,
+    Icon,
     // Loader,
     Popup,
     Table
@@ -18,6 +19,7 @@ import {
     getCohortParticipants,
     setCohort
 } from '@client/actions/cohort';
+import ConfirmAuth from '@client/components/ConfirmAuth';
 import './Cohort.css';
 
 export class CohortParticipants extends React.Component {
@@ -34,7 +36,8 @@ export class CohortParticipants extends React.Component {
 
         this.state = {
             cohort: {
-                id
+                id,
+                users: []
             }
         };
 
@@ -54,11 +57,16 @@ export class CohortParticipants extends React.Component {
             cohort: { id }
         } = this.state;
 
-        this.refreshInterval = setInterval(async () => {
-            await this.props.getCohortParticipants(Number(id));
+        const cohort = await this.props.getCohort(Number(id));
 
-            // See note above, re: participants list backup
-            this.participants = this.props.cohort.users.slice();
+        this.setState({ cohort });
+
+        this.refreshInterval = setInterval(async () => {
+            const { cohort } = this.state;
+
+            cohort.users = await this.props.getCohortParticipants(Number(id));
+
+            this.setState({ cohort });
         }, 1000);
     }
 
@@ -91,8 +99,10 @@ export class CohortParticipants extends React.Component {
     }
 
     render() {
-        const { cohort } = this.props;
-        const { onCheckboxClick } = this;
+        const { onClick } = this.props;
+        const { cohort } = this.state;
+        // NOTE: The checkbox is temporarily disabled
+        // const { onCheckboxClick } = this;
 
         return (
             <Container fluid className="cohort__table-container">
@@ -106,7 +116,8 @@ export class CohortParticipants extends React.Component {
                     <Table.Header className="cohort__table-thead-tbody-tr">
                         <Table.Row>
                             <Table.HeaderCell colSpan={3}>
-                                Participants{'  '}
+                                Participants ({this.props.cohort.users.length}){' '}
+                                {'  '}
                                 {/*
                                 <Input
                                     className="cohort__table--search"
@@ -119,14 +130,23 @@ export class CohortParticipants extends React.Component {
                     <Table.Body className="cohort__scrolling-tbody">
                         {cohort.users.length ? (
                             cohort.users.map((user, index) => {
+                                const onClickAddTab = (event, data) => {
+                                    onClick(event, {
+                                        ...data,
+                                        type: 'participant',
+                                        source: user
+                                    });
+                                };
+
                                 return (
                                     <Table.Row
-                                        key={`row-${index}`}
+                                        key={`participants-row-${index}`}
                                         className="cohort__table-thead-tbody-tr"
                                         style={{ cursor: 'pointer' }}
                                     >
+                                        {/*
                                         <Table.Cell
-                                            key={`cell-checkbox-${index}`}
+                                            key={`participants-cell-checkbox-${index}`}
                                             className="cohort__table-cell-first"
                                         >
                                             <Popup
@@ -134,7 +154,7 @@ export class CohortParticipants extends React.Component {
                                                 trigger={
                                                     <Checkbox
                                                         disabled
-                                                        key={`checkbox-${index}`}
+                                                        key={`participants-checkbox-${index}`}
                                                         value={user.id}
                                                         onClick={
                                                             onCheckboxClick
@@ -143,7 +163,39 @@ export class CohortParticipants extends React.Component {
                                                 }
                                             />
                                         </Table.Cell>
-                                        <Table.Cell>{user.username}</Table.Cell>
+                                        */}
+                                        <Table.Cell>
+                                            <Button.Group
+                                                hidden
+                                                basic
+                                                size="small"
+                                                className="cohort__button-group--transparent"
+                                                style={{
+                                                    marginRight: '0.5rem'
+                                                }}
+                                            >
+                                                <ConfirmAuth requiredPermission="view_all_data">
+                                                    <Popup
+                                                        content="View cohort reponses from this participant"
+                                                        trigger={
+                                                            <Button
+                                                                icon
+                                                                content={
+                                                                    <Icon name="file alternate outline" />
+                                                                }
+                                                                name={
+                                                                    user.username
+                                                                }
+                                                                onClick={
+                                                                    onClickAddTab
+                                                                }
+                                                            />
+                                                        }
+                                                    />
+                                                </ConfirmAuth>
+                                            </Button.Group>
+                                            {user.username} ({user.role})
+                                        </Table.Cell>
                                         <Table.Cell>{user.email}</Table.Cell>
                                     </Table.Row>
                                 );
@@ -174,6 +226,7 @@ CohortParticipants.propTypes = {
         scenarios: PropTypes.array,
         users: PropTypes.array
     }),
+    participants: PropTypes.array,
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
@@ -184,7 +237,7 @@ CohortParticipants.propTypes = {
             id: PropTypes.node
         }).isRequired
     }).isRequired,
-    onChange: PropTypes.func,
+    onClick: PropTypes.func,
     getCohort: PropTypes.func,
     getCohortParticipants: PropTypes.func,
     setCohort: PropTypes.func,
@@ -193,8 +246,9 @@ CohortParticipants.propTypes = {
 
 const mapStateToProps = state => {
     const { currentCohort: cohort } = state.cohort;
+    const { users: participants } = cohort;
     const { scenarios } = state.scenario;
-    return { cohort, scenarios };
+    return { cohort, participants, scenarios };
 };
 
 const mapDispatchToProps = dispatch => ({

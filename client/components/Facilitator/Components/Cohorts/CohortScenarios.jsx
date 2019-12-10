@@ -7,11 +7,8 @@ import {
     Button,
     Checkbox,
     Container,
-    // Dimmer,
     Icon,
-    // Image,
     Input,
-    // Loader,
     Popup,
     Table
 } from 'semantic-ui-react';
@@ -157,7 +154,7 @@ export class CohortScenarios extends React.Component {
     }
 
     render() {
-        const { cohort, scenarios = [] } = this.props;
+        const { cohort, onClick, scenarios = [] } = this.props;
         const { onChangeOrder, onCheckboxClick, onSearchScenarios } = this;
 
         // This is the list of scenarios that are IN the
@@ -223,12 +220,22 @@ export class CohortScenarios extends React.Component {
                                 const checked = cohort.scenarios.includes(
                                     scenario.id
                                 );
+                                const disabled = true;
+                                const props = !checked ? { disabled } : {};
                                 const pathname = `/cohort/${cohort.id}/run/${scenario.id}`;
                                 const url = `${location.origin}${pathname}`;
 
                                 const requiredPermission = checked
                                     ? 'view_scenarios_in_cohort'
                                     : 'edit_scenarios_in_cohort';
+
+                                const onClickAddTab = (event, data) => {
+                                    onClick(event, {
+                                        ...data,
+                                        type: 'scenario',
+                                        source: scenario
+                                    });
+                                };
 
                                 return (
                                     <ConfirmAuth
@@ -256,26 +263,73 @@ export class CohortScenarios extends React.Component {
                                                 </Table.Cell>
                                             </ConfirmAuth>
                                             <Table.Cell>
+                                                <Button.Group
+                                                    hidden
+                                                    basic
+                                                    size="small"
+                                                    className="cohort__button-group--transparent"
+                                                    style={{
+                                                        marginRight: '0.5rem'
+                                                    }}
+                                                >
+                                                    <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                                                        <Popup
+                                                            content="Copy cohort scenario link to clipboard"
+                                                            trigger={
+                                                                <Button
+                                                                    icon
+                                                                    content={
+                                                                        <Icon name="clipboard outline" />
+                                                                    }
+                                                                    onClick={() =>
+                                                                        copy(
+                                                                            url
+                                                                        )
+                                                                    }
+                                                                    {...props}
+                                                                />
+                                                            }
+                                                        />
+                                                        <Popup
+                                                            content="Run this cohort scenario as a participant"
+                                                            trigger={
+                                                                <Button
+                                                                    icon
+                                                                    content={
+                                                                        <Icon name="play" />
+                                                                    }
+                                                                    onClick={() => {
+                                                                        location.href = url;
+                                                                    }}
+                                                                    {...props}
+                                                                />
+                                                            }
+                                                        />
+                                                    </ConfirmAuth>
+                                                    <ConfirmAuth requiredPermission="view_all_data">
+                                                        <Popup
+                                                            content="View cohort reponses to prompts in this scenario"
+                                                            trigger={
+                                                                <Button
+                                                                    icon
+                                                                    content={
+                                                                        <Icon name="file alternate outline" />
+                                                                    }
+                                                                    name={
+                                                                        scenario.title
+                                                                    }
+                                                                    onClick={
+                                                                        onClickAddTab
+                                                                    }
+                                                                    {...props}
+                                                                />
+                                                            }
+                                                        />
+                                                    </ConfirmAuth>
+                                                </Button.Group>
                                                 <NavLink to={pathname}>
                                                     {scenario.title}
                                                 </NavLink>
-                                                <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-                                                    <Popup
-                                                        content="Copy cohort link to clipboard"
-                                                        trigger={
-                                                            <Button
-                                                                icon
-                                                                className="cohort__button--transparent"
-                                                                content={
-                                                                    <Icon name="clipboard outline" />
-                                                                }
-                                                                onClick={() =>
-                                                                    copy(url)
-                                                                }
-                                                            />
-                                                        }
-                                                    />
-                                                </ConfirmAuth>
                                             </Table.Cell>
                                             <Table.Cell className="cohort__table-cell--description">
                                                 {scenario.description}
@@ -322,7 +376,7 @@ CohortScenarios.propTypes = {
             id: PropTypes.node
         }).isRequired
     }).isRequired,
-    onChange: PropTypes.func,
+    onClick: PropTypes.func,
     getCohort: PropTypes.func,
     setCohort: PropTypes.func,
     getScenarios: PropTypes.func,
