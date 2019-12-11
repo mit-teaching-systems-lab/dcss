@@ -21,14 +21,19 @@ export class Cohort extends React.Component {
     constructor(props) {
         super(props);
 
+        const { location, match } = this.props;
+
         let {
             params: { id }
-        } = this.props.match;
+        } = match;
 
         if (!id && this.props.id) {
             id = this.props.id;
         }
 
+        if (location && location.search) {
+            storage.setItem(`referrer_params`, location.search);
+        }
         // This is a hack to get through the testing on Monday.
         {
             let localCohort = storage.getItem('cohort');
@@ -50,7 +55,6 @@ export class Cohort extends React.Component {
         };
 
         this.onClick = this.onClick.bind(this);
-        // TODO: This will be used in a follow up changeset
         this.onDataTableClick = this.onDataTableClick.bind(this);
         this.onTabClick = this.onTabClick.bind(this);
     }
@@ -285,6 +289,11 @@ Cohort.propTypes = {
         push: PropTypes.func.isRequired
     }).isRequired,
     id: PropTypes.any,
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+        search: PropTypes.string,
+        state: PropTypes.object
+    }),
     match: PropTypes.shape({
         path: PropTypes.string,
         params: PropTypes.shape({

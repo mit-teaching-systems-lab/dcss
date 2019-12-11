@@ -32,9 +32,10 @@ class Scenario extends Component {
         this.getScenarioSlides();
 
         if (this.isScenarioRun) {
-            const pathToSlide = `${baseurl}/slide/${activeSlideIndex}`;
+            const { pathname, search } = location;
+            const pathToSlide = `${baseurl}/slide/${activeSlideIndex}${search}`;
 
-            if (location.pathname !== pathToSlide) {
+            if (pathname !== pathToSlide) {
                 history.push(pathToSlide);
             }
         }
@@ -194,6 +195,7 @@ Scenario.propTypes = {
     baseurl: PropTypes.string,
     location: PropTypes.shape({
         pathname: PropTypes.string,
+        search: PropTypes.string,
         state: PropTypes.object
     }),
     match: PropTypes.shape({

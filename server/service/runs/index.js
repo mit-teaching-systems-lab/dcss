@@ -5,6 +5,7 @@ const { requireUserForRun } = require('./middleware');
 const {
     finishRun,
     getResponse,
+    getReferrerParams,
     newOrExistingRun,
     revokeConsentForRun,
     updateRun,
@@ -35,5 +36,6 @@ runs.post('/:run_id/response/:response_id', [
 ]);
 
 runs.get('/:run_id/response/:response_id', [requireUserForRun, getResponse]);
+runs.get('/:run_id/referrer-params', [requireUserForRun, getReferrerParams]);
 
 module.exports = runs;

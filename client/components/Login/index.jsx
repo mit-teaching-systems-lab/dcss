@@ -93,7 +93,7 @@ class Login extends Component {
 
             // Step outside of react to force a real reload
             // after login and session create
-            location.href = from ? from.pathname : '/';
+            location.href = from ? `${from.pathname}${from.search}` : '/';
         }
     }
 

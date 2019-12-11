@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react';
+import * as QueryString from 'query-string';
+import storage from 'local-storage-fallback';
 import Scenario from '@components/Scenario';
 import { linkCohortToRun, setCohortUserRole } from '@client/actions/cohort';
 import { getUser } from '@client/actions/user';
@@ -33,26 +35,45 @@ class Run extends Component {
     }
 
     async componentDidMount() {
+        const {
+            getRun,
+            linkCohortToRun,
+            location: { search },
+            setCohortUserRole,
+            setRun
+        } = this.props;
         const { cohortId, scenarioId } = this.state;
-        const run = await this.props.getRun(scenarioId);
+        const run = await getRun(scenarioId);
 
-        if (cohortId && run) {
-            const cohort = await this.props.linkCohortToRun(cohortId, run.id);
+        if (run) {
+            if (cohortId) {
+                const cohort = await linkCohortToRun(cohortId, run.id);
 
-            if (cohort) {
-                const { id, users } = cohort;
-                const {
-                    user: { username }
-                } = this.props;
+                if (cohort) {
+                    const { id, users } = cohort;
+                    const {
+                        user: { username }
+                    } = this.props;
 
-                if (!users.find(user => username === user.username)) {
-                    // For now we'll default all unknown
-                    // users as "participant".
-                    await this.props.setCohortUserRole({
-                        id,
-                        role: 'participant'
-                    });
+                    if (!users.find(user => username === user.username)) {
+                        // For now we'll default all unknown
+                        // users as "participant".
+                        await setCohortUserRole({
+                            id,
+                            role: 'participant'
+                        });
+                    }
                 }
+            }
+
+            const referrer_params = storage.getItem('referrer_params');
+            if (search || referrer_params) {
+                await setRun(run.id, {
+                    referrer_params: QueryString.parse(
+                        search || referrer_params
+                    )
+                });
+                storage.removeItem('referrer_params');
             }
         }
     }
@@ -124,6 +145,11 @@ Run.propTypes = {
     getRun: PropTypes.func,
     setRun: PropTypes.func,
     linkCohortToRun: PropTypes.func,
+    location: PropTypes.shape({
+        pathname: PropTypes.string,
+        search: PropTypes.string,
+        state: PropTypes.object
+    }),
     match: PropTypes.shape({
         params: PropTypes.shape({
             cohortId: PropTypes.node,

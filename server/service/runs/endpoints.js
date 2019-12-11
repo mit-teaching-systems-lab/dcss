@@ -67,6 +67,11 @@ async function revokeConsentForRunAsync(req, res) {
     res.json({ status: 200, run });
 }
 
+async function getReferrerParamsAsync(req, res) {
+    const { referrer_params } = await runForRequest(req);
+    res.json({ status: 200, referrer_params });
+}
+
 async function finishRunAsync(req, res) {
     const { id } = await runForRequest(req);
     res.json(await db.finishRun(id));
@@ -76,5 +81,6 @@ exports.finishRun = asyncMiddleware(finishRunAsync);
 exports.getResponse = asyncMiddleware(getResponseAsync);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);
+exports.getReferrerParams = asyncMiddleware(getReferrerParamsAsync);
 exports.updateRun = asyncMiddleware(updateRunAsync);
 exports.upsertResponse = asyncMiddleware(upsertResponseAsync);

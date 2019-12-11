@@ -87,7 +87,7 @@ class CreateAnonymousAccount extends Component {
 
             // Step outside of react to force a real reload
             // after signup and session create
-            location.href = from ? from.pathname : '/';
+            location.href = from ? `${from.pathname}${from.search}` : '/';
         }
     }
 
