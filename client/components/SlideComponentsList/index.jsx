@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
+import storage from 'local-storage-fallback';
 
 const SlideComponentsList = ({
     asSVG = false,
@@ -57,7 +58,7 @@ const SlideComponentsList = ({
             const { Display } = Components[type];
             const persisted = JSON.parse(
                 run && responseId
-                    ? localStorage.getItem(responseId) || emptyValue
+                    ? storage.getItem(`${run.id}-${responseId}`) || emptyValue
                     : emptyValue
             );
             return (

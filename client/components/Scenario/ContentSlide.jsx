@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
+import storage from 'local-storage-fallback';
 
 import SlideComponentsList from '@components/SlideComponentsList';
 
@@ -82,6 +83,8 @@ class ContentSlide extends React.Component {
             return null;
         }
 
+        const { run } = this.props;
+
         // If we have a response change for a responseId that
         // was marked required, and the value isn't empty,
         // then it can be removed from the list.
@@ -101,7 +104,7 @@ class ContentSlide extends React.Component {
 
         if (!data.isFulfilled) {
             this.props.onResponseChange(event, data);
-            localStorage.setItem(name, JSON.stringify(data));
+            storage.setItem(`${run.id}-${name}`, JSON.stringify(data));
             this.setState({
                 skipButton: 'Choose to skip',
                 skipOrKeep: 'skip'

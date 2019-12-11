@@ -1,3 +1,5 @@
+import storage from 'local-storage-fallback';
+
 const TIMEOUT = 1000 * 60 * 60;
 
 const getSession = () => {
@@ -5,7 +7,7 @@ const getSession = () => {
         timestamp = Date.now(),
         username = '',
         permissions = []
-    } = JSON.parse(localStorage.getItem('session')) || {
+    } = JSON.parse(storage.getItem('session')) || {
         timestamp: '',
         username: '',
         permissions: []
@@ -29,11 +31,11 @@ const isLoggedIn = () => {
 };
 
 const destroy = () => {
-    localStorage.removeItem('session');
+    storage.removeItem('session');
 };
 
 const create = session => {
-    localStorage.setItem('session', JSON.stringify(session));
+    storage.setItem('session', JSON.stringify(session));
 };
 
 export default {

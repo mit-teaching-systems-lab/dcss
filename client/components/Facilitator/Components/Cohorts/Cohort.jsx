@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
+import storage from 'local-storage-fallback';
 import {
     getCohort,
     setCohort,
@@ -30,9 +31,9 @@ export class Cohort extends React.Component {
 
         // This is a hack to get through the testing on Monday.
         {
-            let localCohort = localStorage.getItem('cohort');
+            let localCohort = storage.getItem('cohort');
             if (id && localCohort !== id) {
-                localStorage.setItem('cohort', id);
+                storage.setItem('cohort', id);
             } else {
                 if (localCohort !== null) {
                     id = Number(localCohort);

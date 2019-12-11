@@ -1,3 +1,4 @@
+import storage from 'local-storage-fallback';
 import {
     GET_RESPONSE,
     GET_RESPONSE_SUCCESS,
@@ -37,8 +38,8 @@ export const setResponses = (id, responses) => async dispatch => {
                 body: JSON.stringify(body)
             });
 
-            if (localStorage[name]) {
-                localStorage.removeItem(name);
+            if (storage[`${id}-${name}`]) {
+                storage.removeItem(`${id}-${name}`);
             }
         }
 
