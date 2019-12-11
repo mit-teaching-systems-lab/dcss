@@ -146,7 +146,6 @@ exports.setCohortScenarios = async ({ id, scenarios }) => {
 exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
     return await withClientTransaction(async client => {
         let responses = [];
-
         if (participant_id) {
             const result = await client.query(sql`
                 SELECT
@@ -157,13 +156,20 @@ exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
                     cohort_run.run_id as run_id,
                     response_id,
                     run_response.response,
-                    run_response.created_at as response_created_at,
-                    run_response.ended_at as response_ended_at
+                    run_response.response->>'value' as value,
+                    audio_transcript.transcript as transcript,
+                    CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+                        ELSE TRUE
+                    END as is_skip,
+                    run_response.response->>'type' as type,
+                    run_response.created_at as created_at,
+                    run_response.ended_at as ended_at
                 FROM run_response
                 JOIN cohort_run ON run_response.run_id = cohort_run.run_id
                 JOIN run ON run.id = cohort_run.run_id
                 JOIN users ON users.id = run.user_id
                 JOIN scenario ON scenario.id = run.scenario_id
+                LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
                 WHERE cohort_run.cohort_id = ${id}
                 AND run.user_id = ${participant_id}
                 ORDER BY cohort_run.run_id DESC
@@ -180,13 +186,20 @@ exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
                     cohort_run.run_id as run_id,
                     response_id,
                     run_response.response,
-                    run_response.created_at as response_created_at,
-                    run_response.ended_at as response_ended_at
+                    run_response.response->>'value' as value,
+                    audio_transcript.transcript as transcript,
+                    CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+                        ELSE TRUE
+                    END as is_skip,
+                    run_response.response->>'type' as type,
+                    run_response.created_at as created_at,
+                    run_response.ended_at as ended_at
                 FROM run_response
                 JOIN cohort_run ON run_response.run_id = cohort_run.run_id
                 JOIN run ON run.id = cohort_run.run_id
                 JOIN users ON users.id = run.user_id
                 JOIN scenario ON scenario.id = run.scenario_id
+                LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
                 WHERE cohort_run.cohort_id = ${id}
                 AND run.scenario_id = ${scenario_id}
                 ORDER BY cohort_run.run_id DESC

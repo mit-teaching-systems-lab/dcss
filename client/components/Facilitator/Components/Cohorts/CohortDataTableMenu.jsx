@@ -16,7 +16,9 @@ export class CohortDataTableMenu extends React.Component {
     }
 
     onClick(event, { name }) {
-        const { cohortId, scenarioId, participantId } = this.props.source;
+        const {
+            source: { cohortId, scenarioId, participantId }
+        } = this.props;
 
         const sourceKey = scenarioId
             ? `scenario-${scenarioId}`
