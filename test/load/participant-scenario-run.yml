@@ -14,12 +14,12 @@ config:
           - "scenarioId"
   phases:
     - duration: 60
-      arrivalRate: 5
+      arrivalRate: 1
     - duration: 120
-      arrivalRate: 5
-      rampTo: 20
+      arrivalRate: 1
+      rampTo: 3
     - duration: 600
-      arrivalRate: 30
+      arrivalRate: 1
 scenarios:
   - name: "Get scenarios on the front end"
     flow:
