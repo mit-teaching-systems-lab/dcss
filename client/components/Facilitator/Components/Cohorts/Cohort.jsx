@@ -194,6 +194,7 @@ export class Cohort extends React.Component {
                                         />
                                     }
                                 />
+                                {/*
                                 <Popup
                                     content="Run this cohort as a participant"
                                     trigger={
@@ -208,7 +209,6 @@ export class Cohort extends React.Component {
                                         />
                                     }
                                 />
-
                                 <Popup
                                     content="Download the data from this data table tab"
                                     trigger={
@@ -223,6 +223,7 @@ export class Cohort extends React.Component {
                                         />
                                     }
                                 />
+                            */}
                             </Menu>
                         </ConfirmAuth>
                         <CohortScenarios
