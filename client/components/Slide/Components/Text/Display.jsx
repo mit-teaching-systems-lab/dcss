@@ -1,10 +1,12 @@
 import { type } from './type';
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Text.css';
 
 const Display = ({ html: __html }) => (
     <React.Fragment>
         <div
+            className="richtext__container"
             dangerouslySetInnerHTML={{
                 __html
             }}
