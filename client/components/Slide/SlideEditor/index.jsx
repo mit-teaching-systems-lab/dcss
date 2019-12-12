@@ -30,16 +30,20 @@ export default class SlideEditor extends React.Component {
         this.clickHandlers = {};
         const mode = 'edit';
         const currentComponentIndex = 0;
+        const titleHasFocus = false;
         const { title = 'Slide', components = [] } = props;
         this.state = {
             components,
             currentComponentIndex,
             mode,
+            titleHasFocus,
             title
         };
 
         this.onChangeComponentOrder = this.onChangeComponentOrder.bind(this);
+        this.onTitleBlur = this.onTitleBlur.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
+        this.onTitleFocus = this.onTitleFocus.bind(this);
         this.onDeleteComponent = this.onDeleteComponent.bind(this);
         this.updateState = this.updateState.bind(this);
     }
@@ -128,11 +132,21 @@ export default class SlideEditor extends React.Component {
         this.setState({ title }, this.updateState);
     }
 
+    onTitleFocus() {
+        this.setState({ titleHasFocus: true });
+    }
+
+    onTitleBlur() {
+        this.setState({ titleHasFocus: false });
+    }
+
     render() {
         const {
             onChangeComponentOrder,
+            onTitleBlur,
             onTitleChange,
-            state: { title, components },
+            onTitleFocus,
+            state: { components, titleHasFocus, title },
             updateState
         } = this;
 
@@ -141,6 +155,11 @@ export default class SlideEditor extends React.Component {
         const showComponentDropdown =
             components.length === 0 ? { open: true } : {};
 
+        // Let other operations override the openness
+        // of the component menu.
+        if (titleHasFocus) {
+            showComponentDropdown.open = false;
+        }
         const slideComponentDropDown = (
             <Dropdown
                 {...showComponentDropdown}
@@ -192,6 +211,8 @@ export default class SlideEditor extends React.Component {
                                             labelPosition="left"
                                             value={title}
                                             onChange={onTitleChange}
+                                            onFocus={onTitleFocus}
+                                            onBlur={onTitleBlur}
                                         />
                                     </Menu.Item>
                                 ],
