@@ -2,6 +2,7 @@ import { type } from './type';
 export { type };
 export const defaultValue = ({ responseId }) => ({
     recallId: '',
+    header: '',
     required: true,
     responseId,
     type

@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Accordion, Checkbox, Container, Form, Icon } from 'semantic-ui-react';
+import {
+    Accordion,
+    Container,
+    Form,
+    Icon,
+    Message,
+    Popup
+} from 'semantic-ui-react';
 import { type } from './type';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './TextResponse.css';
@@ -10,14 +17,16 @@ class TextResponseEditor extends React.Component {
     constructor(props) {
         super(props);
         const {
+            header = '',
             prompt = 'Text Prompt (displayed before input field as label)',
-            placeholder = 'Placeholder Text',
+            placeholder = '',
             recallId = '',
             required,
             responseId = ''
         } = props.value;
         this.state = {
             activeIndex: recallId ? 0 : -1,
+            header,
             prompt,
             placeholder,
             recallId,
@@ -26,8 +35,6 @@ class TextResponseEditor extends React.Component {
         };
 
         this.onChange = this.onChange.bind(this);
-        this.onRequirementChange = this.onRequirementChange.bind(this);
-        this.onRecallChange = this.onRecallChange.bind(this);
         this.toggleOptional = this.toggleOptional.bind(this);
         this.updateState = this.updateState.bind(this);
     }
@@ -35,18 +42,13 @@ class TextResponseEditor extends React.Component {
     render() {
         const {
             activeIndex,
+            header,
             prompt,
             placeholder,
-            recallId,
-            required
+            recallId
         } = this.state;
         const { scenarioId } = this.props;
-        const {
-            onChange,
-            onRecallChange,
-            onRequirementChange,
-            toggleOptional
-        } = this;
+        const { onChange, onRecallChange, toggleOptional } = this;
         return (
             <Form>
                 <Container fluid>
@@ -84,11 +86,22 @@ class TextResponseEditor extends React.Component {
                         value={placeholder}
                         onChange={onChange}
                     />
-                    <Checkbox
-                        name="required"
-                        label="Required?"
-                        checked={required}
-                        onChange={onRequirementChange}
+                    <Message
+                        color={header ? 'grey' : 'pink'}
+                        content={
+                            <Popup
+                                content="Set a data header. This is only displayed in the data view and data download."
+                                trigger={
+                                    <Form.TextArea
+                                        required
+                                        label="Header"
+                                        name="header"
+                                        value={header}
+                                        onChange={onChange}
+                                    />
+                                }
+                            />
+                        }
                     />
                 </Container>
             </Form>
@@ -97,6 +110,7 @@ class TextResponseEditor extends React.Component {
 
     updateState() {
         const {
+            header,
             prompt,
             placeholder,
             recallId,
@@ -104,21 +118,18 @@ class TextResponseEditor extends React.Component {
             responseId
         } = this.state;
         this.props.onChange({
-            type,
+            header,
             prompt,
             placeholder,
             recallId,
             required,
-            responseId
+            responseId,
+            type
         });
     }
 
     onRecallChange({ recallId }) {
         this.setState({ recallId }, this.updateState);
-    }
-
-    onRequirementChange(event, { name, checked }) {
-        this.setState({ [name]: checked }, this.updateState);
     }
 
     onChange(event, { name, value }) {
@@ -138,6 +149,7 @@ TextResponseEditor.propTypes = {
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
         placeholder: PropTypes.string,
+        header: PropTypes.string,
         prompt: PropTypes.string,
         recallId: PropTypes.string,
         required: PropTypes.bool,

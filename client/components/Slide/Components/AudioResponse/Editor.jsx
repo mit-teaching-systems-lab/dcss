@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
     Accordion,
-    Checkbox,
     Container,
     Form,
     Icon,
     Input,
+    Label,
     Message,
     Popup
 } from 'semantic-ui-react';
@@ -18,35 +18,44 @@ import '@components/Slide/SlideEditor/SlideEditor.css';
 class AudioResponseEditor extends Component {
     constructor(props) {
         super(props);
-        const { prompt, recallId = '', required, responseId } = props.value;
+        const {
+            header = '',
+            prompt = '',
+            recallId = '',
+            required,
+            responseId
+        } = props.value;
         this.state = {
             activeIndex: recallId ? 0 : -1,
+            header,
             prompt,
             recallId,
             required,
             responseId
         };
-        this.onPromptChange = this.onPromptChange.bind(this);
-        this.onRequirementChange = this.onRequirementChange.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.onRecallChange = this.onRecallChange.bind(this);
         this.toggleOptional = this.toggleOptional.bind(this);
     }
 
     updateState() {
-        const { prompt, recallId, required, responseId } = this.state;
-        this.props.onChange({ prompt, recallId, required, responseId, type });
+        const { header, prompt, recallId, required, responseId } = this.state;
+        this.props.onChange({
+            header,
+            prompt,
+            recallId,
+            required,
+            responseId,
+            type
+        });
     }
 
-    onPromptChange(event, { value }) {
-        this.setState({ prompt: value }, this.updateState);
+    onChange(event, { name, value }) {
+        this.setState({ [name]: value }, this.updateState);
     }
 
     onRecallChange({ recallId }) {
         this.setState({ recallId }, this.updateState);
-    }
-
-    onRequirementChange(event, { checked }) {
-        this.setState({ required: checked }, this.updateState);
     }
 
     toggleOptional(event, { index }) {
@@ -57,14 +66,10 @@ class AudioResponseEditor extends Component {
     }
 
     render() {
-        const { activeIndex, prompt, recallId, required } = this.state;
+        const { activeIndex, header, prompt, recallId } = this.state;
         const { scenarioId } = this.props;
-        const {
-            onPromptChange,
-            onRecallChange,
-            onRequirementChange,
-            toggleOptional
-        } = this;
+        const { onChange, onRecallChange, toggleOptional } = this;
+
         return (
             <Form>
                 <Container fluid>
@@ -92,22 +97,38 @@ class AudioResponseEditor extends Component {
                     <Popup
                         content="This is the label that will appear on the Audio Prompt button."
                         trigger={
-                            <Input
-                                label="Audio Prompt:"
-                                name="prompt"
-                                value={prompt}
-                                onChange={onPromptChange}
-                            />
+                            <Form.Field inline>
+                                <Input
+                                    label="Audio Prompt:"
+                                    name="prompt"
+                                    value={prompt}
+                                    onChange={onChange}
+                                />
+                                <Label pointing="left">
+                                    This component will fallback to a text input
+                                    prompt when Audio recording is not
+                                    supported.
+                                </Label>
+                            </Form.Field>
                         }
                     />
 
-                    <Message content="Note: This component will fallback to a text input prompt when Audio recording is not supported." />
-
-                    <Checkbox
-                        name="required"
-                        label="Required?"
-                        checked={required}
-                        onChange={onRequirementChange}
+                    <Message
+                        color={header ? 'grey' : 'pink'}
+                        content={
+                            <Popup
+                                content="Set a data header. This is only displayed in the data view and data download."
+                                trigger={
+                                    <Form.TextArea
+                                        required
+                                        label="Header"
+                                        name="header"
+                                        value={header}
+                                        onChange={onChange}
+                                    />
+                                }
+                            />
+                        }
                     />
                 </Container>
             </Form>
@@ -119,6 +140,7 @@ AudioResponseEditor.propTypes = {
     onChange: PropTypes.func.isRequired,
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
+        header: PropTypes.string,
         prompt: PropTypes.string,
         recallId: PropTypes.string,
         required: PropTypes.bool,

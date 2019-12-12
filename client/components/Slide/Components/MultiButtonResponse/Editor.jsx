@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import {
     Accordion,
     Button,
-    Checkbox,
     Form,
     Icon,
     Input,
     List,
-    Menu
+    Menu,
+    Message,
+    Popup
 } from 'semantic-ui-react';
 import { type } from './type';
 import Sortable from 'react-sortablejs';
@@ -28,6 +29,7 @@ class MultiButtonResponseEditor extends React.Component {
                 }
                 */
             ],
+            header = '',
             prompt = '',
             recallId = '',
             required,
@@ -37,6 +39,7 @@ class MultiButtonResponseEditor extends React.Component {
         this.state = {
             activeIndex: recallId ? 0 : -1,
             buttons,
+            header,
             prompt,
             recallId,
             required,
@@ -46,34 +49,37 @@ class MultiButtonResponseEditor extends React.Component {
         this.onAddButton = this.onAddButton.bind(this);
         this.onChangeButtonDetail = this.onChangeButtonDetail.bind(this);
         this.onChangeButtonOrder = this.onChangeButtonOrder.bind(this);
-        this.onChangePrompt = this.onChangePrompt.bind(this);
+        this.onChange = this.onChange.bind(this);
         this.onDeleteButton = this.onDeleteButton.bind(this);
         this.onFocusButtonDetail = this.onFocusButtonDetail.bind(this);
         this.onRecallChange = this.onRecallChange.bind(this);
-        this.onRequirementChange = this.onRequirementChange.bind(this);
         this.toggleOptional = this.toggleOptional.bind(this);
 
         this.updateState = this.updateState.bind(this);
     }
 
     updateState() {
-        const { buttons, prompt, recallId, required, responseId } = this.state;
-        this.props.onChange({
-            type,
+        const {
             buttons,
+            header,
             prompt,
             recallId,
             required,
             responseId
+        } = this.state;
+        this.props.onChange({
+            buttons,
+            header,
+            prompt,
+            recallId,
+            required,
+            responseId,
+            type
         });
     }
 
     onRecallChange({ recallId }) {
         this.setState({ recallId }, this.updateState);
-    }
-
-    onRequirementChange(event, { name, checked }) {
-        this.setState({ [name]: checked }, this.updateState);
     }
 
     onAddButton() {
@@ -114,7 +120,7 @@ class MultiButtonResponseEditor extends React.Component {
         this.setState({ buttons }, this.updateState);
     }
 
-    onChangePrompt(event, { name, value }) {
+    onChange(event, { name, value }) {
         this.setState({ [name]: value }, this.updateState);
     }
 
@@ -138,16 +144,15 @@ class MultiButtonResponseEditor extends React.Component {
 
     render() {
         const { scenarioId } = this.props;
-        const { activeIndex, buttons, prompt, recallId, required } = this.state;
+        const { activeIndex, buttons, header, prompt, recallId } = this.state;
         const {
             onAddButton,
             onChangeButtonDetail,
             onChangeButtonOrder,
             onRecallChange,
-            onChangePrompt,
+            onChange,
             onDeleteButton,
             onFocusButtonDetail,
-            onRequirementChange,
             toggleOptional,
             updateState
         } = this;
@@ -179,7 +184,7 @@ class MultiButtonResponseEditor extends React.Component {
                     label="Prompt (displayed before buttons)"
                     name="prompt"
                     value={prompt}
-                    onChange={onChangePrompt}
+                    onChange={onChange}
                 />
                 <Button icon onClick={onAddButton}>
                     <Icon.Group size="large" style={{ marginRight: '0.5rem' }}>
@@ -250,11 +255,22 @@ class MultiButtonResponseEditor extends React.Component {
                         })}
                     </Sortable>
                 </List>
-                <Checkbox
-                    name="required"
-                    label="Required?"
-                    checked={required}
-                    onChange={onRequirementChange}
+                <Message
+                    color={header ? 'grey' : 'pink'}
+                    content={
+                        <Popup
+                            content="Set a data header. This is only displayed in the data view and data download."
+                            trigger={
+                                <Form.TextArea
+                                    required
+                                    label="Header"
+                                    name="header"
+                                    value={header}
+                                    onChange={onChange}
+                                />
+                            }
+                        />
+                    }
                 />
             </Form>
         );
@@ -266,6 +282,7 @@ MultiButtonResponseEditor.propTypes = {
     scenarioId: PropTypes.string,
     value: PropTypes.shape({
         buttons: PropTypes.array,
+        header: PropTypes.string,
         prompt: PropTypes.string,
         recallId: PropTypes.string,
         required: PropTypes.bool,

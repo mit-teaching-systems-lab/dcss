@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+    Checkbox,
     Dropdown,
     Grid,
     Icon,
@@ -138,6 +139,10 @@ export default class SlideEditor extends React.Component {
 
     onTitleBlur() {
         this.setState({ titleHasFocus: false });
+    }
+
+    onComponentRequirementChange(event, { checked }) {
+        this.setState({ required: checked }, this.updateState);
     }
 
     render() {
@@ -293,6 +298,38 @@ export default class SlideEditor extends React.Component {
                                         this,
                                         index
                                     );
+
+                                    const right = [];
+
+                                    if (value.responseId) {
+                                        const requiredCheckbox = (
+                                            <Menu.Item
+                                                key="menu-item-prompt-required"
+                                                name="Set this prompt to 'required'"
+                                            >
+                                                <Checkbox
+                                                    name="required"
+                                                    label="Required?"
+                                                    checked={value.required}
+                                                    onChange={(
+                                                        event,
+                                                        { checked }
+                                                    ) =>
+                                                        this.onComponentChange(
+                                                            index,
+                                                            {
+                                                                ...value,
+                                                                required: checked
+                                                            }
+                                                        )
+                                                    }
+                                                />
+                                            </Menu.Item>
+                                        );
+
+                                        right.push(requiredCheckbox);
+                                    }
+
                                     const componentMenu = (
                                         <EditorMenu
                                             type="component"
@@ -302,7 +339,8 @@ export default class SlideEditor extends React.Component {
                                                 },
                                                 delete: {
                                                     onConfirm: onDeleteComponentCurriedWithIndex
-                                                }
+                                                },
+                                                right
                                             }}
                                         />
                                     );

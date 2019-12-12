@@ -1,6 +1,7 @@
 import { type } from './type';
 export { type };
 export const defaultValue = ({ responseId }) => ({
+    header: '',
     prompt: 'Record your response',
     recallId: '',
     required: true,
