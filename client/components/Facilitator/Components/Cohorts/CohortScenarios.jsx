@@ -187,6 +187,7 @@ export class CohortScenarios extends React.Component {
                     role="grid"
                     aria-labelledby="header"
                     className="cohort__table--constraints"
+                    unstackable
                 >
                     <Table.Header className="cohort__table-thead-tbody-tr">
                         <Table.Row>

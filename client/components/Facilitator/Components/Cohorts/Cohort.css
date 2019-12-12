@@ -51,6 +51,12 @@
     text-overflow: ellipsis;
 }
 
+@media only screen and (max-width: 767px) {
+    .cohort__table-cell--description {
+        display: none !important;
+    }
+}
+
 .cohort__table--search {
     margin-left: 0.5rem !important;
 }
