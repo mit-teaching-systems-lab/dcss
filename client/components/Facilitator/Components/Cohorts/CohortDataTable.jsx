@@ -84,6 +84,7 @@ export class CohortDataTable extends React.Component {
                 response: ''
             },
             isScenarioDataTable: false,
+            initialRequestMade: false,
             prompts: [],
             responses: [],
             tables: []
@@ -108,6 +109,9 @@ export class CohortDataTable extends React.Component {
 
         if (scenarioId || participantId) {
             await this.refresh();
+            this.setState({
+                initialRequestMade: true
+            });
         }
     }
 
@@ -308,108 +312,113 @@ export class CohortDataTable extends React.Component {
     }
 
     render() {
-        const { detail, isScenarioDataTable, tables } = this.state;
+        const {
+            detail,
+            isScenarioDataTable,
+            initialRequestMade,
+            tables
+        } = this.state;
         const { source } = this.props;
         const { detailClose, onDataTableMenuClick } = this;
         const leftColHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
-        return (
+        return tables.length ? (
             <React.Fragment>
                 <CohortDataTableMenu
                     source={source}
                     onClick={onDataTableMenuClick}
                 />
-                {tables.length ? (
-                    <React.Fragment>
-                        {tables.map(({ headers, rows }, index) => {
-                            const tableKeyBase = `data-table-${index}`;
-                            return (
-                                <div
-                                    key={`${tableKeyBase}-container`}
-                                    className="cohortdatatable__scroll"
-                                >
-                                    <Table
-                                        key={`${tableKeyBase}-table`}
-                                        celled
-                                        striped
-                                        selectable
-                                        role="grid"
-                                    >
-                                        <Table.Header>
-                                            <Table.Row>
-                                                <Table.HeaderCell scope="col" />
-                                                <Table.HeaderCell
-                                                    scope="col"
-                                                    colSpan={headers.length}
-                                                >
-                                                    Prompts & Responses
-                                                </Table.HeaderCell>
-                                            </Table.Row>
-                                            <Table.Row>
-                                                <Table.HeaderCell scope="col">
-                                                    {leftColHeader}
-                                                </Table.HeaderCell>
-                                                {headers.map(
-                                                    ({ prompt }, index) => {
-                                                        return (
-                                                            <Table.HeaderCell
-                                                                key={`${tableKeyBase}-prompt-${index}`}
-                                                                scope="col"
-                                                            >
-                                                                {prompt}
-                                                            </Table.HeaderCell>
-                                                        );
-                                                    }
-                                                )}
-                                            </Table.Row>
-                                        </Table.Header>
-                                        <Table.Body>
-                                            {rows.map((cells, index) => {
-                                                const key = `${tableKeyBase}-row-${index}`;
-                                                return (
-                                                    <CohortDataTableRow
-                                                        {...this}
-                                                        headers={headers}
-                                                        cells={cells}
-                                                        rowKey={key}
-                                                        key={key}
-                                                    />
-                                                );
-                                            })}
-                                        </Table.Body>
-                                    </Table>
-                                </div>
-                            );
-                        })}
-                        <Modal
-                            closeIcon
-                            key="detail-modal"
-                            onClose={detailClose}
-                            open={detail.open}
-                            size="tiny"
+                {tables.map(({ headers, rows }, index) => {
+                    const tableKeyBase = `data-table-${index}`;
+                    return (
+                        <div
+                            key={`${tableKeyBase}-container`}
+                            className="cohortdatatable__scroll"
                         >
-                            <Modal.Header>
-                                Prompt & Response from{' '}
-                                <code>{detail.subject}</code>
-                            </Modal.Header>
-                            <Modal.Content scrolling>
-                                <Modal.Description>
-                                    <Header>{detail.prompt}</Header>
-                                    <p>{detail.response}</p>
-                                </Modal.Description>
-                            </Modal.Content>
-                            <Modal.Actions />
-                        </Modal>
+                            <Table
+                                key={`${tableKeyBase}-table`}
+                                celled
+                                striped
+                                selectable
+                                role="grid"
+                            >
+                                <Table.Header>
+                                    <Table.Row>
+                                        <Table.HeaderCell scope="col" />
+                                        <Table.HeaderCell
+                                            scope="col"
+                                            colSpan={headers.length}
+                                        >
+                                            Prompts & Responses
+                                        </Table.HeaderCell>
+                                    </Table.Row>
+                                    <Table.Row>
+                                        <Table.HeaderCell scope="col">
+                                            {leftColHeader}
+                                        </Table.HeaderCell>
+                                        {headers.map(({ prompt }, index) => {
+                                            return (
+                                                <Table.HeaderCell
+                                                    key={`${tableKeyBase}-prompt-${index}`}
+                                                    scope="col"
+                                                >
+                                                    {prompt}
+                                                </Table.HeaderCell>
+                                            );
+                                        })}
+                                    </Table.Row>
+                                </Table.Header>
+                                <Table.Body>
+                                    {rows.map((cells, index) => {
+                                        const key = `${tableKeyBase}-row-${index}`;
+                                        return (
+                                            <CohortDataTableRow
+                                                {...this}
+                                                headers={headers}
+                                                cells={cells}
+                                                rowKey={key}
+                                                key={key}
+                                            />
+                                        );
+                                    })}
+                                </Table.Body>
+                            </Table>
+                        </div>
+                    );
+                })}
+                <Modal
+                    closeIcon
+                    key="detail-modal"
+                    onClose={detailClose}
+                    open={detail.open}
+                    size="tiny"
+                >
+                    <Modal.Header>
+                        Prompt & Response from <code>{detail.subject}</code>
+                    </Modal.Header>
+                    <Modal.Content scrolling>
+                        <Modal.Description>
+                            <Header>{detail.prompt}</Header>
+                            <p>{detail.response}</p>
+                        </Modal.Description>
+                    </Modal.Content>
+                    <Modal.Actions />
+                </Modal>
+            </React.Fragment>
+        ) : (
+            <Segment>
+                {initialRequestMade ? (
+                    <React.Fragment>
+                        There is currently no data to display here.
                     </React.Fragment>
                 ) : (
-                    <Segment>
+                    <React.Fragment>
                         <Dimmer active>
                             <Loader />
                         </Dimmer>
-
                         <Image src="/images/wireframe/short-paragraph.png" />
-                    </Segment>
+                    </React.Fragment>
                 )}
-            </React.Fragment>
+            </Segment>
         );
     }
 }
