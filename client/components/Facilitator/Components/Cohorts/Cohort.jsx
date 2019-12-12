@@ -46,12 +46,25 @@ export class Cohort extends React.Component {
             }
         }
 
+        this.persistenceKey = `cohort/${id}`;
+        let cohortPersisted = JSON.parse(storage.getItem(this.persistenceKey));
+
+        if (!cohortPersisted) {
+            cohortPersisted = { activeTabKey: 'cohort', tabs: [] };
+            storage.setItem(
+                this.persistenceKey,
+                JSON.stringify(cohortPersisted)
+            );
+        }
+
+        const { activeTabKey = 'cohort', tabs = [] } = cohortPersisted;
+
         this.state = {
-            activeTabKey: 'cohort',
+            activeTabKey,
             cohort: {
                 id
             },
-            tabs: []
+            tabs
         };
 
         this.onClick = this.onClick.bind(this);
@@ -152,6 +165,9 @@ export class Cohort extends React.Component {
         const currentUserInCohort = cohort.users.find(cohortMember => {
             return cohortMember.username === username;
         });
+
+        // Everytime there is a render, save the state.
+        storage.setItem(this.persistenceKey, JSON.stringify(this.state));
 
         return (
             <div>
