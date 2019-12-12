@@ -8461,24 +8461,24 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
-nib-converter@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/nib-converter/-/nib-converter-2.2.5.tgz#531470a65d30b3033afeba9a8d40170730950778"
-  integrity sha512-D0ejm2I7dLWs5MEQ4gQUt600R72Y4CbAd1vVYzUV5iqGPbxzAPkcCb99uvwDAE7dADd40mUqKhj7C3FeoLsNjQ==
+nib-converter@^2.2.9:
+  version "2.2.9"
+  resolved "https://registry.yarnpkg.com/nib-converter/-/nib-converter-2.2.9.tgz#40e70ebcfc82113c3deedc8ee382d7a4de334ea6"
+  integrity sha512-KB2UnhasCmNi9z1OhEd7CIBwfYva6ikaf/plxfgYElyhlMebDFnoGnHmPfB17+ds0BNrnorxZHGf22x1gl6FOQ==
   dependencies:
-    nib-schema "^2.2.5"
+    nib-schema "^2.2.7"
     prosemirror-model "^1.0.0"
 
-nib-core@^2.3.8:
-  version "2.3.8"
-  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.3.8.tgz#0ea26fd0e4d1dff6b834c7b461ddc381f9ab872d"
-  integrity sha512-WXc4GXsXvdLCqa7bsOZhBntQiGPYMxNf7U88jrWHyUw68EJe3T3VRccbrrfjH5Hos85SI2lv26OeuaQT/udlYw==
+nib-core@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/nib-core/-/nib-core-2.3.9.tgz#e81de06b0d7e80c0a53ffd2dc53872d9da79e82c"
+  integrity sha512-XsJZhEzYgH266QrlQf3rwPbEHEon8IW35RUvMGvA06e+mwPy1TOnp/7Mf4cwUyBgsIs6BRG5jF2ulvQ5HDS5Vg==
   dependencies:
     "@emotion/core" "^10.0.14"
     "@emotion/styled" "^10.0.14"
     emotion-theming "^10.0.14"
     nib-embed "2.1.6"
-    nib-schema "2.2.6"
+    nib-schema "2.2.7"
     nib-ui "2.3.2"
     nib-upload "2.1.6"
     prosemirror-commands "^1.0.7"
@@ -8498,10 +8498,10 @@ nib-embed@2.1.6:
   dependencies:
     axios "^0.19.0"
 
-nib-schema@2.2.6, nib-schema@^2.2.5:
-  version "2.2.6"
-  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-2.2.6.tgz#9381af38c686d694e66ed129261e21fe12124043"
-  integrity sha512-PADSJD8HdR+gsy1irV0ZfkUHXah+YAHvUPQSVbZfP4wWlT1lEtqCp0+QBrdN0TivH5QMOOyH7eoMiakKFPfK5w==
+nib-schema@2.2.7, nib-schema@^2.2.7:
+  version "2.2.7"
+  resolved "https://registry.yarnpkg.com/nib-schema/-/nib-schema-2.2.7.tgz#f39e827a1edc74aafd8dae2d3e2ea6ec6914e90f"
+  integrity sha512-+4JEed3vYjPQiOaseD7U7guzRpShN111qmTI4HPz1tiNIMRrT9uKRMVFQcUyLfSczFKum7owffiVbCLaLbQhFw==
   dependencies:
     prosemirror-tables "^0.8.1"
 

@@ -4,6 +4,16 @@ import Editor from 'nib-core';
 import { convertFromHTML, convertToHTML } from 'nib-converter';
 import { type } from './type';
 
+function nodeVisitor(node, nodeVisitorCallback) {
+    const { type, content } = node;
+    nodeVisitorCallback(node);
+    if (type && content) {
+        for (const node of content) {
+            nodeVisitor(node, nodeVisitorCallback);
+        }
+    }
+}
+
 class TextEditor extends React.Component {
     constructor(props) {
         super(props);
@@ -45,10 +55,12 @@ class TextEditor extends React.Component {
     onChange(defaultValue) {
         this.setState({ defaultValue });
         if (this.props.onChange) {
-            const html = convertToHTML(defaultValue.doc).replace(
-                /<p><\/p>/g,
-                '<br>'
-            );
+            nodeVisitor(defaultValue.doc, node => {
+                if (node.type === 'image' && !node.attrs.alt) {
+                    node.attrs.alt = prompt('Image description required:');
+                }
+            });
+            const html = convertToHTML(defaultValue.doc);
             this.props.onChange({
                 type,
                 html
