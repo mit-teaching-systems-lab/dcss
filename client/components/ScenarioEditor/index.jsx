@@ -126,7 +126,7 @@ class ScenarioEditor extends Component {
 
     async onSubmit() {
         const {
-            categories,
+            categories = [],
             consent,
             description,
             finish,

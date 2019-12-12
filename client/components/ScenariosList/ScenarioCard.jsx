@@ -48,7 +48,7 @@ class ScenarioCard extends React.Component {
         const { isLoggedIn } = this.props;
         const { scenario } = this.state;
         const {
-            categories,
+            categories = [],
             id,
             description,
             deleted_at,
