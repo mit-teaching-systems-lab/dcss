@@ -58,8 +58,7 @@ VALUES
 ---
 -- Down below
 DELETE FROM role_permission
-WHERE 1=1
-OR permission = 'create_cohort'
+WHERE permission = 'create_cohort'
 OR permission = 'edit_all_cohorts'
 OR permission = 'edit_own_cohorts'
 OR permission = 'view_all_cohorts'

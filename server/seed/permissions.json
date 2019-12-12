@@ -1,6 +1,0 @@
-{
-    "create_scenario": ["super_admin", "admin", "researcher", "facilitator"],
-    "edit_scenario": ["super_admin", "admin"],
-    "edit_permissions": ["super_admin", "admin"],
-    "view_run_data": ["super_admin", "admin", "researcher", "facilitator"]
-}
