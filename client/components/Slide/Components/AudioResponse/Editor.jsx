@@ -121,7 +121,7 @@ class AudioResponseEditor extends Component {
                                 trigger={
                                     <Form.TextArea
                                         required
-                                        label="Header"
+                                        label="Data Header"
                                         name="header"
                                         value={header}
                                         onChange={onChange}
