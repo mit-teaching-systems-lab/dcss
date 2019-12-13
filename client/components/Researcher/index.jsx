@@ -59,7 +59,7 @@ class Researcher extends Component {
     }
 
     render() {
-        let momentOptions =
+        let options =
             (this.props.scenarios &&
                 this.props.scenarios.map(({ id, title }) => ({
                     key: id,
@@ -71,11 +71,11 @@ class Researcher extends Component {
             <Grid columns={2}>
                 <Grid.Column width={12}>
                     <Dropdown
-                        placeholder="Select Moment"
+                        placeholder="Select a Scenario"
                         fluid
                         search
                         selection
-                        options={momentOptions}
+                        options={options}
                         onChange={this.onSelectScenario}
                     />
                 </Grid.Column>

@@ -138,7 +138,7 @@ class ScenarioEditor extends Component {
 
         if (!title || !description) {
             updateEditorMessage(
-                'A title and description are required for Teacher Moments'
+                'A title and description are required for saving scenarios'
             );
             return;
         }

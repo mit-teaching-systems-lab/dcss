@@ -49,14 +49,14 @@ class ScenariosList extends Component {
         switch (category) {
             case 'all':
                 filteredScenarios = this.props.scenarios;
-                listHeading = 'All Teacher Moments';
+                listHeading = 'All Scenarios';
                 break;
             case 'author':
                 authorUsername = this.props.match.params.username;
                 // Currently we're only showing author views for the current user
                 if (this.props.username !== authorUsername) return;
 
-                listHeading = ` Teacher Moments by ${changeCase.titleCase(
+                listHeading = ` Scenarios by ${changeCase.titleCase(
                     authorUsername
                 )}`;
                 filteredScenarios = this.props.scenarios.filter(
@@ -72,9 +72,7 @@ class ScenariosList extends Component {
                         return !category || categories.includes(category);
                     }
                 );
-                listHeading = `${changeCase.titleCase(
-                    category
-                )} Teacher Moments`;
+                listHeading = `${changeCase.titleCase(category)} Scenarios`;
                 break;
             case 'continue':
                 // eslint-disable-next-line no-case-declarations
@@ -83,8 +81,8 @@ class ScenariosList extends Component {
                 )).json();
                 filteredScenarios = scenarios;
                 listHeading = filteredScenarios.length
-                    ? 'In-progress and Completed Teacher Moments'
-                    : 'No Teacher Moments Completed Yet';
+                    ? 'In-progress and Completed Scenarios'
+                    : 'No Scenarios Completed Yet';
                 break;
         }
 

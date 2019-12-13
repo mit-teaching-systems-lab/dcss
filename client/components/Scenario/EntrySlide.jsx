@@ -60,7 +60,7 @@ class EntrySlide extends React.Component {
                             size="large"
                             color="olive"
                             header="In Progress"
-                            content="This Teacher Moment is currently in progress"
+                            content="This scenario is currently in progress"
                         />
                     )}
                     {consent && (

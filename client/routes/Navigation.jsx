@@ -11,7 +11,7 @@ Session.timeout();
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
     {
-        text: 'Create a Moment',
+        text: 'Create a Scenario',
         path: '/editor/new',
         permission: 'create_scenario'
     },
@@ -80,7 +80,7 @@ const Navigation = () => {
                         <Dropdown
                             simple
                             item
-                            text={<NavLink to="/">Moments</NavLink>}
+                            text={<NavLink to="/scenarios/">Scenarios</NavLink>}
                         >
                             <Dropdown.Menu>
                                 {Session.isSessionActive() && (
@@ -89,25 +89,29 @@ const Navigation = () => {
                                             <Dropdown.Item>
                                                 <NavLink
                                                     to={{
-                                                        pathname: `/author/${username}`
+                                                        pathname: `/scenarios/author/${username}`
                                                     }}
                                                 >
-                                                    My Moments
+                                                    My Scenarios
                                                 </NavLink>
                                             </Dropdown.Item>
                                         </ConfirmAuth>
                                         <Dropdown.Item>
-                                            <NavLink to="/continue">
-                                                Continue Moments
+                                            <NavLink to="/scenarios/continue">
+                                                Continue Scenarios
                                             </NavLink>
                                         </Dropdown.Item>
                                     </React.Fragment>
                                 )}
                                 <Dropdown.Item>
-                                    <NavLink to="/official">Official</NavLink>
+                                    <NavLink to="/scenarios/official">
+                                        Official
+                                    </NavLink>
                                 </Dropdown.Item>
                                 <Dropdown.Item>
-                                    <NavLink to="/community">Community</NavLink>
+                                    <NavLink to="/scenarios/community">
+                                        Community
+                                    </NavLink>
                                 </Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>

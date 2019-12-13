@@ -35,14 +35,27 @@ const Routes = () => {
     return (
         <Switch>
             <Route exact path="/" component={ScenariosListAll} />
+            <Route exact path="/scenarios/" component={ScenariosListAll} />
             <Route
                 exact
-                path="/author/:username"
+                path="/scenarios/author/:username"
                 component={ScenariosListAuthor}
             />
-            <Route exact path="/continue" component={ScenariosListContinue} />
-            <Route exact path="/official" component={ScenariosListOfficial} />
-            <Route exact path="/community" component={ScenariosListCommunity} />
+            <Route
+                exact
+                path="/scenarios/continue"
+                component={ScenariosListContinue}
+            />
+            <Route
+                exact
+                path="/scenarios/official"
+                component={ScenariosListOfficial}
+            />
+            <Route
+                exact
+                path="/scenarios/community"
+                component={ScenariosListCommunity}
+            />
             <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeSlideIndex">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>
