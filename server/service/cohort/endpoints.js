@@ -21,7 +21,7 @@ exports.getMyCohorts = asyncMiddleware(async function getMyCohorts(req, res) {
     res.json({ cohorts });
 });
 
-exports.linkCohortToRun = asyncMiddleware(async function joinCohortAsync(
+exports.linkCohortToRun = asyncMiddleware(async function linkCohortToRunAsync(
     req,
     res
 ) {
@@ -102,7 +102,10 @@ async function getScenarioPrompts(scenario_id) {
             accum.push(
                 ...slide.components.reduce((accum, component) => {
                     if (component.responseId) {
-                        accum.push(component);
+                        accum.push({
+                            slide,
+                            ...component
+                        });
                     }
                     return accum;
                 }, [])

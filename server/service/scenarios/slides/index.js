@@ -4,7 +4,7 @@ const { validateRequestBody } = require('../../../util/requestValidation');
 const slides = new Router();
 const {
     getSlides,
-    getSlidesResponseComponents,
+    getSlidesPromptComponents,
     addSlide,
     orderSlides,
     updateSlide,
@@ -14,7 +14,7 @@ const {
 
 slides.get('/', getSlides);
 slides.post('/', [validateRequestBody, setAllSlides]);
-slides.get('/response-components', getSlidesResponseComponents);
+slides.get('/response-components', getSlidesPromptComponents);
 slides.put('/', [validateRequestBody, addSlide]);
 slides.post('/order', [validateRequestBody, orderSlides]);
 slides.post('/:slide_id', [validateRequestBody, updateSlide]);

@@ -9,7 +9,7 @@ exports.getSlides = asyncMiddleware(async (req, res) => {
     res.json({ slides, status: 200 });
 });
 
-exports.getSlidesResponseComponents = asyncMiddleware(async (req, res) => {
+exports.getSlidesPromptComponents = asyncMiddleware(async (req, res) => {
     const { id } = reqScenario(req);
     const slides = await db.getSlidesForScenario(id);
     const components = slides.reduce((accum, slide) => {

@@ -4,7 +4,8 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import {
     Dimmer,
-    Header,
+    Grid,
+    Icon,
     Image,
     Loader,
     Modal,
@@ -12,8 +13,10 @@ import {
     Table
 } from 'semantic-ui-react';
 import { diff } from 'deep-diff';
+import Moment from 'react-moment';
 import { getCohort, getCohortData } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
+import ContentSlide from '@components/Scenario/ContentSlide';
 import CohortDataTableMenu from './CohortDataTableMenu';
 import './CohortDataTable.css';
 
@@ -22,35 +25,33 @@ function isAudioFile(input) {
 }
 
 function reduceResponses(key, responses) {
-    const responsesReduced = responses.reduce(
-        (
-            accum,
-            { [key]: property, value, transcript = '', is_skip, response_id }
-        ) => {
-            const audio = { value, transcript };
-            const content = isAudioFile(value) ? audio : value;
-            const response = is_skip ? '(skipped)' : content;
+    const responsesReduced = responses.reduce((accum, response) => {
+        const {
+            [key]: property,
+            value,
+            transcript = '',
+            is_skip,
+            response_id
+        } = response;
+        response.content = is_skip ? '(skipped)' : transcript || value;
 
-            if (!accum[property]) {
-                accum[property] = { [response_id]: response };
-            } else {
-                // For now we limit to limit to most recent responses.
-                if (!accum[property][response_id]) {
-                    accum[property][response_id] = response;
-                }
+        if (!accum[property]) {
+            accum[property] = { [response_id]: response };
+        } else {
+            // For now we limit to limit to most recent responses.
+            if (!accum[property][response_id]) {
+                accum[property][response_id] = response;
             }
-            return accum;
-        },
-        {}
-    );
+        }
+        return accum;
+    }, {});
 
     return responsesReduced;
 }
 
-function makeHeader(header, prompts) {
-    const { buttons, prompt, responseId, recallId, required } = header;
-
-    const parentheticals = [responseId];
+function makeHeader(props, prompts) {
+    const { buttons, header, prompt, recallId, required } = props || {};
+    const parentheticals = [];
 
     if (required) {
         parentheticals.push('Required');
@@ -69,7 +70,15 @@ function makeHeader(header, prompts) {
         );
     }
 
-    return `"${prompt} (${parentheticals.join(', ')})"`;
+    if (!header) {
+        return `${prompt} (${parentheticals.join(', ')})`;
+    } else {
+        return `${header} (${parentheticals.join(', ')})`;
+    }
+}
+
+function escapeCSV(input) {
+    return input.replace(/(\r\n|\n|\r)/gm, ' ').replace(/"/gm, '""');
 }
 
 export class CohortDataTable extends React.Component {
@@ -91,8 +100,6 @@ export class CohortDataTable extends React.Component {
         };
 
         this.refreshInterval = null;
-        this.detailOpen = this.detailOpen.bind(this);
-        this.detailClose = this.detailClose.bind(this);
         this.refresh = this.refresh.bind(this);
         this.onDataTableMenuClick = this.onDataTableMenuClick.bind(this);
     }
@@ -150,7 +157,7 @@ export class CohortDataTable extends React.Component {
                 }
             }
 
-            tables.push({ headers: prompts, rows });
+            tables.push({ prompts, rows });
         } else {
             /*
 
@@ -180,7 +187,7 @@ export class CohortDataTable extends React.Component {
                     }
 
                     tables.push({
-                        headers,
+                        prompts: headers,
                         rows
                     });
                 }
@@ -217,32 +224,6 @@ export class CohortDataTable extends React.Component {
         this.setState(newState);
     }
 
-    detailClose() {
-        const {
-            detail: { subject, prompt, response }
-        } = this.state;
-
-        this.setState({
-            detail: {
-                open: false,
-                subject,
-                prompt,
-                response
-            }
-        });
-    }
-
-    detailOpen(event, { subject, prompt, response }) {
-        this.setState({
-            detail: {
-                open: true,
-                subject,
-                prompt,
-                response
-            }
-        });
-    }
-
     download() {
         const {
             cohort: { users },
@@ -252,7 +233,7 @@ export class CohortDataTable extends React.Component {
 
         const { isScenarioDataTable, tables } = this.state;
 
-        tables.forEach(({ headers, rows }) => {
+        tables.forEach(({ prompts, rows }) => {
             const subject = isScenarioDataTable
                 ? scenarios.find(scenario => scenario.id === scenarioId).title
                 : users.find(user => user.id === participantId).username;
@@ -263,20 +244,27 @@ export class CohortDataTable extends React.Component {
 
             const subjectAndPrompts = [
                 `"${leftColumnHeader}"`,
-                ...headers.map(header => makeHeader(header, headers))
+                ...prompts.map(
+                    prompt => `"${escapeCSV(makeHeader(prompt, prompts))}"`
+                )
             ].join(',');
 
             let csv = `${subjectAndPrompts}\n`;
 
             rows.forEach(row => {
-                const prepared = row.map((response = '') => {
-                    if (typeof response === 'object') {
-                        return `${location.origin}/api/media/${response.value} (Transcript: '${response.transcript}')`;
+                const prepared = row.map(data => {
+                    if (typeof data === 'string') {
+                        return `"${data}"`;
                     }
 
-                    const formatted = response
-                        .replace(/(\r\n|\n|\r)/gm, ' ')
-                        .replace(/"/gm, '""');
+                    const response = data || {};
+                    const isAudioContent = isAudioFile(response.value);
+                    let { content = '' } = response;
+
+                    if (isAudioContent) {
+                        content += ` (${location.origin}/api/media/${response.value})`;
+                    }
+                    const formatted = escapeCSV(content);
 
                     return `"${formatted}"`;
                 });
@@ -312,14 +300,9 @@ export class CohortDataTable extends React.Component {
     }
 
     render() {
-        const {
-            detail,
-            isScenarioDataTable,
-            initialRequestMade,
-            tables
-        } = this.state;
+        const { isScenarioDataTable, initialRequestMade, tables } = this.state;
         const { source } = this.props;
-        const { detailClose, onDataTableMenuClick } = this;
+        const { onDataTableMenuClick } = this;
         const leftColHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
         return tables.length ? (
             <React.Fragment>
@@ -327,7 +310,7 @@ export class CohortDataTable extends React.Component {
                     source={source}
                     onClick={onDataTableMenuClick}
                 />
-                {tables.map(({ headers, rows }, index) => {
+                {tables.map(({ prompts, rows }, index) => {
                     const tableKeyBase = `data-table-${index}`;
                     return (
                         <div
@@ -337,34 +320,27 @@ export class CohortDataTable extends React.Component {
                             <Table
                                 key={`${tableKeyBase}-table`}
                                 celled
+                                fixed
                                 striped
                                 selectable
                                 role="grid"
                             >
                                 <Table.Header>
                                     <Table.Row>
-                                        <Table.HeaderCell scope="col" />
-                                        <Table.HeaderCell
-                                            scope="col"
-                                            colSpan={headers.length}
-                                        >
-                                            Prompts & Responses
-                                        </Table.HeaderCell>
-                                    </Table.Row>
-                                    <Table.Row>
                                         <Table.HeaderCell scope="col">
                                             {leftColHeader}
                                         </Table.HeaderCell>
-                                        {headers.map(({ prompt }, index) => {
-                                            return (
+                                        {prompts.map(
+                                            ({ header, prompt }, index) => (
                                                 <Table.HeaderCell
                                                     key={`${tableKeyBase}-prompt-${index}`}
                                                     scope="col"
                                                 >
-                                                    {prompt}
+                                                    {header ||
+                                                        `Prompt: "${prompt}"`}
                                                 </Table.HeaderCell>
-                                            );
-                                        })}
+                                            )
+                                        )}
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
@@ -372,10 +348,14 @@ export class CohortDataTable extends React.Component {
                                         const key = `${tableKeyBase}-row-${index}`;
                                         return (
                                             <CohortDataTableRow
-                                                {...this}
-                                                headers={headers}
+                                                isScenarioDataTable={
+                                                    isScenarioDataTable
+                                                }
+                                                prompts={prompts}
                                                 cells={cells}
+                                                rows={rows}
                                                 rowKey={key}
+                                                rowIndex={index}
                                                 key={key}
                                             />
                                         );
@@ -385,24 +365,6 @@ export class CohortDataTable extends React.Component {
                         </div>
                     );
                 })}
-                <Modal
-                    closeIcon
-                    key="detail-modal"
-                    onClose={detailClose}
-                    open={detail.open}
-                    size="tiny"
-                >
-                    <Modal.Header>
-                        Prompt & Response from <code>{detail.subject}</code>
-                    </Modal.Header>
-                    <Modal.Content scrolling>
-                        <Modal.Description>
-                            <Header>{detail.prompt}</Header>
-                            <p>{detail.response}</p>
-                        </Modal.Description>
-                    </Modal.Content>
-                    <Modal.Actions />
-                </Modal>
             </React.Fragment>
         ) : (
             <Segment>
@@ -424,73 +386,194 @@ export class CohortDataTable extends React.Component {
 }
 
 const CohortDataTableRow = props => {
-    const { cells, detailOpen, headers, rowKey } = props;
+    const { cells, rowKey } = props;
     const subject = cells[0] || '';
     return (
         <Table.Row>
-            <Table.HeaderCell>{subject}</Table.HeaderCell>
+            <Table.HeaderCell verticalAlign="top">{subject}</Table.HeaderCell>
 
-            {cells.slice(1).map((response = '', index) => {
-                const cellKey = `${rowKey}-cell-${index}`;
+            {cells.slice(1).map((response = {}, cellIndex) => {
+                const cellKey = `${rowKey}-cell-${cellIndex}`;
+                const modalKey = `${rowKey}-modal-${cellIndex}`;
+                const isAudioContent = isAudioFile(response.value);
+                const { content = '' } = response;
 
-                const audio =
-                    typeof response === 'object' ? response.value : response;
-
-                const isAudioContent = isAudioFile(audio);
-
+                // microphone
                 const display = isAudioContent ? (
                     <React.Fragment>
-                        <audio
-                            src={`/api/media/${response.value}`}
-                            controls="controls"
-                        />
-                        {response.transcript
-                            ? `Transcript: "${response.transcript}"`
-                            : ''}
+                        {content ? (
+                            content
+                        ) : (
+                            <audio
+                                src={`/api/media/${response.value}`}
+                                controls="controls"
+                            />
+                        )}
+                        <Icon name="microphone" />
                     </React.Fragment>
                 ) : (
-                    response
+                    content
                 );
 
-                const className = !response
+                const className = !content
                     ? 'cohortdatatable__cell-data-missing'
                     : '';
-                const name = 'detail';
-                const onCellClick = event =>
-                    detailOpen(event, {
-                        name,
-                        subject,
-                        prompt: headers[index].prompt,
-                        response: display
-                    });
 
                 return (
-                    <Table.Cell
-                        className={className}
-                        key={cellKey}
-                        name="cell"
-                        onClick={onCellClick}
-                        style={{
-                            cursor: 'pointer'
-                        }}
-                    >
-                        {display}
-                    </Table.Cell>
+                    <CohortDataModal
+                        {...props}
+                        index={cellIndex}
+                        key={modalKey}
+                        trigger={
+                            <Table.Cell
+                                className={className}
+                                key={cellKey}
+                                name="cell"
+                                style={{
+                                    cursor: 'pointer'
+                                }}
+                                verticalAlign="top"
+                            >
+                                <p>{display}</p>
+
+                                {display && (
+                                    <Moment
+                                        duration={response.created_at}
+                                        date={response.ended_at}
+                                        style={{
+                                            color: 'grey'
+                                        }}
+                                    />
+                                )}
+                            </Table.Cell>
+                        }
+                    ></CohortDataModal>
                 );
             })}
         </Table.Row>
     );
 };
 
-CohortDataTableRow.propTypes = {
+const CohortDataModal = props => {
+    const { index, prompts, rows } = props;
+    const component = prompts[index];
+    const { header, prompt, slide } = component;
+
+    return (
+        <Modal
+            trigger={props.trigger}
+            size="fullscreen"
+            className="cohortdatatablemodal__view"
+            closeIcon
+        >
+            <Modal.Header>Responses In Context</Modal.Header>
+
+            <Modal.Content className="cohortdatatablemodal__scroll">
+                <Grid columns={2} className="cohortdatatablemodal__grid-nowrap">
+                    <Grid.Column className="cohortdatatable__scroll gridcolumn__first-child--sticky">
+                        <ContentSlide
+                            slide={slide}
+                            isLastSlide={false}
+                            onClickBack={() => {}}
+                            onClickNext={() => {}}
+                            onResponseChange={() => {}}
+                        />
+                    </Grid.Column>
+                    <Grid.Column className="cohortdatatable__scroll">
+                        <Table celled striped selectable role="grid">
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell scope="col" colSpan={2}>
+                                        {header || `Prompt: "${prompt}"`}
+                                    </Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {rows.map((row, rowIndex) => {
+                                    let {
+                                        0: left = '',
+                                        [index + 1]: response = {}
+                                    } = row;
+                                    const isAudioContent = isAudioFile(
+                                        response.value
+                                    );
+                                    const { content = '' } = response;
+                                    const display = isAudioContent ? (
+                                        <React.Fragment>
+                                            {content ? (
+                                                content
+                                            ) : (
+                                                <audio
+                                                    src={`/api/media/${response.value}`}
+                                                    controls="controls"
+                                                />
+                                            )}
+                                            <Icon name="microphone" />
+                                        </React.Fragment>
+                                    ) : (
+                                        content
+                                    );
+
+                                    return (
+                                        <Table.Row
+                                            key={`modal-${slide.id}-${rowIndex}`}
+                                        >
+                                            <Table.HeaderCell verticalAlign="top">
+                                                {left}
+                                            </Table.HeaderCell>
+                                            <Table.Cell>
+                                                <p>{display}</p>
+
+                                                {display && (
+                                                    <Moment
+                                                        duration={
+                                                            response.created_at
+                                                        }
+                                                        date={response.ended_at}
+                                                        style={{
+                                                            color: 'grey'
+                                                        }}
+                                                    />
+                                                )}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    );
+                                })}
+                            </Table.Body>
+                        </Table>
+                    </Grid.Column>
+                </Grid>
+            </Modal.Content>
+        </Modal>
+    );
+};
+
+CohortDataModal.propTypes = {
+    isScenarioDataTable: PropTypes.bool,
     cells: PropTypes.array,
-    detailOpen: PropTypes.func,
+    onClick: PropTypes.func,
     headers: PropTypes.array,
+    index: PropTypes.number,
+    prompts: PropTypes.array,
+    rows: PropTypes.array,
+    rowKey: PropTypes.string,
+    state: PropTypes.object,
+    trigger: PropTypes.node
+};
+
+CohortDataTableRow.propTypes = {
+    isScenarioDataTable: PropTypes.bool,
+    cells: PropTypes.array,
+    onClick: PropTypes.func,
+    headers: PropTypes.array,
+    prompts: PropTypes.array,
+    rows: PropTypes.array,
     rowKey: PropTypes.string,
     state: PropTypes.object
 };
 
 CohortDataTable.propTypes = {
+    isScenarioDataTable: PropTypes.bool,
     scenarios: PropTypes.array,
     source: PropTypes.object,
     runs: PropTypes.array,
