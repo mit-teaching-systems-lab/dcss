@@ -2,13 +2,13 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import AccountAdmin from '@client/components/AccountAdmin';
+import Cohorts from '@client/components/Facilitator/Components/Cohorts';
 import Cohort from '@client/components/Facilitator/Components/Cohorts/Cohort';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import CreateAccount from '@client/components/CreateAccount';
 import LoginRoutePromptModal from '@client/components/Login/LoginRoutePromptModal';
 import CreateAnonymousAccount from '@client/components/CreateAccount/CreateAnonymousAccount';
 import Editor from '@client/components/Editor';
-import Facilitator from '@client/components/Facilitator';
 import Login from '@client/components/Login';
 import { Logout } from './RouteComponents';
 import { NewScenario } from './RouteComponents';
@@ -58,31 +58,18 @@ const Routes = () => {
             >
                 <Route component={AccountAdmin} />
             </ConfirmAuth>
-            <ConfirmAuth
-                exact
-                path="/cohorts"
-                requiredPermission="view_all_cohorts"
-            >
+
+            <ConfirmAuth path="/cohorts" requiredPermission="view_own_cohorts">
                 <Route
-                    component={props => (
-                        <Facilitator {...props} activeTab="cohorts" />
-                    )}
+                    render={props => <Cohorts {...props} activeTab="cohorts" />}
                 />
             </ConfirmAuth>
+
             <InterceptAnonymizableRoute exact path="/cohort/:id">
                 <Route
                     render={props => <Cohort {...props} activeTab="cohort" />}
                 />
             </InterceptAnonymizableRoute>
-
-            <ConfirmAuth
-                path="/cohort"
-                requiredPermission="view_invited_cohorts"
-            >
-                <Route
-                    render={props => <Cohort {...props} activeTab="cohort" />}
-                />
-            </ConfirmAuth>
 
             <ConfirmAuth
                 exact

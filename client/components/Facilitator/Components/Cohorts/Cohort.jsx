@@ -34,17 +34,6 @@ export class Cohort extends React.Component {
         if (location && location.search) {
             storage.setItem(`referrer_params`, location.search);
         }
-        // This is a hack to get through the testing on Monday.
-        {
-            let localCohort = storage.getItem('cohort');
-            if (id && localCohort !== id) {
-                storage.setItem('cohort', id);
-            } else {
-                if (localCohort !== null) {
-                    id = Number(localCohort);
-                }
-            }
-        }
 
         this.persistenceKey = `cohort/${id}`;
         let cohortPersisted = JSON.parse(storage.getItem(this.persistenceKey));

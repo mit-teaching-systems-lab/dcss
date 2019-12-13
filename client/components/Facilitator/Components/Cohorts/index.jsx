@@ -23,6 +23,7 @@ import {
     createCohort
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
+import ConfirmAuth from '@client/components/ConfirmAuth';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
 import EditorMenu from '@components/EditorMenu';
@@ -92,21 +93,26 @@ export class Cohorts extends React.Component {
                     type="cohorts"
                     items={{
                         left: [
-                            <Menu.Item
-                                key="menu-item-create-cohort"
-                                name="Create a cohort"
-                                onClick={onClickOpenCreateCohort}
-                                className="cohort__menu-item--padding"
+                            <ConfirmAuth
+                                key="menu-item-create-cohort-auth"
+                                requiredPermission="edit_all_cohorts"
                             >
-                                <Icon.Group>
-                                    <Icon name="group" />
-                                    <Icon
-                                        corner="top right"
-                                        name="add"
-                                        color="green"
-                                    />
-                                </Icon.Group>
-                            </Menu.Item>
+                                <Menu.Item
+                                    key="menu-item-create-cohort"
+                                    name="Create a cohort"
+                                    onClick={onClickOpenCreateCohort}
+                                    className="cohort__menu-item--padding"
+                                >
+                                    <Icon.Group>
+                                        <Icon name="group" />
+                                        <Icon
+                                            corner="top right"
+                                            name="add"
+                                            color="green"
+                                        />
+                                    </Icon.Group>
+                                </Menu.Item>
+                            </ConfirmAuth>
                         ],
                         search: {
                             source: cohorts,

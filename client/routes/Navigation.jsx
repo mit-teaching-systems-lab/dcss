@@ -18,12 +18,7 @@ const restrictedNav = [
     {
         text: 'Cohorts',
         path: '/cohorts',
-        permission: 'create_cohort'
-    },
-    {
-        text: 'My Cohort',
-        path: '/cohort',
-        permission: 'view_invited_cohorts'
+        permission: 'view_own_cohorts'
     },
     {
         text: 'Research',
