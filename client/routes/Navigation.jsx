@@ -26,6 +26,11 @@ const restrictedNav = [
         permission: 'view_invited_cohorts'
     },
     {
+        text: 'Research',
+        path: '/research',
+        permission: 'view_run_data'
+    },
+    {
         text: 'Account Administration',
         path: '/account-administration',
         permission: 'edit_permissions'

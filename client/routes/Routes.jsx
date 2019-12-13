@@ -105,7 +105,7 @@ const Routes = () => {
             >
                 <Route component={Editor} />
             </ConfirmAuth>
-            <ConfirmAuth path="/researcher" requiredPermission="view_run_data">
+            <ConfirmAuth path="/research" requiredPermission="view_run_data">
                 <Route component={Researcher} />
             </ConfirmAuth>
             <Route exact path="/logout" component={Logout} />
