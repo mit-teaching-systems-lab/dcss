@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router';
 import Sortable from 'react-sortablejs';
 import {
     Card,
@@ -11,6 +12,7 @@ import {
     Menu,
     Message,
     Popup,
+    Ref,
     Segment
 } from 'semantic-ui-react';
 import generateResponseId from '@components/Slide/util/generate-response-id';
@@ -21,23 +23,34 @@ import './Slides.css';
 class Slides extends React.Component {
     constructor(props) {
         super(props);
+
+        const activeSlideIndex =
+            Number(
+                this.props.match.params.activeSlideIndex ||
+                    this.props.activeSlideIndex
+            ) || 0;
+
         this.state = {
+            activeSlideIndex,
             loading: true,
-            slides: [],
-            currentSlideIndex: 0
+            slides: []
         };
 
+        this.slideRefs = [];
         this.debounceSlideUpdate = {};
 
         this.onChangeSlide = this.onChangeSlide.bind(this);
         this.onChangeSlideOrder = this.onChangeSlideOrder.bind(this);
         this.addSlide = this.addSlide.bind(this);
+        this.activateSlide = this.activateSlide.bind(this);
         this.deleteSlide = this.deleteSlide.bind(this);
         this.duplicateSlide = this.duplicateSlide.bind(this);
     }
 
-    componentDidMount() {
-        this.fetchSlides();
+    async componentDidMount() {
+        await this.fetchSlides();
+
+        this.activateSlide(this.state.activeSlideIndex);
     }
 
     async fetchSlides() {
@@ -57,8 +70,8 @@ class Slides extends React.Component {
 
     onChangeSlide(val) {
         const { scenarioId } = this.props;
-        const { slides, currentSlideIndex } = this.state;
-        const slide = slides[currentSlideIndex];
+        const { slides, activeSlideIndex } = this.state;
+        const slide = slides[activeSlideIndex];
         this.props.updateEditorMessage('');
         clearTimeout(this.debounceSlideUpdate[slide.id]);
         this.debounceSlideUpdate[slide.id] = setTimeout(async () => {
@@ -97,7 +110,7 @@ class Slides extends React.Component {
             slides[fromIndex] = to;
         }
         // This is to update the UI ASAP
-        this.setState({ slides, currentSlideIndex: toIndex });
+        this.setState({ slides, activeSlideIndex: toIndex });
         const result = await fetch(
             `/api/scenarios/${scenarioId}/slides/order`,
             {
@@ -109,7 +122,9 @@ class Slides extends React.Component {
             }
         );
         await result.json();
-        this.setState({ slides, currentSlideIndex: toIndex });
+        this.setState({ slides, activeSlideIndex: toIndex }, () => {
+            this.activateSlide(toIndex);
+        });
         this.props.updateEditorMessage('Slide saved!');
     }
 
@@ -125,22 +140,24 @@ class Slides extends React.Component {
         await result.json();
         const slides = this.state.slides.filter(({ id }) => id !== slide.id);
 
-        let currentSlideIndex;
+        let activeSlideIndex;
 
         // The slide was at the end...
         if (index > slides.length) {
-            currentSlideIndex = slides.length - 1;
+            activeSlideIndex = slides.length - 1;
         }
 
         // The slide was at the beginning...
         if (index === 0) {
-            currentSlideIndex = 0;
+            activeSlideIndex = 0;
         } else {
             // The slide was somewhere in between...
-            currentSlideIndex = index - 1;
+            activeSlideIndex = index - 1;
         }
 
-        this.setState({ slides, currentSlideIndex });
+        this.setState({ slides, activeSlideIndex }, () => {
+            this.activateSlide(activeSlideIndex);
+        });
         this.props.updateEditorMessage('Slide deleted');
     }
 
@@ -159,16 +176,34 @@ class Slides extends React.Component {
             }
         }
 
-        await this.storeSlide({
+        const activeSlideIndex = await this.storeSlide({
             title,
             components
         });
+
+        this.activateSlide(activeSlideIndex);
     }
 
     async addSlide() {
-        await this.storeSlide({
+        const activeSlideIndex = await this.storeSlide({
             title: '',
             components: []
+        });
+
+        this.activateSlide(activeSlideIndex);
+    }
+
+    activateSlide(activeSlideIndex) {
+        this.setState({ activeSlideIndex }, () => {
+            if (this.slideRefs[activeSlideIndex]) {
+                this.slideRefs[activeSlideIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
+                });
+            }
+
+            this.props.setActiveSlide(activeSlideIndex);
         });
     }
 
@@ -190,21 +225,23 @@ class Slides extends React.Component {
         const orderIndex = this.state.slides.findIndex(
             slide => slide.id === id
         );
-        let currentSlideIndex = this.state.currentSlideIndex + 1;
+        let activeSlideIndex = this.state.activeSlideIndex + 1;
 
-        if (this.state.slides.length > 1 && orderIndex !== currentSlideIndex) {
-            this.moveSlide(orderIndex, currentSlideIndex);
+        if (this.state.slides.length > 1 && orderIndex !== activeSlideIndex) {
+            this.moveSlide(orderIndex, activeSlideIndex);
         } else {
-            // If this is the very first slide, the currentSlideIndex
+            // If this is the very first slide, the activeSlideIndex
             // needs to be corrected to 0
             if (this.state.slides.length === 1) {
-                currentSlideIndex = 0;
+                activeSlideIndex = 0;
             }
 
             // This is necessary when adding a slide that doesn't need
             // any special ordering changes, but still must be highlighted.
-            this.setState({ currentSlideIndex });
+            this.setState({ activeSlideIndex });
         }
+
+        return activeSlideIndex;
     }
 
     async onChangeSlideOrder(...args) {
@@ -223,7 +260,7 @@ class Slides extends React.Component {
             duplicateSlide
         } = this;
         const { scenarioId, updateEditorMessage } = this.props;
-        const { loading, slides, currentSlideIndex } = this.state;
+        const { loading, slides, activeSlideIndex } = this.state;
         if (loading) {
             return (
                 <Segment>
@@ -246,9 +283,7 @@ class Slides extends React.Component {
                                         <Menu.Item
                                             name="Add a slide"
                                             onClick={() => {
-                                                addSlide(
-                                                    this.state.currentSlideIndex
-                                                );
+                                                addSlide(activeSlideIndex);
                                             }}
                                         >
                                             <Icon
@@ -277,7 +312,7 @@ class Slides extends React.Component {
                                                             onClick={() => {
                                                                 duplicateSlide(
                                                                     this.state
-                                                                        .currentSlideIndex
+                                                                        .activeSlideIndex
                                                                 );
                                                             }}
                                                         >
@@ -313,7 +348,7 @@ class Slides extends React.Component {
                                     header="Add a slide!"
                                     content="Click the 'Add a slide' button to add your first slide!"
                                     onClick={() => {
-                                        addSlide(this.state.currentSlideIndex);
+                                        addSlide(activeSlideIndex);
                                     }}
                                 />
                             )}
@@ -327,38 +362,49 @@ class Slides extends React.Component {
                             >
                                 {slides
                                     .filter(slide => !slide.is_finish)
-                                    .map((slide, index) => (
-                                        <Grid.Row
-                                            key={slide.id}
-                                            className="slides__list-row"
-                                        >
-                                            <Card
-                                                className={
-                                                    index ===
-                                                    this.state.currentSlideIndex
-                                                        ? 'slides__list-row-selected'
-                                                        : ''
-                                                }
-                                                onClick={() =>
-                                                    this.setState({
-                                                        currentSlideIndex: index
-                                                    })
-                                                }
+                                    .map((slide, index) => {
+                                        const isActiveSlide =
+                                            index === activeSlideIndex;
+                                        const className = isActiveSlide
+                                            ? 'slides__list-row-selected'
+                                            : '';
+                                        const onClickActivateSlide = () => {
+                                            this.activateSlide(index);
+                                        };
+                                        return (
+                                            <Grid.Row
+                                                key={slide.id}
+                                                className="slides__list-row"
                                             >
-                                                <Card.Header>
-                                                    {slide.title}
-                                                </Card.Header>
-                                                <Card.Content>
-                                                    <SlideComponentsList
-                                                        asSVG={true}
-                                                        components={
-                                                            slide.components
+                                                <Ref
+                                                    innerRef={node =>
+                                                        (this.slideRefs[
+                                                            index
+                                                        ] = node)
+                                                    }
+                                                >
+                                                    <Card
+                                                        className={className}
+                                                        onClick={
+                                                            onClickActivateSlide
                                                         }
-                                                    />
-                                                </Card.Content>
-                                            </Card>
-                                        </Grid.Row>
-                                    ))}
+                                                    >
+                                                        <Card.Header>
+                                                            {slide.title}
+                                                        </Card.Header>
+                                                        <Card.Content>
+                                                            <SlideComponentsList
+                                                                asSVG={true}
+                                                                components={
+                                                                    slide.components
+                                                                }
+                                                            />
+                                                        </Card.Content>
+                                                    </Card>
+                                                </Ref>
+                                            </Grid.Row>
+                                        );
+                                    })}
                             </Sortable>
                         </Segment>
                     </Grid.Column>
@@ -366,12 +412,12 @@ class Slides extends React.Component {
                         width={13}
                         className="slides__editor-outer-container"
                     >
-                        {slides[currentSlideIndex] && (
+                        {slides[activeSlideIndex] && (
                             <SlideEditor
-                                key={currentSlideIndex}
+                                key={activeSlideIndex}
                                 scenarioId={scenarioId}
-                                index={currentSlideIndex}
-                                {...slides[currentSlideIndex]}
+                                index={activeSlideIndex}
+                                {...slides[activeSlideIndex]}
                                 onChange={onChangeSlide}
                                 deleteSlide={deleteSlide}
                                 updateEditorMessage={updateEditorMessage}
@@ -385,7 +431,15 @@ class Slides extends React.Component {
 }
 
 Slides.propTypes = {
-    scenarioId: PropTypes.string,
+    activeSlideIndex: PropTypes.number,
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            activeSlideIndex: PropTypes.node,
+            id: PropTypes.node
+        }).isRequired
+    }),
+    scenarioId: PropTypes.node,
+    setActiveSlide: PropTypes.func,
     updateEditorMessage: PropTypes.func.isRequired
 };
-export default Slides;
+export default withRouter(Slides);

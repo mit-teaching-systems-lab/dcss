@@ -126,6 +126,7 @@ class Run extends Component {
                 onResponseChange={onResponseChange}
                 onRunChange={onChange}
                 onSubmit={onSubmit}
+                setActiveSlide={() => {}}
             />
         ) : (
             <Loader>Loading</Loader>

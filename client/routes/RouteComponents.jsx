@@ -18,6 +18,10 @@ export const NewScenario = props => {
     return <Editor {...props} isNewScenario={true} />;
 };
 
+export const CopyScenario = props => {
+    return <Editor {...props} isCopyScenario={true} />;
+};
+
 export const ScenariosListAll = props => {
     return <ScenariosList {...props} category="all" />;
 };

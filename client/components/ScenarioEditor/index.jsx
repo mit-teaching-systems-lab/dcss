@@ -61,15 +61,14 @@ class ScenarioEditor extends Component {
                 categories: [],
                 status: 1
             });
+        } else {
+            this.props.getScenario(this.props.scenarioId);
         }
     }
 
     async componentDidMount() {
         const categories = await (await fetch('/api/tags/categories')).json();
         this.setState({ categories });
-        if (this.props.scenarioId !== 'new') {
-            await this.props.getScenario(this.props.scenarioId);
-        }
     }
 
     onChange(event, { name, value }) {

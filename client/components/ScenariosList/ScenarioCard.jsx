@@ -116,12 +116,7 @@ class ScenarioCard extends React.Component {
                                     color="black"
                                     className="scenario__entry--button"
                                     as={Link}
-                                    to={{
-                                        pathname: `/editor/copy`,
-                                        state: {
-                                            scenarioCopyId: id
-                                        }
-                                    }}
+                                    to={{ pathname: `/editor/copy/${id}` }}
                                 >
                                     Copy
                                 </Button>

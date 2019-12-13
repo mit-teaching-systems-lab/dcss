@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import { Grid, Segment } from 'semantic-ui-react';
+import { Grid, Ref, Segment } from 'semantic-ui-react';
 
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
@@ -14,20 +14,21 @@ class Scenario extends Component {
     constructor(props) {
         super(props);
 
-        const {
-            baseurl,
-            history,
-            scenarioId,
-            location,
-            match: { params = {} }
-        } = this.props;
+        const activeSlideIndex =
+            Number(
+                this.props.match.params.activeSlideIndex ||
+                    this.props.activeSlideIndex
+            ) || 0;
 
-        const activeSlideIndex = Number(params.activeSlideIndex) || 0;
+        const { baseurl, history, scenarioId, location } = this.props;
 
         this.state = {
             activeSlideIndex,
             scenarioId
         };
+
+        this.slideRefs = [];
+        this.activateSlide = this.activateSlide.bind(this);
 
         this.getScenarioSlides();
 
@@ -43,6 +44,12 @@ class Scenario extends Component {
 
     get isScenarioRun() {
         return location.pathname.includes('/run/');
+    }
+
+    componentDidMount() {
+        if (!this.isScenarioRun) {
+            this.activateSlide(this.state.activeSlideIndex);
+        }
     }
 
     getOnClickHandler(type) {
@@ -127,7 +134,12 @@ class Scenario extends Component {
     }
 
     async getScenarioSlides() {
-        const { baseurl, onResponseChange, onRunChange } = this.props;
+        const {
+            baseurl,
+            onResponseChange,
+            onRunChange = () => {}
+        } = this.props;
+
         const metaData = await this.getScenarioMetaData();
         const contents = await this.getScenarioContent();
         let finish = contents.find(slide => slide.is_finish) || null;
@@ -168,7 +180,7 @@ class Scenario extends Component {
         slides.push(
             <FinishSlide
                 key="finish-slide"
-                back={`${baseurl}/${slides.length - 1}`}
+                back={`${baseurl}/slide/${slides.length - 1}`}
                 slide={finish}
                 onChange={onRunChange}
             />
@@ -177,21 +189,62 @@ class Scenario extends Component {
         this.props.setSlides({ slides });
     }
 
+    activateSlide(activeSlideIndex) {
+        this.setState({ activeSlideIndex }, () => {
+            if (this.slideRefs[activeSlideIndex]) {
+                this.slideRefs[activeSlideIndex].scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
+                });
+            }
+            this.props.setActiveSlide(activeSlideIndex);
+        });
+    }
+
     render() {
         const { slides } = this.props;
+        const { activeSlideIndex } = this.state;
+        const classes = 'ui centered card scenario__card--run';
         return this.isScenarioRun ? (
             <Grid columns={1}>
-                <Grid.Column>
-                    {slides && slides[this.state.activeSlideIndex]}
-                </Grid.Column>
+                <Grid.Column>{slides && slides[activeSlideIndex]}</Grid.Column>
             </Grid>
         ) : (
-            <Segment className="scenario__slide-preview-pane">{slides}</Segment>
+            <Segment className="scenario__slide-preview-pane">
+                {slides.map((slide, index) => {
+                    const className =
+                        activeSlideIndex === index - 1
+                            ? `${classes} scenario__slide-preview--selected`
+                            : classes;
+
+                    return index === 0 || index === slides.length - 1 ? (
+                        slide
+                    ) : (
+                        <div
+                            className={className}
+                            key={`div-${index}`}
+                            onClick={() => this.activateSlide(index - 1)}
+                        >
+                            <Ref
+                                key={`ref-${index}`}
+                                innerRef={node =>
+                                    (this.slideRefs[index - 1] = node)
+                                }
+                            >
+                                {slide}
+                            </Ref>
+                        </div>
+                    );
+                })}
+            </Segment>
         );
     }
 }
 
 Scenario.propTypes = {
+    activeSlideIndex: PropTypes.number,
+    setActiveSlide: PropTypes.func,
     baseurl: PropTypes.string,
     location: PropTypes.shape({
         pathname: PropTypes.string,
@@ -200,6 +253,7 @@ Scenario.propTypes = {
     }),
     match: PropTypes.shape({
         params: PropTypes.shape({
+            activeSlideIndex: PropTypes.node,
             id: PropTypes.node
         }).isRequired
     }),

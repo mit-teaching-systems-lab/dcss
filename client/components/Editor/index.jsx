@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import storage from 'local-storage-fallback';
 
 import EditorMenu from '@components/EditorMenu';
 import ScenarioEditor from '@components/ScenarioEditor';
@@ -20,40 +21,97 @@ class Editor extends Component {
     constructor(props) {
         super(props);
 
-        const scenarioId = this.props.match.params.id || 'new';
-
         this.copyScenario = this.copyScenario.bind(this);
         this.deleteScenario = this.deleteScenario.bind(this);
-        this.updateScenario = this.updateScenario.bind(this);
+        this.getAllTabs = this.getAllTabs.bind(this);
+        this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
+        this.getSubmitCallback = this.getSubmitCallback.bind(this);
+        this.getTab = this.getTab.bind(this);
         this.onClick = this.onClick.bind(this);
         this.onClickScenarioAction = this.onClickScenarioAction.bind(this);
-        this.getSubmitCallback = this.getSubmitCallback.bind(this);
-        this.getPostSubmitCallback = this.getPostSubmitCallback.bind(this);
-        this.getTab = this.getTab.bind(this);
-        this.getAllTabs = this.getAllTabs.bind(this);
+        this.setActiveView = this.setActiveView.bind(this);
         this.updateEditorMessage = this.updateEditorMessage.bind(this);
+        this.updateScenario = this.updateScenario.bind(this);
+
+        let {
+            activeTab,
+            activeSlideIndex,
+            isCopyScenario,
+            isNewScenario,
+            match,
+            scenarioId
+        } = this.props;
+
+        if (!scenarioId) {
+            scenarioId = isNewScenario ? 'new' : match.params.id;
+        }
+
+        if (isNewScenario) {
+            activeTab = 'scenario';
+        }
+
+        if (!isCopyScenario && !isNewScenario) {
+            this.persistenceKey = `editor/${scenarioId}`;
+
+            let persisted = JSON.parse(storage.getItem(this.persistenceKey));
+
+            if (!persisted) {
+                persisted = { activeTab: 'scenario', activeSlideIndex };
+                storage.setItem(this.persistenceKey, JSON.stringify(persisted));
+            }
+
+            // These have already been declared as let bindings above
+            // but we may override those values here, with whatever
+            // was persisted for this scenario
+            ({ activeTab, activeSlideIndex } = persisted);
+        }
+
         this.state = {
-            activeTab: 'moment',
+            activeSlideIndex,
+            activeTab,
             editorMessage: '',
             saving: false,
-            scenarioId: scenarioId,
+            scenarioId,
             tabs: this.getAllTabs(scenarioId)
         };
 
-        switch (scenarioId) {
-            case 'new':
-            case 'copy':
-                break;
-            default:
-                this.state.activeTab = 'slides';
-                this.props.getScenario(scenarioId);
-                break;
+        if (isCopyScenario) {
+            this.copyScenario(scenarioId);
+        }
+
+        if (!isNewScenario) {
+            this.state.activeTab = 'slides';
+            this.props.getScenario(scenarioId);
         }
     }
 
-    onClick(e, { name }) {
-        this.setState({ activeTab: name });
+    onClick(e, { name: activeTab }) {
+        this.setState({ activeTab });
+
+        const persisted = JSON.parse(storage.getItem(this.persistenceKey));
+        const updated = {
+            ...persisted,
+            activeTab
+        };
+        const { scenarioId } = this.state;
+
+        storage.setItem(this.persistenceKey, JSON.stringify(updated));
+
+        const pathname = `/editor/${scenarioId}/${activeTab}/${updated.activeSlideIndex}`;
+        this.props.history.push(pathname);
         this.updateEditorMessage('');
+    }
+
+    setActiveView({ activeTab, activeSlideIndex }) {
+        const { scenarioId } = this.state;
+
+        const pathname = `/editor/${scenarioId}/${activeTab}/${activeSlideIndex}`;
+
+        storage.setItem(
+            this.persistenceKey,
+            JSON.stringify({ activeTab, activeSlideIndex })
+        );
+        this.props.history.push(pathname);
     }
 
     onClickScenarioAction(event, data) {
@@ -66,31 +124,23 @@ class Editor extends Component {
         }
     }
 
-    componentDidMount() {
-        if (this.state.scenarioId === 'copy') {
-            this.copyScenario();
-        }
-    }
+    async copyScenario(scenarioId) {
+        if (!scenarioId) return;
 
-    async copyScenario() {
-        const { scenarioCopyId } = this.props.location.state;
-        if (!scenarioCopyId) return;
-
-        const postSubmitCB = this.getPostSubmitCallback();
-        const copyResponse = await (await fetch(
-            `/api/scenarios/${scenarioCopyId}/copy`,
+        const { scenario, status } = await (await fetch(
+            `/api/scenarios/${scenarioId}/copy`,
             {
                 method: 'POST'
             }
         )).json();
 
-        if (copyResponse.status !== 201) {
+        if (status !== 201) {
             this.updateEditorMessage('Error saving copy.');
             return;
         }
 
-        this.props.setScenario(copyResponse.scenario);
-        postSubmitCB(copyResponse.scenario);
+        // Hard refresh to clear all previous state from the editor.
+        location.href = `/editor/${scenario.id}`;
     }
 
     async deleteScenario(scenarioId) {
@@ -99,12 +149,8 @@ class Editor extends Component {
         });
         await result.json();
 
-        this.setState({
-            scenarioId: 'new',
-            activeTab: 'moment'
-        });
-
-        this.props.history.push('/');
+        // Hard redirect to clear all previous state from the editor.
+        location.href = '/';
     }
 
     async updateScenario(updates = {}) {
@@ -145,7 +191,7 @@ class Editor extends Component {
         switch (response.status) {
             case 200:
                 this.props.setScenario(response.scenario);
-                this.updateEditorMessage('Teacher Moment saved');
+                this.updateEditorMessage('Scenario saved');
                 break;
             default:
                 if (response.error) {
@@ -156,11 +202,14 @@ class Editor extends Component {
     }
 
     getTab(name, scenarioId) {
+        const { activeSlideIndex = 0 } = this.state || this.props;
+        const { setActiveView } = this;
+
         switch (name) {
-            case 'moment':
+            case 'scenario':
                 return (
                     <ScenarioEditor
-                        scenarioId={scenarioId || this.props.match.params.id}
+                        scenarioId={scenarioId}
                         submitCB={this.getSubmitCallback()}
                         postSubmitCB={this.getPostSubmitCallback()}
                         updateEditorMessage={this.updateEditorMessage}
@@ -169,14 +218,28 @@ class Editor extends Component {
             case 'slides':
                 return (
                     <Slides
-                        scenarioId={scenarioId || this.props.match.params.id}
+                        setActiveSlide={activeSlideIndex =>
+                            setActiveView({
+                                activeSlideIndex,
+                                activeTab: 'slides'
+                            })
+                        }
+                        activeSlideIndex={activeSlideIndex}
+                        scenarioId={scenarioId}
                         updateEditorMessage={this.updateEditorMessage}
                     />
                 );
             case 'preview':
                 return (
                     <Scenario
-                        scenarioId={scenarioId || this.props.match.params.id}
+                        setActiveSlide={activeSlideIndex =>
+                            setActiveView({
+                                activeSlideIndex,
+                                activeTab: 'preview'
+                            })
+                        }
+                        activeSlideIndex={activeSlideIndex}
+                        scenarioId={scenarioId}
                     />
                 );
             default:
@@ -185,63 +248,52 @@ class Editor extends Component {
     }
 
     getAllTabs(scenarioId) {
-        if (!scenarioId) return {};
-        let copyId;
         switch (scenarioId) {
             case 'new':
                 return {
-                    moment: this.getTab('moment', 'new')
-                };
-            case 'copy':
-                copyId = String(this.props.location.state.scenarioCopyId);
-                return {
-                    moment: this.getTab('moment', copyId),
-                    slides: this.getTab('slides', copyId),
-                    preview: this.getTab('preview', copyId)
+                    scenario: this.getTab('scenario', 'new')
                 };
             default:
                 return {
-                    moment: this.getTab('moment'),
-                    slides: this.getTab('slides'),
-                    preview: this.getTab('preview')
+                    scenario: this.getTab('scenario', scenarioId),
+                    slides: this.getTab('slides', scenarioId),
+                    preview: this.getTab('preview', scenarioId)
                 };
         }
     }
 
     getSubmitCallback() {
         let endpoint, method;
-        const scenarioId = this.props.match.params.id;
+        const { isNewScenario, scenarioId } = this.props;
 
-        if (this.props.isNewScenario || scenarioId === 'copy') {
+        if (isNewScenario) {
             endpoint = '/api/scenarios';
             method = 'PUT';
         } else {
             endpoint = `/api/scenarios/${scenarioId}`;
             method = 'POST';
         }
-        return scenarioData => {
+        return scenario => {
             return fetch(endpoint, {
                 method,
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(scenarioData)
+                body: JSON.stringify(scenario)
             });
         };
     }
 
     getPostSubmitCallback() {
-        if (this.props.isNewScenario || this.props.match.params.id === 'copy') {
-            return scenarioData => {
-                this.props.history.push(`/editor/${scenarioData.id}`);
-                this.setState({
-                    activeTab: 'moment',
-                    scenarioId: scenarioData.id
-                });
+        const { history, isCopyScenario, isNewScenario } = this.props;
+        const { setActiveView } = this;
 
-                // Clear cached new scenario values from tabs
-                const tabs = this.getAllTabs(scenarioData.id);
-                this.setState({ tabs });
+        if (isCopyScenario || isNewScenario) {
+            return scenario => {
+                history.push(`/editor/${scenario.id}`);
+                this.setState({ scenarioId: scenario.id }, () => {
+                    setActiveView({ activeTab: 'slides' });
+                });
             };
         }
 
@@ -321,12 +373,17 @@ EditorMessage.propTypes = {
 };
 
 Editor.propTypes = {
+    activeTab: PropTypes.string,
+    activeSlideIndex: PropTypes.number,
+    scenarioId: PropTypes.node,
     history: PropTypes.shape({
         push: PropTypes.func.isRequired
     }).isRequired,
     match: PropTypes.shape({
+        path: PropTypes.string,
         params: PropTypes.shape({
-            id: PropTypes.node
+            id: PropTypes.node,
+            activeSlideIndex: PropTypes.node
         }).isRequired
     }).isRequired,
     location: PropTypes.shape({
@@ -334,6 +391,7 @@ Editor.propTypes = {
             scenarioCopyId: PropTypes.node
         })
     }).isRequired,
+    isCopyScenario: PropTypes.bool,
     isNewScenario: PropTypes.bool,
     getScenario: PropTypes.func.isRequired,
     setScenario: PropTypes.func.isRequired,
