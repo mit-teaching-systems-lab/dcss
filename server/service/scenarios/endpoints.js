@@ -244,6 +244,10 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
             }
         }
 
+        const { finish } = await db.getScenario(scenarioId);
+
+        originalSlides.push(finish);
+
         await setAllSlides(scenario.id, originalSlides);
 
         const consent = await db.getScenarioConsent(scenarioId);
@@ -256,7 +260,8 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
 
         Object.assign(scenario, {
             consent,
-            categories
+            categories,
+            finish
         });
         res.send({ scenario, status: 201 });
     } catch (apiError) {

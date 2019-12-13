@@ -196,6 +196,12 @@ class ScenarioEditor extends Component {
             title
         } = this.props;
 
+        // Stop letting the editor load before the
+        // finish slide is available.
+        if (!finish.components[0]) {
+            return null;
+        }
+
         const consentAgreementValue = {
             type: 'Text',
             html: consent.prose || ''
