@@ -9,6 +9,14 @@
     margin-bottom: 1rem;
 }
 
+@media only screen and (max-width: 767px) {
+    .ui.container.cohort__table-container {
+        width: auto !important;
+        margin-left: 0em !important;
+        margin-right: 0em !important;
+    }
+}
+
 .cohort__table-thead-tbody-tr {
     display: table;
     width: 100%;
@@ -68,6 +76,10 @@
 .cohort__tab-menu--overflow {
     overflow-x: auto;
     overflow-y: hidden;
+}
+
+.cohort__table-row--menu {
+    width: 9.6rem !important;
 }
 
 .cohort__tab-menu--button-transparent {
