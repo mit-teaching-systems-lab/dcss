@@ -31,7 +31,7 @@ const isLoggedIn = () => {
 };
 
 const destroy = () => {
-    storage.removeItem('session');
+    storage.clear();
 };
 
 const create = session => {
