@@ -425,10 +425,10 @@ function mapStateToProps(state) {
     };
 }
 
-const mapDispatchToProps = {
-    getScenario,
-    setScenario
-};
+const mapDispatchToProps = dispatch => ({
+    getScenario: id => dispatch(getScenario(id)),
+    setScenario: params => dispatch(setScenario(params))
+});
 
 export default connect(
     mapStateToProps,

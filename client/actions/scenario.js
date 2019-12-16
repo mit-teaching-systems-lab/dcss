@@ -5,6 +5,9 @@ import {
     GET_SCENARIOS,
     GET_SCENARIOS_SUCCESS,
     GET_SCENARIOS_ERROR,
+    GET_SLIDES,
+    GET_SLIDES_SUCCESS,
+    GET_SLIDES_ERROR,
     SET_SCENARIO,
     // SET_SCENARIO_SUCCESS,
     // SET_SCENARIO_ERROR,
@@ -47,6 +50,24 @@ export const getScenario = id => async dispatch => {
     } catch (error) {
         const { message, status, stack } = error;
         dispatch({ type: GET_SCENARIO_ERROR, status, message, stack });
+    }
+};
+
+export const getSlides = scenarioId => async dispatch => {
+    dispatch({ type: GET_SLIDES, scenarioId });
+    try {
+        const { slides, error } = await (await fetch(
+            `/api/scenarios/${scenarioId}/slides`
+        )).json();
+
+        if (error) {
+            throw error;
+        }
+        dispatch({ type: GET_SLIDES_SUCCESS, slides });
+        return slides;
+    } catch (error) {
+        const { message, status, stack } = error;
+        dispatch({ type: GET_SLIDES_ERROR, status, message, stack });
     }
 };
 

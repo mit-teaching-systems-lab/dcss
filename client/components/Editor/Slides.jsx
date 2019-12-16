@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import Sortable from 'react-sortablejs';
 import {
@@ -18,6 +19,7 @@ import {
 import generateResponseId from '@components/Slide/util/generate-response-id';
 import SlideEditor from '@components/Slide/SlideEditor';
 import SlideComponentsList from '@components/SlideComponentsList';
+import { getSlides } from '@client/actions/scenario';
 import './Slides.css';
 
 class Slides extends React.Component {
@@ -38,7 +40,6 @@ class Slides extends React.Component {
 
         this.slideRefs = [];
         this.debounceSlideUpdate = {};
-
         this.onChangeSlide = this.onChangeSlide.bind(this);
         this.onChangeSlideOrder = this.onChangeSlideOrder.bind(this);
         this.addSlide = this.addSlide.bind(this);
@@ -49,22 +50,16 @@ class Slides extends React.Component {
 
     async componentDidMount() {
         await this.fetchSlides();
-
-        this.activateSlide(this.state.activeSlideIndex);
     }
 
     async fetchSlides() {
-        const { scenarioId } = this.props;
-        const res = await fetch(`/api/scenarios/${scenarioId}/slides`);
-        const { slides } = await res.json();
-        return new Promise(resolve => {
-            this.setState(
-                {
-                    loading: false,
-                    slides: slides.filter(slide => !slide.is_finish)
-                },
-                resolve
-            );
+        const { getSlides, scenarioId } = this.props;
+        const slides = (await getSlides(scenarioId)).filter(
+            slide => !slide.is_finish
+        );
+
+        this.setState({ slides, loading: false }, () => {
+            this.activateSlide(this.state.activeSlideIndex);
         });
     }
 
@@ -122,7 +117,9 @@ class Slides extends React.Component {
             }
         );
         await result.json();
-        this.setState({ slides, activeSlideIndex: toIndex }, () => {
+        await this.fetchSlides();
+
+        this.setState({ activeSlideIndex: toIndex }, () => {
             this.activateSlide(toIndex);
         });
         this.props.updateEditorMessage('Slide saved!');
@@ -138,6 +135,7 @@ class Slides extends React.Component {
             }
         );
         await result.json();
+        await this.fetchSlides();
         const slides = this.state.slides.filter(({ id }) => id !== slide.id);
 
         let activeSlideIndex;
@@ -209,14 +207,16 @@ class Slides extends React.Component {
 
     async storeSlide(slide) {
         this.props.updateEditorMessage('');
-        const { scenarioId } = this.props;
-        const res = await fetch(`/api/scenarios/${scenarioId}/slides`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(slide)
-        });
+        const res = await fetch(
+            `/api/scenarios/${this.props.scenarioId}/slides`,
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(slide)
+            }
+        );
         const {
             slide: { id }
         } = await res.json();
@@ -432,14 +432,33 @@ class Slides extends React.Component {
 
 Slides.propTypes = {
     activeSlideIndex: PropTypes.number,
+    getSlides: PropTypes.func,
     match: PropTypes.shape({
         params: PropTypes.shape({
             activeSlideIndex: PropTypes.node,
             id: PropTypes.node
         }).isRequired
     }),
+    slides: PropTypes.array,
     scenarioId: PropTypes.node,
     setActiveSlide: PropTypes.func,
     updateEditorMessage: PropTypes.func.isRequired
 };
-export default withRouter(Slides);
+
+const mapStateToProps = state => {
+    const { slides } = state.scenario;
+    return {
+        slides
+    };
+};
+
+const mapDispatchToProps = dispatch => ({
+    getSlides: params => dispatch(getSlides(params))
+});
+
+export default withRouter(
+    connect(
+        mapStateToProps,
+        mapDispatchToProps
+    )(Slides)
+);

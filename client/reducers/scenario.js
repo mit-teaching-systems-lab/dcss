@@ -5,6 +5,7 @@ import {
     // GET_SCENARIOS,
     GET_SCENARIOS_SUCCESS,
     // GET_SCENARIOS_ERROR,
+    GET_SLIDES_SUCCESS,
     SET_SCENARIO,
     // SET_SCENARIO_SUCCESS,
     // SET_SCENARIO_ERROR,
@@ -33,29 +34,32 @@ const initialState = {
 export const scenario = (state = initialState, action) => {
     const { scenario, slides, type } = action;
 
-    if (type === SET_SCENARIO || type === GET_SCENARIO_SUCCESS) {
-        return {
-            ...state,
-            ...scenario
-        };
+    switch (type) {
+        case SET_SCENARIO:
+        case GET_SCENARIO_SUCCESS:
+            return {
+                ...state,
+                ...scenario
+            };
+        case SET_SLIDES:
+        case GET_SLIDES_SUCCESS:
+            return {
+                ...state,
+                ...slides
+            };
+        default:
+            return state;
     }
-
-    if (type === SET_SLIDES) {
-        return {
-            ...state,
-            ...slides
-        };
-    }
-
-    return state;
 };
 
 export const scenarios = (state = [], action) => {
     const { scenarios, type } = action;
 
-    if (type === SET_SCENARIOS || type === GET_SCENARIOS_SUCCESS) {
-        return scenarios;
+    switch (type) {
+        case SET_SCENARIOS:
+        case GET_SCENARIOS_SUCCESS:
+            return scenarios;
+        default:
+            return state;
     }
-
-    return state;
 };
