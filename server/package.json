@@ -21,6 +21,7 @@
     "dev": "nodemon index.js",
     "lint": "eslint --ext js .",
     "prettier": "prettier --write \"**/*.js\"",
+    "seed:super-admin": "node seed/super-admin.js",
     "test": "yarn workspace test run test:server"
   },
   "dependencies": {
