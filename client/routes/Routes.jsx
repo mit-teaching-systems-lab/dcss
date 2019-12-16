@@ -1,17 +1,19 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import AccountAdmin from '@client/components/AccountAdmin';
-import Cohorts from '@client/components/Facilitator/Components/Cohorts';
-import Cohort from '@client/components/Facilitator/Components/Cohorts/Cohort';
-import ConfirmAuth from '@client/components/ConfirmAuth';
-import CreateAccount from '@client/components/CreateAccount';
-import LoginRoutePromptModal from '@client/components/Login/LoginRoutePromptModal';
-import CreateAnonymousAccount from '@client/components/CreateAccount/CreateAnonymousAccount';
-import Editor from '@client/components/Editor';
-import Login from '@client/components/Login';
-import Researcher from '@client/components/Researcher';
-import Run from '@client/components/Run';
+import AccountAdmin from '@components/AccountAdmin';
+import Cohorts from '@components/Facilitator/Components/Cohorts';
+import Cohort from '@components/Facilitator/Components/Cohorts/Cohort';
+import ConfirmAuth from '@components/ConfirmAuth';
+import CreateAccount from '@components/CreateAccount';
+import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';
+import Editor from '@components/Editor';
+import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
+import Login from '@components/Login';
+import MyScenarios from '@components/MyScenarios';
+
+import Researcher from '@components/Researcher';
+import Run from '@components/Run';
 import {
     CopyScenario,
     Logout,
@@ -21,7 +23,6 @@ import {
     ScenariosListAll,
     ScenariosListAuthor,
     ScenariosListCommunity,
-    ScenariosListContinue,
     ScenariosListOfficial
 } from './RouteComponents';
 
@@ -43,11 +44,6 @@ const Routes = () => {
             />
             <Route
                 exact
-                path="/scenarios/continue"
-                component={ScenariosListContinue}
-            />
-            <Route
-                exact
                 path="/scenarios/official"
                 component={ScenariosListOfficial}
             />
@@ -56,6 +52,7 @@ const Routes = () => {
                 path="/scenarios/community"
                 component={ScenariosListCommunity}
             />
+            <Route exact path="/my-scenario-data/" component={MyScenarios} />
             <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeSlideIndex">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>

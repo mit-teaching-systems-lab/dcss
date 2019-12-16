@@ -30,6 +30,15 @@ export const SET_RESPONSES_ERROR = 'SET_RESPONSES_ERROR';
 export const GET_RUN = 'GET_RUN';
 export const GET_RUN_SUCCESS = 'GET_RUN_SUCCESS';
 export const GET_RUN_ERROR = 'GET_RUN_ERROR';
+
+export const GET_RUNS = 'GET_RUNS';
+export const GET_RUNS_SUCCESS = 'GET_RUNS_SUCCESS';
+export const GET_RUNS_ERROR = 'GET_RUNS_ERROR';
+
+export const GET_RUN_DATA = 'GET_RUN_DATA';
+export const GET_RUN_DATA_SUCCESS = 'GET_RUN_DATA_SUCCESS';
+export const GET_RUN_DATA_ERROR = 'GET_RUN_DATA_ERROR';
+
 export const SET_RUN = 'SET_RUN';
 export const SET_RUN_SUCCESS = 'SET_RUN_SUCCESS';
 export const SET_RUN_ERROR = 'SET_RUN_ERROR';

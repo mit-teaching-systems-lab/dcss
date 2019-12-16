@@ -1,7 +1,7 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
 const { runForRequest } = require('./middleware');
-const { getScenarioConsent } = require('../scenarios/db');
+const { getScenarioConsent, getScenarioPrompts } = require('../scenarios/db');
 
 async function newOrExistingRunAsync(req, res) {
     const { scenario_id } = req.params;
@@ -53,6 +53,22 @@ async function getResponseAsync(req, res) {
     res.json({ response, status: 200 });
 }
 
+async function getRunDataAsync(req, res) {
+    const { run_id } = req.params;
+    const responses = await db.getRunResponses({ run_id });
+    const prompts = {};
+
+    for (const response of responses) {
+        if (!prompts[response.scenario_id]) {
+            prompts[response.scenario_id] = [
+                await getScenarioPrompts(response.scenario_id)
+            ];
+        }
+    }
+
+    res.json({ prompts, responses });
+}
+
 async function updateRunAsync(req, res) {
     const { id } = await runForRequest(req);
     const body = req.body;
@@ -77,8 +93,16 @@ async function finishRunAsync(req, res) {
     res.json(await db.finishRun(id));
 }
 
+async function getUserRunsAsync(req, res) {
+    const { id: user_id } = req.session.user;
+    const runs = await db.getUserRuns(user_id);
+    res.json({ status: 200, runs });
+}
+
 exports.finishRun = asyncMiddleware(finishRunAsync);
 exports.getResponse = asyncMiddleware(getResponseAsync);
+exports.getRunData = asyncMiddleware(getRunDataAsync);
+exports.getUserRuns = asyncMiddleware(getUserRunsAsync);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);
 exports.getReferrerParams = asyncMiddleware(getReferrerParamsAsync);

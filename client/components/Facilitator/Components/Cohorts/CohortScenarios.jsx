@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
     Button,
@@ -332,9 +332,9 @@ export class CohortScenarios extends React.Component {
                                                     location.href = url;
                                                 }}
                                             >
-                                                <NavLink to={pathname}>
+                                                <Link to={pathname}>
                                                     {scenario.title}
-                                                </NavLink>
+                                                </Link>
                                             </Table.Cell>
                                             <Table.Cell className="cohort__table-cell--description">
                                                 {scenario.description}

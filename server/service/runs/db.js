@@ -1,5 +1,5 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
-const { query } = require('../../util/db');
+const { query, withClientTransaction } = require('../../util/db');
 
 exports.getRunById = async function(id) {
     const result = await query(sql`
@@ -7,6 +7,28 @@ exports.getRunById = async function(id) {
         WHERE id=${id};
     `);
     return result.rows[0];
+};
+
+exports.getUserRuns = async function(user_id) {
+    const result = await query(sql`
+        SELECT
+            run.id as run_id,
+            run.created_at as run_created_at,
+            run.ended_at as run_ended_at,
+            consent_acknowledged_by_user,
+            consent_granted_by_user,
+            cohort_run.cohort_id as cohort_id,
+            scenario.id as scenario_id,
+            scenario.title as scenario_title,
+            scenario.description as scenario_description,
+            scenario.id as scenario_id
+        FROM run
+        JOIN scenario ON scenario.id = run.scenario_id
+        LEFT JOIN cohort_run ON cohort_run.run_id = run.id
+        WHERE user_id = ${user_id}
+        ORDER BY run.created_at DESC;
+    `);
+    return result.rows;
 };
 
 exports.fetchRun = async function({ scenario_id, user_id }) {
@@ -58,6 +80,48 @@ exports.getResponse = async ({ run_id, response_id, user_id }) => {
         LIMIT 1;
     `);
     return result.rows[0];
+};
+
+exports.getRunResponses = async ({ run_id }) => {
+    return await withClientTransaction(async client => {
+        const result = await client.query(sql`
+            SELECT
+                run.user_id as user_id,
+                username,
+                scenario.id as scenario_id,
+                scenario.title as scenario_title,
+                run.id as run_id,
+                response_id,
+                run_response.response,
+                run_response.response->>'value' as value,
+                audio_transcript.transcript as transcript,
+                CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+                    ELSE TRUE
+                END as is_skip,
+                run_response.response->>'type' as type,
+                run_response.created_at as created_at,
+                run_response.ended_at as ended_at
+            FROM run_response
+            JOIN run ON run.id = run_response.run_id
+            JOIN users ON users.id = run.user_id
+            JOIN scenario ON scenario.id = run.scenario_id
+            LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
+            WHERE run_response.run_id = ${run_id}
+            ORDER BY run_response.id ASC
+        `);
+
+        return result.rows;
+    });
+};
+
+exports.getResponses = async ({ run_id, user_id }) => {
+    const result = await query(sql`
+        SELECT * FROM run_response
+        WHERE run_id = ${run_id}
+        AND user_id = ${user_id}
+        ORDER BY created_at DESC;
+    `);
+    return result.rows;
 };
 
 exports.getAudioTranscript = async ({ run_id, response_id, user_id }) => {

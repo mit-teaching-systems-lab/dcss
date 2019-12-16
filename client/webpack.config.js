@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 
 module.exports = {
     entry: ['babel-polyfill', './index.js'],
@@ -57,6 +58,8 @@ module.exports = {
             {
                 from: 'static'
             }
-        ])
+        ]),
+        // Optimize moment locales
+        new MomentLocalesPlugin()
     ]
 };

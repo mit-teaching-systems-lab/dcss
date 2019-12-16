@@ -1,0 +1,9 @@
+.buttongroup__button-group--transparent {
+    background: none !important;
+}
+
+@media only screen and (max-width: 767px) {
+    .myscenarios__hidden-on-mobile {
+        display: none !important;
+    }
+}

@@ -13,9 +13,12 @@ import {
     Table
 } from 'semantic-ui-react';
 import { diff } from 'deep-diff';
-import Moment from 'react-moment';
+import * as moment from 'moment';
+import 'moment-duration-format';
 import { getCohort, getCohortData } from '@client/actions/cohort';
+import { getRunData } from '@client/actions/run';
 import { getScenarios } from '@client/actions/scenario';
+import { getUser } from '@client/actions/user';
 import ContentSlide from '@components/Scenario/ContentSlide';
 import CohortDataTableMenu from './CohortDataTableMenu';
 import './CohortDataTable.css';
@@ -86,12 +89,6 @@ export class CohortDataTable extends React.Component {
         super(props);
 
         this.state = {
-            detail: {
-                open: false,
-                subject: '',
-                prompt: '',
-                response: ''
-            },
             isScenarioDataTable: false,
             initialRequestMade: false,
             prompts: [],
@@ -108,13 +105,18 @@ export class CohortDataTable extends React.Component {
         const {
             getCohort,
             getScenarios,
-            source: { cohortId, participantId, scenarioId }
+            getUser,
+            source: { cohortId, participantId, runId, scenarioId }
         } = this.props;
 
-        await getCohort(cohortId);
-        await getScenarios();
+        if (cohortId) {
+            await getCohort(cohortId);
+        }
 
-        if (scenarioId || participantId) {
+        await getScenarios();
+        await getUser();
+
+        if (participantId || runId || scenarioId) {
             await this.refresh();
             this.setState({
                 initialRequestMade: true
@@ -125,14 +127,17 @@ export class CohortDataTable extends React.Component {
     async refresh() {
         const {
             getCohortData,
-            source: { cohortId, participantId, scenarioId }
+            getRunData,
+            source: { cohortId, participantId, runId, scenarioId }
         } = this.props;
         const isScenarioDataTable = scenarioId !== undefined;
-        const { prompts, responses } = await getCohortData({
-            cohortId,
-            participantId,
-            scenarioId
-        });
+        const { prompts, responses } = cohortId
+            ? await getCohortData({ cohortId, participantId, scenarioId })
+            : await getRunData({ runId });
+
+        const scenarios = cohortId
+            ? this.props.cohort.scenarios
+            : this.props.scenarios.map(scenario => scenario.id);
 
         const tables = [];
         const rows = [];
@@ -167,7 +172,6 @@ export class CohortDataTable extends React.Component {
                             cohort, from this participant.
              */
             const reduced = reduceResponses('scenario_id', responses);
-            const { scenarios } = this.props.cohort;
             // eslint-disable-next-line require-atomic-updates
             for (const scenarioId of scenarios) {
                 if (prompts[scenarioId]) {
@@ -226,12 +230,15 @@ export class CohortDataTable extends React.Component {
 
     download() {
         const {
-            cohort: { users },
+            cohort,
             scenarios,
-            source: { cohortId, participantId, scenarioId }
+            source: { cohortId, participantId, runId, scenarioId },
+            user
         } = this.props;
-
         const { isScenarioDataTable, tables } = this.state;
+        const users = cohortId ? cohort.users : [user];
+
+        const prefix = cohortId ? `cohort-${cohortId}` : `run-${runId}`;
 
         tables.forEach(({ prompts, rows }) => {
             const subject = isScenarioDataTable
@@ -275,10 +282,7 @@ export class CohortDataTable extends React.Component {
             const url = URL.createObjectURL(blob);
             const anchor = document.createElement('a');
             anchor.href = url;
-            anchor.setAttribute(
-                'download',
-                `cohort-${cohortId}-${subject}.csv`
-            );
+            anchor.setAttribute('download', `${prefix}-${subject}.csv`);
             anchor.click();
 
             URL.revokeObjectURL(url);
@@ -301,9 +305,13 @@ export class CohortDataTable extends React.Component {
 
     render() {
         const { isScenarioDataTable, initialRequestMade, tables } = this.state;
-        const { source } = this.props;
+        const { leftColVisible = true, source } = this.props;
         const { onDataTableMenuClick } = this;
         const leftColHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
+        const leftColHidden = !leftColVisible
+            ? { className: 'datatable__left-col-hidden' }
+            : {};
+
         return tables.length ? (
             <React.Fragment>
                 <CohortDataTableMenu
@@ -315,19 +323,21 @@ export class CohortDataTable extends React.Component {
                     return (
                         <div
                             key={`${tableKeyBase}-container`}
-                            className="cohortdatatable__scroll"
+                            className="datatable__scroll"
                         >
                             <Table
                                 key={`${tableKeyBase}-table`}
                                 celled
-                                fixed
                                 striped
                                 selectable
                                 role="grid"
                             >
                                 <Table.Header>
                                     <Table.Row>
-                                        <Table.HeaderCell scope="col">
+                                        <Table.HeaderCell
+                                            scope="col"
+                                            {...leftColHidden}
+                                        >
                                             {leftColHeader}
                                         </Table.HeaderCell>
                                         {prompts.map(
@@ -351,6 +361,7 @@ export class CohortDataTable extends React.Component {
                                                 isScenarioDataTable={
                                                     isScenarioDataTable
                                                 }
+                                                leftColVisible={leftColVisible}
                                                 prompts={prompts}
                                                 cells={cells}
                                                 rows={rows}
@@ -386,11 +397,16 @@ export class CohortDataTable extends React.Component {
 }
 
 const CohortDataTableRow = props => {
-    const { cells, rowKey } = props;
+    const { cells, isScenarioDataTable, leftColVisible, rowKey } = props;
+    const leftColHidden = !leftColVisible
+        ? { className: 'datatable__left-col-hidden' }
+        : {};
     const subject = cells[0] || '';
     return (
         <Table.Row>
-            <Table.HeaderCell verticalAlign="top">{subject}</Table.HeaderCell>
+            <Table.HeaderCell verticalAlign="top" {...leftColHidden}>
+                {subject}
+            </Table.HeaderCell>
 
             {cells.slice(1).map((response = {}, cellIndex) => {
                 const cellKey = `${rowKey}-cell-${cellIndex}`;
@@ -416,13 +432,21 @@ const CohortDataTableRow = props => {
                 );
 
                 const className = !content
-                    ? 'cohortdatatable__cell-data-missing'
+                    ? 'datatable__cell-data-missing'
                     : '';
+
+                const difference = moment(response.ended_at).diff(
+                    response.created_at
+                );
+                const duration = moment
+                    .duration(difference)
+                    .format(moment.globalFormat);
 
                 return (
                     <CohortDataModal
                         {...props}
                         index={cellIndex}
+                        isScenarioDataTable={isScenarioDataTable}
                         key={modalKey}
                         trigger={
                             <Table.Cell
@@ -437,13 +461,7 @@ const CohortDataTableRow = props => {
                                 <p>{display}</p>
 
                                 {display && (
-                                    <Moment
-                                        duration={response.created_at}
-                                        date={response.ended_at}
-                                        style={{
-                                            color: 'grey'
-                                        }}
-                                    />
+                                    <p style={{ color: 'grey' }}>{duration}</p>
                                 )}
                             </Table.Cell>
                         }
@@ -455,7 +473,7 @@ const CohortDataTableRow = props => {
 };
 
 const CohortDataModal = props => {
-    const { index, prompts, rows } = props;
+    const { index, isScenarioDataTable, prompts, rows } = props;
     const component = prompts[index];
     const { header, prompt, slide } = component;
 
@@ -463,23 +481,23 @@ const CohortDataModal = props => {
         <Modal
             trigger={props.trigger}
             size="fullscreen"
-            className="cohortdatatablemodal__view"
+            className="datatablemodal__view"
             closeIcon
         >
             <Modal.Header>Responses In Context</Modal.Header>
 
-            <Modal.Content className="cohortdatatablemodal__scroll">
-                <Grid columns={2} className="cohortdatatablemodal__grid-nowrap">
-                    <Grid.Column className="cohortdatatable__scroll gridcolumn__first-child--sticky">
+            <Modal.Content className="datatablemodal__scroll">
+                <Grid columns={2} className="datatablemodal__grid-nowrap">
+                    <Grid.Column className="datatable__scroll gridcolumn__first-child--sticky">
                         <ContentSlide
                             slide={slide}
                             isLastSlide={false}
-                            onClickBack={() => {}}
-                            onClickNext={() => {}}
-                            onResponseChange={() => {}}
+                            onClickBack={null}
+                            onClickNext={null}
+                            onResponseChange={null}
                         />
                     </Grid.Column>
-                    <Grid.Column className="cohortdatatable__scroll">
+                    <Grid.Column className="datatable__scroll">
                         <Table celled striped selectable role="grid">
                             <Table.Header>
                                 <Table.Row>
@@ -494,10 +512,21 @@ const CohortDataModal = props => {
                                         0: left = '',
                                         [index + 1]: response = {}
                                     } = row;
-                                    const isAudioContent = isAudioFile(
-                                        response.value
-                                    );
+
+                                    const {
+                                        created_at,
+                                        ended_at,
+                                        value
+                                    } = response;
+                                    const isAudioContent = isAudioFile(value);
                                     const { content = '' } = response;
+                                    const difference = moment(ended_at).diff(
+                                        created_at
+                                    );
+                                    const duration = moment
+                                        .duration(difference)
+                                        .format(moment.globalFormat);
+
                                     const display = isAudioContent ? (
                                         <React.Fragment>
                                             {content ? (
@@ -518,22 +547,22 @@ const CohortDataModal = props => {
                                         <Table.Row
                                             key={`modal-${slide.id}-${rowIndex}`}
                                         >
-                                            <Table.HeaderCell verticalAlign="top">
-                                                {left}
-                                            </Table.HeaderCell>
+                                            {isScenarioDataTable && (
+                                                <Table.HeaderCell verticalAlign="top">
+                                                    {left}
+                                                </Table.HeaderCell>
+                                            )}
                                             <Table.Cell>
                                                 <p>{display}</p>
 
                                                 {display && (
-                                                    <Moment
-                                                        duration={
-                                                            response.created_at
-                                                        }
-                                                        date={response.ended_at}
+                                                    <p
                                                         style={{
                                                             color: 'grey'
                                                         }}
-                                                    />
+                                                    >
+                                                        {duration}
+                                                    </p>
                                                 )}
                                             </Table.Cell>
                                         </Table.Row>
@@ -550,6 +579,7 @@ const CohortDataModal = props => {
 
 CohortDataModal.propTypes = {
     isScenarioDataTable: PropTypes.bool,
+    leftColVisible: PropTypes.bool,
     cells: PropTypes.array,
     onClick: PropTypes.func,
     headers: PropTypes.array,
@@ -563,6 +593,7 @@ CohortDataModal.propTypes = {
 
 CohortDataTableRow.propTypes = {
     isScenarioDataTable: PropTypes.bool,
+    leftColVisible: PropTypes.bool,
     cells: PropTypes.array,
     onClick: PropTypes.func,
     headers: PropTypes.array,
@@ -574,6 +605,7 @@ CohortDataTableRow.propTypes = {
 
 CohortDataTable.propTypes = {
     isScenarioDataTable: PropTypes.bool,
+    leftColVisible: PropTypes.bool,
     scenarios: PropTypes.array,
     source: PropTypes.object,
     runs: PropTypes.array,
@@ -589,21 +621,25 @@ CohortDataTable.propTypes = {
     onClick: PropTypes.func,
     getCohort: PropTypes.func,
     getCohortData: PropTypes.func,
+    getRunData: PropTypes.func,
     getScenarios: PropTypes.func,
+    getUser: PropTypes.func,
     user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-    const { username, permissions } = state.login;
+    const { permissions } = state.login;
     const { currentCohort: cohort } = state.cohort;
-    const { scenarios } = state;
-    return { cohort, scenarios, user: { username, permissions } };
+    const { scenarios, user } = state;
+    return { cohort, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({
     getCohort: id => dispatch(getCohort(id)),
     getCohortData: (...params) => dispatch(getCohortData(...params)),
-    getScenarios: () => dispatch(getScenarios())
+    getRunData: (...params) => dispatch(getRunData(...params)),
+    getScenarios: () => dispatch(getScenarios()),
+    getUser: () => dispatch(getUser())
 });
 
 export default withRouter(

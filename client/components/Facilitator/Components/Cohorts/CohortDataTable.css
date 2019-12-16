@@ -1,11 +1,10 @@
-.cohortdatatablemodal__view {
+.datatablemodal__view {
     height: 90%;
 }
-.cohortdatatablemodal__scroll {
+.datatablemodal__scroll {
     max-height: 50rem !important;
-    overflow-x: auto;
 }
-.cohortdatatable__scroll {
+.datatable__scroll {
     padding-top: 0 !important;
     position: relative;
     width: 100%;
@@ -15,7 +14,7 @@
     overflow: auto;
     max-height: 80vh;
 }
-.cohortdatatable__no-scroll {
+.datatable__no-scroll {
     position: relative;
     width: 100%;
     z-index: 1;
@@ -23,8 +22,8 @@
     margin-bottom: 1rem;
 }
 
-.cohortdatatable__no-scroll table,
-.cohortdatatable__scroll table {
+.datatable__no-scroll table,
+.datatable__scroll table {
     width: 100%;
     max-width: 1280px;
     margin: auto;
@@ -34,39 +33,39 @@
 .table-wrap {
     position: relative;
 }
-.cohortdatatable__no-scroll tbody th,
-.cohortdatatable__scroll tbody th {
+.datatable__no-scroll tbody th,
+.datatable__scroll tbody th {
     min-width: 100px;
     max-width: 150px;
 }
-.cohortdatatable__scroll tbody td {
+.datatable__scroll tbody td {
     max-width: 100px;
 }
 
-.cohortdatatablemodal__scroll tbody td {
+.datatablemodal__scroll tbody td {
     min-width: 100px;
     overflow: visible !important;
     white-space: inherit !important;
     text-overflow: unset !important;
 }
 
-.cohortdatatable__no-scroll tbody td {
+.datatable__no-scroll tbody td {
     max-width: 100px;
 }
 
-.cohortdatatable__no-scroll thead th,
-.cohortdatatable__scroll thead th {
+.datatable__no-scroll thead th,
+.datatable__scroll thead th {
     position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
 /* safari and ios need the tfoot itself to be position:sticky also */
-.cohortdatatable__no-scroll tfoot,
-.cohortdatatable__no-scroll tfoot th,
-.cohortdatatable__no-scroll tfoot td,
-.cohortdatatable__scroll tfoot,
-.cohortdatatable__scroll tfoot th,
-.cohortdatatable__scroll tfoot td {
+.datatable__no-scroll tfoot,
+.datatable__no-scroll tfoot th,
+.datatable__no-scroll tfoot td,
+.datatable__scroll tfoot,
+.datatable__scroll tfoot th,
+.datatable__scroll tfoot td {
     position: -webkit-sticky;
     position: sticky;
     bottom: 0;
@@ -74,8 +73,8 @@
     z-index: 4;
 }
 
-.cohortdatatable__no-scroll th:first-child,
-.cohortdatatable__scroll th:first-child {
+.datatable__no-scroll th:first-child,
+.datatable__scroll th:first-child {
     background: #f9fafb;
     padding: 0.78571429em 0.78571429em;
     position: -webkit-sticky;
@@ -84,17 +83,17 @@
     z-index: 2;
 }
 
-.cohortdatatable__scroll tbody th:first-child {
+.datatable__scroll tbody th:first-child {
     border-top: 1px solid rgba(34, 36, 38, 0.1);
 }
-.cohortdatatable__no-scroll thead th:first-child,
-.cohortdatatable__no-scroll tfoot th:first-child,
-.cohortdatatable__scroll thead th:first-child,
-.cohortdatatable__scroll tfoot th:first-child {
+.datatable__no-scroll thead th:first-child,
+.datatable__no-scroll tfoot th:first-child,
+.datatable__scroll thead th:first-child,
+.datatable__scroll tfoot th:first-child {
     z-index: 5;
 }
 
-.cohortdatatable__cell-data-missing {
+.datatable__cell-data-missing {
     background-image: linear-gradient(
         to top right,
         transparent calc(50% - 1px),
@@ -112,6 +111,10 @@
     top: 0;
 }
 
-.cohortdatatablemodal__grid-nowrap {
+.datatablemodal__grid-nowrap {
     flex-wrap: nowrap !important;
+}
+
+.datatable__left-col-hidden {
+    display: none !important;
 }

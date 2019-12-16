@@ -76,6 +76,14 @@ const Navigation = () => {
                         <NavLink to="/">Teacher Moments</NavLink>
                     </Menu.Item>
 
+                    {Session.isSessionActive() && (
+                        <Menu.Item>
+                            <NavLink to="/my-scenario-data">
+                                My Scenario Data
+                            </NavLink>
+                        </Menu.Item>
+                    )}
+
                     <Menu.Menu>
                         <Dropdown
                             simple
@@ -96,11 +104,6 @@ const Navigation = () => {
                                                 </NavLink>
                                             </Dropdown.Item>
                                         </ConfirmAuth>
-                                        <Dropdown.Item>
-                                            <NavLink to="/scenarios/continue">
-                                                Continue Scenarios
-                                            </NavLink>
-                                        </Dropdown.Item>
                                     </React.Fragment>
                                 )}
                                 <Dropdown.Item>

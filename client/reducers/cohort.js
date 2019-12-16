@@ -20,6 +20,7 @@ import {
     GET_COHORT_PARTICIPANTS_SUCCESS,
     GET_COHORT_SUCCESS,
     // GET_USER_COHORTS,
+    GET_RUN_DATA_SUCCESS,
     GET_USER_COHORTS_SUCCESS,
     SET_COHORT_USER_ROLE_SUCCESS
     // GET_USER_COHORTS_ERROR
@@ -94,19 +95,25 @@ const getCohort = (state = cohortInitialState, action) => {
     }
 };
 
-const cohortDataInitialState = { prompts: [], responses: [] };
+const dataInitialState = {
+    prompts: [],
+    responses: []
+};
 
-const getCohortData = (state = cohortDataInitialState, action) => {
+const getCohortData = (state = dataInitialState, action) => {
     const { type, prompts, responses } = action;
-    if (type === GET_COHORT_DATA_SUCCESS) {
-        return {
-            ...state,
-            prompts,
-            responses
-        };
-    }
 
-    return state;
+    switch (type) {
+        case GET_COHORT_DATA_SUCCESS:
+        case GET_RUN_DATA_SUCCESS:
+            return {
+                ...state,
+                prompts,
+                responses
+            };
+        default:
+            return state;
+    }
 };
 
 const setCohortUserRole = (state = cohortInitialState, action) => {

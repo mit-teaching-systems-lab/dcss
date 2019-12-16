@@ -261,6 +261,28 @@ async function getScenarioByRun(userId) {
     return result.rows;
 }
 
+async function getScenarioPrompts(scenario_id) {
+    const slides = await getSlidesForScenario(scenario_id);
+    const components = slides.reduce((accum, slide) => {
+        if (slide.components && slide.components.length) {
+            accum.push(
+                ...slide.components.reduce((accum, component) => {
+                    if (component.responseId) {
+                        accum.push({
+                            slide,
+                            ...component
+                        });
+                    }
+                    return accum;
+                }, [])
+            );
+        }
+        return accum;
+    }, []);
+
+    return components;
+}
+
 // Scenario
 exports.addScenario = addScenario;
 exports.setScenario = setScenario;
@@ -270,6 +292,7 @@ exports.softDeleteScenario = softDeleteScenario;
 exports.getAllScenarios = getAllScenarios;
 exports.getScenarioResearchData = getScenarioResearchData;
 exports.getScenarioByRun = getScenarioByRun;
+exports.getScenarioPrompts = getScenarioPrompts;
 
 // Scenario Consent
 exports.addConsent = addConsent;

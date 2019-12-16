@@ -30,10 +30,6 @@ export const ScenariosListAuthor = props => {
     return <ScenariosList {...props} category="author" />;
 };
 
-export const ScenariosListContinue = props => {
-    return <ScenariosList {...props} category="continue" />;
-};
-
 export const ScenariosListCommunity = props => {
     return <ScenariosList {...props} category="community" />;
 };

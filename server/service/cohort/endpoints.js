@@ -1,6 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
-const { getSlidesForScenario } = require('../scenarios/slides/db');
+const { getScenarioPrompts } = require('../scenarios/db');
 
 exports.createCohort = asyncMiddleware(async function createCohort(req, res) {
     const user_id = req.session.user.id;
@@ -94,28 +94,6 @@ exports.setCohortScenarios = asyncMiddleware(async function setCohortScenarios(
     await db.setCohortScenarios({ id, scenarios });
     res.json({ scenarios });
 });
-
-async function getScenarioPrompts(scenario_id) {
-    const slides = await getSlidesForScenario(scenario_id);
-    const components = slides.reduce((accum, slide) => {
-        if (slide.components && slide.components.length) {
-            accum.push(
-                ...slide.components.reduce((accum, component) => {
-                    if (component.responseId) {
-                        accum.push({
-                            slide,
-                            ...component
-                        });
-                    }
-                    return accum;
-                }, [])
-            );
-        }
-        return accum;
-    }, []);
-
-    return components;
-}
 
 exports.getCohortData = asyncMiddleware(async function getCohortDataAsync(
     req,

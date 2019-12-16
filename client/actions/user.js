@@ -12,10 +12,10 @@ export const setUser = user => ({
     user
 });
 
-export const getUser = ({ id }) => async dispatch => {
-    dispatch({ type: GET_USER, user: { id } });
+export const getUser = () => async dispatch => {
+    dispatch({ type: GET_USER });
     try {
-        const user = await (await fetch(`/api/me`)).json();
+        const user = await (await fetch(`/api/auth/me`)).json();
         dispatch({ type: GET_USER_SUCCESS, user });
         return user;
     } catch (error) {
