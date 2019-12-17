@@ -2,6 +2,7 @@ const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 const { addSlide, getSlidesForScenario } = require('./slides/db');
 const { getRunResponses } = require('../runs/db');
+const { getUserByProps } = require('../auth/db');
 
 async function getScenarioCategories(scenarioId) {
     const scenarioCategoriesResults = await query(sql`
@@ -72,6 +73,8 @@ async function getScenario(scenarioId) {
         SELECT * FROM scenario WHERE id = ${scenarioId};
     `);
 
+    const { author_id } = results.rows[0];
+    const { username: author } = await getUserByProps({ id: author_id });
     const categories = await getScenarioCategories(scenarioId);
     const consent = await getScenarioConsent(scenarioId);
     const finish =
@@ -79,8 +82,10 @@ async function getScenario(scenarioId) {
             slide => slide.is_finish
         ) || (await addFinishSlide(scenarioId));
 
+    delete results.rows[0].author_id;
     return {
         ...results.rows[0],
+        author,
         categories,
         consent,
         finish

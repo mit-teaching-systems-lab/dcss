@@ -9,6 +9,7 @@ const {
     getAllUsersRoles,
     getUserRoles,
     getUserPermissions,
+    getUsersByPermission,
     addUserRoles,
     deleteUserRoles,
     setUserRoles
@@ -17,6 +18,8 @@ const {
 router.get('/', [requireUserRole('admin'), getAllUsersRoles]);
 
 router.get('/permission', [getUserPermissions]);
+
+router.post('/user/permission', [getUsersByPermission]);
 
 router.get('/:user_id', [requireUserRole('admin'), getUserRoles]);
 

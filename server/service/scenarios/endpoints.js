@@ -1,5 +1,6 @@
 const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
+const { getUserByProps } = require('../auth/db');
 
 const { reqScenario } = require('./middleware');
 const {
@@ -43,7 +44,8 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
     res
 ) {
     const userId = req.session.user.id;
-    const { title, description, categories } = req.body;
+    const { author, title, description, categories } = req.body;
+    let authorId = userId;
 
     if (!userId || !title || !description) {
         const scenarioCreateError = new Error(
@@ -53,8 +55,13 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
         throw scenarioCreateError;
     }
 
+    if (author) {
+        const { id } = await getUserByProps({ username: author });
+        authorId = id;
+    }
+
     try {
-        const scenario = await db.addScenario(userId, title, description);
+        const scenario = await db.addScenario(authorId, title, description);
         await db.setScenarioCategories(scenario.id, categories);
         const result = { scenario, status: 201 };
 
@@ -69,6 +76,7 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
 
 async function setScenarioAsync(req, res) {
     const {
+        author,
         author_id,
         deleted_at,
         description,
@@ -79,10 +87,16 @@ async function setScenarioAsync(req, res) {
         title
     } = req.body;
     const scenarioId = req.params.scenario_id;
+    let authorId = author_id;
 
-    if (!author_id && !title && !description) {
+    if (author) {
+        const { id } = await getUserByProps({ username: author });
+        authorId = id || author_id;
+    }
+
+    if (!authorId && !title && !description) {
         const scenarioUpdateError = new Error(
-            'Must provide author_id, title, or description to update'
+            'Must provide author, author_id, title, or description to update'
         );
         scenarioUpdateError.status = 409;
         throw scenarioUpdateError;
@@ -90,7 +104,7 @@ async function setScenarioAsync(req, res) {
 
     try {
         const scenario = await db.setScenario(scenarioId, {
-            author_id,
+            author_id: authorId,
             deleted_at,
             description,
             status,

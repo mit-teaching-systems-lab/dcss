@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-    Button,
-    Container,
-    Dropdown,
-    Form,
-    Grid,
-    Popup
-} from 'semantic-ui-react';
+import { Button, Container, Form, Grid, Popup } from 'semantic-ui-react';
 import { getScenario, setScenario } from '@client/actions/scenario';
 
 import ConfirmAuth from '@client/components/ConfirmAuth';
+import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
 import { Text } from '@client/components/Slide/Components';
 import './scenarioEditor.css';
 
@@ -36,8 +30,9 @@ class ScenarioEditor extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            saving: false,
-            categories: []
+            authors: [],
+            categories: [],
+            saving: false
         };
 
         this.onChange = this.onChange.bind(this);
@@ -47,6 +42,7 @@ class ScenarioEditor extends Component {
 
         if (this.props.scenarioId === 'new') {
             this.props.setScenario({
+                author: '',
                 title: '',
                 description: '',
                 finish: {
@@ -68,11 +64,17 @@ class ScenarioEditor extends Component {
 
     async componentDidMount() {
         const categories = await (await fetch('/api/tags/categories')).json();
-        this.setState({ categories });
+        const authors = await (await fetch('/api/roles/user/permission', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ permission: 'create_scenario' })
+        })).json();
+        this.setState({ categories, authors });
     }
 
     onChange(event, { name, value }) {
-        this.props.updateEditorMessage('');
         this.props.setScenario({ [name]: value });
 
         // Only auto-save after initial
@@ -125,6 +127,7 @@ class ScenarioEditor extends Component {
 
     async onSubmit() {
         const {
+            author,
             categories = [],
             consent,
             description,
@@ -146,6 +149,7 @@ class ScenarioEditor extends Component {
         this.setState({ saving: true });
 
         const data = {
+            author,
             categories,
             consent,
             description,
@@ -187,6 +191,7 @@ class ScenarioEditor extends Component {
             onSubmit
         } = this;
         const {
+            author,
             categories,
             consent,
             description,
@@ -290,30 +295,25 @@ class ScenarioEditor extends Component {
                                 width={6}
                                 className="scenarioeditor__grid-column-min-width"
                             >
-                                {this.state.categories.length && (
-                                    <ConfirmAuth requiredPermission="edit_scenario">
-                                        <Form.Field>
-                                            <label>Categories</label>
-                                            <Dropdown
-                                                label="Categories"
-                                                name="categories"
-                                                placeholder="Select..."
-                                                fluid
-                                                multiple
-                                                selection
-                                                options={this.state.categories.map(
-                                                    category => ({
-                                                        key: category.id,
-                                                        text: category.name,
-                                                        value: category.name
-                                                    })
-                                                )}
-                                                defaultValue={categories}
-                                                onChange={onChange}
-                                            />
-                                        </Form.Field>
-                                    </ConfirmAuth>
-                                )}
+                                <ConfirmAuth requiredPermission="edit_scenario">
+                                    {this.state.authors.length && (
+                                        <AuthorDropdown
+                                            scenarioAuthor={author}
+                                            authorOptions={this.state.authors}
+                                            onChange={onChange}
+                                        />
+                                    )}
+                                    {this.state.categories.length && (
+                                        <CategoriesDropdown
+                                            categoryOptions={
+                                                this.state.categories
+                                            }
+                                            scenarioCategories={categories}
+                                            onChange={onChange}
+                                        />
+                                    )}
+                                </ConfirmAuth>
+
                                 {/*
                                     TODO: create the same Dropdown style thing
                                             for displaying and selecting
@@ -360,6 +360,7 @@ class ScenarioEditor extends Component {
 
 function mapStateToProps(state) {
     const {
+        author,
         categories,
         consent,
         description,
@@ -367,7 +368,7 @@ function mapStateToProps(state) {
         status,
         title
     } = state.scenario;
-    return { categories, consent, description, finish, status, title };
+    return { author, categories, consent, description, finish, status, title };
 }
 
 const mapDispatchToProps = {
@@ -382,6 +383,7 @@ ScenarioEditor.propTypes = {
     submitCB: PropTypes.func.isRequired,
     postSubmitCB: PropTypes.func,
     updateEditorMessage: PropTypes.func.isRequired,
+    author: PropTypes.string,
     title: PropTypes.string,
     categories: PropTypes.array,
     consent: PropTypes.shape({
