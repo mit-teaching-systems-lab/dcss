@@ -248,7 +248,7 @@ export class CohortDataTable extends React.Component {
                 csv += `${prepared.join(',')}\n`;
             });
 
-            CSV.download(`${prefix}-${subject}.csv`, csv);
+            CSV.download(`${prefix}-${subject}`, csv);
         });
     }
 
