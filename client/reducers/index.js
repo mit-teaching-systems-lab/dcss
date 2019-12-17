@@ -6,11 +6,12 @@ import login from './login';
 import { user } from './user';
 import { response, responses } from './response';
 import { run, runs } from './run';
-import { scenario, scenarios } from './scenario';
+import { history, scenario, scenarios } from './scenario';
 
 export default combineReducers({
     admin,
     cohort,
+    history,
     login,
     response,
     responses,

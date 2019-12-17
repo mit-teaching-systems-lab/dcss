@@ -14,6 +14,9 @@ import {
     GET_COHORT_DATA,
     GET_COHORT_DATA_SUCCESS,
     GET_COHORT_DATA_ERROR,
+    GET_ALL_COHORTS,
+    GET_ALL_COHORTS_SUCCESS,
+    GET_ALL_COHORTS_ERROR,
     GET_USER_COHORTS,
     GET_USER_COHORTS_SUCCESS,
     GET_USER_COHORTS_ERROR,
@@ -90,6 +93,23 @@ export const getCohorts = params => async dispatch => {
     } catch (error) {
         const { message, status, stack } = error;
         dispatch({ type: GET_USER_COHORTS_ERROR, status, message, stack });
+    }
+};
+
+export const getAllCohorts = () => async dispatch => {
+    dispatch({ type: GET_ALL_COHORTS });
+    try {
+        const { cohorts, error } = await (await fetch(
+            '/api/cohort/all'
+        )).json();
+        if (error) {
+            throw error;
+        }
+        dispatch({ type: GET_ALL_COHORTS_SUCCESS, cohorts });
+        return cohorts;
+    } catch (error) {
+        const { message, status, stack } = error;
+        dispatch({ type: GET_ALL_COHORTS_ERROR, status, message, stack });
     }
 };
 

@@ -272,10 +272,9 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
     }
 });
 
-exports.getScenarioDataResearcher = asyncMiddleware(async function(req, res) {
-    const scenarioId = req.params.scenario_id;
-    const data = await db.getScenarioResearchData(scenarioId);
-    res.send({ data });
+exports.getScenarioRunHistory = asyncMiddleware(async function(req, res) {
+    const history = await db.getScenarioRunHistory(req.params);
+    res.send({ history });
 });
 
 exports.getScenarioByRun = asyncMiddleware(async function(req, res) {

@@ -114,6 +114,28 @@ exports.getMyCohorts = async ({ user_id }) => {
     });
 };
 
+exports.getAllCohorts = async () => {
+    return await withClientTransaction(async client => {
+        const result = await client.query(sql`
+            SELECT * FROM cohort;
+        `);
+
+        const cohorts = [];
+        for (const row of result.rows) {
+            const runs = await getCohortRuns(row.id);
+            const scenarios = await getCohortScenarios(row.id);
+            const users = await getCohortUsers(row.id);
+            cohorts.push({
+                ...row,
+                runs,
+                scenarios,
+                users
+            });
+        }
+        return cohorts;
+    });
+};
+
 exports.setCohort = async () => {
     // console.log('setCohort', params);
 

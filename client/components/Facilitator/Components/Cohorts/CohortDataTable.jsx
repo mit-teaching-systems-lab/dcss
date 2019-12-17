@@ -21,6 +21,8 @@ import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
 import ContentSlide from '@components/Scenario/ContentSlide';
 import CohortDataTableMenu from './CohortDataTableMenu';
+import CSV from '@client/util/csv';
+import { makeHeader } from '@client/util/data-table';
 import './CohortDataTable.css';
 
 function isAudioFile(input) {
@@ -50,38 +52,6 @@ function reduceResponses(key, responses) {
     }, {});
 
     return responsesReduced;
-}
-
-function makeHeader(props, prompts) {
-    const { buttons, header, prompt, recallId, required } = props || {};
-    const parentheticals = [];
-
-    if (required) {
-        parentheticals.push('Required');
-    }
-
-    if (recallId) {
-        const reflected = prompts.find(
-            ({ responseId }) => responseId === recallId
-        ).prompt;
-        parentheticals.push(`Reflecting on '${reflected}'`);
-    }
-
-    if (buttons) {
-        parentheticals.push(
-            `Choices: ${buttons.map(button => button.display).join(', ')}`
-        );
-    }
-
-    if (!header) {
-        return `${prompt} (${parentheticals.join(', ')})`;
-    } else {
-        return `${header} (${parentheticals.join(', ')})`;
-    }
-}
-
-function escapeCSV(input) {
-    return input.replace(/(\r\n|\n|\r)/gm, ' ').replace(/"/gm, '""');
 }
 
 export class CohortDataTable extends React.Component {
@@ -252,7 +222,7 @@ export class CohortDataTable extends React.Component {
             const subjectAndPrompts = [
                 `"${leftColumnHeader}"`,
                 ...prompts.map(
-                    prompt => `"${escapeCSV(makeHeader(prompt, prompts))}"`
+                    prompt => `"${CSV.escape(makeHeader(prompt, prompts))}"`
                 )
             ].join(',');
 
@@ -271,21 +241,14 @@ export class CohortDataTable extends React.Component {
                     if (isAudioContent) {
                         content += ` (${location.origin}/api/media/${response.value})`;
                     }
-                    const formatted = escapeCSV(content);
+                    const formatted = CSV.escape(content);
 
                     return `"${formatted}"`;
                 });
                 csv += `${prepared.join(',')}\n`;
             });
 
-            const blob = new Blob([csv], { type: 'text/csv' });
-            const url = URL.createObjectURL(blob);
-            const anchor = document.createElement('a');
-            anchor.href = url;
-            anchor.setAttribute('download', `${prefix}-${subject}.csv`);
-            anchor.click();
-
-            URL.revokeObjectURL(url);
+            CSV.download(`${prefix}-${subject}.csv`, csv);
         });
     }
 

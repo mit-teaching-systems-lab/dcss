@@ -5,6 +5,7 @@ import {
     // GET_SCENARIOS,
     GET_SCENARIOS_SUCCESS,
     // GET_SCENARIOS_ERROR,
+    GET_SCENARIO_RUN_HISTORY_SUCCESS,
     GET_SLIDES_SUCCESS,
     SET_SCENARIO,
     // SET_SCENARIO_SUCCESS,
@@ -15,7 +16,7 @@ import {
     SET_SLIDES
 } from '@client/actions/types';
 
-const initialState = {
+const initialScenarioState = {
     title: '',
     description: '',
     consent: {
@@ -31,9 +32,8 @@ const initialState = {
     status: 1
 };
 
-export const scenario = (state = initialState, action) => {
+export const scenario = (state = initialScenarioState, action) => {
     const { scenario, slides, type } = action;
-
     switch (type) {
         case SET_SCENARIO:
         case GET_SCENARIO_SUCCESS:
@@ -46,6 +46,24 @@ export const scenario = (state = initialState, action) => {
             return {
                 ...state,
                 ...slides
+            };
+        default:
+            return state;
+    }
+};
+
+const initialHistoryState = {
+    prompts: [],
+    responses: []
+};
+
+export const history = (state = initialHistoryState, action) => {
+    const { history, type } = action;
+    switch (type) {
+        case GET_SCENARIO_RUN_HISTORY_SUCCESS:
+            return {
+                ...state,
+                ...history
             };
         default:
             return state;

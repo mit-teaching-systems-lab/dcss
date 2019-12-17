@@ -91,6 +91,7 @@ exports.getRunResponses = async ({ run_id }) => {
                 scenario.id as scenario_id,
                 scenario.title as scenario_title,
                 run.id as run_id,
+                run.referrer_params as referrer_params,
                 response_id,
                 run_response.response,
                 run_response.response->>'value' as value,

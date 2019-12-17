@@ -1,6 +1,7 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 const { addSlide, getSlidesForScenario } = require('./slides/db');
+const { getRunResponses } = require('../runs/db');
 
 async function getScenarioCategories(scenarioId) {
     const scenarioCategoriesResults = await query(sql`
@@ -235,18 +236,6 @@ async function softDeleteScenario(scenarioId) {
     return result.rows[0];
 }
 
-async function getScenarioResearchData(scenarioId) {
-    const result = await query(sql`
-        SELECT run_response.*
-        FROM run
-        INNER JOIN run_response on run.id = run_response.run_id
-        WHERE run.consent_granted_by_user = true
-        AND run.scenario_id = ${scenarioId};
-    `);
-
-    return result.rows;
-}
-
 async function getScenarioByRun(userId) {
     const result = await query(sql`
         SELECT DISTINCT * FROM scenario
@@ -283,6 +272,30 @@ async function getScenarioPrompts(scenario_id) {
     return components;
 }
 
+async function getScenarioRunHistory(params) {
+    const {
+        // TODO: implement support for limiting by cohort
+        // cohort_id,
+        scenario_id
+    } = params;
+
+    const results = await query(sql`
+        SELECT id
+        FROM run
+        WHERE consent_granted_by_user = true
+        AND scenario_id = ${scenario_id};
+    `);
+
+    const prompts = await getScenarioPrompts(scenario_id);
+    const responses = [];
+
+    for (const { id: run_id } of results.rows) {
+        responses.push(await getRunResponses({ run_id }));
+    }
+
+    return { prompts, responses };
+}
+
 // Scenario
 exports.addScenario = addScenario;
 exports.setScenario = setScenario;
@@ -290,7 +303,7 @@ exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
 exports.softDeleteScenario = softDeleteScenario;
 exports.getAllScenarios = getAllScenarios;
-exports.getScenarioResearchData = getScenarioResearchData;
+exports.getScenarioRunHistory = getScenarioRunHistory;
 exports.getScenarioByRun = getScenarioByRun;
 exports.getScenarioPrompts = getScenarioPrompts;
 

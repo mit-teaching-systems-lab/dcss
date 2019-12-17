@@ -21,6 +21,11 @@ exports.getMyCohorts = asyncMiddleware(async function getMyCohorts(req, res) {
     res.json({ cohorts });
 });
 
+exports.getAllCohorts = asyncMiddleware(async function getAllCohorts(req, res) {
+    const cohorts = await db.getAllCohorts();
+    res.json({ cohorts });
+});
+
 exports.linkCohortToRun = asyncMiddleware(async function linkCohortToRunAsync(
     req,
     res
