@@ -16,6 +16,11 @@ const restrictedNav = [
         permission: 'create_scenario'
     },
     {
+        text: 'My Scenario Data',
+        path: '/my-scenario-data',
+        permission: 'view_own_data'
+    },
+    {
         text: 'Cohorts',
         path: '/cohorts',
         permission: 'view_own_cohorts'
@@ -75,14 +80,6 @@ const Navigation = () => {
                     <Menu.Item className="navigation__menu-item-logo">
                         <NavLink to="/">Teacher Moments</NavLink>
                     </Menu.Item>
-
-                    {Session.isSessionActive() && (
-                        <Menu.Item>
-                            <NavLink to="/my-scenario-data">
-                                My Scenario Data
-                            </NavLink>
-                        </Menu.Item>
-                    )}
 
                     <Menu.Menu>
                         <Dropdown
