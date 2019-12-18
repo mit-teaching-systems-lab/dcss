@@ -241,6 +241,16 @@ export class CohortDataTable extends React.Component {
                     if (isAudioContent) {
                         content += ` (${location.origin}/api/media/${response.value})`;
                     }
+
+                    const difference = moment(response.ended_at).diff(
+                        response.created_at
+                    );
+                    const duration = moment
+                        .duration(difference)
+                        .format(moment.globalFormat);
+
+                    content += ` (${duration})`;
+
                     const formatted = CSV.escape(content);
 
                     return `"${formatted}"`;

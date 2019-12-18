@@ -1,3 +1,6 @@
+.richtext__container {
+    overflow-wrap: break-word;
+}
 .richtext__container img {
     max-width: 100%;
 }

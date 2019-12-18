@@ -40,11 +40,13 @@
 }
 .datatable__scroll tbody td {
     max-width: 100px;
+    overflow-wrap: break-word;
 }
 
 .datatablemodal__scroll tbody td {
     min-width: 100px;
     overflow: visible !important;
+    overflow-wrap: break-word;
     white-space: inherit !important;
     text-overflow: unset !important;
 }

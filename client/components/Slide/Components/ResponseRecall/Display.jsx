@@ -64,7 +64,10 @@ class Display extends React.Component {
         return (
             <Message
                 floating
-                style={{ whiteSpace: 'pre-wrap' }}
+                style={{
+                    whiteSpace: 'pre-wrap',
+                    overflowWrap: 'break-word'
+                }}
                 content={
                     content.endsWith('mp3') ? (
                         <React.Fragment>
