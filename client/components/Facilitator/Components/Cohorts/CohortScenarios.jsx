@@ -331,6 +331,10 @@ export class CohortScenarios extends React.Component {
                                                 onClick={() => {
                                                     location.href = url;
                                                 }}
+                                                // Workaround for firing on Android devices
+                                                onTouchStart={() => {
+                                                    location.href = url;
+                                                }}
                                             >
                                                 <Link to={pathname}>
                                                     {scenario.title}
