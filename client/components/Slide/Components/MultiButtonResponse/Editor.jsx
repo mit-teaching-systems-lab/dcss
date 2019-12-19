@@ -32,7 +32,6 @@ class MultiButtonResponseEditor extends React.Component {
             header = '',
             prompt = '',
             recallId = '',
-            required,
             responseId = ''
         } = props.value;
 
@@ -42,7 +41,6 @@ class MultiButtonResponseEditor extends React.Component {
             header,
             prompt,
             recallId,
-            required,
             responseId
         };
 
@@ -59,20 +57,13 @@ class MultiButtonResponseEditor extends React.Component {
     }
 
     updateState() {
-        const {
-            buttons,
-            header,
-            prompt,
-            recallId,
-            required,
-            responseId
-        } = this.state;
+        const { buttons, header, prompt, recallId, responseId } = this.state;
+
         this.props.onChange({
             buttons,
             header,
             prompt,
             recallId,
-            required,
             responseId,
             type
         });

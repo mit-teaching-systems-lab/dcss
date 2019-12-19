@@ -21,7 +21,6 @@ class TextResponseEditor extends React.Component {
             prompt = 'Text Prompt (displayed before input field as label)',
             placeholder = '',
             recallId = '',
-            required,
             responseId = ''
         } = props.value;
         this.state = {
@@ -30,7 +29,6 @@ class TextResponseEditor extends React.Component {
             prompt,
             placeholder,
             recallId,
-            required,
             responseId
         };
 
@@ -114,7 +112,6 @@ class TextResponseEditor extends React.Component {
             prompt,
             placeholder,
             recallId,
-            required,
             responseId
         } = this.state;
         this.props.onChange({
@@ -122,7 +119,6 @@ class TextResponseEditor extends React.Component {
             prompt,
             placeholder,
             recallId,
-            required,
             responseId,
             type
         });

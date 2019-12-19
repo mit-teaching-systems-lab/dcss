@@ -22,7 +22,6 @@ class AudioResponseEditor extends Component {
             header = '',
             prompt = '',
             recallId = '',
-            required,
             responseId
         } = props.value;
         this.state = {
@@ -30,7 +29,6 @@ class AudioResponseEditor extends Component {
             header,
             prompt,
             recallId,
-            required,
             responseId
         };
         this.onChange = this.onChange.bind(this);
@@ -39,12 +37,11 @@ class AudioResponseEditor extends Component {
     }
 
     updateState() {
-        const { header, prompt, recallId, required, responseId } = this.state;
+        const { header, prompt, recallId, responseId } = this.state;
         this.props.onChange({
             header,
             prompt,
             recallId,
-            required,
             responseId,
             type
         });
