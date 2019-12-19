@@ -95,7 +95,7 @@ export class Cohorts extends React.Component {
                         left: [
                             <ConfirmAuth
                                 key="menu-item-create-cohort-auth"
-                                requiredPermission="edit_all_cohorts"
+                                requiredPermission="create_cohort"
                             >
                                 <Menu.Item
                                     key="menu-item-create-cohort"
