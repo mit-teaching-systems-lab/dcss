@@ -1,5 +1,5 @@
 function encodeValue(value) {
-    if (Array.isArray(value) || typeof value === 'object') {
+    if (Array.isArray(value) || (typeof value === 'object' && value !== null)) {
         const typecast = '::jsonb';
         return { typecast, value: JSON.stringify(value) };
     }
