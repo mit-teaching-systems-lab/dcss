@@ -51,7 +51,7 @@ class MultiButtonResponseEditor extends React.Component {
         this.onChangeButtonOrder = this.onChangeButtonOrder.bind(this);
         this.onChange = this.onChange.bind(this);
         this.onDeleteButton = this.onDeleteButton.bind(this);
-        this.onFocusButtonDetail = this.onFocusButtonDetail.bind(this);
+        this.preventEmptyButtonField = this.preventEmptyButtonField.bind(this);
         this.onRecallChange = this.onRecallChange.bind(this);
         this.toggleOptional = this.toggleOptional.bind(this);
 
@@ -107,14 +107,22 @@ class MultiButtonResponseEditor extends React.Component {
         this.setState({ buttons }, this.updateState);
     }
 
-    onFocusButtonDetail(index) {
+    preventEmptyButtonField(index) {
         const { buttons } = this.state;
 
         // If the Value field is presently empty,
         // kindly fill it with the same value
         // provided to the Display field
-        if (!buttons[index].value) {
+        if (!buttons[index].value.trim()) {
             buttons[index].value = buttons[index].display;
+        }
+
+        // If the Display field is presently empty,
+        // but the Value field is not,
+        // kindly fill it with the same value
+        // provided to the Value field
+        if (!buttons[index].display.trim() && buttons[index].value.trim()) {
+            buttons[index].display = buttons[index].value;
         }
 
         this.setState({ buttons }, this.updateState);
@@ -152,7 +160,7 @@ class MultiButtonResponseEditor extends React.Component {
             onRecallChange,
             onChange,
             onDeleteButton,
-            onFocusButtonDetail,
+            preventEmptyButtonField,
             toggleOptional,
             updateState
         } = this;
@@ -203,10 +211,12 @@ class MultiButtonResponseEditor extends React.Component {
                         }}
                     >
                         {buttons.map(({ display, value }, index) => {
-                            const onFocusButtonDetailWithCurriedIndex = onFocusButtonDetail.bind(
+                            const preventEmptyButtonFieldCurriedIndex = preventEmptyButtonField.bind(
                                 this,
                                 index
                             );
+                            const onBlur = preventEmptyButtonFieldCurriedIndex;
+                            const onFocus = preventEmptyButtonFieldCurriedIndex;
                             return (
                                 <EditorMenu
                                     key={`button-editor-${index}`}
@@ -223,6 +233,8 @@ class MultiButtonResponseEditor extends React.Component {
                                                     label="Button Display:"
                                                     name="display"
                                                     value={display}
+                                                    onFocus={onFocus}
+                                                    onBlur={onBlur}
                                                     onChange={
                                                         onChangeButtonDetail
                                                     }
@@ -233,9 +245,8 @@ class MultiButtonResponseEditor extends React.Component {
                                                     label="Button Value:"
                                                     name="value"
                                                     value={value}
-                                                    onFocus={
-                                                        onFocusButtonDetailWithCurriedIndex
-                                                    }
+                                                    onFocus={onFocus}
+                                                    onBlur={onBlur}
                                                     onChange={
                                                         onChangeButtonDetail
                                                     }
