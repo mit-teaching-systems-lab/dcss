@@ -272,9 +272,11 @@ export default class SlideEditor extends React.Component {
                             <Sortable
                                 onChange={onChangeComponentOrder}
                                 options={{
+                                    animation: 150,
                                     direction: 'vertical',
-                                    swapThreshold: 0.5,
-                                    animation: 150
+                                    draggable: '.draggable',
+                                    forceFallback: true,
+                                    swapThreshold: 0.5
                                 }}
                             >
                                 {components.map((value, index) => {
@@ -351,8 +353,8 @@ export default class SlideEditor extends React.Component {
                                             className={
                                                 index ===
                                                 this.state.currentComponentIndex
-                                                    ? 'editor__component-selected'
-                                                    : ''
+                                                    ? 'editor__component-selected draggable'
+                                                    : 'draggable'
                                             }
                                             onClick={() =>
                                                 this.setState({
