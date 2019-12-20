@@ -9,14 +9,20 @@ const USER_ROLES = Object.freeze({
     participant: 'Participant'
 });
 
-const onCheckboxClick = async (event, { email, username, role, checked }) => {
+const IMMUTABLE_ROLES = Object.freeze(['participant']);
+
+const onCheckboxClick = async (event, data) => {
+    const { email, username, role, checked, disabled } = data;
+    if (disabled) {
+        return;
+    }
     const endpoint = checked ? '/api/roles/add' : '/api/roles/delete';
     const body = JSON.stringify({
         roles: [role],
         email,
         username
     });
-    fetch(endpoint, {
+    await fetch(endpoint, {
         headers: {
             'Content-Type': 'application/json'
         },
@@ -26,12 +32,13 @@ const onCheckboxClick = async (event, { email, username, role, checked }) => {
 };
 
 const RoleCells = ({ username, email, roles }) => {
-    return Object.keys(USER_ROLES).map(dbValue => {
+    return Object.keys(USER_ROLES).map((dbValue, index) => {
         const checked = roles ? roles.includes(dbValue) : false;
-
+        const disabled = IMMUTABLE_ROLES.includes(dbValue);
         return (
-            <Table.Cell key={dbValue}>
+            <Table.Cell key={`${username}-${dbValue}-${index}`}>
                 <Checkbox
+                    disabled={disabled}
                     role={dbValue}
                     username={username}
                     email={email}
