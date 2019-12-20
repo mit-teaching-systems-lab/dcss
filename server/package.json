@@ -15,7 +15,6 @@
     "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
     "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
     "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
-    "db-init-staging": "yarn db-migrate-up -e staging",
     "db-migrate-down": "db-migrate down",
     "db-migrate-up": "db-migrate up",
     "dev": "nodemon index.js",
