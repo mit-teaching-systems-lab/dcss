@@ -20,11 +20,7 @@ class AccountAdmin extends Component {
     }
 
     async getUsers() {
-        const usersResponse = await (await fetch('api/roles')).json();
-        let users = null;
-        if (usersResponse.status === 200) {
-            users = usersResponse.users;
-        }
+        const { users = null } = await (await fetch('api/roles')).json();
 
         this.props.setUsers({ users });
     }

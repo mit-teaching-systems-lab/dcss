@@ -24,7 +24,7 @@ exports.requireUserRole = roles => [
         if (
             // super admin wins - always gets permission for this
             userRoles.includes('super_admin') ||
-            roles.every(role => userRoles.includes(role))
+            roles.some(role => userRoles.includes(role))
         ) {
             return next();
         }
@@ -36,7 +36,7 @@ exports.requireUserRole = roles => [
 
 exports.checkCanEditUserRoles = getEditUserId => [
     // only admin can edit user roles
-    exports.requireUserRole('admin'),
+    exports.requireUserRole(['admin', 'super_admin']),
     asyncMiddleware(async function checkCanEditUser(req, res, next) {
         const targetUserId = await getEditUserId(req);
         const { roles: targetUserRoles } = await db.getUserRoles(targetUserId);

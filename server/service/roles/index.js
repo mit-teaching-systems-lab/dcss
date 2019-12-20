@@ -15,13 +15,19 @@ const {
     setUserRoles
 } = require('./endpoints');
 
-router.get('/', [requireUserRole('admin'), getAllUsersRoles]);
+router.get('/', [requireUserRole(['admin', 'super_admin']), getAllUsersRoles]);
 
 router.get('/permission', [getUserPermissions]);
 
-router.post('/user/permission', [getUsersByPermission]);
+router.post('/user/permission', [
+    requireUserRole(['admin', 'super_admin']),
+    getUsersByPermission
+]);
 
-router.get('/:user_id', [requireUserRole('admin'), getUserRoles]);
+router.get('/:user_id', [
+    requireUserRole(['admin', 'super_admin']),
+    getUserRoles
+]);
 
 router.put('/:user_id', [
     checkCanEditUserRoles(req => req.params.user_id),

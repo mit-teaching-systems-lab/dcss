@@ -248,7 +248,7 @@ export class CohortScenarios extends React.Component {
                                             className="cohort__table-thead-tbody-tr"
                                             style={{ cursor: 'pointer' }}
                                         >
-                                            <ConfirmAuth requiredPermission="edit_all_cohorts">
+                                            <ConfirmAuth requiredPermission="edit_own_cohorts">
                                                 <Table.Cell
                                                     key={`cell-checkbox-${index}`}
                                                     className="cohort__table-cell-first"

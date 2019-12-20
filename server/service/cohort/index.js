@@ -2,6 +2,7 @@ const { Router } = require('express');
 
 const { validateRequestBody } = require('../../util/requestValidation');
 const { requireUser } = require('../auth/middleware');
+const { requireUserRole } = require('../roles/middleware');
 const { requireUserForRun } = require('../runs/middleware');
 const router = Router();
 
@@ -21,11 +22,24 @@ const {
     doneCohort
 } = require('./endpoints');
 
-router.put('/', [requireUser, validateRequestBody, createCohort]);
+const requiredRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
+
+router.put('/', [
+    requireUser,
+    requireUserRole(requiredRoles),
+    validateRequestBody,
+    createCohort
+]);
 router.get('/', [requireUser, listUserCohorts]);
-router.post('/:id', [requireUser, validateRequestBody, setCohort]);
+router.post('/:id', [
+    requireUser,
+    requireUserRole(requiredRoles),
+    validateRequestBody,
+    setCohort
+]);
 router.post('/:id/scenarios', [
     requireUser,
+    requireUserRole(requiredRoles),
     validateRequestBody,
     setCohortScenarios
 ]);
@@ -39,7 +53,6 @@ router.get('/:id/participant/:participant_id', [
     getCohortParticipantData
 ]);
 
-// /api/cohort/${id}/run/${runId}
 router.get('/:id/run/:run_id', [requireUserForRun, linkCohortToRun]);
 
 router.get('/:id/join/:role', [requireUser, joinCohort]);
