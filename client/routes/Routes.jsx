@@ -20,6 +20,7 @@ import {
     InterceptAnonymizableRoute,
     NewScenario,
     RedirectRouteForActiveSession,
+    RedirectRouteForInactiveSession,
     ScenariosListAll,
     ScenariosListAuthor,
     ScenariosListCommunity,
@@ -52,7 +53,11 @@ const Routes = () => {
                 path="/scenarios/community"
                 component={ScenariosListCommunity}
             />
-            <Route exact path="/my-scenario-data/" component={MyScenarios} />
+
+            <RedirectRouteForInactiveSession exact path="/my-scenario-data">
+                <Route component={MyScenarios} />
+            </RedirectRouteForInactiveSession>
+
             <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeSlideIndex">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>

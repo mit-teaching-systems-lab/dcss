@@ -72,7 +72,6 @@ export const RedirectRouteForActiveSession = ({ children, ...rest }) => {
                 if (!Session.isSessionActive()) {
                     return children;
                 }
-
                 location.href = '/';
             }}
         />
@@ -80,6 +79,27 @@ export const RedirectRouteForActiveSession = ({ children, ...rest }) => {
 };
 
 RedirectRouteForActiveSession.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired
+};
+
+export const RedirectRouteForInactiveSession = ({ children, ...rest }) => {
+    return (
+        <Route
+            {...rest}
+            render={() => {
+                if (Session.isSessionActive()) {
+                    return children;
+                }
+                location.href = '/login';
+            }}
+        />
+    );
+};
+
+RedirectRouteForInactiveSession.propTypes = {
     children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
