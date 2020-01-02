@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
     Button,
@@ -15,7 +14,8 @@ import {
 import Sortable from 'react-sortablejs';
 import copy from 'copy-text-to-clipboard';
 import _ from 'lodash';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import ClickableTableCell from '@components/ClickableTableCell';
+import ConfirmAuth from '@components/ConfirmAuth';
 
 import { getCohort, setCohort } from '@client/actions/cohort';
 import { getScenarios, setScenarios } from '@client/actions/scenario';
@@ -327,19 +327,10 @@ export class CohortScenarios extends React.Component {
                                                     </Button.Group>
                                                 </Table.Cell>
                                             </ConfirmAuth>
-                                            <Table.Cell
-                                                onClick={() => {
-                                                    location.href = url;
-                                                }}
-                                                // Workaround for firing on Android devices
-                                                onTouchStart={() => {
-                                                    location.href = url;
-                                                }}
-                                            >
-                                                <Link to={pathname}>
-                                                    {scenario.title}
-                                                </Link>
-                                            </Table.Cell>
+                                            <ClickableTableCell
+                                                href={pathname}
+                                                display={scenario.title}
+                                            />
                                             <Table.Cell className="cohort__table-cell--description">
                                                 {scenario.description}
                                             </Table.Cell>

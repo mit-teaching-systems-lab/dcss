@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Button, Icon, Pagination, Popup, Ref, Table } from 'semantic-ui-react';
@@ -9,6 +8,7 @@ import { getUserRuns } from '@client/actions/run';
 import { getCohorts } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
+import ClickableTableCell from '@components/ClickableTableCell';
 import CohortDataTable from '@components/Facilitator/Components/Cohorts/CohortDataTable';
 
 import './MyScenarios.css';
@@ -97,7 +97,7 @@ class MyScenarios extends Component {
 
     render() {
         const { onDataTableMenuClick, onPageChange, onRunDataClick } = this;
-        const { runs } = this.props;
+        const { cohorts, runs } = this.props;
         const { activePage, source } = this.state;
 
         const runsPages = Math.ceil(runs.length / ROWS_PER_PAGE);
@@ -109,18 +109,21 @@ class MyScenarios extends Component {
                 <Table role="grid" unstackable>
                     <Table.Header>
                         <Table.Row>
-                            <Table.HeaderCell colSpan="4">
+                            <Table.HeaderCell colSpan="5">
                                 My Scenario Data
                             </Table.HeaderCell>
                         </Table.Row>
                         <Table.Row>
                             <Table.HeaderCell collapsing></Table.HeaderCell>
-                            <Table.HeaderCell>Title</Table.HeaderCell>
+                            <Table.HeaderCell>Scenario Title</Table.HeaderCell>
                             <Table.HeaderCell className="myscenarios__hidden-on-mobile">
                                 Started
                             </Table.HeaderCell>
                             <Table.HeaderCell className="myscenarios__hidden-on-mobile">
                                 Completed
+                            </Table.HeaderCell>
+                            <Table.HeaderCell className="myscenarios__hidden-on-mobile">
+                                Cohort
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
@@ -161,6 +164,16 @@ class MyScenarios extends Component {
                                 ? `/cohort/${cohort_id}/run/${scenario_id}/slide/0`
                                 : `/run/${scenario_id}/slide/0`;
 
+                            const cohort = cohorts.find(
+                                ({ id }) => id === cohort_id
+                            );
+
+                            const cohortPathname = cohort
+                                ? `/cohort/${cohort_id}`
+                                : null;
+
+                            const cohortDisplay = cohort ? cohort.name : null;
+
                             return (
                                 <Table.Row
                                     {...completeOrIncomplete}
@@ -173,15 +186,10 @@ class MyScenarios extends Component {
                                             onClick={onRunDataClick}
                                         />
                                     </Table.Cell>
-                                    <Table.Cell
-                                        onClick={() => {
-                                            location.href = pathname;
-                                        }}
-                                    >
-                                        <Link to={pathname}>
-                                            {scenario_title}
-                                        </Link>
-                                    </Table.Cell>
+                                    <ClickableTableCell
+                                        href={pathname}
+                                        display={scenario_title}
+                                    />
                                     <Table.Cell
                                         alt={endedAtAlt}
                                         className="myscenarios__hidden-on-mobile"
@@ -194,6 +202,11 @@ class MyScenarios extends Component {
                                     >
                                         {endedAtDisplay}
                                     </Table.Cell>
+                                    <ClickableTableCell
+                                        className="myscenarios__hidden-on-mobile"
+                                        href={cohortPathname}
+                                        display={cohortDisplay}
+                                    />
                                 </Table.Row>
                             );
                         })}
@@ -201,7 +214,7 @@ class MyScenarios extends Component {
 
                     <Table.Footer>
                         <Table.Row>
-                            <Table.HeaderCell colSpan="4">
+                            <Table.HeaderCell colSpan="5">
                                 <Pagination
                                     name="runs"
                                     siblingRange={1}
