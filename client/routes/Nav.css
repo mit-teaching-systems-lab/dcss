@@ -16,7 +16,7 @@
 
 .ui.menu .item.navigation__menu-item-logo a {
     padding: 10px;
-    background-image: url('/images/MIT-TSL-Logo-Icons.png');
+    background-image: env(--DCSS_BRAND_LOGO);
     background-position: center center;
     background-repeat: no-repeat;
     text-indent: -999em;

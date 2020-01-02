@@ -78,7 +78,9 @@ const Navigation = () => {
             {menuExpanded && (
                 <Menu id="nav" className="nav" stackable>
                     <Menu.Item className="navigation__menu-item-logo">
-                        <NavLink to="/">Teacher Moments</NavLink>
+                        <NavLink to="/">
+                            {process.env.DCSS_BRAND_NAME_TITLE || 'Home'}
+                        </NavLink>
                     </Menu.Item>
 
                     <Menu.Menu>

@@ -1,7 +1,19 @@
 const path = require('path');
-const webpack = require('webpack');
+const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
+    (accum, [key, value]) => {
+        if (key.startsWith('DCSS_BRAND_')) {
+            // This will appear _in-line_ which means the value
+            // MUST be quoted, otherwise the JS runtime will think
+            // the "value" is an identifier!
+            accum[`process.env.${key}`] = `"${value}"`;
+        }
+        return accum;
+    },
+    {}
+);
 
 module.exports = {
     entry: ['babel-polyfill', './index.js'],
@@ -19,7 +31,21 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            config: {
+                                path: path.resolve(
+                                    __dirname,
+                                    'postcss.config.js'
+                                )
+                            }
+                        }
+                    }
+                ]
             },
             {
                 // From https://github.com/Semantic-Org/Semantic-UI-CSS/issues/28
@@ -53,13 +79,14 @@ module.exports = {
         }
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        new HotModuleReplacementPlugin(),
         new CopyWebpackPlugin([
             {
                 from: 'static'
             }
         ]),
         // Optimize moment locales
-        new MomentLocalesPlugin()
+        new MomentLocalesPlugin(),
+        new DefinePlugin(DCSS_BRAND_VARS)
     ]
 };
