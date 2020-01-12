@@ -11,11 +11,6 @@ Session.timeout();
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
     {
-        text: 'Create a Scenario',
-        path: '/editor/new',
-        permission: 'create_scenario'
-    },
-    {
         text: 'My Scenario Data',
         path: '/my-scenario-data',
         permission: 'view_own_data'

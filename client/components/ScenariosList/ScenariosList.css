@@ -14,3 +14,7 @@
     max-height: 10rem !important;
     overflow-y: auto !important;
 }
+
+.scenarios__menu-item--padding {
+    padding: 0.428571em 1.14285714em !important;
+}

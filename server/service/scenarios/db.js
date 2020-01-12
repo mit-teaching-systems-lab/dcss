@@ -74,7 +74,7 @@ async function getScenario(scenarioId) {
     `);
 
     const { author_id } = results.rows[0];
-    const { username: author } = await getUserByProps({ id: author_id });
+    const author = await getUserByProps({ id: author_id });
     const categories = await getScenarioCategories(scenarioId);
     const consent = await getScenarioConsent(scenarioId);
     const finish =
@@ -99,13 +99,20 @@ async function getAllScenarios() {
 
     const scenarios = [];
     for (const row of results.rows) {
+        const author = await getUserByProps({ id: row.author_id });
         const categories = await getScenarioCategories(row.id);
         const consent = await getScenarioConsent(row.id);
         const finish =
             (await getSlidesForScenario(row.id)).find(
                 slide => slide.is_finish
             ) || (await addFinishSlide(row.id));
-        scenarios.push({ ...row, categories, consent, finish });
+        scenarios.push({
+            ...row,
+            author,
+            categories,
+            consent,
+            finish
+        });
     }
 
     return scenarios;

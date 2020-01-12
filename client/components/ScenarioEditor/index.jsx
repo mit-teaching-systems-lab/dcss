@@ -42,7 +42,7 @@ class ScenarioEditor extends Component {
 
         if (this.props.scenarioId === 'new') {
             this.props.setScenario({
-                author: '',
+                author: {},
                 title: '',
                 description: '',
                 finish: {
@@ -298,7 +298,7 @@ class ScenarioEditor extends Component {
                                 <ConfirmAuth requiredPermission="edit_scenario">
                                     {this.state.authors.length && (
                                         <AuthorDropdown
-                                            scenarioAuthor={author}
+                                            scenarioAuthor={author.username}
                                             authorOptions={this.state.authors}
                                             onChange={onChange}
                                         />
@@ -383,7 +383,7 @@ ScenarioEditor.propTypes = {
     submitCB: PropTypes.func.isRequired,
     postSubmitCB: PropTypes.func,
     updateEditorMessage: PropTypes.func.isRequired,
-    author: PropTypes.string,
+    author: PropTypes.object,
     title: PropTypes.string,
     categories: PropTypes.array,
     consent: PropTypes.shape({

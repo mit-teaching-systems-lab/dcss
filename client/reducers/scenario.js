@@ -19,7 +19,10 @@ import {
 const initialScenarioState = {
     title: '',
     description: '',
-    author: '',
+    author: {
+        id: null,
+        username: ''
+    },
     consent: {
         id: null,
         prose: ''
