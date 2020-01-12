@@ -43,9 +43,8 @@
     margin: 0 !important;
 }
 
-.cohort__menu-item--padding {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
+.cohorts__menu-item--padding {
+    padding: 0.428571em 1.14285714em !important;
 }
 
 .cohort__table--constraints {

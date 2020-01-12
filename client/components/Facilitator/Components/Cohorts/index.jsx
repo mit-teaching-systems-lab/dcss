@@ -38,18 +38,26 @@ export class Cohorts extends React.Component {
 
         this.state = {
             createIsVisible: false,
-            cohort: new CohortEmpty({ id })
+            cohort: new CohortEmpty({ id }),
+            cohorts: [],
+            scenarios: []
         };
 
         this.onCancelCreateCohort = this.onCancelCreateCohort.bind(this);
         this.onChangeCohortName = this.onChangeCohortName.bind(this);
         this.onClickOpenCreateCohort = this.onClickOpenCreateCohort.bind(this);
+        this.onSearchChange = this.onSearchChange.bind(this);
         this.onSubmitCreateCohort = this.onSubmitCreateCohort.bind(this);
     }
 
     async componentDidMount() {
         await this.props.getCohorts();
         await this.props.getScenarios();
+
+        this.setState({
+            cohorts: this.props.cohorts,
+            scenarios: this.props.scenarios
+        });
     }
 
     async onSubmitCreateCohort() {
@@ -74,18 +82,63 @@ export class Cohorts extends React.Component {
         this.setState({ createIsVisible: true });
     }
 
+    onSearchChange(event, props) {
+        const { cohorts: sourceCohorts, scenarios } = this.props;
+        const { value } = props;
+
+        if (value === '') {
+            this.setState({
+                cohorts: sourceCohorts
+            });
+
+            return;
+        }
+
+        const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+        const lookupCohort = id =>
+            scenarios.find(scenario => scenario.id === id);
+
+        const results = sourceCohorts.filter(record => {
+            const { name, scenarios, users } = record;
+
+            if (escapedRegExp.test(name)) {
+                return true;
+            }
+
+            if (users.some(({ username }) => escapedRegExp.test(username))) {
+                return true;
+            }
+
+            if (
+                scenarios.some(
+                    id =>
+                        escapedRegExp.test(lookupCohort(id).title) ||
+                        escapedRegExp.test(lookupCohort(id).description)
+                )
+            ) {
+                return true;
+            }
+            return false;
+        });
+
+        if (results.length === 0) {
+            results.push(...sourceCohorts);
+        }
+
+        this.setState({
+            cohorts: results
+        });
+    }
+
     render() {
-        const { cohorts, scenarios } = this.props;
-        const { cohort, createIsVisible } = this.state;
+        const { cohort, cohorts, createIsVisible } = this.state;
         const {
             onCancelCreateCohort,
             onChangeCohortName,
             onClickOpenCreateCohort,
+            onSearchChange,
             onSubmitCreateCohort
         } = this;
-
-        const lookupCohort = id =>
-            scenarios.find(scenario => scenario.id === id);
 
         return (
             <React.Fragment>
@@ -101,9 +154,11 @@ export class Cohorts extends React.Component {
                                     key="menu-item-create-cohort"
                                     name="Create a cohort"
                                     onClick={onClickOpenCreateCohort}
-                                    className="cohort__menu-item--padding"
+                                    className="cohorts__menu-item--padding"
                                 >
-                                    <Icon.Group>
+                                    <Icon.Group
+                                        style={{ marginRight: '0.5rem' }}
+                                    >
                                         <Icon name="group" />
                                         <Icon
                                             corner="top right"
@@ -111,74 +166,21 @@ export class Cohorts extends React.Component {
                                             color="green"
                                         />
                                     </Icon.Group>
+                                    Create a Cohort
                                 </Menu.Item>
-                            </ConfirmAuth>
-                        ],
-                        search: {
-                            source: cohorts,
-                            onResultSelect: (event, { selected }) => {
-                                location.href = `/cohort/${selected.id}`;
-                            },
-                            onSearchChange: (event, props, setState) => {
-                                const { value } = props;
-                                const escapedRegExp = new RegExp(
-                                    _.escapeRegExp(value),
-                                    'i'
-                                );
-                                const results = cohorts.filter(record => {
-                                    if (escapedRegExp.test(record.name)) {
-                                        return true;
-                                    }
-
-                                    if (
-                                        record.users.some(({ username }) =>
-                                            escapedRegExp.test(username)
-                                        )
-                                    ) {
-                                        return true;
-                                    }
-
-                                    if (
-                                        record.scenarios.some(
-                                            id =>
-                                                escapedRegExp.test(
-                                                    lookupCohort(id).title
-                                                ) ||
-                                                escapedRegExp.test(
-                                                    lookupCohort(id).description
-                                                )
-                                        )
-                                    ) {
-                                        return true;
-                                    }
-                                    return false;
-                                });
-
-                                setState({
-                                    search: {
-                                        isLoading: false,
-                                        results,
-                                        source: cohorts,
-                                        value
-                                    }
-                                });
-                            },
-                            renderer: ({
-                                id,
-                                name
-                                /*
-                                users,
-                                runs,
-                                scenarios
-                                */
-                            }) => {
-                                return (
-                                    <div key={id}>
-                                        <p>{name}</p>
-                                    </div>
-                                );
-                            }
-                        }
+                            </ConfirmAuth>,
+                            <Menu.Item
+                                key="menu-item-search-cohorts"
+                                name="Search cohorts"
+                                className="cohorts__menu-item--padding"
+                            >
+                                <Input
+                                    icon="search"
+                                    placeholder="Search..."
+                                    onChange={onSearchChange}
+                                />
+                            </Menu.Item>
+                        ]
                     }}
                 />
                 <Container fluid>

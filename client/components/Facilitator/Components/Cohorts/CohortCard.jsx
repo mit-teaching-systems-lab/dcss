@@ -25,8 +25,12 @@ const mapStateToProps = (state, props) => {
     const {
         cohort: { userCohorts: cohorts }
     } = state;
-    const { id, name, role } = cohorts.find(cohort => cohort.id === props.id);
-    return { id, name, role };
+    const cohort = cohorts.find(cohort => cohort.id === props.id);
+    const scenarios = cohort.scenarios.map(id =>
+        state.scenarios.find(scenario => scenario.id === id)
+    );
+
+    return { ...cohort, scenarios };
 };
 
 export default connect(mapStateToProps)(CohortCard);
