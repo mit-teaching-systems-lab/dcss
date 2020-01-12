@@ -1,97 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Popup, Search } from 'semantic-ui-react';
+import { Icon, Menu, Popup } from 'semantic-ui-react';
 import ConfirmableDeleteButton from './ConfirmableDeleteButton';
-import _ from 'lodash';
 import './EditorMenu.css';
-
-const initialSearchState = {
-    isLoading: false,
-    results: [],
-    selected: null,
-    value: ''
-};
 
 export default class EditorMenu extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            mode: 'edit',
-            search: {
-                ...initialSearchState
-            }
+            mode: 'edit'
         };
-
-        this.onEditorMenuResultSelect = this.onEditorMenuResultSelect.bind(
-            this
-        );
-        this.onEditorMenuSearchChange = this.onEditorMenuSearchChange.bind(
-            this
-        );
-    }
-
-    onEditorMenuResultSelect(event, { result }) {
-        const { results } = this.state.search;
-
-        this.setState(
-            {
-                search: {
-                    isLoading: false,
-                    results,
-                    selected: result,
-                    value: result.name
-                }
-            },
-            () => {
-                const { onResultSelect } = this.props.items.search;
-                onResultSelect(
-                    event,
-                    this.state.search,
-                    this.setState.bind(this)
-                );
-            }
-        );
-    }
-
-    onEditorMenuSearchChange(event, { value }) {
-        const { results, selected } = this.state.search;
-
-        const search = {
-            isLoading: true,
-            results,
-            selected,
-            value
-        };
-
-        this.setState({ search }, () => {
-            const { value } = this.state.search;
-            const { onSearchChange } = this.props.items.search;
-
-            if (value.length < 1) {
-                return this.setState(
-                    {
-                        search: {
-                            ...initialSearchState
-                        }
-                    },
-                    () => {
-                        onSearchChange(
-                            event,
-                            this.state.search,
-                            this.setState.bind(this)
-                        );
-                    }
-                );
-            }
-            onSearchChange(event, this.state.search, this.setState.bind(this));
-        });
     }
 
     render() {
         const { type, items } = this.props;
-        const { mode, search } = this.state;
-        const { onEditorMenuResultSelect, onEditorMenuSearchChange } = this;
+        const { mode } = this.state;
 
         return (
             <Menu icon>
@@ -182,34 +106,6 @@ export default class EditorMenu extends React.Component {
                         />
                     ))}
 
-                {items.search && (
-                    <Popup
-                        content={`Search ${type}`}
-                        trigger={
-                            <Menu.Item
-                                aria-label={`Search ${type}`}
-                                name={`search-${type}`}
-                                className="editormenu__search--padding"
-                            >
-                                <Search
-                                    loading={search.isLoading}
-                                    resultRenderer={items.search.renderer}
-                                    onResultSelect={onEditorMenuResultSelect}
-                                    onSearchChange={_.debounce(
-                                        onEditorMenuSearchChange,
-                                        500,
-                                        {
-                                            leading: true
-                                        }
-                                    )}
-                                    results={search.results}
-                                    value={search.value}
-                                />
-                            </Menu.Item>
-                        }
-                    />
-                )}
-
                 {items.right && (
                     <React.Fragment>
                         {items.right
@@ -228,7 +124,7 @@ export default class EditorMenu extends React.Component {
     }
 }
 
-const VALID_PROPS = ['delete', 'editable', 'left', 'right', 'save', 'search'];
+const VALID_PROPS = ['delete', 'editable', 'left', 'right', 'save'];
 EditorMenu.propTypes = {
     items: function(props, propName) {
         const { items } = props;
@@ -273,23 +169,6 @@ EditorMenu.propTypes = {
             }
             if (items.right && !Array.isArray(items.right)) {
                 return new Error('EditorMenu: Invalid items.right property');
-            }
-
-            if (items.search) {
-                if (
-                    !Object.keys(items.search).every(key =>
-                        [
-                            'onResultSelect',
-                            'onSearchChange',
-                            'renderer',
-                            'source'
-                        ].includes(key)
-                    )
-                ) {
-                    return new Error(
-                        'EditorMenu: Invalid items.search property'
-                    );
-                }
             }
         }
 
