@@ -1,3 +1,4 @@
+const { getDbConfig } = require('./dbConfig');
 const { Pool, Client } = require('pg');
 
 const oldQuery = Client.prototype.query;
@@ -12,7 +13,7 @@ if (String(process.env.DEBUG).includes('sql') || process.env.SQL_DEBUG) {
     };
 }
 
-const pool = new Pool();
+const pool = new Pool(getDbConfig());
 
 exports.withClient = async method => {
     let client = pool.connect();
