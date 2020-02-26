@@ -41,7 +41,7 @@ export const AuthorDropdown = ({ authorOptions, scenarioAuthor, onChange }) => {
                 multiple={false}
                 selection
                 options={authorOptions.map(author => ({
-                    key: author.username,
+                    key: author.id,
                     text: author.username,
                     value: author.username
                 }))}

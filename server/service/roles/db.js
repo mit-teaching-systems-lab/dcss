@@ -109,9 +109,16 @@ SELECT role FROM role_permission WHERE permission = ${permission};`);
     // Get all the users with a certain role
     return await withClient(async client => {
         const result = await client.query(sql`
-SELECT username FROM users
-    WHERE id IN (SELECT user_id FROM user_role
-    WHERE role IN (SELECT jsonb_array_elements_text(${requestedRoles})));`);
+            SELECT id, username
+            FROM users
+            WHERE id IN (
+                SELECT user_id
+                FROM user_role
+                WHERE role IN (
+                    SELECT jsonb_array_elements_text(${requestedRoles})
+                )
+            );
+        `);
         return result.rows;
     });
 };

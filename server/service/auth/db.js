@@ -6,8 +6,8 @@ async function getUserByProps({ id, username, email }) {
     // This query looks a little ugly, but it allows us to pass in empty stuff for id, username or email!
     const result = await query(
         sql`SELECT * FROM users WHERE id = ${id}
-            OR (email = ${email} AND email != '')
-            OR (username = ${username} AND username != '');`
+            OR (username = ${username} AND username != '')
+            OR (email = ${email} AND email != '');`
     );
     return result.rows[0];
 }

@@ -54,8 +54,8 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
     req,
     res
 ) {
-    const { username, email, roles } = req.body;
-    const user = await getUserByProps({ username, email });
+    const { id, roles } = req.body;
+    const user = await getUserByProps({ id });
     const userId = user.id;
     if (!userId || !roles.length) {
         const roleCreateError = new Error('User and roles must be defined');
@@ -80,8 +80,8 @@ exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
     req,
     res
 ) {
-    const { username, email, roles } = req.body;
-    const user = await getUserByProps({ username, email });
+    const { id, roles } = req.body;
+    const user = await getUserByProps({ id });
     const userId = user.id;
     if (!userId || !roles.length) {
         const error = new Error('User and roles must be defined');
