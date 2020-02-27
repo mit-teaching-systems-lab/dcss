@@ -33,6 +33,7 @@ class TextResponseEditor extends React.Component {
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onRecallChange = this.onRecallChange.bind(this);
         this.toggleOptional = this.toggleOptional.bind(this);
         this.updateState = this.updateState.bind(this);
     }
