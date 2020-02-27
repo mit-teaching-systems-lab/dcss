@@ -164,6 +164,7 @@ class Editor extends Component {
         //       scenario when clicking the [save icon]
         //       that's displayed via EditorMenu.
         const {
+            author,
             categories,
             consent,
             description,
@@ -173,6 +174,7 @@ class Editor extends Component {
         } = this.props;
 
         const data = {
+            author,
             categories,
             consent,
             description,
@@ -373,6 +375,7 @@ EditorMessage.propTypes = {
 };
 
 Editor.propTypes = {
+    author: PropTypes.string,
     activeTab: PropTypes.string,
     activeSlideIndex: PropTypes.number,
     scenarioId: PropTypes.node,
@@ -408,6 +411,7 @@ Editor.propTypes = {
 
 function mapStateToProps(state) {
     const {
+        author,
         categories,
         consent,
         description,
@@ -416,6 +420,7 @@ function mapStateToProps(state) {
         title
     } = state.scenario;
     return {
+        author,
         categories,
         consent,
         description,
