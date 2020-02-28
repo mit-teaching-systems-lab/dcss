@@ -24,7 +24,8 @@ class Scenario extends Component {
 
         this.state = {
             activeSlideIndex,
-            scenarioId
+            scenarioId,
+            slides: [],
         };
 
         this.slideRefs = [];
@@ -186,7 +187,7 @@ class Scenario extends Component {
             />
         );
 
-        this.props.setSlides({ slides });
+        this.setState({ slides });
     }
 
     activateSlide(activeSlideIndex) {
@@ -203,9 +204,9 @@ class Scenario extends Component {
     }
 
     render() {
-        const { slides } = this.props;
-        const { activeSlideIndex } = this.state;
+        const { activeSlideIndex, slides } = this.state;
         const classes = 'ui centered card scenario__card--run';
+
         return this.isScenarioRun ? (
             <Grid columns={1}>
                 <Grid.Column>{slides && slides[activeSlideIndex]}</Grid.Column>
@@ -263,7 +264,6 @@ Scenario.propTypes = {
     scenarioId: PropTypes.node,
     getScenario: PropTypes.func.isRequired,
     setScenario: PropTypes.func.isRequired,
-    setSlides: PropTypes.func.isRequired,
     title: PropTypes.string,
     description: PropTypes.string,
     categories: PropTypes.array,
@@ -276,14 +276,13 @@ Scenario.propTypes = {
 };
 
 function mapStateToProps(state) {
-    const { title, description, consent, slides } = state.scenario;
-    return { title, description, consent, slides };
+    const { title, description, consent } = state.scenario;
+    return { title, description, consent };
 }
 
 const mapDispatchToProps = {
     getScenario,
-    setScenario,
-    setSlides
+    setScenario
 };
 
 export default withRouter(

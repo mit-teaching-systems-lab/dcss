@@ -46,7 +46,7 @@ export const scenario = (state = initialScenarioState, action) => {
         case GET_SLIDES_SUCCESS:
             return {
                 ...state,
-                ...slides
+                slides
             };
         default:
             return state;
