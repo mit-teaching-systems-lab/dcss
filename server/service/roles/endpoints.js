@@ -1,7 +1,6 @@
-const { asyncMiddleware } = require('../../util/api');
-
 const db = require('./db');
-const { getUserByProps } = require('../auth/db');
+const { asyncMiddleware } = require('../../util/api');
+const { getUserForClientByProps } = require('../auth/db');
 
 exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
     req,
@@ -55,7 +54,7 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
     res
 ) {
     const { id, roles } = req.body;
-    const user = await getUserByProps({ id });
+    const user = await getUserForClientByProps({ id });
     const userId = user.id;
     if (!userId || !roles.length) {
         const roleCreateError = new Error('User and roles must be defined');
@@ -81,7 +80,7 @@ exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
     res
 ) {
     const { id, roles } = req.body;
-    const user = await getUserByProps({ id });
+    const user = await getUserForClientByProps({ id });
     const userId = user.id;
     if (!userId || !roles.length) {
         const error = new Error('User and roles must be defined');

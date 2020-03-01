@@ -296,22 +296,22 @@ class ScenarioEditor extends Component {
                                 className="scenarioeditor__grid-column-min-width"
                             >
                                 <ConfirmAuth requiredPermission="edit_scenario">
-                                    {this.state.authors.length && (
+                                    {this.state.authors.length ? (
                                         <AuthorDropdown
-                                            scenarioAuthor={author.username}
-                                            authorOptions={this.state.authors}
+                                            author={author}
+                                            options={this.state.authors}
                                             onChange={onChange}
                                         />
-                                    )}
-                                    {this.state.categories.length && (
+                                    ) : null}
+                                    {this.state.categories.length ? (
                                         <CategoriesDropdown
-                                            categoryOptions={
+                                            options={
                                                 this.state.categories
                                             }
-                                            scenarioCategories={categories}
+                                            categories={categories}
                                             onChange={onChange}
                                         />
-                                    )}
+                                    ) : null}
                                 </ConfirmAuth>
 
                                 {/*

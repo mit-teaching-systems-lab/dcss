@@ -2,7 +2,7 @@ const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 const { addSlide, getSlidesForScenario } = require('./slides/db');
 const { getRunResponses } = require('../runs/db');
-const { getUserByProps } = require('../auth/db');
+const { getUserForClientByProps } = require('../auth/db');
 
 async function getScenarioCategories(scenarioId) {
     const scenarioCategoriesResults = await query(sql`
@@ -74,7 +74,7 @@ async function getScenario(scenarioId) {
     `);
 
     const { author_id } = results.rows[0];
-    const author = await getUserByProps({ id: author_id });
+    const author = await getUserForClientByProps({ id: author_id });
     const categories = await getScenarioCategories(scenarioId);
     const consent = await getScenarioConsent(scenarioId);
     const finish =
@@ -99,7 +99,7 @@ async function getAllScenarios() {
 
     const scenarios = [];
     for (const row of results.rows) {
-        const author = await getUserByProps({ id: row.author_id });
+        const author = await getUserForClientByProps({ id: row.author_id });
         const categories = await getScenarioCategories(row.id);
         const consent = await getScenarioConsent(row.id);
         const finish =

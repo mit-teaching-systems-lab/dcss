@@ -13,6 +13,21 @@ async function getUserByProps({ id, username, email }) {
 }
 
 exports.getUserByProps = getUserByProps;
+
+exports.getUserForClientByProps = async function(props) {
+    let {
+        id,
+        email,
+        username
+    } = await getUserByProps(props);
+
+    return {
+        id,
+        email,
+        username,
+    };
+};
+
 exports.createUser = async function({ email, username, password }) {
     let salt, passwordHash;
     if (password) {

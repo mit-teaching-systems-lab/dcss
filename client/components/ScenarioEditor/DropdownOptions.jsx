@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Dropdown, Form } from 'semantic-ui-react';
 
 export const CategoriesDropdown = ({
-    categoryOptions,
-    scenarioCategories,
+    options,
+    categories,
     onChange
 }) => {
     return (
@@ -17,19 +17,29 @@ export const CategoriesDropdown = ({
                 fluid
                 multiple
                 selection
-                options={categoryOptions.map(category => ({
+                options={options.map(category => ({
                     key: category.id,
                     text: category.name,
                     value: category.name
                 }))}
-                defaultValue={scenarioCategories}
+                defaultValue={categories}
                 onChange={onChange}
             />
         </Form.Field>
     );
 };
 
-export const AuthorDropdown = ({ authorOptions, scenarioAuthor, onChange }) => {
+export const AuthorDropdown = ({ options, author = {}, onChange }) => {
+    const onAuthorChange = (event, { name, value: id }) => {
+        const value = options.find(author => author.id === id);
+        onChange(event, {
+            name, value
+        });
+    };
+    const {
+        id: defaultValue
+    } = author;
+
     return (
         <Form.Field>
             <label>Author</label>
@@ -40,26 +50,26 @@ export const AuthorDropdown = ({ authorOptions, scenarioAuthor, onChange }) => {
                 fluid
                 multiple={false}
                 selection
-                options={authorOptions.map(author => ({
+                options={options.map(author => ({
                     key: author.id,
                     text: author.username,
-                    value: author.username
+                    value: author.id
                 }))}
-                defaultValue={scenarioAuthor}
-                onChange={onChange}
+                defaultValue={defaultValue}
+                onChange={onAuthorChange}
             />
         </Form.Field>
     );
 };
 
 CategoriesDropdown.propTypes = {
-    categoryOptions: PropTypes.array.isRequired,
-    scenarioCategories: PropTypes.array.isRequired,
+    categories: PropTypes.array.isRequired,
+    options: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired
 };
 
 AuthorDropdown.propTypes = {
-    authorOptions: PropTypes.array.isRequired,
-    scenarioAuthor: PropTypes.string,
+    author: PropTypes.object,
+    options: PropTypes.array.isRequired,
     onChange: PropTypes.func.isRequired
 };

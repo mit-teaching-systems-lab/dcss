@@ -375,7 +375,7 @@ EditorMessage.propTypes = {
 };
 
 Editor.propTypes = {
-    author: PropTypes.string,
+    author: PropTypes.object,
     activeTab: PropTypes.string,
     activeSlideIndex: PropTypes.number,
     scenarioId: PropTypes.node,

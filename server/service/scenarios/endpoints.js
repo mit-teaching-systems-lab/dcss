@@ -1,8 +1,8 @@
 const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
-const { getUserByProps } = require('../auth/db');
-
+const { getUserForClientByProps } = require('../auth/db');
 const { reqScenario } = require('./middleware');
+
 const {
     addSlide,
     getSlidesForScenario,
@@ -39,10 +39,7 @@ exports.getAllScenarios = asyncMiddleware(async function getAllScenariosAsync(
     }
 });
 
-exports.addScenario = asyncMiddleware(async function addScenarioAsync(
-    req,
-    res
-) {
+async function addScenarioAsync(req, res) {
     const userId = req.session.user.id;
     const { author, title, description, categories } = req.body;
     let authorId = userId;
@@ -55,9 +52,8 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
         throw scenarioCreateError;
     }
 
-    if (author) {
-        const { id } = await getUserByProps({ username: author });
-        authorId = id;
+    if (author && author.id) {
+        authorId = author.id;
     }
 
     try {
@@ -72,7 +68,7 @@ exports.addScenario = asyncMiddleware(async function addScenarioAsync(
         error.stack = apiError.stack;
         throw error;
     }
-});
+};
 
 async function setScenarioAsync(req, res) {
     const {
@@ -89,9 +85,8 @@ async function setScenarioAsync(req, res) {
     const scenarioId = req.params.scenario_id;
     let authorId = author_id;
 
-    if (author) {
-        const { id } = await getUserByProps({ username: author });
-        authorId = id || author_id;
+    if (author && author.id) {
+        authorId = author.id || author_id;
     }
 
     if (!authorId && !title && !description) {
@@ -159,6 +154,7 @@ async function setScenarioAsync(req, res) {
     }
 }
 
+exports.addScenario = asyncMiddleware(addScenarioAsync);
 exports.setScenario = asyncMiddleware(setScenarioAsync);
 
 exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
