@@ -698,9 +698,10 @@ class LobbyUserSelect extends Component {
         </Fragment>
       ) : null;
 
+    const isAre = pluralize('is', availableCount);
     const headerContent = (
       <Fragment>
-        There are <strong>{availableCount}</strong> other {pluralAvailable}{' '}
+        There {isAre} <strong>{availableCount}</strong> other {pluralAvailable}{' '}
         available to fill the other <strong>{otherRoleCount}</strong>{' '}
         {pluralRole}. {headerAdditional}
       </Fragment>
@@ -799,6 +800,7 @@ class LobbyUserSelect extends Component {
               autoFocus
               key="x"
               className="grid__menu-search l__search-input primary"
+              noResultsMessage="No users found"
               onFocus={onSearchChange}
               onMouseDown={onSearchChange}
               onResultSelect={onResultSelect}

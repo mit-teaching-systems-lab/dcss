@@ -397,7 +397,7 @@ class SocketManager {
 
       socket.on(CHAT_AGENT_START, async payload => {
         console.log(CHAT_AGENT_START, payload);
-        const { chat, prompt, user } = payload;
+        const { chat, prompt, run, user } = payload;
 
         if (payload.agent && payload.agent.id) {
           const room = `${chat.id}-user-${user.id}`;

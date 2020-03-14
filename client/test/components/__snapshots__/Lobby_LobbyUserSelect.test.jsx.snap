@@ -512,7 +512,7 @@ exports[`With cohort Assign & unassign roles 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -892,7 +892,7 @@ exports[`With cohort Assign & unassign roles 4`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -1253,7 +1253,7 @@ exports[`With cohort Assign & unassign roles 5`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -1994,7 +1994,7 @@ exports[`With cohort Assigning roles enables Send Invites button 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -2374,7 +2374,7 @@ exports[`With cohort Assigning roles enables Send Invites button 4`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -2735,7 +2735,7 @@ exports[`With cohort Assigning roles enables Send Invites button 5`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -3094,7 +3094,7 @@ exports[`With cohort Assigning roles enables Send Invites button 6`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -5539,7 +5539,7 @@ exports[`With cohort Select & unselect participant 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -5924,7 +5924,7 @@ exports[`With cohort Select & unselect participant 4`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -6551,7 +6551,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 3`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -6931,7 +6931,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 4`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -7311,7 +7311,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 5`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -7672,7 +7672,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 6`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -8033,7 +8033,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 7`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -8392,7 +8392,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 8`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -8730,7 +8730,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 9`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -9068,7 +9068,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 10`] =
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -9608,7 +9608,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 11`] =
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -9946,7 +9946,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 12`] =
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -10284,7 +10284,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 13`] =
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -10824,7 +10824,7 @@ exports[`With cohort Select, Assign a role, then Set roles & send invites 14`] =
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -11721,7 +11721,7 @@ exports[`With cohort Selecting from search results adds a participant 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -12749,7 +12749,7 @@ exports[`With cohort Selecting too many shows a warning, discard selection 4`] =
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -15038,7 +15038,7 @@ exports[`With cohort Selecting too many shows a warning, remove an invite 4`] = 
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -17804,7 +17804,7 @@ exports[`Without cohort Assign & unassign roles 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -18184,7 +18184,7 @@ exports[`Without cohort Assign & unassign roles 4`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -18545,7 +18545,7 @@ exports[`Without cohort Assign & unassign roles 5`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -19286,7 +19286,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -19666,7 +19666,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 4`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -20027,7 +20027,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 5`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -20386,7 +20386,7 @@ exports[`Without cohort Assigning roles enables Send Invites button 6`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -22841,7 +22841,7 @@ exports[`Without cohort Select & unselect participant 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -23226,7 +23226,7 @@ exports[`Without cohort Select & unselect participant 4`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -23853,7 +23853,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 3`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -24233,7 +24233,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 4`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -24613,7 +24613,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 5`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -24974,7 +24974,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 6`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -25335,7 +25335,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 7`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -25694,7 +25694,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 8`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -26032,7 +26032,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 9`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -26370,7 +26370,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 10`
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -26910,7 +26910,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 11`
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -27248,7 +27248,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 12`
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -27586,7 +27586,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 13`
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -28126,7 +28126,7 @@ exports[`Without cohort Select, Assign a role, then Set roles & send invites 14`
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -29029,7 +29029,7 @@ exports[`Without cohort Selecting from search results adds a participant 3`] = `
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -30057,7 +30057,7 @@ exports[`Without cohort Selecting too many shows a warning, discard selection 4`
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
@@ -32354,7 +32354,7 @@ exports[`Without cohort Selecting too many shows a warning, remove an invite 4`]
               <div
                 class=\\"header\\"
               >
-                No results found.
+                No users found
               </div>
             </div>
           </div>
