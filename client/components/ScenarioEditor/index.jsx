@@ -36,9 +36,9 @@ class ScenarioEditor extends Component {
         };
 
         this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
         this.onConsentChange = this.onConsentChange.bind(this);
         this.onFinishSlideChange = this.onFinishSlideChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
 
         if (this.props.scenarioId === 'new') {
             this.props.setScenario({

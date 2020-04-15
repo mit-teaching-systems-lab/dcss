@@ -68,7 +68,7 @@ async function addScenarioAsync(req, res) {
         error.stack = apiError.stack;
         throw error;
     }
-};
+}
 
 async function setScenarioAsync(req, res) {
     const {

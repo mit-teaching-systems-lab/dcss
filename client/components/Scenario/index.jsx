@@ -7,7 +7,7 @@ import { Grid, Ref, Segment } from 'semantic-ui-react';
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
-import { getScenario, setScenario, setSlides } from '@client/actions/scenario';
+import { getScenario, setScenario } from '@client/actions/scenario';
 import './Scenario.css';
 
 class Scenario extends Component {

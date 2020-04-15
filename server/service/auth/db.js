@@ -15,16 +15,12 @@ async function getUserByProps({ id, username, email }) {
 exports.getUserByProps = getUserByProps;
 
 exports.getUserForClientByProps = async function(props) {
-    let {
-        id,
-        email,
-        username
-    } = await getUserByProps(props);
+    let { id, email, username } = await getUserByProps(props);
 
     return {
         id,
         email,
-        username,
+        username
     };
 };
 
