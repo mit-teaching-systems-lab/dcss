@@ -13,6 +13,7 @@ import {
 import Sortable from 'react-sortablejs';
 import EditorMenu from '@components/EditorMenu';
 import generateResponseId from '../util/generate-response-id';
+import hash from 'object-hash';
 import * as Components from '../Components';
 import './SlideEditor.css';
 
@@ -49,6 +50,51 @@ export default class SlideEditor extends Component {
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onTitleFocus = this.onTitleFocus.bind(this);
         this.updateState = this.updateState.bind(this);
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+
+        if (nextProps.components.length === 0 &&
+            nextState.components.length === 0) {
+            // console.log("COMPONENTS HAVE BEEN DELETED");
+            return true;
+        }
+
+        if (
+            (this.state.currentComponentIndex !== nextState.currentComponentIndex) ||
+            (this.state.mode !== nextState.mode) ||
+            (this.state.titleHasFocus !== nextState.titleHasFocus)
+        ) {
+            // console.log("COMPONENT METADATA HAS CHANGED");
+            return true;
+        }
+
+        if (
+            (this.props.components.length !== nextProps.components.length) ||
+            (this.state.components.length !== nextState.components.length)
+        ) {
+            // console.log("COMPONENT LENGTH HAS CHANGED");
+            return true;
+        }
+
+        if (this.state.components.length === nextState.components.length) {
+            let same = 0;
+            for (let component of this.state.components) {
+                let index = this.state.components.indexOf(component);
+                if (hash(component) === hash(nextState.components[index])) {
+                    same++;
+                }
+            }
+
+            if (same !== this.state.components.length) {
+                // console.log("COMPONENT CONTENT HAS CHANGED");
+                return true;
+            }
+        }
+
+        // console.log("props", this.props, nextProps);
+        // console.log("state", this.state, nextState);
+        return false;
     }
 
     updateState() {
