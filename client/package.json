@@ -54,6 +54,7 @@
     "nib-core": "^2.3.9",
     "node-html-parser": "^1.1.16",
     "npm-run-all": "^4.1.5",
+    "object-hash": "^2.0.3",
     "postcss-env-function": "^2.0.2",
     "postcss-loader": "^3.0.0",
     "prettier": "^1.18.2",
