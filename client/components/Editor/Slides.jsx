@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import Sortable from 'react-sortablejs';
 import {
     Card,
     Container,
@@ -16,6 +15,7 @@ import {
     Ref,
     Segment
 } from 'semantic-ui-react';
+import Sortable from '@components/Sortable';
 import generateResponseId from '@components/Slide/util/generate-response-id';
 import SlideEditor from '@components/Slide/SlideEditor';
 import SlideComponentsList from '@components/SlideComponentsList';
@@ -244,11 +244,8 @@ class Slides extends React.Component {
         return activeSlideIndex;
     }
 
-    async onChangeSlideOrder(...args) {
-        await this.moveSlide(
-            args[2].oldDraggableIndex,
-            args[2].newDraggableIndex
-        );
+    async onChangeSlideOrder(fromIndex, toIndex) {
+        await this.moveSlide(fromIndex, toIndex);
     }
 
     render() {
@@ -354,11 +351,6 @@ class Slides extends React.Component {
                             )}
                             <Sortable
                                 onChange={onChangeSlideOrder}
-                                options={{
-                                    direction: 'vertical',
-                                    swapThreshold: 0.5,
-                                    animation: 150
-                                }}
                             >
                                 {slides
                                     .filter(slide => !slide.is_finish)

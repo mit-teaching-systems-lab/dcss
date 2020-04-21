@@ -10,7 +10,7 @@ import {
     Message,
     Segment
 } from 'semantic-ui-react';
-import Sortable from 'react-sortablejs';
+import Sortable from '@components/Sortable';
 import EditorMenu from '@components/EditorMenu';
 import generateResponseId from '../util/generate-response-id';
 import hash from 'object-hash';
@@ -116,11 +116,11 @@ export default class SlideEditor extends Component {
         this.setState({ components }, this.updateState);
     }
 
-    onComponentOrderChange(...args) {
-        const {
-            oldDraggableIndex: fromIndex,
-            newDraggableIndex: toIndex
-        } = args[2];
+    onComponentOrderChange(fromIndex, toIndex) {
+        // const {
+        //     oldDraggableIndex: fromIndex,
+        //     newDraggableIndex: toIndex
+        // } = args[2];
 
         this.props.updateEditorMessage('Moving component...');
 
@@ -317,16 +317,7 @@ export default class SlideEditor extends Component {
                                 />
                             )}
 
-                            <Sortable
-                                onChange={onComponentOrderChange}
-                                options={{
-                                    animation: 150,
-                                    direction: 'vertical',
-                                    draggable: '.draggable',
-                                    forceFallback: true,
-                                    swapThreshold: 0.5
-                                }}
-                            >
+                            <Sortable onChange={onComponentOrderChange}>
                                 {components.map((value, index) => {
                                     const { type } = value;
                                     if (!Components[type]) return;
