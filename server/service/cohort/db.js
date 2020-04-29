@@ -26,12 +26,13 @@ exports.createCohort = async ({ name, user_id }) => {
 async function getCohortScenarios(cohort_id) {
     return await withClientTransaction(async client => {
         const result = await client.query(sql`
-            SELECT scenario.id as id
-            FROM scenario
-            INNER JOIN cohort_scenario
-                ON scenario.id = cohort_scenario.scenario_id
+            SELECT scenario_id as id
+            FROM cohort_scenario
+            INNER JOIN scenario
+                ON cohort_scenario.scenario_id = scenario.id
             WHERE cohort_scenario.cohort_id = ${cohort_id}
-              AND scenario.deleted_at IS NULL;
+              AND scenario.deleted_at IS NULL
+            ORDER BY cohort_scenario.id;
         `);
         return result.rows.map(row => row.id);
     });
