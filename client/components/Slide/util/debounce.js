@@ -7,4 +7,4 @@ export default function(time, callback) {
             callback(...args);
         }, time);
     };
-};
+}
