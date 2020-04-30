@@ -23,3 +23,7 @@
     min-width: 130px;
     background-position-x: center;
 }
+
+#nav {
+    margin-top: 0.5em!important;
+}

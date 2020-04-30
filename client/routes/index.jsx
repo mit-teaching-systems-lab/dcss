@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Fragment, Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+
 import Navigation from './Navigation';
+import Notification from './Notification';
 import Routes from './Routes';
 import './Nav.css';
 
@@ -17,6 +19,7 @@ class App extends Component {
             <Router>
                 <Navigation />
                 <Routes />
+                <Notification />
             </Router>
         );
     }

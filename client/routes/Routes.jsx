@@ -29,7 +29,7 @@ import {
 
 const makeEditorProps = props => ({
     ...props,
-    activeSlideIndex: Number(props.match.params.index || 0),
+    activeNonZeroSlideIndex: Number(props.match.params.index || 1),
     scenarioId: props.match.params.id
 });
 
@@ -58,14 +58,14 @@ const Routes = () => {
                 <Route component={MyScenarios} />
             </RedirectRouteForInactiveSession>
 
-            <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeSlideIndex">
+            <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeNonZeroSlideIndex">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>
             <InterceptAnonymizableRoute path="/run/:scenarioId">
                 <Route component={Run} />
             </InterceptAnonymizableRoute>
 
-            <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId/slide/:activeSlideIndex">
+            <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId/slide/:activeNonZeroSlideIndex">
                 <Route render={props => <Run {...props} />} />
             </InterceptAnonymizableRoute>
 
@@ -131,7 +131,7 @@ const Routes = () => {
                 />
             </ConfirmAuth>
             <ConfirmAuth
-                path="/editor/:id/slides/:activeSlideIndex"
+                path="/editor/:id/slides/:activeNonZeroSlideIndex"
                 requiredPermission="create_scenario"
             >
                 <Route
@@ -161,7 +161,7 @@ const Routes = () => {
                 />
             </ConfirmAuth>
             <ConfirmAuth
-                path="/editor/:id/preview/:activeSlideIndex"
+                path="/editor/:id/preview/:activeNonZeroSlideIndex"
                 requiredPermission="create_scenario"
             >
                 <Route
