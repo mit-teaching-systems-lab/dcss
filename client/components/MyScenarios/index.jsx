@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -105,7 +105,7 @@ class MyScenarios extends Component {
         const runsSlice = runs.slice(runsIndex, runsIndex + ROWS_PER_PAGE);
 
         return (
-            <div>
+            <Fragment>
                 <Table role="grid" unstackable>
                     <Table.Header>
                         <Table.Row>
@@ -244,7 +244,7 @@ class MyScenarios extends Component {
                         />
                     </Ref>
                 )}
-            </div>
+            </Fragment>
         );
     }
 }
