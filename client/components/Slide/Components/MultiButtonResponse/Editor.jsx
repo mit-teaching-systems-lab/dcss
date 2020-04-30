@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-    Accordion,
     Button,
+    Container,
     Form,
     Icon,
     Input,
@@ -12,8 +12,9 @@ import {
     Popup
 } from 'semantic-ui-react';
 import { type } from './type';
-import Sortable from 'react-sortablejs';
 import EditorMenu from '@components/EditorMenu';
+import DataHeader from '@components/Slide/Components/DataHeader';
+import Sortable from '@components/Sortable';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import '@components/Slide/SlideEditor/SlideEditor.css';
 
@@ -44,16 +45,20 @@ class MultiButtonResponseEditor extends React.Component {
             responseId
         };
 
-        this.onAddButton = this.onAddButton.bind(this);
-        this.onChangeButtonDetail = this.onChangeButtonDetail.bind(this);
-        this.onChangeButtonOrder = this.onChangeButtonOrder.bind(this);
-        this.onChange = this.onChange.bind(this);
-        this.onDeleteButton = this.onDeleteButton.bind(this);
-        this.preventEmptyButtonField = this.preventEmptyButtonField.bind(this);
-        this.onRecallChange = this.onRecallChange.bind(this);
-        this.toggleOptional = this.toggleOptional.bind(this);
+        this.onButtonAddClick = this.onButtonAddClick.bind(this);
+        this.onButtonDeleteClick = this.onButtonDeleteClick.bind(this);
+        this.onButtonDetailChange = this.onButtonDetailChange.bind(this);
+        this.onButtonOrderChange = this.onButtonOrderChange.bind(this);
 
+        this.onChange = this.onChange.bind(this);
+        this.onRecallChange = this.onRecallChange.bind(this);
+
+        this.preventEmptyButtonField = this.preventEmptyButtonField.bind(this);
         this.updateState = this.updateState.bind(this);
+    }
+
+    onChange(event, { name, value }) {
+        this.setState({ [name]: value }, this.updateState);
     }
 
     updateState() {
@@ -73,7 +78,7 @@ class MultiButtonResponseEditor extends React.Component {
         this.setState({ recallId }, this.updateState);
     }
 
-    onAddButton() {
+    onButtonAddClick() {
         const { buttons } = this.state;
         buttons.push({
             display: '',
@@ -82,17 +87,17 @@ class MultiButtonResponseEditor extends React.Component {
         this.setState({ buttons }, this.updateState);
     }
 
-    onDeleteButton(index) {
+    onButtonDeleteClick(index) {
         const buttons = this.state.buttons.slice();
         buttons.splice(index, 1);
         this.setState({ buttons }, this.updateState);
     }
 
-    onChangeButtonOrder(...args) {
-        this.moveButton(args[2].oldDraggableIndex, args[2].newDraggableIndex);
+    onButtonOrderChange(fromIndex, toIndex) {
+        this.moveButton(fromIndex, toIndex);
     }
 
-    onChangeButtonDetail(event, { index, name, value }) {
+    onButtonDetailChange(event, { index, name, value }) {
         const { buttons } = this.state;
         buttons[index][name] = value;
         this.setState({ buttons }, this.updateState);
@@ -119,10 +124,6 @@ class MultiButtonResponseEditor extends React.Component {
         this.setState({ buttons }, this.updateState);
     }
 
-    onChange(event, { name, value }) {
-        this.setState({ [name]: value }, this.updateState);
-    }
-
     moveButton(fromIndex, toIndex) {
         const buttons = this.state.buttons.slice();
         const from = buttons[fromIndex];
@@ -134,146 +135,105 @@ class MultiButtonResponseEditor extends React.Component {
         this.setState({ buttons }, this.updateState);
     }
 
-    toggleOptional(event, { index }) {
-        const { activeIndex } = this.state;
-        const newIndex = activeIndex === index ? -1 : index;
-
-        this.setState({ activeIndex: newIndex });
-    }
-
     render() {
-        const { scenarioId } = this.props;
-        const { activeIndex, buttons, header, prompt, recallId } = this.state;
+        const { scenarioId, slideIndex } = this.props;
+        const { buttons, header, prompt, recallId } = this.state;
         const {
-            onAddButton,
-            onChangeButtonDetail,
-            onChangeButtonOrder,
+            onButtonAddClick,
+            onButtonDeleteClick,
+            onButtonDetailChange,
+            onButtonOrderChange,
             onRecallChange,
             onChange,
-            onDeleteButton,
             preventEmptyButtonField,
-            toggleOptional,
             updateState
         } = this;
 
         return (
             <Form>
-                <Accordion>
-                    <Accordion.Title
-                        active={activeIndex === 0}
-                        index={0}
-                        onClick={toggleOptional}
-                    >
-                        <Icon name="dropdown" />
-                        Optionally Embed A Previous Response
-                    </Accordion.Title>
-                    <Accordion.Content active={activeIndex === 0}>
-                        <ResponseRecall
-                            className="responserecall__margin-bottom"
-                            value={{
-                                components: [],
-                                recallId
-                            }}
-                            scenarioId={scenarioId}
-                            onChange={onRecallChange}
-                        />
-                    </Accordion.Content>
-                </Accordion>
-                <Form.TextArea
-                    label="Prompt (displayed before buttons)"
-                    name="prompt"
-                    value={prompt}
-                    onChange={onChange}
-                />
-                <Button icon onClick={onAddButton}>
-                    <Icon.Group size="large" style={{ marginRight: '0.5rem' }}>
-                        <Icon name="hand pointer outline" />
-                        <Icon corner="top right" name="add" color="green" />
-                    </Icon.Group>
-                    Add A Button
-                </Button>
-                <List>
-                    <Sortable
-                        onChange={onChangeButtonOrder}
-                        options={{
-                            direction: 'vertical',
-                            swapThreshold: 0.5,
-                            animation: 150
-                        }}
-                    >
-                        {buttons.map(({ display, value }, index) => {
-                            const preventEmptyButtonFieldCurriedIndex = preventEmptyButtonField.bind(
-                                this,
-                                index
-                            );
-                            const onBlur = preventEmptyButtonFieldCurriedIndex;
-                            const onFocus = preventEmptyButtonFieldCurriedIndex;
-                            return (
-                                <EditorMenu
-                                    key={`button-editor-${index}`}
-                                    type="button"
-                                    items={{
-                                        right: [
-                                            <Menu.Item
-                                                key={`button-menu-${index}`}
-                                                name="Edit Button Details"
-                                            >
-                                                <Input
-                                                    index={index}
-                                                    key={`button-diplay-${index}`}
-                                                    label="Button Display:"
-                                                    name="display"
-                                                    value={display}
-                                                    onFocus={onFocus}
-                                                    onBlur={onBlur}
-                                                    onChange={
-                                                        onChangeButtonDetail
-                                                    }
-                                                />
-                                                <Input
-                                                    index={index}
-                                                    key={`button-value-${index}`}
-                                                    label="Button Value:"
-                                                    name="value"
-                                                    value={value}
-                                                    onFocus={onFocus}
-                                                    onBlur={onBlur}
-                                                    onChange={
-                                                        onChangeButtonDetail
-                                                    }
-                                                />
-                                            </Menu.Item>
-                                        ],
-                                        save: {
-                                            onClick: () => updateState()
-                                        },
-                                        delete: {
-                                            onConfirm: () =>
-                                                onDeleteButton(index)
-                                        }
-                                    }}
-                                />
-                            );
-                        })}
-                    </Sortable>
-                </List>
-                <Message
-                    color={header ? 'grey' : 'pink'}
-                    content={
-                        <Popup
-                            content="Set a data header. This is only displayed in the data view and data download."
-                            trigger={
-                                <Form.TextArea
-                                    required
-                                    label="Data Header"
-                                    name="header"
-                                    value={header}
-                                    onChange={onChange}
-                                />
-                            }
-                        />
-                    }
-                />
+                <Container fluid>
+                    <ResponseRecall
+                        value={{ recallId }}
+                        slideIndex={slideIndex}
+                        scenarioId={scenarioId}
+                        onChange={onRecallChange}
+                    />
+                    <Form.TextArea
+                        label="Prompt (displayed before buttons)"
+                        name="prompt"
+                        value={prompt}
+                        onChange={onChange}
+                    />
+                    <Button icon onClick={onButtonAddClick}>
+                        <Icon.Group
+                            size="large"
+                            className="editormenu__icon-group"
+                        >
+                            <Icon name="hand pointer outline" />
+                            <Icon corner="top right" name="add" color="green" />
+                        </Icon.Group>
+                        Add A Button
+                    </Button>
+                    <List>
+                        <Sortable onChange={onButtonOrderChange}>
+                            {buttons.map(({ display, value }, index) => {
+                                const preventEmptyButtonFieldCurriedIndex = preventEmptyButtonField.bind(
+                                    this,
+                                    index
+                                );
+                                const onBlur = preventEmptyButtonFieldCurriedIndex;
+                                const onFocus = preventEmptyButtonFieldCurriedIndex;
+                                return (
+                                    <EditorMenu
+                                        key={`button-editor-${index}`}
+                                        type="button"
+                                        items={{
+                                            right: [
+                                                <Menu.Item
+                                                    key={`button-menu-${index}`}
+                                                    name="Edit Button Details"
+                                                >
+                                                    <Input
+                                                        index={index}
+                                                        key={`button-diplay-${index}`}
+                                                        label="Button Display:"
+                                                        name="display"
+                                                        value={display}
+                                                        onFocus={onFocus}
+                                                        onBlur={onBlur}
+                                                        onChange={
+                                                            onButtonDetailChange
+                                                        }
+                                                    />
+                                                    <Input
+                                                        index={index}
+                                                        key={`button-value-${index}`}
+                                                        label="Button Value:"
+                                                        name="value"
+                                                        value={value}
+                                                        onFocus={onFocus}
+                                                        onBlur={onBlur}
+                                                        onChange={
+                                                            onButtonDetailChange
+                                                        }
+                                                    />
+                                                </Menu.Item>
+                                            ],
+                                            save: {
+                                                onClick: () => updateState()
+                                            },
+                                            delete: {
+                                                onConfirm: () =>
+                                                    onButtonDeleteClick(index)
+                                            }
+                                        }}
+                                    />
+                                );
+                            })}
+                        </Sortable>
+                    </List>
+                    <DataHeader content={header} onChange={onChange} />
+                </Container>
             </Form>
         );
     }
@@ -281,7 +241,8 @@ class MultiButtonResponseEditor extends React.Component {
 
 MultiButtonResponseEditor.propTypes = {
     onChange: PropTypes.func.isRequired,
-    scenarioId: PropTypes.string,
+    scenarioId: PropTypes.any,
+    slideIndex: PropTypes.any,
     value: PropTypes.shape({
         buttons: PropTypes.array,
         header: PropTypes.string,
