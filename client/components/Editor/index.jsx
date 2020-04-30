@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import storage from 'local-storage-fallback';
-
 import EditorMenu from '@components/EditorMenu';
+import notify from '@components/Notification';
 import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
@@ -12,10 +12,6 @@ import Slides from './Slides';
 import { getScenario, setScenario } from '@client/actions/scenario';
 
 import './editor.css';
-
-const EditorMessage = ({ message }) => {
-    return <div>{message}</div>;
-};
 
 class Editor extends Component {
     constructor(props) {
@@ -30,7 +26,6 @@ class Editor extends Component {
         this.onClick = this.onClick.bind(this);
         this.onClickScenarioAction = this.onClickScenarioAction.bind(this);
         this.setActiveView = this.setActiveView.bind(this);
-        this.updateEditorMessage = this.updateEditorMessage.bind(this);
         this.updateScenario = this.updateScenario.bind(this);
 
         let {
@@ -44,6 +39,10 @@ class Editor extends Component {
 
         if (!scenarioId) {
             scenarioId = isNewScenario ? 'new' : match.params.id;
+        }
+
+        if (typeof scenarioId === 'string') {
+            scenarioId = Number(scenarioId);
         }
 
         if (isNewScenario) {
@@ -97,20 +96,19 @@ class Editor extends Component {
 
         storage.setItem(this.persistenceKey, JSON.stringify(updated));
 
-        const pathname = `/editor/${scenarioId}/${activeTab}/${updated.activeSlideIndex}`;
+        const activeNonZeroSlideIndex = updated.activeSlideIndex + 1;
+        const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
         this.props.history.push(pathname);
-        this.updateEditorMessage('');
     }
 
     setActiveView({ activeTab, activeSlideIndex }) {
         const { scenarioId } = this.state;
-
-        const pathname = `/editor/${scenarioId}/${activeTab}/${activeSlideIndex}`;
-
         storage.setItem(
             this.persistenceKey,
             JSON.stringify({ activeTab, activeSlideIndex })
         );
+        const activeNonZeroSlideIndex = activeSlideIndex + 1;
+        const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
         this.props.history.push(pathname);
     }
 
@@ -135,7 +133,7 @@ class Editor extends Component {
         )).json();
 
         if (status !== 201) {
-            this.updateEditorMessage('Error saving copy.');
+            notify({ type: 'error', message: 'Error saving copy.' });
             return;
         }
 
@@ -193,11 +191,11 @@ class Editor extends Component {
         switch (response.status) {
             case 200:
                 this.props.setScenario(response.scenario);
-                this.updateEditorMessage('Scenario saved');
+                notify({ type: 'success', message: 'Scenario saved' });
                 break;
             default:
                 if (response.error) {
-                    this.updateEditorMessage(response.message);
+                    notify({ type: 'error', message: response.message });
                 }
                 break;
         }
@@ -214,7 +212,6 @@ class Editor extends Component {
                         scenarioId={scenarioId}
                         submitCB={this.getSubmitCallback()}
                         postSubmitCB={this.getPostSubmitCallback()}
-                        updateEditorMessage={this.updateEditorMessage}
                     />
                 );
             case 'slides':
@@ -228,7 +225,6 @@ class Editor extends Component {
                         }
                         activeSlideIndex={activeSlideIndex}
                         scenarioId={scenarioId}
-                        updateEditorMessage={this.updateEditorMessage}
                     />
                 );
             case 'preview':
@@ -302,10 +298,6 @@ class Editor extends Component {
         return null;
     }
 
-    updateEditorMessage(message) {
-        this.setState({ editorMessage: message });
-    }
-
     render() {
         const scenarioStatusMenuItem = this.props.status !== undefined && (
             <ScenarioStatusMenuItem
@@ -330,11 +322,6 @@ class Editor extends Component {
             <div>
                 <Menu attached="top" tabular>
                     {editTabMenu}
-                    <Menu.Menu position="right">
-                        <Menu.Item>
-                            <EditorMessage message={this.state.editorMessage} />
-                        </Menu.Item>
-                    </Menu.Menu>
                 </Menu>
 
                 <Segment attached="bottom" className="editor__content-pane">
@@ -370,9 +357,9 @@ class Editor extends Component {
 // an object, instead of a string.
 Dropdown.propTypes.text = PropTypes.any;
 
-EditorMessage.propTypes = {
-    message: PropTypes.string
-};
+// EditorMessage.propTypes = {
+//     message: PropTypes.string
+// };
 
 Editor.propTypes = {
     author: PropTypes.object,

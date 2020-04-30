@@ -8,5 +8,8 @@
 }
 
 .editor__content-pane {
+    /* Previously, this was defined as:
     height: 83vh !important;
+    */
+    height: 100% !important;
 }
