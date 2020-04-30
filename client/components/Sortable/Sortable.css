@@ -1,18 +1,11 @@
+/*
+Previously, this file defined:
 .sortable__outer-container {
     width:100%!important;
 }
-
-
-
-/*.sortable__inner-column-left {
-    float: left!important;
-    width: 10%!important;
-    display: inline-block!important;
-}
-
-.sortable__inner-column-right {
-    float: left!important;
-    width: 90%!important;
-    display: inline-block!important;
-}
 */
+.sortable__draggable-outer-container {}
+
+.sortable__draggable-outer-container > div {
+    margin-bottom: 0.5em!important;
+}
