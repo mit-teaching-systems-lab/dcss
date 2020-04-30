@@ -455,7 +455,7 @@ class Slides extends React.Component {
                                     const isActiveSlide =
                                         index === activeSlideIndex;
                                     const className = isActiveSlide
-                                        ? 'slides__list-card slides__list-row-selected'
+                                        ? 'slides__list-card sortable__selected'
                                         : 'slides__list-card';
                                     const onActivateSlideClick = () => {
                                         this.activateSlide(index);

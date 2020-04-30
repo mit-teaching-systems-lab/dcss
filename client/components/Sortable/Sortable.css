@@ -9,3 +9,12 @@ Previously, this file defined:
 .sortable__draggable-outer-container > div {
     margin-bottom: 0.5em!important;
 }
+
+.sortable__selected {
+    border: 1px solid transparent !important;
+    box-shadow: 0 1px 3px 0 gold, 0 0 0 1px gold !important;
+}
+
+.draggable {
+    margin-bottom: 1em !important;
+}
