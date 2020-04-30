@@ -1,0 +1,15 @@
+.notification {
+    z-index: 9999;
+    position: fixed;
+    top: 1em;
+    right: 1em;
+}
+
+.notification__visible {
+    pointer-events: auto;
+    opacity: 1;
+}
+.notification__invisible {
+    pointer-events: none;
+    opacity: 0;
+}
