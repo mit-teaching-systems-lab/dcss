@@ -36,7 +36,7 @@ class ScenariosList extends Component {
         this.onClickCreateScenario = this.onClickCreateScenario.bind(this);
         this.onSearchChange = this.onSearchChange.bind(this);
         this.reduceScenarios = this.reduceScenarios.bind(this);
-        this.sortDeletedScenarios = this.sortDeletedScenarios.bind(this);
+        this.moveDeletedScenarios = this.moveDeletedScenarios.bind(this);
     }
 
     async componentDidMount() {
@@ -44,15 +44,11 @@ class ScenariosList extends Component {
         await this.reduceScenarios();
     }
 
-    sortDeletedScenarios(scenarios = []) {
-        scenarios.forEach((scenario, index, scenarios) => {
-            if (scenario.deleted_at) {
-                scenarios.splice(index, 1);
-                scenarios.push(scenario);
-            }
-        });
-
-        return scenarios;
+    moveDeletedScenarios(scenarios = []) {
+        return [
+            ...scenarios.filter(({ deleted_at }) => !deleted_at),
+            ...scenarios.filter(({ deleted_at }) => deleted_at)
+        ];
     }
 
     async reduceScenarios() {
@@ -82,16 +78,15 @@ class ScenariosList extends Component {
                 break;
             case 'official':
             case 'community':
-                scenarios = scenarios.push(
-                    ...this.props.scenarios.filter(({ categories }) => {
-                        return !category || categories.includes(category);
-                    })
-                );
+                scenarios = this.props.scenarios.filter(({ categories }) => {
+                    return !category || categories.includes(category);
+                });
                 heading = `${changeCase.titleCase(category)} Scenarios`;
                 break;
         }
 
-        scenarios = this.sortDeletedScenarios(scenarios);
+        scenarios = this.moveDeletedScenarios(scenarios);
+
         this.setState({
             heading,
             scenarios,
@@ -177,9 +172,7 @@ class ScenariosList extends Component {
                                     onClick={onClickCreateScenario}
                                     className="scenarios__menu-item--padding"
                                 >
-                                    <Icon.Group
-                                        style={{ marginRight: '0.5rem' }}
-                                    >
+                                    <Icon.Group className="editormenu__icon-group">
                                         <Icon name="newspaper outline" />
                                         <Icon
                                             corner="top right"

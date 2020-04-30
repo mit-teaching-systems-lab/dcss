@@ -85,7 +85,6 @@ class ScenarioCard extends React.Component {
                     <Button
                         basic
                         fluid
-                        color="black"
                         as={Link}
                         to={{ pathname: `/run/${id}` }}
                         className="scenario__entry--button"
@@ -102,7 +101,6 @@ class ScenarioCard extends React.Component {
                             >
                                 <Button
                                     basic
-                                    color="black"
                                     className="scenario__entry--button"
                                     as={Link}
                                     to={{ pathname: `/editor/${id}` }}
@@ -113,7 +111,6 @@ class ScenarioCard extends React.Component {
                             <ConfirmAuth requiredPermission="create_scenario">
                                 <Button
                                     basic
-                                    color="black"
                                     className="scenario__entry--button"
                                     as={Link}
                                     to={{ pathname: `/editor/copy/${id}` }}
