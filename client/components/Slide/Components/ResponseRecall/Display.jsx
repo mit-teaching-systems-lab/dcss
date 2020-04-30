@@ -20,7 +20,7 @@ class Display extends React.Component {
     async componentDidMount() {
         // TODO: replace this with call to getResponse
         const { run, recallId } = this.props;
-        if (this.isScenarioRun) {
+        if (this.isScenarioRun && recallId !== -1) {
             const { response, status } = await (await fetch(
                 `/api/runs/${run.id}/response/${recallId}`
             )).json();
@@ -52,6 +52,10 @@ class Display extends React.Component {
         // to display, so display:
         // "Participant response will appear here"
         //
+
+        if (!response) {
+            return null;
+        }
 
         const content = this.isScenarioRun
             ? response
