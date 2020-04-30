@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-    Accordion,
     Container,
     Form,
     Icon,
@@ -11,6 +10,7 @@ import {
     Popup
 } from 'semantic-ui-react';
 import { type } from './type';
+import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './AudioResponse.css';
 import '@components/Slide/SlideEditor/SlideEditor.css';
@@ -25,7 +25,6 @@ class AudioResponseEditor extends Component {
             responseId
         } = props.value;
         this.state = {
-            activeIndex: recallId ? 0 : -1,
             header,
             prompt,
             recallId,
@@ -33,7 +32,6 @@ class AudioResponseEditor extends Component {
         };
         this.onChange = this.onChange.bind(this);
         this.onRecallChange = this.onRecallChange.bind(this);
-        this.toggleOptional = this.toggleOptional.bind(this);
     }
 
     updateState() {
@@ -55,41 +53,20 @@ class AudioResponseEditor extends Component {
         this.setState({ recallId }, this.updateState);
     }
 
-    toggleOptional(event, { index }) {
-        const { activeIndex } = this.state;
-        const newIndex = activeIndex === index ? -1 : index;
-
-        this.setState({ activeIndex: newIndex });
-    }
-
     render() {
-        const { activeIndex, header, prompt, recallId } = this.state;
-        const { scenarioId } = this.props;
-        const { onChange, onRecallChange, toggleOptional } = this;
+        const { header, prompt, recallId } = this.state;
+        const { scenarioId, slideIndex } = this.props;
+        const { onChange, onRecallChange } = this;
 
         return (
             <Form>
                 <Container fluid>
-                    <Accordion>
-                        <Accordion.Title
-                            active={activeIndex === 0}
-                            index={0}
-                            onClick={toggleOptional}
-                        >
-                            <Icon name="dropdown" />
-                            Optionally Embed A Previous Response
-                        </Accordion.Title>
-                        <Accordion.Content active={activeIndex === 0}>
-                            <ResponseRecall
-                                className="responserecall__margin-bottom"
-                                value={{
-                                    recallId
-                                }}
-                                scenarioId={scenarioId}
-                                onChange={onRecallChange}
-                            />
-                        </Accordion.Content>
-                    </Accordion>
+                    <ResponseRecall
+                        value={{ recallId }}
+                        scenarioId={scenarioId}
+                        slideIndex={slideIndex}
+                        onChange={onRecallChange}
+                    />
 
                     <Popup
                         content="This is the label that will appear on the Audio Prompt button."
@@ -101,32 +78,16 @@ class AudioResponseEditor extends Component {
                                     value={prompt}
                                     onChange={onChange}
                                 />
-                                <Label pointing="left">
-                                    This component will fallback to a text input
-                                    prompt when Audio recording is not
-                                    supported.
-                                </Label>
                             </Form.Field>
                         }
                     />
-
                     <Message
-                        color={header ? 'grey' : 'pink'}
-                        content={
-                            <Popup
-                                content="Set a data header. This is only displayed in the data view and data download."
-                                trigger={
-                                    <Form.TextArea
-                                        required
-                                        label="Data Header"
-                                        name="header"
-                                        value={header}
-                                        onChange={onChange}
-                                    />
-                                }
-                            />
-                        }
+                        icon="warning sign"
+                        color="orange"
+                        content="This component will fallback to a text input prompt when the participant's browser or device does not support audio recording."
                     />
+
+                    <DataHeader content={header} onChange={onChange} />
                 </Container>
             </Form>
         );
@@ -135,7 +96,8 @@ class AudioResponseEditor extends Component {
 
 AudioResponseEditor.propTypes = {
     onChange: PropTypes.func.isRequired,
-    scenarioId: PropTypes.string,
+    scenarioId: PropTypes.any,
+    slideIndex: PropTypes.any,
     value: PropTypes.shape({
         header: PropTypes.string,
         prompt: PropTypes.string,

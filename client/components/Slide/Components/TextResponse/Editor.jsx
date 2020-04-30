@@ -9,6 +9,7 @@ import {
     Popup
 } from 'semantic-ui-react';
 import { type } from './type';
+import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './TextResponse.css';
 import '@components/Slide/SlideEditor/SlideEditor.css';
@@ -24,7 +25,6 @@ class TextResponseEditor extends React.Component {
             responseId = ''
         } = props.value;
         this.state = {
-            activeIndex: recallId ? 0 : -1,
             header,
             prompt,
             placeholder,
@@ -34,45 +34,27 @@ class TextResponseEditor extends React.Component {
 
         this.onChange = this.onChange.bind(this);
         this.onRecallChange = this.onRecallChange.bind(this);
-        this.toggleOptional = this.toggleOptional.bind(this);
         this.updateState = this.updateState.bind(this);
     }
 
     render() {
         const {
-            activeIndex,
             header,
             prompt,
             placeholder,
             recallId
         } = this.state;
-        const { scenarioId } = this.props;
-        const { onChange, onRecallChange, toggleOptional } = this;
+        const { scenarioId, slideIndex } = this.props;
+        const { onChange, onRecallChange } = this;
         return (
             <Form>
                 <Container fluid>
-                    <Accordion>
-                        <Accordion.Title
-                            active={activeIndex === 0}
-                            index={0}
-                            onClick={toggleOptional}
-                        >
-                            <Icon name="dropdown" />
-                            Optionally Embed A Previous Response
-                        </Accordion.Title>
-                        <Accordion.Content active={activeIndex === 0}>
-                            <ResponseRecall
-                                className="responserecall__margin-bottom"
-                                value={{
-                                    components: [],
-                                    recallId
-                                }}
-                                scenarioId={scenarioId}
-                                onChange={onRecallChange}
-                            />
-                        </Accordion.Content>
-                    </Accordion>
-
+                    <ResponseRecall
+                        value={{ recallId }}
+                        slideIndex={slideIndex}
+                        scenarioId={scenarioId}
+                        onChange={onRecallChange}
+                    />
                     <Form.TextArea
                         label="Prompt"
                         name="prompt"
@@ -85,23 +67,7 @@ class TextResponseEditor extends React.Component {
                         value={placeholder}
                         onChange={onChange}
                     />
-                    <Message
-                        color={header ? 'grey' : 'pink'}
-                        content={
-                            <Popup
-                                content="Set a data header. This is only displayed in the data view and data download."
-                                trigger={
-                                    <Form.TextArea
-                                        required
-                                        label="Data Header"
-                                        name="header"
-                                        value={header}
-                                        onChange={onChange}
-                                    />
-                                }
-                            />
-                        }
-                    />
+                    <DataHeader content={header} onChange={onChange} />
                 </Container>
             </Form>
         );
@@ -143,7 +109,8 @@ class TextResponseEditor extends React.Component {
 
 TextResponseEditor.propTypes = {
     onChange: PropTypes.func.isRequired,
-    scenarioId: PropTypes.string,
+    slideIndex: PropTypes.any,
+    scenarioId: PropTypes.any,
     value: PropTypes.shape({
         placeholder: PropTypes.string,
         header: PropTypes.string,
