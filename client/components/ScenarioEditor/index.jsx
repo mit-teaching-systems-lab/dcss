@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import { Button, Container, Form, Grid, Popup } from 'semantic-ui-react';
 import { getScenario, setScenario } from '@client/actions/scenario';
 
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import ConfirmAuth from '@components/ConfirmAuth';
+import notify from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
 import { Text } from '@client/components/Slide/Components';
 import './scenarioEditor.css';
@@ -88,7 +89,6 @@ class ScenarioEditor extends Component {
     }
 
     onConsentChange({ html: value }) {
-        this.props.updateEditorMessage('');
         let { id, prose } = this.props.consent;
 
         if (prose !== value) {
@@ -135,14 +135,15 @@ class ScenarioEditor extends Component {
             postSubmitCB,
             status,
             submitCB,
-            title,
-            updateEditorMessage
+            title
         } = this.props;
 
         if (!title || !description) {
-            updateEditorMessage(
-                'A title and description are required for saving scenarios'
-            );
+            notify({
+                type: 'info',
+                message:
+                    'A title and description are required for saving scenarios'
+            });
             return;
         }
 
@@ -176,7 +177,7 @@ class ScenarioEditor extends Component {
                 }
                 break;
         }
-        updateEditorMessage(editorMessage);
+        notify({ type: 'info', message: editorMessage });
         this.setState({ saving: false });
         if (postSubmitCB) {
             postSubmitCB(response.scenario);
@@ -305,9 +306,7 @@ class ScenarioEditor extends Component {
                                     ) : null}
                                     {this.state.categories.length ? (
                                         <CategoriesDropdown
-                                            options={
-                                                this.state.categories
-                                            }
+                                            options={this.state.categories}
                                             categories={categories}
                                             onChange={onChange}
                                         />
@@ -382,7 +381,6 @@ ScenarioEditor.propTypes = {
     setScenario: PropTypes.func.isRequired,
     submitCB: PropTypes.func.isRequired,
     postSubmitCB: PropTypes.func,
-    updateEditorMessage: PropTypes.func.isRequired,
     author: PropTypes.object,
     title: PropTypes.string,
     categories: PropTypes.array,
