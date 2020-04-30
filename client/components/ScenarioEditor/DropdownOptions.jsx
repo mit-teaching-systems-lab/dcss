@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, Form } from 'semantic-ui-react';
 
-export const CategoriesDropdown = ({
-    options,
-    categories,
-    onChange
-}) => {
+export const CategoriesDropdown = ({ options, categories, onChange }) => {
     return (
         <Form.Field>
             <label>Categories</label>
@@ -33,12 +29,11 @@ export const AuthorDropdown = ({ options, author = {}, onChange }) => {
     const onAuthorChange = (event, { name, value: id }) => {
         const value = options.find(author => author.id === id);
         onChange(event, {
-            name, value
+            name,
+            value
         });
     };
-    const {
-        id: defaultValue
-    } = author;
+    const { id: defaultValue } = author;
 
     return (
         <Form.Field>
