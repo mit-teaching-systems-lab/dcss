@@ -25,7 +25,7 @@ class Scenario extends Component {
         this.state = {
             activeSlideIndex,
             scenarioId,
-            slides: [],
+            slides: []
         };
 
         this.slideRefs = [];
@@ -216,7 +216,7 @@ class Scenario extends Component {
                 {slides.map((slide, index) => {
                     const className =
                         activeSlideIndex === index - 1
-                            ? `${classes} scenario__slide-preview--selected`
+                            ? `${classes} scenario__slide-preview-selected`
                             : classes;
 
                     return index === 0 || index === slides.length - 1 ? (

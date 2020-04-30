@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 import storage from 'local-storage-fallback';
 
-const SlideComponentsList = ({
+const SlideComponentList = ({
     asSVG = false,
     components,
     onResponseChange,
@@ -12,17 +12,16 @@ const SlideComponentsList = ({
     const emptyValue = '{"value":""}';
     const runOnly = run ? { run } : {};
     const style = {
-        height: '150px',
+        height: '100px',
         overflow: 'hidden',
         margin: '-1rem !important'
     };
-
     return asSVG ? (
         <div style={style}>
-            <svg width="500" height="400">
+            <svg width="500" height="1000">
                 {/* intentionally break out */}
                 <foreignObject
-                    transform="scale(0.5)"
+                    transform="scale(0.4)"
                     width="100%"
                     height="100%"
                 >
@@ -43,9 +42,9 @@ const SlideComponentsList = ({
                 <rect
                     x="0"
                     y="0"
-                    transform="scale(0.5)"
-                    width="500"
-                    height="400"
+                    transform="scale(0.4)"
+                    width="100%"
+                    height="100%"
                     fill="transparent"
                 />
             </svg>
@@ -74,10 +73,10 @@ const SlideComponentsList = ({
     );
 };
 
-SlideComponentsList.propTypes = {
+SlideComponentList.propTypes = {
     asSVG: PropTypes.bool,
     components: PropTypes.array,
     onResponseChange: PropTypes.func,
     run: PropTypes.object
 };
-export default SlideComponentsList;
+export default SlideComponentList;

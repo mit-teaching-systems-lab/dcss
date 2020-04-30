@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
 import storage from 'local-storage-fallback';
 
-import SlideComponentsList from '@components/SlideComponentsList';
+import SlideComponentList from '@components/SlideComponentList';
 
 class ContentSlide extends React.Component {
     constructor(props) {
@@ -184,7 +184,7 @@ class ContentSlide extends React.Component {
                     </Card.Header>
                 </Card.Content>
                 <Card.Content key={`content${slide.id}`}>
-                    <SlideComponentsList
+                    <SlideComponentList
                         {...runOnly}
                         components={slide.components}
                         onResponseChange={onInterceptResponseChange}
