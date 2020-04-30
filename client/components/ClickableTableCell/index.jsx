@@ -10,22 +10,26 @@ const IS_ANDROID = detect()
 
 const ClickableTableCell = props => {
     const { className, display, href } = props;
-    const onClick = IS_ANDROID ? () => (location.href = href) : null;
+    const onClick =
+        props.onClick || (IS_ANDROID ? () => (location.href = href) : null);
+
+    const link = href && display ? <Link to={href}>{display}</Link> : display;
     return (
         <Table.Cell
             className={className}
             onClick={onClick}
             onTouchStart={onClick}
         >
-            {href && display && <Link to={href}>{display}</Link>}
+            {link}
         </Table.Cell>
     );
 };
 
 ClickableTableCell.propTypes = {
     className: PropTypes.string,
-    display: PropTypes.string,
-    href: PropTypes.string
+    display: PropTypes.node,
+    href: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 export default ClickableTableCell;
