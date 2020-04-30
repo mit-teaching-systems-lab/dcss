@@ -18,7 +18,7 @@ export default class EditorMenu extends React.Component {
         const { mode } = this.state;
 
         return (
-            <Menu icon>
+            <Menu icon borderless>
                 {items.left && (
                     <React.Fragment>
                         {items.left
@@ -113,7 +113,7 @@ export default class EditorMenu extends React.Component {
                             .map((item, index) => (
                                 <Popup
                                     key={index}
-                                    content={`${item.props.name}`}
+                                    content={item.props.name}
                                     trigger={item}
                                 />
                             ))}

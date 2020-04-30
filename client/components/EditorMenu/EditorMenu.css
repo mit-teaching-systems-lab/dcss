@@ -1,3 +1,8 @@
-.editormenu__search--padding {
+.editormenu__padding {
     padding: 0.428571em 1.14285714em !important;
+}
+
+
+.editormenu__icon-group {
+  margin-right: 0.5rem;
 }
