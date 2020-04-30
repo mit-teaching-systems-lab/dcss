@@ -11,7 +11,7 @@ class Display extends React.Component {
     constructor(props) {
         super(props);
 
-        const { persisted } = this.props;
+        const { persisted = { value: '' } } = this.props;
 
         this.state = {
             value: persisted.value

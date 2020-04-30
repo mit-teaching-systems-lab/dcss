@@ -23,7 +23,7 @@ class Display extends Component {
     constructor(props) {
         super(props);
 
-        const { persisted } = this.props;
+        const { persisted = { value: '', transcript: '' } } = this.props;
 
         this.state = {
             blobURL: '',
