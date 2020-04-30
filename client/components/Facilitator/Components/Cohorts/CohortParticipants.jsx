@@ -9,7 +9,9 @@ import {
     Container,
     // Dimmer,
     Icon,
-    // Loader,
+    Input,
+    Menu,
+    Ref,
     Popup,
     Table
 } from 'semantic-ui-react';
@@ -19,7 +21,9 @@ import {
     getCohortParticipants,
     setCohort
 } from '@client/actions/cohort';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import EditorMenu from '@components/EditorMenu';
+import ClickableTableCell from '@components/ClickableTableCell';
+import ConfirmAuth from '@components/ConfirmAuth';
 import './Cohort.css';
 
 export class CohortParticipants extends React.Component {
@@ -35,6 +39,7 @@ export class CohortParticipants extends React.Component {
         }
 
         this.state = {
+            search: '',
             cohort: {
                 id,
                 users: []
@@ -49,7 +54,9 @@ export class CohortParticipants extends React.Component {
         this.participants = [];
         this.tableBody = React.createRef();
         this.onCheckboxClick = this.onCheckboxClick.bind(this);
-        this.onSearchParticipants = this.onSearchParticipants.bind(this);
+        this.onParticipantSearchChange = this.onParticipantSearchChange.bind(
+            this
+        );
     }
 
     async componentDidMount() {
@@ -59,14 +66,19 @@ export class CohortParticipants extends React.Component {
 
         const cohort = await this.props.getCohort(Number(id));
 
-        this.setState({ cohort });
+        this.setState({
+            cohort
+        });
 
         this.refreshInterval = setInterval(async () => {
-            const { cohort } = this.state;
-
-            cohort.users = await this.props.getCohortParticipants(Number(id));
-
-            this.setState({ cohort });
+            const { search, cohort } = this.state;
+            if (!search) {
+                cohort.users = await this.props.getCohortParticipants(
+                    Number(id)
+                );
+                this.participants = cohort.users.slice();
+                this.setState({ cohort });
+            }
         }, 1000);
     }
 
@@ -76,12 +88,21 @@ export class CohortParticipants extends React.Component {
 
     onCheckboxClick() {}
 
-    async onSearchParticipants(event, { value }) {
+    scrollIntoView() {
+        this.tableBody.current.node.firstElementChild.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'nearest'
+        });
+    }
+
+    onParticipantSearchChange(event, { value }) {
         const { participants } = this;
         const { cohort } = this.props;
+
         const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
 
-        const filtered = participants.filter(scenario => {
+        const users = participants.filter(scenario => {
             if (escapedRegExp.test(scenario.username)) {
                 return true;
             }
@@ -92,125 +113,158 @@ export class CohortParticipants extends React.Component {
             return false;
         });
 
-        await this.props.setCohort({
-            ...cohort,
-            users: filtered
+        this.setState({
+            search: value,
+            cohort: {
+                ...cohort,
+                users
+            }
         });
     }
 
     render() {
         const { onClick } = this.props;
         const { cohort } = this.state;
+        const { onParticipantSearchChange } = this;
         // NOTE: The checkbox is temporarily disabled
         // const { onCheckboxClick } = this;
 
         return (
             <Container fluid className="cohort__table-container">
+                <EditorMenu
+                    type="cohort participants"
+                    items={{
+                        left: [
+                            <Menu.Item
+                                key="menu-item-cohort-scenarios"
+                                className="editormenu__padding"
+                                name="Scenarios in this Cohort"
+                                onClick={this.scrollIntoView}
+                            >
+                                <Icon.Group className="editormenu__icon-group">
+                                    <Icon name="group" />
+                                </Icon.Group>
+                                Cohort Participants (
+                                {this.props.cohort.users.length})
+                            </Menu.Item>
+                        ],
+                        right: [
+                            <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                                <Menu.Menu position="right">
+                                    <Menu.Item
+                                        key="menu-item-search-accounts"
+                                        name="Search cohort participants"
+                                        className="editormenu__padding"
+                                    >
+                                        <Input
+                                            icon="search"
+                                            placeholder="Search..."
+                                            onChange={onParticipantSearchChange}
+                                        />
+                                    </Menu.Item>
+                                </Menu.Menu>
+                            </ConfirmAuth>
+                        ]
+                    }}
+                />
                 <Table
-                    celled
+                    fixed
                     striped
                     selectable
                     role="grid"
                     aria-labelledby="header"
+                    className="cohort__table--constraints"
+                    unstackable
                 >
                     <Table.Header className="cohort__table-thead-tbody-tr">
                         <Table.Row>
-                            <Table.HeaderCell colSpan={3}>
-                                Participants ({this.props.cohort.users.length}){' '}
-                                {'  '}
-                                {/*
-                                <Input
-                                    className="cohort__table--search"
-                                    onChange={onSearchParticipants}
-                                />
-                                */}
+                            <Table.HeaderCell className="cohort__table-cell-first">
+                                {' '}
+                            </Table.HeaderCell>
+                            <Table.HeaderCell>Username</Table.HeaderCell>
+                            <Table.HeaderCell>Role</Table.HeaderCell>
+                            <Table.HeaderCell className="cohort__table-cell-content">
+                                Email
                             </Table.HeaderCell>
                         </Table.Row>
                     </Table.Header>
-                    <Table.Body className="cohort__scrolling-tbody">
-                        {cohort.users.length ? (
-                            cohort.users.map((user, index) => {
-                                const onClickAddTab = (event, data) => {
-                                    onClick(event, {
-                                        ...data,
-                                        type: 'participant',
-                                        source: user
-                                    });
-                                };
+                    <Ref innerRef={node => (this.tableBody = node)}>
+                        <Table.Body className="cohort__scrolling-tbody">
+                            {cohort.users.length ? (
+                                cohort.users.map((user, index) => {
+                                    const onClickAddTab = (event, data) => {
+                                        onClick(event, {
+                                            ...data,
+                                            type: 'participant',
+                                            source: user
+                                        });
+                                    };
 
-                                return (
-                                    <Table.Row
-                                        key={`participants-row-${index}`}
-                                        className="cohort__table-thead-tbody-tr"
-                                        style={{ cursor: 'pointer' }}
-                                    >
-                                        {/*
-                                        <Table.Cell
-                                            key={`participants-cell-checkbox-${index}`}
-                                            className="cohort__table-cell-first"
+                                    return (
+                                        <Table.Row
+                                            key={`participants-row-${index}`}
+                                            className="cohort__table-thead-tbody-tr"
+                                            style={{ cursor: 'pointer' }}
                                         >
-                                            <Popup
-                                                content="Adding participants is not available in this version of Cohorts"
-                                                trigger={
-                                                    <Checkbox
-                                                        disabled
-                                                        key={`participants-checkbox-${index}`}
-                                                        value={user.id}
-                                                        onClick={
-                                                            onCheckboxClick
-                                                        }
-                                                    />
-                                                }
-                                            />
-                                        </Table.Cell>
-                                        */}
-                                        <Table.Cell>
-                                            <Button.Group
-                                                hidden
-                                                basic
-                                                size="small"
-                                                className="cohort__button-group--transparent"
-                                                style={{
-                                                    marginRight: '0.5rem'
-                                                }}
+                                            {/*
+                                            <Table.Cell
+                                                key={`participants-cell-checkbox-${index}`}
+                                                className="cohort__table-cell-first"
                                             >
-                                                <ConfirmAuth requiredPermission="view_all_data">
-                                                    <Popup
-                                                        content="View cohort reponses from this participant"
-                                                        trigger={
-                                                            <Button
-                                                                icon
-                                                                content={
-                                                                    <Icon name="file alternate outline" />
-                                                                }
-                                                                name={
-                                                                    user.username
-                                                                }
-                                                                onClick={
-                                                                    onClickAddTab
-                                                                }
-                                                            />
-                                                        }
-                                                    />
-                                                </ConfirmAuth>
-                                            </Button.Group>
-                                            {user.username} ({user.role})
-                                        </Table.Cell>
-                                        <Table.Cell>{user.email}</Table.Cell>
-                                    </Table.Row>
-                                );
-                            })
-                        ) : (
-                            <Table.Row
-                                key={`row-empty-results`}
-                                className="cohort__table-thead-tbody-tr"
-                            >
-                                <Table.Cell>
-                                    No participants match your search
-                                </Table.Cell>
-                            </Table.Row>
-                        )}
-                    </Table.Body>
+                                                <Popup
+                                                    content="Adding participants is not available in this version of Cohorts"
+                                                    trigger={
+                                                        <Checkbox
+                                                            disabled
+                                                            key={`participants-checkbox-${index}`}
+                                                            value={user.id}
+                                                            onClick={
+                                                                onCheckboxClick
+                                                            }
+                                                        />
+                                                    }
+                                                />
+                                            </Table.Cell>
+                                            */}
+
+                                            <ConfirmAuth requiredPermission="view_all_data">
+                                                <Popup
+                                                    content="View cohort reponses from this participant"
+                                                    trigger={
+                                                        <ClickableTableCell
+                                                            className="cohort__table-cell-first"
+                                                            display={
+                                                                <Icon name="file alternate outline" />
+                                                            }
+                                                            onClick={
+                                                                onClickAddTab
+                                                            }
+                                                        />
+                                                    }
+                                                />
+                                            </ConfirmAuth>
+                                            <Table.Cell>
+                                                {user.username}
+                                            </Table.Cell>
+                                            <Table.Cell>{user.role}</Table.Cell>
+                                            <Table.Cell className="cohort__table-cell-content">
+                                                {user.email}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    );
+                                })
+                            ) : (
+                                <Table.Row
+                                    key={`row-empty-results`}
+                                    className="cohort__table-thead-tbody-tr"
+                                >
+                                    <Table.Cell>
+                                        No participants match your search
+                                    </Table.Cell>
+                                </Table.Row>
+                            )}
+                        </Table.Body>
+                    </Ref>
                 </Table>
             </Container>
         );

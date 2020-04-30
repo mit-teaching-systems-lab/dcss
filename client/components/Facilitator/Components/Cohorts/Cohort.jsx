@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
@@ -191,17 +191,20 @@ export class Cohort extends React.Component {
                 {activeTabKey === 'cohort' ? (
                     <Segment attached="bottom">
                         <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-                            <Menu icon>
+                            <Menu icon borderless>
                                 <Popup
                                     content="Copy cohort link to clipboard"
                                     trigger={
                                         <Menu.Item
-                                            icon
-                                            content={
-                                                <Icon name="clipboard outline" />
-                                            }
+                                            key="menu-item-account-administration"
+                                            className="editormenu__padding"
                                             onClick={() => copy(cohortUrl)}
-                                        />
+                                        >
+                                            <Icon.Group className="editormenu__icon-group">
+                                                <Icon name="clipboard outline" />
+                                            </Icon.Group>
+                                            {cohortUrl}
+                                        </Menu.Item>
                                     }
                                 />
                                 {/*
@@ -237,13 +240,13 @@ export class Cohort extends React.Component {
                             </Menu>
                         </ConfirmAuth>
                         <CohortScenarios
-                            key={`cohort-scenarios`}
+                            key="cohort-scenarios"
                             id={id}
                             onClick={onClick}
                         />
                         <ConfirmAuth requiredPermission="edit_all_cohorts">
                             <CohortParticipants
-                                key={`cohort-participants`}
+                                key="cohort-participants"
                                 id={id}
                                 onClick={onClick}
                             />

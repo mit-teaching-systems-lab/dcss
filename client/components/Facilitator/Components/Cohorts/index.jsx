@@ -154,11 +154,9 @@ export class Cohorts extends React.Component {
                                     key="menu-item-create-cohort"
                                     name="Create a cohort"
                                     onClick={onClickOpenCreateCohort}
-                                    className="cohorts__menu-item--padding"
+                                    className="editormenu__padding"
                                 >
-                                    <Icon.Group
-                                        style={{ marginRight: '0.5rem' }}
-                                    >
+                                    <Icon.Group className="editormenu__icon-group">
                                         <Icon name="group" />
                                         <Icon
                                             corner="top right"
@@ -168,18 +166,22 @@ export class Cohorts extends React.Component {
                                     </Icon.Group>
                                     Create a Cohort
                                 </Menu.Item>
-                            </ConfirmAuth>,
-                            <Menu.Item
-                                key="menu-item-search-cohorts"
-                                name="Search cohorts"
-                                className="cohorts__menu-item--padding"
-                            >
-                                <Input
-                                    icon="search"
-                                    placeholder="Search..."
-                                    onChange={onSearchChange}
-                                />
-                            </Menu.Item>
+                            </ConfirmAuth>
+                        ],
+                        right: [
+                            <Menu.Menu position="right">
+                                <Menu.Item
+                                    key="menu-item-search-cohorts"
+                                    name="Search cohorts"
+                                    className="editormenu__padding"
+                                >
+                                    <Input
+                                        icon="search"
+                                        placeholder="Search..."
+                                        onChange={onSearchChange}
+                                    />
+                                </Menu.Item>
+                            </Menu.Menu>
                         ]
                     }}
                 />

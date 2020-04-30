@@ -23,10 +23,6 @@
     table-layout: fixed;
 }
 
-.cohort__table-cell-first {
-    width: 40px;
-}
-
 .cohort__button--transparent {
     background: none !important;
 }
@@ -53,13 +49,22 @@
     table-layout: fixed;
 }
 
-.cohort__table-cell--description {
+.cohort__table-cell-first {
+    width: 40px;
+    text-overflow: none!important;
+}
+
+.cohort__table-cell-options {
+    width: 15rem !important;
+}
+
+.cohort__table-cell-content {
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 @media only screen and (max-width: 767px) {
-    .cohort__table-cell--description {
+    .cohort__table-cell-content {
         display: none !important;
     }
 }
@@ -77,9 +82,6 @@
     overflow-y: hidden;
 }
 
-.cohort__table-row--menu {
-    width: 9.6rem !important;
-}
 
 .cohort__tab-menu--button-transparent {
     background-color: none !important;
