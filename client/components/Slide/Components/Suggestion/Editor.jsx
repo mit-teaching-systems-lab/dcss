@@ -106,7 +106,7 @@ class SuggestionEditor extends React.Component {
 
 SuggestionEditor.propTypes = {
     onChange: PropTypes.func.isRequired,
-    scenarioId: PropTypes.string,
+    scenarioId: PropTypes.any,
     value: PropTypes.shape({
         color: PropTypes.string,
         html: PropTypes.string,
