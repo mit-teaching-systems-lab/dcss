@@ -110,6 +110,9 @@ class Editor extends Component {
         const activeNonZeroSlideIndex = activeSlideIndex + 1;
         const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
         this.props.history.push(pathname);
+
+        // TODO: verify that this is correct
+        this.setState({ activeSlideIndex });
     }
 
     onClickScenarioAction(event, data) {
@@ -356,10 +359,6 @@ class Editor extends Component {
 // Note: this silences the warning about "text={}" receiving
 // an object, instead of a string.
 Dropdown.propTypes.text = PropTypes.any;
-
-// EditorMessage.propTypes = {
-//     message: PropTypes.string
-// };
 
 Editor.propTypes = {
     author: PropTypes.object,
