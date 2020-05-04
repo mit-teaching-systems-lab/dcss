@@ -66,7 +66,7 @@ exports.updateSlide = asyncMiddleware(async (req, res) => {
     const { slide_id } = req.params;
     const { title, order, components, is_finish = false } = req.body;
     res.json({
-        slide: await db.updateSlide(slide_id, {
+        result: await db.updateSlide(slide_id, {
             title,
             order,
             components,

@@ -38,7 +38,7 @@ exports.addSlide = async ({
 
 exports.updateSlide = async (id, data) => {
     const result = await query(updateQuery('slide', { id }, data));
-    return result.rows[0];
+    return result.rowCount;
 };
 
 exports.setAllSlides = async (scenario_id, slides) => {
