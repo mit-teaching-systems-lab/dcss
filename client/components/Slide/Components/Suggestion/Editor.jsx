@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Checkbox, Dropdown, Message } from 'semantic-ui-react';
 import Editor from 'nib-core';
 import { convertFromHTML, convertToHTML } from 'nib-converter';
-import { type } from './type';
+import { type } from './meta';
 
 const options = [
     { key: 'red', value: 'red', text: 'Red' },

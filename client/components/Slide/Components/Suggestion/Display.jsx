@@ -1,4 +1,4 @@
-import { type } from './type';
+import { type } from './meta';
 import React from 'react';
 import { Button, Container, Icon, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';

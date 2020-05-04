@@ -11,7 +11,7 @@ import {
     Message,
     Popup
 } from 'semantic-ui-react';
-import { type } from './type';
+import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Sortable from '@components/Sortable';

@@ -1,14 +1,15 @@
 import React from 'react';
 import { Popup, Icon } from 'semantic-ui-react';
+import { name } from './meta';
 
 const SuggestionCard = () => (
     <Popup
         content="Insert a suggestion that will appear in the slide."
-        header="Participant Suggestion"
+        header={name}
         trigger={
             <React.Fragment>
-                <Icon name="info circle" aria-label="Participant Suggestion" />
-                Participant Suggestion
+                <Icon name="info circle" aria-label={name} />
+                {name}
             </React.Fragment>
         }
     />

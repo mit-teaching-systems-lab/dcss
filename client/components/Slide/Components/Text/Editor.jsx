@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Editor from 'nib-core';
 import { convertFromHTML, convertToHTML } from 'nib-converter';
 import * as HTMLParser from 'node-html-parser';
-import { type } from './type';
+import { type } from './meta';
 
 // The nodeVisitor is used for finding and interacting
 // with nodes in the document created by Prosemirror (via Nib).

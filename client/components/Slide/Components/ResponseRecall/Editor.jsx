@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Form, Dropdown, Table, Select } from 'semantic-ui-react';
 import FormField from '@components/FormField';
-import { type } from './type';
+import { type } from './meta';
 
 class ResponseRecallEditor extends React.Component {
     constructor(props) {

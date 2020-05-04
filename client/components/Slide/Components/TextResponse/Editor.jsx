@@ -8,7 +8,7 @@ import {
     Message,
     Popup
 } from 'semantic-ui-react';
-import { type } from './type';
+import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './TextResponse.css';

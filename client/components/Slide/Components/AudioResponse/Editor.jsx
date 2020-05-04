@@ -9,7 +9,7 @@ import {
     Message,
     Popup
 } from 'semantic-ui-react';
-import { type } from './type';
+import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import './AudioResponse.css';
@@ -24,6 +24,7 @@ class AudioResponseEditor extends Component {
             recallId = '',
             responseId
         } = props.value;
+
         this.state = {
             header,
             prompt,
