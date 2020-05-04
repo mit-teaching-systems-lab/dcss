@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
     Checkbox,
@@ -8,260 +8,249 @@ import {
     Input,
     Menu,
     Message,
+    Ref,
     Segment
 } from 'semantic-ui-react';
-import Sortable from '@components/Sortable';
-import EditorMenu from '@components/EditorMenu';
-import generateResponseId from '../util/generate-response-id';
 import hash from 'object-hash';
+import EditorMenu from '@components/EditorMenu';
+import notify from '@components/Notification';
+import Sortable from '@components/Sortable';
+import SlideComponentSelect from '@components/SlideComponentSelect';
+import generateResponseId from '../util/generate-response-id';
 import * as Components from '../Components';
 import './SlideEditor.css';
-
-const ComponentsMenuOrder = [
-    'Text',
-    'Suggestion',
-    'ResponseRecall',
-    'TextResponse',
-    'MultiButtonResponse',
-    'AudioResponse'
-];
 
 export default class SlideEditor extends Component {
     constructor(props) {
         super(props);
-        this.clickHandlers = {};
-        const mode = 'edit';
-        const currentComponentIndex = 0;
-        const titleHasFocus = false;
         const { title = 'Slide', components = [] } = props;
+        const activeComponentIndex = -1;
+        const mode = 'edit';
+        const titleHasFocus = false;
+
         this.state = {
+            activeComponentIndex,
             components,
-            currentComponentIndex,
             mode,
-            titleHasFocus,
-            title
+            title,
+            titleHasFocus
         };
 
+        this.activateComponent = this.activateComponent.bind(this);
+        this.updateSlide = this.updateSlide.bind(this);
+
+        this.componentRefs = [];
+        this.debouncers = {};
+
         this.onComponentChange = this.onComponentChange.bind(this);
-        this.onComponentOrderChange = this.onComponentOrderChange.bind(this);
         this.onComponentDelete = this.onComponentDelete.bind(this);
+        this.onComponentOrderChange = this.onComponentOrderChange.bind(this);
+
+        this.onComponentSelectClick = this.onComponentSelectClick.bind(this);
 
         this.onTitleBlur = this.onTitleBlur.bind(this);
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onTitleFocus = this.onTitleFocus.bind(this);
-        this.updateState = this.updateState.bind(this);
     }
 
-    shouldComponentUpdate(nextProps, nextState) {
+    // componentDidMount() {
+    //     const {
+    //         components = [],
+    //         title = '',
+    //     } = this.props;
+    //     this.setState({
+    //         components,
+    //         title,
+    //     });
+    // }
 
-        if (nextProps.components.length === 0 &&
-            nextState.components.length === 0) {
-            // console.log("COMPONENTS HAVE BEEN DELETED");
-            return true;
-        }
-
-        if (
-            (this.state.currentComponentIndex !== nextState.currentComponentIndex) ||
-            (this.state.mode !== nextState.mode) ||
-            (this.state.titleHasFocus !== nextState.titleHasFocus)
-        ) {
-            // console.log("COMPONENT METADATA HAS CHANGED");
-            return true;
-        }
-
-        if (
-            (this.props.components.length !== nextProps.components.length) ||
-            (this.state.components.length !== nextState.components.length)
-        ) {
-            // console.log("COMPONENT LENGTH HAS CHANGED");
-            return true;
-        }
-
-        if (this.state.components.length === nextState.components.length) {
-            let same = 0;
-            for (let component of this.state.components) {
-                let index = this.state.components.indexOf(component);
-                if (hash(component) === hash(nextState.components[index])) {
-                    same++;
-                }
-            }
-
-            if (same !== this.state.components.length) {
-                // console.log("COMPONENT CONTENT HAS CHANGED");
-                return true;
-            }
-        }
-
-        // console.log("props", this.props, nextProps);
-        // console.log("state", this.state, nextState);
-        return false;
-    }
-
-    updateState() {
+    updateSlide() {
         if (this.props.onChange) {
-            this.props.onChange(this.state);
+            const { components, title } = this.state;
+
+            this.props.onChange(this.props.index, {
+                components,
+                title
+            });
         }
     }
 
-    clickHandle(type) {
-        if (!this.clickHandlers[type]) {
-            this.clickHandlers[type] = this.onMenuClick.bind(this, type);
+    activateComponent(state, callback = () => {}) {
+        let updatedState = state;
+
+        if (Array.isArray(state)) {
+            updatedState = {
+                components: state
+            };
         }
-        return this.clickHandlers[type];
+        if (typeof state === 'number') {
+            updatedState = {
+                activeComponentIndex: state
+            };
+        }
+
+        if (updatedState.activeComponentIndex !== -1) {
+            this.setState(updatedState, () => {
+                const { activeComponentIndex } = this.state;
+
+                if (this.componentRefs[activeComponentIndex]) {
+                    this.componentRefs[activeComponentIndex].scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'nearest',
+                        inline: 'nearest'
+                    });
+                }
+                callback();
+            });
+        }
     }
 
     onComponentChange(index, value) {
-        const components = this.state.components.slice();
-        components[index] = value;
-        this.setState({ components }, this.updateState);
+        const { components } = this.state;
+        Object.assign(components[index], value);
+        this.setState({ components }, () => {
+            clearTimeout(this.debouncers[index]);
+            this.debouncers[index] = setTimeout(() => {
+                this.updateSlide();
+            }, 5000);
+        });
     }
 
-    onComponentOrderChange(fromIndex, toIndex) {
-        // const {
-        //     oldDraggableIndex: fromIndex,
-        //     newDraggableIndex: toIndex
-        // } = args[2];
-
-        this.props.updateEditorMessage('Moving component...');
-
-        const components = this.state.components.slice();
-        const from = components[fromIndex];
-        const to = components[toIndex];
-        if (from && to) {
-            components[toIndex] = from;
-            components[fromIndex] = to;
-        }
-
-        const currentComponentIndex = toIndex;
-
-        this.setState({ components, currentComponentIndex }, this.updateState);
-        this.props.updateEditorMessage('Component moved!');
+    onComponentOrderChange(fromIndex, activeComponentIndex) {
+        const { components } = this.state;
+        const moving = components[fromIndex];
+        components.splice(fromIndex, 1);
+        components.splice(activeComponentIndex, 0, moving);
+        this.activateComponent({ components, activeComponentIndex }, () => {
+            this.updateSlide();
+        });
     }
 
     onComponentDelete(index) {
-        const components = this.state.components.slice();
+        const { components } = this.state;
+
         components.splice(index, 1);
-        this.setState({ components }, () => {
-            let currentComponentIndex;
 
-            // The components was at the end...
-            if (index > components.length) {
-                currentComponentIndex = components.length - 1;
-            }
+        let activeComponentIndex;
 
-            // The components was at the beginning...
-            if (index === 0) {
-                currentComponentIndex = 0;
-            } else {
-                // The components was somewhere in between...
-                currentComponentIndex = index - 1;
-            }
+        // The components was at the end...
+        if (index > components.length) {
+            activeComponentIndex = components.length - 1;
+        }
 
-            this.setState({ currentComponentIndex });
-            this.props.updateEditorMessage('Component deleted');
-            this.updateState();
+        // The components was at the beginning...
+        if (index === 0) {
+            activeComponentIndex = 0;
+        } else {
+            // The components was somewhere in between...
+            activeComponentIndex = index - 1;
+        }
+        this.activateComponent({ components, activeComponentIndex }, () => {
+            this.updateSlide();
         });
     }
 
-    onMenuClick(type) {
-        const components = [
-            ...this.state.components,
-            Components[type].defaultValue({
-                responseId: generateResponseId(type)
-            })
-        ];
-        const currentComponentIndex = components.length - 1;
-        this.setState({ components, currentComponentIndex }, () => {
-            this.props.updateEditorMessage('Component added');
-            this.updateState();
+    onComponentSelectClick(type) {
+        const {
+            activeComponentIndex: currentActiveComponentIndex,
+            components
+        } = this.state;
+
+        const activeComponentIndex = currentActiveComponentIndex + 1;
+
+        const component = Components[type].defaultValue({
+            responseId: generateResponseId(type)
+        });
+
+        if (activeComponentIndex === components.length) {
+            components.push(component);
+        } else {
+            components.splice(activeComponentIndex, 0, component);
+        }
+
+        this.activateComponent({ components, activeComponentIndex }, () => {
+            this.updateSlide();
         });
     }
 
-    onTitleChange(event, { value: title }) {
-        this.setState({ title }, this.updateState);
+    onTitleChange(event, { name, value }) {
+        console.log(name, value);
+        this.setState({ [name]: value });
     }
 
     onTitleFocus() {
         this.setState({ titleHasFocus: true });
     }
 
-    onTitleBlur() {
+    onTitleBlur(event, data) {
+        // Title is an uncontrolled input, so setting
+        // state directly here is intentional.
+        //
+        this.state.title = event.target.value;
+        this.updateSlide();
         this.setState({ titleHasFocus: false });
-    }
-
-    onComponentRequirementChange(event, { checked }) {
-        this.setState({ required: checked }, this.updateState);
     }
 
     render() {
         const {
+            activateComponent,
+            updateSlide,
+            onComponentChange,
+            onComponentDelete,
             onComponentOrderChange,
+            onComponentSelectClick,
             onTitleBlur,
             onTitleChange,
-            onTitleFocus,
-            state: { components, titleHasFocus, title },
-            updateState
+            onTitleFocus
         } = this;
+
+        const {
+            activeComponentIndex,
+            components,
+            titleHasFocus,
+            title
+        } = this.state;
 
         const { scenarioId } = this.props;
 
-        const showComponentDropdown =
+        if (!components) {
+            return <span>Loading</span>;
+        }
+
+        const slideComponentSelectOpen =
             components.length === 0 ? { open: true } : {};
 
         // Let other operations override the openness
         // of the component menu.
         if (titleHasFocus) {
-            showComponentDropdown.open = false;
+            slideComponentSelectOpen.open = false;
         }
-        const slideComponentDropDown = (
-            <Dropdown
-                {...showComponentDropdown}
-                item
-                text={
-                    <Fragment>
-                        <Icon
-                            name="content"
-                            style={{
-                                marginRight: '0.5rem'
-                            }}
-                        />
-                        Add to slide
-                    </Fragment>
-                }
-            >
-                <Dropdown.Menu>
-                    {ComponentsMenuOrder.map(type => {
-                        const { Card } = Components[type];
-                        return (
-                            <Dropdown.Item
-                                key={type}
-                                onClick={this.clickHandle(type)}
-                            >
-                                <Card />
-                            </Dropdown.Item>
-                        );
-                    })}
-                </Dropdown.Menu>
-            </Dropdown>
-        );
 
         return (
             <Grid>
                 <Grid.Column stretched>
                     <Grid.Row>
                         <EditorMenu
+                            key="slide-editor-menu"
                             type="slide"
                             items={{
                                 left: [
+                                    <Menu.Item
+                                        key="menu-item-number"
+                                        name="Slide number"
+                                        className="slideeditormenu__slide-number-width header"
+                                    >
+                                        {this.props.index + 1}
+                                    </Menu.Item>,
+
                                     <Menu.Item
                                         key="menu-item-title"
                                         name="Slide title"
                                     >
                                         <Input
+                                            focus
                                             name="title"
-                                            placeholder="Slide title"
-                                            label={{ content: 'Slide title:' }}
-                                            labelPosition="left"
+                                            placeholder="Slide title (optional)"
                                             value={title}
                                             onChange={onTitleChange}
                                             onFocus={onTitleFocus}
@@ -270,13 +259,11 @@ export default class SlideEditor extends Component {
                                     </Menu.Item>
                                 ],
                                 save: {
-                                    onClick: updateState
+                                    onClick: updateSlide
                                 },
                                 delete: {
                                     onConfirm: () => {
-                                        this.props.deleteSlide(
-                                            this.props.index
-                                        );
+                                        this.props.onDelete(this.props.index);
                                     }
                                 },
                                 editable: {
@@ -290,7 +277,10 @@ export default class SlideEditor extends Component {
                                         position="right"
                                         name="Add content to slide"
                                     >
-                                        {slideComponentDropDown}
+                                        <SlideComponentSelect
+                                            {...slideComponentSelectOpen}
+                                            onClick={onComponentSelectClick}
+                                        />
                                     </Menu.Menu>
                                 ]
                             }}
@@ -302,9 +292,9 @@ export default class SlideEditor extends Component {
                                     icon={
                                         <Icon.Group
                                             size="huge"
-                                            style={{ marginRight: '0.5rem' }}
+                                            className="editormenu__icon-group"
                                         >
-                                            <Icon name="content" />
+                                            <Icon name="bars" />
                                             <Icon
                                                 corner="top right"
                                                 name="add"
@@ -327,8 +317,45 @@ export default class SlideEditor extends Component {
                                         Display: ComponentDisplay
                                     } = Components[type];
 
-                                    const onConfirm = this.onComponentDelete.bind(this, index);
-                                    const right = [];
+                                    const onConfirm = () =>
+                                        onComponentDelete(index);
+
+                                    const description = `${index + 1}, `;
+                                    const right = [
+                                        <Menu.Menu
+                                            key="menu-components-order-change"
+                                            name="Move component up or down"
+                                            position="right"
+                                        >
+                                            <Menu.Item
+                                                key="menu-components-order-change-up"
+                                                icon="caret up"
+                                                aria-label={`Move component ${description} up`}
+                                                disabled={index === 0}
+                                                onClick={() => {
+                                                    onComponentOrderChange(
+                                                        index,
+                                                        index - 1
+                                                    );
+                                                }}
+                                            />
+                                            <Menu.Item
+                                                key="menu-components-order-change-down"
+                                                icon="caret down"
+                                                aria-label={`Move component ${description} down`}
+                                                disabled={
+                                                    index ===
+                                                    components.length - 1
+                                                }
+                                                onClick={() => {
+                                                    onComponentOrderChange(
+                                                        index,
+                                                        index + 1
+                                                    );
+                                                }}
+                                            />
+                                        </Menu.Menu>
+                                    ];
 
                                     if (value.responseId) {
                                         const requiredCheckbox = (
@@ -344,7 +371,7 @@ export default class SlideEditor extends Component {
                                                         event,
                                                         { checked }
                                                     ) =>
-                                                        this.onComponentChange(
+                                                        onComponentChange(
                                                             index,
                                                             {
                                                                 ...value,
@@ -356,53 +383,70 @@ export default class SlideEditor extends Component {
                                             </Menu.Item>
                                         );
 
-                                        right.push(requiredCheckbox);
+                                        right.unshift(requiredCheckbox);
                                     }
 
                                     const onComponentClick = () => {
-                                        if (this.state.currentComponentIndex !== index) {
-                                            this.setState({
-                                                ...this.state,
-                                                currentComponentIndex: index
-                                            });
+                                        if (activeComponentIndex !== index) {
+                                            this.activateComponent(index);
                                         }
                                     };
 
                                     return this.state.mode === 'edit' ? (
-                                        <Segment
-                                            key={`component-${index}`}
-                                            className={
-                                                index ===
-                                                this.state.currentComponentIndex
-                                                    ? 'editor__component-selected draggable'
-                                                    : 'draggable'
+                                        <Ref
+                                            key={`component-ref-${index}`}
+                                            innerRef={node =>
+                                                (this.componentRefs[
+                                                    index
+                                                ] = node)
                                             }
-                                            onClick={onComponentClick}
                                         >
-                                            <EditorMenu
-                                                type="component"
-                                                items={{
-                                                    save: {
-                                                        onClick: this.updateState
-                                                    },
-                                                    delete: {
-                                                        onConfirm: onConfirm
-                                                    },
-                                                    right
-                                                }}
-                                            />
-
-                                            <ComponentEditor
-                                                scenarioId={scenarioId}
-                                                value={value}
-                                                onChange={v =>
-                                                    this.onComponentChange(index, v)
+                                            <Segment
+                                                key={`component-edit-${index}`}
+                                                className={
+                                                    index ===
+                                                    activeComponentIndex
+                                                        ? 'sortable__selected draggable'
+                                                        : 'draggable'
                                                 }
-                                            />
-                                        </Segment>
+                                                onClick={onComponentClick}
+                                            >
+                                                <EditorMenu
+                                                    type="component"
+                                                    items={{
+                                                        save: {
+                                                            onClick: updateSlide
+                                                        },
+                                                        delete: {
+                                                            onConfirm
+                                                        },
+                                                        right
+                                                    }}
+                                                />
+
+                                                <ComponentEditor
+                                                    slideIndex={
+                                                        this.props.index
+                                                    }
+                                                    scenarioId={scenarioId}
+                                                    value={value}
+                                                    onChange={v =>
+                                                        onComponentChange(
+                                                            index,
+                                                            v
+                                                        )
+                                                    }
+                                                />
+                                            </Segment>
+                                        </Ref>
                                     ) : (
-                                        <Fragment key={index}>
-                                            <ComponentDisplay {...value} />
+                                        <Fragment
+                                            key={`component-fragment-${index}`}
+                                        >
+                                            <ComponentDisplay
+                                                key={`component-preview-${index}`}
+                                                {...value}
+                                            />
                                         </Fragment>
                                     );
                                 })}
@@ -416,11 +460,10 @@ export default class SlideEditor extends Component {
 }
 
 SlideEditor.propTypes = {
-    scenarioId: PropTypes.string,
+    scenarioId: PropTypes.any,
     index: PropTypes.number,
     title: PropTypes.string,
     components: PropTypes.arrayOf(PropTypes.object),
     onChange: PropTypes.func,
-    deleteSlide: PropTypes.func,
-    updateEditorMessage: PropTypes.func
+    onDelete: PropTypes.func
 };

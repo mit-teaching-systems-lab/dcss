@@ -7,7 +7,6 @@ import {
     Grid,
     Icon,
     Input,
-    Loader,
     Menu
 } from 'semantic-ui-react';
 import _ from 'lodash';
@@ -15,6 +14,7 @@ import changeCase from 'change-case';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
+import Loading from '@components/Loading';
 import ScenarioEntries from './ScenarioEntries';
 import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
@@ -214,7 +214,7 @@ class ScenariosList extends Component {
                                         />
                                     </Card.Group>
                                 ) : (
-                                    <Loader inverted content="Loading" />
+                                    <Loading size="medium" />
                                 )}
                             </Grid.Column>
                         </Grid.Row>
