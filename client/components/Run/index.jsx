@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import { Loader } from 'semantic-ui-react';
 import * as QueryString from 'query-string';
 import storage from 'local-storage-fallback';
+import Loading from '@components/Loading';
 import Scenario from '@components/Scenario';
 import { linkCohortToRun, setCohortUserRole } from '@client/actions/cohort';
 import { getUser } from '@client/actions/user';
@@ -129,7 +129,7 @@ class Run extends Component {
                 setActiveSlide={() => {}}
             />
         ) : (
-            <Loader>Loading</Loader>
+            <Loading size="medium" />
         );
     }
 }
