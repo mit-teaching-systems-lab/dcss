@@ -41,7 +41,10 @@ class ConfirmableDeleteButton extends React.Component {
                     content={ariaLabel}
                     trigger={
                         <Menu.Item onClick={onClick}>
-                            <Icon name="trash" aria-label={ariaLabel} />
+                            <Icon
+                                name="trash alternate outline"
+                                aria-label={ariaLabel}
+                            />
                         </Menu.Item>
                     }
                 />

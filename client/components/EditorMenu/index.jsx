@@ -41,7 +41,7 @@ export default class EditorMenu extends React.Component {
                                 name={`save-${type}`}
                                 onClick={items.save.onClick}
                             >
-                                <Icon name="save" />
+                                <Icon name="save outline" />
                             </Menu.Item>
                         }
                     />
