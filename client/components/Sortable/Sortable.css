@@ -11,7 +11,7 @@ Previously, this file defined:
 }
 
 .sortable__selected {
-    border: 1px solid transparent !important;
+    border: 0px;
     box-shadow: 0 1px 3px 0 gold, 0 0 0 1px gold !important;
 }
 
