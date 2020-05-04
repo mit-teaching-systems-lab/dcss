@@ -8,10 +8,7 @@ const MultiButtonResponseCard = () => (
         header={name}
         trigger={
             <React.Fragment>
-                <Icon
-                    name="hand pointer outline"
-                    aria-label={name}
-                />
+                <Icon name="hand pointer outline" aria-label={name} />
                 {name}
             </React.Fragment>
         }

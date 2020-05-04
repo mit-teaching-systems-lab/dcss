@@ -11,4 +11,3 @@ export const defaultValue = ({ responseId }) => ({
     responseId,
     type
 });
-

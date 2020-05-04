@@ -8,10 +8,7 @@ const ResponseRecallCard = () => (
         header={name}
         trigger={
             <React.Fragment>
-                <Icon
-                    name="comment alternate outline"
-                    aria-label={name}
-                />
+                <Icon name="comment alternate outline" aria-label={name} />
                 {name}
             </React.Fragment>
         }

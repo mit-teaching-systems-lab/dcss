@@ -38,12 +38,7 @@ class TextResponseEditor extends React.Component {
     }
 
     render() {
-        const {
-            header,
-            prompt,
-            placeholder,
-            recallId
-        } = this.state;
+        const { header, prompt, placeholder, recallId } = this.state;
         const { scenarioId, slideIndex } = this.props;
         const { onChange, onRecallChange } = this;
         return (

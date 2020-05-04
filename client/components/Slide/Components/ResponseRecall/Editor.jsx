@@ -100,7 +100,7 @@ class ResponseRecallEditor extends React.Component {
                 key: '',
                 text: 'No participant responses available',
                 value: '-1'
-            })
+            });
         } else {
             prompts.unshift({
                 key: '',
@@ -108,7 +108,6 @@ class ResponseRecallEditor extends React.Component {
                 value: '-1'
             });
         }
-
 
         const defaultValue = recallId || -1;
 

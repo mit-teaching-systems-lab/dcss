@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popup, Icon } from 'semantic-ui-react';
 
-const header = "Rich Text";
+const header = 'Rich Text';
 const TextCard = () => (
     <Popup
         content="A rich text display area, used for titles, text, images, video and many other things."
