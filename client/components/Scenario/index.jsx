@@ -4,6 +4,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from 'semantic-ui-react';
 
+import scrollIntoView from '@components/util/scrollIntoView';
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
@@ -192,14 +193,12 @@ class Scenario extends Component {
 
     activateSlide(activeSlideIndex) {
         this.setState({ activeSlideIndex }, () => {
+            this.props.setActiveSlide(activeSlideIndex);
             if (this.slideRefs[activeSlideIndex]) {
-                this.slideRefs[activeSlideIndex].scrollIntoView({
-                    behavior: 'smooth',
+                scrollIntoView(this.slideRefs[activeSlideIndex], {
                     block: 'start',
-                    inline: 'nearest'
                 });
             }
-            this.props.setActiveSlide(activeSlideIndex);
         });
     }
 

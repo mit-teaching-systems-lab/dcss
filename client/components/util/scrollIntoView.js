@@ -5,6 +5,8 @@ const defaultOptions = {
 };
 export default function(element, options = defaultOptions) {
     if (element) {
-        element.scrollIntoView(options);
+        element.scrollIntoView(
+            Object.assign({}, defaultOptions, options)
+        );
     }
 }

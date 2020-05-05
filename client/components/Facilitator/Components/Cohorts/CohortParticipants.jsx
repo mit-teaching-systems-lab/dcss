@@ -23,6 +23,7 @@ import {
 import EditorMenu from '@components/EditorMenu';
 import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';
+import scrollIntoView from '@components/util/scrollIntoView';
 import './Cohort.css';
 
 export class CohortParticipants extends React.Component {
@@ -88,11 +89,7 @@ export class CohortParticipants extends React.Component {
     onParticipantCheckboxClick() {}
 
     scrollIntoView() {
-        this.tableBody.current.node.firstElementChild.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'nearest'
-        });
+        scrollIntoView(this.tableBody.current.node.firstElementChild);
     }
 
     onParticipantSearchChange(event, { value }) {

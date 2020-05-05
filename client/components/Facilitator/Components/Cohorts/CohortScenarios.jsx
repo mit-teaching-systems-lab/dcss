@@ -19,7 +19,7 @@ import EditorMenu from '@components/EditorMenu';
 import Sortable from '@components/Sortable';
 import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';
-
+import scrollIntoView from '@components/util/scrollIntoView';
 import { getCohort, setCohort } from '@client/actions/cohort';
 import { getScenarios, setScenarios } from '@client/actions/scenario';
 
@@ -92,11 +92,7 @@ export class CohortScenarios extends React.Component {
     }
 
     scrollIntoView() {
-        this.tableBody.current.node.firstElementChild.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'nearest'
-        });
+        scrollIntoView(this.tableBody.current.node.firstElementChild);
     }
 
     onScenarioCheckboxClick(event, { checked, value }) {

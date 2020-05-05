@@ -9,6 +9,7 @@ import { getCohorts } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
 import ClickableTableCell from '@components/ClickableTableCell';
+import scrollIntoView from '@components/util/scrollIntoView';
 import CohortDataTable from '@components/Facilitator/Components/Cohorts/CohortDataTable';
 
 import './MyScenarios.css';
@@ -71,11 +72,10 @@ class MyScenarios extends Component {
                     runId: run_id
                 }
             },
+
             () => {
-                this.tableRef.scrollIntoView({
-                    behavior: 'smooth',
+                scrollIntoView(this.tableRef, {
                     block: 'start',
-                    inline: 'nearest'
                 });
             }
         );

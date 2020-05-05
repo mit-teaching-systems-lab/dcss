@@ -18,9 +18,10 @@ import {
 } from 'semantic-ui-react';
 import notify from '@components/Notification';
 import Sortable from '@components/Sortable';
-import generateResponseId from '@components/Slide/util/generate-response-id';
 import SlideEditor from '@components/Slide/SlideEditor';
 import SlideComponentList from '@components/SlideComponentList';
+import generateResponseId from '@components/util/generateResponseId';
+import scrollIntoView from '@components/util/scrollIntoView';
 import { getSlides } from '@client/actions/scenario';
 import './Slides.css';
 
@@ -281,11 +282,7 @@ class Slides extends React.Component {
                 const { activeSlideIndex } = this.state;
 
                 if (this.slideRefs[activeSlideIndex]) {
-                    this.slideRefs[activeSlideIndex].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'nearest'
-                    });
+                    scrollIntoView(this.slideRefs[activeSlideIndex]);
                 }
                 this.props.setActiveSlide(activeSlideIndex);
                 callback();

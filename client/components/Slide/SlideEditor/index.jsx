@@ -14,9 +14,11 @@ import {
 import hash from 'object-hash';
 import EditorMenu from '@components/EditorMenu';
 import notify from '@components/Notification';
+import Loading from '@components/Loading';
 import Sortable from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
-import generateResponseId from '../util/generate-response-id';
+import generateResponseId from '@components/util/generateResponseId';
+import scrollIntoView from '@components/util/scrollIntoView';
 import * as Components from '../Components';
 import './SlideEditor.css';
 
@@ -94,11 +96,7 @@ export default class SlideEditor extends Component {
                 const { activeComponentIndex } = this.state;
 
                 if (this.componentRefs[activeComponentIndex]) {
-                    this.componentRefs[activeComponentIndex].scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'nearest'
-                    });
+                    scrollIntoView(this.componentRefs[activeComponentIndex]);
                 }
                 callback();
             });
