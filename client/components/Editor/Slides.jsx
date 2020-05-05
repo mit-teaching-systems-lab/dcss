@@ -16,7 +16,6 @@ import {
     Ref,
     Segment
 } from 'semantic-ui-react';
-import hash from 'object-hash';
 import notify from '@components/Notification';
 import Sortable from '@components/Sortable';
 import generateResponseId from '@components/Slide/util/generate-response-id';
@@ -447,7 +446,6 @@ class Slides extends React.Component {
                                             size="huge"
                                             className="editormenu__icon-group"
                                         >
-                                            >
                                             <Icon name="plus square outline" />
                                             <Icon
                                                 corner="top right"

@@ -1,9 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-    Dropdown,
-    Icon
-} from 'semantic-ui-react';
+import { Dropdown, Icon } from 'semantic-ui-react';
 import * as Components from '@components/Slide/Components';
 import './SlideComponentSelect.css';
 
@@ -36,11 +33,7 @@ class SlideComponentSelect extends Component {
     }
 
     render() {
-        const {
-            mode = 'default',
-            onClick,
-            open
-        } = this.props;
+        const { mode = 'default', onClick, open } = this.props;
 
         const props = {};
 
@@ -62,7 +55,10 @@ class SlideComponentSelect extends Component {
         return mode === 'default' ? (
             <Dropdown {...props} item text={icon}>
                 <Dropdown.Menu>
-                    <ComponentItems mode={mode} onComponentItemClick={onClick} />
+                    <ComponentItems
+                        mode={mode}
+                        onComponentItemClick={onClick}
+                    />
                 </Dropdown.Menu>
             </Dropdown>
         ) : (

@@ -169,7 +169,10 @@ export class Cohorts extends React.Component {
                             </ConfirmAuth>
                         ],
                         right: [
-                            <Menu.Menu position="right">
+                            <Menu.Menu
+                                key="menu-right-search-cohorts"
+                                position="right"
+                            >
                                 <Menu.Item
                                     key="menu-item-search-cohorts"
                                     name="Search cohorts"

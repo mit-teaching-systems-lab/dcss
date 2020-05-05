@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import {
-    Button,
     // NOTE: The checkbox is temporarily disabled
     // Checkbox,
     Container,
@@ -53,7 +52,7 @@ export class CohortParticipants extends React.Component {
         // by searching.
         this.participants = [];
         this.tableBody = React.createRef();
-        this.onCheckboxClick = this.onCheckboxClick.bind(this);
+        this.onParticipantCheckboxClick = this.onParticipantCheckboxClick.bind(this);
         this.onParticipantSearchChange = this.onParticipantSearchChange.bind(
             this
         );
@@ -86,7 +85,7 @@ export class CohortParticipants extends React.Component {
         clearInterval(this.refreshInterval);
     }
 
-    onCheckboxClick() {}
+    onParticipantCheckboxClick() {}
 
     scrollIntoView() {
         this.tableBody.current.node.firstElementChild.scrollIntoView({
@@ -127,7 +126,7 @@ export class CohortParticipants extends React.Component {
         const { cohort } = this.state;
         const { onParticipantSearchChange } = this;
         // NOTE: The checkbox is temporarily disabled
-        // const { onCheckboxClick } = this;
+        // const { onParticipantCheckboxClick } = this;
 
         return (
             <Container fluid className="cohort__table-container">
@@ -149,7 +148,10 @@ export class CohortParticipants extends React.Component {
                             </Menu.Item>
                         ],
                         right: [
-                            <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                            <ConfirmAuth
+                                key="menu-item-cohort-scenarios-search"
+                                requiredPermission="edit_scenarios_in_cohort"
+                            >
                                 <Menu.Menu position="right">
                                     <Menu.Item
                                         key="menu-item-search-accounts"
@@ -219,7 +221,7 @@ export class CohortParticipants extends React.Component {
                                                             key={`participants-checkbox-${index}`}
                                                             value={user.id}
                                                             onClick={
-                                                                onCheckboxClick
+                                                                onParticipantCheckboxClick
                                                             }
                                                         />
                                                     }

@@ -106,7 +106,10 @@ class AccountAdmin extends Component {
                             </Menu.Item>
                         ],
                         right: [
-                            <Menu.Menu position="right">
+                            <Menu.Menu
+                                key="menu-item-account-search"
+                                position="right"
+                            >
                                 <Menu.Item
                                     key="menu-item-search-accounts"
                                     name="Search user accounts"

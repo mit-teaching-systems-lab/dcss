@@ -47,7 +47,7 @@ export class CohortScenarios extends React.Component {
         // by searching.
         this.scenarios = [];
         this.tableBody = React.createRef();
-        this.onScenarioChangeOrder = this.onScenarioChangeOrder.bind(this);
+        this.onScenarioOrderChange = this.onScenarioOrderChange.bind(this);
         this.onScenarioCheckboxClick = this.onScenarioCheckboxClick.bind(this);
         this.onScenarioSearchChange = this.onScenarioSearchChange.bind(this);
         this.scrollIntoView = this.scrollIntoView.bind(this);
@@ -138,7 +138,7 @@ export class CohortScenarios extends React.Component {
         await this.saveScenarios();
     }
 
-    onScenarioChangeOrder(fromIndex, toIndex) {
+    onScenarioOrderChange(fromIndex, toIndex) {
         this.moveScenario(fromIndex, toIndex);
     }
 
@@ -166,7 +166,7 @@ export class CohortScenarios extends React.Component {
     render() {
         const { cohort, onClick, scenarios = [] } = this.props;
         const {
-            onScenarioChangeOrder,
+            onScenarioOrderChange,
             onScenarioCheckboxClick,
             onScenarioSearchChange
         } = this;
@@ -266,7 +266,7 @@ export class CohortScenarios extends React.Component {
                         <Sortable
                             tag="tbody"
                             className="cohort__scrolling-tbody"
-                            onChange={onScenarioChangeOrder}
+                            onChange={onScenarioOrderChange}
                             tableRef={this.tableBody}
                             options={{
                                 direction: 'vertical',
@@ -395,7 +395,7 @@ export class CohortScenarios extends React.Component {
                                                                         0
                                                                     }
                                                                     onClick={() => {
-                                                                        onScenarioChangeOrder(
+                                                                        onScenarioOrderChange(
                                                                             index,
                                                                             index -
                                                                                 1
@@ -416,7 +416,7 @@ export class CohortScenarios extends React.Component {
                                                                             1
                                                                     }
                                                                     onClick={() => {
-                                                                        onScenarioChangeOrder(
+                                                                        onScenarioOrderChange(
                                                                             index,
                                                                             index +
                                                                                 1

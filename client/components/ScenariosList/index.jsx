@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-    Card,
-    Container,
-    Grid,
-    Icon,
-    Input,
-    Menu
-} from 'semantic-ui-react';
+import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
 import _ from 'lodash';
 import changeCase from 'change-case';
 import { getScenarios } from '@client/actions/scenario';

@@ -51,7 +51,7 @@
 
 .cohort__table-cell-first {
     width: 40px;
-    text-overflow: none!important;
+    text-overflow: unset !important;
 }
 
 .cohort__table-cell-options {
