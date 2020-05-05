@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'connected-react-router'
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from 'semantic-ui-react';
@@ -15,13 +16,13 @@ class Scenario extends Component {
     constructor(props) {
         super(props);
 
-        const activeSlideIndex =
+        const activeNonZeroSlideIndex =
             Number(
-                this.props.match.params.activeSlideIndex ||
-                    this.props.activeSlideIndex
-            ) || 0;
+                this.props.match.params.activeNonZeroSlideIndex
+            ) || 1;
 
         const { baseurl, history, scenarioId, location } = this.props;
+        const activeSlideIndex = activeNonZeroSlideIndex - 1;
 
         this.state = {
             activeSlideIndex,
@@ -31,8 +32,6 @@ class Scenario extends Component {
 
         this.slideRefs = [];
         this.activateSlide = this.activateSlide.bind(this);
-
-        this.getScenarioSlides();
 
         if (this.isScenarioRun) {
             const { pathname, search } = location;
@@ -46,12 +45,6 @@ class Scenario extends Component {
 
     get isScenarioRun() {
         return location.pathname.includes('/run/');
-    }
-
-    componentDidMount() {
-        if (!this.isScenarioRun) {
-            this.activateSlide(this.state.activeSlideIndex);
-        }
     }
 
     getOnClickHandler(type) {
@@ -135,7 +128,7 @@ class Scenario extends Component {
         return null;
     }
 
-    async getScenarioSlides() {
+    async componentDidMount() {
         const {
             baseurl,
             onResponseChange,
@@ -189,6 +182,11 @@ class Scenario extends Component {
         );
 
         this.setState({ slides });
+
+        if (!this.isScenarioRun) {
+            console.log(this.state.activeSlideIndex);
+            this.activateSlide(this.state.activeSlideIndex);
+        }
     }
 
     activateSlide(activeSlideIndex) {
