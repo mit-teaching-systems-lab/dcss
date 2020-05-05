@@ -36,17 +36,17 @@ export class Cohort extends React.Component {
         }
 
         this.persistenceKey = `cohort/${id}`;
-        let cohortPersisted = JSON.parse(storage.getItem(this.persistenceKey));
+        let persisted = JSON.parse(storage.getItem(this.persistenceKey));
 
-        if (!cohortPersisted) {
-            cohortPersisted = { activeTabKey: 'cohort', tabs: [] };
+        if (!persisted) {
+            persisted = { activeTabKey: 'cohort', tabs: [] };
             storage.setItem(
                 this.persistenceKey,
-                JSON.stringify(cohortPersisted)
+                JSON.stringify(persisted)
             );
         }
 
-        const { activeTabKey = 'cohort', tabs = [] } = cohortPersisted;
+        const { activeTabKey = 'cohort', tabs = [] } = persisted;
 
         this.state = {
             activeTabKey,
