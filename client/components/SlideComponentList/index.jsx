@@ -16,6 +16,7 @@ const SlideComponentList = ({
         overflow: 'hidden',
         margin: '-1rem !important'
     };
+
     return asSVG ? (
         <div style={style}>
             <svg width="500" height="1000">
@@ -25,7 +26,15 @@ const SlideComponentList = ({
                     width="100%"
                     height="100%"
                 >
-                    {components.map((value, index) => {
+                    {/*
+                        Only the first three components
+                        will be rendered. This prevents
+                        the UI from getting sluggish for
+                        the sake of rendering these
+                        entirely non-functional version.
+                    */}
+
+                    {components.slice(0, 3).map((value, index) => {
                         const { type } = value;
                         if (!Components[type]) return;
 
