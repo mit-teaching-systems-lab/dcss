@@ -41,10 +41,6 @@ class Editor extends Component {
             scenarioId = isNewScenario ? 'new' : match.params.id;
         }
 
-        if (typeof scenarioId === 'string') {
-            scenarioId = Number(scenarioId);
-        }
-
         if (isNewScenario) {
             activeTab = 'scenario';
         }
@@ -68,10 +64,9 @@ class Editor extends Component {
         this.state = {
             activeSlideIndex,
             activeTab,
-            editorMessage: '',
             saving: false,
             scenarioId,
-            tabs: this.getAllTabs(scenarioId)
+            tabs: null
         };
 
         if (isCopyScenario) {
@@ -84,6 +79,12 @@ class Editor extends Component {
         }
     }
 
+    componentDidMount() {
+        this.setState(state => ({
+            tabs: this.getAllTabs(state.scenarioId)
+        }));
+    }
+
     onClick(e, { name: activeTab }) {
         this.setState({ activeTab });
 
@@ -92,7 +93,7 @@ class Editor extends Component {
             ...persisted,
             activeTab
         };
-        const { scenarioId } = this.state;
+        const { activeSlideIndex, scenarioId } = this.state;
 
         storage.setItem(this.persistenceKey, JSON.stringify(updated));
 
@@ -107,7 +108,7 @@ class Editor extends Component {
             this.persistenceKey,
             JSON.stringify({ activeTab, activeSlideIndex })
         );
-        const activeNonZeroSlideIndex = activeSlideIndex + 1;
+        const activeNonZeroSlideIndex =  (activeSlideIndex + 1) || 1;
         const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
         this.props.history.push(pathname);
 
@@ -205,7 +206,7 @@ class Editor extends Component {
     }
 
     getTab(name, scenarioId) {
-        const { activeSlideIndex = 0 } = this.state || this.props;
+        const { activeSlideIndex } = this.state;
         const { setActiveView } = this;
 
         switch (name) {
@@ -293,7 +294,7 @@ class Editor extends Component {
             return scenario => {
                 history.push(`/editor/${scenario.id}`);
                 this.setState({ scenarioId: scenario.id }, () => {
-                    setActiveView({ activeTab: 'slides' });
+                    setActiveView({ activeTab: 'slides', activeSlideIndex: 0 });
                 });
             };
         }
@@ -310,6 +311,10 @@ class Editor extends Component {
                 onClick={this.onClickScenarioAction}
             />
         );
+        if (!this.state.tabs) {
+            return null;
+        }
+
         const editTabMenu = Object.keys(this.state.tabs).map(tabType => {
             return (
                 <Menu.Item
