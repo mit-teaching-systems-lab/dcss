@@ -161,23 +161,24 @@ class ScenarioEditor extends Component {
 
         const response = await (await submitCB(data)).json();
 
-        let editorMessage = '';
+        let message = '';
         switch (response.status) {
             case 200: {
-                editorMessage = 'Scenario saved';
+                message = 'Scenario saved';
                 break;
             }
             case 201: {
-                editorMessage = 'Scenario created';
+                message = 'Scenario created';
                 break;
             }
             default:
                 if (response.message) {
-                    editorMessage = response.message;
+                    message = response.message;
                 }
                 break;
         }
-        notify({ type: 'info', message: editorMessage });
+        notify({ message });
+
         this.setState({ saving: false });
         if (postSubmitCB) {
             postSubmitCB(response.scenario);
