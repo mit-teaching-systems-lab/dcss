@@ -4,8 +4,8 @@ export { default as Display } from './Display';
 export { default as Editor } from './Editor';
 export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
-    placeholder: 'Placeholder Text',
-    prompt: 'Prompt (displayed before input field as label)',
+    placeholder: 'Placeholder Text (displayed inside the input text field)',
+    prompt: 'Prompt (displayed before input text field as label)',
     recallId: '',
     required: true,
     responseId,

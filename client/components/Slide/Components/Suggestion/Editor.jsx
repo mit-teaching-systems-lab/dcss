@@ -80,7 +80,6 @@ class SuggestionEditor extends React.Component {
                 />
                 <Message color={color}>
                     <Editor
-                        autoFocus
                         defaultValue={defaultValue}
                         onChange={onTextareaChange}
                         styleConfig={{

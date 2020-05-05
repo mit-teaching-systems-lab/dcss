@@ -49,7 +49,7 @@ class TextResponseEditor extends React.Component {
                         value={prompt}
                         onChange={onChange}
                     />
-                    <Form.TextArea
+                    <Form.Input
                         label="Placeholder"
                         name="placeholder"
                         value={placeholder}
