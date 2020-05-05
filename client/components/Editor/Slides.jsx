@@ -9,13 +9,16 @@ import {
     Dropdown,
     Grid,
     Icon,
-    Loader,
     Menu,
     Message,
     Popup,
     Ref,
     Segment
 } from 'semantic-ui-react';
+import hash from 'object-hash';
+import {diff} from 'deep-object-diff';
+import storage from 'local-storage-fallback';
+import Loading from '@components/Loading';
 import notify from '@components/Notification';
 import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
@@ -31,14 +34,30 @@ class Slides extends React.Component {
 
         const activeNonZeroSlideIndex =
             Number(
-                this.props.match.params.activeNonZeroSlideIndex ||
-                    this.props.activeSlideIndex + 1
+                this.props.match.params.activeNonZeroSlideIndex
             ) || 1;
 
+        this.persistenceKey = `slides/${this.props.scenarioId}`;
+        let persisted = JSON.parse(storage.getItem(this.persistenceKey));
+        let activeSlideIndex = activeNonZeroSlideIndex - 1;
+
+        if (!persisted) {
+            persisted = {
+                activeSlideIndex,
+                minimized: false,
+            };
+        }
+
+        if (persisted.activeSlideIndex !== activeSlideIndex) {
+            persisted.activeSlideIndex = activeSlideIndex;
+        }
+
+        storage.setItem(this.persistenceKey, JSON.stringify(persisted));
+
         this.state = {
-            activeSlideIndex: activeNonZeroSlideIndex - 1,
+            activeSlideIndex,
             loading: true,
-            minimized: false,
+            minimized: persisted.minimized,
             slides: []
         };
 
@@ -50,6 +69,7 @@ class Slides extends React.Component {
         this.onSlideDelete = this.onSlideDelete.bind(this);
         this.onSlideDuplicate = this.onSlideDuplicate.bind(this);
         this.onSlideOrderChange = this.onSlideOrderChange.bind(this);
+        this.onSlideMinMaxChange = this.onSlideMinMaxChange.bind(this);
     }
 
     async componentDidMount() {
@@ -58,87 +78,37 @@ class Slides extends React.Component {
 
     async fetchSlides() {
         const { getSlides, scenarioId } = this.props;
+        const { activeSlideIndex } = this.state;
         const slides = (await getSlides(scenarioId)).filter(
             slide => !slide.is_finish
         );
-
-        this.activateSlide({ slides, loading: false });
+        this.activateSlide({ activeSlideIndex, slides, loading: false });
     }
 
     // shouldComponentUpdate(nextProps, nextState) {
-    //     let status = false;
-    //     console.group('Slides: shouldComponentUpdate()?');
+    //     console.log("shouldComponentUpdate");
+    //     // console.log(
+    //     //     hash(this.props), hash(nextProps),
+    //     //     hash(this.props) === hash(nextProps) ? 'PROPS UNCHANGED' : 'PROPS CHANGED',
+    //     //     diff(this.props, nextProps)
 
-    //     if (nextProps.slides.length === 0 && nextState.slides.length === 0) {
-    //         // console.log("SLIDES HAVE BEEN DELETED");
-    //         status = true;
-    //     }
-
-    //     if (
-    //         !status &&
-    //         this.state.activeSlideIndex !== nextState.activeSlideIndex
-    //     ) {
-    //         // console.log("SLIDE METADATA HAS CHANGED");
-    //         status = true;
-    //     }
-
-    //     if (
-    //         !status &&
-    //         (this.props.slides.length !== nextProps.slides.length ||
-    //             this.state.slides.length !== nextState.slides.length)
-    //     ) {
-    //         // console.log("SLIDE LENGTH HAS CHANGED");
-    //         status = true;
-    //     }
-
-    //     if (this.props.slides.length === nextProps.slides.length) {
-    //         let same = 0;
-    //         for (let slide of this.props.slides) {
-    //             let index = this.props.slides.indexOf(slide);
-    //             if (hash(slide) === hash(nextProps.slides[index])) {
-    //                 same++;
-    //             }
-    //         }
-    //         if (same === this.props.slides.length) {
-    //             status = false;
-    //         }
-    //     }
-
-    //     if (this.state.slides.length === nextState.slides.length) {
-    //         let same = 0;
-    //         for (let slide of this.state.slides) {
-    //             let index = this.state.slides.indexOf(slide);
-    //             if (hash(slide) === hash(nextState.slides[index])) {
-    //                 same++;
-    //             }
-    //         }
-
-    //         if (same === this.state.slides.length) {
-    //             status = false;
-    //         }
-    //     }
-
-    //     if (
-    //         !status &&
-    //         (this.props.slides.length === 1 && this.props.slides[0].is_finish)
-    //     ) {
-    //         console.log('NO SCENARIO SLIDES CREATED');
-    //         status = true;
-    //     }
-
-    //     if (!status && this.props.slides.length !== this.state.slides.length) {
-    //         status = true;
-    //     }
-
-    //     console.log('props', this.props, nextProps);
-    //     console.log('state', this.state, nextState);
-    //     console.log('props.slides', this.props.slides, nextProps.slides);
-    //     console.log('state.slides', this.state.slides, nextState.slides);
-    //     console.log('Updating component?', status);
-    //     console.groupEnd('Slides: shouldComponentUpdate()?');
-
-    //     return status;
+    //     // );
+    //     // console.log(
+    //     //     hash(this.state), hash(nextState),
+    //     //     hash(this.state) === hash(nextState) ? 'STATE UNCHANGED' : 'STATE CHANGED',
+    //     //     diff(this.state, nextState)
+    //     // );
+    //     return hash(this.props) !== hash(nextProps) ||
+    //             hash(this.state) !== hash(nextState);
     // }
+
+    componentDidUpdate() {
+        const {
+            activeSlideIndex,
+            minimized
+        } = this.state;
+        storage.setItem(this.persistenceKey, JSON.stringify({activeSlideIndex, minimized}));
+    }
 
     onSlideChange(activeSlideIndex, value) {
         const { scenarioId } = this.props;
@@ -192,11 +162,6 @@ class Slides extends React.Component {
             await result.json();
             notify({ type: 'success', message: 'Slide moved' });
         });
-        // this.setState({ slides, activeSlideIndex: toIndex });
-        // await this.fetchSlides();
-        // this.setState({ activeSlideIndex: toIndex }, () => {
-        //     this.activateSlide(toIndex);
-        // });
     }
 
     onSlideDelete(index) {
@@ -263,7 +228,7 @@ class Slides extends React.Component {
         this.activateSlide(activeSlideIndex);
     }
 
-    activateSlide(state, callback = () => {}) {
+    activateSlide(state, callback = async () => {}) {
         let updatedState = state;
 
         if (Array.isArray(state)) {
@@ -276,15 +241,16 @@ class Slides extends React.Component {
                 activeSlideIndex: state
             };
         }
-
         if (updatedState.activeSlideIndex !== -1) {
             this.setState(updatedState, () => {
-                const { activeSlideIndex } = this.state;
+                const { activeSlideIndex, minimized  } = this.state;
 
                 if (this.slideRefs[activeSlideIndex]) {
                     scrollIntoView(this.slideRefs[activeSlideIndex]);
                 }
+
                 this.props.setActiveSlide(activeSlideIndex);
+                storage.setItem(this.persistenceKey, JSON.stringify({activeSlideIndex, minimized}));
                 callback();
             });
         }
@@ -332,33 +298,48 @@ class Slides extends React.Component {
         this.moveSlide(fromIndex, toIndex);
     }
 
+    onSlideMinMaxChange() {
+        const {
+            activeSlideIndex,
+            minimized
+        } = this.state;
+
+        this.setState({ minimized: !minimized }, () => {
+            storage.setItem(this.persistenceKey, JSON.stringify({activeSlideIndex, minimized}));
+        });
+    }
+
     render() {
         const {
+            onSlideAdd,
             onSlideChange,
             onSlideDelete,
-            onSlideOrderChange,
-            onSlideAdd,
-            onSlideDuplicate
+            onSlideDuplicate,
+            onSlideMinMaxChange,
+            onSlideOrderChange
         } = this;
         const { scenarioId } = this.props;
-        const { loading, activeSlideIndex } = this.state;
+        const { activeSlideIndex, loading, minimized } = this.state;
+
         if (loading) {
             return (
-                <Segment>
-                    <Loader />
-                </Segment>
+                <Container fluid>
+                    <Grid>
+                        <Grid.Column width={3}>
+                            <Loading />
+                        </Grid.Column>
+                        <Grid.Column width={13}>
+                            <Loading />
+                        </Grid.Column>
+                    </Grid>
+                </Container>
             );
         }
 
         const slides = this.state.slides.filter(slide => !slide.is_finish);
-
-        const minMaxIcon = this.state.minimized
-            ? 'window maximize outline'
-            : 'window minimize outline';
-        const minMaxText = this.state.minimized
-            ? 'Maximize slides'
-            : 'Minimize slides';
-        const minMaxHide = this.state.minimized ? { hidden: true } : {};
+        const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
+        const minMaxText = `${minimized ? 'Maximize' : 'Minimize'} slides`;
+        const minMaxHide = minimized ? { hidden: true } : {};
 
         return (
             <Container fluid>
@@ -411,13 +392,7 @@ class Slides extends React.Component {
                                                         </Dropdown.Item>
                                                         <Dropdown.Item
                                                             key={`slide-options-0`}
-                                                            onClick={() => {
-                                                                this.setState({
-                                                                    minimized: !this
-                                                                        .state
-                                                                        .minimized
-                                                                });
-                                                            }}
+                                                            onClick={onSlideMinMaxChange}
                                                         >
                                                             <Icon
                                                                 name={
@@ -466,10 +441,11 @@ class Slides extends React.Component {
                                         ? 'slides__list-card sortable__selected'
                                         : 'slides__list-card';
                                     const onActivateSlideClick = () => {
+                                        // Update the UI as soon as possible
+                                        this.setState({ activeSlideIndex: index });
                                         this.activateSlide(index);
                                     };
-
-                                    const description = '';
+                                    const description = index + 1;
                                     return (
                                         <Grid.Row
                                             key={slide.id}
@@ -509,50 +485,52 @@ class Slides extends React.Component {
                                                                     />
                                                                 )}
 
-                                                                <Menu.Menu
-                                                                    key="menu-slides-order-change"
-                                                                    position="right"
-                                                                >
-                                                                    <Button
-                                                                        key="menu-slides-order-change-up"
-                                                                        icon="caret up"
-                                                                        aria-label={`Move slide ${description} up`}
-                                                                        disabled={
-                                                                            index ===
-                                                                            0
-                                                                        }
-                                                                        onClick={event => {
-                                                                            event.stopPropagation();
-                                                                            onSlideOrderChange(
-                                                                                index,
-                                                                                index -
+                                                                {isActiveSlide ? (
+                                                                    <Menu.Menu
+                                                                        key="menu-slides-order-change"
+                                                                        position="right"
+                                                                    >
+                                                                        <Button
+                                                                            key="menu-slides-order-change-up"
+                                                                            icon="caret up"
+                                                                            aria-label={`Move slide ${description} up`}
+                                                                            disabled={
+                                                                                index ===
+                                                                                0
+                                                                            }
+                                                                            onClick={event => {
+                                                                                event.stopPropagation();
+                                                                                onSlideOrderChange(
+                                                                                    index,
+                                                                                    index -
+                                                                                        1
+                                                                                );
+                                                                            }}
+                                                                        />
+                                                                        <Button
+                                                                            key="menu-slides-order-change-down"
+                                                                            icon="caret down"
+                                                                            aria-label={`Move slide ${description} down`}
+                                                                            disabled={
+                                                                                index ===
+                                                                                slides.length -
                                                                                     1
-                                                                            );
-                                                                        }}
-                                                                    />
-                                                                    <Button
-                                                                        key="menu-slides-order-change-down"
-                                                                        icon="caret down"
-                                                                        aria-label={`Move slide ${description} down`}
-                                                                        disabled={
-                                                                            index ===
-                                                                            slides.length -
-                                                                                1
-                                                                        }
-                                                                        onClick={event => {
-                                                                            event.stopPropagation();
-                                                                            onSlideOrderChange(
-                                                                                index,
-                                                                                index +
-                                                                                    1
-                                                                            );
-                                                                        }}
-                                                                    />
-                                                                </Menu.Menu>
+                                                                            }
+                                                                            onClick={event => {
+                                                                                event.stopPropagation();
+                                                                                onSlideOrderChange(
+                                                                                    index,
+                                                                                    index +
+                                                                                        1
+                                                                                );
+                                                                            }}
+                                                                        />
+                                                                    </Menu.Menu>
+                                                                ) : null}
                                                             </Menu>
                                                         </Card.Header>
                                                     </Card.Content>
-                                                    <Card.Content
+                                                    {!minimized ? (<Card.Content
                                                         {...minMaxHide}
                                                         className="slides__list-card-content"
                                                     >
@@ -563,6 +541,7 @@ class Slides extends React.Component {
                                                             }
                                                         />
                                                     </Card.Content>
+                                                    ) : null}
                                                 </Card>
                                             </Ref>
                                         </Grid.Row>

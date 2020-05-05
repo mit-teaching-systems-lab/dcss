@@ -23,7 +23,7 @@ import './SlideEditor.css';
 export default class SlideEditor extends Component {
     constructor(props) {
         super(props);
-        const { title = 'Slide', components = [] } = props;
+        const { title = '', components = [] } = props;
         const activeComponentIndex = -1;
         const mode = 'edit';
         const titleHasFocus = false;
@@ -119,7 +119,7 @@ export default class SlideEditor extends Component {
         let activeComponentIndex;
 
         // The components was at the end...
-        if (index > components.length) {
+        if (index >= components.length) {
             activeComponentIndex = components.length - 1;
         }
 
@@ -158,8 +158,13 @@ export default class SlideEditor extends Component {
         });
     }
 
-    onTitleChange(event, { name, value }) {
+    onTitleChange(event, { name, value, id }) {
         this.setState({ [name]: value });
+
+        clearTimeout(this.debouncers[id]);
+        this.debouncers[id] = setTimeout(() => {
+            this.updateSlide();
+        }, 1000);
     }
 
     onTitleFocus() {
@@ -232,6 +237,7 @@ export default class SlideEditor extends Component {
                                     >
                                         <Input
                                             focus
+                                            id={`title-${this.props.index}`}
                                             name="title"
                                             placeholder="Slide title (optional)"
                                             value={title}
@@ -303,8 +309,9 @@ export default class SlideEditor extends Component {
                                     const onConfirm = () =>
                                         onComponentDelete(index);
 
+                                    const isActiveComponent = activeComponentIndex === index;
                                     const description = `${index + 1}, `;
-                                    const right = [
+                                    const right = isActiveComponent ? [
                                         <Menu.Menu
                                             key="menu-components-order-change"
                                             name="Move component up or down"
@@ -338,7 +345,7 @@ export default class SlideEditor extends Component {
                                                 }}
                                             />
                                         </Menu.Menu>
-                                    ];
+                                    ] : [];
 
                                     if (value.responseId) {
                                         const requiredCheckbox = (
@@ -448,5 +455,5 @@ SlideEditor.propTypes = {
     title: PropTypes.string,
     components: PropTypes.arrayOf(PropTypes.object),
     onChange: PropTypes.func,
-    onDelete: PropTypes.func
+    onDelete: PropTypes.func,
 };
