@@ -53,7 +53,9 @@ export class CohortParticipants extends React.Component {
         // by searching.
         this.participants = [];
         this.tableBody = React.createRef();
-        this.onParticipantCheckboxClick = this.onParticipantCheckboxClick.bind(this);
+        this.onParticipantCheckboxClick = this.onParticipantCheckboxClick.bind(
+            this
+        );
         this.onParticipantSearchChange = this.onParticipantSearchChange.bind(
             this
         );

@@ -7,9 +7,7 @@ import {
     Icon,
     Input,
     List,
-    Menu,
-    Message,
-    Popup
+    Menu
 } from 'semantic-ui-react';
 import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';

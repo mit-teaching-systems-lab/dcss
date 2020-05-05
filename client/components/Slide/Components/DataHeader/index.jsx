@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Label, Message, Popup } from 'semantic-ui-react';
+import { Form, Message, Popup } from 'semantic-ui-react';
 
 class DataHeader extends Component {
     render() {

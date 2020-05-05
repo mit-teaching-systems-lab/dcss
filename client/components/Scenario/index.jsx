@@ -196,7 +196,7 @@ class Scenario extends Component {
             this.props.setActiveSlide(activeSlideIndex);
             if (this.slideRefs[activeSlideIndex]) {
                 scrollIntoView(this.slideRefs[activeSlideIndex], {
-                    block: 'start',
+                    block: 'start'
                 });
             }
         });

@@ -75,7 +75,7 @@ class MyScenarios extends Component {
 
             () => {
                 scrollIntoView(this.tableRef, {
-                    block: 'start',
+                    block: 'start'
                 });
             }
         );

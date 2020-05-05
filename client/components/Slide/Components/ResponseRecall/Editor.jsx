@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Dropdown, Table, Select } from 'semantic-ui-react';
+import { Dropdown, Table } from 'semantic-ui-react';
 import FormField from '@components/FormField';
 import { type } from './meta';
 
@@ -132,6 +132,7 @@ class ResponseRecallEditor extends React.Component {
 
 ResponseRecallEditor.propTypes = {
     onChange: PropTypes.func.isRequired,
+    recallId: PropTypes.any,
     scenarioId: PropTypes.any,
     slideIndex: PropTypes.any,
     value: PropTypes.shape({

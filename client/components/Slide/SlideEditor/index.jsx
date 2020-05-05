@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
     Checkbox,
-    Dropdown,
     Grid,
     Icon,
     Input,
@@ -11,10 +10,9 @@ import {
     Ref,
     Segment
 } from 'semantic-ui-react';
-import hash from 'object-hash';
 import EditorMenu from '@components/EditorMenu';
-import notify from '@components/Notification';
-import Loading from '@components/Loading';
+// import notify from '@components/Notification';
+// import Loading from '@components/Loading';
 import Sortable from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
 import generateResponseId from '@components/util/generateResponseId';
@@ -54,17 +52,6 @@ export default class SlideEditor extends Component {
         this.onTitleChange = this.onTitleChange.bind(this);
         this.onTitleFocus = this.onTitleFocus.bind(this);
     }
-
-    // componentDidMount() {
-    //     const {
-    //         components = [],
-    //         title = '',
-    //     } = this.props;
-    //     this.setState({
-    //         components,
-    //         title,
-    //     });
-    // }
 
     updateSlide() {
         if (this.props.onChange) {
@@ -172,7 +159,6 @@ export default class SlideEditor extends Component {
     }
 
     onTitleChange(event, { name, value }) {
-        console.log(name, value);
         this.setState({ [name]: value });
     }
 
@@ -180,13 +166,12 @@ export default class SlideEditor extends Component {
         this.setState({ titleHasFocus: true });
     }
 
-    onTitleBlur(event, data) {
-        // Title is an uncontrolled input, so setting
-        // state directly here is intentional.
-        //
+    onTitleBlur(event) {
+        this.setState({ titleHasFocus: false });
+        // "Title" is an uncontrolled input, so setting
+        // state directly here is ok.
         this.state.title = event.target.value;
         this.updateSlide();
-        this.setState({ titleHasFocus: false });
     }
 
     render() {
@@ -386,7 +371,7 @@ export default class SlideEditor extends Component {
 
                                     const onComponentClick = () => {
                                         if (activeComponentIndex !== index) {
-                                            this.activateComponent(index);
+                                            activateComponent(index);
                                         }
                                     };
 

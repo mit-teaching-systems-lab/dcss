@@ -5,8 +5,6 @@ const defaultOptions = {
 };
 export default function(element, options = defaultOptions) {
     if (element) {
-        element.scrollIntoView(
-            Object.assign({}, defaultOptions, options)
-        );
+        element.scrollIntoView(Object.assign({}, defaultOptions, options));
     }
 }

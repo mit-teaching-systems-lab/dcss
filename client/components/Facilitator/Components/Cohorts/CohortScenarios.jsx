@@ -206,7 +206,10 @@ export class CohortScenarios extends React.Component {
                             </Menu.Item>
                         ],
                         right: [
-                            <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                            <ConfirmAuth
+                                key="confirm-auth-menu-item-search-accounts"
+                                requiredPermission="edit_scenarios_in_cohort"
+                            >
                                 <Menu.Menu position="right">
                                     <Menu.Item
                                         key="menu-item-search-accounts"
