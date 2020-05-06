@@ -342,7 +342,7 @@ class Slides extends React.Component {
         const minMaxIcon = `window ${
             minimized ? 'maximize' : 'minimize'
         } outline`;
-        const minMaxText = `${minimized ? 'Maximize' : 'Minimize'} slides`;
+        const minMaxText = `${minimized ? 'Preview' : 'Outline'} slides`;
         const minMaxHide = minimized ? { hidden: true } : {};
 
         return (
