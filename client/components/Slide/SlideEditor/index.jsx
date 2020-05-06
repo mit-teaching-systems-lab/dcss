@@ -57,6 +57,8 @@ export default class SlideEditor extends Component {
         if (this.props.onChange) {
             const { components, title } = this.state;
 
+            console.log('updateSlide: ', title, components);
+
             this.props.onChange(this.props.index, {
                 components,
                 title
@@ -64,17 +66,18 @@ export default class SlideEditor extends Component {
         }
     }
 
-    activateComponent(state, callback = () => {}) {
-        let updatedState = state;
+    activateComponent(value, callback = () => {}) {
+        console.log('activateComponent?', value);
+        let updatedState = value;
 
-        if (Array.isArray(state)) {
+        if (Array.isArray(value)) {
             updatedState = {
-                components: state
+                components: value
             };
         }
-        if (typeof state === 'number') {
+        if (typeof value === 'number') {
             updatedState = {
-                activeComponentIndex: state
+                activeComponentIndex: value
             };
         }
 
@@ -94,10 +97,11 @@ export default class SlideEditor extends Component {
         const { components } = this.state;
         Object.assign(components[index], value);
         this.setState({ components }, () => {
-            clearTimeout(this.debouncers[index]);
-            this.debouncers[index] = setTimeout(() => {
-                this.updateSlide();
-            }, 5000);
+            this.updateSlide();
+            // clearTimeout(this.debouncers[index]);
+            // this.debouncers[index] = setTimeout(() => {
+            //     this.updateSlide();
+            // }, 5000);
         });
     }
 
@@ -106,6 +110,9 @@ export default class SlideEditor extends Component {
         const moving = components[fromIndex];
         components.splice(fromIndex, 1);
         components.splice(activeComponentIndex, 0, moving);
+
+        console.log(fromIndex, activeComponentIndex);
+
         this.activateComponent({ components, activeComponentIndex }, () => {
             this.updateSlide();
         });
@@ -309,43 +316,46 @@ export default class SlideEditor extends Component {
                                     const onConfirm = () =>
                                         onComponentDelete(index);
 
-                                    const isActiveComponent = activeComponentIndex === index;
+                                    const isActiveComponent =
+                                        activeComponentIndex === index;
                                     const description = `${index + 1}, `;
-                                    const right = isActiveComponent ? [
-                                        <Menu.Menu
-                                            key="menu-components-order-change"
-                                            name="Move component up or down"
-                                            position="right"
-                                        >
-                                            <Menu.Item
-                                                key="menu-components-order-change-up"
-                                                icon="caret up"
-                                                aria-label={`Move component ${description} up`}
-                                                disabled={index === 0}
-                                                onClick={() => {
-                                                    onComponentOrderChange(
-                                                        index,
-                                                        index - 1
-                                                    );
-                                                }}
-                                            />
-                                            <Menu.Item
-                                                key="menu-components-order-change-down"
-                                                icon="caret down"
-                                                aria-label={`Move component ${description} down`}
-                                                disabled={
-                                                    index ===
-                                                    components.length - 1
-                                                }
-                                                onClick={() => {
-                                                    onComponentOrderChange(
-                                                        index,
-                                                        index + 1
-                                                    );
-                                                }}
-                                            />
-                                        </Menu.Menu>
-                                    ] : [];
+                                    const right = isActiveComponent
+                                        ? [
+                                              <Menu.Menu
+                                                  key="menu-components-order-change"
+                                                  name="Move component up or down"
+                                                  position="right"
+                                              >
+                                                  <Menu.Item
+                                                      key="menu-components-order-change-up"
+                                                      icon="caret up"
+                                                      aria-label={`Move component ${description} up`}
+                                                      disabled={index === 0}
+                                                      onClick={() => {
+                                                          onComponentOrderChange(
+                                                              index,
+                                                              index - 1
+                                                          );
+                                                      }}
+                                                  />
+                                                  <Menu.Item
+                                                      key="menu-components-order-change-down"
+                                                      icon="caret down"
+                                                      aria-label={`Move component ${description} down`}
+                                                      disabled={
+                                                          index ===
+                                                          components.length - 1
+                                                      }
+                                                      onClick={() => {
+                                                          onComponentOrderChange(
+                                                              index,
+                                                              index + 1
+                                                          );
+                                                      }}
+                                                  />
+                                              </Menu.Menu>
+                                          ]
+                                        : [];
 
                                     if (value.responseId) {
                                         const requiredCheckbox = (
@@ -455,5 +465,5 @@ SlideEditor.propTypes = {
     title: PropTypes.string,
     components: PropTypes.arrayOf(PropTypes.object),
     onChange: PropTypes.func,
-    onDelete: PropTypes.func,
+    onDelete: PropTypes.func
 };

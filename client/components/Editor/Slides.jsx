@@ -15,8 +15,9 @@ import {
     Ref,
     Segment
 } from 'semantic-ui-react';
-import hash from 'object-hash';
-import {diff} from 'deep-object-diff';
+// TODO: can we use this for shouldComponentUpdate?
+// import hash from 'object-hash';
+// import { diff } from 'deep-object-diff';
 import storage from 'local-storage-fallback';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';
@@ -33,9 +34,7 @@ class Slides extends React.Component {
         super(props);
 
         const activeNonZeroSlideIndex =
-            Number(
-                this.props.match.params.activeNonZeroSlideIndex
-            ) || 1;
+            Number(this.props.match.params.activeNonZeroSlideIndex) || 1;
 
         this.persistenceKey = `slides/${this.props.scenarioId}`;
         let persisted = JSON.parse(storage.getItem(this.persistenceKey));
@@ -44,7 +43,7 @@ class Slides extends React.Component {
         if (!persisted) {
             persisted = {
                 activeSlideIndex,
-                minimized: false,
+                minimized: false
             };
         }
 
@@ -103,11 +102,11 @@ class Slides extends React.Component {
     // }
 
     componentDidUpdate() {
-        const {
-            activeSlideIndex,
-            minimized
-        } = this.state;
-        storage.setItem(this.persistenceKey, JSON.stringify({activeSlideIndex, minimized}));
+        const { activeSlideIndex, minimized } = this.state;
+        storage.setItem(
+            this.persistenceKey,
+            JSON.stringify({ activeSlideIndex, minimized })
+        );
     }
 
     onSlideChange(activeSlideIndex, value) {
@@ -243,14 +242,17 @@ class Slides extends React.Component {
         }
         if (updatedState.activeSlideIndex !== -1) {
             this.setState(updatedState, () => {
-                const { activeSlideIndex, minimized  } = this.state;
+                const { activeSlideIndex, minimized } = this.state;
 
                 if (this.slideRefs[activeSlideIndex]) {
                     scrollIntoView(this.slideRefs[activeSlideIndex]);
                 }
 
                 this.props.setActiveSlide(activeSlideIndex);
-                storage.setItem(this.persistenceKey, JSON.stringify({activeSlideIndex, minimized}));
+                storage.setItem(
+                    this.persistenceKey,
+                    JSON.stringify({ activeSlideIndex, minimized })
+                );
                 callback();
             });
         }
@@ -299,13 +301,13 @@ class Slides extends React.Component {
     }
 
     onSlideMinMaxChange() {
-        const {
-            activeSlideIndex,
-            minimized
-        } = this.state;
+        const { activeSlideIndex, minimized } = this.state;
 
         this.setState({ minimized: !minimized }, () => {
-            storage.setItem(this.persistenceKey, JSON.stringify({activeSlideIndex, minimized}));
+            storage.setItem(
+                this.persistenceKey,
+                JSON.stringify({ activeSlideIndex, minimized })
+            );
         });
     }
 
@@ -337,7 +339,9 @@ class Slides extends React.Component {
         }
 
         const slides = this.state.slides.filter(slide => !slide.is_finish);
-        const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
+        const minMaxIcon = `window ${
+            minimized ? 'maximize' : 'minimize'
+        } outline`;
         const minMaxText = `${minimized ? 'Maximize' : 'Minimize'} slides`;
         const minMaxHide = minimized ? { hidden: true } : {};
 
@@ -392,7 +396,9 @@ class Slides extends React.Component {
                                                         </Dropdown.Item>
                                                         <Dropdown.Item
                                                             key={`slide-options-0`}
-                                                            onClick={onSlideMinMaxChange}
+                                                            onClick={
+                                                                onSlideMinMaxChange
+                                                            }
                                                         >
                                                             <Icon
                                                                 name={
@@ -442,7 +448,9 @@ class Slides extends React.Component {
                                         : 'slides__list-card';
                                     const onActivateSlideClick = () => {
                                         // Update the UI as soon as possible
-                                        this.setState({ activeSlideIndex: index });
+                                        this.setState({
+                                            activeSlideIndex: index
+                                        });
                                         this.activateSlide(index);
                                     };
                                     const description = index + 1;
@@ -530,17 +538,18 @@ class Slides extends React.Component {
                                                             </Menu>
                                                         </Card.Header>
                                                     </Card.Content>
-                                                    {!minimized ? (<Card.Content
-                                                        {...minMaxHide}
-                                                        className="slides__list-card-content"
-                                                    >
-                                                        <SlideComponentList
-                                                            asSVG={true}
-                                                            components={
-                                                                slide.components
-                                                            }
-                                                        />
-                                                    </Card.Content>
+                                                    {!minimized ? (
+                                                        <Card.Content
+                                                            {...minMaxHide}
+                                                            className="slides__list-card-content"
+                                                        >
+                                                            <SlideComponentList
+                                                                asSVG={true}
+                                                                components={
+                                                                    slide.components
+                                                                }
+                                                            />
+                                                        </Card.Content>
                                                     ) : null}
                                                 </Card>
                                             </Ref>

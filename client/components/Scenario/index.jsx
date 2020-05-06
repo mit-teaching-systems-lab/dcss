@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { push } from 'connected-react-router'
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from 'semantic-ui-react';
@@ -17,9 +16,7 @@ class Scenario extends Component {
         super(props);
 
         const activeNonZeroSlideIndex =
-            Number(
-                this.props.match.params.activeNonZeroSlideIndex
-            ) || 1;
+            Number(this.props.match.params.activeNonZeroSlideIndex) || 1;
 
         const { baseurl, history, scenarioId, location } = this.props;
         const activeSlideIndex = activeNonZeroSlideIndex - 1;
@@ -241,6 +238,7 @@ class Scenario extends Component {
 }
 
 Scenario.propTypes = {
+    activeNonZeroSlideIndex: PropTypes.number,
     activeSlideIndex: PropTypes.number,
     setActiveSlide: PropTypes.func,
     baseurl: PropTypes.string,
@@ -251,6 +249,7 @@ Scenario.propTypes = {
     }),
     match: PropTypes.shape({
         params: PropTypes.shape({
+            activeNonZeroSlideIndex: PropTypes.node,
             activeSlideIndex: PropTypes.node,
             id: PropTypes.node
         }).isRequired

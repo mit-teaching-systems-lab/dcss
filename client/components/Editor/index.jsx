@@ -88,12 +88,12 @@ class Editor extends Component {
     onClick(e, { name: activeTab }) {
         this.setState({ activeTab });
 
+        const { activeSlideIndex, scenarioId } = this.state;
         const persisted = JSON.parse(storage.getItem(this.persistenceKey));
         const updated = {
             ...persisted,
             activeTab
         };
-        const { activeSlideIndex, scenarioId } = this.state;
 
         storage.setItem(this.persistenceKey, JSON.stringify(updated));
 
@@ -108,7 +108,7 @@ class Editor extends Component {
             this.persistenceKey,
             JSON.stringify({ activeTab, activeSlideIndex })
         );
-        const activeNonZeroSlideIndex =  (activeSlideIndex + 1) || 1;
+        const activeNonZeroSlideIndex = activeSlideIndex + 1 || 1;
         const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
         this.props.history.push(pathname);
 
