@@ -21,14 +21,14 @@ class Login extends Component {
                 ? 'logout'
                 : 'login';
         const isLoggedIn = false;
-        const loginError = '';
+        const message = '';
         const username = '';
         const password = '';
 
         this.state = {
             from,
             isLoggedIn,
-            loginError,
+            message,
             mode,
             username,
             password
@@ -61,7 +61,7 @@ class Login extends Component {
             username,
             password
         });
-        const { error, message: loginError = '' } = await (await fetch(
+        const { error, message } = await (await fetch(
             '/api/auth/login',
             {
                 headers: {
@@ -72,14 +72,15 @@ class Login extends Component {
             }
         )).json();
 
-        const { permissions } = await (await fetch(
-            '/api/roles/permission'
-        )).json();
 
         if (error) {
-            this.setState({ loginError });
+            this.setState({ message });
             this.props.logOut('');
         } else {
+            const { permissions } = await (await fetch(
+                '/api/roles/permission'
+            )).json();
+
             this.props.logIn({
                 username,
                 isLoggedIn: true,
@@ -108,7 +109,7 @@ class Login extends Component {
     }
 
     render() {
-        const { loginError, mode, password, username } = this.state;
+        const { message, mode, password, username } = this.state;
         const { onChange, onSubmit } = this;
 
         if (mode === 'logout') {
@@ -151,7 +152,7 @@ class Login extends Component {
                             </Item.Extra>
                         </Item>
                     </Grid.Column>
-                    <Grid.Column>{loginError}</Grid.Column>
+                    <Grid.Column>{message}</Grid.Column>
                 </Grid>
             </Form>
         );

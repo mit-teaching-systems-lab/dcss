@@ -80,11 +80,11 @@ class CreateAccount extends Component {
             return;
         }
 
-        const { permissions } = await (await fetch(
-            '/api/roles/permission'
-        )).json();
-
         if (username) {
+            const { permissions } = await (await fetch(
+                '/api/roles/permission'
+            )).json();
+
             this.props.logIn({
                 isLoggedIn: true,
                 permissions,
