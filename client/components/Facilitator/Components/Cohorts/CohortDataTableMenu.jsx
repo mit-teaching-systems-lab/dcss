@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup } from 'semantic-ui-react';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import ConfirmAuth from '@components/ConfirmAuth';
 import { getCohort } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import './Cohort.css';

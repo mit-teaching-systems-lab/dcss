@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Icon, Input, Menu, Table } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Icon, Input, Menu, Table } from 'semantic-ui-react';
 
 import EditorMenu from '@components/EditorMenu';
 import UserRows from './UserRows';

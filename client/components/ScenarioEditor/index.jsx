@@ -7,7 +7,7 @@ import { getScenario, setScenario } from '@client/actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import notify from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
-import { Text } from '@client/components/Slide/Components';
+import { Text } from '@components/Slide/Components';
 import './scenarioEditor.css';
 
 const { Editor: TextEditor } = Text;

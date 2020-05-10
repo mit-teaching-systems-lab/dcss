@@ -10,7 +10,7 @@ import {
     Segment
 } from 'semantic-ui-react';
 import { logIn } from '@client/actions';
-import Session from '@client/util/session';
+import Session from '@utils/session';
 import anonymousUsername from './anonymousUsername';
 import './CreateAnonymousAccount.css';
 

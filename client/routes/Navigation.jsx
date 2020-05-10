@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
 
-import ConfirmAuth from '@client/components/ConfirmAuth';
-import ConfirmableLogoutMenuItem from '@client/components/Login/ConfirmableLogoutMenuItem';
-import Session from '@client/util/session';
+import ConfirmAuth from '@components/ConfirmAuth';
+import ConfirmableLogoutMenuItem from '@components/Login/ConfirmableLogoutMenuItem';
+import Session from '@utils/session';
 
 Session.timeout();
 

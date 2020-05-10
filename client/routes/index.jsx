@@ -6,7 +6,7 @@ import Notification from './Notification';
 import Routes from './Routes';
 import './Nav.css';
 
-import Session from '@client/util/session';
+import Session from '@utils/session';
 
 Session.timeout();
 

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, Grid, Item } from 'semantic-ui-react';
 
 import { logIn, logOut } from '@client/actions';
-import Session from '@client/util/session';
+import Session from '@utils/session';
 
 const method = 'POST';
 

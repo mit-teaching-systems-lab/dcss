@@ -2,12 +2,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Editor from '@client/components/Editor';
-import Login from '@client/components/Login';
-import LoginRoutePromptModal from '@client/components/Login/LoginRoutePromptModal';
-import ScenariosList from '@client/components/ScenariosList';
+import Editor from '@components/Editor';
+import Login from '@components/Login';
+import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
+import ScenariosList from '@components/ScenariosList';
 
-import Session from '@client/util/session';
+import Session from '@utils/session';
 
 /**
  * Special case components for solving routing issues. Component state

@@ -11,7 +11,7 @@ import {
     setCohortUserRole
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import ConfirmAuth from '@components/ConfirmAuth';
 import CohortDataTable from './CohortDataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';

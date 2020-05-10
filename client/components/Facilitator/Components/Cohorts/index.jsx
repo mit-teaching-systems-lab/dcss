@@ -23,7 +23,7 @@ import {
     createCohort
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import ConfirmAuth from '@components/ConfirmAuth';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
 import EditorMenu from '@components/EditorMenu';

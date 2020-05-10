@@ -5,7 +5,7 @@ import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
 import _ from 'lodash';
 import changeCase from 'change-case';
 import { getScenarios } from '@client/actions/scenario';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import ScenarioEntries from './ScenarioEntries';

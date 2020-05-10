@@ -1,5 +1,5 @@
 import { LOG_IN, LOG_OUT } from '@client/actions/types';
-import Session from '@client/util/session';
+import Session from '@utils/session';
 
 const { username = '', permissions = [] } = Session.isSessionActive()
     ? Session.getSession()

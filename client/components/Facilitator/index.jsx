@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { Menu, Segment } from 'semantic-ui-react';
 
-import Cohorts from '@client/components/Facilitator/Components/Cohorts';
-import Search from '@client/components/Facilitator/Components/Search';
+import Cohorts from '@components/Facilitator/Components/Cohorts';
+import Search from '@components/Facilitator/Components/Search';
 
 import './Facilitator.css';
 

@@ -20,9 +20,9 @@ import { getRunData } from '@client/actions/run';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
 import ContentSlide from '@components/Scenario/ContentSlide';
+import CSV from '@utils/csv';
+import { makeHeader } from '@utils/data-table';
 import CohortDataTableMenu from './CohortDataTableMenu';
-import CSV from '@client/util/csv';
-import { makeHeader } from '@client/util/data-table';
 import './CohortDataTable.css';
 
 function isAudioFile(input) {

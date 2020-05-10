@@ -10,7 +10,7 @@ import {
     Popup
 } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
-import Session from '@client/util/session';
+import Session from '@utils/session';
 import './ConfirmableLogoutMenuItem.css';
 
 class ConfirmableLogoutMenuItem extends Component {

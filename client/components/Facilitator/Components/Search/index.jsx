@@ -8,7 +8,7 @@ import {
     Input,
     List
 } from 'semantic-ui-react';
-import Search from '@client/components/Search';
+import Search from '@components/Search';
 import SearchResults from './SearchResults';
 const availableViews = [
     {

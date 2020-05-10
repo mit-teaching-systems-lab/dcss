@@ -17,8 +17,8 @@ import {
 import { getAllCohorts } from '@client/actions/cohort';
 import { getScenarios, getScenarioRunHistory } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
-import { makeHeader } from '@client/util/data-table';
-import CSV from '@client/util/csv';
+import CSV from '@utils/csv';
+import { makeHeader } from '@utils/data-table';
 import './Researcher.css';
 
 const ROWS_PER_PAGE = 10;
