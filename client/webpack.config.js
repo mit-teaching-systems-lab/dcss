@@ -57,9 +57,13 @@ module.exports = {
     resolve: {
         alias: {
             '@': path.resolve(__dirname, '..'),
+            '@actions': path.resolve(__dirname, 'actions'),
             '@client': __dirname,
             '@components': path.resolve(__dirname, 'components'),
-            '@server': path.resolve(__dirname, '../server')
+            '@reducers': path.resolve(__dirname, 'reducers'),
+            '@routes': path.resolve(__dirname, 'routes'),
+            '@utils':  path.resolve(__dirname, 'util'),
+            '@server': path.resolve(__dirname, '../server'),
         },
         extensions: ['*', '.js', '.jsx']
     },
