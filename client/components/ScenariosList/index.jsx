@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
 import _ from 'lodash';
 import changeCase from 'change-case';
+import nextKey from '@utils/key';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
@@ -133,7 +134,7 @@ class ScenariosList extends Component {
 
         if (results.length === 0) {
             results.push(...viewScenarios);
-            replacementHeading = viewHeading;
+            replacementHeading = `${viewHeading}, nothing matches '${value}'`;
         }
 
         this.setState({
@@ -156,11 +157,10 @@ class ScenariosList extends Component {
                     items={{
                         left: [
                             <ConfirmAuth
-                                key="menu-item-create-scenario-auth"
+                                key="menu-item-scenario-create"
                                 requiredPermission="create_scenario"
                             >
                                 <Menu.Item
-                                    key="menu-item-create-scenario"
                                     name="Create a scenario"
                                     onClick={onClickCreateScenario}
                                     className="scenarios__menu-item--padding"
@@ -175,18 +175,25 @@ class ScenariosList extends Component {
                                     </Icon.Group>
                                     Create a Scenario
                                 </Menu.Item>
-                            </ConfirmAuth>,
-                            <Menu.Item
-                                key="menu-item-search-scenarios"
+                            </ConfirmAuth>
+                        ],
+                        right: [
+                            <Menu.Menu
+                                key="menu-item-scenario-search"
                                 name="Search scenarios"
-                                className="scenarios__menu-item--padding"
+                                position="right"
                             >
-                                <Input
-                                    icon="search"
-                                    placeholder="Search..."
-                                    onChange={onSearchChange}
-                                />
-                            </Menu.Item>
+                                <Menu.Item
+                                    name="Search scenarios"
+                                    className="scenarios__menu-item--padding"
+                                >
+                                    <Input
+                                        icon="search"
+                                        placeholder="Search..."
+                                        onChange={onSearchChange}
+                                    />
+                                </Menu.Item>
+                            </Menu.Menu>
                         ]
                     }}
                 />
@@ -200,7 +207,7 @@ class ScenariosList extends Component {
                         <Grid.Row>
                             <Grid.Column stretched>
                                 {scenarios.length ? (
-                                    <Card.Group>
+                                    <Card.Group itemsPerRow={4} stackable>
                                         <ScenarioEntries
                                             scenarios={scenarios}
                                             isLoggedIn={this.props.isLoggedIn}
