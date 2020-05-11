@@ -22,6 +22,7 @@ class ScenariosList extends Component {
     this.state = {
       category,
       heading: '',
+      loading: true,
       scenarios: [],
       viewHeading: '',
       viewScenarios: []
@@ -37,7 +38,6 @@ class ScenariosList extends Component {
   async componentDidMount() {
     await this.getScenarios();
     await this.reduceScenarios();
-    this.loading = false;
   }
 
   moveDeletedScenarios(scenarios = []) {
@@ -55,6 +55,7 @@ class ScenariosList extends Component {
     const { category } = this.state;
     let scenarios = [];
     let heading = '';
+    let loading = false;
     let authorUsername = '';
 
     switch (category) {
@@ -64,18 +65,14 @@ class ScenariosList extends Component {
         break;
       case 'author':
         authorUsername = this.props.match.params.username;
-        // Currently we're only showing author views for the current user
-        if (this.props.username !== authorUsername) {
-          return;
-        }
-
         heading = `Scenarios by ${authorUsername}`;
         scenarios.push(
-          ...this.props.scenarios.filter(({ user_is_author }) => {
-            return user_is_author;
+          ...this.props.scenarios.filter(({ author: {username} }) => {
+            return username === authorUsername;
           })
         );
 
+        console.log(scenarios);
         if (scenarios.length === 0) {
           heading = `There are no scenarios by ${authorUsername}`;
         }
@@ -94,6 +91,7 @@ class ScenariosList extends Component {
 
     this.setState({
       heading,
+      loading,
       scenarios,
       viewScenarios: scenarios.slice(0),
       viewHeading: heading
@@ -149,8 +147,9 @@ class ScenariosList extends Component {
     }
 
     this.setState({
+      heading: replacementHeading,
+      loading: false,
       scenarios: results,
-      heading: replacementHeading
     });
   }
 
@@ -159,7 +158,7 @@ class ScenariosList extends Component {
   }
 
   render() {
-    const { heading, scenarios } = this.state;
+    const { heading, loading, scenarios } = this.state;
     const { onClickCreateScenario, onSearchChange } = this;
     return (
       <React.Fragment>
@@ -213,7 +212,7 @@ class ScenariosList extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column stretched>
-                {scenarios.length && !this.loading ? (
+                {!loading ? (
                   <Card.Group itemsPerRow={4} stackable>
                     <ScenarioEntries
                       scenarios={scenarios}
