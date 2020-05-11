@@ -12,7 +12,6 @@ import {
     Header,
     Icon,
     Input,
-    Loader,
     Menu,
     Modal
 } from 'semantic-ui-react';
@@ -24,6 +23,7 @@ import {
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
+import Loading from '@components/Loading';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
 import EditorMenu from '@components/EditorMenu';
@@ -220,13 +220,13 @@ export class Cohorts extends React.Component {
                         <Grid.Row>
                             <Grid.Column stretched>
                                 {cohorts && cohorts.length ? (
-                                    <Card.Group>
+                                    <Card.Group itemsPerRow={4} stackable>
                                         {cohorts.map(({ id }) => (
                                             <CohortCard key={id} id={id} />
                                         ))}
                                     </Card.Group>
                                 ) : (
-                                    <Loader inverted content="Loading" />
+                                    <Loading size="medium" />
                                 )}
                             </Grid.Column>
                         </Grid.Row>

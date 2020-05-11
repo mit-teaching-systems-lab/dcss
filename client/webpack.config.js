@@ -62,8 +62,8 @@ module.exports = {
             '@components': path.resolve(__dirname, 'components'),
             '@reducers': path.resolve(__dirname, 'reducers'),
             '@routes': path.resolve(__dirname, 'routes'),
-            '@utils':  path.resolve(__dirname, 'util'),
-            '@server': path.resolve(__dirname, '../server'),
+            '@utils': path.resolve(__dirname, 'util'),
+            '@server': path.resolve(__dirname, '../server')
         },
         extensions: ['*', '.js', '.jsx']
     },

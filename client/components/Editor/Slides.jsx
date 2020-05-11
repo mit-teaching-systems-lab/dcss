@@ -330,7 +330,7 @@ class Slides extends React.Component {
                         <Grid.Column width={3}>
                             <Loading />
                         </Grid.Column>
-                        <Grid.Column width={13}>
+                        <Grid.Column className="slides__editor-outer-container" width={13}>
                             <Loading />
                         </Grid.Column>
                     </Grid>

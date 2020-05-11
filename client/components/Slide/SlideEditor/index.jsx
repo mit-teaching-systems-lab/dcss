@@ -175,11 +175,11 @@ export default class SlideEditor extends Component {
     }
 
     onTitleFocus() {
-        this.setState({ titleHasFocus: true });
+        // this.setState({ titleHasFocus: true });
     }
 
     onTitleBlur(event) {
-        this.setState({ titleHasFocus: false });
+        // this.setState({ titleHasFocus: false });
         // "Title" is an uncontrolled input, so setting
         // state directly here is ok.
         this.state.title = event.target.value;
@@ -266,192 +266,228 @@ export default class SlideEditor extends Component {
                                     onToggle: (event, data, { mode }) => {
                                         this.setState({ mode });
                                     }
-                                },
-                                right: [
-                                    <Menu.Menu
-                                        key="menu-item-components"
-                                        position="right"
-                                        name="Add content to slide"
-                                    >
-                                        <SlideComponentSelect
-                                            {...slideComponentSelectOpen}
-                                            onClick={onComponentSelectClick}
-                                        />
-                                    </Menu.Menu>
-                                ]
+                                }
                             }}
                         />
-                        <Segment className="editor__component-layout-pane">
-                            {components.length === 0 && (
-                                <Message
-                                    floating
-                                    icon={
-                                        <Icon.Group
-                                            size="huge"
-                                            className="editormenu__icon-group"
-                                        >
-                                            <Icon name="bars" />
-                                            <Icon
-                                                corner="top right"
-                                                name="add"
-                                                color="green"
-                                            />
-                                        </Icon.Group>
-                                    }
-                                    header="Add content to this slide!"
-                                    content="Using the 'Add to slide' menu on the right, select content components to add to your slide."
-                                />
-                            )}
-
-                            <Sortable onChange={onComponentOrderChange}>
-                                {components.map((value, index) => {
-                                    const { type } = value;
-                                    if (!Components[type]) return;
-
-                                    const {
-                                        Editor: ComponentEditor,
-                                        Display: ComponentDisplay
-                                    } = Components[type];
-
-                                    const onConfirm = () =>
-                                        onComponentDelete(index);
-
-                                    const isActiveComponent =
-                                        activeComponentIndex === index;
-                                    const description = `${index + 1}, `;
-                                    const right = isActiveComponent
-                                        ? [
-                                              <Menu.Menu
-                                                  key="menu-components-order-change"
-                                                  name="Move component up or down"
-                                                  position="right"
-                                              >
-                                                  <Menu.Item
-                                                      key="menu-components-order-change-up"
-                                                      icon="caret up"
-                                                      aria-label={`Move component ${description} up`}
-                                                      disabled={index === 0}
-                                                      onClick={() => {
-                                                          onComponentOrderChange(
-                                                              index,
-                                                              index - 1
-                                                          );
-                                                      }}
-                                                  />
-                                                  <Menu.Item
-                                                      key="menu-components-order-change-down"
-                                                      icon="caret down"
-                                                      aria-label={`Move component ${description} down`}
-                                                      disabled={
-                                                          index ===
-                                                          components.length - 1
-                                                      }
-                                                      onClick={() => {
-                                                          onComponentOrderChange(
-                                                              index,
-                                                              index + 1
-                                                          );
-                                                      }}
-                                                  />
-                                              </Menu.Menu>
-                                          ]
-                                        : [];
-
-                                    if (value.responseId) {
-                                        const requiredCheckbox = (
-                                            <Menu.Item
-                                                key="menu-item-prompt-required"
-                                                name="Set this prompt to 'required'"
-                                            >
-                                                <Checkbox
-                                                    name="required"
-                                                    label="Required?"
-                                                    checked={value.required}
-                                                    onChange={(
-                                                        event,
-                                                        { checked }
-                                                    ) =>
-                                                        onComponentChange(
-                                                            index,
-                                                            {
-                                                                ...value,
-                                                                required: checked
-                                                            }
-                                                        )
-                                                    }
-                                                />
-                                            </Menu.Item>
-                                        );
-
-                                        right.unshift(requiredCheckbox);
-                                    }
-
-                                    const onComponentClick = () => {
-                                        if (activeComponentIndex !== index) {
-                                            activateComponent(index);
-                                        }
-                                    };
-
-                                    return this.state.mode === 'edit' ? (
-                                        <Ref
-                                            key={`component-ref-${index}`}
-                                            innerRef={node =>
-                                                (this.componentRefs[
-                                                    index
-                                                ] = node)
-                                            }
-                                        >
-                                            <Segment
-                                                key={`component-edit-${index}`}
-                                                className={
-                                                    index ===
-                                                    activeComponentIndex
-                                                        ? 'sortable__selected draggable'
-                                                        : 'draggable'
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid columns={2}>
+                            <Grid.Row className="editor__component-pane">
+                                <Grid.Column className="editor__component-layout-pane-outer">
+                                    <Segment className="editor__component-layout-pane">
+                                        {components.length === 0 && (
+                                            <Message
+                                                floating
+                                                icon={
+                                                    <Icon.Group
+                                                        size="huge"
+                                                        className="editormenu__icon-group"
+                                                    >
+                                                        <Icon name="bars" />
+                                                        <Icon
+                                                            corner="top right"
+                                                            name="add"
+                                                            color="green"
+                                                        />
+                                                    </Icon.Group>
                                                 }
-                                                onClick={onComponentClick}
-                                            >
-                                                <EditorMenu
-                                                    type="component"
-                                                    items={{
-                                                        save: {
-                                                            onClick: updateSlide
-                                                        },
-                                                        delete: {
-                                                            onConfirm
-                                                        },
-                                                        right
-                                                    }}
-                                                />
-
-                                                <ComponentEditor
-                                                    slideIndex={
-                                                        this.props.index
-                                                    }
-                                                    scenarioId={scenarioId}
-                                                    value={value}
-                                                    onChange={v =>
-                                                        onComponentChange(
-                                                            index,
-                                                            v
-                                                        )
-                                                    }
-                                                />
-                                            </Segment>
-                                        </Ref>
-                                    ) : (
-                                        <Fragment
-                                            key={`component-fragment-${index}`}
-                                        >
-                                            <ComponentDisplay
-                                                key={`component-preview-${index}`}
-                                                {...value}
+                                                header="Add content to this slide!"
+                                                content="Using the 'Add to slide' menu on the right, select content components to add to your slide."
                                             />
-                                        </Fragment>
-                                    );
-                                })}
-                            </Sortable>
-                        </Segment>
+                                        )}
+
+                                        <Sortable
+                                            onChange={onComponentOrderChange}
+                                        >
+                                            {components.map((value, index) => {
+                                                const { type } = value;
+                                                if (!Components[type]) return;
+
+                                                const {
+                                                    Editor: ComponentEditor,
+                                                    Display: ComponentDisplay
+                                                } = Components[type];
+
+                                                const onConfirm = () =>
+                                                    onComponentDelete(index);
+
+                                                const isActiveComponent =
+                                                    activeComponentIndex ===
+                                                    index;
+                                                const description = `${index +
+                                                    1}, `;
+                                                const right = isActiveComponent
+                                                    ? [
+                                                          <Menu.Menu
+                                                              key="menu-components-order-change"
+                                                              name="Move component up or down"
+                                                              position="right"
+                                                          >
+                                                              <Menu.Item
+                                                                  key="menu-components-order-change-up"
+                                                                  icon="caret up"
+                                                                  aria-label={`Move component ${description} up`}
+                                                                  disabled={
+                                                                      index ===
+                                                                      0
+                                                                  }
+                                                                  onClick={() => {
+                                                                      onComponentOrderChange(
+                                                                          index,
+                                                                          index -
+                                                                              1
+                                                                      );
+                                                                  }}
+                                                              />
+                                                              <Menu.Item
+                                                                  key="menu-components-order-change-down"
+                                                                  icon="caret down"
+                                                                  aria-label={`Move component ${description} down`}
+                                                                  disabled={
+                                                                      index ===
+                                                                      components.length -
+                                                                          1
+                                                                  }
+                                                                  onClick={() => {
+                                                                      onComponentOrderChange(
+                                                                          index,
+                                                                          index +
+                                                                              1
+                                                                      );
+                                                                  }}
+                                                              />
+                                                          </Menu.Menu>
+                                                      ]
+                                                    : [];
+
+                                                if (value.responseId) {
+                                                    const requiredCheckbox = (
+                                                        <Menu.Item
+                                                            key="menu-item-prompt-required"
+                                                            name="Set this prompt to 'required'"
+                                                        >
+                                                            <Checkbox
+                                                                name="required"
+                                                                label="Required?"
+                                                                checked={
+                                                                    value.required
+                                                                }
+                                                                onChange={(
+                                                                    event,
+                                                                    { checked }
+                                                                ) =>
+                                                                    onComponentChange(
+                                                                        index,
+                                                                        {
+                                                                            ...value,
+                                                                            required: checked
+                                                                        }
+                                                                    )
+                                                                }
+                                                            />
+                                                        </Menu.Item>
+                                                    );
+
+                                                    right.unshift(
+                                                        requiredCheckbox
+                                                    );
+                                                }
+
+                                                const onComponentClick = () => {
+                                                    if (
+                                                        activeComponentIndex !==
+                                                        index
+                                                    ) {
+                                                        activateComponent(
+                                                            index
+                                                        );
+                                                    }
+                                                };
+
+                                                return this.state.mode ===
+                                                    'edit' ? (
+                                                    <Ref
+                                                        key={`component-ref-${index}`}
+                                                        innerRef={node =>
+                                                            (this.componentRefs[
+                                                                index
+                                                            ] = node)
+                                                        }
+                                                    >
+                                                        <Segment
+                                                            key={`component-edit-${index}`}
+                                                            className={
+                                                                index ===
+                                                                activeComponentIndex
+                                                                    ? 'sortable__selected draggable'
+                                                                    : 'draggable'
+                                                            }
+                                                            onClick={
+                                                                onComponentClick
+                                                            }
+                                                        >
+                                                            <EditorMenu
+                                                                type="component"
+                                                                items={{
+                                                                    save: {
+                                                                        onClick: updateSlide
+                                                                    },
+                                                                    delete: {
+                                                                        onConfirm
+                                                                    },
+                                                                    right
+                                                                }}
+                                                            />
+
+                                                            <ComponentEditor
+                                                                slideIndex={
+                                                                    this.props
+                                                                        .index
+                                                                }
+                                                                scenarioId={
+                                                                    scenarioId
+                                                                }
+                                                                value={value}
+                                                                onChange={v =>
+                                                                    onComponentChange(
+                                                                        index,
+                                                                        v
+                                                                    )
+                                                                }
+                                                            />
+                                                        </Segment>
+                                                    </Ref>
+                                                ) : (
+                                                    <Fragment
+                                                        key={`component-fragment-${index}`}
+                                                    >
+                                                        <ComponentDisplay
+                                                            key={`component-preview-${index}`}
+                                                            {...value}
+                                                        />
+                                                    </Fragment>
+                                                );
+                                            })}
+                                        </Sortable>
+                                    </Segment>
+                                </Grid.Column>
+                                <Grid.Column className="editor__component-select-pane-outer">
+                                    <SlideComponentSelect
+                                        mode="menu"
+                                        {...slideComponentSelectOpen}
+                                        onClick={onComponentSelectClick}
+                                    />
+
+                                    {/*
+                                    <SlideComponentSelect
+                                        mode="menu"
+                                        {...slideComponentSelectOpen}
+                                        onClick={onComponentSelectClick}
+                                    />
+                                    */}
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
                     </Grid.Row>
                 </Grid.Column>
             </Grid>

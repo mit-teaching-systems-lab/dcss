@@ -61,17 +61,13 @@ class Login extends Component {
             username,
             password
         });
-        const { error, message } = await (await fetch(
-            '/api/auth/login',
-            {
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                method,
-                body
-            }
-        )).json();
-
+        const { error, message } = await (await fetch('/api/auth/login', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method,
+            body
+        })).json();
 
         if (error) {
             this.setState({ message });

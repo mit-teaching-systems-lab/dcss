@@ -10,10 +10,12 @@ class ScenarioStatusMenuItem extends React.Component {
         super(props);
 
         this.state = {
-            statusOptions: null
+            statusOptions: cachedStatusOptions
         };
 
-        this.fetchStatusOptions();
+        if (!cachedStatusOptions) {
+            this.fetchStatusOptions();
+        }
     }
 
     async fetchStatusOptions() {

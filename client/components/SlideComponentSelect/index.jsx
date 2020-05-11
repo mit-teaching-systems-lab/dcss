@@ -13,16 +13,20 @@ const ComponentsMenuOrder = [
     'AudioResponse'
 ];
 
-const ComponentItems = ({ onComponentItemClick }) => {
+const ComponentItems = ({ onComponentItemClick, mode }) => {
+    const Constructor = mode === 'menu' ? Menu.Item : Dropdown.Item;
     return ComponentsMenuOrder.map((type, index) => {
         const { Card } = Components[type];
+
         return (
-            <Dropdown.Item
+            <Constructor
+
                 key={`slide-component-select-${type}-${index}`}
                 onClick={() => onComponentItemClick(type)}
+                style={{float:"none !important"}}
             >
                 <Card />
-            </Dropdown.Item>
+            </Constructor>
         );
     });
 };
@@ -62,8 +66,11 @@ class SlideComponentSelect extends Component {
                 </Dropdown.Menu>
             </Dropdown>
         ) : (
-            <Menu vertical>
-                <ComponentItems mode={mode} onComponentItemClick={onClick} />
+            <Menu fluid vertical>
+                <ComponentItems
+                    mode={mode}
+                    onComponentItemClick={onClick}
+                />
             </Menu>
         );
     }

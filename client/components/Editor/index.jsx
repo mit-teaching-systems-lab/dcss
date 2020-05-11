@@ -92,6 +92,7 @@ class Editor extends Component {
         const persisted = JSON.parse(storage.getItem(this.persistenceKey));
         const updated = {
             ...persisted,
+            activeSlideIndex,
             activeTab
         };
 
