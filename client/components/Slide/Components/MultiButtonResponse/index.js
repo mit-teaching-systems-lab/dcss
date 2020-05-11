@@ -4,9 +4,9 @@ export { default as Display } from './Display';
 export { default as Editor } from './Editor';
 export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
-    recallId: '',
-    header: '',
-    required: true,
-    responseId,
-    type
+  recallId: '',
+  header: '',
+  required: true,
+  responseId,
+  type
 });

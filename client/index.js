@@ -11,8 +11,8 @@ document.title = process.env.DCSS_BRAND_NAME_TITLE || 'Teacher Moments';
 Session.timeout();
 
 ReactDOM.render(
-    <Provider store={store}>
-        <Routes />
-    </Provider>,
-    document.getElementById('root')
+  <Provider store={store}>
+    <Routes />
+  </Provider>,
+  document.getElementById('root')
 );

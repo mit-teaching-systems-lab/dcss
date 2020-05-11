@@ -15,93 +15,93 @@ import Session from '@utils/session';
  */
 
 export const NewScenario = props => {
-    return <Editor {...props} isNewScenario={true} />;
+  return <Editor {...props} isNewScenario={true} />;
 };
 
 export const CopyScenario = props => {
-    return <Editor {...props} isCopyScenario={true} />;
+  return <Editor {...props} isCopyScenario={true} />;
 };
 
 export const ScenariosListAll = props => {
-    return <ScenariosList {...props} category="all" />;
+  return <ScenariosList {...props} category="all" />;
 };
 
 export const ScenariosListAuthor = props => {
-    return <ScenariosList {...props} category="author" />;
+  return <ScenariosList {...props} category="author" />;
 };
 
 export const ScenariosListCommunity = props => {
-    return <ScenariosList {...props} category="community" />;
+  return <ScenariosList {...props} category="community" />;
 };
 
 export const ScenariosListOfficial = props => {
-    return <ScenariosList {...props} category="official" />;
+  return <ScenariosList {...props} category="official" />;
 };
 
 export const Logout = props => {
-    return <Login {...props} mode="logout" />;
+  return <Login {...props} mode="logout" />;
 };
 
 export const InterceptAnonymizableRoute = ({ children, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={props => {
-                return Session.isSessionActive() ? (
-                    children
-                ) : (
-                    <LoginRoutePromptModal {...props} />
-                );
-            }}
-        />
-    );
+  return (
+    <Route
+      {...rest}
+      render={props => {
+        return Session.isSessionActive() ? (
+          children
+        ) : (
+          <LoginRoutePromptModal {...props} />
+        );
+      }}
+    />
+  );
 };
 
 InterceptAnonymizableRoute.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export const RedirectRouteForActiveSession = ({ children, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={() => {
-                if (!Session.isSessionActive()) {
-                    return children;
-                }
-                location.href = '/';
-            }}
-        />
-    );
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (!Session.isSessionActive()) {
+          return children;
+        }
+        location.href = '/';
+      }}
+    />
+  );
 };
 
 RedirectRouteForActiveSession.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export const RedirectRouteForInactiveSession = ({ children, ...rest }) => {
-    return (
-        <Route
-            {...rest}
-            render={() => {
-                if (Session.isSessionActive()) {
-                    return children;
-                }
-                location.href = '/login';
-            }}
-        />
-    );
+  return (
+    <Route
+      {...rest}
+      render={() => {
+        if (Session.isSessionActive()) {
+          return children;
+        }
+        location.href = '/login';
+      }}
+    />
+  );
 };
 
 RedirectRouteForInactiveSession.propTypes = {
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ]).isRequired
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };

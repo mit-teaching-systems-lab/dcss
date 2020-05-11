@@ -10,123 +10,119 @@ Session.timeout();
 
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
-    {
-        text: 'My Scenario Data',
-        path: '/my-scenario-data',
-        permission: 'view_own_data'
-    },
-    {
-        text: 'Cohorts',
-        path: '/cohorts',
-        permission: 'view_own_cohorts'
-    },
-    {
-        text: 'Research',
-        path: '/research',
-        permission: 'view_run_data'
-    },
-    {
-        text: 'Account Administration',
-        path: '/account-administration',
-        permission: 'edit_permissions'
-    }
+  {
+    text: 'My Scenario Data',
+    path: '/my-scenario-data',
+    permission: 'view_own_data'
+  },
+  {
+    text: 'Cohorts',
+    path: '/cohorts',
+    permission: 'view_own_cohorts'
+  },
+  {
+    text: 'Research',
+    path: '/research',
+    permission: 'view_run_data'
+  },
+  {
+    text: 'Account Administration',
+    path: '/account-administration',
+    permission: 'edit_permissions'
+  }
 ];
 
 const Navigation = () => {
-    const [menuExpanded, setMenuExpanded] = useState(
-        !(window.innerWidth <= MOBILE_WIDTH)
-    );
-    window.onresize = () => {
-        if (window.innerWidth > MOBILE_WIDTH && !menuExpanded) {
-            // Make the menu appear if the user resizes the window to be wider
-            setMenuExpanded(true);
-        }
-    };
-    const authorizedNav = restrictedNav.map(
-        ({ text, path, permission }, index) => {
-            return (
-                <ConfirmAuth key={index} requiredPermission={permission}>
-                    <Menu.Item>
-                        <NavLink to={path}>{text}</NavLink>
-                    </Menu.Item>
-                </ConfirmAuth>
-            );
-        }
-    );
-    const { username } = Session.getSession();
+  const [menuExpanded, setMenuExpanded] = useState(
+    !(window.innerWidth <= MOBILE_WIDTH)
+  );
+  window.onresize = () => {
+    if (window.innerWidth > MOBILE_WIDTH && !menuExpanded) {
+      // Make the menu appear if the user resizes the window to be wider
+      setMenuExpanded(true);
+    }
+  };
+  const authorizedNav = restrictedNav.map(
+    ({ text, path, permission }, index) => {
+      return (
+        <ConfirmAuth key={index} requiredPermission={permission}>
+          <Menu.Item>
+            <NavLink to={path}>{text}</NavLink>
+          </Menu.Item>
+        </ConfirmAuth>
+      );
+    }
+  );
+  const { username } = Session.getSession();
 
-    return (
-        <React.Fragment>
-            <Button
-                icon
-                fluid
-                labelPosition="left"
-                basic
-                className="nav__mobile"
-                id="nav__mobile--button"
-                onClick={() => setMenuExpanded(!menuExpanded)}
-                aria-controls="nav"
+  return (
+    <React.Fragment>
+      <Button
+        icon
+        fluid
+        labelPosition="left"
+        basic
+        className="nav__mobile"
+        id="nav__mobile--button"
+        onClick={() => setMenuExpanded(!menuExpanded)}
+        aria-controls="nav"
+      >
+        <Icon name="content" />
+        MENU
+      </Button>
+      {menuExpanded && (
+        <Menu id="nav" className="nav" stackable borderless>
+          <Menu.Item className="navigation__menu-item-logo">
+            <NavLink to="/">
+              {process.env.DCSS_BRAND_NAME_TITLE || 'Home'}
+            </NavLink>
+          </Menu.Item>
+
+          <Menu.Menu>
+            <Dropdown
+              simple
+              item
+              text={<NavLink to="/scenarios/">Scenarios</NavLink>}
             >
-                <Icon name="content" />
-                MENU
-            </Button>
-            {menuExpanded && (
-                <Menu id="nav" className="nav" stackable borderless>
-                    <Menu.Item className="navigation__menu-item-logo">
-                        <NavLink to="/">
-                            {process.env.DCSS_BRAND_NAME_TITLE || 'Home'}
-                        </NavLink>
-                    </Menu.Item>
-
-                    <Menu.Menu>
-                        <Dropdown
-                            simple
-                            item
-                            text={<NavLink to="/scenarios/">Scenarios</NavLink>}
+              <Dropdown.Menu>
+                {Session.isSessionActive() && (
+                  <React.Fragment>
+                    <ConfirmAuth requiredPermission="create_scenario">
+                      <Dropdown.Item>
+                        <NavLink
+                          to={{
+                            pathname: `/scenarios/author/${username}`
+                          }}
                         >
-                            <Dropdown.Menu>
-                                {Session.isSessionActive() && (
-                                    <React.Fragment>
-                                        <ConfirmAuth requiredPermission="create_scenario">
-                                            <Dropdown.Item>
-                                                <NavLink
-                                                    to={{
-                                                        pathname: `/scenarios/author/${username}`
-                                                    }}
-                                                >
-                                                    My Scenarios
-                                                </NavLink>
-                                            </Dropdown.Item>
-                                        </ConfirmAuth>
-                                    </React.Fragment>
-                                )}
-                                <Dropdown.Item>
-                                    <NavLink to="/scenarios/official">
-                                        Official
-                                    </NavLink>
-                                </Dropdown.Item>
-                                <Dropdown.Item>
-                                    <NavLink to="/scenarios/community">
-                                        Community
-                                    </NavLink>
-                                </Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Menu.Menu>
+                          My Scenarios
+                        </NavLink>
+                      </Dropdown.Item>
+                    </ConfirmAuth>
+                  </React.Fragment>
+                )}
+                <Dropdown.Item>
+                  <NavLink to="/scenarios/official">Official</NavLink>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <NavLink to="/scenarios/community">Community</NavLink>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Menu.Menu>
 
-                    {authorizedNav}
+          {authorizedNav}
 
-                    {Session.isSessionActive() ? (
-                        <ConfirmableLogoutMenuItem />
-                    ) : (
-                        <Menu.Item position="right">
-                            <NavLink to="/login">Log in</NavLink>
-                        </Menu.Item>
-                    )}
-                </Menu>
-            )}
-        </React.Fragment>
-    );
+          {Session.isSessionActive() ? (
+            <ConfirmableLogoutMenuItem />
+          ) : (
+            <Menu.Item position="right">
+              <NavLink to="/login">Log in</NavLink>
+            </Menu.Item>
+          )}
+        </Menu>
+      )}
+    </React.Fragment>
+  );
 };
 
 export default Navigation;

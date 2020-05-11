@@ -9,15 +9,15 @@ import { run, runs } from './run';
 import { history, scenario, scenarios } from './scenario';
 
 export default combineReducers({
-    admin,
-    cohort,
-    history,
-    login,
-    response,
-    responses,
-    run,
-    runs,
-    scenario,
-    scenarios,
-    user
+  admin,
+  cohort,
+  history,
+  login,
+  response,
+  responses,
+  run,
+  runs,
+  scenario,
+  scenarios,
+  user
 });

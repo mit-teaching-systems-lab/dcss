@@ -9,28 +9,28 @@
 const path = require('path');
 
 module.exports = {
-    plugins: [
-        // your custom plugins
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
-            {
-                // From https://github.com/Semantic-Org/Semantic-UI-CSS/issues/28
-                test: /\.(png|woff|woff2|eot|ttf|svg)$/,
-                loader: 'url-loader?limit=100000'
-            }
-        ]
+  plugins: [
+    // your custom plugins
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        // From https://github.com/Semantic-Org/Semantic-UI-CSS/issues/28
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        loader: 'url-loader?limit=100000'
+      }
+    ]
+  },
+  resolve: {
+    alias: {
+      '@client': path.resolve(__dirname, '../'),
+      '@': path.resolve(__dirname, '../..'),
+      '@components': path.resolve(__dirname, '../components')
     },
-    resolve: {
-        alias: {
-            '@client': path.resolve(__dirname, '../'),
-            '@': path.resolve(__dirname, '../..'),
-            '@components': path.resolve(__dirname, '../components')
-        },
-        extensions: ['*', '.js', '.jsx']
-    }
+    extensions: ['*', '.js', '.jsx']
+  }
 };

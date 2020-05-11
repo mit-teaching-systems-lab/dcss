@@ -10,37 +10,37 @@ const SCENARIO_STATUS_PRIVATE = 3;
 /* eslint-enable */
 
 const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
-    if (!scenarios.length) return null;
+  if (!scenarios.length) return null;
 
-    return scenarios.reduce((accum, scenario) => {
-        const { status, user_is_author: isAuthor } = scenario;
+  return scenarios.reduce((accum, scenario) => {
+    const { status, user_is_author: isAuthor } = scenario;
 
-        // This scenario status is "draft", to see it:
-        //  - user must be logged in
-        //  - user must be the author
-        if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor)) {
-            return accum;
-        }
-        // This scenario status is "private", to see it:
-        //  - user must be logged in
-        if (status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
-            return accum;
-        }
-        accum.push(
-            <ScenarioCard
-                key={scenario.id}
-                scenario={scenario}
-                isLoggedIn={isLoggedIn}
-            />
-        );
+    // This scenario status is "draft", to see it:
+    //  - user must be logged in
+    //  - user must be the author
+    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor)) {
+      return accum;
+    }
+    // This scenario status is "private", to see it:
+    //  - user must be logged in
+    if (status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
+      return accum;
+    }
+    accum.push(
+      <ScenarioCard
+        key={scenario.id}
+        scenario={scenario}
+        isLoggedIn={isLoggedIn}
+      />
+    );
 
-        return accum;
-    }, []);
+    return accum;
+  }, []);
 };
 
 ScenarioCard.propTypes = {
-    scenarios: PropTypes.array,
-    isLoggedIn: PropTypes.bool.isRequired
+  scenarios: PropTypes.array,
+  isLoggedIn: PropTypes.bool.isRequired
 };
 
 export default ScenarioEntries;
