@@ -27,6 +27,7 @@ class ScenariosList extends Component {
             viewScenarios: []
         };
 
+        this.loading = true;
         this.onClickCreateScenario = this.onClickCreateScenario.bind(this);
         this.onSearchChange = this.onSearchChange.bind(this);
         this.reduceScenarios = this.reduceScenarios.bind(this);
@@ -34,8 +35,9 @@ class ScenariosList extends Component {
     }
 
     async componentDidMount() {
-        await this.props.getScenarios();
+        await this.getScenarios();
         await this.reduceScenarios();
+        this.loading = false;
     }
 
     moveDeletedScenarios(scenarios = []) {
@@ -43,6 +45,10 @@ class ScenariosList extends Component {
             ...scenarios.filter(({ deleted_at }) => !deleted_at),
             ...scenarios.filter(({ deleted_at }) => deleted_at)
         ];
+    }
+
+    async getScenarios() {
+        await this.props.getScenarios();
     }
 
     async reduceScenarios() {
@@ -69,6 +75,12 @@ class ScenariosList extends Component {
                         return user_is_author;
                     })
                 );
+
+
+                if (scenarios.length === 0) {
+                    heading = `There are no scenarios by ${authorUsername}`;
+                }
+
                 break;
             case 'official':
             case 'community':
@@ -206,7 +218,7 @@ class ScenariosList extends Component {
                         </Grid.Row>
                         <Grid.Row>
                             <Grid.Column stretched>
-                                {scenarios.length ? (
+                                {(scenarios.length && !this.loading) ? (
                                     <Card.Group itemsPerRow={4} stackable>
                                         <ScenarioEntries
                                             scenarios={scenarios}
