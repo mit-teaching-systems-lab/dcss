@@ -27,16 +27,16 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(
-    session({
-        secret: process.env['SESSION_SECRET'] || 'mit tsl teacher moments',
-        resave: false,
-        saveUninitialized: true,
-        store: new pgSession({
-            pool: new Pool(poolConfig),
-            tableName: 'session'
-        }),
-        cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
-    })
+  session({
+    secret: process.env['SESSION_SECRET'] || 'mit tsl teacher moments',
+    resave: false,
+    saveUninitialized: true,
+    store: new pgSession({
+      pool: new Pool(poolConfig),
+      tableName: 'session'
+    }),
+    cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+  })
 );
 
 app.use('/auth', authRouter);
@@ -51,9 +51,9 @@ app.use('/tags', tagsRouter);
 
 // This handles 404 results from router -- answers all remaining requests
 app.use((req, res, next) => {
-    const e404 = new Error('API Endpoint not found');
-    e404.status = 404;
-    next(e404);
+  const e404 = new Error('API Endpoint not found');
+  e404.status = 404;
+  next(e404);
 });
 // This handles api errors that are thrown -- needs to be after all the endpoints
 app.use(errorHandler);
@@ -61,8 +61,8 @@ app.use(errorHandler);
 const listener = express();
 listener.use('/api', app);
 listener.listen(port, () => {
-    // eslint-disable-next-line no-console
-    console.log(`Listening on ${port}`);
+  // eslint-disable-next-line no-console
+  console.log(`Listening on ${port}`);
 });
 
 module.exports = { listener, app };

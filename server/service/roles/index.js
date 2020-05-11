@@ -6,13 +6,13 @@ const { requireUserRole, checkCanEditUserRoles } = require('./middleware');
 const router = Router();
 
 const {
-    getAllUsersRoles,
-    getUserRoles,
-    getUserPermissions,
-    getUsersByPermission,
-    addUserRoles,
-    deleteUserRoles,
-    setUserRoles
+  getAllUsersRoles,
+  getUserRoles,
+  getUserPermissions,
+  getUsersByPermission,
+  addUserRoles,
+  deleteUserRoles,
+  setUserRoles
 } = require('./endpoints');
 
 router.get('/', [requireUserRole(['admin', 'super_admin']), getAllUsersRoles]);
@@ -20,31 +20,31 @@ router.get('/', [requireUserRole(['admin', 'super_admin']), getAllUsersRoles]);
 router.get('/permission', [getUserPermissions]);
 
 router.post('/user/permission', [
-    requireUserRole(['admin', 'super_admin']),
-    getUsersByPermission
+  requireUserRole(['admin', 'super_admin']),
+  getUsersByPermission
 ]);
 
 router.get('/:user_id', [
-    requireUserRole(['admin', 'super_admin']),
-    getUserRoles
+  requireUserRole(['admin', 'super_admin']),
+  getUserRoles
 ]);
 
 router.put('/:user_id', [
-    checkCanEditUserRoles(req => req.params.user_id),
-    validateRequestBody,
-    setUserRoles
+  checkCanEditUserRoles(req => req.params.user_id),
+  validateRequestBody,
+  setUserRoles
 ]);
 
 router.post('/add', [
-    checkCanEditUserRoles(req => req.session.user.id),
-    validateRequestBody,
-    addUserRoles
+  checkCanEditUserRoles(req => req.session.user.id),
+  validateRequestBody,
+  addUserRoles
 ]);
 
 router.post('/delete', [
-    checkCanEditUserRoles(req => req.session.user.id),
-    validateRequestBody,
-    deleteUserRoles
+  checkCanEditUserRoles(req => req.session.user.id),
+  validateRequestBody,
+  deleteUserRoles
 ]);
 
 module.exports = router;

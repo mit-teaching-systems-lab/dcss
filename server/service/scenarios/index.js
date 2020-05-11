@@ -8,15 +8,15 @@ const requiredRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
 const router = Router();
 
 const {
-    addScenario,
-    copyScenario,
-    deleteScenario,
-    getAllScenarios,
-    getScenario,
-    getScenarioByRun,
-    getScenarioRunHistory,
-    setScenario,
-    softDeleteScenario
+  addScenario,
+  copyScenario,
+  deleteScenario,
+  getAllScenarios,
+  getScenario,
+  getScenarioByRun,
+  getScenarioRunHistory,
+  setScenario,
+  softDeleteScenario
 } = require('./endpoints.js');
 
 router.get('/', getAllScenarios);
@@ -25,38 +25,38 @@ router.get('/:scenario_id', [lookupScenario(), getScenario]);
 
 router.get('/:scenario_id/history', [requireUser, getScenarioRunHistory]);
 router.get('/:scenario_id/cohort/:cohort_id/history', [
-    requireUser,
-    getScenarioRunHistory
+  requireUser,
+  getScenarioRunHistory
 ]);
 
 router.put('/', [
-    requireUserRole(requiredRoles),
-    validateRequestBody,
-    addScenario
+  requireUserRole(requiredRoles),
+  validateRequestBody,
+  addScenario
 ]);
 
 router.post('/:scenario_id', [
-    requireUserRole(requiredRoles),
-    lookupScenario(),
-    validateRequestBody,
-    setScenario
+  requireUserRole(requiredRoles),
+  lookupScenario(),
+  validateRequestBody,
+  setScenario
 ]);
 
 router.post('/:scenario_id/copy', [
-    requireUserRole(requiredRoles),
-    lookupScenario(),
-    copyScenario
+  requireUserRole(requiredRoles),
+  lookupScenario(),
+  copyScenario
 ]);
 
 router.delete('/:scenario_id', [
-    requireUserRole(['super_admin', 'admin']),
-    lookupScenario(),
-    softDeleteScenario
+  requireUserRole(['super_admin', 'admin']),
+  lookupScenario(),
+  softDeleteScenario
 ]);
 router.delete('/:scenario_id/hard', [
-    requireUserRole(['super_admin', 'admin']),
-    lookupScenario(),
-    deleteScenario
+  requireUserRole(['super_admin', 'admin']),
+  lookupScenario(),
+  deleteScenario
 ]);
 
 router.use('/:scenario_id/slides', [lookupScenario(), require('./slides')]);

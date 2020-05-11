@@ -2,30 +2,30 @@ const { sql } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 
 exports.createCohort = async ({ name, user_id }) => {
-    if (!(name && user_id)) {
-        throw new Error(
-            'Creating cohort requires user id and a name to be provided'
-        );
-    }
+  if (!(name && user_id)) {
+    throw new Error(
+      'Creating cohort requires user id and a name to be provided'
+    );
+  }
 
-    return await withClientTransaction(async client => {
-        // create a cohort
-        const create = await client.query(
-            sql`INSERT INTO cohort (name) VALUES (${name}) RETURNING *`
-        );
-        const cohort = create.rows[0];
-        // assign user as owner
-        await client.query(
-            sql`INSERT INTO cohort_user_role (cohort_id, user_id, role)
+  return await withClientTransaction(async client => {
+    // create a cohort
+    const create = await client.query(
+      sql`INSERT INTO cohort (name) VALUES (${name}) RETURNING *`
+    );
+    const cohort = create.rows[0];
+    // assign user as owner
+    await client.query(
+      sql`INSERT INTO cohort_user_role (cohort_id, user_id, role)
             VALUES (${cohort.id}, ${user_id}, 'owner')`
-        );
-        return cohort;
-    });
+    );
+    return cohort;
+  });
 };
 
 async function getCohortScenarios(cohort_id) {
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             SELECT scenario_id as id
             FROM cohort_scenario
             INNER JOIN scenario
@@ -34,13 +34,13 @@ async function getCohortScenarios(cohort_id) {
               AND scenario.deleted_at IS NULL
             ORDER BY cohort_scenario.id;
         `);
-        return result.rows.map(row => row.id);
-    });
+    return result.rows.map(row => row.id);
+  });
 }
 
 async function getCohortRuns(cohort_id) {
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             SELECT *
             FROM run
             INNER JOIN cohort_run
@@ -48,13 +48,13 @@ async function getCohortRuns(cohort_id) {
             WHERE cohort_run.cohort_id = ${cohort_id};
         `);
 
-        return result.rows;
-    });
+    return result.rows;
+  });
 }
 
 async function getCohortUsers(cohort_id) {
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             SELECT *
             FROM users
             INNER JOIN cohort_user_role
@@ -62,13 +62,13 @@ async function getCohortUsers(cohort_id) {
             WHERE cohort_user_role.cohort_id = ${cohort_id};
         `);
 
-        return result.rows;
-    });
+    return result.rows;
+  });
 }
 
 exports.getCohort = async ({ id }) => {
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
             FROM cohort
             LEFT JOIN cohort_user_role
@@ -76,22 +76,22 @@ exports.getCohort = async ({ id }) => {
             WHERE cohort.id = ${id}
         `);
 
-        const runs = await getCohortRuns(id);
-        const scenarios = await getCohortScenarios(id);
-        const users = await getCohortUsers(id);
+    const runs = await getCohortRuns(id);
+    const scenarios = await getCohortScenarios(id);
+    const users = await getCohortUsers(id);
 
-        return {
-            ...result.rows[0],
-            runs,
-            scenarios,
-            users
-        };
-    });
+    return {
+      ...result.rows[0],
+      runs,
+      scenarios,
+      users
+    };
+  });
 };
 
 exports.getMyCohorts = async ({ user_id }) => {
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
             FROM cohort
             LEFT JOIN cohort_user_role
@@ -99,78 +99,78 @@ exports.getMyCohorts = async ({ user_id }) => {
             WHERE cohort_user_role.user_id = ${user_id};
         `);
 
-        const cohorts = [];
-        for (const row of result.rows) {
-            const runs = await getCohortRuns(row.id);
-            const scenarios = await getCohortScenarios(row.id);
-            const users = await getCohortUsers(row.id);
-            cohorts.push({
-                ...row,
-                runs,
-                scenarios,
-                users
-            });
-        }
-        return cohorts;
-    });
+    const cohorts = [];
+    for (const row of result.rows) {
+      const runs = await getCohortRuns(row.id);
+      const scenarios = await getCohortScenarios(row.id);
+      const users = await getCohortUsers(row.id);
+      cohorts.push({
+        ...row,
+        runs,
+        scenarios,
+        users
+      });
+    }
+    return cohorts;
+  });
 };
 
 exports.getAllCohorts = async () => {
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             SELECT * FROM cohort;
         `);
 
-        const cohorts = [];
-        for (const row of result.rows) {
-            const runs = await getCohortRuns(row.id);
-            const scenarios = await getCohortScenarios(row.id);
-            const users = await getCohortUsers(row.id);
-            cohorts.push({
-                ...row,
-                runs,
-                scenarios,
-                users
-            });
-        }
-        return cohorts;
-    });
+    const cohorts = [];
+    for (const row of result.rows) {
+      const runs = await getCohortRuns(row.id);
+      const scenarios = await getCohortScenarios(row.id);
+      const users = await getCohortUsers(row.id);
+      cohorts.push({
+        ...row,
+        runs,
+        scenarios,
+        users
+      });
+    }
+    return cohorts;
+  });
 };
 
 exports.setCohort = async () => {
-    // console.log('setCohort', params);
+  // console.log('setCohort', params);
 
-    return {};
-    // return await withClientTransaction(async client => {
-    //     const result = await client.query(sql`
-    //         SELECT * FROM cohort WHERE id = ${cohort_id}
-    //     `);
-    //     return result.rows[0];
-    // });
+  return {};
+  // return await withClientTransaction(async client => {
+  //     const result = await client.query(sql`
+  //         SELECT * FROM cohort WHERE id = ${cohort_id}
+  //     `);
+  //     return result.rows[0];
+  // });
 };
 
 exports.setCohortScenarios = async ({ id, scenarios }) => {
-    return await withClientTransaction(async client => {
-        await client.query(sql`
+  return await withClientTransaction(async client => {
+    await client.query(sql`
             DELETE FROM cohort_scenario
             WHERE cohort_id = ${Number(id)};
         `);
 
-        for (const scenario_id of scenarios) {
-            await client.query(sql`
+    for (const scenario_id of scenarios) {
+      await client.query(sql`
                 INSERT INTO cohort_scenario (cohort_id, scenario_id)
                 VALUES (${Number(id)}, ${Number(scenario_id)});
             `);
-        }
-        return scenarios;
-    });
+    }
+    return scenarios;
+  });
 };
 
 exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
-    return await withClientTransaction(async client => {
-        let responses = [];
-        if (participant_id) {
-            const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    let responses = [];
+    if (participant_id) {
+      const result = await client.query(sql`
                 SELECT
                     run.user_id as user_id,
                     username,
@@ -198,9 +198,9 @@ exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
                 ORDER BY cohort_run.run_id DESC
             `);
 
-            responses.push(...result.rows);
-        } else {
-            const result = await client.query(sql`
+      responses.push(...result.rows);
+    } else {
+      const result = await client.query(sql`
                 SELECT
                     run.user_id as user_id,
                     username,
@@ -228,77 +228,77 @@ exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
                 ORDER BY cohort_run.run_id DESC
             `);
 
-            responses.push(...result.rows);
-        }
+      responses.push(...result.rows);
+    }
 
-        return responses;
-    });
+    return responses;
+  });
 };
 
 exports.linkCohortToRun = async ({ id, run_id }) => {
-    if (!(id && run_id)) {
-        throw new Error(
-            'Link a cohort to a run requires a cohort id, run id and user id'
-        );
-    }
+  if (!(id && run_id)) {
+    throw new Error(
+      'Link a cohort to a run requires a cohort id, run id and user id'
+    );
+  }
 
-    return await withClientTransaction(async client => {
-        const result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
             INSERT INTO cohort_run (cohort_id, run_id)
             VALUES (${id}, ${run_id})
             ON CONFLICT DO NOTHING;
         `);
 
-        return result;
-    });
+    return result;
+  });
 };
 
 exports.setCohortUserRole = async ({ cohort_id, user_id, role, action }) => {
-    if (!(cohort_id && user_id)) {
-        throw new Error(
-            'Setting a cohort user role requires a cohort id and a user_id'
-        );
-    }
+  if (!(cohort_id && user_id)) {
+    throw new Error(
+      'Setting a cohort user role requires a cohort id and a user_id'
+    );
+  }
 
-    return await withClientTransaction(async client => {
-        let result;
-        if (action === 'join') {
-            result = await client.query(sql`
+  return await withClientTransaction(async client => {
+    let result;
+    if (action === 'join') {
+      result = await client.query(sql`
                 INSERT INTO cohort_user_role (cohort_id, user_id, role)
                 VALUES (${cohort_id}, ${user_id}, ${role})
                 RETURNING *;
             `);
-        }
+    }
 
-        if (action === 'done') {
-            const ended_at = new Date().toISOString();
-            result = await client.query(sql`
+    if (action === 'done') {
+      const ended_at = new Date().toISOString();
+      result = await client.query(sql`
                 UPDATE cohort_user_role
                 SET ended_at = ${ended_at}
                 WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
                 RETURNING *;
             `);
-        }
+    }
 
-        if (action === 'quit') {
-            result = await client.query(sql`
+    if (action === 'quit') {
+      result = await client.query(sql`
                 DELETE FROM cohort_user_role
                 WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
                 RETURNING *;
             `);
-        }
+    }
 
-        return result && result.rows.length && getCohortUsers(cohort_id);
-    });
+    return result && result.rows.length && getCohortUsers(cohort_id);
+  });
 };
 
 exports.listUserCohorts = async ({ user_id }) => {
-    const result = await query(
-        sql`SELECT cohort.id, cohort.name, cohort_user_role.role
+  const result = await query(
+    sql`SELECT cohort.id, cohort.name, cohort_user_role.role
             FROM cohort
             LEFT JOIN cohort_user_role
                 ON cohort_user_role.cohort_id = cohort.id
             WHERE cohort_user_role.user_id = ${user_id}`
-    );
-    return result.rows;
+  );
+  return result.rows;
 };
