@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import {
   CREATE_COHORT_SUCCESS,
   SET_COHORT,
-  SET_COHORT_ERROR,
+  // SET_COHORT_ERROR,
   SET_COHORT_SUCCESS,
 
   //

@@ -52,7 +52,6 @@ class ResponseRecallEditor extends React.Component {
       return null;
     }
 
-    const slideNumber = slideIndex - 1;
     const prompts = components.reduce((accum, component, key) => {
       const {
         header,
@@ -64,7 +63,6 @@ class ResponseRecallEditor extends React.Component {
 
       const index = nonZeroIndex - 1;
 
-      console.log(prompt);
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
       if (!responseId || slideIndex === index) {

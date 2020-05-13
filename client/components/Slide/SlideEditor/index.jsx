@@ -23,17 +23,15 @@ import './SlideEditor.css';
 export default class SlideEditor extends Component {
   constructor(props) {
     super(props);
-    const { id, title = '', components = [] } = props;
+    const { title = '', components = [] } = props;
     const activeComponentIndex = -1;
     const mode = 'edit';
-    const titleHasFocus = false;
 
     this.state = {
       activeComponentIndex,
       components,
       mode,
-      title,
-      titleHasFocus
+      title
     };
 
     this.activateComponent = this.activateComponent.bind(this);
@@ -176,12 +174,7 @@ export default class SlideEditor extends Component {
 
     const { noSlide, scenarioId } = this.props;
 
-    const {
-      activeComponentIndex,
-      components,
-      titleHasFocus,
-      title
-    } = this.state;
+    const { activeComponentIndex, components, title } = this.state;
 
     const noSlideComponents = components.length === 0;
     const disabled = !!noSlide;

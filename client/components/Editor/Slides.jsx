@@ -10,7 +10,6 @@ import {
   Grid,
   Icon,
   Menu,
-  Message,
   Popup,
   Ref,
   Segment

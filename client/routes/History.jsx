@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 
-class History extends Component {
+class History extends React.Component {
   constructor(props) {
     super(props);
 
@@ -35,5 +35,9 @@ class History extends Component {
     return this.props.children;
   }
 }
+
+History.propTypes = {
+  children: PropTypes.array
+};
 
 export default withRouter(History);

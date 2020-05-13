@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Message } from 'semantic-ui-react';
 
-export default function AddSlideMessage({ onClick }) {
+function AddSlideMessage({ onClick }) {
   return (
     <Message
       floating
@@ -25,3 +25,9 @@ export default function AddSlideMessage({ onClick }) {
     />
   );
 }
+
+AddSlideMessage.propTypes = {
+  onClick: PropTypes.func
+};
+
+export default AddSlideMessage;

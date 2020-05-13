@@ -72,7 +72,6 @@ class ScenariosList extends Component {
           })
         );
 
-        console.log(scenarios);
         if (scenarios.length === 0) {
           heading = `There are no scenarios by ${authorUsername}`;
         }
