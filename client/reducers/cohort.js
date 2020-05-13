@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 import {
   CREATE_COHORT_SUCCESS,
   SET_COHORT,
+  SET_COHORT_ERROR,
+  SET_COHORT_SUCCESS,
 
   //
   //
@@ -11,8 +13,6 @@ import {
   //
   //
   //
-  // SET_COHORT_ERROR,
-  // SET_COHORT_SUCCESS,
   // GET_COHORT,
   // GET_COHORT_ERROR,
   // TODO: These will be used in a follow up changeset
@@ -89,7 +89,7 @@ const getCohort = (state = cohortInitialState, action) => {
   const { type, cohort } = action;
 
   switch (type) {
-    case SET_COHORT:
+    case SET_COHORT_SUCCESS:
     case GET_COHORT_SUCCESS:
       return {
         ...state,

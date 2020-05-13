@@ -70,27 +70,6 @@ export class CohortScenarios extends React.Component {
     await this.props.setScenarios(this.scenarios);
   }
 
-  async saveScenarios() {
-    const { cohort } = this.props;
-    const { scenarios } = cohort;
-    const body = JSON.stringify({
-      scenarios
-    });
-
-    await (await fetch(`/api/cohort/${cohort.id}/scenarios`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
-
-    this.props.setCohort({
-      ...cohort,
-      scenarios
-    });
-  }
-
   scrollIntoView() {
     scrollIntoView(this.tableBody.current.node.firstElementChild);
   }
@@ -112,8 +91,6 @@ export class CohortScenarios extends React.Component {
       ...cohort,
       scenarios
     });
-
-    this.saveScenarios();
   }
 
   async moveScenario(fromIndex, toIndex) {
@@ -130,8 +107,6 @@ export class CohortScenarios extends React.Component {
       ...cohort,
       scenarios
     });
-
-    await this.saveScenarios();
   }
 
   onScenarioOrderChange(fromIndex, toIndex) {

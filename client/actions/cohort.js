@@ -3,8 +3,8 @@ import {
   CREATE_COHORT_SUCCESS,
   CREATE_COHORT_ERROR,
   SET_COHORT,
-  // SET_COHORT_SUCCESS,
-  // SET_COHORT_ERROR,
+  SET_COHORT_SUCCESS,
+  SET_COHORT_ERROR,
   GET_COHORT,
   GET_COHORT_SUCCESS,
   GET_COHORT_ERROR,
@@ -53,10 +53,39 @@ export const createCohort = ({ name }) => async dispatch => {
   }
 };
 
-export const setCohort = cohort => ({
-  type: SET_COHORT,
-  cohort
-});
+export const setCohort = cohort => async dispatch => {
+  dispatch({ type: SET_COHORT, cohort });
+  try {
+    const { scenarios } = cohort;
+    const body = JSON.stringify({
+      scenarios
+    });
+    await (await fetch(`/api/cohort/${cohort.id}/scenarios`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
+    dispatch({ type: SET_COHORT_SUCCESS, cohort });
+  } catch (error) {
+    const { message, status, stack } = error;
+    dispatch({ type: SET_COHORT_ERROR, status, message, stack });
+  }
+};
+
+// router.post('/:id', [
+//   requireUser,
+//   requireUserRole(requiredRoles),
+//   validateRequestBody,
+//   setCohort
+// ]);
+// router.post('/:id/scenarios', [
+//   requireUser,
+//   requireUserRole(requiredRoles),
+//   validateRequestBody,
+//   setCohortScenarios
+// ]);
 
 export const getCohort = id => async dispatch => {
   if (Number.isNaN(id)) {
