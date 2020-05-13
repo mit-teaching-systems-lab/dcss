@@ -9,7 +9,7 @@ const {
   getSlidesPromptComponents,
   addSlide,
   orderSlides,
-  updateSlide,
+  setSlide,
   setAllSlides,
   deleteSlide
 } = require('./endpoints');
@@ -34,7 +34,7 @@ slides.post('/order', [
 slides.post('/:slide_id', [
   requireUserRole(requiredRoles),
   validateRequestBody,
-  updateSlide
+  setSlide
 ]);
 slides.delete('/:slide_id', [requireUserRole(requiredRoles), deleteSlide]);
 

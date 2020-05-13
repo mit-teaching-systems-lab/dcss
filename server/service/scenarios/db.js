@@ -1,6 +1,6 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
-const { addSlide, getSlidesForScenario } = require('./slides/db');
+const { addSlide, getScenarioSlides } = require('./slides/db');
 const { getRunResponses } = require('../runs/db');
 const { getUserForClientByProps } = require('../auth/db');
 
@@ -78,7 +78,7 @@ async function getScenario(scenarioId) {
   const categories = await getScenarioCategories(scenarioId);
   const consent = await getScenarioConsent(scenarioId);
   const finish =
-    (await getSlidesForScenario(scenarioId)).find(slide => slide.is_finish) ||
+    (await getScenarioSlides(scenarioId)).find(slide => slide.is_finish) ||
     (await addFinishSlide(scenarioId));
 
   delete results.rows[0].author_id;
@@ -102,7 +102,7 @@ async function getAllScenarios() {
     const categories = await getScenarioCategories(row.id);
     const consent = await getScenarioConsent(row.id);
     const finish =
-      (await getSlidesForScenario(row.id)).find(slide => slide.is_finish) ||
+      (await getScenarioSlides(row.id)).find(slide => slide.is_finish) ||
       (await addFinishSlide(row.id));
     scenarios.push({
       ...row,
@@ -256,7 +256,7 @@ async function getScenarioByRun(userId) {
 }
 
 async function getScenarioPrompts(scenario_id) {
-  const slides = await getSlidesForScenario(scenario_id);
+  const slides = await getScenarioSlides(scenario_id);
   const components = slides.reduce((accum, slide) => {
     if (slide.components && slide.components.length) {
       accum.push(

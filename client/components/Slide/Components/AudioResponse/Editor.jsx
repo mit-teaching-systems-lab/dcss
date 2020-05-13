@@ -59,7 +59,7 @@ class AudioResponseEditor extends Component {
           <Popup
             content="This is the label that will appear on the Audio Prompt button."
             trigger={
-              <Form.Field inline>
+              <Form.Field>
                 <Input
                   label="Audio Prompt:"
                   name="prompt"

@@ -5,7 +5,7 @@ import { Form, Message, Popup } from 'semantic-ui-react';
 class DataHeader extends Component {
   render() {
     const { content, onChange } = this.props;
-
+    const color = content ? 'grey' : 'red';
     const trigger = (
       <Fragment>
         <Form.TextArea
@@ -25,7 +25,7 @@ class DataHeader extends Component {
         trigger={trigger}
       />
     );
-    return <Message color={content ? 'grey' : 'red'} content={popup} />;
+    return <Message color={color} content={popup} />;
   }
 }
 

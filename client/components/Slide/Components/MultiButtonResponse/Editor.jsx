@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -15,6 +15,7 @@ import DataHeader from '@components/Slide/Components/DataHeader';
 import Sortable from '@components/Sortable';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import '@components/Slide/SlideEditor/SlideEditor.css';
+import './MultiButtonResponse.css';
 
 class MultiButtonResponseEditor extends React.Component {
   constructor(props) {
@@ -22,11 +23,11 @@ class MultiButtonResponseEditor extends React.Component {
     const {
       buttons = [
         /*
-                {
-                    display: "Text on button",
-                    value: "Value button represents"
-                }
-                */
+        {
+            display: "Text on button",
+            value: "Value button represents"
+        }
+        */
       ],
       header = '',
       prompt = '',
@@ -178,18 +179,21 @@ class MultiButtonResponseEditor extends React.Component {
                 );
                 const onBlur = preventEmptyButtonFieldCurriedIndex;
                 const onFocus = preventEmptyButtonFieldCurriedIndex;
+                const key = `${value.scenarioId}-${value.recallId}-${value.responseId}`;
                 return (
                   <EditorMenu
-                    key={`button-editor-${index}`}
+                    key={key}
                     type="button"
                     items={{
                       right: [
                         <Menu.Item
-                          key={`button-menu-${index}`}
-                          name="Edit Button Details"
+                          key={`${key}-display`}
+                          name="Edit button display"
+                          style={{ width: '20rem' }}
                         >
                           <Input
                             index={index}
+                            className="multibuttonresponse__button-label"
                             key={`button-diplay-${index}`}
                             label="Button Display:"
                             name="display"
@@ -198,8 +202,15 @@ class MultiButtonResponseEditor extends React.Component {
                             onBlur={onBlur}
                             onChange={onButtonDetailChange}
                           />
+                        </Menu.Item>,
+                        <Menu.Item
+                          key={`${key}-value`}
+                          name="Edit button value"
+                          style={{ width: '20rem' }}
+                        >
                           <Input
                             index={index}
+                            className="multibuttonresponse__button-label"
                             key={`button-value-${index}`}
                             label="Button Value:"
                             name="value"

@@ -1,7 +1,7 @@
 const { sql, updateQuery } = require('../../../util/sqlHelpers');
 const { query } = require('../../../util/db');
 
-exports.getSlidesForScenario = async scenarioId => {
+exports.getScenarioSlides = async scenarioId => {
   const results = await query(sql`
         SELECT id, title, components, is_finish
         FROM slide
@@ -36,7 +36,7 @@ exports.addSlide = async ({
   return results.rows[0];
 };
 
-exports.updateSlide = async (id, data) => {
+exports.setSlide = async (id, data) => {
   const result = await query(updateQuery('slide', { id }, data));
   return result.rowCount;
 };
@@ -59,7 +59,7 @@ exports.deleteSlide = async ({ scenario_id, id }) => {
   return result.rowCount;
 };
 
-exports.updateSlideOrder = async ({ scenario_id, slide_ids }) => {
+exports.setSlideOrder = async ({ scenario_id, slide_ids }) => {
   const results = await query(
     sql`
 WITH n (slide_id, new_order) as (SELECT jsonb_array_elements_text(${slide_ids}), generate_series(100, 10000000, 10))

@@ -5,23 +5,18 @@ const { reqScenario } = require('./middleware');
 
 const {
   addSlide,
-  getSlidesForScenario,
+  getScenarioSlides,
   setAllSlides,
-  updateSlide
+  setScenarioCategories,
+  setSlide
 } = require('./slides/db');
 const db = require('./db');
 
-exports.getScenario = asyncMiddleware(async function getScenarioAsync(
-  req,
-  res
-) {
+async function getScenarioAsync(req, res) {
   res.send({ scenario: reqScenario(req), status: 200 });
-});
+}
 
-exports.getAllScenarios = asyncMiddleware(async function getAllScenariosAsync(
-  req,
-  res
-) {
+async function getAllScenariosAsync(req, res) {
   try {
     const scenarios = await db.getAllScenarios();
     scenarios.forEach(scenario => {
@@ -37,7 +32,7 @@ exports.getAllScenarios = asyncMiddleware(async function getAllScenariosAsync(
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
 
 async function addScenarioAsync(req, res) {
   const userId = req.session.user.id;
@@ -136,7 +131,7 @@ async function setScenarioAsync(req, res) {
         is_finish
       });
     } else {
-      await updateSlide(finish.id, finish);
+      await setSlide(finish.id, finish);
     }
 
     Object.assign(scenario, {
@@ -154,13 +149,7 @@ async function setScenarioAsync(req, res) {
   }
 }
 
-exports.addScenario = asyncMiddleware(addScenarioAsync);
-exports.setScenario = asyncMiddleware(setScenarioAsync);
-
-exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
-  req,
-  res
-) {
+async function deleteScenarioAsync(req, res) {
   const scenarioId = req.params.scenario_id;
 
   if (!scenarioId) {
@@ -182,74 +171,96 @@ exports.deleteScenario = asyncMiddleware(async function deleteScenarioAsync(
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
 
-exports.softDeleteScenario = asyncMiddleware(
-  async function softDeleteScenarioAsync(req, res) {
-    const scenarioId = req.params.scenario_id;
-
-    if (!scenarioId) {
-      const scenarioDeleteError = new Error(
-        'Scenario id required for scenario deletion'
-      );
-      scenarioDeleteError.status = 409;
-      throw scenarioDeleteError;
-    }
-
-    try {
-      const scenario = await db.softDeleteScenario(scenarioId);
-
-      res.send({ scenario, status: 200 });
-    } catch (apiError) {
-      const error = new Error('Error while soft deleting scenario');
-      error.status = 500;
-      error.stack = apiError.stack;
-      throw error;
-    }
-  }
-);
-
-exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
-  req,
-  res
-) {
+async function softDeleteScenarioAsync(req, res) {
   const scenarioId = req.params.scenario_id;
 
   if (!scenarioId) {
-    const scenarioCopyError = new Error(
+    const error = new Error('Scenario id required for scenario deletion');
+    error.status = 409;
+    throw error;
+  }
+
+  try {
+    const scenario = await db.softDeleteScenario(scenarioId);
+
+    res.send({ scenario, status: 200 });
+  } catch (apiError) {
+    const error = new Error('Error while soft deleting scenario');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
+async function copyScenarioAsync(req, res) {
+  const scenarioId = req.params.scenario_id;
+
+  if (!scenarioId) {
+    const error = new Error(
       'Original scenario id required for creating a copy'
     );
-    scenarioCopyError.status = 409;
-    throw scenarioCopyError;
+    error.status = 409;
+    throw error;
   }
 
   try {
     const userId = req.session.user.id;
-    const { title, description, categories } = reqScenario(req);
-    const originalSlides = await getSlidesForScenario(scenarioId);
+    const { title, description, categories, finish } = reqScenario(req);
     const scenario = await db.addScenario(userId, `${title} COPY`, description);
+    const slides = (await getScenarioSlides(scenarioId)).filter(
+      ({ is_finish }) => !is_finish
+    );
 
-    await db.setScenarioCategories(scenario.id, categories);
+    // When copying a scenario, not only do new responseIds need to be set,
+    // but any recallIds that refer to old responseIds must be mapped to
+    // the copy's responseId
+    const slidesNeedRecallIdUpdate = [];
+    const responseIdMap = {};
 
-    // Check through all components of this slide
-    // for any that are response components...
-    for (const slide of originalSlides) {
+    // 1. Find all response components and assign each one a new responseId,
+    //    while saving a mapping of "old response id" => "new response id"
+    //    to be used in remapping the recallIds.
+    for (const slide of slides) {
       for (const component of slide.components) {
-        // ...When a response component has been
+        // When a response component has been
         // found, assign it a newly generated responseId,
         // to prevent duplicate responseId values from
         // being created.
-        if (Object.prototype.hasOwnProperty.call(component, 'responseId')) {
-          component.responseId = `${component.type}-${uuid()}`;
+        //
+        // This check used to use:
+        //
+        // Object.prototype.hasOwnProperty.call(component, 'responseId')
+        //
+        // But no longer needs to, since responseId cannot be empty.
+        //
+        if (component.responseId) {
+          // Save the original responseId, so we can use
+          // it for mapping to recallId in a second pass.
+          responseIdMap[component.responseId] = `${component.type}-${uuid()}`;
+          component.responseId = responseIdMap[component.responseId];
+        }
+
+        // If any slide uses a ResponseRecall component, add the slide
+        // to an update list.
+        if (component.recallId && !slidesNeedRecallIdUpdate.includes(slide)) {
+          slidesNeedRecallIdUpdate.push(slide);
         }
       }
     }
 
-    const { finish } = await db.getScenario(scenarioId);
+    console.log('slidesNeedRecallIdUpdate:', slidesNeedRecallIdUpdate);
 
-    originalSlides.push(finish);
+    // 2. If any slide has been flagged for recallId remapping, update them.
+    for (const slide of slidesNeedRecallIdUpdate) {
+      for (const component of slide.components) {
+        component.recallId = responseIdMap[component.recallId];
+      }
+    }
 
-    await setAllSlides(scenario.id, originalSlides);
+    await db.setScenarioCategories(scenario.id, categories);
+    await setAllSlides(scenario.id, slides);
 
     const consent = await db.getScenarioConsent(scenarioId);
     const { id, prose } = await db.addConsent(consent);
@@ -271,15 +282,25 @@ exports.copyScenario = asyncMiddleware(async function copyScenarioAsync(
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
 
-exports.getScenarioRunHistory = asyncMiddleware(async function(req, res) {
+async function getScenarioRunHistoryAsync(req, res) {
   const history = await db.getScenarioRunHistory(req.params);
-  res.send({ history });
-});
+  res.send({ history, status: 200 });
+}
 
-exports.getScenarioByRun = asyncMiddleware(async function(req, res) {
+async function getScenarioByRunAsync(req, res) {
   const userId = req.session.user.id;
   const scenarios = await db.getScenarioByRun(userId);
   res.send({ scenarios, status: 200 });
-});
+}
+
+exports.getScenario = asyncMiddleware(getScenarioAsync);
+exports.getAllScenarios = asyncMiddleware(getAllScenariosAsync);
+exports.addScenario = asyncMiddleware(addScenarioAsync);
+exports.setScenario = asyncMiddleware(setScenarioAsync);
+exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);
+exports.softDeleteScenario = asyncMiddleware(softDeleteScenarioAsync);
+exports.copyScenario = asyncMiddleware(copyScenarioAsync);
+exports.getScenarioRunHistory = asyncMiddleware(getScenarioRunHistoryAsync);
+exports.getScenarioByRun = asyncMiddleware(getScenarioByRunAsync);

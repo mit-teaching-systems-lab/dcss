@@ -5,20 +5,23 @@ const db = require('./db');
 
 exports.getSlides = asyncMiddleware(async (req, res) => {
   const { id } = reqScenario(req);
-  const slides = await db.getSlidesForScenario(id);
+  const slides = await db.getScenarioSlides(id);
   res.json({ slides, status: 200 });
 });
 
 exports.getSlidesPromptComponents = asyncMiddleware(async (req, res) => {
   const { id } = reqScenario(req);
-  const slides = await db.getSlidesForScenario(id);
+  const slides = await db.getScenarioSlides(id);
   const components = slides.reduce((accum, slide, index) => {
+    if (slide.is_finish) {
+      return accum;
+    }
     if (slide.components && slide.components.length) {
       accum.push(
         ...slide.components.reduce((accum, component) => {
           if (component.responseId) {
             accum.push({
-              slideIndex: index + 1,
+              index,
               slide,
               ...component
             });
@@ -54,7 +57,7 @@ exports.orderSlides = asyncMiddleware(async (req, res) => {
     return id;
   });
   res.json({
-    slides: await db.updateSlideOrder({
+    slides: await db.setSlideOrder({
       scenario_id,
       slide_ids
     }),
@@ -62,12 +65,12 @@ exports.orderSlides = asyncMiddleware(async (req, res) => {
   });
 });
 
-exports.updateSlide = asyncMiddleware(async (req, res) => {
+exports.setSlide = asyncMiddleware(async (req, res) => {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { slide_id } = req.params;
   const { title, order, components, is_finish = false } = req.body;
   res.json({
-    result: await db.updateSlide(slide_id, {
+    result: await db.setSlide(slide_id, {
       title,
       order,
       components,

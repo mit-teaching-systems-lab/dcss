@@ -41,7 +41,10 @@ class ResponseRecallEditor extends React.Component {
   }
 
   render() {
-    const { slideIndex, recallId } = this.props;
+    const {
+      slideIndex,
+      value: { recallId }
+    } = this.props;
     const { components } = this.state;
     const { onChange } = this;
 
@@ -49,28 +52,33 @@ class ResponseRecallEditor extends React.Component {
       return null;
     }
 
-    const prompts = components.reduce((accum, component, index) => {
+    const slideNumber = slideIndex - 1;
+    const prompts = components.reduce((accum, component, key) => {
       const {
         header,
+        index: nonZeroIndex,
         prompt,
         responseId,
         slide: { title }
       } = component;
 
+      const index = nonZeroIndex - 1;
+
+      console.log(prompt);
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
-      if (!prompt || slideIndex === index) {
+      if (!responseId || slideIndex === index) {
         return accum;
       }
 
       const slideTitle = title ? ` "${title}"` : ``;
-      const text = `Slide #${index + 1} ${slideTitle}: "${prompt}"`;
+      const text = `Slide #${nonZeroIndex} ${slideTitle}: "${prompt}"`;
       const content = (
         <Table celled striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell colSpan="2">
-                Slide #{index + 1}
+                Slide #{nonZeroIndex}
                 {slideTitle}
               </Table.HeaderCell>
             </Table.Row>
@@ -90,22 +98,27 @@ class ResponseRecallEditor extends React.Component {
         </Table>
       );
 
-      accum.push({ key: index, text, content, value: responseId });
+      accum.push({
+        key: `recall-response-${key}`,
+        text,
+        content,
+        value: responseId
+      });
 
       return accum;
     }, []);
 
     if (!prompts.length) {
       prompts.push({
-        key: '',
+        key: 'recall-response-missing',
         text: 'No participant responses available',
-        value: '-1'
+        value: -1
       });
     } else {
       prompts.unshift({
-        key: '',
+        key: 'recall-response-default',
         text: 'No participant response embed has been selected',
-        value: '-1'
+        value: -1
       });
     }
 
@@ -114,7 +127,7 @@ class ResponseRecallEditor extends React.Component {
     return (
       <FormField
         style={{ marginBottom: '1rem' }}
-        label="Optionally embed a participant's response from another slide:"
+        label="Select a participant's previous response for display in this slide: "
         content={
           <Dropdown
             defaultValue={defaultValue}
