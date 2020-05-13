@@ -16,19 +16,21 @@ const SlideComponentList = ({
     overflow: 'hidden',
     margin: '-1rem !important'
   };
-
+  const transform = 'scale(0.45)';
+  const width = '100%';
+  const height = '100%';
   return asSVG ? (
     <div style={style}>
       <svg width="500" height="1000">
         {/* intentionally break out */}
-        <foreignObject transform="scale(0.4)" width="100%" height="100%">
+        <foreignObject transform={transform} width={width} height={height}>
           {/*
-                        Only the first three components
-                        will be rendered. This prevents
-                        the UI from getting sluggish for
-                        the sake of rendering these
-                        entirely non-functional version.
-                    */}
+            Only the first three components
+            will be rendered. This prevents
+            the UI from getting sluggish for
+            the sake of rendering these
+            entirely non-functional version.
+          */}
 
           {components.slice(0, 3).map((value, index) => {
             const { type } = value;
@@ -41,9 +43,9 @@ const SlideComponentList = ({
         <rect
           x="0"
           y="0"
-          transform="scale(0.4)"
-          width="100%"
-          height="100%"
+          transform={transform}
+          width={width}
+          height={height}
           fill="transparent"
         />
       </svg>

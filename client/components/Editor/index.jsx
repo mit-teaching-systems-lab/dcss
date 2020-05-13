@@ -4,6 +4,7 @@ import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import storage from 'local-storage-fallback';
 import EditorMenu from '@components/EditorMenu';
+import Loading from '@components/Loading';
 import notify from '@components/Notification';
 import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
@@ -304,6 +305,14 @@ class Editor extends Component {
   }
 
   render() {
+    if (this.props.isCopyScenario) {
+      return <Loading />;
+    }
+
+    if (!this.state.tabs) {
+      return null;
+    }
+
     const scenarioStatusMenuItem = this.props.status !== undefined && (
       <ScenarioStatusMenuItem
         key="scenario-status-menu-item"
@@ -312,9 +321,6 @@ class Editor extends Component {
         onClick={this.onClickScenarioAction}
       />
     );
-    if (!this.state.tabs) {
-      return null;
-    }
 
     const editTabMenu = Object.keys(this.state.tabs).map(tabType => {
       return (

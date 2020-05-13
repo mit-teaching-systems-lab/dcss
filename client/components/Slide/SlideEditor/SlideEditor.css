@@ -1,40 +1,62 @@
-.editor__component-pane {
-    flex-wrap: nowrap !important;
+.slideeditor__component-pane {
+  flex-wrap: nowrap !important;
+  margin: 1rem 0 0 0 !important;
+  padding: 0.5rem 0 0.5rem 0 !important;
 }
 
-.editor__component-layout-pane-outer {
-    padding-top: 1em;
-    min-width: 530px !important;
-    width: 530px !important;
-    max-width: 530px !important;
+.slideeditor__component-layout-pane-outer {
+  /*padding-top: 1em;*/
+  /* This can be used to constrain the center panel of the editor
+    min-width: 541px !important;
+    width: 541px !important;
+    max-width: 541px !important;
+  */
+  min-width: 541px !important;
+  width: 100% !important;
+  overflow-y: hidden;
+  height: 100%;
 }
 
-.editor__component-select-pane-outer {
-    padding-top: 1em;
-    min-width: 240px !important;
-    width: 240px !important;
-    max-width: 240px !important;
-    padding-left: 0px !important;
+.slideeditor__component-select-pane-outer {
+  /*padding-top: 1em;*/
+  min-width: 240px !important;
+  width: 240px !important;
+  max-width: 240px !important;
+  padding-left: 0px !important;
 }
 
-.editor__component-select-pane-outer > .icon {
-    border: 1px solid red !important;
-    font-size: 1em!important;
-    float: none !important;
-    margin: 0 .75em 0 0!important;
+.slideeditor__component-select-pane-outer > .icon {
+  border: 1px solid red !important;
+  font-size: 1em!important;
+  float: none !important;
+  margin: 0 .75em 0 0!important;
 }
 
-.editor__component-layout-pane {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 65vh !important;
-    padding: 1px !important;
-    border: 0 !important;
-    box-shadow: 0 0 0 0 !important;
-    -webkit-box-shadow: 0 0 0 0 !important;
+.slideeditor__component-select a i {
+  float: none !important;
+  margin: 0 0.5em 0 0 !important;
 }
 
-.responserecall__margin-bottom {
-    margin-bottom: 1rem !important;
+.slideeditor__component-layout-pane {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  /*height: 79vh !important;*/
+height: 70vh !important;
+  padding: 1px !important;
+  border: 0 !important;
+  box-shadow: 0 0 0 0 !important;
+  -webkit-box-shadow: 0 0 0 0 !important;
 }
 
+.sortable__component {
+  /*padding: 0px !important;*/
+  padding: 0.5em !important;
+  border: 0 !important;
+  box-shadow: 0 !important;
+  background-color: #F5F5F5 !important;
+}
+
+
+.ui.form .field>label {
+  padding-left: 3px !important;
+}

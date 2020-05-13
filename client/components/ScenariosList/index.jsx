@@ -67,7 +67,7 @@ class ScenariosList extends Component {
         authorUsername = this.props.match.params.username;
         heading = `Scenarios by ${authorUsername}`;
         scenarios.push(
-          ...this.props.scenarios.filter(({ author: {username} }) => {
+          ...this.props.scenarios.filter(({ author: { username } }) => {
             return username === authorUsername;
           })
         );
@@ -149,7 +149,7 @@ class ScenariosList extends Component {
     this.setState({
       heading: replacementHeading,
       loading: false,
-      scenarios: results,
+      scenarios: results
     });
   }
 

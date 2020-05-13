@@ -23,7 +23,7 @@ import './SlideEditor.css';
 export default class SlideEditor extends Component {
   constructor(props) {
     super(props);
-    const { title = '', components = [] } = props;
+    const { id, title = '', components = [] } = props;
     const activeComponentIndex = -1;
     const mode = 'edit';
     const titleHasFocus = false;
@@ -48,9 +48,7 @@ export default class SlideEditor extends Component {
 
     this.onComponentSelectClick = this.onComponentSelectClick.bind(this);
 
-    this.onTitleBlur = this.onTitleBlur.bind(this);
     this.onTitleChange = this.onTitleChange.bind(this);
-    this.onTitleFocus = this.onTitleFocus.bind(this);
   }
 
   updateSlide() {
@@ -143,7 +141,6 @@ export default class SlideEditor extends Component {
     } = this.state;
 
     const activeComponentIndex = currentActiveComponentIndex + 1;
-
     const component = Components[type].defaultValue({
       responseId: generateResponseId(type)
     });
@@ -153,7 +150,6 @@ export default class SlideEditor extends Component {
     } else {
       components.splice(activeComponentIndex, 0, component);
     }
-
     this.activateComponent({ components, activeComponentIndex }, () => {
       this.updateSlide();
     });
@@ -161,23 +157,10 @@ export default class SlideEditor extends Component {
 
   onTitleChange(event, { name, value, id }) {
     this.setState({ [name]: value });
-
     clearTimeout(this.debouncers[id]);
     this.debouncers[id] = setTimeout(() => {
       this.updateSlide();
-    }, 1000);
-  }
-
-  onTitleFocus() {
-    // this.setState({ titleHasFocus: true });
-  }
-
-  onTitleBlur(event) {
-    // this.setState({ titleHasFocus: false });
-    // "Title" is an uncontrolled input, so setting
-    // state directly here is ok.
-    this.state.title = event.target.value; // eslint-disable-line react/no-direct-mutation-state
-    this.updateSlide();
+    }, 200);
   }
 
   render() {
@@ -188,10 +171,10 @@ export default class SlideEditor extends Component {
       onComponentDelete,
       onComponentOrderChange,
       onComponentSelectClick,
-      onTitleBlur,
-      onTitleChange,
-      onTitleFocus
+      onTitleChange
     } = this;
+
+    const { noSlide, scenarioId } = this.props;
 
     const {
       activeComponentIndex,
@@ -200,20 +183,46 @@ export default class SlideEditor extends Component {
       title
     } = this.state;
 
-    const { scenarioId } = this.props;
+    const noSlideComponents = components.length === 0;
+    const disabled = !!noSlide;
+    const editorMenuItems = {
+      left: [
+        <Menu.Item
+          key="menu-item-slide-number"
+          name="Slide number"
+          className="slideeditormenu__slide-number-width header"
+        >
+          {this.props.index + 1}
+        </Menu.Item>,
 
-    if (!components) {
-      return <span>Loading</span>;
-    }
-
-    const slideComponentSelectOpen =
-      components.length === 0 ? { open: true } : {};
-
-    // Let other operations override the openness
-    // of the component menu.
-    if (titleHasFocus) {
-      slideComponentSelectOpen.open = false;
-    }
+        <Menu.Item key="menu-item-slide-title" name="Slide title">
+          <Input
+            id={`title-${this.props.index}`}
+            disabled={disabled}
+            name="title"
+            placeholder="Slide title (optional)"
+            defaultValue={title}
+            onChange={onTitleChange}
+          />
+        </Menu.Item>
+      ],
+      save: {
+        disabled,
+        onClick: updateSlide
+      },
+      delete: {
+        disabled,
+        onConfirm: () => {
+          this.props.onDelete(this.props.index);
+        }
+      },
+      editable: {
+        disabled: disabled || noSlideComponents,
+        onToggle: (event, data, { mode }) => {
+          this.setState({ mode });
+        }
+      }
+    };
 
     return (
       <Grid>
@@ -222,202 +231,173 @@ export default class SlideEditor extends Component {
             <EditorMenu
               key="slide-editor-menu"
               type="slide"
-              items={{
-                left: [
-                  <Menu.Item
-                    key="menu-item-number"
-                    name="Slide number"
-                    className="slideeditormenu__slide-number-width header"
-                  >
-                    {this.props.index + 1}
-                  </Menu.Item>,
-
-                  <Menu.Item key="menu-item-title" name="Slide title">
-                    <Input
-                      focus
-                      id={`title-${this.props.index}`}
-                      name="title"
-                      placeholder="Slide title (optional)"
-                      value={title}
-                      onChange={onTitleChange}
-                      onFocus={onTitleFocus}
-                      onBlur={onTitleBlur}
-                    />
-                  </Menu.Item>
-                ],
-                save: {
-                  onClick: updateSlide
-                },
-                delete: {
-                  onConfirm: () => {
-                    this.props.onDelete(this.props.index);
-                  }
-                },
-                editable: {
-                  onToggle: (event, data, { mode }) => {
-                    this.setState({ mode });
-                  }
-                }
-              }}
+              items={editorMenuItems}
             />
           </Grid.Row>
           <Grid.Row>
-            <Grid columns={2}>
-              <Grid.Row className="editor__component-pane">
-                <Grid.Column className="editor__component-layout-pane-outer">
-                  <Segment className="editor__component-layout-pane">
-                    {components.length === 0 && (
-                      <Message
-                        floating
-                        icon={
-                          <Icon.Group
-                            size="huge"
-                            className="editormenu__icon-group"
-                          >
-                            <Icon name="bars" />
-                            <Icon corner="top right" name="add" color="green" />
-                          </Icon.Group>
-                        }
-                        header="Add content to this slide!"
-                        content="Using the 'Add to slide' menu on the right, select content components to add to your slide."
-                      />
-                    )}
-
-                    <Sortable onChange={onComponentOrderChange}>
-                      {components.map((value, index) => {
-                        const { type } = value;
-                        if (!Components[type]) return;
-
-                        const {
-                          Editor: ComponentEditor,
-                          Display: ComponentDisplay
-                        } = Components[type];
-
-                        const onConfirm = () => onComponentDelete(index);
-
-                        const isActiveComponent =
-                          activeComponentIndex === index;
-                        const description = `${index + 1}, `;
-                        const movers = (
-                          <Menu.Menu
-                            name="Move component up or down"
-                            position="right"
-                          >
-                            <Menu.Item
-                              icon="caret up"
-                              aria-label={`Move component ${description} up`}
-                              disabled={index === 0}
-                              onClick={() => {
-                                onComponentOrderChange(index, index - 1);
-                              }}
-                            />
-                            <Menu.Item
-                              icon="caret down"
-                              aria-label={`Move component ${description} down`}
-                              disabled={index === components.length - 1}
-                              onClick={() => {
-                                onComponentOrderChange(index, index + 1);
-                              }}
-                            />
-                          </Menu.Menu>
-                        );
-                        const right = isActiveComponent ? [movers] : [];
-
-                        if (value.responseId) {
-                          const requiredCheckbox = (
-                            <Menu.Item
-                              key="menu-item-prompt-required"
-                              name="Set this prompt to 'required'"
+            {noSlide ? (
+              <Grid>
+                <Grid.Row className="slideeditor__component-pane">
+                  <Grid.Column className="slideeditor__component-layout-pane-outer">
+                    <Segment className="slideeditor__component-layout-pane">
+                      {noSlide}
+                    </Segment>
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            ) : (
+              <Grid columns={2}>
+                <Grid.Row className="slideeditor__component-pane">
+                  <Grid.Column className="slideeditor__component-layout-pane-outer">
+                    <Segment className="slideeditor__component-layout-pane">
+                      {noSlideComponents && (
+                        <Message
+                          floating
+                          icon={
+                            <Icon.Group
+                              size="huge"
+                              className="editormenu__icon-group"
                             >
-                              <Checkbox
-                                name="required"
-                                label="Required?"
-                                checked={value.required}
-                                onChange={(event, { checked }) =>
-                                  onComponentChange(index, {
-                                    ...value,
-                                    required: checked
-                                  })
-                                }
+                              <Icon name="newspaper outline" />
+                              <Icon
+                                corner="top right"
+                                name="add"
+                                color="green"
                               />
-                            </Menu.Item>
-                          );
-
-                          right.unshift(requiredCheckbox);
-                        }
-
-                        const onComponentClick = () => {
-                          if (activeComponentIndex !== index) {
-                            activateComponent(index);
+                            </Icon.Group>
                           }
-                        };
+                          header="Add content to this slide!"
+                          content="Select a content component from the menu to right."
+                        />
+                      )}
 
-                        return this.state.mode === 'edit' ? (
-                          <Ref
-                            key={`component-ref-${index}`}
-                            innerRef={node =>
-                              (this.componentRefs[index] = node)
-                            }
-                          >
-                            <Segment
-                              key={`component-edit-${index}`}
-                              className={
-                                index === activeComponentIndex
-                                  ? 'sortable__selected draggable'
-                                  : 'draggable'
-                              }
-                              onClick={onComponentClick}
+                      <Sortable onChange={onComponentOrderChange}>
+                        {components.map((value, index) => {
+                          const { type } = value;
+                          if (!Components[type]) return;
+
+                          const {
+                            Editor: ComponentEditor,
+                            Display: ComponentDisplay
+                          } = Components[type];
+
+                          const onConfirm = () => onComponentDelete(index);
+                          const isActiveComponent =
+                            activeComponentIndex === index;
+                          const description = `${index + 1}, `;
+                          const movers = (
+                            <Menu.Menu
+                              name="Move component up or down"
+                              position="right"
                             >
-                              <EditorMenu
-                                type="component"
-                                items={{
-                                  save: {
-                                    onClick: updateSlide
-                                  },
-                                  delete: {
-                                    onConfirm
-                                  },
-                                  right
+                              <Menu.Item
+                                icon="caret up"
+                                aria-label={`Move component ${description} up`}
+                                disabled={index === 0}
+                                onClick={() => {
+                                  onComponentOrderChange(index, index - 1);
                                 }}
                               />
-
-                              <ComponentEditor
-                                slideIndex={this.props.index}
-                                scenarioId={scenarioId}
-                                value={value}
-                                onChange={v => onComponentChange(index, v)}
+                              <Menu.Item
+                                icon="caret down"
+                                aria-label={`Move component ${description} down`}
+                                disabled={index === components.length - 1}
+                                onClick={() => {
+                                  onComponentOrderChange(index, index + 1);
+                                }}
                               />
-                            </Segment>
-                          </Ref>
-                        ) : (
-                          <Fragment key={`component-fragment-${index}`}>
-                            <ComponentDisplay
-                              key={`component-preview-${index}`}
-                              {...value}
-                            />
-                          </Fragment>
-                        );
-                      })}
-                    </Sortable>
-                  </Segment>
-                </Grid.Column>
-                <Grid.Column className="editor__component-select-pane-outer">
-                  <SlideComponentSelect
-                    mode="menu"
-                    {...slideComponentSelectOpen}
-                    onClick={onComponentSelectClick}
-                  />
+                            </Menu.Menu>
+                          );
+                          const right = isActiveComponent ? [movers] : [];
 
-                  {/*
-                                    <SlideComponentSelect
-                                        mode="menu"
-                                        {...slideComponentSelectOpen}
-                                        onClick={onComponentSelectClick}
-                                    />
-                                    */}
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
+                          if (value.responseId) {
+                            const requiredCheckbox = (
+                              <Menu.Item
+                                key="menu-item-prompt-required"
+                                name="Set this prompt to 'required'"
+                              >
+                                <Checkbox
+                                  name="required"
+                                  label="Required?"
+                                  checked={value.required}
+                                  onChange={(event, { checked }) =>
+                                    onComponentChange(index, {
+                                      ...value,
+                                      required: checked
+                                    })
+                                  }
+                                />
+                              </Menu.Item>
+                            );
+
+                            right.unshift(requiredCheckbox);
+                          }
+
+                          const onComponentClick = () => {
+                            if (activeComponentIndex !== index) {
+                              activateComponent(index);
+                            }
+                          };
+
+                          return this.state.mode === 'edit' ? (
+                            <Ref
+                              key={`component-ref-${index}`}
+                              innerRef={node =>
+                                (this.componentRefs[index] = node)
+                              }
+                            >
+                              <Segment
+                                key={`component-edit-${index}`}
+                                className={
+                                  index === activeComponentIndex
+                                    ? 'sortable__selected sortable__component draggable'
+                                    : 'sortable__component draggable'
+                                }
+                                onClick={onComponentClick}
+                              >
+                                <EditorMenu
+                                  type="component"
+                                  items={{
+                                    save: {
+                                      onClick: updateSlide
+                                    },
+                                    delete: {
+                                      onConfirm
+                                    },
+                                    right
+                                  }}
+                                />
+
+                                <ComponentEditor
+                                  slideIndex={this.props.index}
+                                  scenarioId={scenarioId}
+                                  value={value}
+                                  onChange={v => onComponentChange(index, v)}
+                                />
+                              </Segment>
+                            </Ref>
+                          ) : (
+                            <Fragment key={`component-fragment-${index}`}>
+                              <ComponentDisplay
+                                key={`component-preview-${index}`}
+                                {...value}
+                              />
+                            </Fragment>
+                          );
+                        })}
+                      </Sortable>
+                    </Segment>
+                  </Grid.Column>
+                  <Grid.Column className="slideeditor__component-select-pane-outer">
+                    <SlideComponentSelect
+                      className="slideeditor__component-select"
+                      mode="menu"
+                      onClick={onComponentSelectClick}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            )}
           </Grid.Row>
         </Grid.Column>
       </Grid>
@@ -428,8 +408,10 @@ export default class SlideEditor extends Component {
 SlideEditor.propTypes = {
   scenarioId: PropTypes.any,
   index: PropTypes.number,
+  id: PropTypes.number,
   title: PropTypes.string,
   components: PropTypes.arrayOf(PropTypes.object),
+  noSlide: PropTypes.bool,
   onChange: PropTypes.func,
   onDelete: PropTypes.func
 };

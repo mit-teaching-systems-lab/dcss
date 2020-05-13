@@ -27,7 +27,7 @@ class ConfirmableDeleteButton extends React.Component {
       onCancel,
       onClick,
       onComplete,
-      props: { itemType, onConfirm }
+      props: { disabled, itemType, onConfirm }
     } = this;
 
     const ariaLabel = `Delete ${itemType}`.trim();
@@ -40,7 +40,7 @@ class ConfirmableDeleteButton extends React.Component {
         <Popup
           content={ariaLabel}
           trigger={
-            <Menu.Item onClick={onClick}>
+            <Menu.Item disabled={disabled} onClick={onClick}>
               <Icon name="trash alternate outline" aria-label={ariaLabel} />
             </Menu.Item>
           }
@@ -62,6 +62,7 @@ class ConfirmableDeleteButton extends React.Component {
 }
 
 ConfirmableDeleteButton.propTypes = {
+  disabled: PropTypes.bool,
   itemType: PropTypes.string,
   onConfirm: PropTypes.func.isRequired
 };

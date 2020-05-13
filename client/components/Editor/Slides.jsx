@@ -19,6 +19,7 @@ import {
 // import hash from 'object-hash';
 // import { diff } from 'deep-object-diff';
 import storage from 'local-storage-fallback';
+import AddSlideMessage from '@components/AddSlideMessage';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';
 import Sortable from '@components/Sortable';
@@ -81,7 +82,12 @@ class Slides extends React.Component {
     const slides = (await getSlides(scenarioId)).filter(
       slide => !slide.is_finish
     );
-    this.activateSlide({ activeSlideIndex, slides, loading: false });
+
+    if (slides.length === 0) {
+      await this.onSlideAdd();
+    } else {
+      this.activateSlide({ activeSlideIndex, slides, loading: false });
+    }
   }
 
   // shouldComponentUpdate(nextProps, nextState) {
@@ -163,6 +169,12 @@ class Slides extends React.Component {
   onSlideDelete(index) {
     const { scenarioId } = this.props;
     const slide = this.state.slides[index];
+
+    if (!slide || !slide.id) {
+      // There's no slide to delete, so quietly ignore
+      return;
+    }
+
     const slides = this.state.slides.filter(({ id }) => id !== slide.id);
 
     let activeSlideIndex;
@@ -314,192 +326,181 @@ class Slides extends React.Component {
     } = this;
     const { scenarioId } = this.props;
     const { activeSlideIndex, loading, minimized } = this.state;
-
-    if (loading) {
-      return (
-        <Container fluid>
-          <Grid>
-            <Grid.Column width={3}>
-              <Loading />
-            </Grid.Column>
-            <Grid.Column className="slides__editor-outer-container" width={13}>
-              <Loading />
-            </Grid.Column>
-          </Grid>
-        </Container>
-      );
-    }
-
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
     const minMaxText = `${minimized ? 'Preview' : 'Outline'} slides`;
     const minMaxHide = minimized ? { hidden: true } : {};
 
+    const noSlide = !slides[activeSlideIndex];
+    const promptToAddSlide = noSlide ? (
+      <AddSlideMessage onClick={onSlideAdd} />
+    ) : null;
+
     return (
       <Container fluid>
         <Grid className="slides__editor-all-outer-container">
           <Grid.Column width={3} className="slides__list-outer-container">
-            <Grid.Row>
-              <Menu icon borderless>
-                <Popup
-                  content="Add a slide"
-                  trigger={
-                    <Menu.Item
-                      name="Add a slide"
-                      onClick={() => {
-                        onSlideAdd(activeSlideIndex);
-                      }}
-                    >
-                      <Icon
-                        name="plus square outline"
-                        size="large"
-                        className="editormenu__icon-group"
-                      />
-                      Add a slide
-                    </Menu.Item>
-                  }
-                />
-                {slides.length > 0 && (
-                  <Menu.Menu key="menu-item-slide-options" position="right">
+            {loading ? (
+              <Loading />
+            ) : (
+              <>
+                <Grid.Row>
+                  <Menu icon borderless>
                     <Popup
-                      content="Slide options"
+                      content="Add a slide"
                       trigger={
-                        <Dropdown item icon="options">
-                          <Dropdown.Menu>
-                            <Dropdown.Item
-                              key={`slide-options-1`}
-                              onClick={() => {
-                                onSlideDuplicate(activeSlideIndex);
-                              }}
-                            >
-                              <Icon name="copy outline" />
-                              Duplicate selected slide
-                            </Dropdown.Item>
-                            <Dropdown.Item
-                              key={`slide-options-0`}
-                              onClick={onSlideMinMaxChange}
-                            >
-                              <Icon name={minMaxIcon} />
-                              {minMaxText}
-                            </Dropdown.Item>
-                          </Dropdown.Menu>
-                        </Dropdown>
+                        <Menu.Item name="Add a slide" onClick={onSlideAdd}>
+                          <Icon
+                            name="plus square outline"
+                            size="large"
+                            className="editormenu__icon-group"
+                          />
+                          Add a slide
+                        </Menu.Item>
                       }
                     />
-                  </Menu.Menu>
-                )}
-              </Menu>
-            </Grid.Row>
-            <Segment className="slides__list-inner-container">
-              {slides.length === 0 && (
-                <Message
-                  floating
-                  icon={
-                    <Icon.Group size="huge" className="editormenu__icon-group">
-                      <Icon name="plus square outline" />
-                      <Icon corner="top right" name="add" color="green" />
-                    </Icon.Group>
-                  }
-                  header="Add a slide!"
-                  content="Click the 'Add a slide' button to add your first slide!"
-                  onClick={() => {
-                    onSlideAdd(activeSlideIndex);
-                  }}
-                />
-              )}
-              <Sortable onChange={onSlideOrderChange}>
-                {slides.map((slide, index) => {
-                  const isActiveSlide = index === activeSlideIndex;
-                  const className = isActiveSlide
-                    ? 'slides__list-card sortable__selected'
-                    : 'slides__list-card';
-                  const onActivateSlideClick = () => {
-                    // Update the UI as soon as possible
-                    this.setState({
-                      activeSlideIndex: index
-                    });
-                    this.activateSlide(index);
-                  };
-                  const description = index + 1;
-                  return (
-                    <Grid.Row key={slide.id} className="slides__list-row">
-                      <Ref innerRef={node => (this.slideRefs[index] = node)}>
-                        <Card
-                          className={className}
-                          onClick={onActivateSlideClick}
-                        >
-                          <Card.Content className="slides__list-card-content">
-                            <Card.Header>
-                              <Menu
-                                size="mini"
-                                className="slides__list-card-header-menu-items"
-                                secondary
-                              >
-                                <Menu.Item name={`${index + 1}`} />
+                    {slides.length > 0 && (
+                      <Menu.Menu key="menu-item-slide-options" position="right">
+                        <Popup
+                          content="Slide options"
+                          trigger={
+                            <Dropdown item icon="options">
+                              <Dropdown.Menu>
+                                <Dropdown.Item
+                                  key={`slide-options-0`}
+                                  onClick={() => {
+                                    onSlideDuplicate(activeSlideIndex);
+                                  }}
+                                >
+                                  <Icon name="copy outline" />
+                                  Duplicate selected slide
+                                </Dropdown.Item>
+                                <Dropdown.Item
+                                  key={`slide-options-1`}
+                                  onClick={onSlideMinMaxChange}
+                                >
+                                  <Icon name={minMaxIcon} />
+                                  {minMaxText}
+                                </Dropdown.Item>
+                              </Dropdown.Menu>
+                            </Dropdown>
+                          }
+                        />
+                      </Menu.Menu>
+                    )}
+                  </Menu>
+                </Grid.Row>
 
-                                {slide.title && (
-                                  <Menu.Item
-                                    className="slides__list-card-header-title"
-                                    name={slide.title}
-                                  />
-                                )}
-
-                                {isActiveSlide ? (
-                                  <Menu.Menu
-                                    key="menu-slides-order-change"
-                                    position="right"
-                                  >
-                                    <Button
-                                      key="menu-slides-order-change-up"
-                                      icon="caret up"
-                                      aria-label={`Move slide ${description} up`}
-                                      disabled={index === 0}
-                                      onClick={event => {
-                                        event.stopPropagation();
-                                        onSlideOrderChange(index, index - 1);
-                                      }}
-                                    />
-                                    <Button
-                                      key="menu-slides-order-change-down"
-                                      icon="caret down"
-                                      aria-label={`Move slide ${description} down`}
-                                      disabled={index === slides.length - 1}
-                                      onClick={event => {
-                                        event.stopPropagation();
-                                        onSlideOrderChange(index, index + 1);
-                                      }}
-                                    />
-                                  </Menu.Menu>
-                                ) : null}
-                              </Menu>
-                            </Card.Header>
-                          </Card.Content>
-                          {!minimized ? (
-                            <Card.Content
-                              {...minMaxHide}
-                              className="slides__list-card-content"
+                <Segment className="slides__list-inner-container">
+                  {slides.length === 0 && promptToAddSlide}
+                  <Sortable onChange={onSlideOrderChange}>
+                    {slides.map((slide, index) => {
+                      const isActiveSlide = index === activeSlideIndex;
+                      const className = isActiveSlide
+                        ? 'slides__list-card sortable__selected'
+                        : 'slides__list-card';
+                      const onActivateSlideClick = () => {
+                        // Update the UI as soon as possible
+                        this.setState({
+                          activeSlideIndex: index
+                        });
+                        this.activateSlide(index);
+                      };
+                      const description = index + 1;
+                      return (
+                        <Grid.Row key={slide.id} className="slides__list-row">
+                          <Ref
+                            innerRef={node => (this.slideRefs[index] = node)}
+                          >
+                            <Card
+                              className={className}
+                              onClick={onActivateSlideClick}
                             >
-                              <SlideComponentList
-                                asSVG={true}
-                                components={slide.components}
-                              />
-                            </Card.Content>
-                          ) : null}
-                        </Card>
-                      </Ref>
-                    </Grid.Row>
-                  );
-                })}
-              </Sortable>
-            </Segment>
+                              <Card.Content className="slides__list-card-content-header">
+                                <Card.Header>
+                                  <Menu
+                                    size="mini"
+                                    secondary
+                                    className="slides__list-card-header-menu-items"
+                                    style={{ margin: '0 !important' }}
+                                  >
+                                    <Menu.Item name={`${index + 1}`} />
+
+                                    {slide.title && (
+                                      <Menu.Item
+                                        className="slides__list-card-header-title"
+                                        name={slide.title}
+                                        content={slide.title}
+                                      />
+                                    )}
+
+                                    {isActiveSlide ? (
+                                      <Menu.Menu
+                                        key="menu-slides-order-change"
+                                        position="right"
+                                      >
+                                        <Button
+                                          key="menu-slides-order-change-up"
+                                          icon="caret up"
+                                          aria-label={`Move slide ${description} up`}
+                                          disabled={index === 0}
+                                          onClick={event => {
+                                            event.stopPropagation();
+                                            onSlideOrderChange(
+                                              index,
+                                              index - 1
+                                            );
+                                          }}
+                                        />
+                                        <Button
+                                          key="menu-slides-order-change-down"
+                                          icon="caret down"
+                                          aria-label={`Move slide ${description} down`}
+                                          disabled={index === slides.length - 1}
+                                          onClick={event => {
+                                            event.stopPropagation();
+                                            onSlideOrderChange(
+                                              index,
+                                              index + 1
+                                            );
+                                          }}
+                                        />
+                                      </Menu.Menu>
+                                    ) : null}
+                                  </Menu>
+                                </Card.Header>
+                              </Card.Content>
+                              {!minimized ? (
+                                <Card.Content
+                                  {...minMaxHide}
+                                  className="slides__list-card-content"
+                                >
+                                  <SlideComponentList
+                                    asSVG={true}
+                                    components={slide.components}
+                                  />
+                                </Card.Content>
+                              ) : null}
+                            </Card>
+                          </Ref>
+                        </Grid.Row>
+                      );
+                    })}
+                  </Sortable>
+                </Segment>
+              </>
+            )}
           </Grid.Column>
           <Grid.Column width={13} className="slides__editor-outer-container">
-            {slides[activeSlideIndex] && (
+            {loading ? (
+              <Loading />
+            ) : (
               <SlideEditor
                 key={`slide-editor-${activeSlideIndex}`}
                 scenarioId={scenarioId}
                 index={activeSlideIndex}
                 {...slides[activeSlideIndex]}
+                noSlide={promptToAddSlide}
                 onChange={onSlideChange}
                 onDelete={onSlideDelete}
               />

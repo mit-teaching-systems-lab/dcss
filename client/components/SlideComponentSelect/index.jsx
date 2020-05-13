@@ -36,11 +36,13 @@ class SlideComponentSelect extends Component {
   }
 
   render() {
-    const { mode = 'default', onClick, open } = this.props;
+    const { className = '', mode = 'default', onClick, open } = this.props;
 
-    const props = {};
+    const props = {
+      className
+    };
 
-    if (typeof open !== 'undefined') {
+    if (mode === 'default' && typeof open !== 'undefined') {
       props.open = open;
     }
 
@@ -62,7 +64,7 @@ class SlideComponentSelect extends Component {
         </Dropdown.Menu>
       </Dropdown>
     ) : (
-      <Menu fluid vertical>
+      <Menu {...props} fluid vertical>
         <ComponentItems mode={mode} onComponentItemClick={onClick} />
       </Menu>
     );
@@ -70,6 +72,7 @@ class SlideComponentSelect extends Component {
 }
 
 SlideComponentSelect.propTypes = {
+  className: PropTypes.string,
   open: PropTypes.bool,
   mode: PropTypes.string,
   onClick: PropTypes.func

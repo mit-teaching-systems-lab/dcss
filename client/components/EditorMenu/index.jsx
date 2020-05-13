@@ -38,6 +38,7 @@ export default class EditorMenu extends React.Component {
             trigger={
               <Menu.Item
                 aria-label={`Save ${type}`}
+                disabled={items.save.disabled}
                 name={`save-${type}`}
                 onClick={items.save.onClick}
               >
@@ -49,6 +50,7 @@ export default class EditorMenu extends React.Component {
         {items.delete && (
           <ConfirmableDeleteButton
             aria-label={`Delete ${type}`}
+            disabled={items.delete.disabled}
             name={`delete-${type}`}
             itemType={type}
             onConfirm={items.delete.onConfirm}
@@ -63,6 +65,7 @@ export default class EditorMenu extends React.Component {
                 <Menu.Item
                   aria-label={`Edit ${type}`}
                   name={`edit-${type}`}
+                  disabled={items.editable.disabled}
                   onClick={(...args) => {
                     this.setState({ mode: 'edit' }, () => {
                       args.push(Object.assign({}, this.state));
@@ -81,6 +84,7 @@ export default class EditorMenu extends React.Component {
                 <Menu.Item
                   aria-label={`Preview ${type}`}
                   name={`preview-${type}`}
+                  disabled={items.editable.disabled}
                   onClick={(...args) => {
                     this.setState({ mode: 'preview' }, () => {
                       args.push(Object.assign({}, this.state));
@@ -118,19 +122,31 @@ EditorMenu.propTypes = {
       }
 
       if (items.save) {
-        if (!Object.keys(items.save).every(v => ['onClick'].includes(v))) {
+        if (
+          !Object.keys(items.save).every(v =>
+            ['disabled', 'onClick'].includes(v)
+          )
+        ) {
           return new Error('EditorMenu: Invalid items.save property');
         }
       }
 
       if (items.delete) {
-        if (!Object.keys(items.delete).every(v => ['onConfirm'].includes(v))) {
+        if (
+          !Object.keys(items.delete).every(v =>
+            ['disabled', 'onConfirm'].includes(v)
+          )
+        ) {
           return new Error('EditorMenu: Invalid item.delete property');
         }
       }
 
       if (items.editable) {
-        if (!Object.keys(items.editable).every(v => ['onToggle'].includes(v))) {
+        if (
+          !Object.keys(items.editable).every(v =>
+            ['disabled', 'onToggle'].includes(v)
+          )
+        ) {
           return new Error('EditorMenu: Invalid item.editable property');
         }
       }

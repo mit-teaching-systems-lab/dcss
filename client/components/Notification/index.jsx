@@ -4,6 +4,7 @@ import { toast } from 'react-semantic-toasts';
 const cache = new Set();
 
 export default function notify({
+  color,
   icon = '',
   message = '',
   size = 'tiny',
@@ -18,6 +19,17 @@ export default function notify({
     time,
     type
   };
+
+  if (color) {
+    props.color = color;
+    props.type = undefined;
+  }
+
+  if (type === 'warn') {
+    props.color = 'orange';
+    props.type = undefined;
+  }
+
   const key = hash(props);
 
   if (!cache.has(key)) {
