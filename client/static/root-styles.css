@@ -1,5 +1,6 @@
 #root {
-    margin: 0.5em;
+  margin: 0.5em 0.5em 0 0.5em;
+  height: 100vh;
 }
 
 .ui.form input:not([type]),
@@ -16,5 +17,30 @@
 .ui.form input[type='url'],
 .ui.form select:focus,
 .ui.form textarea {
-    font-size: 1.1456em !important;
+    font-size: 1em !important;
 }
+
+.ui.segment {
+   margin-top: 0.5rem;
+   margin-bottom: 0.5rem;
+}
+
+.ui.segment:first-child {
+   margin-top: 0 !important;
+}
+
+.ui.menu {
+  /*margin: 0.5rem 0 !important;*/
+}
+
+.ui.menu:first-child,
+.ui.menu[class*="top attached"]:first-child
+ {
+  margin-top: 0 !important;
+}
+
+.ui[class*="top attached"].menu {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0 !important;
+}
+
