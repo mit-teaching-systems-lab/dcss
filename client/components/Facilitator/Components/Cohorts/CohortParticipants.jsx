@@ -10,11 +10,12 @@ import {
   Icon,
   Input,
   Menu,
-  Ref,
   Popup,
+  Ref,
   Table
 } from 'semantic-ui-react';
 import _ from 'lodash';
+import storage from 'local-storage-fallback';
 import {
   getCohort,
   getCohortParticipants,
@@ -38,7 +39,18 @@ export class CohortParticipants extends React.Component {
       id = this.props.id;
     }
 
+    this.persistenceKey = `cohort-participants/${id}`;
+    let persisted = JSON.parse(storage.getItem(this.persistenceKey));
+
+    if (!persisted) {
+      persisted = { refresh: false };
+      storage.setItem(this.persistenceKey, JSON.stringify(persisted));
+    }
+
+    const { refresh } = persisted;
+
     this.state = {
+      refresh,
       search: '',
       cohort: {
         id,
@@ -57,11 +69,13 @@ export class CohortParticipants extends React.Component {
       this
     );
     this.onParticipantSearchChange = this.onParticipantSearchChange.bind(this);
+    this.onParticipantRefreshChange = this.onParticipantRefreshChange.bind(this);
   }
 
   async componentDidMount() {
     const {
-      cohort: { id }
+      cohort: { id },
+      refresh
     } = this.state;
 
     const cohort = await this.props.getCohort(Number(id));
@@ -70,14 +84,9 @@ export class CohortParticipants extends React.Component {
       cohort
     });
 
-    this.refreshInterval = setInterval(async () => {
-      const { search, cohort } = this.state;
-      if (!search) {
-        cohort.users = await this.props.getCohortParticipants(Number(id));
-        this.participants = cohort.users.slice();
-        this.setState({ cohort });
-      }
-    }, 1000);
+    if (refresh) {
+      this.participantRefresh();
+    }
   }
 
   async componentWillUnmount() {
@@ -116,13 +125,46 @@ export class CohortParticipants extends React.Component {
     });
   }
 
+
+  participantRefresh() {
+    this.refreshInterval = setInterval(async () => {
+      const { search, cohort } = this.state;
+      if (!search) {
+        cohort.users = await this.props.getCohortParticipants(Number(cohort.id));
+        this.participants = cohort.users.slice();
+        this.setState({ cohort });
+      }
+    }, 1000);
+  }
+
+  onParticipantRefreshChange() {
+    let refresh = !this.state.refresh;
+    this.setState({refresh}, () => {
+      if (!refresh) {
+        clearInterval(this.refreshInterval);
+      } else {
+        this.participantRefresh();
+      }
+      storage.setItem(this.persistenceKey, JSON.stringify(this.state));
+    });
+  }
+
   render() {
     const { onClick } = this.props;
-    const { cohort } = this.state;
-    const { onParticipantSearchChange } = this;
+    const { cohort, refresh } = this.state;
+    const { onParticipantRefreshChange,onParticipantSearchChange } = this;
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
 
+    const refreshIcon = refresh
+      ? 'play'
+      : 'square';
+    const refreshColor = refresh
+      ? 'green'
+      : 'red';
+    const refreshLabel = refresh
+      ? 'Automattically refreshing this list'
+      : 'List will refresh when page is reloaded';
     return (
       <Container fluid className="cohort__table-container">
         <EditorMenu
@@ -130,16 +172,30 @@ export class CohortParticipants extends React.Component {
           items={{
             left: [
               <Menu.Item
-                key="menu-item-cohort-scenarios"
+                key="menu-item-cohort-participants"
                 className="editormenu__padding"
-                name="Scenarios in this Cohort"
+                name="Participants in this Cohort"
                 onClick={this.scrollIntoView}
               >
                 <Icon.Group className="editormenu__icon-group">
                   <Icon name="group" />
                 </Icon.Group>
                 Cohort Participants ({this.props.cohort.users.length})
-              </Menu.Item>
+              </Menu.Item>,
+              <Menu.Item
+                key="menu-item-cohort-participants"
+                className="editormenu__padding"
+                name="Participants in this Cohort"
+                onClick={this.scrollIntoView}
+                onClick={onParticipantRefreshChange}
+              >
+                <Icon.Group className="editormenu__icon-group">
+                  <Icon name="refresh" />
+                  <Icon corner="top right" name={refreshIcon} color={refreshColor} />
+                </Icon.Group>
+                {refreshLabel}
+              </Menu.Item>,
+
             ],
             right: [
               <ConfirmAuth

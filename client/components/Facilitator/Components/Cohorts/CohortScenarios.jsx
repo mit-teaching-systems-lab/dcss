@@ -157,7 +157,12 @@ export class CohortScenarios extends React.Component {
     }, []);
 
     // This is the merged, order corrected list of scenarios.
-    const orderCorrectedScenarios = [...cohortScenarios, ...reducedScenarios];
+    const orderCorrectedScenarios = [
+      ...cohortScenarios,
+      ...reducedScenarios
+    ];
+    console.log(orderCorrectedScenarios);
+    // .filter(({deleted_at}) => deleted_at);
 
     return (
       <Container fluid className="cohort__table-container">
@@ -288,82 +293,84 @@ export class CohortScenarios extends React.Component {
                       </ConfirmAuth>
                       <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
                         <Table.Cell className="cohort__table-cell-options">
-                          <Button.Group
-                            hidden
-                            basic
-                            size="small"
-                            className="cohort__button-group--transparent"
-                          >
-                            <Popup
-                              content="Copy cohort scenario link to clipboard"
-                              trigger={
-                                <Button
-                                  icon
-                                  content={<Icon name="clipboard outline" />}
-                                  onClick={() => copy(url)}
-                                  {...props}
-                                />
-                              }
-                            />
-                            <Popup
-                              content="Run this cohort scenario as a participant"
-                              trigger={
-                                <Button
-                                  icon
-                                  content={<Icon name="play" />}
-                                  onClick={() => {
-                                    location.href = url;
-                                  }}
-                                  {...props}
-                                />
-                              }
-                            />
-
-                            <ConfirmAuth requiredPermission="view_all_data">
+                          {checked ? (
+                            <Button.Group
+                              hidden
+                              basic
+                              size="small"
+                              className="cohort__button-group--transparent"
+                            >
                               <Popup
-                                content="View cohort reponses to prompts in this scenario"
+                                content="Copy cohort scenario link to clipboard"
                                 trigger={
                                   <Button
                                     icon
-                                    content={
-                                      <Icon name="file alternate outline" />
-                                    }
-                                    name={scenario.title}
-                                    onClick={onClickAddTab}
+                                    content={<Icon name="clipboard outline" />}
+                                    onClick={() => copy(url)}
                                     {...props}
                                   />
                                 }
                               />
-                            </ConfirmAuth>
-                            <Popup
-                              content="Move scenario up"
-                              trigger={
-                                <Button
-                                  icon="caret up"
-                                  aria-label="Move scenario up"
-                                  disabled={index === 0}
-                                  onClick={() => {
-                                    onScenarioOrderChange(index, index - 1);
-                                  }}
-                                />
-                              }
-                            />
-                            <Popup
-                              content="Move scenario down"
-                              trigger={
-                                <Button
-                                  icon="caret down"
-                                  aria-label="Move scenario down"
-                                  disabled={
-                                    index === cohortScenarios.length - 1
+                              <Popup
+                                content="Run this cohort scenario as a participant"
+                                trigger={
+                                  <Button
+                                    icon
+                                    content={<Icon name="play" />}
+                                    onClick={() => {
+                                      location.href = url;
+                                    }}
+                                    {...props}
+                                  />
+                                }
+                              />
+
+                              <ConfirmAuth requiredPermission="view_all_data">
+                                <Popup
+                                  content="View cohort reponses to prompts in this scenario"
+                                  trigger={
+                                    <Button
+                                      icon
+                                      content={
+                                        <Icon name="file alternate outline" />
+                                      }
+                                      name={scenario.title}
+                                      onClick={onClickAddTab}
+                                      {...props}
+                                    />
                                   }
-                                  onClick={() => {
-                                    onScenarioOrderChange(index, index + 1);
-                                  }}
                                 />
-                              }
-                            />
-                          </Button.Group>
+                              </ConfirmAuth>
+                              <Popup
+                                content="Move scenario up"
+                                trigger={
+                                  <Button
+                                    icon="caret up"
+                                    aria-label="Move scenario up"
+                                    disabled={index === 0}
+                                    onClick={() => {
+                                      onScenarioOrderChange(index, index - 1);
+                                    }}
+                                  />
+                                }
+                              />
+                              <Popup
+                                content="Move scenario down"
+                                trigger={
+                                  <Button
+                                    icon="caret down"
+                                    aria-label="Move scenario down"
+                                    disabled={
+                                      index === cohortScenarios.length - 1
+                                    }
+                                    onClick={() => {
+                                      onScenarioOrderChange(index, index + 1);
+                                    }}
+                                  />
+                                }
+                              />
+                            </Button.Group>
+                          ) : null}
                         </Table.Cell>
                       </ConfirmAuth>
                       <ClickableTableCell
@@ -426,7 +433,9 @@ CohortScenarios.propTypes = {
 
 const mapStateToProps = state => {
   const { currentCohort: cohort } = state.cohort;
-  const { scenarios } = state;
+  const scenarios = state.scenarios.filter(
+    scenario => scenario.deleted_at === null
+  );
   return { cohort, scenarios };
 };
 
