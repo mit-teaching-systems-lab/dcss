@@ -11,7 +11,6 @@ exports.requireUser = (req, res, next) => {
   next();
 };
 
-// this is technically an "endpoint" but the only one in this whole service for now
 exports.respondWithUser = (req, res) => {
   return res.json(req.session.user);
 };
