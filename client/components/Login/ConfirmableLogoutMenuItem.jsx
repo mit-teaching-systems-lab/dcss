@@ -10,7 +10,6 @@ import {
   Popup
 } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
-import Session from '@utils/session';
 import './ConfirmableLogoutMenuItem.css';
 
 class ConfirmableLogoutMenuItem extends Component {
@@ -37,7 +36,9 @@ class ConfirmableLogoutMenuItem extends Component {
   render() {
     const { open, name } = this.state;
     const { onCancel, onClick, onConfirm } = this;
-    const { username } = Session.isSessionActive() ? Session.getSession() : {};
+    const {
+      user: { username }
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -90,7 +91,8 @@ class ConfirmableLogoutMenuItem extends Component {
 ConfirmableLogoutMenuItem.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
-  }).isRequired
+  }).isRequired,
+  user: PropTypes.object
 };
 
 export default withRouter(ConfirmableLogoutMenuItem);

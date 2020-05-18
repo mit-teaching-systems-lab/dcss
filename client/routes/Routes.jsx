@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import AccountAdmin from '@components/AccountAdmin';
@@ -33,7 +35,7 @@ const makeEditorProps = props => ({
   scenarioId: props.match.params.id
 });
 
-const Routes = () => {
+const Routes = ({ isLoggedIn }) => {
   return (
     <Switch>
       <Route exact path="/" component={ScenariosListAll} />
@@ -54,22 +56,38 @@ const Routes = () => {
         component={ScenariosListCommunity}
       />
 
-      <RedirectRouteForInactiveSession exact path="/my-scenario-data">
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        exact
+        path="/my-scenario-data"
+      >
         <Route component={MyScenarios} />
       </RedirectRouteForInactiveSession>
 
-      <InterceptAnonymizableRoute path="/run/:scenarioId/slide/:activeNonZeroSlideIndex">
+      <InterceptAnonymizableRoute
+        isLoggedIn={isLoggedIn}
+        path="/run/:scenarioId/slide/:activeNonZeroSlideIndex"
+      >
         <Route component={Run} />
       </InterceptAnonymizableRoute>
-      <InterceptAnonymizableRoute path="/run/:scenarioId">
+      <InterceptAnonymizableRoute
+        isLoggedIn={isLoggedIn}
+        path="/run/:scenarioId"
+      >
         <Route component={Run} />
       </InterceptAnonymizableRoute>
 
-      <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId/slide/:activeNonZeroSlideIndex">
+      <InterceptAnonymizableRoute
+        isLoggedIn={isLoggedIn}
+        path="/cohort/:cohortId/run/:scenarioId/slide/:activeNonZeroSlideIndex"
+      >
         <Route render={props => <Run {...props} />} />
       </InterceptAnonymizableRoute>
 
-      <InterceptAnonymizableRoute path="/cohort/:cohortId/run/:scenarioId">
+      <InterceptAnonymizableRoute
+        isLoggedIn={isLoggedIn}
+        path="/cohort/:cohortId/run/:scenarioId"
+      >
         <Route render={props => <Run {...props} />} />
       </InterceptAnonymizableRoute>
 
@@ -85,7 +103,7 @@ const Routes = () => {
         <Route render={props => <Cohorts {...props} activeTab="cohorts" />} />
       </ConfirmAuth>
 
-      <InterceptAnonymizableRoute exact path="/cohort/:id">
+      <InterceptAnonymizableRoute isLoggedIn={isLoggedIn} exact path="/cohort/:id">
         <Route render={props => <Cohort {...props} activeTab="cohort" />} />
       </InterceptAnonymizableRoute>
 
@@ -166,10 +184,18 @@ const Routes = () => {
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/login" component={Login} />
 
-      <RedirectRouteForActiveSession exact path="/login/create-account">
+      <RedirectRouteForActiveSession
+        isLoggedIn={isLoggedIn}
+        exact
+        path="/login/create-account"
+      >
         <Route component={LoginRoutePromptModal} />
       </RedirectRouteForActiveSession>
-      <RedirectRouteForActiveSession exact path="/login/new">
+      <RedirectRouteForActiveSession
+        isLoggedIn={isLoggedIn}
+        exact
+        path="/login/new"
+      >
         <Route component={CreateAccount} />
       </RedirectRouteForActiveSession>
       <Route exact path="/login/anonymous" component={CreateAnonymousAccount} />
@@ -177,4 +203,16 @@ const Routes = () => {
   );
 };
 
-export default Routes;
+Routes.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  user: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  const { isLoggedIn } = state.login;
+  const { user } = state;
+  return { user, isLoggedIn };
+};
+
+export default connect(mapStateToProps)(Routes);
+

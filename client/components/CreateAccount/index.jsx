@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid } from 'semantic-ui-react';
-
 import { logIn } from '@client/actions';
-import Session from '@utils/session';
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -89,13 +87,6 @@ class CreateAccount extends Component {
         permissions,
         username
       });
-
-      Session.create({
-        permissions,
-        timeout: Date.now(),
-        username
-      });
-
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { Button, Form, Grid, Item } from 'semantic-ui-react';
 
 import { logIn, logOut } from '@client/actions';
-import Session from '@utils/session';
 
 const method = 'POST';
 
@@ -60,6 +59,7 @@ class Login extends Component {
       username,
       password
     });
+
     const { error, message } = await (await fetch('/api/auth/login', {
       headers: {
         'Content-Type': 'application/json'
@@ -70,37 +70,15 @@ class Login extends Component {
 
     if (error) {
       this.setState({ message });
-      this.props.logOut('');
     } else {
-      const { permissions } = await (await fetch(
-        '/api/roles/permission'
-      )).json();
-
-      this.props.logIn({
-        username,
-        isLoggedIn: true,
-        permissions
-      });
-      Session.create({
-        username,
-        timeout: Date.now(),
-        permissions
-      });
-
       // Step outside of react to force a real reload
       // after login and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';
     }
   }
 
-  async doLogout() {
-    await fetch('/api/auth/logout', {
-      method
-    });
-    Session.destroy();
-    // Step outside of react and react-router to
-    // force a real request after logout.
-    location.href = '/';
+  doLogout() {
+    this.props.logOut();
   }
 
   render() {

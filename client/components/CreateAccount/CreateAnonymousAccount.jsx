@@ -10,7 +10,6 @@ import {
   Segment
 } from 'semantic-ui-react';
 import { logIn } from '@client/actions';
-import Session from '@utils/session';
 import anonymousUsername from './anonymousUsername';
 import './CreateAnonymousAccount.css';
 
@@ -77,13 +76,6 @@ class CreateAnonymousAccount extends Component {
         permissions,
         username
       });
-
-      Session.create({
-        permissions,
-        timeout: Date.now(),
-        username
-      });
-
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';

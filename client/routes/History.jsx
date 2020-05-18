@@ -9,13 +9,6 @@ class History extends React.Component {
     this.onPopState = this.onPopState.bind(this);
   }
 
-  static propTypes() {
-    return {
-      children: PropTypes.array,
-      history: PropTypes.object
-    };
-  }
-
   componentDidMount() {
     window.addEventListener('popstate', this.onPopState);
   }
@@ -37,7 +30,8 @@ class History extends React.Component {
 }
 
 History.propTypes = {
-  children: PropTypes.array
+  children: PropTypes.array,
+  history: PropTypes.object
 };
 
 export default withRouter(History);

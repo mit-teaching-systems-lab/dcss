@@ -7,8 +7,6 @@ import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import ScenariosList from '@components/ScenariosList';
 
-import Session from '@utils/session';
-
 /**
  * Special case components for solving routing issues. Component state
  * doesn't update when navigating to exact same component.
@@ -42,34 +40,35 @@ export const Logout = props => {
   return <Login {...props} mode="logout" />;
 };
 
-export const InterceptAnonymizableRoute = ({ children, ...rest }) => {
+export const InterceptAnonymizableRoute = ({
+  children,
+  isLoggedIn,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
       render={props => {
-        return Session.isSessionActive() ? (
-          children
-        ) : (
-          <LoginRoutePromptModal {...props} />
-        );
+        return isLoggedIn ? children : <LoginRoutePromptModal {...props} />;
       }}
     />
   );
 };
 
 InterceptAnonymizableRoute.propTypes = {
+  isLoggedIn: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired
 };
 
-export const RedirectRouteForActiveSession = ({ children, ...rest }) => {
+export const RedirectRouteForActiveSession = ({ children, isLoggedIn, ...rest }) => {
   return (
     <Route
       {...rest}
       render={() => {
-        if (!Session.isSessionActive()) {
+        if (!isLoggedIn) {
           return children;
         }
         location.href = '/';
@@ -79,18 +78,23 @@ export const RedirectRouteForActiveSession = ({ children, ...rest }) => {
 };
 
 RedirectRouteForActiveSession.propTypes = {
+  isLoggedIn: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired
 };
 
-export const RedirectRouteForInactiveSession = ({ children, ...rest }) => {
+export const RedirectRouteForInactiveSession = ({
+  children,
+  isLoggedIn,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}
       render={() => {
-        if (Session.isSessionActive()) {
+        if (isLoggedIn) {
           return children;
         }
         location.href = '/login';
@@ -100,6 +104,7 @@ export const RedirectRouteForInactiveSession = ({ children, ...rest }) => {
 };
 
 RedirectRouteForInactiveSession.propTypes = {
+  isLoggedIn: PropTypes.bool,
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
