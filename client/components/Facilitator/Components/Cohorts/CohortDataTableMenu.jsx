@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import PropTypes from 'prop-types';
 import { Icon, Menu, Popup } from 'semantic-ui-react';
-import ConfirmAuth from '@components/ConfirmAuth';
 import { getCohort } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
+import ConfirmAuth from '@components/ConfirmAuth';
 import './Cohort.css';
 
-export class CohortDataTableMenu extends React.Component {
+export class CohortDataTableMenu extends Component {
   constructor(props) {
     super(props);
 
@@ -35,33 +35,39 @@ export class CohortDataTableMenu extends React.Component {
   render() {
     const { onClick } = this;
 
+    const menuItemClose = (
+      <Menu.Item name="close" onClick={onClick}>
+        <Icon name="close" />
+      </Menu.Item>
+    );
+
+    const menuItemRefresh = (
+      <Menu.Item name="refresh" onClick={onClick}>
+        <Icon name="refresh" />
+      </Menu.Item>
+    );
+
+    const menuItemDownload = (
+      <Menu.Item name="download" onClick={onClick}>
+        <Icon name="download" />
+      </Menu.Item>
+    );
+
     return (
       <Menu icon>
         <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
           <Popup
             content="Close this data table tab"
-            trigger={
-              <Menu.Item name="close" onClick={onClick}>
-                <Icon name="close" />
-              </Menu.Item>
-            }
+            trigger={menuItemClose}
           />
         </ConfirmAuth>
         <Popup
           content="Refresh this data"
-          trigger={
-            <Menu.Item name="refresh" onClick={onClick}>
-              <Icon name="refresh" />
-            </Menu.Item>
-          }
+          trigger={menuItemRefresh}
         />
         <Popup
           content="Download the data from this data table tab"
-          trigger={
-            <Menu.Item name="download" onClick={onClick}>
-              <Icon name="download" />
-            </Menu.Item>
-          }
+          trigger={menuItemDownload}
         />
       </Menu>
     );

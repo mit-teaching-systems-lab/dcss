@@ -24,6 +24,7 @@ import {
 import EditorMenu from '@components/EditorMenu';
 import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';
+import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
 import './Cohort.css';
 
@@ -80,6 +81,7 @@ export class CohortParticipants extends React.Component {
 
     const cohort = await this.props.getCohort(Number(id));
 
+    this.participants = cohort.users.slice();
     this.setState({
       cohort
     });
@@ -104,18 +106,22 @@ export class CohortParticipants extends React.Component {
     const { cohort } = this.props;
 
     const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
-
-    const users = participants.filter(scenario => {
-      if (escapedRegExp.test(scenario.username)) {
+    let users = participants.filter(participant => {
+      if (escapedRegExp.test(participant.username)) {
         return true;
       }
 
-      if (escapedRegExp.test(scenario.email)) {
+      if (escapedRegExp.test(participant.email)) {
         return true;
       }
       return false;
     });
 
+    if (!value) {
+      users = this.participants;
+    }
+
+    console.log(users);
     this.setState({
       search: value,
       cohort: {
@@ -185,7 +191,7 @@ export class CohortParticipants extends React.Component {
               <Menu.Item
                 key="menu-item-cohort-participants"
                 className="editormenu__padding"
-                name="Participants in this Cohort"
+                name="Control participant list refresh"
                 onClick={this.scrollIntoView}
                 onClick={onParticipantRefreshChange}
               >
@@ -259,25 +265,25 @@ export class CohortParticipants extends React.Component {
                       style={{ cursor: 'pointer' }}
                     >
                       {/*
-                                            <Table.Cell
-                                                key={`participants-cell-checkbox-${index}`}
-                                                className="cohort__table-cell-first"
-                                            >
-                                                <Popup
-                                                    content="Adding participants is not available in this version of Cohorts"
-                                                    trigger={
-                                                        <Checkbox
-                                                            disabled
-                                                            key={`participants-checkbox-${index}`}
-                                                            value={user.id}
-                                                            onClick={
-                                                                onParticipantCheckboxClick
-                                                            }
-                                                        />
-                                                    }
-                                                />
-                                            </Table.Cell>
-                                            */}
+                      <Table.Cell
+                          key={`participants-cell-checkbox-${index}`}
+                          className="cohort__table-cell-first"
+                      >
+                          <Popup
+                              content="Adding participants is not available in this version of Cohorts"
+                              trigger={
+                                  <Checkbox
+                                      disabled
+                                      key={`participants-checkbox-${index}`}
+                                      value={user.id}
+                                      onClick={
+                                          onParticipantCheckboxClick
+                                      }
+                                  />
+                              }
+                          />
+                      </Table.Cell>
+                      */}
 
                       <ConfirmAuth requiredPermission="view_all_data">
                         <Popup
@@ -304,7 +310,9 @@ export class CohortParticipants extends React.Component {
                   key={`row-empty-results`}
                   className="cohort__table-thead-tbody-tr"
                 >
-                  <Table.Cell>No participants match your search</Table.Cell>
+                  <Table.Cell>
+                    <Loading />
+                  </Table.Cell>
                 </Table.Row>
               )}
             </Table.Body>

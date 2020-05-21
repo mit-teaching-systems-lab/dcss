@@ -81,6 +81,9 @@
     overflow-x: auto;
     overflow-y: hidden;
 }
+.cohort__tab-menu--overflow::-webkit-scrollbar {
+    height: 2px !important;
+}
 
 
 .cohort__tab-menu--button-transparent {

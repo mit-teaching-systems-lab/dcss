@@ -10,6 +10,7 @@ import {
   Segment
 } from 'semantic-ui-react';
 import { logIn } from '@client/actions';
+import Loading from '@components/Loading';
 import anonymousUsername from './anonymousUsername';
 import './CreateAnonymousAccount.css';
 
@@ -110,7 +111,7 @@ class CreateAnonymousAccount extends Component {
                 <code>{username}</code>
               </Header>
             ) : (
-              <Loader active inline="centered" />
+              <Loading />
             )}
           </Segment>
 

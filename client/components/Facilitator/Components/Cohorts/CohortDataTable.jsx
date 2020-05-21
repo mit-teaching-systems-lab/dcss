@@ -7,7 +7,6 @@ import {
   Grid,
   Icon,
   Image,
-  Loader,
   Modal,
   Segment,
   Table
@@ -20,6 +19,7 @@ import { getRunData } from '@client/actions/run';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
 import ContentSlide from '@components/Scenario/ContentSlide';
+import Loading from '@components/Loading';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import CohortDataTableMenu from './CohortDataTableMenu';
@@ -60,7 +60,7 @@ export class CohortDataTable extends React.Component {
 
     this.state = {
       isScenarioDataTable: false,
-      initialRequestMade: false,
+      isReady: false,
       prompts: [],
       responses: [],
       tables: []
@@ -89,7 +89,7 @@ export class CohortDataTable extends React.Component {
     if (participantId || runId || scenarioId) {
       await this.refresh();
       this.setState({
-        initialRequestMade: true
+        isReady: true
       });
     }
   }
@@ -115,10 +115,10 @@ export class CohortDataTable extends React.Component {
     if (isScenarioDataTable) {
       /*
 
-                prompts:    an array of prompts for a single scenario
-                responses:  an array of responses from all participants
-                            in this scenario.
-             */
+        prompts:    an array of prompts for a single scenario
+        responses:  an array of responses from all participants
+                    in this scenario.
+      */
 
       const reduced = reduceResponses('username', responses);
       for (const user of this.props.cohort.users) {
@@ -273,7 +273,7 @@ export class CohortDataTable extends React.Component {
   }
 
   render() {
-    const { isScenarioDataTable, initialRequestMade, tables } = this.state;
+    const { isScenarioDataTable, isReady, tables } = this.state;
     const { leftColVisible = true, source } = this.props;
     const { onDataTableMenuClick } = this;
     const leftColHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
@@ -336,20 +336,13 @@ export class CohortDataTable extends React.Component {
         })}
       </React.Fragment>
     ) : (
-      <Segment>
-        {initialRequestMade ? (
-          <React.Fragment>
-            There is currently no data to display here.
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <Dimmer active>
-              <Loader />
-            </Dimmer>
-            <Image src="/images/wireframe/short-paragraph.png" />
-          </React.Fragment>
-        )}
-      </Segment>
+      isReady ? (
+        <Segment>
+          There is currently no data to display here.
+        </Segment>
+      ) : (
+        <Loading />
+      )
     );
   }
 }

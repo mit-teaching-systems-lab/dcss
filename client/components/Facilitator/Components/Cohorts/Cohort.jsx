@@ -89,10 +89,24 @@ export class Cohort extends React.Component {
       tabs
     } = this.state;
     const isScenario = type === 'scenario';
-    const content = source[isScenario ? 'title' : 'username'];
     const icon = isScenario ? 'content' : 'user outline';
     const key = `cohort-${id}-${type}-${source.id}`;
     const tab = tabs.find(tab => tab.menuItem.key === key);
+    const content = source[isScenario ? 'title' : 'username'];
+
+    // const display = source[isScenario ? 'title' : 'username'];
+    // const content = (
+    //   <>
+    //     {display}
+    //     <Button
+    //       circular
+    //       icon="close"
+    //       floated="right"
+    //       size="mini"
+    //       style={{ fontSize: '0.75em', marginLeft: '1rem' }}
+    //     />
+    //   </>
+    // );
 
     if (!tab) {
       tabs.push({
@@ -198,35 +212,35 @@ export class Cohort extends React.Component {
                   }
                 />
                 {/*
-                                <Popup
-                                    content="Run this cohort as a participant"
-                                    trigger={
-                                        <Menu.Item
-                                            icon
-                                            content={<Icon name="play" />}
-                                            onClick={() => {
-                                                alert(
-                                                    'View cohort as participant. (Feature not available in this version)'
-                                                );
-                                            }}
-                                        />
-                                    }
-                                />
-                                <Popup
-                                    content="Download the data from this data table tab"
-                                    trigger={
-                                        <Menu.Item
-                                            icon
-                                            content={<Icon name="download" />}
-                                            onClick={() => {
-                                                alert(
-                                                    'Download all data from this cohort. (Feature not available in this version)'
-                                                );
-                                            }}
-                                        />
-                                    }
-                                />
-                            */}
+                  <Popup
+                      content="Run this cohort as a participant"
+                      trigger={
+                          <Menu.Item
+                              icon
+                              content={<Icon name="play" />}
+                              onClick={() => {
+                                  alert(
+                                      'View cohort as participant. (Feature not available in this version)'
+                                  );
+                              }}
+                          />
+                      }
+                  />
+                  <Popup
+                      content="Download the data from this data table tab"
+                      trigger={
+                          <Menu.Item
+                              icon
+                              content={<Icon name="download" />}
+                              onClick={() => {
+                                  alert(
+                                      'Download all data from this cohort. (Feature not available in this version)'
+                                  );
+                              }}
+                          />
+                      }
+                  />
+              */}
               </Menu>
             </ConfirmAuth>
             <CohortScenarios key="cohort-scenarios" id={id} onClick={onClick} />
