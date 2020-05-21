@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Icon, Input, Menu, Table } from 'semantic-ui-react';
@@ -34,12 +35,19 @@ class AccountAdmin extends Component {
   }
 
   async componentDidMount() {
-    const { users = [] } = await (await fetch('api/roles')).json();
+    const {
+      error,
+      users
+    } = await (await fetch('api/roles')).json();
 
-    this.props.setUsers({ users });
-    this.setState({
-      users: this.props.users
-    });
+    if (error) {
+      this.props.history.push('/logout');
+    } else {
+      this.props.setUsers({ users });
+      this.setState({
+        users: this.props.users
+      });
+    }
   }
 
   onAccountSearchChange(event, props) {
@@ -140,6 +148,9 @@ class AccountAdmin extends Component {
 }
 
 AccountAdmin.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   setUsers: PropTypes.func.isRequired,
   users: PropTypes.array
 };
@@ -153,7 +164,7 @@ const mapDispatchToProps = {
   setUsers
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(AccountAdmin);
+)(AccountAdmin));
