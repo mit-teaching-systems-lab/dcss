@@ -250,8 +250,6 @@ async function copyScenarioAsync(req, res) {
       }
     }
 
-    console.log('slidesNeedRecallIdUpdate:', slidesNeedRecallIdUpdate);
-
     // 2. If any slide has been flagged for recallId remapping, update them.
     for (const slide of slidesNeedRecallIdUpdate) {
       for (const component of slide.components) {
