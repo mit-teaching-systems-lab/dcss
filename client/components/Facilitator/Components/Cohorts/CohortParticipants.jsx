@@ -121,7 +121,6 @@ export class CohortParticipants extends React.Component {
       users = this.participants;
     }
 
-    console.log(users);
     this.setState({
       search: value,
       cohort: {

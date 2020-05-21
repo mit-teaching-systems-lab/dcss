@@ -161,8 +161,6 @@ export class CohortScenarios extends React.Component {
       ...cohortScenarios,
       ...reducedScenarios
     ];
-    console.log(orderCorrectedScenarios);
-    // .filter(({deleted_at}) => deleted_at);
 
     return (
       <Container fluid className="cohort__table-container">

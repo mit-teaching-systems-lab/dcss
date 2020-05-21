@@ -34,20 +34,28 @@ class MyScenarios extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getCohorts();
-    await this.props.getUserRuns();
-    await this.props.getScenarios();
-    await this.props.getUser();
+    const {
+      error
+    } = await (await fetch('/api/roles')).json();
 
-    const { source } = this.state;
+    if (error) {
+      this.props.history.push('/logout');
+    } else {
+      await this.props.getCohorts();
+      await this.props.getUserRuns();
+      await this.props.getScenarios();
+      await this.props.getUser();
 
-    this.setState({
-      ...this.state,
-      source: {
-        ...source,
-        participantId: this.props.user.id
-      }
-    });
+      const { source } = this.state;
+
+      this.setState({
+        ...this.state,
+        source: {
+          ...source,
+          participantId: this.props.user.id
+        }
+      });
+    }
   }
 
   onPageChange(event, { activePage }) {
@@ -269,6 +277,9 @@ RunMenu.propTypes = {
 };
 
 MyScenarios.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   runs: PropTypes.array,
   cohorts: PropTypes.array,
   scenarios: PropTypes.array,

@@ -37,6 +37,7 @@ export class Cohorts extends React.Component {
     const id = path === '/cohort/:id' && params ? params.id : null;
 
     this.state = {
+      isReady: false,
       createIsVisible: false,
       cohort: new CohortEmpty({ id }),
       cohorts: [],
@@ -51,13 +52,22 @@ export class Cohorts extends React.Component {
   }
 
   async componentDidMount() {
-    await this.props.getCohorts();
-    await this.props.getScenarios();
+    const {
+      error
+    } = await (await fetch('/api/roles')).json();
 
-    this.setState({
-      cohorts: this.props.cohorts,
-      scenarios: this.props.scenarios
-    });
+    if (error) {
+      this.props.history.push('/logout');
+    } else {
+      await this.props.getCohorts();
+      await this.props.getScenarios();
+
+      this.setState({
+        isReady: true,
+        cohorts: this.props.cohorts,
+        scenarios: this.props.scenarios
+      });
+    }
   }
 
   async onSubmitCreateCohort() {
@@ -130,7 +140,7 @@ export class Cohorts extends React.Component {
   }
 
   render() {
-    const { cohort, cohorts, createIsVisible } = this.state;
+    const { isReady, cohort, cohorts, createIsVisible } = this.state;
     const {
       onCancelCreateCohort,
       onChangeCohortName,
@@ -138,6 +148,10 @@ export class Cohorts extends React.Component {
       onSearchChange,
       onSubmitCreateCohort
     } = this;
+
+    if (!isReady) {
+      return <Loading />;
+    }
 
     return (
       <React.Fragment>
@@ -227,6 +241,9 @@ export class Cohorts extends React.Component {
 }
 
 Cohorts.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   cohorts: PropTypes.array,
   cohort: PropTypes.object,
   status: PropTypes.oneOf(['success', 'error', 'requesting', 'init']),

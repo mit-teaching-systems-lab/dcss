@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { Parser } from 'json2csv';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import {
   Button,
   //This is disabled for Jamboree.
@@ -19,6 +20,7 @@ import { getScenarios, getScenarioRunHistory } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
+import Loading from '@components/Loading';
 import './Researcher.css';
 
 const ROWS_PER_PAGE = 10;
@@ -32,7 +34,7 @@ class Researcher extends Component {
     super(props);
 
     this.state = {
-      loading: true,
+      isReady: false,
       activePage: 1,
       scenario: null,
       cohort: null
@@ -44,10 +46,17 @@ class Researcher extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getScenarios();
-    await this.props.getAllCohorts();
+    const {
+      error
+    } = await (await fetch('/api/roles')).json();
 
-    this.setState({ loading: false });
+    if (error) {
+      this.props.history.push('/logout');
+    } else {
+      await this.props.getScenarios();
+      await this.props.getAllCohorts();
+      this.setState({ isReady: true });
+    }
   }
 
   // This is disabled for Jamboree.
@@ -114,7 +123,7 @@ class Researcher extends Component {
 
   render() {
     const { onPageChange, onScenarioDataClick } = this;
-    const { activePage, loading } = this.state;
+    const { activePage, isReady } = this.state;
     // This is disabled for Jamboree.
     // const { cohorts } = this.props;
     const scenarios = this.props.scenarios.filter(
@@ -128,8 +137,8 @@ class Researcher extends Component {
       scenariosIndex + ROWS_PER_PAGE
     );
 
-    if (loading) {
-      return null;
+    if (!isReady) {
+      return <Loading />;
     }
 
     return (
@@ -255,7 +264,9 @@ ResearcherMenu.propTypes = {
 
 Researcher.propTypes = {
   cohorts: PropTypes.array,
-  history: PropTypes.object,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   runs: PropTypes.array,
   scenarios: PropTypes.array,
   getAllCohorts: PropTypes.func,
@@ -268,8 +279,8 @@ Researcher.propTypes = {
 
 const mapStateToProps = state => {
   const { allCohorts: cohorts } = state.cohort;
-  const { history, runs, scenarios, user } = state;
-  return { cohorts, history, runs, scenarios, user };
+  const { runs, scenarios, user } = state;
+  return { cohorts, runs, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -279,7 +290,7 @@ const mapDispatchToProps = dispatch => ({
   getUser: () => dispatch(getUser())
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Researcher);
+)(Researcher));

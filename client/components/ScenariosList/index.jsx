@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
 import _ from 'lodash';
 import changeCase from 'change-case';
@@ -21,6 +22,7 @@ class ScenariosList extends Component {
 
     this.state = {
       category,
+      isReady: false,
       heading: '',
       loading: true,
       scenarios: [],
@@ -36,8 +38,19 @@ class ScenariosList extends Component {
   }
 
   async componentDidMount() {
-    await this.getScenarios();
-    await this.reduceScenarios();
+    const {
+      error
+    } = await (await fetch('/api/roles')).json();
+
+    if (error) {
+      this.props.history.push('/logout');
+    } else {
+      await this.getScenarios();
+      await this.reduceScenarios();
+      this.setState({
+        isReady: true
+      });
+    }
   }
 
   moveDeletedScenarios(scenarios = []) {
@@ -157,8 +170,9 @@ class ScenariosList extends Component {
   }
 
   render() {
-    const { heading, loading, scenarios } = this.state;
+    const { isReady, heading, loading, scenarios } = this.state;
     const { onClickCreateScenario, onSearchChange } = this;
+
     return (
       <React.Fragment>
         <EditorMenu
@@ -211,7 +225,7 @@ class ScenariosList extends Component {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column stretched>
-                {!loading ? (
+                {isReady ? (
                   <Card.Group itemsPerRow={4} stackable>
                     <ScenarioEntries
                       scenarios={scenarios}
@@ -231,6 +245,9 @@ class ScenariosList extends Component {
 }
 
 ScenariosList.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   category: PropTypes.string,
   getScenarios: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
@@ -256,7 +273,7 @@ const mapDispatchToProps = {
   getScenarios
 };
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(ScenariosList);
+)(ScenariosList));

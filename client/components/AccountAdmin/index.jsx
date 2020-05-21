@@ -38,7 +38,7 @@ class AccountAdmin extends Component {
     const {
       error,
       users
-    } = await (await fetch('api/roles')).json();
+    } = await (await fetch('/api/roles')).json();
 
     if (error) {
       this.props.history.push('/logout');

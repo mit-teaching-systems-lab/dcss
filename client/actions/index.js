@@ -21,7 +21,7 @@ export const logOut = () => async dispatch => {
     });
     // Step outside of react and react-router to
     // force a real request after logout.
-    location.href = location.origin;
+    location.href = `${location.origin}/login`;
   } catch (error) {
     void error;
   }
