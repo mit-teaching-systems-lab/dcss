@@ -30,7 +30,7 @@ exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(
   next();
 });
 
-exports.createUser = asyncMiddleware(async function createUser(req, res, next) {
+async function createUserAsync(req, res, next) {
   const { username, password, email } = req.body;
   const created = await db.createUser({ email, username, password });
 
@@ -49,9 +49,9 @@ exports.createUser = asyncMiddleware(async function createUser(req, res, next) {
   };
 
   next();
-});
+}
 
-exports.loginUser = asyncMiddleware(async function loginUser(req, res, next) {
+async function loginUserAsync(req, res, next) {
   const { username, email, password } = req.body;
   const user = await db.getUserByProps({ username, email });
 
@@ -96,4 +96,8 @@ exports.loginUser = asyncMiddleware(async function loginUser(req, res, next) {
   }
 
   throw invalidUserError;
-});
+}
+
+
+exports.createUser = asyncMiddleware(createUserAsync);
+exports.loginUser = asyncMiddleware(loginUserAsync);

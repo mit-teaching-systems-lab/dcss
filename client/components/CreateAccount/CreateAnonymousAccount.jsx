@@ -68,15 +68,6 @@ class CreateAnonymousAccount extends Component {
     }
 
     if (username) {
-      const { permissions } = await (await fetch(
-        '/api/roles/permission'
-      )).json();
-
-      this.props.logIn({
-        isLoggedIn: true,
-        permissions,
-        username
-      });
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';

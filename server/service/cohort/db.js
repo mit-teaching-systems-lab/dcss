@@ -10,15 +10,15 @@ exports.createCohort = async ({ name, user_id }) => {
 
   return await withClientTransaction(async client => {
     // create a cohort
-    const create = await client.query(
-      sql`INSERT INTO cohort (name) VALUES (${name}) RETURNING *`
-    );
+    const create = await client.query(sql`
+      INSERT INTO cohort (name) VALUES (${name}) RETURNING *
+    `);
     const cohort = create.rows[0];
     // assign user as owner
-    await client.query(
-      sql`INSERT INTO cohort_user_role (cohort_id, user_id, role)
-            VALUES (${cohort.id}, ${user_id}, 'owner')`
-    );
+    await client.query(sql`
+      INSERT INTO cohort_user_role (cohort_id, user_id, role)
+      VALUES (${cohort.id}, ${user_id}, 'owner')
+    `);
     return cohort;
   });
 };
@@ -26,14 +26,14 @@ exports.createCohort = async ({ name, user_id }) => {
 async function getCohortScenarios(cohort_id) {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT scenario_id as id
-            FROM cohort_scenario
-            INNER JOIN scenario
-                ON cohort_scenario.scenario_id = scenario.id
-            WHERE cohort_scenario.cohort_id = ${cohort_id}
-              AND scenario.deleted_at IS NULL
-            ORDER BY cohort_scenario.id;
-        `);
+      SELECT scenario_id as id
+      FROM cohort_scenario
+      INNER JOIN scenario
+          ON cohort_scenario.scenario_id = scenario.id
+      WHERE cohort_scenario.cohort_id = ${cohort_id}
+        AND scenario.deleted_at IS NULL
+      ORDER BY cohort_scenario.id;
+    `);
     return result.rows.map(row => row.id);
   });
 }
@@ -41,12 +41,12 @@ async function getCohortScenarios(cohort_id) {
 async function getCohortRuns(cohort_id) {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT *
-            FROM run
-            INNER JOIN cohort_run
-                ON run.id = cohort_run.run_id
-            WHERE cohort_run.cohort_id = ${cohort_id};
-        `);
+      SELECT *
+      FROM run
+      INNER JOIN cohort_run
+          ON run.id = cohort_run.run_id
+      WHERE cohort_run.cohort_id = ${cohort_id};
+    `);
 
     return result.rows;
   });
@@ -55,12 +55,12 @@ async function getCohortRuns(cohort_id) {
 async function getCohortUsers(cohort_id) {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT *
-            FROM users
-            INNER JOIN cohort_user_role
-                ON users.id = cohort_user_role.user_id
-            WHERE cohort_user_role.cohort_id = ${cohort_id};
-        `);
+      SELECT *
+      FROM users
+      INNER JOIN cohort_user_role
+          ON users.id = cohort_user_role.user_id
+      WHERE cohort_user_role.cohort_id = ${cohort_id};
+    `);
 
     return result.rows;
   });
@@ -69,12 +69,12 @@ async function getCohortUsers(cohort_id) {
 exports.getCohort = async ({ id }) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
-            FROM cohort
-            LEFT JOIN cohort_user_role
-                ON cohort_user_role.cohort_id = cohort.id
-            WHERE cohort.id = ${id}
-        `);
+      SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
+      FROM cohort
+      LEFT JOIN cohort_user_role
+          ON cohort_user_role.cohort_id = cohort.id
+      WHERE cohort.id = ${id}
+    `);
 
     const runs = await getCohortRuns(id);
     const scenarios = await getCohortScenarios(id);
@@ -92,12 +92,12 @@ exports.getCohort = async ({ id }) => {
 exports.getMyCohorts = async ({ user_id }) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
-            FROM cohort
-            LEFT JOIN cohort_user_role
-                ON cohort.id = cohort_user_role.cohort_id
-            WHERE cohort_user_role.user_id = ${user_id};
-        `);
+      SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
+      FROM cohort
+      LEFT JOIN cohort_user_role
+          ON cohort.id = cohort_user_role.cohort_id
+      WHERE cohort_user_role.user_id = ${user_id};
+    `);
 
     const cohorts = [];
     for (const row of result.rows) {
@@ -118,8 +118,8 @@ exports.getMyCohorts = async ({ user_id }) => {
 exports.getAllCohorts = async () => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT * FROM cohort;
-        `);
+      SELECT * FROM cohort;
+    `);
 
     const cohorts = [];
     for (const row of result.rows) {
@@ -201,32 +201,32 @@ exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
       responses.push(...result.rows);
     } else {
       const result = await client.query(sql`
-                SELECT
-                    run.user_id as user_id,
-                    username,
-                    scenario.id as scenario_id,
-                    scenario.title as scenario_title,
-                    cohort_run.run_id as run_id,
-                    response_id,
-                    run_response.response,
-                    run_response.response->>'value' as value,
-                    audio_transcript.transcript as transcript,
-                    CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
-                        ELSE TRUE
-                    END as is_skip,
-                    run_response.response->>'type' as type,
-                    run_response.created_at as created_at,
-                    run_response.ended_at as ended_at
-                FROM run_response
-                JOIN cohort_run ON run_response.run_id = cohort_run.run_id
-                JOIN run ON run.id = cohort_run.run_id
-                JOIN users ON users.id = run.user_id
-                JOIN scenario ON scenario.id = run.scenario_id
-                LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
-                WHERE cohort_run.cohort_id = ${id}
-                AND run.scenario_id = ${scenario_id}
-                ORDER BY cohort_run.run_id DESC
-            `);
+        SELECT
+            run.user_id as user_id,
+            username,
+            scenario.id as scenario_id,
+            scenario.title as scenario_title,
+            cohort_run.run_id as run_id,
+            response_id,
+            run_response.response,
+            run_response.response->>'value' as value,
+            audio_transcript.transcript as transcript,
+            CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+                ELSE TRUE
+            END as is_skip,
+            run_response.response->>'type' as type,
+            run_response.created_at as created_at,
+            run_response.ended_at as ended_at
+        FROM run_response
+        JOIN cohort_run ON run_response.run_id = cohort_run.run_id
+        JOIN run ON run.id = cohort_run.run_id
+        JOIN users ON users.id = run.user_id
+        JOIN scenario ON scenario.id = run.scenario_id
+        LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
+        WHERE cohort_run.cohort_id = ${id}
+        AND run.scenario_id = ${scenario_id}
+        ORDER BY cohort_run.run_id DESC
+      `);
 
       responses.push(...result.rows);
     }
@@ -244,10 +244,10 @@ exports.linkCohortToRun = async ({ id, run_id }) => {
 
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            INSERT INTO cohort_run (cohort_id, run_id)
-            VALUES (${id}, ${run_id})
-            ON CONFLICT DO NOTHING;
-        `);
+      INSERT INTO cohort_run (cohort_id, run_id)
+      VALUES (${id}, ${run_id})
+      ON CONFLICT DO NOTHING;
+    `);
 
     return result;
   });
@@ -264,28 +264,28 @@ exports.setCohortUserRole = async ({ cohort_id, user_id, role, action }) => {
     let result;
     if (action === 'join') {
       result = await client.query(sql`
-                INSERT INTO cohort_user_role (cohort_id, user_id, role)
-                VALUES (${cohort_id}, ${user_id}, ${role})
-                RETURNING *;
-            `);
+        INSERT INTO cohort_user_role (cohort_id, user_id, role)
+        VALUES (${cohort_id}, ${user_id}, ${role})
+        RETURNING *;
+      `);
     }
 
     if (action === 'done') {
       const ended_at = new Date().toISOString();
       result = await client.query(sql`
-                UPDATE cohort_user_role
-                SET ended_at = ${ended_at}
-                WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
-                RETURNING *;
-            `);
+        UPDATE cohort_user_role
+        SET ended_at = ${ended_at}
+        WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
+        RETURNING *;
+      `);
     }
 
     if (action === 'quit') {
       result = await client.query(sql`
-                DELETE FROM cohort_user_role
-                WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
-                RETURNING *;
-            `);
+        DELETE FROM cohort_user_role
+        WHERE cohort_id = ${cohort_id} AND user_id = ${user_id}
+        RETURNING *;
+      `);
     }
 
     return result && result.rows.length && getCohortUsers(cohort_id);
@@ -293,12 +293,12 @@ exports.setCohortUserRole = async ({ cohort_id, user_id, role, action }) => {
 };
 
 exports.listUserCohorts = async ({ user_id }) => {
-  const result = await query(
-    sql`SELECT cohort.id, cohort.name, cohort_user_role.role
-            FROM cohort
-            LEFT JOIN cohort_user_role
-                ON cohort_user_role.cohort_id = cohort.id
-            WHERE cohort_user_role.user_id = ${user_id}`
-  );
+  const result = await query(sql`
+    SELECT cohort.id, cohort.name, cohort_user_role.role
+    FROM cohort
+    LEFT JOIN cohort_user_role
+        ON cohort_user_role.cohort_id = cohort.id
+    WHERE cohort_user_role.user_id = ${user_id}
+  `);
   return result.rows;
 };

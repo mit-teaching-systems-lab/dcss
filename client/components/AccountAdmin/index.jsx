@@ -35,9 +35,10 @@ class AccountAdmin extends Component {
   }
 
   async componentDidMount() {
+    const user = await (await fetch('/api/auth/me')).json();
     const { error, users } = await (await fetch('/api/roles')).json();
 
-    if (error) {
+    if (user.error || error) {
       this.props.history.push('/logout');
     } else {
       this.props.setUsers({ users });

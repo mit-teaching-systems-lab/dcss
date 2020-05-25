@@ -52,7 +52,7 @@ export class Cohorts extends React.Component {
   }
 
   async componentDidMount() {
-    const { error } = await (await fetch('/api/roles')).json();
+    const { error } = await (await fetch('/api/auth/me')).json();
 
     if (error) {
       this.props.history.push('/logout');

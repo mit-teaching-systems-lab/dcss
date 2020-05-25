@@ -78,15 +78,6 @@ class CreateAccount extends Component {
     }
 
     if (username) {
-      const { permissions } = await (await fetch(
-        '/api/roles/permission'
-      )).json();
-
-      this.props.logIn({
-        isLoggedIn: true,
-        permissions,
-        username
-      });
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';
@@ -149,7 +140,7 @@ class CreateAccount extends Component {
         </Form.Field>
         <Grid columns={2}>
           <Grid.Column>
-            <Button primary type="submit" size="large" onClick={onSubmit}>
+            <Button primary type="submit" size="large">
               Create Account
             </Button>
           </Grid.Column>
@@ -161,9 +152,6 @@ class CreateAccount extends Component {
 }
 
 CreateAccount.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
   location: PropTypes.object,
   logIn: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
