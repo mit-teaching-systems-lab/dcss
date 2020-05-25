@@ -72,7 +72,7 @@ class Login extends Component {
       this.setState({ message });
     } else {
       // Step outside of react to force a real reload
-      // after login and session create
+      // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';
     }
   }

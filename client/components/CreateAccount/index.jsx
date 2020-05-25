@@ -74,10 +74,7 @@ class CreateAccount extends Component {
 
     if (error) {
       this.setState({ message });
-      return;
-    }
-
-    if (username) {
+    } else {
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';
