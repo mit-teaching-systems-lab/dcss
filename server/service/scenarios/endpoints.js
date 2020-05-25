@@ -1,13 +1,11 @@
 const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
-const { getUserForClientByProps } = require('../auth/db');
 const { reqScenario } = require('./middleware');
 
 const {
   addSlide,
   getScenarioSlides,
   setAllSlides,
-  setScenarioCategories,
   setSlide
 } = require('./slides/db');
 const db = require('./db');

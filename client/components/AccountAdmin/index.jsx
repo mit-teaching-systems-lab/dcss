@@ -35,10 +35,7 @@ class AccountAdmin extends Component {
   }
 
   async componentDidMount() {
-    const {
-      error,
-      users
-    } = await (await fetch('/api/roles')).json();
+    const { error, users } = await (await fetch('/api/roles')).json();
 
     if (error) {
       this.props.history.push('/logout');
@@ -164,7 +161,9 @@ const mapDispatchToProps = {
   setUsers
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AccountAdmin));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(AccountAdmin)
+);

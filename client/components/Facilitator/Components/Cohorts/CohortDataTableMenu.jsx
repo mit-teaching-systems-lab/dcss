@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
@@ -56,15 +56,9 @@ export class CohortDataTableMenu extends Component {
     return (
       <Menu icon>
         <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-          <Popup
-            content="Close this data table tab"
-            trigger={menuItemClose}
-          />
+          <Popup content="Close this data table tab" trigger={menuItemClose} />
         </ConfirmAuth>
-        <Popup
-          content="Refresh this data"
-          trigger={menuItemRefresh}
-        />
+        <Popup content="Refresh this data" trigger={menuItemRefresh} />
         <Popup
           content="Download the data from this data table tab"
           trigger={menuItemDownload}

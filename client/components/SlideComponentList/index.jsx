@@ -19,6 +19,11 @@ const SlideComponentList = ({
   const transform = 'scale(0.45)';
   const width = '100%';
   const height = '100%';
+
+  // check this out: https://sequelize.org/v5/
+  // transform: scale(0.4);
+  // transform-origin: 0 0;
+  // width: 250%;
   return asSVG ? (
     <div style={style}>
       <svg width="500" height="1000">

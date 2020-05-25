@@ -38,9 +38,7 @@ class ScenariosList extends Component {
   }
 
   async componentDidMount() {
-    const {
-      error
-    } = await (await fetch('/api/roles')).json();
+    const { error } = await (await fetch('/api/roles')).json();
 
     if (error) {
       this.props.history.push('/logout');
@@ -273,7 +271,9 @@ const mapDispatchToProps = {
   getScenarios
 };
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScenariosList));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenariosList)
+);

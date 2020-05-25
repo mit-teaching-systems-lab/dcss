@@ -70,7 +70,9 @@ export class CohortParticipants extends React.Component {
       this
     );
     this.onParticipantSearchChange = this.onParticipantSearchChange.bind(this);
-    this.onParticipantRefreshChange = this.onParticipantRefreshChange.bind(this);
+    this.onParticipantRefreshChange = this.onParticipantRefreshChange.bind(
+      this
+    );
   }
 
   async componentDidMount() {
@@ -130,12 +132,13 @@ export class CohortParticipants extends React.Component {
     });
   }
 
-
   participantRefresh() {
     this.refreshInterval = setInterval(async () => {
       const { search, cohort } = this.state;
       if (!search) {
-        cohort.users = await this.props.getCohortParticipants(Number(cohort.id));
+        cohort.users = await this.props.getCohortParticipants(
+          Number(cohort.id)
+        );
         this.participants = cohort.users.slice();
         this.setState({ cohort });
       }
@@ -144,7 +147,7 @@ export class CohortParticipants extends React.Component {
 
   onParticipantRefreshChange() {
     let refresh = !this.state.refresh;
-    this.setState({refresh}, () => {
+    this.setState({ refresh }, () => {
       if (!refresh) {
         clearInterval(this.refreshInterval);
       } else {
@@ -157,16 +160,12 @@ export class CohortParticipants extends React.Component {
   render() {
     const { onClick } = this.props;
     const { cohort, refresh } = this.state;
-    const { onParticipantRefreshChange,onParticipantSearchChange } = this;
+    const { onParticipantRefreshChange, onParticipantSearchChange } = this;
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
 
-    const refreshIcon = refresh
-      ? 'play'
-      : 'square';
-    const refreshColor = refresh
-      ? 'green'
-      : 'red';
+    const refreshIcon = refresh ? 'play' : 'square';
+    const refreshColor = refresh ? 'green' : 'red';
     const refreshLabel = refresh
       ? 'Automattically refreshing this list'
       : 'List will refresh when page is reloaded';
@@ -196,11 +195,14 @@ export class CohortParticipants extends React.Component {
               >
                 <Icon.Group className="editormenu__icon-group">
                   <Icon name="refresh" />
-                  <Icon corner="top right" name={refreshIcon} color={refreshColor} />
+                  <Icon
+                    corner="top right"
+                    name={refreshIcon}
+                    color={refreshColor}
+                  />
                 </Icon.Group>
                 {refreshLabel}
-              </Menu.Item>,
-
+              </Menu.Item>
             ],
             right: [
               <ConfirmAuth

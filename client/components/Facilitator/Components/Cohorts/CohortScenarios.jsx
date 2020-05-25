@@ -157,10 +157,7 @@ export class CohortScenarios extends React.Component {
     }, []);
 
     // This is the merged, order corrected list of scenarios.
-    const orderCorrectedScenarios = [
-      ...cohortScenarios,
-      ...reducedScenarios
-    ];
+    const orderCorrectedScenarios = [...cohortScenarios, ...reducedScenarios];
 
     return (
       <Container fluid className="cohort__table-container">

@@ -63,7 +63,11 @@ InterceptAnonymizableRoute.propTypes = {
   ]).isRequired
 };
 
-export const RedirectRouteForActiveSession = ({ children, isLoggedIn, ...rest }) => {
+export const RedirectRouteForActiveSession = ({
+  children,
+  isLoggedIn,
+  ...rest
+}) => {
   return (
     <Route
       {...rest}

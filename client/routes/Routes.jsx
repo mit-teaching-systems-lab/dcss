@@ -103,7 +103,11 @@ const Routes = ({ isLoggedIn }) => {
         <Route render={props => <Cohorts {...props} activeTab="cohorts" />} />
       </ConfirmAuth>
 
-      <InterceptAnonymizableRoute isLoggedIn={isLoggedIn} exact path="/cohort/:id">
+      <InterceptAnonymizableRoute
+        isLoggedIn={isLoggedIn}
+        exact
+        path="/cohort/:id"
+      >
         <Route render={props => <Cohort {...props} activeTab="cohort" />} />
       </InterceptAnonymizableRoute>
 
@@ -215,4 +219,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Routes);
-

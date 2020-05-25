@@ -46,9 +46,7 @@ class Researcher extends Component {
   }
 
   async componentDidMount() {
-    const {
-      error
-    } = await (await fetch('/api/roles')).json();
+    const { error } = await (await fetch('/api/roles')).json();
 
     if (error) {
       this.props.history.push('/logout');
@@ -290,7 +288,9 @@ const mapDispatchToProps = dispatch => ({
   getUser: () => dispatch(getUser())
 });
 
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Researcher));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Researcher)
+);
