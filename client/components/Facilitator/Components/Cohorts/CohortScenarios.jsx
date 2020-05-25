@@ -189,9 +189,12 @@ export class CohortScenarios extends React.Component {
               </Menu.Item>
             ],
             right: [
-              <Menu.Menu position="right">
+              <Menu.Menu
+                key="menu-menu-search-cohort-scenarios"
+                position="right"
+              >
                 <Menu.Item
-                  key="menu-item-search-scenarios"
+                  key="menu-item-search-cohort-scenarios"
                   name="Search cohort scenarios"
                   className="editormenu__padding"
                 >

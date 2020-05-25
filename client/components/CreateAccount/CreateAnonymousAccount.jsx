@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Header,
-  Loader,
-  Modal,
-  Popup,
-  Segment
-} from 'semantic-ui-react';
+import { Button, Header, Modal, Popup, Segment } from 'semantic-ui-react';
 import { logIn } from '@client/actions';
 import Loading from '@components/Loading';
 import anonymousUsername from './anonymousUsername';

@@ -162,7 +162,11 @@ export class CohortParticipants extends React.Component {
   render() {
     const { isAuthorized, onClick } = this.props;
     const { cohort, isReady, refresh } = this.state;
-    const { onParticipantRefreshChange, onParticipantSearchChange } = this;
+    const {
+      onParticipantRefreshChange,
+      onParticipantSearchChange,
+      scrollIntoView
+    } = this;
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
 
@@ -185,7 +189,7 @@ export class CohortParticipants extends React.Component {
                 key="menu-item-cohort-participants"
                 className="editormenu__padding"
                 name="Participants in this Cohort"
-                onClick={this.scrollIntoView}
+                onClick={scrollIntoView}
               >
                 <Icon.Group className="editormenu__icon-group">
                   <Icon name="group" />
@@ -196,7 +200,6 @@ export class CohortParticipants extends React.Component {
                 key="menu-item-cohort-participants"
                 className="editormenu__padding"
                 name="Control participant list refresh"
-                onClick={this.scrollIntoView}
                 onClick={onParticipantRefreshChange}
               >
                 <Icon.Group className="editormenu__icon-group">
@@ -211,9 +214,12 @@ export class CohortParticipants extends React.Component {
               </Menu.Item>
             ],
             right: [
-              <Menu.Menu position="right">
+              <Menu.Menu
+                key="menu-menu-search-cohort-participants"
+                position="right"
+              >
                 <Menu.Item
-                  key="menu-item-search-accounts"
+                  key="menu-item-search-cohort-participants"
                   name="Search cohort participants"
                   className="editormenu__padding"
                 >

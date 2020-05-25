@@ -166,7 +166,6 @@ export class Cohort extends React.Component {
     const {
       cohort,
       cohort: { id, name },
-      user,
       user: { username, permissions }
     } = this.props;
     const { isReady, activeTabKey, tabs } = this.state;

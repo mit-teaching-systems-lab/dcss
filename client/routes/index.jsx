@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { logIn, logOut } from '@client/actions';
+import { logIn } from '@client/actions';
 import { getUser } from '@client/actions/user';
 import Loading from '@components/Loading';
 
@@ -24,7 +24,7 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { getUser, logIn, logOut } = this.props;
+    const { getUser, logIn } = this.props;
     let { isReady } = this.state;
 
     if (!isReady) {
@@ -52,19 +52,14 @@ class App extends Component {
   }
 
   render() {
-    const { isReady } = this.state;
-
-    if (!isReady) {
+    if (!this.state.isReady) {
       return <Loading />;
     }
-    console.log(isReady);
-    const { isLoggedIn } = this.props;
-
     return (
       <Router>
         <History>
           <Navigation />
-          <Routes isLoggedIn={isLoggedIn} />
+          <Routes isLoggedIn={this.props.isLoggedIn} />
           <Notification />
         </History>
       </Router>
@@ -75,6 +70,7 @@ class App extends Component {
 App.propTypes = {
   getUser: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  logIn: PropTypes.func,
   user: PropTypes.object
 };
 

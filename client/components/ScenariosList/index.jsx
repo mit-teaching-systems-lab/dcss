@@ -24,13 +24,11 @@ class ScenariosList extends Component {
       category,
       isReady: false,
       heading: '',
-      loading: true,
       scenarios: [],
       viewHeading: '',
       viewScenarios: []
     };
 
-    this.loading = true;
     this.onClickCreateScenario = this.onClickCreateScenario.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.reduceScenarios = this.reduceScenarios.bind(this);
@@ -66,7 +64,6 @@ class ScenariosList extends Component {
     const { category } = this.state;
     let scenarios = [];
     let heading = '';
-    let loading = false;
     let authorUsername = '';
 
     switch (category) {
@@ -101,7 +98,6 @@ class ScenariosList extends Component {
 
     this.setState({
       heading,
-      loading,
       scenarios,
       viewScenarios: scenarios.slice(0),
       viewHeading: heading
@@ -158,7 +154,6 @@ class ScenariosList extends Component {
 
     this.setState({
       heading: replacementHeading,
-      loading: false,
       scenarios: results
     });
   }
@@ -168,7 +163,7 @@ class ScenariosList extends Component {
   }
 
   render() {
-    const { isReady, heading, loading, scenarios } = this.state;
+    const { isReady, heading, scenarios } = this.state;
     const { onClickCreateScenario, onSearchChange } = this;
 
     return (

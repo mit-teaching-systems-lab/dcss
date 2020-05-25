@@ -2,15 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import {
-  Dimmer,
-  Grid,
-  Icon,
-  Image,
-  Modal,
-  Segment,
-  Table
-} from 'semantic-ui-react';
+import { Grid, Icon, Modal, Table } from 'semantic-ui-react';
 import { diff } from 'deep-diff';
 import * as moment from 'moment';
 import 'moment-duration-format';
