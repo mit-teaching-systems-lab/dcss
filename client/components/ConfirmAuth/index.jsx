@@ -10,14 +10,16 @@ const ConfirmAuth = ({
   requiredPermission,
   ...rest
 }) => {
-  const AuthConfirmed =
-    isAuthorized || permissions.includes(requiredPermission);
+  let hasCorrectPermission = permissions.includes(requiredPermission);
 
+  if (isAuthorized !== undefined) {
+    hasCorrectPermission = isAuthorized && hasCorrectPermission;
+  }
   return (
     <Route
       {...rest}
       render={() => {
-        return AuthConfirmed ? children : null;
+        return hasCorrectPermission ? children : null;
       }}
     />
   );

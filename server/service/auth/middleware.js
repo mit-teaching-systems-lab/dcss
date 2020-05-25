@@ -98,6 +98,5 @@ async function loginUserAsync(req, res, next) {
   throw invalidUserError;
 }
 
-
 exports.createUser = asyncMiddleware(createUserAsync);
 exports.loginUser = asyncMiddleware(loginUserAsync);

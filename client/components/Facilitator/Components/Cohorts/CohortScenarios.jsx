@@ -19,6 +19,7 @@ import EditorMenu from '@components/EditorMenu';
 import Sortable from '@components/Sortable';
 import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';
+import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { getCohort, setCohort } from '@client/actions/cohort';
 import { getScenarios, setScenarios } from '@client/actions/scenario';
@@ -38,6 +39,7 @@ export class CohortScenarios extends React.Component {
     }
 
     this.state = {
+      isReady: false,
       cohort: {
         id
       }
@@ -63,6 +65,9 @@ export class CohortScenarios extends React.Component {
 
     // See note above, re: scenarios list backup
     this.scenarios = this.props.scenarios.slice();
+    this.setState({
+      isReady: true
+    });
   }
 
   async componentWillUnmount() {
@@ -135,12 +140,18 @@ export class CohortScenarios extends React.Component {
   }
 
   render() {
-    const { cohort, onClick, scenarios = [] } = this.props;
     const {
       onScenarioOrderChange,
       onScenarioCheckboxClick,
       onScenarioSearchChange
     } = this;
+    const { cohort, isAuthorized, onClick, scenarios = [] } = this.props;
+    const { isReady } = this.state;
+
+    if (!isReady) {
+      return <Loading />;
+    }
+
     // This is the list of scenarios that are IN the
     // cohort. The order MUST be preserved.
     const cohortScenarios = cohort.scenarios.map(id =>
@@ -178,24 +189,19 @@ export class CohortScenarios extends React.Component {
               </Menu.Item>
             ],
             right: [
-              <ConfirmAuth
-                key="confirm-auth-menu-item-search-accounts"
-                requiredPermission="edit_scenarios_in_cohort"
-              >
-                <Menu.Menu position="right">
-                  <Menu.Item
-                    key="menu-item-search-accounts"
-                    name="Search cohort scenarios"
-                    className="editormenu__padding"
-                  >
-                    <Input
-                      icon="search"
-                      placeholder="Search..."
-                      onChange={onScenarioSearchChange}
-                    />
-                  </Menu.Item>
-                </Menu.Menu>
-              </ConfirmAuth>
+              <Menu.Menu position="right">
+                <Menu.Item
+                  key="menu-item-search-scenarios"
+                  name="Search cohort scenarios"
+                  className="editormenu__padding"
+                >
+                  <Input
+                    icon="search"
+                    placeholder="Search..."
+                    onChange={onScenarioSearchChange}
+                  />
+                </Menu.Item>
+              </Menu.Menu>
             ]
           }}
         />
@@ -210,15 +216,20 @@ export class CohortScenarios extends React.Component {
         >
           <Table.Header className="cohort__table-thead-tbody-tr">
             <Table.Row>
-              <Table.HeaderCell className="cohort__table-cell-first">
-                <Icon.Group className="editormenu__icon-group">
-                  <Icon name="newspaper outline" />
-                  <Icon corner="top right" name="add" color="green" />
-                </Icon.Group>
-              </Table.HeaderCell>
-              <Table.HeaderCell className="cohort__table-cell-options">
-                Options
-              </Table.HeaderCell>
+              <ConfirmAuth
+                isAuthorized={isAuthorized}
+                requiredPermission="edit_scenarios_in_cohort"
+              >
+                <Table.HeaderCell className="cohort__table-cell-first">
+                  <Icon.Group className="editormenu__icon-group">
+                    <Icon name="newspaper outline" />
+                    <Icon corner="top right" name="add" color="green" />
+                  </Icon.Group>
+                </Table.HeaderCell>
+                <Table.HeaderCell className="cohort__table-cell-options">
+                  Options
+                </Table.HeaderCell>
+              </ConfirmAuth>
               <Table.HeaderCell>Title</Table.HeaderCell>
               <Table.HeaderCell className="cohort__table-cell-content">
                 Author
@@ -262,7 +273,6 @@ export class CohortScenarios extends React.Component {
                     source: scenario
                   });
                 };
-
                 return (
                   <ConfirmAuth
                     key={`confirm-${index}`}
@@ -273,7 +283,10 @@ export class CohortScenarios extends React.Component {
                       className="cohort__table-thead-tbody-tr"
                       style={{ cursor: 'pointer' }}
                     >
-                      <ConfirmAuth requiredPermission="edit_own_cohorts">
+                      <ConfirmAuth
+                        isAuthorized={isAuthorized}
+                        requiredPermission="edit_own_cohorts"
+                      >
                         <Table.Cell
                           key={`cell-checkbox-${index}`}
                           className="cohort__table-cell-first"
@@ -286,7 +299,10 @@ export class CohortScenarios extends React.Component {
                           />
                         </Table.Cell>
                       </ConfirmAuth>
-                      <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+                      <ConfirmAuth
+                        isAuthorized={isAuthorized}
+                        requiredPermission="edit_scenarios_in_cohort"
+                      >
                         <Table.Cell className="cohort__table-cell-options">
                           {checked ? (
                             <Button.Group
@@ -320,7 +336,10 @@ export class CohortScenarios extends React.Component {
                                 }
                               />
 
-                              <ConfirmAuth requiredPermission="view_all_data">
+                              <ConfirmAuth
+                                isAuthorized={isAuthorized}
+                                requiredPermission="view_all_data"
+                              >
                                 <Popup
                                   content="View cohort reponses to prompts in this scenario"
                                   trigger={
@@ -411,6 +430,7 @@ CohortScenarios.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
+  isAuthorized: PropTypes.bool,
   id: PropTypes.any,
   match: PropTypes.shape({
     path: PropTypes.string,

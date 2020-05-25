@@ -11,10 +11,12 @@ import {
   setCohortUserRole
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
+import { getUser } from '@client/actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
 import CohortDataTable from './CohortDataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';
+import Loading from '@components/Loading';
 import './Cohort.css';
 
 export class Cohort extends React.Component {
@@ -46,6 +48,7 @@ export class Cohort extends React.Component {
     const { activeTabKey = 'cohort', tabs = [] } = persisted;
 
     this.state = {
+      isReady: false,
       activeTabKey,
       cohort: {
         id
@@ -59,24 +62,34 @@ export class Cohort extends React.Component {
   }
 
   async componentDidMount() {
-    const {
-      cohort: { id }
-    } = this.state;
+    const { error } = await (await fetch('/api/auth/me')).json();
 
-    await this.props.getCohort(Number(id));
-    await this.props.getScenarios();
+    if (error) {
+      this.props.history.push('/logout');
+    } else {
+      const {
+        cohort: { id }
+      } = this.state;
 
-    const {
-      cohort: { users },
-      user: { username }
-    } = this.props;
+      await this.props.getCohort(Number(id));
+      await this.props.getScenarios();
 
-    if (!users.find(user => username === user.username)) {
-      // For now we'll default all unknown
-      // users as "participant".
-      await this.props.setCohortUserRole({
-        id: Number(id),
-        role: 'participant'
+      const {
+        cohort: { users },
+        user: { username }
+      } = this.props;
+
+      if (!users.find(user => username === user.username)) {
+        // For now we'll default all unknown
+        // users as "participant".
+        await this.props.setCohortUserRole({
+          id: Number(id),
+          role: 'participant'
+        });
+      }
+
+      this.setState({
+        isReady: true
       });
     }
   }
@@ -153,15 +166,23 @@ export class Cohort extends React.Component {
     const {
       cohort,
       cohort: { id, name },
+      user,
       user: { username, permissions }
     } = this.props;
-    const { activeTabKey, tabs } = this.state;
+    const { isReady, activeTabKey, tabs } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
+
+    if (!isReady) {
+      return <Loading />;
+    }
+
     const cohortUrl = `${location.origin}/cohort/${cohort.id}`;
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
     const currentUserInCohort = cohort.users.find(cohortMember => {
       return cohortMember.username === username;
     });
+    const isAuthorized =
+      currentUserInCohort && currentUserInCohort.role === 'owner';
 
     // Everytime there is a render, save the state.
     storage.setItem(this.persistenceKey, JSON.stringify(this.state));
@@ -194,63 +215,65 @@ export class Cohort extends React.Component {
 
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
-            <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-              <Menu icon borderless>
-                <Popup
-                  content="Copy cohort link to clipboard"
-                  trigger={
-                    <Menu.Item
-                      key="menu-item-account-administration"
-                      className="editormenu__padding"
-                      onClick={() => copy(cohortUrl)}
-                    >
-                      <Icon.Group className="editormenu__icon-group">
-                        <Icon name="clipboard outline" />
-                      </Icon.Group>
-                      {cohortUrl}
-                    </Menu.Item>
-                  }
-                />
-                {/*
-                  <Popup
-                      content="Run this cohort as a participant"
-                      trigger={
-                          <Menu.Item
-                              icon
-                              content={<Icon name="play" />}
-                              onClick={() => {
-                                  alert(
-                                      'View cohort as participant. (Feature not available in this version)'
-                                  );
-                              }}
-                          />
-                      }
-                  />
-                  <Popup
-                      content="Download the data from this data table tab"
-                      trigger={
-                          <Menu.Item
-                              icon
-                              content={<Icon name="download" />}
-                              onClick={() => {
-                                  alert(
-                                      'Download all data from this cohort. (Feature not available in this version)'
-                                  );
-                              }}
-                          />
-                      }
-                  />
-              */}
-              </Menu>
-            </ConfirmAuth>
-            <CohortScenarios key="cohort-scenarios" id={id} onClick={onClick} />
-            <ConfirmAuth requiredPermission="edit_all_cohorts">
-              <CohortParticipants
-                key="cohort-participants"
-                id={id}
-                onClick={onClick}
+            <Menu icon borderless>
+              <Popup
+                content="Copy cohort link to clipboard"
+                trigger={
+                  <Menu.Item
+                    key="menu-item-account-administration"
+                    className="editormenu__padding"
+                    onClick={() => copy(cohortUrl)}
+                  >
+                    <Icon.Group className="editormenu__icon-group">
+                      <Icon name="clipboard outline" />
+                    </Icon.Group>
+                    {cohortUrl}
+                  </Menu.Item>
+                }
               />
-            </ConfirmAuth>
+              {/*
+                <Popup
+                    content="Run this cohort as a participant"
+                    trigger={
+                        <Menu.Item
+                            icon
+                            content={<Icon name="play" />}
+                            onClick={() => {
+                                alert(
+                                    'View cohort as participant. (Feature not available in this version)'
+                                );
+                            }}
+                        />
+                    }
+                />
+                <Popup
+                    content="Download the data from this data table tab"
+                    trigger={
+                        <Menu.Item
+                            icon
+                            content={<Icon name="download" />}
+                            onClick={() => {
+                                alert(
+                                    'Download all data from this cohort. (Feature not available in this version)'
+                                );
+                            }}
+                        />
+                    }
+                />
+            */}
+            </Menu>
+            <CohortScenarios
+              key="cohort-scenarios"
+              id={id}
+              isAuthorized={isAuthorized}
+              onClick={onClick}
+            />
+            <CohortParticipants
+              key="cohort-participants"
+              id={id}
+              isAuthorized={isAuthorized}
+              onClick={onClick}
+            />
             {currentUserInCohort && (
               <ConfirmAuth
                 isAuthorized={!permissions.includes('edit_all_cohorts')}
@@ -311,21 +334,23 @@ Cohort.propTypes = {
   setCohort: PropTypes.func,
   setCohortUserRole: PropTypes.func,
   getScenarios: PropTypes.func,
+  getUser: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { username, permissions } = state.login;
+  const { permissions } = state.login;
   const { currentCohort: cohort } = state.cohort;
-  const { scenarios } = state;
-  return { cohort, scenarios, user: { username, permissions } };
+  const { scenarios, user } = state;
+  return { cohort, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getScenarios: () => dispatch(getScenarios()),
   setCohort: params => dispatch(setCohort(params)),
-  setCohortUserRole: params => dispatch(setCohortUserRole(params))
+  setCohortUserRole: params => dispatch(setCohortUserRole(params)),
+  getUser: () => dispatch(getUser())
 });
 
 export default withRouter(

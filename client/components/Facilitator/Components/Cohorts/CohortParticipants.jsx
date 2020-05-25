@@ -51,6 +51,7 @@ export class CohortParticipants extends React.Component {
     const { refresh } = persisted;
 
     this.state = {
+      isReady: false,
       refresh,
       search: '',
       cohort: {
@@ -85,6 +86,7 @@ export class CohortParticipants extends React.Component {
 
     this.participants = cohort.users.slice();
     this.setState({
+      isReady: true,
       cohort
     });
 
@@ -158,11 +160,15 @@ export class CohortParticipants extends React.Component {
   }
 
   render() {
-    const { onClick } = this.props;
-    const { cohort, refresh } = this.state;
+    const { isAuthorized, onClick } = this.props;
+    const { cohort, isReady, refresh } = this.state;
     const { onParticipantRefreshChange, onParticipantSearchChange } = this;
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
+
+    if (!isReady) {
+      return <Loading />;
+    }
 
     const refreshIcon = refresh ? 'play' : 'square';
     const refreshColor = refresh ? 'green' : 'red';
@@ -205,24 +211,19 @@ export class CohortParticipants extends React.Component {
               </Menu.Item>
             ],
             right: [
-              <ConfirmAuth
-                key="menu-item-cohort-scenarios-search"
-                requiredPermission="edit_scenarios_in_cohort"
-              >
-                <Menu.Menu position="right">
-                  <Menu.Item
-                    key="menu-item-search-accounts"
-                    name="Search cohort participants"
-                    className="editormenu__padding"
-                  >
-                    <Input
-                      icon="search"
-                      placeholder="Search..."
-                      onChange={onParticipantSearchChange}
-                    />
-                  </Menu.Item>
-                </Menu.Menu>
-              </ConfirmAuth>
+              <Menu.Menu position="right">
+                <Menu.Item
+                  key="menu-item-search-accounts"
+                  name="Search cohort participants"
+                  className="editormenu__padding"
+                >
+                  <Input
+                    icon="search"
+                    placeholder="Search..."
+                    onChange={onParticipantSearchChange}
+                  />
+                </Menu.Item>
+              </Menu.Menu>
             ]
           }}
         />
@@ -237,9 +238,14 @@ export class CohortParticipants extends React.Component {
         >
           <Table.Header className="cohort__table-thead-tbody-tr">
             <Table.Row>
-              <Table.HeaderCell className="cohort__table-cell-first">
-                {' '}
-              </Table.HeaderCell>
+              <ConfirmAuth
+                isAuthorized={isAuthorized}
+                requiredPermission="edit_scenarios_in_cohort"
+              >
+                <Table.HeaderCell className="cohort__table-cell-first">
+                  {' '}
+                </Table.HeaderCell>
+              </ConfirmAuth>
               <Table.HeaderCell>Username</Table.HeaderCell>
               <Table.HeaderCell>Role</Table.HeaderCell>
               <Table.HeaderCell className="cohort__table-cell-content">
@@ -286,7 +292,10 @@ export class CohortParticipants extends React.Component {
                       </Table.Cell>
                       */}
 
-                      <ConfirmAuth requiredPermission="view_all_data">
+                      <ConfirmAuth
+                        isAuthorized={isAuthorized}
+                        requiredPermission="view_all_data"
+                      >
                         <Popup
                           content="View cohort reponses from this participant"
                           trigger={
@@ -337,6 +346,7 @@ CohortParticipants.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
+  isAuthorized: PropTypes.bool,
   id: PropTypes.any,
   match: PropTypes.shape({
     path: PropTypes.string,

@@ -335,9 +335,7 @@ export class CohortDataTable extends React.Component {
           );
         })}
       </React.Fragment>
-    ) : isReady ? (
-      <Segment>There is currently no data to display here.</Segment>
-    ) : (
+    ) : isReady ? null : (
       <Loading />
     );
   }

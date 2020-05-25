@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
@@ -13,6 +13,7 @@ import {
   Icon,
   Input,
   Menu,
+  Message,
   Modal
 } from 'semantic-ui-react';
 import {
@@ -22,6 +23,7 @@ import {
   createCohort
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
+import { getUser } from '@client/actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import CohortCard from './CohortCard';
@@ -59,6 +61,7 @@ export class Cohorts extends React.Component {
     } else {
       await this.props.getCohorts();
       await this.props.getScenarios();
+      await this.props.getUser();
 
       this.setState({
         isReady: true,
@@ -227,7 +230,27 @@ export class Cohorts extends React.Component {
                     ))}
                   </Card.Group>
                 ) : (
-                  <Loading size="medium" />
+                  <Message
+                    size="big"
+                    color="yellow"
+                    header="You have no cohorts"
+                    content={
+                      <ConfirmAuth requiredPermission="create_cohort">
+                        <Button
+                          name="Create a cohort"
+                          onClick={onClickOpenCreateCohort}
+                          className="editormenu__padding"
+                          style={{ background: 'transparent' }}
+                        >
+                          <Icon.Group className="editormenu__icon-group">
+                            <Icon name="group" />
+                            <Icon corner="top right" name="add" color="green" />
+                          </Icon.Group>
+                          Create a Cohort
+                        </Button>
+                      </ConfirmAuth>
+                    }
+                  />
                 )}
               </Grid.Column>
             </Grid.Row>
@@ -262,13 +285,16 @@ Cohorts.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.node
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  getUser: PropTypes.func,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
+  const { permissions } = state.login;
   const { currentCohort: cohort, userCohorts: cohorts } = state.cohort;
-  const { scenarios } = state;
-  return { cohort, cohorts, scenarios };
+  const { scenarios, user } = state;
+  return { cohort, cohorts, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -276,7 +302,8 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
   getScenarios: () => dispatch(getScenarios()),
-  createCohort: params => dispatch(createCohort(params))
+  createCohort: params => dispatch(createCohort(params)),
+  getUser: () => dispatch(getUser())
 });
 
 export default withRouter(
