@@ -22,13 +22,13 @@ class Run extends Component {
     } = this.props;
 
     this.state = {
+      isReady: false,
       baseurl: url.replace(/\/slide\/\d.*$/g, ''),
       cohortId: Number(cohortId || params.cohortId),
       scenarioId: Number(scenarioId || params.scenarioId)
     };
 
     this.responses = new Map();
-
     this.onChange = this.onChange.bind(this);
     this.onResponseChange = this.onResponseChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -73,6 +73,8 @@ class Run extends Component {
         });
         storage.removeItem('referrer_params');
       }
+
+      this.setState({ isReady: true });
     }
   }
 
@@ -113,7 +115,11 @@ class Run extends Component {
 
   render() {
     const { onChange, onResponseChange, onSubmit } = this;
-    const { baseurl } = this.state;
+    const { isReady, baseurl } = this.state;
+
+    if (!isReady) {
+      return <Loading />;
+    }
 
     return this.props.run ? (
       <Scenario
@@ -125,7 +131,7 @@ class Run extends Component {
         setActiveSlide={() => {}}
       />
     ) : (
-      <Loading size="medium" />
+      <Loading />
     );
   }
 }
