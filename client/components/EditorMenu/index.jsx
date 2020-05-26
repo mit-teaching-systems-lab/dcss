@@ -13,16 +13,8 @@ export default class EditorMenu extends React.Component {
     };
   }
 
-  shouldComponentUpdate(newProps, newState) {
-    if (this.state.mode !== newState.mode) {
-      return true;
-    }
-
-    if (
-      'index' in newProps &&
-      'index' in this.props &&
-      newProps.index === this.props.index
-    ) {
+  shouldComponentUpdate(newProps) {
+    if (newProps.isDragging) {
       return false;
     }
     return true;
@@ -129,6 +121,7 @@ export default class EditorMenu extends React.Component {
 const VALID_PROPS = ['delete', 'editable', 'left', 'right', 'save'];
 EditorMenu.propTypes = {
   draghandle: PropTypes.object,
+  isDragging: PropTypes.bool,
   index: PropTypes.number,
   items: function(props, propName) {
     const { items } = props;

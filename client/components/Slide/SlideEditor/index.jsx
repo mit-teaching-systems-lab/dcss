@@ -349,7 +349,7 @@ export default class SlideEditor extends Component {
                               draggableId={`draggable-id-${index}`}
                               index={index}
                             >
-                              {(provided, snapshot) => {
+                              {(provided, {isDragging}) => {
                                 const {
                                   draggableProps,
                                   dragHandleProps,
@@ -360,7 +360,7 @@ export default class SlideEditor extends Component {
                                     {...draggableProps}
                                     ref={innerRef}
                                     style={getDraggableStyle(
-                                      snapshot.isDragging,
+                                      isDragging,
                                       draggableProps.style
                                     )}
                                   >
@@ -380,6 +380,7 @@ export default class SlideEditor extends Component {
                                         onClick={onComponentClick}
                                       >
                                         <EditorMenu
+                                          isDragging={isDragging}
                                           draghandle={dragHandleProps}
                                           type="component"
                                           index={index}
