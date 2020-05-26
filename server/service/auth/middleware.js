@@ -6,7 +6,7 @@ exports.requireUser = (req, res, next) => {
   if (!req.session.user) {
     const error = new Error('Not logged in!');
     error.status = 401;
-    next(error);
+    throw error;
   }
   next();
 };
@@ -23,9 +23,9 @@ exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(
   const username = req.body.username || req.params.username;
   const user = await db.getUserByProps({ username });
   if (user) {
-    const duplicatedUserError = new Error('User exists.');
-    duplicatedUserError.status = 409;
-    throw duplicatedUserError;
+    const error = new Error('User exists.');
+    error.status = 409;
+    throw error;
   }
   next();
 });
@@ -35,9 +35,9 @@ async function createUserAsync(req, res, next) {
   const created = await db.createUser({ email, username, password });
 
   if (!created) {
-    const userCreateError = new Error('User not created. Server error');
-    userCreateError.status = 500;
-    throw userCreateError;
+    const error = new Error('User not created. Server error');
+    error.status = 500;
+    throw error;
   }
 
   //eslint-disable-next-line require-atomic-updates
@@ -55,8 +55,8 @@ async function loginUserAsync(req, res, next) {
   const { username, email, password } = req.body;
   const user = await db.getUserByProps({ username, email });
 
-  const invalidUserError = new Error('Invalid username or password.');
-  invalidUserError.status = 401;
+  const error = new Error('Invalid username or password.');
+  error.status = 401;
 
   // Case when user is found
   if (user) {
@@ -72,12 +72,12 @@ async function loginUserAsync(req, res, next) {
 
     // Case when a passwordless user passes a password
     if (password && !hash && !salt) {
-      throw invalidUserError;
+      throw error;
     }
 
     // Case when a user with a password is supplied without a password
     if (!password && hash && salt) {
-      throw invalidUserError;
+      throw error;
     }
     // Case when user has a password is supplied with a password
     const { passwordHash } = validateHashPassword(password, salt);
@@ -95,7 +95,7 @@ async function loginUserAsync(req, res, next) {
     }
   }
 
-  throw invalidUserError;
+  throw error;
 }
 
 exports.createUser = asyncMiddleware(createUserAsync);
