@@ -37,15 +37,13 @@ const plugins = {
   image,
   link,
   video,
-  audio,
+  audio
 };
 
-export default (buttons) => {
+export default buttons => {
   return buttons.flat().reduce((accum, name) => {
     if (plugins[name]) {
       accum.push(plugins[name]);
-    } else {
-      console.log(`SunEditor Plugin: ${name} was not present in loaded plugins.`);
     }
     return accum;
   }, []);

@@ -1,17 +1,20 @@
 import { type } from './meta';
 import React from 'react';
-import { Button, Container, Icon, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Button, Container, Icon, Message } from 'semantic-ui-react';
+import RichTextEditor from '@components/RichTextEditor';
+import 'suneditor/dist/css/suneditor.min.css';
+import 'katex/dist/katex.min.css';
 
 class Display extends React.Component {
   constructor(props) {
     super(props);
 
-    const { color, html: __html, open = false } = this.props;
+    const { color, html, open = false } = this.props;
 
     this.state = {
       color,
-      __html,
+      html,
       open
     };
 
@@ -24,7 +27,7 @@ class Display extends React.Component {
   }
 
   render() {
-    const { color, __html, open } = this.state;
+    const { color, html, open } = this.state;
     const { onClick } = this;
     const props = open ? {} : { hidden: true };
     return (
@@ -34,11 +37,7 @@ class Display extends React.Component {
           Information
         </Button>
         <Message color={color} {...props}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html
-            }}
-          ></div>
+          <RichTextEditor mode="display" defaultValue={html} />
         </Message>
       </Container>
     );

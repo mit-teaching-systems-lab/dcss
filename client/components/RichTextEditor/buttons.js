@@ -18,7 +18,6 @@ export const large = [
   ['font', 'fontSize', 'formatBlock'],
   ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
   ['removeFormat'],
-  '/',
   ['fontColor', 'hiliteColor'],
   ['align', 'outdent', 'indent'],
   ['horizontalRule', 'list', 'table'],
@@ -28,4 +27,50 @@ export const large = [
   ['template']
 ];
 
-export default { small, medium, large };
+export const component = [
+  [
+    'fullScreen',
+    'codeView',
+    'undo',
+    'redo',
+    'removeFormat',
+    'font',
+    'fontSize',
+    'formatBlock',
+    'fontColor',
+    'hiliteColor',
+    'bold',
+    'underline',
+    'italic',
+    'strike',
+    'subscript',
+    'superscript',
+    'align',
+    'outdent',
+    'indent',
+    'horizontalRule',
+    'list',
+    'table',
+    'link',
+    'image',
+    'video'
+  ]
+];
+
+export const suggestion = [
+  [
+    'undo',
+    'redo',
+    'removeFormat',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'list',
+    'link',
+    'image',
+    'video'
+  ]
+];
+
+export default { small, medium, large, component, suggestion };

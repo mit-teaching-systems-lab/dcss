@@ -439,7 +439,7 @@ class Slides extends React.Component {
                                         position="right"
                                       >
                                         <Button
-                                          key="menu-slides-order-change-up"
+                                          key="menu-slides-move-up"
                                           icon="caret up"
                                           aria-label={`Move slide ${description} up`}
                                           disabled={index === 0}
@@ -452,7 +452,7 @@ class Slides extends React.Component {
                                           }}
                                         />
                                         <Button
-                                          key="menu-slides-order-change-down"
+                                          key="menu-slides-move-down"
                                           icon="caret down"
                                           aria-label={`Move slide ${description} down`}
                                           disabled={index === slides.length - 1}

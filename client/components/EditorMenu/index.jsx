@@ -13,12 +13,26 @@ export default class EditorMenu extends React.Component {
     };
   }
 
-  render() {
-    const { type, items } = this.props;
-    const { mode } = this.state;
+  shouldComponentUpdate(newProps, newState) {
+    if (this.state.mode !== newState.mode) {
+      return true;
+    }
 
+    if (
+      'index' in newProps &&
+      'index' in this.props &&
+      newProps.index === this.props.index
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  render() {
+    const { draghandle = {}, type, items } = this.props;
+    const { mode } = this.state;
     return (
-      <Menu icon borderless>
+      <Menu {...draghandle} icon borderless>
         {items.left && (
           <React.Fragment>
             {items.left
@@ -114,6 +128,8 @@ export default class EditorMenu extends React.Component {
 
 const VALID_PROPS = ['delete', 'editable', 'left', 'right', 'save'];
 EditorMenu.propTypes = {
+  draghandle: PropTypes.object,
+  index: PropTypes.number,
   items: function(props, propName) {
     const { items } = props;
     if (propName === 'items') {

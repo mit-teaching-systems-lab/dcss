@@ -7,25 +7,8 @@ import { getScenario, setScenario } from '@client/actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import notify from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
-import { Text } from '@components/Slide/Components';
+import RichTextEditor from '@components/RichTextEditor';
 import './scenarioEditor.css';
-
-const { Editor: TextEditor } = Text;
-
-const configTextEditor = {
-  plugins: {
-    options: 'inline link list image video help'
-  },
-  toolbar: {
-    options: 'top',
-    top: {
-      options: 'inline link list image video history help',
-      inline: {
-        options: 'strong em underline strike'
-      }
-    }
-  }
-};
 
 class ScenarioEditor extends Component {
   constructor(props) {
@@ -88,7 +71,7 @@ class ScenarioEditor extends Component {
     // }
   }
 
-  onConsentChange({ html: value }) {
+  onConsentChange(value) {
     let { id, prose } = this.props.consent;
 
     if (prose !== value) {
@@ -104,7 +87,7 @@ class ScenarioEditor extends Component {
     }
   }
 
-  onFinishSlideChange({ html }) {
+  onFinishSlideChange(html) {
     const {
       components: [existing],
       id,
@@ -202,10 +185,7 @@ class ScenarioEditor extends Component {
       return null;
     }
 
-    const consentAgreementValue = {
-      type: 'Text',
-      html: consent.prose || ''
-    };
+    const consentAgreementValue = consent.prose || '';
 
     return (
       <Form size={'big'}>
@@ -249,21 +229,17 @@ class ScenarioEditor extends Component {
                     trigger={
                       <Form.Field required>
                         <label>Consent Agreement</label>
-                        {consentAgreementValue.html && (
-                          <TextEditor
-                            onChange={onConsentChange}
-                            scenarioId={scenarioId}
+                        {consentAgreementValue ? (
+                          <RichTextEditor
+                            defaultValue={consent.prose}
                             name="consentprose"
-                            value={consentAgreementValue}
-                            spellCheck={true}
-                            styleConfig={{
-                              editor: () => ({
-                                height: '100px'
-                              })
+                            onChange={onConsentChange}
+                            options={{
+                              buttons: 'suggestion',
+                              height: '100px'
                             }}
-                            config={configTextEditor}
                           />
-                        )}
+                        ) : null}
                       </Form.Field>
                     }
                   />
@@ -314,17 +290,13 @@ class ScenarioEditor extends Component {
                           After a scenario has been completed, the participant
                           will be shown this:
                         </label>
-                        <TextEditor
+                        <RichTextEditor
+                          defaultValue={finish.components[0].html}
                           onChange={onFinishSlideChange}
-                          scenarioId={scenarioId}
-                          value={finish.components[0]}
-                          spellCheck={true}
-                          styleConfig={{
-                            editor: () => ({
-                              height: '200px'
-                            })
+                          options={{
+                            buttons: 'suggestion',
+                            height: '200px'
                           }}
-                          config={configTextEditor}
                         />
                       </Form.Field>
                     }

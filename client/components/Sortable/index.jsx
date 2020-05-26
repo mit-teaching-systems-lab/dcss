@@ -1,30 +1,34 @@
 import React, { Component } from 'react';
+import shallowCompare from 'react-addons-shallow-compare';
 import PropTypes from 'prop-types';
-import { Icon } from 'semantic-ui-react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import RSortable from 'react-sortablejs';
 import './Sortable.css';
 
-const getDroppableStyle = (isDraggingOver, overflow) => ({
-  // background: isDraggingOver ? 'gold' : '',
-  overflow
-});
+const getDroppableStyle = (isDraggingOver, overflow) => {
+  return {
+    pointerEvents: isDraggingOver ? 'none' : '',
+    background: isDraggingOver ? 'rgba(255, 215, 0, 0.25)' : '',
+    overflow
+  };
+};
 
 const getDraggableStyle = (isDragging, draggableStyle) => {
   return {
-    // padding: isDragging ? '1em' : '',
-    // margin: isDragging ? `0 0 1em 0` : '',
-    // height: isDragging ? '80%' : 'auto',
-    // height: isDragging ? '100px' : 'auto',
-    background: isDragging ? 'gold' : '',
+    background: isDragging ? 'rgba(255, 215, 0, 0.75)' : '',
     ...draggableStyle
   };
 };
+
+export { Draggable, getDroppableStyle, getDraggableStyle };
 
 class Sortable extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+  }
+  shouldComponentUpdate(nextProps) {
+    return shallowCompare(this, nextProps);
   }
   onChange(result) {
     if (!result.destination || !this.props.onChange) {
@@ -37,7 +41,7 @@ class Sortable extends Component {
   }
   render() {
     const { onChange } = this;
-    const { children, handle = null, tag = '', ...rest } = this.props;
+    const { children, hasOwnDraggables, tag = '', ...rest } = this.props;
 
     if (!children || !children.length) {
       return null;
@@ -86,42 +90,41 @@ class Sortable extends Component {
                 this.props.overflow
               )}
             >
-              {children.map((child, index) => (
-                <Draggable
-                  key={`draggable-key-${index}`}
-                  draggableId={`draggable-id-${index}`}
-                  disableInteractiveElementBlocking={false}
-                  index={index}
-                >
-                  {(draggableProvided, draggableSnapshot) => {
-                    const {
-                      draggableProps,
-                      dragHandleProps,
-                      innerRef
-                    } = draggableProvided;
+              {children.map((child, index) => {
+                if (hasOwnDraggables) {
+                  return child;
+                } else {
+                  return (
+                    <Draggable
+                      key={`draggable-key-${index}`}
+                      draggableId={`draggable-id-${index}`}
+                      index={index}
+                    >
+                      {(draggableProvided, draggableSnapshot) => {
+                        const {
+                          draggableProps,
+                          dragHandleProps,
+                          innerRef
+                        } = draggableProvided;
+                        return (
+                          <div
+                            {...draggableProps}
+                            {...dragHandleProps}
+                            ref={innerRef}
+                            style={getDraggableStyle(
+                              draggableSnapshot.isDragging,
+                              draggableProps.style
+                            )}
+                          >
+                            {child}
+                          </div>
+                        );
+                      }}
+                    </Draggable>
+                  );
+                }
+              })}
 
-                    const implicitHandle = !handle ? dragHandleProps : {};
-
-                    const explicitHandle = handle ? dragHandleProps : {};
-
-                    return (
-                      <div
-                        ref={innerRef}
-                        {...draggableProps}
-                        {...implicitHandle}
-                        style={getDraggableStyle(
-                          draggableSnapshot.isDragging,
-                          draggableProps.style
-                        )}
-                      >
-                        {handle && <Icon {...explicitHandle} name={handle} />}
-
-                        {child}
-                      </div>
-                    );
-                  }}
-                </Draggable>
-              ))}
               {droppableProvided.placeholder}
             </div>
           )}
@@ -133,7 +136,7 @@ class Sortable extends Component {
 
 Sortable.propTypes = {
   children: PropTypes.array,
-  handle: PropTypes.any,
+  hasOwnDraggables: PropTypes.bool,
   onChange: PropTypes.func,
   overflow: PropTypes.any,
   tag: PropTypes.string

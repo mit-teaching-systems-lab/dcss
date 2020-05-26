@@ -13,12 +13,20 @@ import {
 import EditorMenu from '@components/EditorMenu';
 // import notify from '@components/Notification';
 // import Loading from '@components/Loading';
-import Sortable from '@components/Sortable';
+import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
 import * as Components from '../Components';
 import './SlideEditor.css';
+
+const getDraggableStyle = (isDragging, draggableStyle) => {
+  return {
+    background: isDragging ? 'rgba(255, 215, 0, 0.75)' : '',
+    opacity: isDragging ? '0.25' : '1',
+    ...draggableStyle
+  };
+};
 
 export default class SlideEditor extends Component {
   constructor(props) {
@@ -43,7 +51,6 @@ export default class SlideEditor extends Component {
     this.onComponentChange = this.onComponentChange.bind(this);
     this.onComponentDelete = this.onComponentDelete.bind(this);
     this.onComponentOrderChange = this.onComponentOrderChange.bind(this);
-
     this.onComponentSelectClick = this.onComponentSelectClick.bind(this);
 
     this.onTitleChange = this.onTitleChange.bind(this);
@@ -173,9 +180,7 @@ export default class SlideEditor extends Component {
     } = this;
 
     const { noSlide, scenarioId } = this.props;
-
     const { activeComponentIndex, components, title } = this.state;
-
     const noSlideComponents = components.length === 0;
     const disabled = !!noSlide;
     const editorMenuItems = {
@@ -264,7 +269,11 @@ export default class SlideEditor extends Component {
                         />
                       )}
 
-                      <Sortable onChange={onComponentOrderChange}>
+                      <Sortable
+                        hasOwnDraggables={true}
+                        onChange={onComponentOrderChange}
+                        type="component"
+                      >
                         {components.map((value, index) => {
                           const { type } = value;
                           if (!Components[type]) return;
@@ -279,10 +288,12 @@ export default class SlideEditor extends Component {
                             activeComponentIndex === index;
                           const description = `${index + 1}, `;
                           const movers = (
-                            <Menu.Menu
-                              name="Move component up or down"
-                              position="right"
-                            >
+                            <Menu.Menu name="Move component" position="right">
+                              <Menu.Item
+                                icon="move"
+                                aria-label={`Move component`}
+                                disabled={components.length <= 1}
+                              />
                               <Menu.Item
                                 icon="caret up"
                                 aria-label={`Move component ${description} up`}
@@ -333,42 +344,70 @@ export default class SlideEditor extends Component {
                           };
 
                           return this.state.mode === 'edit' ? (
-                            <Ref
-                              key={`component-ref-${index}`}
-                              innerRef={node =>
-                                (this.componentRefs[index] = node)
-                              }
+                            <Draggable
+                              key={`draggable-key-${index}`}
+                              draggableId={`draggable-id-${index}`}
+                              index={index}
                             >
-                              <Segment
-                                key={`component-edit-${index}`}
-                                className={
-                                  index === activeComponentIndex
-                                    ? 'sortable__selected sortable__component draggable'
-                                    : 'sortable__component draggable'
-                                }
-                                onClick={onComponentClick}
-                              >
-                                <EditorMenu
-                                  type="component"
-                                  items={{
-                                    save: {
-                                      onClick: updateSlide
-                                    },
-                                    delete: {
-                                      onConfirm
-                                    },
-                                    right
-                                  }}
-                                />
+                              {(provided, snapshot) => {
+                                const {
+                                  draggableProps,
+                                  dragHandleProps,
+                                  innerRef
+                                } = provided;
+                                return (
+                                  <div
+                                    {...draggableProps}
+                                    ref={innerRef}
+                                    style={getDraggableStyle(
+                                      snapshot.isDragging,
+                                      draggableProps.style
+                                    )}
+                                  >
+                                    <Ref
+                                      key={`component-ref-${index}`}
+                                      innerRef={node =>
+                                        (this.componentRefs[index] = node)
+                                      }
+                                    >
+                                      <Segment
+                                        key={`component-edit-${index}`}
+                                        className={
+                                          index === activeComponentIndex
+                                            ? 'sortable__selected sortable__component draggable'
+                                            : 'sortable__component draggable'
+                                        }
+                                        onClick={onComponentClick}
+                                      >
+                                        <EditorMenu
+                                          draghandle={dragHandleProps}
+                                          type="component"
+                                          index={index}
+                                          items={{
+                                            save: {
+                                              onClick: updateSlide
+                                            },
+                                            delete: {
+                                              onConfirm
+                                            },
+                                            right
+                                          }}
+                                        />
 
-                                <ComponentEditor
-                                  slideIndex={this.props.index}
-                                  scenarioId={scenarioId}
-                                  value={value}
-                                  onChange={v => onComponentChange(index, v)}
-                                />
-                              </Segment>
-                            </Ref>
+                                        <ComponentEditor
+                                          slideIndex={this.props.index}
+                                          scenarioId={scenarioId}
+                                          value={value}
+                                          onChange={v =>
+                                            onComponentChange(index, v)
+                                          }
+                                        />
+                                      </Segment>
+                                    </Ref>
+                                  </div>
+                                );
+                              }}
+                            </Draggable>
                           ) : (
                             <Fragment key={`component-fragment-${index}`}>
                               <ComponentDisplay

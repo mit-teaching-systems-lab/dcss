@@ -23,7 +23,7 @@ const languages = {
   pt_br,
   ru,
   it,
-  zh_cn,
+  zh_cn
 };
 
 export default lang => languages[lang];

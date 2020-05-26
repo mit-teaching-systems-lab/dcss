@@ -1,17 +1,17 @@
 import { type } from './meta';
 import React from 'react';
 import PropTypes from 'prop-types';
+import 'suneditor/dist/css/suneditor.min.css';
+import 'katex/dist/katex.min.css';
 import './Text.css';
 
 const Display = ({ html: __html }) => (
-  <React.Fragment>
-    <div
-      className="richtext__container"
-      dangerouslySetInnerHTML={{
-        __html
-      }}
-    ></div>
-  </React.Fragment>
+  <div
+    className="sun-editor-editable richtext__container"
+    dangerouslySetInnerHTML={{
+      __html
+    }}
+  />
 );
 
 Display.propTypes = {

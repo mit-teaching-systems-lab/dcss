@@ -1,0 +1,8 @@
+.sun-editor-editable {
+  padding: 0.5em;
+}
+
+.richtexteditor__mode-display {
+  background-color: transparent !important;
+  padding: 0 !important;
+}

@@ -6,35 +6,27 @@ import { type } from './meta';
 class TextEditor extends React.Component {
   constructor(props) {
     super(props);
-
-    const defaultValue = (props.value && props.value.html) || '';
-    this.state = {
-      defaultValue
-    };
     this.onChange = this.onChange.bind(this);
   }
 
   render() {
     const { onChange } = this;
-    const { defaultValue } = this.state;
-
     return (
       <RichTextEditor
+        options={{ buttons: 'component' }}
         defaultValue={this.props.value.html}
-        onBlur={onChange}
+        onChange={onChange}
       />
     );
   }
 
   onChange(html) {
+    // eslint-disable-next-line no-console
     console.log(this.props.value.html === html, this.props.value.html, html);
-    if (this.props.onChange) {
-
-      this.props.onChange({
-        type,
-        html
-      });
-    }
+    this.props.onChange({
+      type,
+      html
+    });
   }
 }
 

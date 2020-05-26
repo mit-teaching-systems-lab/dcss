@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Checkbox, Dropdown, Message } from 'semantic-ui-react';
-import Editor from 'nib-core';
-import { convertFromHTML, convertToHTML } from 'nib-converter';
+import RichTextEditor from '@components/RichTextEditor';
 import { type } from './meta';
 
 const options = [
@@ -23,50 +22,47 @@ class SuggestionEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    const { color = 'grey', html = '', open = false } = props.value;
+    // const { color = 'grey', html = '', open = false } = props.value;
 
-    const defaultValue = convertFromHTML(html);
-
-    this.state = {
-      color,
-      defaultValue,
-      open
-    };
+    // this.state = {
+    //   color,
+    //   defaultValue,
+    //   open
+    // };
 
     this.onColorChange = this.onColorChange.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
     this.onTextareaChange = this.onTextareaChange.bind(this);
-    this.updateState = this.updateState.bind(this);
   }
 
-  updateState() {
-    const { color, defaultValue, open } = this.state;
+  // updateState() {
+  //   const { color, defaultValue, open } = this.state;
 
-    const html = convertToHTML(defaultValue.doc);
+  //   const html = convertToHTML(defaultValue.doc);
 
-    this.props.onChange({
-      type,
-      html,
-      color,
-      open
-    });
-  }
+  // this.props.onChange({
+  //   type,
+  //   html,
+  //   color,
+  //   open
+  // });
+  // }
 
-  onTextareaChange(defaultValue) {
-    this.setState({ defaultValue }, this.updateState);
+  onTextareaChange(html) {
+    this.props.onChange({ html });
   }
 
   onVisibilityChange(event, { checked: open }) {
-    this.setState({ open }, this.updateState);
+    this.props.onChange({ open });
   }
 
   onColorChange(event, { value: color }) {
-    this.setState({ color }, this.updateState);
+    this.props.onChange({ color });
   }
 
   render() {
-    const { color, open, defaultValue } = this.state;
     const { onColorChange, onTextareaChange, onVisibilityChange } = this;
+    const { color, html, open } = this.props.value;
     const selectedOption = options.find(option => option.key === color);
     return (
       <React.Fragment>
@@ -79,17 +75,13 @@ class SuggestionEditor extends React.Component {
           onChange={onColorChange}
         />
         <Message color={color}>
-          <Editor
-            defaultValue={defaultValue}
+          <RichTextEditor
+            options={{
+              buttons: 'suggestion',
+              height: '150px'
+            }}
+            defaultValue={html}
             onChange={onTextareaChange}
-            styleConfig={{
-              editor: () => ({
-                height: '150px'
-              })
-            }}
-            config={{
-              toolbar: { options: '' }
-            }}
           />
         </Message>
         <Checkbox
