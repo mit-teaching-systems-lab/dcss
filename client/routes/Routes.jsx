@@ -125,66 +125,108 @@ const Routes = ({ isLoggedIn }) => {
         <Route component={CopyScenario} />
       </ConfirmAuth>
 
-      <ConfirmAuth
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
         path="/editor/:id/scenario"
-        requiredPermission="create_scenario"
       >
-        <Route
-          render={props => {
-            return <Editor {...makeEditorProps(props)} activeTab="scenario" />;
-          }}
-        />
-      </ConfirmAuth>
-      <ConfirmAuth
+        <ConfirmAuth
+          path="/editor/:id/scenario"
+          requiredPermission="create_scenario"
+        >
+          <Route
+            render={props => {
+              return <Editor {...makeEditorProps(props)} activeTab="scenario" />;
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
         path="/editor/:id/slides/:activeNonZeroSlideIndex"
-        requiredPermission="create_scenario"
       >
-        <Route
-          render={props => {
-            return <Editor {...makeEditorProps(props)} activeTab="slides" />;
-          }}
-        />
-      </ConfirmAuth>
-      <ConfirmAuth
+        <ConfirmAuth
+          path="/editor/:id/slides/:activeNonZeroSlideIndex"
+          requiredPermission="create_scenario"
+        >
+          <Route
+            render={props => {
+              return <Editor {...makeEditorProps(props)} activeTab="slides" />;
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
         path="/editor/:id/slides"
-        requiredPermission="create_scenario"
       >
-        <Route
-          render={props => {
-            return <Editor {...makeEditorProps(props)} activeTab="slides" />;
-          }}
-        />
-      </ConfirmAuth>
-      <ConfirmAuth
+        <ConfirmAuth
+          path="/editor/:id/slides"
+          requiredPermission="create_scenario"
+        >
+          <Route
+            render={props => {
+              return <Editor {...makeEditorProps(props)} activeTab="slides" />;
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
         path="/editor/:id/preview/:activeNonZeroSlideIndex"
-        requiredPermission="create_scenario"
       >
-        <Route
-          render={props => {
-            return <Editor {...makeEditorProps(props)} activeTab="preview" />;
-          }}
-        />
-      </ConfirmAuth>
-      <ConfirmAuth
+        <ConfirmAuth
+          path="/editor/:id/preview/:activeNonZeroSlideIndex"
+          requiredPermission="create_scenario"
+        >
+          <Route
+            render={props => {
+              return <Editor {...makeEditorProps(props)} activeTab="preview" />;
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
         path="/editor/:id/preview"
-        requiredPermission="create_scenario"
       >
-        <Route
-          render={props => {
-            return <Editor {...makeEditorProps(props)} activeTab="preview" />;
-          }}
-        />
-      </ConfirmAuth>
-      <ConfirmAuth path="/editor/:id" requiredPermission="create_scenario">
-        <Route
-          render={props => {
-            return <Editor {...makeEditorProps(props)} activeTab="scenario" />;
-          }}
-        />
-      </ConfirmAuth>
-      <ConfirmAuth path="/research" requiredPermission="view_run_data">
-        <Route component={Researcher} />
-      </ConfirmAuth>
+        <ConfirmAuth
+          path="/editor/:id/preview"
+          requiredPermission="create_scenario"
+        >
+          <Route
+            render={props => {
+              return <Editor {...makeEditorProps(props)} activeTab="preview" />;
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        path="/editor/:id"
+      >
+        <ConfirmAuth path="/editor/:id" requiredPermission="create_scenario">
+          <Route
+            render={props => {
+              return <Editor {...makeEditorProps(props)} activeTab="scenario" />;
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        path="/research"
+      >
+        <ConfirmAuth path="/research" requiredPermission="view_run_data">
+          <Route component={Researcher} />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
       <Route exact path="/logout" component={Logout} />
       <Route exact path="/login" component={Login} />
 
