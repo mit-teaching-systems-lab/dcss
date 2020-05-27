@@ -349,7 +349,7 @@ export default class SlideEditor extends Component {
                               draggableId={`draggable-id-${index}`}
                               index={index}
                             >
-                              {(provided, {isDragging}) => {
+                              {(provided, { isDragging }) => {
                                 const {
                                   draggableProps,
                                   dragHandleProps,
