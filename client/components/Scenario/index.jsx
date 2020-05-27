@@ -260,10 +260,10 @@ Scenario.propTypes = {
   onSubmit: PropTypes.func
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { title, description, consent } = state.scenario;
   return { title, description, consent };
-}
+};
 
 const mapDispatchToProps = {
   getScenario,

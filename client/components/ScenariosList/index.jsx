@@ -254,13 +254,13 @@ ScenariosList.propTypes = {
   username: PropTypes.string
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const {
     login: { isLoggedIn, username },
     scenarios
   } = state;
   return { isLoggedIn, username, scenarios };
-}
+};
 
 const mapDispatchToProps = {
   getScenarios

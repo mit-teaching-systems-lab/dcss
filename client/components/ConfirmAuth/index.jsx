@@ -25,10 +25,10 @@ const ConfirmAuth = ({
   );
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { isLoggedIn, username, permissions } = state.login;
   return { isLoggedIn, username, permissions };
-}
+};
 
 ConfirmAuth.propTypes = {
   children: PropTypes.oneOfType([

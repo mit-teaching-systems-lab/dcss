@@ -311,7 +311,7 @@ class ScenarioEditor extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const {
     author,
     categories,
@@ -322,7 +322,7 @@ function mapStateToProps(state) {
     title
   } = state.scenario;
   return { author, categories, consent, description, finish, status, title };
-}
+};
 
 const mapDispatchToProps = {
   getScenario,

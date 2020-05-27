@@ -132,12 +132,12 @@ ScenarioCard.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const {
     login: { isLoggedIn, username }
   } = state;
   return { isLoggedIn, username };
-}
+};
 
 const mapDispatchToProps = {
   getScenarios

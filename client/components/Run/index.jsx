@@ -166,12 +166,12 @@ Run.propTypes = {
   user: PropTypes.object
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { id, username, permissions } = state.login;
   const { currentCohort: cohort } = state.cohort;
   const { responses, run } = state;
   return { cohort, responses, run, user: { id, username, permissions } };
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   setCohortUserRole: params => dispatch(setCohortUserRole(params)),

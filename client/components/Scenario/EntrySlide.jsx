@@ -121,9 +121,9 @@ EntrySlide.propTypes = {
   onClickNext: PropTypes.func
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { run } = state;
   return { run };
-}
+};
 
 export default connect(mapStateToProps)(EntrySlide);

@@ -405,7 +405,7 @@ Editor.propTypes = {
   status: PropTypes.number
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const {
     author,
     categories,
@@ -424,7 +424,7 @@ function mapStateToProps(state) {
     status,
     title
   };
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   getScenario: id => dispatch(getScenario(id)),

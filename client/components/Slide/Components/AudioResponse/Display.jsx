@@ -242,10 +242,10 @@ Display.propTypes = {
   type: PropTypes.oneOf([type]).isRequired
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { run } = state;
   return { run };
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   getResponse: params => dispatch(getResponse(params))

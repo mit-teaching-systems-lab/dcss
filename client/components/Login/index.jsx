@@ -142,10 +142,10 @@ Login.propTypes = {
   username: PropTypes.string
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { isLoggedIn, username, permissions } = state.login;
   return { isLoggedIn, username, permissions };
-}
+};
 
 const mapDispatchToProps = {
   logIn,

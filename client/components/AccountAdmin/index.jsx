@@ -153,10 +153,10 @@ AccountAdmin.propTypes = {
   users: PropTypes.array
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { users } = state.admin;
   return { users };
-}
+};
 
 const mapDispatchToProps = {
   setUsers

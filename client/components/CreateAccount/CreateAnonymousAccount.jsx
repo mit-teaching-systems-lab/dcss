@@ -152,10 +152,10 @@ CreateAnonymousAccount.propTypes = {
   username: PropTypes.string
 };
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   const { isLoggedIn, username } = state.login;
   return { isLoggedIn, username };
-}
+};
 
 const mapDispatchToProps = {
   logIn
