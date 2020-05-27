@@ -15,10 +15,9 @@ const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
   {}
 );
 
-module.exports = {
+
+const config = {
   entry: ['babel-polyfill', './index.js'],
-  mode: 'development',
-  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -90,4 +89,16 @@ module.exports = {
     new MomentLocalesPlugin(),
     new DefinePlugin(DCSS_BRAND_VARS)
   ]
+};
+
+module.exports = (env, argv) => {
+
+  if (argv.mode === 'development') {
+    config.devtool = 'inline-source-map';
+  }
+
+  if (argv.mode === 'production') {
+    //...
+  }
+  return config;
 };

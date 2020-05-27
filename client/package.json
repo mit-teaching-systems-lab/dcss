@@ -10,7 +10,7 @@
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode development",
+    "build": "webpack --mode production",
     "build-storybook": "build-storybook",
     "dev": "webpack-dev-server --mode development",
     "lint": "npm-run-all lint:css \"lint:js {@}\" -c --",
