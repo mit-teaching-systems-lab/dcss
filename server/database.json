@@ -14,5 +14,11 @@
         "connectionString": {"ENV": "DATABASE_URL"},
         "ssl": true,
         "sslmode": "require"
+    },
+    "prod": {
+        "driver": "pg",
+        "connectionString": {"ENV": "DATABASE_URL"},
+        "ssl": true,
+        "sslmode": "require"
     }
 }
