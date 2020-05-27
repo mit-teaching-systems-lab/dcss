@@ -11,9 +11,8 @@
     },
     "staging": {
         "driver": "pg",
-        "user": "",
-        "password": "",
-        "host": "",
-        "database": ""
+        "connectionString": {"ENV": "DATABASE_URL"},
+        "ssl": true,
+        "sslmode": "require"
     }
 }
