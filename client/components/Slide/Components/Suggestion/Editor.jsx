@@ -21,33 +21,10 @@ const options = [
 class SuggestionEditor extends React.Component {
   constructor(props) {
     super(props);
-
-    // const { color = 'grey', html = '', open = false } = props.value;
-
-    // this.state = {
-    //   color,
-    //   defaultValue,
-    //   open
-    // };
-
     this.onColorChange = this.onColorChange.bind(this);
     this.onVisibilityChange = this.onVisibilityChange.bind(this);
     this.onTextareaChange = this.onTextareaChange.bind(this);
   }
-
-  // updateState() {
-  //   const { color, defaultValue, open } = this.state;
-
-  //   const html = convertToHTML(defaultValue.doc);
-
-  // this.props.onChange({
-  //   type,
-  //   html,
-  //   color,
-  //   open
-  // });
-  // }
-
   onTextareaChange(html) {
     this.props.onChange({ html });
   }

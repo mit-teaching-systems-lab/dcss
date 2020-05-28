@@ -3,18 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container, Icon, Message } from 'semantic-ui-react';
 import RichTextEditor from '@components/RichTextEditor';
-import 'suneditor/dist/css/suneditor.min.css';
-import 'katex/dist/katex.min.css';
 
 class Display extends React.Component {
   constructor(props) {
     super(props);
 
-    const { color, html, open = false } = this.props;
+    const { open = false } = this.props;
 
     this.state = {
-      color,
-      html,
       open
     };
 
@@ -27,20 +23,37 @@ class Display extends React.Component {
   }
 
   render() {
-    const { color, html, open } = this.state;
+    const { color, html } = this.props;
+    const { open } = this.state;
     const { onClick } = this;
-    const props = open ? {} : { hidden: true };
+    const icon = <Icon name="info circle" />;
+    const content = open
+      ? <RichTextEditor mode="display" defaultValue={html} />
+      : <>{icon}{' '}Information</>;
+
+    const props = open
+      ? {
+          color,
+          content,
+          onDismiss: onClick
+        }
+      : {
+          color,
+          content,
+          onClick
+        };
+
     return (
-      <Container style={{ margin: '1rem 0 1rem 0' }}>
-        <Button onClick={onClick} compact inverted circular icon color={color}>
-          <Icon name="info circle" />
-          Information
-        </Button>
-        <Message color={color} {...props}>
-          <RichTextEditor mode="display" defaultValue={html} />
-        </Message>
-      </Container>
+       <Container style={{ margin: '1rem 0 1rem 0' }}>
+        {open ? (
+          <Message {...props} />
+        ) : (
+          <Button icon {...props} />
+        )}
+       </Container>
     );
+
+
   }
 }
 
