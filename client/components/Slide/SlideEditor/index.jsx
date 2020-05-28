@@ -254,7 +254,7 @@ export default class SlideEditor extends Component {
                           icon={
                             <Icon.Group
                               size="huge"
-                              className="editormenu__icon-group"
+                              className="em__icon-group-margin"
                             >
                               <Icon name="newspaper outline" />
                               <Icon
