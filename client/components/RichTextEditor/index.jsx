@@ -1,17 +1,19 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
-import SunEditor from 'suneditor';
+
+// import katex from 'katex';
+// import 'katex/dist/katex.min.css';
+
 import CodeMirror from 'codemirror';
-import katex from 'katex';
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/mode/htmlmixed/htmlmixed';
+
+import SunEditor from 'suneditor';
+import 'suneditor/dist/css/suneditor.min.css';
 
 import buttons from './buttons';
 import plugins from './plugins';
 import language from './language';
-
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/mode/htmlmixed/htmlmixed';
-import 'katex/dist/katex.min.css';
-import 'suneditor/dist/css/suneditor.min.css';
 import './RichTextEditor.css';
 
 const en = language('en');
@@ -89,9 +91,9 @@ class RichTextEditor extends Component {
       options = Object.assign({}, defaultOptions, options, { buttonList });
       options.plugins = plugins(buttonList || []);
 
-      if (options.buttonList.flat().includes('math')) {
-        options.katex = katex;
-      }
+      // if (options.buttonList.flat().includes('math')) {
+      //   options.katex = katex;
+      // }
 
       this[SymbolEditor] = SunEditor.create(this.ref.current);
       this[SymbolEditor].setOptions(options);
@@ -175,9 +177,9 @@ class RichTextEditor extends Component {
 
   render() {
     const { ref } = this;
-    const { mode = 'editor', defaultValue: __html } = this.props;
+    const { defaultValue: __html, mode = 'editor'} = this.props;
 
-    let className = 'sun-editor-editable richtexteditor__mode-display';
+    let className = 'sun-editor-editable richtext__container';
 
     if (this.props.className) {
       className += ` ${this.props.className}`;

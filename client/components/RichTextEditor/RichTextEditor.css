@@ -2,7 +2,12 @@
   padding: 0.5em;
 }
 
-.richtexteditor__mode-display {
+.richtext__container {
+  overflow-wrap: break-word;
   background-color: transparent !important;
   padding: 0 !important;
+}
+
+.richtext__container img {
+  max-width: 100%;
 }
