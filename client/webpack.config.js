@@ -123,9 +123,6 @@ module.exports = (env, {mode, analyze}) => {
   }
 
   if (mode === 'production') {
-    console.log('production!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-    //...
-
     config.performance = {
       hints: 'warning'
     };
@@ -133,7 +130,7 @@ module.exports = (env, {mode, analyze}) => {
       pathinfo: false
     };
 
-    Object.assign(config.optimization, {
+    config.optimization = {
       namedModules: false,
       namedChunks: false,
       nodeEnv: 'production',
@@ -149,7 +146,7 @@ module.exports = (env, {mode, analyze}) => {
       noEmitOnErrors: true,
       checkWasmTypes: true,
       minimize: true,
-    });
+    };
 
     config.plugins.push(
       new DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
