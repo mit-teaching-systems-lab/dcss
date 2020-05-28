@@ -1,7 +1,18 @@
 const path = require('path');
-const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
+const webpack = require('webpack');
+const {
+  DefinePlugin,
+  HotModuleReplacementPlugin,
+  NoEmitOnErrorsPlugin,
+  optimize: {
+    ModuleConcatenationPlugin
+  }
+} = webpack;
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
   (accum, [key, value]) => {
     if (key.startsWith('DCSS_BRAND_')) {
@@ -15,9 +26,9 @@ const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
   {}
 );
 
-
 const config = {
   entry: ['babel-polyfill', './index.js'],
+  target: 'web',
   module: {
     rules: [
       {
@@ -78,8 +89,15 @@ const config = {
       '/api': 'http://localhost:5000/'
     }
   },
+  // optimization: {
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       test: /\.js(\?.*)?$/i,
+  //     }),
+  //     new OptimizeCSSAssetsPlugin({})
+  //   ]
+  // },
   plugins: [
-    new HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {
         from: 'static'
@@ -87,18 +105,58 @@ const config = {
     ]),
     // Optimize moment locales
     new MomentLocalesPlugin(),
+    // Handle application specific ENV configuration vars
     new DefinePlugin(DCSS_BRAND_VARS)
   ]
 };
 
-module.exports = (env, argv) => {
+module.exports = (env, {mode, analyze}) => {
+  config.mode = mode;
 
-  if (argv.mode === 'development') {
+  if (mode === 'development') {
     config.devtool = 'inline-source-map';
+    config.plugins.unshift(new HotModuleReplacementPlugin());
+
+    if (analyze) {
+      config.plugins.unshift(new BundleAnalyzerPlugin());
+    }
   }
 
-  if (argv.mode === 'production') {
+  if (mode === 'production') {
+    console.log('production!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
     //...
+
+    config.performance = {
+      hints: 'warning'
+    };
+    config.output = {
+      pathinfo: false
+    };
+
+    Object.assign(config.optimization, {
+      namedModules: false,
+      namedChunks: false,
+      nodeEnv: 'production',
+      flagIncludedChunks: true,
+      occurrenceOrder: true,
+      concatenateModules: true,
+      splitChunks: {
+        hidePathInfo: true,
+        minSize: 30000,
+        maxAsyncRequests: 5,
+        maxInitialRequests: 3,
+      },
+      noEmitOnErrors: true,
+      checkWasmTypes: true,
+      minimize: true,
+    });
+
+    config.plugins.push(
+      new DefinePlugin({ "process.env.NODE_ENV": JSON.stringify("production") }),
+      new ModuleConcatenationPlugin(),
+      new NoEmitOnErrorsPlugin()
+    );
   }
+
   return config;
 };
