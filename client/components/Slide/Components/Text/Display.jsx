@@ -1,17 +1,11 @@
 import { type } from './meta';
 import React from 'react';
 import PropTypes from 'prop-types';
-import 'suneditor/dist/css/suneditor.min.css';
-import 'katex/dist/katex.min.css';
+import RichTextEditor from '@components/RichTextEditor';
 import './Text.css';
 
-const Display = ({ html: __html }) => (
-  <div
-    className="sun-editor-editable richtext__container"
-    dangerouslySetInnerHTML={{
-      __html
-    }}
-  />
+const Display = ({ html }) => (
+  <RichTextEditor mode="display" defaultValue={html} />
 );
 
 Display.propTypes = {
