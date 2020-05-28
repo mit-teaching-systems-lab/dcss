@@ -164,7 +164,7 @@ class MultiButtonResponseEditor extends React.Component {
             onChange={onChange}
           />
           <Button icon onClick={onButtonAddClick}>
-            <Icon.Group size="large" className="editormenu__icon-group">
+            <Icon.Group size="large" className="em__icon-group-margin">
               <Icon name="hand pointer outline" />
               <Icon corner="top right" name="add" color="green" />
             </Icon.Group>

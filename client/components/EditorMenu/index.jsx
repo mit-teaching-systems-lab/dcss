@@ -24,7 +24,7 @@ export default class EditorMenu extends React.Component {
     const { draghandle = {}, type, items } = this.props;
     const { mode } = this.state;
     return (
-      <Menu {...draghandle} icon borderless>
+      <Menu {...draghandle} icon borderless className="em__height">
         {items.left && (
           <React.Fragment>
             {items.left

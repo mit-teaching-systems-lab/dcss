@@ -1,13 +1,15 @@
-.editormenu__padding {
-    padding: 0.428571em 1.14285714em !important;
+.em__height {
+  min-height: 45px !important;
 }
 
-
-.editormenu__icon-group {
-    margin-right: 0.5rem!important;
+.em__icon-padding {
+  padding: 0.428571em 1.14285714em !important;
 }
 
+.em__icon-group-margin {
+  margin-right: 0.5rem!important;
+}
 
-.editormenu__icon-padding {
-    padding: 0.92857143em 0.5em !important;
+.em__icon-padding {
+  padding: 0.92857143em 0.5em !important;
 }

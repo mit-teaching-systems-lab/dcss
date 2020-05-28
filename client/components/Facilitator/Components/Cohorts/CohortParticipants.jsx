@@ -187,22 +187,22 @@ export class CohortParticipants extends React.Component {
             left: [
               <Menu.Item
                 key="menu-item-cohort-participants"
-                className="editormenu__padding"
+                className="em__icon-padding"
                 name="Participants in this Cohort"
                 onClick={scrollIntoView}
               >
-                <Icon.Group className="editormenu__icon-group">
+                <Icon.Group className="em__icon-group-margin">
                   <Icon name="group" />
                 </Icon.Group>
                 Cohort Participants ({this.props.cohort.users.length})
               </Menu.Item>,
               <Menu.Item
                 key="menu-item-cohort-participants"
-                className="editormenu__padding"
+                className="em__icon-padding"
                 name="Control participant list refresh"
                 onClick={onParticipantRefreshChange}
               >
-                <Icon.Group className="editormenu__icon-group">
+                <Icon.Group className="em__icon-group-margin">
                   <Icon name="refresh" />
                   <Icon
                     corner="top right"
@@ -221,7 +221,7 @@ export class CohortParticipants extends React.Component {
                 <Menu.Item
                   key="menu-item-search-cohort-participants"
                   name="Search cohort participants"
-                  className="editormenu__padding"
+                  className="em__icon-padding"
                 >
                   <Input
                     icon="search"

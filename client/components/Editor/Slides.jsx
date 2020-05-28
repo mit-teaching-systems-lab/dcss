@@ -352,7 +352,7 @@ class Slides extends React.Component {
                           <Icon
                             name="plus square outline"
                             size="large"
-                            className="editormenu__icon-group"
+                            className="em__icon-group-margin"
                           />
                           Add a slide
                         </Menu.Item>

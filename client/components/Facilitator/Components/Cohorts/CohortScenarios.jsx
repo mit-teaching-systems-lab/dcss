@@ -178,11 +178,11 @@ export class CohortScenarios extends React.Component {
             left: [
               <Menu.Item
                 key="menu-item-cohort-scenarios"
-                className="editormenu__padding"
+                className="em__icon-padding"
                 name="Scenarios in this Cohort"
                 onClick={this.scrollIntoView}
               >
-                <Icon.Group className="editormenu__icon-group">
+                <Icon.Group className="em__icon-group-margin">
                   <Icon name="newspaper outline" />
                 </Icon.Group>
                 Cohort Scenarios ({cohortScenarios.length})
@@ -196,7 +196,7 @@ export class CohortScenarios extends React.Component {
                 <Menu.Item
                   key="menu-item-search-cohort-scenarios"
                   name="Search cohort scenarios"
-                  className="editormenu__padding"
+                  className="em__icon-padding"
                 >
                   <Input
                     icon="search"
@@ -224,7 +224,7 @@ export class CohortScenarios extends React.Component {
                 requiredPermission="edit_scenarios_in_cohort"
               >
                 <Table.HeaderCell className="cohort__table-cell-first">
-                  <Icon.Group className="editormenu__icon-group">
+                  <Icon.Group className="em__icon-group-margin">
                     <Icon name="newspaper outline" />
                     <Icon corner="top right" name="add" color="green" />
                   </Icon.Group>

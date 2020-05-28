@@ -168,9 +168,9 @@ export class Cohorts extends React.Component {
                   key="menu-item-create-cohort"
                   name="Create a cohort"
                   onClick={onClickOpenCreateCohort}
-                  className="editormenu__padding"
+                  className="em__icon-padding"
                 >
-                  <Icon.Group className="editormenu__icon-group">
+                  <Icon.Group className="em__icon-group-margin">
                     <Icon name="group" />
                     <Icon corner="top right" name="add" color="green" />
                   </Icon.Group>
@@ -183,7 +183,7 @@ export class Cohorts extends React.Component {
                 <Menu.Item
                   key="menu-item-search-cohorts"
                   name="Search cohorts"
-                  className="editormenu__padding"
+                  className="em__icon-padding"
                 >
                   <Input
                     icon="search"
@@ -239,10 +239,10 @@ export class Cohorts extends React.Component {
                         <Button
                           name="Create a cohort"
                           onClick={onClickOpenCreateCohort}
-                          className="editormenu__padding"
+                          className="em__icon-padding"
                           style={{ background: 'transparent' }}
                         >
-                          <Icon.Group className="editormenu__icon-group">
+                          <Icon.Group className="em__icon-group-margin">
                             <Icon name="group" />
                             <Icon corner="top right" name="add" color="green" />
                           </Icon.Group>

@@ -181,7 +181,7 @@ class ScenariosList extends Component {
                   onClick={onClickCreateScenario}
                   className="scenarios__menu-item--padding"
                 >
-                  <Icon.Group className="editormenu__icon-group">
+                  <Icon.Group className="em__icon-group-margin">
                     <Icon name="newspaper outline" />
                     <Icon corner="top right" name="add" color="green" />
                   </Icon.Group>

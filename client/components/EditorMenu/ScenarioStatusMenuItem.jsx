@@ -60,7 +60,7 @@ class ScenarioStatusMenuItem extends React.Component {
           item
           text={
             <React.Fragment>
-              <Icon.Group className="editormenu__icon-group">
+              <Icon.Group className="em__icon-group-margin">
                 <Icon name="pencil alternate" />
                 {this.getStatusDisplay({
                   asIcon: true

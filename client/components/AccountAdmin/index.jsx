@@ -98,9 +98,9 @@ class AccountAdmin extends Component {
             left: [
               <Menu.Item
                 key="menu-item-account-administration"
-                className="editormenu__padding"
+                className="em__icon-padding"
               >
-                <Icon.Group className="editormenu__icon-group">
+                <Icon.Group className="em__icon-group-margin">
                   <Icon name="user" />
                   <Icon corner="top right" name="cogs" color="orange" />
                 </Icon.Group>
@@ -112,7 +112,7 @@ class AccountAdmin extends Component {
                 <Menu.Item
                   key="menu-item-search-accounts"
                   name="Search user accounts"
-                  className="editormenu__padding"
+                  className="em__icon-padding"
                 >
                   <Input
                     icon="search"

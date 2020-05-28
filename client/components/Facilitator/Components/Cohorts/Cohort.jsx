@@ -220,10 +220,10 @@ export class Cohort extends React.Component {
                 trigger={
                   <Menu.Item
                     key="menu-item-account-administration"
-                    className="editormenu__padding"
+                    className="em__icon-padding"
                     onClick={() => copy(cohortUrl)}
                   >
-                    <Icon.Group className="editormenu__icon-group">
+                    <Icon.Group className="em__icon-group-margin">
                       <Icon name="clipboard outline" />
                     </Icon.Group>
                     {cohortUrl}
