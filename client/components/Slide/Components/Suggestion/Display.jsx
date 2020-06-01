@@ -27,9 +27,11 @@ class Display extends React.Component {
     const { open } = this.state;
     const { onClick } = this;
     const icon = <Icon name="info circle" />;
-    const content = open
-      ? <RichTextEditor mode="display" defaultValue={html} />
-      : <>{icon}{' '}Information</>;
+    const content = open ? (
+      <RichTextEditor mode="display" defaultValue={html} />
+    ) : (
+      <>{icon} Information</>
+    );
 
     const props = open
       ? {
@@ -44,16 +46,10 @@ class Display extends React.Component {
         };
 
     return (
-       <Container style={{ margin: '1rem 0 1rem 0' }}>
-        {open ? (
-          <Message {...props} />
-        ) : (
-          <Button icon {...props} />
-        )}
-       </Container>
+      <Container style={{ margin: '1rem 0 1rem 0' }}>
+        {open ? <Message {...props} /> : <Button icon {...props} />}
+      </Container>
     );
-
-
   }
 }
 

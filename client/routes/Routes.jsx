@@ -135,7 +135,9 @@ const Routes = ({ isLoggedIn }) => {
         >
           <Route
             render={props => {
-              return <Editor {...makeEditorProps(props)} activeTab="scenario" />;
+              return (
+                <Editor {...makeEditorProps(props)} activeTab="scenario" />
+              );
             }}
           />
         </ConfirmAuth>
@@ -212,16 +214,15 @@ const Routes = ({ isLoggedIn }) => {
         <ConfirmAuth path="/editor/:id" requiredPermission="create_scenario">
           <Route
             render={props => {
-              return <Editor {...makeEditorProps(props)} activeTab="scenario" />;
+              return (
+                <Editor {...makeEditorProps(props)} activeTab="scenario" />
+              );
             }}
           />
         </ConfirmAuth>
       </RedirectRouteForInactiveSession>
 
-      <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
-        path="/research"
-      >
+      <RedirectRouteForInactiveSession isLoggedIn={isLoggedIn} path="/research">
         <ConfirmAuth path="/research" requiredPermission="view_run_data">
           <Route component={Researcher} />
         </ConfirmAuth>
