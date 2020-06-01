@@ -10,10 +10,10 @@
   "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config=webpack.config.js",
+    "build": "webpack --mode=production",
     "build-storybook": "build-storybook",
-    "dev": "webpack-dev-server --config=webpack.config.js",
-    "dev:analyze": "webpack-dev-server --analyze=true --config=webpack.config.js",
+    "dev": "webpack-dev-server --mode=development --config=webpack.config.js",
+    "dev:analyze": "webpack-dev-server --analyze=true --mode=development --config=webpack.config.js",
     "lint": "npm-run-all lint:css \"lint:js {@}\" -c --",
     "lint:css": "prettier -l \"**/*.css\"",
     "lint:js": "eslint --ext js,jsx .",
