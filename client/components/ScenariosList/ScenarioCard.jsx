@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Button, Card, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Button, Card, Icon } from 'semantic-ui-react';
+import storage from 'local-storage-fallback';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
@@ -45,25 +46,23 @@ class ScenarioCard extends React.Component {
 
   render() {
     const { onClick } = this;
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, user } = this.props;
     const { scenario } = this.state;
-    const {
-      categories = [],
-      id,
-      description,
-      deleted_at,
-      title,
-      user_is_author
-    } = scenario;
+    const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
       <Icon name="check" />
     ) : null;
 
+    const isAuthorized =
+      scenario.author_id === user.id || user.roles.includes('super_admin');
+
+    const persisted = JSON.parse(storage.getItem(`editor/${id}`));
+    const tab = (persisted && persisted.activeTab) || 'slides';
+    const nonZeroIndex = (persisted && persisted.activeSlideIndex + 1) || 1;
+    const editPath = `/editor/${id}/${tab}/${nonZeroIndex}`;
+
     return deleted_at ? (
-      <ConfirmAuth
-        isAuthorized={user_is_author}
-        requiredPermission="edit_scenario"
-      >
+      <ConfirmAuth isAuthorized={isAuthorized}>
         <DeletedCard
           id={id}
           title={title}
@@ -95,15 +94,12 @@ class ScenarioCard extends React.Component {
         {isLoggedIn && (
           <Card.Content extra>
             <Button.Group className="scenario__entry--edit-buttons">
-              <ConfirmAuth
-                isAuthorized={user_is_author}
-                requiredPermission="edit_scenario"
-              >
+              <ConfirmAuth isAuthorized={isAuthorized}>
                 <Button
                   basic
                   className="scenario__entry--button"
                   as={Link}
-                  to={{ pathname: `/editor/${id}` }}
+                  to={{ pathname: `/editor/${id}/${tab}/${nonZeroIndex}` }}
                 >
                   Edit
                 </Button>
@@ -128,16 +124,18 @@ class ScenarioCard extends React.Component {
 
 ScenarioCard.propTypes = {
   getScenarios: PropTypes.func,
+  isLoggedIn: PropTypes.bool.isRequired,
   scenario: PropTypes.object,
-  isLoggedIn: PropTypes.bool.isRequired
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
   const {
-    login: { isLoggedIn, username }
+    login: { isLoggedIn },
+    user
   } = state;
-  return { isLoggedIn, username };
-};
+  return { isLoggedIn, user };
+}
 
 const mapDispatchToProps = {
   getScenarios

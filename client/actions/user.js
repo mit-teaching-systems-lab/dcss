@@ -15,7 +15,7 @@ export const setUser = user => ({
 export const getUser = () => async dispatch => {
   dispatch({ type: GET_USER });
   try {
-    const user = await (await fetch(`/api/auth/me`)).json();
+    const user = await (await fetch('/api/auth/me')).json();
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   } catch (error) {

@@ -1,10 +1,8 @@
 const { Router } = require('express');
+const router = Router();
 
 const { validateRequestBody } = require('../../util/requestValidation');
 const { requireUserRole, checkCanEditUserRoles } = require('./middleware');
-
-const router = Router();
-
 const {
   getAllUsersRoles,
   getUserRoles,
@@ -15,10 +13,12 @@ const {
   setUserRoles
 } = require('./endpoints');
 
-router.get('/', [requireUserRole(['admin', 'super_admin']), getAllUsersRoles]);
+router.get('/all', [
+  requireUserRole(['admin', 'super_admin']),
+  getAllUsersRoles
+]);
 
 router.get('/permission', [getUserPermissions]);
-
 router.post('/user/permission', [
   requireUserRole(['admin', 'super_admin']),
   getUsersByPermission

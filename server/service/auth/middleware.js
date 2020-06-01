@@ -1,6 +1,7 @@
 const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
 const db = require('./db');
+const { getUserRoles } = require('../roles/db');
 
 exports.requireUser = (req, res, next) => {
   if (!req.session.user) {
@@ -33,6 +34,7 @@ exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(
 async function createUserAsync(req, res, next) {
   const { username, password, email } = req.body;
   const created = await db.createUser({ email, username, password });
+  const { roles } = await getUserRoles(created.id);
 
   if (!created) {
     const error = new Error('User not created. Server error');
@@ -43,9 +45,10 @@ async function createUserAsync(req, res, next) {
   //eslint-disable-next-line require-atomic-updates
   req.session.user = {
     anonymous: false,
-    username: created.username,
     email: created.email,
-    id: created.id
+    id: created.id,
+    roles,
+    username: created.username
   };
 
   next();
@@ -54,6 +57,7 @@ async function createUserAsync(req, res, next) {
 async function loginUserAsync(req, res, next) {
   const { username, email, password } = req.body;
   const user = await db.getUserByProps({ username, email });
+  const { roles } = await getUserRoles(user.id);
 
   const error = new Error('Invalid username or password.');
   error.status = 401;
@@ -87,9 +91,10 @@ async function loginUserAsync(req, res, next) {
       //eslint-disable-next-line require-atomic-updates
       req.session.user = {
         anonymous: false,
-        username: user.username,
         email: user.email,
-        id
+        id,
+        roles,
+        username: user.username
       };
       return next();
     }

@@ -9,7 +9,8 @@ import {
 const initialState = {
   username: null,
   email: null,
-  id: null
+  id: null,
+  roles: []
 };
 
 export const user = (state = initialState, action) => {

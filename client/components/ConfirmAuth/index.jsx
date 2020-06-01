@@ -10,16 +10,27 @@ const ConfirmAuth = ({
   requiredPermission,
   ...rest
 }) => {
-  let hasCorrectPermission = permissions.includes(requiredPermission);
+  let asksPermission = requiredPermission !== undefined;
+  let asksIsAuthorized = isAuthorized !== undefined;
+  let isAccessGranted = false;
 
-  if (isAuthorized !== undefined) {
-    hasCorrectPermission = isAuthorized && hasCorrectPermission;
+  if (asksPermission) {
+    isAccessGranted = permissions.includes(requiredPermission);
   }
+
+  if (asksIsAuthorized) {
+    isAccessGranted = isAuthorized;
+  }
+
+  if (asksPermission && asksIsAuthorized) {
+    isAccessGranted = isAuthorized && permissions.includes(requiredPermission);
+  }
+
   return (
     <Route
       {...rest}
       render={() => {
-        return hasCorrectPermission ? children : null;
+        return isAccessGranted ? children : null;
       }}
     />
   );

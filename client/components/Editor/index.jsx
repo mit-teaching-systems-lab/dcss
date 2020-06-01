@@ -29,6 +29,7 @@ class Editor extends Component {
     this.setActiveView = this.setActiveView.bind(this);
     this.updateScenario = this.updateScenario.bind(this);
 
+    let noPersistedView = true;
     let {
       activeTab,
       activeSlideIndex,
@@ -60,6 +61,8 @@ class Editor extends Component {
       // but we may override those values here, with whatever
       // was persisted for this scenario
       ({ activeTab, activeSlideIndex } = persisted);
+
+      noPersistedView = false;
     }
 
     this.state = {
@@ -75,7 +78,9 @@ class Editor extends Component {
     }
 
     if (!isNewScenario) {
-      this.state.activeTab = 'slides';
+      if (noPersistedView) {
+        this.state.activeTab = 'slides';
+      }
       this.props.getScenario(scenarioId);
     }
   }
