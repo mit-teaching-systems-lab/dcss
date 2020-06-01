@@ -1,13 +1,13 @@
 .sun-editor-editable {
-  padding: 0.5em;
+  padding: 0.5em !important;
 }
 
-.richtext__container {
+.rt__container {
   overflow-wrap: break-word;
   background-color: transparent !important;
   padding: 0 !important;
 }
 
-.richtext__container img {
+.rt__container img {
   max-width: 100%;
 }

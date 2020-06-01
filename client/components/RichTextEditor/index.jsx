@@ -9,7 +9,8 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 
 import SunEditor from 'suneditor';
-import 'suneditor/dist/css/suneditor.min.css';
+import 'suneditor/src/assets/css/suneditor-contents.css';
+import 'suneditor/src/assets/css/suneditor.css';
 
 import buttons from './buttons';
 import plugins from './plugins';
@@ -177,9 +178,9 @@ class RichTextEditor extends Component {
 
   render() {
     const { ref } = this;
-    const { defaultValue: __html, mode = 'editor'} = this.props;
+    const { defaultValue: __html, mode = 'editor' } = this.props;
 
-    let className = 'sun-editor-editable richtext__container';
+    let className = 'sun-editor-editable rt__container';
 
     if (this.props.className) {
       className += ` ${this.props.className}`;
