@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import { Button, Header, Modal, Popup, Segment } from 'semantic-ui-react';
+import { Button, Header, Modal, Popup } from 'semantic-ui-react';
 import { logIn } from '@client/actions';
 import Loading from '@components/Loading';
 import anonymousUsername from './anonymousUsername';
@@ -69,7 +70,7 @@ class CreateAnonymousAccount extends Component {
       this.generateUnusedAnonymousUsername();
     }
     if (name === 'nvm') {
-      location.href = '/';
+      this.props.history.push('/login/create-account');
     }
   }
 
@@ -77,35 +78,30 @@ class CreateAnonymousAccount extends Component {
     const { username } = this.state;
     const { onClick, onSubmit } = this;
     const header = username
-      ? 'Do you like this temporary user name?'
-      : 'Find a temporary user name for you.';
+      ? 'Do you like this anonymous user name?'
+      : 'Find an anonymous user name for you.';
     return (
       <Modal open size="small">
         <Header icon="user outline" content={header} />
         <Modal.Content>
-          <Segment>
-            {username ? (
-              <Header
-                as="h1"
-                className="createanonymousaccount__header-centered"
-              >
-                <code>{username}</code>
-              </Header>
-            ) : (
-              <Loading />
-            )}
-          </Segment>
-
-          <Button.Group fluid>
+          {username ? (
+            <Header as="h1" className="createanonymousaccount__header-centered">
+              <code>{username}</code>
+            </Header>
+          ) : (
+            <Loading />
+          )}
+        </Modal.Content>
+        <Modal.Actions style={{ height: '75px' }}>
+          <Button.Group fluid size="large">
             <Popup
-              content="Select this user name to continue."
+              content="Go back"
               position="bottom center"
               trigger={
                 <Button
-                  color="green"
-                  content="Yes, continue"
-                  name="yes"
-                  onClick={onSubmit}
+                  content="Nevermind, go back"
+                  name="nvm"
+                  onClick={onClick}
                 />
               }
             />
@@ -124,19 +120,19 @@ class CreateAnonymousAccount extends Component {
             />
             <Button.Or />
             <Popup
-              content="Return to list of scenarios."
+              content="Select this user name to continue."
               position="bottom center"
               trigger={
                 <Button
-                  color="grey"
-                  content="Nevermind!"
-                  name="nvm"
-                  onClick={onClick}
+                  color="green"
+                  content="Yes, continue"
+                  name="yes"
+                  onClick={onSubmit}
                 />
               }
             />
           </Button.Group>
-        </Modal.Content>
+        </Modal.Actions>
       </Modal>
     );
   }
@@ -161,7 +157,9 @@ const mapDispatchToProps = {
   logIn
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateAnonymousAccount);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateAnonymousAccount)
+);

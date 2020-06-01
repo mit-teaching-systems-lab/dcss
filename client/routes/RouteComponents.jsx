@@ -101,7 +101,7 @@ export const RedirectRouteForInactiveSession = ({
         if (isLoggedIn) {
           return children;
         }
-        location.href = '/login';
+        location.href = '/login/create-account';
       }}
     />
   );

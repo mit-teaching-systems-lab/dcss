@@ -59,7 +59,6 @@ class ScenarioCard extends React.Component {
     const persisted = JSON.parse(storage.getItem(`editor/${id}`));
     const tab = (persisted && persisted.activeTab) || 'slides';
     const nonZeroIndex = (persisted && persisted.activeSlideIndex + 1) || 1;
-    const editPath = `/editor/${id}/${tab}/${nonZeroIndex}`;
 
     return deleted_at ? (
       <ConfirmAuth isAuthorized={isAuthorized}>
@@ -135,7 +134,7 @@ const mapStateToProps = state => {
     user
   } = state;
   return { isLoggedIn, user };
-}
+};
 
 const mapDispatchToProps = {
   getScenarios

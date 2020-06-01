@@ -68,10 +68,7 @@ class LoginRoutePromptModal extends Component {
           content="Log in, Create an account, or Continue anonymously?"
         />
         <Modal.Content>
-          <p>
-            To continue with this scenario, please choose one of the following
-            options:
-          </p>
+          <p>Please choose one of the following options:</p>
           <Grid columns={2} divided>
             <Grid.Row>
               <Grid.Column>{buttonLogin}</Grid.Column>

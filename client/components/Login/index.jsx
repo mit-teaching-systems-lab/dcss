@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Form, Grid, Item } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Modal } from 'semantic-ui-react';
 
 import { logIn, logOut } from '@client/actions';
 
@@ -24,14 +23,17 @@ class Login extends Component {
     const password = '';
 
     this.state = {
+      error: {
+        message
+      },
       from,
       isLoggedIn,
-      message,
       mode,
       username,
       password
     };
 
+    this.onCreateAccountClick = this.onCreateAccountClick.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -41,6 +43,10 @@ class Login extends Component {
     if (mode === 'logout') {
       this.doLogout();
     }
+  }
+
+  onCreateAccountClick() {
+    this.props.history.push('/login/create-account');
   }
 
   onChange(event, { name, value }) {
@@ -69,10 +75,17 @@ class Login extends Component {
     })).json();
 
     if (error) {
-      this.setState({ message });
+      this.setState({
+        error: {
+          message
+        }
+      });
     } else {
       // Step outside of react to force a real reload
       // after signup and session create
+      //
+      // TODO: assess whether this should be necessary or not.
+      //
       location.href = from ? `${from.pathname}${from.search}` : '/';
     }
   }
@@ -82,50 +95,71 @@ class Login extends Component {
   }
 
   render() {
-    const { message, mode, password, username } = this.state;
-    const { onChange, onSubmit } = this;
+    const { error, password, username } = this.state;
+    const { onChange, onCreateAccountClick, onSubmit } = this;
 
-    if (mode === 'logout') {
-      return null;
+    // Previously, we would not render anything here and
+    // allow the action handler to set location.href.
+    // if (mode === 'logout') {
+    //   return null;
+    // }
+    //
+    const messageProps = {
+      hidden: true,
+      color: 'red'
+    };
+
+    if (error.message) {
+      messageProps.hidden = false;
     }
 
     return (
-      <Form className="login__form" onSubmit={onSubmit}>
-        <Form.Field>
-          <label htmlFor="name">Username</label>
-          <Form.Input
-            name="username"
-            autoComplete="username"
-            onChange={onChange}
-            value={username}
-          />
-        </Form.Field>
-        <Form.Field>
-          <label htmlFor="password">Password</label>
-          <Form.Input
-            name="password"
-            type="password"
-            autoComplete="current-password"
-            onChange={onChange}
-            value={password}
-          />
-        </Form.Field>
-        <Grid columns={2}>
-          <Grid.Column>
-            <Item>
-              <Item.Extra>
-                <Button type="submit" primary size="large">
+      <Modal open size="small">
+        <Header icon="user outline" content="Log In" />
+        <Modal.Content>
+          <Form onSubmit={onSubmit}>
+            <Form.Field>
+              <label htmlFor="name">Username</label>
+              <Form.Input
+                name="username"
+                autoComplete="username"
+                onChange={onChange}
+                value={username}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="password">Password</label>
+              <Form.Input
+                name="password"
+                type="password"
+                autoComplete="current-password"
+                onChange={onChange}
+                value={password}
+              />
+            </Form.Field>
+          </Form>
+        </Modal.Content>
+        <Modal.Actions style={{ height: '75px' }}>
+          <Grid columns={2}>
+            <Grid.Column>
+              <Message floating {...messageProps} style={{ textAlign: 'left' }}>
+                {error.message}
+              </Message>
+            </Grid.Column>
+            <Grid.Column>
+              <Button.Group>
+                <Button primary type="submit" onClick={onSubmit} size="large">
                   Log in
                 </Button>
-              </Item.Extra>
-              <Item.Extra className="login__form--create-link">
-                <Link to="/login/create-account">Create an account</Link>
-              </Item.Extra>
-            </Item>
-          </Grid.Column>
-          <Grid.Column>{message}</Grid.Column>
-        </Grid>
-      </Form>
+                <Button.Or />
+                <Button size="large" onClick={onCreateAccountClick}>
+                  Create an account
+                </Button>
+              </Button.Group>
+            </Grid.Column>
+          </Grid>
+        </Modal.Actions>
+      </Modal>
     );
   }
 }

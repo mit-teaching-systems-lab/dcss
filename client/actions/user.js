@@ -16,6 +16,9 @@ export const getUser = () => async dispatch => {
   dispatch({ type: GET_USER });
   try {
     const user = await (await fetch('/api/auth/me')).json();
+    if (user.error) {
+      throw new Error(user);
+    }
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   } catch (error) {

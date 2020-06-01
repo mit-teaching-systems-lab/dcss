@@ -4,10 +4,11 @@ import { withRouter } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import {
   Button,
-  Confirm,
   Container,
+  Header,
   Icon,
   Menu,
+  Modal,
   Popup
 } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
@@ -49,11 +50,14 @@ class ConfirmableLogoutMenuItem extends Component {
     return (
       <React.Fragment>
         <Menu.Item position="right">
-          <NavLink to="/logout" onClick={onNavLinkClick}>Log out ({username})</NavLink>
+          <NavLink to="/logout" onClick={onNavLinkClick}>
+            Log out ({username})
+          </NavLink>
         </Menu.Item>
-        <Confirm
-          content={
-            <Container className="clmi__container--padding">
+        <Modal open={open} size="small">
+          <Header icon="log out" content="Log out confirmation" />
+          <Modal.Content>
+            <Container style={{ textAlign: 'center' }}>
               <p>You are currently logged in as: </p>
               <Popup
                 content="Copy user name to clipboard"
@@ -78,14 +82,19 @@ class ConfirmableLogoutMenuItem extends Component {
               />
               <p>Are you sure you want to log out?</p>
             </Container>
-          }
-          header="Log out confirmation"
-          onCancel={onCancel}
-          onConfirm={onConfirm}
-          confirmButton="Yes, log me out"
-          open={open}
-          size="tiny"
-        />
+          </Modal.Content>
+          <Modal.Actions style={{ height: '75px' }}>
+            <Button.Group>
+              <Button onClick={onCancel} size="large">
+                Cancel
+              </Button>
+              <Button.Or />
+              <Button onClick={onConfirm} primary size="large">
+                Yes, log me out
+              </Button>
+            </Button.Group>
+          </Modal.Actions>
+        </Modal>
       </React.Fragment>
     );
   }

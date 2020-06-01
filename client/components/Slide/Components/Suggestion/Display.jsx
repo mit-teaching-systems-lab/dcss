@@ -33,17 +33,10 @@ class Display extends React.Component {
       <>{icon} Information</>
     );
 
+    const onDismiss = onClick;
     const props = open
-      ? {
-          color,
-          content,
-          onDismiss: onClick
-        }
-      : {
-          color,
-          content,
-          onClick
-        };
+      ? { color, content, onDismiss }
+      : { color, content, onClick };
 
     return (
       <Container style={{ margin: '1rem 0 1rem 0' }}>

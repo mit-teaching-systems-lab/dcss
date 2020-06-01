@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
-import { Button, Form, Grid } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Modal } from 'semantic-ui-react';
 import { logIn } from '@client/actions';
 
 class CreateAccount extends Component {
@@ -16,35 +17,47 @@ class CreateAccount extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      message: ''
+      error: {
+        field: '',
+        message: ''
+      }
     };
 
     this.validFormInput = this.validFormInput.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   validFormInput() {
     const { confirmPassword, password, username } = this.state;
 
+    if (!username) {
+      this.setState({
+        error: {
+          field: 'username',
+          message: 'Please enter a username.'
+        }
+      });
+      return false;
+    }
+
     if (!password || !confirmPassword) {
       this.setState({
-        message: 'Please enter and confirm your intended password.'
+        error: {
+          field: 'password',
+          message: 'Please enter a password.'
+        }
       });
       return false;
     }
 
     if (password !== confirmPassword) {
       this.setState({
-        message:
-          'Password fields do not match. Please confirm your intended password.'
-      });
-      return false;
-    }
-
-    if (!username) {
-      this.setState({
-        message: 'Please enter a username for your account.'
+        error: {
+          field: 'confirmPassword',
+          message: 'Password fields do not match.'
+        }
       });
       return false;
     }
@@ -73,7 +86,8 @@ class CreateAccount extends Component {
     })).json();
 
     if (error) {
-      this.setState({ message });
+      const field = message.includes('username') ? 'username' : 'email';
+      this.setState({ error: { field, message } });
     } else {
       // Step outside of react to force a real reload
       // after signup and session create
@@ -83,72 +97,121 @@ class CreateAccount extends Component {
 
   onChange(event, { name, value }) {
     if (this.state.message) {
-      this.setState({ message: '' });
+      this.setState({ error: { field: '', message: '' } });
     }
     this.setState({ [name]: value });
+
+    this.validFormInput();
+  }
+
+  onCancel(event) {
+    event.preventDefault();
+    this.props.history.push('/login');
   }
 
   render() {
-    const { email, confirmPassword, message, password, username } = this.state;
-    const { onChange, onSubmit } = this;
+    const { email, confirmPassword, error, password, username } = this.state;
+    const { onChange, onCancel, onSubmit, validFormInput } = this;
+    const messageProps = {
+      hidden: true,
+      color: 'red'
+    };
+
+    if (error.message) {
+      messageProps.hidden = false;
+    }
+
     return (
-      <Form onSubmit={onSubmit} className="signup__form">
-        <Form.Field>
-          <Form.Input
-            required
-            label="Username:"
-            name="username"
-            autoComplete="username"
-            onChange={onChange}
-            value={username}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Form.Input
-            name="email"
-            label="Email Address:"
-            autoComplete="email"
-            placeholder="(Optional)"
-            onChange={onChange}
-            value={email}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Form.Input
-            required
-            label="Password:"
-            name="password"
-            type="password"
-            autoComplete="new-password"
-            onChange={onChange}
-            value={password}
-          />
-        </Form.Field>
-        <Form.Field>
-          <Form.Input
-            required
-            label="Confirm Password:"
-            name="confirmPassword"
-            type="password"
-            autoComplete="new-password"
-            onChange={onChange}
-            value={confirmPassword}
-          />
-        </Form.Field>
-        <Grid columns={2}>
-          <Grid.Column>
-            <Button primary type="submit" size="large">
-              Create Account
-            </Button>
-          </Grid.Column>
-          <Grid.Column>{message}</Grid.Column>
-        </Grid>
-      </Form>
+      <Modal closeIcon onClose={onCancel} open={true} size="small">
+        <Header icon="user outline" content="Create a new user account" />
+        <Modal.Content>
+          <Form onSubmit={onSubmit}>
+            <Form.Field>
+              <Form.Input
+                required
+                label="Username:"
+                name="username"
+                autoComplete="username"
+                onChange={onChange}
+                onBlur={validFormInput}
+                value={username}
+                {...(error && error.field === 'username'
+                  ? { error: true }
+                  : {})}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Form.Input
+                name="email"
+                label="Email Address:"
+                autoComplete="email"
+                placeholder="(Optional)"
+                onChange={onChange}
+                onBlur={validFormInput}
+                value={email}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Form.Input
+                required
+                label="Password:"
+                name="password"
+                type="password"
+                autoComplete="new-password"
+                onChange={onChange}
+                onBlur={validFormInput}
+                value={password}
+                {...(error && error.field === 'password'
+                  ? { error: true }
+                  : {})}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Form.Input
+                required
+                label="Confirm Password:"
+                name="confirmPassword"
+                type="password"
+                autoComplete="new-password"
+                onChange={onChange}
+                onBlur={validFormInput}
+                value={confirmPassword}
+                {...(error && error.field === 'confirmPassword'
+                  ? { error: true }
+                  : {})}
+              />
+            </Form.Field>
+          </Form>
+        </Modal.Content>
+        <Modal.Actions style={{ height: '75px' }}>
+          <Grid columns={2}>
+            <Grid.Column>
+              <Message floating {...messageProps} style={{ textAlign: 'left' }}>
+                {error.message}
+              </Message>
+            </Grid.Column>
+            <Grid.Column>
+              <Button.Group>
+                <Button onClick={onCancel} size="large">
+                  Cancel
+                </Button>
+                <Button.Or />
+                <Button primary type="submit" onClick={onSubmit} size="large">
+                  Submit
+                </Button>
+              </Button.Group>
+            </Grid.Column>
+          </Grid>
+        </Modal.Actions>
+      </Modal>
     );
   }
 }
 
 CreateAccount.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   location: PropTypes.object,
   logIn: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
@@ -164,7 +227,9 @@ const mapDispatchToProps = {
   logIn
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateAccount);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateAccount)
+);
