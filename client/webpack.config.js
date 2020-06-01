@@ -15,9 +15,12 @@ const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
   {}
 );
 
+const mode = process.argv.mode || 'development';
+
 module.exports = {
   entry: ['babel-polyfill', './index.js'],
   devtool: 'inline-source-map',
+  mode,
   module: {
     rules: [
       {
