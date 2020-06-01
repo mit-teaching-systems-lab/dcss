@@ -36,6 +36,7 @@
     "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"**/*.js\"",
     "lint:packages": "yarn workspaces run lint",
     "prettier": "prettier --write \"**/*.{js,jsx,json,css}\"",
+    "postinstall": "node ./scripts/postinstall.js",
     "storybook": "yarn workspaces run storybook",
     "test": "npm-run-all jest lint -c"
   },
