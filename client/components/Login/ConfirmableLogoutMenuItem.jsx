@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import {
   Button,
   Confirm,
@@ -34,30 +35,32 @@ class ConfirmableLogoutMenuItem extends Component {
     this.props.history.push('/logout');
   }
   render() {
-    const { open, name } = this.state;
     const { onCancel, onClick, onConfirm } = this;
+    const { open, name } = this.state;
     const {
       user: { username }
     } = this.props;
 
+    const onNavLinkClick = event => {
+      event.preventDefault();
+      onClick();
+    };
+
     return (
       <React.Fragment>
-        <Menu.Item
-          className="confirmablelogoutmenuitem__anchor-style"
-          content={`Log out (${username})`}
-          onClick={onClick}
-          position="right"
-        />
+        <Menu.Item position="right">
+          <NavLink to="/logout" onClick={onNavLinkClick}>Log out ({username})</NavLink>
+        </Menu.Item>
         <Confirm
           content={
-            <Container className="confirmablelogoutmenuitem__container--padding">
+            <Container className="clmi__container--padding">
               <p>You are currently logged in as: </p>
               <Popup
                 content="Copy user name to clipboard"
                 trigger={
                   <Button
                     icon
-                    className="confirmablelogoutmenuitem__button"
+                    className="clmi__button"
                     content={
                       <React.Fragment>
                         <code>{username}</code>

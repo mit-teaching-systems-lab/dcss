@@ -1,16 +1,9 @@
-.confirmablelogoutmenuitem__anchor-style {
-    color: #4183c4 !important;
-    text-decoration: none !important;
-    cursor: pointer !important;
+.clmi__button {
+  margin-bottom: 1rem !important;
+  font-size: 1.5rem !important;
+  color: black !important;
+  padding: 1rem;
 }
-
-.confirmablelogoutmenuitem__button {
-    margin-bottom: 1rem !important;
-    font-size: 1.5rem !important;
-    color: black !important;
-    padding: 1rem;
-}
-
-.confirmablelogoutmenuitem__container--padding {
-    padding: 1rem;
+.clmi__container--padding {
+  padding: 1rem;
 }
