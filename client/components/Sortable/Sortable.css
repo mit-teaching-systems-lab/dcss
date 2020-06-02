@@ -16,5 +16,7 @@ Previously, this file defined:
 }
 
 .draggable {
-    margin-bottom: 1em !important;
+  margin-bottom: 1em !important;
+  margin-left: 1px !important;
+  margin-top: 1px !important;
 }

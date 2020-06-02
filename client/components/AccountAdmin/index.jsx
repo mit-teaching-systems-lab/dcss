@@ -35,6 +35,7 @@ class AccountAdmin extends Component {
   }
 
   async componentDidMount() {
+    // TODO: Move to own async action
     const user = await (await fetch('/api/auth/me')).json();
     const { error, users } = await (await fetch('/api/roles/all')).json();
 
