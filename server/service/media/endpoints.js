@@ -26,12 +26,19 @@ async function uploadAudio(req, res) {
     const userId = req.session.user.id;
     const key = `audio/${runId}/${responseId}/${userId}/${uuid()}.mp3`;
 
-    const s3Location = await uploadToS3(key, buffer);
-
-    res.status = 200;
-    res.send({
-      s3Location
-    });
+    try {
+      const s3Location = await uploadToS3(key, buffer);
+      res.status = 200;
+      res.send({
+        s3Location
+      });
+    } catch (error) {
+      res.status = 200;
+      res.send({
+        error,
+        s3Location: key
+      });
+    }
 
     const { response, transcript } = await requestTranscriptionAsync(buffer);
 
