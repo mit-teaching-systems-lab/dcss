@@ -1,4 +1,4 @@
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import {
   GET_RESPONSE,
   GET_RESPONSE_SUCCESS,

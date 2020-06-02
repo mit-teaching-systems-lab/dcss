@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import Loading from '@components/Loading';
 import Scenario from '@components/Scenario';
 import { linkCohortToRun, setCohortUserRole } from '@client/actions/cohort';

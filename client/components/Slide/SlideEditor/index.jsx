@@ -17,7 +17,7 @@ import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import * as Components from '../Components';
 import './SlideEditor.css';
 

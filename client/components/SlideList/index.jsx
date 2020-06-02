@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 
 const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
   const emptyValue = { value: '' };

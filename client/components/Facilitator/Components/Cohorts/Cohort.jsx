@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import {
   getCohort,
   setCohort,

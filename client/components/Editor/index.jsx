@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';

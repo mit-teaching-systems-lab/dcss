@@ -1,5 +1,5 @@
 import { LOG_IN, LOG_OUT, SET_USERS } from './types';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 
 export const logIn = userData => ({
   type: LOG_IN,

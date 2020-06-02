@@ -17,7 +17,7 @@ import {
 // TODO: can we use this for shouldComponentUpdate?
 // import hash from 'object-hash';
 // import { diff } from 'deep-object-diff';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import AddSlideMessage from '@components/AddSlideMessage';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';

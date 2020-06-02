@@ -15,7 +15,7 @@ import {
   Table
 } from 'semantic-ui-react';
 import _ from 'lodash';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 import {
   getCohort,
   getCohortParticipants,

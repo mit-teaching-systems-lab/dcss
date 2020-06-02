@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
-import Session from '@utils/Session';
+import Session from '@client/util/Session';
 
 import SlideList from '@components/SlideList';
 
