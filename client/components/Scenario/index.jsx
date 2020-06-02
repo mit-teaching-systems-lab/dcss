@@ -16,15 +16,16 @@ class Scenario extends Component {
   constructor(props) {
     super(props);
 
-    const activeNonZeroSlideIndex =
-      Number(this.props.match.params.activeNonZeroSlideIndex) || 1;
+    const activeRunSlideIndex =
+      Number(this.props.match.params.activeRunSlideIndex) || 0;
 
     const { baseurl, history, scenarioId, location } = this.props;
-    const activeSlideIndex = activeNonZeroSlideIndex - 1;
+    const activeSlideIndex = activeRunSlideIndex - 1;
     const isReady = false;
 
     this.state = {
       isReady,
+      activeRunSlideIndex,
       activeSlideIndex,
       scenarioId,
       slides: []
@@ -36,7 +37,7 @@ class Scenario extends Component {
 
     if (this.isScenarioRun) {
       const { pathname, search } = location;
-      const pathToSlide = `${baseurl}/slide/${activeNonZeroSlideIndex}${search}`;
+      const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}${search}`;
 
       if (pathname !== pathToSlide) {
         history.push(pathToSlide);
@@ -60,14 +61,20 @@ class Scenario extends Component {
           if (onSubmit) {
             onSubmit();
           }
-          let activeSlideIndex = this.state.activeSlideIndex - 1;
-          this.setState({ activeSlideIndex });
+          const activeRunSlideIndex = this.state.activeRunSlideIndex - 1;
+          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
-          const pathToSlide = `${baseurl}/slide/${activeSlideIndex}`;
-
-          if (location.pathname !== pathToSlide) {
-            history.push(pathToSlide);
-          }
+          this.setState(
+            {
+              activeRunSlideIndex,
+              activeSlideIndex: activeRunSlideIndex - 1
+            },
+            () => {
+              if (location.pathname !== pathToSlide) {
+                history.push(pathToSlide);
+              }
+            }
+          );
         };
       case 'next':
       case 'finish':
@@ -75,15 +82,20 @@ class Scenario extends Component {
           if (onSubmit) {
             onSubmit();
           }
+          const activeRunSlideIndex = this.state.activeRunSlideIndex + 1;
+          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
-          let activeSlideIndex = this.state.activeSlideIndex + 1;
-          this.setState({ activeSlideIndex });
-
-          const pathToSlide = `${baseurl}/slide/${activeSlideIndex}`;
-
-          if (location.pathname !== pathToSlide) {
-            history.push(pathToSlide);
-          }
+          this.setState(
+            {
+              activeRunSlideIndex,
+              activeSlideIndex: activeRunSlideIndex + 1
+            },
+            () => {
+              if (location.pathname !== pathToSlide) {
+                history.push(pathToSlide);
+              }
+            }
+          );
         };
       default:
         return null;
@@ -146,7 +158,7 @@ class Scenario extends Component {
         key="entry-slide"
         scenario={metaData}
         onChange={onRunChange}
-        onClickNext={this.getOnClickHandler('next')}
+        onNextClick={this.getOnClickHandler('next')}
       />
     ];
 
@@ -157,8 +169,8 @@ class Scenario extends Component {
           key={index}
           slide={slide}
           isLastSlide={isLastSlide}
-          onClickBack={this.getOnClickHandler('back')}
-          onClickNext={this.getOnClickHandler(isLastSlide ? 'finish' : 'next')}
+          onBackClick={this.getOnClickHandler('back')}
+          onNextClick={this.getOnClickHandler(isLastSlide ? 'finish' : 'next')}
           onResponseChange={onResponseChange}
         />
       );
@@ -200,7 +212,12 @@ class Scenario extends Component {
   }
 
   render() {
-    const { activeSlideIndex, isReady, slides } = this.state;
+    const {
+      activeRunSlideIndex,
+      activeSlideIndex,
+      isReady,
+      slides
+    } = this.state;
     const classes = 'ui centered card scenario__card--run';
 
     if (!isReady) {
@@ -209,7 +226,7 @@ class Scenario extends Component {
 
     return this.isScenarioRun ? (
       <Grid columns={1}>
-        <Grid.Column>{slides && slides[activeSlideIndex + 1]}</Grid.Column>
+        <Grid.Column>{slides && slides[activeRunSlideIndex]}</Grid.Column>
       </Grid>
     ) : (
       <Segment className="scenario__slide-preview-pane">
@@ -242,7 +259,7 @@ class Scenario extends Component {
 }
 
 Scenario.propTypes = {
-  activeNonZeroSlideIndex: PropTypes.number,
+  activeRunSlideIndex: PropTypes.number,
   activeSlideIndex: PropTypes.number,
   setActiveSlide: PropTypes.func,
   baseurl: PropTypes.string,
@@ -253,7 +270,7 @@ Scenario.propTypes = {
   }),
   match: PropTypes.shape({
     params: PropTypes.shape({
-      activeNonZeroSlideIndex: PropTypes.node,
+      activeRunSlideIndex: PropTypes.node,
       activeSlideIndex: PropTypes.node,
       id: PropTypes.node
     }).isRequired

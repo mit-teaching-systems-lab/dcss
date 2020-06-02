@@ -10,7 +10,6 @@ class EntrySlide extends React.Component {
 
     this.onClick = this.onClick.bind(this);
   }
-
   onClick(event, data) {
     if (!this.props.run) {
       alert('Consent cannot be granted in Preview');
@@ -99,7 +98,7 @@ class EntrySlide extends React.Component {
                           <Button.Or />
                         </React.Fragment>
                       )}
-                      <Button color="green" onClick={this.props.onClickNext}>
+                      <Button color="green" onClick={this.props.onNextClick}>
                         Continue this scenario
                       </Button>
                     </Button.Group>
@@ -118,7 +117,7 @@ EntrySlide.propTypes = {
   run: PropTypes.object,
   scenario: PropTypes.object,
   onChange: PropTypes.func,
-  onClickNext: PropTypes.func
+  onNextClick: PropTypes.func
 };
 
 const mapStateToProps = state => {
