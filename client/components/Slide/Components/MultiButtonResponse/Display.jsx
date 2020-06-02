@@ -83,33 +83,32 @@ class Display extends React.Component {
       </React.Fragment>
     );
 
-    return (
+    return buttons && buttons.length ? (
       <Segment>
         <Header as="h3">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
         <List>
-          {buttons &&
-            buttons.map(({ display, value }, index) => {
-              const selectedIcon =
-                previousValue === value ? { icon: 'checkmark' } : {};
+          {buttons.map(({ display, value }, index) => {
+            const selectedIcon =
+              previousValue === value ? { icon: 'checkmark' } : {};
 
-              return (
-                <List.Item key={`list.item-${index}`}>
-                  <Button
-                    fluid
-                    key={`button-${index}`}
-                    content={display}
-                    name={responseId}
-                    value={value}
-                    onClick={onClick}
-                    {...selectedIcon}
-                  />
-                </List.Item>
-              );
-            })}
+            return (
+              <List.Item key={`list.item-${index}`}>
+                <Button
+                  fluid
+                  key={`button-${index}`}
+                  content={display}
+                  name={responseId}
+                  value={value}
+                  onClick={onClick}
+                  {...selectedIcon}
+                />
+              </List.Item>
+            );
+          })}
         </List>
       </Segment>
-    );
+    ) : null;
   }
 }
 

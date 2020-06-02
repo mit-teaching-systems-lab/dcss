@@ -1,52 +1,39 @@
 import storage from 'local-storage-fallback';
 
-const TIMEOUT = 1000 * 60 * 60;
+const Session = {
+  clear() {
+    storage.clear();
+  },
+  delete(key) {
+    return storage.removeItem(key);
+  },
+  get(key, defaults) {
+    let persisted = JSON.parse(storage.getItem(key));
 
-const getSession = () => {
-  const {
-    timestamp = Date.now(),
-    username = '',
-    permissions = []
-  } = JSON.parse(storage.getItem('session')) || {
-    timestamp: '',
-    username: '',
-    permissions: []
-  };
-
-  return {
-    timestamp,
-    username,
-    permissions
-  };
-};
-
-const isSessionActive = () => {
-  const { timestamp } = getSession();
-  return Number(timestamp) >= Date.now() - TIMEOUT;
-};
-
-const isLoggedIn = () => {
-  const { username } = getSession();
-  return isSessionActive() && username !== '';
-};
-
-const destroy = () => {
-  storage.clear();
-};
-
-const create = session => {
-  storage.setItem('session', JSON.stringify(session));
-};
-
-export default {
-  create,
-  destroy,
-  getSession,
-  isLoggedIn,
-  isSessionActive,
-  timeout() {
-    if (!isSessionActive()) {
-      destroy();
+    if (!persisted && defaults) {
+      Session.set(key, defaults);
+      persisted = defaults;
     }
+    return persisted;
+  },
+  has(key) {
+    return storage[key] !== undefined;
+  },
+  merge(key, dataOrFn) {
+    let persisted = Session.get(key, {});
+    if (typeof dataOrFn === 'function') {
+      return Session.set(key, dataOrFn(persisted));
+    } else {
+      return Session.set(key, {
+        ...persisted,
+        ...dataOrFn
+      });
+    }
+  },
+  set(key, data) {
+    storage.setItem(key, JSON.stringify(data));
+    return data;
   }
 };
+
+export default Session;

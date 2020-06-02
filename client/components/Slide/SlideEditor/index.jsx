@@ -17,6 +17,7 @@ import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
+import Session from '@utils/Session';
 import * as Components from '../Components';
 import './SlideEditor.css';
 
@@ -32,8 +33,13 @@ export default class SlideEditor extends Component {
   constructor(props) {
     super(props);
     const { title = '', components = [] } = props;
-    const activeComponentIndex = -1;
-    const mode = 'edit';
+
+    this.sessionKey = `slideeditor/${props.id}`;
+
+    const { activeComponentIndex, mode } = Session.get(this.sessionKey, {
+      activeComponentIndex: -1,
+      mode: 'edit'
+    });
 
     this.state = {
       activeComponentIndex,
@@ -54,6 +60,16 @@ export default class SlideEditor extends Component {
     this.onComponentSelectClick = this.onComponentSelectClick.bind(this);
 
     this.onTitleChange = this.onTitleChange.bind(this);
+  }
+
+  async componentDidMount() {
+    const { activeComponentIndex } = this.state;
+
+    if (this.componentRefs[activeComponentIndex]) {
+      scrollIntoView(this.componentRefs[activeComponentIndex], {
+        block: 'start'
+      });
+    }
   }
 
   updateSlide() {
@@ -84,9 +100,10 @@ export default class SlideEditor extends Component {
     if (updatedState.activeComponentIndex !== -1) {
       this.setState(updatedState, () => {
         const { activeComponentIndex } = this.state;
-
         if (this.componentRefs[activeComponentIndex]) {
-          scrollIntoView(this.componentRefs[activeComponentIndex]);
+          scrollIntoView(this.componentRefs[activeComponentIndex], {
+            block: 'start'
+          });
         }
         callback();
       });
@@ -180,7 +197,7 @@ export default class SlideEditor extends Component {
     } = this;
 
     const { noSlide, scenarioId } = this.props;
-    const { activeComponentIndex, components, title } = this.state;
+    const { activeComponentIndex, components, mode, title } = this.state;
     const noSlideComponents = components.length === 0;
     const disabled = !!noSlide;
     const editorMenuItems = {
@@ -221,6 +238,11 @@ export default class SlideEditor extends Component {
         }
       }
     };
+
+    Session.set(this.sessionKey, {
+      activeComponentIndex,
+      mode
+    });
 
     return (
       <Grid>
@@ -343,7 +365,7 @@ export default class SlideEditor extends Component {
                             }
                           };
 
-                          return this.state.mode === 'edit' ? (
+                          return mode === 'edit' ? (
                             <Draggable
                               key={`draggable-key-${index}`}
                               draggableId={`draggable-id-${index}`}

@@ -1,4 +1,5 @@
 import { LOG_IN, LOG_OUT, SET_USERS } from './types';
+import Session from '@utils/Session';
 
 export const logIn = userData => ({
   type: LOG_IN,
@@ -19,6 +20,9 @@ export const logOut = () => async dispatch => {
     await fetch('/api/auth/logout', {
       method
     });
+
+    Session.clear();
+
     // Previously, we would step outside of react and react-router to
     // force a real request after logout.
     // location.href = `${location.origin}/login/create-account`;

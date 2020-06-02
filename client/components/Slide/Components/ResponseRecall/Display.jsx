@@ -20,7 +20,7 @@ class Display extends React.Component {
   async componentDidMount() {
     // TODO: replace this with call to getResponse
     const { run, recallId } = this.props;
-    if (this.isScenarioRun && recallId !== -1) {
+    if (this.isScenarioRun && (recallId && recallId !== -1)) {
       const { response, status } = await (await fetch(
         `/api/runs/${run.id}/response/${recallId}`
       )).json();

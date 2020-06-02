@@ -17,13 +17,13 @@ import {
 // TODO: can we use this for shouldComponentUpdate?
 // import hash from 'object-hash';
 // import { diff } from 'deep-object-diff';
-import storage from 'local-storage-fallback';
+import Session from '@utils/Session';
 import AddSlideMessage from '@components/AddSlideMessage';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';
 import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
-import SlideComponentList from '@components/SlideComponentList';
+import SlideList from '@components/SlideList';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { getSlides } from '@client/actions/scenario';
@@ -36,28 +36,31 @@ class Slides extends React.Component {
     const activeNonZeroSlideIndex =
       Number(this.props.match.params.activeNonZeroSlideIndex) || 1;
 
-    this.persistenceKey = `slides/${this.props.scenarioId}`;
-    let persisted = JSON.parse(storage.getItem(this.persistenceKey));
-    let activeSlideIndex = activeNonZeroSlideIndex - 1;
+    this.sessionKey = `slides/${this.props.scenarioId}`;
 
-    if (!persisted) {
-      persisted = {
-        activeSlideIndex,
-        minimized: false
-      };
-    }
+    const { activeSlideIndex, minimized } = Session.merge(
+      this.sessionKey,
+      persisted => {
+        const {
+          activeSlideIndex = activeNonZeroSlideIndex - 1,
+          minimized = false
+        } = persisted;
 
-    if (persisted.activeSlideIndex !== activeSlideIndex) {
-      persisted.activeSlideIndex = activeSlideIndex;
-    }
+        return {
+          activeSlideIndex,
+          minimized
+        };
+      }
+    );
 
-    storage.setItem(this.persistenceKey, JSON.stringify(persisted));
+    const isReady = false;
+    const slides = [];
 
     this.state = {
       activeSlideIndex,
-      loading: true,
-      minimized: persisted.minimized,
-      slides: []
+      isReady,
+      minimized,
+      slides
     };
 
     this.slideRefs = [];
@@ -85,7 +88,11 @@ class Slides extends React.Component {
     if (slides.length === 0) {
       await this.onSlideAdd();
     } else {
-      this.activateSlide({ activeSlideIndex, slides, loading: false });
+      this.activateSlide({
+        activeSlideIndex,
+        slides,
+        isReady: true
+      });
     }
   }
 
@@ -108,10 +115,7 @@ class Slides extends React.Component {
 
   componentDidUpdate() {
     const { activeSlideIndex, minimized } = this.state;
-    storage.setItem(
-      this.persistenceKey,
-      JSON.stringify({ activeSlideIndex, minimized })
-    );
+    Session.set(this.sessionKey, { activeSlideIndex, minimized });
   }
 
   onSlideChange(activeSlideIndex, value) {
@@ -131,6 +135,7 @@ class Slides extends React.Component {
 
     clearTimeout(this.debouncers[slideId]);
     this.debouncers[slideId] = setTimeout(async () => {
+      // TODO: Move to own async action
       const result = await fetch(
         `/api/scenarios/${scenarioId}/slides/${slideId}`,
         {
@@ -257,10 +262,8 @@ class Slides extends React.Component {
         }
 
         this.props.setActiveSlide(activeSlideIndex);
-        storage.setItem(
-          this.persistenceKey,
-          JSON.stringify({ activeSlideIndex, minimized })
-        );
+
+        Session.set(this.sessionKey, { activeSlideIndex, minimized });
         callback();
       });
     }
@@ -304,14 +307,9 @@ class Slides extends React.Component {
   }
 
   onSlideMinMaxChange() {
-    const { activeSlideIndex, minimized } = this.state;
+    const { minimized } = this.state;
 
-    this.setState({ minimized: !minimized }, () => {
-      storage.setItem(
-        this.persistenceKey,
-        JSON.stringify({ activeSlideIndex, minimized })
-      );
-    });
+    this.setState({ minimized: !minimized });
   }
 
   render() {
@@ -324,7 +322,7 @@ class Slides extends React.Component {
       onSlideOrderChange
     } = this;
     const { scenarioId } = this.props;
-    const { activeSlideIndex, loading, minimized } = this.state;
+    const { activeSlideIndex, isReady, minimized } = this.state;
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
     const minMaxText = `${minimized ? 'Preview' : 'Outline'} slides`;
@@ -339,9 +337,7 @@ class Slides extends React.Component {
       <Container fluid>
         <Grid className="slides__editor-all-outer-container">
           <Grid.Column width={3} className="slides__list-outer-container">
-            {loading ? (
-              <Loading />
-            ) : (
+            {isReady ? (
               <>
                 <Grid.Row>
                   <Menu icon borderless>
@@ -474,7 +470,7 @@ class Slides extends React.Component {
                                   {...minMaxHide}
                                   className="slides__list-card-content"
                                 >
-                                  <SlideComponentList
+                                  <SlideList
                                     asSVG={true}
                                     components={slide.components}
                                   />
@@ -488,12 +484,12 @@ class Slides extends React.Component {
                   </Sortable>
                 </Segment>
               </>
+            ) : (
+              <Loading />
             )}
           </Grid.Column>
           <Grid.Column width={13} className="slides__editor-outer-container">
-            {loading ? (
-              <Loading />
-            ) : (
+            {isReady ? (
               <SlideEditor
                 key={`slide-editor-${activeSlideIndex}`}
                 scenarioId={scenarioId}
@@ -503,6 +499,8 @@ class Slides extends React.Component {
                 onChange={onSlideChange}
                 onDelete={onSlideDelete}
               />
+            ) : (
+              <Loading />
             )}
           </Grid.Column>
         </Grid>

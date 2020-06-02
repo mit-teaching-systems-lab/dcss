@@ -8,6 +8,7 @@ import scrollIntoView from '@components/util/scrollIntoView';
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
+import Loading from '@components/Loading';
 import { getScenario, setScenario } from '@client/actions/scenario';
 import './Scenario.css';
 
@@ -20,19 +21,22 @@ class Scenario extends Component {
 
     const { baseurl, history, scenarioId, location } = this.props;
     const activeSlideIndex = activeNonZeroSlideIndex - 1;
+    const isReady = false;
 
     this.state = {
+      isReady,
       activeSlideIndex,
       scenarioId,
       slides: []
     };
 
     this.slideRefs = [];
+    this.slideRefIndex = -1;
     this.activateSlide = this.activateSlide.bind(this);
 
     if (this.isScenarioRun) {
       const { pathname, search } = location;
-      const pathToSlide = `${baseurl}/slide/${activeSlideIndex}${search}`;
+      const pathToSlide = `${baseurl}/slide/${activeNonZeroSlideIndex}${search}`;
 
       if (pathname !== pathToSlide) {
         history.push(pathToSlide);
@@ -170,7 +174,7 @@ class Scenario extends Component {
       />
     );
 
-    this.setState({ slides });
+    this.setState({ slides, isReady: true });
 
     if (!this.isScenarioRun) {
       this.activateSlide(this.state.activeSlideIndex);
@@ -180,7 +184,14 @@ class Scenario extends Component {
   activateSlide(activeSlideIndex) {
     this.setState({ activeSlideIndex }, () => {
       this.props.setActiveSlide(activeSlideIndex);
-      if (this.slideRefs[activeSlideIndex]) {
+      if (
+        this.slideRefs[activeSlideIndex] &&
+        this.slideRefIndex !== activeSlideIndex
+      ) {
+        // This prevents attempts to rescroll the slide
+        // when you're on a very long slide that the
+        // browser thinks you need to scroll to. :eyeroll:
+        this.slideRefIndex = activeSlideIndex;
         scrollIntoView(this.slideRefs[activeSlideIndex], {
           block: 'start'
         });
@@ -189,12 +200,16 @@ class Scenario extends Component {
   }
 
   render() {
-    const { activeSlideIndex, slides } = this.state;
+    const { activeSlideIndex, isReady, slides } = this.state;
     const classes = 'ui centered card scenario__card--run';
+
+    if (!isReady) {
+      return <Loading />;
+    }
 
     return this.isScenarioRun ? (
       <Grid columns={1}>
-        <Grid.Column>{slides && slides[activeSlideIndex]}</Grid.Column>
+        <Grid.Column>{slides && slides[activeSlideIndex + 1]}</Grid.Column>
       </Grid>
     ) : (
       <Segment className="scenario__slide-preview-pane">

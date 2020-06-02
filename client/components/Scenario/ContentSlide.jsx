@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
-import storage from 'local-storage-fallback';
+import Session from '@utils/Session';
 
-import SlideComponentList from '@components/SlideComponentList';
+import SlideList from '@components/SlideList';
 
 class ContentSlide extends React.Component {
   constructor(props) {
@@ -72,8 +72,7 @@ class ContentSlide extends React.Component {
   onInterceptResponseChange(event, data) {
     const { name, value } = data;
     const { pending, required } = this.state;
-
-    if (!this.props.run) {
+    if (!this.props.run || (this.props.run && !this.props.run.id)) {
       // TODO: implement some kind of feedback to
       // make previewer aware that Preview mode
       // does not function like Run mode.
@@ -102,7 +101,7 @@ class ContentSlide extends React.Component {
 
     if (!data.isFulfilled) {
       this.props.onResponseChange(event, data);
-      storage.setItem(`${run.id}-${name}`, JSON.stringify(data));
+      Session.set(`run/${run.id}/${name}`, data);
       this.setState({
         skipButton: 'Choose to skip',
         skipOrKeep: 'skip'
@@ -172,7 +171,7 @@ class ContentSlide extends React.Component {
           <Card.Header key={`header${slide.id}`}>{slide.title}</Card.Header>
         </Card.Content>
         <Card.Content key={`content${slide.id}`}>
-          <SlideComponentList
+          <SlideList
             {...runOnly}
             components={slide.components}
             onResponseChange={onInterceptResponseChange}

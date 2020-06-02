@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import storage from 'local-storage-fallback';
+import Session from '@utils/Session';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';
@@ -48,14 +48,12 @@ class Editor extends Component {
     }
 
     if (!isCopyScenario && !isNewScenario) {
-      this.persistenceKey = `editor/${scenarioId}`;
+      this.sessionKey = `editor/${scenarioId}`;
 
-      let persisted = JSON.parse(storage.getItem(this.persistenceKey));
-
-      if (!persisted) {
-        persisted = { activeTab: 'scenario', activeSlideIndex };
-        storage.setItem(this.persistenceKey, JSON.stringify(persisted));
-      }
+      let persisted = Session.get(this.sessionKey, {
+        activeTab: 'scenario',
+        activeSlideIndex
+      });
 
       // These have already been declared as let bindings above
       // but we may override those values here, with whatever
@@ -93,16 +91,11 @@ class Editor extends Component {
 
   onClick(e, { name: activeTab }) {
     this.setState({ activeTab });
-
     const { activeSlideIndex, scenarioId } = this.state;
-    const persisted = JSON.parse(storage.getItem(this.persistenceKey));
-    const updated = {
-      ...persisted,
+    const updated = Session.merge(this.sessionKey, {
       activeSlideIndex,
       activeTab
-    };
-
-    storage.setItem(this.persistenceKey, JSON.stringify(updated));
+    });
 
     const activeNonZeroSlideIndex = updated.activeSlideIndex + 1;
     const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
@@ -111,10 +104,9 @@ class Editor extends Component {
 
   setActiveView({ activeTab, activeSlideIndex }) {
     const { scenarioId } = this.state;
-    storage.setItem(
-      this.persistenceKey,
-      JSON.stringify({ activeTab, activeSlideIndex })
-    );
+
+    Session.set(this.sessionKey, { activeTab, activeSlideIndex });
+
     const activeNonZeroSlideIndex = activeSlideIndex + 1 || 1;
     const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
     this.props.history.push(pathname);
@@ -133,6 +125,7 @@ class Editor extends Component {
     }
   }
 
+  // TODO: Move to own async action
   async copyScenario(scenarioId) {
     if (!scenarioId) return;
 
@@ -149,9 +142,11 @@ class Editor extends Component {
     }
 
     // Hard refresh to clear all previous state from the editor.
+    // TODO: determine if this can be handled by pushing to history
     location.href = `/editor/${scenario.id}`;
   }
 
+  // TODO: Move to own async action
   async deleteScenario(scenarioId) {
     const result = await fetch(`/api/scenarios/${scenarioId}`, {
       method: 'DELETE'
@@ -162,6 +157,7 @@ class Editor extends Component {
     location.href = '/';
   }
 
+  // TODO: Move to own async action
   async updateScenario(updates = {}) {
     if (this.state.saving) {
       return;
@@ -282,6 +278,8 @@ class Editor extends Component {
       endpoint = `/api/scenarios/${scenarioId}`;
       method = 'POST';
     }
+
+    // TODO: Move to own async action
     return scenario => {
       return fetch(endpoint, {
         method,

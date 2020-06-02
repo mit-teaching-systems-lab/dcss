@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
-import storage from 'local-storage-fallback';
+import Session from '@utils/Session';
 import {
   getCohort,
   setCohort,
@@ -34,18 +34,15 @@ export class Cohort extends React.Component {
     }
 
     if (location && location.search) {
-      storage.setItem(`referrer_params`, location.search);
+      Session.set('app/referrer_params', location.search);
     }
 
-    this.persistenceKey = `cohort/${id}`;
-    let persisted = JSON.parse(storage.getItem(this.persistenceKey));
+    this.sessionKey = `cohort/${id}`;
 
-    if (!persisted) {
-      persisted = { activeTabKey: 'cohort', tabs: [] };
-      storage.setItem(this.persistenceKey, JSON.stringify(persisted));
-    }
-
-    const { activeTabKey = 'cohort', tabs = [] } = persisted;
+    const { activeTabKey, tabs } = Session.get(this.sessionKey, {
+      activeTabKey: 'cohort',
+      tabs: []
+    });
 
     this.state = {
       isReady: false,
@@ -184,7 +181,7 @@ export class Cohort extends React.Component {
       currentUserInCohort && currentUserInCohort.role === 'owner';
 
     // Everytime there is a render, save the state.
-    storage.setItem(this.persistenceKey, JSON.stringify(this.state));
+    Session.set(this.sessionKey, { activeTabKey, tabs });
 
     return (
       <div>

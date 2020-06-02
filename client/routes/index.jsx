@@ -13,8 +13,6 @@ import Notification from './Notification';
 import Routes from './Routes';
 import './Nav.css';
 
-localStorage.removeItem('session');
-
 class App extends Component {
   constructor(props) {
     super(props);

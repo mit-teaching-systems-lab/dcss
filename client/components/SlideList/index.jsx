@@ -1,15 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
-import storage from 'local-storage-fallback';
+import Session from '@utils/Session';
 
-const SlideComponentList = ({
-  asSVG = false,
-  components,
-  onResponseChange,
-  run
-}) => {
-  const emptyValue = '{"value":""}';
+const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
+  const emptyValue = { value: '' };
   const runOnly = run ? { run } : {};
   const style = {
     height: '100px',
@@ -42,7 +37,7 @@ const SlideComponentList = ({
             if (!Components[type]) return;
 
             const { Display } = Components[type];
-            return <Display key={`slide${index}`} persisted={{}} {...value} />;
+            return <Display key={`slide-${index}`} persisted={{}} {...value} />;
           })}
         </foreignObject>
         <rect
@@ -61,14 +56,13 @@ const SlideComponentList = ({
       if (!Components[type]) return;
 
       const { Display } = Components[type];
-      const persisted = JSON.parse(
-        run && responseId
-          ? storage.getItem(`${run.id}-${responseId}`) || emptyValue
-          : emptyValue
-      );
+      const persisted = run
+        ? Session.get(`run/${run.id}/${responseId}`, emptyValue)
+        : emptyValue;
+
       return (
         <Display
-          key={`slide${index}`}
+          key={`slide-${index}`}
           persisted={persisted}
           onResponseChange={onResponseChange}
           {...runOnly}
@@ -79,10 +73,10 @@ const SlideComponentList = ({
   );
 };
 
-SlideComponentList.propTypes = {
+SlideList.propTypes = {
   asSVG: PropTypes.bool,
   components: PropTypes.array,
   onResponseChange: PropTypes.func,
   run: PropTypes.object
 };
-export default SlideComponentList;
+export default SlideList;

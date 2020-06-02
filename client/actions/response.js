@@ -1,4 +1,4 @@
-import storage from 'local-storage-fallback';
+import Session from '@utils/Session';
 import {
   GET_RESPONSE,
   GET_RESPONSE_SUCCESS,
@@ -29,8 +29,8 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
 export const setResponses = (id, responses) => async dispatch => {
   dispatch({ type: SET_RESPONSES, responses });
   try {
-    for (let [name, body] of responses) {
-      await fetch(`/api/runs/${id}/response/${name}`, {
+    for (let [responseId, body] of responses) {
+      await fetch(`/api/runs/${id}/response/${responseId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -38,8 +38,8 @@ export const setResponses = (id, responses) => async dispatch => {
         body: JSON.stringify(body)
       });
 
-      if (storage[`${id}-${name}`]) {
-        storage.removeItem(`${id}-${name}`);
+      if (Session.has(`run/${id}/${responseId}`)) {
+        Session.delete(`run/${id}/${responseId}`);
       }
     }
 
