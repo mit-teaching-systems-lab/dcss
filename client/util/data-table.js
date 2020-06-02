@@ -6,10 +6,11 @@ export const makeHeader = (props, prompts) => {
     parentheticals.push('Required');
   }
 
-  if (recallId) {
-    const reflected = prompts.find(({ responseId }) => responseId === recallId)
-      .prompt;
-    parentheticals.push(`Reflecting on '${reflected}'`);
+  if (recallId && recallId !== -1) {
+    const response = prompts.find(({ responseId }) => responseId === recallId);
+    if (response) {
+      parentheticals.push(`Reflecting on '${response.prompt}'`);
+    }
   }
 
   if (buttons) {
