@@ -60,7 +60,7 @@ class RichTextEditor extends Component {
   }
 
   shouldComponentUpdate(newProps) {
-    return newProps.defaultValue !== this.props.defaultValue;
+    return newProps.id !== this.props.id;
   }
 
   componentDidMount() {
@@ -201,6 +201,7 @@ RichTextEditor.propTypes = {
   disable: PropTypes.bool,
   enable: PropTypes.bool,
   hide: PropTypes.bool,
+  id: PropTypes.node,
   lang: PropTypes.string,
   mode: PropTypes.oneOf(['editor', 'display']),
   name: PropTypes.string,
