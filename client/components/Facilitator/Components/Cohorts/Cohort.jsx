@@ -4,7 +4,7 @@ import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import {
   getCohort,
   setCohort,
@@ -34,12 +34,12 @@ export class Cohort extends React.Component {
     }
 
     if (location && location.search) {
-      Session.set('app/referrer_params', location.search);
+      Storage.set('app/referrer_params', location.search);
     }
 
     this.sessionKey = `cohort/${id}`;
 
-    const { activeTabKey, tabs } = Session.get(this.sessionKey, {
+    const { activeTabKey, tabs } = Storage.get(this.sessionKey, {
       activeTabKey: 'cohort',
       tabs: []
     });
@@ -181,7 +181,7 @@ export class Cohort extends React.Component {
       currentUserInCohort && currentUserInCohort.role === 'owner';
 
     // Everytime there is a render, save the state.
-    Session.set(this.sessionKey, { activeTabKey, tabs });
+    Storage.set(this.sessionKey, { activeTabKey, tabs });
 
     return (
       <div>

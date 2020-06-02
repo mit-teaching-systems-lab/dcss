@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';
@@ -50,7 +50,7 @@ class Editor extends Component {
     if (!isCopyScenario && !isNewScenario) {
       this.sessionKey = `editor/${scenarioId}`;
 
-      let persisted = Session.get(this.sessionKey, {
+      let persisted = Storage.get(this.sessionKey, {
         activeTab: 'scenario',
         activeSlideIndex
       });
@@ -92,7 +92,7 @@ class Editor extends Component {
   onClick(e, { name: activeTab }) {
     this.setState({ activeTab });
     const { activeSlideIndex, scenarioId } = this.state;
-    const updated = Session.merge(this.sessionKey, {
+    const updated = Storage.merge(this.sessionKey, {
       activeSlideIndex,
       activeTab
     });
@@ -105,7 +105,7 @@ class Editor extends Component {
   setActiveView({ activeTab, activeSlideIndex }) {
     const { scenarioId } = this.state;
 
-    Session.set(this.sessionKey, { activeTab, activeSlideIndex });
+    Storage.set(this.sessionKey, { activeTab, activeSlideIndex });
 
     const activeNonZeroSlideIndex = activeSlideIndex + 1 || 1;
     const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;

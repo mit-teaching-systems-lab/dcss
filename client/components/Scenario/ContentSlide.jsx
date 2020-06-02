@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 
 import SlideList from '@components/SlideList';
 
@@ -101,7 +101,7 @@ class ContentSlide extends React.Component {
 
     if (!data.isFulfilled) {
       this.props.onResponseChange(event, data);
-      Session.set(`run/${run.id}/${name}`, data);
+      Storage.set(`run/${run.id}/${name}`, data);
       this.setState({
         skipButton: 'Choose to skip',
         skipOrKeep: 'skip'

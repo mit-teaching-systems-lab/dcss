@@ -17,7 +17,7 @@ import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import * as Components from '../Components';
 import './SlideEditor.css';
 
@@ -36,7 +36,7 @@ export default class SlideEditor extends Component {
 
     this.sessionKey = `slideeditor/${props.id}`;
 
-    const { activeComponentIndex, mode } = Session.get(this.sessionKey, {
+    const { activeComponentIndex, mode } = Storage.get(this.sessionKey, {
       activeComponentIndex: -1,
       mode: 'edit'
     });
@@ -239,7 +239,7 @@ export default class SlideEditor extends Component {
       }
     };
 
-    Session.set(this.sessionKey, {
+    Storage.set(this.sessionKey, {
       activeComponentIndex,
       mode
     });

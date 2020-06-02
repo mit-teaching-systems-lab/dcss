@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 
 const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
   const emptyValue = { value: '' };
@@ -57,7 +57,7 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
 
       const { Display } = Components[type];
       const persisted = run
-        ? Session.get(`run/${run.id}/${responseId}`, emptyValue)
+        ? Storage.get(`run/${run.id}/${responseId}`, emptyValue)
         : emptyValue;
 
       return (

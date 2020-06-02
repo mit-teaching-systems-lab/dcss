@@ -17,7 +17,7 @@ import {
 // TODO: can we use this for shouldComponentUpdate?
 // import hash from 'object-hash';
 // import { diff } from 'deep-object-diff';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import AddSlideMessage from '@components/AddSlideMessage';
 import Loading from '@components/Loading';
 import notify from '@components/Notification';
@@ -38,7 +38,7 @@ class Slides extends React.Component {
 
     this.sessionKey = `slides/${this.props.scenarioId}`;
 
-    const { activeSlideIndex, minimized } = Session.merge(
+    const { activeSlideIndex, minimized } = Storage.merge(
       this.sessionKey,
       persisted => {
         const {
@@ -115,7 +115,7 @@ class Slides extends React.Component {
 
   componentDidUpdate() {
     const { activeSlideIndex, minimized } = this.state;
-    Session.set(this.sessionKey, { activeSlideIndex, minimized });
+    Storage.set(this.sessionKey, { activeSlideIndex, minimized });
   }
 
   onSlideChange(activeSlideIndex, value) {
@@ -263,7 +263,7 @@ class Slides extends React.Component {
 
         this.props.setActiveSlide(activeSlideIndex);
 
-        Session.set(this.sessionKey, { activeSlideIndex, minimized });
+        Storage.set(this.sessionKey, { activeSlideIndex, minimized });
         callback();
       });
     }

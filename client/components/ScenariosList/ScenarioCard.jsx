@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Card, Icon } from 'semantic-ui-react';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
@@ -56,7 +56,7 @@ class ScenarioCard extends React.Component {
     const isAuthorized =
       scenario.author_id === user.id || user.roles.includes('super_admin');
 
-    const { activeSlideIndex, activeTab } = Session.get(`editor/${id}`, {
+    const { activeSlideIndex, activeTab } = Storage.get(`editor/${id}`, {
       activeTab: 'slides',
       activeSlideIndex: 0
     });

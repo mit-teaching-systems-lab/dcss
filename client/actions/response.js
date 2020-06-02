@@ -1,4 +1,4 @@
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import {
   GET_RESPONSE,
   GET_RESPONSE_SUCCESS,
@@ -38,8 +38,8 @@ export const setResponses = (id, responses) => async dispatch => {
         body: JSON.stringify(body)
       });
 
-      if (Session.has(`run/${id}/${responseId}`)) {
-        Session.delete(`run/${id}/${responseId}`);
+      if (Storage.has(`run/${id}/${responseId}`)) {
+        Storage.delete(`run/${id}/${responseId}`);
       }
     }
 

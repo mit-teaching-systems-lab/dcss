@@ -15,7 +15,7 @@ import {
   Table
 } from 'semantic-ui-react';
 import _ from 'lodash';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import {
   getCohort,
   getCohortParticipants,
@@ -41,11 +41,11 @@ export class CohortParticipants extends React.Component {
     }
 
     this.sessionKey = `cohort-participants/${id}`;
-    let persisted = Session.get(this.sessionKey);
+    let persisted = Storage.get(this.sessionKey);
 
     if (!persisted) {
       persisted = { refresh: false };
-      Session.set(this.sessionKey, persisted);
+      Storage.set(this.sessionKey, persisted);
     }
 
     const { refresh } = persisted;
@@ -155,7 +155,7 @@ export class CohortParticipants extends React.Component {
       } else {
         this.participantRefresh();
       }
-      Session.set(this.sessionKey, this.state);
+      Storage.set(this.sessionKey, this.state);
     });
   }
 

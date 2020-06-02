@@ -1,6 +1,6 @@
 import storage from 'local-storage-fallback';
 
-const Session = {
+const Storage = {
   clear() {
     storage.clear();
   },
@@ -11,7 +11,7 @@ const Session = {
     let persisted = JSON.parse(storage.getItem(key));
 
     if (!persisted && defaults) {
-      Session.set(key, defaults);
+      Storage.set(key, defaults);
       persisted = defaults;
     }
     return persisted;
@@ -20,11 +20,11 @@ const Session = {
     return storage[key] !== undefined;
   },
   merge(key, dataOrFn) {
-    let persisted = Session.get(key, {});
+    let persisted = Storage.get(key, {});
     if (typeof dataOrFn === 'function') {
-      return Session.set(key, dataOrFn(persisted));
+      return Storage.set(key, dataOrFn(persisted));
     } else {
-      return Session.set(key, {
+      return Storage.set(key, {
         ...persisted,
         ...dataOrFn
       });
@@ -36,4 +36,4 @@ const Session = {
   }
 };
 
-export default Session;
+export default Storage;

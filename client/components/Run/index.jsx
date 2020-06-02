@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
-import Session from '@client/util/Session';
+import Storage from '@utils/Storage';
 import Loading from '@components/Loading';
 import Scenario from '@components/Scenario';
 import { linkCohortToRun, setCohortUserRole } from '@client/actions/cohort';
@@ -66,12 +66,12 @@ class Run extends Component {
         }
       }
 
-      const referrer_params = Session.get('app/referrer_params');
+      const referrer_params = Storage.get('app/referrer_params');
       if (search || referrer_params) {
         await setRun(run.id, {
           referrer_params: QueryString.parse(search || referrer_params)
         });
-        Session.delete('app/referrer_params');
+        Storage.delete('app/referrer_params');
       }
 
       this.setState({ isReady: true });
