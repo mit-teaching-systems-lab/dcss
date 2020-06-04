@@ -1,15 +1,15 @@
 import Storage from '@utils/Storage';
 import {
-  GET_RESPONSE,
+  // GET_RESPONSE,
   GET_RESPONSE_SUCCESS,
   GET_RESPONSE_ERROR,
-  SET_RESPONSES,
+  // SET_RESPONSES,
   SET_RESPONSES_SUCCESS,
   SET_RESPONSES_ERROR
 } from './types';
 
 export const getResponse = ({ id, responseId }) => async dispatch => {
-  dispatch({ type: GET_RESPONSE, id });
+  // dispatch({ type: GET_RESPONSE });
   try {
     const { response, error } = await (await fetch(
       `/api/runs/${id}/response/${responseId}`
@@ -26,10 +26,15 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
   }
 };
 
-export const setResponses = (id, responses) => async dispatch => {
-  dispatch({ type: SET_RESPONSES, responses });
+export const setResponses = (id, submitted) => async dispatch => {
+  // dispatch({ type: SET_RESPONSES });
+  const responses = [];
+  const responsesById = {};
   try {
-    for (let [responseId, body] of responses) {
+    for (let [responseId, body] of submitted) {
+      responses.push(body);
+      responsesById[responseId] = body;
+
       await fetch(`/api/runs/${id}/response/${responseId}`, {
         method: 'POST',
         headers: {
@@ -42,8 +47,7 @@ export const setResponses = (id, responses) => async dispatch => {
         Storage.delete(`run/${id}/${responseId}`);
       }
     }
-
-    dispatch({ type: SET_RESPONSES_SUCCESS, responses });
+    dispatch({ type: SET_RESPONSES_SUCCESS, responses, responsesById });
     return responses;
   } catch (error) {
     const { message, status, stack } = error;

@@ -2,6 +2,9 @@ import { type } from './meta';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import Loading from '@components/Loading';
+import { getResponse } from '@client/actions/response';
 import '../AudioResponse/AudioResponse.css';
 
 class Display extends React.Component {
@@ -9,7 +12,7 @@ class Display extends React.Component {
     super(props);
 
     this.state = {
-      response: null
+      response: this.props.responsesById[this.props.recallId] || null
     };
   }
 
@@ -18,18 +21,37 @@ class Display extends React.Component {
   }
 
   async componentDidMount() {
-    // TODO: replace this with call to getResponse
-    const { run, recallId } = this.props;
-    if (this.isScenarioRun && (recallId && recallId !== -1)) {
-      const { response, status } = await (await fetch(
-        `/api/runs/${run.id}/response/${recallId}`
-      )).json();
+    if (!this.isScenarioRun) {
+      return;
+    }
 
-      if (status === 200) {
-        this.setState({
+    if (this.state.response) {
+      return;
+    }
+
+    let {
+      getResponse,
+      recallId: responseId,
+      responsesById,
+      run: {id}
+    } = this.props;
+
+    if (!responseId || responseId === -1) {
+      return;
+    }
+
+    const recalled = await getResponse({
+      id,
+      responseId
+    });
+
+    if (recalled) {
+      const {
           response
-        });
-      }
+      } = recalled;
+      this.setState({
+        response
+      });
     }
   }
   render() {
@@ -52,18 +74,17 @@ class Display extends React.Component {
     // to display, so display:
     // "Participant response will appear here"
     //
-
-    if (!response) {
-      return null;
-    }
-
     const content = this.isScenarioRun
       ? response
-        ? response.response.isSkip
+        ? response.isSkip
           ? 'Prompt skipped'
-          : response.response.value
-        : 'Loading your previous response'
+          : response.value
+        : false
       : 'Participant response will appear here';
+
+    if (content === false) {
+      return null;
+    }
 
     return (
       <Message
@@ -77,7 +98,7 @@ class Display extends React.Component {
             <React.Fragment>
               <audio src={`/api/media/${content}`} controls="controls" />
               <blockquote className="audiotranscript__blockquote">
-                {response.response.transcript ||
+                {response.transcript ||
                   '(Transcription in progress. This may take a few minutes, depending on the length of your audio recording.)'}
               </blockquote>
             </React.Fragment>
@@ -91,6 +112,8 @@ class Display extends React.Component {
 }
 
 Display.propTypes = {
+  getResponse: PropTypes.func,
+  responsesById: PropTypes.object,
   // This is named `recallId`, instead of `responseId`
   // to prevent the serialized form of this component
   // from being mis-indentified as a "Response" component.
@@ -99,4 +122,16 @@ Display.propTypes = {
   type: PropTypes.oneOf([type])
 };
 
-export default React.memo(Display);
+const mapStateToProps = state => {
+  const { run, responsesById } = state;
+  return { run, responsesById };
+};
+
+const mapDispatchToProps = dispatch => ({
+  getResponse: params => dispatch(getResponse(params))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Display);

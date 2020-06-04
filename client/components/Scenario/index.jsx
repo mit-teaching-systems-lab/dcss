@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from 'semantic-ui-react';
 
@@ -16,6 +16,7 @@ class Scenario extends Component {
   constructor(props) {
     super(props);
 
+    const isReady = false;
     // Used in Run mode
     const activeRunSlideIndex =
       Number(this.props.match.params.activeRunSlideIndex) || 0;
@@ -28,7 +29,6 @@ class Scenario extends Component {
       scenarioId,
       location
     } = this.props;
-    const isReady = false;
 
     this.state = {
       isReady,
@@ -47,7 +47,7 @@ class Scenario extends Component {
       const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}${search}`;
 
       if (pathname !== pathToSlide) {
-        history.push(pathToSlide);
+        history.push(pathToSlide, {search, activeRunSlideIndex});
       }
     }
   }
@@ -64,9 +64,9 @@ class Scenario extends Component {
     const { baseurl, history, onSubmit } = this.props;
     switch (type) {
       case 'back':
-        return () => {
+        return async () => {
           if (onSubmit) {
-            onSubmit();
+            await onSubmit();
           }
           const activeRunSlideIndex = this.state.activeRunSlideIndex - 1;
           const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
@@ -79,9 +79,9 @@ class Scenario extends Component {
         };
       case 'next':
       case 'finish':
-        return () => {
+        return async () => {
           if (onSubmit) {
-            onSubmit();
+            await onSubmit();
           }
           const activeRunSlideIndex = this.state.activeRunSlideIndex + 1;
           const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;

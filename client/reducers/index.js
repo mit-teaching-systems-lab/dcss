@@ -4,7 +4,7 @@ import admin from './admin';
 import cohort from './cohort';
 import login from './login';
 import { user } from './user';
-import { response, responses } from './response';
+import { response, responses, responsesById } from './response';
 import { run, runs } from './run';
 import { history, scenario, scenarios } from './scenario';
 
@@ -15,6 +15,7 @@ export default combineReducers({
   login,
   response,
   responses,
+  responsesById,
   run,
   runs,
   scenario,

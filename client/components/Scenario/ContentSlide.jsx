@@ -122,7 +122,7 @@ class ContentSlide extends React.Component {
     const runOnly = run ? { run } : {};
     const hasPrompt = slide.components.some(component => component.responseId);
 
-    const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next';
+    const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next slide';
     const submitNextOrFinish = isLastSlide ? 'Finish' : proceedButtonLabel;
 
     const awaitingRequiredPrompts = (
@@ -144,7 +144,7 @@ class ContentSlide extends React.Component {
       onClick
     };
     let fwdButtonTip = hasPrompt
-      ? 'Submit response and go to next slide'
+      ? 'Submit and go to next slide'
       : 'Go to the next slide';
 
     let skipButtonTip =
@@ -183,7 +183,7 @@ class ContentSlide extends React.Component {
                 floated="left"
                 color="grey"
                 onClick={onBackClick}
-                content={'Back'}
+                content={'Previous slide'}
               />
             }
           />

@@ -32,7 +32,24 @@ export const responses = (state = [], action) => {
   switch (type) {
     case GET_RESPONSES_SUCCESS:
     case SET_RESPONSES_SUCCESS:
-      return responses;
+      return [
+        ...state,
+        ...responses
+      ];
+    default:
+      return state;
+  }
+};
+
+export const responsesById = (state = {}, action) => {
+  const { responsesById, type } = action;
+
+  switch (type) {
+    case SET_RESPONSES_SUCCESS:
+      return {
+        ...state,
+        ...responsesById
+      };
     default:
       return state;
   }
