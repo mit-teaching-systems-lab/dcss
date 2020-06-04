@@ -1,11 +1,11 @@
 import {
-  CREATE_COHORT,
+  // CREATE_COHORT,
   CREATE_COHORT_SUCCESS,
   CREATE_COHORT_ERROR,
   SET_COHORT,
   SET_COHORT_SUCCESS,
   SET_COHORT_ERROR,
-  GET_COHORT,
+  // GET_COHORT,
   GET_COHORT_SUCCESS,
   GET_COHORT_ERROR,
   GET_COHORT_PARTICIPANTS,
@@ -29,7 +29,7 @@ import {
 } from './types';
 
 export const createCohort = ({ name }) => async dispatch => {
-  dispatch({ type: CREATE_COHORT, payload: { name } });
+  // dispatch({ type: CREATE_COHORT, payload: { name } });
   try {
     const res = await fetch('/api/cohort', {
       method: 'PUT',
@@ -91,7 +91,7 @@ export const getCohort = id => async dispatch => {
   if (Number.isNaN(id)) {
     return;
   }
-  dispatch({ type: GET_COHORT, payload: { id } });
+  // dispatch({ type: GET_COHORT, payload: { id } });
   try {
     const { cohort, error } = await (await fetch(`/api/cohort/${id}`)).json();
 
