@@ -66,7 +66,7 @@ const Routes = ({ isLoggedIn }) => {
 
       <InterceptAnonymizableRoute
         isLoggedIn={isLoggedIn}
-        path="/run/:scenarioId/slide/:activeNonZeroSlideIndex"
+        path="/run/:scenarioId/slide/:activeRunSlideIndex"
       >
         <Route component={Run} />
       </InterceptAnonymizableRoute>
@@ -79,7 +79,7 @@ const Routes = ({ isLoggedIn }) => {
 
       <InterceptAnonymizableRoute
         isLoggedIn={isLoggedIn}
-        path="/cohort/:cohortId/run/:scenarioId/slide/:activeNonZeroSlideIndex"
+        path="/cohort/:cohortId/run/:scenarioId/slide/:activeRunSlideIndex"
       >
         <Route render={props => <Run {...props} />} />
       </InterceptAnonymizableRoute>
