@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
 import _ from 'lodash';
 import changeCase from 'change-case';

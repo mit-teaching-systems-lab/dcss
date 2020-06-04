@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Button, Icon, Pagination, Popup, Ref, Table } from 'semantic-ui-react';
 import * as moment from 'moment';
 import { getUserRuns } from '@client/actions/run';

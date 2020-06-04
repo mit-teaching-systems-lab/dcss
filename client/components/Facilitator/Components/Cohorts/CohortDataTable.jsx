@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Icon, Modal, Table } from 'semantic-ui-react';
 import { diff } from 'deep-diff';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import { Icon, Menu, Popup } from 'semantic-ui-react';
 import { getCohort } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';

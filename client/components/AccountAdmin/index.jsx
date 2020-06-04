@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import { Icon, Input, Menu, Table } from 'semantic-ui-react';
