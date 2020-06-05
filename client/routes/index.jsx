@@ -7,7 +7,7 @@ import { logIn } from '@client/actions';
 import { getUser } from '@client/actions/user';
 import Loading from '@components/Loading';
 
-import History from './History';
+import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Notification from './Notification';
 import Routes from './Routes';
@@ -55,11 +55,11 @@ class App extends Component {
     }
     return (
       <Router>
-        <History>
+        <BackButtonHistory>
           <Navigation />
           <Routes isLoggedIn={this.props.isLoggedIn} />
           <Notification />
-        </History>
+        </BackButtonHistory>
       </Router>
     );
   }

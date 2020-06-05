@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+import { withRouter } from 'react-router-dom';
 
-class History extends React.Component {
+class BackButtonHistory extends React.Component {
   constructor(props) {
     super(props);
-
     this.onPopState = this.onPopState.bind(this);
   }
 
@@ -18,10 +17,7 @@ class History extends React.Component {
   }
 
   onPopState() {
-    // console.log(event);
-    // console.log(this.props.history);
-    // console.log('onPopState');
-    // this.props.history.goBack();
+    window.location.href = this.props.location.pathname;
   }
 
   render() {
@@ -29,9 +25,9 @@ class History extends React.Component {
   }
 }
 
-History.propTypes = {
+BackButtonHistory.propTypes = {
   children: PropTypes.array,
-  history: PropTypes.object
+  location: PropTypes.object.isRequired,
 };
 
-export default withRouter(History);
+export default withRouter(BackButtonHistory);
