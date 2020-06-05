@@ -9,6 +9,7 @@ import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Loading from '@components/Loading';
+import Storage from '@utils/Storage';
 import { getScenario, setScenario } from '@client/actions/scenario';
 import './Scenario.css';
 
@@ -213,11 +214,24 @@ class Scenario extends Component {
       isReady,
       slides
     } = this.state;
-    const classes = 'ui centered card scenario__card--run';
+
+
 
     if (!isReady) {
       return <Loading />;
     }
+
+    const {
+      scenarioId
+    } = this.props;
+
+    if (this.isScenarioRun) {
+      Storage.set(`run/${scenarioId}`, {
+        activeRunSlideIndex
+      });
+    }
+
+    const classes = 'ui centered card scenario__card--run';
 
     return this.isScenarioRun ? (
       <Grid columns={1}>

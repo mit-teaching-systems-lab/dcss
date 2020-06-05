@@ -56,11 +56,14 @@ class ScenarioCard extends React.Component {
     const isAuthorized =
       scenario.author_id === user.id || user.roles.includes('super_admin');
 
-    const { activeSlideIndex, activeTab } = Storage.get(`editor/${id}`, {
+    const editor = Storage.get(`editor/${id}`, {
       activeTab: 'slides',
       activeSlideIndex: 0
     });
-    const nonZeroIndex = activeSlideIndex + 1;
+    editor.nonZeroIndex = editor.activeSlideIndex + 1;
+    const run = Storage.get(`run/${id}`, {
+      activeRunSlideIndex: 0
+    });
 
     return deleted_at ? (
       <ConfirmAuth isAuthorized={isAuthorized}>
@@ -86,7 +89,7 @@ class ScenarioCard extends React.Component {
             basic
             fluid
             as={Link}
-            to={{ pathname: `/run/${id}` }}
+            to={{ pathname: `/run/${id}/slide/${run.activeRunSlideIndex}` }}
             className="scenario__entry--button"
           >
             Run
@@ -101,7 +104,7 @@ class ScenarioCard extends React.Component {
                   className="scenario__entry--button"
                   as={Link}
                   to={{
-                    pathname: `/editor/${id}/${activeTab}/${nonZeroIndex}`
+                    pathname: `/editor/${id}/${editor.activeTab}/${editor.nonZeroIndex}`
                   }}
                 >
                   Edit
