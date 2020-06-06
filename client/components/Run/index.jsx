@@ -115,7 +115,7 @@ class Run extends Component {
 
   render() {
     const { onChange, onResponseChange, onSubmit } = this;
-    const { isReady, baseurl } = this.state;
+    const { isReady, baseurl, scenarioId } = this.state;
 
     if (!isReady) {
       return <Loading />;
@@ -124,7 +124,7 @@ class Run extends Component {
     return this.props.run ? (
       <Scenario
         baseurl={baseurl}
-        scenarioId={this.state.scenarioId}
+        scenarioId={scenarioId}
         onResponseChange={onResponseChange}
         onRunChange={onChange}
         onSubmit={onSubmit}

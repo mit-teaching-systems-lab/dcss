@@ -9,7 +9,7 @@ const Loading = ({ size = 'medium', children }) => {
       : '/images/wireframe/paragraph.png';
 
   return (
-    <div>
+    <div style={{ marginBottom: '1em' }}>
       <Segment>
         <Dimmer active inverted>
           <Loader size={size}>Loading</Loader>

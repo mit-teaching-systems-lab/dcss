@@ -36,17 +36,11 @@ class ScenariosList extends Component {
   }
 
   async componentDidMount() {
-    const { error } = await (await fetch('/api/auth/me')).json();
-
-    if (error) {
-      this.props.history.push('/logout');
-    } else {
-      await this.getScenarios();
-      await this.reduceScenarios();
-      this.setState({
-        isReady: true
-      });
-    }
+    await this.getScenarios();
+    await this.reduceScenarios();
+    this.setState({
+      isReady: true
+    });
   }
 
   moveDeletedScenarios(scenarios = []) {

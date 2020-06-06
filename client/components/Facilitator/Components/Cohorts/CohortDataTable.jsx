@@ -58,7 +58,6 @@ export class CohortDataTable extends React.Component {
       tables: []
     };
 
-    this.refreshInterval = null;
     this.refresh = this.refresh.bind(this);
     this.onDataTableMenuClick = this.onDataTableMenuClick.bind(this);
   }
