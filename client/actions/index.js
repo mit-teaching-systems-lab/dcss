@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT, SET_USERS } from './types';
+import { LOG_IN, LOG_OUT } from './types';
 import Storage from '@utils/Storage';
 
 export const logIn = userData => ({
@@ -30,8 +30,3 @@ export const logOut = () => async dispatch => {
     void error;
   }
 };
-
-export const setUsers = payload => ({
-  type: SET_USERS,
-  payload
-});

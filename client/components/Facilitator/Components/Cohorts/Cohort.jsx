@@ -12,7 +12,6 @@ import {
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
-import ConfirmAuth from '@components/ConfirmAuth';
 import CohortDataTable from './CohortDataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';
@@ -59,9 +58,9 @@ export class Cohort extends React.Component {
   }
 
   async componentDidMount() {
-    const { error } = await (await fetch('/api/auth/me')).json();
+    await this.props.getUser();
 
-    if (error) {
+    if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
       const {
@@ -163,7 +162,7 @@ export class Cohort extends React.Component {
     const {
       cohort,
       cohort: { id, name },
-      user: { username, permissions }
+      user: { username }
     } = this.props;
     const { isReady, activeTabKey, tabs } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
@@ -177,8 +176,9 @@ export class Cohort extends React.Component {
     const currentUserInCohort = cohort.users.find(cohortMember => {
       return cohortMember.username === username;
     });
-    const isAuthorized =
-      currentUserInCohort && currentUserInCohort.role === 'owner';
+    const isOwner = currentUserInCohort && currentUserInCohort.role === 'owner';
+    const isParticipant =
+      currentUserInCohort && currentUserInCohort.role === 'participant';
 
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
@@ -261,28 +261,25 @@ export class Cohort extends React.Component {
             <CohortScenarios
               key="cohort-scenarios"
               id={id}
-              isAuthorized={isAuthorized}
+              isOwner={isOwner}
+              isParticipant={isParticipant}
               onClick={onClick}
             />
-            <CohortParticipants
-              key="cohort-participants"
-              id={id}
-              isAuthorized={isAuthorized}
-              onClick={onClick}
+            {isOwner ? (
+              <CohortParticipants
+                key="cohort-participants"
+                id={id}
+                isAuthorized={isOwner}
+                onClick={onClick}
+              />
+            ) : null}
+            <CohortDataTable
+              source={{
+                cohortId: id,
+                participantId: currentUserInCohort.id
+              }}
+              onClick={onDataTableClick}
             />
-            {currentUserInCohort && (
-              <ConfirmAuth
-                isAuthorized={!permissions.includes('edit_all_cohorts')}
-              >
-                <CohortDataTable
-                  source={{
-                    cohortId: id,
-                    participantId: currentUserInCohort.id
-                  }}
-                  onClick={onDataTableClick}
-                />
-              </ConfirmAuth>
-            )}
           </Segment>
         ) : (
           <Segment key={activeTabKey} attached="bottom">

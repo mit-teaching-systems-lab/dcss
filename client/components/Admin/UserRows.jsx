@@ -36,27 +36,40 @@ const RoleCells = ({ id, username, roles }) => {
     const disabled = IMMUTABLE_ROLES.includes(dbValue);
     return (
       <Table.Cell key={`${username}-${dbValue}-${index}`}>
-        <Checkbox
-          disabled={disabled}
-          role={dbValue}
-          user_id={id}
-          defaultChecked={checked}
-          onClick={onCheckboxClick}
-        />
+        {id ? (
+          <Checkbox
+            disabled={disabled}
+            role={dbValue}
+            user_id={id}
+            defaultChecked={checked}
+            onClick={onCheckboxClick}
+          />
+        ) : null}
       </Table.Cell>
     );
   });
 };
 
-const UserRows = users => {
+const UserRows = (users, diff) => {
   if (!users) return null;
 
-  return users.map(user => {
+  if (diff) {
+    users.push(
+      ...Array(diff).fill({
+        id: null,
+        username: '',
+        email: '',
+        roles: []
+      })
+    );
+  }
+
+  return users.map((user, index) => {
     const roleCells = RoleCells(user);
     return (
-      <Table.Row key={user.id}>
-        <Table.Cell>{user.username}</Table.Cell>
-        <Table.Cell>{user.email}</Table.Cell>
+      <Table.Row key={`${user.id}-${index}`}>
+        <Table.Cell>{user.username || ' '}</Table.Cell>
+        <Table.Cell>{user.email || ' '}</Table.Cell>
         {roleCells}
       </Table.Row>
     );

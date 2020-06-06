@@ -57,6 +57,10 @@ class Scenario extends Component {
     return location.pathname.includes('/run/');
   }
 
+  get isCohortScenarioRun() {
+    return this.isScenarioRun && location.pathname.includes('/cohort/');
+  }
+
   getOnClickHandler(type) {
     if (!this.isScenarioRun) {
       return null;

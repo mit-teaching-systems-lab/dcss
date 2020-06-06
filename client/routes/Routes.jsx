@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
-import AccountAdmin from '@components/AccountAdmin';
+import Admin from '@components/Admin';
 import Cohorts from '@components/Facilitator/Components/Cohorts';
 import Cohort from '@components/Facilitator/Components/Cohorts/Cohort';
 import ConfirmAuth from '@components/ConfirmAuth';
@@ -91,13 +91,13 @@ const Routes = ({ isLoggedIn }) => {
         <Route render={props => <Run {...props} />} />
       </InterceptAnonymizableRoute>
 
-      <ConfirmAuth
-        exact
-        path="/account-administration"
-        requiredPermission="edit_permissions"
-      >
-        <Route component={AccountAdmin} />
-      </ConfirmAuth>
+      <RedirectRouteForInactiveSession isLoggedIn={isLoggedIn} path="/admin">
+        <ConfirmAuth path="/admin" requiredPermission="edit_permissions">
+          <Route
+            render={props => <Admin {...props} isLoggedIn={isLoggedIn} />}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
 
       <ConfirmAuth path="/cohorts" requiredPermission="view_own_cohorts">
         <Route render={props => <Cohorts {...props} activeTab="cohorts" />} />

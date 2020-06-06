@@ -1,10 +1,4 @@
-import {
-  GET_USER_ERROR,
-  GET_USER_SUCCESS,
-  // GET_USERS_SUCCESS,
-  SET_USER_SUCCESS
-  // SET_USERS_SUCCESS
-} from '@client/actions/types';
+import { GET_USER_SUCCESS, SET_USER_SUCCESS } from '@client/actions/types';
 
 const initialState = {
   username: null,
@@ -24,7 +18,6 @@ export const user = (state = initialState, action) => {
     // falling back to initialState
     case GET_USER_SUCCESS:
     case SET_USER_SUCCESS:
-    case GET_USER_ERROR:
       return {
         ...state,
         ...user

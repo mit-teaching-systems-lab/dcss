@@ -14,6 +14,7 @@ import {
 } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
 import _ from 'lodash';
+import * as moment from 'moment';
 
 import EditorMenu from '@components/EditorMenu';
 import Sortable from '@components/Sortable';
@@ -23,6 +24,7 @@ import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { getCohort, setCohort } from '@client/actions/cohort';
 import { getScenarios, setScenarios } from '@client/actions/scenario';
+import { getUserRuns } from '@client/actions/run';
 
 import './Cohort.css';
 
@@ -60,8 +62,11 @@ export class CohortScenarios extends React.Component {
       cohort: { id }
     } = this.state;
 
-    await this.props.getCohort(Number(id));
-    await this.props.getScenarios();
+    const { getCohort, getScenarios, getUserRuns } = this.props;
+
+    await getCohort(Number(id));
+    await getScenarios();
+    await getUserRuns();
 
     // See note above, re: scenarios list backup
     this.scenarios = this.props.scenarios.slice();
@@ -101,13 +106,9 @@ export class CohortScenarios extends React.Component {
   async moveScenario(fromIndex, toIndex) {
     const { cohort } = this.props;
     const scenarios = cohort.scenarios.slice();
-    const from = scenarios[fromIndex];
-    const to = scenarios[toIndex];
-    if (from && to) {
-      scenarios[toIndex] = from;
-      scenarios[fromIndex] = to;
-    }
-
+    const moving = scenarios[fromIndex];
+    scenarios.splice(fromIndex, 1);
+    scenarios.splice(toIndex, 0, moving);
     this.props.setCohort({
       ...cohort,
       scenarios
@@ -145,7 +146,14 @@ export class CohortScenarios extends React.Component {
       onScenarioCheckboxClick,
       onScenarioSearchChange
     } = this;
-    const { cohort, isAuthorized, onClick, scenarios = [] } = this.props;
+    const {
+      cohort,
+      isOwner,
+      isParticipant,
+      onClick,
+      runs,
+      scenarios = []
+    } = this.props;
     const { isReady } = this.state;
 
     if (!isReady) {
@@ -220,7 +228,7 @@ export class CohortScenarios extends React.Component {
           <Table.Header className="cohort__table-thead-tbody-tr">
             <Table.Row>
               <ConfirmAuth
-                isAuthorized={isAuthorized}
+                isAuthorized={isOwner}
                 requiredPermission="edit_scenarios_in_cohort"
               >
                 <Table.HeaderCell className="cohort__table-cell-first">
@@ -235,16 +243,17 @@ export class CohortScenarios extends React.Component {
               </ConfirmAuth>
               <Table.HeaderCell>Title</Table.HeaderCell>
               <Table.HeaderCell className="cohort__table-cell-content">
-                Author
+                {isOwner ? 'Author' : 'Started'}
               </Table.HeaderCell>
               <Table.HeaderCell className="cohort__table-cell-content">
-                Description
+                {isOwner ? 'Description' : 'Completed'}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
           {scenarios.length ? (
             <Sortable
+              isAuthorized={isOwner}
               tag="tbody"
               className="cohort__scrolling-tbody"
               onChange={onScenarioOrderChange}
@@ -262,7 +271,9 @@ export class CohortScenarios extends React.Component {
                 const checked = cohort.scenarios.includes(scenario.id);
                 const disabled = true;
                 const props = !checked ? { disabled } : {};
-                const pathname = `/cohort/${cohort.id}/run/${scenario.id}`;
+
+                // TODO: check localstorage for more appropriate slide number to begin at
+                const pathname = `/cohort/${cohort.id}/run/${scenario.id}/slide/0`;
                 const url = `${location.origin}${pathname}`;
 
                 const requiredPermission = checked
@@ -276,6 +287,47 @@ export class CohortScenarios extends React.Component {
                     source: scenario
                   });
                 };
+
+                const run =
+                  runs.find(run => run.scenario_id === scenario.id) || {};
+
+                const { run_created_at = null, run_ended_at = null } = run;
+
+                const createdStatus = run_created_at
+                  ? { warning: true }
+                  : { negative: true };
+
+                const completeOrIncomplete = isParticipant
+                  ? run_ended_at
+                    ? { positive: true }
+                    : createdStatus
+                  : {};
+
+                const createdAt = run_created_at
+                  ? moment(run_created_at).fromNow()
+                  : '';
+
+                const createdAtAlt = run_created_at
+                  ? moment(run_created_at).calendar()
+                  : '';
+
+                const endedAt = run_ended_at
+                  ? moment(run_ended_at).fromNow()
+                  : '';
+
+                const endedAtAlt = run_ended_at
+                  ? moment(run_ended_at).calendar()
+                  : 'This scenario is not complete';
+
+                const startedAtDisplay = run_created_at
+                  ? `${createdAt} (${createdAtAlt})`.trim()
+                  : 'This scenario has not been started';
+
+                const endedAtCreatedAtAlt = run_created_at ? endedAtAlt : '';
+                const endedAtDisplay = run_ended_at
+                  ? `${endedAt} (${endedAtAlt})`.trim()
+                  : endedAtCreatedAtAlt;
+
                 return (
                   <ConfirmAuth
                     key={`confirm-${index}`}
@@ -285,9 +337,10 @@ export class CohortScenarios extends React.Component {
                       key={`row-${index}`}
                       className="cohort__table-thead-tbody-tr"
                       style={{ cursor: 'pointer' }}
+                      {...completeOrIncomplete}
                     >
                       <ConfirmAuth
-                        isAuthorized={isAuthorized}
+                        isAuthorized={isOwner}
                         requiredPermission="edit_own_cohorts"
                       >
                         <Table.Cell
@@ -303,7 +356,7 @@ export class CohortScenarios extends React.Component {
                         </Table.Cell>
                       </ConfirmAuth>
                       <ConfirmAuth
-                        isAuthorized={isAuthorized}
+                        isAuthorized={isOwner}
                         requiredPermission="edit_scenarios_in_cohort"
                       >
                         <Table.Cell className="cohort__table-cell-options">
@@ -340,7 +393,7 @@ export class CohortScenarios extends React.Component {
                               />
 
                               <ConfirmAuth
-                                isAuthorized={isAuthorized}
+                                isAuthorized={isOwner}
                                 requiredPermission="view_all_data"
                               >
                                 <Popup
@@ -395,10 +448,10 @@ export class CohortScenarios extends React.Component {
                         display={scenario.title}
                       />
                       <Table.Cell className="cohort__table-cell-content">
-                        {scenario.author.username}
+                        {isOwner ? scenario.author.username : startedAtDisplay}
                       </Table.Cell>
                       <Table.Cell className="cohort__table-cell-content">
-                        {scenario.description}
+                        {isOwner ? scenario.description : endedAtDisplay}
                       </Table.Cell>
                     </Table.Row>
                   </ConfirmAuth>
@@ -422,6 +475,8 @@ export class CohortScenarios extends React.Component {
 }
 
 CohortScenarios.propTypes = {
+  getCohort: PropTypes.func,
+  setCohort: PropTypes.func,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
@@ -433,6 +488,8 @@ CohortScenarios.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
+  isOwner: PropTypes.bool,
+  isParticipant: PropTypes.bool,
   isAuthorized: PropTypes.bool,
   id: PropTypes.any,
   match: PropTypes.shape({
@@ -442,26 +499,30 @@ CohortScenarios.propTypes = {
     }).isRequired
   }).isRequired,
   onClick: PropTypes.func,
-  getCohort: PropTypes.func,
-  setCohort: PropTypes.func,
   getScenarios: PropTypes.func,
   setScenarios: PropTypes.func,
-  scenarios: PropTypes.array
+  scenarios: PropTypes.array,
+  getUserRuns: PropTypes.func,
+  runs: PropTypes.array,
+  user: PropTypes.object
 };
 
-const mapStateToProps = state => {
-  const { currentCohort: cohort } = state.cohort;
+const mapStateToProps = (state, ownProps) => {
+  const { user } = state;
+  const { currentCohort: cohort, userCohorts: cohorts } = state.cohort;
   const scenarios = state.scenarios.filter(
     scenario => scenario.deleted_at === null
   );
-  return { cohort, scenarios };
+  const runs = state.runs.filter(run => run.cohort_id === ownProps.id);
+  return { cohort, cohorts, scenarios, runs, user };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
   getScenarios: () => dispatch(getScenarios()),
-  setScenarios: scenarios => dispatch(setScenarios(scenarios))
+  setScenarios: scenarios => dispatch(setScenarios(scenarios)),
+  getUserRuns: () => dispatch(getUserRuns())
 });
 
 export default withRouter(

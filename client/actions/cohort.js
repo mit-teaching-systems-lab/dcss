@@ -8,22 +8,21 @@ import {
   // GET_COHORT,
   GET_COHORT_SUCCESS,
   GET_COHORT_ERROR,
-  GET_COHORT_PARTICIPANTS,
+  // GET_COHORT_PARTICIPANTS,
   GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_PARTICIPANTS_ERROR,
-  GET_COHORT_DATA,
   GET_COHORT_DATA_SUCCESS,
   GET_COHORT_DATA_ERROR,
-  GET_ALL_COHORTS,
+  // GET_ALL_COHORTS,
   GET_ALL_COHORTS_SUCCESS,
   GET_ALL_COHORTS_ERROR,
-  GET_USER_COHORTS,
+  // GET_USER_COHORTS,
   GET_USER_COHORTS_SUCCESS,
   GET_USER_COHORTS_ERROR,
-  LINK_COHORT_TO_RUN,
+  // LINK_COHORT_TO_RUN,
   LINK_COHORT_TO_RUN_SUCCESS,
   LINK_COHORT_TO_RUN_ERROR,
-  SET_COHORT_USER_ROLE,
+  // SET_COHORT_USER_ROLE,
   SET_COHORT_USER_ROLE_SUCCESS,
   SET_COHORT_USER_ROLE_ERROR
 } from './types';
@@ -109,8 +108,8 @@ export const getCohort = id => async dispatch => {
   }
 };
 
-export const getCohorts = params => async dispatch => {
-  dispatch({ type: GET_USER_COHORTS, params });
+export const getCohorts = () => async dispatch => {
+  // dispatch({ type: GET_USER_COHORTS, params });
   try {
     const { cohorts, error } = await (await fetch('/api/cohort/my')).json();
     if (error) {
@@ -124,7 +123,7 @@ export const getCohorts = params => async dispatch => {
 };
 
 export const getAllCohorts = () => async dispatch => {
-  dispatch({ type: GET_ALL_COHORTS });
+  // dispatch({ type: GET_ALL_COHORTS });
   try {
     const { cohorts, error } = await (await fetch('/api/cohort/all')).json();
     if (error) {
@@ -139,7 +138,7 @@ export const getAllCohorts = () => async dispatch => {
 };
 
 export const setCohortUserRole = ({ id, role }) => async dispatch => {
-  dispatch({ type: SET_COHORT_USER_ROLE });
+  // dispatch({ type: SET_COHORT_USER_ROLE });
   try {
     const users = await (await fetch(`/api/cohort/${id}/join/${role}`)).json();
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
@@ -150,7 +149,7 @@ export const setCohortUserRole = ({ id, role }) => async dispatch => {
 };
 
 export const getCohortParticipants = id => async dispatch => {
-  dispatch({ type: GET_COHORT_PARTICIPANTS });
+  // dispatch({ type: GET_COHORT_PARTICIPANTS });
   try {
     const {
       cohort,
@@ -182,7 +181,6 @@ export const getCohortParticipants = id => async dispatch => {
 
 export const getCohortData = params => async dispatch => {
   const { cohortId, participantId, scenarioId } = params;
-  dispatch({ type: GET_COHORT_DATA });
   try {
     const endpoint = scenarioId
       ? `/api/cohort/${cohortId}/scenario/${scenarioId}`
@@ -210,7 +208,7 @@ export const getCohortData = params => async dispatch => {
 };
 
 export const linkCohortToRun = (cohortId, runId) => async dispatch => {
-  dispatch({ type: LINK_COHORT_TO_RUN });
+  // dispatch({ type: LINK_COHORT_TO_RUN });
   try {
     const { cohort } = await (await fetch(
       `/api/cohort/${cohortId}/run/${runId}`

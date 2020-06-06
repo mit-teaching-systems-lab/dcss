@@ -8,6 +8,7 @@ import { getUserRuns } from '@client/actions/run';
 import { getCohorts } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
+import Loading from '@components/Loading';
 import ClickableTableCell from '@components/ClickableTableCell';
 import scrollIntoView from '@components/util/scrollIntoView';
 import CohortDataTable from '@components/Facilitator/Components/Cohorts/CohortDataTable';
@@ -21,6 +22,7 @@ class MyScenarios extends Component {
     super(props);
 
     this.state = {
+      isReady: false,
       activePage: 1,
       source: {
         runId: null,
@@ -34,20 +36,20 @@ class MyScenarios extends Component {
   }
 
   async componentDidMount() {
-    const { error } = await (await fetch('/api/auth/me')).json();
+    await this.props.getUser();
 
-    if (error) {
+    if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
       await this.props.getCohorts();
       await this.props.getUserRuns();
       await this.props.getScenarios();
-      await this.props.getUser();
 
       const { source } = this.state;
 
       this.setState({
         ...this.state,
+        isReady: true,
         source: {
           ...source,
           participantId: this.props.user.id
@@ -104,7 +106,11 @@ class MyScenarios extends Component {
   render() {
     const { onDataTableMenuClick, onPageChange, onRunDataClick } = this;
     const { cohorts, runs } = this.props;
-    const { activePage, source } = this.state;
+    const { isReady, activePage, source } = this.state;
+
+    if (!isReady) {
+      return <Loading />;
+    }
 
     const runsPages = Math.ceil(runs.length / ROWS_PER_PAGE);
     const runsIndex = (activePage - 1) * ROWS_PER_PAGE;
@@ -155,7 +161,7 @@ class MyScenarios extends Component {
                 ? moment(run_ended_at).calendar()
                 : 'This run is not complete';
 
-              const createdAtDisplay = `${createdAt} (${createdAtAlt})`;
+              const startedAtDisplay = `${createdAt} (${createdAtAlt})`;
               const endedAtDisplay = `${endedAt} (${endedAtAlt})`;
 
               const runKey = `${run_id}-${cohort_id ? cohort_id : scenario_id}`;
@@ -183,7 +189,7 @@ class MyScenarios extends Component {
                     alt={endedAtAlt}
                     className="myscenarios__hidden-on-mobile"
                   >
-                    {createdAtDisplay}
+                    {startedAtDisplay}
                   </Table.Cell>
                   <Table.Cell
                     alt={endedAtAlt}
@@ -284,8 +290,8 @@ MyScenarios.propTypes = {
   getCohorts: PropTypes.func,
   getUserRuns: PropTypes.func,
   getScenarios: PropTypes.func,
-  getUser: PropTypes.func,
   onClick: PropTypes.func,
+  getUser: PropTypes.func,
   user: PropTypes.object
 };
 

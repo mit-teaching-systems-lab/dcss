@@ -25,8 +25,8 @@ const restrictedNav = [
     permission: 'view_run_data'
   },
   {
-    text: 'Account Administration',
-    path: '/account-administration',
+    text: 'Admin',
+    path: '/admin',
     permission: 'edit_permissions'
   }
 ];

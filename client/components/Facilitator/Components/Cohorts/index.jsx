@@ -54,9 +54,9 @@ export class Cohorts extends React.Component {
   }
 
   async componentDidMount() {
-    const { error } = await (await fetch('/api/auth/me')).json();
+    await this.props.getUser();
 
-    if (error) {
+    if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
       await this.props.getCohorts();

@@ -1,15 +1,15 @@
 import { combineReducers } from 'redux';
 
-import admin from './admin';
 import cohort from './cohort';
 import login from './login';
-import { user } from './user';
 import { response, responses, responsesById } from './response';
 import { run, runs } from './run';
-import { history, scenario, scenarios } from './scenario';
+import { history, scenario } from './scenario';
+import { scenarios } from './scenarios';
+import { user } from './user';
+import { users } from './users';
 
 export default combineReducers({
-  admin,
   cohort,
   history,
   login,
@@ -20,5 +20,6 @@ export default combineReducers({
   runs,
   scenario,
   scenarios,
-  user
+  user,
+  users
 });

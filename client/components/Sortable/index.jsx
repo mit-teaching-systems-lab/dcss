@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import PropTypes from 'prop-types';
+import { Table } from 'semantic-ui-react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import RSortable from 'react-sortablejs';
 import './Sortable.css';
@@ -41,10 +42,20 @@ class Sortable extends Component {
   }
   render() {
     const { onChange } = this;
-    const { children, hasOwnDraggables, tag = '', ...rest } = this.props;
+    const {
+      children,
+      hasOwnDraggables,
+      isAuthorized = true,
+      tag = '',
+      ...rest
+    } = this.props;
 
     if (!children || !children.length) {
       return null;
+    }
+
+    if (!isAuthorized) {
+      return <Table.Body>{children}</Table.Body>;
     }
 
     if (tag) {
@@ -135,6 +146,7 @@ class Sortable extends Component {
 }
 
 Sortable.propTypes = {
+  isAuthorized: PropTypes.bool,
   children: PropTypes.array,
   hasOwnDraggables: PropTypes.bool,
   onChange: PropTypes.func,

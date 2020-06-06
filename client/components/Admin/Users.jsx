@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Icon, Input, Menu, Table } from 'semantic-ui-react';
+import { Icon, Input, Menu, Pagination, Table } from 'semantic-ui-react';
 
 import EditorMenu from '@components/EditorMenu';
+import Loading from '@components/Loading';
 import UserRows from './UserRows';
-import { setUsers } from '@client/actions';
+import { getUsers } from '@client/actions/users';
+
+const ROWS_PER_PAGE = 10;
 
 const rolesMap = {
   super_admin: 'Super Admin',
@@ -23,46 +26,52 @@ Object.entries(rolesMap).forEach(([key, value]) => {
   rolesMap[value.toLowerCase()] = key;
 });
 
-class AccountAdmin extends Component {
+class Users extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      isReady: false,
+      activePage: 1,
       users: []
     };
 
-    this.onAccountSearchChange = this.onAccountSearchChange.bind(this);
+    // This is used as a back up copy of
+    // users when the list is filtered
+    // by searching.
+    this.users = [];
+    this.onPageChange = this.onPageChange.bind(this);
+    this.onUserSearchChange = this.onUserSearchChange.bind(this);
   }
 
   async componentDidMount() {
-    // TODO: Move to own async action
-    const user = await (await fetch('/api/auth/me')).json();
-    const { error, users } = await (await fetch('/api/roles/all')).json();
-
-    if (user.error || error) {
-      this.props.history.push('/logout');
-    } else {
-      this.props.setUsers({ users });
-      this.setState({
-        users: this.props.users
-      });
-    }
+    const users = await this.props.getUsers();
+    this.users = users.slice();
+    this.setState({
+      isReady: true,
+      users
+    });
   }
 
-  onAccountSearchChange(event, props) {
-    const { users: sourceUsers } = this.props;
-    const { value } = props;
+  onPageChange(event, { activePage }) {
+    this.setState({
+      ...this.state,
+      activePage
+    });
+  }
+
+  onUserSearchChange(event, { value }) {
+    const users = this.users.slice();
 
     if (value === '') {
       this.setState({
-        users: sourceUsers
+        users
       });
-
       return;
     }
 
     const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
-    const results = sourceUsers.filter(({ username, email, roles }) => {
+    const results = users.filter(({ username, email, roles }) => {
       if (escapedRegExp.test(username)) {
         return true;
       }
@@ -78,18 +87,29 @@ class AccountAdmin extends Component {
     });
 
     if (results.length === 0) {
-      results.push(...sourceUsers);
+      results.push(...users);
     }
 
     this.setState({
+      activePage: 1,
       users: results
     });
   }
 
   render() {
-    const { onAccountSearchChange } = this;
-    const { users } = this.state;
-    const usersDisplay = UserRows(users);
+    const { onPageChange, onUserSearchChange } = this;
+    const { isReady, activePage, users } = this.state;
+
+    if (!isReady) {
+      return <Loading />;
+    }
+
+    const usersPages = Math.ceil(users.length / ROWS_PER_PAGE);
+    const usersIndex = (activePage - 1) * ROWS_PER_PAGE;
+    const usersSlice = users.slice(usersIndex, usersIndex + ROWS_PER_PAGE);
+
+    const diff = ROWS_PER_PAGE - usersSlice.length;
+    const rows = UserRows(usersSlice, diff);
 
     return (
       <Fragment>
@@ -105,7 +125,7 @@ class AccountAdmin extends Component {
                   <Icon name="user" />
                   <Icon corner="top right" name="cogs" color="orange" />
                 </Icon.Group>
-                Account Administration
+                User Administration ({users.length} users)
               </Menu.Item>
             ],
             right: [
@@ -118,7 +138,7 @@ class AccountAdmin extends Component {
                   <Input
                     icon="search"
                     placeholder="Search..."
-                    onChange={onAccountSearchChange}
+                    onChange={onUserSearchChange}
                   />
                 </Menu.Item>
               </Menu.Menu>
@@ -126,7 +146,7 @@ class AccountAdmin extends Component {
           }}
         />
         {users.length ? (
-          <Table celled>
+          <Table fixed celled style={{ minHeight: '550px' }}>
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Username</Table.HeaderCell>
@@ -138,7 +158,24 @@ class AccountAdmin extends Component {
                 <Table.HeaderCell>Participant</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body>{usersDisplay}</Table.Body>
+            <Table.Body>{rows}</Table.Body>
+            <Table.Footer>
+              <Table.Row>
+                <Table.HeaderCell colSpan="7">
+                  <Pagination
+                    name="users"
+                    siblingRange={1}
+                    boundaryRange={0}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    activePage={activePage}
+                    onPageChange={onPageChange}
+                    totalPages={usersPages}
+                  />
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
           </Table>
         ) : null}
       </Fragment>
@@ -146,26 +183,27 @@ class AccountAdmin extends Component {
   }
 }
 
-AccountAdmin.propTypes = {
+Users.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  setUsers: PropTypes.func.isRequired,
-  users: PropTypes.array
+  user: PropTypes.object,
+  users: PropTypes.array,
+  getUsers: PropTypes.func
 };
 
 const mapStateToProps = state => {
-  const { users } = state.admin;
-  return { users };
+  const { user, users } = state;
+  return { user, users };
 };
 
-const mapDispatchToProps = {
-  setUsers
-};
+const mapDispatchToProps = dispatch => ({
+  getUsers: () => dispatch(getUsers())
+});
 
 export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(AccountAdmin)
+  )(Users)
 );
