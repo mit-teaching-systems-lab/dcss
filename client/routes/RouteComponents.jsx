@@ -7,6 +7,7 @@ import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import ScenariosList from '@components/ScenariosList';
 
+import Storage from '@utils/Storage';
 /**
  * Special case components for solving routing issues. Component state
  * doesn't update when navigating to exact same component.
@@ -68,6 +69,7 @@ export const RedirectRouteForActiveSession = ({
   isLoggedIn,
   ...rest
 }) => {
+  const { pathname } = Storage.get('location') || { pathname: '/' };
   return (
     <Route
       {...rest}
@@ -75,7 +77,7 @@ export const RedirectRouteForActiveSession = ({
         if (!isLoggedIn) {
           return children;
         }
-        location.href = '/';
+        location.href = pathname;
       }}
     />
   );
@@ -94,6 +96,8 @@ export const RedirectRouteForInactiveSession = ({
   isLoggedIn,
   ...rest
 }) => {
+  const { pathname } = rest.location;
+  Storage.set('location', { pathname });
   return (
     <Route
       {...rest}
