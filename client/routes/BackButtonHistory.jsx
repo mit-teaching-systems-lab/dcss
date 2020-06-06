@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
@@ -27,7 +27,7 @@ class BackButtonHistory extends React.Component {
 
 BackButtonHistory.propTypes = {
   children: PropTypes.array,
-  location: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export default withRouter(BackButtonHistory);
