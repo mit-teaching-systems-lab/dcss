@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
+import hash from 'object-hash';
 import Storage from '@utils/Storage';
-
 import SlideList from '@components/SlideList';
+import Loading from '@components/Loading';
+import { getResponse } from '@client/actions/response';
 
 class ContentSlide extends React.Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class ContentSlide extends React.Component {
     }, []);
 
     this.state = {
+      isReady: false,
       // Provides a reference to compare
       // prompt responseIds as the value
       // changes.
@@ -35,6 +38,39 @@ class ContentSlide extends React.Component {
 
     this.onSkip = this.onSkip.bind(this);
     this.onInterceptResponseChange = this.onInterceptResponseChange.bind(this);
+  }
+
+  get isScenarioRun() {
+    return location.pathname.includes('/run/');
+  }
+
+  async componentDidMount() {
+    if (!this.isScenarioRun) {
+      return;
+    }
+
+    let {
+      getResponse,
+      responsesById,
+      run: { id },
+      slide: { components }
+    } = this.props;
+
+    for (let { responseId } of components) {
+      if (responseId && !responsesById[responseId]) {
+        await getResponse({ id, responseId });
+      }
+    }
+
+    const pending = this.state.pending.filter(
+      responseId => !this.props.responsesById[responseId]
+    );
+
+    this.setState({
+      isReady: true,
+      hasChanged: false,
+      pending
+    });
   }
 
   onSkip(event, { name }) {
@@ -97,17 +133,18 @@ class ContentSlide extends React.Component {
       }
     }
 
-    this.setState({ pending });
-
     if (!data.isFulfilled) {
       this.props.onResponseChange(event, data);
       Storage.set(`run/${run.id}/${name}`, data);
       this.setState({
+        hasChanged: true,
+        pending,
         skipButton: 'Choose to skip',
         skipOrKeep: 'skip'
       });
     } else {
       this.setState({
+        pending,
         skipButton: 'Keep and continue',
         skipOrKeep: 'keep'
       });
@@ -115,13 +152,24 @@ class ContentSlide extends React.Component {
   }
 
   render() {
-    const { pending, required, skipButton, skipOrKeep } = this.state;
+    const {
+      isReady,
+      hasChanged,
+      pending,
+      required,
+      responses,
+      skipButton,
+      skipOrKeep
+    } = this.state;
     const { isLastSlide, onNextClick, onBackClick, run, slide } = this.props;
     const { onInterceptResponseChange, onSkip } = this;
+
+    if (!isReady) {
+      return <Loading />;
+    }
     const cardClass = run ? 'scenario__card--run' : 'scenario__card';
     const runOnly = run ? { run } : {};
     const hasPrompt = slide.components.some(component => component.responseId);
-
     const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next slide';
     const submitNextOrFinish = isLastSlide ? 'Finish' : proceedButtonLabel;
 
@@ -131,7 +179,7 @@ class ContentSlide extends React.Component {
       </React.Fragment>
     );
 
-    const hasRequiredFields = !!required.length;
+    const hasPendingRequiredFields = !!required.length && !!pending.length;
     const color = pending.length ? 'red' : 'green';
     const content = pending.length
       ? awaitingRequiredPrompts
@@ -153,7 +201,9 @@ class ContentSlide extends React.Component {
         : 'Keep these responses and go to next slide';
 
     fwdButtonTip += pending.length
-      ? ` (${pending.length} required responses are not complete)`
+      ? ` (${pending.length} required response${
+          pending.length > 1 ? 's are' : ' is'
+        } not complete)`
       : '';
 
     let skipButtonContent = skipButton;
@@ -188,25 +238,23 @@ class ContentSlide extends React.Component {
             }
           />
           <Button.Group floated="right">
-            <Popup
-              content={fwdButtonTip}
-              trigger={<Button {...fwdButtonProps} />}
-            />
-            {hasPrompt && !hasRequiredFields && (
-              <React.Fragment>
-                <Button.Or />
-                <Popup
-                  content={skipButtonTip}
-                  trigger={
-                    <Button
-                      color="yellow"
-                      name={skipOrKeep}
-                      onClick={onSkip}
-                      content={skipButtonContent}
-                    />
-                  }
-                />
-              </React.Fragment>
+            {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
+              <Popup
+                content={skipButtonTip}
+                trigger={
+                  <Button
+                    color="yellow"
+                    name={skipOrKeep}
+                    onClick={onSkip}
+                    content={skipButtonContent}
+                  />
+                }
+              />
+            ) : (
+              <Popup
+                content={fwdButtonTip}
+                trigger={<Button {...fwdButtonProps} />}
+              />
             )}
           </Button.Group>
         </Card.Content>
@@ -216,17 +264,26 @@ class ContentSlide extends React.Component {
 }
 
 ContentSlide.propTypes = {
+  responsesById: PropTypes.object,
   run: PropTypes.object,
   slide: PropTypes.object,
   isLastSlide: PropTypes.bool,
   onResponseChange: PropTypes.func,
   onBackClick: PropTypes.func,
-  onNextClick: PropTypes.func
+  onNextClick: PropTypes.func,
+  getResponse: PropTypes.func
 };
 
 const mapStateToProps = state => {
-  const { run } = state;
-  return { run };
+  const { run, responsesById } = state;
+  return { run, responsesById };
 };
 
-export default connect(mapStateToProps)(ContentSlide);
+const mapDispatchToProps = dispatch => ({
+  getResponse: params => dispatch(getResponse(params))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContentSlide);

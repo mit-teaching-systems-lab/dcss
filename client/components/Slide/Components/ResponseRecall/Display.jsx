@@ -3,7 +3,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import Loading from '@components/Loading';
 import { getResponse } from '@client/actions/response';
 import '../AudioResponse/AudioResponse.css';
 
@@ -33,29 +32,22 @@ class Display extends React.Component {
       getResponse,
       recallId: responseId,
       responsesById,
-      run: {id}
+      run: { id }
     } = this.props;
 
     if (!responseId || responseId === -1) {
       return;
     }
 
-    const recalled = await getResponse({
-      id,
-      responseId
-    });
+    const { response } = await getResponse({ id, responseId });
 
-    if (recalled) {
-      const {
-          response
-      } = recalled;
-      this.setState({
-        response
-      });
-    }
+    this.setState({
+      response: response || this.state.response
+    });
   }
   render() {
     const { response } = this.state;
+
     // If the scenario is an active "Run":
     //      If there is a response object, but
     //      the response was skipped,
