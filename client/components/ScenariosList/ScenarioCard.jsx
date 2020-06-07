@@ -50,7 +50,7 @@ class ScenarioCard extends React.Component {
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
-      <Icon name="check" />
+      <Icon name="check" aria-label="Official" />
     ) : null;
 
     const isAuthorized =
@@ -78,7 +78,7 @@ class ScenarioCard extends React.Component {
       <Card className="scenario__entry" key={id}>
         <Card.Content>
           <Card.Header>
-            {title} {officialCheckmark}
+            {officialCheckmark} {title}
           </Card.Header>
           <Card.Description className="scenario__entry--description">
             {description}

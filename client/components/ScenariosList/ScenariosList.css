@@ -18,3 +18,11 @@
 .scenarios__menu-item--padding {
     padding: 0.428571em 1.14285714em !important;
 }
+
+.deleted {
+  opacity: 0.5 !important;
+}
+
+.strike {
+  text-decoration: line-through !important;
+}

@@ -1,14 +1,14 @@
 import {
-  GET_SCENARIO,
+  // GET_SCENARIO,
   GET_SCENARIO_SUCCESS,
   GET_SCENARIO_ERROR,
-  GET_SCENARIOS,
+  // GET_SCENARIOS,
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIOS_ERROR,
-  GET_SCENARIO_RUN_HISTORY,
+  // GET_SCENARIO_RUN_HISTORY,
   GET_SCENARIO_RUN_HISTORY_SUCCESS,
   GET_SCENARIO_RUN_HISTORY_ERROR,
-  GET_SLIDES,
+  // GET_SLIDES,
   GET_SLIDES_SUCCESS,
   GET_SLIDES_ERROR,
   SET_SCENARIO,
@@ -21,7 +21,7 @@ import {
 } from './types';
 
 export const getScenarios = () => async dispatch => {
-  dispatch({ type: GET_SCENARIOS });
+  // dispatch({ type: GET_SCENARIOS });
   try {
     const { scenarios, error } = await (await fetch('/api/scenarios')).json();
     if (error) {
@@ -37,7 +37,7 @@ export const getScenarios = () => async dispatch => {
 };
 
 export const getScenario = id => async dispatch => {
-  dispatch({ type: GET_SCENARIO, id });
+  // dispatch({ type: GET_SCENARIO, id });
   try {
     const { scenario, error } = await (await fetch(
       `/api/scenarios/${id}`
@@ -56,7 +56,7 @@ export const getScenario = id => async dispatch => {
 
 export const getScenarioRunHistory = params => async dispatch => {
   const { scenarioId, cohortId } = params;
-  dispatch({ type: GET_SCENARIO_RUN_HISTORY });
+  // dispatch({ type: GET_SCENARIO_RUN_HISTORY });
   try {
     const endpoint = cohortId
       ? `/api/scenarios/${scenarioId}/cohort/${cohortId}/history`
@@ -84,7 +84,7 @@ export const getScenarioRunHistory = params => async dispatch => {
 };
 
 export const getSlides = scenarioId => async dispatch => {
-  dispatch({ type: GET_SLIDES, scenarioId });
+  // dispatch({ type: GET_SLIDES, scenarioId });
   try {
     const { slides, error } = await (await fetch(
       `/api/scenarios/${scenarioId}/slides`
@@ -101,10 +101,34 @@ export const getSlides = scenarioId => async dispatch => {
   }
 };
 
-export const setScenario = scenario => ({
-  type: SET_SCENARIO,
-  scenario
-});
+export const setScenario = scenario => {
+  if (scenario === null) {
+    return {
+      type: SET_SCENARIO,
+      scenario: {
+        author: {},
+        title: '',
+        description: '',
+        finish: {
+          components: [
+            {
+              html: `<h2>Thanks for participating!</h2>`
+            }
+          ],
+          is_finish: true,
+          title: ''
+        },
+        categories: [],
+        status: 1
+      }
+    };
+  }
+
+  return {
+    type: SET_SCENARIO,
+    scenario,
+  };
+};
 
 export const setScenarios = scenarios => ({
   type: SET_SCENARIOS,

@@ -15,3 +15,24 @@ export const getUsers = () => async dispatch => {
     return error;
   }
 };
+
+/**
+ * getUsersByPermission does not dispatch because it's called on a scenario specific basis.
+ * @param  {string} permission The permission to filter users on.
+ * @return {array}             An array of users that have this permission.
+ */
+export const getUsersByPermission = (permission) => async () => {
+  try {
+    const authors = await (await fetch('/api/roles/user/permission', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ permission })
+    })).json();
+    return authors;
+  } catch (error) {
+    return error;
+  }
+};
+

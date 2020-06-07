@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
@@ -66,7 +66,6 @@ class Editor extends Component {
     this.state = {
       activeSlideIndex,
       activeTab,
-      saving: false,
       scenarioId,
       tabs: null
     };
@@ -159,12 +158,6 @@ class Editor extends Component {
 
   // TODO: Move to own async action
   async updateScenario(updates = {}) {
-    if (this.state.saving) {
-      return;
-    }
-
-    this.setState({ saving: true });
-
     // NOTE: this is to support saving the whole
     //       scenario when clicking the [save icon]
     //       that's displayed via EditorMenu.
@@ -192,8 +185,6 @@ class Editor extends Component {
 
     const submitCallback = this.getSubmitCallback();
     const response = await (await submitCallback(data)).json();
-
-    this.setState({ saving: false });
 
     switch (response.status) {
       case 200:
@@ -337,7 +328,7 @@ class Editor extends Component {
     });
 
     return (
-      <div>
+      <Fragment>
         <Menu attached="top" tabular>
           {editTabMenu}
         </Menu>
@@ -364,7 +355,7 @@ class Editor extends Component {
 
           {this.state.tabs[this.state.activeTab]}
         </Segment>
-      </div>
+      </Fragment>
     );
   }
 }

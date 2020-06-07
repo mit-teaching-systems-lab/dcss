@@ -1,12 +1,9 @@
 import {
-  // GET_SCENARIO,
+  GET_CATEGORIES_SUCCESS,
   GET_SCENARIO_SUCCESS,
-  // GET_SCENARIO_ERROR,
   GET_SCENARIO_RUN_HISTORY_SUCCESS,
   GET_SLIDES_SUCCESS,
   SET_SCENARIO,
-  // SET_SCENARIO_SUCCESS,
-  // SET_SCENARIO_ERROR,
   SET_SLIDES
 } from '@client/actions/types';
 
@@ -45,6 +42,18 @@ export const scenario = (state = initialScenarioState, action) => {
         ...state,
         slides
       };
+    default:
+      return state;
+  }
+};
+
+export const categories = (state = [], action) => {
+  const { categories = [], type } = action;
+  switch (type) {
+    case GET_CATEGORIES_SUCCESS:
+      return [
+        ...categories
+      ];
     default:
       return state;
   }

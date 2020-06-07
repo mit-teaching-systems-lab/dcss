@@ -3,8 +3,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Container, Form, Grid, Popup } from 'semantic-ui-react';
 import { getScenario, setScenario } from '@client/actions/scenario';
+import { getCategories } from '@client/actions/tags';
+import { getUsersByPermission } from '@client/actions/users';
 
 import ConfirmAuth from '@components/ConfirmAuth';
+import Loading from '@components/Loading';
 import notify from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
 import RichTextEditor from '@components/RichTextEditor';
@@ -14,48 +17,51 @@ class ScenarioEditor extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isReady: false,
       authors: [],
       categories: [],
-      saving: false
     };
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onConsentChange = this.onConsentChange.bind(this);
     this.onFinishSlideChange = this.onFinishSlideChange.bind(this);
-
-    if (this.props.scenarioId === 'new') {
-      this.props.setScenario({
-        author: {},
-        title: '',
-        description: '',
-        finish: {
-          components: [
-            {
-              html: '<h2>Thanks for participating!</h2>'
-            }
-          ],
-          is_finish: true,
-          title: ''
-        },
-        categories: [],
-        status: 1
-      });
-    } else {
-      this.props.getScenario(this.props.scenarioId);
-    }
   }
 
   async componentDidMount() {
-    const categories = await (await fetch('/api/tags/categories')).json();
-    const authors = await (await fetch('/api/roles/user/permission', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ permission: 'create_scenario' })
-    })).json();
-    this.setState({ categories, authors });
+
+    const {
+      setScenario,
+      getScenario,
+      getUsersByPermission,
+      getCategories,
+      scenarioId,
+      tags
+    } = this.props;
+
+    if (scenarioId === 'new') {
+      setScenario(null);
+    } else {
+      await getScenario(scenarioId);
+    }
+
+    const authors = await getUsersByPermission('create_scenario');
+
+    let {
+      categories
+    } = tags;
+
+    // Either the existing categories have been loaded,
+    // or fetch categories to fill the default value
+    if (!categories.length) {
+      categories = await getCategories();
+    }
+
+    this.setState({
+      isReady: true,
+      categories,
+      authors
+    });
   }
 
   onChange(event, { name, value }) {
@@ -66,9 +72,9 @@ class ScenarioEditor extends Component {
     // NOTE: temporarily disabling this until we
     // have a better strategy for auto saving details
     // on this page.
-    // if (this.props.scenarioId !== 'new') {
-    //     this.onSubmit();
-    // }
+    if (this.props.scenarioId !== 'new') {
+        this.onSubmit();
+    }
   }
 
   onConsentChange(value) {
@@ -129,8 +135,6 @@ class ScenarioEditor extends Component {
       return;
     }
 
-    this.setState({ saving: true });
-
     const data = {
       author,
       categories,
@@ -161,7 +165,6 @@ class ScenarioEditor extends Component {
     }
     notify({ message });
 
-    this.setState({ saving: false });
     if (postSubmitCB) {
       postSubmitCB(response.scenario);
     }
@@ -179,10 +182,12 @@ class ScenarioEditor extends Component {
       title
     } = this.props;
 
-    // Stop letting the editor load before the
-    // finish slide is available.
-    if (!finish.components[0]) {
-      return null;
+    const {
+      isReady
+    } = this.state;
+
+    if (!isReady || !finish.components[0]) {
+      return <Loading />;
     }
 
     const consentAgreementValue = consent.prose || '';
@@ -236,7 +241,7 @@ class ScenarioEditor extends Component {
                             onChange={onConsentChange}
                             options={{
                               buttons: 'suggestion',
-                              height: '100px'
+                              height: '150px'
                             }}
                           />
                         ) : null}
@@ -245,13 +250,11 @@ class ScenarioEditor extends Component {
                   />
                 )}
 
-                {this.state.saving ? (
-                  <Button type="submit" primary loading />
-                ) : (
+                {scenarioId === 'new' ? (
                   <Button type="submit" primary onClick={onSubmit}>
                     Save
                   </Button>
-                )}
+                ) : null}
               </Grid.Column>
               <Grid.Column
                 width={6}
@@ -275,11 +278,11 @@ class ScenarioEditor extends Component {
                 </ConfirmAuth>
 
                 {/*
-                                    TODO: create the same Dropdown style thing
-                                            for displaying and selecting
-                                            available topics (if any exist)
+                TODO: create the same Dropdown style thing
+                        for displaying and selecting
+                        available topics (if any exist)
 
-                                */}
+                */}
 
                 {scenarioId !== 'new' && finish && (
                   <Popup
@@ -311,25 +314,9 @@ class ScenarioEditor extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const {
-    author,
-    categories,
-    consent,
-    description,
-    finish,
-    status,
-    title
-  } = state.scenario;
-  return { author, categories, consent, description, finish, status, title };
-};
-
-const mapDispatchToProps = {
-  getScenario,
-  setScenario
-};
-
 ScenarioEditor.propTypes = {
+  getUsersByPermission: PropTypes.func.isRequired,
+  getCategories: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   scenarioId: PropTypes.node.isRequired,
   setScenario: PropTypes.func.isRequired,
@@ -346,6 +333,35 @@ ScenarioEditor.propTypes = {
   finish: PropTypes.object,
   status: PropTypes.number
 };
+
+const mapStateToProps = (state, ownProps) => {
+  const {
+    scenario: {
+      author,
+      categories,
+      consent,
+      description,
+      finish,
+      status,
+      title
+    },
+    user,
+    tags,
+  } = state;
+
+  if (ownProps.scenarioId === 'new') {
+    Object.assign(author, user);
+  }
+
+  return { author, categories, consent, description, finish, status, title, tags };
+};
+
+const mapDispatchToProps = dispatch => ({
+  getScenario: id => dispatch(getScenario(id)),
+  setScenario: params => dispatch(setScenario(params)),
+  getCategories: () => dispatch(getCategories()),
+  getUsersByPermission: permission => dispatch(getUsersByPermission(permission))
+});
 
 export default connect(
   mapStateToProps,
