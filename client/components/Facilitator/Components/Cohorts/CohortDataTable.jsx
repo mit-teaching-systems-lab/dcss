@@ -272,6 +272,11 @@ export class CohortDataTable extends React.Component {
       ? { className: 'datatable__left-col-hidden' }
       : {};
 
+    if (isReady && !tables.length) {
+      return (
+        <div>There is no data recorded for this scenario yet</div>
+      );
+    }
     return tables.length ? (
       <React.Fragment>
         <CohortDataTableMenu source={source} onClick={onDataTableMenuClick} />
@@ -285,6 +290,7 @@ export class CohortDataTable extends React.Component {
               <Table
                 key={`${tableKeyBase}-table`}
                 celled
+                fixed
                 striped
                 selectable
                 role="grid"
@@ -418,6 +424,7 @@ const CohortDataModal = props => {
           <Grid.Column className="datatable__scroll gridcolumn__first-child--sticky">
             <ContentSlide
               slide={slide}
+              isContextual={true}
               isLastSlide={false}
               onClickBack={null}
               onClickNext={null}
