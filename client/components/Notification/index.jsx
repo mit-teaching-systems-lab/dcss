@@ -1,9 +1,12 @@
 import hash from 'object-hash';
-import { toast } from 'react-semantic-toasts';
+import { SemanticToastContainer as Notification, toast } from 'react-semantic-toasts';
+import './Notification.css';
+
+export default Notification;
 
 const cache = new Set();
 
-export default function notify({
+export function notify({
   color,
   icon = '',
   message = '',

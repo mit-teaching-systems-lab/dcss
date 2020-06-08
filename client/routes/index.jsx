@@ -5,11 +5,12 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import { logIn } from '@client/actions';
 import { getUser } from '@client/actions/user';
+
 import Loading from '@components/Loading';
+import Notification from '@components/Notification';
 
 import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
-import Notification from './Notification';
 import Routes from './Routes';
 import './Nav.css';
 
