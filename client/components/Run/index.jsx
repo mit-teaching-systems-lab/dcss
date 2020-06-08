@@ -6,7 +6,7 @@ import * as QueryString from 'query-string';
 import Storage from '@utils/Storage';
 import Loading from '@components/Loading';
 import Scenario from '@components/Scenario';
-import { linkCohortToRun, setCohortUserRole } from '@client/actions/cohort';
+import { linkRunToCohort, setCohortUserRole } from '@client/actions/cohort';
 import { getUser } from '@client/actions/user';
 import { getResponse, setResponses } from '@client/actions/response';
 import { getRun, setRun } from '@client/actions/run';
@@ -16,16 +16,12 @@ class Run extends Component {
     super(props);
 
     const {
-      cohortId,
-      match: { params, url },
-      scenarioId
+      match: { url }
     } = this.props;
 
     this.state = {
       isReady: false,
-      baseurl: url.replace(/\/slide\/\d.*$/g, ''),
-      cohortId: Number(cohortId || params.cohortId),
-      scenarioId: Number(scenarioId || params.scenarioId)
+      baseurl: url.replace(/\/slide\/\d.*$/g, '')
     };
 
     this.responses = new Map();
@@ -36,18 +32,20 @@ class Run extends Component {
 
   async componentDidMount() {
     const {
+      cohortId,
       getRun,
-      linkCohortToRun,
+      linkRunToCohort,
       location: { search },
+      scenarioId,
       setCohortUserRole,
       setRun
     } = this.props;
-    const { cohortId, scenarioId } = this.state;
+
     const run = await getRun(scenarioId);
 
     if (run) {
       if (cohortId) {
-        const cohort = await linkCohortToRun(cohortId, run.id);
+        const cohort = await linkRunToCohort(cohortId, run.id);
 
         if (cohort) {
           const { id, users } = cohort;
@@ -115,7 +113,8 @@ class Run extends Component {
 
   render() {
     const { onChange, onResponseChange, onSubmit } = this;
-    const { isReady, baseurl, scenarioId } = this.state;
+    const { cohortId, scenarioId } = this.props;
+    const { isReady, baseurl } = this.state;
 
     if (!isReady) {
       return <Loading />;
@@ -124,6 +123,7 @@ class Run extends Component {
     return this.props.run ? (
       <Scenario
         baseurl={baseurl}
+        cohortId={cohortId}
         scenarioId={scenarioId}
         onResponseChange={onResponseChange}
         onRunChange={onChange}
@@ -147,7 +147,7 @@ Run.propTypes = {
   run: PropTypes.object,
   getRun: PropTypes.func,
   setRun: PropTypes.func,
-  linkCohortToRun: PropTypes.func,
+  linkRunToCohort: PropTypes.func,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
@@ -166,11 +166,23 @@ Run.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { params } = ownProps.match || { params: {} };
   const { id, username, permissions } = state.login;
   const { currentCohort: cohort } = state.cohort;
   const { responses, run } = state;
-  return { cohort, responses, run, user: { id, username, permissions } };
+
+  return {
+    activeRunSlideIndex: Number(
+      ownProps.activeRunSlideIndex || params.activeRunSlideIndex
+    ),
+    cohortId: Number(ownProps.cohortId || params.cohortId),
+    scenarioId: Number(ownProps.scenarioId || params.scenarioId),
+    cohort,
+    responses,
+    run,
+    user: { id, username, permissions }
+  };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -180,7 +192,7 @@ const mapDispatchToProps = dispatch => ({
   setResponses: (...params) => dispatch(setResponses(...params)),
   getRun: params => dispatch(getRun(params)),
   setRun: (...params) => dispatch(setRun(...params)),
-  linkCohortToRun: (...params) => dispatch(linkCohortToRun(...params))
+  linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params))
 });
 
 export default withRouter(
