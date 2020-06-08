@@ -1,12 +1,12 @@
 const { Router } = require('express');
 
 const {
+  checkForDuplicate,
   createUser,
   loginUser,
   requireUser,
   respondWithUser
 } = require('./middleware');
-const { checkForDuplicate } = require('./middleware');
 const {
   validateRequestUsernameAndEmail,
   validateRequestBody
