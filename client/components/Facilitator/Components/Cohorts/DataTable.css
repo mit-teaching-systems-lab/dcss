@@ -165,7 +165,7 @@ div.dt__scroll table {
 
 div.dt__scroll td,
 div.dt__scroll th {
-  padding: 0.25em;
+  padding: .78571429em .78571429em;
   min-width: 150px;
   max-width: 250px;
   border-left: 1px solid rgba(34, 36, 38, .1);

@@ -348,7 +348,7 @@ const DataTableRow = props => {
   return (
     <Table.Row>
       <Table.HeaderCell verticalAlign="top" {...leftColHidden}>
-        {subject}
+        <p>{subject}</p>
       </Table.HeaderCell>
 
       {cells.slice(1).map((response = {}, cellIndex) => {
@@ -475,7 +475,7 @@ const DataModal = props => {
                       <Table.Row key={`modal-${slide.id}-${rowIndex}`}>
                         {isScenarioDataTable && (
                           <Table.HeaderCell verticalAlign="top">
-                            {left}
+                            <p>{left}</p>
                           </Table.HeaderCell>
                         )}
                         <Table.Cell>
