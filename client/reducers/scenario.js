@@ -47,18 +47,6 @@ export const scenario = (state = initialScenarioState, action) => {
   }
 };
 
-export const categories = (state = [], action) => {
-  const { categories = [], type } = action;
-  switch (type) {
-    case GET_CATEGORIES_SUCCESS:
-      return [
-        ...categories
-      ];
-    default:
-      return state;
-  }
-};
-
 const initialHistoryState = {
   prompts: [],
   responses: []
