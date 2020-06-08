@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
-import notify from '@components/Notification';
+import { notify } from '@components/Notification';
 import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
@@ -329,7 +329,7 @@ class Editor extends Component {
 
     return (
       <Fragment>
-        <Menu attached="top" tabular>
+        <Menu attached="top" tabular className="editor__tabmenu">
           {editTabMenu}
         </Menu>
 

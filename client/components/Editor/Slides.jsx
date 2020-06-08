@@ -20,7 +20,7 @@ import {
 import Storage from '@utils/Storage';
 import AddSlideMessage from '@components/AddSlideMessage';
 import Loading from '@components/Loading';
-import notify from '@components/Notification';
+import { notify } from '@components/Notification';
 import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
 import SlideList from '@components/SlideList';

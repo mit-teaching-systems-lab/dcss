@@ -22,7 +22,8 @@
 .slides__list-outer-container {
   margin-top: 0rem !important;
   padding-top: 0.5rem !important;
-  min-width: 292px !important;
+  /*min-width: 292px !important;*/
+  min-width: 210px !important;
 }
 
 .slides__editor-outer-container {
