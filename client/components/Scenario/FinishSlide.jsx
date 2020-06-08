@@ -18,6 +18,10 @@ class FinishSlide extends React.Component {
     return location.pathname.includes('/run/');
   }
 
+  get isCohortScenarioRun() {
+    return location.pathname.includes('/cohort/');
+  }
+
   onCancel() {
     if (!this.isScenarioRun) {
       return;
@@ -37,11 +41,20 @@ class FinishSlide extends React.Component {
 
   render() {
     const { onCancel, onConfirm } = this;
-    const { slide } = this.props;
+    const { cohortId, slide } = this.props;
     const { isConfirmBoxOpen } = this.state;
     const components = (slide && slide.components) || [{ html: '' }];
     const className = `scenario__card--run${isConfirmBoxOpen ? '-hidden' : ''}`;
 
+    const extra = (
+      <Card.Content extra>
+        {this.isCohortScenarioRun ? (
+          <NavLink to={`/cohort/${cohortId}`}>Return to cohort</NavLink>
+        ) : (
+          <NavLink to={`/scenarios/`}>Return to scenarios</NavLink>
+        )}
+      </Card.Content>
+    );
     return (
       <React.Fragment>
         <Confirm
@@ -55,6 +68,7 @@ class FinishSlide extends React.Component {
           size="tiny"
         />
         <Card centered className={className}>
+          {extra}
           <Card.Content>
             {components &&
               components.map(({ html: __html }, index) => (
@@ -65,9 +79,6 @@ class FinishSlide extends React.Component {
                   }}
                 />
               ))}
-          </Card.Content>
-          <Card.Content extra>
-            <NavLink to="/">Return home</NavLink>
           </Card.Content>
         </Card>
       </React.Fragment>
