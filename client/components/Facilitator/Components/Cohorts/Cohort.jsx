@@ -273,13 +273,15 @@ export class Cohort extends React.Component {
                 onClick={onClick}
               />
             ) : null}
-            <DataTable
-              source={{
-                cohortId: id,
-                participantId: currentUserInCohort.id
-              }}
-              onClick={onDataTableClick}
-            />
+            {isParticipant ? (
+              <DataTable
+                source={{
+                  cohortId: id,
+                  participantId: currentUserInCohort.id
+                }}
+                onClick={onDataTableClick}
+              />
+            ) : null}
           </Segment>
         ) : (
           <Segment key={activeTabKey} attached="bottom">

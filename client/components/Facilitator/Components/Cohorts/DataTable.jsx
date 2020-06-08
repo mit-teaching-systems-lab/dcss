@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Icon, Modal, Table } from 'semantic-ui-react';
+import SplitPane from 'react-split-pane';
 import { diff } from 'deep-diff';
 import * as moment from 'moment';
 import 'moment-duration-format';
@@ -16,6 +17,7 @@ import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import DataTableMenu from './DataTableMenu';
 import './DataTable.css';
+import './Resizer.css';
 
 function isAudioFile(input) {
   return /^audio\/\d.+\/AudioResponse/.test(input) && input.endsWith('.mp3');
@@ -269,7 +271,7 @@ export class DataTable extends React.Component {
     const { onDataTableMenuClick } = this;
     const leftColHeader = isScenarioDataTable ? 'Participant' : 'Scenario';
     const leftColHidden = !leftColVisible
-      ? { className: 'datatable__left-col-hidden' }
+      ? { className: 'dt__left-col-hidden' }
       : {};
 
     if (isReady && !tables.length) {
@@ -285,12 +287,11 @@ export class DataTable extends React.Component {
           return (
             <div
               key={`${tableKeyBase}-container`}
-              className="datatable__scroll"
+              className="dt__scroll"
             >
               <Table
                 key={`${tableKeyBase}-table`}
                 celled
-                fixed
                 striped
                 selectable
                 role="grid"
@@ -305,7 +306,7 @@ export class DataTable extends React.Component {
                         key={`${tableKeyBase}-prompt-${index}`}
                         scope="col"
                       >
-                        {header || `Prompt: "${prompt}"`}
+                        {header || prompt}
                       </Table.HeaderCell>
                     ))}
                   </Table.Row>
@@ -341,7 +342,7 @@ export class DataTable extends React.Component {
 const DataTableRow = props => {
   const { cells, isScenarioDataTable, leftColVisible, rowKey } = props;
   const leftColHidden = !leftColVisible
-    ? { className: 'datatable__left-col-hidden' }
+    ? { className: 'dt__left-col-hidden' }
     : {};
   const subject = cells[0] || '';
   return (
@@ -370,7 +371,7 @@ const DataTableRow = props => {
           content
         );
 
-        const className = !content ? 'datatable__cell-data-missing' : '';
+        const className = !content ? 'dt__cell-data-missing' : '';
 
         const difference = moment(response.ended_at).diff(response.created_at);
         const duration = moment
@@ -414,87 +415,90 @@ const DataModal = props => {
     <Modal
       trigger={props.trigger}
       size="fullscreen"
-      className="datatablemodal__view"
+      className="dtm__view"
       closeIcon
     >
-      <Modal.Header>Responses In Context</Modal.Header>
+      <Modal.Header className="dtm__header">Responses In Context</Modal.Header>
 
-      <Modal.Content className="datatablemodal__scroll">
-        <Grid columns={2} className="datatablemodal__grid-nowrap">
-          <Grid.Column className="datatable__scroll gridcolumn__first-child--sticky">
-            <ContentSlide
-              slide={slide}
-              isContextual={true}
-              isLastSlide={false}
-              onClickBack={null}
-              onClickNext={null}
-              onResponseChange={null}
-            />
-          </Grid.Column>
-          <Grid.Column className="datatable__scroll">
-            <Table celled striped selectable role="grid">
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell scope="col" colSpan={2}>
-                    {header || `Prompt: "${prompt}"`}
-                  </Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {rows.map((row, rowIndex) => {
-                  let { 0: left = '', [index + 1]: response = {} } = row;
+      <Modal.Content scrolling className="dtm__scroll" >
+        <Modal.Description>
 
-                  const { created_at, ended_at, value } = response;
-                  const isAudioContent = isAudioFile(value);
-                  const { content = '' } = response;
-                  const difference = moment(ended_at).diff(created_at);
-                  const duration = moment
-                    .duration(difference)
-                    .format(moment.globalFormat);
+          <SplitPane split="vertical" minSize={100} defaultSize={500}>
+            <div>
+              <ContentSlide
+                slide={slide}
+                isContextual={true}
+                isLastSlide={false}
+                onClickBack={null}
+                onClickNext={null}
+                onResponseChange={null}
+              />
+            </div>
+            <div className="dt__scroll">
+              <Table celled striped selectable role="grid">
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell scope="col" colSpan={2}>
+                      {header || `Prompt: "${prompt}"`}
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {rows.map((row, rowIndex) => {
+                    let { 0: left = '', [index + 1]: response = {} } = row;
 
-                  const display = isAudioContent ? (
-                    <React.Fragment>
-                      {content ? (
-                        content
-                      ) : (
-                        <audio
-                          src={`/api/media/${response.value}`}
-                          controls="controls"
-                        />
-                      )}
-                      <Icon name="microphone" />
-                    </React.Fragment>
-                  ) : (
-                    content
-                  );
+                    const { created_at, ended_at, value } = response;
+                    const isAudioContent = isAudioFile(value);
+                    const { content = '' } = response;
+                    const difference = moment(ended_at).diff(created_at);
+                    const duration = moment
+                      .duration(difference)
+                      .format(moment.globalFormat);
 
-                  return (
-                    <Table.Row key={`modal-${slide.id}-${rowIndex}`}>
-                      {isScenarioDataTable && (
-                        <Table.HeaderCell verticalAlign="top">
-                          {left}
-                        </Table.HeaderCell>
-                      )}
-                      <Table.Cell>
-                        <p>{display}</p>
-
-                        {display && (
-                          <p
-                            style={{
-                              color: 'grey'
-                            }}
-                          >
-                            {duration}
-                          </p>
+                    const display = isAudioContent ? (
+                      <React.Fragment>
+                        {content ? (
+                          content
+                        ) : (
+                          <audio
+                            src={`/api/media/${response.value}`}
+                            controls="controls"
+                          />
                         )}
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })}
-              </Table.Body>
-            </Table>
-          </Grid.Column>
-        </Grid>
+                        <Icon name="microphone" />
+                      </React.Fragment>
+                    ) : (
+                      content
+                    );
+
+                    return (
+                      <Table.Row key={`modal-${slide.id}-${rowIndex}`}>
+                        {isScenarioDataTable && (
+                          <Table.HeaderCell verticalAlign="top">
+                            {left}
+                          </Table.HeaderCell>
+                        )}
+                        <Table.Cell>
+                          <p>{display}</p>
+
+                          {display && (
+                            <p
+                              style={{
+                                color: 'grey'
+                              }}
+                            >
+                              {duration}
+                            </p>
+                          )}
+                        </Table.Cell>
+                      </Table.Row>
+                    );
+                  })}
+                </Table.Body>
+              </Table>
+            </div>
+          </SplitPane>
+        </Modal.Description>
       </Modal.Content>
     </Modal>
   );

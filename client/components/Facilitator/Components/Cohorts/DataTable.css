@@ -1,65 +1,77 @@
-.datatablemodal__view {
-    height: 90%;
+.dtm__view {
+  height: 100% !important;
+  width: calc(100% - 1em) !important;
+  margin: -0.5em 0.5em 0.5em 0.5em !important;
 }
-.datatablemodal__scroll {
-    max-height: 50rem !important;
+
+.dtm__header {
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem !important;
+}
+
+.ui.fullscreen.modal.dtm__view {
+  width: calc(100% - 1em) !important;
+}
+
+.dtm__scroll {
+  height: 85vh !important;
+  padding: 0rem !important;
 }
 .datatable__scroll {
-    padding-top: 0 !important;
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    /*margin: auto;*/
-    margin-bottom: 1rem;
-    overflow: auto;
-    max-height: 80vh;
+  padding-top: 0 !important;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  /*margin: auto;*/
+  margin-bottom: 1rem;
+  overflow: auto;
+  max-height: 80vh;
 }
 .datatable__no-scroll {
-    position: relative;
-    width: 100%;
-    z-index: 1;
-    margin: auto;
-    margin-bottom: 1rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin: auto;
+  margin-bottom: 1rem;
 }
 
 .datatable__no-scroll table,
 .datatable__scroll table {
-    width: 100%;
-    max-width: 1280px;
-    margin: auto;
-    border-collapse: separate;
-    border-spacing: 0;
+  width: 100%;
+  max-width: 1280px;
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 0;
 }
 .table-wrap {
-    position: relative;
+  position: relative;
 }
 .datatable__no-scroll tbody th,
 .datatable__scroll tbody th {
-    min-width: 100px;
-    max-width: 150px;
+  min-width: 100px;
+  max-width: 150px;
 }
 .datatable__scroll tbody td {
-    max-width: 100px;
-    overflow-wrap: break-word;
+  max-width: 100px;
+  overflow-wrap: break-word;
 }
 
-.datatablemodal__scroll tbody td {
-    min-width: 100px;
-    overflow: visible !important;
-    overflow-wrap: break-word;
-    white-space: inherit !important;
-    text-overflow: unset !important;
+.dtm__scroll tbody td {
+  min-width: 100px;
+  overflow: visible !important;
+  overflow-wrap: break-word;
+  white-space: inherit !important;
+  text-overflow: unset !important;
 }
 
 .datatable__no-scroll tbody td {
-    max-width: 100px;
+  max-width: 100px;
 }
 
 .datatable__no-scroll thead th,
 .datatable__scroll thead th {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 /* safari and ios need the tfoot itself to be position:sticky also */
 .datatable__no-scroll tfoot,
@@ -68,55 +80,132 @@
 .datatable__scroll tfoot,
 .datatable__scroll tfoot th,
 .datatable__scroll tfoot td {
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    background: #f9fafb;
-    z-index: 4;
+  position: -webkit-sticky;
+  position: sticky;
+  bottom: 0;
+  background: #f9fafb;
+  z-index: 4;
 }
 
 .datatable__no-scroll th:first-child,
 .datatable__scroll th:first-child {
-    background: #f9fafb;
-    padding: 0.78571429em 0.78571429em;
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    z-index: 2;
+  background: #f9fafb;
+  padding: 0.78571429em 0.78571429em;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 2;
 }
 
 .datatable__scroll tbody th:first-child {
-    border-top: 1px solid rgba(34, 36, 38, 0.1);
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
 }
 .datatable__no-scroll thead th:first-child,
 .datatable__no-scroll tfoot th:first-child,
 .datatable__scroll thead th:first-child,
 .datatable__scroll tfoot th:first-child {
-    z-index: 5;
+  z-index: 5;
 }
 
-.datatable__cell-data-missing {
-    background-image: linear-gradient(
-        to top right,
-        transparent calc(50% - 1px),
-        #e0e6eb,
-        transparent calc(50% + 1px)
-    );
+.dt__cell-data-missing {
+  background-image: linear-gradient(
+    to top right,
+    transparent calc(50% - 1px),
+    #e0e6eb,
+    transparent calc(50% + 1px)
+  );
 }
 
 .gridcolumn__first-child--sticky {
-    min-width: 500px !important;
+  min-width: 40% !important;
 }
 
 .gridcolumn__first-child--sticky div:first-child {
-    position: sticky;
-    top: 0;
+  position: sticky;
+  top: 0;
+  margin-top: 1px;
+
 }
 
-.datatablemodal__grid-nowrap {
-    flex-wrap: nowrap !important;
+.dtm__grid-nowrap {
+  flex-wrap: nowrap !important;
 }
 
-.datatable__left-col-hidden {
-    display: none !important;
+.dt__left-col-hidden {
+  display: none !important;
+}
+
+
+
+
+
+
+
+div.dt__scroll {
+  max-width: 100%;
+  max-height: 85vh;
+  overflow: scroll;
+  position: relative;
+  margin-bottom: 1rem;
+  padding-top: 0 !important;
+}
+
+.dtm__view .dt__scroll {
+  width: unset;
+  overflow-y: scroll !important;
+  overflow-x: unset !important;
+}
+
+
+div.dt__scroll table {
+  position: relative;
+  border-collapse: collapse;
+  border: unset !important;
+}
+
+div.dt__scroll td,
+div.dt__scroll th {
+  padding: 0.25em;
+  min-width: 150px;
+  max-width: 250px;
+  border-left: 1px solid rgba(34, 36, 38, .1);
+}
+
+div.dt__scroll thead th {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  top: 0;
+  /*background: #000;*/
+  /*color: #FFF;*/
+  border-top: 1px solid rgba(34, 36, 38, .1) !important;
+  border-left: 1px solid rgba(34, 36, 38, .1);
+}
+
+div.dt__scroll thead th:first-child {
+  color: red;
+  left: 0;
+  z-index: 1;
+  vertical-align: middle;
+  text-align: center;
+  border-right: 1px solid rgba(34, 36, 38, .1) !important;
+  border-left: 1px solid rgba(34, 36, 38, .1) !important;
+}
+div.dt__scroll thead th:nth-child(2) {
+  border-left: none !important;
+}
+
+div.dt__scroll tbody th {
+  position: -webkit-sticky; /* for Safari */
+  position: sticky;
+  left: 0;
+  background: rgb(249, 250, 251);
+  vertical-align: middle;
+  text-align: center;
+  border-left: 1px solid rgba(34, 36, 38, .1) !important;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
+}
+
+div.dt__scroll tbody td {
+  border-top: none !important;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
 }
