@@ -114,10 +114,10 @@ class EntrySlide extends React.Component {
 }
 
 EntrySlide.propTypes = {
-  run: PropTypes.object,
-  scenario: PropTypes.object,
   onChange: PropTypes.func,
-  onNextClick: PropTypes.func
+  onNextClick: PropTypes.func,
+  run: PropTypes.object,
+  scenario: PropTypes.object
 };
 
 const mapStateToProps = state => {
