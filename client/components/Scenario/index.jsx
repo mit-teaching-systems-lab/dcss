@@ -25,10 +25,12 @@ class Scenario extends Component {
     // Used in Editor preview mode
     const {
       activeSlideIndex,
-      cohortId,
       baseurl,
       history,
       location,
+      // eslint-disable-next-line no-unused-vars
+      cohortId,
+      // eslint-disable-next-line no-unused-vars
       scenarioId
     } = this.props;
 
@@ -154,7 +156,13 @@ class Scenario extends Component {
   }
 
   async componentDidMount() {
-    const { baseurl, cohortId, onResponseChange, onRunChange = () => {}, scenarioId } = this.props;
+    const {
+      baseurl,
+      cohortId,
+      onResponseChange,
+      onRunChange = () => {},
+      scenarioId
+    } = this.props;
 
     const metaData = await this.getScenarioMetaData();
     const contents = await this.getScenarioContent();

@@ -46,7 +46,7 @@ class ContentSlide extends React.Component {
   async componentDidMount() {
     if (!this.isScenarioRun) {
       this.setState({
-        isReady: true,
+        isReady: true
       });
       return;
     }
@@ -162,7 +162,14 @@ class ContentSlide extends React.Component {
       skipButton,
       skipOrKeep
     } = this.state;
-    const { isContextual, isLastSlide, onNextClick, onBackClick, run, slide } = this.props;
+    const {
+      isContextual,
+      isLastSlide,
+      onNextClick,
+      onBackClick,
+      run,
+      slide
+    } = this.props;
     const { onInterceptResponseChange, onSkip } = this;
 
     if (!isReady) {

@@ -1,5 +1,8 @@
 import hash from 'object-hash';
-import { SemanticToastContainer as Notification, toast } from 'react-semantic-toasts';
+import {
+  SemanticToastContainer as Notification,
+  toast
+} from 'react-semantic-toasts';
 import './Notification.css';
 
 export default Notification;

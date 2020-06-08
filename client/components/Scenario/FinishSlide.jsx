@@ -87,6 +87,8 @@ class FinishSlide extends React.Component {
 }
 
 FinishSlide.propTypes = {
+  cohortId: PropTypes.node,
+  scenarioId: PropTypes.node,
   back: PropTypes.string,
   onChange: PropTypes.func,
   slide: PropTypes.object

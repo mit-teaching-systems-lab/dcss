@@ -31,6 +31,7 @@ class Display extends React.Component {
     let {
       getResponse,
       recallId: responseId,
+      // eslint-disable-next-line no-unused-vars
       responsesById,
       run: { id }
     } = this.props;
