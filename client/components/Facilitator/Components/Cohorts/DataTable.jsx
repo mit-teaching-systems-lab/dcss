@@ -14,8 +14,8 @@ import ContentSlide from '@components/Scenario/ContentSlide';
 import Loading from '@components/Loading';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
-import CohortDataTableMenu from './CohortDataTableMenu';
-import './CohortDataTable.css';
+import DataTableMenu from './DataTableMenu';
+import './DataTable.css';
 
 function isAudioFile(input) {
   return /^audio\/\d.+\/AudioResponse/.test(input) && input.endsWith('.mp3');
@@ -46,7 +46,7 @@ function reduceResponses(key, responses) {
   return responsesReduced;
 }
 
-export class CohortDataTable extends React.Component {
+export class DataTable extends React.Component {
   constructor(props) {
     super(props);
 
@@ -279,7 +279,7 @@ export class CohortDataTable extends React.Component {
     }
     return tables.length ? (
       <React.Fragment>
-        <CohortDataTableMenu source={source} onClick={onDataTableMenuClick} />
+        <DataTableMenu source={source} onClick={onDataTableMenuClick} />
         {tables.map(({ prompts, rows }, index) => {
           const tableKeyBase = `data-table-${index}`;
           return (
@@ -314,7 +314,7 @@ export class CohortDataTable extends React.Component {
                   {rows.map((cells, index) => {
                     const key = `${tableKeyBase}-row-${index}`;
                     return (
-                      <CohortDataTableRow
+                      <DataTableRow
                         isScenarioDataTable={isScenarioDataTable}
                         leftColVisible={leftColVisible}
                         prompts={prompts}
@@ -338,7 +338,7 @@ export class CohortDataTable extends React.Component {
   }
 }
 
-const CohortDataTableRow = props => {
+const DataTableRow = props => {
   const { cells, isScenarioDataTable, leftColVisible, rowKey } = props;
   const leftColHidden = !leftColVisible
     ? { className: 'datatable__left-col-hidden' }
@@ -378,7 +378,7 @@ const CohortDataTableRow = props => {
           .format(moment.globalFormat);
 
         return (
-          <CohortDataModal
+          <DataModal
             {...props}
             index={cellIndex}
             isScenarioDataTable={isScenarioDataTable}
@@ -398,14 +398,14 @@ const CohortDataTableRow = props => {
                 {display && <p style={{ color: 'grey' }}>{duration}</p>}
               </Table.Cell>
             }
-          ></CohortDataModal>
+          ></DataModal>
         );
       })}
     </Table.Row>
   );
 };
 
-const CohortDataModal = props => {
+const DataModal = props => {
   const { index, isScenarioDataTable, prompts, rows } = props;
   const component = prompts[index];
   const { header, prompt, slide } = component;
@@ -500,7 +500,7 @@ const CohortDataModal = props => {
   );
 };
 
-CohortDataModal.propTypes = {
+DataModal.propTypes = {
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,
   cells: PropTypes.array,
@@ -514,7 +514,7 @@ CohortDataModal.propTypes = {
   trigger: PropTypes.node
 };
 
-CohortDataTableRow.propTypes = {
+DataTableRow.propTypes = {
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,
   cells: PropTypes.array,
@@ -526,7 +526,7 @@ CohortDataTableRow.propTypes = {
   state: PropTypes.object
 };
 
-CohortDataTable.propTypes = {
+DataTable.propTypes = {
   isScenarioDataTable: PropTypes.bool,
   leftColVisible: PropTypes.bool,
   scenarios: PropTypes.array,
@@ -569,5 +569,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CohortDataTable)
+  )(DataTable)
 );

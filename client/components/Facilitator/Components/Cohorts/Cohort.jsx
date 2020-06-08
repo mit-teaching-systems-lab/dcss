@@ -12,7 +12,7 @@ import {
 } from '@client/actions/cohort';
 import { getScenarios } from '@client/actions/scenario';
 import { getUser } from '@client/actions/user';
-import CohortDataTable from './CohortDataTable';
+import DataTable from './DataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';
 import Loading from '@components/Loading';
@@ -273,7 +273,7 @@ export class Cohort extends React.Component {
                 onClick={onClick}
               />
             ) : null}
-            <CohortDataTable
+            <DataTable
               source={{
                 cohortId: id,
                 participantId: currentUserInCohort.id
@@ -283,7 +283,7 @@ export class Cohort extends React.Component {
           </Segment>
         ) : (
           <Segment key={activeTabKey} attached="bottom">
-            <CohortDataTable
+            <DataTable
               source={source && source.data}
               onClick={onDataTableClick}
             />

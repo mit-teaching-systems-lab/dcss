@@ -8,7 +8,7 @@ import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import './Cohort.css';
 
-export class CohortDataTableMenu extends Component {
+export class DataTableMenu extends Component {
   constructor(props) {
     super(props);
 
@@ -68,7 +68,7 @@ export class CohortDataTableMenu extends Component {
   }
 }
 
-CohortDataTableMenu.propTypes = {
+DataTableMenu.propTypes = {
   source: PropTypes.object,
   runs: PropTypes.array,
   users: PropTypes.array,
@@ -102,5 +102,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CohortDataTableMenu)
+  )(DataTableMenu)
 );

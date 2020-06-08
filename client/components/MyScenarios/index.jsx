@@ -11,7 +11,7 @@ import { getUser } from '@client/actions/user';
 import Loading from '@components/Loading';
 import ClickableTableCell from '@components/ClickableTableCell';
 import scrollIntoView from '@components/util/scrollIntoView';
-import CohortDataTable from '@components/Facilitator/Components/Cohorts/CohortDataTable';
+import DataTable from '@components/Facilitator/Components/Cohorts/DataTable';
 
 import './MyScenarios.css';
 
@@ -231,7 +231,7 @@ class MyScenarios extends Component {
             key={`ref-${source.runId}`}
             innerRef={node => (this.tableRef = node)}
           >
-            <CohortDataTable
+            <DataTable
               key={`datatable-${source.runId}`}
               source={source}
               leftColVisible={false}
