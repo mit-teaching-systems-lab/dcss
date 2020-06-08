@@ -182,7 +182,6 @@ div.dt__scroll thead th {
 }
 
 div.dt__scroll thead th:first-child {
-  color: red;
   left: 0;
   z-index: 1;
   vertical-align: middle;
