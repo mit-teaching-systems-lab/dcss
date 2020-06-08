@@ -1,11 +1,8 @@
 import {
-  GET_RUN,
   GET_RUN_SUCCESS,
   GET_RUN_ERROR,
-  GET_RUNS,
   GET_RUNS_SUCCESS,
   GET_RUNS_ERROR,
-  GET_RUN_DATA,
   GET_RUN_DATA_SUCCESS,
   GET_RUN_DATA_ERROR,
   SET_RUN,
@@ -14,7 +11,6 @@ import {
 } from './types';
 
 export const getRun = scenario_id => async dispatch => {
-  dispatch({ type: GET_RUN, scenario_id });
   try {
     const { run, error } = await (await fetch(
       `/api/runs/new-or-existing/scenario/${scenario_id}`,
@@ -38,7 +34,6 @@ export const getRun = scenario_id => async dispatch => {
 };
 
 export const getUserRuns = () => async dispatch => {
-  dispatch({ type: GET_RUNS });
   try {
     const { runs, error } = await (await fetch('/api/runs')).json();
 
@@ -78,7 +73,6 @@ export const setRun = (id, data) => async dispatch => {
 
 export const getRunData = params => async dispatch => {
   const { runId } = params;
-  dispatch({ type: GET_RUN_DATA });
   try {
     const endpoint = `/api/runs/${runId}`;
     const { prompts, responses, error } = await (await fetch(endpoint)).json();

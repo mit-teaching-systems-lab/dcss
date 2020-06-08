@@ -1,7 +1,4 @@
-import {
-  GET_CATEGORIES_SUCCESS,
-  GET_CATEGORIES_ERROR,
-} from './types';
+import { GET_CATEGORIES_SUCCESS, GET_CATEGORIES_ERROR } from './types';
 
 export const getCategories = () => async dispatch => {
   try {

@@ -21,7 +21,7 @@ export const getUsers = () => async dispatch => {
  * @param  {string} permission The permission to filter users on.
  * @return {array}             An array of users that have this permission.
  */
-export const getUsersByPermission = (permission) => async () => {
+export const getUsersByPermission = permission => async () => {
   try {
     const authors = await (await fetch('/api/roles/user/permission', {
       method: 'POST',
@@ -35,4 +35,3 @@ export const getUsersByPermission = (permission) => async () => {
     return error;
   }
 };
-

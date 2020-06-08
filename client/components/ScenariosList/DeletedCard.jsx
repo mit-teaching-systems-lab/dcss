@@ -8,9 +8,7 @@ const DeletedCard = ({ id, title, description, onClick }) => {
     <Card className="scenario__entry deleted" key={id}>
       <Card.Content>
         <Card.Header className="strike">{title}</Card.Header>
-        <Card.Description
-          className="scenario__entry--description strike"
-        >
+        <Card.Description className="scenario__entry--description strike">
           {description}
         </Card.Description>
       </Card.Content>

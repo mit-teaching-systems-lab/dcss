@@ -9,7 +9,6 @@ import {
 } from './types';
 
 export const getResponse = ({ id, responseId }) => async dispatch => {
-  // dispatch({ type: GET_RESPONSE });
   try {
     const { response, error } = await (await fetch(
       `/api/runs/${id}/response/${responseId}`
@@ -27,7 +26,6 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
 };
 
 export const setResponses = (id, submitted) => async dispatch => {
-  // dispatch({ type: SET_RESPONSES });
   const responses = [];
   const responsesById = {};
   try {

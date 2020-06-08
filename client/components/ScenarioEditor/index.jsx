@@ -8,7 +8,7 @@ import { getUsersByPermission } from '@client/actions/users';
 
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
-import notify from '@components/Notification';
+import { notify } from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
 import RichTextEditor from '@components/RichTextEditor';
 import './scenarioEditor.css';
@@ -19,7 +19,7 @@ class ScenarioEditor extends Component {
     this.state = {
       isReady: false,
       authors: [],
-      categories: [],
+      categories: []
     };
 
     this.onChange = this.onChange.bind(this);
@@ -29,7 +29,6 @@ class ScenarioEditor extends Component {
   }
 
   async componentDidMount() {
-
     const {
       setScenario,
       getScenario,
@@ -47,9 +46,7 @@ class ScenarioEditor extends Component {
 
     const authors = await getUsersByPermission('create_scenario');
 
-    let {
-      categories
-    } = tags;
+    let { categories } = tags;
 
     // Either the existing categories have been loaded,
     // or fetch categories to fill the default value
@@ -73,7 +70,7 @@ class ScenarioEditor extends Component {
     // have a better strategy for auto saving details
     // on this page.
     if (this.props.scenarioId !== 'new') {
-        this.onSubmit();
+      this.onSubmit();
     }
   }
 
@@ -182,9 +179,7 @@ class ScenarioEditor extends Component {
       title
     } = this.props;
 
-    const {
-      isReady
-    } = this.state;
+    const { isReady } = this.state;
 
     if (!isReady || !finish.components[0]) {
       return <Loading />;
@@ -331,7 +326,10 @@ ScenarioEditor.propTypes = {
   }),
   description: PropTypes.string,
   finish: PropTypes.object,
-  status: PropTypes.number
+  status: PropTypes.number,
+  tags: PropTypes.shape({
+    categories: PropTypes.array
+  })
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -346,14 +344,23 @@ const mapStateToProps = (state, ownProps) => {
       title
     },
     user,
-    tags,
+    tags
   } = state;
 
   if (ownProps.scenarioId === 'new') {
     Object.assign(author, user);
   }
 
-  return { author, categories, consent, description, finish, status, title, tags };
+  return {
+    author,
+    categories,
+    consent,
+    description,
+    finish,
+    status,
+    title,
+    tags
+  };
 };
 
 const mapDispatchToProps = dispatch => ({

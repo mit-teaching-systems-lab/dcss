@@ -25,17 +25,17 @@ class Scenario extends Component {
     // Used in Editor preview mode
     const {
       activeSlideIndex,
+      cohortId,
       baseurl,
       history,
-      scenarioId,
-      location
+      location,
+      scenarioId
     } = this.props;
 
     this.state = {
       isReady,
       activeRunSlideIndex,
       activeSlideIndex,
-      scenarioId,
       slides: []
     };
 
@@ -43,12 +43,24 @@ class Scenario extends Component {
     this.slideRefIndex = -1;
     this.activateSlide = this.activateSlide.bind(this);
 
+    // if (this.isCohortScenarioRun) {
+    //   Storage.set(`cohort/${cohortId}/run/${scenarioId}`, {
+    //     activeRunSlideIndex
+    //   });
+    //   const { pathname, search } = location;
+    //   const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}${search}`;
+
+    //   if (pathname !== pathToSlide) {
+    //     history.push(pathToSlide, { search, activeRunSlideIndex });
+    //   }
+    // }
+
     if (this.isScenarioRun) {
       const { pathname, search } = location;
       const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}${search}`;
 
       if (pathname !== pathToSlide) {
-        history.push(pathToSlide, {search, activeRunSlideIndex});
+        history.push(pathToSlide, { search, activeRunSlideIndex });
       }
     }
   }
@@ -120,18 +132,20 @@ class Scenario extends Component {
         status
       };
     } else {
-      const scenario = await this.props.getScenario(this.state.scenarioId);
+      const scenario = await this.props.getScenario(this.props.scenarioId);
 
-      this.props.setScenario(scenario);
+      // TODO: determine if this actually does anything
+      // this.props.setScenario(scenario);
 
       return scenario;
     }
   }
 
+  // TODO: remove this and use getSlides()
   async getScenarioContent() {
-    if (this.state.scenarioId) {
+    if (this.props.scenarioId) {
       const response = await fetch(
-        `/api/scenarios/${this.state.scenarioId}/slides`
+        `/api/scenarios/${this.props.scenarioId}/slides`
       );
       const { slides } = await response.json();
       return slides;
@@ -140,7 +154,7 @@ class Scenario extends Component {
   }
 
   async componentDidMount() {
-    const { baseurl, onResponseChange, onRunChange = () => {} } = this.props;
+    const { baseurl, cohortId, onResponseChange, onRunChange = () => {}, scenarioId } = this.props;
 
     const metaData = await this.getScenarioMetaData();
     const contents = await this.getScenarioContent();
@@ -156,6 +170,8 @@ class Scenario extends Component {
     const slides = [
       <EntrySlide
         key="entry-slide"
+        cohortId={cohortId}
+        scenarioId={scenarioId}
         scenario={metaData}
         onChange={onRunChange}
         onNextClick={this.getOnClickHandler('next')}
@@ -168,6 +184,8 @@ class Scenario extends Component {
         <ContentSlide
           key={index}
           slide={slide}
+          cohortId={cohortId}
+          scenarioId={scenarioId}
           isLastSlide={isLastSlide}
           onBackClick={this.getOnClickHandler('back')}
           onNextClick={this.getOnClickHandler(isLastSlide ? 'finish' : 'next')}
@@ -180,8 +198,10 @@ class Scenario extends Component {
     slides.push(
       <FinishSlide
         key="finish-slide"
-        back={`${baseurl}/slide/${slides.length - 1}`}
         slide={finish}
+        cohortId={cohortId}
+        scenarioId={scenarioId}
+        back={`${baseurl}/slide/${slides.length - 1}`}
         onChange={onRunChange}
       />
     );
@@ -219,18 +239,20 @@ class Scenario extends Component {
       slides
     } = this.state;
 
-
-
     if (!isReady) {
       return <Loading />;
     }
 
-    const {
-      scenarioId
-    } = this.props;
+    const { cohortId, scenarioId } = this.props;
 
     if (this.isScenarioRun) {
       Storage.set(`run/${scenarioId}`, {
+        activeRunSlideIndex
+      });
+    }
+
+    if (this.isCohortScenarioRun) {
+      Storage.set(`cohort/${cohortId}/run/${scenarioId}`, {
         activeRunSlideIndex
       });
     }
@@ -274,8 +296,12 @@ class Scenario extends Component {
 Scenario.propTypes = {
   activeRunSlideIndex: PropTypes.number,
   activeSlideIndex: PropTypes.number,
-  setActiveSlide: PropTypes.func,
   baseurl: PropTypes.string,
+  categories: PropTypes.array,
+  cohortId: PropTypes.node,
+  description: PropTypes.string,
+  getScenario: PropTypes.func.isRequired,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }),
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
@@ -287,21 +313,16 @@ Scenario.propTypes = {
       id: PropTypes.node
     }).isRequired
   }),
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }),
-  scenarioId: PropTypes.node,
-  getScenario: PropTypes.func.isRequired,
-  setScenario: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  categories: PropTypes.array,
-  slides: PropTypes.array,
-  status: PropTypes.number,
-  run: PropTypes.object,
   onResponseChange: PropTypes.func,
   onRunChange: PropTypes.func,
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+  run: PropTypes.object,
+  scenarioId: PropTypes.node,
+  setActiveSlide: PropTypes.func,
+  setScenario: PropTypes.func.isRequired,
+  slides: PropTypes.array,
+  status: PropTypes.number,
+  title: PropTypes.string
 };
 
 const mapStateToProps = state => {

@@ -1,8 +1,6 @@
 import { combineReducers } from 'redux';
 
-import {
-  GET_CATEGORIES_SUCCESS,
-} from '@client/actions/types';
+import { GET_CATEGORIES_SUCCESS } from '@client/actions/types';
 
 export const categories = (state = [], action) => {
   const { categories = [], type } = action;

@@ -20,8 +20,8 @@ import {
   GET_USER_COHORTS_SUCCESS,
   GET_USER_COHORTS_ERROR,
   // LINK_COHORT_TO_RUN,
-  LINK_COHORT_TO_RUN_SUCCESS,
-  LINK_COHORT_TO_RUN_ERROR,
+  LINK_RUN_TO_COHORT_SUCCESS,
+  LINK_RUN_TO_COHORT_ERROR,
   // SET_COHORT_USER_ROLE,
   SET_COHORT_USER_ROLE_SUCCESS,
   SET_COHORT_USER_ROLE_ERROR
@@ -73,19 +73,6 @@ export const setCohort = cohort => async dispatch => {
   }
 };
 
-// router.post('/:id', [
-//   requireUser,
-//   requireUserRole(requiredRoles),
-//   validateRequestBody,
-//   setCohort
-// ]);
-// router.post('/:id/scenarios', [
-//   requireUser,
-//   requireUserRole(requiredRoles),
-//   validateRequestBody,
-//   setCohortScenarios
-// ]);
-
 export const getCohort = id => async dispatch => {
   if (Number.isNaN(id)) {
     return;
@@ -123,7 +110,6 @@ export const getCohorts = () => async dispatch => {
 };
 
 export const getAllCohorts = () => async dispatch => {
-  // dispatch({ type: GET_ALL_COHORTS });
   try {
     const { cohorts, error } = await (await fetch('/api/cohort/all')).json();
     if (error) {
@@ -138,7 +124,6 @@ export const getAllCohorts = () => async dispatch => {
 };
 
 export const setCohortUserRole = ({ id, role }) => async dispatch => {
-  // dispatch({ type: SET_COHORT_USER_ROLE });
   try {
     const users = await (await fetch(`/api/cohort/${id}/join/${role}`)).json();
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
@@ -149,7 +134,6 @@ export const setCohortUserRole = ({ id, role }) => async dispatch => {
 };
 
 export const getCohortParticipants = id => async dispatch => {
-  // dispatch({ type: GET_COHORT_PARTICIPANTS });
   try {
     const {
       cohort,
@@ -207,18 +191,17 @@ export const getCohortData = params => async dispatch => {
   }
 };
 
-export const linkCohortToRun = (cohortId, runId) => async dispatch => {
-  // dispatch({ type: LINK_COHORT_TO_RUN });
+export const linkRunToCohort = (cohortId, runId) => async dispatch => {
   try {
     const { cohort } = await (await fetch(
       `/api/cohort/${cohortId}/run/${runId}`
     )).json();
 
-    dispatch({ type: LINK_COHORT_TO_RUN_SUCCESS });
+    dispatch({ type: LINK_RUN_TO_COHORT_SUCCESS });
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   } catch (error) {
     const { message, status, stack } = error;
-    dispatch({ type: LINK_COHORT_TO_RUN_ERROR, status, message, stack });
+    dispatch({ type: LINK_RUN_TO_COHORT_ERROR, status, message, stack });
   }
 };

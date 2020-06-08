@@ -21,7 +21,6 @@ import {
 } from './types';
 
 export const getScenarios = () => async dispatch => {
-  // dispatch({ type: GET_SCENARIOS });
   try {
     const { scenarios, error } = await (await fetch('/api/scenarios')).json();
     if (error) {
@@ -37,7 +36,6 @@ export const getScenarios = () => async dispatch => {
 };
 
 export const getScenario = id => async dispatch => {
-  // dispatch({ type: GET_SCENARIO, id });
   try {
     const { scenario, error } = await (await fetch(
       `/api/scenarios/${id}`
@@ -56,7 +54,6 @@ export const getScenario = id => async dispatch => {
 
 export const getScenarioRunHistory = params => async dispatch => {
   const { scenarioId, cohortId } = params;
-  // dispatch({ type: GET_SCENARIO_RUN_HISTORY });
   try {
     const endpoint = cohortId
       ? `/api/scenarios/${scenarioId}/cohort/${cohortId}/history`
@@ -84,7 +81,6 @@ export const getScenarioRunHistory = params => async dispatch => {
 };
 
 export const getSlides = scenarioId => async dispatch => {
-  // dispatch({ type: GET_SLIDES, scenarioId });
   try {
     const { slides, error } = await (await fetch(
       `/api/scenarios/${scenarioId}/slides`
@@ -126,7 +122,7 @@ export const setScenario = scenario => {
 
   return {
     type: SET_SCENARIO,
-    scenario,
+    scenario
   };
 };
 

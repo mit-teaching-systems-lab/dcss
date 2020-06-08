@@ -11,7 +11,7 @@ import {
   Segment
 } from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
-// import notify from '@components/Notification';
+// import { notify } from '@components/Notification';
 // import Loading from '@components/Loading';
 import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
