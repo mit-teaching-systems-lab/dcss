@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
-import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import SlideList from '@components/SlideList';
 import Loading from '@components/Loading';
@@ -46,6 +45,9 @@ class ContentSlide extends React.Component {
 
   async componentDidMount() {
     if (!this.isScenarioRun) {
+      this.setState({
+        isReady: true,
+      });
       return;
     }
 
@@ -157,11 +159,10 @@ class ContentSlide extends React.Component {
       hasChanged,
       pending,
       required,
-      responses,
       skipButton,
       skipOrKeep
     } = this.state;
-    const { isLastSlide, onNextClick, onBackClick, run, slide } = this.props;
+    const { isContextual, isLastSlide, onNextClick, onBackClick, run, slide } = this.props;
     const { onInterceptResponseChange, onSkip } = this;
 
     if (!isReady) {
@@ -200,11 +201,10 @@ class ContentSlide extends React.Component {
         ? 'Skip these prompts and go to next slide'
         : 'Keep these responses and go to next slide';
 
-    fwdButtonTip += pending.length
-      ? ` (${pending.length} required response${
-          pending.length > 1 ? 's are' : ' is'
-        } not complete)`
-      : '';
+    let requiredReponses = ` (${pending.length} required response${
+      pending.length > 1 ? 's are' : ' is'
+    } not complete)`;
+    fwdButtonTip += pending.length ? requiredReponses : '';
 
     let skipButtonContent = skipButton;
 
@@ -226,37 +226,41 @@ class ContentSlide extends React.Component {
             components={slide.components}
             onResponseChange={onInterceptResponseChange}
           />
-          <Popup
-            content="Go back to the previous slide"
-            trigger={
-              <Button
-                floated="left"
-                color="grey"
-                onClick={onBackClick}
-                content={'Previous slide'}
-              />
-            }
-          />
-          <Button.Group floated="right">
-            {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
+          {!isContextual ? (
+            <Fragment>
               <Popup
-                content={skipButtonTip}
+                content="Go back to the previous slide"
                 trigger={
                   <Button
-                    color="yellow"
-                    name={skipOrKeep}
-                    onClick={onSkip}
-                    content={skipButtonContent}
+                    floated="left"
+                    color="grey"
+                    onClick={onBackClick}
+                    content={'Previous slide'}
                   />
                 }
               />
-            ) : (
-              <Popup
-                content={fwdButtonTip}
-                trigger={<Button {...fwdButtonProps} />}
-              />
-            )}
-          </Button.Group>
+              <Button.Group floated="right">
+                {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
+                  <Popup
+                    content={skipButtonTip}
+                    trigger={
+                      <Button
+                        color="yellow"
+                        name={skipOrKeep}
+                        onClick={onSkip}
+                        content={skipButtonContent}
+                      />
+                    }
+                  />
+                ) : (
+                  <Popup
+                    content={fwdButtonTip}
+                    trigger={<Button {...fwdButtonProps} />}
+                  />
+                )}
+              </Button.Group>
+            </Fragment>
+          ) : null}
         </Card.Content>
       </Card>
     );
@@ -264,19 +268,21 @@ class ContentSlide extends React.Component {
 }
 
 ContentSlide.propTypes = {
-  responsesById: PropTypes.object,
-  run: PropTypes.object,
-  slide: PropTypes.object,
+  getResponse: PropTypes.func,
+  isContextual: PropTypes.bool,
   isLastSlide: PropTypes.bool,
-  onResponseChange: PropTypes.func,
   onBackClick: PropTypes.func,
   onNextClick: PropTypes.func,
-  getResponse: PropTypes.func
+  onResponseChange: PropTypes.func,
+  responsesById: PropTypes.object,
+  run: PropTypes.object,
+  slide: PropTypes.object
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { run, responsesById } = state;
-  return { run, responsesById };
+  const isContextual = ownProps.isContextual || false;
+  return { isContextual, run, responsesById };
 };
 
 const mapDispatchToProps = dispatch => ({
