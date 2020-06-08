@@ -149,13 +149,13 @@ class Users extends Component {
           <Table fixed celled style={{ minHeight: '550px' }}>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>Username</Table.HeaderCell>
-                <Table.HeaderCell>Email</Table.HeaderCell>
-                <Table.HeaderCell>Super Admin</Table.HeaderCell>
-                <Table.HeaderCell>Admin</Table.HeaderCell>
-                <Table.HeaderCell>Researcher</Table.HeaderCell>
-                <Table.HeaderCell>Facilitator</Table.HeaderCell>
-                <Table.HeaderCell>Participant</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-large">Username</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-large">Email</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-small">Super Admin</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-small">Admin</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-small">Researcher</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-small">Facilitator</Table.HeaderCell>
+                <Table.HeaderCell className="users__col-small">Participant</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>{rows}</Table.Body>

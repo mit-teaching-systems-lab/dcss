@@ -1,3 +1,13 @@
 .admin__content-pane {
     height: 83vh !important;
 }
+
+.users__col-large {
+  width: 20%;
+}
+
+.users__col-small {
+  width: 12%;
+}
+
+
