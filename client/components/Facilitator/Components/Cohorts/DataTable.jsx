@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Grid, Icon, Modal, Table } from 'semantic-ui-react';
+import { Icon, Modal, Table } from 'semantic-ui-react';
 import SplitPane from 'react-split-pane';
 import { diff } from 'deep-diff';
 import * as moment from 'moment';
@@ -275,20 +275,15 @@ export class DataTable extends React.Component {
       : {};
 
     if (isReady && !tables.length) {
-      return (
-        <div>There is no data recorded for this scenario yet</div>
-      );
+      return <div>There is no data recorded for this scenario yet</div>;
     }
     return tables.length ? (
-      <React.Fragment>
+      <Fragment>
         <DataTableMenu source={source} onClick={onDataTableMenuClick} />
         {tables.map(({ prompts, rows }, index) => {
           const tableKeyBase = `data-table-${index}`;
           return (
-            <div
-              key={`${tableKeyBase}-container`}
-              className="dt__scroll"
-            >
+            <div key={`${tableKeyBase}-container`} className="dt__scroll">
               <Table
                 key={`${tableKeyBase}-table`}
                 celled
@@ -299,6 +294,7 @@ export class DataTable extends React.Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell scope="col" {...leftColHidden}>
+                      <Icon name="chevron down" />
                       {leftColHeader}
                     </Table.HeaderCell>
                     {prompts.map(({ header, prompt }, index) => (
@@ -332,7 +328,7 @@ export class DataTable extends React.Component {
             </div>
           );
         })}
-      </React.Fragment>
+      </Fragment>
     ) : isReady ? null : (
       <Loading />
     );
@@ -345,6 +341,7 @@ const DataTableRow = props => {
     ? { className: 'dt__left-col-hidden' }
     : {};
   const subject = cells[0] || '';
+
   return (
     <Table.Row>
       <Table.HeaderCell verticalAlign="top" {...leftColHidden}>
@@ -359,14 +356,14 @@ const DataTableRow = props => {
 
         // microphone
         const display = isAudioContent ? (
-          <React.Fragment>
+          <Fragment>
             {content ? (
               content
             ) : (
               <audio src={`/api/media/${response.value}`} controls="controls" />
             )}
             <Icon name="microphone" />
-          </React.Fragment>
+          </Fragment>
         ) : (
           content
         );
@@ -420,9 +417,8 @@ const DataModal = props => {
     >
       <Modal.Header className="dtm__header">Responses In Context</Modal.Header>
 
-      <Modal.Content scrolling className="dtm__scroll" >
+      <Modal.Content scrolling className="dtm__scroll">
         <Modal.Description>
-
           <SplitPane split="vertical" minSize={100} defaultSize={500}>
             <div>
               <ContentSlide
@@ -438,8 +434,12 @@ const DataModal = props => {
               <Table celled striped selectable role="grid">
                 <Table.Header>
                   <Table.Row>
-                    <Table.HeaderCell scope="col" colSpan={2}>
-                      {header || `Prompt: "${prompt}"`}
+                    <Table.HeaderCell
+                      scope="col"
+                      className="dt__scrollable-th"
+                      colSpan={2}
+                    >
+                      {header || prompt}
                     </Table.HeaderCell>
                   </Table.Row>
                 </Table.Header>
@@ -456,7 +456,7 @@ const DataModal = props => {
                       .format(moment.globalFormat);
 
                     const display = isAudioContent ? (
-                      <React.Fragment>
+                      <Fragment>
                         {content ? (
                           content
                         ) : (
@@ -466,18 +466,16 @@ const DataModal = props => {
                           />
                         )}
                         <Icon name="microphone" />
-                      </React.Fragment>
+                      </Fragment>
                     ) : (
                       content
                     );
 
-                    return (
-                      <Table.Row key={`modal-${slide.id}-${rowIndex}`}>
-                        {isScenarioDataTable && (
-                          <Table.HeaderCell verticalAlign="top">
-                            <p>{left}</p>
-                          </Table.HeaderCell>
-                        )}
+                    const rowCells = isScenarioDataTable ? (
+                      <Fragment>
+                        <Table.HeaderCell verticalAlign="top">
+                          <p>{left}</p>
+                        </Table.HeaderCell>
                         <Table.Cell>
                           <p>{display}</p>
 
@@ -491,6 +489,26 @@ const DataModal = props => {
                             </p>
                           )}
                         </Table.Cell>
+                      </Fragment>
+                    ) : (
+                      <Table.Cell colSpan={2}>
+                        <p>{display}</p>
+
+                        {display && (
+                          <p
+                            style={{
+                              color: 'grey'
+                            }}
+                          >
+                            {duration}
+                          </p>
+                        )}
+                      </Table.Cell>
+                    );
+
+                    return (
+                      <Table.Row key={`modal-${slide.id}-${rowIndex}`}>
+                        {rowCells}
                       </Table.Row>
                     );
                   })}

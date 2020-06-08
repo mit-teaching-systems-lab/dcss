@@ -49,3 +49,9 @@
 .Resizer.disabled:hover {
   border-color: transparent;
 }
+
+
+.Pane {
+  height: 90vh;
+  max-height: 90vh;
+}

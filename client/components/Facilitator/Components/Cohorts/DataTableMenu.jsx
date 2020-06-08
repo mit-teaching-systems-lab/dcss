@@ -54,7 +54,7 @@ export class DataTableMenu extends Component {
     );
 
     return (
-      <Menu icon>
+      <Menu borderless icon>
         <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
           <Popup content="Close this data table tab" trigger={menuItemClose} />
         </ConfirmAuth>
