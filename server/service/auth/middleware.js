@@ -57,13 +57,12 @@ async function createUserAsync(req, res, next) {
 async function loginUserAsync(req, res, next) {
   const { username, email, password } = req.body;
   const user = await db.getUserByProps({ username, email });
-  const { roles } = await getUserRoles(user.id);
-
   const error = new Error('Invalid username or password.');
   error.status = 401;
 
   // Case when user is found
   if (user) {
+    const { roles } = await getUserRoles(user.id);
     const { salt, hash, id } = user;
 
     // Case of anonymous user, where only the username / email stored
