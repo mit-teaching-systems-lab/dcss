@@ -21,9 +21,7 @@ export const CohortCard = ({ id, created_at, name, role }) => {
           Created {fromNow}
         </Card.Meta>
       </Card.Content>
-      <Card.Content extra>
-        {yourRole}
-      </Card.Content>
+      <Card.Content extra>{yourRole}</Card.Content>
     </Card>
   );
 };

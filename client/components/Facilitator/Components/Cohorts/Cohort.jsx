@@ -63,23 +63,20 @@ export class Cohort extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      const {
-        cohort: { id }
-      } = this.state;
+      const cohortId = Number(this.state.cohort.id);
 
-      await this.props.getCohort(Number(id));
+      await this.props.getCohort(cohortId);
       await this.props.getScenarios();
 
-      const {
-        cohort: { users },
-        user: { username }
-      } = this.props;
+      const { cohort, user } = this.props;
 
-      if (!users.find(user => username === user.username)) {
+      const notInCohort = !!cohort.users.find(({ id }) => id === user.id);
+
+      if (notInCohort) {
         // For now we'll default all unknown
         // users as "participant".
         await this.props.setCohortUserRole({
-          id: Number(id),
+          id: cohortId,
           role: 'participant'
         });
       }
@@ -162,7 +159,7 @@ export class Cohort extends React.Component {
     const {
       cohort,
       cohort: { id, name },
-      user: { username }
+      user
     } = this.props;
     const { isReady, activeTabKey, tabs } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
@@ -173,15 +170,12 @@ export class Cohort extends React.Component {
 
     const cohortUrl = `${location.origin}/cohort/${cohort.id}`;
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
-    const currentUserInCohort = cohort.users.find(cohortMember => {
-      return cohortMember.username === username;
-    });
-    const isOwner = currentUserInCohort && currentUserInCohort.role === 'owner';
-    const isParticipant =
-      currentUserInCohort && currentUserInCohort.role === 'participant';
 
+    // console.log("user", user);
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
+
+    const { isOwner, isParticipant } = user;
 
     return (
       <div>
@@ -277,7 +271,7 @@ export class Cohort extends React.Component {
               <DataTable
                 source={{
                   cohortId: id,
-                  participantId: currentUserInCohort.id
+                  participantId: user.id
                 }}
                 onClick={onDataTableClick}
               />
@@ -337,7 +331,21 @@ const mapStateToProps = state => {
   const { permissions } = state.login;
   const { currentCohort: cohort } = state.cohort;
   const { scenarios, user } = state;
-  return { cohort, scenarios, user: { ...user, permissions } };
+  const cohortUser = cohort.users.find(
+    cohortMember => cohortMember.id === user.id
+  );
+  const authority = {
+    isOwner: cohortUser && cohortUser.role === 'owner',
+    isParticipant: cohortUser && cohortUser.role === 'participant'
+  };
+  // Super admins have access as an owner even if they are not in the cohort!
+  if (user.roles.includes('super_admin')) {
+    authority.isSuper = true;
+    authority.isOwner = true;
+    authority.isParticipant = false;
+  }
+
+  return { cohort, scenarios, user: { ...user, ...authority, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({

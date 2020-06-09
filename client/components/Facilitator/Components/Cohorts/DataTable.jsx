@@ -275,7 +275,7 @@ export class DataTable extends React.Component {
       : {};
 
     if (isReady && !tables.length) {
-      return <div>There is no data recorded for this scenario yet</div>;
+      return <div>There is no data recorded yet.</div>;
     }
     return tables.length ? (
       <Fragment>
