@@ -11,14 +11,18 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
     overflow: 'hidden',
     margin: '-1rem !important'
   };
-  const transform = 'scale(0.45)';
+  const transform = 'scale(0.3)';
   const width = '100%';
   const height = '100%';
 
-  // check this out: https://sequelize.org/v5/
+  // Attempte to use this, but does not provide the
+  // interaction prevention that an SVG rect overlay provides:
+  // (from https://sequelize.org/v5/)
+  //
   // transform: scale(0.4);
   // transform-origin: 0 0;
   // width: 250%;
+  //
   return asSVG ? (
     <div style={style}>
       <svg width="500" height="1000">
