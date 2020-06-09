@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Modal } from 'semantic-ui-react';
-
 import { logIn, logOut } from '@client/actions';
+import './Login.css';
 
 const method = 'POST';
 
@@ -119,7 +119,7 @@ class Login extends Component {
         <Modal.Content>
           <Form onSubmit={onSubmit}>
             <Form.Field>
-              <label htmlFor="name">Username</label>
+              <label htmlFor="username">Username</label>
               <Form.Input
                 name="username"
                 autoComplete="username"
@@ -139,7 +139,7 @@ class Login extends Component {
             </Form.Field>
           </Form>
         </Modal.Content>
-        <Modal.Actions style={{ height: '75px' }}>
+        <Modal.Actions className="modal__action-height">
           <Grid columns={2}>
             <Grid.Column>
               <Message floating {...messageProps} style={{ textAlign: 'left' }}>

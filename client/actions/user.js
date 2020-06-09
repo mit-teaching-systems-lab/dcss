@@ -1,15 +1,9 @@
 import {
   GET_USER_SUCCESS,
   GET_USER_ERROR,
-  SET_USER
-  // SET_USER_SUCCESS,
-  // SET_USER_ERROR
+  SET_USER_SUCCESS,
+  SET_USER_ERROR
 } from './types';
-
-export const setUser = user => ({
-  type: SET_USER,
-  user
-});
 
 export const getUser = () => async dispatch => {
   try {
@@ -18,6 +12,31 @@ export const getUser = () => async dispatch => {
     return user;
   } catch (error) {
     dispatch({ type: GET_USER_ERROR, error });
+    return error;
+  }
+};
+
+export const setUser = data => async dispatch => {
+  try {
+    if (Object.values(data).length) {
+      const body = JSON.stringify(data);
+      const user = await (await fetch('/api/auth/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })).json();
+
+      if (user.status) {
+        throw user;
+      }
+
+      dispatch({ type: SET_USER_SUCCESS, user });
+      return user;
+    }
+  } catch (error) {
+    dispatch({ type: SET_USER_ERROR, error });
     return error;
   }
 };

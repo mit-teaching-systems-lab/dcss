@@ -37,7 +37,7 @@ async function createUserAsync(req, res, next) {
   const { roles } = await getUserRoles(created.id);
 
   if (!created) {
-    const error = new Error('User not created. Server error');
+    const error = new Error('User could not be created.');
     error.status = 500;
     throw error;
   }
@@ -49,6 +49,42 @@ async function createUserAsync(req, res, next) {
     id: created.id,
     roles,
     username: created.username
+  };
+
+  next();
+}
+
+async function updateUserAsync(req, res, next) {
+  const { username, password, email } = req.body;
+  const { id } = req.session.user;
+  const updates = {};
+
+  if (email) {
+    updates.email = email;
+  }
+
+  if (password) {
+    updates.password = password;
+  }
+
+  if (username) {
+    updates.username = username;
+  }
+
+  const user = await db.updateUser(id, updates);
+  const { roles } = await getUserRoles(id);
+
+  if (!user) {
+    const error = new Error('User could not be updated.');
+    error.status = 500;
+    throw error;
+  }
+
+  //eslint-disable-next-line require-atomic-updates
+  req.session.user = {
+    anonymous: false,
+    ...user,
+    roles
   };
 
   next();
@@ -104,3 +140,4 @@ async function loginUserAsync(req, res, next) {
 
 exports.createUser = asyncMiddleware(createUserAsync);
 exports.loginUser = asyncMiddleware(loginUserAsync);
+exports.updateUser = asyncMiddleware(updateUserAsync);

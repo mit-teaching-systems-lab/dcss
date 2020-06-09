@@ -1,4 +1,4 @@
-const { sql } = require('../../util/sqlHelpers');
+const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 const { saltHashPassword } = require('../../util/pwHash');
 
@@ -52,4 +52,26 @@ exports.createUser = async function({ email, username, password }) {
   } else {
     return getUserByProps({ username });
   }
+};
+
+exports.updateUser = async function(id, updates) {
+  const prepared = Object.entries(updates)
+    .reduce((accum, [key, value]) => {
+      if (key === 'password') {
+        let { passwordHash: hash, salt } = saltHashPassword(value);
+        accum.hash = hash;
+        accum.salt = salt;
+      } else {
+        accum[key] = value;
+      }
+      return accum;
+    }, {});
+
+  const {
+    rows: [user]
+  } = await query(
+    updateQuery('users', { id }, prepared)
+  );
+
+  return user;
 };

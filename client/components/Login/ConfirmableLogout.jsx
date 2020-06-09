@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
 import {
   Button,
   Container,
@@ -12,9 +11,10 @@ import {
   Popup
 } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
-import './ConfirmableLogoutMenuItem.css';
+import './ConfirmableLogout.css';
+import './Login.css';
 
-class ConfirmableLogoutMenuItem extends Component {
+class ConfirmableLogout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -49,11 +49,7 @@ class ConfirmableLogoutMenuItem extends Component {
 
     return (
       <React.Fragment>
-        <Menu.Item position="right">
-          <NavLink to="/logout" onClick={onNavLinkClick}>
-            Log out ({username})
-          </NavLink>
-        </Menu.Item>
+        <Menu.Item onClick={onNavLinkClick}>Log out</Menu.Item>
         <Modal open={open} size="small">
           <Header icon="log out" content="Log out confirmation" />
           <Modal.Content>
@@ -83,14 +79,14 @@ class ConfirmableLogoutMenuItem extends Component {
               <p>Are you sure you want to log out?</p>
             </Container>
           </Modal.Content>
-          <Modal.Actions style={{ height: '75px' }}>
+          <Modal.Actions className="modal__action-height">
             <Button.Group>
-              <Button onClick={onCancel} size="large">
-                Cancel
-              </Button>
-              <Button.Or />
               <Button onClick={onConfirm} primary size="large">
                 Yes, log me out
+              </Button>
+              <Button.Or />
+              <Button onClick={onCancel} size="large">
+                Cancel
               </Button>
             </Button.Group>
           </Modal.Actions>
@@ -100,11 +96,11 @@ class ConfirmableLogoutMenuItem extends Component {
   }
 }
 
-ConfirmableLogoutMenuItem.propTypes = {
+ConfirmableLogout.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   user: PropTypes.object
 };
 
-export default withRouter(ConfirmableLogoutMenuItem);
+export default withRouter(ConfirmableLogout);

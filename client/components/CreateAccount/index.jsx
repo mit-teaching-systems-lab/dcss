@@ -143,7 +143,7 @@ class CreateAccount extends Component {
             <Form.Field>
               <Form.Input
                 name="email"
-                label="Email Address:"
+                label="Email address:"
                 autoComplete="email"
                 placeholder="(Optional)"
                 onChange={onChange}
@@ -169,7 +169,7 @@ class CreateAccount extends Component {
             <Form.Field>
               <Form.Input
                 required
-                label="Confirm Password:"
+                label="Confirm password:"
                 name="confirmPassword"
                 type="password"
                 autoComplete="new-password"

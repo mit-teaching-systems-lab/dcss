@@ -5,7 +5,8 @@ const {
   createUser,
   loginUser,
   requireUser,
-  respondWithUser
+  respondWithUser,
+  updateUser
 } = require('./middleware');
 const {
   validateRequestUsernameAndEmail,
@@ -21,6 +22,14 @@ router.post('/signup', [
   validateRequestUsernameAndEmail,
   checkForDuplicate,
   createUser,
+  respondWithUser
+]);
+
+router.post('/update', [
+  requireUser,
+  validateRequestBody,
+  checkForDuplicate,
+  updateUser,
   respondWithUser
 ]);
 

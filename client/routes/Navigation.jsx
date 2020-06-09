@@ -5,7 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
 
 import ConfirmAuth from '@components/ConfirmAuth';
-import ConfirmableLogoutMenuItem from '@components/Login/ConfirmableLogoutMenuItem';
+import ConfirmableLogout from '@components/Login/ConfirmableLogout';
+import UserSettings from '@components/Login/UserSettings';
 
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
@@ -66,15 +67,17 @@ class Navigation extends Component {
       ({ text, path, permission }, index) => {
         return (
           <ConfirmAuth key={index} requiredPermission={permission}>
-            <Menu.Item>
-              <NavLink to={path}>{text}</NavLink>
-            </Menu.Item>
+            <Menu.Item href={path}>{text}</Menu.Item>
           </ConfirmAuth>
         );
       }
     );
 
-    const navLinkToScenarios = <NavLink to="/scenarios/">Scenarios</NavLink>;
+    const navLinkToScenarios = (
+      <Menu.Item href="/scenarios/">Scenarios</Menu.Item>
+    );
+
+    //<NavLink to="/scenarios/">Scenarios</NavLink>;
     return (
       <Fragment>
         <Button
@@ -99,29 +102,24 @@ class Navigation extends Component {
             </Menu.Item>
 
             <Menu.Menu>
-              <Dropdown simple item text={navLinkToScenarios}>
+              <Dropdown
+                simple
+                item
+                text={navLinkToScenarios}
+                style={{ paddingTop: '0px', paddingBottom: '0px' }}
+              >
                 <Dropdown.Menu>
                   {isLoggedIn && (
                     <Fragment>
                       <ConfirmAuth requiredPermission="create_scenario">
-                        <Dropdown.Item>
-                          <NavLink
-                            to={{
-                              pathname: `/scenarios/author/${user.username}`
-                            }}
-                          >
-                            My Scenarios
-                          </NavLink>
-                        </Dropdown.Item>
+                        <Menu.Item href={`/scenarios/author/${user.username}`}>
+                          My Scenarios
+                        </Menu.Item>
                       </ConfirmAuth>
                     </Fragment>
                   )}
-                  <Dropdown.Item>
-                    <NavLink to="/scenarios/official">Official</NavLink>
-                  </Dropdown.Item>
-                  <Dropdown.Item>
-                    <NavLink to="/scenarios/community">Community</NavLink>
-                  </Dropdown.Item>
+                  <Menu.Item href="/scenarios/official">Official</Menu.Item>
+                  <Menu.Item href="/scenarios/community">Community</Menu.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Menu>
@@ -129,7 +127,14 @@ class Navigation extends Component {
             {isLoggedIn ? navLinkAuthorized : null}
 
             {isLoggedIn ? (
-              <ConfirmableLogoutMenuItem user={user} />
+              <Menu.Menu position="right">
+                <Dropdown item text={user.username}>
+                  <Dropdown.Menu>
+                    <UserSettings user={user} />
+                    <ConfirmableLogout user={user} />
+                  </Dropdown.Menu>
+                </Dropdown>
+              </Menu.Menu>
             ) : (
               <Menu.Item position="right">
                 <NavLink to="/login">Log in</NavLink>
