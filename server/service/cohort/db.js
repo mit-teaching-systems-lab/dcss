@@ -95,8 +95,9 @@ exports.getMyCohorts = async ({ user_id }) => {
       SELECT cohort.id, cohort.name, cohort.created_at, cohort_user_role.role
       FROM cohort
       LEFT JOIN cohort_user_role
-          ON cohort.id = cohort_user_role.cohort_id
-      WHERE cohort_user_role.user_id = ${user_id};
+      ON cohort.id = cohort_user_role.cohort_id
+      WHERE cohort_user_role.user_id = ${user_id}
+      ORDER BY created_at DESC;
     `);
 
     const cohorts = [];

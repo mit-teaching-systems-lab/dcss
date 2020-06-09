@@ -3,20 +3,34 @@ import PropTypes from 'prop-types';
 import { Card } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as moment from 'moment';
 
-export const CohortCard = ({ id, name, role }) => (
-  <Card key={id}>
-    <Card.Content>
-      <Card.Header>
-        <NavLink to={`/cohort/${id}`}>{name}</NavLink>
-      </Card.Header>
-      <Card.Meta>({role})</Card.Meta>
-    </Card.Content>
-  </Card>
-);
+export const CohortCard = ({ id, created_at, name, role }) => {
+  const article = role === 'owner' ? 'the' : 'a';
+  const yourRole = `You are ${article} ${role}`;
+  const fromNow = moment(created_at).fromNow();
+  const calendar = moment(created_at).calendar();
+
+  return (
+    <Card key={id}>
+      <Card.Content>
+        <Card.Header>
+          <NavLink to={`/cohort/${id}`}>{name}</NavLink>
+        </Card.Header>
+        <Card.Meta title={`Created on ${calendar}`}>
+          Created {fromNow}
+        </Card.Meta>
+      </Card.Content>
+      <Card.Content extra>
+        {yourRole}
+      </Card.Content>
+    </Card>
+  );
+};
 
 CohortCard.propTypes = {
   id: PropTypes.number,
+  created_at: PropTypes.string,
   name: PropTypes.string,
   role: PropTypes.string
 };
