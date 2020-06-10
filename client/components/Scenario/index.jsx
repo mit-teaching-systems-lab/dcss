@@ -252,18 +252,34 @@ class Scenario extends Component {
       return <Loading />;
     }
 
-    const { cohortId, scenarioId } = this.props;
+    const { cohortId, scenarioId, run } = this.props;
 
-    if (this.isScenarioRun) {
-      Storage.set(`run/${scenarioId}`, {
-        activeRunSlideIndex
-      });
-    }
 
-    if (this.isCohortScenarioRun) {
-      Storage.set(`cohort/${cohortId}/run/${scenarioId}`, {
-        activeRunSlideIndex
-      });
+    if (run) {
+      const runScenarioKey = `run/${scenarioId}`;
+      const runCohortKey = `cohort/${cohortId}/run/${scenarioId}`;
+      // As long as this run is unfinished, update the
+      // the local state with the latest slide.
+      if (!run.ended_at) {
+        if (this.isScenarioRun) {
+          Storage.set(runScenarioKey, {
+            activeRunSlideIndex
+          });
+        }
+        if (this.isCohortScenarioRun) {
+          Storage.set(runCohortKey, {
+            activeRunSlideIndex
+          });
+        }
+      } else {
+        // Otherwise, delete the local state
+        if (this.isScenarioRun) {
+          Storage.delete(runScenarioKey);
+        }
+        if (this.isCohortScenarioRun) {
+          Storage.delete(runCohortKey);
+        }
+      }
     }
 
     const classes = 'ui centered card scenario__card--run';
@@ -336,7 +352,8 @@ Scenario.propTypes = {
 
 const mapStateToProps = state => {
   const { title, description, consent } = state.scenario;
-  return { title, description, consent };
+  const { run } = state;
+  return { title, description, consent, run };
 };
 
 const mapDispatchToProps = {
