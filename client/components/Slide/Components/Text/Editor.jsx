@@ -14,7 +14,10 @@ class TextEditor extends React.Component {
     return (
       <RichTextEditor
         id={this.props.scenarioId}
-        options={{ buttons: 'component' }}
+        options={{
+          buttons: 'component',
+          minHeight: 330
+        }}
         defaultValue={this.props.value.html}
         onChange={onChange}
       />
