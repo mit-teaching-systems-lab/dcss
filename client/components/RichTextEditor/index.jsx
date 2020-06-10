@@ -106,6 +106,14 @@ class RichTextEditor extends Component {
         onChange(content);
       };
 
+      this[SymbolEditor].toggleCodeView = (isCodeView, core) => {
+        const content = core.getContents();
+        if (name) {
+          this.ref.current.value = content;
+        }
+        onChange(content);
+      };
+
       MiscEventNames.forEach(eventName => {
         if (this.props[eventName]) {
           this[SymbolEditor][eventName] = (...args) => {
