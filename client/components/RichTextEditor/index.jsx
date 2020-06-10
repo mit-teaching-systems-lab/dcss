@@ -46,6 +46,8 @@ const defaultOptions = {
   buttons: buttons.large,
   lang: en,
   showPathLabel: false,
+  minHeight: '100px',
+  height: 'auto',
   width: '100%',
   youtubeQuery:
     'autoplay=0&mute=1&enablejsapi=1&controls=0&rel=0&modestbranding=1'
