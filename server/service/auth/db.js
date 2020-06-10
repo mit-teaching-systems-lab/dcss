@@ -55,23 +55,20 @@ exports.createUser = async function({ email, username, password }) {
 };
 
 exports.updateUser = async function(id, updates) {
-  const prepared = Object.entries(updates)
-    .reduce((accum, [key, value]) => {
-      if (key === 'password') {
-        let { passwordHash: hash, salt } = saltHashPassword(value);
-        accum.hash = hash;
-        accum.salt = salt;
-      } else {
-        accum[key] = value;
-      }
-      return accum;
-    }, {});
+  const prepared = Object.entries(updates).reduce((accum, [key, value]) => {
+    if (key === 'password') {
+      let { passwordHash: hash, salt } = saltHashPassword(value);
+      accum.hash = hash;
+      accum.salt = salt;
+    } else {
+      accum[key] = value;
+    }
+    return accum;
+  }, {});
 
   const {
     rows: [user]
-  } = await query(
-    updateQuery('users', { id }, prepared)
-  );
+  } = await query(updateQuery('users', { id }, prepared));
 
   return user;
 };
