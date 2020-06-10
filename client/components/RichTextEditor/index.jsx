@@ -70,6 +70,7 @@ class RichTextEditor extends Component {
       let {
         autoFocus = false,
         defaultValue = '',
+        focusEdge = false,
         disable = false,
         enable = true,
         hide = false,
@@ -98,35 +99,34 @@ class RichTextEditor extends Component {
       //   options.katex = katex;
       // }
 
-      this[SymbolEditor] = SunEditor.create(this.ref.current);
-      this[SymbolEditor].setOptions(options);
-
-      this[SymbolEditor].onChange = content => {
+      const onContentChange = content => {
         if (name) {
           this.ref.current.value = content;
         }
         onChange(content);
       };
 
+      this[SymbolEditor] = SunEditor.create(this.ref.current);
+      this[SymbolEditor].setOptions(options);
+
+      this[SymbolEditor].onChange = content => {
+        onContentChange(content);
+      };
+
       this[SymbolEditor].toggleCodeView = (isCodeView, core) => {
-        const content = core.getContents();
-        if (name) {
-          this.ref.current.value = content;
-        }
-        onChange(content);
+        onContentChange(core.getContents());
       };
 
       MiscEventNames.forEach(eventName => {
         if (this.props[eventName]) {
           this[SymbolEditor][eventName] = (...args) => {
-            this.props[eventName](...args, this[SymbolEditor].getContents());
+            this.props[eventName](this[SymbolEditor].getContents(), ...args);
           };
         }
       });
 
       if (defaultValue) {
         this[SymbolEditor].setContents(defaultValue);
-        this[SymbolEditor].core.focusEdge();
       }
 
       if (value) {
@@ -169,6 +169,10 @@ class RichTextEditor extends Component {
       if (autoFocus === true) {
         this[SymbolEditor].core.context.element.wysiwyg.focus();
       }
+
+      if (focusEdge) {
+        this[SymbolEditor].core.focusEdge();
+      }
     }
   }
 
@@ -210,6 +214,7 @@ RichTextEditor.propTypes = {
   defaultValue: PropTypes.string,
   disable: PropTypes.bool,
   enable: PropTypes.bool,
+  focusEdge: PropTypes.bool,
   hide: PropTypes.bool,
   id: PropTypes.node,
   lang: PropTypes.string,
