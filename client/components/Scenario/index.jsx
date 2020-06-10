@@ -240,11 +240,7 @@ class Scenario extends Component {
   }
 
   render() {
-    const {
-      activeRunSlideIndex,
-      isReady,
-      slides
-    } = this.state;
+    const { activeRunSlideIndex, isReady, slides } = this.state;
 
     const activeSlideIndex = activeRunSlideIndex - 1;
 
@@ -253,7 +249,6 @@ class Scenario extends Component {
     }
 
     const { cohortId, scenarioId, run } = this.props;
-
 
     if (run) {
       const runScenarioKey = `run/${scenarioId}`;

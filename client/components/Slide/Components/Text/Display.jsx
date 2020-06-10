@@ -8,13 +8,7 @@ import './Text.css';
 const Display = ({ html: defaultValue }) => {
   const key = nextKey();
   const mode = 'display';
-  return (
-    <RichTextEditor
-      key={key}
-      defaultValue={defaultValue}
-      mode={mode}
-    />
-  );
+  return <RichTextEditor key={key} defaultValue={defaultValue} mode={mode} />;
 };
 
 Display.propTypes = {

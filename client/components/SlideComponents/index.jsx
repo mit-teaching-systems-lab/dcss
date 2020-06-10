@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 import Storage from '@utils/Storage';
 
-const SlideComponents = ({ asSVG = false, components, onResponseChange, run }) => {
+const SlideComponents = ({
+  asSVG = false,
+  components,
+  onResponseChange,
+  run
+}) => {
   const emptyValue = { value: '' };
   const runOnly = run ? { run } : {};
   const style = {
@@ -41,7 +46,13 @@ const SlideComponents = ({ asSVG = false, components, onResponseChange, run }) =
             if (!Components[type]) return;
 
             const { Display } = Components[type];
-            return <Display key={`component-svg-${index}`} persisted={{}} {...value} />;
+            return (
+              <Display
+                key={`component-svg-${index}`}
+                persisted={{}}
+                {...value}
+              />
+            );
           })}
         </foreignObject>
         <rect
