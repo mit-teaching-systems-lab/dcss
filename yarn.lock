@@ -15478,10 +15478,10 @@ stylehacks@^4.0.0:
     postcss "^7.0.0"
     postcss-selector-parser "^3.0.0"
 
-suneditor@2.30.0:
-  version "2.30.0"
-  resolved "https://registry.yarnpkg.com/suneditor/-/suneditor-2.30.0.tgz#cf3ed2d667f37afc3b6fe51bf6da884ad729bb53"
-  integrity sha512-bZ8sGTRFDXaFVPF1U4aphWSlSHCpPrBOuqRgaDCGw+rrGKtqA4gyrpMBldC7ZAtbFmLX4V2OFZCyJkX1acqs7A==
+suneditor@2.29.0:
+  version "2.29.0"
+  resolved "https://registry.yarnpkg.com/suneditor/-/suneditor-2.29.0.tgz#7cecfa33e3475a1012d12f16e968055c8fe46f52"
+  integrity sha512-6dfVygY5lOBKZOQwA640zVtahvc6dMgkN3ObYrVDtoyUpfvgjVwj+en2V8vbtkmgaUTkgusKRr6OmPjuQLegLA==
 
 supports-color@6.1.0, supports-color@^6.1.0:
   version "6.1.0"
