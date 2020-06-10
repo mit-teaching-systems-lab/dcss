@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 import Storage from '@utils/Storage';
 
-const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
+const SlideComponents = ({ asSVG = false, components, onResponseChange, run }) => {
   const emptyValue = { value: '' };
   const runOnly = run ? { run } : {};
   const style = {
@@ -15,11 +15,7 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
   const width = '100%';
   const height = '100%';
 
-  // console.log("RENDERING SlideList!", components);
-  // components.forEach(component => {
-  //   console.log(component);
-  // })
-  // Attempte to use this, but does not provide the
+  // Attempted to use this, but does not provide the
   // interaction prevention that an SVG rect overlay provides:
   // (from https://sequelize.org/v5/)
   //
@@ -81,10 +77,10 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
   );
 };
 
-SlideList.propTypes = {
+SlideComponents.propTypes = {
   asSVG: PropTypes.bool,
   components: PropTypes.array,
   onResponseChange: PropTypes.func,
   run: PropTypes.object
 };
-export default SlideList;
+export default SlideComponents;
