@@ -200,7 +200,6 @@ class Editor extends Component {
   }
 
   getTab(name, scenarioId) {
-    const { activeSlideIndex } = this.state;
     const { setActiveView } = this;
 
     switch (name) {
@@ -221,20 +220,19 @@ class Editor extends Component {
                 activeTab: 'slides'
               })
             }
-            activeSlideIndex={activeSlideIndex}
             scenarioId={scenarioId}
           />
         );
       case 'preview':
         return (
           <Scenario
+            key={scenarioId}
             setActiveSlide={activeSlideIndex =>
               setActiveView({
                 activeSlideIndex,
                 activeTab: 'preview'
               })
             }
-            activeSlideIndex={activeSlideIndex}
             scenarioId={scenarioId}
           />
         );

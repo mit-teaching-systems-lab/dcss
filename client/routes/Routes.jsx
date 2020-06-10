@@ -177,10 +177,10 @@ const Routes = ({ isLoggedIn }) => {
 
       <RedirectRouteForInactiveSession
         isLoggedIn={isLoggedIn}
-        path="/editor/:id/preview/:activeNonZeroSlideIndex"
+        path="/editor/:id/preview/:activeRunSlideIndex"
       >
         <ConfirmAuth
-          path="/editor/:id/preview/:activeNonZeroSlideIndex"
+          path="/editor/:id/preview/:activeRunSlideIndex"
           requiredPermission="create_scenario"
         >
           <Route

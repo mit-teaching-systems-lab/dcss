@@ -47,6 +47,7 @@ class Slides extends React.Component {
         } = persisted;
 
         return {
+          ...persisted,
           activeSlideIndex,
           minimized
         };

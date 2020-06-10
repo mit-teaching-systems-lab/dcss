@@ -24,7 +24,6 @@ class Scenario extends Component {
 
     // Used in Editor preview mode
     const {
-      activeSlideIndex,
       baseurl,
       history,
       location,
@@ -37,7 +36,6 @@ class Scenario extends Component {
     this.state = {
       isReady,
       activeRunSlideIndex,
-      activeSlideIndex,
       slides: []
     };
 
@@ -137,7 +135,7 @@ class Scenario extends Component {
       const scenario = await this.props.getScenario(this.props.scenarioId);
 
       // TODO: determine if this actually does anything
-      // this.props.setScenario(scenario);
+      this.props.setScenario(scenario);
 
       return scenario;
     }
@@ -217,12 +215,14 @@ class Scenario extends Component {
     this.setState({ slides, isReady: true });
 
     if (!this.isScenarioRun) {
-      this.activateSlide(this.state.activeSlideIndex);
+      this.activateSlide(this.state.activeRunSlideIndex);
     }
   }
 
-  activateSlide(activeSlideIndex) {
-    this.setState({ activeSlideIndex }, () => {
+  activateSlide(activeRunSlideIndex) {
+    this.setState({ activeRunSlideIndex }, () => {
+      const activeSlideIndex = activeRunSlideIndex - 1;
+
       this.props.setActiveSlide(activeSlideIndex);
       if (
         this.slideRefs[activeSlideIndex] &&
@@ -242,10 +242,11 @@ class Scenario extends Component {
   render() {
     const {
       activeRunSlideIndex,
-      activeSlideIndex,
       isReady,
       slides
     } = this.state;
+
+    const activeSlideIndex = activeRunSlideIndex - 1;
 
     if (!isReady) {
       return <Loading />;
