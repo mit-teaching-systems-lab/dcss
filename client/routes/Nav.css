@@ -38,3 +38,7 @@
 .navigation__dropdown a:first-child {
   padding: 0px !important;
 }
+
+.navigation__dropdown a:first-child:hover {
+  background: transparent !important;
+}
