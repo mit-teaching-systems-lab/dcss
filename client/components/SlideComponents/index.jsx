@@ -15,6 +15,10 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
   const width = '100%';
   const height = '100%';
 
+  // console.log("RENDERING SlideList!", components);
+  // components.forEach(component => {
+  //   console.log(component);
+  // })
   // Attempte to use this, but does not provide the
   // interaction prevention that an SVG rect overlay provides:
   // (from https://sequelize.org/v5/)
@@ -36,12 +40,12 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
             entirely non-functional version.
           */}
 
-          {components.slice(0, 3).map((value, index) => {
+          {components.slice(0, 2).map((value, index) => {
             const { type } = value;
             if (!Components[type]) return;
 
             const { Display } = Components[type];
-            return <Display key={`slide-${index}`} persisted={{}} {...value} />;
+            return <Display key={`component-svg-${index}`} persisted={{}} {...value} />;
           })}
         </foreignObject>
         <rect
@@ -66,7 +70,7 @@ const SlideList = ({ asSVG = false, components, onResponseChange, run }) => {
 
       return (
         <Display
-          key={`slide-${index}`}
+          key={`component-html-${index}`}
           persisted={persisted}
           onResponseChange={onResponseChange}
           {...runOnly}

@@ -12,7 +12,7 @@ const SCENARIO_STATUS_PRIVATE = 3;
 const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
   if (!scenarios.length) return null;
 
-  return scenarios.reduce((accum, scenario) => {
+  return scenarios.reduce((accum, scenario, index) => {
     const { status, user_is_author: isAuthor } = scenario;
 
     // This scenario status is "draft", to see it:
@@ -28,7 +28,7 @@ const ScenarioEntries = ({ scenarios, isLoggedIn }) => {
     }
     accum.push(
       <ScenarioCard
-        key={scenario.id}
+        key={`scenario-card-${scenario.id}-${index}`}
         scenario={scenario}
         isLoggedIn={isLoggedIn}
       />

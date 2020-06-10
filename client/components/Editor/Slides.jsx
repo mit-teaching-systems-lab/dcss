@@ -23,7 +23,7 @@ import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
-import SlideList from '@components/SlideList';
+import SlideComponents from '@components/SlideComponents';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { getSlides } from '@client/actions/scenario';
@@ -471,7 +471,7 @@ class Slides extends React.Component {
                                   {...minMaxHide}
                                   className="slides__list-card-content"
                                 >
-                                  <SlideList
+                                  <SlideComponents
                                     asSVG={true}
                                     components={slide.components}
                                   />

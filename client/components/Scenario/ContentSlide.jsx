@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
 import Storage from '@utils/Storage';
-import SlideList from '@components/SlideList';
+import SlideComponents from '@components/SlideComponents';
 import Loading from '@components/Loading';
 import { getResponse } from '@client/actions/response';
 
@@ -228,7 +228,7 @@ class ContentSlide extends React.Component {
           <Card.Header key={`header${slide.id}`}>{slide.title}</Card.Header>
         </Card.Content>
         <Card.Content key={`content${slide.id}`}>
-          <SlideList
+          <SlideComponents
             {...runOnly}
             components={slide.components}
             onResponseChange={onInterceptResponseChange}
