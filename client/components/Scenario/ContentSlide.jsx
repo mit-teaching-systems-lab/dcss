@@ -233,42 +233,42 @@ class ContentSlide extends React.Component {
             components={slide.components}
             onResponseChange={onInterceptResponseChange}
           />
-          {!isContextual ? (
-            <Fragment>
-              <Popup
-                content="Go back to the previous slide"
-                trigger={
-                  <Button
-                    floated="left"
-                    color="grey"
-                    onClick={onBackClick}
-                    content={'Previous slide'}
-                  />
-                }
-              />
-              <Button.Group floated="right">
-                {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
-                  <Popup
-                    content={skipButtonTip}
-                    trigger={
-                      <Button
-                        color="yellow"
-                        name={skipOrKeep}
-                        onClick={onSkip}
-                        content={skipButtonContent}
-                      />
-                    }
-                  />
-                ) : (
-                  <Popup
-                    content={fwdButtonTip}
-                    trigger={<Button {...fwdButtonProps} />}
-                  />
-                )}
-              </Button.Group>
-            </Fragment>
-          ) : null}
         </Card.Content>
+        {!isContextual ? (
+          <Card.Content extra>
+            <Popup
+              content="Go back to the previous slide"
+              trigger={
+                <Button
+                  floated="left"
+                  color="grey"
+                  onClick={onBackClick}
+                  content={'Previous slide'}
+                />
+              }
+            />
+            <Button.Group floated="right">
+              {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
+                <Popup
+                  content={skipButtonTip}
+                  trigger={
+                    <Button
+                      color="yellow"
+                      name={skipOrKeep}
+                      onClick={onSkip}
+                      content={skipButtonContent}
+                    />
+                  }
+                />
+              ) : (
+                <Popup
+                  content={fwdButtonTip}
+                  trigger={<Button {...fwdButtonProps} />}
+                />
+              )}
+            </Button.Group>
+          </Card.Content>
+        ) : null}
       </Card>
     );
   }
