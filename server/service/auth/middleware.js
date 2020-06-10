@@ -42,9 +42,11 @@ async function createUserAsync(req, res, next) {
     throw error;
   }
 
+  const anonymous = typeof password === 'undefined';
+
   //eslint-disable-next-line require-atomic-updates
   req.session.user = {
-    anonymous: false,
+    anonymous,
     email: created.email,
     id: created.id,
     roles,
@@ -80,12 +82,20 @@ async function updateUserAsync(req, res, next) {
     throw error;
   }
 
-  //eslint-disable-next-line require-atomic-updates
-  req.session.user = {
-    anonymous: false,
-    ...user,
-    roles
-  };
+  const anonymous = typeof password === 'undefined';
+
+  {
+    const { email, username, id } = user;
+
+    //eslint-disable-next-line require-atomic-updates
+    req.session.user = {
+      anonymous,
+      email,
+      id,
+      username,
+      roles
+    };
+  }
 
   next();
 }

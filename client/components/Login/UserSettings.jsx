@@ -13,11 +13,14 @@ import {
 import { getUser, setUser } from '@client/actions/user';
 import './Login.css';
 
+const anonymousMode =
+  'You are currently in anonymous mode. Set a password to become a full user.';
+
 class UserSettings extends Component {
   constructor(props) {
     super(props);
 
-    const { email, username } = this.props.user;
+    const { anonymous, email, username } = this.props.user;
 
     this.state = {
       open: false,
@@ -115,10 +118,10 @@ class UserSettings extends Component {
       return;
     }
 
-    if (result.status) {
+    if (this.props.errors.user) {
       this.setState({
         error: {
-          message: result.message
+          message: this.props.errors.user.message
         }
       });
     } else {
@@ -165,6 +168,8 @@ class UserSettings extends Component {
       success
     } = this.state;
 
+    const { user } = this.props;
+
     const messageProps = {
       hidden: true
     };
@@ -180,6 +185,23 @@ class UserSettings extends Component {
       messageProps.color = 'green';
       messageProps.content = success.message;
     }
+
+    const anonymousModeFormProps = {
+      style: {
+        width: user.anonymous ? '50%' : '100%',
+        display: user.anonymous ? 'inline-block' : 'block'
+      }
+    };
+
+    const anonymousModeMessageProps = {
+      style: {
+        width: user.anonymous ? '47%' : '0%',
+        display: user.anonymous ? 'inline-block' : 'none',
+        verticalAlign: user.anonymous ? 'top' : 'unset',
+        marginTop: user.anonymous ? '1.6em' : 'unset',
+        marginLeft: user.anonymous ? '1em' : 'unset'
+      }
+    };
 
     return (
       <Fragment>
@@ -208,26 +230,31 @@ class UserSettings extends Component {
                   onChange={onChange}
                 />
               </Form.Field>
-              <Form.Field>
-                <label htmlFor="password">New password:</label>
-                <Form.Input
-                  name="password"
-                  autoComplete="new-password"
-                  type="password"
-                  defaultValue={password || ''}
-                  onChange={onChange}
-                />
-              </Form.Field>
-              <Form.Field>
-                <label htmlFor="confirmPassword">Confirm new password:</label>
-                <Form.Input
-                  name="confirmPassword"
-                  autoComplete="new-password"
-                  type="password"
-                  defaultValue={confirmPassword || ''}
-                  onChange={onChange}
-                />
-              </Form.Field>
+              <div {...anonymousModeFormProps}>
+                <Form.Field>
+                  <label htmlFor="password">New password:</label>
+                  <Form.Input
+                    name="password"
+                    autoComplete="new-password"
+                    type="password"
+                    defaultValue={password || ''}
+                    onChange={onChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label htmlFor="confirmPassword">Confirm new password:</label>
+                  <Form.Input
+                    name="confirmPassword"
+                    autoComplete="new-password"
+                    type="password"
+                    defaultValue={confirmPassword || ''}
+                    onChange={onChange}
+                  />
+                </Form.Field>
+              </div>
+              <div {...anonymousModeMessageProps}>
+                <Message color="orange" content={anonymousMode} />
+              </div>
             </Form>
           </Modal.Content>
           <Modal.Actions className="modal__action-height">
@@ -259,14 +286,15 @@ class UserSettings extends Component {
 }
 
 UserSettings.propTypes = {
+  errors: PropTypes.object,
   getUser: PropTypes.func,
   setUser: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { user } = state;
-  return { user };
+  const { errors, user } = state;
+  return { errors, user };
 };
 
 const mapDispatchToProps = dispatch => ({
