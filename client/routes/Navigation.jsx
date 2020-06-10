@@ -105,8 +105,8 @@ class Navigation extends Component {
               <Dropdown
                 simple
                 item
+                className="navigation__dropdown"
                 text={navLinkToScenarios}
-                style={{ paddingTop: '0px', paddingBottom: '0px' }}
               >
                 <Dropdown.Menu>
                   {isLoggedIn && (

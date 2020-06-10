@@ -29,3 +29,12 @@
   background-position-x: center;
 }
 
+
+.navigation__dropdown {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.navigation__dropdown a:first-child {
+  padding: 0px !important;
+}
