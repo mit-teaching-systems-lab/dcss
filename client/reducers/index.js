@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import cohort from './cohort';
+import errors from './errors';
 import login from './login';
 import { response, responses, responsesById } from './response';
 import { run, runs } from './run';
@@ -12,6 +13,7 @@ import { users } from './users';
 
 export default combineReducers({
   cohort,
+  errors,
   history,
   login,
   response,

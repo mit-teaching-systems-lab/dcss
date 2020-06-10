@@ -9,6 +9,7 @@ const initialState = {
 
 export const user = (state = initialState, action) => {
   const { user, type } = action;
+
   switch (type) {
     // GET_USER_SUCCESS, SET_USER_SUCCESS:
     // user will be an object with the same
@@ -17,11 +18,12 @@ export const user = (state = initialState, action) => {
     // GET_USER_ERROR: user will be undefined,
     // falling back to initialState
     case GET_USER_SUCCESS:
-    case SET_USER_SUCCESS:
+    case SET_USER_SUCCESS: {
       return {
         ...state,
         ...user
       };
+    }
     default:
       return state;
   }

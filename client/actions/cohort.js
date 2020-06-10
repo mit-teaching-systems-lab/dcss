@@ -36,16 +36,17 @@ export const createCohort = ({ name }) => async dispatch => {
       },
       body: JSON.stringify({ name })
     });
-    const { cohort, error } = await res.json();
-    if (error) {
-      throw error;
+    const response = await res.json();
+    if (response.error) {
+      throw response;
     }
+    const { cohort } = response;
+
     dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
     // return the cohort to the promise action for redirection purposes
     return cohort;
   } catch (error) {
-    const { message, stack, status } = error;
-    dispatch({ type: CREATE_COHORT_ERROR, message, stack, status });
+    dispatch({ type: CREATE_COHORT_ERROR, error });
     // pass along the error to the promise action
     throw error;
   }
@@ -67,8 +68,7 @@ export const setCohort = cohort => async dispatch => {
     })).json();
     dispatch({ type: SET_COHORT_SUCCESS, cohort });
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: SET_COHORT_ERROR, status, message, stack });
+    dispatch({ type: SET_COHORT_ERROR, error });
   }
 };
 
@@ -77,17 +77,16 @@ export const getCohort = id => async dispatch => {
     return;
   }
   try {
-    const { cohort, error } = await (await fetch(`/api/cohort/${id}`)).json();
-
-    if (error) {
-      throw error;
+    const response = await (await fetch(`/api/cohort/${id}`)).json();
+    if (response.error) {
+      throw response;
     }
+    const { cohort } = response;
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     // return the cohort to the promise action for redirection purposes
     return cohort;
   } catch (error) {
-    const { message, stack, status } = error;
-    dispatch({ type: GET_COHORT_ERROR, message, stack, status });
+    dispatch({ type: GET_COHORT_ERROR, error });
     // pass along the error to the promise action
     throw error;
   }
@@ -95,65 +94,64 @@ export const getCohort = id => async dispatch => {
 
 export const getCohorts = () => async dispatch => {
   try {
-    const { cohorts, error } = await (await fetch('/api/cohort/my')).json();
-    if (error) {
-      throw error;
+    const response = await (await fetch('/api/cohort/my')).json();
+
+    if (response.error) {
+      throw response;
     }
+    const { cohorts } = response;
     dispatch({ type: GET_USER_COHORTS_SUCCESS, cohorts });
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: GET_USER_COHORTS_ERROR, status, message, stack });
+    dispatch({ type: GET_USER_COHORTS_ERROR, error });
   }
 };
 
 export const getAllCohorts = () => async dispatch => {
   try {
-    const { cohorts, error } = await (await fetch('/api/cohort/all')).json();
-    if (error) {
-      throw error;
+    const response = await (await fetch('/api/cohort/all')).json();
+    if (response.error) {
+      throw response;
     }
+    const { cohorts } = response;
     dispatch({ type: GET_ALL_COHORTS_SUCCESS, cohorts });
     return cohorts;
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: GET_ALL_COHORTS_ERROR, status, message, stack });
+    dispatch({ type: GET_ALL_COHORTS_ERROR, error });
   }
 };
 
 export const setCohortUserRole = ({ id, role }) => async dispatch => {
   try {
     const users = await (await fetch(`/api/cohort/${id}/join/${role}`)).json();
+    if (users.error) {
+      throw users.error;
+    }
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: SET_COHORT_USER_ROLE_ERROR, status, message, stack });
+    dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
   }
 };
 
 export const getCohortParticipants = id => async dispatch => {
   try {
+    const response = await (await fetch(`/api/cohort/${id}`)).json();
+
+    if (response.error) {
+      throw response;
+    }
     const {
       cohort,
-      cohort: { users },
-      error
-    } = await (await fetch(`/api/cohort/${id}`)).json();
-
-    if (error) {
-      throw error;
-    }
-
+      cohort: { users }
+    } = response;
     // Dispatch the entire "cohort", but only the "users" property
     // will be used in the reducer.
     dispatch({ type: GET_COHORT_PARTICIPANTS_SUCCESS, cohort });
     // return the cohort to the promise action for redirection purposes
     return users;
   } catch (error) {
-    const { message, stack, status } = error;
     dispatch({
       type: GET_COHORT_PARTICIPANTS_ERROR,
-      message,
-      stack,
-      status
+      error
     });
     // pass along the error to the promise action
     throw error;
@@ -167,21 +165,20 @@ export const getCohortData = params => async dispatch => {
       ? `/api/cohort/${cohortId}/scenario/${scenarioId}`
       : `/api/cohort/${cohortId}/participant/${participantId}`;
 
-    const { prompts, responses, error } = await (await fetch(endpoint)).json();
+    const response = await (await fetch(endpoint)).json();
 
-    if (error) {
-      throw error;
+    if (response.error) {
+      throw response;
     }
+
+    const { prompts, responses } = response;
 
     dispatch({ type: GET_COHORT_DATA_SUCCESS, prompts, responses });
     return { prompts, responses };
   } catch (error) {
-    const { message, stack, status } = error;
     dispatch({
       type: GET_COHORT_DATA_ERROR,
-      message,
-      stack,
-      status
+      error
     });
     // pass along the error to the promise action
     throw error;
@@ -190,15 +187,17 @@ export const getCohortData = params => async dispatch => {
 
 export const linkRunToCohort = (cohortId, runId) => async dispatch => {
   try {
-    const { cohort } = await (await fetch(
+    const response = await (await fetch(
       `/api/cohort/${cohortId}/run/${runId}`
     )).json();
-
+    if (response.error) {
+      throw response;
+    }
+    const { cohort } = response;
     dispatch({ type: LINK_RUN_TO_COHORT_SUCCESS });
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: LINK_RUN_TO_COHORT_ERROR, status, message, stack });
+    dispatch({ type: LINK_RUN_TO_COHORT_ERROR, error });
   }
 };

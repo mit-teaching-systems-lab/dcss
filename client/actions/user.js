@@ -28,7 +28,7 @@ export const setUser = data => async dispatch => {
         body
       })).json();
 
-      if (user.status) {
+      if (user.error) {
         throw user;
       }
 
