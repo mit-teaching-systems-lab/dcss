@@ -41,7 +41,7 @@ export const responses = (state = [], action) => {
 };
 
 export const responsesById = (state = {}, action) => {
-  const { response = {}, responses = [], responsesById = {}, type } = action;
+  const { response, responses, responsesById, type } = action;
   let data = {};
 
   if (responsesById) {
