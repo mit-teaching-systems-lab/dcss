@@ -50,7 +50,7 @@ const defaultOptions = {
   height: 'auto',
   width: '100%',
   youtubeQuery:
-    'autoplay=0&mute=1&enablejsapi=1&controls=0&rel=0&modestbranding=1'
+    'autoplay=0&controls=1&rel=0&modestbranding=1'
 };
 
 const SymbolEditor = Symbol('@@editor');
