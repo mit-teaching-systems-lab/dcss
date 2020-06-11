@@ -281,7 +281,9 @@ class Scenario extends Component {
 
     return this.isScenarioRun ? (
       <Grid columns={1}>
-        <Grid.Column>{slides && slides[activeRunSlideIndex]}</Grid.Column>
+        <Ref innerRef={node => node.scrollIntoView(node)}>
+          <Grid.Column>{slides && slides[activeRunSlideIndex]}</Grid.Column>
+        </Ref>
       </Grid>
     ) : (
       <Segment className="scenario__slide-preview-pane">
