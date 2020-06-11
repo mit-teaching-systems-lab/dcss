@@ -20,7 +20,7 @@ class UserSettings extends Component {
   constructor(props) {
     super(props);
 
-    const { anonymous, email, username } = this.props.user;
+    const { email, username } = this.props.user;
 
     this.state = {
       open: false,

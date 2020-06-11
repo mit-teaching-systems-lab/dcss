@@ -49,8 +49,7 @@ const defaultOptions = {
   minHeight: '100px',
   height: 'auto',
   width: '100%',
-  youtubeQuery:
-    'autoplay=0&controls=1&rel=0&modestbranding=1'
+  youtubeQuery: 'autoplay=0&controls=1&rel=0&modestbranding=1'
 };
 
 const SymbolEditor = Symbol('@@editor');
