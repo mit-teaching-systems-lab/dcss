@@ -28,12 +28,27 @@ class TextResponseEditor extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onRecallChange = this.onRecallChange.bind(this);
     this.updateState = this.updateState.bind(this);
+    this.delayUpdateState = this.delayUpdateState.bind(this);
+    this.timeout = null;
+  }
+
+  componentWillUnmount() {
+    this.updateState();
+    clearInterval(this.timeout);
+  }
+
+  delayUpdateState() {
+    if (!this.timeout) {
+      clearTimeout(this.timeout);
+    }
+
+    this.timeout = setTimeout(this.updateState, 5000);
   }
 
   render() {
     const { header, prompt, placeholder, recallId } = this.state;
     const { scenarioId, slideIndex } = this.props;
-    const { onChange, onRecallChange } = this;
+    const { onChange, onRecallChange, updateState } = this;
     return (
       <Form>
         <Container fluid>
@@ -48,14 +63,20 @@ class TextResponseEditor extends React.Component {
             name="prompt"
             value={prompt}
             onChange={onChange}
+            onBlur={updateState}
           />
           <Form.Input
             label="Placeholder"
             name="placeholder"
             value={placeholder}
             onChange={onChange}
+            onBlur={updateState}
           />
-          <DataHeader content={header} onChange={onChange} />
+          <DataHeader
+            content={header}
+            onChange={onChange}
+            onBlur={updateState}
+          />
         </Container>
       </Form>
     );

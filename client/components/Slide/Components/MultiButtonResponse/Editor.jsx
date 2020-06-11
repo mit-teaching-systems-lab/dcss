@@ -21,14 +21,13 @@ class MultiButtonResponseEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
-      buttons = [
-        /*
-        {
-            display: "Text on button",
-            value: "Value button represents"
-        }
-        */
-      ],
+      /*
+      {
+          display: "Text on button",
+          value: "Value button represents"
+      }
+      */
+      buttons = [],
       header = '',
       prompt = '',
       recallId = '',
@@ -36,10 +35,9 @@ class MultiButtonResponseEditor extends React.Component {
     } = props.value;
 
     this.state = {
-      activeIndex: recallId ? 0 : -1,
-      buttons,
       header,
       prompt,
+      buttons,
       recallId,
       responseId
     };
@@ -54,10 +52,25 @@ class MultiButtonResponseEditor extends React.Component {
 
     this.preventEmptyButtonField = this.preventEmptyButtonField.bind(this);
     this.updateState = this.updateState.bind(this);
+    this.delayUpdateState = this.delayUpdateState.bind(this);
+    this.timeout = null;
+  }
+
+  componentWillUnmount() {
+    this.updateState();
+    clearInterval(this.timeout);
+  }
+
+  delayUpdateState() {
+    if (!this.timeout) {
+      clearTimeout(this.timeout);
+    }
+
+    this.timeout = setTimeout(this.updateState, 5000);
   }
 
   onChange(event, { name, value }) {
-    this.setState({ [name]: value }, this.updateState);
+    this.setState({ [name]: value }, this.delayUpdateState);
   }
 
   updateState() {
@@ -74,7 +87,7 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.updateState);
+    this.setState({ recallId }, this.delayUpdateState);
   }
 
   onButtonAddClick() {
@@ -83,13 +96,13 @@ class MultiButtonResponseEditor extends React.Component {
       display: '',
       value: ''
     });
-    this.setState({ buttons }, this.updateState);
+    this.setState({ buttons }, this.delayUpdateState);
   }
 
   onButtonDeleteClick(index) {
     const buttons = this.state.buttons.slice();
     buttons.splice(index, 1);
-    this.setState({ buttons }, this.updateState);
+    this.setState({ buttons }, this.delayUpdateState);
   }
 
   onButtonOrderChange(fromIndex, toIndex) {
@@ -99,7 +112,7 @@ class MultiButtonResponseEditor extends React.Component {
   onButtonDetailChange(event, { index, name, value }) {
     const { buttons } = this.state;
     buttons[index][name] = value;
-    this.setState({ buttons }, this.updateState);
+    this.setState({ buttons }, this.delayUpdateState);
   }
 
   preventEmptyButtonField(index) {
@@ -120,23 +133,21 @@ class MultiButtonResponseEditor extends React.Component {
       buttons[index].display = buttons[index].value;
     }
 
-    this.setState({ buttons }, this.updateState);
+    this.setState({ buttons }, this.delayUpdateState);
   }
 
   moveButton(fromIndex, toIndex) {
-    const buttons = this.state.buttons.slice();
-    const from = buttons[fromIndex];
-    const to = buttons[toIndex];
-    if (from && to) {
-      buttons[toIndex] = from;
-      buttons[fromIndex] = to;
-    }
-    this.setState({ buttons }, this.updateState);
+    const { buttons } = this.state;
+    const moving = buttons[fromIndex];
+    buttons.splice(fromIndex, 1);
+    buttons.splice(toIndex, 0, moving);
+    this.setState({ buttons }, this.delayUpdateState);
   }
 
   render() {
     const { scenarioId, slideIndex } = this.props;
-    const { buttons, header, prompt, recallId } = this.state;
+    const { header, prompt, buttons, recallId } = this.state;
+
     const {
       onButtonAddClick,
       onButtonDeleteClick,
@@ -162,6 +173,7 @@ class MultiButtonResponseEditor extends React.Component {
             name="prompt"
             value={prompt}
             onChange={onChange}
+            onBlur={updateState}
           />
           <Button icon onClick={onButtonAddClick}>
             <Icon.Group size="large" className="em__icon-group-margin">
@@ -233,7 +245,11 @@ class MultiButtonResponseEditor extends React.Component {
               })}
             </Sortable>
           </List>
-          <DataHeader content={header} onChange={onChange} />
+          <DataHeader
+            content={header}
+            onChange={onChange}
+            onBlur={updateState}
+          />
         </Container>
       </Form>
     );

@@ -20,6 +20,22 @@ class AudioResponseEditor extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onRecallChange = this.onRecallChange.bind(this);
+    this.updateState = this.updateState.bind(this);
+    this.delayUpdateState = this.delayUpdateState.bind(this);
+    this.timeout = null;
+  }
+
+  componentWillUnmount() {
+    this.updateState();
+    clearInterval(this.timeout);
+  }
+
+  delayUpdateState() {
+    if (!this.timeout) {
+      clearTimeout(this.timeout);
+    }
+
+    this.timeout = setTimeout(this.updateState, 5000);
   }
 
   updateState() {
@@ -34,17 +50,22 @@ class AudioResponseEditor extends Component {
   }
 
   onChange(event, { name, value }) {
-    this.setState({ [name]: value }, this.updateState);
+    this.setState({ [name]: value }, this.delayUpdateState);
+    if (!this.timeout) {
+      clearTimeout(this.timeout);
+    }
+
+    this.timeout = setTimeout(() => this.updateState(), 5000);
   }
 
   onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.updateState);
+    this.setState({ recallId }, this.delayUpdateState);
   }
 
   render() {
     const { header, prompt, recallId } = this.state;
     const { scenarioId, slideIndex } = this.props;
-    const { onChange, onRecallChange } = this;
+    const { onChange, onRecallChange, updateState } = this;
 
     return (
       <Form>
@@ -65,6 +86,7 @@ class AudioResponseEditor extends Component {
                   name="prompt"
                   value={prompt}
                   onChange={onChange}
+                  onBlur={updateState}
                 />
               </Form.Field>
             }
@@ -75,7 +97,11 @@ class AudioResponseEditor extends Component {
             content="This component will fallback to a text input prompt when the participant's browser or device does not support audio recording."
           />
 
-          <DataHeader content={header} onChange={onChange} />
+          <DataHeader
+            content={header}
+            onChange={onChange}
+            onBlur={updateState}
+          />
         </Container>
       </Form>
     );

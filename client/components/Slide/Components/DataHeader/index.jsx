@@ -3,9 +3,20 @@ import PropTypes from 'prop-types';
 import { Form, Message, Popup } from 'semantic-ui-react';
 
 class DataHeader extends Component {
+  shouldComponentUpdate(newProps) {
+    return this.props.content !== newProps.content;
+  }
+
   render() {
-    const { content, onChange } = this.props;
+    const { content, onBlur, onChange } = this.props;
     const color = content ? 'grey' : 'red';
+    const eventHandlers = {};
+    if (onBlur) {
+      eventHandlers.onBlur = onBlur;
+    }
+    if (onChange) {
+      eventHandlers.onChange = onChange;
+    }
     const trigger = (
       <Fragment>
         <Form.TextArea
@@ -13,7 +24,7 @@ class DataHeader extends Component {
           label="Data Header"
           name="header"
           value={content}
-          onChange={onChange}
+          {...eventHandlers}
         />
         This is only displayed in researcher data, as the column name for this
         response.
@@ -30,7 +41,8 @@ class DataHeader extends Component {
 }
 
 DataHeader.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func,
+  onChange: PropTypes.func,
   content: PropTypes.any
 };
 

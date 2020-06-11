@@ -12,7 +12,7 @@ class Display extends React.Component {
     super(props);
 
     this.state = {
-      response: null
+      response: this.props.responsesById[this.props.recallId] || null
     };
     this.pollForNewResponse = this.pollForNewResponse.bind(this);
     this.interval = null;
@@ -68,18 +68,17 @@ class Display extends React.Component {
 
     this.interval = setInterval(async () => {
       const previous = await getResponse({
-        id, responseId
+        id,
+        responseId
       });
 
       if (previous) {
-        const {
-          response
-        } = previous;
+        const { response } = previous;
 
         if (hash(response) !== hash(this.state.response)) {
           clearInterval(this.interval);
           this.setState({
-            response,
+            response
           });
         }
       }
