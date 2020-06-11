@@ -1,6 +1,7 @@
 import { type } from './meta';
 import React from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import { Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { getResponse } from '@client/actions/response';
@@ -13,18 +14,22 @@ class Display extends React.Component {
     this.state = {
       response: null
     };
+    this.pollForNewResponse = this.pollForNewResponse.bind(this);
+    this.interval = null;
   }
 
   get isScenarioRun() {
     return location.pathname.includes('/run/');
   }
 
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
   async componentDidMount() {
     if (!this.isScenarioRun) {
-      return;
-    }
-
-    if (this.state.response) {
       return;
     }
 
@@ -45,7 +50,42 @@ class Display extends React.Component {
     this.setState({
       response: response || this.state.response
     });
+
+    if (response && response.type === 'AudioResponse') {
+      this.pollForNewResponse();
+    }
   }
+
+  async pollForNewResponse() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    const {
+      getResponse,
+      recallId: responseId,
+      run: { id }
+    } = this.props;
+
+    this.interval = setInterval(async () => {
+      const previous = await getResponse({
+        id, responseId
+      });
+
+      if (previous) {
+        const {
+          response
+        } = previous;
+
+        if (hash(response) !== hash(this.state.response)) {
+          clearInterval(this.interval);
+          this.setState({
+            response,
+          });
+        }
+      }
+    }, 2000);
+  }
+
   render() {
     const { response } = this.state;
 
