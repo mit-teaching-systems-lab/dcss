@@ -11,7 +11,7 @@ class Display extends React.Component {
     super(props);
 
     this.state = {
-      response: this.props.responsesById[this.props.recallId] || null
+      response: null
     };
   }
 
