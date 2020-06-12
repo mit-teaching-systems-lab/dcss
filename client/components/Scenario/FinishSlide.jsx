@@ -22,6 +22,14 @@ class FinishSlide extends React.Component {
     return location.pathname.includes('/cohort/');
   }
 
+  async componentDidMount() {
+    if (!this.isScenarioRun) {
+      return;
+    }
+
+    window.scrollTo(0, 0);
+  }
+
   onCancel() {
     if (!this.isScenarioRun) {
       return;

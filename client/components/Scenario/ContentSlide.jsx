@@ -73,6 +73,8 @@ class ContentSlide extends React.Component {
       hasChanged: false,
       pending
     });
+
+    window.scrollTo(0, 0);
   }
 
   onSkip(event, { name }) {

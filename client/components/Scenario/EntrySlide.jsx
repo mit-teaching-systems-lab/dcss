@@ -25,6 +25,16 @@ class EntrySlide extends React.Component {
     }
   }
 
+  async componentDidMount() {
+    if (!this.isScenarioRun) {
+      this.setState({
+        isReady: true
+      });
+      return;
+    }
+
+    window.scrollTo(0, 0);
+  }
   render() {
     const { run, scenario } = this.props;
     const { title, description, consent } = scenario;

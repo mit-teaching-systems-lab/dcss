@@ -279,15 +279,6 @@ class Scenario extends Component {
 
     const classes = 'ui centered card scenario__card--run';
 
-
-
-
-    // Previously, this would scroll the slide to the top when rendering,
-    // but that appears to be too aggressive.
-    // <Ref innerRef={node => node.scrollIntoView(node)}>
-    //   <Grid.Column>{slides && slides[activeRunSlideIndex]}</Grid.Column>
-    // </Ref>
-
     return this.isScenarioRun ? (
       <Grid columns={1}>
         <Grid.Column>{slides && slides[activeRunSlideIndex]}</Grid.Column>
