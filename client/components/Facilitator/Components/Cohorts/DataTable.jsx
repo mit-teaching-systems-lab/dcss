@@ -100,7 +100,7 @@ export class DataTable extends React.Component {
 
     const scenarios = cohortId
       ? this.props.cohort.scenarios
-      : this.props.scenarios.map(scenario => scenario.id);
+      : [...new Set(this.props.scenarios.map(scenario => scenario.id))];
 
     const tables = [];
     const rows = [];
@@ -129,11 +129,12 @@ export class DataTable extends React.Component {
     } else {
       /*
 
-                prompts:    an object of scenario id keys. Each key's value
-                            is an array of prompts for a single scenario
-                responses:  an array of responses for all scenarios in this
-                            cohort, from this participant.
-             */
+        prompts:    an object of scenario id keys. Each key's value
+                    is an array of prompts for a single scenario
+        responses:  an array of responses for all scenarios in this
+                    cohort, from this participant.
+      */
+
       const reduced = reduceResponses('scenario_id', responses);
       // eslint-disable-next-line require-atomic-updates
       for (const scenarioId of scenarios) {

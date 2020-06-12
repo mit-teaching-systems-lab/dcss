@@ -229,7 +229,7 @@ class MyScenarios extends Component {
         {source && source.runId && (
           <Ref
             key={`ref-${source.runId}`}
-            innerRef={node => (this.tableRef = node)}
+            innerRef={node => scrollIntoView(node, { block: 'start' })}
           >
             <DataTable
               key={`datatable-${source.runId}`}

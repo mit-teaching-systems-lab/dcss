@@ -124,7 +124,7 @@ export const setCohortUserRole = ({ id, role }) => async dispatch => {
   try {
     const users = await (await fetch(`/api/cohort/${id}/join/${role}`)).json();
     if (users.error) {
-      throw users.error;
+      throw users;
     }
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
   } catch (error) {
