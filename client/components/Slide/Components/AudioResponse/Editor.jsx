@@ -113,6 +113,7 @@ AudioResponseEditor.propTypes = {
   scenarioId: PropTypes.any,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    id: PropTypes.string,
     header: PropTypes.string,
     prompt: PropTypes.string,
     recallId: PropTypes.string,

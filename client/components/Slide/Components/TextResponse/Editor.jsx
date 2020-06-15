@@ -33,15 +33,14 @@ class TextResponseEditor extends React.Component {
   }
 
   componentWillUnmount() {
-    this.updateState();
     clearInterval(this.timeout);
+    this.updateState();
   }
 
   delayUpdateState() {
-    if (!this.timeout) {
+    if (this.timeout) {
       clearTimeout(this.timeout);
     }
-
     this.timeout = setTimeout(this.updateState, 5000);
   }
 
@@ -115,6 +114,7 @@ TextResponseEditor.propTypes = {
   slideIndex: PropTypes.any,
   scenarioId: PropTypes.any,
   value: PropTypes.shape({
+    id: PropTypes.string,
     placeholder: PropTypes.string,
     header: PropTypes.string,
     prompt: PropTypes.string,

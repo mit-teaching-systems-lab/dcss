@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { v4 as uuid } from 'uuid';
 import {
   Checkbox,
   Grid,
@@ -39,6 +40,12 @@ export default class SlideEditor extends Component {
     const { activeComponentIndex, mode } = Storage.get(this.sessionKey, {
       activeComponentIndex: -1,
       mode: 'edit'
+    });
+
+    components.forEach(component => {
+      if (!component.id) {
+        component.id = uuid();
+      }
     });
 
     this.state = {
@@ -166,6 +173,8 @@ export default class SlideEditor extends Component {
     const component = Components[type].defaultValue({
       responseId: generateResponseId(type)
     });
+
+    component.id = uuid();
 
     if (activeComponentIndex === components.length) {
       components.push(component);
@@ -365,9 +374,13 @@ export default class SlideEditor extends Component {
                             }
                           };
 
+                          if (!value.id) {
+                            value.id = uuid();
+                          }
+
                           return mode === 'edit' ? (
                             <Draggable
-                              key={`draggable-key-${index}`}
+                              key={`draggable-key-${value.id}`}
                               draggableId={`draggable-id-${index}`}
                               index={index}
                             >
@@ -418,6 +431,8 @@ export default class SlideEditor extends Component {
                                         />
 
                                         <ComponentEditor
+                                          key={value.id}
+                                          id={value.id}
                                           slideIndex={this.props.index}
                                           scenarioId={scenarioId}
                                           value={value}
@@ -432,9 +447,9 @@ export default class SlideEditor extends Component {
                               }}
                             </Draggable>
                           ) : (
-                            <Fragment key={`component-fragment-${index}`}>
+                            <Fragment key={`component-fragment-${value.id}`}>
                               <ComponentDisplay
-                                key={`component-preview-${index}`}
+                                key={`component-preview-${value.id}`}
                                 {...value}
                               />
                             </Fragment>

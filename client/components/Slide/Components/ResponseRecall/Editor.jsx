@@ -147,6 +147,7 @@ ResponseRecallEditor.propTypes = {
   scenarioId: PropTypes.any,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    id: PropTypes.string,
     type: PropTypes.oneOf([type]),
     recallId: PropTypes.string,
     components: PropTypes.array

@@ -41,9 +41,10 @@ class DataHeader extends Component {
 }
 
 DataHeader.propTypes = {
+  content: PropTypes.any,
+  id: PropTypes.string,
   onBlur: PropTypes.func,
-  onChange: PropTypes.func,
-  content: PropTypes.any
+  onChange: PropTypes.func
 };
 
 export default DataHeader;

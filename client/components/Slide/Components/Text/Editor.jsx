@@ -38,6 +38,7 @@ TextEditor.propTypes = {
   scenarioId: PropTypes.node,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.shape({
+    id: PropTypes.string,
     type: PropTypes.oneOf([type]),
     html: PropTypes.string
   })

@@ -245,6 +245,9 @@ async function copyScenarioAsync(req, res) {
         if (component.recallId && !slidesNeedRecallIdUpdate.includes(slide)) {
           slidesNeedRecallIdUpdate.push(slide);
         }
+
+        // Make sure that all components have a new id
+        component.id = uuid();
       }
     }
 

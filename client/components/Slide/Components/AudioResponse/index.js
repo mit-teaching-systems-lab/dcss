@@ -5,6 +5,7 @@ export { default as Editor } from './Editor';
 export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
   header: '',
+  id: '',
   prompt: 'Record your response',
   recallId: '',
   required: true,

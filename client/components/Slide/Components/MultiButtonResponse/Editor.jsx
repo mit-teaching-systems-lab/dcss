@@ -57,12 +57,12 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   componentWillUnmount() {
-    this.updateState();
     clearInterval(this.timeout);
+    this.updateState();
   }
 
   delayUpdateState() {
-    if (!this.timeout) {
+    if (this.timeout) {
       clearTimeout(this.timeout);
     }
 
@@ -261,6 +261,7 @@ MultiButtonResponseEditor.propTypes = {
   scenarioId: PropTypes.any,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
+    id: PropTypes.string,
     buttons: PropTypes.array,
     header: PropTypes.string,
     prompt: PropTypes.string,

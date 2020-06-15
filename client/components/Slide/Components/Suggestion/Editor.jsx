@@ -76,6 +76,7 @@ SuggestionEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   scenarioId: PropTypes.any,
   value: PropTypes.shape({
+    id: PropTypes.string,
     color: PropTypes.string,
     html: PropTypes.string,
     open: PropTypes.bool,

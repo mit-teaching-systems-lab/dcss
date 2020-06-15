@@ -6,5 +6,6 @@ export { default as Card } from './Card';
 export const defaultValue = () => ({
   color: 'grey',
   html: '<Message color="grey"><p>Type your suggestion here</p></Message>',
+  id: '',
   type
 });
