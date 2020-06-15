@@ -110,40 +110,40 @@ const dataInitialState = {
   responses: []
 };
 
-const getCohortData = (state = dataInitialState, action) => {
-  const { type, prompts, responses } = action;
+// const getCohortData = (state = dataInitialState, action) => {
+//   const { type, prompts, responses } = action;
 
-  switch (type) {
-    case GET_COHORT_DATA_SUCCESS:
-    case GET_RUN_DATA_SUCCESS:
-      return {
-        ...state,
-        prompts,
-        responses
-      };
-    default:
-      return state;
-  }
-};
+//   switch (type) {
+//     case GET_COHORT_DATA_SUCCESS:
+//     case GET_RUN_DATA_SUCCESS:
+//       return {
+//         ...state,
+//         prompts,
+//         responses
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
-const setCohortUserRole = (state = cohortInitialState, action) => {
-  const { type, users } = action;
-  if (type === SET_COHORT_USER_ROLE_SUCCESS) {
-    return {
-      ...state,
-      users
-    };
-  }
+// const setCohortUserRole = (state = cohortInitialState, action) => {
+//   const { type, users } = action;
+//   if (type === SET_COHORT_USER_ROLE_SUCCESS) {
+//     return {
+//       ...state,
+//       users
+//     };
+//   }
 
-  return state;
-};
+//   return state;
+// };
 
 export default combineReducers({
   allCohorts,
   currentCohort,
   userCohorts,
   getCohorts,
-  getCohort,
-  getCohortData,
-  setCohortUserRole
+  getCohort
+  // getCohortData,
+  // setCohortUserRole
 });
