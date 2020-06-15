@@ -19,18 +19,20 @@ export const scenarios = (state = [], action) => {
         scenario.id: index
          */
       };
-      return [...state, ...scenarios].reduce((accum, scenario) => {
-        // If we've already seen this scenario, then it was already
-        // in "state" and we should replace it with the newer version.
-        const index = seen[scenario.id];
-        if (index !== undefined) {
-          accum[index] = scenario;
-        } else {
-          seen[scenario.id] = accum.length;
-          accum.push(scenario);
-        }
-        return accum;
-      }, []).sort((a, b) => a.id > b.id);
+      return [...state, ...scenarios]
+        .reduce((accum, scenario) => {
+          // If we've already seen this scenario, then it was already
+          // in "state" and we should replace it with the newer version.
+          const index = seen[scenario.id];
+          if (index !== undefined) {
+            accum[index] = scenario;
+          } else {
+            seen[scenario.id] = accum.length;
+            accum.push(scenario);
+          }
+          return accum;
+        }, [])
+        .sort((a, b) => a.id > b.id);
     }
     case SET_SCENARIO:
     case GET_SCENARIO_SUCCESS: {
@@ -38,7 +40,7 @@ export const scenarios = (state = [], action) => {
         return [...state];
       }
 
-      const index = state.findIndex(({id}) => id === scenario.id);
+      const index = state.findIndex(({ id }) => id === scenario.id);
 
       if (index !== -1) {
         state[index] = scenario;
@@ -65,7 +67,7 @@ export const scenariosById = (state = {}, action) => {
       }, {});
       return {
         ...state,
-        ...scenariosById,
+        ...scenariosById
       };
     }
     case SET_SCENARIO:
