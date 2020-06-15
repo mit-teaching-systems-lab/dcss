@@ -2,7 +2,6 @@ import {
   // CREATE_COHORT,
   CREATE_COHORT_SUCCESS,
   CREATE_COHORT_ERROR,
-  SET_COHORT,
   SET_COHORT_SUCCESS,
   SET_COHORT_ERROR,
   // GET_COHORT,
@@ -11,8 +10,8 @@ import {
   // GET_COHORT_PARTICIPANTS,
   GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_PARTICIPANTS_ERROR,
-  GET_COHORT_DATA_SUCCESS,
-  GET_COHORT_DATA_ERROR,
+  GET_COHORT_RUN_DATA_SUCCESS,
+  GET_COHORT_RUN_DATA_ERROR,
   // GET_ALL_COHORTS,
   GET_ALL_COHORTS_SUCCESS,
   GET_ALL_COHORTS_ERROR,
@@ -53,7 +52,7 @@ export const createCohort = ({ name }) => async dispatch => {
 };
 
 export const setCohort = cohort => async dispatch => {
-  dispatch({ type: SET_COHORT, cohort });
+  // dispatch({ type: SET_COHORT, cohort });
   try {
     const { scenarios } = cohort;
     const body = JSON.stringify({
@@ -173,11 +172,14 @@ export const getCohortData = params => async dispatch => {
 
     const { prompts, responses } = response;
 
-    dispatch({ type: GET_COHORT_DATA_SUCCESS, prompts, responses });
+    // This dispatch does not update internal state, since
+    // such state would be thrown away:
+    // dispatch({ type: GET_COHORT_RUN_DATA_SUCCESS, prompts, responses });
+    //
     return { prompts, responses };
   } catch (error) {
     dispatch({
-      type: GET_COHORT_DATA_ERROR,
+      type: GET_COHORT_RUN_DATA_ERROR,
       error
     });
     // pass along the error to the promise action

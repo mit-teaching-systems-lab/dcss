@@ -296,8 +296,7 @@ MyScenarios.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { userCohorts: cohorts } = state.cohort;
-  const { runs, scenarios, user } = state;
+  const { cohorts, runs, scenarios, user } = state;
   return { runs, cohorts, scenarios, user };
 };
 

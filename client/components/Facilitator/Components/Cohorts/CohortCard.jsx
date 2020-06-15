@@ -34,9 +34,7 @@ CohortCard.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const {
-    cohort: { userCohorts: cohorts }
-  } = state;
+  const { cohorts } = state;
   const cohort = cohorts.find(cohort => cohort.id === props.id);
   const scenarios = cohort.scenarios.map(id =>
     state.scenarios.find(scenario => scenario.id === id)

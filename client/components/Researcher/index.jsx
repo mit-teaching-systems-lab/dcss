@@ -276,8 +276,7 @@ Researcher.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { allCohorts: cohorts } = state.cohort;
-  const { runs, scenarios, user } = state;
+  const { cohorts, runs, scenarios, user } = state;
   return { cohorts, runs, scenarios, user };
 };
 

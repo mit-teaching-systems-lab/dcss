@@ -168,9 +168,8 @@ Run.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
-  const { id, username, permissions } = state.login;
-  const { currentCohort: cohort } = state.cohort;
-  const { responses, run } = state;
+  const { permissions } = state.login;
+  const { cohort, responses, run, user } = state;
 
   return {
     activeRunSlideIndex: Number(
@@ -181,7 +180,7 @@ const mapStateToProps = (state, ownProps) => {
     cohort,
     responses,
     run,
-    user: { id, username, permissions }
+    user: { ...user, permissions }
   };
 };
 

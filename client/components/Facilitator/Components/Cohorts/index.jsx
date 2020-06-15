@@ -292,8 +292,7 @@ Cohorts.propTypes = {
 
 const mapStateToProps = state => {
   const { permissions } = state.login;
-  const { currentCohort: cohort, userCohorts: cohorts } = state.cohort;
-  const { scenarios, user } = state;
+  const { cohort, cohorts, scenarios, user } = state;
   return { cohort, cohorts, scenarios, user: { ...user, permissions } };
 };
 

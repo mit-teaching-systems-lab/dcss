@@ -80,10 +80,10 @@ export const getScenarioRunHistory = params => async dispatch => {
   }
 };
 
-export const getSlides = scenarioId => async dispatch => {
+export const getSlides = id => async dispatch => {
   try {
     const { slides, error } = await (await fetch(
-      `/api/scenarios/${scenarioId}/slides`
+      `/api/scenarios/${id}/slides`
     )).json();
 
     if (error) {

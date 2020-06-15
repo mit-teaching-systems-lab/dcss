@@ -87,10 +87,9 @@ DataTableMenu.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { username, permissions } = state.login;
-  const { currentCohort: cohort } = state.cohort;
-  const { scenarios } = state;
-  return { cohort, scenarios, user: { username, permissions } };
+  const { permissions } = state.login;
+  const { cohort, scenarios, user } = state;
+  return { cohort, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({

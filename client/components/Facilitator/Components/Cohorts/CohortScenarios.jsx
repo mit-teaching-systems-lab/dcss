@@ -508,8 +508,7 @@ CohortScenarios.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { user } = state;
-  const { currentCohort: cohort, userCohorts: cohorts } = state.cohort;
+  const { cohort, cohorts, user } = state;
   const scenarios = state.scenarios.filter(
     scenario => scenario.deleted_at === null
   );

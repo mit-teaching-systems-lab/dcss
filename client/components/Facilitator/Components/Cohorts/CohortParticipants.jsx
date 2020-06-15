@@ -368,7 +368,7 @@ CohortParticipants.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { currentCohort: cohort } = state.cohort;
+  const { cohort } = state;
   const { users: participants } = cohort;
   const { scenarios } = state.scenario;
   return { cohort, participants, scenarios };

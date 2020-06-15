@@ -17,7 +17,7 @@ import {
   SET_COHORT_ERROR,
   GET_ALL_COHORTS_ERROR,
   GET_USER_COHORTS_ERROR,
-  GET_COHORT_DATA_ERROR,
+  GET_COHORT_RUN_DATA_ERROR,
   GET_RUNS_ERROR,
   LINK_RUN_TO_COHORT_ERROR
 } from '@client/actions/types';
@@ -54,7 +54,7 @@ const cohorts = (state = null, action) => {
 const cohortdata = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
-    case GET_COHORT_DATA_ERROR:
+    case GET_COHORT_RUN_DATA_ERROR:
       return {
         ...error
       };

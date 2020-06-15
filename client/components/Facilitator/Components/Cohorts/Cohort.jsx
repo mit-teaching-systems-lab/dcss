@@ -171,7 +171,6 @@ export class Cohort extends React.Component {
     const cohortUrl = `${location.origin}/cohort/${cohort.id}`;
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
 
-    // console.log("user", user);
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
 
@@ -329,8 +328,7 @@ Cohort.propTypes = {
 
 const mapStateToProps = state => {
   const { permissions } = state.login;
-  const { currentCohort: cohort } = state.cohort;
-  const { scenarios, user } = state;
+  const { cohort, scenarios, user } = state;
   const cohortUser = cohort.users.find(
     cohortMember => cohortMember.id === user.id
   );
