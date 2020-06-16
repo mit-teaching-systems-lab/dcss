@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
 import _ from 'lodash';
 import changeCase from 'change-case';
@@ -29,7 +29,6 @@ class ScenariosList extends Component {
       viewScenarios: []
     };
 
-    this.onClickCreateScenario = this.onClickCreateScenario.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.reduceScenarios = this.reduceScenarios.bind(this);
     this.moveDeletedScenarios = this.moveDeletedScenarios.bind(this);
@@ -152,13 +151,9 @@ class ScenariosList extends Component {
     });
   }
 
-  onClickCreateScenario() {
-    location.href = '/editor/new';
-  }
-
   render() {
     const { isReady, heading, scenarios } = this.state;
-    const { onClickCreateScenario, onSearchChange } = this;
+    const { onSearchChange } = this;
 
     return (
       <React.Fragment>
@@ -172,7 +167,9 @@ class ScenariosList extends Component {
               >
                 <Menu.Item
                   name="Create a scenario"
-                  onClick={onClickCreateScenario}
+                  as={NavLink}
+                  exact
+                  to="/editor/new"
                   className="scenarios__menu-item--padding"
                 >
                   <Icon.Group className="em__icon-group-margin">
