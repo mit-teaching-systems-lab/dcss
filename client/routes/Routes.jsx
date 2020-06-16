@@ -127,6 +127,24 @@ const Routes = ({ isLoggedIn }) => {
 
       <RedirectRouteForInactiveSession
         isLoggedIn={isLoggedIn}
+        path="/editor/:id/scenario/:activeNonZeroSlideIndex"
+      >
+        <ConfirmAuth
+          path="/editor/:id/scenario/:activeNonZeroSlideIndex"
+          requiredPermission="create_scenario"
+        >
+          <Route
+            render={props => {
+              return (
+                <Editor {...makeEditorProps(props)} activeTab="scenario" />
+              );
+            }}
+          />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
         path="/editor/:id/scenario"
       >
         <ConfirmAuth

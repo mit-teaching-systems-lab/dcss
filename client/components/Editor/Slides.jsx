@@ -261,8 +261,11 @@ class Slides extends React.Component {
         if (this.slideRefs[activeSlideIndex]) {
           scrollIntoView(this.slideRefs[activeSlideIndex]);
         }
-
-        this.props.setActiveSlide(activeSlideIndex);
+        // Don't let the initial state.isReady call trigger this
+        // slide activator
+        if (!state.isReady) {
+          this.props.setActiveSlide(activeSlideIndex);
+        }
 
         Storage.set(this.sessionKey, { activeSlideIndex, minimized });
         callback();

@@ -40,7 +40,7 @@ class Editor extends Component {
     } = this.props;
 
     if (!scenarioId) {
-      scenarioId = isNewScenario ? 'new' : match.params.id;
+      scenarioId = isNewScenario ? 'new' : Number(match.params.id);
     }
 
     if (isNewScenario) {
@@ -90,28 +90,49 @@ class Editor extends Component {
 
   onClick(e, { name: activeTab }) {
     this.setState({ activeTab });
-    const { activeSlideIndex, scenarioId } = this.state;
-    const updated = Storage.merge(this.sessionKey, {
-      activeSlideIndex,
+    const { scenarioId } = this.state;
+    // const updated = Storage.merge(this.sessionKey, {
+    //   activeSlideIndex,
+    //   activeTab
+    // });
+
+    let activeNonZeroSlideIndex = Number(
+      this.props.match.params.activeNonZeroSlideIndex ||
+        this.props.match.params.activeRunSlideIndex
+    );
+
+    const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
+
+    this.props.history.push(pathname);
+
+    Storage.set(this.sessionKey, {
+      activeSlideIndex: activeNonZeroSlideIndex,
       activeTab
     });
-
-    const activeNonZeroSlideIndex = updated.activeSlideIndex + 1;
-    const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
-    this.props.history.push(pathname);
   }
 
   setActiveView({ activeTab, activeSlideIndex }) {
     const { scenarioId } = this.state;
+    /*
 
-    Storage.set(this.sessionKey, { activeTab, activeSlideIndex });
+        High likelihood that this is buggy.
 
-    const activeNonZeroSlideIndex = activeSlideIndex + 1 || 1;
-    const pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
+
+     */
+
+    let activeNonZeroSlideIndex = activeSlideIndex + 1 || 1;
+    let pathname;
+
+    if (activeTab === 'preview') {
+      activeNonZeroSlideIndex = activeSlideIndex;
+      pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
+      this.setState({ activeTabSlideIndex: activeNonZeroSlideIndex });
+    } else {
+      pathname = `/editor/${scenarioId}/${activeTab}/${activeNonZeroSlideIndex}`;
+      this.setState({ activeSlideIndex });
+    }
+
     this.props.history.push(pathname);
-
-    // TODO: verify that this is correct
-    this.setState({ activeSlideIndex });
   }
 
   onClickScenarioAction(event, data) {
@@ -288,7 +309,7 @@ class Editor extends Component {
       return scenario => {
         history.push(`/editor/${scenario.id}`);
         this.setState({ scenarioId: scenario.id }, () => {
-          setActiveView({ activeTab: 'slides', activeSlideIndex: 0 });
+          setActiveView({ activeTab: 'slides', activeSlideIndex: 1 });
         });
       };
     }
@@ -374,6 +395,8 @@ Editor.propTypes = {
     path: PropTypes.string,
     params: PropTypes.shape({
       id: PropTypes.node,
+      activeNonZeroSlideIndex: PropTypes.node,
+      activeRunSlideIndex: PropTypes.node,
       activeSlideIndex: PropTypes.node
     }).isRequired
   }).isRequired,
@@ -397,7 +420,8 @@ Editor.propTypes = {
   status: PropTypes.number
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const scenarioId = Number(ownProps.scenarioId);
   const {
     author,
     categories,
@@ -408,6 +432,7 @@ const mapStateToProps = state => {
     title
   } = state.scenario;
   return {
+    scenarioId,
     author,
     categories,
     consent,
