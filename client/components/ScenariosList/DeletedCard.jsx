@@ -5,15 +5,13 @@ import './ScenariosList.css';
 
 const DeletedCard = ({ id, title, description, onClick }) => {
   return (
-    <Card className="scenario__entry deleted" key={id}>
+    <Card className="sc sc__margin-height deleted" key={id}>
       <Card.Content>
         <Card.Header className="strike">{title}</Card.Header>
-        <Card.Description className="scenario__entry--description strike">
-          {description}
-        </Card.Description>
+        <Card.Description className="strike">{description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        <Button.Group className="scenario__entry--edit-buttons">
+        <Button.Group className="sc__edit-buttons">
           <Button name="restore" onClick={onClick}>
             Restore
           </Button>

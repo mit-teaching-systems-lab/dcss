@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Button, Card, Icon } from 'semantic-ui-react';
 import Storage from '@utils/Storage';
-import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
 import './ScenariosList.css';
@@ -19,10 +18,10 @@ class ScenarioCard extends React.Component {
       scenario
     };
 
-    this.onClick = this.onClick.bind(this);
+    this.onRestoreClick = this.onRestoreClick.bind(this);
   }
 
-  async onClick(event, { name }) {
+  async onRestoreClick(event, { name }) {
     if (name === 'restore') {
       const originalScenario = this.state.scenario;
       originalScenario.deleted_at = null;
@@ -45,8 +44,8 @@ class ScenarioCard extends React.Component {
   }
 
   render() {
-    const { onClick } = this;
-    const { isLoggedIn, user } = this.props;
+    const { onRestoreClick } = this;
+    const { isLoggedIn, onClick, user } = this.props;
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
@@ -71,18 +70,16 @@ class ScenarioCard extends React.Component {
           id={id}
           title={title}
           description={description}
-          onClick={onClick}
+          onClick={onRestoreClick}
         />
       </ConfirmAuth>
     ) : (
-      <Card className="scenario__entry" key={id}>
-        <Card.Content>
+      <Card className="sc sc__margin-height" key={id}>
+        <Card.Content onClick={onClick}>
           <Card.Header>
             {officialCheckmark} {title}
           </Card.Header>
-          <Card.Description className="scenario__entry--description">
-            {description}
-          </Card.Description>
+          <Card.Description>{description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
           <Button
@@ -90,18 +87,18 @@ class ScenarioCard extends React.Component {
             fluid
             as={Link}
             to={{ pathname: `/run/${id}/slide/${run.activeRunSlideIndex}` }}
-            className="scenario__entry--button"
+            className="sc__button"
           >
             Run
           </Button>
         </Card.Content>
         {isLoggedIn && (
           <Card.Content extra>
-            <Button.Group className="scenario__entry--edit-buttons">
+            <Button.Group className="sc__edit-buttons">
               <ConfirmAuth isAuthorized={isAuthorized}>
                 <Button
                   basic
-                  className="scenario__entry--button"
+                  className="sc__button"
                   as={Link}
                   to={{
                     pathname: `/editor/${id}/${editor.activeTab}/${editor.nonZeroIndex}`
@@ -113,7 +110,7 @@ class ScenarioCard extends React.Component {
               <ConfirmAuth requiredPermission="create_scenario">
                 <Button
                   basic
-                  className="scenario__entry--button"
+                  className="sc__button"
                   as={Link}
                   to={{ pathname: `/editor/copy/${id}` }}
                 >
@@ -129,8 +126,8 @@ class ScenarioCard extends React.Component {
 }
 
 ScenarioCard.propTypes = {
-  getScenarios: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
+  onClick: PropTypes.func,
   scenario: PropTypes.object,
   user: PropTypes.object
 };
@@ -143,9 +140,7 @@ const mapStateToProps = state => {
   return { isLoggedIn, user };
 };
 
-const mapDispatchToProps = {
-  getScenarios
-};
+const mapDispatchToProps = {};
 
 export default connect(
   mapStateToProps,

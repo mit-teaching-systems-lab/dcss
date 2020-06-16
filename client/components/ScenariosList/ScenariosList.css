@@ -1,22 +1,33 @@
-.scenario__entry--edit-buttons {
-    width: 100%;
+.sc__edit-buttons {
+  width: 100%;
 }
 
-.ui.basic.button.scenario__entry--button:hover {
-    background-color: #cacbcd !important;
+.ui.basic.button.sc__button:hover {
+  background-color: #cacbcd !important;
 }
 
-.ui.card.scenario__entry {
-    margin: 1rem auto;
+.ui.card.sc__margin-height {
+  height: 19rem !important;
+  margin-bottom: 0 !important;
 }
 
-.scenario__entry--description {
-    max-height: 10rem !important;
-    overflow-y: auto !important;
+.ui.card.sc .header {
+  max-height: 2.5em !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  /*white-space: nowrap !important;*/
+  overflow-wrap: anywhere !important;
+}
+.ui.card.sc .description {
+  /*4rem !important;*/
+  /*max-height: 10rem !important;*/
+  height: 5.25rem !important;
+  max-height: 5.25rem !important;
+  overflow-y: auto !important;
 }
 
 .scenarios__menu-item--padding {
-    padding: 0.428571em 1.14285714em !important;
+  padding: 0.428571em 1.14285714em !important;
 }
 
 .deleted {
@@ -26,3 +37,4 @@
 .strike {
   text-decoration: line-through !important;
 }
+

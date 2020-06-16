@@ -2,33 +2,84 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Card, Container, Grid, Icon, Input, Menu } from 'semantic-ui-react';
+import {
+  Card,
+  Container,
+  Grid,
+  Icon,
+  Input,
+  Menu,
+  Modal,
+  Pagination,
+  Popup
+} from 'semantic-ui-react';
 import _ from 'lodash';
+import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 // import nextKey from '@utils/key';
 import { getScenarios } from '@client/actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
-import ScenarioEntries from './ScenarioEntries';
+import ScenarioCard from './ScenarioCard';
 import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
+
+const CARDS_PER_PAGE = 8;
+
+/* eslint-disable */
+const SCENARIO_STATUS_DRAFT = 1;
+const SCENARIO_STATUS_PUBLIC = 2;
+const SCENARIO_STATUS_PRIVATE = 3;
+/* eslint-enable */
+
+const filter = (scenarios, isLoggedIn) => {
+  if (!scenarios.length) {
+    return [];
+  }
+
+  return scenarios.reduce((accum, scenario) => {
+    const { status, user_is_author: isAuthor } = scenario;
+
+    // This scenario status is "draft", to see it:
+    //  - user must be logged in
+    //  - user must be the author
+    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor)) {
+      return accum;
+    }
+    // This scenario status is "private", to see it:
+    //  - user must be logged in
+    if (status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
+      return accum;
+    }
+    accum.push(scenario);
+
+    return accum;
+  }, []);
+};
 
 class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
     const { category } = this.props;
-
+    const value = decodeURIComponent(window.location.search.replace('?q=', ''));
     this.state = {
+      open: false,
+      activePage: 1,
       category,
       isReady: false,
+      selected: {},
       heading: '',
       scenarios: [],
       viewHeading: '',
-      viewScenarios: []
+      viewScenarios: [],
+      value
     };
 
+    this.onPageChange = this.onPageChange.bind(this);
+    this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
+    this.onScenarioCardClose = this.onScenarioCardClose.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.reduceScenarios = this.reduceScenarios.bind(this);
     this.moveDeletedScenarios = this.moveDeletedScenarios.bind(this);
@@ -37,9 +88,14 @@ class ScenariosList extends Component {
   async componentDidMount() {
     await this.getScenarios();
     await this.reduceScenarios();
-    this.setState({
-      isReady: true
-    });
+    if (this.state.value) {
+      this.onSearchChange(
+        {},
+        {
+          value: this.state.value
+        }
+      );
+    }
   }
 
   moveDeletedScenarios(scenarios = []) {
@@ -60,11 +116,12 @@ class ScenariosList extends Component {
     let authorUsername = '';
 
     switch (category) {
-      case 'all':
+      case 'all': {
         scenarios.push(...this.props.scenarios);
         heading = 'All Scenarios';
         break;
-      case 'author':
+      }
+      case 'author': {
         authorUsername = this.props.match.params.username;
         heading = `Scenarios by ${authorUsername}`;
         scenarios.push(
@@ -78,22 +135,46 @@ class ScenariosList extends Component {
         }
 
         break;
+      }
       case 'official':
-      case 'community':
+      case 'community': {
         scenarios = this.props.scenarios.filter(({ categories }) => {
           return !category || categories.includes(category);
         });
         heading = `${changeCase.titleCase(category)} Scenarios`;
         break;
+      }
     }
 
     scenarios = this.moveDeletedScenarios(scenarios);
 
     this.setState({
+      isReady: true,
+      activePage: 1,
       heading,
       scenarios,
       viewScenarios: scenarios.slice(0),
       viewHeading: heading
+    });
+  }
+
+  onScenarioCardClick(selected) {
+    this.setState({
+      open: true,
+      selected
+    });
+  }
+
+  onScenarioCardClose() {
+    this.setState({
+      open: false,
+      selected: {}
+    });
+  }
+
+  onPageChange(event, { activePage }) {
+    this.setState({
+      activePage
     });
   }
 
@@ -104,6 +185,7 @@ class ScenariosList extends Component {
 
     if (value === '') {
       this.setState({
+        activePage: 1,
         scenarios: viewScenarios,
         heading: viewHeading
       });
@@ -146,83 +228,139 @@ class ScenariosList extends Component {
     }
 
     this.setState({
+      activePage: 1,
       heading: replacementHeading,
-      scenarios: results
+      scenarios: results,
+      value
     });
   }
 
   render() {
-    const { isReady, heading, scenarios } = this.state;
-    const { onSearchChange } = this;
+    const { isLoggedIn } = this.props;
+    const { activePage, isReady, heading, open, selected, value } = this.state;
+    const {
+      onPageChange,
+      onScenarioCardClick,
+      onScenarioCardClose,
+      onSearchChange
+    } = this;
 
-    return (
-      <React.Fragment>
-        <EditorMenu
-          type="scenarios"
-          items={{
-            left: [
-              <ConfirmAuth
-                key="menu-item-scenario-create"
-                requiredPermission="create_scenario"
-              >
-                <Menu.Item
-                  name="Create a scenario"
-                  as={NavLink}
-                  exact
-                  to="/editor/new"
-                  className="scenarios__menu-item--padding"
-                >
-                  <Icon.Group className="em__icon-group-margin">
-                    <Icon name="newspaper outline" />
-                    <Icon corner="top right" name="add" color="green" />
-                  </Icon.Group>
-                  Create a Scenario
-                </Menu.Item>
-              </ConfirmAuth>
-            ],
-            right: [
-              <Menu.Menu
-                key="menu-item-scenario-search"
-                name="Search scenarios"
-                position="right"
-              >
-                <Menu.Item
-                  name="Search scenarios"
-                  className="scenarios__menu-item--padding"
-                >
-                  <Input
-                    icon="search"
-                    placeholder="Search..."
-                    onChange={onSearchChange}
-                  />
-                </Menu.Item>
-              </Menu.Menu>
-            ]
-          }}
+    const url = `${window.location.origin}${window.location.pathname}${
+      value ? `?q=${encodeURIComponent(value)}` : ''
+    }`;
+    const scenarios = filter(this.state.scenarios, isLoggedIn);
+    const scenariosPages = Math.ceil(scenarios.length / CARDS_PER_PAGE);
+    const scenariosIndex = (activePage - 1) * CARDS_PER_PAGE;
+    const scenariosSlice = scenarios.slice(
+      scenariosIndex,
+      scenariosIndex + CARDS_PER_PAGE
+    );
+    const cards = scenariosSlice.map((scenario, index) => {
+      return (
+        <ScenarioCard
+          key={`scenario-card-${scenario.id}-${index}`}
+          scenario={scenario}
+          isLoggedIn={isLoggedIn}
+          onClick={() => onScenarioCardClick(scenario)}
         />
-        <Container fluid>
-          <Grid>
+      );
+    });
+
+    const left = [
+      <ConfirmAuth
+        key="menu-item-scenario-create"
+        requiredPermission="create_scenario"
+      >
+        <Menu.Item
+          name="Create a scenario"
+          as={NavLink}
+          exact
+          to="/editor/new"
+          className="scenarios__menu-item--padding"
+        >
+          <Icon.Group className="em__icon-group-margin">
+            <Icon name="newspaper outline" />
+            <Icon corner="top right" name="add" color="green" />
+          </Icon.Group>
+          Create a Scenario
+        </Menu.Item>
+      </ConfirmAuth>
+    ];
+
+    const menuTriggerCopy = (
+      <Menu.Item onClick={() => copy(url)}>
+        {heading} ({scenariosSlice.length})
+        <Icon name="clipboard outline" />
+      </Menu.Item>
+    );
+
+    const menuTriggerInput = (
+      <Menu.Item className="scenarios__menu-item--padding">
+        <Input
+          icon="search"
+          placeholder="Search..."
+          defaultValue={value || ''}
+          onChange={onSearchChange}
+        />
+      </Menu.Item>
+    );
+    const right = [
+      <Menu.Menu key="menu-item-scenario-search" position="right">
+        <Popup content="Copy link to this search" trigger={menuTriggerCopy} />
+        <Popup content="Search scenarios" trigger={menuTriggerInput} />
+      </Menu.Menu>
+    ];
+
+    if (!isReady) {
+      return <Loading />;
+    }
+    /*
             <Grid.Row>
               <Grid.Column stretched>
                 {heading && <h3>{heading}</h3>}
               </Grid.Column>
             </Grid.Row>
+
+ */
+    return (
+      <React.Fragment>
+        <EditorMenu type="scenarios" items={{ left, right }} />
+        <Container fluid>
+          <Grid>
             <Grid.Row>
               <Grid.Column stretched>
                 {isReady ? (
                   <Card.Group itemsPerRow={4} stackable>
-                    <ScenarioEntries
-                      scenarios={scenarios}
-                      isLoggedIn={this.props.isLoggedIn}
-                    />
+                    {cards}
                   </Card.Group>
                 ) : (
                   <Loading size="medium" />
                 )}
               </Grid.Column>
             </Grid.Row>
+            <Grid.Row>
+              <Grid.Column stretched>
+                <Pagination
+                  name="scenarios"
+                  siblingRange={1}
+                  boundaryRange={0}
+                  ellipsisItem={null}
+                  firstItem={null}
+                  lastItem={null}
+                  activePage={activePage}
+                  onPageChange={onPageChange}
+                  totalPages={scenariosPages}
+                />
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Container>
+        <Modal closeIcon open={open} onClose={onScenarioCardClose}>
+          <Modal.Header>{selected.title}</Modal.Header>
+          <Modal.Content>
+            <Modal.Description>{selected.description}</Modal.Description>
+          </Modal.Content>
+        </Modal>
       </React.Fragment>
     );
   }
@@ -242,15 +380,16 @@ ScenariosList.propTypes = {
     })
   }),
   scenarios: PropTypes.array,
-  username: PropTypes.string
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
   const {
-    login: { isLoggedIn, username },
-    scenarios
+    login: { isLoggedIn },
+    scenarios,
+    user
   } = state;
-  return { isLoggedIn, username, scenarios };
+  return { isLoggedIn, user, scenarios };
 };
 
 const mapDispatchToProps = {
