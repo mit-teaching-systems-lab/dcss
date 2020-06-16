@@ -74,7 +74,9 @@ class ContentSlide extends React.Component {
       pending
     });
 
-    window.scrollTo(0, 0);
+    if (this.isScenarioRun) {
+      window.scrollTo(0, 0);
+    }
   }
 
   onSkip(event, { name }) {

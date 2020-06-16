@@ -10,7 +10,7 @@ import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Loading from '@components/Loading';
 import Storage from '@utils/Storage';
-import { getScenario, setScenario } from '@client/actions/scenario';
+import { getSlides, getScenario, setScenario } from '@client/actions/scenario';
 import './Scenario.css';
 
 class Scenario extends Component {
@@ -81,41 +81,70 @@ class Scenario extends Component {
     const { baseurl, history, onSubmit } = this.props;
     switch (type) {
       case 'back':
-        return async () => {
-          if (onSubmit) {
-            await onSubmit();
+        return event => {
+          if (!this.isScenarioRun) {
+            event.stopPropagation();
           }
-          const activeRunSlideIndex = this.state.activeRunSlideIndex - 1;
-          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
-          this.setState({ activeRunSlideIndex }, () => {
-            if (location.pathname !== pathToSlide) {
-              history.push(pathToSlide);
+          (async () => {
+            if (onSubmit) {
+              await onSubmit();
             }
-          });
+            const activeRunSlideIndex = this.state.activeRunSlideIndex - 1;
+            const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
+
+            this.setState({ activeRunSlideIndex }, () => {
+              if (location.pathname !== pathToSlide) {
+                history.push(pathToSlide);
+              }
+            });
+          })();
         };
       case 'next':
       case 'finish':
-        return async () => {
-          if (onSubmit) {
-            await onSubmit();
+        return event => {
+          if (!this.isScenarioRun) {
+            event.stopPropagation();
           }
-          const activeRunSlideIndex = this.state.activeRunSlideIndex + 1;
-          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
-          this.setState({ activeRunSlideIndex }, () => {
-            if (location.pathname !== pathToSlide) {
-              history.push(pathToSlide);
+          (async () => {
+            if (onSubmit) {
+              await onSubmit();
             }
-          });
+            const activeRunSlideIndex = this.state.activeRunSlideIndex + 1;
+            const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
+
+            this.setState({ activeRunSlideIndex }, () => {
+              if (location.pathname !== pathToSlide) {
+                history.push(pathToSlide);
+              }
+            });
+          })();
         };
       default:
         return null;
     }
   }
 
+  getRunSlidePathname(type, zeroIndex) {
+    if (!this.isScenarioRun) {
+      return null;
+    }
+
+    const { baseurl } = this.props;
+
+    let runSlideIndex = type === 'back' ? zeroIndex - 1 : zeroIndex + 1;
+
+    if (runSlideIndex < 0) {
+      runSlideIndex = 0;
+    }
+
+    return `${baseurl}/slide/${runSlideIndex}`;
+  }
+
   async getScenarioMetaData() {
     if (this.state.title && this.state.description) {
+      console.log('getScenarioMetaData, if clause');
       const { title, description, consent, status } = this.state;
 
       this.props.setScenario({
@@ -132,6 +161,7 @@ class Scenario extends Component {
         status
       };
     } else {
+      console.log('getScenarioMetaData, else clause');
       const scenario = await this.props.getScenario(this.props.scenarioId);
 
       // TODO: determine if this actually does anything
@@ -157,13 +187,16 @@ class Scenario extends Component {
     const {
       baseurl,
       cohortId,
+      getScenario,
+      getSlides,
       onResponseChange,
       onRunChange = () => {},
       scenarioId
     } = this.props;
 
-    const metaData = await this.getScenarioMetaData();
-    const contents = await this.getScenarioContent();
+    const scenario = await (this.props.scenario || getScenario(scenarioId));
+    const contents = await getSlides(scenarioId);
+
     let finish = contents.find(slide => slide.is_finish) || null;
 
     if (finish) {
@@ -178,7 +211,7 @@ class Scenario extends Component {
         key="entry-slide"
         cohortId={cohortId}
         scenarioId={scenarioId}
-        scenario={metaData}
+        scenario={scenario}
         onChange={onRunChange}
         onNextClick={this.getOnClickHandler('next')}
       />
@@ -213,26 +246,20 @@ class Scenario extends Component {
     );
 
     this.setState({ slides, isReady: true });
-
-    if (!this.isScenarioRun) {
-      this.activateSlide(this.state.activeRunSlideIndex);
-    }
   }
 
   activateSlide(activeRunSlideIndex) {
     this.setState({ activeRunSlideIndex }, () => {
-      const activeSlideIndex = activeRunSlideIndex - 1;
-
-      this.props.setActiveSlide(activeSlideIndex);
+      this.props.setActiveSlide(activeRunSlideIndex);
       if (
-        this.slideRefs[activeSlideIndex] &&
-        this.slideRefIndex !== activeSlideIndex
+        this.slideRefs[activeRunSlideIndex] &&
+        this.slideRefIndex !== activeRunSlideIndex
       ) {
         // This prevents attempts to rescroll the slide
         // when you're on a very long slide that the
         // browser thinks you need to scroll to. :eyeroll:
-        this.slideRefIndex = activeSlideIndex;
-        scrollIntoView(this.slideRefs[activeSlideIndex], {
+        this.slideRefIndex = activeRunSlideIndex;
+        scrollIntoView(this.slideRefs[activeRunSlideIndex], {
           block: 'start'
         });
       }
@@ -242,7 +269,8 @@ class Scenario extends Component {
   render() {
     const { activeRunSlideIndex, isReady, slides } = this.state;
 
-    const activeSlideIndex = activeRunSlideIndex - 1;
+    // const activeSlideIndex = activeRunSlideIndex - 1;
+    const activeSlideIndex = activeRunSlideIndex;
 
     if (!isReady) {
       return <Loading />;
@@ -286,10 +314,10 @@ class Scenario extends Component {
     ) : (
       <Segment className="scenario__slide-preview-pane">
         {slides.map((slide, index) => {
-          const className =
-            activeSlideIndex === index - 1
-              ? `${classes} scenario__slide-preview-selected`
-              : classes;
+          const isActiveSlide = activeSlideIndex === index;
+          const className = isActiveSlide
+            ? `${classes} scenario__slide-preview-selected`
+            : classes;
 
           return index === 0 || index === slides.length - 1 ? (
             slide
@@ -297,11 +325,17 @@ class Scenario extends Component {
             <div
               className={className}
               key={`div-${index}`}
-              onClick={() => this.activateSlide(index - 1)}
+              onClick={() => this.activateSlide(index)}
             >
               <Ref
                 key={`ref-${index}`}
-                innerRef={node => (this.slideRefs[index - 1] = node)}
+                innerRef={node =>
+                  isActiveSlide &&
+                  scrollIntoView(node, {
+                    behavior: 'auto',
+                    block: 'start'
+                  })
+                }
               >
                 {slide}
               </Ref>
@@ -321,6 +355,7 @@ Scenario.propTypes = {
   cohortId: PropTypes.node,
   description: PropTypes.string,
   getScenario: PropTypes.func.isRequired,
+  getSlides: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
   location: PropTypes.shape({
     pathname: PropTypes.string,
@@ -337,6 +372,7 @@ Scenario.propTypes = {
   onRunChange: PropTypes.func,
   onSubmit: PropTypes.func,
   run: PropTypes.object,
+  scenario: PropTypes.object,
   scenarioId: PropTypes.node,
   setActiveSlide: PropTypes.func,
   setScenario: PropTypes.func.isRequired,
@@ -345,16 +381,19 @@ Scenario.propTypes = {
   title: PropTypes.string
 };
 
-const mapStateToProps = state => {
-  const { title, description, consent } = state.scenario;
+const mapStateToProps = (state, ownProps) => {
+  const scenario =
+    state.scenariosById[ownProps.scenarioId] || state.scenario || {};
+  const { title, description, consent } = scenario;
   const { run } = state;
   return { title, description, consent, run };
 };
 
-const mapDispatchToProps = {
-  getScenario,
+const mapDispatchToProps = dispatch => ({
+  getScenario: params => dispatch(getScenario(params)),
+  getSlides: params => dispatch(getSlides(params)),
   setScenario
-};
+});
 
 export default withRouter(
   connect(
