@@ -23,7 +23,7 @@ const restrictedNav = [
   {
     text: 'Research',
     path: '/research',
-    permission: 'view_run_data'
+    permission: 'view_all_run_data'
   },
   {
     text: 'Admin',
