@@ -59,7 +59,9 @@ class Login extends Component {
   }
 
   async doLogin() {
-    const { from, username, password } = this.state;
+    let { from, username, password } = this.state;
+
+    username = username.trim();
 
     const body = JSON.stringify({
       username,
