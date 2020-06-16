@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import {
   Button,
   Container,
@@ -7,9 +8,11 @@ import {
   Icon,
   Input,
   List,
-  Menu
+  Menu,
+  Table
 } from 'semantic-ui-react';
 import { type } from './meta';
+import ConfirmableDeleteButton from '@components/EditorMenu/ConfirmableDeleteButton';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Sortable from '@components/Sortable';
@@ -52,25 +55,41 @@ class MultiButtonResponseEditor extends React.Component {
 
     this.preventEmptyButtonField = this.preventEmptyButtonField.bind(this);
     this.updateState = this.updateState.bind(this);
-    this.delayUpdateState = this.delayUpdateState.bind(this);
+    this.delayedUpdateState = this.delayedUpdateState.bind(this);
     this.timeout = null;
   }
 
   componentWillUnmount() {
     clearInterval(this.timeout);
-    this.updateState();
+
+    const {
+      header,
+      prompt,
+      buttons,
+      recallId,
+      responseId
+    } = this.props.value;
+
+    const lastProps = {
+      header,
+      prompt,
+      buttons,
+      recallId,
+      responseId
+    };
+
+    console.log(lastProps);
+    if (hash(this.state) !== hash(lastProps)) {
+      this.updateState();
+    }
   }
 
-  delayUpdateState() {
+  delayedUpdateState() {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
 
-    this.timeout = setTimeout(this.updateState, 5000);
-  }
-
-  onChange(event, { name, value }) {
-    this.setState({ [name]: value }, this.delayUpdateState);
+    this.timeout = setTimeout(this.updateState, 500);
   }
 
   updateState() {
@@ -87,7 +106,9 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.delayUpdateState);
+    // This is not a typed text input, so there should be no delay
+    // applied to saving this state to the server.
+    this.setState({ recallId }, this.updateState);
   }
 
   onButtonAddClick() {
@@ -96,13 +117,17 @@ class MultiButtonResponseEditor extends React.Component {
       display: '',
       value: ''
     });
-    this.setState({ buttons }, this.delayUpdateState);
+    // This is not a typed text input, so there should be no delay
+    // applied to saving this state to the server.
+    this.setState({ buttons }, this.updateState);
   }
 
   onButtonDeleteClick(index) {
     const buttons = this.state.buttons.slice();
     buttons.splice(index, 1);
-    this.setState({ buttons }, this.delayUpdateState);
+    // This is not a typed text input, so there should be no delay
+    // applied to saving this state to the server.
+    this.setState({ buttons }, this.updateState);
   }
 
   onButtonOrderChange(fromIndex, toIndex) {
@@ -112,7 +137,7 @@ class MultiButtonResponseEditor extends React.Component {
   onButtonDetailChange(event, { index, name, value }) {
     const { buttons } = this.state;
     buttons[index][name] = value;
-    this.setState({ buttons }, this.delayUpdateState);
+    this.setState({ buttons }, this.delayedUpdateState);
   }
 
   preventEmptyButtonField(index) {
@@ -133,7 +158,9 @@ class MultiButtonResponseEditor extends React.Component {
       buttons[index].display = buttons[index].value;
     }
 
-    this.setState({ buttons }, this.delayUpdateState);
+    // This is not a typed text input, so there should be no delay
+    // applied to saving this state to the server.
+    this.setState({ buttons }, this.updateState);
   }
 
   moveButton(fromIndex, toIndex) {
@@ -141,7 +168,13 @@ class MultiButtonResponseEditor extends React.Component {
     const moving = buttons[fromIndex];
     buttons.splice(fromIndex, 1);
     buttons.splice(toIndex, 0, moving);
-    this.setState({ buttons }, this.delayUpdateState);
+    // This is not a typed text input, so there should be no delay
+    // applied to saving this state to the server.
+    this.setState({ buttons }, this.updateState);
+  }
+
+  onChange(event, { name, value }) {
+    this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
   render() {
@@ -175,76 +208,95 @@ class MultiButtonResponseEditor extends React.Component {
             onChange={onChange}
             onBlur={updateState}
           />
-          <Button icon onClick={onButtonAddClick}>
-            <Icon.Group size="large" className="em__icon-group-margin">
-              <Icon name="hand pointer outline" />
-              <Icon corner="top right" name="add" color="green" />
-            </Icon.Group>
-            Add A Button
-          </Button>
-          <List>
-            <Sortable onChange={onButtonOrderChange}>
+
+          <Table definition striped unstackable>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell className="mbr__thead-background" />
+                <Table.HeaderCell>
+                  {buttons.length ? 'Button Display' : ''}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {buttons.length ? 'Button Value' : ''}
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+
+            <Sortable
+              tag="tbody"
+              onChange={onButtonOrderChange}
+              options={{
+                direction: 'vertical',
+                swapThreshold: 0.5,
+                animation: 150
+              }}
+            >
               {buttons.map(({ display, value }, index) => {
-                const preventEmptyButtonFieldCurriedIndex = preventEmptyButtonField.bind(
+                const onBlurOrFocus = preventEmptyButtonField.bind(
                   this,
                   index
                 );
-                const onBlur = preventEmptyButtonFieldCurriedIndex;
-                const onFocus = preventEmptyButtonFieldCurriedIndex;
-                const key = `${value.scenarioId}-${value.recallId}-${value.responseId}`;
+                const key = `button-row-${value}-${index}`;
                 return (
-                  <EditorMenu
-                    key={key}
-                    type="button"
-                    items={{
-                      right: [
-                        <Menu.Item
-                          key={`${key}-display`}
-                          name="Edit button display"
-                          style={{ width: '20rem' }}
-                        >
-                          <Input
-                            index={index}
-                            className="multibuttonresponse__button-label"
-                            key={`button-diplay-${index}`}
-                            label="Button Display:"
-                            name="display"
-                            value={display}
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                            onChange={onButtonDetailChange}
-                          />
-                        </Menu.Item>,
-                        <Menu.Item
-                          key={`${key}-value`}
-                          name="Edit button value"
-                          style={{ width: '20rem' }}
-                        >
-                          <Input
-                            index={index}
-                            className="multibuttonresponse__button-label"
-                            key={`button-value-${index}`}
-                            label="Button Value:"
-                            name="value"
-                            value={value}
-                            onFocus={onFocus}
-                            onBlur={onBlur}
-                            onChange={onButtonDetailChange}
-                          />
-                        </Menu.Item>
-                      ],
-                      save: {
-                        onClick: () => updateState()
-                      },
-                      delete: {
-                        onConfirm: () => onButtonDeleteClick(index)
-                      }
-                    }}
-                  />
+                  <Table.Row className="mbr__cursor-grab" key={key}>
+                    <Table.Cell collapsing>
+                      <EditorMenu
+                        className="mbr__em-fixed-width"
+                        type="button"
+                        items={{
+                          save: {
+                            onClick: () => updateState()
+                          },
+                          delete: {
+                            onConfirm: () => onButtonDeleteClick(index)
+                          }
+                        }}
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Input
+                        fluid
+                        name="display"
+                        index={index}
+                        key={`button-diplay-${index}`}
+                        value={display}
+                        onBlur={onBlurOrFocus}
+                        onFocus={onBlurOrFocus}
+                        onChange={onButtonDetailChange}
+                      />
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Input
+                        fluid
+                        name="value"
+                        index={index}
+                        key={`button-value-${index}`}
+                        value={value}
+                        onFocus={onBlurOrFocus}
+                        onBlur={onBlurOrFocus}
+                        onChange={onButtonDetailChange}
+                      />
+                    </Table.Cell>
+                  </Table.Row>
                 );
               })}
             </Sortable>
-          </List>
+
+            <Table.Footer fullWidth>
+              <Table.Row>
+                <Table.HeaderCell />
+                <Table.HeaderCell colSpan="2">
+                  <Button icon floated="right" onClick={onButtonAddClick}>
+                    <Icon.Group size="large" className="em__icon-group-margin">
+                      <Icon name="hand pointer outline" />
+                      <Icon corner="top right" name="add" color="green" />
+                    </Icon.Group>
+                    Add A Button
+                  </Button>
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
+          </Table>
           <DataHeader
             content={header}
             onChange={onChange}
