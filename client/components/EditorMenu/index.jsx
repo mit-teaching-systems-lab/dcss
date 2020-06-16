@@ -21,10 +21,15 @@ export default class EditorMenu extends React.Component {
   }
 
   render() {
-    const { draghandle = {}, type, items } = this.props;
+    const { className, draghandle = {}, type, items } = this.props;
     const { mode } = this.state;
+
+    let menuClassName = 'em__height';
+    if (className) {
+      menuClassName += ` ${className}`;
+    }
     return (
-      <Menu {...draghandle} icon borderless className="em__height">
+      <Menu {...draghandle} icon borderless className={menuClassName}>
         {items.left && (
           <React.Fragment>
             {items.left
