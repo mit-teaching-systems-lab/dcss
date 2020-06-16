@@ -116,6 +116,10 @@ class RichTextEditor extends Component {
         onContentChange(core.getContents());
       };
 
+      this[SymbolEditor].toggleFullScreen = (isFullScreen, core) => {
+        onContentChange(core.getContents());
+      };
+
       MiscEventNames.forEach(eventName => {
         if (this.props[eventName]) {
           this[SymbolEditor][eventName] = (...args) => {
