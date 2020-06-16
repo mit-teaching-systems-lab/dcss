@@ -34,13 +34,13 @@ export default class EditorMenu extends React.Component {
           <React.Fragment>
             {items.left
               .filter(item => item)
-              .map((item, index) => (
-                <Popup
-                  key={index}
-                  content={`${item.props.name}`}
-                  trigger={item}
-                />
-              ))}
+              .map((item, index) => {
+                return item.props.name ? (
+                  <Popup key={index} content={item.props.name} trigger={item} />
+                ) : (
+                  item
+                );
+              })}
           </React.Fragment>
         )}
         {items.save && (
@@ -113,9 +113,13 @@ export default class EditorMenu extends React.Component {
           <React.Fragment>
             {items.right
               .filter(item => item)
-              .map((item, index) => (
-                <Popup key={index} content={item.props.name} trigger={item} />
-              ))}
+              .map((item, index) => {
+                return item.props.name ? (
+                  <Popup key={index} content={item.props.name} trigger={item} />
+                ) : (
+                  item
+                );
+              })}
           </React.Fragment>
         )}
       </Menu>
