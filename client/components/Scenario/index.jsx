@@ -144,6 +144,7 @@ class Scenario extends Component {
 
   async getScenarioMetaData() {
     if (this.state.title && this.state.description) {
+      // eslint-disable-next-line no-console
       console.log('getScenarioMetaData, if clause');
       const { title, description, consent, status } = this.state;
 
@@ -161,6 +162,7 @@ class Scenario extends Component {
         status
       };
     } else {
+      // eslint-disable-next-line no-console
       console.log('getScenarioMetaData, else clause');
       const scenario = await this.props.getScenario(this.props.scenarioId);
 

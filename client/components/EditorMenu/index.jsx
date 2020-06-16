@@ -125,6 +125,7 @@ export default class EditorMenu extends React.Component {
 
 const VALID_PROPS = ['delete', 'editable', 'left', 'right', 'save'];
 EditorMenu.propTypes = {
+  className: PropTypes.string,
   draghandle: PropTypes.object,
   isDragging: PropTypes.bool,
   index: PropTypes.number,

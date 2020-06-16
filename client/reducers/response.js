@@ -16,11 +16,16 @@ export const response = (state = initialState, action) => {
 
   switch (type) {
     case GET_RESPONSE_SUCCESS:
-    case SET_RESPONSE_SUCCESS:
-      return {
+    case SET_RESPONSE_SUCCESS: {
+      const newState = {
         ...state,
         ...data
       };
+
+      // eslint-disable-next-line no-console
+      console.log(newState);
+      return newState;
+    }
     default:
       return state;
   }

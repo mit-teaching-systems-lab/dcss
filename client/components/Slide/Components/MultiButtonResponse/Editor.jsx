@@ -1,18 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import {
-  Button,
-  Container,
-  Form,
-  Icon,
-  Input,
-  List,
-  Menu,
-  Table
-} from 'semantic-ui-react';
+import { Button, Container, Form, Icon, Input, Table } from 'semantic-ui-react';
 import { type } from './meta';
-import ConfirmableDeleteButton from '@components/EditorMenu/ConfirmableDeleteButton';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Sortable from '@components/Sortable';
@@ -62,14 +52,7 @@ class MultiButtonResponseEditor extends React.Component {
   componentWillUnmount() {
     clearInterval(this.timeout);
 
-    const {
-      header,
-      prompt,
-      buttons,
-      recallId,
-      responseId
-    } = this.props.value;
-
+    const { header, prompt, buttons, recallId, responseId } = this.props.value;
     const lastProps = {
       header,
       prompt,
@@ -78,7 +61,6 @@ class MultiButtonResponseEditor extends React.Component {
       responseId
     };
 
-    console.log(lastProps);
     if (hash(this.state) !== hash(lastProps)) {
       this.updateState();
     }
@@ -232,10 +214,7 @@ class MultiButtonResponseEditor extends React.Component {
               }}
             >
               {buttons.map(({ display, value }, index) => {
-                const onBlurOrFocus = preventEmptyButtonField.bind(
-                  this,
-                  index
-                );
+                const onBlurOrFocus = preventEmptyButtonField.bind(this, index);
                 const key = `button-row-${value}-${index}`;
                 return (
                   <Table.Row className="mbr__cursor-grab" key={key}>

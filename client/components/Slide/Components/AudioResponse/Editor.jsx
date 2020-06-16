@@ -29,12 +29,7 @@ class AudioResponseEditor extends Component {
   componentWillUnmount() {
     clearInterval(this.timeout);
 
-    const {
-      header,
-      prompt,
-      recallId,
-      responseId
-    } = this.props.value;
+    const { header, prompt, recallId, responseId } = this.props.value;
 
     const lastProps = {
       header,
