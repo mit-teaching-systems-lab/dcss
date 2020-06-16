@@ -58,6 +58,10 @@ class Display extends React.Component {
   }
 
   onClick(event, { name, value }) {
+    if (!this.isScenarioRun) {
+      event.stopPropagation();
+    }
+
     const { created_at } = this;
     const { onResponseChange, recallId } = this.props;
     onResponseChange(event, {
