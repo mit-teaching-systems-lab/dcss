@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import { Container, Form, Input, Message, Popup } from 'semantic-ui-react';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
@@ -21,25 +22,43 @@ class AudioResponseEditor extends Component {
     this.onChange = this.onChange.bind(this);
     this.onRecallChange = this.onRecallChange.bind(this);
     this.updateState = this.updateState.bind(this);
-    this.delayUpdateState = this.delayUpdateState.bind(this);
+    this.delayedUpdateState = this.delayedUpdateState.bind(this);
     this.timeout = null;
   }
 
   componentWillUnmount() {
-    this.updateState();
     clearInterval(this.timeout);
+
+    const {
+      header,
+      prompt,
+      recallId,
+      responseId
+    } = this.props.value;
+
+    const lastProps = {
+      header,
+      prompt,
+      recallId,
+      responseId
+    };
+
+    if (hash(this.state) !== hash(lastProps)) {
+      this.updateState();
+    }
   }
 
-  delayUpdateState() {
-    if (!this.timeout) {
+  delayedUpdateState() {
+    if (this.timeout) {
       clearTimeout(this.timeout);
     }
 
-    this.timeout = setTimeout(this.updateState, 5000);
+    this.timeout = setTimeout(this.updateState, 500);
   }
 
   updateState() {
     const { header, prompt, recallId, responseId } = this.state;
+
     this.props.onChange({
       header,
       prompt,
@@ -50,16 +69,11 @@ class AudioResponseEditor extends Component {
   }
 
   onChange(event, { name, value }) {
-    this.setState({ [name]: value }, this.delayUpdateState);
-    if (!this.timeout) {
-      clearTimeout(this.timeout);
-    }
-
-    this.timeout = setTimeout(() => this.updateState(), 5000);
+    this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
   onRecallChange({ recallId }) {
-    this.setState({ recallId }, this.delayUpdateState);
+    this.setState({ recallId }, this.updateState);
   }
 
   render() {
@@ -81,8 +95,8 @@ class AudioResponseEditor extends Component {
             content="This is the label that will appear on the Audio Prompt button."
             trigger={
               <Form.Field>
+                <label htmlFor="prompt">Audio Prompt:</label>
                 <Input
-                  label="Audio Prompt:"
                   name="prompt"
                   value={prompt}
                   onChange={onChange}
