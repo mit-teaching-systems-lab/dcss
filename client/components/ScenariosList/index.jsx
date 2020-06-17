@@ -6,6 +6,7 @@ import {
   Card,
   Container,
   Grid,
+  Header,
   Icon,
   Input,
   Menu,
@@ -16,8 +17,8 @@ import {
 import _ from 'lodash';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
-// import nextKey from '@utils/key';
-import { getScenarios } from '@client/actions/scenario';
+import Moment from '@utils/Moment';
+import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -70,7 +71,7 @@ class ScenariosList extends Component {
       activePage: 1,
       category,
       isReady: false,
-      selected: {},
+      selected: null,
       heading: '',
       scenarios: [],
       viewHeading: '',
@@ -80,7 +81,7 @@ class ScenariosList extends Component {
 
     this.onPageChange = this.onPageChange.bind(this);
     this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
-    this.onScenarioCardClose = this.onScenarioCardClose.bind(this);
+    this.onScenarioModalClose = this.onScenarioModalClose.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.reduceScenarios = this.reduceScenarios.bind(this);
     this.moveDeletedScenarios = this.moveDeletedScenarios.bind(this);
@@ -166,10 +167,10 @@ class ScenariosList extends Component {
     });
   }
 
-  onScenarioCardClose() {
+  onScenarioModalClose() {
     this.setState({
       open: false,
-      selected: {}
+      selected: null
     });
   }
 
@@ -242,13 +243,11 @@ class ScenariosList extends Component {
     const {
       onPageChange,
       onScenarioCardClick,
-      onScenarioCardClose,
+      onScenarioModalClose,
       onSearchChange
     } = this;
 
-    const {
-      origin, pathname
-    } = window.location;
+    const { origin, pathname } = window.location;
 
     let url = `${origin}${pathname}`;
 
@@ -363,19 +362,45 @@ class ScenariosList extends Component {
             </Grid.Row>
           </Grid>
         </Container>
-        <Modal closeIcon open={open} onClose={onScenarioCardClose}>
-          <Modal.Header>{selected.title}</Modal.Header>
-          <Modal.Content>
-            <Modal.Description>{selected.description}</Modal.Description>
-          </Modal.Content>
-          <Modal.Actions>
-            <ScenarioCardActions scenario={selected} />
-          </Modal.Actions>
-        </Modal>
+        {selected ? (
+          <ScenarioDetailModal
+            open={open}
+            onClose={onScenarioModalClose}
+            scenario={selected}
+          />
+        ) : null}
       </React.Fragment>
     );
   }
 }
+
+const ScenarioDetailModal = ({ onClose, open, scenario }) => {
+  const createdAt = Moment(scenario).fromNow();
+  const createdAtAlt = Moment(scenario.created_at).calendar();
+  const subheader = `Created by ${scenario.author.username}, ${createdAt} on ${createdAtAlt}`;
+  return (
+    <Modal closeIcon centered={false} open={open} onClose={onClose}>
+      <Header>{scenario.title}</Header>
+      <Modal.Content>
+        <Header>
+          <Header.Subheader aria-label="">{subheader}</Header.Subheader>
+        </Header>
+        <Modal.Description className="sc__modal-description">
+          {scenario.description}
+        </Modal.Description>
+      </Modal.Content>
+      <Modal.Actions>
+        <ScenarioCardActions scenario={scenario} />
+      </Modal.Actions>
+    </Modal>
+  );
+};
+
+ScenarioDetailModal.propTypes = {
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  scenario: PropTypes.object
+};
 
 ScenariosList.propTypes = {
   history: PropTypes.shape({

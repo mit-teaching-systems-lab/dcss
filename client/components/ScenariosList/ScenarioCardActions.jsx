@@ -10,16 +10,15 @@ import './ScenariosList.css';
 class ScenarioCardActions extends Component {
   render() {
     const { isLoggedIn, scenario, user } = this.props;
-    const { categories = [], id, deleted_at, title } = scenario;
 
     const isAuthorized =
       scenario.author_id === user.id || user.roles.includes('super_admin');
 
-    const editor = Storage.get(`editor/${id}`, {
+    const editor = Storage.get(`editor/${scenario.id}`, {
       activeTab: 'slides',
       activeSlideIndex: 1
     });
-    const run = Storage.get(`run/${id}`, {
+    const run = Storage.get(`run/${scenario.id}`, {
       // The title slide is slide 0
       activeRunSlideIndex: 0
     });
@@ -32,7 +31,9 @@ class ScenarioCardActions extends Component {
           basic
           icon
           as={Link}
-          to={{ pathname: `/run/${id}/slide/${run.activeRunSlideIndex}` }}
+          to={{
+            pathname: `/run/${scenario.id}/slide/${run.activeRunSlideIndex}`
+          }}
           aria-label="Run scenario"
           className="sc__button"
         >
@@ -47,7 +48,7 @@ class ScenarioCardActions extends Component {
                 icon
                 as={Link}
                 to={{
-                  pathname: `/editor/${id}/${editor.activeTab}/${editor.activeSlideIndex}`
+                  pathname: `/editor/${scenario.id}/${editor.activeTab}/${editor.activeSlideIndex}`
                 }}
                 aria-label="Edit scenario"
                 className="sc__button"
@@ -61,7 +62,7 @@ class ScenarioCardActions extends Component {
                 basic
                 icon
                 as={Link}
-                to={{ pathname: `/editor/copy/${id}` }}
+                to={{ pathname: `/editor/copy/${scenario.id}` }}
                 aria-label="Copy scenario"
                 className="sc__button"
               >

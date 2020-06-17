@@ -1,9 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Button, Card, Icon } from 'semantic-ui-react';
-import Storage from '@utils/Storage';
+import { Card, Icon } from 'semantic-ui-react';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
 import ScenarioCardActions from './ScenarioCardActions';
@@ -46,7 +44,7 @@ class ScenarioCard extends React.Component {
 
   render() {
     const { onRestoreClick } = this;
-    const { isLoggedIn, onClick, user } = this.props;
+    const { onClick, user } = this.props;
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
@@ -82,18 +80,14 @@ class ScenarioCard extends React.Component {
 }
 
 ScenarioCard.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
   onClick: PropTypes.func,
   scenario: PropTypes.object,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const {
-    login: { isLoggedIn },
-    user
-  } = state;
-  return { isLoggedIn, user };
+  const { user } = state;
+  return { user };
 };
 
 const mapDispatchToProps = {};

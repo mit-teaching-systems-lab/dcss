@@ -51,6 +51,11 @@
   text-decoration: line-through !important;
 }
 
+.sc__modal-description {
+  max-height: 50vh !important;
+  overflow-y: scroll  !important;
+}
+
 .sc__cursor-pointer {
   cursor: pointer;
 }
