@@ -22,6 +22,7 @@ import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import ScenarioCard from './ScenarioCard';
+import ScenarioCardActions from './ScenarioCardActions';
 import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
 
@@ -245,9 +246,16 @@ class ScenariosList extends Component {
       onSearchChange
     } = this;
 
-    const url = `${window.location.origin}${window.location.pathname}${
-      value ? `?q=${encodeURIComponent(value)}` : ''
-    }`;
+    const {
+      origin, pathname
+    } = window.location;
+
+    let url = `${origin}${pathname}`;
+
+    if (value) {
+      url += `?q=${encodeURIComponent(value)}`;
+    }
+
     const scenarios = filter(this.state.scenarios, isLoggedIn);
     const scenariosPages = Math.ceil(scenarios.length / CARDS_PER_PAGE);
     const scenariosIndex = (activePage - 1) * CARDS_PER_PAGE;
@@ -360,6 +368,9 @@ class ScenariosList extends Component {
           <Modal.Content>
             <Modal.Description>{selected.description}</Modal.Description>
           </Modal.Content>
+          <Modal.Actions>
+            <ScenarioCardActions scenario={selected} />
+          </Modal.Actions>
         </Modal>
       </React.Fragment>
     );

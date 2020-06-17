@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Button, Card, Icon } from 'semantic-ui-react';
 import Storage from '@utils/Storage';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
+import ScenarioCardActions from './ScenarioCardActions';
 import './ScenariosList.css';
 
 class ScenarioCard extends React.Component {
@@ -55,15 +56,6 @@ class ScenarioCard extends React.Component {
     const isAuthorized =
       scenario.author_id === user.id || user.roles.includes('super_admin');
 
-    const editor = Storage.get(`editor/${id}`, {
-      activeTab: 'slides',
-      activeSlideIndex: 0
-    });
-    editor.nonZeroIndex = editor.activeSlideIndex + 1;
-    const run = Storage.get(`run/${id}`, {
-      activeRunSlideIndex: 0
-    });
-
     return deleted_at ? (
       <ConfirmAuth isAuthorized={isAuthorized}>
         <DeletedCard
@@ -75,51 +67,15 @@ class ScenarioCard extends React.Component {
       </ConfirmAuth>
     ) : (
       <Card className="sc sc__margin-height" key={id}>
-        <Card.Content onClick={onClick}>
+        <Card.Content className="sc sc__cursor-pointer" onClick={onClick}>
           <Card.Header>
             {officialCheckmark} {title}
           </Card.Header>
           <Card.Description>{description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Button
-            basic
-            fluid
-            as={Link}
-            to={{ pathname: `/run/${id}/slide/${run.activeRunSlideIndex}` }}
-            className="sc__button"
-          >
-            Run
-          </Button>
+          <ScenarioCardActions scenario={scenario} />
         </Card.Content>
-        {isLoggedIn && (
-          <Card.Content extra>
-            <Button.Group className="sc__edit-buttons">
-              <ConfirmAuth isAuthorized={isAuthorized}>
-                <Button
-                  basic
-                  className="sc__button"
-                  as={Link}
-                  to={{
-                    pathname: `/editor/${id}/${editor.activeTab}/${editor.nonZeroIndex}`
-                  }}
-                >
-                  Edit
-                </Button>
-              </ConfirmAuth>
-              <ConfirmAuth requiredPermission="create_scenario">
-                <Button
-                  basic
-                  className="sc__button"
-                  as={Link}
-                  to={{ pathname: `/editor/copy/${id}` }}
-                >
-                  Copy
-                </Button>
-              </ConfirmAuth>
-            </Button.Group>
-          </Card.Content>
-        )}
       </Card>
     );
   }

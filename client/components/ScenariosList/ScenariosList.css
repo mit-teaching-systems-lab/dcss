@@ -1,7 +1,7 @@
-.sc__edit-buttons {
+/*.sc__edit-buttons {
   width: 100%;
 }
-
+*/
 .ui.basic.button.sc__button:hover {
   background-color: #cacbcd !important;
 }
@@ -9,6 +9,19 @@
 .ui.card.sc__margin-height {
   height: 19rem !important;
   margin-bottom: 0 !important;
+}
+
+.ui.four.cards {
+  /*margin-left: -.5em !important;*/
+  margin-left: -0.35em !important;
+  margin-right: -.5em !important;
+}
+
+.ui.four.cards>.card {
+  width: calc(25% - 1em) !important;
+  margin-bottom: 0 !important;
+  margin-left: .5em !important;
+  margin-right: .5em !important;
 }
 
 .ui.card.sc .header {
@@ -21,8 +34,8 @@
 .ui.card.sc .description {
   /*4rem !important;*/
   /*max-height: 10rem !important;*/
-  height: 5.25rem !important;
-  max-height: 5.25rem !important;
+  height: 9.25rem !important;
+  max-height: 9.25rem !important;
   overflow-y: auto !important;
 }
 
@@ -38,3 +51,26 @@
   text-decoration: line-through !important;
 }
 
+.sc__cursor-pointer {
+  cursor: pointer;
+}
+
+.sc__card-action-labels {
+  display: none;
+}
+
+.modal .actions .sc__card-action-labels {
+  margin-left: 0.5rem !important;
+  display: inline-block;
+}
+
+@media not all and (max-width: 1100px) {
+  .sc__card-action-labels {
+    margin-left: 0.5rem !important;
+    display: inline-block;
+  }
+  .modal .actions .sc__card-action-labels {
+    margin-left: 0.5rem !important;
+    display: inline-block;
+  }
+}
