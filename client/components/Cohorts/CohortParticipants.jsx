@@ -16,11 +16,7 @@ import {
 } from 'semantic-ui-react';
 import _ from 'lodash';
 import Storage from '@utils/Storage';
-import {
-  getCohort,
-  getCohortParticipants,
-  setCohort
-} from '@actions/cohort';
+import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
 import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';

@@ -14,8 +14,7 @@ import {
 } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
 import _ from 'lodash';
-import * as moment from 'moment';
-
+import Moment from '@utils/Moment';
 import EditorMenu from '@components/EditorMenu';
 import Sortable from '@components/Sortable';
 import ClickableTableCell from '@components/ClickableTableCell';
@@ -304,19 +303,19 @@ export class CohortScenarios extends React.Component {
                   : {};
 
                 const createdAt = run_created_at
-                  ? moment(run_created_at).fromNow()
+                  ? Moment(run_created_at).fromNow()
                   : '';
 
                 const createdAtAlt = run_created_at
-                  ? moment(run_created_at).calendar()
+                  ? Moment(run_created_at).calendar()
                   : '';
 
                 const endedAt = run_ended_at
-                  ? moment(run_ended_at).fromNow()
+                  ? Moment(run_ended_at).fromNow()
                   : '';
 
                 const endedAtAlt = run_ended_at
-                  ? moment(run_ended_at).calendar()
+                  ? Moment(run_ended_at).calendar()
                   : 'This scenario is not complete';
 
                 const startedAtDisplay = run_created_at

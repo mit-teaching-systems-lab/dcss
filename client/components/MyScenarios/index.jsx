@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button, Icon, Pagination, Popup, Ref, Table } from 'semantic-ui-react';
-import * as moment from 'moment';
+import { Icon, Pagination, Popup, Ref, Table } from 'semantic-ui-react';
+import Moment from '@utils/Moment';
 import { getUserRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
@@ -15,7 +15,7 @@ import DataTable from '@components/Cohorts/DataTable';
 
 import './MyScenarios.css';
 
-const ROWS_PER_PAGE = 5;
+const ROWS_PER_PAGE = 10;
 
 class MyScenarios extends Component {
   constructor(props) {
@@ -118,21 +118,26 @@ class MyScenarios extends Component {
 
     return (
       <Fragment>
-        <Table role="grid" unstackable>
+        <Table
+          fixed
+          striped
+          selectable
+          unstackable
+          role="grid"
+          aria-labelledby="header"
+          className="ms__table--constraints"
+        >
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell colSpan="5">My Scenario Data</Table.HeaderCell>
-            </Table.Row>
-            <Table.Row>
-              <Table.HeaderCell collapsing></Table.HeaderCell>
+              <Table.HeaderCell style={{ width: '40px' }}></Table.HeaderCell>
               <Table.HeaderCell>Scenario Title</Table.HeaderCell>
-              <Table.HeaderCell className="myscenarios__hidden-on-mobile">
+              <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
                 Started
               </Table.HeaderCell>
-              <Table.HeaderCell className="myscenarios__hidden-on-mobile">
+              <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
                 Completed
               </Table.HeaderCell>
-              <Table.HeaderCell className="myscenarios__hidden-on-mobile">
+              <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
                 Cohort
               </Table.HeaderCell>
             </Table.Row>
@@ -151,20 +156,18 @@ class MyScenarios extends Component {
                 ? { positive: true }
                 : { negative: true };
 
-              const createdAt = moment(run_created_at).fromNow();
-              const createdAtAlt = moment(run_created_at).calendar();
+              const createdAt = Moment(run_created_at).fromNow();
+              const createdAtAlt = Moment(run_created_at).calendar();
 
               const endedAt = run_ended_at
-                ? moment(run_ended_at).fromNow()
+                ? Moment(run_ended_at).fromNow()
                 : '';
               const endedAtAlt = run_ended_at
-                ? moment(run_ended_at).calendar()
+                ? Moment(run_ended_at).calendar()
                 : 'This run is not complete';
 
               const startedAtDisplay = `${createdAt} (${createdAtAlt})`;
               const endedAtDisplay = `${endedAt} (${endedAtAlt})`;
-
-              const runKey = `${run_id}-${cohort_id ? cohort_id : scenario_id}`;
 
               const pathname = cohort_id
                 ? `/cohort/${cohort_id}/run/${scenario_id}/slide/0`
@@ -176,29 +179,38 @@ class MyScenarios extends Component {
 
               const cohortDisplay = cohort ? cohort.name : null;
 
+              const onViewRunDataClick = (event, props) => {
+                onRunDataClick(event, {
+                  ...props,
+                  run
+                });
+              };
+
               return (
                 <Table.Row {...completeOrIncomplete} key={run_id}>
-                  <Table.Cell collapsing>
-                    <RunMenu key={runKey} run={run} onClick={onRunDataClick} />
-                  </Table.Cell>
+                  <Popup
+                    content="View your data for this scenario run"
+                    trigger={
+                      <ClickableTableCell
+                        className="ms__table-cell-first"
+                        display={<Icon name="file alternate outline" />}
+                        onClick={onViewRunDataClick}
+                      />
+                    }
+                  />
                   <ClickableTableCell
                     href={pathname}
                     display={scenario_title}
+                    className="ms__table-cell-options"
                   />
-                  <Table.Cell
-                    alt={endedAtAlt}
-                    className="myscenarios__hidden-on-mobile"
-                  >
+                  <Table.Cell alt={endedAtAlt} className="ms__hidden-on-mobile">
                     {startedAtDisplay}
                   </Table.Cell>
-                  <Table.Cell
-                    alt={endedAtAlt}
-                    className="myscenarios__hidden-on-mobile"
-                  >
+                  <Table.Cell alt={endedAtAlt} className="ms__hidden-on-mobile">
                     {endedAtDisplay}
                   </Table.Cell>
                   <ClickableTableCell
-                    className="myscenarios__hidden-on-mobile"
+                    className="ms__hidden-on-mobile"
                     href={cohortPathname}
                     display={cohortDisplay}
                   />
@@ -243,42 +255,6 @@ class MyScenarios extends Component {
     );
   }
 }
-
-const RunMenu = props => {
-  const { onClick, run } = props;
-
-  const onClickToViewRunData = (event, props) => {
-    onClick(event, {
-      ...props,
-      run
-    });
-  };
-  return (
-    <Button.Group
-      hidden
-      basic
-      size="tiny"
-      className="buttongroup__button-group--transparent"
-    >
-      <Popup
-        content="View your data for this scenario run"
-        trigger={
-          <Button
-            icon
-            content={<Icon name="file alternate outline" />}
-            name={run.scenario_title}
-            onClick={onClickToViewRunData}
-          />
-        }
-      />
-    </Button.Group>
-  );
-};
-
-RunMenu.propTypes = {
-  run: PropTypes.object,
-  onClick: PropTypes.func
-};
 
 MyScenarios.propTypes = {
   history: PropTypes.shape({

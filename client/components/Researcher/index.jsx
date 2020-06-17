@@ -234,12 +234,7 @@ const ResearcherMenu = props => {
     });
   };
   return (
-    <Button.Group
-      hidden
-      basic
-      size="tiny"
-      className="buttongroup__button-group--transparent"
-    >
+    <Button.Group hidden basic size="tiny" className="buttongroup__transparent">
       <Popup
         content="Download all data from this scenario"
         trigger={

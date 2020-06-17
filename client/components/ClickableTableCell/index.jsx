@@ -15,7 +15,12 @@ const ClickableTableCell = props => {
 
   const link = href && display ? <Link to={href}>{display}</Link> : display;
   return (
-    <Table.Cell className={className} onClick={onClick} onTouchStart={onClick}>
+    <Table.Cell
+      style={{ cursor: 'pointer' }}
+      className={className}
+      onClick={onClick}
+      onTouchStart={onClick}
+    >
       {link}
     </Table.Cell>
   );

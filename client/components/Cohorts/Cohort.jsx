@@ -5,11 +5,7 @@ import PropTypes from 'prop-types';
 import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
-import {
-  getCohort,
-  setCohort,
-  setCohortUserRole
-} from '@actions/cohort';
+import { getCohort, setCohort, setCohortUserRole } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import DataTable from './DataTable';

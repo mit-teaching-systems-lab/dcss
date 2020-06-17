@@ -2,11 +2,10 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Modal, Table } from 'semantic-ui-react';
+import { Header, Icon, Modal, Table } from 'semantic-ui-react';
 import SplitPane from 'react-split-pane';
 import { diff } from 'deep-diff';
-import * as moment from 'moment';
-import 'moment-duration-format';
+import Moment from '@utils/Moment';
 import { getCohort, getCohortData } from '@actions/cohort';
 import { getRunData } from '@actions/run';
 import { getScenarios } from '@actions/scenario';
@@ -232,12 +231,12 @@ export class DataTable extends React.Component {
             content += ` (${location.origin}/api/media/${response.value})`;
           }
 
-          const difference = moment(response.ended_at).diff(
+          const difference = Moment(response.ended_at).diff(
             response.created_at
           );
-          const duration = moment
-            .duration(difference)
-            .format(moment.globalFormat);
+          const duration = Moment.duration(difference).format(
+            Moment.globalFormat
+          );
 
           content += ` (${duration})`;
 
@@ -371,10 +370,10 @@ const DataTableRow = props => {
 
         const className = !content ? 'dt__cell-data-missing' : '';
 
-        const difference = moment(response.ended_at).diff(response.created_at);
-        const duration = moment
-          .duration(difference)
-          .format(moment.globalFormat);
+        const difference = Moment(response.ended_at).diff(response.created_at);
+        const duration = Moment.duration(difference).format(
+          Moment.globalFormat
+        );
 
         return (
           <DataModal
@@ -416,7 +415,7 @@ const DataModal = props => {
       className="dtm__view"
       closeIcon
     >
-      <Modal.Header className="dtm__header">Responses In Context</Modal.Header>
+      <Header className="dtm__header">Responses In Context</Header>
 
       <Modal.Content scrolling className="dtm__scroll">
         <Modal.Description>
@@ -451,10 +450,10 @@ const DataModal = props => {
                     const { created_at, ended_at, value } = response;
                     const isAudioContent = isAudioFile(value);
                     const { content = '' } = response;
-                    const difference = moment(ended_at).diff(created_at);
-                    const duration = moment
-                      .duration(difference)
-                      .format(moment.globalFormat);
+                    const difference = Moment(ended_at).diff(created_at);
+                    const duration = Moment.duration(difference).format(
+                      Moment.globalFormat
+                    );
 
                     const display = isAudioContent ? (
                       <Fragment>
