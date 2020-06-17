@@ -20,7 +20,7 @@ import {
   getCohort,
   getCohortParticipants,
   setCohort
-} from '@client/actions/cohort';
+} from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
 import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';

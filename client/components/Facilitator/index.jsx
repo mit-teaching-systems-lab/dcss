@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { Menu, Segment } from 'semantic-ui-react';
 
-import Cohorts from '@components/Facilitator/Components/Cohorts';
+import Cohorts from '@components/Cohorts';
 import Search from '@components/Facilitator/Components/Search';
 
 import './Facilitator.css';

@@ -22,9 +22,9 @@ import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
-import { getCohort, setCohort } from '@client/actions/cohort';
-import { getScenarios, setScenarios } from '@client/actions/scenario';
-import { getUserRuns } from '@client/actions/run';
+import { getCohort, setCohort } from '@actions/cohort';
+import { getScenarios, setScenarios } from '@actions/scenario';
+import { getUserRuns } from '@actions/run';
 
 import './Cohort.css';
 

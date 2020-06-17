@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import Admin from '@components/Admin';
-import Cohorts from '@components/Facilitator/Components/Cohorts';
-import Cohort from '@components/Facilitator/Components/Cohorts/Cohort';
+import Cohorts from '@components/Cohorts';
+import Cohort from '@components/Cohorts/Cohort';
 import ConfirmAuth from '@components/ConfirmAuth';
 import CreateAccount from '@components/CreateAccount';
 import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';

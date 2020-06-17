@@ -11,7 +11,7 @@ import { getUser } from '@client/actions/user';
 import Loading from '@components/Loading';
 import ClickableTableCell from '@components/ClickableTableCell';
 import scrollIntoView from '@components/util/scrollIntoView';
-import DataTable from '@components/Facilitator/Components/Cohorts/DataTable';
+import DataTable from '@components/Cohorts/DataTable';
 
 import './MyScenarios.css';
 

@@ -21,14 +21,14 @@ import {
   getCohort,
   setCohort,
   createCohort
-} from '@client/actions/cohort';
-import { getScenarios } from '@client/actions/scenario';
-import { getUser } from '@client/actions/user';
+} from '@actions/cohort';
+import { getScenarios } from '@actions/scenario';
+import { getUser } from '@actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
+import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
-import EditorMenu from '@components/EditorMenu';
 
 export class Cohorts extends React.Component {
   constructor(props) {

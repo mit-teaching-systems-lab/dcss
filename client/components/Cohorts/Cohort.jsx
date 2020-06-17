@@ -9,9 +9,9 @@ import {
   getCohort,
   setCohort,
   setCohortUserRole
-} from '@client/actions/cohort';
-import { getScenarios } from '@client/actions/scenario';
-import { getUser } from '@client/actions/user';
+} from '@actions/cohort';
+import { getScenarios } from '@actions/scenario';
+import { getUser } from '@actions/user';
 import DataTable from './DataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';
