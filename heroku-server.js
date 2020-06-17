@@ -8,5 +8,5 @@ listener.use(enforce.HTTPS({ trustProtoHeader: true }));
 listener.use(express.static('./dist'));
 
 listener.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
