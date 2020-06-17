@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Menu, Segment } from 'semantic-ui-react';
 
-import { getUser } from '@client/actions/user';
+import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import Users from './Users';
 import './Admin.css';

@@ -15,9 +15,9 @@ import {
   Popup,
   Table
 } from 'semantic-ui-react';
-import { getAllCohorts } from '@client/actions/cohort';
-import { getScenarios, getScenarioRunHistory } from '@client/actions/scenario';
-import { getUser } from '@client/actions/user';
+import { getAllCohorts } from '@actions/cohort';
+import { getScenarios, getScenarioRunHistory } from '@actions/scenario';
+import { getUser } from '@actions/user';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import Loading from '@components/Loading';

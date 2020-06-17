@@ -5,7 +5,7 @@ import { Button, Card, Icon, Popup } from 'semantic-ui-react';
 import Storage from '@utils/Storage';
 import SlideComponents from '@components/SlideComponents';
 import Loading from '@components/Loading';
-import { getResponse } from '@client/actions/response';
+import { getResponse } from '@actions/response';
 
 class ContentSlide extends React.Component {
   constructor(props) {

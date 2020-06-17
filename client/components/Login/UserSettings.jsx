@@ -10,7 +10,7 @@ import {
   Message,
   Modal
 } from 'semantic-ui-react';
-import { getUser, setUser } from '@client/actions/user';
+import { getUser, setUser } from '@actions/user';
 import './Login.css';
 
 const anonymousMode =

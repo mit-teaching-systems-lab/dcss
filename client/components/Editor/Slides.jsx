@@ -26,7 +26,7 @@ import SlideEditor from '@components/Slide/SlideEditor';
 import SlideComponents from '@components/SlideComponents';
 import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
-import { getSlides } from '@client/actions/scenario';
+import { getSlides } from '@actions/scenario';
 import './Slides.css';
 
 class Slides extends React.Component {

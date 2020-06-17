@@ -10,7 +10,7 @@ import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
 import Slides from './Slides';
-import { getScenario, setScenario } from '@client/actions/scenario';
+import { getScenario, setScenario } from '@actions/scenario';
 
 import './editor.css';
 

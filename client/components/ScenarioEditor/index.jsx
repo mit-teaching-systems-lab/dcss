@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Container, Form, Grid, Popup } from 'semantic-ui-react';
-import { getScenario, setScenario } from '@client/actions/scenario';
-import { getCategories } from '@client/actions/tags';
-import { getUsersByPermission } from '@client/actions/users';
+import { getScenario, setScenario } from '@actions/scenario';
+import { getCategories } from '@actions/tags';
+import { getUsersByPermission } from '@actions/users';
 
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';

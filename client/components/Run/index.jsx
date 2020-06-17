@@ -6,10 +6,10 @@ import * as QueryString from 'query-string';
 import Storage from '@utils/Storage';
 import Loading from '@components/Loading';
 import Scenario from '@components/Scenario';
-import { linkRunToCohort, setCohortUserRole } from '@client/actions/cohort';
-import { getUser } from '@client/actions/user';
-import { getResponse, setResponses } from '@client/actions/response';
-import { getRun, setRun } from '@client/actions/run';
+import { linkRunToCohort, setCohortUserRole } from '@actions/cohort';
+import { getUser } from '@actions/user';
+import { getResponse, setResponses } from '@actions/response';
+import { getRun, setRun } from '@actions/run';
 
 class Run extends Component {
   constructor(props) {

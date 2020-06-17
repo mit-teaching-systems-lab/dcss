@@ -14,7 +14,7 @@ import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display'
 import MicRecorder from 'mic-recorder-to-mp3';
 import { detect } from 'detect-browser';
 import { connect } from 'react-redux';
-import { getResponse } from '@client/actions/response';
+import { getResponse } from '@actions/response';
 import './AudioResponse.css';
 
 const SUPPORTED_BROWSERS = ['chrome', 'firefox'];

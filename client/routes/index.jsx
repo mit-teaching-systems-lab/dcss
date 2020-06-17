@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { logIn } from '@client/actions';
-import { getUser } from '@client/actions/user';
+import { logIn } from '@actions';
+import { getUser } from '@actions/user';
 
 import Loading from '@components/Loading';
 import Notification from '@components/Notification';

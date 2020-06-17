@@ -10,7 +10,7 @@ import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Loading from '@components/Loading';
 import Storage from '@utils/Storage';
-import { getSlides, getScenario, setScenario } from '@client/actions/scenario';
+import { getSlides, getScenario, setScenario } from '@actions/scenario';
 import './Scenario.css';
 
 class Scenario extends Component {

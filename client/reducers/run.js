@@ -2,7 +2,7 @@ import {
   GET_RUN_SUCCESS,
   GET_RUNS_SUCCESS,
   SET_RUN_SUCCESS
-} from '@client/actions/types';
+} from '@actions/types';
 
 const initialState = {};
 

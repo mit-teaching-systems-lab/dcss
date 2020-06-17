@@ -5,7 +5,7 @@ import { Button, Header, List, Segment } from 'semantic-ui-react';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { connect } from 'react-redux';
-import { getResponse } from '@client/actions/response';
+import { getResponse } from '@actions/response';
 
 class Display extends React.Component {
   constructor(props) {

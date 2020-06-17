@@ -20,7 +20,7 @@ import {
   GET_COHORT_RUN_DATA_ERROR,
   GET_RUNS_ERROR,
   LINK_RUN_TO_COHORT_ERROR
-} from '@client/actions/types';
+} from '@actions/types';
 
 // eslint-disable-next-line no-unused-vars
 const cohort = (state = null, action) => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { Message } from 'semantic-ui-react';
 import { connect } from 'react-redux';
-import { getResponse } from '@client/actions/response';
+import { getResponse } from '@actions/response';
 import '../AudioResponse/AudioResponse.css';
 
 class Display extends React.Component {

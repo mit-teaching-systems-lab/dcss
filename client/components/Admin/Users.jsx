@@ -8,7 +8,7 @@ import { Icon, Input, Menu, Pagination, Table } from 'semantic-ui-react';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import UserRows from './UserRows';
-import { getUsers } from '@client/actions/users';
+import { getUsers } from '@actions/users';
 
 const ROWS_PER_PAGE = 10;
 

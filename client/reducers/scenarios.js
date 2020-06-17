@@ -6,7 +6,7 @@ import {
   SET_SCENARIOS
   // SET_SCENARIOS_SUCCESS,
   // SET_SCENARIOS_ERROR,
-} from '@client/actions/types';
+} from '@actions/types';
 
 export const scenarios = (state = [], action) => {
   const { scenario, scenarios, type } = action;

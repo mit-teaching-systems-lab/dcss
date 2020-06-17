@@ -4,7 +4,7 @@ import {
   GET_SLIDES_SUCCESS,
   SET_SCENARIO,
   SET_SLIDES
-} from '@client/actions/types';
+} from '@actions/types';
 
 const initialScenarioState = {
   title: '',

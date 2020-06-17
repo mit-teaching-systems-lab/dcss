@@ -3,7 +3,7 @@ import {
   GET_RESPONSES_SUCCESS,
   SET_RESPONSE_SUCCESS,
   SET_RESPONSES_SUCCESS
-} from '@client/actions/types';
+} from '@actions/types';
 
 const initialState = {};
 

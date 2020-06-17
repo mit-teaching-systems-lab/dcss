@@ -1,4 +1,4 @@
-import { GET_USER_SUCCESS, SET_USER_SUCCESS } from '@client/actions/types';
+import { GET_USER_SUCCESS, SET_USER_SUCCESS } from '@actions/types';
 
 const initialState = {
   username: null,
