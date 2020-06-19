@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import 'moment-duration-format';
 
-moment.locale('en', {
+moment.updateLocale('en', {
   calendar: {
     lastDay: '[yesterday at] LT',
     sameDay: '[today at] LT',
