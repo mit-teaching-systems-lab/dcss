@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Icon, Pagination, Popup, Ref, Table } from 'semantic-ui-react';
+import { Icon, Pagination, Popup, Tab, Table } from 'semantic-ui-react';
 import Moment from '@utils/Moment';
 import { getUserRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
@@ -10,7 +10,6 @@ import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import ClickableTableCell from '@components/ClickableTableCell';
-import scrollIntoView from '@components/util/scrollIntoView';
 import DataTable from '@components/Cohorts/DataTable';
 
 import './MyScenarios.css';
@@ -21,18 +20,30 @@ class MyScenarios extends Component {
   constructor(props) {
     super(props);
 
+    const panes = [
+      {
+        menuItem: 'My Scenarios',
+        pane: {
+          key: 'main-scenarios',
+          content: null
+        }
+      }
+    ];
     this.state = {
       isReady: false,
+      activeIndex: 0,
       activePage: 1,
       source: {
         runId: null,
         participantId: null
-      }
+      },
+      panes
     };
     this.tableRef = null;
     this.onRunDataClick = this.onRunDataClick.bind(this);
     this.onDataTableMenuClick = this.onDataTableMenuClick.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
+    this.onTabChange = this.onTabChange.bind(this);
   }
 
   async componentDidMount() {
@@ -67,46 +78,59 @@ class MyScenarios extends Component {
 
   onRunDataClick(event, props) {
     const {
-      run: { run_id }
+      menuItem,
+      run: { run_id: runId }
     } = props;
 
-    const { source } = this.state;
-
-    this.setState(
-      {
-        ...this.state,
-        source: {
-          ...source,
-          runId: run_id
-        }
-      },
-
-      () => {
-        scrollIntoView(this.tableRef, {
-          block: 'start'
-        });
-      }
+    const { panes } = this.state;
+    const activeIndex = panes.findIndex(
+      ({ pane }) => pane.key === `tab-${runId}`
     );
-  }
 
-  onDataTableMenuClick(event, { name }) {
-    // If the button name was "close"...
-    if (name === 'close') {
-      const { source } = this.state;
-      this.setState({
-        ...this.state,
+    if (activeIndex > -1) {
+      this.setState({ activeIndex });
+    } else {
+      panes.push({
+        menuItem,
+        pane: {
+          key: `tab-${runId}`,
+          content: null
+        },
         source: {
-          ...source,
-          runId: null
+          participantId: this.props.user.id,
+          runId
         }
       });
+      this.setState({ panes });
     }
   }
 
+  onDataTableMenuClick(event, { name, key }) {
+    const { panes } = this.state;
+
+    if (name === 'close') {
+      const indexOf = panes.findIndex(({ pane }) => pane.key === key);
+      const activeIndex = indexOf - 1;
+      panes.splice(indexOf, 1);
+      this.setState({ activeIndex, panes });
+    }
+  }
+
+  onTabChange(event, { activeIndex }) {
+    this.setState({
+      activeIndex
+    });
+  }
+
   render() {
-    const { onDataTableMenuClick, onPageChange, onRunDataClick } = this;
+    const {
+      onDataTableMenuClick,
+      onPageChange,
+      onRunDataClick,
+      onTabChange
+    } = this;
     const { cohorts, runs } = this.props;
-    const { isReady, activePage, source } = this.state;
+    const { isReady, activeIndex, activePage, panes } = this.state;
 
     if (!isReady) {
       return <Loading />;
@@ -116,7 +140,7 @@ class MyScenarios extends Component {
     const runsIndex = (activePage - 1) * ROWS_PER_PAGE;
     const runsSlice = runs.slice(runsIndex, runsIndex + ROWS_PER_PAGE);
 
-    return (
+    panes[0].pane.content = (
       <Fragment>
         <Table
           fixed
@@ -182,7 +206,8 @@ class MyScenarios extends Component {
               const onViewRunDataClick = (event, props) => {
                 onRunDataClick(event, {
                   ...props,
-                  run
+                  run,
+                  menuItem: `${scenario_title} (${endedAtAlt})`
                 });
               };
 
@@ -237,21 +262,32 @@ class MyScenarios extends Component {
             </Table.Row>
           </Table.Footer>
         </Table>
-
-        {source && source.runId && (
-          <Ref
-            key={`ref-${source.runId}`}
-            innerRef={node => scrollIntoView(node, { block: 'start' })}
-          >
-            <DataTable
-              key={`datatable-${source.runId}`}
-              source={source}
-              leftColVisible={false}
-              onClick={onDataTableMenuClick}
-            />
-          </Ref>
-        )}
       </Fragment>
+    );
+
+    panes.forEach(({ pane, source }, index) => {
+      // Skip the first one...
+      if (!index) {
+        return;
+      }
+      const key = `tab-${source.runId}`;
+      pane.content = (
+        <DataTable
+          key={`datatable-${source.runId}`}
+          source={source}
+          leftColVisible={false}
+          onClick={() => onDataTableMenuClick({}, { name: 'close', key })}
+        />
+      );
+    });
+
+    return (
+      <Tab
+        activeIndex={activeIndex}
+        onTabChange={onTabChange}
+        panes={panes}
+        renderActiveOnly={false}
+      />
     );
   }
 }
