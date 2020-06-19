@@ -150,51 +150,49 @@ export class Cohorts extends React.Component {
       onSubmitCreateCohort
     } = this;
 
-    if (!isReady) {
-      return <Loading />;
-    }
-
     return (
       <React.Fragment>
-        <EditorMenu
-          type="cohorts"
-          items={{
-            left: [
-              <ConfirmAuth
-                key="menu-item-create-cohort-auth"
-                requiredPermission="create_cohort"
-              >
-                <Menu.Item
-                  key="menu-item-create-cohort"
-                  name="Create a cohort"
-                  onClick={onClickOpenCreateCohort}
-                  className="em__icon-padding"
+        {cohorts && cohorts.length ? (
+          <EditorMenu
+            type="cohorts"
+            items={{
+              left: [
+                <ConfirmAuth
+                  key="menu-item-create-cohort-auth"
+                  requiredPermission="create_cohort"
                 >
-                  <Icon.Group className="em__icon-group-margin">
-                    <Icon name="group" />
-                    <Icon corner="top right" name="add" color="green" />
-                  </Icon.Group>
-                  Create a Cohort
-                </Menu.Item>
-              </ConfirmAuth>
-            ],
-            right: [
-              <Menu.Menu key="menu-right-search-cohorts" position="right">
-                <Menu.Item
-                  key="menu-item-search-cohorts"
-                  name="Search cohorts"
-                  className="em__icon-padding"
-                >
-                  <Input
-                    icon="search"
-                    placeholder="Search..."
-                    onChange={onSearchChange}
-                  />
-                </Menu.Item>
-              </Menu.Menu>
-            ]
-          }}
-        />
+                  <Menu.Item
+                    key="menu-item-create-cohort"
+                    name="Create a cohort"
+                    onClick={onClickOpenCreateCohort}
+                    className="em__icon-padding"
+                  >
+                    <Icon.Group className="em__icon-group-margin">
+                      <Icon name="group" />
+                      <Icon corner="top right" name="add" color="green" />
+                    </Icon.Group>
+                    Create a Cohort
+                  </Menu.Item>
+                </ConfirmAuth>
+              ],
+              right: [
+                <Menu.Menu key="menu-right-search-cohorts" position="right">
+                  <Menu.Item
+                    key="menu-item-search-cohorts"
+                    name="Search cohorts"
+                    className="em__icon-padding"
+                  >
+                    <Input
+                      icon="search"
+                      placeholder="Search..."
+                      onChange={onSearchChange}
+                    />
+                  </Menu.Item>
+                </Menu.Menu>
+              ]
+            }}
+          />
+        ) : null}
         <Container fluid>
           <Modal open={createIsVisible} size="small">
             <Header icon="group" content="Create a cohort" />
@@ -220,41 +218,50 @@ export class Cohorts extends React.Component {
               </Button>
             </Modal.Actions>
           </Modal>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column stretched>
-                {cohorts && cohorts.length ? (
-                  <Card.Group itemsPerRow={4} stackable>
-                    {cohorts.map(({ id }) => (
-                      <CohortCard key={id} id={id} />
-                    ))}
-                  </Card.Group>
-                ) : (
-                  <Message
-                    size="big"
-                    color="yellow"
-                    header="You have no cohorts"
-                    content={
-                      <ConfirmAuth requiredPermission="create_cohort">
-                        <Button
-                          name="Create a cohort"
-                          onClick={onClickOpenCreateCohort}
-                          className="em__icon-padding"
-                          style={{ background: 'transparent' }}
-                        >
-                          <Icon.Group className="em__icon-group-margin">
-                            <Icon name="group" />
-                            <Icon corner="top right" name="add" color="green" />
-                          </Icon.Group>
-                          Create a Cohort
-                        </Button>
-                      </ConfirmAuth>
-                    }
-                  />
-                )}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
+
+          {isReady ? (
+            <Grid>
+              <Grid.Row>
+                <Grid.Column stretched>
+                  {cohorts && cohorts.length ? (
+                    <Card.Group itemsPerRow={4} stackable>
+                      {cohorts.map(({ id }) => (
+                        <CohortCard key={id} id={id} />
+                      ))}
+                    </Card.Group>
+                  ) : (
+                    <Message
+                      size="big"
+                      color="yellow"
+                      header="You have no cohorts"
+                      content={
+                        <ConfirmAuth requiredPermission="create_cohort">
+                          <Button
+                            name="Create a cohort"
+                            onClick={onClickOpenCreateCohort}
+                            className="em__icon-padding"
+                            style={{ background: 'transparent' }}
+                          >
+                            <Icon.Group className="em__icon-group-margin">
+                              <Icon name="group" />
+                              <Icon
+                                corner="top right"
+                                name="add"
+                                color="green"
+                              />
+                            </Icon.Group>
+                            Create a Cohort
+                          </Button>
+                        </ConfirmAuth>
+                      }
+                    />
+                  )}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          ) : (
+            <Loading card={{ cols: 4, rows: 2 }} />
+          )}
         </Container>
       </React.Fragment>
     );

@@ -274,12 +274,14 @@ export class DataTable extends React.Component {
       ? { className: 'dt__left-col-hidden' }
       : {};
 
-    if (isReady && !tables.length) {
-      return <div>There is no data recorded yet.</div>;
+    if (!isReady) {
+      return <Loading />;
     }
-    return tables.length ? (
+
+    return (
       <Fragment>
         <DataTableMenu source={source} onClick={onDataTableMenuClick} />
+        {!tables.length ? <div>There is no data recorded yet.</div> : null}
         {tables.map(({ prompts, rows }, index) => {
           const tableKeyBase = `data-table-${index}`;
           return (
@@ -329,8 +331,6 @@ export class DataTable extends React.Component {
           );
         })}
       </Fragment>
-    ) : isReady ? null : (
-      <Loading />
     );
   }
 }

@@ -54,11 +54,7 @@ class Admin extends Component {
   render() {
     const { isReady, activeTab } = this.state;
     const { onClick } = this;
-
-    if (!isReady) {
-      return <Loading />;
-    }
-    return (
+    return isReady ? (
       <div>
         <Menu attached="top" tabular>
           <Menu.Item
@@ -72,6 +68,8 @@ class Admin extends Component {
           {this.state.tabs[this.state.activeTab]}
         </Segment>
       </div>
+    ) : (
+      <Loading />
     );
   }
 }

@@ -489,7 +489,7 @@ class Slides extends React.Component {
                 </Segment>
               </>
             ) : (
-              <Loading />
+              <Loading card={{ cols: 1, rows: 3 }} />
             )}
           </Grid.Column>
           <Grid.Column width={13} className="slides__editor-outer-container">
@@ -504,7 +504,7 @@ class Slides extends React.Component {
                 onDelete={onSlideDelete}
               />
             ) : (
-              <Loading />
+              <Loading card={{ cols: 1, rows: 1 }} />
             )}
           </Grid.Column>
         </Grid>

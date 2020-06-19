@@ -4,7 +4,6 @@ import { Dropdown, Menu, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
-import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
@@ -319,7 +318,7 @@ class Editor extends Component {
 
   render() {
     if (this.props.isCopyScenario) {
-      return <Loading />;
+      return null;
     }
 
     if (!this.state.tabs) {
