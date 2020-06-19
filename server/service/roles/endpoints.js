@@ -7,10 +7,11 @@ exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
   res
 ) {
   const users = await db.getAllUsersRoles();
-  const noUsersFoundError = new Error('No users found');
-  noUsersFoundError.status = 409;
-
-  if (!users) throw noUsersFoundError;
+  if (!users) {
+    const error = new Error('No users found');
+    error.status = 409;
+    throw error;
+  }
 
   res.json({ users, status: 200 });
 });
@@ -21,10 +22,12 @@ exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
 ) {
   const userId = req.session.user.id;
   const user = await db.getUserById(userId);
-  const noUserFoundError = new Error('Invalid user id.');
-  noUserFoundError.status = 409;
 
-  if (!user) throw noUserFoundError;
+  if (!user) {
+    const error = new Error('Invalid user id.');
+    error.status = 409;
+    throw error;
+  }
 
   const userRoleData = await db.getUserRoles(userId, req.body.roles);
   res.json(userRoleData);
@@ -57,9 +60,9 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
   const user = await getUserForClientByProps({ id });
   const userId = user.id;
   if (!userId || !roles.length) {
-    const roleCreateError = new Error('User and roles must be defined');
-    roleCreateError.status = 409;
-    throw roleCreateError;
+    const error = new Error('User and roles must be defined');
+    error.status = 409;
+    throw error;
   }
 
   // TODO: Further Permissions Checks - can this user edit these roles?
@@ -108,9 +111,9 @@ exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
   const userId = req.session.user.id;
   const roles = req.body.roles;
   if (!userId || !roles.length) {
-    const roleCreateError = new Error('User and roles must be defined');
-    roleCreateError.status = 409;
-    throw roleCreateError;
+    const error = new Error('User and roles must be defined');
+    error.status = 409;
+    throw error;
   }
 
   // TODO: Further Permissions Checks - can this user edit these roles?
