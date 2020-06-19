@@ -8,8 +8,10 @@ export default class EditorMenu extends React.Component {
   constructor(props) {
     super(props);
 
+    const { mode = 'edit' } = this.props;
+
     this.state = {
-      mode: 'edit'
+      mode
     };
   }
 
@@ -179,5 +181,6 @@ EditorMenu.propTypes = {
 
     return null;
   },
+  mode: PropTypes.string,
   type: PropTypes.string
 };
