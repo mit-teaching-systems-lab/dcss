@@ -1,19 +1,14 @@
 import { type } from './meta';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Form,
-  Header,
-  Icon,
-  Message,
-  Segment
-} from 'semantic-ui-react';
-import PromptRequiredLabel from '../PromptRequiredLabel';
-import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
+import { connect } from 'react-redux';
+import { Button, Form, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import MicRecorder from 'mic-recorder-to-mp3';
 import { detect } from 'detect-browser';
-import { connect } from 'react-redux';
+import PromptRequiredLabel from '../PromptRequiredLabel';
+import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
+import AudioPlayer from './AudioPlayer';
+import Transcript from './Transcript';
 import { getResponse } from '@actions/response';
 import './AudioResponse.css';
 
@@ -38,8 +33,8 @@ class Display extends Component {
 
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
-    this.onStart = this.onStart.bind(this);
-    this.onStop = this.onStop.bind(this);
+    this.onStartClick = this.onStartClick.bind(this);
+    this.onStopClick = this.onStopClick.bind(this);
 
     this.browserSupported = SUPPORTED_BROWSERS.includes(detect().name);
   }
@@ -80,64 +75,67 @@ class Display extends Component {
     }
   }
 
-  async onStart() {
-    await this.mp3Recorder.start();
-    this.created_at = new Date().toISOString();
-    this.setState({
-      isRecording: true
+  onStartClick() {
+    this.setState({ isRecording: true });
+    this.mp3Recorder.start().then(() => {
+      this.created_at = new Date().toISOString();
     });
   }
 
-  async onStop() {
-    const [buffer, blob] = await (await this.mp3Recorder.stop()).getMp3();
-    const blobURL = URL.createObjectURL(blob);
+  onStopClick() {
+    this.setState({ isRecording: false });
 
-    const file = new File(buffer, 'recording.mp3', {
-      type: blob.type,
-      lastModified: Date.now()
-    });
+    (async () => {
+      const [buffer, blob] = await (await this.mp3Recorder.stop()).getMp3();
+      const blobURL = URL.createObjectURL(blob);
 
-    const { responseId, responseId: name, run } = this.props;
+      const file = new File(buffer, 'recording.mp3', {
+        type: blob.type,
+        lastModified: Date.now()
+      });
 
-    let body = new FormData();
-    body.append('name', 'audio-response');
-    body.append('recording', file);
-    body.append('responseId', responseId);
+      const { responseId, responseId: name, run } = this.props;
 
-    if (run) {
-      body.append('runId', run.id);
-    }
+      let body = new FormData();
+      body.append('name', 'audio-response');
+      body.append('recording', file);
+      body.append('responseId', responseId);
 
-    const { s3Location: value } = await (await fetch('/api/media/audio', {
-      method: 'POST',
-      body
-    })).json();
-
-    this.setState(prevState => {
-      if (prevState.blobURL) {
-        URL.revokeObjectURL(prevState.blobURL);
+      if (run) {
+        body.append('runId', run.id);
       }
-      return { blobURL, value, isRecording: false };
-    });
 
-    const { created_at } = this;
-    const { recallId } = this.props;
-    const transcript = '';
+      const { s3Location: value } = await (await fetch('/api/media/audio', {
+        method: 'POST',
+        body
+      })).json();
 
-    this.props.onResponseChange(
-      {},
-      {
-        created_at,
-        ended_at: new Date().toISOString(),
-        name,
-        recallId,
-        transcript,
-        type,
-        value
-      }
-    );
+      this.setState(prevState => {
+        if (prevState.blobURL) {
+          URL.revokeObjectURL(prevState.blobURL);
+        }
+        return { blobURL, value, isRecording: false };
+      });
 
-    this.setState({ transcript, value });
+      const { created_at } = this;
+      const { recallId } = this.props;
+      const transcript = '';
+
+      this.props.onResponseChange(
+        {},
+        {
+          created_at,
+          ended_at: new Date().toISOString(),
+          name,
+          recallId,
+          transcript,
+          type,
+          value
+        }
+      );
+
+      this.setState({ transcript, value });
+    })();
   }
 
   onFocus() {
@@ -167,54 +165,72 @@ class Display extends Component {
     const { isRecording, blobURL, transcript, value } = this.state;
     const { prompt, recallId, responseId, required, run } = this.props;
     const { onChange, onFocus } = this;
-    const fulfilled = value || blobURL ? true : false;
-    const header = this.browserSupported ? (
-      required && <PromptRequiredLabel fulfilled={fulfilled} />
-    ) : (
-      <React.Fragment>
-        {prompt} {required && <PromptRequiredLabel fulfilled={fulfilled} />}
-      </React.Fragment>
+    const isFulfilled = value || blobURL ? true : false;
+    const header = (
+      <Fragment>
+        {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
+      </Fragment>
     );
+    const src = isFulfilled ? blobURL || value : null;
 
     return this.browserSupported ? (
       <Segment>
         <Header as="h3">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
-        {!isRecording && (
-          <Button basic toggle onClick={this.onStart}>
-            <Icon name="circle" aria-label="Record an Audio Response" />
-            {prompt}
-          </Button>
-        )}
-        {isRecording && (
-          <Button basic negative onClick={this.onStop}>
-            <Icon name="stop circle" aria-label="Record an Audio Response" />
-            Done
-          </Button>
-        )}
 
-        {(blobURL || value) && (
-          <Message
-            content={
-              <React.Fragment>
-                <audio
-                  src={blobURL || `/api/media/${value}`}
-                  controls="controls"
-                />
+        <Grid columns={2}>
+          <Grid.Row>
+            <Grid.Column width={3}>
+              {!isRecording ? (
+                <Button
+                  aria-label="Start recording"
+                  className="ar__button"
+                  onClick={this.onStartClick}
+                >
+                  <Icon.Group size="big">
+                    <Icon size="large" name="circle outline" />
+                    <Icon name="microphone" />
+                    <Icon corner="top right" color="red" name="circle" />
+                  </Icon.Group>
+                </Button>
+              ) : (
+                <Button
+                  aria-label="Stop recording"
+                  className="ar__button"
+                  onClick={this.onStopClick}
+                >
+                  <Icon.Group size="big">
+                    <Icon size="large" loading name="circle notch" />
+                    <Icon name="microphone" />
+                    <Icon
+                      className="blink"
+                      corner="top right"
+                      color="red"
+                      name="circle"
+                    />
+                  </Icon.Group>
+                </Button>
+              )}
+            </Grid.Column>
+            <Grid.Column>
+              <AudioPlayer src={src} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
 
-                <blockquote className="audiotranscript__blockquote">
-                  {transcript ||
-                    '(Transcription in progress. This may take a few minutes, depending on the length of your audio recording.)'}
-                </blockquote>
-              </React.Fragment>
-            }
+        {isFulfilled ? (
+          <Transcript
+            key={src}
+            responseId={responseId}
+            run={run}
+            transcript={transcript}
           />
-        )}
+        ) : null}
       </Segment>
     ) : (
       <Segment>
         <Header as="h3">{header}</Header>
-
+        {recallId && <ResponseRecall run={run} recallId={recallId} />}
         <Form>
           <Form.TextArea
             name={responseId}

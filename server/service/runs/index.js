@@ -6,6 +6,7 @@ const {
   finishRun,
   getUserRuns,
   getResponse,
+  getResponseTranscriptOnly,
   getReferrerParams,
   getRunData,
   newOrExistingRun,
@@ -39,6 +40,10 @@ runs.post('/:run_id/response/:response_id', [
   upsertResponse
 ]);
 
+runs.get('/:run_id/response/:response_id/transcript', [
+  requireUserForRun,
+  getResponseTranscriptOnly
+]);
 runs.get('/:run_id/response/:response_id', [requireUserForRun, getResponse]);
 runs.get('/:run_id/referrer-params', [requireUserForRun, getReferrerParams]);
 
