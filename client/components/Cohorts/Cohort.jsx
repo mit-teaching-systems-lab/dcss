@@ -66,6 +66,10 @@ export class Cohort extends React.Component {
 
       const { cohort, user } = this.props;
 
+      if (cohort.id === null) {
+        this.props.history.push('/cohorts');
+      }
+
       const notInCohort = !!cohort.users.find(({ id }) => id === user.id);
 
       if (notInCohort) {
