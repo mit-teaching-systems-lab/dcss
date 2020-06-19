@@ -13,7 +13,7 @@ exports.requireUser = (req, res, next) => {
 };
 
 exports.respondWithUser = (req, res) => {
-  return res.json(req.session.user);
+  return res.json({ user: req.session.user });
 };
 
 exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(

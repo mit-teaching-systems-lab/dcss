@@ -1,27 +1,49 @@
 import Storage from '@utils/Storage';
 import {
-  // GET_RESPONSE,
   GET_RESPONSE_SUCCESS,
   GET_RESPONSE_ERROR,
-  // SET_RESPONSES,
+  GET_TRANSCRIPT_SUCCESS,
+  GET_TRANSCRIPT_ERROR,
   SET_RESPONSES_SUCCESS,
   SET_RESPONSES_ERROR
 } from './types';
 
 export const getResponse = ({ id, responseId }) => async dispatch => {
   try {
-    const { response, error } = await (await fetch(
+    const res = await (await fetch(
       `/api/runs/${id}/response/${responseId}`
     )).json();
 
-    if (error) {
+    if (res.error) {
       throw error;
     }
+
+    const { response } = res;
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: GET_RESPONSE_ERROR, status, message, stack });
+    dispatch({ type: GET_RESPONSE_ERROR, error });
+    return null;
+  }
+};
+
+export const getTranscriptOnly = ({ id, responseId }) => async dispatch => {
+  try {
+    const res = await (await fetch(
+      `/api/runs/${id}/response/${responseId}/transcript`
+    )).json();
+
+    if (res.error) {
+      throw error;
+    }
+    const {
+      transcript
+    } = res;
+    dispatch({ type: GET_TRANSCRIPT_SUCCESS, transcript });
+    return transcript;
+  } catch (error) {
+    dispatch({ type: GET_TRANSCRIPT_ERROR, error });
+    return null;
   }
 };
 
@@ -48,7 +70,7 @@ export const setResponses = (id, submitted) => async dispatch => {
     dispatch({ type: SET_RESPONSES_SUCCESS, responses, responsesById });
     return responses;
   } catch (error) {
-    const { message, status, stack } = error;
-    dispatch({ type: SET_RESPONSES_ERROR, status, message, stack });
+    dispatch({ type: SET_RESPONSES_ERROR, error });
+    return null;
   }
 };
