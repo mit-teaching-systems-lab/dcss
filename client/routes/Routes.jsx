@@ -10,6 +10,7 @@ import ConfirmAuth from '@components/ConfirmAuth';
 import CreateAccount from '@components/CreateAccount';
 import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';
 import Editor from '@components/Editor';
+import ForOhFor from '@components/ForOhFor';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import Login from '@components/Login';
 import MyScenarios from '@components/MyScenarios';
@@ -68,7 +69,7 @@ const Routes = ({ isLoggedIn }) => {
         isLoggedIn={isLoggedIn}
         path="/run/:scenarioId/slide/:activeRunSlideIndex"
       >
-        <Route component={Run} />
+        <Route render={props => <Run {...props} />} />
       </InterceptAnonymizableRoute>
       <InterceptAnonymizableRoute
         isLoggedIn={isLoggedIn}
@@ -264,6 +265,8 @@ const Routes = ({ isLoggedIn }) => {
         <Route component={CreateAccount} />
       </RedirectRouteForActiveSession>
       <Route exact path="/login/anonymous" component={CreateAnonymousAccount} />
+
+      <Route component={ForOhFor} />
     </Switch>
   );
 };
