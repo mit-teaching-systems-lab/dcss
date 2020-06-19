@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Confirm, Icon, Menu, Popup } from 'semantic-ui-react';
+import { Button, Confirm, Icon, Menu, Popup, Ref } from 'semantic-ui-react';
 
-class ConfirmableDeleteButton extends React.Component {
+class ConfirmableDeleteButton extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,21 +35,29 @@ class ConfirmableDeleteButton extends React.Component {
       ? `Are you sure you want to delete this ${itemType}?`
       : `Are you sure you want to delete?`;
 
+    const onConfirmClick = () => {
+      onConfirm();
+      onComplete();
+    };
+
+    const cancelButton = 'No thanks';
+    const confirmButton = (
+      <ConfirmButton onClick={onConfirmClick} content="Confirm delete" />
+    );
+
+    const trigger = (
+      <Menu.Item disabled={disabled} onClick={onClick}>
+        <Icon name="trash alternate outline" aria-label={ariaLabel} />
+      </Menu.Item>
+    );
     return (
       <React.Fragment>
-        <Popup
-          content={ariaLabel}
-          trigger={
-            <Menu.Item disabled={disabled} onClick={onClick}>
-              <Icon name="trash alternate outline" aria-label={ariaLabel} />
-            </Menu.Item>
-          }
-        />
+        <Popup content={ariaLabel} trigger={trigger} />
         <Confirm
           open={this.state.open}
           content={content}
-          cancelButton="No Thanks"
-          confirmButton="Confirm Delete"
+          cancelButton={cancelButton}
+          confirmButton={confirmButton}
           onCancel={onCancel}
           onConfirm={() => {
             onConfirm();
@@ -66,4 +74,31 @@ ConfirmableDeleteButton.propTypes = {
   itemType: PropTypes.string,
   onConfirm: PropTypes.func.isRequired
 };
+
+class ConfirmButton extends Component {
+  constructor(props) {
+    super(props);
+    this.setRef = node => {
+      this.ref = node;
+      this.ref.focus();
+    };
+  }
+  render() {
+    return (
+      <Ref innerRef={this.setRef}>
+        <Button
+          content={this.props.content}
+          onClick={this.props.onClick}
+          primary
+        />
+      </Ref>
+    );
+  }
+}
+
+ConfirmButton.propTypes = {
+  onClick: PropTypes.func,
+  content: PropTypes.node
+};
+
 export default ConfirmableDeleteButton;
