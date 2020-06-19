@@ -333,8 +333,8 @@ const mapStateToProps = state => {
     cohortMember => cohortMember.id === user.id
   );
   const authority = {
-    isOwner: cohortUser && cohortUser.role === 'owner',
-    isParticipant: cohortUser && cohortUser.role === 'participant'
+    isOwner: (cohortUser && cohortUser.role === 'owner') || false,
+    isParticipant: (cohortUser && cohortUser.role === 'participant') || false
   };
   // Super admins have access as an owner even if they are not in the cohort!
   if (user.roles.includes('super_admin')) {
