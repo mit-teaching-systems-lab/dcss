@@ -1,25 +1,26 @@
 import { combineReducers } from 'redux';
 
 import {
-  GET_USER_ERROR,
-  SET_USER_ERROR,
-  GET_USERS_ERROR,
-  GET_RESPONSE_ERROR,
-  SET_RESPONSE_ERROR,
-  GET_RUN_ERROR,
-  SET_RUN_ERROR,
-  GET_SCENARIO_ERROR,
-  SET_SCENARIO_ERROR,
-  GET_SCENARIOS_ERROR,
-  SET_SCENARIOS_ERROR,
-  GET_SLIDES_ERROR,
-  GET_COHORT_ERROR,
-  SET_COHORT_ERROR,
   GET_ALL_COHORTS_ERROR,
-  GET_USER_COHORTS_ERROR,
+  GET_COHORT_ERROR,
   GET_COHORT_RUN_DATA_ERROR,
+  GET_RESPONSE_ERROR,
+  GET_RUN_ERROR,
   GET_RUNS_ERROR,
-  LINK_RUN_TO_COHORT_ERROR
+  GET_SCENARIO_ERROR,
+  GET_SCENARIOS_ERROR,
+  GET_SLIDES_ERROR,
+  GET_TRANSCRIPT_ERROR,
+  GET_USER_COHORTS_ERROR,
+  GET_USER_ERROR,
+  GET_USERS_ERROR,
+  LINK_RUN_TO_COHORT_ERROR,
+  SET_COHORT_ERROR,
+  SET_RESPONSE_ERROR,
+  SET_RUN_ERROR,
+  SET_SCENARIO_ERROR,
+  SET_SCENARIOS_ERROR,
+  SET_USER_ERROR
 } from '@actions/types';
 
 // eslint-disable-next-line no-unused-vars
@@ -132,6 +133,19 @@ const response = (state = null, action) => {
 };
 
 // eslint-disable-next-line no-unused-vars
+const transcript = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case GET_TRANSCRIPT_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
 const run = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
@@ -187,15 +201,16 @@ const users = (state = null, action) => {
 
 export default combineReducers({
   cohort,
-  cohorts,
   cohortdata,
   cohortlink,
-  scenario,
-  scenarios,
-  slides,
+  cohorts,
   response,
   run,
   runs,
+  scenario,
+  scenarios,
+  slides,
+  transcript,
   user,
   users
 });
