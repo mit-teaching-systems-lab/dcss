@@ -6,13 +6,15 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { logIn } from '@actions';
 import { getUser } from '@actions/user';
 
-import Loading from '@components/Loading';
 import Notification from '@components/Notification';
-
 import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Routes from './Routes';
+
 import './Nav.css';
+import 'semantic-ui-css/semantic.min.css';
+// TODO: investigate using Fomantic
+// import 'fomantic-ui-css/semantic.min.css';
 
 class App extends Component {
   constructor(props) {
@@ -52,8 +54,9 @@ class App extends Component {
 
   render() {
     if (!this.state.isReady) {
-      return <Loading />;
+      return null;
     }
+
     return (
       <Router>
         <BackButtonHistory>
