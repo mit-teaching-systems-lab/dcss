@@ -261,6 +261,7 @@ export default class SlideEditor extends Component {
               key="slide-editor-menu"
               type="slide"
               items={editorMenuItems}
+              mode={mode}
             />
           </Grid.Row>
           <Grid.Row>
