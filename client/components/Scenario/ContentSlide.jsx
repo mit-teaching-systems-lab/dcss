@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Button, Card, Icon, Popup } from 'semantic-ui-react';
 import Storage from '@utils/Storage';
 import SlideComponents from '@components/SlideComponents';
-import Loading from '@components/Loading';
 import { getResponse } from '@actions/response';
 
 class ContentSlide extends React.Component {
@@ -141,7 +140,9 @@ class ContentSlide extends React.Component {
 
     if (!data.isFulfilled) {
       this.props.onResponseChange(event, data);
-      Storage.set(`run/${run.id}/${name}`, data);
+      if (run && run.id) {
+        Storage.set(`run/${run.id}/${name}`, data);
+      }
       this.setState({
         hasChanged: true,
         pending,
@@ -177,7 +178,7 @@ class ContentSlide extends React.Component {
     const { onInterceptResponseChange, onSkip } = this;
 
     if (!isReady) {
-      return <Loading />;
+      return null;
     }
     const cardClass = run ? 'scenario__card--run' : 'scenario__card';
     const runOnly = run ? { run } : {};

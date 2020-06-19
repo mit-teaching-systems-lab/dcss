@@ -51,7 +51,7 @@ class ScenarioCardActions extends Component {
                   pathname: `/editor/${scenario.id}/${editor.activeTab}/${editor.activeSlideIndex}`
                 }}
                 aria-label="Edit scenario"
-                className="sc__button"
+                className="sc__button sc__hidden-on-mobile"
               >
                 <Icon name="edit outline" />
                 <span className={className}>Edit</span>
@@ -64,7 +64,7 @@ class ScenarioCardActions extends Component {
                 as={Link}
                 to={{ pathname: `/editor/copy/${scenario.id}` }}
                 aria-label="Copy scenario"
-                className="sc__button"
+                className="sc__button sc__hidden-on-mobile"
               >
                 <Icon name="clipboard outline" />
                 <span className={className}>Copy</span>

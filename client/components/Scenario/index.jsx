@@ -199,6 +199,12 @@ class Scenario extends Component {
     const scenario = await (this.props.scenario || getScenario(scenarioId));
     const contents = await getSlides(scenarioId);
 
+    // Nice try! The requested scenario does not exist.
+    if (!scenario) {
+      this.props.history.push('/scenarios/');
+      return;
+    }
+
     let finish = contents.find(slide => slide.is_finish) || null;
 
     if (finish) {
@@ -273,9 +279,14 @@ class Scenario extends Component {
 
     // const activeSlideIndex = activeRunSlideIndex - 1;
     const activeSlideIndex = activeRunSlideIndex;
+    const classes = 'ui centered card scenario__card--run';
 
     if (!isReady) {
-      return <Loading />;
+      return this.isScenarioRun ? (
+        <div className={classes}>
+          <Loading card={{ cols: 1, rows: 1, style: { boxShadow: 'none' } }} />
+        </div>
+      ) : null;
     }
 
     const { cohortId, scenarioId, run } = this.props;
@@ -306,8 +317,6 @@ class Scenario extends Component {
         }
       }
     }
-
-    const classes = 'ui centered card scenario__card--run';
 
     return this.isScenarioRun ? (
       <Grid columns={1}>

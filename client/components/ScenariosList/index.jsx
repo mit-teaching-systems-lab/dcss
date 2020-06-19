@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
@@ -22,9 +22,9 @@ import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
+import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioCardActions from './ScenarioCardActions';
-import 'semantic-ui-css/semantic.min.css';
 import './ScenariosList.css';
 
 const CARDS_PER_PAGE = 8;
@@ -235,6 +235,10 @@ class ScenariosList extends Component {
       scenarios: results,
       value
     });
+
+    this.props.history.push(
+      `${this.props.location.pathname}?q=${encodeURIComponent(value)}`
+    );
   }
 
   render() {
@@ -283,7 +287,7 @@ class ScenariosList extends Component {
           as={NavLink}
           exact
           to="/editor/new"
-          className="scenarios__menu-item--padding"
+          className="sc__hidden-on-mobile sl__menu-item--padding"
         >
           <Icon.Group className="em__icon-group-margin">
             <Icon name="newspaper outline" />
@@ -294,15 +298,22 @@ class ScenariosList extends Component {
       </ConfirmAuth>
     ];
 
+    const onCopyClick = () => {
+      copy(url);
+      notify({
+        message: <Fragment>Copied: {url}</Fragment>
+      });
+    };
+
     const menuTriggerCopy = (
-      <Menu.Item onClick={() => copy(url)}>
+      <Menu.Item className="sc__hidden-on-mobile" onClick={onCopyClick}>
         {heading} ({scenariosSlice.length})
         <Icon name="clipboard outline" />
       </Menu.Item>
     );
 
     const menuTriggerInput = (
-      <Menu.Item className="scenarios__menu-item--padding">
+      <Menu.Item className="sl__menu-item--padding">
         <Input
           icon="search"
           placeholder="Search..."
@@ -318,50 +329,39 @@ class ScenariosList extends Component {
       </Menu.Menu>
     ];
 
-    if (!isReady) {
-      return <Loading />;
-    }
-    /*
-            <Grid.Row>
-              <Grid.Column stretched>
-                {heading && <h3>{heading}</h3>}
-              </Grid.Column>
-            </Grid.Row>
-
- */
     return (
-      <React.Fragment>
+      <Fragment>
         <EditorMenu type="scenarios" items={{ left, right }} />
-        <Container fluid>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column stretched>
-                {isReady ? (
-                  <Card.Group itemsPerRow={4} stackable>
+        {!isReady ? (
+          <Loading card={{ cols: 4, rows: 2 }} />
+        ) : (
+          <Container fluid>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column stretched>
+                  <Card.Group doubling itemsPerRow={4} stackable>
                     {cards}
                   </Card.Group>
-                ) : (
-                  <Loading size="medium" />
-                )}
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column stretched>
-                <Pagination
-                  name="scenarios"
-                  siblingRange={1}
-                  boundaryRange={0}
-                  ellipsisItem={null}
-                  firstItem={null}
-                  lastItem={null}
-                  activePage={activePage}
-                  onPageChange={onPageChange}
-                  totalPages={scenariosPages}
-                />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column stretched>
+                  <Pagination
+                    name="scenarios"
+                    siblingRange={1}
+                    boundaryRange={0}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    activePage={activePage}
+                    onPageChange={onPageChange}
+                    totalPages={scenariosPages}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Container>
+        )}
         {selected ? (
           <ScenarioDetailModal
             open={open}
@@ -369,7 +369,7 @@ class ScenariosList extends Component {
             scenario={selected}
           />
         ) : null}
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
