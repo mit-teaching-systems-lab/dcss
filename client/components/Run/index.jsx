@@ -4,7 +4,6 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
 import Storage from '@utils/Storage';
-import Loading from '@components/Loading';
 import Scenario from '@components/Scenario';
 import { linkRunToCohort, setCohortUserRole } from '@actions/cohort';
 import { getUser } from '@actions/user';
@@ -28,6 +27,17 @@ class Run extends Component {
     this.onChange = this.onChange.bind(this);
     this.onResponseChange = this.onResponseChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.submitIfPendingResponses = this.submitIfPendingResponses.bind(this);
+  }
+
+  submitIfPendingResponses() {
+    if (this.responses.size) {
+      this.onSubmit();
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.submitIfPendingResponses);
   }
 
   async componentDidMount() {
@@ -74,6 +84,8 @@ class Run extends Component {
 
       this.setState({ isReady: true });
     }
+
+    window.addEventListener('beforeunload', this.submitIfPendingResponses);
   }
 
   onResponseChange(event, data) {
@@ -116,11 +128,11 @@ class Run extends Component {
     const { cohortId, scenarioId } = this.props;
     const { isReady, baseurl } = this.state;
 
-    if (!isReady) {
-      return <Loading />;
+    if (!isReady || !this.props.run) {
+      return null;
     }
 
-    return this.props.run ? (
+    return (
       <Scenario
         baseurl={baseurl}
         cohortId={cohortId}
@@ -130,8 +142,6 @@ class Run extends Component {
         onSubmit={onSubmit}
         setActiveSlide={() => {}}
       />
-    ) : (
-      <Loading />
     );
   }
 }
