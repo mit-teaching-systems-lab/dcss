@@ -1,0 +1,4 @@
+.loading__single-card .ui.placeholder {
+  max-width: 100% !important;
+  height: 100vh;
+}
