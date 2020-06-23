@@ -11,7 +11,6 @@ const cohortInitialState = {
   id: null,
   created_at: '',
   name: '',
-  role: '',
   runs: [],
   scenarios: [],
   users: []
@@ -28,6 +27,7 @@ export const cohort = (state = cohortInitialState, action) => {
   }
 
   if (type === CREATE_COHORT_SUCCESS) {
+    console.log("CREATED: ", { ...cohort });
     return {
       ...state,
       ...cohort,
@@ -43,10 +43,16 @@ export const cohort = (state = cohortInitialState, action) => {
   }
 
   if (type === SET_COHORT_USER_ROLE_SUCCESS) {
-    return {
-      ...state,
-      users
-    };
+    if (users) {
+      return {
+        ...state,
+        users
+      };
+    } else {
+      return {
+        ...state
+      };
+    }
   }
 
   return state;

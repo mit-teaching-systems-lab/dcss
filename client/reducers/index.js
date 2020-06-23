@@ -9,7 +9,7 @@ import { history, scenario } from './scenario';
 import { scenarios, scenariosById } from './scenarios';
 import tags from './tags';
 import { user } from './user';
-import { users } from './users';
+import { users, usersById } from './users';
 
 export default combineReducers({
   cohort,
@@ -28,5 +28,6 @@ export default combineReducers({
   scenariosById,
   tags,
   user,
-  users
+  users,
+  usersById
 });

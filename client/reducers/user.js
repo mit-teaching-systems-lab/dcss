@@ -9,7 +9,6 @@ const initialState = {
 
 export const user = (state = initialState, action) => {
   const { user, type } = action;
-
   switch (type) {
     // GET_USER_SUCCESS, SET_USER_SUCCESS:
     // user will be an object with the same
