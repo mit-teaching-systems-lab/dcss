@@ -3,11 +3,18 @@
 }
 
 .users__col-large {
+  /*width: 30%;*/
+}
+
+.users__col-medium {
   width: 20%;
 }
 
 .users__col-small {
-  width: 12%;
+  width: 10%;
 }
 
 
+.ut__tbody {
+  min-height: 231px;
+}

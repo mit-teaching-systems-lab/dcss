@@ -58,7 +58,7 @@ class Admin extends Component {
       <div>
         <Menu attached="top" tabular>
           <Menu.Item
-            content="Users"
+            content="Access Control"
             name="users"
             active={activeTab === 'users'}
             onClick={onClick}

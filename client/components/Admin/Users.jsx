@@ -3,37 +3,28 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Icon, Input, Menu, Pagination, Table } from 'semantic-ui-react';
+import { Icon, Input, Menu } from 'semantic-ui-react';
 
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
-import UserRows from './UserRows';
+import UsersTable from './UsersTable';
 import { getUsers } from '@actions/users';
+import { SITE_ROLE_GROUPS } from './constants';
+
+const { super_admin, admin, facilitator, researcher } = SITE_ROLE_GROUPS;
 
 const ROWS_PER_PAGE = 10;
-
-const rolesMap = {
-  super_admin: 'Super Admin',
-  admin: 'Admin',
-  researcher: 'Researcher',
-  facilitator: 'Facilitator',
-  participant: 'Participant'
-};
-
-Object.entries(rolesMap).forEach(([key, value]) => {
-  rolesMap[key.toLowerCase()] = value;
-  rolesMap[value] = key;
-  rolesMap[value.toLowerCase()] = key;
-});
 
 class Users extends Component {
   constructor(props) {
     super(props);
 
+    const { users } = this.props;
+
     this.state = {
       isReady: false,
       activePage: 1,
-      users: []
+      users
     };
 
     // This is used as a back up copy of
@@ -45,7 +36,12 @@ class Users extends Component {
   }
 
   async componentDidMount() {
-    const users = await this.props.getUsers();
+    let { users } = this.state;
+
+    if (!users.length) {
+      users = await this.props.getUsers();
+    }
+
     this.users = users.slice();
     this.setState({
       isReady: true,
@@ -67,6 +63,10 @@ class Users extends Component {
       this.setState({
         users
       });
+      return;
+    }
+
+    if (value.length < 3) {
       return;
     }
 
@@ -98,18 +98,60 @@ class Users extends Component {
 
   render() {
     const { onPageChange, onUserSearchChange } = this;
-    const { isReady, activePage, users } = this.state;
+    const { user } = this.props;
+    const { isReady, activePage } = this.state;
 
     if (!isReady) {
       return <Loading />;
     }
+    const totalUserCount = this.state.users.length;
+    const pages = Math.ceil(totalUserCount / ROWS_PER_PAGE);
+    const index = (activePage - 1) * ROWS_PER_PAGE;
+    const users = this.state.users.slice(index, index + ROWS_PER_PAGE);
+    const columns = {
+      username: {
+        className: 'users__col-large',
+        content: 'Username'
+      },
+      email: {
+        className: 'users__col-large',
+        content: 'Email'
+      }
+    };
 
-    const usersPages = Math.ceil(users.length / ROWS_PER_PAGE);
-    const usersIndex = (activePage - 1) * ROWS_PER_PAGE;
-    const usersSlice = users.slice(usersIndex, usersIndex + ROWS_PER_PAGE);
+    const grantableRoles = {};
 
-    const diff = ROWS_PER_PAGE - usersSlice.length;
-    const rows = UserRows(usersSlice, diff);
+    if (user.roles.includes('super_admin')) {
+      Object.assign(grantableRoles, super_admin);
+    }
+
+    if (user.roles.includes('admin')) {
+      Object.assign(grantableRoles, admin);
+    }
+
+    if (user.roles.includes('facilitator')) {
+      Object.assign(grantableRoles, facilitator);
+    }
+
+    if (user.roles.includes('researcher')) {
+      Object.assign(grantableRoles, researcher);
+    }
+
+    Object.assign(columns, grantableRoles);
+
+    const rows = users.reduce((accum, user) => {
+      accum[user.id] = [user.username, user.email];
+      return accum;
+    }, {});
+
+    const usersTableProps = {
+      activePage,
+      columns,
+      grantableRoles,
+      onPageChange,
+      pages,
+      rows
+    };
 
     return (
       <Fragment>
@@ -125,7 +167,7 @@ class Users extends Component {
                   <Icon name="user" />
                   <Icon corner="top right" name="cogs" color="orange" />
                 </Icon.Group>
-                User Administration ({users.length} users)
+                Users ({totalUserCount})
               </Menu.Item>
             ],
             right: [
@@ -145,53 +187,7 @@ class Users extends Component {
             ]
           }}
         />
-        {users.length ? (
-          <Table fixed celled style={{ minHeight: '550px' }}>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell className="users__col-large">
-                  Username
-                </Table.HeaderCell>
-                <Table.HeaderCell className="users__col-large">
-                  Email
-                </Table.HeaderCell>
-                <Table.HeaderCell className="users__col-small">
-                  Super Admin
-                </Table.HeaderCell>
-                <Table.HeaderCell className="users__col-small">
-                  Admin
-                </Table.HeaderCell>
-                <Table.HeaderCell className="users__col-small">
-                  Researcher
-                </Table.HeaderCell>
-                <Table.HeaderCell className="users__col-small">
-                  Facilitator
-                </Table.HeaderCell>
-                <Table.HeaderCell className="users__col-small">
-                  Participant
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>{rows}</Table.Body>
-            <Table.Footer>
-              <Table.Row>
-                <Table.HeaderCell colSpan="7">
-                  <Pagination
-                    name="users"
-                    siblingRange={1}
-                    boundaryRange={0}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    activePage={activePage}
-                    onPageChange={onPageChange}
-                    totalPages={usersPages}
-                  />
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Footer>
-          </Table>
-        ) : null}
+        <UsersTable {...usersTableProps} />
       </Fragment>
     );
   }
@@ -206,8 +202,13 @@ Users.propTypes = {
   getUsers: PropTypes.func
 };
 
-const mapStateToProps = state => {
-  const { user, users } = state;
+const mapStateToProps = (state, ownProps) => {
+  let users = state.users;
+
+  if (ownProps.users) {
+    users = ownProps.users;
+  }
+  const { user } = state;
   return { user, users };
 };
 
