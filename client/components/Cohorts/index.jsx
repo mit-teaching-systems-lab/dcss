@@ -46,11 +46,11 @@ export class Cohorts extends React.Component {
       scenarios: []
     };
 
-    this.onCancelCreateCohort = this.onCancelCreateCohort.bind(this);
-    this.onChangeCohortName = this.onChangeCohortName.bind(this);
-    this.onClickOpenCreateCohort = this.onClickOpenCreateCohort.bind(this);
-    this.onSearchChange = this.onSearchChange.bind(this);
-    this.onSubmitCreateCohort = this.onSubmitCreateCohort.bind(this);
+    this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
+    this.onCohortNameChange = this.onCohortNameChange.bind(this);
+    this.onOpenCreateCohortClick = this.onOpenCreateCohortClick.bind(this);
+    this.onCohortSearchChange = this.onCohortSearchChange.bind(this);
+    this.onCreateCohortSubmit = this.onCreateCohortSubmit.bind(this);
   }
 
   async componentDidMount() {
@@ -71,7 +71,7 @@ export class Cohorts extends React.Component {
     }
   }
 
-  async onSubmitCreateCohort() {
+  async onCreateCohortSubmit() {
     const { name } = this.state.cohort;
 
     const { id } = await this.props.createCohort({
@@ -81,19 +81,19 @@ export class Cohorts extends React.Component {
     location.href = `/cohort/${id}`;
   }
 
-  onCancelCreateCohort() {
+  onCreateCohortCancel() {
     this.setState({ createIsVisible: false });
   }
 
-  onChangeCohortName(event, { name, value }) {
+  onCohortNameChange(event, { name, value }) {
     this.setState({ cohort: { [name]: value } });
   }
 
-  onClickOpenCreateCohort() {
+  onOpenCreateCohortClick() {
     this.setState({ createIsVisible: true });
   }
 
-  onSearchChange(event, props) {
+  onCohortSearchChange(event, props) {
     const { cohorts: sourceCohorts, scenarios } = this.props;
     const { value } = props;
 
@@ -102,6 +102,10 @@ export class Cohorts extends React.Component {
         cohorts: sourceCohorts
       });
 
+      return;
+    }
+
+    if (value.length < 3) {
       return;
     }
 
@@ -143,11 +147,11 @@ export class Cohorts extends React.Component {
   render() {
     const { isReady, cohort, cohorts, createIsVisible } = this.state;
     const {
-      onCancelCreateCohort,
-      onChangeCohortName,
-      onClickOpenCreateCohort,
-      onSearchChange,
-      onSubmitCreateCohort
+      onCreateCohortCancel,
+      onCohortNameChange,
+      onOpenCreateCohortClick,
+      onCohortSearchChange,
+      onCreateCohortSubmit
     } = this;
 
     return (
@@ -164,7 +168,7 @@ export class Cohorts extends React.Component {
                   <Menu.Item
                     key="menu-item-create-cohort"
                     name="Create a cohort"
-                    onClick={onClickOpenCreateCohort}
+                    onClick={onOpenCreateCohortClick}
                     className="em__icon-padding"
                   >
                     <Icon.Group className="em__icon-group-margin">
@@ -185,7 +189,7 @@ export class Cohorts extends React.Component {
                     <Input
                       icon="search"
                       placeholder="Search..."
-                      onChange={onSearchChange}
+                      onChange={onCohortSearchChange}
                     />
                   </Menu.Item>
                 </Menu.Menu>
@@ -197,23 +201,23 @@ export class Cohorts extends React.Component {
           <Modal open={createIsVisible} size="small">
             <Header icon="group" content="Create a cohort" />
             <Modal.Content>
-              <Form onSubmit={onSubmitCreateCohort}>
+              <Form onSubmit={onCreateCohortSubmit}>
                 <Input
                   fluid
                   focus
                   placeholder="Enter a name for your cohort"
                   name="name"
                   value={cohort.name}
-                  onChange={onChangeCohortName}
-                  onSubmit={onSubmitCreateCohort}
+                  onChange={onCohortNameChange}
+                  onSubmit={onCreateCohortSubmit}
                 />
               </Form>
             </Modal.Content>
             <Modal.Actions>
-              <Button color="grey" onClick={onCancelCreateCohort}>
+              <Button color="grey" onClick={onCreateCohortCancel}>
                 Cancel
               </Button>
-              <Button color="green" onClick={onSubmitCreateCohort}>
+              <Button color="green" onClick={onCreateCohortSubmit}>
                 Create
               </Button>
             </Modal.Actions>
@@ -238,7 +242,7 @@ export class Cohorts extends React.Component {
                         <ConfirmAuth requiredPermission="create_cohort">
                           <Button
                             name="Create a cohort"
-                            onClick={onClickOpenCreateCohort}
+                            onClick={onOpenCreateCohortClick}
                             className="em__icon-padding"
                             style={{ background: 'transparent' }}
                           >
