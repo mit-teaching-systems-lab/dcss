@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
 import Storage from '@utils/Storage';
 import Scenario from '@components/Scenario';
-import { linkRunToCohort, setCohortUserRole } from '@actions/cohort';
+import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getResponse, setResponses } from '@actions/response';
 import { getRun, setRun } from '@actions/run';
@@ -43,40 +43,32 @@ class Run extends Component {
   async componentDidMount() {
     const {
       cohortId,
-      getRun,
-      linkRunToCohort,
       location: { search },
       scenarioId,
-      setCohortUserRole,
-      setRun
     } = this.props;
 
-    const run = await getRun(scenarioId);
+    const run = await this.props.getRun(scenarioId);
 
     if (run) {
       if (cohortId) {
-        const cohort = await linkRunToCohort(cohortId, run.id);
+        const cohort = await this.props.linkRunToCohort(cohortId, run.id);
 
         if (cohort) {
           const { id, users } = cohort;
-          const {
-            user: { username }
-          } = this.props;
+          const { user } = this.props;
 
-          if (!users.find(user => username === user.username)) {
+          console.log(cohort.users);
+          if (!users.find(({ id }) => id === user.id)) {
             // For now we'll default all unknown
             // users as "participant".
-            await setCohortUserRole({
-              id,
-              role: 'participant'
-            });
+            await this.props.linkUserToCohort(id, 'participant');
           }
         }
       }
 
       const referrer_params = Storage.get('app/referrer_params');
       if (search || referrer_params) {
-        await setRun(run.id, {
+        await this.props.setRun(run.id, {
           referrer_params: QueryString.parse(search || referrer_params)
         });
         Storage.delete('app/referrer_params');
@@ -149,7 +141,7 @@ class Run extends Component {
 Run.propTypes = {
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
-  setCohortUserRole: PropTypes.func,
+  linkUserToCohort: PropTypes.func,
   getUser: PropTypes.func,
   getResponse: PropTypes.func,
   setResponses: PropTypes.func,
@@ -195,13 +187,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  setCohortUserRole: params => dispatch(setCohortUserRole(params)),
   getUser: params => dispatch(getUser(params)),
   getResponse: params => dispatch(getResponse(params)),
   setResponses: (...params) => dispatch(setResponses(...params)),
   getRun: params => dispatch(getRun(params)),
   setRun: (...params) => dispatch(setRun(...params)),
-  linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params))
+  linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
 });
 
 export default withRouter(
