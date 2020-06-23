@@ -1,42 +1,60 @@
 const { sql } = require('../../util/sqlHelpers');
 const { withClient, withClientTransaction } = require('../../util/db');
 
-exports.getUserById = async function getUserById(id) {
+exports.getAllUsersRoles = async function() {
   return withClient(async client => {
-    const result = await client.query(
-      sql`SELECT * FROM users WHERE id = ${id};`
-    );
-    return result.rows[0];
-  });
-};
-
-exports.getAllUsersRoles = async function getAllUsersRoles() {
-  return withClient(async client => {
-    const result = await client.query(sql`SELECT * FROM user_role_detail`);
+    const result = await client.query(sql`
+      SELECT * FROM user_role_detail
+    `);
     return result.rows;
   });
 };
 
-exports.getUserRoles = async function getUserRoles(userId) {
+exports.getUserRoles = async function(user_id) {
+  console.log("!!!!!!!!!!!!!!!!!!!!!!getUserRoles!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   return withClient(async client => {
-    const result = await client.query(
-      sql`SELECT * FROM user_role WHERE user_id = ${userId};`
-    );
+    const result = await client.query(sql`
+      SELECT * FROM user_role WHERE user_id = ${user_id};
+    `);
     return { roles: result.rows.map(row => row.role) };
   });
 };
 
-exports.addUserRoles = async function addUserRoles(userId, roles) {
+exports.addUserRoles = async function(user_id, roles) {
   return withClientTransaction(async client => {
+    // const result = await client.query(sql`
+    //   INSERT INTO user_role (user_id, role)
+    //   SELECT ${user_id} as user_id, t.role FROM jsonb_array_elements_text(${roles}) AS t (role)
+    //   ON CONFLICT DO NOTHING;
+    // `);
+    const [role] = roles;
     const result = await client.query(sql`
-INSERT INTO user_role (user_id, role)
-    SELECT ${userId} as user_id, t.role FROM jsonb_array_elements_text(${roles}) AS t (role)
-    ON CONFLICT DO NOTHING;`);
+      INSERT INTO user_role (user_id, role)
+      VALUES (${user_id}, ${role})
+      ON CONFLICT DO NOTHING;
+    `);
     return { addedCount: result.rowCount };
   });
 };
 
-exports.setUserRoles = async function setUserRoles(userId, roles) {
+exports.deleteUserRoles = async function(user_id, roles) {
+  return withClientTransaction(async client => {
+    // const result = await client.query(sql`
+    //   DELETE FROM user_role
+    //   WHERE user_id = ${user_id}
+    //   AND role IN (SELECT jsonb_array_elements_text(${roles}));
+    // `);
+    const [role] = roles;
+    const result = await client.query(sql`
+      DELETE FROM user_role
+      WHERE user_id = ${user_id}
+      AND role = ${role};
+    `);
+    return { deletedCount: result.rowCount };
+  });
+};
+
+exports.setUserRoles = async function(userId, roles) {
   return withClientTransaction(async client => {
     const add = await client.query(sql`
 INSERT INTO user_role (user_id, role)
@@ -54,19 +72,7 @@ DELETE FROM user_role WHERE user_id = ${userId} AND role NOT IN (SELECT jsonb_ar
   });
 };
 
-exports.deleteUserRoles = async function(userId, roles) {
-  return withClientTransaction(async client => {
-    const result = await client.query(
-      sql`DELETE FROM user_role WHERE user_id = ${userId} AND role IN (SELECT jsonb_array_elements_text(${roles}));`
-    );
-    return { deletedCount: result.rowCount };
-  });
-};
-
-exports.addRolePermissions = async function addRolePermissions(
-  role,
-  permission
-) {
+exports.addRolePermissions = async function(role, permission) {
   return withClientTransaction(async client => {
     const result = await client.query(sql`
 INSERT INTO role_permission (role, permission)
@@ -77,7 +83,7 @@ INSERT INTO role_permission (role, permission)
   });
 };
 
-exports.getUserPermissions = async function getUserPermissions(userId) {
+exports.getUserPermissions = async function(userId) {
   const { roles } = await this.getUserRoles(userId);
 
   return withClient(async client => {
@@ -93,7 +99,7 @@ exports.getUserPermissions = async function getUserPermissions(userId) {
   });
 };
 
-exports.getUsersByPermission = async function getUsersByPermission(permission) {
+exports.getUsersByPermission = async function(permission) {
   const requestedRoles = await withClient(async client => {
     const roles = [];
     const result = await client.query(sql`

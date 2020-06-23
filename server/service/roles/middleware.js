@@ -35,8 +35,10 @@ exports.requireUserRole = roles => [
 ];
 
 exports.checkCanEditUserRoles = getEditUserId => [
-  // only admin can edit user roles
-  exports.requireUserRole(['admin', 'super_admin']),
+  // super_admin & admin can edit user roles via Admin -> Users
+  // super_admin, admin, facilitator (cohort: owner, facilitator)
+  //    can can edit user roles via Cohort
+  exports.requireUserRole(['admin', 'super_admin', 'facilitator']),
   asyncMiddleware(async function checkCanEditUser(req, res, next) {
     const targetUserId = await getEditUserId(req);
     const { roles: targetUserRoles } = await db.getUserRoles(targetUserId);

@@ -14,18 +14,18 @@ const {
 } = require('./endpoints');
 
 router.get('/all', [
-  requireUserRole(['admin', 'super_admin']),
+  requireUserRole(['admin', 'super_admin', 'facilitator']),
   getAllUsersRoles
 ]);
 
 router.get('/permission', [getUserPermissions]);
 router.post('/user/permission', [
-  requireUserRole(['admin', 'super_admin']),
+  requireUserRole(['admin', 'super_admin', 'facilitator']),
   getUsersByPermission
 ]);
 
 router.get('/:user_id', [
-  requireUserRole(['admin', 'super_admin']),
+  requireUserRole(['admin', 'super_admin', 'facilitator']),
   getUserRoles
 ]);
 

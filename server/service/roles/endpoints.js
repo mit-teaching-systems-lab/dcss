@@ -1,6 +1,6 @@
 const db = require('./db');
 const { asyncMiddleware } = require('../../util/api');
-const { getUserForClientByProps } = require('../auth/db');
+const { getUserById } = require('../auth/db');
 
 exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
   req,
@@ -12,7 +12,6 @@ exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
     error.status = 409;
     throw error;
   }
-
   res.json({ users, status: 200 });
 });
 
@@ -20,8 +19,7 @@ exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
   req,
   res
 ) {
-  const userId = req.session.user.id;
-  const user = await db.getUserById(userId);
+  const user = await db.getUserById(req.session.user.id);
 
   if (!user) {
     const error = new Error('Invalid user id.');
@@ -29,7 +27,7 @@ exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
     throw error;
   }
 
-  const userRoleData = await db.getUserRoles(userId, req.body.roles);
+  const userRoleData = await db.getUserRoles(user.id, req.body.roles);
   res.json(userRoleData);
 });
 
@@ -37,9 +35,7 @@ exports.getUserPermissions = asyncMiddleware(async function getUserPermissions(
   req,
   res
 ) {
-  const userId = req.session.user.id;
-  const userPermissions = await db.getUserPermissions(userId);
-
+  const userPermissions = await db.getUserPermissions(req.session.user.id);
   res.json(userPermissions);
 });
 
@@ -56,10 +52,9 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
   req,
   res
 ) {
-  const { id, roles } = req.body;
-  const user = await getUserForClientByProps({ id });
-  const userId = user.id;
-  if (!userId || !roles.length) {
+  const { user_id, roles } = req.body;
+  const user = await getUserById(user_id);
+  if (!user.id || !roles.length) {
     const error = new Error('User and roles must be defined');
     error.status = 409;
     throw error;
@@ -68,7 +63,7 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
   // TODO: Further Permissions Checks - can this user edit these roles?
 
   try {
-    const result = await db.addUserRoles(userId, roles);
+    const result = await db.addUserRoles(user.id, roles);
     res.json(result);
   } catch (apiError) {
     const error = new Error('Error while editing roles');
@@ -82,10 +77,9 @@ exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
   req,
   res
 ) {
-  const { id, roles } = req.body;
-  const user = await getUserForClientByProps({ id });
-  const userId = user.id;
-  if (!userId || !roles.length) {
+  const { user_id, roles } = req.body;
+  const user = await getUserById(user_id);
+  if (!user.id || !roles.length) {
     const error = new Error('User and roles must be defined');
     error.status = 409;
     throw error;
@@ -94,7 +88,7 @@ exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
   // TODO: Further Permissions Checks - can this user edit these roles?
 
   try {
-    const result = await db.deleteUserRoles(userId, roles);
+    const result = await db.deleteUserRoles(user.id, roles);
     res.json(result);
   } catch (apiError) {
     const error = new Error('Error while editing roles');
@@ -108,9 +102,7 @@ exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
   req,
   res
 ) {
-  const userId = req.session.user.id;
-  const roles = req.body.roles;
-  if (!userId || !roles.length) {
+  if (!req.session.user.id || !req.body.roles.length) {
     const error = new Error('User and roles must be defined');
     error.status = 409;
     throw error;
@@ -119,7 +111,7 @@ exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
   // TODO: Further Permissions Checks - can this user edit these roles?
 
   try {
-    const result = await db.setUserRoles(userId, roles);
+    const result = await db.setUserRoles(req.session.user.id, req.body.roles);
     res.json(result);
   } catch (apiError) {
     const error = new Error('Error while editing roles');
