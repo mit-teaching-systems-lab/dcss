@@ -65,15 +65,20 @@
 .dt__scroll {
   max-width: 100%;
   max-height: 72vh;
-  overflow: scroll;
+  overflow: auto;
   position: relative;
   margin-bottom: 1rem;
   padding-top: 0 !important;
 }
 
+.dt__scroll th:last-child,
+.dt__scroll td:last-child {
+  border-right: 1px solid rgba(34,36,38,.15) !important;
+}
+
 .dtm__view .dt__scroll {
   width: unset;
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
   overflow-x: unset !important;
 }
 

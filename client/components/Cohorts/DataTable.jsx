@@ -94,8 +94,8 @@ export class DataTable extends React.Component {
     } = this.props;
     const isScenarioDataTable = scenarioId !== undefined;
     const { prompts, responses } = cohortId
-      ? await getCohortData({ cohortId, participantId, scenarioId })
-      : await getRunData({ runId });
+      ? await getCohortData(cohortId, participantId, scenarioId)
+      : await getRunData(runId);
 
     const scenarios = cohortId
       ? this.props.cohort.scenarios
@@ -296,7 +296,7 @@ export class DataTable extends React.Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell scope="col" {...leftColHidden}>
-                      <Icon name="chevron down" />
+
                       {leftColHeader}
                     </Table.HeaderCell>
                     {prompts.map(({ header, prompt }, index) => (
