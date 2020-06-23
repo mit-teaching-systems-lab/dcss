@@ -139,6 +139,10 @@ class Researcher extends Component {
       return <Loading />;
     }
 
+    if (true) {
+      return <div><h1>Temporarily Unavailable</h1></div>;
+    }
+
     return (
       <div>
         <Table role="grid" unstackable>
