@@ -15,14 +15,22 @@ import {
   Table
 } from 'semantic-ui-react';
 import _ from 'lodash';
+import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
+import UsersTable from '@components/Admin/UsersTable';
 import ClickableTableCell from '@components/ClickableTableCell';
+import CohortUserRole from './CohortUserRole';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
+import { COHORT_ROLE_GROUPS } from '../Admin/constants';
 import './Cohort.css';
+
+const { super_admin, admin, facilitator, researcher } = COHORT_ROLE_GROUPS;
+
+const ROWS_PER_PAGE = 10;
 
 export class CohortParticipants extends React.Component {
   constructor(props) {
@@ -48,6 +56,7 @@ export class CohortParticipants extends React.Component {
 
     this.state = {
       isReady: false,
+      activePage: 1,
       refresh,
       search: '',
       cohort: {
@@ -63,6 +72,8 @@ export class CohortParticipants extends React.Component {
     // by searching.
     this.participants = [];
     this.tableBody = React.createRef();
+    this.sectionRef = React.createRef();
+    this.onPageChange = this.onPageChange.bind(this);
     this.onParticipantCheckboxClick = this.onParticipantCheckboxClick.bind(
       this
     );
@@ -105,8 +116,25 @@ export class CohortParticipants extends React.Component {
     const { participants } = this;
     const { cohort } = this.props;
 
+    if (value === '') {
+      this.setState({
+        activePage: 1,
+        search: value,
+        cohort: {
+          ...cohort,
+          users: participants
+        }
+      });
+      return;
+    }
+
+    if (value.length < 3) {
+      return;
+    }
+
     const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
     let users = participants.filter(participant => {
+      console.log(participant);
       if (escapedRegExp.test(participant.username)) {
         return true;
       }
@@ -114,6 +142,11 @@ export class CohortParticipants extends React.Component {
       if (escapedRegExp.test(participant.email)) {
         return true;
       }
+
+      if (escapedRegExp.test(participant.roles.join(','))) {
+        return true;
+      }
+
       return false;
     });
 
@@ -122,6 +155,7 @@ export class CohortParticipants extends React.Component {
     }
 
     this.setState({
+      activePage: 1,
       search: value,
       cohort: {
         ...cohort,
@@ -155,14 +189,23 @@ export class CohortParticipants extends React.Component {
     });
   }
 
+  onPageChange(event, { activePage }) {
+    this.setState({
+      activePage
+    });
+  }
+
   render() {
-    const { isAuthorized, onClick } = this.props;
-    const { cohort, isReady, refresh } = this.state;
+    const { authority, onClick, user } = this.props;
+    const { activePage, cohort, isReady, refresh } = this.state;
     const {
+      onPageChange,
       onParticipantRefreshChange,
       onParticipantSearchChange,
       scrollIntoView
     } = this;
+    const { isFacilitator, isOwner } = authority;
+
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
 
@@ -175,60 +218,160 @@ export class CohortParticipants extends React.Component {
     const refreshLabel = refresh
       ? 'Automattically refreshing this list'
       : 'List will refresh when page is reloaded';
-    return (
-      <Container fluid className="cohort__table-container">
+
+    const rowsPerPage = ROWS_PER_PAGE;
+    const pages = Math.ceil(cohort.users.length / ROWS_PER_PAGE);
+    const index = (activePage - 1) * ROWS_PER_PAGE;
+    const users = cohort.users.slice(index, index + ROWS_PER_PAGE);
+    const columns = {
+      data: {
+        className: 'cohort__table-cell-first',
+        content: ''
+      },
+      username: {
+        className: 'users__col-large',
+        content: 'Username'
+      },
+      email: {
+        className: 'users__col-large',
+        content: 'Email'
+      }
+    };
+
+    const grantableRoles = {};
+
+    if (user.roles.includes('facilitator')) {
+      Object.assign(grantableRoles, facilitator);
+    }
+
+    if (user.roles.includes('researcher')) {
+      Object.assign(grantableRoles, researcher);
+    }
+
+    Object.assign(columns, grantableRoles);
+
+    const rows = users.reduce((accum, user) => {
+      // username will never be empty, but email might be.
+      const onClickAddTab = (event, data) => {
+        onClick(event, {
+          ...data,
+          type: 'participant',
+          source: user
+        });
+      };
+      const trigger = (
+        <ClickableTableCell
+          className="cohort__table-cell-first"
+          key={`clickabletablecell-${user.id}`}
+          display={<Icon name="file alternate outline" />}
+          onClick={onClickAddTab}
+        />
+      );
+      const popup = (
+        <ConfirmAuth
+          key={`confirmauth-${user.id}`}
+          isAuthorized={isFacilitator}
+          requiredPermission="view_all_data"
+        >
+          <Popup
+            content="View cohort reponses from this participant"
+            trigger={trigger}
+          />
+        </ConfirmAuth>
+      );
+
+console.log(user);
+      accum[user.id] = [
+        popup,
+        // These are cohort user roles, not site user roles!!!
+        user.roles.includes('owner')
+          ? `${user.username} (owner)`
+          : user.username,
+        user.email || ''
+      ];
+      return accum;
+    }, {});
+
+    const usersTableProps = {
+      activePage,
+      cohort,
+      columns,
+      grantableRoles,
+      onPageChange,
+      pages,
+      rows
+    };
+
+    const left = [
+      <Menu.Item
+        key="menu-item-cohort-participants"
+        className="em__icon-padding"
+        name="Participants in this Cohort"
+        onClick={scrollIntoView}
+      >
+        <Icon.Group className="em__icon-group-margin">
+          <Icon name="group" />
+        </Icon.Group>
+        Participants ({this.props.cohort.users.length})
+      </Menu.Item>,
+      <Menu.Item
+        key="menu-item-cohort-participants"
+        className="em__icon-padding"
+        name="Control participant list refresh"
+        onClick={onParticipantRefreshChange}
+      >
+        <Icon.Group className="em__icon-group-margin">
+          <Icon name="refresh" />
+          <Icon
+            corner="top right"
+            name={refreshIcon}
+            color={refreshColor}
+          />
+        </Icon.Group>
+        {refreshLabel}
+      </Menu.Item>
+    ];
+
+    const right = [
+      <Menu.Menu
+        key="menu-menu-search-cohort-participants"
+        position="right"
+      >
+        <Menu.Item
+          key="menu-item-search-cohort-participants"
+          name="Search cohort participants"
+          className="em__icon-padding"
+        >
+          <Input
+            icon="search"
+            placeholder="Search..."
+            onChange={onParticipantSearchChange}
+          />
+        </Menu.Item>
+        {/*
+        <Menu.Item
+          onClick={() => this.sectionRef.scrollIntoView()}
+        >
+            <Icon name="angle double up" />
+        </Menu.Item>
+        */}
+      </Menu.Menu>
+    ];
+    const editorMenu = (
+      <Ref innerRef={node => (this.sectionRef = node)}>
         <EditorMenu
           type="cohort participants"
-          items={{
-            left: [
-              <Menu.Item
-                key="menu-item-cohort-participants"
-                className="em__icon-padding"
-                name="Participants in this Cohort"
-                onClick={scrollIntoView}
-              >
-                <Icon.Group className="em__icon-group-margin">
-                  <Icon name="group" />
-                </Icon.Group>
-                Cohort Participants ({this.props.cohort.users.length})
-              </Menu.Item>,
-              <Menu.Item
-                key="menu-item-cohort-participants"
-                className="em__icon-padding"
-                name="Control participant list refresh"
-                onClick={onParticipantRefreshChange}
-              >
-                <Icon.Group className="em__icon-group-margin">
-                  <Icon name="refresh" />
-                  <Icon
-                    corner="top right"
-                    name={refreshIcon}
-                    color={refreshColor}
-                  />
-                </Icon.Group>
-                {refreshLabel}
-              </Menu.Item>
-            ],
-            right: [
-              <Menu.Menu
-                key="menu-menu-search-cohort-participants"
-                position="right"
-              >
-                <Menu.Item
-                  key="menu-item-search-cohort-participants"
-                  name="Search cohort participants"
-                  className="em__icon-padding"
-                >
-                  <Input
-                    icon="search"
-                    placeholder="Search..."
-                    onChange={onParticipantSearchChange}
-                  />
-                </Menu.Item>
-              </Menu.Menu>
-            ]
-          }}
+          items={{ left, right }}
         />
+      </Ref>
+    );
+    return (
+      <Container fluid className="cohort__table-container">
+        {editorMenu}
+        <UsersTable {...usersTableProps} />
+
+        {/*
+
         <Table
           fixed
           striped
@@ -241,7 +384,7 @@ export class CohortParticipants extends React.Component {
           <Table.Header className="cohort__table-thead-tbody-tr">
             <Table.Row>
               <ConfirmAuth
-                isAuthorized={isAuthorized}
+                isAuthorized={isOwner}
                 requiredPermission="edit_scenarios_in_cohort"
               >
                 <Table.HeaderCell className="cohort__table-cell-first">
@@ -273,29 +416,9 @@ export class CohortParticipants extends React.Component {
                       className="cohort__table-thead-tbody-tr"
                       style={{ cursor: 'pointer' }}
                     >
-                      {/*
-                      <Table.Cell
-                          key={`participants-cell-checkbox-${index}`}
-                          className="cohort__table-cell-first"
-                      >
-                          <Popup
-                              content="Adding participants is not available in this version of Cohorts"
-                              trigger={
-                                  <Checkbox
-                                      disabled
-                                      key={`participants-checkbox-${index}`}
-                                      value={user.id}
-                                      onClick={
-                                          onParticipantCheckboxClick
-                                      }
-                                  />
-                              }
-                          />
-                      </Table.Cell>
-                      */}
 
                       <ConfirmAuth
-                        isAuthorized={isAuthorized}
+                        isAuthorized={isOwner}
                         requiredPermission="view_all_data"
                       >
                         <Popup
@@ -310,7 +433,9 @@ export class CohortParticipants extends React.Component {
                         />
                       </ConfirmAuth>
                       <Table.Cell>{user.username}</Table.Cell>
-                      <Table.Cell>{user.role}</Table.Cell>
+                      <Table.Cell>
+                        <CohortUserRole user={user} />
+                      </Table.Cell>
                       <Table.Cell className="cohort__table-cell-content">
                         {user.email}
                       </Table.Cell>
@@ -330,12 +455,14 @@ export class CohortParticipants extends React.Component {
             </Table.Body>
           </Ref>
         </Table>
+        */}
       </Container>
     );
   }
 }
 
 CohortParticipants.propTypes = {
+  authority: PropTypes.object,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
@@ -348,7 +475,6 @@ CohortParticipants.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  isAuthorized: PropTypes.bool,
   id: PropTypes.any,
   match: PropTypes.shape({
     path: PropTypes.string,
@@ -360,14 +486,15 @@ CohortParticipants.propTypes = {
   getCohort: PropTypes.func,
   getCohortParticipants: PropTypes.func,
   setCohort: PropTypes.func,
-  scenarios: PropTypes.array
+  scenarios: PropTypes.array,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { cohort } = state;
+  const { cohort, user } = state;
   const { users: participants } = cohort;
   const { scenarios } = state.scenario;
-  return { cohort, participants, scenarios };
+  return { cohort, participants, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
