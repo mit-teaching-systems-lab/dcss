@@ -1,38 +1,33 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
-import { getCohort, setCohort, setCohortUserRole } from '@actions/cohort';
+import { getCohort, setCohort, linkUserToCohort } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
+import { getUsers } from '@actions/users';
 import DataTable from './DataTable';
 import CohortParticipants from './CohortParticipants';
 import CohortScenarios from './CohortScenarios';
+import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
+
 import './Cohort.css';
 
 export class Cohort extends React.Component {
   constructor(props) {
     super(props);
 
-    const { location, match } = this.props;
-
-    let {
-      params: { id }
-    } = match;
-
-    if (!id && this.props.id) {
-      id = this.props.id;
-    }
+    const { cohort, location, match } = this.props;
 
     if (location && location.search) {
       Storage.set('app/referrer_params', location.search);
     }
 
-    this.sessionKey = `cohort/${id}`;
+    this.sessionKey = `cohort/${cohort.id}`;
 
     const { activeTabKey, tabs } = Storage.get(this.sessionKey, {
       activeTabKey: 'cohort',
@@ -42,9 +37,6 @@ export class Cohort extends React.Component {
     this.state = {
       isReady: false,
       activeTabKey,
-      cohort: {
-        id
-      },
       tabs
     };
 
@@ -59,10 +51,14 @@ export class Cohort extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      const cohortId = Number(this.state.cohort.id);
 
-      await this.props.getCohort(cohortId);
+      if (!this.props.cohort.created_at) {
+        await this.props.getCohort(this.props.cohort.id);
+      }
+
       await this.props.getScenarios();
+      // Not sure this is necessary?
+      await this.props.getUsers();
 
       const { cohort, user } = this.props;
 
@@ -70,15 +66,12 @@ export class Cohort extends React.Component {
         this.props.history.push('/cohorts');
       }
 
-      const notInCohort = !!cohort.users.find(({ id }) => id === user.id);
+      const notInCohort = cohort.users.find(({ id }) => id === user.id) === undefined;
 
       if (notInCohort) {
         // For now we'll default all unknown
         // users as "participant".
-        await this.props.setCohortUserRole({
-          id: cohortId,
-          role: 'participant'
-        });
+        await this.props.linkUserToCohort(cohort.id, 'participant');
       }
 
       this.setState({
@@ -90,13 +83,14 @@ export class Cohort extends React.Component {
   onClick(event, { source, type }) {
     let { activeTabKey } = this.state;
     const {
-      cohort,
-      cohort: { id },
       tabs
     } = this.state;
+    const {
+      cohort
+    } = this.props;
     const isScenario = type === 'scenario';
     const icon = isScenario ? 'content' : 'user outline';
-    const key = `cohort-${id}-${type}-${source.id}`;
+    const key = `cohort-${cohort.id}-${type}-${source.id}`;
     const tab = tabs.find(tab => tab.menuItem.key === key);
     const content = source[isScenario ? 'title' : 'username'];
 
@@ -157,6 +151,7 @@ export class Cohort extends React.Component {
 
   render() {
     const {
+      authority,
       cohort,
       cohort: { id, name },
       user
@@ -168,13 +163,20 @@ export class Cohort extends React.Component {
       return <Loading />;
     }
 
-    const cohortUrl = `${location.origin}/cohort/${cohort.id}`;
+    const url = `${location.origin}/cohort/${cohort.id}`;
+    const onCohortUrlCopyClick = () => {
+      copy(url);
+      notify({
+        message: `Copied: ${url}`
+      });
+    };
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
+
+    console.log(authority);
+    const { isOwner, isFacilitator, isParticipant } = authority;
 
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
-
-    const { isOwner, isParticipant } = user;
 
     return (
       <div>
@@ -211,12 +213,12 @@ export class Cohort extends React.Component {
                   <Menu.Item
                     key="menu-item-account-administration"
                     className="em__icon-padding"
-                    onClick={() => copy(cohortUrl)}
+                    onClick={onCohortUrlCopyClick}
                   >
                     <Icon.Group className="em__icon-group-margin">
                       <Icon name="clipboard outline" />
                     </Icon.Group>
-                    {cohortUrl}
+                    {url}
                   </Menu.Item>
                 }
               />
@@ -254,19 +256,18 @@ export class Cohort extends React.Component {
             <CohortScenarios
               key="cohort-scenarios"
               id={id}
-              isOwner={isOwner}
-              isParticipant={isParticipant}
+              authority={authority}
               onClick={onClick}
             />
-            {isOwner ? (
+            {isFacilitator ? (
               <CohortParticipants
                 key="cohort-participants"
                 id={id}
-                isAuthorized={isOwner}
+                authority={authority}
                 onClick={onClick}
               />
             ) : null}
-            {isParticipant ? (
+            {!isFacilitator ? (
               <DataTable
                 source={{
                   cohortId: id,
@@ -291,16 +292,18 @@ export class Cohort extends React.Component {
 
 Cohort.propTypes = {
   activeTabKey: PropTypes.string,
+  authority: PropTypes.object,
   scenarios: PropTypes.array,
   runs: PropTypes.array,
   users: PropTypes.array,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
-    role: PropTypes.string,
+    // roles: PropTypes.array,
     runs: PropTypes.array,
     scenarios: PropTypes.array,
-    users: PropTypes.array
+    users: PropTypes.array,
+    usersById: PropTypes.object
   }),
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -320,38 +323,50 @@ Cohort.propTypes = {
   onChange: PropTypes.func,
   getCohort: PropTypes.func,
   setCohort: PropTypes.func,
-  setCohortUserRole: PropTypes.func,
+  linkUserToCohort: PropTypes.func,
   getScenarios: PropTypes.func,
   getUser: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  getUsers: PropTypes.func
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const id = Number(ownProps.match.params.id);
   const { permissions } = state.login;
-  const { cohort, scenarios, user } = state;
+  const { cohortsById, scenarios, user } = state;
+  const cohort = cohortsById[id] || { ...state.cohort, id };
+
   const cohortUser = cohort.users.find(
     cohortMember => cohortMember.id === user.id
   );
   const authority = {
-    isOwner: (cohortUser && cohortUser.role === 'owner') || false,
-    isParticipant: (cohortUser && cohortUser.role === 'participant') || false
+    isOwner: (cohortUser && cohortUser.roles.includes('owner')) || false,
+    isFacilitator:
+      (cohortUser && cohortUser.roles.includes('facilitator')) || false,
+    isResearcher:
+      (cohortUser && cohortUser.roles.includes('researcher')) || false,
+    isParticipant:
+      (cohortUser && cohortUser.roles.includes('participant')) || false,
   };
-  // Super admins have access as an owner even if they are not in the cohort!
-  if (user.roles.includes('super_admin')) {
-    authority.isSuper = true;
+
+  // Super admins have unrestricted access to cohorts
+  if (user.is_super) {
     authority.isOwner = true;
-    authority.isParticipant = false;
+    authority.isFacilitator = true;
+    authority.isResearcher = true;
+    authority.isParticipant = true;
   }
 
-  return { cohort, scenarios, user: { ...user, ...authority, permissions } };
+  return { authority, cohort, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getScenarios: () => dispatch(getScenarios()),
   setCohort: params => dispatch(setCohort(params)),
-  setCohortUserRole: params => dispatch(setCohortUserRole(params)),
-  getUser: () => dispatch(getUser())
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
+  getUser: () => dispatch(getUser()),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default withRouter(
