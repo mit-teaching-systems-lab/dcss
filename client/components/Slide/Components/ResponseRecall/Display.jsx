@@ -89,10 +89,7 @@ class Display extends Component {
 
   render() {
     const { response } = this.state;
-    const {
-      recallId,
-      run
-    } = this.props;
+    const { recallId, run } = this.props;
 
     // If the scenario is an active "Run":
     //      If there is a response object, but
@@ -129,10 +126,7 @@ class Display extends Component {
     // The fallback value of an AudioResponse will not be an
     // mp3 file path.
     if (rvalue.endsWith('mp3')) {
-
-      const {
-        transcript
-      } = response;
+      const { transcript } = response;
 
       content = (
         <Fragment>

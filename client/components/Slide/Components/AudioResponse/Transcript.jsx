@@ -82,7 +82,7 @@ class Transcript extends Component {
   }
 
   render() {
-    const { isReady, transcript } = this.state;
+    const { transcript } = this.state;
 
     if (!this.isScenarioRun) {
       return (
