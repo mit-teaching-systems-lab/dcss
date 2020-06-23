@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
 import { Parser } from 'json2csv';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -15,7 +14,8 @@ import {
   Popup,
   Table
 } from 'semantic-ui-react';
-import { getAllCohorts } from '@actions/cohort';
+import hash from 'object-hash';
+import { getCohorts } from '@actions/cohort';
 import { getScenarios, getScenarioRunHistory } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import CSV from '@utils/csv';
@@ -52,7 +52,7 @@ class Researcher extends Component {
       this.props.history.push('/logout');
     } else {
       await this.props.getScenarios();
-      await this.props.getAllCohorts();
+      await this.props.getCohorts();
       this.setState({ isReady: true });
     }
   }
@@ -71,82 +71,92 @@ class Researcher extends Component {
 
   async onScenarioDataClick(event, data) {
     const { getScenarioRunHistory } = this.props;
-    const { name } = data;
+    const { scenario, cohort } = data;
 
-    this.setState(
-      {
-        [name]: data[name]
-      },
-      async () => {
-        const { cohort = {}, scenario = {} } = this.state;
-        const { id: scenarioId } = scenario || {};
-        const { id: cohortId } = cohort || {};
-        const { prompts, responses } = await getScenarioRunHistory({
-          scenarioId,
-          cohortId
-        });
-        const records = responses.flat();
+    const { id: scenarioId } = scenario;
+    const { id: cohortId } = cohort;
+    const { prompts, responses } = await getScenarioRunHistory({
+      scenarioId,
+      cohortId
+    });
+    const records = responses.flat();
 
-        records.forEach(record => {
-          const { is_skip, response_id, transcript, value } = record;
-          const prompt = prompts.find(
-            prompt => prompt.responseId === response_id
-          );
-          record.header = makeHeader(prompt, prompts);
-          record.content = is_skip ? '(skipped)' : transcript || value;
+    records.forEach(record => {
+      const { is_skip, response_id, transcript, value } = record;
+      const prompt = prompts.find(prompt => prompt.responseId === response_id);
+      record.header = makeHeader(prompt, prompts);
+      record.content = is_skip ? '(skipped)' : transcript || value;
 
-          if (isAudioFile(value)) {
-            record.content += ` (${location.origin}/api/media/${value})`;
-          }
-        });
-
-        const fields = [
-          'username',
-          'header',
-          'content',
-          'is_skip',
-          'run_id',
-          'created_at',
-          'ended_at',
-          'type',
-          'referrer_params'
-        ];
-        const parser = new Parser({ fields });
-        const csv = parser.parse(records);
-
-        CSV.download(scenario.title, csv);
+      if (isAudioFile(value)) {
+        record.content += ` (${location.origin}/api/media/${value})`;
       }
-    );
+    });
+
+    const fields = [
+      'username',
+      'header',
+      'content',
+      'is_skip',
+      'run_id',
+      'created_at',
+      'ended_at',
+      'type',
+      'referrer_params'
+    ];
+    const parser = new Parser({ fields });
+    const csv = parser.parse(records);
+
+    CSV.download(`${cohort.name}-${scenario.title}`, csv);
   }
 
   render() {
     const { onPageChange, onScenarioDataClick } = this;
     const { activePage, isReady } = this.state;
     // This is disabled for Jamboree.
-    // const { cohorts } = this.props;
-    const scenarios = this.props.scenarios.filter(
-      scenario => scenario.deleted_at === null
-    );
-
-    const scenariosPages = Math.ceil(scenarios.length / ROWS_PER_PAGE);
-    const scenariosIndex = (activePage - 1) * ROWS_PER_PAGE;
-    const scenariosSlice = scenarios.slice(
-      scenariosIndex,
-      scenariosIndex + ROWS_PER_PAGE
-    );
+    const { cohorts, scenariosById, user } = this.props;
 
     if (!isReady) {
       return <Loading />;
     }
 
-    if (isReady) {
-      return (
-        <div>
-          <h1>Temporarily Unavailable</h1>
-        </div>
-      );
-    }
+    const hasAccessToCohort = cohort => {
+      return cohort.users.find(({ id, roles }) => {
+        return id === user.id && roles.includes('researcher');
+      });
+    };
 
+    const downloads = cohorts.reduce((accum, cohort) => {
+      if (hasAccessToCohort(cohort)) {
+        accum.push(
+          ...cohort.scenarios.map(id => {
+            const scenario = scenariosById[id];
+            const { title } = scenario;
+
+            return (
+              <Table.Row key={hash({ ...cohort, id, title })}>
+                <Table.Cell collapsing>
+                  <ResearcherMenu
+                    cohort={cohort}
+                    scenario={scenario}
+                    onClick={onScenarioDataClick}
+                  />
+                </Table.Cell>
+                <Table.Cell>{cohort.name}</Table.Cell>
+                <Table.Cell>{title}</Table.Cell>
+              </Table.Row>
+            );
+          })
+        );
+      }
+      return accum;
+    }, []);
+
+    const downloadsPages = Math.ceil(downloads.length / ROWS_PER_PAGE);
+    const downloadsIndex = (activePage - 1) * ROWS_PER_PAGE;
+    const downloadsSlice = downloads.slice(
+      downloadsIndex,
+      downloadsIndex + ROWS_PER_PAGE
+    );
 
     return (
       <div>
@@ -159,62 +169,16 @@ class Researcher extends Component {
             </Table.Row>
             <Table.Row>
               <Table.HeaderCell collapsing></Table.HeaderCell>
-              <Table.HeaderCell>Title</Table.HeaderCell>
+              <Table.HeaderCell>Cohort</Table.HeaderCell>
+              <Table.HeaderCell>Scenario</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
-          <Table.Body>
-            {scenariosSlice.map(scenario => {
-              const { id, title } = scenario;
-              const scenarioKey = `scenario-${id}`;
-              const pathname = `/run/${id}/slide/0`;
-
-              // This is disabled for Jamboree.
-              // const options = cohorts.map(
-              //     ({ id: key, name: text }) => ({
-              //         key,
-              //         text,
-              //         value: key
-              //     })
-              // );
-
-              return (
-                <Table.Row key={id}>
-                  <Table.Cell collapsing>
-                    { This is disabled for Jamboree.
-
-                                        <Menu compact>
-                                            <Dropdown
-                                                item
-                                                options={options}
-                                                onChange={onCohortSelect}
-                                                simple
-                                                text="Limit to a Cohort"
-                                            />
-                                        </Menu>
-                                    }
-                    <ResearcherMenu
-                      key={scenarioKey}
-                      scenario={scenario}
-                      onClick={onScenarioDataClick}
-                    />
-                  </Table.Cell>
-                  <Table.Cell
-                    onClick={() => {
-                      location.href = pathname;
-                    }}
-                  >
-                    <NavLink to={pathname}>{title}</NavLink>
-                  </Table.Cell>
-                </Table.Row>
-              );
-            })}
-          </Table.Body>
-
+          <Table.Body>{downloadsSlice}</Table.Body>
           <Table.Footer>
             <Table.Row>
               <Table.HeaderCell colSpan="4">
                 <Pagination
-                  name="scenarios"
+                  name="downloads"
                   siblingRange={1}
                   boundaryRange={0}
                   ellipsisItem={null}
@@ -222,7 +186,7 @@ class Researcher extends Component {
                   lastItem={null}
                   activePage={activePage}
                   onPageChange={onPageChange}
-                  totalPages={scenariosPages}
+                  totalPages={downloadsPages}
                 />
               </Table.HeaderCell>
             </Table.Row>
@@ -234,11 +198,12 @@ class Researcher extends Component {
 }
 
 const ResearcherMenu = props => {
-  const { onClick, scenario } = props;
+  const { onClick, cohort, scenario } = props;
 
   const onClickToDownloadData = (event, props) => {
     onClick(event, {
       ...props,
+      cohort,
       scenario
     });
   };
@@ -260,6 +225,7 @@ const ResearcherMenu = props => {
 };
 
 ResearcherMenu.propTypes = {
+  cohort: PropTypes.object,
   scenario: PropTypes.object,
   onClick: PropTypes.func
 };
@@ -271,7 +237,8 @@ Researcher.propTypes = {
   }).isRequired,
   runs: PropTypes.array,
   scenarios: PropTypes.array,
-  getAllCohorts: PropTypes.func,
+  scenariosById: PropTypes.object,
+  getCohorts: PropTypes.func,
   getScenarios: PropTypes.func,
   getScenarioRunHistory: PropTypes.func,
   getUser: PropTypes.func,
@@ -280,12 +247,12 @@ Researcher.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { cohorts, runs, scenarios, user } = state;
-  return { cohorts, runs, scenarios, user };
+  const { cohorts, runs, scenarios, scenariosById, user } = state;
+  return { cohorts, runs, scenarios, scenariosById, user };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getAllCohorts: () => dispatch(getAllCohorts()),
+  getCohorts: () => dispatch(getCohorts()),
   getScenarios: () => dispatch(getScenarios()),
   getScenarioRunHistory: params => dispatch(getScenarioRunHistory(params)),
   getUser: () => dispatch(getUser())

@@ -61,7 +61,7 @@ const RoleCheckbox = props => {
         cRoleResult = await addCohortUserRole(cohort.id, user.id, role);
         if (cRoleResult.addedCount) {
           notify({
-            message: `${user.username} is now a ${role} in ${cohort.title}`
+            message: `${user.username} is now a ${role} in ${cohort.name}`
           });
         }
         // console.log('cRoleResult: ', cRoleResult);
@@ -73,7 +73,7 @@ const RoleCheckbox = props => {
         cRoleResult = await deleteCohortUserRole(cohort.id, user.id, role);
         if (cRoleResult.deletedCount) {
           notify({
-            message: `${user.username} is no longer a ${role} in ${cohort.title}`
+            message: `${user.username} is no longer a ${role} in ${cohort.name}`
           });
         }
         // console.log('cRoleResult: ', cRoleResult);

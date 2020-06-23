@@ -280,21 +280,32 @@ async function getScenarioPrompts(scenario_id) {
 async function getScenarioRunHistory(params) {
   const {
     // TODO: implement support for limiting by cohort
-    // cohort_id,
+    cohort_id,
     scenario_id
   } = params;
+  let results;
 
-  const results = await query(sql`
-        SELECT id
-        FROM run
-        WHERE consent_granted_by_user = true
-        AND scenario_id = ${scenario_id};
+  if (cohort_id) {
+    results = await query(sql`
+      SELECT run_id
+      FROM cohort_run
+      JOIN run ON run.id = cohort_run.run_id
+      WHERE run.consent_granted_by_user = true
+      AND run.scenario_id = ${scenario_id};
     `);
+  } else {
+    results = await query(sql`
+      SELECT id AS run_id
+      FROM run
+      WHERE consent_granted_by_user = true
+      AND scenario_id = ${scenario_id};
+    `);
+  }
 
   const prompts = await getScenarioPrompts(scenario_id);
   const responses = [];
 
-  for (const { id: run_id } of results.rows) {
+  for (const { run_id } of results.rows) {
     responses.push(await getRunResponses({ run_id }));
   }
 
