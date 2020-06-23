@@ -1,9 +1,24 @@
 const { Router } = require('express');
-
 const { validateRequestBody } = require('../../util/requestValidation');
-const { requireUser } = require('../auth/middleware');
-const { requireUserRole } = require('../roles/middleware');
-const { requireUserForRun } = require('../runs/middleware');
+const {
+  // Use for restricting access to only authed users.
+  requireUser
+} = require('../auth/middleware');
+const {
+  // Use for restricting access to site-wide cohort creation
+  requireUserRole
+} = require('../roles/middleware');
+const {
+  // Use for restricting access to cohort-specific interactions
+  requireCohortUserRole
+  // checkCanEditCohortUserRoles
+} = require('./middleware');
+
+const {
+  // Use for linking a run to a cohort
+  requireUserForRun
+} = require('../runs/middleware');
+
 const router = Router();
 
 const {
@@ -19,28 +34,33 @@ const {
   linkCohortToRun,
   joinCohort,
   quitCohort,
-  doneCohort
+  doneCohort,
+  addCohortUserRole,
+  deleteCohortUserRole
 } = require('./endpoints');
 
-const requiredRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
+const requiredSiteRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
+const requiredCohortRoles = ['owner', 'facilitator'];
 
 router.put('/', [
   requireUser,
-  requireUserRole(requiredRoles),
+  requireUserRole(requiredSiteRoles),
   validateRequestBody,
   createCohort
 ]);
 router.get('/', [requireUser, listUserCohorts]);
 router.post('/:id', [
   requireUser,
-  requireUserRole(requiredRoles),
+  requireUserRole(requiredSiteRoles),
   validateRequestBody,
+  // requireCohortUserRole(requiredCohortRoles),
   setCohort
 ]);
 router.post('/:id/scenarios', [
   requireUser,
-  requireUserRole(requiredRoles),
+  requireUserRole(requiredSiteRoles),
   validateRequestBody,
+  // requireCohortUserRole(requiredCohortRoles),
   setCohortScenarios
 ]);
 router.get('/my', [requireUser, getMyCohorts]);
@@ -55,8 +75,21 @@ router.get('/:id/participant/:participant_id', [
 
 router.get('/:id/run/:run_id', [requireUserForRun, linkCohortToRun]);
 
+// These are used for interactions by the CURRENT USER
 router.get('/:id/join/:role', [requireUser, joinCohort]);
 router.get('/:id/quit', [requireUser, quitCohort]);
 router.get('/:id/done', [requireUser, doneCohort]);
+
+// These are used for ACCESS CONTROL of other users.
+router.post('/:id/roles/add', [
+  validateRequestBody,
+  requireCohortUserRole(['owner', 'facilitator']),
+  addCohortUserRole
+]);
+router.post('/:id/roles/delete', [
+  validateRequestBody,
+  requireCohortUserRole(['owner', 'facilitator']),
+  deleteCohortUserRole
+]);
 
 module.exports = router;
