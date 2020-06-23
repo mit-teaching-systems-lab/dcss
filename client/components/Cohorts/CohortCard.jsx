@@ -5,9 +5,34 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from '@utils/Moment';
 
-export const CohortCard = ({ id, created_at, name, role }) => {
-  const article = role === 'owner' ? 'the' : 'a';
-  const yourRole = `You are ${article} ${role}`;
+const rolesToHumanReadableString = (roles) => {
+  const rolesSlice = roles.slice();
+  const ownerIndex = rolesSlice.indexOf('owner');
+  const isOwner = ownerIndex !== -1;
+  let returnValue = '';
+
+  if (isOwner) {
+    returnValue = 'the owner';
+  } else {
+    // The user is not the owner...
+    //
+    if (rolesSlice.length === 1) {
+      // The user is just a "participant"
+      returnValue = `a ${rolesSlice[0]}`;
+    } else {
+      // This user is more than just a "participant", so
+      // "participant" is implied, but not necessary to display.
+      rolesSlice.splice(rolesSlice.indexOf('participant'), 1);
+      returnValue = `a ${rolesSlice[0]} and ${rolesSlice[1]}`;
+    }
+  }
+
+
+  return `You are ${returnValue}.`;
+};
+
+export const CohortCard = ({ id, created_at, name, roles }) => {
+  const yourRoles = rolesToHumanReadableString(roles);
   const fromNow = Moment(created_at).fromNow();
   const calendar = Moment(created_at).calendar();
 
@@ -21,7 +46,7 @@ export const CohortCard = ({ id, created_at, name, role }) => {
           Created {fromNow}
         </Card.Meta>
       </Card.Content>
-      <Card.Content extra>{yourRole}</Card.Content>
+      <Card.Content extra>{yourRoles}</Card.Content>
     </Card>
   );
 };
