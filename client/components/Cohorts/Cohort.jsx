@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -21,7 +21,7 @@ export class Cohort extends React.Component {
   constructor(props) {
     super(props);
 
-    const { cohort, location, match } = this.props;
+    const { cohort, location } = this.props;
 
     if (location && location.search) {
       Storage.set('app/referrer_params', location.search);
@@ -51,7 +51,6 @@ export class Cohort extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-
       if (!this.props.cohort.created_at) {
         await this.props.getCohort(this.props.cohort.id);
       }
@@ -66,7 +65,8 @@ export class Cohort extends React.Component {
         this.props.history.push('/cohorts');
       }
 
-      const notInCohort = cohort.users.find(({ id }) => id === user.id) === undefined;
+      const notInCohort =
+        cohort.users.find(({ id }) => id === user.id) === undefined;
 
       if (notInCohort) {
         // For now we'll default all unknown
@@ -82,12 +82,8 @@ export class Cohort extends React.Component {
 
   onClick(event, { source, type }) {
     let { activeTabKey } = this.state;
-    const {
-      tabs
-    } = this.state;
-    const {
-      cohort
-    } = this.props;
+    const { tabs } = this.state;
+    const { cohort } = this.props;
     const isScenario = type === 'scenario';
     const icon = isScenario ? 'content' : 'user outline';
     const key = `cohort-${cohort.id}-${type}-${source.id}`;
@@ -172,8 +168,8 @@ export class Cohort extends React.Component {
     };
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
 
-    console.log(authority);
-    const { isOwner, isFacilitator, isParticipant } = authority;
+    // console.log(authority);
+    const { isFacilitator } = authority;
 
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
@@ -298,6 +294,7 @@ Cohort.propTypes = {
   users: PropTypes.array,
   cohort: PropTypes.shape({
     id: PropTypes.any,
+    created_at: PropTypes.string,
     name: PropTypes.string,
     // roles: PropTypes.array,
     runs: PropTypes.array,
@@ -346,7 +343,7 @@ const mapStateToProps = (state, ownProps) => {
     isResearcher:
       (cohortUser && cohortUser.roles.includes('researcher')) || false,
     isParticipant:
-      (cohortUser && cohortUser.roles.includes('participant')) || false,
+      (cohortUser && cohortUser.roles.includes('participant')) || false
   };
 
   // Super admins have unrestricted access to cohorts

@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+// import hash from 'object-hash';
 import { Checkbox, Popup } from 'semantic-ui-react';
 import { notify } from '@components/Notification';
 import { addCohortUserRole, deleteCohortUserRole } from '@actions/cohort';
 import { addUserRole, deleteUserRole } from '@actions/role';
 
-const RoleCheckbox = (props) => {
+const RoleCheckbox = props => {
   const {
     cohort,
     content,
@@ -16,7 +16,7 @@ const RoleCheckbox = (props) => {
     addUserRole,
     addCohortUserRole,
     deleteUserRole,
-    deleteCohortUserRole,
+    deleteCohortUserRole
   } = props;
 
   const onCheckboxClick = async (event, data) => {
@@ -49,25 +49,39 @@ const RoleCheckbox = (props) => {
     if (checked) {
       // Add the role to this user.
       uRoleResult = await addUserRole(user.id, role);
-      console.log("uRoleResult: ", uRoleResult);
+      // console.log('uRoleResult: ', uRoleResult);
+      if (uRoleResult.addedCount) {
+        notify({ message: `${user.username} is now a ${role}` });
+      }
 
-// notify
+      // notify
       // If a cohort object is present, add the role to
       // this user, for this cohort.
       if (cohort) {
         cRoleResult = await addCohortUserRole(cohort.id, user.id, role);
-        console.log("cRoleResult: ", cRoleResult);
+        if (cRoleResult.addedCount) {
+          notify({
+            message: `${user.username} is now a ${role} in ${cohort.title}`
+          });
+        }
+        // console.log('cRoleResult: ', cRoleResult);
       }
     } else {
-
       // If a cohort object is present, ONLY delete the role from
       // this user, for this cohort.
       if (cohort) {
         cRoleResult = await deleteCohortUserRole(cohort.id, user.id, role);
-        console.log("cRoleResult: ", cRoleResult);
+        if (cRoleResult.deletedCount) {
+          notify({
+            message: `${user.username} is no longer a ${role} in ${cohort.title}`
+          });
+        }
+        // console.log('cRoleResult: ', cRoleResult);
       } else {
         uRoleResult = await deleteUserRole(user.id, role);
-        console.log("uRoleResult: ", uRoleResult);
+        if (uRoleResult.deletedCount) {
+          notify({ message: `${user.username} is no longer a ${role}` });
+        }
       }
     }
   };
@@ -80,13 +94,7 @@ const RoleCheckbox = (props) => {
     />
   );
 
-  return (
-    <Popup
-      basic
-      content={content}
-      trigger={trigger}
-    />
-  );
+  return <Popup basic content={content} trigger={trigger} />;
 };
 
 RoleCheckbox.propTypes = {
@@ -99,7 +107,7 @@ RoleCheckbox.propTypes = {
   addUserRole: PropTypes.func,
   addCohortUserRole: PropTypes.func,
   deleteUserRole: PropTypes.func,
-  deleteCohortUserRole: PropTypes.func,
+  deleteCohortUserRole: PropTypes.func
 };
 
 // const mapStateToProps = state => {
@@ -111,7 +119,7 @@ const mapDispatchToProps = dispatch => ({
   addUserRole: (...params) => dispatch(addUserRole(...params)),
   addCohortUserRole: (...params) => dispatch(addCohortUserRole(...params)),
   deleteUserRole: (...params) => dispatch(deleteUserRole(...params)),
-  deleteCohortUserRole: (...params) => dispatch(deleteCohortUserRole(...params)),
+  deleteCohortUserRole: (...params) => dispatch(deleteCohortUserRole(...params))
 });
 
 export default connect(

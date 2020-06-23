@@ -76,7 +76,7 @@ export const setRun = (id, data) => async dispatch => {
   }
 };
 
-export const getRunData = (run_id) => async dispatch => {
+export const getRunData = run_id => async dispatch => {
   try {
     const endpoint = `/api/runs/${run_id}`;
     const res = await (await fetch(endpoint)).json();

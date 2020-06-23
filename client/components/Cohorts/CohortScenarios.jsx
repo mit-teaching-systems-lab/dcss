@@ -156,7 +156,6 @@ export class CohortScenarios extends React.Component {
     const { authority, cohort, onClick, runs, user } = this.props;
     const { isReady, scenarios } = this.state;
     const { isFacilitator, isParticipant } = authority;
-    const isNonFacilitatorParticipant = !isFacilitator && isParticipant;
 
     if (!isReady) {
       return <Loading />;
@@ -181,22 +180,17 @@ export class CohortScenarios extends React.Component {
     const sectionedScenarios = cohortScenarios;
 
     if (isFacilitator || user.is_super) {
-      sectionedScenarios.push(
-        ...reducedScenarios
-      );
+      sectionedScenarios.push(...reducedScenarios);
     }
 
     // Filter out draft status scenarios.
     const orderCorrectedScenarios = sectionedScenarios.filter(
       // scenario => scenario.status !== 1
-      scenario => true
+      scenario => scenario
     );
 
     const right = [
-      <Menu.Menu
-        key="menu-menu-search-cohort-scenarios"
-        position="right"
-      >
+      <Menu.Menu key="menu-menu-search-cohort-scenarios" position="right">
         <Menu.Item
           key="menu-item-search-cohort-scenarios"
           name="Search cohort scenarios"
@@ -481,7 +475,9 @@ export class CohortScenarios extends React.Component {
                         display={scenario.title}
                       />
                       <Table.Cell className="cohort__table-cell-content">
-                        {isFacilitator ? scenario.author.username : startedAtDisplay}
+                        {isFacilitator
+                          ? scenario.author.username
+                          : startedAtDisplay}
                       </Table.Cell>
                       <Table.Cell className="cohort__table-cell-content">
                         {isFacilitator ? scenario.description : endedAtDisplay}

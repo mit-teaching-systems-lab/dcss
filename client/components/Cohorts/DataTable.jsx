@@ -296,7 +296,6 @@ export class DataTable extends React.Component {
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell scope="col" {...leftColHidden}>
-
                       {leftColHeader}
                     </Table.HeaderCell>
                     {prompts.map(({ header, prompt }, index) => (

@@ -139,9 +139,14 @@ class Researcher extends Component {
       return <Loading />;
     }
 
-    if (true) {
-      return <div><h1>Temporarily Unavailable</h1></div>;
+    if (isReady) {
+      return (
+        <div>
+          <h1>Temporarily Unavailable</h1>
+        </div>
+      );
     }
+
 
     return (
       <div>
@@ -175,7 +180,7 @@ class Researcher extends Component {
               return (
                 <Table.Row key={id}>
                   <Table.Cell collapsing>
-                    {/* This is disabled for Jamboree.
+                    { This is disabled for Jamboree.
 
                                         <Menu compact>
                                             <Dropdown
@@ -186,7 +191,7 @@ class Researcher extends Component {
                                                 text="Limit to a Cohort"
                                             />
                                         </Menu>
-                                    */}
+                                    }
                     <ResearcherMenu
                       key={scenarioKey}
                       scenario={scenario}

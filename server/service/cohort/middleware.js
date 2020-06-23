@@ -1,7 +1,7 @@
 const { asyncMiddleware } = require('../../util/api');
 const { requireUser } = require('../auth/middleware');
 const db = require('./db');
-const rolesMap = new WeakMap();
+// const rolesMap = new WeakMap();
 
 exports.requireCohortUserRole = roles => [
   requireUser,
@@ -14,7 +14,8 @@ exports.requireCohortUserRole = roles => [
     );
 
     const { roles: cohortUserRoles } = await db.getCohortUserRoles(
-      req.session.user.id, req.body.cohort_id
+      req.session.user.id,
+      req.body.cohort_id
     );
 
     if (
@@ -44,7 +45,6 @@ exports.requireCohortUserRole = roles => [
   })
 ];
 
-
 // const rolesForRequest = async req => {
 //   if (rolesMap.has(req)) {
 //     return rolesMap.get(req);
@@ -57,7 +57,6 @@ exports.requireCohortUserRole = roles => [
 //     return roles;
 //   }
 // };
-
 
 // exports.checkCanEditCohortUserRoles = [
 //   exports.requireCohortUserRole(['owner', 'facilitator']),

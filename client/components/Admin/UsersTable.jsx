@@ -54,9 +54,7 @@ class UsersTable extends Component {
             ))}
           </Table.Row>
         </Table.Header>
-        <Table.Body className="ut__tbody">
-          {tableRows}
-        </Table.Body>
+        <Table.Body className="ut__tbody">{tableRows}</Table.Body>
         <Table.Footer>
           <Table.Row>
             <Table.HeaderCell colSpan="7">

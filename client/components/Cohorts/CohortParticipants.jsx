@@ -11,24 +11,23 @@ import {
   Input,
   Menu,
   Popup,
-  Ref,
-  Table
+  Ref
 } from 'semantic-ui-react';
 import _ from 'lodash';
-import hash from 'object-hash';
+// import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
 import UsersTable from '@components/Admin/UsersTable';
 import ClickableTableCell from '@components/ClickableTableCell';
-import CohortUserRole from './CohortUserRole';
+// import CohortUserRole from './CohortUserRole';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { COHORT_ROLE_GROUPS } from '../Admin/constants';
 import './Cohort.css';
 
-const { super_admin, admin, facilitator, researcher } = COHORT_ROLE_GROUPS;
+const { facilitator, researcher } = COHORT_ROLE_GROUPS;
 
 const ROWS_PER_PAGE = 10;
 
@@ -134,7 +133,7 @@ export class CohortParticipants extends React.Component {
 
     const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
     let users = participants.filter(participant => {
-      console.log(participant);
+      // console.log(participant);
       if (escapedRegExp.test(participant.username)) {
         return true;
       }
@@ -204,7 +203,7 @@ export class CohortParticipants extends React.Component {
       onParticipantSearchChange,
       scrollIntoView
     } = this;
-    const { isFacilitator, isOwner } = authority;
+    const { isFacilitator } = authority;
 
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
@@ -219,7 +218,6 @@ export class CohortParticipants extends React.Component {
       ? 'Automattically refreshing this list'
       : 'List will refresh when page is reloaded';
 
-    const rowsPerPage = ROWS_PER_PAGE;
     const pages = Math.ceil(cohort.users.length / ROWS_PER_PAGE);
     const index = (activePage - 1) * ROWS_PER_PAGE;
     const users = cohort.users.slice(index, index + ROWS_PER_PAGE);
@@ -280,7 +278,7 @@ export class CohortParticipants extends React.Component {
         </ConfirmAuth>
       );
 
-console.log(user);
+      // console.log(user);
       accum[user.id] = [
         popup,
         // These are cohort user roles, not site user roles!!!
@@ -322,21 +320,14 @@ console.log(user);
       >
         <Icon.Group className="em__icon-group-margin">
           <Icon name="refresh" />
-          <Icon
-            corner="top right"
-            name={refreshIcon}
-            color={refreshColor}
-          />
+          <Icon corner="top right" name={refreshIcon} color={refreshColor} />
         </Icon.Group>
         {refreshLabel}
       </Menu.Item>
     ];
 
     const right = [
-      <Menu.Menu
-        key="menu-menu-search-cohort-participants"
-        position="right"
-      >
+      <Menu.Menu key="menu-menu-search-cohort-participants" position="right">
         <Menu.Item
           key="menu-item-search-cohort-participants"
           name="Search cohort participants"
@@ -359,10 +350,7 @@ console.log(user);
     ];
     const editorMenu = (
       <Ref innerRef={node => (this.sectionRef = node)}>
-        <EditorMenu
-          type="cohort participants"
-          items={{ left, right }}
-        />
+        <EditorMenu type="cohort participants" items={{ left, right }} />
       </Ref>
     );
     return (

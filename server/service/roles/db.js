@@ -11,7 +11,6 @@ exports.getAllUsersRoles = async function() {
 };
 
 exports.getUserRoles = async function(user_id) {
-  console.log("!!!!!!!!!!!!!!!!!!!!!!getUserRoles!!!!!!!!!!!!!!!!!!!!!!!!!!!");
   return withClient(async client => {
     const result = await client.query(sql`
       SELECT * FROM user_role WHERE user_id = ${user_id};

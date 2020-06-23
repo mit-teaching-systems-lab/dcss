@@ -27,7 +27,7 @@ export const cohort = (state = cohortInitialState, action) => {
   }
 
   if (type === CREATE_COHORT_SUCCESS) {
-    console.log("CREATED: ", { ...cohort });
+    // console.log('CREATED: ', { ...cohort });
     return {
       ...state,
       ...cohort,

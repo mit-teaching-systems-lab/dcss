@@ -1,6 +1,6 @@
 const { sql } = require('../../util/sqlHelpers');
 const { query, withClient, withClientTransaction } = require('../../util/db');
-const rolesDb = require('../roles/db');
+// const rolesDb = require('../roles/db');
 
 async function getCohortScenarios(cohort_id) {
   return await withClient(async client => {
@@ -97,7 +97,7 @@ exports.createCohort = async ({ name, user_id }) => {
   });
 };
 
-const getAggregatedCohort = async (cohort) => {
+const getAggregatedCohort = async cohort => {
   const runs = await getCohortRuns(cohort.id);
   const scenarios = await getCohortScenarios(cohort.id);
   const users = await getCohortUsers(cohort.id);
@@ -114,7 +114,7 @@ const getAggregatedCohort = async (cohort) => {
   };
 };
 
-exports.getCohort = async (id) => {
+exports.getCohort = async id => {
   return await withClient(async client => {
     const result = await client.query(sql`
       SELECT cohort.id, cohort.name, cohort.created_at, cur.roles
@@ -127,13 +127,11 @@ exports.getCohort = async (id) => {
       ) cur
       ON cohort.id = cur.cohort_id;
     `);
-    return result.rowCount
-      ? getAggregatedCohort(result.rows[0])
-      : {};
+    return result.rowCount ? getAggregatedCohort(result.rows[0]) : {};
   });
 };
 
-exports.getMyCohorts = async (user_id) => {
+exports.getMyCohorts = async user_id => {
   return await withClient(async client => {
     const result = await client.query(sql`
       SELECT cohort.id, cohort.name, cohort.created_at, cur.roles
@@ -188,7 +186,6 @@ exports.setCohortScenarios = async (id, scenarios) => {
       DELETE FROM cohort_scenario
       WHERE cohort_id = ${Number(id)};
     `);
-
 
     // TODO: migrate this into SQL as
     //
@@ -309,7 +306,7 @@ exports.getCohortUserRoles = async (user_id, id) => {
   });
 };
 
-exports.getSiteUserRoles = async (user_id) => {
+exports.getSiteUserRoles = async user_id => {
   return withClient(async client => {
     const result = await client.query(sql`
       SELECT ARRAY_AGG(role) AS roles
@@ -415,7 +412,7 @@ exports.deleteCohortUserRole = async (cohort_id, user_id, roles) => {
 //   });
 // };
 
-exports.listUserCohorts = async (user_id) => {
+exports.listUserCohorts = async user_id => {
   const result = await query(sql`
     SELECT cohort.id, cohort.name, cohort_user_role.role
     FROM cohort

@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from '@utils/Moment';
 
-const rolesToHumanReadableString = (roles) => {
+const rolesToHumanReadableString = roles => {
   const rolesSlice = roles.slice();
   const ownerIndex = rolesSlice.indexOf('owner');
   const isOwner = ownerIndex !== -1;
@@ -26,7 +26,6 @@ const rolesToHumanReadableString = (roles) => {
       returnValue = `a ${rolesSlice[0]} and ${rolesSlice[1]}`;
     }
   }
-
 
   return `You are ${returnValue}.`;
 };
@@ -55,7 +54,7 @@ CohortCard.propTypes = {
   id: PropTypes.number,
   created_at: PropTypes.string,
   name: PropTypes.string,
-  role: PropTypes.string
+  roles: PropTypes.string
 };
 
 const mapStateToProps = (state, props) => {

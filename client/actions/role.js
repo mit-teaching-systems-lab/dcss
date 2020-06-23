@@ -1,7 +1,4 @@
-import {
-  SET_USER_ROLE_SUCCESS,
-  SET_USER_ROLE_ERROR
-} from './types';
+import { SET_USER_ROLE_SUCCESS, SET_USER_ROLE_ERROR } from './types';
 
 export const addUserRole = (user_id, role) => async dispatch => {
   try {
@@ -9,15 +6,13 @@ export const addUserRole = (user_id, role) => async dispatch => {
       user_id,
       roles: [role]
     });
-    const result = await (
-      await fetch('/api/roles/add', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body
-      })
-    ).json();
+    const result = await (await fetch('/api/roles/add', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
     dispatch({ type: SET_USER_ROLE_SUCCESS });
     return result;
   } catch (error) {
@@ -32,15 +27,13 @@ export const deleteUserRole = (user_id, role) => async dispatch => {
       user_id,
       roles: [role]
     });
-    const result = await (
-      await fetch('/api/roles/delete', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body
-      })
-    ).json();
+    const result = await (await fetch('/api/roles/delete', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
     dispatch({ type: SET_USER_ROLE_SUCCESS });
     return result;
   } catch (error) {

@@ -40,7 +40,7 @@ const {
 } = require('./endpoints');
 
 const requiredSiteRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
-const requiredCohortRoles = ['owner', 'facilitator'];
+// const requiredCohortRoles = ['owner', 'facilitator'];
 
 router.put('/', [
   requireUser,

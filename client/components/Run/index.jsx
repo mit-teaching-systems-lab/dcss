@@ -44,7 +44,7 @@ class Run extends Component {
     const {
       cohortId,
       location: { search },
-      scenarioId,
+      scenarioId
     } = this.props;
 
     const run = await this.props.getRun(scenarioId);
@@ -57,7 +57,7 @@ class Run extends Component {
           const { id, users } = cohort;
           const { user } = this.props;
 
-          console.log(cohort.users);
+          // console.log(cohort.users);
           if (!users.find(({ id }) => id === user.id)) {
             // For now we'll default all unknown
             // users as "participant".
@@ -193,7 +193,7 @@ const mapDispatchToProps = dispatch => ({
   getRun: params => dispatch(getRun(params)),
   setRun: (...params) => dispatch(setRun(...params)),
   linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),
-  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params))
 });
 
 export default withRouter(

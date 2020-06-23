@@ -1,7 +1,7 @@
 const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
 const db = require('./db');
-const { getUserRoles } = require('../roles/db');
+// const { getUserRoles } = require('../roles/db');
 
 exports.requireUser = (req, res, next) => {
   if (!req.session.user) {
@@ -38,7 +38,8 @@ async function createUserAsync(req, res, next) {
     throw error;
   }
 
-  const anonymous = typeof password === 'undefined' || typeof email === 'undefined';
+  // const anonymous =
+  //   typeof password === 'undefined' || typeof email === 'undefined';
 
   //eslint-disable-next-line require-atomic-updates
   req.session.user = {
@@ -73,14 +74,12 @@ async function updateUserAsync(req, res, next) {
     throw error;
   }
 
-  const anonymous = typeof password === 'undefined' || typeof email === 'undefined';
-
-  {
-    //eslint-disable-next-line require-atomic-updates
-    req.session.user = {
-      ...user
-    };
-  }
+  // const anonymous =
+  //   typeof password === 'undefined' || typeof email === 'undefined';
+  // eslint-disable-next-line require-atomic-updates
+  req.session.user = {
+    ...user
+  };
 
   next();
 }
@@ -93,10 +92,10 @@ async function loginUserAsync(req, res, next) {
 
   // Case when user is found
   if (existing) {
-    console.log(existing.id);
+    // console.log(existing.id);
     const user = await db.getUserById(existing.id);
-    console.log(user);
-    const { salt, hash, id } = existing;
+    // console.log(user);
+    const { salt, hash } = existing;
 
     // Case of anonymous user, where only a username is created.
     if (!email || (!password && !hash && !salt)) {
@@ -138,4 +137,3 @@ exports.createUser = asyncMiddleware(createUserAsync);
 exports.loginUser = asyncMiddleware(loginUserAsync);
 exports.updateUser = asyncMiddleware(updateUserAsync);
 exports.checkForDuplicate = asyncMiddleware(checkForDuplicateAsync);
-

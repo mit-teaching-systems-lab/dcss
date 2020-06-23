@@ -142,7 +142,11 @@ export const getCohortParticipants = id => async dispatch => {
   }
 };
 
-export const getCohortData = (cohort_id, participant_id, scenario_id) => async dispatch => {
+export const getCohortData = (
+  cohort_id,
+  participant_id,
+  scenario_id
+) => async dispatch => {
   try {
     const endpoint = scenario_id
       ? `/api/cohort/${cohort_id}/scenario/${scenario_id}`
@@ -187,7 +191,9 @@ export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
 // This is used to
 export const linkUserToCohort = (cohort_id, role) => async dispatch => {
   try {
-    const users = await (await fetch(`/api/cohort/${cohort_id}/join/${role}`)).json();
+    const users = await (await fetch(
+      `/api/cohort/${cohort_id}/join/${role}`
+    )).json();
     if (users.error) {
       throw users;
     }
@@ -198,22 +204,24 @@ export const linkUserToCohort = (cohort_id, role) => async dispatch => {
   }
 };
 
-export const addCohortUserRole = (cohort_id, user_id, role) => async dispatch => {
+export const addCohortUserRole = (
+  cohort_id,
+  user_id,
+  role
+) => async dispatch => {
   try {
     const body = JSON.stringify({
       cohort_id,
       user_id,
       roles: [role]
     });
-    const result = await (
-      await fetch('/api/cohort/${cohort_id}/roles/add', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body
-      })
-    ).json();
+    const result = await (await fetch('/api/cohort/${cohort_id}/roles/add', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
 
     const { cohort } = result;
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS });
@@ -225,22 +233,24 @@ export const addCohortUserRole = (cohort_id, user_id, role) => async dispatch =>
   }
 };
 
-export const deleteCohortUserRole = (cohort_id, user_id, role) => async dispatch => {
+export const deleteCohortUserRole = (
+  cohort_id,
+  user_id,
+  role
+) => async dispatch => {
   try {
     const body = JSON.stringify({
       cohort_id,
       user_id,
       roles: [role]
     });
-    const result = await (
-      await fetch('/api/cohort/${cohort_id}/roles/delete', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body
-      })
-    ).json();
+    const result = await (await fetch('/api/cohort/${cohort_id}/roles/delete', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
     const { cohort } = result;
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS });
     dispatch({ type: GET_COHORT_SUCCESS, cohort });

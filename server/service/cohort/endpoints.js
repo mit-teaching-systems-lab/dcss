@@ -40,36 +40,21 @@ async function linkCohortToRunAsync(req, res) {
 async function joinCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { id: cohort_id, role } = req.params;
-  const result = await db.linkUserToCohort(
-    cohort_id,
-    user_id,
-    role,
-    'join'
-  );
+  const result = await db.linkUserToCohort(cohort_id, user_id, role, 'join');
   res.json(result.rows);
 }
 
 async function quitCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { id: cohort_id, role } = req.params;
-  const result = await db.linkUserToCohort(
-    cohort_id,
-    user_id,
-    role,
-    'quit'
-  );
+  const result = await db.linkUserToCohort(cohort_id, user_id, role, 'quit');
   res.json(result.rows);
 }
 
 async function doneCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { id: cohort_id, role } = req.params;
-  const result = await db.linkUserToCohort(
-    cohort_id,
-    user_id,
-    role,
-    'done'
-  );
+  const result = await db.linkUserToCohort(cohort_id, user_id, role, 'done');
   res.json(result.rows);
 }
 

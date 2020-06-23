@@ -2,11 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Popup, Table } from 'semantic-ui-react';
-import { addCohortUserRole, deleteCohortUserRole } from '@actions/cohort';
-import { addUserRole, deleteUserRole } from '@actions/role';
+import { Table } from 'semantic-ui-react';
 import RoleCheckbox from './RoleCheckbox';
-import nextKey from '@utils/key';
 
 const USER_ROLES = Object.freeze({
   super_admin: 'Super Admin',
@@ -18,18 +15,18 @@ const USER_ROLES = Object.freeze({
 
 const IMMUTABLE_ROLES = Object.freeze(['participant']);
 
-
 const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
   return Object.keys(grantableRoles).map((role, index) => {
     const checked = targetUser.roles ? targetUser.roles.includes(role) : false;
 
     // The current user cannot change their own roles...
     // UNLESS they are a super admin.
-    const isSameAndNotSuperUser = targetUser.id === adminUser.id && !adminUser.is_super;
+    const isSameAndNotSuperUser =
+      targetUser.id === adminUser.id && !adminUser.is_super;
 
-    const isImmutableRole = IMMUTABLE_ROLES.includes(role) || isSameAndNotSuperUser;
+    const isImmutableRole =
+      IMMUTABLE_ROLES.includes(role) || isSameAndNotSuperUser;
     const disabled = isImmutableRole || targetUser.is_anonymous;
-
 
     const tip = checked
       ? `Revoke ${USER_ROLES[role]} access`
@@ -39,13 +36,11 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
       ? `You cannot change your own roles`
       : `${USER_ROLES[role]} role cannot be changed`;
 
-    const tipImmutable = isImmutableRole
-      ? whyRoleCannotBeChanged
-      : tip;
+    const tipImmutable = isImmutableRole ? whyRoleCannotBeChanged : tip;
 
     const content = targetUser.is_anonymous
-        ? 'This is an anonymous account and cannot be promoted.'
-        : tipImmutable;
+      ? 'This is an anonymous account and cannot be promoted.'
+      : tipImmutable;
 
     const roleCheckBox = (
       <RoleCheckbox
@@ -71,7 +66,7 @@ const UserRows = props => {
     adminUser,
     grantableRoles = {},
     rows = {},
-    rowsPerPage = 10,
+    // rowsPerPage = 10,
     usersById = {}
   } = props;
 
@@ -102,7 +97,12 @@ const UserRows = props => {
     // console.log(entry);
     const [id, cellsContents] = entry;
     const targetUser = cohort ? cohort.usersById[id] : usersById[id];
-    const roleCells = RoleCells({ cohort, grantableRoles, targetUser, adminUser });
+    const roleCells = RoleCells({
+      cohort,
+      grantableRoles,
+      targetUser,
+      adminUser
+    });
     return (
       <Table.Row key={hash(targetUser)}>
         {cellsContents.map(content => {
