@@ -4,25 +4,24 @@ const { saltHashPassword } = require('../../util/pwHash');
 
 async function getUserByProps({ id, username, email }) {
   // This query looks a little ugly, but it allows us to pass in empty stuff for id, username or email!
-  const result = await query(
-    sql`SELECT * FROM users WHERE id = ${id}
-            OR (username = ${username} AND username != '')
-            OR (email = ${email} AND email != '');`
-  );
+  // SELECT * FROM users WHERE id = ${id}
+  const result = await query(sql`
+    SELECT * FROM users WHERE id = ${id}
+    OR (username = ${username} AND username != '')
+    OR (email = ${email} AND email != '');
+  `);
+  return result.rows[0];
+}
+
+async function getUserById(id) {
+  const result = await query(sql`
+    SELECT * FROM user_role_detail WHERE id = ${id}
+  `);
   return result.rows[0];
 }
 
 exports.getUserByProps = getUserByProps;
-
-exports.getUserForClientByProps = async function(props) {
-  let { id, email, username } = await getUserByProps(props);
-
-  return {
-    id,
-    email,
-    username
-  };
-};
+exports.getUserById = getUserById;
 
 exports.createUser = async function({ email, username, password }) {
   let salt, passwordHash;
@@ -39,18 +38,19 @@ exports.createUser = async function({ email, username, password }) {
         VALUES(${email}, ${username}, ${passwordHash}, ${salt})
         ON CONFLICT (username) DO NOTHING
         RETURNING *;
-    `);
+      `);
 
   if (user && user.id) {
     // All new users are a "participant" by default.
     await query(sql`
-            INSERT INTO user_role (role, user_id)
-            VALUES('participant', ${user.id})
-            RETURNING *;
-        `);
-    return user;
+      INSERT INTO user_role (role, user_id)
+      VALUES('participant', ${user.id})
+      RETURNING *;
+    `);
+    return getUserById(user.id);
   } else {
-    return getUserByProps({ username });
+    const user = getUserByProps({ username });
+    return getUserById(user.id);
   }
 };
 
@@ -70,5 +70,5 @@ exports.updateUser = async function(id, updates) {
     rows: [user]
   } = await query(updateQuery('users', { id }, prepared));
 
-  return user;
+  return getUserById(user.id);
 };

@@ -16,11 +16,7 @@ exports.respondWithUser = (req, res) => {
   return res.json({ user: req.session.user });
 };
 
-exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(
-  req,
-  res,
-  next
-) {
+async function checkForDuplicateAsync(req, res, next) {
   const username = req.body.username || req.params.username;
   const user = await db.getUserByProps({ username });
   if (user) {
@@ -29,12 +25,12 @@ exports.checkForDuplicate = asyncMiddleware(async function checkForDuplicate(
     throw error;
   }
   next();
-});
+}
 
 async function createUserAsync(req, res, next) {
   const { username, password, email } = req.body;
   const created = await db.createUser({ email, username, password });
-  const { roles } = await getUserRoles(created.id);
+  // const { roles } = await getUserRoles(created.id);
 
   if (!created) {
     const error = new Error('User could not be created.');
@@ -42,15 +38,11 @@ async function createUserAsync(req, res, next) {
     throw error;
   }
 
-  const anonymous = typeof password === 'undefined';
+  const anonymous = typeof password === 'undefined' || typeof email === 'undefined';
 
   //eslint-disable-next-line require-atomic-updates
   req.session.user = {
-    anonymous,
-    email: created.email,
-    id: created.id,
-    roles,
-    username: created.username
+    ...created
   };
 
   next();
@@ -74,7 +66,6 @@ async function updateUserAsync(req, res, next) {
   }
 
   const user = await db.updateUser(id, updates);
-  const { roles } = await getUserRoles(id);
 
   if (!user) {
     const error = new Error('User could not be updated.');
@@ -82,18 +73,12 @@ async function updateUserAsync(req, res, next) {
     throw error;
   }
 
-  const anonymous = typeof password === 'undefined';
+  const anonymous = typeof password === 'undefined' || typeof email === 'undefined';
 
   {
-    const { email, username, id } = user;
-
     //eslint-disable-next-line require-atomic-updates
     req.session.user = {
-      anonymous,
-      email,
-      id,
-      username,
-      roles
+      ...user
     };
   }
 
@@ -102,20 +87,24 @@ async function updateUserAsync(req, res, next) {
 
 async function loginUserAsync(req, res, next) {
   const { username, email, password } = req.body;
-  const user = await db.getUserByProps({ username, email });
+  const existing = await db.getUserByProps({ username, email });
   const error = new Error('Invalid username or password.');
   error.status = 401;
 
   // Case when user is found
-  if (user) {
-    const { roles } = await getUserRoles(user.id);
-    const { salt, hash, id } = user;
+  if (existing) {
+    console.log(existing.id);
+    const user = await db.getUserById(existing.id);
+    console.log(user);
+    const { salt, hash, id } = existing;
 
-    // Case of anonymous user, where only the username / email stored
-    if (!password && !hash && !salt) {
+    // Case of anonymous user, where only a username is created.
+    if (!email || (!password && !hash && !salt)) {
       // disabling to set req.session.user
       //eslint-disable-next-line require-atomic-updates
-      req.session.user = { anonymous: true, username, email: '', id };
+      req.session.user = {
+        ...user
+      };
       return next();
     }
 
@@ -124,7 +113,8 @@ async function loginUserAsync(req, res, next) {
       throw error;
     }
 
-    // Case when a user with a password is supplied without a password
+    // Case when a user with a password is attempts to
+    // log in without a password
     if (!password && hash && salt) {
       throw error;
     }
@@ -135,11 +125,7 @@ async function loginUserAsync(req, res, next) {
       // disabling to set req.session.user
       //eslint-disable-next-line require-atomic-updates
       req.session.user = {
-        anonymous: false,
-        email: user.email,
-        id,
-        roles,
-        username: user.username
+        ...user
       };
       return next();
     }
@@ -151,3 +137,5 @@ async function loginUserAsync(req, res, next) {
 exports.createUser = asyncMiddleware(createUserAsync);
 exports.loginUser = asyncMiddleware(loginUserAsync);
 exports.updateUser = asyncMiddleware(updateUserAsync);
+exports.checkForDuplicate = asyncMiddleware(checkForDuplicateAsync);
+
