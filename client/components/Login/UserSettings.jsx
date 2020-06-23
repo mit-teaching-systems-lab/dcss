@@ -14,7 +14,7 @@ import { getUser, setUser } from '@actions/user';
 import './Login.css';
 
 const anonymousMode =
-  'You are currently in anonymous mode. Set a password to become a full user.';
+  'You are currently in anonymous mode. Set an email address and password to become a full user.';
 
 class UserSettings extends Component {
   constructor(props) {
@@ -188,18 +188,18 @@ class UserSettings extends Component {
 
     const anonymousModeFormProps = {
       style: {
-        width: user.anonymous ? '50%' : '100%',
-        display: user.anonymous ? 'inline-block' : 'block'
+        width: user.is_anonymous ? '50%' : '100%',
+        display: user.is_anonymous ? 'inline-block' : 'block'
       }
     };
 
     const anonymousModeMessageProps = {
       style: {
-        width: user.anonymous ? '47%' : '0%',
-        display: user.anonymous ? 'inline-block' : 'none',
-        verticalAlign: user.anonymous ? 'top' : 'unset',
-        marginTop: user.anonymous ? '1.6em' : 'unset',
-        marginLeft: user.anonymous ? '1em' : 'unset'
+        width: user.is_anonymous ? '47%' : '0%',
+        display: user.is_anonymous ? 'inline-block' : 'none',
+        verticalAlign: user.is_anonymous ? 'top' : 'unset',
+        marginTop: user.is_anonymous ? '1.6em' : 'unset',
+        marginLeft: user.is_anonymous ? '1em' : 'unset'
       }
     };
 
