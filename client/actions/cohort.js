@@ -120,19 +120,6 @@ export const getAllCohorts = () => async dispatch => {
   }
 };
 
-export const setCohortUserRole = ({ id, role }) => async dispatch => {
-  try {
-    const users = await (await fetch(`/api/cohort/${id}/join/${role}`)).json();
-    if (users.error) {
-      throw users;
-    }
-    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
-  } catch (error) {
-    dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
-    return null;
-  }
-};
-
 export const getCohortParticipants = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/cohort/${id}`)).json();
@@ -155,12 +142,11 @@ export const getCohortParticipants = id => async dispatch => {
   }
 };
 
-export const getCohortData = params => async dispatch => {
-  const { cohortId, participantId, scenarioId } = params;
+export const getCohortData = (cohort_id, participant_id, scenario_id) => async dispatch => {
   try {
-    const endpoint = scenarioId
-      ? `/api/cohort/${cohortId}/scenario/${scenarioId}`
-      : `/api/cohort/${cohortId}/participant/${participantId}`;
+    const endpoint = scenario_id
+      ? `/api/cohort/${cohort_id}/scenario/${scenario_id}`
+      : `/api/cohort/${cohort_id}/participant/${participant_id}`;
 
     const res = await (await fetch(endpoint)).json();
 
@@ -181,10 +167,10 @@ export const getCohortData = params => async dispatch => {
   }
 };
 
-export const linkRunToCohort = (cohortId, runId) => async dispatch => {
+export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
   try {
     const res = await (await fetch(
-      `/api/cohort/${cohortId}/run/${runId}`
+      `/api/cohort/${cohort_id}/run/${run_id}`
     )).json();
     if (res.error) {
       throw res;
@@ -195,6 +181,72 @@ export const linkRunToCohort = (cohortId, runId) => async dispatch => {
     return cohort;
   } catch (error) {
     dispatch({ type: LINK_RUN_TO_COHORT_ERROR, error });
+    return null;
+  }
+};
+// This is used to
+export const linkUserToCohort = (cohort_id, role) => async dispatch => {
+  try {
+    const users = await (await fetch(`/api/cohort/${cohort_id}/join/${role}`)).json();
+    if (users.error) {
+      throw users;
+    }
+    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
+  } catch (error) {
+    dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
+    return null;
+  }
+};
+
+export const addCohortUserRole = (cohort_id, user_id, role) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      cohort_id,
+      user_id,
+      roles: [role]
+    });
+    const result = await (
+      await fetch('/api/cohort/${cohort_id}/roles/add', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      })
+    ).json();
+
+    const { cohort } = result;
+    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS });
+    dispatch({ type: GET_COHORT_SUCCESS, cohort });
+    return result;
+  } catch (error) {
+    dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
+    return null;
+  }
+};
+
+export const deleteCohortUserRole = (cohort_id, user_id, role) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      cohort_id,
+      user_id,
+      roles: [role]
+    });
+    const result = await (
+      await fetch('/api/cohort/${cohort_id}/roles/delete', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      })
+    ).json();
+    const { cohort } = result;
+    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS });
+    dispatch({ type: GET_COHORT_SUCCESS, cohort });
+    return result;
+  } catch (error) {
+    dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
     return null;
   }
 };

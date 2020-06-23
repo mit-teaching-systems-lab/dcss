@@ -15,7 +15,7 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
     )).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
 
     const { response } = res;
@@ -34,11 +34,9 @@ export const getTranscriptOnly = ({ id, responseId }) => async dispatch => {
     )).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
-    const {
-      transcript
-    } = res;
+    const { transcript } = res;
     dispatch({ type: GET_TRANSCRIPT_SUCCESS, transcript });
     return transcript;
   } catch (error) {

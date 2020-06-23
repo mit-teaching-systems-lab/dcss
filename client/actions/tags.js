@@ -8,9 +8,7 @@ export const getCategories = () => async dispatch => {
       throw res;
     }
 
-    const {
-      categories
-    } = res;
+    const { categories } = res;
 
     dispatch({ type: GET_CATEGORIES_SUCCESS, categories });
     return categories;

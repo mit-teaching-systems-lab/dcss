@@ -50,6 +50,9 @@ export const GET_RUN_DATA = 'GET_RUN_DATA';
 export const GET_RUN_DATA_SUCCESS = 'GET_RUN_DATA_SUCCESS';
 export const GET_RUN_DATA_ERROR = 'GET_RUN_DATA_ERROR';
 
+export const SET_USER_ROLE_SUCCESS = 'SET_USER_ROLE_SUCCESS';
+export const SET_USER_ROLE_ERROR = 'SET_USER_ROLE_ERROR';
+
 export const SET_RUN = 'SET_RUN';
 export const SET_RUN_SUCCESS = 'SET_RUN_SUCCESS';
 export const SET_RUN_ERROR = 'SET_RUN_ERROR';

@@ -24,11 +24,9 @@ export const getScenarios = () => async dispatch => {
   try {
     const res = await (await fetch('/api/scenarios')).json();
     if (res.error) {
-      throw error;
+      throw res;
     }
-    const {
-      scenarios
-    } = res;
+    const { scenarios } = res;
 
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
@@ -40,16 +38,12 @@ export const getScenarios = () => async dispatch => {
 
 export const getScenario = id => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/scenarios/${id}`
-    )).json();
+    const res = await (await fetch(`/api/scenarios/${id}`)).json();
 
     if (res.error) {
       throw res;
     }
-    const {
-      scenario
-    } = res;
+    const { scenario } = res;
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return scenario;
   } catch (error) {
@@ -68,12 +62,10 @@ export const getScenarioRunHistory = params => async dispatch => {
     const res = await (await fetch(endpoint)).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
 
-    const {
-      history
-    } = res;
+    const { history } = res;
 
     dispatch({ type: GET_SCENARIO_RUN_HISTORY_SUCCESS, ...history });
     return { ...history };
@@ -85,17 +77,13 @@ export const getScenarioRunHistory = params => async dispatch => {
 
 export const getSlides = id => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/scenarios/${id}/slides`
-    )).json();
+    const res = await (await fetch(`/api/scenarios/${id}/slides`)).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
 
-    const {
-      slides
-    } = res;
+    const { slides } = res;
 
     dispatch({ type: GET_SLIDES_SUCCESS, slides });
     return slides;

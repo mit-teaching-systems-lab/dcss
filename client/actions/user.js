@@ -12,9 +12,7 @@ export const getUser = () => async dispatch => {
     if (res.error) {
       throw res;
     }
-    const {
-      user
-    } = res;
+    const { user } = res;
 
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -39,9 +37,7 @@ export const setUser = data => async dispatch => {
       if (res.error) {
         throw res;
       }
-      const {
-        user
-      } = res;
+      const { user } = res;
 
       dispatch({ type: SET_USER_SUCCESS, user });
       return user;

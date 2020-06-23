@@ -23,11 +23,9 @@ export const getRun = scenario_id => async dispatch => {
     )).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
-    const {
-      run
-    } = res;
+    const { run } = res;
     dispatch({ type: GET_RUN_SUCCESS, run });
     return run;
   } catch (error) {
@@ -41,11 +39,9 @@ export const getUserRuns = () => async dispatch => {
     const res = await (await fetch('/api/runs')).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
-    const {
-      runs
-    } = res;
+    const { runs } = res;
     dispatch({ type: GET_RUNS_SUCCESS, runs });
     return runs;
   } catch (error) {
@@ -67,12 +63,10 @@ export const setRun = (id, data) => async dispatch => {
     })).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
 
-    const {
-      run
-    } = res;
+    const { run } = res;
 
     dispatch({ type: SET_RUN_SUCCESS, run });
     return run;
@@ -82,14 +76,13 @@ export const setRun = (id, data) => async dispatch => {
   }
 };
 
-export const getRunData = params => async dispatch => {
-  const { runId } = params;
+export const getRunData = (run_id) => async dispatch => {
   try {
-    const endpoint = `/api/runs/${runId}`;
+    const endpoint = `/api/runs/${run_id}`;
     const res = await (await fetch(endpoint)).json();
 
     if (res.error) {
-      throw error;
+      throw res;
     }
 
     const { prompts, responses } = res;
