@@ -1,6 +1,8 @@
 #nav {
   margin-top: 0.5em!important;
   margin-bottom: 0.5em!important;
+  border: unset !important;
+  box-shadow: unset !important;
 }
 
 @media not all and (max-device-width: 767px) {

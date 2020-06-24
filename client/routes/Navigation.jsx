@@ -128,7 +128,7 @@ class Navigation extends Component {
 
             {isLoggedIn ? (
               <Menu.Menu position="right">
-                <Dropdown item text={user.username}>
+                <Dropdown simple item text={user.username}>
                   <Dropdown.Menu>
                     <UserSettings user={user} />
                     <ConfirmableLogout user={user} />
