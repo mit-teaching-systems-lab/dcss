@@ -36,14 +36,15 @@ export const CohortCard = ({ id, created_at, name, roles }) => {
   const calendar = Moment(created_at).calendar();
 
   return (
-    <Card key={id}>
-      <Card.Content>
+    <Card className="sc sc__margin-height" key={id}>
+      <Card.Content className="sc sc__cursor-pointer">
         <Card.Header>
           <NavLink to={`/cohort/${id}`}>{name}</NavLink>
         </Card.Header>
         <Card.Meta title={`Created on ${calendar}`}>
           Created {fromNow}
         </Card.Meta>
+        <Card.Description>{''}</Card.Description>
       </Card.Content>
       <Card.Content extra>{yourRoles}</Card.Content>
     </Card>
@@ -54,7 +55,7 @@ CohortCard.propTypes = {
   id: PropTypes.number,
   created_at: PropTypes.string,
   name: PropTypes.string,
-  roles: PropTypes.string
+  roles: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => {

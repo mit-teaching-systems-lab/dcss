@@ -245,7 +245,7 @@ export class DataTable extends React.Component {
         csv += `${prepared.join(',')}\n`;
       });
 
-      CSV.download(`${prefix}-${subject}`, csv);
+      CSV.download(hash({prefix, subject}), csv);
     });
   }
 
