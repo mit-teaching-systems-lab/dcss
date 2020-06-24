@@ -154,7 +154,7 @@ class MyScenarios extends Component {
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell style={{ width: '40px' }}></Table.HeaderCell>
-              <Table.HeaderCell>Scenario Title</Table.HeaderCell>
+              <Table.HeaderCell>Scenario</Table.HeaderCell>
               <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
                 Started
               </Table.HeaderCell>
