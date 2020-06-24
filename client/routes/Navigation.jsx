@@ -11,8 +11,8 @@ import UserSettings from '@components/Login/UserSettings';
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
   {
-    text: 'My Scenario Data',
-    path: '/my-scenario-data',
+    text: 'History',
+    path: '/history',
     permission: 'view_own_data'
   },
   {

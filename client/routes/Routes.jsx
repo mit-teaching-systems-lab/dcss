@@ -13,7 +13,7 @@ import Editor from '@components/Editor';
 import ForOhFor from '@components/ForOhFor';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import Login from '@components/Login';
-import MyScenarios from '@components/MyScenarios';
+import History from '@components/History';
 
 import Researcher from '@components/Researcher';
 import Run from '@components/Run';
@@ -60,9 +60,9 @@ const Routes = ({ isLoggedIn }) => {
       <RedirectRouteForInactiveSession
         isLoggedIn={isLoggedIn}
         exact
-        path="/my-scenario-data"
+        path="/history"
       >
-        <Route component={MyScenarios} />
+        <Route component={History} />
       </RedirectRouteForInactiveSession>
 
       <InterceptAnonymizableRoute
