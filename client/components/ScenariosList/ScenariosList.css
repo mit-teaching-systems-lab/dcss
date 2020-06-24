@@ -39,6 +39,10 @@
   overflow-y: auto !important;
 }
 
+.ui.card.sc a {
+  color: rgba(0,0,0,.87);
+}
+
 .sl__menu-item--padding {
   padding: 0.428571em 1.14285714em !important;
 }
