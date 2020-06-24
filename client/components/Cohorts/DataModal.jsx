@@ -27,7 +27,7 @@ const DataModal = props => {
 
       <Modal.Content scrolling className="dtm__scroll">
         <Modal.Description>
-          <SplitPane split="vertical" minSize={100} defaultSize={500}>
+          <SplitPane split="vertical" minSize={500} defaultSize={500}>
             <div>
               <ContentSlide
                 slide={slide}
