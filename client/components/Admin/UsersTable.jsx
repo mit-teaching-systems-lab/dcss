@@ -32,14 +32,6 @@ class UsersTable extends Component {
       rows = {}
     } = this.props;
 
-    // console.log('activePage', activePage);
-    // console.log('columns', columns);
-    // console.log('grantableRoles', grantableRoles);
-    // console.log('onPageChange', onPageChange);
-    // console.log('rowsPerPage', rowsPerPage);
-    // console.log('pages', pages);
-    // console.log('rows', rows);
-
     const userRowsProps = { cohort, grantableRoles, rows, rowsPerPage };
     const tableRows = <UserRows {...userRowsProps} />;
 

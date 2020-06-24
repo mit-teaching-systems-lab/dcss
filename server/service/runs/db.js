@@ -85,31 +85,31 @@ exports.getResponse = async ({ run_id, response_id, user_id }) => {
 exports.getRunResponses = async ({ run_id }) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
-            SELECT
-                run.user_id as user_id,
-                username,
-                scenario.id as scenario_id,
-                scenario.title as scenario_title,
-                run.id as run_id,
-                run.referrer_params as referrer_params,
-                response_id,
-                run_response.response,
-                run_response.response->>'value' as value,
-                audio_transcript.transcript as transcript,
-                CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
-                    ELSE TRUE
-                END as is_skip,
-                run_response.response->>'type' as type,
-                run_response.created_at as created_at,
-                run_response.ended_at as ended_at
-            FROM run_response
-            JOIN run ON run.id = run_response.run_id
-            JOIN users ON users.id = run.user_id
-            JOIN scenario ON scenario.id = run.scenario_id
-            LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
-            WHERE run_response.run_id = ${run_id}
-            ORDER BY run_response.id ASC
-        `);
+        SELECT
+            run.user_id as user_id,
+            username,
+            scenario.id as scenario_id,
+            scenario.title as scenario_title,
+            run.id as run_id,
+            run.referrer_params as referrer_params,
+            response_id,
+            run_response.response,
+            run_response.response->>'value' as value,
+            audio_transcript.transcript as transcript,
+            CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+                ELSE TRUE
+            END as is_skip,
+            run_response.response->>'type' as type,
+            run_response.created_at as created_at,
+            run_response.ended_at as ended_at
+        FROM run_response
+        JOIN run ON run.id = run_response.run_id
+        JOIN users ON users.id = run.user_id
+        JOIN scenario ON scenario.id = run.scenario_id
+        LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
+        WHERE run_response.run_id = ${run_id}
+        ORDER BY run_response.id ASC
+    `);
 
     return result.rows;
   });
@@ -117,11 +117,11 @@ exports.getRunResponses = async ({ run_id }) => {
 
 exports.getResponses = async ({ run_id, user_id }) => {
   const result = await query(sql`
-        SELECT * FROM run_response
-        WHERE run_id = ${run_id}
-        AND user_id = ${user_id}
-        ORDER BY created_at DESC;
-    `);
+    SELECT * FROM run_response
+    WHERE run_id = ${run_id}
+    AND user_id = ${user_id}
+    ORDER BY created_at DESC;
+  `);
   return result.rows;
 };
 
@@ -131,18 +131,18 @@ exports.getAudioTranscriptResponse = async ({
   user_id
 }) => {
   const result = await query(sql`
-        SELECT transcript
-        FROM audio_transcript
-        JOIN (
-            SELECT response->>'value' as audio_key
-            FROM run_response
-            WHERE response_id = ${response_id}
-            AND run_id = ${run_id}
-            AND user_id = ${user_id}
-            ORDER BY created_at DESC
-            LIMIT 1
-        ) AS audio_keys ON audio_keys.audio_key = audio_transcript.key
-    `);
+    SELECT transcript
+    FROM audio_transcript
+    JOIN (
+      SELECT response->>'value' as audio_key
+      FROM run_response
+      WHERE response_id = ${response_id}
+      AND run_id = ${run_id}
+      AND user_id = ${user_id}
+      ORDER BY created_at DESC
+      LIMIT 1
+    ) AS audio_keys ON audio_keys.audio_key = audio_transcript.key
+  `);
 
   return result.rows[0];
 };
