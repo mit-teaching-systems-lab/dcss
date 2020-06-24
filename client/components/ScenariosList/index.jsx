@@ -301,18 +301,18 @@ class ScenariosList extends Component {
     const onCopyClick = () => {
       copy(url);
       notify({
-        message: <Fragment>Copied: {url}</Fragment>
+        message: `Copied: ${url}`
       });
     };
 
-    const menuTriggerCopy = (
+    const scenarioLinkCopyMenuItem = (
       <Menu.Item className="sc__hidden-on-mobile" onClick={onCopyClick}>
         {heading} ({scenariosSlice.length})
         <Icon name="clipboard outline" />
       </Menu.Item>
     );
 
-    const menuTriggerInput = (
+    const scenarioSearchMenuItem = (
       <Menu.Item className="sl__menu-item--padding">
         <Input
           icon="search"
@@ -324,8 +324,8 @@ class ScenariosList extends Component {
     );
     const right = [
       <Menu.Menu key="menu-item-scenario-search" position="right">
-        <Popup content="Copy link to this search" trigger={menuTriggerCopy} />
-        <Popup content="Search scenarios" trigger={menuTriggerInput} />
+        <Popup content="Copy link to this search" trigger={scenarioLinkCopyMenuItem} />
+        <Popup content="Search scenarios" trigger={scenarioSearchMenuItem} />
       </Menu.Menu>
     ];
 
@@ -346,17 +346,19 @@ class ScenariosList extends Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column stretched>
-                  <Pagination
-                    name="scenarios"
-                    siblingRange={1}
-                    boundaryRange={0}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    activePage={activePage}
-                    onPageChange={onPageChange}
-                    totalPages={scenariosPages}
-                  />
+                  {scenariosPages > 1 ? (
+                    <Pagination
+                      name="scenarios"
+                      siblingRange={1}
+                      boundaryRange={0}
+                      ellipsisItem={null}
+                      firstItem={null}
+                      lastItem={null}
+                      activePage={activePage}
+                      onPageChange={onPageChange}
+                      totalPages={scenariosPages}
+                    />
+                  ) : null}
                 </Grid.Column>
               </Grid.Row>
             </Grid>

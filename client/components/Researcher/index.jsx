@@ -5,11 +5,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
   Button,
-  //This is disabled for Jamboree.
-  // Dropdown,
   Icon,
-  //This is disabled for Jamboree.
-  // Menu,
   Pagination,
   Popup,
   Table
@@ -21,6 +17,7 @@ import { getUser } from '@actions/user';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import Loading from '@components/Loading';
+import '../Cohorts/Cohort.css';
 import './Researcher.css';
 
 const ROWS_PER_PAGE = 10;
@@ -90,6 +87,8 @@ class Researcher extends Component {
       if (isAudioFile(value)) {
         record.content += ` (${location.origin}/api/media/${value})`;
       }
+
+      record.cohort_id = cohort.id;
     });
 
     const fields = [
@@ -101,18 +100,18 @@ class Researcher extends Component {
       'created_at',
       'ended_at',
       'type',
-      'referrer_params'
+      'referrer_params',
+      'cohort_id'
     ];
     const parser = new Parser({ fields });
     const csv = parser.parse(records);
 
-    CSV.download(`${cohort.name}-${scenario.title}`, csv);
+    CSV.download(hash({cohort, scenario}), csv);
   }
 
   render() {
     const { onPageChange, onScenarioDataClick } = this;
     const { activePage, isReady } = this.state;
-    // This is disabled for Jamboree.
     const { cohorts, scenariosById, user } = this.props;
 
     if (!isReady) {
@@ -134,15 +133,15 @@ class Researcher extends Component {
 
             return (
               <Table.Row key={hash({ ...cohort, id, title })}>
-                <Table.Cell collapsing>
+                <Table.Cell verticalAlign="top" collapsing>
                   <ResearcherMenu
                     cohort={cohort}
                     scenario={scenario}
                     onClick={onScenarioDataClick}
                   />
                 </Table.Cell>
-                <Table.Cell>{cohort.name}</Table.Cell>
-                <Table.Cell>{title}</Table.Cell>
+                <Table.Cell verticalAlign="top">{cohort.name}</Table.Cell>
+                <Table.Cell verticalAlign="top">{title}</Table.Cell>
               </Table.Row>
             );
           })
@@ -169,25 +168,27 @@ class Researcher extends Component {
             </Table.Row>
             <Table.Row>
               <Table.HeaderCell collapsing></Table.HeaderCell>
-              <Table.HeaderCell>Cohort</Table.HeaderCell>
-              <Table.HeaderCell>Scenario</Table.HeaderCell>
+              <Table.HeaderCell style={{width:'30%'}}>Cohort</Table.HeaderCell>
+              <Table.HeaderCell >Scenario</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>{downloadsSlice}</Table.Body>
           <Table.Footer>
             <Table.Row>
               <Table.HeaderCell colSpan="4">
-                <Pagination
-                  name="downloads"
-                  siblingRange={1}
-                  boundaryRange={0}
-                  ellipsisItem={null}
-                  firstItem={null}
-                  lastItem={null}
-                  activePage={activePage}
-                  onPageChange={onPageChange}
-                  totalPages={downloadsPages}
-                />
+                {downloadsPages > 1 ? (
+                  <Pagination
+                    name="downloads"
+                    siblingRange={1}
+                    boundaryRange={0}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    activePage={activePage}
+                    onPageChange={onPageChange}
+                    totalPages={downloadsPages}
+                  />
+                ) : null}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Footer>
