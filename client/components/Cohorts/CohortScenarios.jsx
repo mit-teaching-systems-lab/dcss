@@ -167,7 +167,6 @@ export class CohortScenarios extends React.Component {
       scenarios.find(scenario => scenario.id === id)
     );
 
-    // const noCohortScenariosSelected =
     // This is the list of scenarios that are available,
     // but NOT in the cohort. The order is by id, descending
     const reducedScenarios = scenarios.reduce((accum, scenario) => {
@@ -177,17 +176,11 @@ export class CohortScenarios extends React.Component {
       return accum;
     }, []);
 
-    const sectionedScenarios = cohortScenarios;
+    const orderCorrectedScenarios = cohortScenarios;
 
     if (isFacilitator || user.is_super) {
-      sectionedScenarios.push(...reducedScenarios);
+      orderCorrectedScenarios.push(...reducedScenarios);
     }
-
-    // Filter out draft status scenarios.
-    const orderCorrectedScenarios = sectionedScenarios.filter(
-      // scenario => scenario.status !== 1
-      scenario => scenario
-    );
 
     const right = [
       <Menu.Menu key="menu-menu-search-cohort-scenarios" position="right">
@@ -536,7 +529,7 @@ CohortScenarios.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const { cohort, cohorts, user } = state;
   const scenarios = state.scenarios.filter(
-    scenario => scenario.deleted_at === null
+    ({deleted_at, status}) => deleted_at === null && status !== 1
   );
   const runs = state.runs.filter(run => run.cohort_id === ownProps.id);
   return { cohort, cohorts, scenarios, runs, user };
