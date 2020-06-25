@@ -23,6 +23,7 @@ import UsersTable from '@components/Admin/UsersTable';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
+import { getUsers } from '@actions/users';
 import { COHORT_ROLE_GROUPS } from '../Admin/constants';
 import './Cohort.css';
 
@@ -81,10 +82,9 @@ export class CohortParticipants extends React.Component {
     );
   }
 
-  async componentDidMount() {
+  async fetchCohort() {
     const {
-      cohort: { id },
-      refresh
+      cohort: { id }
     } = this.state;
 
     const cohort = await this.props.getCohort(Number(id));
@@ -94,8 +94,20 @@ export class CohortParticipants extends React.Component {
       isReady: true,
       cohort
     });
+  }
 
-    if (refresh) {
+  participantRefresh() {
+    this.refreshInterval = setInterval(async () => {
+      if (!this.state.search) {
+        await this.fetchCohort();
+      }
+    }, 1000);
+  }
+
+  async componentDidMount() {
+    await this.fetchCohort();
+
+    if (this.state.refresh) {
       this.participantRefresh();
     }
   }
@@ -160,19 +172,6 @@ export class CohortParticipants extends React.Component {
         users
       }
     });
-  }
-
-  participantRefresh() {
-    this.refreshInterval = setInterval(async () => {
-      const { search, cohort } = this.state;
-      if (!search) {
-        cohort.users = await this.props.getCohortParticipants(
-          Number(cohort.id)
-        );
-        this.participants = cohort.users.slice();
-        this.setState({ cohort });
-      }
-    }, 1000);
   }
 
   onParticipantRefreshChange() {
@@ -387,7 +386,8 @@ CohortParticipants.propTypes = {
   getCohortParticipants: PropTypes.func,
   setCohort: PropTypes.func,
   scenarios: PropTypes.array,
-  user: PropTypes.object
+  user: PropTypes.object,
+  getUsers: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -400,7 +400,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getCohortParticipants: id => dispatch(getCohortParticipants(id)),
-  setCohort: params => dispatch(setCohort(params))
+  setCohort: params => dispatch(setCohort(params)),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default withRouter(
