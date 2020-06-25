@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Dropdown, Menu, Segment } from '@components/UI';
+import { Dropdown, Icon, Menu, Segment } from '@components/UI';
 import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
@@ -325,6 +325,10 @@ class Editor extends Component {
       return null;
     }
 
+    const {
+      scenarioId
+    } = this.state;
+
     const scenarioStatusMenuItem = this.props.status !== undefined && (
       <ScenarioStatusMenuItem
         key="scenario-status-menu-item"
@@ -334,7 +338,19 @@ class Editor extends Component {
       />
     );
 
-    const editTabMenu = Object.keys(this.state.tabs).map(tabType => {
+    const scenarioRunMenuItem = scenarioId !== 'new' ? (
+      <Menu.Item
+        key="scenario-run-menu-item"
+        name="Run this scenario"
+        onClick={() => {
+          this.props.history.push(`/run/${scenarioId}/slide/0`);
+        }}
+      >
+        <Icon name="play" />
+      </Menu.Item>
+    ) : null;
+
+    const menuBar = Object.keys(this.state.tabs).map(tabType => {
       return (
         <Menu.Item
           key={tabType}
@@ -348,11 +364,11 @@ class Editor extends Component {
     return (
       <Fragment>
         <Menu attached="top" tabular className="editor__tabmenu">
-          {editTabMenu}
+          {menuBar}
         </Menu>
 
         <Segment attached="bottom" className="editor__content-pane">
-          {this.state.scenarioId !== 'new' && (
+          {scenarioId !== 'new' && (
             <EditorMenu
               type="scenario"
               items={{
@@ -363,10 +379,13 @@ class Editor extends Component {
                 },
                 delete: {
                   onConfirm: () => {
-                    this.deleteScenario(this.state.scenarioId);
+                    this.deleteScenario(scenarioId);
                   }
                 },
-                right: [scenarioStatusMenuItem]
+                right: [
+                  scenarioRunMenuItem,
+                  scenarioStatusMenuItem
+                ]
               }}
             />
           )}
