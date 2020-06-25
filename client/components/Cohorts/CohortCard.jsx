@@ -6,6 +6,9 @@ import { connect } from 'react-redux';
 import Moment from '@utils/Moment';
 
 const rolesToHumanReadableString = roles => {
+  if (!roles || (roles && !roles.length)) {
+    return `You are not in this cohort`;
+  }
   const rolesSlice = roles.slice();
   const ownerIndex = rolesSlice.indexOf('owner');
   const isOwner = ownerIndex !== -1;

@@ -18,6 +18,7 @@ import {
   Pagination
 } from '@components/UI';
 import {
+  getAllCohorts,
   getCohorts,
   getCohort,
   setCohort,
@@ -62,7 +63,11 @@ export class Cohorts extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      await this.props.getCohorts();
+      if (this.props.user.is_super) {
+        await this.props.getAllCohorts();
+      } else {
+        await this.props.getCohorts();
+      }
       await this.props.getScenarios();
       await this.props.getUser();
 
@@ -324,6 +329,7 @@ Cohorts.propTypes = {
     status: PropTypes.oneOf([PropTypes.string, PropTypes.number])
   }),
   createCohort: PropTypes.func,
+  getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
   getCohort: PropTypes.func,
   setCohort: PropTypes.func,
@@ -346,6 +352,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),

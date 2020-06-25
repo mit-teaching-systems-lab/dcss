@@ -2,6 +2,7 @@ import {
   CREATE_COHORT_SUCCESS,
   GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_SUCCESS,
+  GET_ALL_COHORTS_SUCCESS,
   GET_USER_COHORTS_SUCCESS,
   SET_COHORT_SUCCESS,
   SET_COHORT_USER_ROLE_SUCCESS
@@ -60,7 +61,7 @@ export const cohort = (state = cohortInitialState, action) => {
 
 export const cohorts = (state = [], action) => {
   const { type, cohorts } = action;
-  if (type === GET_USER_COHORTS_SUCCESS) {
+  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.slice();
   }
 
@@ -70,7 +71,7 @@ export const cohorts = (state = [], action) => {
 export const cohortsById = (state = {}, action) => {
   const { type, cohorts } = action;
 
-  if (type === GET_USER_COHORTS_SUCCESS) {
+  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.reduce((accum, cohort) => {
       accum[cohort.id] = cohort;
       return accum;
