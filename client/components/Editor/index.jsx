@@ -325,9 +325,7 @@ class Editor extends Component {
       return null;
     }
 
-    const {
-      scenarioId
-    } = this.state;
+    const { scenarioId } = this.state;
 
     const scenarioStatusMenuItem = this.props.status !== undefined && (
       <ScenarioStatusMenuItem
@@ -338,17 +336,18 @@ class Editor extends Component {
       />
     );
 
-    const scenarioRunMenuItem = scenarioId !== 'new' ? (
-      <Menu.Item
-        key="scenario-run-menu-item"
-        name="Run this scenario"
-        onClick={() => {
-          this.props.history.push(`/run/${scenarioId}/slide/0`);
-        }}
-      >
-        <Icon name="play" />
-      </Menu.Item>
-    ) : null;
+    const scenarioRunMenuItem =
+      scenarioId !== 'new' ? (
+        <Menu.Item
+          key="scenario-run-menu-item"
+          name="Run this scenario"
+          onClick={() => {
+            this.props.history.push(`/run/${scenarioId}/slide/0`);
+          }}
+        >
+          <Icon name="play" />
+        </Menu.Item>
+      ) : null;
 
     const menuBar = Object.keys(this.state.tabs).map(tabType => {
       return (
@@ -382,10 +381,7 @@ class Editor extends Component {
                     this.deleteScenario(scenarioId);
                   }
                 },
-                right: [
-                  scenarioRunMenuItem,
-                  scenarioStatusMenuItem
-                ]
+                right: [scenarioRunMenuItem, scenarioStatusMenuItem]
               }}
             />
           )}
