@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Table } from 'semantic-ui-react';
+import { Popup, Table } from 'semantic-ui-react';
 import { detect } from 'detect-browser';
 
 const IS_ANDROID = detect()
@@ -9,7 +9,7 @@ const IS_ANDROID = detect()
   .includes('android');
 
 const ClickableTableCell = props => {
-  const { children, content, href, ...rest } = props;
+  const { children, content, href, popup, ...rest } = props;
   const onClick =
     props.onClick || (IS_ANDROID ? () => (location.href = href) : null);
 
@@ -22,7 +22,7 @@ const ClickableTableCell = props => {
     ? <Link to={href}>{child}</Link>
     : child;
 
-  return (
+  const cell = (
     <Table.Cell
       {...rest}
       style={{ cursor: 'pointer' }}
@@ -32,6 +32,13 @@ const ClickableTableCell = props => {
       {link}
     </Table.Cell>
   );
+
+  return popup ? (
+    <Popup
+      content={popup}
+      trigger={cell}
+    />
+  ) : cell;
 };
 
 ClickableTableCell.propTypes = {
@@ -53,6 +60,7 @@ ClickableTableCell.propTypes = {
   warning: PropTypes.bool,
   width: PropTypes.number,
   href: PropTypes.string,
+  popup: PropTypes.string,
   onClick: PropTypes.func
 };
 
