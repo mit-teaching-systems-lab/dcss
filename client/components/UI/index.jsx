@@ -7,8 +7,6 @@ import { Table } from 'semantic-ui-react';
 import ClickableTableCell from './ClickableTableCell';
 Table.Cell.Clickable = ClickableTableCell;
 
-
-
 /**
  * Wrap in single object export
  */

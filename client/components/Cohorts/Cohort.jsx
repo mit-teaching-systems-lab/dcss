@@ -347,6 +347,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 
   // Super admins have unrestricted access to cohorts
+
   if (user.is_super) {
     authority.isOwner = true;
     authority.isFacilitator = true;

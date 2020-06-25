@@ -14,13 +14,9 @@ const ClickableTableCell = props => {
     props.onClick || (IS_ANDROID ? () => (location.href = href) : null);
 
   const hasChildren = children && children.length !== 0;
-  const child = hasChildren
-    ? children
-    : content;
+  const child = hasChildren ? children : content;
 
-  const link = href && child
-    ? <Link to={href}>{child}</Link>
-    : child;
+  const link = href && child ? <Link to={href}>{child}</Link> : child;
 
   const cell = (
     <Table.Cell
@@ -33,12 +29,7 @@ const ClickableTableCell = props => {
     </Table.Cell>
   );
 
-  return popup ? (
-    <Popup
-      content={popup}
-      trigger={cell}
-    />
-  ) : cell;
+  return popup ? <Popup content={popup} trigger={cell} /> : cell;
 };
 
 ClickableTableCell.propTypes = {

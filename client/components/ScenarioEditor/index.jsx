@@ -51,11 +51,9 @@ class ScenarioEditor extends Component {
     // Either the existing categories have been loaded,
     // or fetch categories to fill the default value
     if (!categories.length) {
-      console.log("??????????????????????????????");
       categories = await getCategories();
     }
 
-console.log(categories);
     this.setState({
       isReady: true,
       categories,

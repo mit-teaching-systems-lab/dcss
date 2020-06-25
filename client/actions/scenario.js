@@ -52,8 +52,10 @@ export const getScenario = id => async dispatch => {
   }
 };
 
-export const getScenarioRunHistory = (scenario_id, cohort_id) => async dispatch => {
-  console.log(scenario_id, cohort_id);
+export const getScenarioRunHistory = (
+  scenario_id,
+  cohort_id
+) => async dispatch => {
   try {
     const endpoint = cohort_id
       ? `/api/scenarios/${scenario_id}/cohort/${cohort_id}/history`

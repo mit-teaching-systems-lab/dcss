@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Zip from 'jszip';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
@@ -229,10 +228,16 @@ class History extends Component {
                       content={scenario_title}
                       className="ms__table-cell-options"
                     />
-                    <Table.Cell alt={endedAtAlt} className="ms__hidden-on-mobile">
+                    <Table.Cell
+                      alt={endedAtAlt}
+                      className="ms__hidden-on-mobile"
+                    >
                       {startedAtDisplay}
                     </Table.Cell>
-                    <Table.Cell alt={endedAtAlt} className="ms__hidden-on-mobile">
+                    <Table.Cell
+                      alt={endedAtAlt}
+                      className="ms__hidden-on-mobile"
+                    >
                       {endedAtDisplay}
                     </Table.Cell>
                     <Table.Cell.Clickable
@@ -248,19 +253,19 @@ class History extends Component {
             <Table.Footer>
               <Table.Row>
                 <Table.HeaderCell colSpan="5">
-                {runsPages > 1 ? (
-                  <Pagination
-                    name="runs"
-                    siblingRange={1}
-                    boundaryRange={0}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    activePage={activePage}
-                    onPageChange={onPageChange}
-                    totalPages={runsPages}
-                  />
-                ) : null}
+                  {runsPages > 1 ? (
+                    <Pagination
+                      name="runs"
+                      siblingRange={1}
+                      boundaryRange={0}
+                      ellipsisItem={null}
+                      firstItem={null}
+                      lastItem={null}
+                      activePage={activePage}
+                      onPageChange={onPageChange}
+                      totalPages={runsPages}
+                    />
+                  ) : null}
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>

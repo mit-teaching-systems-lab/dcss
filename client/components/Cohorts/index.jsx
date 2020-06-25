@@ -14,7 +14,6 @@ import {
   Icon,
   Input,
   Menu,
-  Message,
   Modal,
   Pagination
 } from '@components/UI';
@@ -38,8 +37,6 @@ const CARDS_PER_PAGE = 8;
 export class Cohorts extends React.Component {
   constructor(props) {
     super(props);
-
-    const { params, path } = this.props.match;
 
     this.state = {
       activePage: 1,
@@ -160,7 +157,7 @@ export class Cohorts extends React.Component {
   }
 
   render() {
-    const { activePage, isReady, cohort, cohorts, createIsVisible } = this.state;
+    const { activePage, isReady, cohorts, createIsVisible } = this.state;
     const {
       onCreateCohortCancel,
       onCohortSearchChange,
@@ -170,9 +167,7 @@ export class Cohorts extends React.Component {
       onPageChange
     } = this;
 
-    const {
-      user
-    } = this.props;
+    const { user } = this.props;
 
     const createCohortsMenuItem = (
       <ConfirmAuth
@@ -203,25 +198,26 @@ export class Cohorts extends React.Component {
         <Icon.Group className="em__icon-group-margin">
           <Icon name="group" />
         </Icon.Group>
-        Cohorts{' '}{cohorts.length ? `(${cohorts.length})` : null}
+        Cohorts {cohorts.length ? `(${cohorts.length})` : null}
       </Menu.Item>
     );
 
-    const searchCohortsMenuItem = cohorts.length > CARDS_PER_PAGE ? (
-      <Menu.Menu key="menu-right-search-cohorts" position="right">
-        <Menu.Item
-          key="menu-item-search-cohorts"
-          name="Search cohorts"
-          className="em__icon-padding"
-        >
-          <Input
-            icon="search"
-            placeholder="Search..."
-            onChange={onCohortSearchChange}
-          />
-        </Menu.Item>
-      </Menu.Menu>
-    ) : null;
+    const searchCohortsMenuItem =
+      cohorts.length > CARDS_PER_PAGE ? (
+        <Menu.Menu key="menu-right-search-cohorts" position="right">
+          <Menu.Item
+            key="menu-item-search-cohorts"
+            name="Search cohorts"
+            className="em__icon-padding"
+          >
+            <Input
+              icon="search"
+              placeholder="Search..."
+              onChange={onCohortSearchChange}
+            />
+          </Menu.Item>
+        </Menu.Menu>
+      ) : null;
 
     const left = [
       user.permissions.includes('create_cohort')
@@ -229,9 +225,7 @@ export class Cohorts extends React.Component {
         : countCohortsMenuItem
     ];
 
-    const right = [
-      searchCohortsMenuItem
-    ];
+    const right = [searchCohortsMenuItem];
 
     const cohortsPages = Math.ceil(cohorts.length / CARDS_PER_PAGE);
     const cohortsIndex = (activePage - 1) * CARDS_PER_PAGE;
@@ -240,9 +234,7 @@ export class Cohorts extends React.Component {
       cohortsIndex + CARDS_PER_PAGE
     );
     const cards = cohortsSlice.map(cohort => {
-      return (
-        <CohortCard key={hash(cohort)} id={cohort.id} />
-      );
+      return <CohortCard key={hash(cohort)} id={cohort.id} />;
     });
 
     return (
@@ -269,19 +261,19 @@ export class Cohorts extends React.Component {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column stretched>
-                {cohortsPages > 1 ? (
-                  <Pagination
-                    name="cohorts"
-                    siblingRange={1}
-                    boundaryRange={0}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    activePage={activePage}
-                    onPageChange={onPageChange}
-                    totalPages={cohortsPages}
-                  />
-                ) : null}
+                  {cohortsPages > 1 ? (
+                    <Pagination
+                      name="cohorts"
+                      siblingRange={1}
+                      boundaryRange={0}
+                      ellipsisItem={null}
+                      firstItem={null}
+                      lastItem={null}
+                      activePage={activePage}
+                      onPageChange={onPageChange}
+                      totalPages={cohortsPages}
+                    />
+                  ) : null}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -310,7 +302,7 @@ export class Cohorts extends React.Component {
               <Button color="grey" onClick={onCreateCohortCancel}>
                 Cancel
               </Button>
-          </Button.Group>
+            </Button.Group>
           </Modal.Actions>
         </Modal>
       </React.Fragment>

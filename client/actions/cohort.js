@@ -131,6 +131,7 @@ export const getCohortParticipants = id => async dispatch => {
       cohort,
       cohort: { users }
     } = res;
+
     // Dispatch the entire "cohort", but only the "users" property
     // will be used in the reducer.
     dispatch({ type: GET_COHORT_PARTICIPANTS_SUCCESS, cohort });

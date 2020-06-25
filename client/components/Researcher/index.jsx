@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import { Parser } from 'json2csv';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import {
-  Button,
-  Icon,
-  Pagination,
-  Popup,
-  Table
-} from '@components/UI';
+import { Button, Icon, Pagination, Popup, Table } from '@components/UI';
 import hash from 'object-hash';
 import { getCohorts } from '@actions/cohort';
 import { getScenarios, getScenarioRunHistory } from '@actions/scenario';
@@ -70,20 +64,19 @@ class Researcher extends Component {
     const { getScenarioRunHistory } = this.props;
     const scenarioIds = scenarioId
       ? [scenarioId]
-      : cohort.scenarios.map(v => typeof v === 'number' ? v : v.id);
+      : cohort.scenarios.map(v => (typeof v === 'number' ? v : v.id));
     const files = [];
 
     for (let id of scenarioIds) {
-      const {
-        prompts,
-        responses
-      } = await getScenarioRunHistory(id, cohort.id);
+      const { prompts, responses } = await getScenarioRunHistory(id, cohort.id);
 
       const records = responses.flat();
 
       records.forEach(record => {
         const { is_skip, response_id, transcript, value } = record;
-        const prompt = prompts.find(prompt => prompt.responseId === response_id);
+        const prompt = prompts.find(
+          prompt => prompt.responseId === response_id
+        );
         record.header = makeHeader(prompt, prompts);
         record.content = is_skip ? '(skipped)' : transcript || value;
 
@@ -106,7 +99,7 @@ class Researcher extends Component {
         'referrer_params',
         'cohort_id'
       ];
-      const file = `${hash({cohort, id})}.csv`;
+      const file = `${hash({ cohort, id })}.csv`;
       const parser = new Parser({ fields });
       const csv = parser.parse(records);
 
@@ -152,7 +145,6 @@ class Researcher extends Component {
 
     const downloads = cohorts.reduce((accum, cohort) => {
       if (hasAccessToCohort(cohort)) {
-
         const onDownloadByCohortClick = () => {
           downloadData({ cohort });
         };
@@ -161,7 +153,6 @@ class Researcher extends Component {
           ...cohort.scenarios.map((id, index) => {
             const scenario = scenariosById[id];
             const { title } = scenario;
-            const { name } = cohort;
 
             const onDownloadByScenarioClick = () => {
               downloadData({ cohort, scenarioId: id });
@@ -214,8 +205,10 @@ class Researcher extends Component {
             <Table.Row>
               <Table.HeaderCell collapsing></Table.HeaderCell>
               <Table.HeaderCell collapsing></Table.HeaderCell>
-              <Table.HeaderCell style={{width:'30%'}}>Cohort</Table.HeaderCell>
-              <Table.HeaderCell >Scenario</Table.HeaderCell>
+              <Table.HeaderCell style={{ width: '30%' }}>
+                Cohort
+              </Table.HeaderCell>
+              <Table.HeaderCell>Scenario</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>{downloadsSlice}</Table.Body>
@@ -301,7 +294,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getScenarios: () => dispatch(getScenarios()),
-  getScenarioRunHistory: (...params) => dispatch(getScenarioRunHistory(...params)),
+  getScenarioRunHistory: (...params) =>
+    dispatch(getScenarioRunHistory(...params)),
   getUser: () => dispatch(getUser())
 });
 

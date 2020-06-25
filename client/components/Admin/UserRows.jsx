@@ -97,6 +97,11 @@ const UserRows = props => {
     // console.log(entry);
     const [id, cellsContents] = entry;
     const targetUser = cohort ? cohort.usersById[id] : usersById[id];
+
+    if (!targetUser) {
+      return null;
+    }
+
     const roleCells = RoleCells({
       cohort,
       grantableRoles,
