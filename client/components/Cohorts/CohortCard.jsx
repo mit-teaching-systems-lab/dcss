@@ -7,7 +7,7 @@ import Moment from '@utils/Moment';
 
 const rolesToHumanReadableString = roles => {
   if (!roles || (roles && !roles.length)) {
-    return `You are not in this cohort`;
+    return `You are not in this cohort.`;
   }
   const rolesSlice = roles.slice();
   const ownerIndex = rolesSlice.indexOf('owner');
@@ -37,7 +37,6 @@ export const CohortCard = ({ id, created_at, name, roles }) => {
   const yourRoles = rolesToHumanReadableString(roles);
   const fromNow = Moment(created_at).fromNow();
   const calendar = Moment(created_at).calendar();
-
   return (
     <Card className="sc sc__margin-height" key={id}>
       <Card.Content className="sc sc__cursor-pointer">
@@ -49,7 +48,7 @@ export const CohortCard = ({ id, created_at, name, roles }) => {
         </Card.Meta>
         <Card.Description>{''}</Card.Description>
       </Card.Content>
-      <Card.Content extra>{yourRoles}</Card.Content>
+      {roles ? <Card.Content extra>{yourRoles}</Card.Content> : null}
     </Card>
   );
 };
@@ -62,13 +61,18 @@ CohortCard.propTypes = {
 };
 
 const mapStateToProps = (state, props) => {
-  const { cohorts } = state;
-  const cohort = cohorts.find(cohort => cohort.id === props.id);
-  const scenarios = cohort.scenarios.map(id =>
-    state.scenarios.find(scenario => scenario.id === id)
-  );
+  const { cohorts, cohortsById, user } = state;
+  const cohort =
+    cohortsById[props.id] || cohorts.find(cohort => cohort.id === props.id);
+  let roles = props.roles;
+  if (!roles) {
+    const cohortUser = cohort.users.find(({ id }) => id === user.id);
 
-  return { ...cohort, scenarios };
+    if (cohortUser) {
+      roles = cohortUser.roles;
+    }
+  }
+  return { ...cohort, roles };
 };
 
 export default connect(mapStateToProps)(CohortCard);

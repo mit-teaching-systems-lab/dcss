@@ -236,7 +236,10 @@ export class CohortParticipants extends React.Component {
 
     const grantableRoles = {};
 
-    if (user.roles.includes('facilitator')) {
+    if (
+      user.roles.includes('facilitator') ||
+      user.roles.includes('super_admin')
+    ) {
       Object.assign(grantableRoles, facilitator);
     }
 
