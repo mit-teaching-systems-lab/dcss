@@ -14,9 +14,9 @@ import hash from 'object-hash';
 import { getCohorts } from '@actions/cohort';
 import { getScenarios, getScenarioRunHistory } from '@actions/scenario';
 import { getUser } from '@actions/user';
+import Loading from '@components/Loading';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
-import Loading from '@components/Loading';
 import '../Cohorts/Cohort.css';
 import './Researcher.css';
 
@@ -39,7 +39,7 @@ class Researcher extends Component {
     // This is disabled for Jamboree.
     // this.onCohortSelect = this.onCohortSelect.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
-    this.onScenarioDataClick = this.onScenarioDataClick.bind(this);
+    this.downloadData = this.downloadData.bind(this);
   }
 
   async componentDidMount() {
@@ -66,51 +66,63 @@ class Researcher extends Component {
     });
   }
 
-  async onScenarioDataClick(event, data) {
+  async downloadData({ cohort, scenarioId }) {
     const { getScenarioRunHistory } = this.props;
-    const { scenario, cohort } = data;
+    const scenarioIds = scenarioId
+      ? [scenarioId]
+      : cohort.scenarios.map(v => typeof v === 'number' ? v : v.id);
+    const files = [];
 
-    const { id: scenarioId } = scenario;
-    const { id: cohortId } = cohort;
-    const { prompts, responses } = await getScenarioRunHistory({
-      scenarioId,
-      cohortId
-    });
-    const records = responses.flat();
+    for (let id of scenarioIds) {
+      const {
+        prompts,
+        responses
+      } = await getScenarioRunHistory(id, cohort.id);
 
-    records.forEach(record => {
-      const { is_skip, response_id, transcript, value } = record;
-      const prompt = prompts.find(prompt => prompt.responseId === response_id);
-      record.header = makeHeader(prompt, prompts);
-      record.content = is_skip ? '(skipped)' : transcript || value;
+      const records = responses.flat();
 
-      if (isAudioFile(value)) {
-        record.content += ` (${location.origin}/api/media/${value})`;
-      }
+      records.forEach(record => {
+        const { is_skip, response_id, transcript, value } = record;
+        const prompt = prompts.find(prompt => prompt.responseId === response_id);
+        record.header = makeHeader(prompt, prompts);
+        record.content = is_skip ? '(skipped)' : transcript || value;
 
-      record.cohort_id = cohort.id;
-    });
+        if (isAudioFile(value)) {
+          record.content += ` (${location.origin}/api/media/${value})`;
+        }
 
-    const fields = [
-      'username',
-      'header',
-      'content',
-      'is_skip',
-      'run_id',
-      'created_at',
-      'ended_at',
-      'type',
-      'referrer_params',
-      'cohort_id'
-    ];
-    const parser = new Parser({ fields });
-    const csv = parser.parse(records);
+        record.cohort_id = cohort.id;
+      });
 
-    CSV.download(hash({cohort, scenario}), csv);
+      const fields = [
+        'username',
+        'header',
+        'content',
+        'is_skip',
+        'run_id',
+        'created_at',
+        'ended_at',
+        'type',
+        'referrer_params',
+        'cohort_id'
+      ];
+      const file = `${hash({cohort, id})}.csv`;
+      const parser = new Parser({ fields });
+      const csv = parser.parse(records);
+
+      files.push([file, csv]);
+    }
+
+    if (Object.entries(files).length === 1) {
+      const [file, csv] = files[0];
+      CSV.download(file, csv);
+    } else {
+      CSV.downloadZipAsync(files);
+    }
   }
 
   render() {
-    const { onPageChange, onScenarioDataClick } = this;
+    const { onPageChange, downloadData } = this;
     const { activePage, isReady } = this.state;
     const { cohorts, scenariosById, user } = this.props;
 
@@ -124,22 +136,55 @@ class Researcher extends Component {
       });
     };
 
+    const downloadByCohortIcon = (
+      <Icon.Group size="big" className="ig__multiple-file">
+        <Icon name="file archive outline" />
+        <Icon name="download" corner="top right" color="green" />
+      </Icon.Group>
+    );
+
+    const downloadByScenarioIcon = (
+      <Icon.Group>
+        <Icon name="file alternate outline" />
+        <Icon name="download" corner="top right" color="green" />
+      </Icon.Group>
+    );
+
     const downloads = cohorts.reduce((accum, cohort) => {
       if (hasAccessToCohort(cohort)) {
+
+        const onDownloadByCohortClick = () => {
+          downloadData({ cohort });
+        };
+
         accum.push(
-          ...cohort.scenarios.map(id => {
+          ...cohort.scenarios.map((id, index) => {
             const scenario = scenariosById[id];
             const { title } = scenario;
+            const { name } = cohort;
+
+            const onDownloadByScenarioClick = () => {
+              downloadData({ cohort, scenarioId: id });
+            };
 
             return (
               <Table.Row key={hash({ ...cohort, id, title })}>
-                <Table.Cell verticalAlign="top" collapsing>
-                  <ResearcherMenu
-                    cohort={cohort}
-                    scenario={scenario}
-                    onClick={onScenarioDataClick}
+                {index === 0 ? (
+                  <Table.Cell.Clickable
+                    verticalAlign="top"
+                    popup="Download a zip containing csv files containing responses for all scenarios in this cohort"
+                    rowSpan={cohort.scenarios.length}
+                    content={downloadByCohortIcon}
+                    onClick={onDownloadByCohortClick}
                   />
-                </Table.Cell>
+                ) : null}
+
+                <Table.Cell.Clickable
+                  verticalAlign="top"
+                  popup="Download a csv file containing responses to this scenario in this cohort"
+                  content={downloadByScenarioIcon}
+                  onClick={onDownloadByScenarioClick}
+                />
                 <Table.Cell verticalAlign="top">{cohort.name}</Table.Cell>
                 <Table.Cell verticalAlign="top">{title}</Table.Cell>
               </Table.Row>
@@ -167,6 +212,7 @@ class Researcher extends Component {
               </Table.HeaderCell>
             </Table.Row>
             <Table.Row>
+              <Table.HeaderCell collapsing></Table.HeaderCell>
               <Table.HeaderCell collapsing></Table.HeaderCell>
               <Table.HeaderCell style={{width:'30%'}}>Cohort</Table.HeaderCell>
               <Table.HeaderCell >Scenario</Table.HeaderCell>
@@ -201,7 +247,7 @@ class Researcher extends Component {
 const ResearcherMenu = props => {
   const { onClick, cohort, scenario } = props;
 
-  const onClickToDownloadData = (event, props) => {
+  const onDownloadIconClick = (event, props) => {
     onClick(event, {
       ...props,
       cohort,
@@ -217,7 +263,7 @@ const ResearcherMenu = props => {
             icon
             content={<Icon name="download" />}
             name="scenario"
-            onClick={onClickToDownloadData}
+            onClick={onDownloadIconClick}
           />
         }
       />
@@ -255,7 +301,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getScenarios: () => dispatch(getScenarios()),
-  getScenarioRunHistory: params => dispatch(getScenarioRunHistory(params)),
+  getScenarioRunHistory: (...params) => dispatch(getScenarioRunHistory(...params)),
   getUser: () => dispatch(getUser())
 });
 
