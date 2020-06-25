@@ -11,7 +11,8 @@ import {
   Input,
   Menu,
   Popup,
-  Ref
+  Ref,
+  Table
 } from '@components/UI';
 import _ from 'lodash';
 // import hash from 'object-hash';
