@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Confirm, Card } from 'semantic-ui-react';
+import { Confirm, Card } from '@components/UI';
 import { NavLink } from 'react-router-dom';
 import './Scenario.css';
 

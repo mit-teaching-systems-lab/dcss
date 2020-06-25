@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Confirm, Icon, Menu, Popup, Ref } from 'semantic-ui-react';
+import { Button, Confirm, Icon, Menu, Popup, Ref } from '@components/UI';
 
 class ConfirmableDeleteButton extends Component {
   constructor(props) {

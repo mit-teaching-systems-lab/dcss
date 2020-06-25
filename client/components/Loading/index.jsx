@@ -7,7 +7,7 @@ import {
   Loader,
   Placeholder,
   Segment
-} from 'semantic-ui-react';
+} from '@components/UI';
 import './Loading.css';
 const Loading = ({
   card = { cols: 1, rows: 1 },

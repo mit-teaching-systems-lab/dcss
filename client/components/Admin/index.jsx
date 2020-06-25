@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Menu, Segment } from 'semantic-ui-react';
+import { Menu, Segment } from '@components/UI';
 
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';

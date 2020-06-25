@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Form, Grid, Header, Message, Modal } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
 import { logIn } from '@actions';
 
 class CreateAccount extends Component {

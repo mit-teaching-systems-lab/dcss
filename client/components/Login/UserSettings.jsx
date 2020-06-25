@@ -9,7 +9,7 @@ import {
   Menu,
   Message,
   Modal
-} from 'semantic-ui-react';
+} from '@components/UI';
 import { getUser, setUser } from '@actions/user';
 import './Login.css';
 

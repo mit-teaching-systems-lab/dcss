@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, Menu } from 'semantic-ui-react';
+import { Dropdown, Icon, Menu } from '@components/UI';
 import * as Components from '@components/Slide/Components';
 import './SlideComponentSelect.css';
 

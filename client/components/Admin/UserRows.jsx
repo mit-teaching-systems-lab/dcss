@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Table } from 'semantic-ui-react';
+import { Table } from '@components/UI';
 import RoleCheckbox from './RoleCheckbox';
 
 const USER_ROLES = Object.freeze({
@@ -106,7 +106,7 @@ const UserRows = props => {
     return (
       <Table.Row key={hash(targetUser)}>
         {cellsContents.map(content => {
-          // This is for supporting ClickableTableCell and
+          // This is for supporting Table.Cell.Clickable and
           // similar other valid table cell stand-ins.
           if (React.isValidElement(content)) {
             return content;

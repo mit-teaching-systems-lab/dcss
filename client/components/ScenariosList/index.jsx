@@ -13,7 +13,7 @@ import {
   Modal,
   Pagination,
   Popup
-} from 'semantic-ui-react';
+} from '@components/UI';
 import _ from 'lodash';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';

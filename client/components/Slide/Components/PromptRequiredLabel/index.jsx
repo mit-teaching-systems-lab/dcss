@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Label } from 'semantic-ui-react';
+import { Icon, Label } from '@components/UI';
 import './PromptRequiredLabel.css';
 
 const PromptRequiredLabel = ({ fulfilled }) => {

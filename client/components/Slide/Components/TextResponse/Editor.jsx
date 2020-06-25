@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Form } from 'semantic-ui-react';
+import { Container, Form } from '@components/UI';
 import { defaultValue } from './';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Container, Form, Input, Message, Popup } from 'semantic-ui-react';
+import { Container, Form, Input, Message, Popup } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';

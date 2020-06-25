@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import Zip from 'jszip';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Icon, Message, Pagination, Popup, Tab, Table } from 'semantic-ui-react';
+import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
 import Moment from '@utils/Moment';
 import { getUserRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
-import ClickableTableCell from '@components/ClickableTableCell';
 import DataTable from '@components/Cohorts/DataTable';
 
 import './History.css';
@@ -217,16 +217,16 @@ class History extends Component {
                     <Popup
                       content="View your data for this scenario run"
                       trigger={
-                        <ClickableTableCell
+                        <Table.Cell.Clickable
                           className="ms__table-cell-first"
-                          display={<Icon name="file alternate outline" />}
+                          content={<Icon name="file alternate outline" />}
                           onClick={onViewRunDataClick}
                         />
                       }
                     />
-                    <ClickableTableCell
+                    <Table.Cell.Clickable
                       href={pathname}
-                      display={scenario_title}
+                      content={scenario_title}
                       className="ms__table-cell-options"
                     />
                     <Table.Cell alt={endedAtAlt} className="ms__hidden-on-mobile">
@@ -235,10 +235,10 @@ class History extends Component {
                     <Table.Cell alt={endedAtAlt} className="ms__hidden-on-mobile">
                       {endedAtDisplay}
                     </Table.Cell>
-                    <ClickableTableCell
+                    <Table.Cell.Clickable
                       className="ms__hidden-on-mobile"
                       href={cohortPathname}
-                      display={cohortDisplay}
+                      content={cohortDisplay}
                     />
                   </Table.Row>
                 );

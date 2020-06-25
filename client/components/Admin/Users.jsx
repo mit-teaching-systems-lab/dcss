@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Icon, Input, Menu } from 'semantic-ui-react';
+import { Icon, Input, Menu } from '@components/UI';
 
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';

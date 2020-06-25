@@ -1,7 +1,7 @@
 import { type } from './meta';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, List, Segment } from 'semantic-ui-react';
+import { Button, Header, List, Segment } from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { connect } from 'react-redux';

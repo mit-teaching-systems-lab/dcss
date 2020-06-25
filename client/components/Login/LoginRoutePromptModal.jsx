@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { Button, Grid, Header, Icon, Modal } from 'semantic-ui-react';
+import { Button, Grid, Header, Icon, Modal } from '@components/UI';
 import './LoginRoutePromptModal.css';
 
 class LoginRoutePromptModal extends Component {

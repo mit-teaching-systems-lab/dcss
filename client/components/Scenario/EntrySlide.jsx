@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Card, Message } from 'semantic-ui-react';
+import { Button, Card, Message } from '@components/UI';
 import './EntrySlide.css';
 
 class EntrySlide extends React.Component {

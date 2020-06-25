@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Checkbox, Dropdown, Message } from 'semantic-ui-react';
+import { Checkbox, Dropdown, Message } from '@components/UI';
 import RichTextEditor from '@components/RichTextEditor';
 import { type } from './meta';
 

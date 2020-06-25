@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Popup } from 'semantic-ui-react';
+import { Icon, Menu, Popup } from '@components/UI';
 import ConfirmableDeleteButton from './ConfirmableDeleteButton';
 import './EditorMenu.css';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Container, Form, Grid, Popup } from 'semantic-ui-react';
+import { Button, Container, Form, Grid, Popup } from '@components/UI';
 import { getScenario, setScenario } from '@actions/scenario';
 import { getCategories } from '@actions/tags';
 import { getUsersByPermission } from '@actions/users';
@@ -51,9 +51,11 @@ class ScenarioEditor extends Component {
     // Either the existing categories have been loaded,
     // or fetch categories to fill the default value
     if (!categories.length) {
+      console.log("??????????????????????????????");
       categories = await getCategories();
     }
 
+console.log(categories);
     this.setState({
       isReady: true,
       categories,

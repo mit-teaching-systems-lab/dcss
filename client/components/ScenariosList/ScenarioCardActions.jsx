@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button, Icon } from 'semantic-ui-react';
+import { Button, Icon } from '@components/UI';
 import Storage from '@utils/Storage';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import './ScenariosList.css';

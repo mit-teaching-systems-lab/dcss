@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Dropdown, Menu, Segment } from 'semantic-ui-react';
+import { Dropdown, Menu, Segment } from '@components/UI';
 import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';

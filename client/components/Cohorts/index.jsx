@@ -17,7 +17,7 @@ import {
   Message,
   Modal,
   Pagination
-} from 'semantic-ui-react';
+} from '@components/UI';
 import {
   getCohorts,
   getCohort,

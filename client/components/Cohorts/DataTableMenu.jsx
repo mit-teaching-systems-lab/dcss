@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Icon, Menu, Popup } from 'semantic-ui-react';
+import { Icon, Menu, Popup } from '@components/UI';
 import { getCohort } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';

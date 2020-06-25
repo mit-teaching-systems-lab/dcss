@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Card, Icon } from 'semantic-ui-react';
+import { Card, Icon } from '@components/UI';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
 import ScenarioCardActions from './ScenarioCardActions';

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Popup, Segment } from 'semantic-ui-react';
+import { Icon, Menu, Popup, Segment } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
 import { getCohort, setCohort, linkUserToCohort } from '@actions/cohort';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popup, Icon } from 'semantic-ui-react';
+import { Popup, Icon } from '@components/UI';
 import { name } from './meta';
 
 const ResponseRecallCard = () => (

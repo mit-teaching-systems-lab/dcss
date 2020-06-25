@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Card, Icon, Popup } from 'semantic-ui-react';
+import { Button, Card, Icon, Popup } from '@components/UI';
 import Storage from '@utils/Storage';
 import SlideComponents from '@components/SlideComponents';
 import { getResponse } from '@actions/response';

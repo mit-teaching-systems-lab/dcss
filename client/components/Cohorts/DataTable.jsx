@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Table } from 'semantic-ui-react';
+import { Icon, Table } from '@components/UI';
 import { diff } from 'deep-diff';
 import Moment from '@utils/Moment';
 import { getCohort, getCohortData } from '@actions/cohort';

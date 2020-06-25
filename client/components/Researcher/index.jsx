@@ -9,7 +9,7 @@ import {
   Pagination,
   Popup,
   Table
-} from 'semantic-ui-react';
+} from '@components/UI';
 import hash from 'object-hash';
 import { getCohorts } from '@actions/cohort';
 import { getScenarios, getScenarioRunHistory } from '@actions/scenario';

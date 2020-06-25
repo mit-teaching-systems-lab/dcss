@@ -13,7 +13,7 @@ import {
   Popup,
   Ref,
   Segment
-} from 'semantic-ui-react';
+} from '@components/UI';
 // TODO: can we use this for shouldComponentUpdate?
 // import hash from 'object-hash';
 // import { diff } from 'deep-object-diff';

@@ -12,15 +12,13 @@ import {
   Menu,
   Popup,
   Ref
-} from 'semantic-ui-react';
+} from '@components/UI';
 import _ from 'lodash';
 // import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
 import UsersTable from '@components/Admin/UsersTable';
-import ClickableTableCell from '@components/ClickableTableCell';
-// import CohortUserRole from './CohortUserRole';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import scrollIntoView from '@components/util/scrollIntoView';
@@ -258,10 +256,10 @@ export class CohortParticipants extends React.Component {
         });
       };
       const trigger = (
-        <ClickableTableCell
+        <Table.Cell.Clickable
           className="cohort__table-cell-first"
           key={`clickabletablecell-${user.id}`}
-          display={<Icon name="file alternate outline" />}
+          content={<Icon name="file alternate outline" />}
           onClick={onClickAddTab}
         />
       );
@@ -357,93 +355,6 @@ export class CohortParticipants extends React.Component {
       <Container fluid className="cohort__table-container">
         {editorMenu}
         <UsersTable {...usersTableProps} />
-
-        {/*
-
-        <Table
-          fixed
-          striped
-          selectable
-          role="grid"
-          aria-labelledby="header"
-          className="cohort__table--constraints"
-          unstackable
-        >
-          <Table.Header className="cohort__table-thead-tbody-tr">
-            <Table.Row>
-              <ConfirmAuth
-                isAuthorized={isOwner}
-                requiredPermission="edit_scenarios_in_cohort"
-              >
-                <Table.HeaderCell className="cohort__table-cell-first">
-                  {' '}
-                </Table.HeaderCell>
-              </ConfirmAuth>
-              <Table.HeaderCell>Username</Table.HeaderCell>
-              <Table.HeaderCell>Role</Table.HeaderCell>
-              <Table.HeaderCell className="cohort__table-cell-content">
-                Email
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Ref innerRef={node => (this.tableBody = node)}>
-            <Table.Body className="cohort__scrolling-tbody">
-              {cohort.users.length ? (
-                cohort.users.map((user, index) => {
-                  const onClickAddTab = (event, data) => {
-                    onClick(event, {
-                      ...data,
-                      type: 'participant',
-                      source: user
-                    });
-                  };
-
-                  return (
-                    <Table.Row
-                      key={`participants-row-${index}`}
-                      className="cohort__table-thead-tbody-tr"
-                      style={{ cursor: 'pointer' }}
-                    >
-
-                      <ConfirmAuth
-                        isAuthorized={isOwner}
-                        requiredPermission="view_all_data"
-                      >
-                        <Popup
-                          content="View cohort reponses from this participant"
-                          trigger={
-                            <ClickableTableCell
-                              className="cohort__table-cell-first"
-                              display={<Icon name="file alternate outline" />}
-                              onClick={onClickAddTab}
-                            />
-                          }
-                        />
-                      </ConfirmAuth>
-                      <Table.Cell>{user.username}</Table.Cell>
-                      <Table.Cell>
-                        <CohortUserRole user={user} />
-                      </Table.Cell>
-                      <Table.Cell className="cohort__table-cell-content">
-                        {user.email}
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })
-              ) : (
-                <Table.Row
-                  key={`row-empty-results`}
-                  className="cohort__table-thead-tbody-tr"
-                >
-                  <Table.Cell>
-                    <Loading />
-                  </Table.Cell>
-                </Table.Row>
-              )}
-            </Table.Body>
-          </Ref>
-        </Table>
-        */}
       </Container>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Pagination, Table } from 'semantic-ui-react';
+import { Pagination, Table } from '@components/UI';
 import UserRows from './UserRows';
 
 // import { getUsers } from '@actions/users';

@@ -10,7 +10,7 @@ import {
   Message,
   Ref,
   Segment
-} from 'semantic-ui-react';
+} from '@components/UI';
 import EditorMenu from '@components/EditorMenu';
 // import { notify } from '@components/Notification';
 // import Loading from '@components/Loading';

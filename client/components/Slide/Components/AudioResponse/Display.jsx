@@ -2,7 +2,7 @@ import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Header, Icon, Segment } from 'semantic-ui-react';
+import { Button, Form, Grid, Header, Icon, Segment } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
 import { detect } from 'detect-browser';
 import PromptRequiredLabel from '../PromptRequiredLabel';

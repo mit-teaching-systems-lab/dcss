@@ -12,11 +12,10 @@ import {
   Popup,
   Ref,
   Table
-} from 'semantic-ui-react';
+} from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import _ from 'lodash';
 import Moment from '@utils/Moment';
-import ClickableTableCell from '@components/ClickableTableCell';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -463,9 +462,9 @@ export class CohortScenarios extends React.Component {
                           ) : null}
                         </Table.Cell>
                       </ConfirmAuth>
-                      <ClickableTableCell
+                      <Table.Cell.Clickable
                         href={pathname}
-                        display={scenario.title}
+                        content={scenario.title}
                       />
                       <Table.Cell className="cohort__table-cell-content">
                         {isFacilitator

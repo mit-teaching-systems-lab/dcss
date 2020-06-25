@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Header, Icon, Modal, Table } from 'semantic-ui-react';
+import { Header, Icon, Modal, Table } from '@components/UI';
 import SplitPane from 'react-split-pane';
 import Moment from '@utils/Moment';
 import ContentSlide from '@components/Scenario/ContentSlide';

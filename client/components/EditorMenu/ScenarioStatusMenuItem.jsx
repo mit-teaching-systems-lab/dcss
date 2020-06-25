@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import changeCase from 'change-case';
-import { Dropdown, Menu, Icon } from 'semantic-ui-react';
+import { Dropdown, Menu, Icon } from '@components/UI';
 
 let cachedStatusOptions = null;
 

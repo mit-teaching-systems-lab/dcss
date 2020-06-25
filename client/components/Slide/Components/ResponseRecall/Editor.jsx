@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Table } from 'semantic-ui-react';
+import { Dropdown, Table } from '@components/UI';
 import FormField from '@components/FormField';
 import { type } from './meta';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from 'semantic-ui-react';
+import { Button, Card } from '@components/UI';
 import PropTypes from 'prop-types';
 import './ScenariosList.css';
 

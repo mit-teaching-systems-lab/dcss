@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import PropTypes from 'prop-types';
-import { Table } from 'semantic-ui-react';
+import { Table } from '@components/UI';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import RSortable from 'react-sortablejs';
 import './Sortable.css';

@@ -52,12 +52,12 @@ export const getScenario = id => async dispatch => {
   }
 };
 
-export const getScenarioRunHistory = params => async dispatch => {
-  const { scenarioId, cohortId } = params;
+export const getScenarioRunHistory = (scenario_id, cohort_id) => async dispatch => {
+  console.log(scenario_id, cohort_id);
   try {
-    const endpoint = cohortId
-      ? `/api/scenarios/${scenarioId}/cohort/${cohortId}/history`
-      : `/api/scenarios/${scenarioId}/history`;
+    const endpoint = cohort_id
+      ? `/api/scenarios/${scenario_id}/cohort/${cohort_id}/history`
+      : `/api/scenarios/${scenario_id}/history`;
 
     const res = await (await fetch(endpoint)).json();
 

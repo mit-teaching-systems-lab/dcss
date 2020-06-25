@@ -1,7 +1,7 @@
 import { type } from './meta';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Container, Icon, Message } from 'semantic-ui-react';
+import { Button, Container, Icon, Message } from '@components/UI';
 import RichTextEditor from '@components/RichTextEditor';
 
 class Display extends React.Component {

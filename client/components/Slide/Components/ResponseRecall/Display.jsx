@@ -2,7 +2,7 @@ import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Message } from 'semantic-ui-react';
+import { Message } from '@components/UI';
 import AudioPlayer from '../AudioResponse/AudioPlayer';
 import Transcript from '../AudioResponse/Transcript';
 import { connect } from 'react-redux';

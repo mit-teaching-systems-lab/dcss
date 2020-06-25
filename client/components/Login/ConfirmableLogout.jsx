@@ -9,7 +9,7 @@ import {
   Menu,
   Modal,
   Popup
-} from 'semantic-ui-react';
+} from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import './ConfirmableLogout.css';
 import './Login.css';

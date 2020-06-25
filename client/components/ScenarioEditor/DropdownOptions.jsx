@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Form } from 'semantic-ui-react';
+import { Dropdown, Form } from '@components/UI';
 
 export const CategoriesDropdown = ({ options, categories, onChange }) => {
   return (

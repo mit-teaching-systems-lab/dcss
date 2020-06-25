@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Button, Dropdown, Icon, Menu } from 'semantic-ui-react';
+import { Button, Dropdown, Icon, Menu } from '@components/UI';
 
 import ConfirmAuth from '@components/ConfirmAuth';
 import ConfirmableLogout from '@components/Login/ConfirmableLogout';

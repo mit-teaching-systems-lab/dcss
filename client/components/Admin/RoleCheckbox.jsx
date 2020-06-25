@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 // import hash from 'object-hash';
-import { Checkbox, Popup } from 'semantic-ui-react';
+import { Checkbox, Popup } from '@components/UI';
 import { notify } from '@components/Notification';
 import { addCohortUserRole, deleteCohortUserRole } from '@actions/cohort';
 import { addUserRole, deleteUserRole } from '@actions/role';

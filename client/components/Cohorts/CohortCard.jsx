@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card } from 'semantic-ui-react';
+import { Card } from '@components/UI';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from '@utils/Moment';

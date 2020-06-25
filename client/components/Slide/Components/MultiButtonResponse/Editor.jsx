@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Button, Container, Form, Icon, Input, Table } from 'semantic-ui-react';
+import { Button, Container, Form, Icon, Input, Table } from '@components/UI';
 import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';

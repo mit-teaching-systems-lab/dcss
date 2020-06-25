@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Header, Modal, Popup } from 'semantic-ui-react';
+import { Button, Header, Modal, Popup } from '@components/UI';
 import { logIn } from '@actions';
 import Loading from '@components/Loading';
 import anonymousUsername from './anonymousUsername';

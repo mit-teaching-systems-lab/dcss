@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Grid, Ref, Segment } from 'semantic-ui-react';
+import { Grid, Ref, Segment } from '@components/UI';
 
 import scrollIntoView from '@components/util/scrollIntoView';
 import ContentSlide from './ContentSlide';
