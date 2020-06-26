@@ -8,7 +8,6 @@ import ClickableTableCell from './ClickableTableCell';
 Table.Cell.Clickable = ClickableTableCell;
 
 /**
- * components
  * Supports migration to default export
  */
-export * as default from 'semantic-ui-react';
+// export * as default from 'semantic-ui-react';
