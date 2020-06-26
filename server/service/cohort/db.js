@@ -157,7 +157,7 @@ exports.getMyCohorts = async user_id => {
 exports.getAllCohorts = async () => {
   return await withClient(async client => {
     const result = await client.query(sql`
-      SELECT * FROM cohort;
+      SELECT * FROM cohort ORDER BY created_at DESC
     `);
 
     const cohorts = [];
