@@ -172,7 +172,7 @@ class Researcher extends Component {
 
                 <Table.Cell.Clickable
                   verticalAlign="top"
-                  popup="Download a csv file containing responses to this scenario in this cohort"
+                  popup="Download a csv file containing responses to only this scenario"
                   content={downloadByScenarioIcon}
                   onClick={onDownloadByScenarioClick}
                 />

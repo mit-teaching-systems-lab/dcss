@@ -174,7 +174,7 @@ export class Cohorts extends React.Component {
 
     const { user } = this.props;
 
-    const createCohortsMenuItem = (
+    const menuItemCreateCohorts = (
       <ConfirmAuth
         key="menu-item-create-cohort-auth"
         requiredPermission="create_cohort"
@@ -194,7 +194,7 @@ export class Cohorts extends React.Component {
       </ConfirmAuth>
     );
 
-    const countCohortsMenuItem = (
+    const menuItemCountCohorts = (
       <Menu.Item
         key="menu-item-count-cohort"
         name="Cohorts"
@@ -207,7 +207,7 @@ export class Cohorts extends React.Component {
       </Menu.Item>
     );
 
-    const searchCohortsMenuItem =
+    const menuItemSearchCohorts =
       cohorts.length > CARDS_PER_PAGE ? (
         <Menu.Menu key="menu-right-search-cohorts" position="right">
           <Menu.Item
@@ -226,11 +226,11 @@ export class Cohorts extends React.Component {
 
     const left = [
       user.permissions.includes('create_cohort')
-        ? createCohortsMenuItem
-        : countCohortsMenuItem
+        ? menuItemCreateCohorts
+        : menuItemCountCohorts
     ];
 
-    const right = [searchCohortsMenuItem];
+    const right = [menuItemSearchCohorts];
 
     const cohortsPages = Math.ceil(cohorts.length / CARDS_PER_PAGE);
     const cohortsIndex = (activePage - 1) * CARDS_PER_PAGE;

@@ -327,7 +327,7 @@ class Editor extends Component {
 
     const { scenarioId } = this.state;
 
-    const scenarioStatusMenuItem = this.props.status !== undefined && (
+    const menuItemScenarioStatus = this.props.status !== undefined && (
       <ScenarioStatusMenuItem
         key="scenario-status-menu-item"
         name="Set scenario status"
@@ -336,7 +336,7 @@ class Editor extends Component {
       />
     );
 
-    const scenarioRunMenuItem =
+    const menuItemScenarioRun =
       scenarioId !== 'new' ? (
         <Menu.Item
           key="scenario-run-menu-item"
@@ -349,7 +349,7 @@ class Editor extends Component {
         </Menu.Item>
       ) : null;
 
-    const menuBar = Object.keys(this.state.tabs).map(tabType => {
+    const menuItemsForMenuBar = Object.keys(this.state.tabs).map(tabType => {
       return (
         <Menu.Item
           key={tabType}
@@ -363,7 +363,7 @@ class Editor extends Component {
     return (
       <Fragment>
         <Menu attached="top" tabular className="editor__tabmenu">
-          {menuBar}
+          {menuItemsForMenuBar}
         </Menu>
 
         <Segment attached="bottom" className="editor__content-pane">
@@ -381,7 +381,7 @@ class Editor extends Component {
                     this.deleteScenario(scenarioId);
                   }
                 },
-                right: [scenarioRunMenuItem, scenarioStatusMenuItem]
+                right: [menuItemScenarioRun, menuItemScenarioStatus]
               }}
             />
           )}

@@ -305,14 +305,14 @@ class ScenariosList extends Component {
       });
     };
 
-    const scenarioLinkCopyMenuItem = (
+    const menuItemScenarioLinkCopy = (
       <Menu.Item className="sc__hidden-on-mobile" onClick={onCopyClick}>
         {heading} ({scenariosSlice.length})
         <Icon name="clipboard outline" />
       </Menu.Item>
     );
 
-    const scenarioSearchMenuItem = (
+    const menuItemScenarioSearch = (
       <Menu.Item className="sl__menu-item--padding">
         <Input
           icon="search"
@@ -326,9 +326,9 @@ class ScenariosList extends Component {
       <Menu.Menu key="menu-item-scenario-search" position="right">
         <Popup
           content="Copy link to this search"
-          trigger={scenarioLinkCopyMenuItem}
+          trigger={menuItemScenarioLinkCopy}
         />
-        <Popup content="Search scenarios" trigger={scenarioSearchMenuItem} />
+        <Popup content="Search scenarios" trigger={menuItemScenarioSearch} />
       </Menu.Menu>
     ];
 

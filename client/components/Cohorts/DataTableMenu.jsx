@@ -60,7 +60,7 @@ export class DataTableMenu extends Component {
         </ConfirmAuth>
         <Popup content="Refresh this data" trigger={menuItemRefresh} />
         <Popup
-          content="Download the data from this data table tab"
+          content="Download a csv file containing these responses"
           trigger={menuItemDownload}
         />
       </Menu>
