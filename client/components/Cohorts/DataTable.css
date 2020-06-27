@@ -34,6 +34,15 @@
   );
 }
 
+.dt__cell-truncated {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+}
+
 .gridcolumn__first-child--sticky {
   min-width: 40% !important;
 }

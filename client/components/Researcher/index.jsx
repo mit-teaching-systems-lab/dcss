@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Button, Icon, Pagination, Popup, Table } from '@components/UI';
 import hash from 'object-hash';
-import { getCohorts } from '@actions/cohort';
+import { getAllCohorts, getCohorts } from '@actions/cohort';
 import { getScenarios, getScenarioRunHistory } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import '../Cohorts/Cohort.css';
+import '../Cohorts/DataTable.css';
 import './Researcher.css';
 
 const ROWS_PER_PAGE = 10;
@@ -43,7 +44,13 @@ class Researcher extends Component {
       this.props.history.push('/logout');
     } else {
       await this.props.getScenarios();
-      await this.props.getCohorts();
+
+      if (this.props.user.is_super) {
+        await this.props.getAllCohorts();
+      } else {
+        await this.props.getCohorts();
+      }
+
       this.setState({ isReady: true });
     }
   }
@@ -68,7 +75,10 @@ class Researcher extends Component {
     const files = [];
 
     for (let id of scenarioIds) {
-      const { prompts, responses } = await getScenarioRunHistory(id, cohort.id);
+      const { prompts, responses } = await getScenarioRunHistory(
+        id,
+        cohort && cohort.id
+      );
 
       const records = responses.flat();
 
@@ -84,7 +94,9 @@ class Researcher extends Component {
           record.content += ` (${location.origin}/api/media/${value})`;
         }
 
-        record.cohort_id = cohort.id;
+        if (cohort) {
+          record.cohort_id = cohort.id;
+        }
       });
 
       const fields = [
@@ -96,14 +108,18 @@ class Researcher extends Component {
         'created_at',
         'ended_at',
         'type',
-        'referrer_params',
-        'cohort_id'
+        'referrer_params'
       ];
-      const file = `${hash({ cohort, id })}.csv`;
+
+      if (cohort) {
+        fields.push('cohort_id');
+      }
+
+      const file = hash({ cohort, id });
       const parser = new Parser({ fields });
       const csv = parser.parse(records);
 
-      files.push([file, csv]);
+      files.push([`${file}.csv`, csv]);
     }
 
     if (Object.entries(files).length === 1) {
@@ -117,26 +133,30 @@ class Researcher extends Component {
   render() {
     const { onPageChange, downloadData } = this;
     const { activePage, isReady } = this.state;
-    const { cohorts, scenariosById, user } = this.props;
+    const { cohorts, scenarios, scenariosById, user } = this.props;
 
     if (!isReady) {
       return <Loading />;
     }
 
     const hasAccessToCohort = cohort => {
+      if (user.is_super) {
+        return true;
+      }
+
       return cohort.users.find(({ id, roles }) => {
         return id === user.id && roles.includes('researcher');
       });
     };
 
-    const downloadByCohortIcon = (
+    const downloadZipIcon = (
       <Icon.Group size="big" className="ig__multiple-file">
         <Icon name="file archive outline" />
         <Icon name="download" corner="top right" color="green" />
       </Icon.Group>
     );
 
-    const downloadByScenarioIcon = (
+    const downloadRunIcon = (
       <Icon.Group>
         <Icon name="file alternate outline" />
         <Icon name="download" corner="top right" color="green" />
@@ -152,20 +172,21 @@ class Researcher extends Component {
         accum.push(
           ...cohort.scenarios.map((id, index) => {
             const scenario = scenariosById[id];
-            const { title } = scenario;
-
-            const onDownloadByScenarioClick = () => {
+            const onDownloadByScenarioRunClick = () => {
               downloadData({ cohort, scenarioId: id });
             };
 
             return (
-              <Table.Row key={hash({ ...cohort, id, title })}>
+              <Table.Row
+                key={hash({ ...cohort, id })}
+                created_at={Date.now(cohort.created_at)}
+              >
                 {index === 0 ? (
                   <Table.Cell.Clickable
                     verticalAlign="top"
                     popup="Download a zip containing csv files containing responses for all scenarios in this cohort"
                     rowSpan={cohort.scenarios.length}
-                    content={downloadByCohortIcon}
+                    content={downloadZipIcon}
                     onClick={onDownloadByCohortClick}
                   />
                 ) : null}
@@ -173,11 +194,13 @@ class Researcher extends Component {
                 <Table.Cell.Clickable
                   verticalAlign="top"
                   popup="Download a csv file containing responses to only this scenario"
-                  content={downloadByScenarioIcon}
-                  onClick={onDownloadByScenarioClick}
+                  content={downloadRunIcon}
+                  onClick={onDownloadByScenarioRunClick}
                 />
                 <Table.Cell verticalAlign="top">{cohort.name}</Table.Cell>
-                <Table.Cell verticalAlign="top">{title}</Table.Cell>
+                <Table.Cell verticalAlign="top" className="dt__cell-truncated">
+                  {scenario.title}
+                </Table.Cell>
               </Table.Row>
             );
           })
@@ -185,6 +208,42 @@ class Researcher extends Component {
       }
       return accum;
     }, []);
+
+    if (user.is_super) {
+      const scenarioRunDownloads = scenarios.reduce((accum, scenario) => {
+        const onDownloadByScenarioRunClick = () => {
+          downloadData({ scenarioId: scenario.id });
+        };
+        accum.push(
+          <Table.Row
+            key={hash({ scenario })}
+            created_at={Date.now(scenario.created_at)}
+          >
+            <Table.Cell> </Table.Cell>
+            <Table.Cell.Clickable
+              verticalAlign="top"
+              popup="Download a csv file containing responses to only this scenario"
+              content={downloadRunIcon}
+              onClick={onDownloadByScenarioRunClick}
+            />
+            <Table.Cell
+              verticalAlign="top"
+              className="dt__cell-data-missing"
+            ></Table.Cell>
+            <Table.Cell verticalAlign="top" className="dt__cell-truncated">
+              {scenario.title}
+            </Table.Cell>
+          </Table.Row>
+        );
+        return accum;
+      }, []);
+
+      downloads.push(...scenarioRunDownloads);
+    }
+
+    downloads.sort((a, b) => {
+      return a.props.created_at > b.props.created_at;
+    });
 
     const downloadsPages = Math.ceil(downloads.length / ROWS_PER_PAGE);
     const downloadsIndex = (activePage - 1) * ROWS_PER_PAGE;
@@ -278,6 +337,7 @@ Researcher.propTypes = {
   runs: PropTypes.array,
   scenarios: PropTypes.array,
   scenariosById: PropTypes.object,
+  getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
   getScenarios: PropTypes.func,
   getScenarioRunHistory: PropTypes.func,
@@ -292,6 +352,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
   getScenarios: () => dispatch(getScenarios()),
   getScenarioRunHistory: (...params) =>
