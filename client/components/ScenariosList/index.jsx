@@ -20,6 +20,7 @@ import changeCase from 'change-case';
 import Moment from '@utils/Moment';
 import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
+import Username from '@components/Admin/Username';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
@@ -382,7 +383,13 @@ class ScenariosList extends Component {
 const ScenarioDetailModal = ({ onClose, open, scenario }) => {
   const createdAt = Moment(scenario).fromNow();
   const createdAtAlt = Moment(scenario.created_at).calendar();
-  const subheader = `Created by ${scenario.author.username}, ${createdAt} on ${createdAtAlt}`;
+  const username = <Username {...scenario.author} />;
+  const subheader = (
+    <Fragment>
+      Created by {username} ({createdAt} on {createdAtAlt})
+    </Fragment>
+  );
+
   return (
     <Modal closeIcon centered={false} open={open} onClose={onClose}>
       <Header>{scenario.title}</Header>

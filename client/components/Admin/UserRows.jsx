@@ -4,6 +4,10 @@ import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { Table } from '@components/UI';
 import RoleCheckbox from './RoleCheckbox';
+import {
+  COHORT_ROLE_GRANT_WARNINGS,
+  SITE_ROLE_GRANT_WARNINGS
+} from './constants';
 
 const USER_ROLES = Object.freeze({
   super_admin: 'Super Admin',
@@ -16,27 +20,44 @@ const USER_ROLES = Object.freeze({
 const IMMUTABLE_ROLES = Object.freeze(['participant']);
 
 const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
+  const roleGrantWarnings = cohort
+    ? COHORT_ROLE_GRANT_WARNINGS
+    : SITE_ROLE_GRANT_WARNINGS;
+
   return Object.keys(grantableRoles).map((role, index) => {
     const checked = targetUser.roles ? targetUser.roles.includes(role) : false;
 
     // The current user cannot change their own roles...
-    // UNLESS they are a super admin.
-    const isSameAndNotSuperUser =
-      targetUser.id === adminUser.id && !adminUser.is_super;
+    // UNLESS they are a super admin (applied later)
+    const isSameUser = targetUser.id === adminUser.id;
 
-    const isImmutableRole =
-      IMMUTABLE_ROLES.includes(role) || isSameAndNotSuperUser;
-    const disabled = isImmutableRole || targetUser.is_anonymous;
+    // If the role being changed is not allowed to be changed
+    const isImmutableRole = IMMUTABLE_ROLES.includes(role);
 
-    const tip = checked
-      ? `Revoke ${USER_ROLES[role]} access`
-      : `Grant ${USER_ROLES[role]} access`;
+    let disabled =
+      isSameUser ||
+      isImmutableRole ||
+      targetUser.is_anonymous ||
+      targetUser.is_super;
 
-    const whyRoleCannotBeChanged = isSameAndNotSuperUser
+    let tip = checked
+      ? `Revoke ${USER_ROLES[role]} access.`
+      : `Grant ${USER_ROLES[role]} access. ${roleGrantWarnings[role]}`;
+
+    let whyRoleCannotBeChanged = isSameUser
       ? `You cannot change your own roles`
       : `${USER_ROLES[role]} role cannot be changed`;
 
-    const tipImmutable = isImmutableRole ? whyRoleCannotBeChanged : tip;
+    if (adminUser.is_super) {
+      if (targetUser.id === adminUser.id) {
+        tip = checked
+          ? `Revoke your ${USER_ROLES[role]} access`
+          : `Grant your ${USER_ROLES[role]} access`;
+      }
+      disabled = false;
+    }
+
+    const tipImmutable = disabled ? whyRoleCannotBeChanged : tip;
 
     const content = targetUser.is_anonymous
       ? 'This is an anonymous account and cannot be promoted.'

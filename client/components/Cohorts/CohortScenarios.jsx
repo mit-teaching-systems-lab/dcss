@@ -16,6 +16,7 @@ import {
 import copy from 'copy-text-to-clipboard';
 import _ from 'lodash';
 import Moment from '@utils/Moment';
+import Username from '@components/Admin/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -24,6 +25,7 @@ import Sortable from '@components/Sortable';
 import { getCohort, setCohort } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
 import { getUserRuns } from '@actions/run';
+import { getUsers } from '@actions/users';
 
 import './Cohort.css';
 
@@ -66,6 +68,7 @@ export class CohortScenarios extends React.Component {
     await this.props.getCohort(Number(id));
     await this.props.getScenarios();
     await this.props.getUserRuns();
+    await this.props.getUsers();
 
     // See note above, re: scenarios list backup
     const scenarios = this.props.scenarios.slice();
@@ -152,7 +155,7 @@ export class CohortScenarios extends React.Component {
       onScenarioCheckboxClick,
       onScenarioSearchChange
     } = this;
-    const { authority, cohort, onClick, runs, user } = this.props;
+    const { authority, cohort, onClick, runs, user, usersById } = this.props;
     const { isReady, scenarios } = this.state;
     const { isFacilitator, isParticipant } = authority;
 
@@ -467,9 +470,11 @@ export class CohortScenarios extends React.Component {
                         content={scenario.title}
                       />
                       <Table.Cell className="cohort__table-cell-content">
-                        {isFacilitator
-                          ? scenario.author.username
-                          : startedAtDisplay}
+                        {isFacilitator ? (
+                          <Username {...usersById[scenario.author.id]} />
+                        ) : (
+                          startedAtDisplay
+                        )}
                       </Table.Cell>
                       <Table.Cell className="cohort__table-cell-content">
                         {isFacilitator ? scenario.description : endedAtDisplay}
@@ -522,23 +527,26 @@ CohortScenarios.propTypes = {
   scenarios: PropTypes.array,
   getUserRuns: PropTypes.func,
   runs: PropTypes.array,
-  user: PropTypes.object
+  user: PropTypes.object,
+  getUsers: PropTypes.func,
+  usersById: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { cohort, cohorts, user } = state;
+  const { cohort, cohorts, user, usersById } = state;
   const scenarios = state.scenarios.filter(
     ({ deleted_at, status }) => deleted_at === null && status !== 1
   );
   const runs = state.runs.filter(run => run.cohort_id === ownProps.id);
-  return { cohort, cohorts, scenarios, runs, user };
+  return { cohort, cohorts, scenarios, runs, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
   getScenarios: () => dispatch(getScenarios()),
-  getUserRuns: () => dispatch(getUserRuns())
+  getUserRuns: () => dispatch(getUserRuns()),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default withRouter(

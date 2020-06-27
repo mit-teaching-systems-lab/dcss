@@ -15,10 +15,11 @@ import {
   Table
 } from '@components/UI';
 import _ from 'lodash';
-// import hash from 'object-hash';
+import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
+import Username from '@components/Admin/Username';
 import UsersTable from '@components/Admin/UsersTable';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
@@ -193,7 +194,7 @@ export class CohortParticipants extends React.Component {
   }
 
   render() {
-    const { authority, onClick, user } = this.props;
+    const { authority, onClick, user, usersById } = this.props;
     const { activePage, cohort, isReady, refresh } = this.state;
     const {
       onPageChange,
@@ -201,7 +202,11 @@ export class CohortParticipants extends React.Component {
       onParticipantSearchChange,
       scrollIntoView
     } = this;
-    const { isFacilitator } = authority;
+
+    // Ensure that Facilitator access is applied even if the user just
+    // became a facilitator and their session roles haven't updated.
+    const isFacilitator =
+      user.roles.includes('facilitator') || authority.isFacilitator;
 
     // NOTE: The checkbox is temporarily disabled
     // const { onParticipantCheckboxClick } = this;
@@ -246,26 +251,26 @@ export class CohortParticipants extends React.Component {
 
     Object.assign(columns, grantableRoles);
 
-    const rows = users.reduce((accum, user) => {
+    const rows = users.reduce((accum, cohortUser) => {
       // username will never be empty, but email might be.
       const onClickAddTab = (event, data) => {
         onClick(event, {
           ...data,
           type: 'participant',
-          source: user
+          source: cohortUser
         });
       };
       const trigger = (
         <Table.Cell.Clickable
           className="cohort__table-cell-first"
-          key={`clickabletablecell-${user.id}`}
+          key={`clickabletablecell-${cohortUser.id}`}
           content={<Icon name="file alternate outline" />}
           onClick={onClickAddTab}
         />
       );
       const popup = (
         <ConfirmAuth
-          key={`confirmauth-${user.id}`}
+          key={`confirmauth-${cohortUser.id}`}
           isAuthorized={isFacilitator}
           requiredPermission="view_all_data"
         >
@@ -276,15 +281,17 @@ export class CohortParticipants extends React.Component {
         </ConfirmAuth>
       );
 
-      // console.log(user);
-      accum[user.id] = [
-        popup,
-        // These are cohort user roles, not site user roles!!!
-        user.roles.includes('owner')
-          ? `${user.username} (owner)`
-          : user.username,
-        user.email || ''
-      ];
+      const { is_super } = (usersById && usersById[cohortUser.id]) || {};
+
+      const username = <Username {...cohortUser} is_super={is_super} />;
+
+      const usernameCell = cohortUser.roles.includes('owner') ? (
+        <Table.Cell key={hash(cohortUser)}>{username} (owner)</Table.Cell>
+      ) : (
+        <Table.Cell key={hash(cohortUser)}>{username}</Table.Cell>
+      );
+
+      accum[cohortUser.id] = [popup, usernameCell, cohortUser.email || ''];
       return accum;
     }, {});
 
@@ -387,14 +394,15 @@ CohortParticipants.propTypes = {
   setCohort: PropTypes.func,
   scenarios: PropTypes.array,
   user: PropTypes.object,
-  getUsers: PropTypes.func
+  getUsers: PropTypes.func,
+  usersById: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { cohort, user } = state;
+  const { cohort, user, usersById } = state;
   const { users: participants } = cohort;
   const { scenarios } = state.scenario;
-  return { cohort, participants, scenarios, user };
+  return { cohort, participants, scenarios, user, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
