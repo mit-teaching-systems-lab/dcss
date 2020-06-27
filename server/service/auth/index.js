@@ -6,6 +6,7 @@ const {
   loginUser,
   requireUser,
   respondWithUser,
+  respondWithUserAndUpdatedSession,
   updateUser
 } = require('./middleware');
 const {
@@ -16,6 +17,7 @@ const {
 const router = Router();
 
 router.get('/me', requireUser, respondWithUser);
+router.get('/session', requireUser, respondWithUserAndUpdatedSession);
 
 router.post('/signup', [
   validateRequestBody,

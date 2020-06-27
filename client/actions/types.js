@@ -10,6 +10,9 @@ export const GET_USER = 'GET_USER';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const GET_USER_ERROR = 'GET_USER_ERROR';
 
+export const GET_SESSION_SUCCESS = 'GET_SESSION_SUCCESS';
+export const GET_SESSION_ERROR = 'GET_SESSION_ERROR';
+
 export const SET_USER = 'SET_USER';
 export const SET_USER_SUCCESS = 'SET_USER_SUCCESS';
 export const SET_USER_ERROR = 'SET_USER_ERROR';

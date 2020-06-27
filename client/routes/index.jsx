@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import { logIn } from '@actions';
-import { getUser } from '@actions/user';
+import { getSession } from '@actions/user';
 
 import Notification from '@components/Notification';
 import BackButtonHistory from './BackButtonHistory';
@@ -25,13 +25,13 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { getUser, logIn } = this.props;
+    const { getSession, logIn } = this.props;
     let { isReady } = this.state;
 
     if (!isReady) {
-      await getUser();
+      await getSession();
 
-      // After getUser() is resolved,
+      // After getSession() is resolved,
       // this.props.user.id will be set if
       // there is a valid, active session.
       if (this.props.user.id) {
@@ -70,7 +70,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  getUser: PropTypes.func,
+  getSession: PropTypes.func,
   isLoggedIn: PropTypes.bool,
   logIn: PropTypes.func,
   user: PropTypes.object
@@ -83,7 +83,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getUser: () => dispatch(getUser()),
+  getSession: options => dispatch(getSession(options)),
   logIn: params => dispatch(logIn(params))
 });
 

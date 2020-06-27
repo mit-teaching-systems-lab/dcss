@@ -1,4 +1,6 @@
 import {
+  GET_SESSION_SUCCESS,
+  GET_SESSION_ERROR,
   GET_USER_SUCCESS,
   GET_USER_ERROR,
   SET_USER_SUCCESS,
@@ -18,6 +20,23 @@ export const getUser = () => async dispatch => {
     return user;
   } catch (error) {
     dispatch({ type: GET_USER_ERROR, error });
+    return null;
+  }
+};
+
+export const getSession = () => async dispatch => {
+  try {
+    const res = await (await fetch('/api/auth/session')).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { user } = res;
+
+    dispatch({ type: GET_SESSION_SUCCESS, user });
+    return user;
+  } catch (error) {
+    dispatch({ type: GET_SESSION_ERROR, error });
     return null;
   }
 };

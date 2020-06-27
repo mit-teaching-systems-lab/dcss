@@ -16,6 +16,22 @@ exports.respondWithUser = (req, res) => {
   return res.json({ user: req.session.user });
 };
 
+async function respondWithUserAndUpdatedSessionAsync(req, res) {
+  const user = await db.getUserById(req.session.user.id);
+  if (!user) {
+    const error = new Error('User does not exist.');
+    error.status = 409;
+    throw error;
+  }
+
+  //eslint-disable-next-line require-atomic-updates
+  req.session.user = {
+    ...user
+  };
+
+  return res.json({ user: req.session.user });
+}
+
 async function checkForDuplicateAsync(req, res, next) {
   const username = req.body.username || req.params.username;
   const user = await db.getUserByProps({ username });
@@ -137,3 +153,6 @@ exports.createUser = asyncMiddleware(createUserAsync);
 exports.loginUser = asyncMiddleware(loginUserAsync);
 exports.updateUser = asyncMiddleware(updateUserAsync);
 exports.checkForDuplicate = asyncMiddleware(checkForDuplicateAsync);
+exports.respondWithUserAndUpdatedSession = asyncMiddleware(
+  respondWithUserAndUpdatedSessionAsync
+);
