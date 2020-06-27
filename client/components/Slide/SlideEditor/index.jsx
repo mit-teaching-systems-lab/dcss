@@ -63,6 +63,7 @@ export default class SlideEditor extends Component {
 
     this.onComponentChange = this.onComponentChange.bind(this);
     this.onComponentDelete = this.onComponentDelete.bind(this);
+    this.onComponentDuplicate = this.onComponentDuplicate.bind(this);
     this.onComponentOrderChange = this.onComponentOrderChange.bind(this);
     this.onComponentSelectClick = this.onComponentSelectClick.bind(this);
 
@@ -126,6 +127,24 @@ export default class SlideEditor extends Component {
       // this.debouncers[index] = setTimeout(() => {
       //     this.updateSlide();
       // }, 5000);
+    });
+  }
+
+  async onComponentDuplicate(index) {
+    const { components } = this.state;
+    const id = uuid();
+    const activeComponentIndex = index + 1;
+
+    const copy = Object.assign({}, components[index], { id });
+
+    if (copy.responseId) {
+      copy.responseId = uuid();
+    }
+
+    components.splice(index, 0, copy);
+
+    this.activateComponent({ components, activeComponentIndex }, () => {
+      this.updateSlide();
     });
   }
 
@@ -201,6 +220,7 @@ export default class SlideEditor extends Component {
       onComponentChange,
       onComponentDelete,
       onComponentOrderChange,
+      onComponentDuplicate,
       onComponentSelectClick,
       onTitleChange
     } = this;
@@ -319,11 +339,22 @@ export default class SlideEditor extends Component {
                           const isActiveComponent =
                             activeComponentIndex === index;
                           const description = `${index + 1}, `;
-                          const movers = (
+                          const menuItemComponentDuplicate = (
+                            <Menu.Item
+                              name="Duplicate this component"
+                              aria-label="Duplicate this component"
+                              onClick={() => {
+                                onComponentDuplicate(index);
+                              }}
+                            >
+                              <Icon name="copy outline" />
+                            </Menu.Item>
+                          );
+                          const menuItemComponentMovers = (
                             <Menu.Menu name="Move component" position="right">
                               <Menu.Item
                                 icon="move"
-                                aria-label={`Move component`}
+                                aria-label="Move component"
                                 disabled={components.length <= 1}
                               />
                               <Menu.Item
@@ -344,10 +375,12 @@ export default class SlideEditor extends Component {
                               />
                             </Menu.Menu>
                           );
-                          const right = isActiveComponent ? [movers] : [];
+                          const right = isActiveComponent
+                            ? [menuItemComponentMovers]
+                            : [];
 
                           if (value.responseId) {
-                            const requiredCheckbox = (
+                            const menuItemRequiredCheckbox = (
                               <Menu.Item
                                 key="menu-item-prompt-required"
                                 name="Set this prompt to 'required'"
@@ -366,8 +399,12 @@ export default class SlideEditor extends Component {
                               </Menu.Item>
                             );
 
-                            right.unshift(requiredCheckbox);
+                            right.unshift(menuItemRequiredCheckbox);
                           }
+
+                          // Always put the duplicate button just to the
+                          // right of the delete button.
+                          right.unshift(menuItemComponentDuplicate);
 
                           const onComponentClick = () => {
                             if (activeComponentIndex !== index) {
