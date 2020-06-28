@@ -43,6 +43,33 @@
   min-width: 250px;
 }
 
+.dtr__cell-truncated {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  width: 200px;
+  max-width: 200px;
+  min-width: 200px;
+}
+
+.dtr__cell-fluid {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  width: 100% !important;
+}
+
+.dtr__cell-fluid-half-th {
+  width: 50% !important;
+}
+
+.dtr__cell-fluid-half {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  width: 50% !important;
+}
+
 .gridcolumn__first-child--sticky {
   min-width: 40% !important;
 }

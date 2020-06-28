@@ -52,7 +52,7 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
       if (targetUser.id === adminUser.id) {
         tip = checked
           ? `Revoke your ${USER_ROLES[role]} access`
-          : `Grant your ${USER_ROLES[role]} access`;
+          : `Grant yourself ${USER_ROLES[role]} access`;
       }
       disabled = false;
     }

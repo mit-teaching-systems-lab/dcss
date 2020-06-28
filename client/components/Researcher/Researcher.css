@@ -1,9 +1,0 @@
-.buttongroup__transparent {
-    background: none !important;
-}
-
-@media only screen and (max-width: 767px) {
-    .researcher__hidden-on-mobile {
-        display: none !important;
-    }
-}

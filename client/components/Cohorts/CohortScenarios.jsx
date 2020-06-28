@@ -16,7 +16,7 @@ import {
 import copy from 'copy-text-to-clipboard';
 import _ from 'lodash';
 import Moment from '@utils/Moment';
-import Username from '@components/Admin/Username';
+import Username from '@components/User/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';

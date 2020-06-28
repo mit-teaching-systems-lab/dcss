@@ -11,7 +11,7 @@ import {
   Modal
 } from '@components/UI';
 import { getUser, setUser } from '@actions/user';
-import './Login.css';
+import './User.css';
 
 const anonymousMode =
   'You are currently in anonymous mode. Set an email address and password to become a full user.';
@@ -205,9 +205,9 @@ class UserSettings extends Component {
 
     return (
       <Fragment>
-        <Menu.Item onClick={onClick}>User settings</Menu.Item>
+        <Menu.Item onClick={onClick}>Settings</Menu.Item>
         <Modal closeIcon onClose={onCancel} open={open} size="small">
-          <Header icon="settings" content="User settings" />
+          <Header icon="settings" content="Settings" />
           <Modal.Content>
             <Form onSubmit={onSubmit}>
               <Form.Field>

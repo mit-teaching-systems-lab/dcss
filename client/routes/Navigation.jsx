@@ -6,7 +6,7 @@ import { Button, Dropdown, Icon, Menu } from '@components/UI';
 
 import ConfirmAuth from '@components/ConfirmAuth';
 import ConfirmableLogout from '@components/Login/ConfirmableLogout';
-import UserSettings from '@components/Login/UserSettings';
+import UserSettings from '@components/User/UserSettings';
 
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
@@ -21,8 +21,8 @@ const restrictedNav = [
     permission: 'view_own_cohorts'
   },
   {
-    text: 'Research',
-    path: '/research',
+    text: 'Downloads',
+    path: '/downloads',
     permission: 'view_all_run_data'
   },
   {

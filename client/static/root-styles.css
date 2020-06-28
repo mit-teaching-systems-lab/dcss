@@ -33,6 +33,11 @@
   /*margin: 0.5rem 0 !important;*/
 }
 
+.ui.borderless.icon.menu>.item,
+.ui.borderless.icon.menu>.right>.item {
+  padding: 0em 1em !important;
+}
+
 .ui.menu:first-child,
 .ui.menu[class*="top attached"]:first-child
  {

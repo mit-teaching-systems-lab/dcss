@@ -15,7 +15,7 @@ import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import Login from '@components/Login';
 import History from '@components/History';
 
-import Researcher from '@components/Researcher';
+import Downloads from '@components/Downloads';
 import Run from '@components/Run';
 import {
   CopyScenario,
@@ -241,9 +241,48 @@ const Routes = ({ isLoggedIn }) => {
         </ConfirmAuth>
       </RedirectRouteForInactiveSession>
 
-      <RedirectRouteForInactiveSession isLoggedIn={isLoggedIn} path="/research">
-        <ConfirmAuth path="/research" requiredPermission="view_run_data">
-          <Route component={Researcher} />
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        path="/downloads/:activePage"
+      >
+        <ConfirmAuth
+          path="/downloads/:activePage"
+          requiredPermission="view_run_data"
+        >
+          <Route exact component={Downloads} />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        path="/downloads"
+      >
+        <ConfirmAuth path="/downloads" requiredPermission="view_run_data">
+          <Route exact component={Downloads} />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        path="/downloads/:type/:id/:activePage"
+      >
+        <ConfirmAuth
+          path="/downloads/:type/:id/:activePage"
+          requiredPermission="view_run_data"
+        >
+          <Route render={props => <Downloads {...props} />} />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        isLoggedIn={isLoggedIn}
+        path="/downloads/:type/:id"
+      >
+        <ConfirmAuth
+          path="/downloads/:type/:id"
+          requiredPermission="view_run_data"
+        >
+          <Route render={props => <Downloads {...props} />} />
         </ConfirmAuth>
       </RedirectRouteForInactiveSession>
 

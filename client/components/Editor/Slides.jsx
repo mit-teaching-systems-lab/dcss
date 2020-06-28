@@ -344,14 +344,13 @@ class Slides extends React.Component {
             {isReady ? (
               <>
                 <Grid.Row>
-                  <Menu icon borderless>
+                  <Menu icon borderless className="em__height">
                     <Popup
                       content="Add a slide"
                       trigger={
                         <Menu.Item name="Add a slide" onClick={onSlideAdd}>
                           <Icon
                             name="plus square outline"
-                            size="large"
                             className="em__icon-group-margin"
                           />
                           Add a slide

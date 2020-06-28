@@ -19,7 +19,7 @@ import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
-import Username from '@components/Admin/Username';
+import Username from '@components/User/Username';
 import UsersTable from '@components/Admin/UsersTable';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';

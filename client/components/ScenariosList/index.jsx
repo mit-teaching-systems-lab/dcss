@@ -20,7 +20,7 @@ import changeCase from 'change-case';
 import Moment from '@utils/Moment';
 import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
-import Username from '@components/Admin/Username';
+import Username from '@components/User/Username';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
@@ -288,7 +288,7 @@ class ScenariosList extends Component {
           as={NavLink}
           exact
           to="/editor/new"
-          className="sc__hidden-on-mobile sl__menu-item--padding"
+          className="sc__hidden-on-mobile"
         >
           <Icon.Group className="em__icon-group-margin">
             <Icon name="newspaper outline" />
@@ -314,7 +314,7 @@ class ScenariosList extends Component {
     );
 
     const menuItemScenarioSearch = (
-      <Menu.Item className="sl__menu-item--padding">
+      <Menu.Item>
         <Input
           icon="search"
           placeholder="Search..."
