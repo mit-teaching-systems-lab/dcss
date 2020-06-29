@@ -33,10 +33,14 @@ const rolesToHumanReadableString = roles => {
   return `You are ${returnValue}.`;
 };
 
-export const CohortCard = ({ id, created_at, name, roles }) => {
+export const CohortCard = ({ id, created_at, name, roles, users }) => {
   const yourRoles = rolesToHumanReadableString(roles);
   const fromNow = Moment(created_at).fromNow();
   const calendar = Moment(created_at).calendar();
+  const createdBy = !yourRoles.includes('owner')
+    ? users.find(user => user.roles.includes('owner')).username
+    : null;
+
   return (
     <Card className="sc sc__margin-height" key={id}>
       <Card.Content className="sc sc__cursor-pointer">
@@ -44,7 +48,7 @@ export const CohortCard = ({ id, created_at, name, roles }) => {
           <NavLink to={`/cohort/${id}`}>{name}</NavLink>
         </Card.Header>
         <Card.Meta title={`Created on ${calendar}`}>
-          Created {fromNow}
+          Created {createdBy} {fromNow}
         </Card.Meta>
         <Card.Description>{''}</Card.Description>
       </Card.Content>
@@ -57,7 +61,8 @@ CohortCard.propTypes = {
   id: PropTypes.number,
   created_at: PropTypes.string,
   name: PropTypes.string,
-  roles: PropTypes.array
+  roles: PropTypes.array,
+  users: PropTypes.array
 };
 
 const mapStateToProps = (state, props) => {
