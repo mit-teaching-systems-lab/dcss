@@ -49,7 +49,8 @@ const defaultOptions = {
   minHeight: '100px',
   height: 'auto',
   width: '100%',
-  youtubeQuery: 'autoplay=0&controls=1&rel=0&modestbranding=1'
+  youtubeQuery: 'autoplay=0&controls=1&rel=0&modestbranding=1',
+  resizingBar: true
 };
 
 const SymbolEditor = Symbol('@@editor');
@@ -111,6 +112,15 @@ class RichTextEditor extends Component {
 
       this[SymbolEditor] = SunEditor.create(this.ref.current);
       this[SymbolEditor].setOptions(options);
+
+      LINE_BREAKER_HACK: {
+        const lineBreakers = document.querySelectorAll('.se-line-breaker-component');
+        if (lineBreakers) {
+          Array.from(lineBreakers, lb => {
+            lb.innerHTML = 'Click to insert a blank line here';
+          });
+        }
+      }
 
       this[SymbolEditor].onChange = content => {
         onContentChange(content);

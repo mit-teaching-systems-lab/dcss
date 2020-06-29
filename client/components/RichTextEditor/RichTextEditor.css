@@ -2,6 +2,22 @@
   padding: 0.5em !important;
 }
 
+.se-toolbar {
+  z-index: 7 !important;
+}
+
+.se-container {
+  overflow: hidden !important;
+}
+
+.se-line-breaker-component {
+  width: auto !important;
+}
+
+.se-resizing-container {
+  /*z-index: 0 !important;*/
+}
+
 .rt__container {
   overflow-wrap: break-word;
   background-color: transparent !important;
