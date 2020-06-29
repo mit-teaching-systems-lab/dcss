@@ -283,11 +283,6 @@ async function copyScenarioAsync(req, res) {
   }
 }
 
-async function getScenarioRunHistoryAsync(req, res) {
-  const history = await db.getScenarioRunHistory(req.params);
-  res.send({ history, status: 200 });
-}
-
 async function getScenarioByRunAsync(req, res) {
   const userId = req.session.user.id;
   const scenarios = await db.getScenarioByRun(userId);
@@ -301,5 +296,4 @@ exports.setScenario = asyncMiddleware(setScenarioAsync);
 exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);
 exports.softDeleteScenario = asyncMiddleware(softDeleteScenarioAsync);
 exports.copyScenario = asyncMiddleware(copyScenarioAsync);
-exports.getScenarioRunHistory = asyncMiddleware(getScenarioRunHistoryAsync);
 exports.getScenarioByRun = asyncMiddleware(getScenarioByRunAsync);

@@ -5,9 +5,6 @@ import {
   // GET_SCENARIOS,
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIOS_ERROR,
-  // GET_SCENARIO_RUN_HISTORY,
-  GET_SCENARIO_RUN_HISTORY_SUCCESS,
-  GET_SCENARIO_RUN_HISTORY_ERROR,
   // GET_SLIDES,
   GET_SLIDES_SUCCESS,
   GET_SLIDES_ERROR,
@@ -48,31 +45,6 @@ export const getScenario = id => async dispatch => {
     return scenario;
   } catch (error) {
     dispatch({ type: GET_SCENARIO_ERROR, error });
-    return null;
-  }
-};
-
-export const getScenarioRunHistory = (
-  scenario_id,
-  cohort_id
-) => async dispatch => {
-  try {
-    const endpoint = cohort_id
-      ? `/api/scenarios/${scenario_id}/cohort/${cohort_id}/history`
-      : `/api/scenarios/${scenario_id}/history`;
-
-    const res = await (await fetch(endpoint)).json();
-
-    if (res.error) {
-      throw res;
-    }
-
-    const { history } = res;
-
-    dispatch({ type: GET_SCENARIO_RUN_HISTORY_SUCCESS, ...history });
-    return { ...history };
-  } catch (error) {
-    dispatch({ type: GET_SCENARIO_RUN_HISTORY_ERROR, error });
     return null;
   }
 };

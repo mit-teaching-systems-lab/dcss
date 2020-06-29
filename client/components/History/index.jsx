@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
 import Moment from '@utils/Moment';
-import { getUserRuns } from '@actions/run';
+import { getRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
@@ -23,7 +24,7 @@ class History extends Component {
       {
         menuItem: 'History',
         pane: {
-          key: 'main-scenarios',
+          key: 'main-history',
           content: null
         }
       }
@@ -32,10 +33,7 @@ class History extends Component {
       isReady: false,
       activeIndex: 0,
       activePage: 1,
-      source: {
-        runId: null,
-        participantId: null
-      },
+      sources: [],
       panes
     };
     this.tableRef = null;
@@ -52,25 +50,17 @@ class History extends Component {
       this.props.history.push('/logout');
     } else {
       await this.props.getCohorts();
-      await this.props.getUserRuns();
       await this.props.getScenarios();
-
-      const { source } = this.state;
+      await this.props.getRuns();
 
       this.setState({
-        ...this.state,
-        isReady: true,
-        source: {
-          ...source,
-          participantId: this.props.user.id
-        }
+        isReady: true
       });
     }
   }
 
   onPageChange(event, { activePage }) {
     this.setState({
-      ...this.state,
       activePage
     });
   }
@@ -89,17 +79,27 @@ class History extends Component {
     if (activeIndex > -1) {
       this.setState({ activeIndex });
     } else {
-      panes.push({
-        menuItem,
-        pane: {
-          key: `tab-${runId}`,
-          content: null
-        },
-        source: {
-          participantId: this.props.user.id,
-          runId
+      const index = panes.findIndex(pane => pane.menuItem === menuItem);
+      const source = {
+        participantId: this.props.user.id,
+        runId
+      };
+
+      if (index !== -1) {
+        if (!panes[index].sources.find(source => source.runId === runId)) {
+          panes[index].sources.push(source);
         }
-      });
+      } else {
+        panes.push({
+          menuItem,
+          pane: {
+            key: `tab-${runId}`,
+            content: null
+          },
+          sources: [source]
+        });
+      }
+
       this.setState({ panes });
     }
   }
@@ -122,13 +122,8 @@ class History extends Component {
   }
 
   render() {
-    const {
-      onDataTableMenuClick,
-      onPageChange,
-      onRunDataClick,
-      onTabChange
-    } = this;
-    const { cohorts, runs } = this.props;
+    const { onPageChange, onRunDataClick, onTabChange } = this;
+    const { cohortsById, runs } = this.props;
     const { isReady, activeIndex, activePage, panes } = this.state;
 
     const runsPages = Math.ceil(runs.length / ROWS_PER_PAGE);
@@ -149,20 +144,20 @@ class History extends Component {
             unstackable
             role="grid"
             aria-labelledby="header"
-            className="ms__table--constraints"
+            className="h__table--constraints"
           >
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell style={{ width: '40px' }}></Table.HeaderCell>
+                <Table.HeaderCell className="h__hidden-on-mobile h__table-cell-content">
+                  Cohort
+                </Table.HeaderCell>
                 <Table.HeaderCell>Scenario</Table.HeaderCell>
-                <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
+                <Table.HeaderCell className="h__hidden-on-mobile h__table-cell-content h__table-cell-small">
                   Started
                 </Table.HeaderCell>
-                <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
+                <Table.HeaderCell className="h__hidden-on-mobile h__table-cell-content h__table-cell-small">
                   Completed
-                </Table.HeaderCell>
-                <Table.HeaderCell className="ms__hidden-on-mobile ms__table-cell-content">
-                  Cohort
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -180,25 +175,38 @@ class History extends Component {
                   ? { positive: true }
                   : { negative: true };
 
-                const createdAt = Moment(run_created_at).fromNow();
+                const createdAt = (
+                  <span>{Moment(run_created_at).fromNow()}</span>
+                );
                 const createdAtAlt = Moment(run_created_at).calendar();
 
-                const endedAt = run_ended_at
-                  ? Moment(run_ended_at).fromNow()
-                  : '';
+                const endedAt = run_ended_at ? (
+                  <span>{Moment(run_ended_at).fromNow()}</span>
+                ) : (
+                  ''
+                );
+
                 const endedAtAlt = run_ended_at
                   ? Moment(run_ended_at).calendar()
                   : 'This run is not complete';
 
-                const startedAtDisplay = `${createdAt} (${createdAtAlt})`;
-                const endedAtDisplay = `${endedAt} (${endedAtAlt})`;
+                const startedAtWithPopup = (
+                  <Popup
+                    size="tiny"
+                    content={createdAtAlt}
+                    trigger={createdAt}
+                  />
+                );
+
+                const endedAtWithPopup = (
+                  <Popup size="tiny" content={endedAtAlt} trigger={endedAt} />
+                );
 
                 const pathname = cohort_id
                   ? `/cohort/${cohort_id}/run/${scenario_id}/slide/0`
                   : `/run/${scenario_id}/slide/0`;
 
-                const cohort = cohorts.find(({ id }) => id === cohort_id);
-
+                const cohort = cohortsById[cohort_id];
                 const cohortPathname = cohort ? `/cohort/${cohort_id}` : null;
 
                 const cohortDisplay = cohort ? cohort.name : null;
@@ -207,44 +215,49 @@ class History extends Component {
                   onRunDataClick(event, {
                     ...props,
                     run,
-                    menuItem: `${scenario_title} (${endedAtAlt})`
+                    menuItem: scenario_title
                   });
                 };
+
+                const popupContent = cohort
+                  ? 'View your data for this scenario run, from this cohort'
+                  : 'View your data for this scenario run';
 
                 return (
                   <Table.Row {...completeOrIncomplete} key={run_id}>
                     <Popup
-                      content="View your data for this scenario run"
+                      size="tiny"
+                      content={popupContent}
                       trigger={
                         <Table.Cell.Clickable
-                          className="ms__table-cell-first"
+                          className="h__table-cell-first"
                           content={<Icon name="file alternate outline" />}
                           onClick={onViewRunDataClick}
                         />
                       }
                     />
                     <Table.Cell.Clickable
-                      href={pathname}
-                      content={scenario_title}
-                      className="ms__table-cell-options"
-                    />
-                    <Table.Cell
-                      alt={endedAtAlt}
-                      className="ms__hidden-on-mobile"
-                    >
-                      {startedAtDisplay}
-                    </Table.Cell>
-                    <Table.Cell
-                      alt={endedAtAlt}
-                      className="ms__hidden-on-mobile"
-                    >
-                      {endedAtDisplay}
-                    </Table.Cell>
-                    <Table.Cell.Clickable
-                      className="ms__hidden-on-mobile"
+                      className="h__hidden-on-mobile"
                       href={cohortPathname}
                       content={cohortDisplay}
                     />
+                    <Table.Cell.Clickable
+                      href={pathname}
+                      content={scenario_title}
+                      className="h__table-cell-options"
+                    />
+                    <Table.Cell
+                      alt={endedAtAlt}
+                      className="h__hidden-on-mobile"
+                    >
+                      {startedAtWithPopup}
+                    </Table.Cell>
+                    <Table.Cell
+                      alt={endedAtAlt}
+                      className="h__hidden-on-mobile"
+                    >
+                      {endedAtWithPopup}
+                    </Table.Cell>
                   </Table.Row>
                 );
               })}
@@ -274,19 +287,41 @@ class History extends Component {
       </Fragment>
     );
 
-    panes.forEach(({ pane, source }, index) => {
-      // Skip the first one...
+    panes.forEach(({ pane, sources }, index) => {
+      // Skip the first one, because it contains the
+      // main data table.
       if (!index) {
         return;
       }
-      const key = `tab-${source.runId}`;
+      const onSubDataTableMenuClick = (event, { name, source }) => {
+        if (name === 'close') {
+          let activeIndex = this.state.activeIndex;
+
+          panes[index].sources.splice(sources.indexOf(source), 1);
+
+          // When there are no more sources, remove the entire pane.
+          if (panes[index].sources.length === 0) {
+            activeIndex = 0;
+            panes.splice(index, 1);
+          }
+
+          this.setState({ activeIndex, panes });
+        }
+      };
+
+      const name = 'close';
+
       pane.content = (
-        <DataTable
-          key={`datatable-${source.runId}`}
-          source={source}
-          leftColVisible={false}
-          onClick={() => onDataTableMenuClick({}, { name: 'close', key })}
-        />
+        <Fragment>
+          {sources.map(source => (
+            <DataTable
+              key={hash(source)}
+              source={source}
+              leftColVisible={false}
+              onClick={() => onSubDataTableMenuClick({}, { name, source })}
+            />
+          ))}
+        </Fragment>
       );
     });
 
@@ -306,10 +341,11 @@ History.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   runs: PropTypes.array,
-  cohorts: PropTypes.array,
+  runsById: PropTypes.object,
+  cohortsById: PropTypes.object,
   scenarios: PropTypes.array,
   getCohorts: PropTypes.func,
-  getUserRuns: PropTypes.func,
+  getRuns: PropTypes.func,
   getScenarios: PropTypes.func,
   onClick: PropTypes.func,
   getUser: PropTypes.func,
@@ -317,13 +353,13 @@ History.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { cohorts, runs, scenarios, user } = state;
-  return { runs, cohorts, scenarios, user };
+  const { cohortsById, runs, runsById, scenarios, user } = state;
+  return { cohortsById, runs, runsById, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
-  getUserRuns: () => dispatch(getUserRuns()),
+  getRuns: () => dispatch(getRuns()),
   getScenarios: () => dispatch(getScenarios()),
   getUser: () => dispatch(getUser())
 });

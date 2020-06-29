@@ -9,7 +9,7 @@ exports.getRunById = async function(id) {
   return result.rows[0];
 };
 
-exports.getUserRuns = async function(user_id) {
+exports.getRuns = async function(user_id) {
   const result = await query(sql`
         SELECT
             run.id as run_id,

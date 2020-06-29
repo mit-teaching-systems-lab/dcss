@@ -4,7 +4,7 @@ const { requireUser } = require('../auth/middleware');
 const { requireUserForRun } = require('./middleware');
 const {
   finishRun,
-  getUserRuns,
+  getRuns,
   getResponse,
   getResponseTranscriptOnly,
   getReferrerParams,
@@ -21,7 +21,7 @@ runs.put('/new-or-existing/scenario/:scenario_id', [
   requireUser,
   newOrExistingRun
 ]);
-runs.get('/', [requireUser, getUserRuns]);
+runs.get('/', [requireUser, getRuns]);
 
 runs.put('/:run_id/finish', [requireUserForRun, finishRun]);
 

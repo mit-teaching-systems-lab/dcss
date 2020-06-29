@@ -277,7 +277,7 @@ async function getScenarioPrompts(scenario_id) {
   return components;
 }
 
-async function getScenarioRunHistory(params) {
+async function getHistoryForScenario(params) {
   const {
     // TODO: implement support for limiting by cohort
     cohort_id,
@@ -319,7 +319,7 @@ exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
 exports.softDeleteScenario = softDeleteScenario;
 exports.getAllScenarios = getAllScenarios;
-exports.getScenarioRunHistory = getScenarioRunHistory;
+exports.getHistoryForScenario = getHistoryForScenario;
 exports.getScenarioByRun = getScenarioByRun;
 exports.getScenarioPrompts = getScenarioPrompts;
 

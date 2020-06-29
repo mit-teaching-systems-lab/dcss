@@ -1,6 +1,5 @@
 import {
   GET_SCENARIO_SUCCESS,
-  GET_SCENARIO_RUN_HISTORY_SUCCESS,
   GET_SLIDES_SUCCESS,
   SET_SCENARIO,
   SET_SLIDES
@@ -40,24 +39,6 @@ export const scenario = (state = initialScenarioState, action) => {
       return {
         ...state,
         slides
-      };
-    default:
-      return state;
-  }
-};
-
-const initialHistoryState = {
-  prompts: [],
-  responses: []
-};
-
-export const history = (state = initialHistoryState, action) => {
-  const { history, type } = action;
-  switch (type) {
-    case GET_SCENARIO_RUN_HISTORY_SUCCESS:
-      return {
-        ...state,
-        ...history
       };
     default:
       return state;

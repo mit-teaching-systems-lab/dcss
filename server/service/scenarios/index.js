@@ -1,5 +1,4 @@
 const { Router } = require('express');
-const { requireUser } = require('../auth/middleware');
 const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
 const { lookupScenario } = require('./middleware');
@@ -14,7 +13,6 @@ const {
   getAllScenarios,
   getScenario,
   getScenarioByRun,
-  getScenarioRunHistory,
   setScenario,
   softDeleteScenario
 } = require('./endpoints.js');
@@ -22,12 +20,6 @@ const {
 router.get('/', getAllScenarios);
 router.get('/run', getScenarioByRun);
 router.get('/:scenario_id', [lookupScenario(), getScenario]);
-
-router.get('/:scenario_id/history', [requireUser, getScenarioRunHistory]);
-router.get('/:scenario_id/cohort/:cohort_id/history', [
-  requireUser,
-  getScenarioRunHistory
-]);
 
 router.put('/', [
   requireUserRole(requiredRoles),

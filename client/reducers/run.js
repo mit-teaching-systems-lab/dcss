@@ -31,3 +31,35 @@ export const runs = (state = [], action) => {
       return state;
   }
 };
+
+export const runsById = (state = {}, action) => {
+  const { run, runs, type } = action;
+
+  switch (type) {
+    case GET_RUN_SUCCESS:
+    case SET_RUN_SUCCESS:
+    case GET_RUNS_SUCCESS: {
+      if (typeof runs !== 'undefined') {
+        const runsById = runs.reduce((accum, run) => {
+          accum[run.run_id] = run;
+          return accum;
+        }, {});
+
+        return {
+          ...state,
+          ...runsById
+        };
+      }
+
+      if (typeof run !== 'undefined') {
+        return {
+          ...state,
+          [run.run_id]: run
+        };
+      }
+      return state;
+    }
+    default:
+      return state;
+  }
+};

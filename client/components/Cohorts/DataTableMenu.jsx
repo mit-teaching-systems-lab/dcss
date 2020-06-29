@@ -34,6 +34,7 @@ export class DataTableMenu extends Component {
 
   render() {
     const { onClick } = this;
+    const { run } = this.props;
 
     const menuItemClose = (
       <Menu.Item name="close" onClick={onClick}>
@@ -53,13 +54,26 @@ export class DataTableMenu extends Component {
       </Menu.Item>
     );
 
+    const shouldShowRefresh = !run || (run && run.run_ended_at === null);
+
     return (
       <Menu borderless icon>
         <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
-          <Popup content="Close this data table tab" trigger={menuItemClose} />
+          <Popup
+            size="tiny"
+            content="Close this data table tab"
+            trigger={menuItemClose}
+          />
         </ConfirmAuth>
-        <Popup content="Refresh this data" trigger={menuItemRefresh} />
+        {shouldShowRefresh ? (
+          <Popup
+            size="tiny"
+            content="Refresh this data"
+            trigger={menuItemRefresh}
+          />
+        ) : null}
         <Popup
+          size="tiny"
           content="Download a csv file containing these responses"
           trigger={menuItemDownload}
         />
@@ -69,9 +83,6 @@ export class DataTableMenu extends Component {
 }
 
 DataTableMenu.propTypes = {
-  source: PropTypes.object,
-  runs: PropTypes.array,
-  users: PropTypes.array,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
@@ -80,16 +91,26 @@ DataTableMenu.propTypes = {
     scenarios: PropTypes.array,
     users: PropTypes.array
   }),
-  onClick: PropTypes.func,
   getCohort: PropTypes.func,
   getScenarios: PropTypes.func,
-  user: PropTypes.object
+  onClick: PropTypes.func,
+  run: PropTypes.object,
+  runsById: PropTypes.object,
+  source: PropTypes.object,
+  user: PropTypes.object,
+  users: PropTypes.array
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { permissions } = state.login;
-  const { cohort, scenarios, user } = state;
-  return { cohort, scenarios, user: { ...user, permissions } };
+  const { cohort, runsById, scenarios, user } = state;
+
+  const run =
+    ownProps.source && ownProps.source.runId
+      ? runsById[ownProps.source.runId]
+      : null;
+
+  return { cohort, run, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({

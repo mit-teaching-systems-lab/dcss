@@ -2,10 +2,11 @@ import { combineReducers } from 'redux';
 
 import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
+import { history } from './history';
 import login from './login';
 import { response, responses, responsesById } from './response';
-import { run, runs } from './run';
-import { history, scenario } from './scenario';
+import { run, runs, runsById } from './run';
+import { scenario } from './scenario';
 import { scenarios, scenariosById } from './scenarios';
 import tags from './tags';
 import { user } from './user';
@@ -23,6 +24,7 @@ export default combineReducers({
   responsesById,
   run,
   runs,
+  runsById,
   scenario,
   scenarios,
   scenariosById,

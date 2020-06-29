@@ -108,9 +108,9 @@ async function finishRunAsync(req, res) {
   res.json(await db.finishRun(id));
 }
 
-async function getUserRunsAsync(req, res) {
+async function getRunsAsync(req, res) {
   const { id: user_id } = req.session.user;
-  const runs = await db.getUserRuns(user_id);
+  const runs = await db.getRuns(user_id);
   res.json({ status: 200, runs });
 }
 
@@ -120,7 +120,7 @@ exports.getRunData = asyncMiddleware(getRunDataAsync);
 exports.getResponseTranscriptOnly = asyncMiddleware(
   getResponseTranscriptOnlyAsync
 );
-exports.getUserRuns = asyncMiddleware(getUserRunsAsync);
+exports.getRuns = asyncMiddleware(getRunsAsync);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);
 exports.getReferrerParams = asyncMiddleware(getReferrerParamsAsync);

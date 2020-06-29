@@ -34,7 +34,7 @@ export const getRun = scenario_id => async dispatch => {
   }
 };
 
-export const getUserRuns = () => async dispatch => {
+export const getRuns = () => async dispatch => {
   try {
     const res = await (await fetch('/api/runs')).json();
 

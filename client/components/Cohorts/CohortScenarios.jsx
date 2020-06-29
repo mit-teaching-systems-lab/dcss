@@ -24,7 +24,7 @@ import scrollIntoView from '@components/util/scrollIntoView';
 import Sortable from '@components/Sortable';
 import { getCohort, setCohort } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';
-import { getUserRuns } from '@actions/run';
+import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
 
 import './Cohort.css';
@@ -67,7 +67,7 @@ export class CohortScenarios extends React.Component {
 
     await this.props.getCohort(Number(id));
     await this.props.getScenarios();
-    await this.props.getUserRuns();
+    await this.props.getRuns();
     await this.props.getUsers();
 
     // See note above, re: scenarios list backup
@@ -525,7 +525,7 @@ CohortScenarios.propTypes = {
   onClick: PropTypes.func,
   getScenarios: PropTypes.func,
   scenarios: PropTypes.array,
-  getUserRuns: PropTypes.func,
+  getRuns: PropTypes.func,
   runs: PropTypes.array,
   user: PropTypes.object,
   getUsers: PropTypes.func,
@@ -545,7 +545,7 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
   getScenarios: () => dispatch(getScenarios()),
-  getUserRuns: () => dispatch(getUserRuns()),
+  getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers())
 });
 

@@ -1,24 +1,28 @@
-.ms__table--constraints {
+.h__table--constraints {
   width: 100%;
   white-space: nowrap;
   table-layout: fixed;
 }
 
-.ms__table-cell-first {
+.h__table-cell-first {
   width: 40px !important;
   text-overflow: unset !important;
 }
 
-.ms__table-cell-options {
+.h__table-cell-options {
   width: 15rem !important;
 }
 
-.ms__table-cell-content {
+.h__table-cell-content {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/*.ms__table-thead-tbody-tr {
+.h__table-cell-small {
+  width: 15%;
+}
+
+/*.h__table-thead-tbody-tr {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -29,7 +33,7 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .ms__hidden-on-mobile {
+  .h__hidden-on-mobile {
     display: none !important;
   }
 }

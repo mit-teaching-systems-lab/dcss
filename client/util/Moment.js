@@ -6,7 +6,7 @@ moment.updateLocale('en', {
     lastDay: '[yesterday at] LT',
     sameDay: '[today at] LT',
     nextDay: '[tomorrow at] LT',
-    lastWeek: '[last] dddd [at] LT',
+    lastWeek: '[Last] dddd [at] LT',
     nextWeek: 'dddd [at] LT',
     sameElse: 'L'
   }

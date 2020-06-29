@@ -16,25 +16,20 @@ import {
   Table
 } from '@components/UI';
 import { getAllCohorts, getCohorts } from '@actions/cohort';
-import { getScenarios, getScenarioRunHistory } from '@actions/scenario';
+import { getHistoryForScenario } from '@actions/run';
+import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
+import shorten from '@utils/shorten';
 import '../Cohorts/Cohort.css';
 import '../Cohorts/DataTable.css';
 import './Downloads.css';
 
 const ROWS_PER_PAGE = 10;
 
-function shorten(str, length, separator = ' ') {
-  const suffix = str.length > length ? '\u2026' : '';
-  if (str.length <= length) {
-    return str;
-  }
-  return `${str.substr(0, str.lastIndexOf(separator, length))}${suffix}`;
-}
 function isAudioFile(input) {
   return /^audio\/\d.+\/AudioResponse/.test(input) && input.endsWith('.mp3');
 }
@@ -88,14 +83,14 @@ class Downloads extends Component {
   }
 
   async requestDownload({ cohort, scenarioId }) {
-    const { getScenarioRunHistory } = this.props;
+    const { getHistoryForScenario } = this.props;
     const scenarioIds = scenarioId
       ? [scenarioId]
       : cohort.scenarios.map(v => (typeof v === 'number' ? v : v.id));
     const files = [];
 
     for (let id of scenarioIds) {
-      const { prompts, responses } = await getScenarioRunHistory(
+      const { prompts, responses } = await getHistoryForScenario(
         id,
         cohort && cohort.id
       );
@@ -543,7 +538,7 @@ Downloads.propTypes = {
   getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
   getScenarios: PropTypes.func,
-  getScenarioRunHistory: PropTypes.func,
+  getHistoryForScenario: PropTypes.func,
   getUser: PropTypes.func,
   onClick: PropTypes.func,
   user: PropTypes.object
@@ -576,8 +571,8 @@ const mapDispatchToProps = dispatch => ({
   getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
   getScenarios: () => dispatch(getScenarios()),
-  getScenarioRunHistory: (...params) =>
-    dispatch(getScenarioRunHistory(...params)),
+  getHistoryForScenario: (...params) =>
+    dispatch(getHistoryForScenario(...params)),
   getUser: () => dispatch(getUser())
 });
 

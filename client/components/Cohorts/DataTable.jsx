@@ -419,6 +419,7 @@ DataTable.propTypes = {
   scenarios: PropTypes.array,
   source: PropTypes.object,
   runs: PropTypes.array,
+  runsById: PropTypes.object,
   users: PropTypes.array,
   cohort: PropTypes.shape({
     id: PropTypes.any,
@@ -439,8 +440,8 @@ DataTable.propTypes = {
 
 const mapStateToProps = state => {
   const { permissions } = state.login;
-  const { cohort, scenarios, user } = state;
-  return { cohort, scenarios, user: { ...user, permissions } };
+  const { cohort, runsById, scenarios, user } = state;
+  return { cohort, runsById, scenarios, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({
