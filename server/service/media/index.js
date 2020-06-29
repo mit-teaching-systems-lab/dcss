@@ -1,9 +1,15 @@
 const { Router } = require('express');
-const { uploadAudio, requestAudio } = require('./endpoints');
+const {
+  uploadAudio,
+  uploadImage,
+  requestMedia
+} = require('./endpoints');
 
 const router = Router();
 
 router.post('/audio', uploadAudio);
-router.get('/audio/*', requestAudio);
+router.post('/image', uploadImage);
+
+router.get('/*', requestMedia);
 
 module.exports = router;

@@ -55,6 +55,7 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.20.0",
     "file-saver": "^2.0.2",
+    "file-type": "^14.6.2",
     "json2csv": "^4.5.4",
     "jszip": "^3.5.0",
     "katex": "^0.11.1",

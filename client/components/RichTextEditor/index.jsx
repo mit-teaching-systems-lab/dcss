@@ -95,9 +95,9 @@ class RichTextEditor extends Component {
       options = Object.assign({}, defaultOptions, options, { buttonList });
       options.plugins = plugins(buttonList || []);
 
-
-      options.imageFileInput = false;
-      // options.imageUrlInput = false;
+      // options.imageFileInput = false;
+      options.imageMultipleFile = false;
+      options.imageUploadUrl = '/api/media/image';
 
       // if (options.buttonList.flat().includes('math')) {
       //   options.katex = katex;

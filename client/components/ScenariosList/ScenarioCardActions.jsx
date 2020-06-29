@@ -66,7 +66,7 @@ class ScenarioCardActions extends Component {
                 aria-label="Copy scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon name="clipboard outline" />
+                <Icon name="copy outline" />
                 <span className={className}>Copy</span>
               </Button>
             </ConfirmAuth>
