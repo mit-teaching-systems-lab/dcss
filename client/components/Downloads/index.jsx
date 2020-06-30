@@ -16,7 +16,7 @@ import {
   Table
 } from '@components/UI';
 import { getAllCohorts, getCohorts } from '@actions/cohort';
-import { getHistoryForScenario } from '@actions/run';
+import { getHistoryForScenario } from '@actions/history';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import EditorMenu from '@components/EditorMenu';
