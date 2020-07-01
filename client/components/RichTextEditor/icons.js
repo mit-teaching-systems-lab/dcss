@@ -2,4 +2,4 @@ const line_break = `<svg version="1" role="img" viewBox="0 0 24 24"><path d="M19
 
 export default {
   line_break
-}
+};

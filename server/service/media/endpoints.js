@@ -77,11 +77,13 @@ async function uploadImageAsync(req, res) {
 
       res.status = 201;
       res.send({
-        result: [{
-          name,
-          size,
-          url
-        }]
+        result: [
+          {
+            name,
+            size,
+            url
+          }
+        ]
       });
 
       try {
@@ -104,9 +106,8 @@ async function uploadImageAsync(req, res) {
   });
 }
 
-async function requestGallery(req, res, next) {
+async function requestGallery(req, res) {
   const images = db.getImagesByUserId(req.session.user.id);
-
 
   res.status = 200;
   res.send({ images });

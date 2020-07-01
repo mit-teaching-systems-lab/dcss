@@ -96,7 +96,6 @@ class RichTextEditor extends Component {
       options = Object.assign({}, defaultOptions, options, { buttonList });
       options.plugins = plugins(buttonList || []);
 
-
       if (location.href.includes('localhost')) {
         options.imageMultipleFile = false;
         options.imageUploadUrl = '/api/media/image';

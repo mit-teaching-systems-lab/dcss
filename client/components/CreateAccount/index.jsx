@@ -36,7 +36,6 @@ class CreateAccount extends Component {
     };
 
     if (event) {
-
       const {
         type,
         target: { name: field, value }

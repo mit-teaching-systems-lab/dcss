@@ -32,7 +32,7 @@ exports.addImageRecognition = async ({ id, classes }) => {
   });
 };
 
-exports.getImagesByUserId = async (user_id) => {
+exports.getImagesByUserId = async user_id => {
   return await withClient(async client => {
     // This MUST allow image records that do not have
     // image_recognition records to be included in
@@ -55,5 +55,3 @@ exports.getImagesByUserId = async (user_id) => {
     return result.rows;
   });
 };
-
-
