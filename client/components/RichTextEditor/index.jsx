@@ -13,6 +13,7 @@ import 'suneditor/src/assets/css/suneditor-contents.css';
 import 'suneditor/src/assets/css/suneditor.css';
 
 import buttons from './buttons';
+import icons from './icons';
 import plugins from './plugins';
 import language from './language';
 import './RichTextEditor.css';
@@ -95,9 +96,13 @@ class RichTextEditor extends Component {
       options = Object.assign({}, defaultOptions, options, { buttonList });
       options.plugins = plugins(buttonList || []);
 
-      // options.imageFileInput = false;
-      options.imageMultipleFile = false;
-      options.imageUploadUrl = '/api/media/image';
+
+      if (location.href.includes('localhost')) {
+        options.imageMultipleFile = false;
+        options.imageUploadUrl = '/api/media/image';
+      } else {
+        options.imageFileInput = false;
+      }
 
       // if (options.buttonList.flat().includes('math')) {
       //   options.katex = katex;
@@ -110,17 +115,10 @@ class RichTextEditor extends Component {
         onChange(content);
       };
 
-      this[SymbolEditor] = SunEditor.create(this.ref.current);
-      this[SymbolEditor].setOptions(options);
-
-      LINE_BREAKER_HACK: {
-        const lineBreakers = document.querySelectorAll('.se-line-breaker-component');
-        if (lineBreakers) {
-          Array.from(lineBreakers, lb => {
-            lb.innerHTML = 'Click to insert a blank line here';
-          });
-        }
-      }
+      this[SymbolEditor] = SunEditor.create(this.ref.current, options, {
+        icons
+      });
+      // this[SymbolEditor].setOptions(options);
 
       this[SymbolEditor].onChange = content => {
         onContentChange(content);
