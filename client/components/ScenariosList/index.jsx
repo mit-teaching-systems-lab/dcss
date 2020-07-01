@@ -36,29 +36,40 @@ const SCENARIO_STATUS_PUBLIC = 2;
 const SCENARIO_STATUS_PRIVATE = 3;
 /* eslint-enable */
 
-const filter = (scenarios, isLoggedIn) => {
+const filter = (scenarios, user) => {
   if (!scenarios.length) {
     return [];
   }
-
-  return scenarios.reduce((accum, scenario) => {
+  const isLoggedIn = !!(user || user.id);
+  const reduced = scenarios.reduce((accum, scenario) => {
     const { status, user_is_author: isAuthor } = scenario;
 
     // This scenario status is "draft", to see it:
     //  - user must be logged in
     //  - user must be the author
-    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor)) {
+    if (
+      !user.is_super &&
+      status === SCENARIO_STATUS_DRAFT &&
+      (!isLoggedIn || !isAuthor)
+    ) {
       return accum;
     }
     // This scenario status is "private", to see it:
     //  - user must be logged in
-    if (status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
+    if (!user.is_super && status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
       return accum;
     }
     accum.push(scenario);
 
     return accum;
   }, []);
+
+  const notDeleted = reduced.filter(({ deleted_at }) => !deleted_at);
+  const deleted = user.is_super
+    ? reduced.filter(({ deleted_at }) => deleted_at)
+    : [];
+
+  return [...notDeleted, ...deleted];
 };
 
 class ScenariosList extends Component {
@@ -76,21 +87,22 @@ class ScenariosList extends Component {
       heading: '',
       scenarios: [],
       viewHeading: '',
-      viewScenarios: [],
       value
     };
-
+    this.scenarios = [];
     this.onPageChange = this.onPageChange.bind(this);
     this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
     this.onScenarioModalClose = this.onScenarioModalClose.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.reduceScenarios = this.reduceScenarios.bind(this);
-    this.moveDeletedScenarios = this.moveDeletedScenarios.bind(this);
   }
 
   async componentDidMount() {
-    await this.getScenarios();
+    await this.props.getScenarios();
     await this.reduceScenarios();
+
+    this.scenarios = filter(this.props.scenarios, this.props.user);
+
     if (this.state.value) {
       this.onSearchChange(
         {},
@@ -101,17 +113,6 @@ class ScenariosList extends Component {
     }
   }
 
-  moveDeletedScenarios(scenarios = []) {
-    return [
-      ...scenarios.filter(({ deleted_at }) => !deleted_at),
-      ...scenarios.filter(({ deleted_at }) => deleted_at)
-    ];
-  }
-
-  async getScenarios() {
-    await this.props.getScenarios();
-  }
-
   async reduceScenarios() {
     const { category } = this.state;
     let scenarios = [];
@@ -120,7 +121,7 @@ class ScenariosList extends Component {
 
     switch (category) {
       case 'all': {
-        scenarios.push(...this.props.scenarios);
+        scenarios.push(...this.scenarios);
         heading = 'All Scenarios';
         break;
       }
@@ -128,7 +129,7 @@ class ScenariosList extends Component {
         authorUsername = this.props.match.params.username;
         heading = `Scenarios by ${authorUsername}`;
         scenarios.push(
-          ...this.props.scenarios.filter(({ author: { username } }) => {
+          ...this.scenarios.filter(({ author: { username } }) => {
             return username === authorUsername;
           })
         );
@@ -141,7 +142,7 @@ class ScenariosList extends Component {
       }
       case 'official':
       case 'community': {
-        scenarios = this.props.scenarios.filter(({ categories }) => {
+        scenarios = this.scenarios.filter(({ categories }) => {
           return !category || categories.includes(category);
         });
         heading = `${changeCase.titleCase(category)} Scenarios`;
@@ -149,14 +150,11 @@ class ScenariosList extends Component {
       }
     }
 
-    scenarios = this.moveDeletedScenarios(scenarios);
-
     this.setState({
       isReady: true,
       activePage: 1,
       heading,
       scenarios,
-      viewScenarios: scenarios.slice(0),
       viewHeading: heading
     });
   }
@@ -182,15 +180,16 @@ class ScenariosList extends Component {
   }
 
   onSearchChange(event, props) {
-    const { scenarios, viewHeading, viewScenarios } = this.state;
+    const scenarios = this.scenarios.slice(0);
+    const { viewHeading } = this.state;
     const { value } = props;
     let replacementHeading = '';
 
     if (value === '') {
       this.setState({
         activePage: 1,
-        scenarios: viewScenarios,
-        heading: viewHeading
+        heading: viewHeading,
+        scenarios
       });
 
       return;
@@ -226,7 +225,7 @@ class ScenariosList extends Component {
     replacementHeading = `${viewHeading}, matching '${value}'`;
 
     if (results.length === 0) {
-      results.push(...viewScenarios);
+      results.push(...scenarios);
       replacementHeading = `${viewHeading}, nothing matches '${value}'`;
     }
 
@@ -244,7 +243,15 @@ class ScenariosList extends Component {
 
   render() {
     const { isLoggedIn } = this.props;
-    const { activePage, isReady, heading, open, selected, value } = this.state;
+    const {
+      activePage,
+      isReady,
+      heading,
+      open,
+      scenarios,
+      selected,
+      value
+    } = this.state;
     const {
       onPageChange,
       onScenarioCardClick,
@@ -260,7 +267,6 @@ class ScenariosList extends Component {
       url += `?q=${encodeURIComponent(value)}`;
     }
 
-    const scenarios = filter(this.state.scenarios, isLoggedIn);
     const scenariosPages = Math.ceil(scenarios.length / CARDS_PER_PAGE);
     const scenariosIndex = (activePage - 1) * CARDS_PER_PAGE;
     const scenariosSlice = scenarios.slice(
@@ -308,7 +314,7 @@ class ScenariosList extends Component {
 
     const menuItemScenarioLinkCopy = (
       <Menu.Item className="sc__hidden-on-mobile" onClick={onCopyClick}>
-        {heading} ({scenariosSlice.length})
+        {heading} ({scenarios.length})
         <Icon name="clipboard outline" />
       </Menu.Item>
     );

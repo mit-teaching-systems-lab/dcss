@@ -32,7 +32,7 @@ export const scenarios = (state = [], action) => {
           }
           return accum;
         }, [])
-        .sort((a, b) => a.id > b.id);
+        .sort((a, b) => a.id < b.id);
     }
     case SET_SCENARIO:
     case GET_SCENARIO_SUCCESS: {
@@ -47,8 +47,7 @@ export const scenarios = (state = [], action) => {
       } else {
         state.push(scenario);
       }
-
-      return [...state].sort((a, b) => a.id > b.id);
+      return [...state].sort((a, b) => a.id < b.id);
     }
     default:
       return state;
