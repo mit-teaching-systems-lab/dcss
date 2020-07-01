@@ -5,7 +5,10 @@ const uuid = require('uuid/v4');
 const db = require('./db');
 const { asyncMiddleware } = require('../../util/api');
 const { uploadToS3, requestFromS3 } = require('./s3');
-const { requestTranscriptionAsync } = require('./transcript');
+const {
+  requestRecognitionAsync,
+  requestTranscriptionAsync
+} = require('./watson');
 
 async function uploadAudioAsync(req, res) {
   const storage = Multer.memoryStorage();
@@ -36,8 +39,7 @@ async function uploadAudioAsync(req, res) {
     } catch (error) {
       res.status = 200;
       res.send({
-        error,
-        s3Location: key
+        error
       });
     }
 
@@ -57,7 +59,7 @@ async function uploadImageAsync(req, res) {
         .status(400)
         .json({ message: 'Upload Request Validation Failed' });
     }
-
+    const user_id = req.session.user.id;
     const {
       buffer,
       // originalname,
@@ -71,7 +73,9 @@ async function uploadImageAsync(req, res) {
     try {
       const s3Location = await uploadToS3(key, buffer);
       const url = `/api/media/${s3Location}`;
-      res.status = 200;
+      const image = await db.addImage({ name, size, url, user_id });
+
+      res.status = 201;
       res.send({
         result: [{
           name,
@@ -80,17 +84,38 @@ async function uploadImageAsync(req, res) {
         }]
       });
 
+      try {
+        const classes = await requestRecognitionAsync(buffer);
+        if (classes) {
+          db.addImageRecognition({ ...image, classes });
+        }
+      } catch (error) {
+        res.status = 500;
+        res.send({
+          error
+        });
+      }
     } catch (error) {
-      res.status = 200;
+      res.status = 500;
       res.send({
-        error,
-        s3Location: key
+        error
       });
     }
   });
 }
 
+async function requestGallery(req, res, next) {
+  const images = db.getImagesByUserId(req.session.user.id);
+
+
+  res.status = 200;
+  res.send({ images });
+}
+
 async function requestMediaAsync(req, res, next) {
+  if (req.url.startsWith('/gallery/')) {
+    return requestGallery(req, res, next);
+  }
   return requestFromS3(req, res, next);
 }
 
