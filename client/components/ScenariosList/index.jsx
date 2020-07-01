@@ -44,19 +44,20 @@ const filter = (scenarios, user) => {
   const reduced = scenarios.reduce((accum, scenario) => {
     const { status, user_is_author: isAuthor } = scenario;
 
+    // Show super admin everything
+    if (user.is_super) {
+      accum.push(scenario);
+      return accum;
+    }
     // This scenario status is "draft", to see it:
     //  - user must be logged in
     //  - user must be the author
-    if (
-      !user.is_super &&
-      status === SCENARIO_STATUS_DRAFT &&
-      (!isLoggedIn || !isAuthor)
-    ) {
+    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor)) {
       return accum;
     }
     // This scenario status is "private", to see it:
     //  - user must be logged in
-    if (!user.is_super && status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
+    if (status === SCENARIO_STATUS_PRIVATE && !isLoggedIn) {
       return accum;
     }
     accum.push(scenario);
@@ -99,9 +100,10 @@ class ScenariosList extends Component {
 
   async componentDidMount() {
     await this.props.getScenarios();
-    await this.reduceScenarios();
 
     this.scenarios = filter(this.props.scenarios, this.props.user);
+
+    await this.reduceScenarios();
 
     if (this.state.value) {
       this.onSearchChange(
