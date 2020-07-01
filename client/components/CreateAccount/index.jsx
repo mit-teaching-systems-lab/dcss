@@ -29,7 +29,41 @@ class CreateAccount extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  validFormInput() {
+  validFormInput(event) {
+    const error = {
+      field: '',
+      message: ''
+    };
+
+    if (event) {
+
+      const {
+        type,
+        target: { name: field, value }
+      } = event;
+      if (type === 'blur') {
+        if (!value) {
+          let message = `Please enter a ${field}.`;
+
+          if (field === 'confirmPassword') {
+            message = !this.state.password
+              ? 'Please enter and confirm your password.'
+              : 'Password fields do not match.';
+          }
+
+          this.setState({
+            error: {
+              field,
+              message
+            }
+          });
+          return false;
+        }
+        this.setState({ error });
+        return true;
+      }
+    }
+
     const { confirmPassword, password, username } = this.state;
 
     if (!username) {
@@ -42,7 +76,7 @@ class CreateAccount extends Component {
       return false;
     }
 
-    if (!password || !confirmPassword) {
+    if (!password) {
       this.setState({
         error: {
           field: 'password',
@@ -62,6 +96,7 @@ class CreateAccount extends Component {
       return false;
     }
 
+    this.setState({ error });
     return true;
   }
 
@@ -100,8 +135,6 @@ class CreateAccount extends Component {
       this.setState({ error: { field: '', message: '' } });
     }
     this.setState({ [name]: value });
-
-    this.validFormInput();
   }
 
   onCancel(event) {
@@ -131,7 +164,7 @@ class CreateAccount extends Component {
                 required
                 label="Username:"
                 name="username"
-                autoComplete="username"
+                autoComplete="off"
                 onChange={onChange}
                 onBlur={validFormInput}
                 value={username}
@@ -147,7 +180,6 @@ class CreateAccount extends Component {
                 autoComplete="email"
                 placeholder="(Optional)"
                 onChange={onChange}
-                onBlur={validFormInput}
                 value={email}
               />
             </Form.Field>
