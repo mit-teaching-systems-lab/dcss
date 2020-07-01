@@ -381,7 +381,7 @@ class ScenariosList extends Component {
 }
 
 const ScenarioDetailModal = ({ onClose, open, scenario }) => {
-  const createdAt = Moment(scenario).fromNow();
+  const createdAt = Moment(scenario.created_at).fromNow();
   const createdAtAlt = Moment(scenario.created_at).calendar();
   const username = <Username {...scenario.author} />;
   const subheader = (
