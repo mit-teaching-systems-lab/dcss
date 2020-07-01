@@ -1,5 +1,5 @@
 const FileType = require('file-type');
-const Multer = require('Multer');
+const Multer = require('multer');
 const uuid = require('uuid/v4');
 
 const db = require('./db');
