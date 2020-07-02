@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, Menu } from '@components/UI';
+import hash from 'object-hash';
+import { Dropdown, Icon, Menu, Popup } from '@components/UI';
 import * as Components from '@components/Slide/Components';
 import './SlideComponentSelect.css';
 
@@ -8,24 +9,36 @@ const ComponentsMenuOrder = [
   'Text',
   'Suggestion',
   'ResponseRecall',
-  'TextResponse',
+  'AudioResponse',
   'MultiButtonResponse',
-  'AudioResponse'
+  'MultiPathResponse',
+  'TextResponse'
 ];
 
-const ComponentItems = ({ onComponentItemClick, mode }) => {
-  const Constructor = mode === 'menu' ? Menu.Item : Dropdown.Item;
-  return ComponentsMenuOrder.map((type, index) => {
-    const { Card } = Components[type];
 
-    return (
-      <Constructor
-        key={`slide-component-select-${type}-${index}`}
-        onClick={() => onComponentItemClick(type)}
-        style={{ float: 'none !important' }}
+const ComponentItems = ({ onComponentItemClick, mode }) => {
+  const style = { float: 'none !important' };
+  // const Constructor = mode === 'menu' ? Menu.Item : Dropdown.Item;
+  return ComponentsMenuOrder.map((item, index) => {
+    const { Card, name: header, description: content } = Components[item];
+
+    const trigger = (
+      <Menu.Item
+        style={style}
+        onClick={() => onComponentItemClick(item)}
       >
         <Card />
-      </Constructor>
+      </Menu.Item>
+    );
+    return (
+      <Popup
+        pinned
+        position="left center"
+        key={hash(item)}
+        header={header}
+        content={content}
+        trigger={trigger}
+      />
     );
   });
 };
@@ -36,36 +49,15 @@ class SlideComponentSelect extends Component {
   }
 
   render() {
-    const { className = '', mode = 'default', onClick, open } = this.props;
+    const { className = '', onClick } = this.props;
 
     const props = {
       className
     };
 
-    if (mode === 'default' && typeof open !== 'undefined') {
-      props.open = open;
-    }
-
-    const icon = (
-      <Fragment>
-        <Icon
-          aria-label="Add to slide"
-          name="content"
-          className="slidecomponentselect__icon-margin"
-        />
-        Add to slide
-      </Fragment>
-    );
-
-    return mode === 'default' ? (
-      <Dropdown {...props} item text={icon}>
-        <Dropdown.Menu>
-          <ComponentItems mode={mode} onComponentItemClick={onClick} />
-        </Dropdown.Menu>
-      </Dropdown>
-    ) : (
+    return (
       <Menu {...props} fluid vertical>
-        <ComponentItems mode={mode} onComponentItemClick={onClick} />
+        <ComponentItems onComponentItemClick={onClick} />
       </Menu>
     );
   }
@@ -73,8 +65,6 @@ class SlideComponentSelect extends Component {
 
 SlideComponentSelect.propTypes = {
   className: PropTypes.string,
-  open: PropTypes.bool,
-  mode: PropTypes.string,
   onClick: PropTypes.func
 };
 
