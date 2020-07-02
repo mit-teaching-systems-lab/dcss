@@ -18,12 +18,16 @@
   z-index: 0 !important;
 }
 
-*/.rt__container {
+*/
+.rt__container {
   overflow-wrap: break-word;
   background-color: transparent !important;
   padding: 0 !important;
+  display: block;
 }
 
-.rt__container img {
-  max-width: 100%;
+.rt__container::after {
+  display: block;
+  content: "";
+  clear: both;
 }
