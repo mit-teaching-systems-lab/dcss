@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Message, Popup } from '@components/UI';
+import { Form, Message } from '@components/UI';
 
 class DataHeader extends Component {
   shouldComponentUpdate(newProps) {
@@ -17,7 +17,7 @@ class DataHeader extends Component {
     if (onChange) {
       eventHandlers.onChange = onChange;
     }
-    const trigger = (
+    const textarea = (
       <Fragment>
         <Form.TextArea
           required
@@ -26,17 +26,15 @@ class DataHeader extends Component {
           value={content}
           {...eventHandlers}
         />
-        This is only displayed in researcher data, as the column name for this
-        response.
+        This is only appears in data downloads, as the column header or row name.
       </Fragment>
     );
-    const popup = (
-      <Popup
-        content="Set a data header. This is only displayed in the data view and data download."
-        trigger={trigger}
+    return (
+      <Message
+        color={color}
+        content={textarea}
       />
     );
-    return <Message color={color} content={popup} />;
   }
 }
 

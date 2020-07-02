@@ -1,18 +1,12 @@
 import React from 'react';
-import { Popup, Icon } from '@components/UI';
+import { Icon } from '@components/UI';
 import { name } from './meta';
 
-const AudioResponseCard = () => (
-  <Popup
-    content="An audio recorder for users to record responses."
-    header={name}
-    trigger={
-      <React.Fragment>
-        <Icon name="microphone" aria-label={name} />
-        {name}
-      </React.Fragment>
-    }
-  />
+const Card = () => (
+  <React.Fragment>
+    <Icon name="microphone" aria-label={name} />
+    {name}
+  </React.Fragment>
 );
 
-export default React.memo(AudioResponseCard);
+export default React.memo(Card);

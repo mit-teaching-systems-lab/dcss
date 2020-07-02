@@ -1,18 +1,12 @@
 import React from 'react';
-import { Popup, Icon } from '@components/UI';
+import { Icon } from '@components/UI';
 import { name } from './meta';
 
-const MultiButtonResponseCard = () => (
-  <Popup
-    content="A multiple button response"
-    header={name}
-    trigger={
-      <React.Fragment>
-        <Icon name="hand pointer outline" aria-label={name} />
-        {name}
-      </React.Fragment>
-    }
-  />
+const Card = () => (
+  <React.Fragment>
+    <Icon name="hand pointer outline" aria-label={name} />
+    {name}
+  </React.Fragment>
 );
 
-export default React.memo(MultiButtonResponseCard);
+export default React.memo(Card);
