@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import { v4 as uuid } from 'uuid';
 import {
   Checkbox,
@@ -380,15 +381,28 @@ export default class SlideEditor extends Component {
                             : [];
 
                           if (value.responseId) {
+                            const props = {
+                              name: 'required',
+                              label: value.disableRequireCheckbox ? 'Required' : 'Required?',
+                              checked: value.required
+                            };
+
+                            let menuItemTip = value.required
+                              ? 'Make this prompt optional.'
+                              : 'Make this prompt required.'
+
+                            if (value.disableRequireCheckbox) {
+                              props.disabled = true;
+                              menuItemTip = 'This prompt component cannot be made optional';
+                            }
+
                             const menuItemRequiredCheckbox = (
                               <Menu.Item
-                                key="menu-item-prompt-required"
-                                name="Set this prompt to 'required'"
+                                key={hash(props)}
+                                name={menuItemTip}
                               >
                                 <Checkbox
-                                  name="required"
-                                  label="Required?"
-                                  checked={value.required}
+                                  {...props}
                                   onChange={(event, { checked }) =>
                                     onComponentChange(index, {
                                       ...value,
