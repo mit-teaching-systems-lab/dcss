@@ -50,7 +50,7 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeout);
+    clearTimeout(this.timeout);
 
     const { header, prompt, buttons, recallId, responseId } = this.props.value;
     const lastProps = {
@@ -184,7 +184,7 @@ class MultiButtonResponseEditor extends React.Component {
             onChange={onRecallChange}
           />
           <Form.TextArea
-            label="Prompt (displayed before buttons)"
+            label="Text to be displayed before buttons:"
             name="prompt"
             value={prompt}
             onChange={onChange}
@@ -196,10 +196,10 @@ class MultiButtonResponseEditor extends React.Component {
               <Table.Row>
                 <Table.HeaderCell className="mbr__thead-background" />
                 <Table.HeaderCell>
-                  {buttons.length ? 'Button Display' : ''}
+                  Button display
                 </Table.HeaderCell>
                 <Table.HeaderCell>
-                  {buttons.length ? 'Button Value' : ''}
+                  Button value
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -265,12 +265,12 @@ class MultiButtonResponseEditor extends React.Component {
               <Table.Row>
                 <Table.HeaderCell />
                 <Table.HeaderCell colSpan="2">
-                  <Button icon floated="right" onClick={onButtonAddClick}>
+                  <Button basic icon floated="right" onClick={onButtonAddClick}>
                     <Icon.Group size="large" className="em__icon-group-margin">
                       <Icon name="hand pointer outline" />
                       <Icon corner="top right" name="add" color="green" />
                     </Icon.Group>
-                    Add A Button
+                    Add a button
                   </Button>
                 </Table.HeaderCell>
               </Table.Row>

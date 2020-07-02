@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dropdown, Table } from '@components/UI';
-import FormField from '@components/FormField';
+import { Dropdown, Form, Table } from '@components/UI';
 import { type } from './meta';
 
 class ResponseRecallEditor extends React.Component {
@@ -15,11 +14,7 @@ class ResponseRecallEditor extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentDidMount() {
-    this.fetchResponseComponents();
-  }
-
-  async fetchResponseComponents() {
+  async componentDidMount() {
     const { scenarioId } = this.props;
     const response = await fetch(
       `/api/scenarios/${scenarioId}/slides/response-components`
@@ -69,15 +64,15 @@ class ResponseRecallEditor extends React.Component {
         return accum;
       }
 
-      const slideTitle = title ? ` "${title}"` : ``;
-      const text = `Slide #${nonZeroIndex} ${slideTitle}: "${prompt}"`;
+      const quotedSlideTitle = title ? ` "${title}"` : ``;
+      const text = `Slide #${nonZeroIndex} ${quotedSlideTitle}: "${prompt}"`;
       const content = (
         <Table celled striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell colSpan="2">
                 Slide #{nonZeroIndex}
-                {slideTitle}
+                {quotedSlideTitle}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
@@ -123,9 +118,9 @@ class ResponseRecallEditor extends React.Component {
     const defaultValue = recallId || -1;
 
     return (
-      <FormField
+      <Form.Field.Labelled
         style={{ marginBottom: '1rem' }}
-        label="Select a participant's previous response for display in this slide: "
+        label="Optionally select a participant's previous response for display in this slide: "
         content={
           <Dropdown
             defaultValue={defaultValue}

@@ -46,7 +46,7 @@ class TextResponseEditor extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timeout);
+    clearTimeout(this.timeout);
 
     let shouldCallUpdateState = false;
 
