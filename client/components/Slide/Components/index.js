@@ -13,5 +13,8 @@ export { AudioResponse };
 import * as MultiButtonResponse from './MultiButtonResponse';
 export { MultiButtonResponse };
 
+import * as MultiPathResponse from './MultiPathResponse';
+export { MultiPathResponse };
+
 import * as TextResponse from './TextResponse';
 export { TextResponse };
