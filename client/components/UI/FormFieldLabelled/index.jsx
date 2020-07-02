@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class FormField extends Component {
+class FormFieldLabelled extends Component {
   render() {
     const { children, content, label = null } = this.props;
     return (
@@ -13,10 +13,10 @@ class FormField extends Component {
   }
 }
 
-FormField.propTypes = {
+FormFieldLabelled.propTypes = {
   children: PropTypes.any,
   content: PropTypes.any,
   label: PropTypes.string
 };
 
-export default FormField;
+export default FormFieldLabelled;
