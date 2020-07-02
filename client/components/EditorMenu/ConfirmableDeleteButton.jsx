@@ -76,16 +76,16 @@ ConfirmableDeleteButton.propTypes = {
 };
 
 class ConfirmButton extends Component {
-  constructor(props) {
-    super(props);
-    this.setRef = node => {
-      this.ref = node;
-      this.ref.focus();
-    };
-  }
   render() {
     return (
-      <Ref innerRef={this.setRef}>
+      <Ref
+        innerRef={node => {
+          this.ref = node;
+          if (this.ref) {
+            this.ref.focus();
+          }
+        }}
+      >
         <Button
           content={this.props.content}
           onClick={this.props.onClick}
