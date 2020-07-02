@@ -41,7 +41,7 @@ const SlideComponents = ({
             entirely non-functional version.
           */}
 
-          {components.slice(0, 2).map((value, index) => {
+          {components.slice(0, 3).map((value, index) => {
             const { type } = value;
             if (!Components[type]) return;
 
@@ -58,10 +58,10 @@ const SlideComponents = ({
         <rect
           x="0"
           y="0"
+          fill="transparent"
           transform={transform}
           width={width}
           height={height}
-          fill="transparent"
         />
       </svg>
     </div>
