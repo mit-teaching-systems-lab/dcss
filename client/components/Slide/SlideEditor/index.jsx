@@ -383,24 +383,24 @@ export default class SlideEditor extends Component {
                           if (value.responseId) {
                             const props = {
                               name: 'required',
-                              label: value.disableRequireCheckbox ? 'Required' : 'Required?',
+                              label: value.disableRequireCheckbox
+                                ? 'Required'
+                                : 'Required?',
                               checked: value.required
                             };
 
                             let menuItemTip = value.required
                               ? 'Make this prompt optional.'
-                              : 'Make this prompt required.'
+                              : 'Make this prompt required.';
 
                             if (value.disableRequireCheckbox) {
                               props.disabled = true;
-                              menuItemTip = 'This prompt component cannot be made optional';
+                              menuItemTip =
+                                'This prompt component cannot be made optional';
                             }
 
                             const menuItemRequiredCheckbox = (
-                              <Menu.Item
-                                key={hash(props)}
-                                name={menuItemTip}
-                              >
+                              <Menu.Item key={hash(props)} name={menuItemTip}>
                                 <Checkbox
                                   {...props}
                                   onChange={(event, { checked }) =>

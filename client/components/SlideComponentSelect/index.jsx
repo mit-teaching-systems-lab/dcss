@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Dropdown, Icon, Menu, Popup } from '@components/UI';
+import { Menu, Popup } from '@components/UI';
 import * as Components from '@components/Slide/Components';
 import './SlideComponentSelect.css';
 
@@ -15,18 +15,13 @@ const ComponentsMenuOrder = [
   'TextResponse'
 ];
 
-
-const ComponentItems = ({ onComponentItemClick, mode }) => {
+const ComponentItems = ({ onComponentItemClick }) => {
   const style = { float: 'none !important' };
-  // const Constructor = mode === 'menu' ? Menu.Item : Dropdown.Item;
-  return ComponentsMenuOrder.map((item, index) => {
+  return ComponentsMenuOrder.map(item => {
     const { Card, name: header, description: content } = Components[item];
 
     const trigger = (
-      <Menu.Item
-        style={style}
-        onClick={() => onComponentItemClick(item)}
-      >
+      <Menu.Item style={style} onClick={() => onComponentItemClick(item)}>
         <Card />
       </Menu.Item>
     );

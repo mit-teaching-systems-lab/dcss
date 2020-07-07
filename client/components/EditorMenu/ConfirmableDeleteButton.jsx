@@ -59,10 +59,6 @@ class ConfirmableDeleteButton extends Component {
           cancelButton={cancelButton}
           confirmButton={confirmButton}
           onCancel={onCancel}
-          onConfirm={() => {
-            onConfirm();
-            onComplete();
-          }}
         />
       </React.Fragment>
     );
