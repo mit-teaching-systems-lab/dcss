@@ -41,7 +41,7 @@ router.post('/:scenario_id/copy', [
 ]);
 
 router.delete('/:scenario_id', [
-  requireUserRole(['super_admin', 'admin']),
+  requireUserRole(requiredRoles),
   lookupScenario(),
   softDeleteScenario
 ]);
