@@ -167,10 +167,9 @@ class Editor extends Component {
 
   // TODO: Move to own async action
   async deleteScenario(scenarioId) {
-    const result = await fetch(`/api/scenarios/${scenarioId}`, {
+    await (await fetch(`/api/scenarios/${scenarioId}`, {
       method: 'DELETE'
-    });
-    await result.json();
+    })).json();
 
     // Hard redirect to clear all previous state from the editor.
     location.href = '/';
