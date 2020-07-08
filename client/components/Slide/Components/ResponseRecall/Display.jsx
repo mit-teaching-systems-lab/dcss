@@ -49,6 +49,10 @@ class Display extends Component {
 
     const { response } = await getResponse({ id, responseId });
 
+    if (!response) {
+      return;
+    }
+
     this.setState({
       response: response || this.state.response
     });
@@ -89,7 +93,12 @@ class Display extends Component {
 
   render() {
     const { response } = this.state;
-    const { recallId, run } = this.props;
+    const {
+      isEmbeddedInSVG,
+      recallId,
+      run,
+      scenario: { slides }
+    } = this.props;
 
     // If the scenario is an active "Run":
     //      If there is a response object, but
@@ -109,7 +118,30 @@ class Display extends Component {
     // to display, so display:
     // "Participant response transcriptions will appear here."
     //
-    const rvalue = this.isScenarioRun
+
+    if (!this.isScenarioRun || isEmbeddedInSVG) {
+      return (
+        <Message
+          floating
+          style={{
+            whiteSpace: 'pre-wrap',
+            overflowWrap: 'break-word'
+          }}
+          content="Participant response will appear here during scenario run."
+        />
+      );
+    }
+    const component = slides.reduce((accum, slide) => {
+      const component = slide.components.find(
+        ({ responseId }) => responseId === recallId
+      );
+      if (component) {
+        accum = component;
+      }
+      return accum;
+    }, undefined);
+
+    let rvalue = this.isScenarioRun
       ? response
         ? response.isSkip
           ? 'Prompt skipped'
@@ -117,17 +149,21 @@ class Display extends Component {
         : false
       : 'Participant response transcriptions will appear here.';
 
-    if (rvalue === false) {
+    if (!rvalue) {
       return null;
     }
 
+    const header = (component && component.prompt) || null;
+
     let content = rvalue;
 
-    // The fallback value of an AudioResponse will not be an
-    // mp3 file path.
-    if (rvalue.endsWith('mp3')) {
+    // The fallback value of an AudioResponse will not be an mp3 file path.
+    if (
+      component &&
+      component.type === 'AudioResponse' &&
+      rvalue.endsWith('mp3')
+    ) {
       const { transcript } = response;
-
       content = (
         <Fragment>
           <AudioPlayer src={rvalue} />
@@ -136,9 +172,24 @@ class Display extends Component {
       );
     }
 
+    if (
+      component &&
+      (component.type === 'MultiButtonResponse' ||
+        component.type === 'MultiPathResponse')
+    ) {
+      const property =
+        component.type === 'MultiButtonResponse' ? 'buttons' : 'paths';
+
+      const selected = component[property].find(
+        ({ value }) => value === rvalue
+      );
+      content = <Fragment>{selected ? selected.display : null}</Fragment>;
+    }
+
     return (
       <Message
         floating
+        header={header}
         style={{
           whiteSpace: 'pre-wrap',
           overflowWrap: 'break-word'
@@ -162,12 +213,13 @@ Display.propTypes = {
   // from being mis-indentified as a "Response" component.
   recallId: PropTypes.string,
   run: PropTypes.object,
+  scenario: PropTypes.object,
   type: PropTypes.oneOf([type])
 };
 
 const mapStateToProps = state => {
-  const { run, responsesById } = state;
-  return { run, responsesById };
+  const { scenario, run, responsesById } = state;
+  return { scenario, run, responsesById };
 };
 
 const mapDispatchToProps = dispatch => ({
