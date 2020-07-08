@@ -288,6 +288,7 @@ class MultiPathResponseEditor extends React.Component {
     );
     const multiPathNetworkGraphModal = open ? (
       <MultiPathNetworkGraphModal
+        header=""
         onClose={onViewGraphClick}
         open={open}
         slides={slides}

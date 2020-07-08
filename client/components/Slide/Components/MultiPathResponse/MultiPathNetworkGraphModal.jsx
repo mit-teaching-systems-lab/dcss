@@ -11,7 +11,7 @@ function makeNodeLabel(index, title) {
 
 class MultiPathNetworkGraphModal extends Component {
   render() {
-    const { onClose, open, slides } = this.props;
+    const { header, onClose, open, slides } = this.props;
 
     if (!slides || (slides && !slides.length)) {
       return null;
@@ -54,8 +54,7 @@ class MultiPathNetworkGraphModal extends Component {
                     accum.push({
                       from,
                       to,
-                      label,
-                      length: 150
+                      label
                     });
                   }
                   return accum;
@@ -73,18 +72,59 @@ class MultiPathNetworkGraphModal extends Component {
       }
     );
 
+    nodes
+      .filter(node => !edgesByNodeId[node.id])
+      .forEach(node => {
+        const slide = slides.find(({ id }) => id === node.id);
+        const slideIndex = slides.indexOf(slide);
+        const edge = {};
+
+        const a = slides[slideIndex - 1];
+        const b = slides[slideIndex + 1];
+
+        if (a && !edgesByNodeId[a.id]) {
+          edge.from = a.id;
+          edge.to = slide.id;
+          edge.level = 1;
+        } else {
+          if (b) {
+            edge.from = slide.id;
+            edge.to = b.id;
+            edge.level = 1;
+          }
+        }
+        edges.push(edge);
+      });
+
+    nodes.forEach(node => {
+      let level = nodes.length;
+      edges.forEach(edge => {
+        if (edge.from === node.id || edge.to === node.id) {
+          level -= 1;
+        }
+      });
+      node.level = level;
+    });
+
     const graph = {
-      // Remove nodes that don't actually connect to anything.
-      nodes: nodes.filter(node => edgesByNodeId[node.id]),
+      nodes,
       edges
     };
-    const height = `${window.innerHeight - 100}px`;
+
+    const height = `${window.innerHeight - 150}px`;
     const options = {
       clickToUse: true,
       layout: {
         randomSeed: 1,
-        improvedLayout: true
+        // improvedLayout: true
         // clusterThreshold: 150,
+        hierarchical: {
+          enabled: true,
+          direction: 'UD',
+          sortMethod: 'hubsize',
+          nodeSpacing: 300
+          // levelSeparation: 300,
+        }
       },
       edges: {
         color: '#000000',
@@ -119,6 +159,7 @@ class MultiPathNetworkGraphModal extends Component {
     };
     return (
       <Modal size="fullscreen" closeIcon open={open} onClose={onClose}>
+        {header ? <Modal.Header>{header}</Modal.Header> : null}
         <Modal.Content>
           <Graph events={events} graph={graph} options={options} />
         </Modal.Content>
@@ -128,11 +169,9 @@ class MultiPathNetworkGraphModal extends Component {
 }
 
 MultiPathNetworkGraphModal.propTypes = {
+  header: PropTypes.string,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  options: PropTypes.array,
-  paths: PropTypes.array,
-  scenarioId: PropTypes.any,
   slides: PropTypes.array
 };
 

@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { connect } from 'react-redux';
 import { Button, Header, List, Segment } from '@components/UI';
-import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { getResponse } from '@actions/response';
 
@@ -73,20 +72,13 @@ class Display extends Component {
   }
 
   render() {
-    const { paths, prompt, recallId, required, responseId, run } = this.props;
+    const { paths, prompt, recallId, responseId, run } = this.props;
     const { value: previousValue } = this.state;
     const { onClick } = this;
-    // const fulfilled = value ? true : false;
-    const header = (
-      <React.Fragment>
-        {prompt} {required && <PromptRequiredLabel fulfilled={false} />}
-      </React.Fragment>
-    );
-
     return paths && paths.length ? (
       <Segment>
-        <Header as="h3">{header}</Header>
-        {recallId && <ResponseRecall run={run} recallId={recallId} />}
+        {prompt ? <Header as="h3">{prompt}</Header> : null}
+        {recallId ? <ResponseRecall run={run} recallId={recallId} /> : null}
 
         <List>
           {paths.map(path => {
@@ -98,6 +90,7 @@ class Display extends Component {
               <List.Item key={hash(path)}>
                 <Button
                   fluid
+                  color="green"
                   content={display}
                   name={responseId}
                   value={value}

@@ -14,15 +14,13 @@ import {
   Segment
 } from '@components/UI';
 import { v4 as uuid } from 'uuid';
-// TODO: can we use this for shouldComponentUpdate?
-// import hash from 'object-hash';
-// import { diff } from 'deep-object-diff';
 import Storage from '@utils/Storage';
 import AddSlideMessage from '@components/AddSlideMessage';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
+import MultiPathNetworkGraphModal from '@components/Slide/Components/MultiPathResponse/MultiPathNetworkGraphModal';
 import SlideComponents from '@components/SlideComponents';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { getSlides } from '@actions/scenario';
@@ -53,11 +51,13 @@ class Slides extends React.Component {
       }
     );
 
+    const graphOpen = true;
     const isReady = false;
     const slides = [];
 
     this.state = {
       activeSlideIndex,
+      graphOpen,
       isReady,
       minimized,
       slides
@@ -95,23 +95,6 @@ class Slides extends React.Component {
       });
     }
   }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //     console.log("shouldComponentUpdate");
-  //     // console.log(
-  //     //     hash(this.props), hash(nextProps),
-  //     //     hash(this.props) === hash(nextProps) ? 'PROPS UNCHANGED' : 'PROPS CHANGED',
-  //     //     diff(this.props, nextProps)
-
-  //     // );
-  //     // console.log(
-  //     //     hash(this.state), hash(nextState),
-  //     //     hash(this.state) === hash(nextState) ? 'STATE UNCHANGED' : 'STATE CHANGED',
-  //     //     diff(this.state, nextState)
-  //     // );
-  //     return hash(this.props) !== hash(nextProps) ||
-  //             hash(this.state) !== hash(nextState);
-  // }
 
   componentDidUpdate() {
     const { activeSlideIndex, minimized } = this.state;
@@ -329,8 +312,8 @@ class Slides extends React.Component {
       onSlideMinMaxChange,
       onSlideOrderChange
     } = this;
-    const { scenarioId } = this.props;
-    const { activeSlideIndex, isReady, minimized } = this.state;
+    const { scenarioId, title } = this.props;
+    const { activeSlideIndex, graphOpen, isReady, minimized } = this.state;
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
     const minMaxText = `${minimized ? 'Preview' : 'Outline'} slides`;
@@ -339,6 +322,15 @@ class Slides extends React.Component {
     const noSlide = !slides[activeSlideIndex];
     const promptToAddSlide = noSlide ? (
       <AddSlideMessage onClick={onSlideAdd} />
+    ) : null;
+
+    const multiPathNetworkGraphModal = graphOpen ? (
+      <MultiPathNetworkGraphModal
+        header={title}
+        onClose={() => this.setState({ graphOpen: false })}
+        open={graphOpen}
+        slides={slides}
+      />
     ) : null;
 
     return (
@@ -350,14 +342,15 @@ class Slides extends React.Component {
                 <Grid.Row>
                   <Menu icon borderless className="em__height">
                     <Popup
+                      size="small"
                       content="Add a slide"
                       trigger={
                         <Menu.Item name="Add a slide" onClick={onSlideAdd}>
                           <Icon
+                            size="large"
                             name="plus square outline"
                             className="em__icon-group-margin"
                           />
-                          Add a slide
                         </Menu.Item>
                       }
                     />
@@ -367,6 +360,22 @@ class Slides extends React.Component {
                         position="right"
                       >
                         <Popup
+                          size="small"
+                          content="View slide graph"
+                          trigger={
+                            <Menu.Item
+                              name="Add a slide"
+                              onClick={() => this.setState({ graphOpen: true })}
+                            >
+                              <Icon
+                                name="fork"
+                                style={{ transform: 'rotate(90deg)' }}
+                              />
+                            </Menu.Item>
+                          }
+                        />
+                        <Popup
+                          size="small"
                           content={minMaxText}
                           trigger={
                             <Menu.Item
@@ -380,6 +389,7 @@ class Slides extends React.Component {
                       </Menu.Menu>
                     )}
                   </Menu>
+                  {multiPathNetworkGraphModal}
                 </Grid.Row>
 
                 <Segment className="slides__list-inner-container">
@@ -519,13 +529,15 @@ Slides.propTypes = {
   }),
   slides: PropTypes.array,
   scenarioId: PropTypes.node,
-  setActiveSlide: PropTypes.func
+  setActiveSlide: PropTypes.func,
+  title: PropTypes.string
 };
 
 const mapStateToProps = state => {
-  const { slides } = state.scenario;
+  const { slides, title } = state.scenario;
   return {
-    slides
+    slides,
+    title
   };
 };
 
