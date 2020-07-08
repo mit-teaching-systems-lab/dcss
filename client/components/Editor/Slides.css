@@ -38,8 +38,14 @@
   height: 100% !important;
 }
 
+.slides__list-card {
+  z-index: 5 !important;
+}
+
 .slides__list-card:hover {
-  transform: translateY(0px) !important;
+  z-index: 5 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 
 .slides__list-card-content-header {
