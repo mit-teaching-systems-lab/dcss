@@ -51,7 +51,7 @@ class Slides extends React.Component {
       }
     );
 
-    const graphOpen = true;
+    const graphOpen = false;
     const isReady = false;
     const slides = [];
 

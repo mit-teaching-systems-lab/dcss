@@ -49,8 +49,15 @@ class MultiPathNetworkGraphModal extends Component {
                   //   return accum;
                   // }
                   if (to !== from) {
-                    edgesByNodeId[from] = true;
-                    edgesByNodeId[to] = true;
+                    const edge = {
+                      from,
+                      to,
+                      label
+                    };
+
+                    edgesByNodeId[from] = edge;
+                    edgesByNodeId[to] = edge;
+
                     accum.push({
                       from,
                       to,
