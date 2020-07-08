@@ -48,6 +48,7 @@ const SlideComponents = ({
             const { Display } = Components[type];
             return (
               <Display
+                isEmbeddedInSVG={true}
                 key={`component-svg-${index}`}
                 persisted={{}}
                 {...value}

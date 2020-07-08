@@ -244,7 +244,12 @@ class Display extends Component {
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
+  isEmbeddedInSVG: PropTypes.bool,
   getResponse: PropTypes.func,
   isRecording: PropTypes.bool,
   onResponseChange: PropTypes.func,

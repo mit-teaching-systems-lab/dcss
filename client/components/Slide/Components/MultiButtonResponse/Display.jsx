@@ -116,7 +116,12 @@ class Display extends React.Component {
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
+  isEmbeddedInSVG: PropTypes.bool,
   buttons: PropTypes.array,
   getResponse: PropTypes.func,
   persisted: PropTypes.object,

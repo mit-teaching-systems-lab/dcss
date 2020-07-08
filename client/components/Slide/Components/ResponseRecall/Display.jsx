@@ -149,7 +149,12 @@ class Display extends Component {
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
+  isEmbeddedInSVG: PropTypes.bool,
   getResponse: PropTypes.func,
   responsesById: PropTypes.object,
   // This is named `recallId`, instead of `responseId`

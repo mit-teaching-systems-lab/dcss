@@ -46,7 +46,12 @@ class Display extends React.Component {
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
+  isEmbeddedInSVG: PropTypes.bool,
   color: PropTypes.string.isRequired,
   html: PropTypes.string.isRequired,
   open: PropTypes.bool,

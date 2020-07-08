@@ -23,7 +23,12 @@ class Display extends Component {
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
+  isEmbeddedInSVG: PropTypes.bool,
   html: PropTypes.string.isRequired,
   type: PropTypes.oneOf([type]).isRequired
 };

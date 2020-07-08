@@ -82,6 +82,7 @@ class Display extends Component {
 
   render() {
     const {
+      isEmbeddedInSVG,
       prompt,
       placeholder,
       recallId,
@@ -102,21 +103,31 @@ class Display extends Component {
       <Segment>
         <Header as="h3">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
-        <Form>
-          <Form.TextArea
-            name={responseId}
-            placeholder={placeholder}
-            onFocus={onFocus}
-            onChange={onChange}
-            defaultValue={value}
-          />
-        </Form>
+
+        {isEmbeddedInSVG ? (
+          <Form.TextArea />
+        ) : (
+          <Form>
+            <Form.TextArea
+              name={responseId}
+              placeholder={placeholder}
+              onFocus={onFocus}
+              onChange={onChange}
+              defaultValue={value}
+            />
+          </Form>
+        )}
       </Segment>
     );
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
+  isEmbeddedInSVG: PropTypes.bool,
   getResponse: PropTypes.func,
   onResponseChange: PropTypes.func,
   persisted: PropTypes.object,
