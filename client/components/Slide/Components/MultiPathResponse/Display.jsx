@@ -1,13 +1,14 @@
 import { type } from './meta';
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
+import { connect } from 'react-redux';
 import { Button, Header, List, Segment } from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
-import { connect } from 'react-redux';
 import { getResponse } from '@actions/response';
 
-class Display extends React.Component {
+class Display extends Component {
   constructor(props) {
     super(props);
 
@@ -30,15 +31,9 @@ class Display extends React.Component {
       return;
     }
 
-    let {
-      getResponse,
-      onResponseChange,
-      persisted = {},
-      responseId,
-      run
-    } = this.props;
+    let { getResponse, persisted = {}, responseId, run } = this.props;
 
-    let { name = responseId, value = '' } = persisted;
+    let { value = '' } = persisted;
 
     if (!value && run.id) {
       const previous = await getResponse({
@@ -52,7 +47,6 @@ class Display extends React.Component {
     }
 
     if (value) {
-      onResponseChange({}, { name, value, isFulfilled: true });
       this.setState({ value });
     }
   }
@@ -64,7 +58,9 @@ class Display extends React.Component {
 
     const { created_at } = this;
     const { onResponseChange, recallId } = this.props;
+
     onResponseChange(event, {
+      hasOwnNavigation: true,
       created_at,
       ended_at: new Date().toISOString(),
       name,
@@ -77,30 +73,31 @@ class Display extends React.Component {
   }
 
   render() {
-    const { buttons, prompt, recallId, required, responseId, run } = this.props;
+    const { paths, prompt, recallId, required, responseId, run } = this.props;
     const { value, value: previousValue } = this.state;
     const { onClick } = this;
-    const fulfilled = value ? true : false;
+    // const fulfilled = value ? true : false;
     const header = (
       <React.Fragment>
-        {prompt} {required && <PromptRequiredLabel fulfilled={fulfilled} />}
+        {prompt} {required && <PromptRequiredLabel fulfilled={false} />}
       </React.Fragment>
     );
 
-    return buttons && buttons.length ? (
+    return paths && paths.length ? (
       <Segment>
         <Header as="h3">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
+
         <List>
-          {buttons.map(({ display, value }, index) => {
+          {paths.map(path => {
+            const { display, value } = path;
             const selectedIcon =
               previousValue === value ? { icon: 'checkmark' } : {};
 
             return (
-              <List.Item key={`list.item-${index}`}>
+              <List.Item key={hash(path)}>
                 <Button
                   fluid
-                  key={`button-${index}`}
                   content={display}
                   name={responseId}
                   value={value}
@@ -116,22 +113,34 @@ class Display extends React.Component {
   }
 }
 
+Display.defaultProps = {
+  isEmbeddedInSVG: false
+};
+
 Display.propTypes = {
-  buttons: PropTypes.array,
+  isEmbeddedInSVG: PropTypes.bool,
+  asSVG: PropTypes.bool,
+  cohort: PropTypes.object,
+  paths: PropTypes.array,
   getResponse: PropTypes.func,
+  // match: PropTypes.shape({
+  //   path: PropTypes.string,
+  //   params: PropTypes.object
+  // }).isRequired,
+  onResponseChange: PropTypes.func,
   persisted: PropTypes.object,
   prompt: PropTypes.string,
   recallId: PropTypes.string,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  onResponseChange: PropTypes.func,
+  scenario: PropTypes.object,
   type: PropTypes.oneOf([type]).isRequired
 };
 
 const mapStateToProps = state => {
-  const { run } = state;
-  return { run };
+  const { cohort, run, scenario } = state;
+  return { cohort, run, scenario };
 };
 
 const mapDispatchToProps = dispatch => ({

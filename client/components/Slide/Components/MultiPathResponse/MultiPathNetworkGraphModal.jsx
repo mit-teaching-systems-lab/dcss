@@ -1,198 +1,126 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Graph from 'react-graph-vis';
+import { connect } from 'react-redux';
 import { Modal } from '@components/UI';
-import Cytoscape from 'cytoscape';
-import CytoscapeGraph from 'react-cytoscapejs';
-import dagre from 'cytoscape-dagre';
-import hash from 'object-hash';
 
-Cytoscape.use(dagre);
+function makeNodeLabel(index, title) {
+  const quotedSlideTitle = title ? `\n"${title}"` : ``;
+  return `Slide #${index} ${quotedSlideTitle}`.trim();
+}
 
-
-class MultiPathNetworkGraphModal extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isReady: false,
-      slides: []
-    };
-  }
-
-  async componentDidMount() {
-    const { scenarioId } = this.props;
-    const { slides: unfiltered, status } = await (
-      await fetch(`/api/scenarios/${scenarioId}/slides`)
-    ).json();
-    if (status === 200) {
-      const slides = unfiltered.filter(({is_finish}) => !is_finish);
-      this.setState({
-        isReady: true,
-        slides
-      });
-    }
-  }
-
+class MultiPathNetworkGraphModal extends Component {
   render() {
+    const { onClose, open, slides } = this.props;
 
-    const { isReady, slides } = this.state;
-    const { onClose, open, options } = this.props;
-
-    if (!isReady) {
+    if (!slides || (slides && !slides.length)) {
       return null;
     }
 
-    const nodes = options.map(({ text: label, value }) => {
-      const id = value;
-      return { data: { id, label } };
-    });
+    const nodesById = {};
+    const edgesByNodeId = {};
+    const { nodes, edges } = slides.reduce(
+      (accum, slide, index) => {
+        const { id, title } = slide;
+        const label = makeNodeLabel(index + 1, title);
 
-    const edges = slides.reduce((accum, slide, index) => {
-      const source = slide.id;
-      const edgesFromNode = slide.components.reduce((accum, component) => {
-        if (component.paths && Array.isArray(component.paths)) {
-          accum.push(
-            ...component.paths.reduce((accum, {id}) => {
-              const target = String(id);
-              if (target !== source) {
-                accum.push({ data: {source, target}});
-              }
-              return accum;
-            }, [])
-          );
-        }
+        nodesById[id] = true;
+        accum.nodes.push({
+          id,
+          label
+        });
+
+        const from = id;
+        accum.edges.push(
+          ...slide.components.reduce((accum, component) => {
+            if (component.paths && Array.isArray(component.paths)) {
+              accum.push(
+                ...component.paths.reduce((accum, path) => {
+                  const { display: label, value } = path;
+                  if (!value) {
+                    return accum;
+                  }
+                  const to = value;
+                  // When a target slide has been deleted, but the component has not
+                  // been editted (which would purge the deleted target, there may be
+                  // stale targets, this will ensure that we don't try to render an
+                  // edge to a node that doesn't exist.
+                  // if (!nodesById[to]) {
+                  //   return accum;
+                  // }
+                  if (to !== from) {
+                    edgesByNodeId[from] = true;
+                    edgesByNodeId[to] = true;
+                    accum.push({
+                      from,
+                      to,
+                      label,
+                      length: 150
+                    });
+                  }
+                  return accum;
+                }, [])
+              );
+            }
+            return accum;
+          }, [])
+        );
         return accum;
-      }, []);
-      accum.push(...edgesFromNode);
-      return accum;
-    }, []);
-
-    const elements = [
-      ...nodes,
-      ...edges
-    ];
-
-    const style = {
-      width: '100%',
-      height: window.innerHeight - 100
-    };
-
-    const layout = {
-      name: 'dagre',
-      // the separation between adjacent nodes in the same rank
-      nodeSep: 200,
-      // the separation between adjacent edges in the same rank
-      edgeSep: 200,
-      // the separation between each rank in the layout
-      // rankSep: 1,
-      // 'TB' for top to bottom flow, 'LR' for left to right,
-      // rankDir: undefined,
-      // Type of algorithm to assign a rank to each node in the input graph.
-      // Possible values: 'network-simplex', 'tight-tree' or 'longest-path'
-      ranker: 'network-simplex',
-      // ranker: 'tight-tree',
-      // number of ranks to keep between the source and target of the edge
-      minLen(edge) { return 2; },
-      // higher weight edges are generally made shorter and straighter than lower weight edges
-      edgeWeight(edge) { return 1; },
-      //
-      // general layout options
-      // whether to fit to viewport
-      fit: false,
-      // fit padding
-      padding: 30,
-      // Applies a multiplicative factor (>0) to expand or compress the overall
-      // area that the nodes take up
-      spacingFactor: undefined,
-      // whether labels should be included in determining the space used by a node
-      nodeDimensionsIncludeLabels: false,
-      // whether to transition the node positions
-      animate: false,
-      // whether to animate specific nodes when animation is on;
-      // non-animated nodes immediately go to their final positions
-      // animateFilter( node, i ){ return true; },
-      // duration of animation in ms if enabled
-      // animationDuration: 500,
-      // easing of animation if enabled
-      // animationEasing: undefined,
-      // constrain layout bounds; { x1, y1, x2, y2 } or { x1, y1, w, h }
-      // boundingBox: { x1: 0, y1: 0, w: 1600, h: style.height },
-      // a function that applies a transform to the final node position
-      // transform(node, pos) {
-      //   return pos;
-      // },
-      ready() {
-        // console.log('ready');
-      }, // on layoutready
-      stop() {
-        // console.log('stop');
-      } // on layoutstop
-    };
-
-    const stylesheet = [
-      {
-        selector: 'node',
-        style: {
-          // 'content': 'data(label)',
-          'label': 'data(label)',
-          'font-size': '12px',
-          'background-color': '#555',
-          'color': '#fff',
-          'overlay-padding': '6px',
-          'shape': 'ellipse',
-          'text-background-color': '#555',
-          'text-background-opacity': 1,
-          'text-background-shape': 'round-rectangle',
-          'text-border-color': '#555',
-          'text-border-width': 20,
-          'text-border-opacity': 1,
-          'text-halign': 'center',
-          'text-valign': 'center',
-          'z-index': '10',
-        }
       },
       {
-        selector: 'edge',
-        style: {
-          'curve-style': 'bezier',
-          'width': 4,
-          'target-arrow-shape': 'triangle',
-          'line-color': '#555',
-          'target-arrow-color': '#555',
-          'opacity': 0.5
-        }
+        nodes: [],
+        edges: []
       }
-    ];
+    );
 
-
-    // const zoom = -2;
-    const cy = (cy) => {
-      cy.on('click', (event) => {
-        if (event.target.id) {
-          console.log('click', event.target.id())
+    const graph = {
+      // Remove nodes that don't actually connect to anything.
+      nodes: nodes.filter(node => edgesByNodeId[node.id]),
+      edges
+    };
+    const height = `${window.innerHeight - 100}px`;
+    const options = {
+      clickToUse: true,
+      layout: {
+        randomSeed: 1,
+        improvedLayout: true
+        // clusterThreshold: 150,
+      },
+      edges: {
+        color: '#000000',
+        smooth: {
+          enabled: true,
+          type: 'horizontal',
+          roundness: 1
         }
-      })
+      },
+
+      nodes: {
+        color: 'rgb(248, 248, 249)',
+        shape: 'box',
+        margin: 10,
+        font: {
+          size: 12,
+          color: '#000'
+        }
+      },
+      width: '100%',
+      height,
+      physics: {
+        enabled: false
+      }
     };
 
-    const cytoscapeGraphProps = {
-      autounselectify: true,
-      boxSelectionEnabled: false,
-      cy,
-      elements,
-      layout,
-      stylesheet,
-      style
+    const events = {
+      select(event) {
+        // eslint-disable-next-line no-console
+        console.log(event);
+      }
     };
-
     return (
-      <Modal
-        size="fullscreen"
-        closeIcon
-        open={open}
-        onClose={onClose}
-      >
+      <Modal size="fullscreen" closeIcon open={open} onClose={onClose}>
         <Modal.Content>
-          <CytoscapeGraph {...cytoscapeGraphProps} />
+          <Graph events={events} graph={graph} options={options} />
         </Modal.Content>
       </Modal>
     );
@@ -204,7 +132,18 @@ MultiPathNetworkGraphModal.propTypes = {
   open: PropTypes.bool,
   options: PropTypes.array,
   paths: PropTypes.array,
-  scenarioId: PropTypes.node,
+  scenarioId: PropTypes.any,
+  slides: PropTypes.array
 };
 
-export default MultiPathNetworkGraphModal;
+const mapStateToProps = state => {
+  const slides = state.scenario.slides.filter(slide => !slide.is_finish);
+  return {
+    slides
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(MultiPathNetworkGraphModal);

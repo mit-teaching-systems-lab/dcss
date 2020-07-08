@@ -10,16 +10,9 @@
   box-shadow: -1px -1px 0 1px rgb(245, 245, 245) !important;
 }
 
-.mpr__em-fixed-width {
-  width: 100px !important;
-  /*margin-right: 0px;  */
-}
-
-
 .mpr__cursor-grab {
   cursor: grab !important;
 }
-
 
 .mpr__slide-preview-constraint {
   width: 150px !important;
@@ -27,12 +20,20 @@
   max-width: 150px !important;
 }
 
-.mpr__goto-slide-constraint {
-  width: 300px !important;
-  min-width: 300px !important;
-  max-width: 300px !important;
+.mpr__goto-slide-title-constraint {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
 }
 
+.mpr__goto-slide-constraint {
+  width: 240px !important;
+  min-width: 240px !important;
+  max-width: 240px !important;
+}
+
+
+/*
 #cy {
   width: 100%;
   height: 100%;
@@ -41,3 +42,16 @@
   top: 0;
   z-index: 999;
 }
+
+.__________cytoscape_container .menu {
+  font-size: 0.75em !important;
+}
+.__________cytoscape_container .button {
+  font-size: 0.75em !important;
+}
+
+.mpng__node,
+.mpng__node .content .button {
+  padding: 0.6em !important;
+}
+*/

@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Button, Container, Dropdown, Form, Icon, Input, Modal, Table } from '@components/UI';
+import {
+  Button,
+  Container,
+  Dropdown,
+  Form,
+  Icon,
+  Input,
+  Table
+} from '@components/UI';
 import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
@@ -16,9 +24,8 @@ class MultiPathResponseEditor extends React.Component {
   constructor(props) {
     super(props);
 
-    const slideNumber = this.props.slideIndex + 1;
-    const id = null;
     const {
+      header = '',
       /*
       {
           display: "Text on button",
@@ -28,10 +35,9 @@ class MultiPathResponseEditor extends React.Component {
       paths = [
         {
           display: `Go to...`,
-          id,
+          value: null
         }
       ],
-      header = '',
       prompt = '',
       recallId = '',
       responseId = ''
@@ -40,16 +46,16 @@ class MultiPathResponseEditor extends React.Component {
     const open = false;
 
     this.state = {
+      isReady: false,
       header,
       prompt,
       paths,
       open,
       recallId,
-      responseId,
-      slideNumber,
-      slides: []
+      responseId
     };
 
+    this.slides = [];
     this.onPathAddClick = this.onPathAddClick.bind(this);
     this.onPathDeleteClick = this.onPathDeleteClick.bind(this);
     this.onPathDetailChange = this.onPathDetailChange.bind(this);
@@ -67,13 +73,13 @@ class MultiPathResponseEditor extends React.Component {
 
   async componentDidMount() {
     const { scenarioId } = this.props;
-    const { slides: unfiltered, status } = await (
-      await fetch(`/api/scenarios/${scenarioId}/slides`)
-    ).json();
+    const { slides: unfiltered, status } = await (await fetch(
+      `/api/scenarios/${scenarioId}/slides`
+    )).json();
     if (status === 200) {
-      const slides = unfiltered.filter(({is_finish}) => !is_finish);
+      this.slides = unfiltered.filter(({ is_finish }) => !is_finish);
       this.setState({
-        slides
+        isReady: true
       });
     }
   }
@@ -81,18 +87,35 @@ class MultiPathResponseEditor extends React.Component {
   componentWillUnmount() {
     clearTimeout(this.timeout);
 
-    const { header, prompt, paths, recallId, responseId } = this.props.value;
-    const lastProps = {
-      header,
-      prompt,
-      paths,
-      recallId,
-      responseId
-    };
+    // This is disabled until it's failures can be investigated.
+    //
+    //
+    // const { header, prompt, paths, recallId, responseId } = this.props.value;
+    // const propsValue = {
+    //   header,
+    //   prompt,
+    //   paths,
+    //   recallId,
+    //   responseId
+    // };
 
-    if (hash(this.state) !== hash(lastProps)) {
-      this.updateState();
-    }
+    // let stateValue;
+
+    // {
+    //   const { header, prompt, paths, recallId, responseId } = this.state;
+
+    //   stateValue = {
+    //     header,
+    //     prompt,
+    //     paths,
+    //     recallId,
+    //     responseId
+    //   };
+    // }
+
+    // if (hash(stateValue) !== hash(propsValue)) {
+    //   this.updateState();
+    // }
   }
 
   delayedUpdateState() {
@@ -126,7 +149,7 @@ class MultiPathResponseEditor extends React.Component {
     const { paths } = this.state;
     paths.push({
       display: '',
-      id: null
+      value: null
     });
     // This is not a typed text input, so there should be no delay
     // applied to saving this state to the server.
@@ -146,8 +169,6 @@ class MultiPathResponseEditor extends React.Component {
   }
 
   onPathDetailChange(event, { index, name, value }) {
-    console.log({ index, name, value });
-
     if (value === -1) {
       return;
     }
@@ -170,25 +191,32 @@ class MultiPathResponseEditor extends React.Component {
     this.setState({ [name]: value }, this.delayedUpdateState);
   }
 
-  preventEmptyButtonField(index, options) {
+  preventEmptyButtonField(index, options, event) {
     const { paths } = this.state;
 
-    // If the id field is presently empty/has not been assigned,
+    // If the value field is presently empty/has not been assigned,
     // there's nothing we can do, so bail out immediately.
-    if (!paths[index].id) {
+    if (!paths[index].value) {
       return;
     }
 
     // If the Display field is presently empty,
-    // but the id field is not, kindly fill it with something.
+    // but the value field is not, kindly fill it with something.
     if (!paths[index].display.trim()) {
-      const { text } = options.find(option => option.value === paths[index].id) || {};
-      paths[index].display = `Go to ${text}`;
+      const { text } =
+        options.find(option => option.value === paths[index].value) || {};
+
+      if (text) {
+        paths[index].display = `Go to ${text}`;
+      }
     }
 
     // This is not a typed text input, so there should be no delay
     // applied to saving this state to the server.
-    this.setState({ paths }, this.updateState);
+    this.setState(
+      { paths },
+      event.type === 'blur' ? this.delayedUpdateState : () => {}
+    );
   }
 
   onViewGraphClick() {
@@ -207,10 +235,16 @@ class MultiPathResponseEditor extends React.Component {
       onChange,
       onViewGraphClick,
       preventEmptyButtonField,
+      slides,
       updateState
     } = this;
-    const { scenarioId, slideIndex } = this.props;
-    const { header, prompt, paths, open, recallId, slides } = this.state;
+    const {
+      scenarioId,
+      slideIndex,
+      value: { id }
+    } = this.props;
+    const { header, prompt, paths, open, recallId } = this.state;
+
     const slidesAsOptions = slides.map((slide, index) => {
       const nonZeroIndex = index + 1;
       const quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
@@ -220,7 +254,7 @@ class MultiPathResponseEditor extends React.Component {
         <Table celled striped>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>
+              <Table.HeaderCell className="mpr__slide-preview-constraint mpr__goto-slide-title-constraint">
                 Slide #{nonZeroIndex}
                 {quotedSlideTitle}
               </Table.HeaderCell>
@@ -228,17 +262,14 @@ class MultiPathResponseEditor extends React.Component {
           </Table.Header>
           <Table.Body>
             <Table.Row>
-            {/*
+              {/*
               <Table.Cell verticalAlign="top">
                 Slide #{nonZeroIndex}
                 {quotedSlideTitle}
               </Table.Cell>
             */}
               <Table.Cell className="mpr__slide-preview-constraint">
-                <SlideComponents
-                  asSVG={true}
-                  components={slide.components}
-                />
+                <SlideComponents asSVG={true} components={slide.components} />
               </Table.Cell>
             </Table.Row>
           </Table.Body>
@@ -252,27 +283,35 @@ class MultiPathResponseEditor extends React.Component {
         value
       };
     });
-    const options = slidesAsOptions.filter((options, index) => slideIndex !== index);
-    const defaultValue = null;
+    const options = slidesAsOptions.filter(
+      (options, index) => slideIndex !== index
+    );
     const multiPathNetworkGraphModal = open ? (
       <MultiPathNetworkGraphModal
         onClose={onViewGraphClick}
         open={open}
-        options={slidesAsOptions}
-        scenarioId={scenarioId}
+        slides={slides}
       />
     ) : null;
+
+
+    const autoComplete = 'off';
+    const fluid = true;
+    const name = 'display';
+
     return slides.length ? (
       <Form>
         <Container fluid>
           <ResponseRecall
+            isEmbedded={true}
             value={{ recallId }}
             slideIndex={slideIndex}
             scenarioId={scenarioId}
             onChange={onRecallChange}
           />
+
           <Form.TextArea
-            label="Text to be displayed before paths:"
+            label="Enter text content to display before the navigation buttons:"
             name="prompt"
             value={prompt}
             onChange={onChange}
@@ -283,9 +322,7 @@ class MultiPathResponseEditor extends React.Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell className="mpr__thead-background" />
-                <Table.HeaderCell>
-                  Button display
-                </Table.HeaderCell>
+                <Table.HeaderCell>Button display</Table.HeaderCell>
                 <Table.HeaderCell className="mpr__goto-slide-constraint">
                   Destination slide
                 </Table.HeaderCell>
@@ -302,17 +339,34 @@ class MultiPathResponseEditor extends React.Component {
               }}
             >
               {paths.map((path, index) => {
-                const { display, id } = path;
-                const rowKey = hash({ row: index, path});
-                const inputKey = hash({ input: index, path});
-                const dropdownKey = hash({ dropdown: index, path});
-                const onBlurOrFocus = preventEmptyButtonField.bind(this, index, options);
-                const defaultValue = id;
+                const { display, value: defaultValue } = path;
+                const onBlurOrFocus = preventEmptyButtonField.bind(
+                  this,
+                  index,
+                  options
+                );
+                const key = hash({ id, index });
+
+                const inputProps = {
+                  autoComplete,
+                  fluid,
+                  name,
+                  index,
+                  value: display,
+                  onBlur: onBlurOrFocus,
+                  onFocus: onBlurOrFocus,
+                  onChange: onPathDetailChange,
+                  key: `button-diplay-${key}`,
+                };
+
+                if (index === paths.length - 1) {
+                  inputProps.autoFocus = true;
+                }
+
                 return (
-                  <Table.Row className="mpr__cursor-grab" key={rowKey}>
+                  <Table.Row className="mpr__cursor-grab" key={`row-${key}`}>
                     <Table.Cell collapsing>
                       <EditorMenu
-                        className="mpr__em-fixed-width"
                         type="path"
                         items={{
                           save: {
@@ -334,12 +388,12 @@ class MultiPathResponseEditor extends React.Component {
                         onBlur={onBlurOrFocus}
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
-                        key={inputKey}
+                        key={`button-diplay-${key}`}
                       />
                     </Table.Cell>
                     <Table.Cell>
                       <Dropdown
-                        name="id"
+                        name="value"
                         closeOnChange
                         fluid
                         selection
@@ -349,7 +403,7 @@ class MultiPathResponseEditor extends React.Component {
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
                         options={options}
-                        key={dropdownKey}
+                        key={`dropdown-value-${key}`}
                       />
                     </Table.Cell>
                   </Table.Row>
@@ -370,7 +424,10 @@ class MultiPathResponseEditor extends React.Component {
                   </Button>
                   <Button basic icon floated="right" onClick={onViewGraphClick}>
                     <Icon.Group size="large" className="em__icon-group-margin">
-                      <Icon name="fork" style={{transform: 'rotate(90deg)'}}/>
+                      <Icon
+                        name="fork"
+                        style={{ transform: 'rotate(90deg)' }}
+                      />
                     </Icon.Group>
                     View slide graph
                   </Button>
@@ -384,7 +441,7 @@ class MultiPathResponseEditor extends React.Component {
             onBlur={updateState}
           />
         </Container>
-      {multiPathNetworkGraphModal}
+        {multiPathNetworkGraphModal}
       </Form>
     ) : null;
   }
@@ -405,7 +462,5 @@ MultiPathResponseEditor.propTypes = {
     type: PropTypes.oneOf([type])
   })
 };
-
-
 
 export default MultiPathResponseEditor;
