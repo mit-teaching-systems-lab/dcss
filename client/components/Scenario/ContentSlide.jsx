@@ -234,11 +234,13 @@ class ContentSlide extends React.Component {
     }
 
     const onResponseChange = (event, data) => {
-      onInterceptResponseChange(event, data);
+      if (this.isScenarioRun) {
+        onInterceptResponseChange(event, data);
 
-      // Both must agree!!
-      if (hasOwnNavigation && data.hasOwnNavigation) {
-        onGotoClick(event, data);
+        // Both must agree!!
+        if (hasOwnNavigation && data.hasOwnNavigation) {
+          onGotoClick(event, data);
+        }
       }
     };
 
