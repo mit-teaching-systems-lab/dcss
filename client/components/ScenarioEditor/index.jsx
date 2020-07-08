@@ -247,7 +247,7 @@ class ScenarioEditor extends Component {
 
                 {scenarioId === 'new' ? (
                   <Button type="submit" primary onClick={onSubmit}>
-                    Save
+                    Create this scenario
                   </Button>
                 ) : null}
               </Grid.Column>
