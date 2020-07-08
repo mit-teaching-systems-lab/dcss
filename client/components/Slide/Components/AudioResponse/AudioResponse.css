@@ -51,3 +51,8 @@ audio {
     visibility: visible;
   }
 }
+
+
+.ar__instruction {
+  font-size: 12px !important;
+}

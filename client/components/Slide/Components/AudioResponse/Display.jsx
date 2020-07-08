@@ -178,8 +178,8 @@ class Display extends Component {
         <Header as="h3">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
 
-        <Grid columns={2}>
-          <Grid.Row>
+        <Grid>
+          <Grid.Row columns={2}>
             <Grid.Column width={3}>
               {!isRecording ? (
                 <Button
@@ -214,6 +214,11 @@ class Display extends Component {
             </Grid.Column>
             <Grid.Column>
               <AudioPlayer src={src} />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row stretched>
+            <Grid.Column className="ar__instruction">
+              Click the microphone to record your response. When you&apos;re done, click the microphone again to stop recording.
             </Grid.Column>
           </Grid.Row>
         </Grid>
