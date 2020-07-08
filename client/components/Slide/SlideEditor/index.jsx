@@ -30,6 +30,43 @@ const getDraggableStyle = (isDragging, draggableStyle) => {
   };
 };
 
+const MenuItemModeToggler = (props) => {
+  const {
+    disabled,
+    mode,
+    onToggle,
+    type
+  } = props;
+
+  const iconProps = mode === 'preview'
+    ? { name: 'edit outline' }
+    : { name: 'eye' };
+
+  const onClick = () => {
+    onToggle({
+      mode: mode === 'preview' ? 'edit' : 'preview'
+    });
+  }
+  return (
+    <Menu.Item
+      key="menu-item-slide-mode-toggle"
+      aria-label={`Edit ${type}`}
+      name={`edit-${type}`}
+      disabled={disabled}
+      onClick={onClick}
+    >
+      <Icon {...iconProps} />
+    </Menu.Item>
+  );
+}
+
+MenuItemModeToggler.propTypes = {
+  disabled: PropTypes.bool,
+  mode: PropTypes.string,
+  onToggle: PropTypes.func,
+  type: PropTypes.string,
+};
+
 export default class SlideEditor extends Component {
   constructor(props) {
     super(props);
@@ -275,12 +312,23 @@ export default class SlideEditor extends Component {
           this.props.onDelete(this.props.index);
         }
       },
-      editable: {
-        disabled: disabled || noSlideComponents,
-        onToggle: (event, data, { mode }) => {
-          this.setState({ mode });
-        }
-      }
+      right: [
+        <Menu.Item
+          key="menu-item-slide-duplicate"
+          name="Duplicate slide"
+          onClick={() => this.props.onDuplicate(this.props.index)}
+        >
+          <Icon name="copy outline" />
+        </Menu.Item>,
+
+        <MenuItemModeToggler
+          key="menu-item-mode-toggler"
+          type="Slide"
+          disabled={disabled || noSlideComponents}
+          mode={mode}
+          onToggle={(state) => this.setState(state)}
+        />
+      ]
     };
 
     Storage.set(this.sessionKey, {
@@ -549,5 +597,6 @@ SlideEditor.propTypes = {
   components: PropTypes.arrayOf(PropTypes.object),
   noSlide: PropTypes.bool,
   onChange: PropTypes.func,
-  onDelete: PropTypes.func
+  onDelete: PropTypes.func,
+  onDuplicate: PropTypes.func
 };
