@@ -194,15 +194,21 @@ export default class SlideEditor extends Component {
   onComponentSelectClick(type) {
     const {
       activeComponentIndex: currentActiveComponentIndex,
-      components
+      components,
+      title
     } = this.state;
 
     const activeComponentIndex = currentActiveComponentIndex + 1;
     const component = Components[type].defaultValue({
-      responseId: generateResponseId(type)
+      responseId: uuid()
     });
 
     component.id = uuid();
+
+    if (component.responseId) {
+      const prefix = title ? `${title}-` : '';
+      component.header = `${prefix}${type}-${activeComponentIndex}`;
+    }
 
     if (activeComponentIndex === components.length) {
       components.push(component);
