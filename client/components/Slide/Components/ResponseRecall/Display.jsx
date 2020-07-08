@@ -100,6 +100,18 @@ class Display extends Component {
       scenario: { slides }
     } = this.props;
 
+    const component = slides.reduce((accum, slide) => {
+      const component = slide.components.find(
+        ({ responseId }) => responseId === recallId
+      );
+      if (component) {
+        accum = component;
+      }
+      return accum;
+    }, undefined);
+
+    const prompt = (component && component.prompt) || null;
+
     // If the scenario is an active "Run":
     //      If there is a response object, but
     //      the response was skipped,
@@ -123,6 +135,7 @@ class Display extends Component {
       return (
         <Message
           floating
+          header={prompt}
           style={{
             whiteSpace: 'pre-wrap',
             overflowWrap: 'break-word'
@@ -131,15 +144,6 @@ class Display extends Component {
         />
       );
     }
-    const component = slides.reduce((accum, slide) => {
-      const component = slide.components.find(
-        ({ responseId }) => responseId === recallId
-      );
-      if (component) {
-        accum = component;
-      }
-      return accum;
-    }, undefined);
 
     let rvalue = this.isScenarioRun
       ? response
@@ -153,7 +157,7 @@ class Display extends Component {
       return null;
     }
 
-    const header = (component && component.prompt) || null;
+
 
     let content = rvalue;
 
@@ -189,7 +193,7 @@ class Display extends Component {
     return (
       <Message
         floating
-        header={header}
+        header={prompt}
         style={{
           whiteSpace: 'pre-wrap',
           overflowWrap: 'break-word'

@@ -83,7 +83,7 @@ class ResponseRecallEditor extends React.Component {
         index,
         prompt,
         responseId,
-        slide: { title }
+        slide
       } = component;
 
       const nonZeroIndex = index + 1;
@@ -94,12 +94,13 @@ class ResponseRecallEditor extends React.Component {
         return accum;
       }
 
-      const quotedSlideTitle = title ? ` "${title}"` : ``;
-      const text = `Slide #${nonZeroIndex} ${quotedSlideTitle}: "${prompt}"`;
+      const quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
+      const title = `Slide #${nonZeroIndex} ${quotedSlideTitle}`;
       const content = (
-        <ResponsePromptFormatted title={text} prompt={prompt} header={header} />
+        <ResponsePromptFormatted title={title} prompt={prompt} header={header} />
       );
 
+      const text = `Slide #${nonZeroIndex}: "${prompt}"`;
       accum.push({
         key: `recall-response-${key}`,
         text,
