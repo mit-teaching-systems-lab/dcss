@@ -133,17 +133,24 @@ export default class SlideEditor extends Component {
   }
 
   async onComponentDuplicate(index) {
-    const { components } = this.state;
+    const { components: sourceComponents, title } = this.state;
     const id = uuid();
-    const activeComponentIndex = index + 1;
-
-    const copy = Object.assign({}, components[index], { id });
+    const sourceComponent = sourceComponents[index];
+    const copy = Object.assign({}, sourceComponent, { id });
 
     if (copy.responseId) {
       copy.responseId = uuid();
+      copy.header = `${sourceComponent.header} (COPY)`;
     }
+    const components = [];
 
-    components.splice(index, 0, copy);
+    for (let i = 0; i > sourceComponents.length; i++) {
+      components.push(sourceComponents[i]);
+      if (i === index) {
+        components.push(copy);
+      }
+    }
+    const activeComponentIndex = index + 1;
 
     this.activateComponent({ components, activeComponentIndex }, () => {
       this.updateSlide();
