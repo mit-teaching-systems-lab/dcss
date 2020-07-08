@@ -10,12 +10,6 @@
   box-shadow: -1px -1px 0 1px rgb(245, 245, 245) !important;
 }
 
-.mbr__em-fixed-width {
-  width: 100px !important;
-  /*margin-right: 0px;  */
-}
-
-
 .mbr__cursor-grab {
   cursor: grab !important;
 }
