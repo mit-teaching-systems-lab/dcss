@@ -60,12 +60,16 @@
   padding: 0.5em !important;
 }
 
+.sortable__selected .slides__list-card-header-title {
+  max-width: 80px !important;
+}
+
 .slides__list-card-header-title {
   font-size: 1rem !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  max-width: 80px !important;
+  max-width: 110px !important;
 }
 
 .slides__list-card-content > .header > .normal {
