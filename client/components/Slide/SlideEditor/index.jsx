@@ -121,14 +121,16 @@ export default class SlideEditor extends Component {
 
   onComponentChange(index, value) {
     const { components } = this.state;
-    Object.assign(components[index], value);
-    this.setState({ components }, () => {
-      this.updateSlide();
-      // clearTimeout(this.debouncers[index]);
-      // this.debouncers[index] = setTimeout(() => {
-      //     this.updateSlide();
-      // }, 5000);
-    });
+    if (components[index]) {
+      Object.assign(components[index], value);
+      this.setState({ components }, () => {
+        this.updateSlide();
+        // clearTimeout(this.debouncers[index]);
+        // this.debouncers[index] = setTimeout(() => {
+        //     this.updateSlide();
+        // }, 5000);
+      });
+    }
   }
 
   async onComponentDuplicate(index) {
