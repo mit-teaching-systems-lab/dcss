@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Dropdown, Form, Table } from '@components/UI';
 import { type } from './meta';
+
+
+const ResponsePromptFormatted = ({ title, prompt, header }) => {
+  return (
+    <Table celled striped>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell colSpan="2">{title}</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell collapsing>Prompt:</Table.Cell>
+          <Table.Cell>{prompt}</Table.Cell>
+        </Table.Row>
+        {header ? (
+          <Table.Row>
+            <Table.Cell collapsing>Data header:</Table.Cell>
+            <Table.Cell>{header}</Table.Cell>
+          </Table.Row>
+        ) : null}
+      </Table.Body>
+    </Table>
+  );
+};
+
+ResponsePromptFormatted.propTypes = {
+  title: PropTypes.string,
+  prompt: PropTypes.string,
+  header: PropTypes.string
+};
 
 class ResponseRecallEditor extends React.Component {
   constructor(props) {
@@ -50,13 +81,13 @@ class ResponseRecallEditor extends React.Component {
     const prompts = components.reduce((accum, component, key) => {
       const {
         header,
-        index: nonZeroIndex,
+        index,
         prompt,
         responseId,
         slide: { title }
       } = component;
 
-      const index = nonZeroIndex - 1;
+      const nonZeroIndex = index + 1;
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
@@ -67,28 +98,11 @@ class ResponseRecallEditor extends React.Component {
       const quotedSlideTitle = title ? ` "${title}"` : ``;
       const text = `Slide #${nonZeroIndex} ${quotedSlideTitle}: "${prompt}"`;
       const content = (
-        <Table celled striped>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell colSpan="2">
-                Slide #{nonZeroIndex}
-                {quotedSlideTitle}
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell collapsing>Prompt:</Table.Cell>
-              <Table.Cell>{prompt}</Table.Cell>
-            </Table.Row>
-            {header ? (
-              <Table.Row>
-                <Table.Cell collapsing>Data header:</Table.Cell>
-                <Table.Cell>{header}</Table.Cell>
-              </Table.Row>
-            ) : null}
-          </Table.Body>
-        </Table>
+        <ResponsePromptFormatted
+          title={text}
+          prompt={prompt}
+          header={header}
+        />
       );
 
       accum.push({
@@ -116,28 +130,50 @@ class ResponseRecallEditor extends React.Component {
     }
 
     const defaultValue = recallId || -1;
+    const selectResponsePromptDropdown = (
+      <Dropdown
+        fluid
+        selection
+        name="recallId"
+        defaultValue={defaultValue}
+        onChange={onChange}
+        options={prompts}
+      />
+    );
 
-    return (
+    const formFieldLabelled = (
       <Form.Field.Labelled
         style={{ marginBottom: '1rem' }}
-        label="Optionally select a participant's previous response for display in this slide: "
-        content={
-          <Dropdown
-            defaultValue={defaultValue}
-            selection
-            fluid
-            name="recallId"
-            onChange={onChange}
-            options={prompts}
-          />
-        }
+        label="Optionally display a participant's response to another prompt: "
+        content={selectResponsePromptDropdown}
       />
+    );
+
+    const selectedResponsePrompt = recallId ? (
+      prompts.find(({value}) => value === recallId).content
+    ) : null;
+
+    return this.props.isEmbedded ? (
+      <Fragment>
+        {formFieldLabelled}
+        {selectedResponsePrompt}
+      </Fragment>
+    ) : (
+      <Form>
+        {formFieldLabelled}
+        {selectedResponsePrompt}
+      </Form>
     );
   }
 }
 
+ResponseRecallEditor.defaultProps = {
+  isEmbedded: false,
+};
+
 ResponseRecallEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
+  isEmbedded: PropTypes.bool,
   recallId: PropTypes.any,
   scenarioId: PropTypes.any,
   slideIndex: PropTypes.any,
