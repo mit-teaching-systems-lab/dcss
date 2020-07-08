@@ -236,7 +236,7 @@ async function copyScenarioAsync(req, res) {
         if (component.responseId) {
           // Save the original responseId, so we can use
           // it for mapping to recallId in a second pass.
-          responseIdMap[component.responseId] = `${component.type}-${uuid()}`;
+          responseIdMap[component.responseId] = uuid();
           component.responseId = responseIdMap[component.responseId];
         }
 
