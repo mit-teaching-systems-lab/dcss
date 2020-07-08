@@ -39,28 +39,32 @@ class Scenario extends Component {
       slides: []
     };
 
+    this.hasRequiredPrompts = false;
+    this.slides = [];
+    this.slideHistory = [];
     this.slideRefs = [];
     this.slideRefIndex = -1;
     this.activateSlide = this.activateSlide.bind(this);
 
-    // if (this.isCohortScenarioRun) {
-    //   Storage.set(`cohort/${cohortId}/run/${scenarioId}`, {
-    //     activeRunSlideIndex
-    //   });
-    //   const { pathname, search } = location;
-    //   const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}${search}`;
-
-    //   if (pathname !== pathToSlide) {
-    //     history.push(pathToSlide, { search, activeRunSlideIndex });
-    //   }
-    // }
-
     if (this.isScenarioRun) {
+      this.runKey = cohortId
+        ? `cohort/${cohortId}/run/${scenarioId}`
+        : `run/${scenarioId}`;
+
+      const { slideHistory } = Storage.merge(this.runKey, {
+        slideHistory: [0]
+      });
+
+      this.slideHistory.push(...slideHistory);
+
       const { pathname, search } = location;
       const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}${search}`;
 
       if (pathname !== pathToSlide) {
-        history.push(pathToSlide, { search, activeRunSlideIndex });
+        history.push(pathToSlide, {
+          search,
+          activeRunSlideIndex
+        });
       }
     }
   }
@@ -90,9 +94,52 @@ class Scenario extends Component {
             if (onSubmit) {
               await onSubmit();
             }
-            const activeRunSlideIndex = this.state.activeRunSlideIndex - 1;
+
+            // Pop the last slide index from slide history, or get the
+            // active slide index, minus 1, and go there.
+            const activeRunSlideIndex =
+              this.slideHistory.pop() || this.state.activeRunSlideIndex - 1;
             const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
+            this.setState({ activeRunSlideIndex }, () => {
+              if (location.pathname !== pathToSlide) {
+                history.push(pathToSlide);
+              }
+            });
+          })();
+        };
+      case 'goto':
+        return (event, { value: nextSlideId }) => {
+          if (!this.isScenarioRun) {
+            event.stopPropagation();
+          }
+
+          if (this.hasRequiredPrompts) {
+            alert('You still have required prompts to respond to.');
+            return;
+          }
+
+          (async () => {
+            if (onSubmit) {
+              await onSubmit();
+            }
+
+            const { slideHistory } = this;
+
+            // Set the former run slide to the value stored for the active run slide
+            const formerRunSlideIndex = this.state.activeRunSlideIndex;
+
+            slideHistory.push(formerRunSlideIndex);
+
+            Storage.merge(this.runKey, { slideHistory });
+
+            // Set the active run slide to the next slide index + 1
+            const nextSlideIndex = this.slides.findIndex(
+              slide => slide.id === nextSlideId
+            );
+
+            const activeRunSlideIndex = nextSlideIndex + 1;
+            const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
             this.setState({ activeRunSlideIndex }, () => {
               if (location.pathname !== pathToSlide) {
                 history.push(pathToSlide);
@@ -111,9 +158,11 @@ class Scenario extends Component {
             if (onSubmit) {
               await onSubmit();
             }
-            const activeRunSlideIndex = this.state.activeRunSlideIndex + 1;
+            const formerRunSlideIndex = this.state.activeRunSlideIndex;
+            const activeRunSlideIndex = formerRunSlideIndex + 1;
             const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
+            this.slideHistory.push(formerRunSlideIndex);
             this.setState({ activeRunSlideIndex }, () => {
               if (location.pathname !== pathToSlide) {
                 history.push(pathToSlide);
@@ -173,17 +222,17 @@ class Scenario extends Component {
     }
   }
 
-  // TODO: remove this and use getSlides()
-  async getScenarioContent() {
-    if (this.props.scenarioId) {
-      const response = await fetch(
-        `/api/scenarios/${this.props.scenarioId}/slides`
-      );
-      const { slides } = await response.json();
-      return slides;
-    }
-    return null;
-  }
+  // // TODO: remove this and use getSlides()
+  // async getScenarioContent() {
+  //   if (this.props.scenarioId) {
+  //     const response = await fetch(
+  //       `/api/scenarios/${this.props.scenarioId}/slides`
+  //     );
+  //     const { slides } = await response.json();
+  //     return slides;
+  //   }
+  //   return null;
+  // }
 
   async componentDidMount() {
     const {
@@ -214,6 +263,10 @@ class Scenario extends Component {
       contents.splice(contents.indexOf(finish), 1);
     }
 
+    // Create a backup of the raw slide contents for the click
+    // handlers to access
+    this.slides = contents.slice();
+
     const slides = [
       <EntrySlide
         key="entry-slide"
@@ -234,7 +287,11 @@ class Scenario extends Component {
           cohortId={cohortId}
           scenarioId={scenarioId}
           isLastSlide={isLastSlide}
+          onRequiredPromptChange={pending => {
+            this.hasRequiredPrompts = !!pending;
+          }}
           onBackClick={this.getOnClickHandler('back')}
+          onGotoClick={this.getOnClickHandler('goto')}
           onNextClick={this.getOnClickHandler(isLastSlide ? 'finish' : 'next')}
           onResponseChange={onResponseChange}
         />
@@ -276,8 +333,7 @@ class Scenario extends Component {
 
   render() {
     const { activeRunSlideIndex, isReady, slides } = this.state;
-
-    // const activeSlideIndex = activeRunSlideIndex - 1;
+    // This assignement only exists to keep modes separate below.
     const activeSlideIndex = activeRunSlideIndex;
     const classes = 'ui centered card scenario__card--run';
 
@@ -289,32 +345,15 @@ class Scenario extends Component {
       ) : null;
     }
 
-    const { cohortId, scenarioId, run } = this.props;
-
-    if (run) {
-      const runScenarioKey = `run/${scenarioId}`;
-      const runCohortKey = `cohort/${cohortId}/run/${scenarioId}`;
+    if (this.isScenarioRun) {
+      const { run } = this.props;
       // As long as this run is unfinished, update the
       // the local state with the latest slide.
       if (!run.ended_at) {
-        if (this.isScenarioRun) {
-          Storage.set(runScenarioKey, {
-            activeRunSlideIndex
-          });
-        }
-        if (this.isCohortScenarioRun) {
-          Storage.set(runCohortKey, {
-            activeRunSlideIndex
-          });
-        }
+        Storage.merge(this.runKey, { activeRunSlideIndex });
       } else {
         // Otherwise, delete the local state
-        if (this.isScenarioRun) {
-          Storage.delete(runScenarioKey);
-        }
-        if (this.isCohortScenarioRun) {
-          Storage.delete(runCohortKey);
-        }
+        Storage.delete(this.runKey);
       }
     }
 
