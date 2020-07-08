@@ -15,7 +15,7 @@ class ContentSlide extends React.Component {
     } = this.props;
 
     const required = components.reduce((accum, component) => {
-      if (component.required) {
+      if (component.required && !component.disableDefaultNavigation) {
         accum.push(component.responseId);
       }
       return accum;
@@ -138,6 +138,8 @@ class ContentSlide extends React.Component {
       }
     }
 
+    this.props.onRequiredPromptChange(pending.length);
+
     if (!data.isFulfilled) {
       this.props.onResponseChange(event, data);
       if (run && run.id) {
@@ -170,8 +172,9 @@ class ContentSlide extends React.Component {
     const {
       isContextual,
       isLastSlide,
-      onNextClick,
       onBackClick,
+      onGotoClick,
+      onNextClick,
       run,
       slide
     } = this.props;
@@ -183,6 +186,9 @@ class ContentSlide extends React.Component {
     const cardClass = run ? 'scenario__card--run' : 'scenario__card';
     const runOnly = run ? { run } : {};
     const hasPrompt = slide.components.some(component => component.responseId);
+    const hasOwnNavigation = slide.components.some(
+      component => component.disableDefaultNavigation
+    );
     const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next slide';
     const submitNextOrFinish = isLastSlide ? 'Finish' : proceedButtonLabel;
 
@@ -227,6 +233,15 @@ class ContentSlide extends React.Component {
       fwdButtonTip = 'Finish';
     }
 
+    const onResponseChange = (event, data) => {
+      onInterceptResponseChange(event, data);
+
+      // Both must agree!!
+      if (hasOwnNavigation && data.hasOwnNavigation) {
+        onGotoClick(event, data);
+      }
+    };
+
     return (
       <Card id={slide.id} key={slide.id} centered className={cardClass}>
         <Card.Content style={{ flexGrow: '0' }}>
@@ -236,7 +251,7 @@ class ContentSlide extends React.Component {
           <SlideComponents
             {...runOnly}
             components={slide.components}
-            onResponseChange={onInterceptResponseChange}
+            onResponseChange={onResponseChange}
           />
         </Card.Content>
         {!isContextual ? (
@@ -252,26 +267,28 @@ class ContentSlide extends React.Component {
                 />
               }
             />
-            <Button.Group floated="right">
-              {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
-                <Popup
-                  content={skipButtonTip}
-                  trigger={
-                    <Button
-                      color="yellow"
-                      name={skipOrKeep}
-                      onClick={onSkip}
-                      content={skipButtonContent}
-                    />
-                  }
-                />
-              ) : (
-                <Popup
-                  content={fwdButtonTip}
-                  trigger={<Button {...fwdButtonProps} />}
-                />
-              )}
-            </Button.Group>
+            {!hasOwnNavigation ? (
+              <Button.Group floated="right">
+                {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
+                  <Popup
+                    content={skipButtonTip}
+                    trigger={
+                      <Button
+                        color="yellow"
+                        name={skipOrKeep}
+                        onClick={onSkip}
+                        content={skipButtonContent}
+                      />
+                    }
+                  />
+                ) : (
+                  <Popup
+                    content={fwdButtonTip}
+                    trigger={<Button {...fwdButtonProps} />}
+                  />
+                )}
+              </Button.Group>
+            ) : null}
           </Card.Content>
         ) : null}
       </Card>
@@ -283,8 +300,10 @@ ContentSlide.propTypes = {
   getResponse: PropTypes.func,
   isContextual: PropTypes.bool,
   isLastSlide: PropTypes.bool,
+  onGotoClick: PropTypes.func,
   onBackClick: PropTypes.func,
   onNextClick: PropTypes.func,
+  onRequiredPromptChange: PropTypes.func,
   onResponseChange: PropTypes.func,
   responsesById: PropTypes.object,
   run: PropTypes.object,
