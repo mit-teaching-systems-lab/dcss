@@ -40,11 +40,9 @@ const SlideComponents = ({
             the sake of rendering these
             entirely non-functional version.
           */}
-
           {components.slice(0, 3).map((value, index) => {
             const { type } = value;
             if (!Components[type]) return;
-
             const { Display } = Components[type];
             return (
               <Display

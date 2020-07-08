@@ -9,6 +9,4 @@ const Card = () => (
   </React.Fragment>
 );
 
-
-
 export default React.memo(Card);

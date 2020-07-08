@@ -28,9 +28,9 @@ class MultiButtonResponseEditor extends React.Component {
     } = props.value;
 
     this.state = {
+      buttons,
       header,
       prompt,
-      buttons,
       recallId,
       responseId
     };
@@ -161,7 +161,7 @@ class MultiButtonResponseEditor extends React.Component {
 
   render() {
     const { scenarioId, slideIndex } = this.props;
-    const { header, prompt, buttons, recallId } = this.state;
+    const { header, id, prompt, buttons, recallId } = this.state;
 
     const {
       onButtonAddClick,
@@ -178,6 +178,7 @@ class MultiButtonResponseEditor extends React.Component {
       <Form>
         <Container fluid>
           <ResponseRecall
+            isEmbedded={true}
             value={{ recallId }}
             slideIndex={slideIndex}
             scenarioId={scenarioId}
@@ -195,12 +196,8 @@ class MultiButtonResponseEditor extends React.Component {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell className="mbr__thead-background" />
-                <Table.HeaderCell>
-                  Button display
-                </Table.HeaderCell>
-                <Table.HeaderCell>
-                  Button value
-                </Table.HeaderCell>
+                <Table.HeaderCell>Button display</Table.HeaderCell>
+                <Table.HeaderCell>Button value</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
@@ -215,12 +212,11 @@ class MultiButtonResponseEditor extends React.Component {
             >
               {buttons.map(({ display, value }, index) => {
                 const onBlurOrFocus = preventEmptyButtonField.bind(this, index);
-                const key = `button-row-${value}-${index}`;
+                const key = hash({ id, index });
                 return (
-                  <Table.Row className="mbr__cursor-grab" key={key}>
+                  <Table.Row className="mbr__cursor-grab" key={`row-${key}`}>
                     <Table.Cell collapsing>
                       <EditorMenu
-                        className="mbr__em-fixed-width"
                         type="button"
                         items={{
                           save: {
@@ -237,7 +233,7 @@ class MultiButtonResponseEditor extends React.Component {
                         fluid
                         name="display"
                         index={index}
-                        key={`button-diplay-${index}`}
+                        key={`button-diplay-${key}`}
                         value={display}
                         onBlur={onBlurOrFocus}
                         onFocus={onBlurOrFocus}
@@ -249,7 +245,7 @@ class MultiButtonResponseEditor extends React.Component {
                         fluid
                         name="value"
                         index={index}
-                        key={`button-value-${index}`}
+                        key={`button-value-${key}`}
                         value={value}
                         onFocus={onBlurOrFocus}
                         onBlur={onBlurOrFocus}

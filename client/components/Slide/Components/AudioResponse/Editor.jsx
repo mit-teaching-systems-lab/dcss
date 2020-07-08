@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Container, Form, Input, Message, Popup } from '@components/UI';
+import { Container, Form, Message } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
@@ -80,36 +80,31 @@ class AudioResponseEditor extends Component {
       <Form>
         <Container fluid>
           <ResponseRecall
+            isEmbedded={true}
             value={{ recallId }}
             scenarioId={scenarioId}
             slideIndex={slideIndex}
             onChange={onRecallChange}
           />
 
-          <Popup
-            content="This is the label that will appear on the Audio Prompt button."
-            trigger={
-              <Form.Field>
-                <label htmlFor="prompt">Audio Prompt:</label>
-                <Input
-                  name="prompt"
-                  value={prompt}
-                  onChange={onChange}
-                  onBlur={updateState}
-                />
-              </Form.Field>
-            }
-          />
-          <Message
-            icon="warning sign"
-            color="orange"
-            content="This component will fallback to a text input prompt when the participant's browser or device does not support audio recording."
+          <Form.TextArea
+            label="Enter text content to display before the audio recording controls:"
+            name="prompt"
+            value={prompt}
+            onChange={onChange}
+            onBlur={updateState}
           />
 
           <DataHeader
             content={header}
             onChange={onChange}
             onBlur={updateState}
+          />
+
+          <Message
+            icon="warning sign"
+            color="orange"
+            content="This component will fallback to a text input prompt when the participant's browser or device does not support audio recording."
           />
         </Container>
       </Form>

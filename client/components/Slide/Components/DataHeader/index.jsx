@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Form, Message } from '@components/UI';
+import { Button, Form, Message } from '@components/UI';
 
 class DataHeader extends Component {
   shouldComponentUpdate(newProps) {
@@ -19,22 +19,18 @@ class DataHeader extends Component {
     }
     const textarea = (
       <Fragment>
-        <Form.TextArea
+        <Form.Input
           required
-          label="Data Header"
+          label="Data header"
           name="header"
           value={content}
           {...eventHandlers}
         />
-        This is only appears in data downloads, as the column header or row name.
+        <Button size="mini" /> This will only appear in data downloads, as the column header or row
+        name.
       </Fragment>
     );
-    return (
-      <Message
-        color={color}
-        content={textarea}
-      />
-    );
+    return <Message color={color} content={textarea} />;
   }
 }
 

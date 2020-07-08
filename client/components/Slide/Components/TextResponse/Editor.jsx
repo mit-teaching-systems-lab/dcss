@@ -13,7 +13,7 @@ class TextResponseEditor extends React.Component {
     super(props);
     const {
       header = '',
-      prompt = 'Text Prompt (displayed before input field as label)',
+      prompt = '',
       placeholder = '',
       recallId = '',
       responseId = ''
@@ -99,20 +99,21 @@ class TextResponseEditor extends React.Component {
       <Form>
         <Container fluid>
           <ResponseRecall
+            isEmbedded={true}
             value={{ recallId }}
             slideIndex={slideIndex}
             scenarioId={scenarioId}
             onChange={onRecallChange}
           />
           <Form.TextArea
-            label="Prompt"
+            label="Text to be displayed before the input:"
             name="prompt"
             value={prompt}
             onChange={onChange}
             onBlur={updateState}
           />
           <Form.Input
-            label="Placeholder"
+            label="Placeholder text displayed inside the input:"
             name="placeholder"
             value={placeholder}
             onChange={onChange}
