@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Message } from '@components/UI';
+import { Form, Message } from '@components/UI';
 
 class DataHeader extends Component {
   shouldComponentUpdate(newProps) {
@@ -26,7 +26,7 @@ class DataHeader extends Component {
           value={content}
           {...eventHandlers}
         />
-        <Button size="mini" /> This will only appear in data downloads, as the column header or row
+        This will only appear in data downloads, as the column header or row
         name.
       </Fragment>
     );
