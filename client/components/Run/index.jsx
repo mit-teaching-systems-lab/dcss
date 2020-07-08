@@ -124,6 +124,15 @@ class Run extends Component {
       return null;
     }
 
+    // Prevent participants from attempting to jump into a run without
+    // first acknowledging the consent form!
+    if (
+      !this.props.run.consent_acknowledged_by_user &&
+      this.props.activeRunSlideIndex !== 0
+    ) {
+      location.href = `${baseurl}/slide/0`;
+    }
+
     return (
       <Scenario
         baseurl={baseurl}
