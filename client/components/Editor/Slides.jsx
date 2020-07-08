@@ -14,6 +14,7 @@ import {
   Ref,
   Segment
 } from '@components/UI';
+import { v4 as uuid } from 'uuid';
 // TODO: can we use this for shouldComponentUpdate?
 // import hash from 'object-hash';
 // import { diff } from 'deep-object-diff';
@@ -24,7 +25,6 @@ import { notify } from '@components/Notification';
 import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
 import SlideComponents from '@components/SlideComponents';
-import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
 import { getSlides } from '@actions/scenario';
 import './Slides.css';
@@ -210,19 +210,23 @@ class Slides extends React.Component {
   }
 
   async onSlideDuplicate(index) {
-    const { title, components } = this.state.slides[index];
+    const { title, components: sourceComponents } = this.state.slides[index];
+    // Map source slide's components to a set of new components.
+    const components = sourceComponents.map(sourceComponent => {
+      const newProps = {};
 
-    // Check through all components of this slide
-    // for any that are response components...
-    for (const component of components) {
-      // ...When a response component has been
-      // found, assign it a newly generated responseId,
-      // to prevent duplicate responseId values from
-      // being created.
-      if (Object.prototype.hasOwnProperty.call(component, 'responseId')) {
-        component.responseId = generateResponseId(component.type);
+      // If the "sourceComponent" is a prompt/response component, assign it a
+      // newly generated "responseId" and "header" to prevent duplicate
+      // "responseId" values from being created.
+      //
+      // NOTE: the "header" can be changed by the user in the component editor
+      if (sourceComponent.responseId) {
+        newProps.responseId = uuid();
+        newProps.header = `${sourceComponent.header} (COPY)`;
       }
-    }
+
+      return Object.assign({}, sourceComponent, newProps);
+    });
 
     const activeSlideIndex = await this.storeSlide({
       title,
@@ -274,6 +278,7 @@ class Slides extends React.Component {
   }
 
   async storeSlide(slide) {
+    // TODO: Move this into own async action
     const res = await fetch(`/api/scenarios/${this.props.scenarioId}/slides`, {
       method: 'PUT',
       headers: {
