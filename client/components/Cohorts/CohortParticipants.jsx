@@ -275,6 +275,7 @@ export class CohortParticipants extends React.Component {
           requiredPermission="view_all_data"
         >
           <Popup
+            size="small"
             content="View cohort reponses from this participant"
             trigger={trigger}
           />

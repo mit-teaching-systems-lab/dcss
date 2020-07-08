@@ -197,6 +197,7 @@ class ScenarioEditor extends Component {
                 className="scenarioeditor__grid-column-min-width"
               >
                 <Popup
+                  size="small"
                   content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
                   trigger={
                     <Form.Input
@@ -210,6 +211,7 @@ class ScenarioEditor extends Component {
                   }
                 />
                 <Popup
+                  size="small"
                   content="Enter a description for your scenario. This will appear on the scenario 'entry' slide."
                   trigger={
                     <Form.TextArea
@@ -225,6 +227,7 @@ class ScenarioEditor extends Component {
 
                 {scenarioId !== 'new' && (
                   <Popup
+                    size="small"
                     content="Enter Consent Agreement prose here, or use the default provided Consent Agreement. This will appear on the scenario 'entry' slide."
                     trigger={
                       <Form.Field required>
@@ -281,6 +284,7 @@ class ScenarioEditor extends Component {
 
                 {scenarioId !== 'new' && finish && (
                   <Popup
+                    size="small"
                     content="This will appear on the slide that's shown after the scenario has been completed."
                     trigger={
                       <Form.Field>

@@ -34,7 +34,12 @@ export default class EditorMenu extends React.Component {
               .filter(item => item)
               .map((item, index) => {
                 return item.props.name ? (
-                  <Popup key={index} content={item.props.name} trigger={item} />
+                  <Popup
+                    size="small"
+                    key={index}
+                    content={item.props.name}
+                    trigger={item}
+                  />
                 ) : (
                   item
                 );
@@ -43,6 +48,7 @@ export default class EditorMenu extends React.Component {
         )}
         {items.save && (
           <Popup
+            size="small"
             content={`Save ${type}`}
             trigger={
               <Menu.Item
@@ -72,7 +78,12 @@ export default class EditorMenu extends React.Component {
               .filter(item => item)
               .map((item, index) => {
                 return item.props.name ? (
-                  <Popup key={index} content={item.props.name} trigger={item} />
+                  <Popup
+                    size="small"
+                    key={index}
+                    content={item.props.name}
+                    trigger={item}
+                  />
                 ) : (
                   item
                 );

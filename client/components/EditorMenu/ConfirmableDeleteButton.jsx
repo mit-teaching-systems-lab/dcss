@@ -52,7 +52,7 @@ class ConfirmableDeleteButton extends Component {
     );
     return (
       <React.Fragment>
-        <Popup content={ariaLabel} trigger={trigger} />
+        <Popup size="small" content={ariaLabel} trigger={trigger} />
         <Confirm
           open={this.state.open}
           content={content}

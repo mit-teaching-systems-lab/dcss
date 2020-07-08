@@ -96,6 +96,7 @@ class CreateAnonymousAccount extends Component {
         <Modal.Actions style={{ height: '75px' }}>
           <Button.Group fluid size="large">
             <Popup
+              size="small"
               content="Go back"
               position="bottom center"
               trigger={
@@ -108,6 +109,7 @@ class CreateAnonymousAccount extends Component {
             />
             <Button.Or />
             <Popup
+              size="small"
               content="Show me another available user name."
               position="bottom center"
               trigger={
@@ -121,6 +123,7 @@ class CreateAnonymousAccount extends Component {
             />
             <Button.Or />
             <Popup
+              size="small"
               content="Select this user name to continue."
               position="bottom center"
               trigger={

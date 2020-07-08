@@ -94,7 +94,7 @@ const RoleCheckbox = props => {
     />
   );
 
-  return <Popup basic content={content} trigger={trigger} />;
+  return <Popup size="small" basic content={content} trigger={trigger} />;
 };
 
 RoleCheckbox.propTypes = {

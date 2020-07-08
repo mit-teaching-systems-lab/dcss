@@ -390,6 +390,7 @@ export class CohortScenarios extends React.Component {
                               className="cohort__button-group--transparent"
                             >
                               <Popup
+                                size="tiny"
                                 content="Copy cohort scenario link to clipboard"
                                 trigger={
                                   <Button
@@ -401,6 +402,7 @@ export class CohortScenarios extends React.Component {
                                 }
                               />
                               <Popup
+                                size="tiny"
                                 content="Run this cohort scenario as a participant"
                                 trigger={
                                   <Button
@@ -434,6 +436,7 @@ export class CohortScenarios extends React.Component {
                                 />
                               </ConfirmAuth>
                               <Popup
+                                size="tiny"
                                 content="Move scenario up"
                                 trigger={
                                   <Button
@@ -447,6 +450,7 @@ export class CohortScenarios extends React.Component {
                                 }
                               />
                               <Popup
+                                size="tiny"
                                 content="Move scenario down"
                                 trigger={
                                   <Button

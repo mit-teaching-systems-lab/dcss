@@ -259,6 +259,7 @@ class ContentSlide extends React.Component {
         {!isContextual ? (
           <Card.Content extra>
             <Popup
+              size="small"
               content="Go back to the previous slide"
               trigger={
                 <Button
@@ -273,6 +274,7 @@ class ContentSlide extends React.Component {
               <Button.Group floated="right">
                 {hasPrompt && !hasPendingRequiredFields && !hasChanged ? (
                   <Popup
+                    size="small"
                     content={skipButtonTip}
                     trigger={
                       <Button
@@ -285,6 +287,7 @@ class ContentSlide extends React.Component {
                   />
                 ) : (
                   <Popup
+                    size="small"
                     content={fwdButtonTip}
                     trigger={<Button {...fwdButtonProps} />}
                   />

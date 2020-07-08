@@ -204,6 +204,7 @@ export class Cohort extends React.Component {
           <Segment attached="bottom">
             <Menu icon borderless>
               <Popup
+                size="small"
                 content="Copy cohort link to clipboard"
                 trigger={
                   <Menu.Item
