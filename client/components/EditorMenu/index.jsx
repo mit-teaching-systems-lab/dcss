@@ -5,16 +5,6 @@ import ConfirmableDeleteButton from './ConfirmableDeleteButton';
 import './EditorMenu.css';
 
 export default class EditorMenu extends React.Component {
-  constructor(props) {
-    super(props);
-
-    const { mode = 'edit' } = this.props;
-
-    this.state = {
-      mode
-    };
-  }
-
   shouldComponentUpdate(newProps) {
     if (newProps.isDragging) {
       return false;
@@ -24,12 +14,18 @@ export default class EditorMenu extends React.Component {
 
   render() {
     const { className, draghandle = {}, type, items } = this.props;
-    const { mode } = this.state;
-
     let menuClassName = 'em__height';
     if (className) {
       menuClassName += ` ${className}`;
     }
+
+    // const menuItems = Object.entries(items).reduce((accum, [prop, item]) => {
+    //   if (Array.isArray(item)) {
+    //     accum.push(...item.filter(x => x));
+    //   }
+    // }, []);
+    // console.log(menuItems);
+
     return (
       <Menu {...draghandle} icon borderless className={menuClassName}>
         {items.left && (
@@ -69,47 +65,6 @@ export default class EditorMenu extends React.Component {
             onConfirm={items.delete.onConfirm}
           />
         )}
-
-        {items.editable &&
-          (mode === 'preview' ? (
-            <Popup
-              content={`Edit ${type}`}
-              trigger={
-                <Menu.Item
-                  aria-label={`Edit ${type}`}
-                  name={`edit-${type}`}
-                  disabled={items.editable.disabled}
-                  onClick={(...args) => {
-                    this.setState({ mode: 'edit' }, () => {
-                      args.push(Object.assign({}, this.state));
-                      items.editable.onToggle(...args);
-                    });
-                  }}
-                >
-                  <Icon name="edit outline" />
-                </Menu.Item>
-              }
-            />
-          ) : (
-            <Popup
-              content={`Preview ${type}`}
-              trigger={
-                <Menu.Item
-                  aria-label={`Preview ${type}`}
-                  name={`preview-${type}`}
-                  disabled={items.editable.disabled}
-                  onClick={(...args) => {
-                    this.setState({ mode: 'preview' }, () => {
-                      args.push(Object.assign({}, this.state));
-                      items.editable.onToggle(...args);
-                    });
-                  }}
-                >
-                  <Icon name="eye" />
-                </Menu.Item>
-              }
-            />
-          ))}
 
         {items.right && (
           <React.Fragment>
@@ -162,18 +117,10 @@ EditorMenu.propTypes = {
         }
       }
 
-      if (items.editable) {
-        if (
-          !Object.keys(items.editable).every(v =>
-            ['disabled', 'onToggle'].includes(v)
-          )
-        ) {
-          return new Error('EditorMenu: Invalid item.editable property');
-        }
-      }
       if (items.left && !Array.isArray(items.left)) {
         return new Error('EditorMenu: Invalid items.left property');
       }
+
       if (items.right && !Array.isArray(items.right)) {
         return new Error('EditorMenu: Invalid items.right property');
       }
@@ -181,6 +128,5 @@ EditorMenu.propTypes = {
 
     return null;
   },
-  mode: PropTypes.string,
   type: PropTypes.string
 };
