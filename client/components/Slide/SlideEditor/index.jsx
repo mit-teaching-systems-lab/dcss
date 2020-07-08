@@ -17,7 +17,6 @@ import EditorMenu from '@components/EditorMenu';
 // import Loading from '@components/Loading';
 import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
-import generateResponseId from '@components/util/generateResponseId';
 import scrollIntoView from '@components/util/scrollIntoView';
 import Storage from '@utils/Storage';
 import * as Components from '../Components';
