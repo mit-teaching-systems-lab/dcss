@@ -1,5 +1,5 @@
 import { type } from './meta';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { connect } from 'react-redux';
@@ -74,7 +74,7 @@ class Display extends Component {
 
   render() {
     const { paths, prompt, recallId, required, responseId, run } = this.props;
-    const { value, value: previousValue } = this.state;
+    const { value: previousValue } = this.state;
     const { onClick } = this;
     // const fulfilled = value ? true : false;
     const header = (

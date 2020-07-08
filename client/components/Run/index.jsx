@@ -148,6 +148,7 @@ class Run extends Component {
 }
 
 Run.propTypes = {
+  activeRunSlideIndex: PropTypes.number,
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
   linkUserToCohort: PropTypes.func,

@@ -294,7 +294,6 @@ class MultiPathResponseEditor extends React.Component {
       />
     ) : null;
 
-
     const autoComplete = 'off';
     const fluid = true;
     const name = 'display';
@@ -356,7 +355,7 @@ class MultiPathResponseEditor extends React.Component {
                   onBlur: onBlurOrFocus,
                   onFocus: onBlurOrFocus,
                   onChange: onPathDetailChange,
-                  key: `button-diplay-${key}`,
+                  key: `button-diplay-${key}`
                 };
 
                 if (index === paths.length - 1) {

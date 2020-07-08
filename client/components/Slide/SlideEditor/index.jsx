@@ -30,23 +30,17 @@ const getDraggableStyle = (isDragging, draggableStyle) => {
   };
 };
 
-const MenuItemModeToggler = (props) => {
-  const {
-    disabled,
-    mode,
-    onToggle,
-    type
-  } = props;
+const MenuItemModeToggler = props => {
+  const { disabled, mode, onToggle, type } = props;
 
-  const iconProps = mode === 'preview'
-    ? { name: 'edit outline' }
-    : { name: 'eye' };
+  const iconProps =
+    mode === 'preview' ? { name: 'edit outline' } : { name: 'eye' };
 
   const onClick = () => {
     onToggle({
       mode: mode === 'preview' ? 'edit' : 'preview'
     });
-  }
+  };
   return (
     <Menu.Item
       key="menu-item-slide-mode-toggle"
@@ -58,13 +52,13 @@ const MenuItemModeToggler = (props) => {
       <Icon {...iconProps} />
     </Menu.Item>
   );
-}
+};
 
 MenuItemModeToggler.propTypes = {
   disabled: PropTypes.bool,
   mode: PropTypes.string,
   onToggle: PropTypes.func,
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 export default class SlideEditor extends Component {
@@ -170,7 +164,7 @@ export default class SlideEditor extends Component {
   }
 
   async onComponentDuplicate(index) {
-    const { components: sourceComponents, title } = this.state;
+    const { components: sourceComponents } = this.state;
     const id = uuid();
     const sourceComponent = sourceComponents[index];
     const copy = Object.assign({}, sourceComponent, { id });
@@ -181,7 +175,7 @@ export default class SlideEditor extends Component {
     }
     const components = [];
 
-    for (let i = 0; i > sourceComponents.length; i++) {
+    for (let i = 0; i < sourceComponents.length; i++) {
       components.push(sourceComponents[i]);
       if (i === index) {
         components.push(copy);
@@ -326,7 +320,7 @@ export default class SlideEditor extends Component {
           type="Slide"
           disabled={disabled || noSlideComponents}
           mode={mode}
-          onToggle={(state) => this.setState(state)}
+          onToggle={state => this.setState(state)}
         />
       ]
     };

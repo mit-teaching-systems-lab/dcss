@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   Container,
-  Dropdown,
   Grid,
   Icon,
   Menu,
@@ -363,7 +362,10 @@ class Slides extends React.Component {
                       }
                     />
                     {slides.length > 0 && (
-                      <Menu.Menu key="menu-item-slide-column-right" position="right">
+                      <Menu.Menu
+                        key="menu-item-slide-column-right"
+                        position="right"
+                      >
                         <Popup
                           content={minMaxText}
                           trigger={

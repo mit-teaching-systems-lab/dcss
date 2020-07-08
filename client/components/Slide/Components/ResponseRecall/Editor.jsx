@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Dropdown, Form, Table } from '@components/UI';
 import { type } from './meta';
 
-
 const ResponsePromptFormatted = ({ title, prompt, header }) => {
   return (
     <Table celled striped>
@@ -98,11 +97,7 @@ class ResponseRecallEditor extends React.Component {
       const quotedSlideTitle = title ? ` "${title}"` : ``;
       const text = `Slide #${nonZeroIndex} ${quotedSlideTitle}: "${prompt}"`;
       const content = (
-        <ResponsePromptFormatted
-          title={text}
-          prompt={prompt}
-          header={header}
-        />
+        <ResponsePromptFormatted title={text} prompt={prompt} header={header} />
       );
 
       accum.push({
@@ -149,9 +144,9 @@ class ResponseRecallEditor extends React.Component {
       />
     );
 
-    const selectedResponsePrompt = recallId ? (
-      prompts.find(({value}) => value === recallId).content
-    ) : null;
+    const selectedResponsePrompt = recallId
+      ? prompts.find(({ value }) => value === recallId).content
+      : null;
 
     return this.props.isEmbedded ? (
       <Fragment>
@@ -168,7 +163,7 @@ class ResponseRecallEditor extends React.Component {
 }
 
 ResponseRecallEditor.defaultProps = {
-  isEmbedded: false,
+  isEmbedded: false
 };
 
 ResponseRecallEditor.propTypes = {
