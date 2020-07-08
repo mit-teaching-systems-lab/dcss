@@ -18,7 +18,11 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
       throw res;
     }
 
-    const { response } = res;
+    let { response } = res;
+
+    if (!response) {
+      response = { response: null };
+    }
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
   } catch (error) {
