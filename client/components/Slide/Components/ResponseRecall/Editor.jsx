@@ -78,13 +78,7 @@ class ResponseRecallEditor extends React.Component {
     }
 
     const prompts = components.reduce((accum, component, key) => {
-      const {
-        header,
-        index,
-        prompt,
-        responseId,
-        slide
-      } = component;
+      const { header, index, prompt, responseId, slide } = component;
 
       const nonZeroIndex = index + 1;
 
@@ -97,7 +91,11 @@ class ResponseRecallEditor extends React.Component {
       const quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
       const title = `Slide #${nonZeroIndex} ${quotedSlideTitle}`;
       const content = (
-        <ResponsePromptFormatted title={title} prompt={prompt} header={header} />
+        <ResponsePromptFormatted
+          title={title}
+          prompt={prompt}
+          header={header}
+        />
       );
 
       const text = `Slide #${nonZeroIndex}: "${prompt}"`;

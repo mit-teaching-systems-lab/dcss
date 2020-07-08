@@ -218,7 +218,8 @@ class Display extends Component {
           </Grid.Row>
           <Grid.Row stretched>
             <Grid.Column className="ar__instruction">
-              Click the microphone to record your response. When you&apos;re done, click the microphone again to stop recording.
+              Click the microphone to record your response. When you&apos;re
+              done, click the microphone again to stop recording.
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -157,8 +157,6 @@ class Display extends Component {
       return null;
     }
 
-
-
     let content = rvalue;
 
     // The fallback value of an AudioResponse will not be an mp3 file path.
