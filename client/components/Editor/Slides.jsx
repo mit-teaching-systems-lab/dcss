@@ -358,30 +358,16 @@ class Slides extends React.Component {
                       }
                     />
                     {slides.length > 0 && (
-                      <Menu.Menu key="menu-item-slide-options" position="right">
+                      <Menu.Menu key="menu-item-slide-column-right" position="right">
                         <Popup
-                          content="Slide options"
+                          content={minMaxText}
                           trigger={
-                            <Dropdown item icon="options">
-                              <Dropdown.Menu>
-                                <Dropdown.Item
-                                  key={`slide-options-0`}
-                                  onClick={() => {
-                                    onSlideDuplicate(activeSlideIndex);
-                                  }}
-                                >
-                                  <Icon name="copy outline" />
-                                  Duplicate selected slide
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  key={`slide-options-1`}
-                                  onClick={onSlideMinMaxChange}
-                                >
-                                  <Icon name={minMaxIcon} />
-                                  {minMaxText}
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
+                            <Menu.Item
+                              key="menu-item-slide-min-max-toggler"
+                              onClick={onSlideMinMaxChange}
+                            >
+                              <Icon name={minMaxIcon} />
+                            </Menu.Item>
                           }
                         />
                       </Menu.Menu>
@@ -497,10 +483,11 @@ class Slides extends React.Component {
                 key={`slide-editor-${activeSlideIndex}`}
                 scenarioId={scenarioId}
                 index={activeSlideIndex}
-                {...slides[activeSlideIndex]}
                 noSlide={promptToAddSlide}
                 onChange={onSlideChange}
                 onDelete={onSlideDelete}
+                onDuplicate={onSlideDuplicate}
+                {...slides[activeSlideIndex]}
               />
             ) : (
               <Loading card={{ cols: 1, rows: 1 }} />
