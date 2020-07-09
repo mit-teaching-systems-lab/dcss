@@ -15,7 +15,6 @@ async function getScenarioAsync(req, res) {
 }
 
 async function getScenarioLockAsync(req, res) {
-
   const scenario = db.getScenarioLock(req.params.scenario_id, req.params.lock);
 
   res.send({ scenario, status: 200 });

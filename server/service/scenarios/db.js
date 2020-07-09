@@ -68,6 +68,29 @@ async function addFinishSlide(scenario_id, title = '') {
   });
 }
 
+async function addScenarioRole(scenario_id, user_id, role) {
+  const result = await query(sql`
+    INSERT INTO scenario_user_role (scenario_id, user_id, role)
+    VALUES (${scenario_id}, ${user_id}, ${role})
+    RETURNING *;
+  `);
+
+  return result.rows[0];
+}
+
+async function endScenarioRole(scenario_id, user_id, role) {
+  const result = await query(sql`
+    UPDATE scenario_user_role
+    SET ended_at = CURRENT_TIMESTAMP
+    WHERE scenario_id = ${scenario_id}
+    AND user_id = ${user_id}
+    AND role = ${role}
+    RETURNING *;
+  `);
+
+  return result.rowCount;
+}
+
 async function getScenarioUsers(scenario_id) {
   const result = await query(sql`
     SELECT
@@ -93,7 +116,7 @@ async function getScenarioUsers(scenario_id) {
 
 async function setScenarioUsers(scenario_id, userRoles) {
   const users = [];
-  for (let {user_id, role} of userRoles) {
+  for (let { user_id, role } of userRoles) {
     users.push(await addScenarioRole(scenario_id, user_id, role));
   }
   return users;
@@ -212,37 +235,15 @@ async function addScenario(user_id, title, description) {
 
   const consent = await setScenarioConsent(scenario.id, consentDefault);
   const finish = await addFinishSlide(scenario.id);
-  const lock = await getScenarioLock(scenario.id);
+  const lock = await addScenarioLock(scenario.id);
 
   return {
     ...scenario,
     users,
     consent,
-    finish
+    finish,
+    lock
   };
-}
-
-async function addScenarioRole(scenario_id, user_id, role) {
-  const result = await query(sql`
-    INSERT INTO scenario_user_role (scenario_id, user_id, role)
-    VALUES (${scenario_id}, ${user_id}, ${role})
-    RETURNING *;
-  `);
-
-  return result.rows[0];
-}
-
-async function endScenarioRole(scenario_id, user_id, role) {
-  const result = await query(sql`
-    UPDATE scenario_user_role
-    SET ended_at = CURRENT_TIMESTAMP
-    WHERE scenario_id = ${scenario_id}
-    AND user_id = ${user_id}
-    AND role = ${role}
-    RETURNING *;
-  `);
-
-  return result.rowCount;
 }
 
 async function setScenario(scenarioId, scenario) {

@@ -44,9 +44,7 @@ const filter = (scenarios, user) => {
   const reduced = scenarios.reduce((accum, scenario) => {
     const { status, users } = scenario;
     const scenarioUser = users.find(({ id }) => user.id === id);
-    const isAuthor = scenarioUser
-      ? scenarioUser.is_author
-      : false;
+    const isAuthor = scenarioUser ? scenarioUser.is_author : false;
 
     // Show super admin everything
     if (user.is_super) {
