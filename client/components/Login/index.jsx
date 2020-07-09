@@ -116,7 +116,7 @@ class Login extends Component {
     }
 
     return (
-      <Modal open size="small">
+      <Modal open role="dialog" aria-modal="true" size="small">
         <Header icon="user outline" content="Log In" />
         <Modal.Content>
           <Form onSubmit={onSubmit}>

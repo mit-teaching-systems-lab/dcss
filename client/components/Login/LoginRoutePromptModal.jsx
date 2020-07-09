@@ -62,7 +62,7 @@ class LoginRoutePromptModal extends Component {
       </Button>
     );
     return (
-      <Modal open size="small">
+      <Modal open role="dialog" aria-modal="true" size="small">
         <Header
           icon="user outline"
           content="Log in, Create an account, or Continue anonymously?"

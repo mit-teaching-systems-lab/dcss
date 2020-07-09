@@ -154,7 +154,14 @@ class CreateAccount extends Component {
     }
 
     return (
-      <Modal closeIcon onClose={onCancel} open={true} size="small">
+      <Modal
+        closeIcon
+        role="dialog"
+        aria-modal="true"
+        size="small"
+        onClose={onCancel}
+        open={true}
+      >
         <Header icon="user outline" content="Create a new user account" />
         <Modal.Content>
           <Form onSubmit={onSubmit}>

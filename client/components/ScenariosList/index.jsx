@@ -404,7 +404,14 @@ const ScenarioDetailModal = ({ onClose, open, scenario }) => {
   );
 
   return (
-    <Modal closeIcon centered={false} open={open} onClose={onClose}>
+    <Modal
+      closeIcon
+      role="dialog"
+      aria-modal="true"
+      centered={false}
+      open={open}
+      onClose={onClose}
+    >
       <Header>{scenario.title}</Header>
       <Modal.Content>
         <Header>

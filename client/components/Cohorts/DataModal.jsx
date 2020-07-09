@@ -18,6 +18,8 @@ const DataModal = props => {
 
   return (
     <Modal
+      role="dialog"
+      aria-modal="true"
       trigger={props.trigger}
       size="fullscreen"
       className="dtm__view"

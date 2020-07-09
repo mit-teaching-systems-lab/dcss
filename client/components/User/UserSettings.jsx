@@ -206,7 +206,14 @@ class UserSettings extends Component {
     return (
       <Fragment>
         <Menu.Item onClick={onClick}>Settings</Menu.Item>
-        <Modal closeIcon onClose={onCancel} open={open} size="small">
+        <Modal
+          closeIcon
+          role="dialog"
+          aria-modal="true"
+          size="small"
+          onClose={onCancel}
+          open={open}
+        >
           <Header icon="settings" content="Settings" />
           <Modal.Content>
             <Form onSubmit={onSubmit}>

@@ -284,7 +284,12 @@ export class Cohorts extends React.Component {
             </Grid>
           </Container>
         )}
-        <Modal open={createIsVisible} size="small">
+        <Modal
+          role="dialog"
+          aria-modal="true"
+          size="small"
+          open={createIsVisible}
+        >
           <Header icon="group" content="Create a cohort" />
           <Modal.Content>
             <Form onSubmit={onCreateCohortSubmit}>

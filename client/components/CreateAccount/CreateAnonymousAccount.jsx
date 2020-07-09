@@ -82,7 +82,7 @@ class CreateAnonymousAccount extends Component {
       ? 'Do you like this anonymous user name?'
       : 'Find an anonymous user name for you.';
     return (
-      <Modal open size="small">
+      <Modal open role="dialog" aria-modal="true" size="small">
         <Header icon="user outline" content={header} />
         <Modal.Content>
           {username ? (

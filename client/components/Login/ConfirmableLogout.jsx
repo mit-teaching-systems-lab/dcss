@@ -50,7 +50,7 @@ class ConfirmableLogout extends Component {
     return (
       <React.Fragment>
         <Menu.Item onClick={onNavLinkClick}>Log out</Menu.Item>
-        <Modal open={open} size="small">
+        <Modal role="dialog" aria-modal="true" size="small" open={open}>
           <Header icon="log out" content="Log out confirmation" />
           <Modal.Content>
             <Container style={{ textAlign: 'center' }}>
