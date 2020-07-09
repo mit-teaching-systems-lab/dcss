@@ -6,7 +6,7 @@ const requiredRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
 const slides = new Router();
 const {
   getSlides,
-  getSlidesPromptComponents,
+  getPromptComponentsByScenarioId,
   addSlide,
   orderSlides,
   setSlide,
@@ -20,7 +20,7 @@ slides.post('/', [
   validateRequestBody,
   setAllSlides
 ]);
-slides.get('/response-components', getSlidesPromptComponents);
+slides.get('/prompt-components', getPromptComponentsByScenarioId);
 slides.put('/', [
   requireUserRole(requiredRoles),
   validateRequestBody,
