@@ -14,16 +14,17 @@ async function getScenarioAsync(req, res) {
   res.send({ scenario: reqScenario(req), status: 200 });
 }
 
+async function getScenarioLockAsync(req, res) {
+
+  const scenario = db.getScenarioLock(req.params.scenario_id, req.params.lock);
+
+  res.send({ scenario, status: 200 });
+}
+
 async function getAllScenariosAsync(req, res) {
   try {
     const scenarios = await db.getAllScenarios();
-    scenarios.forEach(scenario => {
-      scenario.user_is_author = req.session.user
-        ? scenario.author_id === req.session.user.id
-        : false;
-    });
-    const result = { scenarios, status: 200 };
-    res.send(result);
+    res.send({ scenarios, status: 200 });
   } catch (apiError) {
     const error = new Error('Error while getting all scenarios');
     error.status = 500;
@@ -52,9 +53,7 @@ async function addScenarioAsync(req, res) {
   try {
     const scenario = await db.addScenario(authorId, title, description);
     await db.setScenarioCategories(scenario.id, categories);
-    const result = { scenario, status: 201 };
-
-    res.send(result);
+    res.send({ scenario, status: 201 });
   } catch (apiError) {
     const error = new Error('Error while creating scenario');
     error.status = 500;
@@ -105,7 +104,7 @@ async function setScenarioAsync(req, res) {
     // this is a new consent agreement and the new prose
     // must be stored, then linked to the scenario.
     if (!consent.id) {
-      const { id, prose } = await db.addConsent(consent);
+      const { id, prose } = await db.addScenarioConsent(consent);
 
       await db.setScenarioConsent(
         scenarioId,
@@ -262,7 +261,7 @@ async function copyScenarioAsync(req, res) {
     await setAllSlides(scenario.id, slides);
 
     const consent = await db.getScenarioConsent(scenarioId);
-    const { id, prose } = await db.addConsent(consent);
+    const { id, prose } = await db.addScenarioConsent(consent);
 
     await db.setScenarioConsent(
       scenario.id,
@@ -290,6 +289,7 @@ async function getScenarioByRunAsync(req, res) {
 }
 
 exports.getScenario = asyncMiddleware(getScenarioAsync);
+exports.getScenarioLock = asyncMiddleware(getScenarioLockAsync);
 exports.getAllScenarios = asyncMiddleware(getAllScenariosAsync);
 exports.addScenario = asyncMiddleware(addScenarioAsync);
 exports.setScenario = asyncMiddleware(setScenarioAsync);

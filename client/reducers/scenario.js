@@ -8,6 +8,7 @@ import {
 const initialScenarioState = {
   title: '',
   description: '',
+  // TODO: Phase out author
   author: {
     id: null,
     username: ''
@@ -22,7 +23,8 @@ const initialScenarioState = {
     title: ''
   },
   slides: [],
-  status: 1
+  status: 1,
+  users: []
 };
 
 export const scenario = (state = initialScenarioState, action) => {

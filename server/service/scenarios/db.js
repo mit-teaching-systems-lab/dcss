@@ -16,7 +16,7 @@ async function getScenarioCategories(scenarioId) {
   return scenarioCategoriesResults.rows.map(r => r.name);
 }
 
-async function addConsent(consent) {
+async function addScenarioConsent(consent) {
   const result = await query(sql`
         INSERT INTO consent (prose)
         VALUES (${consent.prose})
@@ -68,74 +68,181 @@ async function addFinishSlide(scenario_id, title = '') {
   });
 }
 
-async function getScenario(scenarioId) {
+async function getScenarioUsers(scenario_id) {
+  const result = await query(sql`
+    SELECT
+      id,
+      email,
+      username,
+      roles,
+      '{owner}' && roles AS is_owner,
+      '{author}' && roles AS is_author,
+      '{reviewer}' && roles AS is_reviewer
+    FROM users
+    INNER JOIN (
+      SELECT scenario_id, user_id, ARRAY_AGG(role) AS roles
+      FROM (SELECT * FROM scenario_user_role ORDER BY created_at) sur1
+      WHERE scenario_id = ${scenario_id} AND ended_at IS NULL
+      GROUP BY scenario_id, user_id
+    ) sur
+    ON users.id = sur.user_id;
+  `);
+
+  return result.rows;
+}
+
+async function setScenarioUsers(scenario_id, userRoles) {
+  const users = [];
+  for (let {user_id, role} of userRoles) {
+    users.push(await addScenarioRole(scenario_id, user_id, role));
+  }
+  return users;
+}
+
+async function addScenarioLock(scenario_id, user_id) {
+  const result = await query(sql`
+    INSERT INTO scenario_lock (scenario_id, user_id)
+    VALUES (${scenario_id}, ${user_id})
+    ON CONFLICT DO NOTHING
+    RETURNING *;
+  `);
+  return result.rows[0] || null;
+}
+
+async function endScenarioLock(scenario_id, user_id) {
+  const result = await query(sql`
+    UPDATE scenario_lock
+    SET ended_at = CURRENT_TIMESTAMP
+    WHERE scenario_id = ${scenario_id}
+    AND user_id = ${user_id}
+    RETURNING *;
+  `);
+  return result.rows[0] || null;
+}
+
+async function getScenarioLock(scenario_id) {
+  const result = await query(sql`
+    SELECT *
+    FROM scenario_lock
+    WHERE scenario_id = ${scenario_id}
+    AND ended_at IS NULL;
+  `);
+  return result.rows[0] || null;
+}
+
+async function getScenario(scenario_id) {
   const results = await query(sql`
-        SELECT * FROM scenario WHERE id = ${scenarioId};
-    `);
+    SELECT *
+    FROM scenario
+    WHERE id = ${scenario_id};
+  `);
 
   const { author_id } = results.rows[0];
+  const users = await getScenarioUsers(scenario_id);
+  // TODO: phase out "author"
   const author = await getUserById(author_id);
-  const categories = await getScenarioCategories(scenarioId);
-  const consent = await getScenarioConsent(scenarioId);
+  const categories = await getScenarioCategories(scenario_id);
+  const consent = await getScenarioConsent(scenario_id);
   const finish =
-    (await getScenarioSlides(scenarioId)).find(slide => slide.is_finish) ||
-    (await addFinishSlide(scenarioId));
+    (await getScenarioSlides(scenario_id)).find(slide => slide.is_finish) ||
+    (await addFinishSlide(scenario_id));
+  const lock = await getScenarioLock(scenario_id);
 
   delete results.rows[0].author_id;
   return {
     ...results.rows[0],
+    users,
     author,
     categories,
     consent,
-    finish
+    finish,
+    lock
   };
 }
 
 async function getAllScenarios() {
   const results = await query(sql`
-        SELECT * FROM scenario ORDER BY created_at DESC;
-    `);
+    SELECT * FROM scenario ORDER BY created_at DESC;
+  `);
 
   const scenarios = [];
   for (const row of results.rows) {
+    const users = await getScenarioUsers(row.id);
+    // TODO: phase out "author"
     const author = await getUserById(row.author_id);
     const categories = await getScenarioCategories(row.id);
     const consent = await getScenarioConsent(row.id);
     const finish =
       (await getScenarioSlides(row.id)).find(slide => slide.is_finish) ||
       (await addFinishSlide(row.id));
+    const lock = await getScenarioLock(row.id);
+
     scenarios.push({
       ...row,
+      users,
       author,
       categories,
       consent,
-      finish
+      finish,
+      lock
     });
   }
 
   return scenarios;
 }
 
-async function addScenario(authorId, title, description) {
+async function addScenario(user_id, title, description) {
   const scenarioInsert = await query(sql`
-        INSERT INTO scenario (author_id, title, description)
-            VALUES (${authorId}, ${title}, ${description})
-            RETURNING *;
-    `);
+    INSERT INTO scenario (author_id, title, description)
+    VALUES (${user_id}, ${title}, ${description})
+    RETURNING *;
+  `);
 
   const consentSelect = await query(sql`
-        SELECT id FROM consent WHERE is_default
-    `);
+    SELECT id FROM consent WHERE is_default
+  `);
   const consentDefault = consentSelect.rows[0];
   const scenario = scenarioInsert.rows[0];
+
+  const roles = ['owner', 'author'];
+  const users = await setScenarioUsers(
+    scenario.id,
+    roles.map(role => ({ user_id, role }))
+  );
+
   const consent = await setScenarioConsent(scenario.id, consentDefault);
   const finish = await addFinishSlide(scenario.id);
+  const lock = await getScenarioLock(scenario.id);
 
   return {
     ...scenario,
+    users,
     consent,
     finish
   };
+}
+
+async function addScenarioRole(scenario_id, user_id, role) {
+  const result = await query(sql`
+    INSERT INTO scenario_user_role (scenario_id, user_id, role)
+    VALUES (${scenario_id}, ${user_id}, ${role})
+    RETURNING *;
+  `);
+
+  return result.rows[0];
+}
+
+async function endScenarioRole(scenario_id, user_id, role) {
+  const result = await query(sql`
+    UPDATE scenario_user_role
+    SET ended_at = CURRENT_TIMESTAMP
+    WHERE scenario_id = ${scenario_id}
+    AND user_id = ${user_id}
+    AND role = ${role}
+    RETURNING *;
+  `);
+
+  return result.rowCount;
 }
 
 async function setScenario(scenarioId, scenario) {
@@ -233,11 +340,11 @@ async function deleteScenario(scenarioId) {
 
 async function softDeleteScenario(scenarioId) {
   const result = await query(sql`
-        UPDATE scenario
-        SET deleted_at = CURRENT_TIMESTAMP
-        WHERE id=${scenarioId}
-        RETURNING *;
-    `);
+    UPDATE scenario
+    SET deleted_at = CURRENT_TIMESTAMP
+    WHERE id=${scenarioId}
+    RETURNING *;
+  `);
   return result.rows[0];
 }
 
@@ -323,8 +430,17 @@ exports.getHistoryForScenario = getHistoryForScenario;
 exports.getScenarioByRun = getScenarioByRun;
 exports.getScenarioPrompts = getScenarioPrompts;
 
+// Scenario Lock
+exports.addScenarioLock = addScenarioLock;
+exports.getScenarioLock = getScenarioLock;
+exports.endScenarioLock = endScenarioLock;
+
+// Scenario Roles
+exports.addScenarioRole = addScenarioRole;
+exports.endScenarioRole = endScenarioRole;
+
 // Scenario Consent
-exports.addConsent = addConsent;
+exports.addScenarioConsent = addScenarioConsent;
 exports.setScenarioConsent = setScenarioConsent;
 exports.getScenarioConsent = getScenarioConsent;
 

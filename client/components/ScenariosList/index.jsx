@@ -42,7 +42,11 @@ const filter = (scenarios, user) => {
   }
   const isLoggedIn = !!(user || user.id);
   const reduced = scenarios.reduce((accum, scenario) => {
-    const { status, user_is_author: isAuthor } = scenario;
+    const { status, users } = scenario;
+    const scenarioUser = users.find(({ id }) => user.id === id);
+    const isAuthor = scenarioUser
+      ? scenarioUser.is_author
+      : false;
 
     // Show super admin everything
     if (user.is_super) {

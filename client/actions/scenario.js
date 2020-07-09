@@ -85,7 +85,8 @@ export const setScenario = scenario => {
           title: ''
         },
         categories: [],
-        status: 1
+        status: 1,
+        users: []
       }
     };
   }
