@@ -291,7 +291,7 @@ class MultiPathResponseEditor extends React.Component {
         header=""
         onClose={onViewGraphClick}
         open={open}
-        slides={slides}
+        scenarioId={scenarioId}
       />
     ) : null;
 

@@ -329,7 +329,7 @@ class Slides extends React.Component {
         header={title}
         onClose={() => this.setState({ graphOpen: false })}
         open={graphOpen}
-        slides={slides}
+        scenarioId={scenarioId}
       />
     ) : null;
 

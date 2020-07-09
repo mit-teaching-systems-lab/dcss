@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Graph from 'react-graph-vis';
 import { connect } from 'react-redux';
 import { Modal } from '@components/UI';
+import { getSlides } from '@actions/scenario';
 
 function makeNodeLabel(index, title) {
   const quotedSlideTitle = title ? `\n"${title}"` : ``;
@@ -10,12 +11,89 @@ function makeNodeLabel(index, title) {
 }
 
 class MultiPathNetworkGraphModal extends Component {
-  render() {
-    const { header, onClose, open, slides } = this.props;
+  constructor(props) {
+    super(props);
 
-    if (!slides || (slides && !slides.length)) {
+    this.state = {
+      isReady: false,
+      slides: [],
+      width: window.visualViewport.width,
+      height: window.visualViewport.height
+    };
+
+    this.onResize = this.onResize.bind(this);
+  }
+
+  componentWillUnmount() {
+    window.visualViewport.removeEventListener('resize', this.onResize);
+  }
+
+  componentDidMount() {
+    window.visualViewport.addEventListener('resize', this.onResize);
+
+    (async () => {
+      const unfiltered = await this.props.getSlides(this.props.scenarioId);
+      const slides = unfiltered.filter(({ is_finish }) => !is_finish);
+
+      this.setState({
+        isReady: true,
+        slides
+      });
+    })();
+  }
+
+  onResize() {
+    this.setState({
+      width: window.visualViewport.width,
+      height: window.visualViewport.height
+    });
+  }
+
+  render() {
+    const { header, onClose, open } = this.props;
+    const { isReady, slides } = this.state;
+
+    if (!isReady) {
       return null;
     }
+
+    let slidesCount = slides.length;
+    // Dimensions
+    // Modal.Content imposes a 21px padding on the left and right
+    const mcPaddingLR = 21 * 2;
+    // Modal size="fullscreen" fills 95% of viewport width
+    const viewableModalWidth = window.visualViewport.width * 0.95 - mcPaddingLR;
+
+    // Modal imposes a 14px margin on the top and bottom
+    const mMarginTB = 14 * 2;
+    // Modal imposes a 14px top and 5px bottom
+    const mPositionTB = 14 + 5;
+    // Modal.Header is 61px (margin + padding + content)
+    const mhHeight = 61;
+    // Modal.Content imposes a 21px padding on the top and bottom
+    const mcPaddingTB = 21 * 2;
+    // Sum of all Modal height size deductions;
+    const mHeightDeductionSum =
+      mPositionTB + mMarginTB + mhHeight + mcPaddingTB;
+
+    // Modal size="fullscreen" imposes a
+    const viewableModalHeight =
+      window.visualViewport.height - mHeightDeductionSum;
+
+    if (slidesCount % 2 !== 0) {
+      slidesCount += 1;
+    }
+
+    const sizeOfNode = Math.sqrt(
+      (viewableModalHeight * viewableModalWidth) / slidesCount
+    );
+
+    const nodeCols = Math.round(viewableModalWidth / sizeOfNode);
+    const nodeRows = Math.round(viewableModalHeight / sizeOfNode);
+
+    const nodePadding = 10;
+    const nodeWidth = Math.round(viewableModalWidth / nodeCols);
+    const nodeHeight = Math.round(viewableModalHeight / nodeRows);
 
     const nodesById = {};
     const edgesByNodeId = {};
@@ -79,38 +157,46 @@ class MultiPathNetworkGraphModal extends Component {
       }
     );
 
-    nodes
-      .filter(node => !edgesByNodeId[node.id])
-      .forEach(node => {
-        const slide = slides.find(({ id }) => id === node.id);
-        const slideIndex = slides.indexOf(slide);
-        const edge = {};
+    let colCounter = 0;
+    let rowCounter = 0;
 
-        const a = slides[slideIndex - 1];
-        const b = slides[slideIndex + 1];
-
-        if (a && !edgesByNodeId[a.id]) {
-          edge.from = a.id;
-          edge.to = slide.id;
-          edge.level = 1;
-        } else {
-          if (b) {
-            edge.from = slide.id;
-            edge.to = b.id;
-            edge.level = 1;
-          }
-        }
-        edges.push(edge);
-      });
-
+    // .filter(node => !edgesByNodeId[node.id])
     nodes.forEach(node => {
-      let level = nodes.length;
-      edges.forEach(edge => {
-        if (edge.from === node.id || edge.to === node.id) {
-          level -= 1;
-        }
-      });
-      node.level = level;
+      // Fill in implicit edges
+      const slide = slides.find(({ id }) => id === node.id);
+      const slideIndex = slides.indexOf(slide);
+
+      const edgeToNode = edges.find(edge => edge.to === node.id);
+      const edgeFromNode = edges.find(edge => edge.from === node.id);
+
+      // console.log(node.id, node.label, "edgeToNode", edgeToNode);
+      // console.log(node.id, node.label, "edgeFromNode", edgeFromNode);
+
+      const a = slides[slideIndex - 1];
+      const b = slides[slideIndex + 1];
+
+      if (!edgeToNode && a) {
+        edges.push({
+          from: a.id,
+          to: slide.id
+        });
+      }
+      if (!edgeFromNode && b) {
+        edges.push({
+          from: slide.id,
+          to: b.id
+        });
+      }
+
+      // Resolve positioning
+      node.x = colCounter * nodeWidth + nodePadding * colCounter ** 3;
+      node.y = rowCounter * nodeHeight + nodePadding;
+
+      colCounter++;
+      if (colCounter === nodeCols) {
+        colCounter = 0;
+        rowCounter++;
+      }
     });
 
     const graph = {
@@ -118,27 +204,14 @@ class MultiPathNetworkGraphModal extends Component {
       edges
     };
 
-    const height = `${window.innerHeight - 150}px`;
     const options = {
       clickToUse: true,
-      layout: {
-        randomSeed: 1,
-        // improvedLayout: true
-        // clusterThreshold: 150,
-        hierarchical: {
-          enabled: true,
-          direction: 'UD',
-          sortMethod: 'hubsize',
-          nodeSpacing: 300
-          // levelSeparation: 300,
-        }
-      },
       edges: {
         color: '#000000',
         smooth: {
           enabled: true,
-          type: 'horizontal',
-          roundness: 1
+          type: 'curvedCCW'
+          // roundness: 1
         }
       },
 
@@ -151,10 +224,30 @@ class MultiPathNetworkGraphModal extends Component {
           color: '#000'
         }
       },
-      width: '100%',
-      height,
+      width: `${viewableModalWidth}px`,
+      height: `${viewableModalHeight}px`,
       physics: {
         enabled: false
+      },
+      interaction: {
+        dragNodes: true,
+        dragView: true,
+        hideEdgesOnDrag: false,
+        hideEdgesOnZoom: false,
+        hideNodesOnDrag: false,
+        hover: false,
+        hoverConnectedEdges: true,
+        keyboard: {
+          enabled: false,
+          speed: { x: 10, y: 10, zoom: 0.02 },
+          bindToWindow: true
+        },
+        multiselect: false,
+        navigationButtons: true,
+        selectable: true,
+        selectConnectedEdges: true,
+        tooltipDelay: 300,
+        zoomView: true
       }
     };
 
@@ -165,7 +258,14 @@ class MultiPathNetworkGraphModal extends Component {
       }
     };
     return (
-      <Modal size="fullscreen" closeIcon open={open} onClose={onClose}>
+      <Modal
+        role="dialog"
+        aria-modal="true"
+        size="fullscreen"
+        closeIcon
+        open={open}
+        onClose={onClose}
+      >
         {header ? <Modal.Header>{header}</Modal.Header> : null}
         <Modal.Content>
           <Graph events={events} graph={graph} options={options} />
@@ -176,9 +276,11 @@ class MultiPathNetworkGraphModal extends Component {
 }
 
 MultiPathNetworkGraphModal.propTypes = {
+  getSlides: PropTypes.func,
   header: PropTypes.string,
   onClose: PropTypes.func,
   open: PropTypes.bool,
+  scenarioId: PropTypes.node,
   slides: PropTypes.array
 };
 
@@ -189,7 +291,11 @@ const mapStateToProps = state => {
   };
 };
 
+const mapDispatchToProps = dispatch => ({
+  getSlides: params => dispatch(getSlides(params))
+});
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(MultiPathNetworkGraphModal);
