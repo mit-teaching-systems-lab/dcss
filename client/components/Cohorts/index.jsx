@@ -14,6 +14,7 @@ import {
   Icon,
   Input,
   Menu,
+  Message,
   Modal,
   Pagination
 } from '@components/UI';
@@ -259,9 +260,13 @@ export class Cohorts extends React.Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  <Card.Group doubling itemsPerRow={4} stackable>
-                    {cards}
-                  </Card.Group>
+                  {cards.length ? (
+                    <Card.Group doubling itemsPerRow={4} stackable>
+                      {cards}
+                    </Card.Group>
+                  ) : (
+                    <Message content="No cohorts yet!" />
+                  )}
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
