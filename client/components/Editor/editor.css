@@ -8,3 +8,11 @@
 .editor__tabmenu {
   min-width: 1047px !important;
 }
+
+.editor__righttitle {
+  font-weight: bold;
+  max-width: 550px !important;
+  overflow:  !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}

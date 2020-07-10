@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash/clonedeep';
 import {
   // GET_SCENARIO,
   GET_SCENARIO_SUCCESS,
@@ -16,6 +17,8 @@ import {
   // SET_SCENARIOS_ERROR,
   SET_SLIDES
 } from './types';
+
+import { initialScenarioState } from '@reducers/scenario';
 
 export const getScenarios = () => async dispatch => {
   try {
@@ -69,12 +72,11 @@ export const getSlides = id => async dispatch => {
 
 export const setScenario = scenario => {
   if (scenario === null) {
+    const clone = cloneDeep(initialScenarioState);
     return {
       type: SET_SCENARIO,
       scenario: {
-        author: {},
-        title: '',
-        description: '',
+        ...clone,
         finish: {
           components: [
             {
@@ -83,10 +85,7 @@ export const setScenario = scenario => {
           ],
           is_finish: true,
           title: ''
-        },
-        categories: [],
-        status: 1,
-        users: []
+        }
       }
     };
   }

@@ -336,7 +336,7 @@ class Slides extends React.Component {
     return (
       <Container fluid>
         <Grid className="slides__editor-all-outer-container">
-          <Grid.Column width={3} className="slides__list-outer-container">
+          <Grid.Column className="slides__list-outer-container" width={3}>
             {isReady ? (
               <>
                 <Grid.Row>

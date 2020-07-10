@@ -5,25 +5,27 @@ import {
   SET_SLIDES
 } from '@actions/types';
 
-const initialScenarioState = {
-  title: '',
-  description: '',
+export const initialScenarioState = {
   // TODO: Phase out author
   author: {
     id: null,
     username: ''
   },
+  categories: [],
   consent: {
     id: null,
     prose: ''
   },
+  description: undefined,
   finish: {
     components: [],
     is_finish: true,
     title: ''
   },
+  lock: null,
   slides: [],
   status: 1,
+  title: '',
   users: []
 };
 

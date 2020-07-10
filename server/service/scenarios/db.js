@@ -235,7 +235,7 @@ async function addScenario(user_id, title, description) {
 
   const consent = await setScenarioConsent(scenario.id, consentDefault);
   const finish = await addFinishSlide(scenario.id);
-  const lock = await addScenarioLock(scenario.id);
+  const lock = await addScenarioLock(scenario.id, user_id);
 
   return {
     ...scenario,

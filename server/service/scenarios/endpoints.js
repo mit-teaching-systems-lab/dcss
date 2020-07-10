@@ -33,14 +33,21 @@ async function getAllScenariosAsync(req, res) {
 }
 
 async function addScenarioAsync(req, res) {
-  const userId = req.session.user.id;
   const { author, title, description, categories } = req.body;
-  let authorId = userId;
+  let authorId = req.session.user.id;
+  let message = '';
 
-  if (!userId || !title || !description) {
-    const error = new Error(
-      "The scenario's title and description must be provided by a valid user"
-    );
+  if (!authorId) {
+    message = 'No valid user';
+  }
+
+  if (!message && (!title || !description)) {
+    message =
+      'A title and description must be provided to create a new scenario.';
+  }
+
+  if (message) {
+    const error = new Error(message);
     error.status = 409;
     throw error;
   }

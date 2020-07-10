@@ -348,21 +348,33 @@ class Editor extends Component {
         </Menu.Item>
       ) : null;
 
-    const menuItemsForMenuBar = Object.keys(this.state.tabs).map(tabType => {
-      return (
-        <Menu.Item
-          key={tabType}
-          name={tabType}
-          active={this.state.activeTab === tabType}
-          onClick={this.onClick}
-        />
+    const menuItemsForAttachedTabularBar = Object.keys(this.state.tabs).map(
+      tabType => {
+        return (
+          <Menu.Item
+            key={tabType}
+            name={tabType}
+            active={this.state.activeTab === tabType}
+            onClick={this.onClick}
+          />
+        );
+      }
+    );
+
+    if (scenarioId !== 'new') {
+      menuItemsForAttachedTabularBar.push(
+        <Menu.Menu key="menu-menu-item-tabs-right" position="right">
+          <Menu.Item className="editor__righttitle">
+            {this.props.title}
+          </Menu.Item>
+        </Menu.Menu>
       );
-    });
+    }
 
     return (
       <Fragment>
         <Menu attached="top" tabular className="editor__tabmenu">
-          {menuItemsForMenuBar}
+          {menuItemsForAttachedTabularBar}
         </Menu>
 
         <Segment attached="bottom" className="editor__content-pane">

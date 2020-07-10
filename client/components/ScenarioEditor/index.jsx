@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+// import { diff } from 'deep-object-diff';
+
 import { Button, Container, Form, Grid, Popup } from '@components/UI';
 import { getScenario, setScenario } from '@actions/scenario';
 import { getCategories } from '@actions/tags';
@@ -10,8 +12,17 @@ import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
+import ScenarioAuthors from './ScenarioAuthors';
 import RichTextEditor from '@components/RichTextEditor';
 import './scenarioEditor.css';
+
+function makeDefaultDescription({ title, description }) {
+  let returnValue = description;
+  if (!returnValue && title) {
+    returnValue = `A scenario about "${title}"`;
+  }
+  return returnValue;
+}
 
 class ScenarioEditor extends Component {
   constructor(props) {
@@ -19,13 +30,29 @@ class ScenarioEditor extends Component {
     this.state = {
       isReady: false,
       authors: [],
+      reviewers: [],
       categories: []
     };
 
+    this.debouncer = null;
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onConsentChange = this.onConsentChange.bind(this);
     this.onFinishSlideChange = this.onFinishSlideChange.bind(this);
+    this.onBeforeUnload = this.onBeforeUnload.bind(this);
+  }
+
+  onBeforeUnload() {
+    if (this.props.scenarioId !== 'new') {
+      this.onSubmit();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.debouncer) {
+      clearTimeout(this.debouncer);
+    }
+    window.removeEventListener('beforeunload', this.onBeforeUnload);
   }
 
   async componentDidMount() {
@@ -44,7 +71,7 @@ class ScenarioEditor extends Component {
       await getScenario(scenarioId);
     }
 
-    const authors = await getUsersByPermission('create_scenario');
+    const authors = await getUsersByPermission('edit_scenario');
 
     let { categories } = tags;
 
@@ -59,23 +86,29 @@ class ScenarioEditor extends Component {
       categories,
       authors
     });
+
+    window.addEventListener('beforeunload', this.onBeforeUnload);
   }
 
-  onChange(event, { name, value }) {
-    this.props.setScenario({ [name]: value });
+  async onChange(event, { name, value }) {
+    const { scenario } = await this.props.setScenario({
+      ...this.props.scenario,
+      [name]: value
+    });
 
-    // Only auto-save after initial
-    // save of new scenario
-    // NOTE: temporarily disabling this until we
-    // have a better strategy for auto saving details
-    // on this page.
+    // Only auto-save after scenario has been created.
     if (this.props.scenarioId !== 'new') {
-      this.onSubmit();
+      if (this.debouncer) {
+        clearTimeout(this.debouncer);
+      }
+      this.debouncer = setTimeout(() => {
+        this.onSubmit(scenario);
+      }, 1000);
     }
   }
 
   onConsentChange(value) {
-    let { id, prose } = this.props.consent;
+    let { id, prose } = this.props.scenario.consent;
 
     if (prose !== value) {
       id = null;
@@ -96,7 +129,7 @@ class ScenarioEditor extends Component {
       id,
       is_finish,
       title
-    } = this.props.finish;
+    } = this.props.scenario.finish;
 
     if (!existing || (existing && existing.html !== html)) {
       this.onChange(event, {
@@ -111,39 +144,25 @@ class ScenarioEditor extends Component {
     }
   }
 
-  async onSubmit() {
-    const {
-      author,
-      categories = [],
-      consent,
-      description,
-      finish,
-      postSubmitCB,
-      status,
-      submitCB,
-      title
-    } = this.props;
+  async onSubmit(updatedScenario) {
+    const { postSubmitCB, submitCB } = this.props;
+    const scenario = updatedScenario || this.props.scenario;
 
-    if (!title || !description) {
+    if (!scenario.description) {
+      scenario.description = makeDefaultDescription(scenario);
+    }
+
+    if (!scenario.title || !scenario.description) {
       notify({
-        type: 'info',
-        message: 'A title and description are required for saving scenarios'
+        type: 'error',
+        message: 'A title and description are required for saving scenarios.'
       });
       return;
     }
 
-    const data = {
-      author,
-      categories,
-      consent,
-      description,
-      finish,
-      status,
-      title
-    };
+    const response = await (await submitCB(scenario)).json();
 
-    const response = await (await submitCB(data)).json();
-
+    let type = 'success';
     let message = '';
     switch (response.status) {
       case 200: {
@@ -156,11 +175,16 @@ class ScenarioEditor extends Component {
       }
       default:
         if (response.message) {
+          type = response.error ? 'error' : type;
           message = response.message;
         }
         break;
     }
-    notify({ message });
+    notify({ type, message });
+
+    if (response.error) {
+      return;
+    }
 
     if (postSubmitCB) {
       postSubmitCB(response.scenario);
@@ -168,15 +192,11 @@ class ScenarioEditor extends Component {
   }
 
   render() {
-    const { onChange, onConsentChange, onFinishSlideChange, onSubmit } = this;
+    const { onChange, onConsentChange, onFinishSlideChange } = this;
     const {
-      author,
-      categories,
-      consent,
-      description,
-      finish,
       scenarioId,
-      title
+      scenario,
+      scenario: { author, categories, consent, finish, title }
     } = this.props;
 
     const { isReady } = this.state;
@@ -187,77 +207,117 @@ class ScenarioEditor extends Component {
 
     const consentAgreementValue = consent.prose || '';
 
+    const formInputTitle = (
+      <Form.Input
+        focus
+        required
+        label="Title"
+        name="title"
+        value={title}
+        onChange={onChange}
+      />
+    );
+
+    const descriptionDefaultValue = makeDefaultDescription(scenario);
+
+    const textAreaDescription = (
+      <Form.TextArea
+        required
+        focus="true"
+        label="Description"
+        name="description"
+        rows={1}
+        value={descriptionDefaultValue}
+        onChange={onChange}
+      />
+    );
+
+    const rteConsent =
+      scenarioId !== 'new' ? (
+        <Form.Field required>
+          <label>Consent Agreement</label>
+          {consentAgreementValue ? (
+            <RichTextEditor
+              name="consentprose"
+              defaultValue={consent.prose}
+              onChange={onConsentChange}
+              options={{
+                buttons: 'suggestion',
+                minHeight: '150px'
+              }}
+            />
+          ) : null}
+        </Form.Field>
+      ) : null;
+
+    const rteFinish =
+      scenarioId !== 'new' ? (
+        <Form.Field>
+          <label>
+            After a scenario has been completed, the participant will be shown
+            this:
+          </label>
+          <RichTextEditor
+            defaultValue={finish.components[0].html}
+            onChange={onFinishSlideChange}
+            options={{
+              buttons: 'suggestion',
+              minHeight: '200px'
+            }}
+          />
+        </Form.Field>
+      ) : null;
+
+    // This call is wrapped to prevent the form submit handler from
+    // sending an event object to the "onSubmit" handler method.
+    const onCreateScenarioClick = () => this.onSubmit();
+
+    const popupProps =
+      scenarioId === 'new'
+        ? { size: 'large', position: 'right center', hideOnScroll: true }
+        : { disabled: true };
+
+    const leftColumnClassName =
+      scenarioId !== 'new'
+        ? 'se__grid-column-height-constraint se__grid-column-width-constraint'
+        : '';
+
     return (
       <Form size={'big'}>
         <Container fluid>
           <Grid columns={2} divided>
-            <Grid.Row className="scenarioeditor__grid-nowrap">
-              <Grid.Column
-                width={6}
-                className="scenarioeditor__grid-column-min-width"
-              >
+            <Grid.Row className="se__grid-nowrap">
+              <Grid.Column className={leftColumnClassName} width={6}>
                 <Popup
-                  size="small"
                   content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
-                  trigger={
-                    <Form.Input
-                      focus
-                      required
-                      label="Title"
-                      name="title"
-                      value={title}
-                      onChange={onChange}
-                    />
-                  }
+                  trigger={formInputTitle}
+                  {...popupProps}
                 />
                 <Popup
-                  size="small"
                   content="Enter a description for your scenario. This will appear on the scenario 'entry' slide."
-                  trigger={
-                    <Form.TextArea
-                      focus="true"
-                      required
-                      label="Description"
-                      name="description"
-                      value={description}
-                      onChange={onChange}
-                    />
-                  }
+                  trigger={textAreaDescription}
+                  {...popupProps}
                 />
 
-                {scenarioId !== 'new' && (
-                  <Popup
-                    size="small"
-                    content="Enter Consent Agreement prose here, or use the default provided Consent Agreement. This will appear on the scenario 'entry' slide."
-                    trigger={
-                      <Form.Field required>
-                        <label>Consent Agreement</label>
-                        {consentAgreementValue ? (
-                          <RichTextEditor
-                            defaultValue={consent.prose}
-                            name="consentprose"
-                            onChange={onConsentChange}
-                            options={{
-                              buttons: 'suggestion',
-                              minHeight: '150px'
-                            }}
-                          />
-                        ) : null}
-                      </Form.Field>
-                    }
-                  />
-                )}
-
-                {scenarioId === 'new' ? (
-                  <Button type="submit" primary onClick={onSubmit}>
+                {scenarioId !== 'new' ? (
+                  <Fragment>
+                    {rteConsent}
+                    {rteFinish}
+                  </Fragment>
+                ) : (
+                  <Button type="submit" primary onClick={onCreateScenarioClick}>
                     Create this scenario
                   </Button>
-                ) : null}
+                )}
               </Grid.Column>
               <Grid.Column
-                width={6}
-                className="scenarioeditor__grid-column-min-width"
+                width={9}
+                className="se__grid-column-width-constraint"
               >
+                {scenarioId !== 'new' ? (
+                  <ScenarioAuthors scenario={scenario} />
+                ) : null}
+
                 <ConfirmAuth requiredPermission="edit_scenario">
                   {this.state.authors.length ? (
                     <AuthorDropdown
@@ -281,29 +341,6 @@ class ScenarioEditor extends Component {
                         available topics (if any exist)
 
                 */}
-
-                {scenarioId !== 'new' && finish && (
-                  <Popup
-                    size="small"
-                    content="This will appear on the slide that's shown after the scenario has been completed."
-                    trigger={
-                      <Form.Field>
-                        <label>
-                          After a scenario has been completed, the participant
-                          will be shown this:
-                        </label>
-                        <RichTextEditor
-                          defaultValue={finish.components[0].html}
-                          onChange={onFinishSlideChange}
-                          options={{
-                            buttons: 'suggestion',
-                            minHeight: '200px'
-                          }}
-                        />
-                      </Form.Field>
-                    }
-                  />
-                )}
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -317,53 +354,49 @@ ScenarioEditor.propTypes = {
   getUsersByPermission: PropTypes.func.isRequired,
   getCategories: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
+  postSubmitCB: PropTypes.func,
   scenarioId: PropTypes.node.isRequired,
+  scenario: PropTypes.shape({
+    author: PropTypes.object,
+    categories: PropTypes.array,
+    consent: PropTypes.shape({
+      id: PropTypes.number,
+      prose: PropTypes.string
+    }),
+    description: PropTypes.string,
+    finish: PropTypes.object,
+    lock: PropTypes.object,
+    status: PropTypes.number,
+    title: PropTypes.string,
+    users: PropTypes.array
+  }),
   setScenario: PropTypes.func.isRequired,
   submitCB: PropTypes.func.isRequired,
-  postSubmitCB: PropTypes.func,
-  author: PropTypes.object,
-  title: PropTypes.string,
-  categories: PropTypes.array,
-  consent: PropTypes.shape({
-    id: PropTypes.number,
-    prose: PropTypes.string
-  }),
-  description: PropTypes.string,
-  finish: PropTypes.object,
-  status: PropTypes.number,
   tags: PropTypes.shape({
     categories: PropTypes.array
-  })
+  }),
+  user: PropTypes.object,
+  users: PropTypes.array
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const {
-    scenario: {
-      author,
-      categories,
-      consent,
-      description,
-      finish,
-      status,
-      title
-    },
-    user,
-    tags
-  } = state;
+  const { scenario, tags, user, users } = state;
 
   if (ownProps.scenarioId === 'new') {
-    Object.assign(author, user);
+    Object.assign(scenario.author, user);
   }
-
   return {
-    author,
-    categories,
-    consent,
-    description,
-    finish,
-    status,
-    title,
-    tags
+    // author,
+    // categories,
+    // consent,
+    // description,
+    // finish,
+    // status,
+    // title,
+    scenario,
+    tags,
+    user,
+    users
   };
 };
 

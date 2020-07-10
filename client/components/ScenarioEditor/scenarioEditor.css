@@ -1,8 +1,14 @@
-.scenarioeditor__grid-nowrap {
+.se__grid-nowrap {
   flex-wrap: nowrap !important;
   margin-bottom: 0.5em;
 }
 
-.scenarioeditor__grid-column-min-width {
+.se__grid-column-width-constraint {
   min-width: 48vw !important;
+}
+
+.se__grid-column-height-constraint {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 75vh !important;
 }
