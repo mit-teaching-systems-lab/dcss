@@ -1,4 +1,4 @@
-import cloneDeep from 'lodash/clonedeep';
+import _ from 'lodash';
 import {
   // GET_SCENARIO,
   GET_SCENARIO_SUCCESS,
@@ -72,7 +72,7 @@ export const getSlides = id => async dispatch => {
 
 export const setScenario = scenario => {
   if (scenario === null) {
-    const clone = cloneDeep(initialScenarioState);
+    const clone = _.cloneDeep(initialScenarioState);
     return {
       type: SET_SCENARIO,
       scenario: {
