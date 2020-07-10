@@ -34,7 +34,7 @@ class MultiPathResponseEditor extends React.Component {
       */
       paths = [
         {
-          display: `Go to...`,
+          display: '',
           value: null
         }
       ],

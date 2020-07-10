@@ -1,6 +1,6 @@
 const { sql } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
-const { getScenarioSlides } = require('./slides/db');
+const { getScenarioSlides } = require('../scenarios/slides/db');
 const { getRunResponses } = require('../runs/db');
 
 async function getScenarioPrompts(scenario_id) {
@@ -25,35 +25,53 @@ async function getScenarioPrompts(scenario_id) {
   return components;
 }
 
-async function getHistoryForScenario(params) {
+async function getHistoryForScenario(request) {
   const {
     // TODO: implement support for limiting by cohort
     cohort_id,
     scenario_id
-  } = params;
-  let results;
+  } = request.params;
+  const { is_super } = request.session.user;
+
+  let superSelect;
+  let regularSelect;
 
   if (cohort_id) {
-    results = await query(sql`
-      SELECT run_id
+    superSelect = sql`
+      SELECT run_id, consent_granted_by_user
+      FROM cohort_run
+      JOIN run ON run.id = cohort_run.run_id
+      WHERE run.scenario_id = ${scenario_id};
+    `;
+
+    regularSelect = sql`
+      SELECT run_id, consent_granted_by_user
       FROM cohort_run
       JOIN run ON run.id = cohort_run.run_id
       WHERE run.consent_granted_by_user = true
       AND run.scenario_id = ${scenario_id};
-    `);
+    `;
   } else {
-    results = await query(sql`
-      SELECT id AS run_id
+    superSelect = sql`
+      SELECT id AS run_id, consent_granted_by_user
+      FROM run
+      WHERE scenario_id = ${scenario_id};
+    `;
+
+    regularSelect = sql`
+      SELECT id AS run_id, consent_granted_by_user
       FROM run
       WHERE consent_granted_by_user = true
       AND scenario_id = ${scenario_id};
-    `);
+    `;
   }
+  const select = is_super ? superSelect : regularSelect;
 
+  const results = await query(select);
   const prompts = await getScenarioPrompts(scenario_id);
   const responses = [];
 
-  for (const { run_id } of results.rows) {
+  for (const { run_id, consent_granted_by_user } of results.rows) {
     responses.push(await getRunResponses({ run_id }));
   }
 

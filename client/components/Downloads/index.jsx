@@ -123,7 +123,8 @@ class Downloads extends Component {
         'created_at',
         'ended_at',
         'type',
-        'referrer_params'
+        'referrer_params',
+        'consent_granted_by_user'
       ];
 
       if (cohort) {

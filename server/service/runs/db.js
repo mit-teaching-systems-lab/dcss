@@ -101,7 +101,8 @@ exports.getRunResponses = async ({ run_id }) => {
             END as is_skip,
             run_response.response->>'type' as type,
             run_response.created_at as created_at,
-            run_response.ended_at as ended_at
+            run_response.ended_at as ended_at,
+            run.consent_granted_by_user
         FROM run_response
         JOIN run ON run.id = run_response.run_id
         JOIN users ON users.id = run.user_id

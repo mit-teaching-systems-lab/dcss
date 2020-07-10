@@ -113,6 +113,10 @@ async function loginUserAsync(req, res, next) {
     // console.log(user);
     const { salt, hash } = existing;
 
+    if (!password && hash && salt) {
+      throw error;
+    }
+
     // Case of anonymous user, where only a username is created.
     if (!email || (!password && !hash && !salt)) {
       // disabling to set req.session.user

@@ -7,6 +7,7 @@ const pgSession = require('connect-pg-simple')(session);
 
 const authRouter = require('./service/auth');
 const cohortRouter = require('./service/cohort');
+const historyRouter = require('./service/history');
 // const researchRouter = require('./service/research');
 const rolesRouter = require('./service/roles');
 const runsRouter = require('./service/runs');
@@ -42,6 +43,7 @@ app.use(
 
 app.use('/auth', authRouter);
 app.use('/cohort', cohortRouter);
+app.use('/history', historyRouter);
 app.use('/media', mediaRouter);
 // app.use('/research', researchRouter);
 app.use('/roles', rolesRouter);
