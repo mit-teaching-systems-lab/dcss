@@ -32,7 +32,7 @@ function reduceResponses(key, responses) {
       response: { content = '' }
     } = response;
     response.content = content;
-    response.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
+    response.content += (is_skip ? '(skipped)' : ` ${transcript || value}`).trim();
 
     if (!accum[property]) {
       accum[property] = { [response_id]: response };
@@ -357,7 +357,7 @@ const DataTableRow = props => {
         // microphone
         const display = isAudioContent ? (
           <Fragment>
-            {content ? (
+            {content && content !== response.value ? (
               content
             ) : (
               <audio src={`/api/media/${response.value}`} controls="controls" />

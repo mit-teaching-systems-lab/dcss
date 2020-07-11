@@ -67,7 +67,7 @@ const DataModal = props => {
 
                     const display = isAudioContent ? (
                       <Fragment>
-                        {content ? (
+                        {content && content !== response.value ? (
                           content
                         ) : (
                           <audio
