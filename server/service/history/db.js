@@ -71,7 +71,7 @@ async function getHistoryForScenario(request) {
   const prompts = await getScenarioPrompts(scenario_id);
   const responses = [];
 
-  for (const { run_id, consent_granted_by_user } of results.rows) {
+  for (const { run_id } of results.rows) {
     responses.push(await getRunResponses({ run_id }));
   }
 

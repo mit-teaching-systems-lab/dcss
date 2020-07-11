@@ -45,8 +45,6 @@ class Downloads extends Component {
       activePage: activePage || 1,
       filter
     };
-    // This is disabled for Jamboree.
-    // this.onCohortSelect = this.onCohortSelect.bind(this);
     this.onDownloadSearchChange = this.onDownloadSearchChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.requestDownload = this.requestDownload.bind(this);
@@ -96,14 +94,20 @@ class Downloads extends Component {
       );
 
       const records = responses.flat();
-
       records.forEach(record => {
-        const { is_skip, response_id, transcript, value } = record;
+        const {
+          is_skip,
+          response_id,
+          response: { content },
+          transcript,
+          value
+        } = record;
         const prompt = prompts.find(
           prompt => prompt.responseId === response_id
         );
         record.header = makeHeader(prompt, prompts);
-        record.content = is_skip ? '(skipped)' : transcript || value;
+        record.content = content || '';
+        record.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
 
         if (isAudioFile(value)) {
           record.content += ` (${location.origin}/api/media/${value})`;

@@ -50,7 +50,7 @@ class Display extends Component {
     }
   }
 
-  onClick(event, { name, value }) {
+  onClick(event, { name, value, content }) {
     if (!this.isScenarioRun) {
       event.stopPropagation();
     }
@@ -60,6 +60,7 @@ class Display extends Component {
 
     onResponseChange(event, {
       hasOwnNavigation: true,
+      content,
       created_at,
       ended_at: new Date().toISOString(),
       name,

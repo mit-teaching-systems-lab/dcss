@@ -83,6 +83,7 @@ class Run extends Component {
   onResponseChange(event, data) {
     const {
       created_at,
+      content = '',
       ended_at = new Date().toISOString(),
       isSkip = false,
       name,
@@ -91,6 +92,7 @@ class Run extends Component {
     } = data;
     const record = {
       created_at,
+      content,
       ended_at,
       isSkip,
       type,
