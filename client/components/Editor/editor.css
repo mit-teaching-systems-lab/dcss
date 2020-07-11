@@ -10,9 +10,9 @@
 }
 
 .editor__righttitle {
-  font-weight: bold;
+  font-weight: bold !important;
   max-width: 550px !important;
-  overflow:  !important;
+  overflow:  hidden !important;
   white-space: nowrap !important;
   text-overflow: ellipsis !important;
 }
