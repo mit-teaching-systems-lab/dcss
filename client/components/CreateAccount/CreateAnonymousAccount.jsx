@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Header, Modal, Popup } from '@components/UI';
+import { Button, Header, Modal } from '@components/UI';
 import { logIn } from '@actions';
 import Loading from '@components/Loading';
 import anonymousUsername from './anonymousUsername';
@@ -86,7 +86,7 @@ class CreateAnonymousAccount extends Component {
         <Header icon="user outline" content={header} />
         <Modal.Content>
           {username ? (
-            <Header as="h1" className="createanonymousaccount__header-centered">
+            <Header as="h1" className="caa__header-centered">
               <code>{username}</code>
             </Header>
           ) : (
@@ -94,47 +94,22 @@ class CreateAnonymousAccount extends Component {
           )}
         </Modal.Content>
         <Modal.Actions>
-          <Button.Group fluid size="large">
-            <Popup
-              size="small"
-              content="Go back"
-              position="bottom center"
-              trigger={
-                <Button
-                  content="Nevermind, go back"
-                  name="nvm"
-                  onClick={onClick}
-                />
-              }
+          <Button.Group fluid>
+            <Button
+              color="green"
+              content="Yes, continue"
+              name="yes"
+              onClick={onSubmit}
             />
             <Button.Or />
-            <Popup
-              size="small"
-              content="Show me another available user name."
-              position="bottom center"
-              trigger={
-                <Button
-                  color="orange"
-                  content="No, see another"
-                  name="no"
-                  onClick={onClick}
-                />
-              }
+            <Button
+              color="orange"
+              content="No, see another"
+              name="no"
+              onClick={onClick}
             />
             <Button.Or />
-            <Popup
-              size="small"
-              content="Select this user name to continue."
-              position="bottom center"
-              trigger={
-                <Button
-                  color="green"
-                  content="Yes, continue"
-                  name="yes"
-                  onClick={onSubmit}
-                />
-              }
-            />
+            <Button content="Go back" name="nvm" onClick={onClick} />
           </Button.Group>
         </Modal.Actions>
       </Modal>

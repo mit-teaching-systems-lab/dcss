@@ -142,23 +142,27 @@ class Login extends Component {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Grid stackable columns={2}>
-            <Grid.Column>
-              <Message floating {...messageProps} style={{ textAlign: 'left' }}>
-                {error.message}
-              </Message>
-            </Grid.Column>
-            <Grid.Column>
-              <Button.Group fluid>
-                <Button primary type="submit" onClick={onSubmit} size="large">
-                  Log in
-                </Button>
-                <Button.Or />
-                <Button size="large" onClick={onCreateAccountClick}>
-                  Create an account
-                </Button>
-              </Button.Group>
-            </Grid.Column>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                <Button.Group fluid>
+                  <Button primary type="submit" onClick={onSubmit} size="large">
+                    Log in
+                  </Button>
+                  <Button.Or />
+                  <Button size="large" onClick={onCreateAccountClick}>
+                    Create an account
+                  </Button>
+                </Button.Group>
+                <Message
+                  floating
+                  {...messageProps}
+                  style={{ textAlign: 'left' }}
+                >
+                  {error.message}
+                </Message>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Modal.Actions>
       </Modal>
