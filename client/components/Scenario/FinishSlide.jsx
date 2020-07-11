@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Confirm, Card } from '@components/UI';
+import { Button, Card, Header, Modal } from '@components/UI';
 import { NavLink } from 'react-router-dom';
 import './Scenario.css';
 
@@ -34,7 +34,7 @@ class FinishSlide extends React.Component {
     if (!this.isScenarioRun) {
       return;
     }
-    location.href = this.props.back;
+    this.props.onBackClick();
   }
 
   onConfirm(event) {
@@ -65,16 +65,31 @@ class FinishSlide extends React.Component {
     );
     return (
       <React.Fragment>
-        <Confirm
-          content={`If you're ready to finish, click 'I'm done!'`}
-          header="Ready to finish this scenario?"
-          cancelButton="Go back"
-          confirmButton="I'm done!"
-          onCancel={onCancel}
-          onConfirm={onConfirm}
-          open={isConfirmBoxOpen}
+        <Modal
+          role="dialog"
+          aria-modal="true"
           size="tiny"
-        />
+          open={isConfirmBoxOpen}
+        >
+          <Header
+            icon="newspaper outline"
+            content="Ready to finish this scenario?"
+          />
+          <Modal.Content>
+            If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
+          </Modal.Content>
+          <Modal.Actions>
+            <Button.Group fluid>
+              <Button color="green" onClick={onConfirm}>
+                I&apos;m done!
+              </Button>
+              <Button.Or />
+              <Button color="grey" onClick={onCancel}>
+                Go back
+              </Button>
+            </Button.Group>
+          </Modal.Actions>
+        </Modal>
         <Card centered className={className}>
           {extra}
           <Card.Content>
@@ -98,6 +113,7 @@ FinishSlide.propTypes = {
   cohortId: PropTypes.node,
   scenarioId: PropTypes.node,
   back: PropTypes.string,
+  onBackClick: PropTypes.func,
   onChange: PropTypes.func,
   slide: PropTypes.object
 };

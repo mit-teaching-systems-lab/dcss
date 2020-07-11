@@ -236,7 +236,6 @@ class Scenario extends Component {
 
   async componentDidMount() {
     const {
-      baseurl,
       cohortId,
       getScenario,
       getSlides,
@@ -256,16 +255,16 @@ class Scenario extends Component {
 
     let finish = contents.find(slide => slide.is_finish) || null;
 
+    // Create a backup of the raw slide contents for the click
+    // handlers to access
+    this.slides = contents.slice();
+
     if (finish) {
       // remove the "finish" slide from the returned slides,
       // to prevent it from being treated like a regular
       // content slide.
       contents.splice(contents.indexOf(finish), 1);
     }
-
-    // Create a backup of the raw slide contents for the click
-    // handlers to access
-    this.slides = contents.slice();
 
     const slides = [
       <EntrySlide
@@ -305,7 +304,7 @@ class Scenario extends Component {
         slide={finish}
         cohortId={cohortId}
         scenarioId={scenarioId}
-        back={`${baseurl}/slide/${slides.length - 1}`}
+        onBackClick={this.getOnClickHandler('back')}
         onChange={onRunChange}
       />
     );

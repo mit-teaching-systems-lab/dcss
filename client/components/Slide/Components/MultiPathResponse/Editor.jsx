@@ -11,6 +11,7 @@ import {
   Table
 } from '@components/UI';
 import { type } from './meta';
+import { html } from './html';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Sortable from '@components/Sortable';
@@ -77,7 +78,8 @@ class MultiPathResponseEditor extends React.Component {
       `/api/scenarios/${scenarioId}/slides`
     )).json();
     if (status === 200) {
-      this.slides = unfiltered.filter(({ is_finish }) => !is_finish);
+      // this.slides = unfiltered.filter(({ is_finish }) => !is_finish);
+      this.slides = unfiltered;
       this.setState({
         isReady: true
       });
@@ -247,29 +249,36 @@ class MultiPathResponseEditor extends React.Component {
 
     const slidesAsOptions = slides.map((slide, index) => {
       const nonZeroIndex = index + 1;
-      const quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
-      const text = `Slide #${nonZeroIndex} ${quotedSlideTitle}`.trim();
       const value = slide.id;
+      let quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
+      let text = `Slide #${nonZeroIndex} ${quotedSlideTitle}`.trim();
+      let headerCell = `
+      Slide #{nonZeroIndex}
+      {quotedSlideTitle}
+      `.trim();
+      let components = slide.components;
+
+      if (slide.is_finish) {
+        const type = 'Text';
+        // Override these for display consistency
+        text = 'Finish';
+        headerCell = text;
+        components = [{ html, type }];
+      }
+
       const content = (
         <Table celled striped>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell className="mpr__slide-preview-constraint mpr__goto-slide-title-constraint">
-                Slide #{nonZeroIndex}
-                {quotedSlideTitle}
+                {headerCell}
               </Table.HeaderCell>
             </Table.Row>
           </Table.Header>
           <Table.Body>
             <Table.Row>
-              {/*
-              <Table.Cell verticalAlign="top">
-                Slide #{nonZeroIndex}
-                {quotedSlideTitle}
-              </Table.Cell>
-            */}
               <Table.Cell className="mpr__slide-preview-constraint">
-                <SlideComponents asSVG={true} components={slide.components} />
+                <SlideComponents asSVG={true} components={components} />
               </Table.Cell>
             </Table.Row>
           </Table.Body>

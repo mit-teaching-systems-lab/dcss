@@ -6,7 +6,7 @@ export const small = [
 ];
 
 export const medium = [
-  ['font', 'fontSize', 'formatBlock'],
+  ['font', 'fontSize', 'formatBlock', 'lineHeight'],
   ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
   ['removeFormat'],
   ['outdent', 'indent'],
@@ -15,7 +15,7 @@ export const medium = [
 ];
 
 export const large = [
-  ['font', 'fontSize', 'formatBlock'],
+  ['font', 'fontSize', 'formatBlock', 'lineHeight'],
   ['bold', 'underline', 'italic', 'strike', 'subscript', 'superscript'],
   ['removeFormat'],
   ['fontColor', 'hiliteColor'],
@@ -37,6 +37,7 @@ export const component = [
     'font',
     'fontSize',
     'formatBlock',
+    'lineHeight',
     'fontColor',
     'hiliteColor',
     'bold',

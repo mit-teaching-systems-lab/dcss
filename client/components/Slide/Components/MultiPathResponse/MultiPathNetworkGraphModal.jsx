@@ -5,9 +5,11 @@ import { connect } from 'react-redux';
 import { Modal } from '@components/UI';
 import { getSlides } from '@actions/scenario';
 
-function makeNodeLabel(index, title) {
-  const quotedSlideTitle = title ? `\n"${title}"` : ``;
-  return `Slide #${index} ${quotedSlideTitle}`.trim();
+function makeNodeLabel(index, slide) {
+  const quotedSlideTitle = slide.title ? `\n"${slide.title}"` : ``;
+  return slide.is_finish
+    ? 'Finish'
+    : `Slide #${index} ${quotedSlideTitle}`.trim();
 }
 
 class MultiPathNetworkGraphModal extends Component {
@@ -32,9 +34,7 @@ class MultiPathNetworkGraphModal extends Component {
     window.visualViewport.addEventListener('resize', this.onResize);
 
     (async () => {
-      const unfiltered = await this.props.getSlides(this.props.scenarioId);
-      const slides = unfiltered.filter(({ is_finish }) => !is_finish);
-
+      const slides = await this.props.getSlides(this.props.scenarioId);
       this.setState({
         isReady: true,
         slides
@@ -99,8 +99,8 @@ class MultiPathNetworkGraphModal extends Component {
     const edgesByNodeId = {};
     const { nodes, edges } = slides.reduce(
       (accum, slide, index) => {
-        const { id, title } = slide;
-        const label = makeNodeLabel(index + 1, title);
+        const { id } = slide;
+        const label = makeNodeLabel(index + 1, slide);
 
         nodesById[id] = true;
         accum.nodes.push({
@@ -285,10 +285,8 @@ MultiPathNetworkGraphModal.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const slides = state.scenario.slides.filter(slide => !slide.is_finish);
-  return {
-    slides
-  };
+  const { slides } = state.scenario;
+  return { slides };
 };
 
 const mapDispatchToProps = dispatch => ({
