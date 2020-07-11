@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Confirm, Icon, Menu, Popup, Ref } from '@components/UI';
+import { Button, Header, Icon, Menu, Modal, Popup, Ref } from '@components/UI';
 
 class ConfirmableDeleteButton extends Component {
   constructor(props) {
@@ -30,6 +30,8 @@ class ConfirmableDeleteButton extends Component {
       props: { disabled, itemType, onConfirm }
     } = this;
 
+    const { open } = this.state;
+
     const ariaLabel = `Delete ${itemType}`.trim();
     const content = itemType
       ? `Are you sure you want to delete this ${itemType}?`
@@ -40,9 +42,8 @@ class ConfirmableDeleteButton extends Component {
       onComplete();
     };
 
-    const cancelButton = 'No thanks';
     const confirmButton = (
-      <ConfirmButton onClick={onConfirmClick} content="Confirm delete" />
+      <ConfirmButton onClick={onConfirmClick} content="Yes" />
     );
 
     const trigger = (
@@ -51,16 +52,25 @@ class ConfirmableDeleteButton extends Component {
       </Menu.Item>
     );
     return (
-      <React.Fragment>
+      <Fragment>
         <Popup size="small" content={ariaLabel} trigger={trigger} />
-        <Confirm
-          open={this.state.open}
-          content={content}
-          cancelButton={cancelButton}
-          confirmButton={confirmButton}
-          onCancel={onCancel}
-        />
-      </React.Fragment>
+        <Modal role="dialog" aria-modal="true" size="small" open={open}>
+          <Header
+            icon="trash alternate outline"
+            content="Delete confirmation"
+          />
+          <Modal.Content>{content}</Modal.Content>
+          <Modal.Actions>
+            <Button.Group fluid>
+              {confirmButton}
+              <Button.Or />
+              <Button onClick={onCancel} size="large">
+                No
+              </Button>
+            </Button.Group>
+          </Modal.Actions>
+        </Modal>
+      </Fragment>
     );
   }
 }
