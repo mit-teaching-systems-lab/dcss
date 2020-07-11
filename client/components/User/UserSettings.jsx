@@ -262,25 +262,25 @@ class UserSettings extends Component {
           </Form>
         </Modal.Content>
         <Modal.Actions>
-          <Grid stackable columns={2}>
-            <Grid.Column>
-              <Message
-                floating
-                {...messageProps}
-                style={{ textAlign: 'left' }}
-              />
-            </Grid.Column>
-            <Grid.Column>
-              <Button.Group fluid>
-                <Button primary type="submit" onClick={onSubmit} size="large">
-                  Save
-                </Button>
-                <Button.Or />
-                <Button onClick={onCancel} size="large">
-                  Close
-                </Button>
-              </Button.Group>
-            </Grid.Column>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                <Button.Group fluid>
+                  <Button primary type="submit" onClick={onSubmit} size="large">
+                    Save
+                  </Button>
+                  <Button.Or />
+                  <Button onClick={onCancel} size="large">
+                    Close
+                  </Button>
+                </Button.Group>
+                <Message
+                  floating
+                  {...messageProps}
+                  style={{ textAlign: 'left' }}
+                />
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
         </Modal.Actions>
       </Modal>
