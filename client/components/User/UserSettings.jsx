@@ -187,20 +187,13 @@ class UserSettings extends Component {
     }
 
     const anonymousModeFormProps = {
-      style: {
-        width: user.is_anonymous ? '50%' : '100%',
-        display: user.is_anonymous ? 'inline-block' : 'block'
-      }
+      className: user.is_anonymous ? 'us__anonymous-form' : 'us__reified-form'
     };
 
     const anonymousModeMessageProps = {
-      style: {
-        width: user.is_anonymous ? '47%' : '0%',
-        display: user.is_anonymous ? 'inline-block' : 'none',
-        verticalAlign: user.is_anonymous ? 'top' : 'unset',
-        marginTop: user.is_anonymous ? '1.6em' : 'unset',
-        marginLeft: user.is_anonymous ? '1em' : 'unset'
-      }
+      className: user.is_anonymous
+        ? 'us__anonymous-message'
+        : 'us__reified-message'
     };
 
     return (
@@ -264,8 +257,8 @@ class UserSettings extends Component {
               </div>
             </Form>
           </Modal.Content>
-          <Modal.Actions className="modal__action-height">
-            <Grid columns={2}>
+          <Modal.Actions>
+            <Grid stackable columns={2}>
               <Grid.Column>
                 <Message
                   floating
@@ -274,7 +267,7 @@ class UserSettings extends Component {
                 />
               </Grid.Column>
               <Grid.Column>
-                <Button.Group>
+                <Button.Group fluid>
                   <Button primary type="submit" onClick={onSubmit} size="large">
                     Save
                   </Button>

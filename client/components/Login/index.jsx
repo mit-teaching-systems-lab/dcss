@@ -141,15 +141,15 @@ class Login extends Component {
             </Form.Field>
           </Form>
         </Modal.Content>
-        <Modal.Actions className="modal__action-height">
-          <Grid columns={2}>
+        <Modal.Actions>
+          <Grid stackable columns={2}>
             <Grid.Column>
               <Message floating {...messageProps} style={{ textAlign: 'left' }}>
                 {error.message}
               </Message>
             </Grid.Column>
             <Grid.Column>
-              <Button.Group>
+              <Button.Group fluid>
                 <Button primary type="submit" onClick={onSubmit} size="large">
                   Log in
                 </Button>

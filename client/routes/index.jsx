@@ -12,9 +12,9 @@ import Navigation from './Navigation';
 import Routes from './Routes';
 
 import './Nav.css';
-import 'semantic-ui-css/semantic.min.css';
+// import 'semantic-ui-css/semantic.min.css';
 // TODO: investigate using Fomantic
-// import 'fomantic-ui-css/semantic.min.css';
+import 'fomantic-ui-css/semantic.min.css';
 
 class App extends Component {
   constructor(props) {

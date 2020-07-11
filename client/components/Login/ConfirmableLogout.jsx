@@ -80,8 +80,8 @@ class ConfirmableLogout extends Component {
               <p>Are you sure you want to log out?</p>
             </Container>
           </Modal.Content>
-          <Modal.Actions className="modal__action-height">
-            <Button.Group>
+          <Modal.Actions>
+            <Button.Group fluid>
               <Button onClick={onConfirm} primary size="large">
                 Yes, log me out
               </Button>

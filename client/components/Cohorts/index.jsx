@@ -309,7 +309,7 @@ export class Cohorts extends React.Component {
             </Form>
           </Modal.Content>
           <Modal.Actions>
-            <Button.Group>
+            <Button.Group fluid>
               <Button color="green" onClick={onCreateCohortSubmit}>
                 Create
               </Button>

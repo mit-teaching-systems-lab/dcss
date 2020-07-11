@@ -1,3 +1,40 @@
-.modal__action-height {
-  height: 75px;
+.us__anonymous-form {
+  width: 50%;
+  display: inline-block;
+}
+
+.us__anonymous-message {
+  width: 47%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 1.6em;
+  margin-left: 1em;
+}
+
+.us__reified-form {
+  width: 100%;
+  display: block;
+}
+
+.us__reified-message {
+  width: 0%;
+  display: none;
+  vertical-align: unset;
+  margin-top: unset;
+  margin-left: unset;
+}
+
+@media only screen and (max-width: 767px) {
+  .us__anonymous-form {
+    width: 100%;
+    display: block;
+  }
+
+  .us__anonymous-message {
+    width: 100%;
+    display: block;
+    vertical-align: top;
+    margin-top: 1.6em;
+    margin-left: unset;
+  }
 }

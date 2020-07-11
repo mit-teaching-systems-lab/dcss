@@ -221,21 +221,21 @@ class CreateAccount extends Component {
             </Form.Field>
           </Form>
         </Modal.Content>
-        <Modal.Actions style={{ height: '75px' }}>
-          <Grid columns={2}>
+        <Modal.Actions>
+          <Grid stackable columns={2}>
             <Grid.Column>
               <Message floating {...messageProps} style={{ textAlign: 'left' }}>
                 {error.message}
               </Message>
             </Grid.Column>
             <Grid.Column>
-              <Button.Group>
-                <Button onClick={onCancel} size="large">
-                  Cancel
-                </Button>
-                <Button.Or />
+              <Button.Group fluid>
                 <Button primary type="submit" onClick={onSubmit} size="large">
                   Submit
+                </Button>
+                <Button.Or />
+                <Button onClick={onCancel} size="large">
+                  Cancel
                 </Button>
               </Button.Group>
             </Grid.Column>

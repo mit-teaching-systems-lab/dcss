@@ -93,7 +93,7 @@ class CreateAnonymousAccount extends Component {
             <Loading />
           )}
         </Modal.Content>
-        <Modal.Actions style={{ height: '75px' }}>
+        <Modal.Actions>
           <Button.Group fluid size="large">
             <Popup
               size="small"
