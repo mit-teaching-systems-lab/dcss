@@ -98,7 +98,7 @@ class Downloads extends Component {
         const {
           is_skip,
           response_id,
-          response: { content },
+          response: { content = '' },
           transcript,
           value
         } = record;
@@ -106,7 +106,7 @@ class Downloads extends Component {
           prompt => prompt.responseId === response_id
         );
         record.header = makeHeader(prompt, prompts);
-        record.content = content || '';
+        record.content = content;
         record.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
 
         if (isAudioFile(value)) {
