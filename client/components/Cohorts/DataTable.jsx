@@ -32,7 +32,10 @@ function reduceResponses(key, responses) {
       response: { content = '' }
     } = response;
     response.content = content;
-    response.content += (is_skip ? '(skipped)' : ` ${transcript || value}`).trim();
+    response.content += (is_skip
+      ? '(skipped)'
+      : ` ${transcript || value}`
+    ).trim();
 
     if (!accum[property]) {
       accum[property] = { [response_id]: response };
