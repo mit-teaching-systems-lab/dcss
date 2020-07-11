@@ -100,7 +100,7 @@ class History extends Component {
         });
       }
 
-      this.setState({ panes });
+      this.setState({ activeIndex: panes.length - 1, panes });
     }
   }
 
