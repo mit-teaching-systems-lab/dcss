@@ -68,9 +68,9 @@ class Downloads extends Component {
     }
   }
 
-  onDownloadSearchChange(options, query) {
-    const re = new RegExp(_.escapeRegExp(query));
-    return options.filter(option => re.test(option.text));
+  onDownloadSearchChange(options, value) {
+    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    return options.filter(option => escapedRegExp.test(option.text));
   }
 
   onPageChange(event, { activePage }) {
