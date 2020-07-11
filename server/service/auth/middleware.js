@@ -66,9 +66,13 @@ async function createUserAsync(req, res, next) {
 }
 
 async function updateUserAsync(req, res, next) {
-  const { username, password, email } = req.body;
+  const { username, password, email, personalname } = req.body;
   const { id } = req.session.user;
   const updates = {};
+
+  if (personalname) {
+    updates.personalname = personalname;
+  }
 
   if (email) {
     updates.email = email;
@@ -103,53 +107,50 @@ async function updateUserAsync(req, res, next) {
 async function loginUserAsync(req, res, next) {
   const { username, email, password } = req.body;
   const existing = await db.getUserByProps({ username, email });
-  const error = new Error('Invalid username or password.');
-  error.status = 401;
 
   // Case when user is found
   if (existing) {
-    // console.log(existing.id);
     const user = await db.getUserById(existing.id);
-    // console.log(user);
     const { salt, hash } = existing;
-
-    if (!password && hash && salt) {
-      throw error;
-    }
-
-    // Case of anonymous user, where only a username is created.
-    if (!email || (!password && !hash && !salt)) {
-      // disabling to set req.session.user
-      //eslint-disable-next-line require-atomic-updates
-      req.session.user = {
-        ...user
-      };
-      return next();
-    }
-
-    // Case when a passwordless user passes a password
-    if (password && !hash && !salt) {
-      throw error;
-    }
 
     // Case when a user with a password is attempts to
     // log in without a password
-    if (!password && hash && salt) {
-      throw error;
+    if (!password) {
+      if (hash && salt) {
+        const error = new Error('This account requires a password.');
+        error.status = 401;
+        throw error;
+      }
     }
-    // Case when user has a password is supplied with a password
-    const { passwordHash } = validateHashPassword(password, salt);
-    const match = hash === passwordHash;
-    if (match) {
-      // disabling to set req.session.user
-      //eslint-disable-next-line require-atomic-updates
-      req.session.user = {
-        ...user
-      };
-      return next();
+
+    if (password) {
+      // Anonymous user attempts to provide a password
+      if (!hash && !salt) {
+        const error = new Error('This account does not require a password.');
+        error.status = 401;
+        throw error;
+      }
+
+      // Reified user login: has password and provided it.
+      if (hash && salt) {
+        const { passwordHash } = validateHashPassword(password, salt);
+        if (hash !== passwordHash) {
+          const error = new Error('Invalid password.');
+          error.status = 401;
+          throw error;
+        }
+      }
     }
+
+    // eslint-disable-next-line require-atomic-updates
+    req.session.user = {
+      ...user
+    };
+    return next();
   }
 
+  const error = new Error('Authentication failed.');
+  error.status = 401;
   throw error;
 }
 
