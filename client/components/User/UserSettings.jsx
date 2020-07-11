@@ -1,15 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  Button,
-  Form,
-  Grid,
-  Header,
-  Menu,
-  Message,
-  Modal
-} from '@components/UI';
+import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
 import { getUser, setUser } from '@actions/user';
 import './User.css';
 
@@ -20,12 +12,14 @@ class UserSettings extends Component {
   constructor(props) {
     super(props);
 
-    const { email, username } = this.props.user;
+    const { open } = this.props;
+    const { email, personalname, username } = this.props.user;
 
     this.state = {
-      open: false,
+      open,
       username,
       email,
+      personalname,
       password: '',
       confirmPassword: '',
       error: {
@@ -41,7 +35,6 @@ class UserSettings extends Component {
     this.validFormInput = this.validFormInput.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onChange = this.onChange.bind(this);
-    this.onClick = this.onClick.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentWillUnmount() {
@@ -97,11 +90,15 @@ class UserSettings extends Component {
       return;
     }
 
-    const { email, password, username } = this.state;
+    const { email, personalname, password, username } = this.state;
     const updates = {};
 
     if (email !== this.props.user.email) {
       updates.email = email;
+    }
+
+    if (personalname !== this.props.user.personalname) {
+      updates.personalname = personalname;
     }
 
     if (username !== this.props.user.username) {
@@ -152,19 +149,16 @@ class UserSettings extends Component {
     this.setState({ open: false });
   }
 
-  onClick() {
-    this.setState({ open: true });
-  }
-
   render() {
-    const { onChange, onCancel, onClick, onSubmit } = this;
+    const { onChange, onCancel, onSubmit } = this;
     const {
-      open,
+      username,
+      personalname,
       email,
       confirmPassword,
-      error,
       password,
-      username,
+      open,
+      error,
       success
     } = this.state;
 
@@ -197,90 +191,99 @@ class UserSettings extends Component {
     };
 
     return (
-      <Fragment>
-        <Menu.Item onClick={onClick}>Settings</Menu.Item>
-        <Modal
-          closeIcon
-          role="dialog"
-          aria-modal="true"
-          size="small"
-          onClose={onCancel}
-          open={open}
-        >
-          <Header icon="settings" content="Settings" />
-          <Modal.Content>
-            <Form onSubmit={onSubmit}>
+      <Modal
+        closeIcon
+        role="dialog"
+        aria-modal="true"
+        size="small"
+        onClose={onCancel}
+        open={open}
+      >
+        <Header icon="settings" content="Settings" />
+        <Modal.Content>
+          <Form onSubmit={onSubmit}>
+            <Form.Field>
+              <label htmlFor="username">Username:</label>
+              <Form.Input
+                name="username"
+                autoComplete="username"
+                placeholder="..."
+                defaultValue={username || ''}
+                onChange={onChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="personalname">
+                Personal name (full name, or alias):
+              </label>
+              <Form.Input
+                name="personalname"
+                autoComplete="personalname"
+                placeholder="..."
+                defaultValue={personalname || ''}
+                onChange={onChange}
+              />
+            </Form.Field>
+            <Form.Field>
+              <label htmlFor="email">Email address:</label>
+              <Form.Input
+                name="email"
+                autoComplete="email"
+                placeholder="jane@example.com"
+                defaultValue={email || ''}
+                onChange={onChange}
+              />
+            </Form.Field>
+            <div {...anonymousModeFormProps}>
               <Form.Field>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="password">New password:</label>
                 <Form.Input
-                  name="username"
-                  autoComplete="username"
-                  placeholder="..."
-                  defaultValue={username || ''}
+                  name="password"
+                  autoComplete="new-password"
+                  type="password"
+                  defaultValue={password || ''}
                   onChange={onChange}
                 />
               </Form.Field>
               <Form.Field>
-                <label htmlFor="email">Email address:</label>
+                <label htmlFor="confirmPassword">Confirm new password:</label>
                 <Form.Input
-                  name="email"
-                  autoComplete="email"
-                  placeholder="jane@example.com"
-                  defaultValue={email || ''}
+                  name="confirmPassword"
+                  autoComplete="new-password"
+                  type="password"
+                  defaultValue={confirmPassword || ''}
                   onChange={onChange}
                 />
               </Form.Field>
-              <div {...anonymousModeFormProps}>
-                <Form.Field>
-                  <label htmlFor="password">New password:</label>
-                  <Form.Input
-                    name="password"
-                    autoComplete="new-password"
-                    type="password"
-                    defaultValue={password || ''}
-                    onChange={onChange}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <label htmlFor="confirmPassword">Confirm new password:</label>
-                  <Form.Input
-                    name="confirmPassword"
-                    autoComplete="new-password"
-                    type="password"
-                    defaultValue={confirmPassword || ''}
-                    onChange={onChange}
-                  />
-                </Form.Field>
-              </div>
-              <div {...anonymousModeMessageProps}>
-                <Message color="orange" content={anonymousMode} />
-              </div>
-            </Form>
-          </Modal.Content>
-          <Modal.Actions>
-            <Grid stackable columns={2}>
-              <Grid.Column>
-                <Message
-                  floating
-                  {...messageProps}
-                  style={{ textAlign: 'left' }}
-                />
-              </Grid.Column>
-              <Grid.Column>
-                <Button.Group fluid>
-                  <Button primary type="submit" onClick={onSubmit} size="large">
-                    Save
-                  </Button>
-                  <Button.Or />
-                  <Button onClick={onCancel} size="large">
-                    Close
-                  </Button>
-                </Button.Group>
-              </Grid.Column>
-            </Grid>
-          </Modal.Actions>
-        </Modal>
-      </Fragment>
+            </div>
+            <div {...anonymousModeMessageProps}>
+              <Message color="orange" content={anonymousMode} />
+            </div>
+          </Form>
+        </Modal.Content>
+        <Modal.Actions>
+          <Grid stackable columns={2}>
+            <Grid.Column>
+              <Message
+                floating
+                {...messageProps}
+                style={{ textAlign: 'left' }}
+              />
+            </Grid.Column>
+            <Grid.Column>
+              <Button.Group fluid>
+                <Button primary type="submit" onClick={onSubmit} size="large">
+                  Save
+                </Button>
+                <Button.Or />
+                <Button onClick={onCancel} size="large">
+                  Close
+                </Button>
+              </Button.Group>
+            </Grid.Column>
+          </Grid>
+        </Modal.Actions>
+      </Modal>
     );
   }
 }
@@ -289,7 +292,8 @@ UserSettings.propTypes = {
   errors: PropTypes.object,
   getUser: PropTypes.func,
   setUser: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  open: PropTypes.bool
 };
 
 const mapStateToProps = state => {

@@ -6,6 +6,7 @@ import {
 
 const initialState = {
   username: null,
+  personalname: null,
   email: null,
   id: null,
   roles: []

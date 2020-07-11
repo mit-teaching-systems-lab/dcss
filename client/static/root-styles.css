@@ -60,6 +60,10 @@
   min-height: 75px !important;
 }
 
+.ui.modal > .actions .message {
+  padding: 0.75em 1.5em !important;
+}
+
 td .ui.fluid.selection.dropdown > .text {
   width: 150px !important;
   max-width: 150px !important;

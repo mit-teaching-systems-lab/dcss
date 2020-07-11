@@ -283,7 +283,7 @@ class ScenarioEditor extends Component {
         : '';
 
     return (
-      <Form size={'big'}>
+      <Form>
         <Container fluid>
           <Grid columns={2} divided>
             <Grid.Row className="se__grid-nowrap">

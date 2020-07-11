@@ -5,8 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from '@components/UI';
 
 import ConfirmAuth from '@components/ConfirmAuth';
-import ConfirmableLogout from '@components/Login/ConfirmableLogout';
-import UserSettings from '@components/User/UserSettings';
+import UserMenu from '@components/User/UserMenu';
 
 const MOBILE_WIDTH = 767;
 const restrictedNav = [
@@ -128,12 +127,7 @@ class Navigation extends Component {
 
             {isLoggedIn ? (
               <Menu.Menu position="right">
-                <Dropdown simple item text={user.username}>
-                  <Dropdown.Menu>
-                    <UserSettings user={user} />
-                    <ConfirmableLogout user={user} />
-                  </Dropdown.Menu>
-                </Dropdown>
+                <UserMenu user={user} />
               </Menu.Menu>
             ) : (
               <Menu.Item position="right">
