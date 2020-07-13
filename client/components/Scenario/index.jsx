@@ -259,6 +259,10 @@ class Scenario extends Component {
     // handlers to access
     this.slides = contents.slice();
 
+    this.slides.sort((a, b) => {
+      return a.is_finish === b.is_finish ? 0 : a.is_finish ? 1 : -1;
+    });
+
     if (finish) {
       // remove the "finish" slide from the returned slides,
       // to prevent it from being treated like a regular

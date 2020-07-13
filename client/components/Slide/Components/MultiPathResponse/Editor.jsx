@@ -247,14 +247,22 @@ class MultiPathResponseEditor extends React.Component {
     } = this.props;
     const { header, prompt, paths, open, recallId } = this.state;
 
+    if (!slides.length) {
+      return null;
+    }
+
+    slides.sort((a, b) => {
+      return a.is_finish === b.is_finish ? 0 : a.is_finish ? 1 : -1;
+    });
+
     const slidesAsOptions = slides.map((slide, index) => {
       const nonZeroIndex = index + 1;
       const value = slide.id;
       let quotedSlideTitle = slide.title ? ` "${slide.title}"` : ``;
       let text = `Slide #${nonZeroIndex} ${quotedSlideTitle}`.trim();
       let headerCell = `
-      Slide #{nonZeroIndex}
-      {quotedSlideTitle}
+      Slide #${nonZeroIndex}
+      ${quotedSlideTitle}
       `.trim();
       let components = slide.components;
 

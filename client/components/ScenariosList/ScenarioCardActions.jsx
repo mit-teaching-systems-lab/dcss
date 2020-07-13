@@ -23,6 +23,11 @@ class ScenarioCardActions extends Component {
       activeRunSlideIndex: 0
     });
 
+    if (editor.activeSlideIndex === null) {
+      editor.activeSlideIndex = 1;
+      Storage.set(`editor/${scenario.id}`, editor);
+    }
+
     const className = 'sc__card-action-labels';
 
     return (
