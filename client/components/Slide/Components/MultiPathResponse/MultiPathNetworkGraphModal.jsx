@@ -97,6 +97,11 @@ class MultiPathNetworkGraphModal extends Component {
 
     const nodesById = {};
     const edgesByNodeId = {};
+
+    slides.sort((a, b) => {
+      return a.is_finish === b.is_finish ? 0 : a.is_finish ? 1 : -1;
+    });
+
     const { nodes, edges } = slides.reduce(
       (accum, slide, index) => {
         const { id } = slide;
