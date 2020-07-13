@@ -11,8 +11,7 @@ const MOBILE_WIDTH = 767;
 const restrictedNav = [
   {
     text: 'History',
-    path: '/history',
-    permission: 'view_own_data'
+    path: '/history'
   },
   {
     text: 'Cohorts',
@@ -64,11 +63,12 @@ class Navigation extends Component {
 
     const navLinkAuthorized = restrictedNav.map(
       ({ text, path, permission }, index) => {
-        return (
+        const menuItem = <Menu.Item href={path}>{text}</Menu.Item>;
+        return permission ? (
           <ConfirmAuth key={index} requiredPermission={permission}>
-            <Menu.Item href={path}>{text}</Menu.Item>
+            {menuItem}
           </ConfirmAuth>
-        );
+        ) : menuItem;
       }
     );
 
