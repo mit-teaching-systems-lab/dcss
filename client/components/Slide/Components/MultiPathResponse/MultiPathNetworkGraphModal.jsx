@@ -19,19 +19,19 @@ class MultiPathNetworkGraphModal extends Component {
     this.state = {
       isReady: false,
       slides: [],
-      width: window.visualViewport.width,
-      height: window.visualViewport.height
+      width: window.innerWidth,
+      height: window.innerHeight
     };
 
     this.onResize = this.onResize.bind(this);
   }
 
   componentWillUnmount() {
-    window.visualViewport.removeEventListener('resize', this.onResize);
+    window.removeEventListener('resize', this.onResize);
   }
 
   componentDidMount() {
-    window.visualViewport.addEventListener('resize', this.onResize);
+    window.addEventListener('resize', this.onResize);
 
     (async () => {
       const slides = await this.props.getSlides(this.props.scenarioId);
@@ -44,14 +44,14 @@ class MultiPathNetworkGraphModal extends Component {
 
   onResize() {
     this.setState({
-      width: window.visualViewport.width,
-      height: window.visualViewport.height
+      width: window.innerWidth,
+      height: window.innerHeight
     });
   }
 
   render() {
     const { header, onClose, open } = this.props;
-    const { isReady, slides } = this.state;
+    const { isReady, slides, width, height } = this.state;
 
     if (!isReady) {
       return null;
@@ -62,7 +62,7 @@ class MultiPathNetworkGraphModal extends Component {
     // Modal.Content imposes a 21px padding on the left and right
     const mcPaddingLR = 21 * 2;
     // Modal size="fullscreen" fills 95% of viewport width
-    const viewableModalWidth = window.visualViewport.width * 0.95 - mcPaddingLR;
+    const viewableModalWidth = width * 0.95 - mcPaddingLR;
 
     // Modal imposes a 14px margin on the top and bottom
     const mMarginTB = 14 * 2;
@@ -77,8 +77,7 @@ class MultiPathNetworkGraphModal extends Component {
       mPositionTB + mMarginTB + mhHeight + mcPaddingTB;
 
     // Modal size="fullscreen" imposes a
-    const viewableModalHeight =
-      window.visualViewport.height - mHeightDeductionSum;
+    const viewableModalHeight = height - mHeightDeductionSum;
 
     if (slidesCount % 2 !== 0) {
       slidesCount += 1;
@@ -92,8 +91,8 @@ class MultiPathNetworkGraphModal extends Component {
     const nodeRows = Math.round(viewableModalHeight / sizeOfNode);
 
     const nodePadding = 10;
-    const nodeWidth = Math.round(viewableModalWidth / nodeCols);
-    const nodeHeight = Math.round(viewableModalHeight / nodeRows);
+    const nodeWidth = Math.round(viewableModalWidth / nodeCols + 1);
+    const nodeHeight = Math.round(viewableModalHeight / nodeRows + 1);
 
     const nodesById = {};
     const edgesByNodeId = {};
@@ -194,11 +193,28 @@ class MultiPathNetworkGraphModal extends Component {
       }
 
       // Resolve positioning
-      node.x = colCounter * nodeWidth + nodePadding * colCounter ** 3;
-      node.y = rowCounter * nodeHeight + nodePadding;
+      node.x = colCounter * nodeWidth + nodePadding * colCounter ** 4;
+      node.y = rowCounter * nodeHeight + nodePadding * rowCounter ** 3;
 
       colCounter++;
       if (colCounter === nodeCols) {
+
+        // EXPERITMENTAL: Try using different edge types to make the
+        // layout more readable.
+        //
+        // When we've reached the last column, make the edge connector
+        // curve nicely, since it almost always must point all the way
+        // back to the left.
+        // const isNotLastNode = nodes.indexOf(node) !== nodes[nodes.length - 1];
+        // const lastEdge = edges[edges.length - 1];
+        // if (isNotLastNode && lastEdge.from && lastEdge.to) {
+        //   // edges[edges.length - 1].smooth = {
+        //   lastEdge.smooth = {
+        //     enabled: true,
+        //     type: 'cubicBezier'
+        //   };
+        // }
+
         colCounter = 0;
         rowCounter++;
       }
@@ -215,7 +231,7 @@ class MultiPathNetworkGraphModal extends Component {
         color: '#000000',
         smooth: {
           enabled: true,
-          type: 'curvedCCW'
+          type: 'curvedCW'
           // roundness: 1
         }
       },
