@@ -34,8 +34,10 @@ function reduceResponses(key, responses) {
     response.content = content;
     response.content += (is_skip
       ? '(skipped)'
-      : ` ${transcript || value}`
+      : ` ${transcript || (content === '' ? value : '')}`
     ).trim();
+
+    console.log(response.content);
 
     if (!accum[property]) {
       accum[property] = { [response_id]: response };
