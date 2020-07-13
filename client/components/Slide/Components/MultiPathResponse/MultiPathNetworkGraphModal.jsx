@@ -169,17 +169,17 @@ class MultiPathNetworkGraphModal extends Component {
       const edgeToNode = edges.find(edge => edge.to === node.id);
       const edgeFromNode = edges.find(edge => edge.from === node.id);
 
-      // console.log(node.id, node.label, "edgeToNode", edgeToNode);
-      // console.log(node.id, node.label, "edgeFromNode", edgeFromNode);
-
       const a = slides[slideIndex - 1];
       const b = slides[slideIndex + 1];
 
       if (!edgeToNode && a) {
-        edges.push({
-          from: a.id,
-          to: slide.id
-        });
+        const edgeFromA = edges.find(edge => edge.from === a.id);
+        if (!edgeFromA) {
+          edges.push({
+            from: a.id,
+            to: slide.id
+          });
+        }
       }
       if (!edgeFromNode && b) {
         edges.push({
