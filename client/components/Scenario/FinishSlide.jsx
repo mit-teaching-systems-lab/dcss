@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Header, Modal } from '@components/UI';
+import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { NavLink } from 'react-router-dom';
 import './Scenario.css';
 
@@ -71,10 +71,16 @@ class FinishSlide extends React.Component {
           size="tiny"
           open={isConfirmBoxOpen}
         >
-          <Header
-            icon="newspaper outline"
-            content="Ready to finish this scenario?"
-          />
+          <Header>
+            <Icon.Group className="em__icon-group-margin">
+              <Icon name="newspaper outline" />
+              <Icon corner="top right" name="check circle" color="orange" />
+            </Icon.Group>
+
+            <Header.Content>
+              Ready to finish this scenario?
+            </Header.Content>
+          </Header>
           <Modal.Content>
             If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
           </Modal.Content>
