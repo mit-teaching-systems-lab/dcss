@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Icon } from '@components/UI';
 
 export const Username = props => {
-  const { is_super, psersonalname, username } = props;
+  const { is_super, personalname, username } = props;
   return (
     <Fragment>
-      {psersonalname || username}{' '}
+      {personalname || username}{' '}
       {is_super ? (
         <Icon
           size="small"
@@ -21,7 +21,7 @@ export const Username = props => {
 
 Username.propTypes = {
   is_super: PropTypes.bool,
-  psersonalname: PropTypes.string,
+  personalname: PropTypes.string,
   username: PropTypes.string
 };
 

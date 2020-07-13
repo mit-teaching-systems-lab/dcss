@@ -97,6 +97,7 @@ async function getScenarioUsers(scenario_id) {
       id,
       email,
       username,
+      personalname,
       roles,
       '{owner}' && roles AS is_owner,
       '{author}' && roles AS is_author,
