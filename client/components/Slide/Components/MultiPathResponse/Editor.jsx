@@ -437,7 +437,7 @@ class MultiPathResponseEditor extends React.Component {
                       <Icon name="hand pointer outline" />
                       <Icon corner="top right" name="add" color="green" />
                     </Icon.Group>
-                    Add a path
+                    Add another slide choice
                   </Button>
                   <Button basic icon floated="right" onClick={onViewGraphClick}>
                     <Icon.Group size="large" className="em__icon-group-margin">
