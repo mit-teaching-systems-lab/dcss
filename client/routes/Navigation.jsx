@@ -63,9 +63,9 @@ class Navigation extends Component {
 
     const navLinkAuthorized = restrictedNav.map(
       ({ text, path, permission }, index) => {
-        const menuItem = <Menu.Item href={path}>{text}</Menu.Item>;
+        const menuItem = <Menu.Item key={`menu-item-nav-${index}`} href={path}>{text}</Menu.Item>;
         return permission ? (
-          <ConfirmAuth key={index} requiredPermission={permission}>
+          <ConfirmAuth key={`confirmed-menu-item-nav-${index}`} requiredPermission={permission}>
             {menuItem}
           </ConfirmAuth>
         ) : menuItem;
