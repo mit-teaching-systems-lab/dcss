@@ -9,9 +9,9 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 
 import SunEditor from 'suneditor';
-// import 'suneditor/src/assets/css/suneditor-contents.css';
-// import 'suneditor/src/assets/css/suneditor.css';
-import 'suneditor/dist/css/suneditor.min.css';
+import 'suneditor/src/assets/css/suneditor-contents.css';
+import 'suneditor/src/assets/css/suneditor.css';
+// import 'suneditor/dist/css/suneditor.min.css';
 
 import buttons from './buttons';
 import icons from './icons';
