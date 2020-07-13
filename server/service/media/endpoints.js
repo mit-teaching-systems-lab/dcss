@@ -107,14 +107,30 @@ async function uploadImageAsync(req, res) {
 }
 
 async function requestGallery(req, res) {
-  const images = db.getImagesByUserId(req.session.user.id);
+  const images = await db.getImagesByUserId(req.session.user.id);
+  const result = images.map(image => {
+    const {
+      url: src,
+      classes
+    } = image;
+    const classification = classes.map(classification => {
+      return classification.class;
+    }).join(', ').trim();
+
+    return {
+      src,
+      name: classification,
+      alt: classification,
+      tag: classification
+    };
+  });
 
   res.status = 200;
-  res.send({ images });
+  res.send({ result });
 }
 
 async function requestMediaAsync(req, res, next) {
-  if (req.url.startsWith('/gallery/')) {
+  if (req.url.includes('gallery')) {
     return requestGallery(req, res, next);
   }
   return requestFromS3(req, res, next);

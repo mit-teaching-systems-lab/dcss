@@ -9,8 +9,9 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 
 import SunEditor from 'suneditor';
-import 'suneditor/src/assets/css/suneditor-contents.css';
-import 'suneditor/src/assets/css/suneditor.css';
+// import 'suneditor/src/assets/css/suneditor-contents.css';
+// import 'suneditor/src/assets/css/suneditor.css';
+import 'suneditor/dist/css/suneditor.min.css';
 
 import buttons from './buttons';
 import icons from './icons';
@@ -96,12 +97,10 @@ class RichTextEditor extends Component {
       options = Object.assign({}, defaultOptions, options, { buttonList });
       options.plugins = plugins(buttonList || []);
 
-      if (location.href.includes('localhost')) {
-        options.imageMultipleFile = false;
-        options.imageUploadUrl = '/api/media/image';
-      } else {
-        options.imageFileInput = false;
-      }
+      // Enables image upload and storage
+      options.imageMultipleFile = false;
+      options.imageUploadUrl = '/api/media/image';
+      options.imageGalleryUrl = '/api/media/gallery';
 
       // if (options.buttonList.flat().includes('math')) {
       //   options.katex = katex;

@@ -7,6 +7,7 @@ import fontSize from 'suneditor/src/plugins/submenu/fontSize';
 import formatBlock from 'suneditor/src/plugins/submenu/formatBlock';
 import hiliteColor from 'suneditor/src/plugins/submenu/hiliteColor';
 import horizontalRule from 'suneditor/src/plugins/submenu/horizontalRule';
+import imageGallery from 'suneditor/src/plugins/fileBrowser/imageGallery';
 import lineHeight from 'suneditor/src/plugins/submenu/lineHeight';
 import list from 'suneditor/src/plugins/submenu/list';
 import paragraphStyle from 'suneditor/src/plugins/submenu/paragraphStyle';
@@ -28,6 +29,7 @@ const plugins = {
   formatBlock,
   hiliteColor,
   horizontalRule,
+  imageGallery,
   lineHeight,
   list,
   paragraphStyle,

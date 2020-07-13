@@ -2,7 +2,7 @@ export const small = [
   ['font', 'fontSize'],
   ['bold', 'underline', 'italic', 'strike'],
   ['fontColor'],
-  ['link', 'image']
+  ['link', 'image', 'imageGallery']
 ];
 
 export const medium = [
@@ -21,7 +21,7 @@ export const large = [
   ['fontColor', 'hiliteColor'],
   ['align', 'outdent', 'indent'],
   ['horizontalRule', 'list', 'table'],
-  ['link', 'image', 'video'],
+  ['link', 'image', 'imageGallery', 'video'],
   ['fullScreen', 'codeView'],
   ['undo', 'redo'],
   ['template']
@@ -53,7 +53,7 @@ export const component = [
     'list',
     'table',
     'link',
-    'image',
+    'image', 'imageGallery',
     'video'
   ]
 ];
@@ -69,7 +69,7 @@ export const suggestion = [
     'strike',
     'list',
     'link',
-    'image',
+    'image', 'imageGallery',
     'video'
   ]
 ];
