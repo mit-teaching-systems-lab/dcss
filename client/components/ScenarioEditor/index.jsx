@@ -293,7 +293,7 @@ class ScenarioEditor extends Component {
         <Container fluid>
           <Grid columns={2} divided>
             <Grid.Row className="se__grid-nowrap">
-              <Grid.Column className={leftColumnClassName} width={6}>
+              <Grid.Column className={leftColumnClassName} width={8}>
                 <Popup
                   content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
                   trigger={formInputTitle}
@@ -317,7 +317,7 @@ class ScenarioEditor extends Component {
                 )}
               </Grid.Column>
               <Grid.Column
-                width={9}
+                width={8}
                 className="se__grid-column-width-constraint"
               >
                 {scenarioId !== 'new' ? (
