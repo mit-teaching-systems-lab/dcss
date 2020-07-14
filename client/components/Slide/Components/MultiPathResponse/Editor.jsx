@@ -8,6 +8,7 @@ import {
   Form,
   Icon,
   Input,
+  Menu,
   Table
 } from '@components/UI';
 import { type } from './meta';
@@ -432,22 +433,24 @@ class MultiPathResponseEditor extends React.Component {
               <Table.Row>
                 <Table.HeaderCell />
                 <Table.HeaderCell colSpan="2">
-                  <Button basic icon floated="right" onClick={onPathAddClick}>
-                    <Icon.Group size="large" className="em__icon-group-margin">
-                      <Icon name="hand pointer outline" />
-                      <Icon corner="top right" name="add" color="green" />
-                    </Icon.Group>
-                    Add another slide choice
-                  </Button>
-                  <Button basic icon floated="right" onClick={onViewGraphClick}>
-                    <Icon.Group size="large" className="em__icon-group-margin">
-                      <Icon
-                        name="fork"
-                        style={{ transform: 'rotate(90deg)' }}
-                      />
-                    </Icon.Group>
-                    View slides graph
-                  </Button>
+                  <Menu floated="right" borderless>
+                    <Menu.Item icon onClick={onViewGraphClick}>
+                      <Icon.Group size="large" className="em__icon-group-margin">
+                        <Icon
+                          name="fork"
+                          style={{ transform: 'rotate(90deg)' }}
+                        />
+                      </Icon.Group>
+                      View slides graph
+                    </Menu.Item>
+                    <Menu.Item icon onClick={onPathAddClick}>
+                      <Icon.Group size="large" className="em__icon-group-margin">
+                        <Icon name="hand pointer outline" />
+                        <Icon corner="top right" name="add" color="green" />
+                      </Icon.Group>
+                      Add another slide choice
+                    </Menu.Item>
+                  </Menu>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import { Button, Container, Form, Icon, Input, Table } from '@components/UI';
+import { Button, Container, Form, Icon, Input, Menu, Table } from '@components/UI';
 import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
@@ -261,13 +261,15 @@ class MultiButtonResponseEditor extends React.Component {
               <Table.Row>
                 <Table.HeaderCell />
                 <Table.HeaderCell colSpan="2">
-                  <Button basic icon floated="right" onClick={onButtonAddClick}>
-                    <Icon.Group size="large" className="em__icon-group-margin">
-                      <Icon name="hand pointer outline" />
-                      <Icon corner="top right" name="add" color="green" />
-                    </Icon.Group>
-                    Add a button
-                  </Button>
+                  <Menu floated="right" borderless>
+                    <Menu.Item icon floated="right" onClick={onButtonAddClick}>
+                      <Icon.Group size="large" className="em__icon-group-margin">
+                        <Icon name="hand pointer outline" />
+                        <Icon corner="top right" name="add" color="green" />
+                      </Icon.Group>
+                      Add a button
+                    </Menu.Item>
+                  </Menu>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Footer>
