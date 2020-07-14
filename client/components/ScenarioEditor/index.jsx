@@ -208,28 +208,34 @@ class ScenarioEditor extends Component {
     const consentAgreementValue = consent.prose || '';
 
     const formInputTitle = (
-      <Form.Input
-        focus
-        required
-        label="Title"
-        name="title"
-        value={title}
-        onChange={onChange}
-      />
+      <Form.Field>
+        <label htmlFor="title">Title</label>
+        <Form.Input
+          focus
+          required
+          id="title"
+          name="title"
+          value={title}
+          onChange={onChange}
+        />
+      </Form.Field>
     );
 
     const descriptionDefaultValue = makeDefaultDescription(scenario);
 
     const textAreaDescription = (
-      <Form.TextArea
-        required
-        focus="true"
-        label="Description"
-        name="description"
-        rows={1}
-        value={descriptionDefaultValue}
-        onChange={onChange}
-      />
+      <Form.Field>
+        <label htmlFor="description">Description</label>
+        <Form.TextArea
+          required
+          focus="true"
+          id="description"
+          name="description"
+          rows={1}
+          value={descriptionDefaultValue}
+          onChange={onChange}
+        />
+      </Form.Field>
     );
 
     const rteConsent =
