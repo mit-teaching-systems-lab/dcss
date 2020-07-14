@@ -37,8 +37,6 @@ function reduceResponses(key, responses) {
       : ` ${transcript || (content === '' ? value : '')}`
     ).trim();
 
-    console.log(response.content);
-
     if (!accum[property]) {
       accum[property] = { [response_id]: response };
     } else {
