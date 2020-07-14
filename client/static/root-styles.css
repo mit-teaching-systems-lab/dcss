@@ -72,6 +72,16 @@ td .ui.fluid.selection.dropdown > .text {
   text-overflow: ellipsis !important;
 }
 
+tfoot button,
+thead button {
+  background: #fff !important;
+}
+
+tfoot button:hover,
+thead button:hover {
+  background: transparent none !important;
+}
+
 @media only screen and (max-width: 767px) {
   .ui.modal {
     top: 1rem;
