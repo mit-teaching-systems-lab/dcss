@@ -446,7 +446,7 @@ class MultiPathResponseEditor extends React.Component {
                         style={{ transform: 'rotate(90deg)' }}
                       />
                     </Icon.Group>
-                    View slide graph
+                    View slides graph
                   </Button>
                 </Table.HeaderCell>
               </Table.Row>

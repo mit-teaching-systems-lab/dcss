@@ -316,7 +316,7 @@ class Slides extends React.Component {
     const { activeSlideIndex, graphOpen, isReady, minimized } = this.state;
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
-    const minMaxText = `${minimized ? 'Preview' : 'Outline'} slides`;
+    const minMaxText = `Slides ${minimized ? 'preview' : 'outline'}`;
     const minMaxHide = minimized ? { hidden: true } : {};
 
     const noSlide = !slides[activeSlideIndex];
@@ -361,7 +361,7 @@ class Slides extends React.Component {
                       >
                         <Popup
                           size="small"
-                          content="View slide graph"
+                          content="View slides graph"
                           trigger={
                             <Menu.Item
                               name="Add a slide"
