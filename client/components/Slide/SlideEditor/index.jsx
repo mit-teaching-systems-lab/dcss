@@ -325,6 +325,29 @@ export default class SlideEditor extends Component {
       ]
     };
 
+    const noSlideComponentsIcon = noSlideComponents ? (
+      <Icon.Group
+        size="huge"
+        className="em__icon-group-margin"
+      >
+        <Icon name="newspaper outline" />
+        <Icon
+          corner="top right"
+          name="add"
+          color="green"
+        />
+      </Icon.Group>
+    ) : null;
+
+    const noSlideComponentsMessage = noSlideComponents ? (
+      <Message
+        content="Select a content component from the menu to right."
+        header="Add content to this slide!"
+        floating
+        icon={noSlideComponentsIcon}
+      />
+    ) : null;
+
     Storage.set(this.sessionKey, {
       activeComponentIndex,
       mode
@@ -344,9 +367,9 @@ export default class SlideEditor extends Component {
           <Grid.Row>
             {noSlide ? (
               <Grid>
-                <Grid.Row className="slideeditor__component-pane">
-                  <Grid.Column className="slideeditor__component-layout-pane-outer">
-                    <Segment className="slideeditor__component-layout-pane">
+                <Grid.Row className="ser__component-pane">
+                  <Grid.Column className="ser__component-layout-pane-outer">
+                    <Segment className="ser__component-layout-pane">
                       {noSlide}
                     </Segment>
                   </Grid.Column>
@@ -354,30 +377,10 @@ export default class SlideEditor extends Component {
               </Grid>
             ) : (
               <Grid columns={2}>
-                <Grid.Row className="slideeditor__component-pane">
-                  <Grid.Column className="slideeditor__component-layout-pane-outer">
-                    <Segment className="slideeditor__component-layout-pane">
-                      {noSlideComponents && (
-                        <Message
-                          floating
-                          icon={
-                            <Icon.Group
-                              size="huge"
-                              className="em__icon-group-margin"
-                            >
-                              <Icon name="newspaper outline" />
-                              <Icon
-                                corner="top right"
-                                name="add"
-                                color="green"
-                              />
-                            </Icon.Group>
-                          }
-                          header="Add content to this slide!"
-                          content="Select a content component from the menu to right."
-                        />
-                      )}
-
+                <Grid.Row className="ser__component-pane">
+                  <Grid.Column className="ser__component-layout-pane-outer">
+                    <Segment className="ser__component-layout-pane">
+                      {noSlideComponents ? noSlideComponentsMessage : null}
                       <Sortable
                         hasOwnDraggables={true}
                         onChange={onComponentOrderChange}
@@ -388,8 +391,9 @@ export default class SlideEditor extends Component {
                           if (!Components[type]) return;
 
                           const {
-                            Editor: ComponentEditor,
-                            Display: ComponentDisplay
+                            Card: ComponentCard,
+                            Display: ComponentDisplay,
+                            Editor: ComponentEditor
                           } = Components[type];
 
                           const onConfirm = () => onComponentDelete(index);
@@ -486,6 +490,30 @@ export default class SlideEditor extends Component {
                             value.id = uuid();
                           }
 
+                          const componentCardProps = {
+                            key: `menut-item-component-card-${index}`,
+                            className: 'ser__component-card'
+                          };
+
+                          if (isActiveComponent) {
+                            componentCardProps.color = 'yellow';
+                          }
+
+                          const componentEditorMenuItems = {
+                            left: [
+                              <Menu.Item {...componentCardProps}>
+                                <ComponentCard />
+                              </Menu.Item>
+                            ],
+                            save: {
+                              onClick: updateSlide
+                            },
+                            delete: {
+                              onConfirm
+                            },
+                            right
+                          };
+
                           return mode === 'edit' ? (
                             <Draggable
                               key={`draggable-key-${value.id}`}
@@ -522,20 +550,13 @@ export default class SlideEditor extends Component {
                                         }
                                         onClick={onComponentClick}
                                       >
+
                                         <EditorMenu
                                           isDragging={isDragging}
                                           draghandle={dragHandleProps}
                                           type="component"
                                           index={index}
-                                          items={{
-                                            save: {
-                                              onClick: updateSlide
-                                            },
-                                            delete: {
-                                              onConfirm
-                                            },
-                                            right
-                                          }}
+                                          items={componentEditorMenuItems}
                                         />
 
                                         <ComponentEditor
@@ -566,9 +587,9 @@ export default class SlideEditor extends Component {
                       </Sortable>
                     </Segment>
                   </Grid.Column>
-                  <Grid.Column className="slideeditor__component-select-pane-outer">
+                  <Grid.Column className="ser__component-select-pane-outer">
                     <SlideComponentSelect
-                      className="slideeditor__component-select"
+                      className="ser__component-select"
                       mode="menu"
                       onClick={onComponentSelectClick}
                     />

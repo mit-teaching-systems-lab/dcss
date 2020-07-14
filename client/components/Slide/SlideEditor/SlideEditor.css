@@ -1,10 +1,10 @@
-.slideeditor__component-pane {
+.ser__component-pane {
   flex-wrap: nowrap !important;
   margin: 1rem 0 0 0 !important;
   padding: 0.5rem 0 0.5rem 0 !important;
 }
 
-.slideeditor__component-layout-pane-outer {
+.ser__component-layout-pane-outer {
   /*padding-top: 1em;*/
   /* This can be used to constrain the center panel of the editor
     min-width: 541px !important;
@@ -17,7 +17,7 @@
   height: 100%;
 }
 
-.slideeditor__component-select-pane-outer {
+.ser__component-select-pane-outer {
   /*padding-top: 1em;*/
   min-width: 240px !important;
   width: 240px !important;
@@ -25,19 +25,23 @@
   padding-left: 0px !important;
 }
 
-.slideeditor__component-select-pane-outer > .icon {
+.ser__component-select-pane-outer > .icon {
   border: 1px solid red !important;
   font-size: 1em!important;
   float: none !important;
   margin: 0 .75em 0 0!important;
 }
 
-.slideeditor__component-select a i {
+.ser__component-select a i {
   float: none !important;
   margin: 0 0.5em 0 0 !important;
 }
 
-.slideeditor__component-layout-pane {
+.ser__component-card i {
+  margin: 0 0.5em 0 0 !important;
+}
+
+.ser__component-layout-pane {
   overflow-y: scroll;
   overflow-x: hidden;
   /*height: 79vh !important;*/
