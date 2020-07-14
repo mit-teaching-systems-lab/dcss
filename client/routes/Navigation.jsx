@@ -111,14 +111,14 @@ class Navigation extends Component {
                   {isLoggedIn && (
                     <Fragment>
                       <ConfirmAuth requiredPermission="create_scenario">
-                        <Menu.Item href={`/scenarios/author/${user.username}`}>
+                        <Menu.Item role="option" href={`/scenarios/author/${user.username}`}>
                           My Scenarios
                         </Menu.Item>
                       </ConfirmAuth>
                     </Fragment>
                   )}
-                  <Menu.Item href="/scenarios/official">Official</Menu.Item>
-                  <Menu.Item href="/scenarios/community">Community</Menu.Item>
+                  <Menu.Item role="option" href="/scenarios/official">Official</Menu.Item>
+                  <Menu.Item role="option" href="/scenarios/community">Community</Menu.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Menu>
