@@ -138,7 +138,7 @@ class ResponseRecallEditor extends React.Component {
     const formFieldLabelled = (
       <Form.Field.Labelled
         style={{ marginBottom: '1rem' }}
-        label="Optionally display a participant's response to another prompt: "
+        label="If you want to display a participant's response to another prompt: "
         content={selectResponsePromptDropdown}
       />
     );
