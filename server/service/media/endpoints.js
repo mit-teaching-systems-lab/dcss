@@ -62,12 +62,14 @@ async function uploadImageAsync(req, res) {
     const user_id = req.session.user.id;
     const {
       buffer,
-      // originalname,
+      originalname,
       size
     } = req.file;
 
-    const { ext } = await FileType.fromBuffer(buffer);
-    const name = `${uuid()}.${ext}`;
+    // const { ext } = await FileType.fromBuffer(buffer);
+    // const name = `${uuid()}.${ext}`;
+    // const key = `image/${req.session.user.id}/${name}`;
+    const name = `${uuid()}-${originalname}`;
     const key = `image/${req.session.user.id}/${name}`;
 
     try {
@@ -106,16 +108,16 @@ async function uploadImageAsync(req, res) {
   });
 }
 
-async function requestGallery(req, res) {
+async function getImageGallery(req, res) {
   const images = await db.getImagesByUserId(req.session.user.id);
   const result = images.map(image => {
-    const {
-      url: src,
-      classes
-    } = image;
-    const classification = classes.map(classification => {
-      return classification.class;
-    }).join(', ').trim();
+    const { url: src, classes = [] } = image;
+    const classification = classes
+      .map(classification => {
+        return classification.class;
+      })
+      .join(', ')
+      .trim();
 
     return {
       src,
@@ -130,8 +132,8 @@ async function requestGallery(req, res) {
 }
 
 async function requestMediaAsync(req, res, next) {
-  if (req.url.includes('gallery')) {
-    return requestGallery(req, res, next);
+  if (req.url.includes('gallery/images')) {
+    return getImageGallery(req, res, next);
   }
   return requestFromS3(req, res, next);
 }
