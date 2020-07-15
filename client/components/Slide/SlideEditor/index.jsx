@@ -114,7 +114,6 @@ export default class SlideEditor extends Component {
   updateSlide() {
     if (this.props.onChange) {
       const { components, title } = this.state;
-
       this.props.onChange(this.props.index, {
         components,
         title
@@ -271,7 +270,7 @@ export default class SlideEditor extends Component {
       onTitleChange
     } = this;
 
-    const { noSlide, scenarioId } = this.props;
+    const { noSlide, promptToAddSlide, scenarioId, slides } = this.props;
     const { activeComponentIndex, components, mode, title } = this.state;
     const noSlideComponents = components.length === 0;
     const disabled = !!noSlide;
@@ -301,7 +300,7 @@ export default class SlideEditor extends Component {
         onClick: updateSlide
       },
       delete: {
-        disabled,
+        disabled: slides.length <= 1,
         onConfirm: () => {
           this.props.onDelete(this.props.index);
         }
@@ -363,7 +362,7 @@ export default class SlideEditor extends Component {
                 <Grid.Row className="ser__component-pane">
                   <Grid.Column className="ser__component-layout-pane-outer">
                     <Segment className="ser__component-layout-pane">
-                      {noSlide}
+                      {promptToAddSlide}
                     </Segment>
                   </Grid.Column>
                 </Grid.Row>
@@ -598,11 +597,13 @@ export default class SlideEditor extends Component {
 
 SlideEditor.propTypes = {
   scenarioId: PropTypes.any,
+  slides: PropTypes.array,
   index: PropTypes.number,
   id: PropTypes.number,
   title: PropTypes.string,
   components: PropTypes.arrayOf(PropTypes.object),
   noSlide: PropTypes.bool,
+  promptToAddSlide: PropTypes.node,
   onChange: PropTypes.func,
   onDelete: PropTypes.func,
   onDuplicate: PropTypes.func

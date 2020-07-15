@@ -57,10 +57,7 @@ exports.orderSlides = asyncMiddleware(async (req, res) => {
     return id;
   });
   res.json({
-    slides: await db.setSlideOrder({
-      scenario_id,
-      slide_ids
-    }),
+    slides: await db.setSlideOrder(scenario_id, slide_ids),
     status: 200
   });
 });
@@ -92,9 +89,22 @@ exports.setAllSlides = asyncMiddleware(async (req, res) => {
 exports.deleteSlide = asyncMiddleware(async (req, res) => {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { id: scenario_id } = reqScenario(req);
-  const { slide_id: id } = req.params;
-  res.json({
-    result: await db.deleteSlide({ id, scenario_id }),
-    status: 200
-  });
+  const id = Number(req.params.slide_id);
+
+  try {
+    const count = await db.deleteSlide(scenario_id, id);
+
+    if (count === 1) {
+      const slides = await db.getScenarioSlides(scenario_id);
+      res.json({
+        slides,
+        status: 200
+      });
+    }
+  } catch (apiError) {
+    const error = new Error('Error while deleting slide');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
 });

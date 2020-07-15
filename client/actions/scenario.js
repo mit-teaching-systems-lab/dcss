@@ -9,6 +9,8 @@ import {
   // GET_SLIDES,
   GET_SLIDES_SUCCESS,
   GET_SLIDES_ERROR,
+  DELETE_SLIDE_SUCCESS,
+  DELETE_SLIDE_ERROR,
   SET_SCENARIO,
   // SET_SCENARIO_SUCCESS,
   // SET_SCENARIO_ERROR,
@@ -105,3 +107,26 @@ export const setSlides = slides => ({
   type: SET_SLIDES,
   slides
 });
+
+export const deleteSlide = (scenario_id, id) => async dispatch => {
+  try {
+    const res = await (await fetch(
+      `/api/scenarios/${scenario_id}/slides/${id}`,
+      {
+        method: 'DELETE'
+      }
+    )).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { slides } = res;
+
+    dispatch({ type: DELETE_SLIDE_SUCCESS, slides });
+    return slides;
+  } catch (error) {
+    dispatch({ type: DELETE_SLIDE_ERROR, error });
+    return null;
+  }
+};

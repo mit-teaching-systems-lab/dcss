@@ -41,9 +41,8 @@ async function addScenarioAsync(req, res) {
     message = 'No valid user';
   }
 
-  if (!message && (!title || !description)) {
-    message =
-      'A title and description must be provided to create a new scenario.';
+  if (!message && !title) {
+    message = 'A title must be provided to create a new scenario.';
   }
 
   if (message) {
@@ -80,7 +79,7 @@ async function setScenarioAsync(req, res) {
     status,
     title
   } = req.body;
-  const scenarioId = req.params.scenario_id;
+  const scenarioId = Number(req.params.scenario_id);
   let authorId = author_id;
 
   if (author && author.id) {

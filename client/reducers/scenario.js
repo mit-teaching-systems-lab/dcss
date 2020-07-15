@@ -1,4 +1,5 @@
 import {
+  DELETE_SLIDE_SUCCESS,
   GET_SCENARIO_SUCCESS,
   GET_SLIDES_SUCCESS,
   SET_SCENARIO,
@@ -38,6 +39,7 @@ export const scenario = (state = initialScenarioState, action) => {
         ...state,
         ...scenario
       };
+    case DELETE_SLIDE_SUCCESS:
     case SET_SLIDES:
     case GET_SLIDES_SUCCESS:
       return {

@@ -23,7 +23,7 @@ import SlideEditor from '@components/Slide/SlideEditor';
 import MultiPathNetworkGraphModal from '@components/Slide/Components/MultiPathResponse/MultiPathNetworkGraphModal';
 import SlideComponents from '@components/SlideComponents';
 import scrollIntoView from '@components/util/scrollIntoView';
-import { getSlides } from '@actions/scenario';
+import { deleteSlide, getSlides, setSlides } from '@actions/scenario';
 import './Slides.css';
 
 class Slides extends React.Component {
@@ -179,14 +179,12 @@ class Slides extends React.Component {
       activeSlideIndex = index - 1;
     }
 
+    if (activeSlideIndex < 0) {
+      activeSlideIndex = 0;
+    }
+
     this.activateSlide({ slides, activeSlideIndex }, async () => {
-      const result = await fetch(
-        `/api/scenarios/${scenarioId}/slides/${slide.id}`,
-        {
-          method: 'DELETE'
-        }
-      );
-      await result.json();
+      await this.props.deleteSlide(scenarioId, slide.id);
       notify({ type: 'success', message: 'Slide deleted' });
     });
   }
@@ -312,7 +310,7 @@ class Slides extends React.Component {
       onSlideMinMaxChange,
       onSlideOrderChange
     } = this;
-    const { scenarioId, title } = this.props;
+    const { scenarioId, scenario } = this.props;
     const { activeSlideIndex, graphOpen, isReady, minimized } = this.state;
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
@@ -326,7 +324,7 @@ class Slides extends React.Component {
 
     const multiPathNetworkGraphModal = graphOpen ? (
       <MultiPathNetworkGraphModal
-        header={title}
+        header={scenario.title}
         onClose={() => this.setState({ graphOpen: false })}
         open={graphOpen}
         scenarioId={scenarioId}
@@ -500,10 +498,12 @@ class Slides extends React.Component {
                 key={`slide-editor-${activeSlideIndex}`}
                 scenarioId={scenarioId}
                 index={activeSlideIndex}
-                noSlide={promptToAddSlide}
+                noSlide={noSlide}
+                promptToAddSlide={promptToAddSlide}
                 onChange={onSlideChange}
                 onDelete={onSlideDelete}
                 onDuplicate={onSlideDuplicate}
+                slides={slides}
                 {...slides[activeSlideIndex]}
               />
             ) : (
@@ -519,7 +519,9 @@ class Slides extends React.Component {
 Slides.propTypes = {
   activeNonZeroSlideIndex: PropTypes.number,
   activeSlideIndex: PropTypes.number,
+  deleteSlide: PropTypes.func,
   getSlides: PropTypes.func,
+  setSlides: PropTypes.func,
   match: PropTypes.shape({
     params: PropTypes.shape({
       activeNonZeroSlideIndex: PropTypes.node,
@@ -527,22 +529,22 @@ Slides.propTypes = {
       id: PropTypes.node
     }).isRequired
   }),
-  slides: PropTypes.array,
+  scenario: PropTypes.object,
   scenarioId: PropTypes.node,
-  setActiveSlide: PropTypes.func,
-  title: PropTypes.string
+  setActiveSlide: PropTypes.func
 };
 
 const mapStateToProps = state => {
-  const { slides, title } = state.scenario;
+  const { scenario } = state;
   return {
-    slides,
-    title
+    scenario
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getSlides: params => dispatch(getSlides(params))
+  deleteSlide: (...params) => dispatch(deleteSlide(...params)),
+  getSlides: params => dispatch(getSlides(params)),
+  setSlides: params => dispatch(setSlides(params))
 });
 
 export default withRouter(

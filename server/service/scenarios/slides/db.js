@@ -52,14 +52,14 @@ INSERT INTO slide (scenario_id, title, components, is_finish)
   return { addedCount: results.rowCount };
 };
 
-exports.deleteSlide = async ({ scenario_id, id }) => {
+exports.deleteSlide = async (scenario_id, id) => {
   const result = await query(
     sql`DELETE FROM slide WHERE id=${id} and scenario_id=${scenario_id}`
   );
   return result.rowCount;
 };
 
-exports.setSlideOrder = async ({ scenario_id, slide_ids }) => {
+exports.setSlideOrder = async (scenario_id, slide_ids) => {
   const results = await query(
     sql`
 WITH n (slide_id, new_order) as (SELECT jsonb_array_elements_text(${slide_ids}), generate_series(100, 10000000, 10))

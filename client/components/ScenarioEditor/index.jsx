@@ -148,16 +148,18 @@ class ScenarioEditor extends Component {
     const { postSubmitCB, submitCB } = this.props;
     const scenario = updatedScenario || this.props.scenario;
 
-    if (!scenario.description) {
-      scenario.description = makeDefaultDescription(scenario);
-    }
-
-    if (!scenario.title || !scenario.description) {
+    if (!scenario.title) {
       notify({
         type: 'error',
-        message: 'A title and description are required for saving scenarios.'
+        message: `Scenario title cannot be empty.`
       });
       return;
+    }
+
+    if (!scenario.description) {
+      // If description is any kind of falsy value, ensure that
+      // it's saved as an empty string.
+      scenario.description = '';
     }
 
     const response = await (await submitCB(scenario)).json();
