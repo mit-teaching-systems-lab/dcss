@@ -14,7 +14,7 @@ import {
   Table
 } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
-import _ from 'lodash';
+import escapeRegExp from 'lodash.escaperegexp';
 import Moment from '@utils/Moment';
 import Username from '@components/User/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
@@ -132,7 +132,7 @@ export class CohortScenarios extends React.Component {
       return;
     }
 
-    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
     const results = scenarios.filter(scenario => {
       if (escapedRegExp.test(scenario.title)) {
         return true;

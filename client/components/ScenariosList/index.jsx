@@ -14,7 +14,7 @@ import {
   Pagination,
   Popup
 } from '@components/UI';
-import _ from 'lodash';
+import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
@@ -199,7 +199,7 @@ class ScenariosList extends Component {
       return;
     }
 
-    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
     const results = scenarios.filter(record => {
       const {
         author: { username },

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import hash from 'object-hash';
-import _ from 'lodash';
+import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import { Parser } from 'json2csv';
 import { connect } from 'react-redux';
@@ -69,7 +69,7 @@ class Downloads extends Component {
   }
 
   onDownloadSearchChange(options, value) {
-    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
     return options.filter(option => escapedRegExp.test(option.text));
   }
 

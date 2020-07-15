@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-import _ from 'lodash';
+import escapeRegExp from 'lodash.escaperegexp';
 import {
   Button,
   Card,
@@ -120,7 +120,7 @@ export class Cohorts extends React.Component {
       return;
     }
 
-    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
     const lookupCohort = id => scenarios.find(scenario => scenario.id === id);
 
     const results = sourceCohorts.filter(record => {

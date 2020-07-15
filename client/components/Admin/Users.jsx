@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import _ from 'lodash';
+import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import { Icon, Input, Menu } from '@components/UI';
 
@@ -70,7 +70,7 @@ class Users extends Component {
       return;
     }
 
-    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
     const results = users.filter(({ username, email, roles }) => {
       if (escapedRegExp.test(username)) {
         return true;

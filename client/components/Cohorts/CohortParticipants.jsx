@@ -14,7 +14,7 @@ import {
   Ref,
   Table
 } from '@components/UI';
-import _ from 'lodash';
+import escapeRegExp from 'lodash.escaperegexp';
 import hash from 'object-hash';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
@@ -143,7 +143,7 @@ export class CohortParticipants extends React.Component {
       return;
     }
 
-    const escapedRegExp = new RegExp(_.escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
     let users = participants.filter(participant => {
       // console.log(participant);
       if (escapedRegExp.test(participant.username)) {
