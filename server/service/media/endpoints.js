@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const FileType = require('file-type');
 const Multer = require('multer');
 const uuid = require('uuid/v4');
@@ -60,11 +61,7 @@ async function uploadImageAsync(req, res) {
         .json({ message: 'Upload Request Validation Failed' });
     }
     const user_id = req.session.user.id;
-    const {
-      buffer,
-      originalname,
-      size
-    } = req.file;
+    const { buffer, originalname, size } = req.file;
 
     // const { ext } = await FileType.fromBuffer(buffer);
     // const name = `${uuid()}.${ext}`;
