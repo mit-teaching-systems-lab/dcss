@@ -5,24 +5,22 @@ import { Icon, Message } from '@components/UI';
 function AddSlideMessage({ onClick }) {
   return (
     <Message
-      floating
-      icon={
-        <Icon.Group
-          size="huge"
-          style={{
-            marginRight: '0.5rem !important'
-          }}
-        >
-          <Icon name="plus square outline" />
-          <Icon corner="top right" name="add" color="green" />
-        </Icon.Group>
-      }
-      header="Click to add a slide"
+      icon
       onClick={onClick}
       style={{
-        cursor: 'pointer'
+        cursor: 'pointer',
+        padding: '0.25rem 0.5rem !important'
       }}
-    />
+    >
+      <Icon
+        size="huge"
+        name="plus square outline"
+        style={{ marginRight: '0.25rem !important' }}
+      />
+      <Message.Content>
+        <Message.Header>Click to add a slide</Message.Header>
+      </Message.Content>
+    </Message>
   );
 }
 
