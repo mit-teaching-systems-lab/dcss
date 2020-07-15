@@ -435,7 +435,10 @@ class MultiPathResponseEditor extends React.Component {
                 <Table.HeaderCell colSpan="2">
                   <Menu floated="right" borderless>
                     <Menu.Item icon onClick={onViewGraphClick}>
-                      <Icon.Group size="large" className="em__icon-group-margin">
+                      <Icon.Group
+                        size="large"
+                        className="em__icon-group-margin"
+                      >
                         <Icon
                           name="fork"
                           style={{ transform: 'rotate(90deg)' }}
@@ -444,7 +447,10 @@ class MultiPathResponseEditor extends React.Component {
                       View slides graph
                     </Menu.Item>
                     <Menu.Item icon onClick={onPathAddClick}>
-                      <Icon.Group size="large" className="em__icon-group-margin">
+                      <Icon.Group
+                        size="large"
+                        className="em__icon-group-margin"
+                      >
                         <Icon name="hand pointer outline" />
                         <Icon corner="top right" name="add" color="green" />
                       </Icon.Group>

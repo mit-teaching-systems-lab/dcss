@@ -1,6 +1,8 @@
 .se__grid-nowrap {
   flex-wrap: nowrap !important;
-  margin-bottom: 0.5em;
+  /*margin-bottom: 0.5em;*/
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .se__grid-column-width-constraint {
@@ -10,5 +12,5 @@
 .se__grid-column-height-constraint {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 75vh !important;
+  height: calc(100vh - 167px) !important;
 }

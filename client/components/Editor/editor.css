@@ -1,12 +1,16 @@
 .editor__content-pane {
   /*height: 100% !important;*/
   /*height: 90vh !important;*/
-  min-width: 1047px !important;
+  height: calc(100vh - 100px) !important;
+  width: calc(100vw - 1em) !important;
+  min-width: 951px !important;
   padding: 0.5em 0.5em 0 0.5em !important;
+  margin-bottom: 0 !important;
 }
 
 .editor__tabmenu {
-  min-width: 1047px !important;
+  min-width: 951px !important;
+  width: calc(100vw - 1em) !important;
 }
 
 .editor__righttitle {

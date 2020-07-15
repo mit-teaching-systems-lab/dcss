@@ -494,7 +494,7 @@ class Slides extends React.Component {
               <Loading card={{ cols: 1, rows: 3 }} />
             )}
           </Grid.Column>
-          <Grid.Column width={13} className="slides__editor-outer-container">
+          <Grid.Column className="slides__editor-outer-container">
             {isReady ? (
               <SlideEditor
                 key={`slide-editor-${activeSlideIndex}`}

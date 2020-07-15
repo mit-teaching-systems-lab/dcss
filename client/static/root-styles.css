@@ -1,5 +1,6 @@
 #root {
-  margin: 0.5em 0.5em 0 0.5em;
+  /*margin: 0.5em 0.5em 0 0.5em;*/
+  margin: 0 0.5em 0 0.5em;
   height: 100vh;
 }
 
@@ -72,6 +73,10 @@ td .ui.fluid.selection.dropdown > .text {
   text-overflow: ellipsis !important;
 }
 
+/*.ui.form .field>label {
+  font-size: 1em !important;
+}
+*/
 @media only screen and (max-width: 767px) {
   .ui.modal {
     top: 1rem;

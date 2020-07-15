@@ -429,7 +429,7 @@ class Downloads extends Component {
 
     const menuBar = (
       <EditorMenu
-        type="administration"
+        type="downloads"
         items={{
           left: [
             // filter ? menuItemFilterDisplay : menuItemDownloadsCount,

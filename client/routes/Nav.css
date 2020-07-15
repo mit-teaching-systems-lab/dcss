@@ -1,6 +1,7 @@
 #nav {
-  margin-top: 0.5em!important;
-  margin-bottom: 0.5em!important;
+  /*margin-top: 0.5em!important;*/
+  margin-top: 0 !important;
+  margin-bottom: 0.5em !important;
   border: unset !important;
   box-shadow: unset !important;
 }

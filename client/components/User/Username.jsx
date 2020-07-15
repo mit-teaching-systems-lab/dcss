@@ -1,23 +1,39 @@
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '@components/UI';
 
-export const Username = props => {
-  const { is_super, personalname, username } = props;
-  return (
-    <Fragment>
-      {personalname || username}{' '}
-      {is_super ? (
-        <Icon
-          size="small"
-          style={{ marginLeft: '0.25em', marginRight: '0', opacity: '0.25' }}
-          name="chess queen"
-          title="Super user"
-        />
-      ) : null}
-    </Fragment>
-  );
-};
+class Username extends Component {
+  constructor(props) {
+    super(props);
+    const { personalname, username } = this.props;
+
+    this.displayName = personalname || username;
+  }
+  toString() {
+    return this.displayName;
+  }
+  render() {
+    const { is_super } = this.props;
+    return (
+      <Fragment>
+        {this.displayName}{' '}
+        {is_super ? (
+          <Icon
+            size="small"
+            name="chess queen"
+            title="Super user"
+            style={{
+              marginRight: '0',
+              marginBottom: '0.3em',
+              marginLeft: '0.25em',
+              opacity: '0.25'
+            }}
+          />
+        ) : null}
+      </Fragment>
+    );
+  }
+}
 
 Username.propTypes = {
   is_super: PropTypes.bool,

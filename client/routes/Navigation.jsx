@@ -63,12 +63,21 @@ class Navigation extends Component {
 
     const navLinkAuthorized = restrictedNav.map(
       ({ text, path, permission }, index) => {
-        const menuItem = <Menu.Item key={`menu-item-nav-${index}`} href={path}>{text}</Menu.Item>;
+        const menuItem = (
+          <Menu.Item key={`menu-item-nav-${index}`} href={path}>
+            {text}
+          </Menu.Item>
+        );
         return permission ? (
-          <ConfirmAuth key={`confirmed-menu-item-nav-${index}`} requiredPermission={permission}>
+          <ConfirmAuth
+            key={`confirmed-menu-item-nav-${index}`}
+            requiredPermission={permission}
+          >
             {menuItem}
           </ConfirmAuth>
-        ) : menuItem;
+        ) : (
+          menuItem
+        );
       }
     );
 
@@ -111,14 +120,21 @@ class Navigation extends Component {
                   {isLoggedIn && (
                     <Fragment>
                       <ConfirmAuth requiredPermission="create_scenario">
-                        <Menu.Item role="option" href={`/scenarios/author/${user.username}`}>
+                        <Menu.Item
+                          role="option"
+                          href={`/scenarios/author/${user.username}`}
+                        >
                           My Scenarios
                         </Menu.Item>
                       </ConfirmAuth>
                     </Fragment>
                   )}
-                  <Menu.Item role="option" href="/scenarios/official">Official</Menu.Item>
-                  <Menu.Item role="option" href="/scenarios/community">Community</Menu.Item>
+                  <Menu.Item role="option" href="/scenarios/official">
+                    Official
+                  </Menu.Item>
+                  <Menu.Item role="option" href="/scenarios/community">
+                    Community
+                  </Menu.Item>
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Menu>

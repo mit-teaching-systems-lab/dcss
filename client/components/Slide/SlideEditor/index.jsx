@@ -326,16 +326,9 @@ export default class SlideEditor extends Component {
     };
 
     const noSlideComponentsIcon = noSlideComponents ? (
-      <Icon.Group
-        size="huge"
-        className="em__icon-group-margin"
-      >
+      <Icon.Group size="huge" className="em__icon-group-margin">
         <Icon name="newspaper outline" />
-        <Icon
-          corner="top right"
-          name="add"
-          color="green"
-        />
+        <Icon corner="top right" name="add" color="green" />
       </Icon.Group>
     ) : null;
 
@@ -550,7 +543,6 @@ export default class SlideEditor extends Component {
                                         }
                                         onClick={onComponentClick}
                                       >
-
                                         <EditorMenu
                                           isDragging={isDragging}
                                           draghandle={dragHandleProps}

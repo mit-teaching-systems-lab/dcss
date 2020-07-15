@@ -2,12 +2,28 @@
     height: 83vh !important;
 }
 
+.users__col-xxlarge {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.users__col-xlarge {
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .users__col-large {
   /*width: 30%;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .users__col-medium {
   width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .users__col-small {

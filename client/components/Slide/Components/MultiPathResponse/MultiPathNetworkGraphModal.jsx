@@ -198,7 +198,6 @@ class MultiPathNetworkGraphModal extends Component {
 
       colCounter++;
       if (colCounter === nodeCols) {
-
         // EXPERITMENTAL: Try using different edge types to make the
         // layout more readable.
         //

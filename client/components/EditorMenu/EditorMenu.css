@@ -6,11 +6,23 @@
   margin-right: 0.5rem!important;
 }
 
-/*.em__icon-padding {
-  padding: 0.428571em 1.14285714em !important;
+.em__search-input-box-right {
+  padding-right: 0 !important;
 }
-*/
-/*.em__icon-padding {
-  padding: 0.92857143em 0.5em !important;
+
+.em__sticky {
+  z-index: 1;
+  background: white;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
-*/
+
+
+.em__fullwidth /* minus left and right padding + margin */ {
+  width: calc(100vw - 31px) !important;
+}
+
+.ui.segment > .em__fullwidth /* minus left and right padding + margin */ {
+  width: calc(100vw - 31px) !important;
+}

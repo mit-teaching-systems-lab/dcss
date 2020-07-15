@@ -12,7 +12,8 @@
   overflow-x: hidden;
   /*height: 72vh !important;*/
   /*height: 79vh !important;*/
-  height: 70vh !important;
+  /*height: 70vh !important;*/
+  height: calc(100vh - 212px) !important;
   padding: 0 5px 0 1px !important;
   border: 0 !important;
   box-shadow: 0 0 0 0 !important;
@@ -28,9 +29,10 @@
 }
 
 .slides__editor-outer-container {
+  width: calc(100vw - 213px) !important;
   flex-wrap: nowrap !important;
-  padding-left: 0 !important;
   padding-top: 0.5rem !important;
+  padding-left: 0 !important;
 }
 
 .slides__editor-all-outer-container {
