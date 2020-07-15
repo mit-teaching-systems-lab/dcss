@@ -25,6 +25,7 @@ import {
   setCohort,
   createCohort
 } from '@actions/cohort';
+import { computePerPageItemsRows } from '@utils/Layout';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
@@ -33,8 +34,6 @@ import Loading from '@components/Loading';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
 import '../ScenariosList/ScenariosList.css';
-
-const CARDS_PER_PAGE = 8;
 
 export class Cohorts extends React.Component {
   constructor(props) {
@@ -175,6 +174,11 @@ export class Cohorts extends React.Component {
 
     const { user } = this.props;
 
+    const defaultRowCount = 2;
+    const { itemsPerPage, rowsPerPage } = computePerPageItemsRows({
+      defaultRowCount
+    });
+
     const menuItemCreateCohorts = (
       <ConfirmAuth
         key="menu-item-create-cohort-auth"
@@ -184,7 +188,6 @@ export class Cohorts extends React.Component {
           key="menu-item-create-cohort"
           name="Create a cohort"
           onClick={onOpenCreateCohortClick}
-          className="em__icon-padding"
         >
           <Icon.Group className="em__icon-group-margin">
             <Icon name="group" />
@@ -196,11 +199,7 @@ export class Cohorts extends React.Component {
     );
 
     const menuItemCountCohorts = (
-      <Menu.Item
-        key="menu-item-count-cohort"
-        name="Cohorts"
-        className="em__icon-padding"
-      >
+      <Menu.Item key="menu-item-count-cohort" name="Cohorts">
         <Icon.Group className="em__icon-group-margin">
           <Icon name="group" />
         </Icon.Group>
@@ -209,13 +208,9 @@ export class Cohorts extends React.Component {
     );
 
     const menuItemSearchCohorts =
-      cohorts.length > CARDS_PER_PAGE ? (
+      cohorts.length > itemsPerPage ? (
         <Menu.Menu key="menu-right-search-cohorts" position="right">
-          <Menu.Item
-            key="menu-item-search-cohorts"
-            name="Search cohorts"
-            className="em__icon-padding"
-          >
+          <Menu.Item key="menu-item-search-cohorts" name="Search cohorts">
             <Input
               icon="search"
               placeholder="Search..."
@@ -233,15 +228,17 @@ export class Cohorts extends React.Component {
 
     const right = [menuItemSearchCohorts];
 
-    const cohortsPages = Math.ceil(cohorts.length / CARDS_PER_PAGE);
-    const cohortsIndex = (activePage - 1) * CARDS_PER_PAGE;
+    const cohortsPages = Math.ceil(cohorts.length / itemsPerPage);
+    const cohortsIndex = (activePage - 1) * itemsPerPage;
     const cohortsSlice = cohorts.slice(
       cohortsIndex,
-      cohortsIndex + CARDS_PER_PAGE
+      cohortsIndex + itemsPerPage
     );
     const cards = cohortsSlice.map(cohort => {
       return <CohortCard key={hash(cohort)} id={cohort.id} />;
     });
+
+    const itemsPerRow = 4;
 
     return (
       <React.Fragment>
@@ -254,14 +251,14 @@ export class Cohorts extends React.Component {
         />
 
         {!isReady ? (
-          <Loading card={{ cols: 4, rows: 2 }} />
+          <Loading card={{ cols: itemsPerRow, rows: rowsPerPage }} />
         ) : (
           <Container fluid>
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
                   {cards.length ? (
-                    <Card.Group doubling itemsPerRow={4} stackable>
+                    <Card.Group doubling itemsPerRow={itemsPerRow} stackable>
                       {cards}
                     </Card.Group>
                   ) : (

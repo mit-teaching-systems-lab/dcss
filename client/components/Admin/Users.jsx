@@ -8,12 +8,11 @@ import { Icon, Input, Menu } from '@components/UI';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import UsersTable from './UsersTable';
+import { computePerPageItemsRows } from '@utils/Layout';
 import { getUsers } from '@actions/users';
 import { SITE_ROLE_GROUPS } from './constants';
 
 const { super_admin, admin, facilitator, researcher } = SITE_ROLE_GROUPS;
-
-const ROWS_PER_PAGE = 10;
 
 class Users extends Component {
   constructor(props) {
@@ -104,10 +103,24 @@ class Users extends Component {
     if (!isReady) {
       return <Loading />;
     }
+
+    const defaultRowCount = 10;
+    // known total height of all ui that is not a table row
+    const totalUnavailableHeight = 459;
+    const itemsRowHeight = 44;
+    const itemsPerRow = 1;
+
+    const { rowsPerPage } = computePerPageItemsRows({
+      defaultRowCount,
+      totalUnavailableHeight,
+      itemsPerRow,
+      itemsRowHeight
+    });
+
     const totalUserCount = this.state.users.length;
-    const pages = Math.ceil(totalUserCount / ROWS_PER_PAGE);
-    const index = (activePage - 1) * ROWS_PER_PAGE;
-    const users = this.state.users.slice(index, index + ROWS_PER_PAGE);
+    const pages = Math.ceil(totalUserCount / rowsPerPage);
+    const index = (activePage - 1) * rowsPerPage;
+    const users = this.state.users.slice(index, index + rowsPerPage);
     const columns = {
       username: {
         className: 'users__col-large',

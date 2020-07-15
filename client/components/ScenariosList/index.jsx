@@ -18,6 +18,7 @@ import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
+import { computePerPageItemsRows } from '@utils/Layout';
 import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Username from '@components/User/Username';
@@ -27,8 +28,6 @@ import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioCardActions from './ScenarioCardActions';
 import './ScenariosList.css';
-
-const CARDS_PER_PAGE = 8;
 
 /* eslint-disable */
 const SCENARIO_STATUS_DRAFT = 1;
@@ -271,11 +270,16 @@ class ScenariosList extends Component {
       url += `?q=${encodeURIComponent(value)}`;
     }
 
-    const scenariosPages = Math.ceil(scenarios.length / CARDS_PER_PAGE);
-    const scenariosIndex = (activePage - 1) * CARDS_PER_PAGE;
+    const defaultRowCount = 2;
+    const { itemsPerPage, rowsPerPage } = computePerPageItemsRows({
+      defaultRowCount
+    });
+
+    const scenariosPages = Math.ceil(scenarios.length / itemsPerPage);
+    const scenariosIndex = (activePage - 1) * itemsPerPage;
     const scenariosSlice = scenarios.slice(
       scenariosIndex,
-      scenariosIndex + CARDS_PER_PAGE
+      scenariosIndex + itemsPerPage
     );
     const cards = scenariosSlice.map((scenario, index) => {
       return (
@@ -348,17 +352,19 @@ class ScenariosList extends Component {
       </Menu.Menu>
     ];
 
+    const itemsPerRow = 4;
+
     return (
       <Fragment>
         <EditorMenu type="scenarios" items={{ left, right }} />
         {!isReady ? (
-          <Loading card={{ cols: 4, rows: 2 }} />
+          <Loading card={{ cols: itemsPerRow, rows: rowsPerPage }} />
         ) : (
           <Container fluid>
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  <Card.Group doubling itemsPerRow={4} stackable>
+                  <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
                     {cards}
                   </Card.Group>
                 </Grid.Column>
