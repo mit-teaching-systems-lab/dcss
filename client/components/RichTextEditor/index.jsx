@@ -11,7 +11,6 @@ import 'codemirror/mode/htmlmixed/htmlmixed';
 import SunEditor from 'suneditor';
 import 'suneditor/src/assets/css/suneditor-contents.css';
 import 'suneditor/src/assets/css/suneditor.css';
-// import 'suneditor/dist/css/suneditor.min.css';
 
 import buttons from './buttons';
 import icons from './icons';
@@ -100,8 +99,9 @@ class RichTextEditor extends Component {
       // Enables image upload and storage
       options.imageMultipleFile = false;
       options.imageUploadUrl = '/api/media/image';
-      options.imageGalleryUrl = '/api/media/gallery';
+      options.imageGalleryUrl = '/api/media/gallery/images';
 
+      // Enable this when it's time to add math to the editor.
       // if (options.buttonList.flat().includes('math')) {
       //   options.katex = katex;
       // }
@@ -116,7 +116,6 @@ class RichTextEditor extends Component {
       this[SymbolEditor] = SunEditor.create(this.ref.current, options, {
         icons
       });
-      // this[SymbolEditor].setOptions(options);
 
       this[SymbolEditor].onChange = content => {
         onContentChange(content);

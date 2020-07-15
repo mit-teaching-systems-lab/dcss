@@ -289,7 +289,7 @@ export default class SlideEditor extends Component {
             id={`title-${this.props.index}`}
             disabled={disabled}
             name="title"
-            placeholder="Slide title (optional)"
+            placeholder="Slide title"
             defaultValue={title}
             onChange={onTitleChange}
           />
@@ -482,18 +482,12 @@ export default class SlideEditor extends Component {
                             value.id = uuid();
                           }
 
-                          const componentCardProps = {
-                            key: `menut-item-component-card-${index}`,
-                            className: 'ser__component-card'
-                          };
-
-                          if (isActiveComponent) {
-                            componentCardProps.color = 'yellow';
-                          }
-
                           const componentEditorMenuItems = {
                             left: [
-                              <Menu.Item {...componentCardProps}>
+                              <Menu.Item
+                                className="ser__component-card"
+                                key={`menu-item-component-card-${index}`}
+                              >
                                 <ComponentCard />
                               </Menu.Item>
                             ],

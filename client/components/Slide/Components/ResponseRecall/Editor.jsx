@@ -79,12 +79,11 @@ class ResponseRecallEditor extends React.Component {
 
     const prompts = components.reduce((accum, component, key) => {
       const { header, index, prompt, responseId, slide } = component;
-
       const nonZeroIndex = index + 1;
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
-      if (!responseId || slideIndex === index) {
+      if (!responseId || slideIndex === nonZeroIndex) {
         return accum;
       }
 

@@ -53,7 +53,8 @@ export const component = [
     'list',
     'table',
     'link',
-    'image', 'imageGallery',
+    'image',
+    'imageGallery',
     'video'
   ]
 ];
@@ -69,7 +70,8 @@ export const suggestion = [
     'strike',
     'list',
     'link',
-    'image', 'imageGallery',
+    'image',
+    'imageGallery',
     'video'
   ]
 ];

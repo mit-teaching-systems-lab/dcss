@@ -77,9 +77,7 @@ class FinishSlide extends React.Component {
               <Icon corner="top right" name="check circle" color="orange" />
             </Icon.Group>
 
-            <Header.Content>
-              Ready to finish this scenario?
-            </Header.Content>
+            <Header.Content>Ready to finish this scenario?</Header.Content>
           </Header>
           <Modal.Content>
             If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;

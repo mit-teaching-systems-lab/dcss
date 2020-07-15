@@ -82,13 +82,13 @@ class Display extends Component {
         {recallId ? <ResponseRecall run={run} recallId={recallId} /> : null}
 
         <List>
-          {paths.map(path => {
+          {paths.map((path, index) => {
             const { display, value } = path;
             const selectedIcon =
               previousValue === value ? { icon: 'checkmark' } : {};
-
+            const key = hash({ path, index });
             return (
-              <List.Item key={hash(path)}>
+              <List.Item key={`list-item-${key}`}>
                 <Button
                   fluid
                   color="green"

@@ -309,7 +309,6 @@ export class CohortParticipants extends React.Component {
     const left = [
       <Menu.Item
         key="menu-item-cohort-participants"
-        className="em__icon-padding"
         name="Participants in this Cohort"
         onClick={scrollIntoView}
       >
@@ -320,7 +319,6 @@ export class CohortParticipants extends React.Component {
       </Menu.Item>,
       <Menu.Item
         key="menu-item-cohort-participants"
-        className="em__icon-padding"
         name="Control participant list refresh"
         onClick={onParticipantRefreshChange}
       >
@@ -337,7 +335,6 @@ export class CohortParticipants extends React.Component {
         <Menu.Item
           key="menu-item-search-cohort-participants"
           name="Search cohort participants"
-          className="em__icon-padding"
         >
           <Input
             icon="search"

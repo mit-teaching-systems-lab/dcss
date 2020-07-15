@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import {
-  Button,
   Container,
   Dropdown,
   Form,
@@ -313,10 +312,6 @@ class MultiPathResponseEditor extends React.Component {
       />
     ) : null;
 
-    const autoComplete = 'off';
-    const fluid = true;
-    const name = 'display';
-
     return slides.length ? (
       <Form>
         <Container fluid>
@@ -364,25 +359,11 @@ class MultiPathResponseEditor extends React.Component {
                   options
                 );
                 const key = hash({ id, index });
-
-                const inputProps = {
-                  autoComplete,
-                  fluid,
-                  name,
-                  index,
-                  value: display,
-                  onBlur: onBlurOrFocus,
-                  onFocus: onBlurOrFocus,
-                  onChange: onPathDetailChange,
-                  key: `button-diplay-${key}`
-                };
-
-                if (index === paths.length - 1) {
-                  inputProps.autoFocus = true;
-                }
-
                 return (
-                  <Table.Row className="mpr__cursor-grab" key={`row-${key}`}>
+                  <Table.Row
+                    className="mpr__cursor-grab"
+                    key={`table-row-${key}`}
+                  >
                     <Table.Cell collapsing>
                       <EditorMenu
                         type="path"
@@ -398,15 +379,15 @@ class MultiPathResponseEditor extends React.Component {
                     </Table.Cell>
                     <Table.Cell>
                       <Input
-                        fluid
                         name="display"
                         autoComplete="off"
+                        fluid
                         index={index}
                         value={display}
                         onBlur={onBlurOrFocus}
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
-                        key={`button-diplay-${key}`}
+                        key={`button-display-${key}`}
                       />
                     </Table.Cell>
                     <Table.Cell>

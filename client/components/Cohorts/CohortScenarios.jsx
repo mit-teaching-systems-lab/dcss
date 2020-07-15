@@ -189,7 +189,6 @@ export class CohortScenarios extends React.Component {
         <Menu.Item
           key="menu-item-search-cohort-scenarios"
           name="Search cohort scenarios"
-          className="em__icon-padding"
         >
           <Input
             icon="search"
@@ -215,7 +214,6 @@ export class CohortScenarios extends React.Component {
             left: [
               <Menu.Item
                 key="menu-item-cohort-scenarios"
-                className="em__icon-padding"
                 name="Scenarios in this Cohort"
                 onClick={this.scrollIntoView}
               >
