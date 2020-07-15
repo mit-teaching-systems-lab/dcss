@@ -1,7 +1,7 @@
 const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
 const { reqScenario } = require('./middleware');
-
+const { getUserById } = require('../auth/db');
 const {
   addSlide,
   getScenarioSlides,
@@ -293,6 +293,54 @@ async function getScenarioByRunAsync(req, res) {
   res.send({ scenarios, status: 200 });
 }
 
+async function addScenarioUserRoleAsync(req, res) {
+  const { scenario_id, user_id, roles } = req.body;
+  const user = await getUserById(user_id);
+  if (!user.id || !roles.length) {
+    const error = new Error('User and roles must be defined');
+    error.status = 409;
+    throw error;
+  }
+
+  try {
+    const result = await db.addScenarioUserRole(scenario_id, user_id, roles);
+    const scenario = await db.getScenario(scenario_id);
+    res.json({
+      scenario,
+      ...result
+    });
+  } catch (apiError) {
+    const error = new Error('Error while adding roles');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
+async function endScenarioUserRoleAsync(req, res) {
+  const { scenario_id, user_id, roles } = req.body;
+  const user = await getUserById(user_id);
+  if (!user.id || !roles.length) {
+    const error = new Error('User and roles must be defined');
+    error.status = 409;
+    throw error;
+  }
+
+  try {
+    const result = await db.endScenarioUserRole(scenario_id, user_id, roles);
+    const scenario = await db.getScenario(scenario_id);
+    res.json({
+      scenario,
+      ...result
+    });
+  } catch (apiError) {
+    const error = new Error('Error while deleting roles');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
 exports.getScenario = asyncMiddleware(getScenarioAsync);
 exports.getScenarioLock = asyncMiddleware(getScenarioLockAsync);
 exports.getAllScenarios = asyncMiddleware(getAllScenariosAsync);
@@ -302,3 +350,5 @@ exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);
 exports.softDeleteScenario = asyncMiddleware(softDeleteScenarioAsync);
 exports.copyScenario = asyncMiddleware(copyScenarioAsync);
 exports.getScenarioByRun = asyncMiddleware(getScenarioByRunAsync);
+exports.addScenarioUserRole = asyncMiddleware(addScenarioUserRoleAsync);
+exports.endScenarioUserRole = asyncMiddleware(endScenarioUserRoleAsync);

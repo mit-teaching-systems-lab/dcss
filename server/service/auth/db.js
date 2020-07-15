@@ -1,5 +1,5 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
-const { query } = require('../../util/db');
+const { query, withClient } = require('../../util/db');
 const { saltHashPassword } = require('../../util/pwHash');
 
 async function getUserByProps({ id, username, email }) {
@@ -71,4 +71,16 @@ exports.updateUser = async function(id, updates) {
   } = await query(updateQuery('users', { id }, prepared));
 
   return getUserById(user.id);
+};
+
+exports.getUserRoles = async user_id => {
+  return withClient(async client => {
+    const result = await client.query(sql`
+      SELECT ARRAY_AGG(role) AS roles
+      FROM user_role
+      WHERE user_id = ${user_id};
+    `);
+    const roles = result.rows.length ? result.rows[0].roles : [];
+    return { roles };
+  });
 };

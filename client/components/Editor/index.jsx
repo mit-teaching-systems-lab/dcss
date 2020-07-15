@@ -1,6 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Dropdown, Icon, Menu, Segment } from '@components/UI';
+import { withRouter } from 'react-router-dom';
+import {
+  Button,
+  Dropdown,
+  Header,
+  Icon,
+  Menu,
+  Modal,
+  Segment
+} from '@components/UI';
 import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
@@ -188,7 +197,7 @@ class Editor extends Component {
       finish,
       status,
       title
-    } = this.props;
+    } = this.props.scenario;
 
     const data = {
       author,
@@ -325,12 +334,13 @@ class Editor extends Component {
     }
 
     const { scenarioId } = this.state;
+    const { scenario, user } = this.props;
 
-    const menuItemScenarioStatus = this.props.status !== undefined && (
+    const menuItemScenarioStatus = scenario.status !== undefined && (
       <ScenarioStatusMenuItem
         key="scenario-status-menu-item"
         name="Set scenario status"
-        status={this.props.status}
+        status={scenario.status}
         onClick={this.onClickScenarioAction}
       />
     );
@@ -361,11 +371,55 @@ class Editor extends Component {
       }
     );
 
+    let modal = null;
+
     if (scenarioId !== 'new') {
+      const modalProps = {
+        open: false
+      };
+      let header = '';
+      let content = '';
+
+      if (scenario.lock && scenario.lock.user_id !== user.id) {
+        modalProps.open = true;
+        if (scenario.users.find(sUser => sUser.id !== user.id)) {
+          content =
+            'You do not have permission to edit this scenario. Redirecting...';
+        } else {
+          const lockHolder = scenario.users.find(
+            sUser => sUser.id === scenario.lock.user_id
+          );
+          const lockHolderUsername = new Username(lockHolder);
+          content = `This scenario is currently being edited by ${lockHolderUsername}`;
+        }
+        setTimeout(() => {
+          this.props.history.push('/scenarios/');
+        }, 5000);
+      }
+
+      if (modalProps.open) {
+        modal = (
+          <Modal {...modalProps} role="dialog" aria-modal="true" size="small">
+            <Header icon="user outline" content={header} />
+            <Modal.Content>{content}</Modal.Content>
+            <Modal.Actions>
+              <Button.Group fluid>
+                <Button
+                  color="green"
+                  content="Ok, take me back."
+                  name="yes"
+                  onClick={() => this.props.history.goBack()}
+                />
+              </Button.Group>
+            </Modal.Actions>
+          </Modal>
+        );
+      }
+
       menuItemsForAttachedTabularBar.push(
         <Menu.Menu key="menu-menu-item-tabs-right" position="right">
           <Menu.Item className="editor__righttitle">
-            {this.props.title}
+            {this.props.scenario.title}
           </Menu.Item>
         </Menu.Menu>
       );
@@ -373,6 +427,8 @@ class Editor extends Component {
 
     return (
       <Fragment>
+        {modal}
+
         <Menu attached="top" tabular className="editor__tabmenu">
           {menuItemsForAttachedTabularBar}
         </Menu>
@@ -380,6 +436,7 @@ class Editor extends Component {
         <Segment attached="bottom" className="editor__content-pane">
           {scenarioId !== 'new' && (
             <EditorMenu
+              className="em__fullwidth"
               type="scenario"
               items={{
                 save: {
@@ -409,11 +466,11 @@ class Editor extends Component {
 Dropdown.propTypes.text = PropTypes.any;
 
 Editor.propTypes = {
-  author: PropTypes.object,
   activeTab: PropTypes.string,
   activeSlideIndex: PropTypes.number,
   scenarioId: PropTypes.node,
   history: PropTypes.shape({
+    goBack: PropTypes.func.isRequired,
     push: PropTypes.func.isRequired
   }).isRequired,
   match: PropTypes.shape({
@@ -434,37 +491,21 @@ Editor.propTypes = {
   isNewScenario: PropTypes.bool,
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  categories: PropTypes.array,
-  consent: PropTypes.shape({
-    id: PropTypes.number,
-    prose: PropTypes.string
-  }),
-  finish: PropTypes.object,
-  status: PropTypes.number
+  scenario: PropTypes.object,
+  user: PropTypes.object,
+  users: PropTypes.array
 };
 
 const mapStateToProps = (state, ownProps) => {
   const scenarioId = Number(ownProps.scenarioId);
-  const {
-    author,
-    categories,
-    consent,
-    description,
-    finish,
-    status,
-    title
-  } = state.scenario;
+
+  const { scenario, user, users } = state;
+
   return {
     scenarioId,
-    author,
-    categories,
-    consent,
-    description,
-    finish,
-    status,
-    title
+    scenario,
+    user,
+    users
   };
 };
 
@@ -473,7 +514,9 @@ const mapDispatchToProps = dispatch => ({
   setScenario: params => dispatch(setScenario(params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Editor);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Editor)
+);

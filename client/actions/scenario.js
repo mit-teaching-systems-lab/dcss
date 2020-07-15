@@ -130,3 +130,65 @@ export const deleteSlide = (scenario_id, id) => async dispatch => {
     return null;
   }
 };
+
+export const addScenarioUserRole = (
+  scenario_id,
+  user_id,
+  role
+) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      scenario_id,
+      user_id,
+      roles: [role]
+    });
+
+    const result = await (await fetch(
+      '/api/scenarios/${scenario_id}/roles/add',
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      }
+    )).json();
+
+    const { scenario } = result;
+    dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
+    return result;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIO_ERROR, error });
+    return null;
+  }
+};
+
+export const endScenarioUserRole = (
+  scenario_id,
+  user_id,
+  role
+) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      scenario_id,
+      user_id,
+      roles: [role]
+    });
+    const result = await (await fetch(
+      '/api/scenarios/${scenario_id}/roles/end',
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      }
+    )).json();
+    const { scenario } = result;
+    dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
+    return result;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIO_ERROR, error });
+    return null;
+  }
+};

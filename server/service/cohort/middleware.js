@@ -1,6 +1,8 @@
 const { asyncMiddleware } = require('../../util/api');
 const { requireUser } = require('../auth/middleware');
-const db = require('./db');
+const { getUserRoles } = require('../auth/db');
+const { getCohortUserRoles } = require('./db');
+
 // const rolesMap = new WeakMap();
 
 exports.requireCohortUserRole = roles => [
@@ -9,11 +11,9 @@ exports.requireCohortUserRole = roles => [
     if (!Array.isArray(roles)) {
       roles = [roles];
     }
-    const { roles: siteUserRoles } = await db.getSiteUserRoles(
-      req.session.user.id
-    );
+    const { roles: siteUserRoles } = await getUserRoles(req.session.user.id);
 
-    const { roles: cohortUserRoles } = await db.getCohortUserRoles(
+    const { roles: cohortUserRoles } = await getCohortUserRoles(
       req.session.user.id,
       req.body.cohort_id
     );
@@ -49,7 +49,7 @@ exports.requireCohortUserRole = roles => [
 //   if (rolesMap.has(req)) {
 //     return rolesMap.get(req);
 //   } else {
-//     const { roles } = await db.getCohortUserRoles({
+//     const { roles } = await getCohortUserRoles({
 //       id: req.body.cohort_id,
 //       user_id: req.session.user.id
 //     });
@@ -63,7 +63,7 @@ exports.requireCohortUserRole = roles => [
 //   asyncMiddleware(async (req, res, next) => {
 //     const user_id = req.body.user_id;
 //     const roles = req.body.roles;
-//     const { roles: targetUserRoles } = await db.getUserRoles(targetUserId);
+//     const { roles: targetUserRoles } = await getUserRoles(targetUserId);
 //     const cohortUserRoles = await rolesForRequest(req);
 
 //     // we throw this on invalid access

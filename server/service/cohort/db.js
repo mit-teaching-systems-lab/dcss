@@ -306,18 +306,6 @@ exports.getCohortUserRoles = async (user_id, id) => {
   });
 };
 
-exports.getSiteUserRoles = async user_id => {
-  return withClient(async client => {
-    const result = await client.query(sql`
-      SELECT ARRAY_AGG(role) AS roles
-      FROM user_role
-      WHERE user_id = ${user_id};
-    `);
-    const roles = result.rows.length ? result.rows[0].roles : [];
-    return { roles };
-  });
-};
-
 exports.linkUserToCohort = async (cohort_id, user_id, role, action) => {
   if (!(cohort_id && user_id)) {
     throw new Error(

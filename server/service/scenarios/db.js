@@ -1,5 +1,5 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
-const { query } = require('../../util/db');
+const { query, withClientTransaction } = require('../../util/db');
 const { addSlide, getScenarioSlides } = require('./slides/db');
 const { getRunResponses } = require('../runs/db');
 const { getUserById } = require('../auth/db');
@@ -68,29 +68,6 @@ async function addFinishSlide(scenario_id, title = '') {
   });
 }
 
-async function addScenarioRole(scenario_id, user_id, role) {
-  const result = await query(sql`
-    INSERT INTO scenario_user_role (scenario_id, user_id, role)
-    VALUES (${scenario_id}, ${user_id}, ${role})
-    RETURNING *;
-  `);
-
-  return result.rows[0];
-}
-
-async function endScenarioRole(scenario_id, user_id, role) {
-  const result = await query(sql`
-    UPDATE scenario_user_role
-    SET ended_at = CURRENT_TIMESTAMP
-    WHERE scenario_id = ${scenario_id}
-    AND user_id = ${user_id}
-    AND role = ${role}
-    RETURNING *;
-  `);
-
-  return result.rowCount;
-}
-
 async function getScenarioUsers(scenario_id) {
   const result = await query(sql`
     SELECT
@@ -115,10 +92,22 @@ async function getScenarioUsers(scenario_id) {
   return result.rows;
 }
 
+exports.getScenarioUserRoles = async (user_id, scenario_id) => {
+  const result = await query(sql`
+    SELECT ARRAY_AGG(role) AS roles
+    FROM scenario_user_role
+    WHERE scenario_id = ${scenario_id}
+    AND user_id = ${user_id}
+    AND ended_at IS NULL
+  `);
+  const roles = result.rows.length ? result.rows[0].roles : [];
+  return { roles };
+};
+
 async function setScenarioUsers(scenario_id, userRoles) {
   const users = [];
   for (let { user_id, role } of userRoles) {
-    users.push(await addScenarioRole(scenario_id, user_id, role));
+    users.push(await addScenarioUserRole(scenario_id, user_id, [role]));
   }
   return users;
 }
@@ -421,6 +410,35 @@ async function getHistoryForScenario(params) {
   return { prompts, responses };
 }
 
+async function addScenarioUserRole(scenario_id, user_id, roles) {
+  return withClientTransaction(async client => {
+    const [role] = roles;
+    const result = await client.query(sql`
+      INSERT INTO scenario_user_role (scenario_id, user_id, role)
+      VALUES (${scenario_id}, ${user_id}, ${role})
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+    `);
+    return { addedCount: result.rowCount };
+  });
+}
+
+async function endScenarioUserRole(scenario_id, user_id, roles) {
+  return withClientTransaction(async client => {
+    const [role] = roles;
+    const result = await client.query(sql`
+      UPDATE scenario_user_role
+      SET ended_at = CURRENT_TIMESTAMP
+      WHERE scenario_id = ${scenario_id}
+      AND user_id = ${user_id}
+      AND role = ${role}
+      RETURNING *;
+    `);
+
+    return { deletedCount: result.rowCount };
+  });
+}
+
 // Scenario
 exports.addScenario = addScenario;
 exports.setScenario = setScenario;
@@ -438,8 +456,8 @@ exports.getScenarioLock = getScenarioLock;
 exports.endScenarioLock = endScenarioLock;
 
 // Scenario Roles
-exports.addScenarioRole = addScenarioRole;
-exports.endScenarioRole = endScenarioRole;
+exports.addScenarioUserRole = addScenarioUserRole;
+exports.endScenarioUserRole = endScenarioUserRole;
 
 // Scenario Consent
 exports.addScenarioConsent = addScenarioConsent;

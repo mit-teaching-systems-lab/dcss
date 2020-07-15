@@ -1,14 +1,23 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import { diff } from 'deep-object-diff';
-
-import { Button, Container, Form, Grid, Popup } from '@components/UI';
+import hash from 'object-hash';
+// import { titleCase } from 'change-case';
+import {
+  Button,
+  Container,
+  Form,
+  Grid,
+  Menu,
+  Popup,
+  Ref
+} from '@components/UI';
 import { getScenario, setScenario } from '@actions/scenario';
 import { getCategories } from '@actions/tags';
 import { getUsersByPermission } from '@actions/users';
 
 import ConfirmAuth from '@components/ConfirmAuth';
+// import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
@@ -243,9 +252,10 @@ class ScenarioEditor extends Component {
     const rteConsent =
       scenarioId !== 'new' ? (
         <Form.Field required>
-          <label>Consent Agreement</label>
+          <label htmlFor="consentprose">Consent Agreement</label>
           {consentAgreementValue ? (
             <RichTextEditor
+              id="consentprose"
               name="consentprose"
               defaultValue={consent.prose}
               onChange={onConsentChange}
@@ -261,11 +271,12 @@ class ScenarioEditor extends Component {
     const rteFinish =
       scenarioId !== 'new' ? (
         <Form.Field>
-          <label>
+          <label htmlFor="finish">
             After a scenario has been completed, the participant will be shown
             this:
           </label>
           <RichTextEditor
+            id="finish"
             defaultValue={finish.components[0].html}
             onChange={onFinishSlideChange}
             options={{
@@ -275,6 +286,25 @@ class ScenarioEditor extends Component {
           />
         </Form.Field>
       ) : null;
+
+    const dropdowns = (
+      <ConfirmAuth requiredPermission="edit_scenario">
+        {this.state.authors.length ? (
+          <AuthorDropdown
+            author={author}
+            options={this.state.authors}
+            onChange={onChange}
+          />
+        ) : null}
+        {this.state.categories.length ? (
+          <CategoriesDropdown
+            options={this.state.categories}
+            categories={categories}
+            onChange={onChange}
+          />
+        ) : null}
+      </ConfirmAuth>
+    );
 
     // This call is wrapped to prevent the form submit handler from
     // sending an event object to the "onSubmit" handler method.
@@ -289,6 +319,26 @@ class ScenarioEditor extends Component {
       scenarioId !== 'new'
         ? 'se__grid-column-height-constraint se__grid-column-width-constraint'
         : '';
+
+    // const left = Object.keys(this.sectionRefs).map((ref, index) => (
+    //   <Menu.Item
+    //     animated
+    //     icon
+    //     key={hash({ ref, index })}
+    //     onClick={() => this.sectionRefs[ref].scrollIntoView()}
+    //   >
+    //     {titleCase(ref)}
+    //   </Menu.Item>
+    // ));
+
+    // const hideEditorMenu = true;
+    // const editorMenu = hideEditorMenu ? null : (
+    //   <EditorMenu
+    //     className="em__sticky"
+    //     type="scenario authors"
+    //     items={{ left }}
+    //   />
+    // );
 
     return (
       <Form>
@@ -306,6 +356,8 @@ class ScenarioEditor extends Component {
                   trigger={textAreaDescription}
                   {...popupProps}
                 />
+
+                {dropdowns}
 
                 {scenarioId !== 'new' ? (
                   <Fragment>
@@ -325,30 +377,6 @@ class ScenarioEditor extends Component {
                 {scenarioId !== 'new' ? (
                   <ScenarioAuthors scenario={scenario} />
                 ) : null}
-
-                <ConfirmAuth requiredPermission="edit_scenario">
-                  {this.state.authors.length ? (
-                    <AuthorDropdown
-                      author={author}
-                      options={this.state.authors}
-                      onChange={onChange}
-                    />
-                  ) : null}
-                  {this.state.categories.length ? (
-                    <CategoriesDropdown
-                      options={this.state.categories}
-                      categories={categories}
-                      onChange={onChange}
-                    />
-                  ) : null}
-                </ConfirmAuth>
-
-                {/*
-                TODO: create the same Dropdown style thing
-                        for displaying and selecting
-                        available topics (if any exist)
-
-                */}
               </Grid.Column>
             </Grid.Row>
           </Grid>

@@ -1,9 +1,9 @@
 const { Router } = require('express');
 const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
-const { lookupScenario } = require('./middleware');
+const { lookupScenario, requireScenarioUserRole } = require('./middleware');
 
-const requiredRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
+const requiredRoles = ['super_admin', 'admin', 'facilitator'];
 const router = Router();
 
 const {
@@ -14,7 +14,9 @@ const {
   getScenario,
   getScenarioByRun,
   setScenario,
-  softDeleteScenario
+  softDeleteScenario,
+  addScenarioUserRole,
+  endScenarioUserRole
 } = require('./endpoints.js');
 
 router.get('/', getAllScenarios);
@@ -29,6 +31,7 @@ router.put('/', [
 
 router.post('/:scenario_id', [
   requireUserRole(requiredRoles),
+  requireScenarioUserRole(['owner', 'author']),
   lookupScenario(),
   validateRequestBody,
   setScenario
@@ -42,9 +45,11 @@ router.post('/:scenario_id/copy', [
 
 router.delete('/:scenario_id', [
   requireUserRole(requiredRoles),
+  requireScenarioUserRole(['owner']),
   lookupScenario(),
   softDeleteScenario
 ]);
+
 router.delete('/:scenario_id/hard', [
   requireUserRole(['super_admin', 'admin']),
   lookupScenario(),
@@ -52,5 +57,18 @@ router.delete('/:scenario_id/hard', [
 ]);
 
 router.use('/:scenario_id/slides', [lookupScenario(), require('./slides')]);
+
+// SCENARIO AUTHORING ACCESS CONTROL
+router.post('/:scenario_id/roles/add', [
+  requireScenarioUserRole(['owner']),
+  validateRequestBody,
+  addScenarioUserRole
+]);
+
+router.post('/:scenario_id/roles/end', [
+  requireScenarioUserRole(['owner']),
+  validateRequestBody,
+  endScenarioUserRole
+]);
 
 module.exports = router;
