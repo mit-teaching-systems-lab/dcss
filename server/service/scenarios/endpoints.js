@@ -21,7 +21,6 @@ async function getScenarioLockAsync(req, res) {
 }
 
 async function getAllScenariosAsync(req, res) {
-  throw 1;
   try {
     const scenarios = await db.getAllScenarios();
     res.send({ scenarios, status: 200 });
