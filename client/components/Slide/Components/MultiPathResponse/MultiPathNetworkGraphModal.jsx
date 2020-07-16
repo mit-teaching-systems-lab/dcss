@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Graph from 'react-graph-vis';
 import { connect } from 'react-redux';
-import { Modal } from '@components/UI';
+import { Modal, Ref } from '@components/UI';
 import { getSlides } from '@actions/scenario';
 
 function makeNodeLabel(index, slide) {
@@ -34,7 +34,7 @@ class MultiPathNetworkGraphModal extends Component {
     window.addEventListener('resize', this.onResize);
 
     (async () => {
-      const slides = await this.props.getSlides(this.props.scenarioId);
+      const slides = await this.props.getSlides(this.props.scenario.id);
       this.setState({
         isReady: true,
         slides
@@ -50,7 +50,7 @@ class MultiPathNetworkGraphModal extends Component {
   }
 
   render() {
-    const { header, onClose, open } = this.props;
+    const { header, onClose, open, scenario } = this.props;
     const { isReady, slides, width, height } = this.state;
 
     if (!isReady) {
@@ -106,7 +106,7 @@ class MultiPathNetworkGraphModal extends Component {
         const { id } = slide;
         const label = makeNodeLabel(index + 1, slide);
 
-        nodesById[id] = true;
+        nodesById[id] = label;
         accum.nodes.push({
           id,
           label
@@ -219,6 +219,22 @@ class MultiPathNetworkGraphModal extends Component {
       }
     });
 
+    const description = edges.reduce((accum, edge) => {
+
+      const fromNodeLabel = nodesById[edge.from];
+      const toNodeLabel = nodesById[edge.to];
+      let pathDescription =
+        `The node labeled "${fromNodeLabel}" leads to the node labeled "${toNodeLabel}"`;
+
+      if (edge.label) {
+        pathDescription += `, with the label ${edge.label}`;
+      }
+
+      pathDescription += '.';
+
+      return accum.concat([pathDescription]);
+    }, []).join(' ').trim();
+
     const graph = {
       nodes,
       edges
@@ -277,6 +293,26 @@ class MultiPathNetworkGraphModal extends Component {
         console.log(event);
       }
     };
+    const makeAccessible = (node) => {
+      if (node) {
+        const canvas = node.querySelector('canvas');
+
+        if (canvas) {
+          if (!canvas.getAttribute('role')) {
+            canvas.setAttribute('role', 'img');
+          }
+
+          if (!canvas.getAttribute('aria-label')) {
+            canvas.setAttribute('aria-label', description);
+          }
+
+          if (!canvas.innerText) {
+            canvas.innerText = description;
+          }
+        }
+      }
+    };
+
     return (
       <Modal
         role="dialog"
@@ -286,9 +322,11 @@ class MultiPathNetworkGraphModal extends Component {
         open={open}
         onClose={onClose}
       >
-        {header ? <Modal.Header>{header}</Modal.Header> : null}
+        <Modal.Header>{scenario.title}</Modal.Header>
         <Modal.Content>
-          <Graph events={events} graph={graph} options={options} />
+          <Ref innerRef={makeAccessible}>
+            <Graph events={events} graph={graph} options={options} />
+          </Ref>
         </Modal.Content>
       </Modal>
     );
@@ -297,10 +335,9 @@ class MultiPathNetworkGraphModal extends Component {
 
 MultiPathNetworkGraphModal.propTypes = {
   getSlides: PropTypes.func,
-  header: PropTypes.string,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  scenarioId: PropTypes.node,
+  scenario: PropTypes.object,
   slides: PropTypes.array
 };
 
