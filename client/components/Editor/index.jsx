@@ -241,9 +241,9 @@ class Editor extends Component {
 
   getTab(name, scenarioId) {
     const { setActiveView } = this;
-
     switch (name) {
       case 'scenario':
+        // TODO: Eliminate scenarioId
         return (
           <ScenarioEditor
             scenarioId={scenarioId}
@@ -252,6 +252,7 @@ class Editor extends Component {
           />
         );
       case 'slides':
+        // TODO: Eliminate scenarioId
         return (
           <Slides
             setActiveSlide={activeSlideIndex =>
@@ -261,9 +262,11 @@ class Editor extends Component {
               })
             }
             scenarioId={scenarioId}
+            scenario={this.props.scenario}
           />
         );
       case 'preview':
+        // TODO: Eliminate scenarioId
         return (
           <Scenario
             key={scenarioId}
@@ -274,6 +277,7 @@ class Editor extends Component {
               })
             }
             scenarioId={scenarioId}
+            scenario={this.props.scenario}
           />
         );
       default:
@@ -508,6 +512,7 @@ Editor.propTypes = {
   }).isRequired,
   isCopyScenario: PropTypes.bool,
   isNewScenario: PropTypes.bool,
+  unlockScenario: PropTypes.func.isRequired,
   deleteScenario: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
@@ -529,6 +534,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  unlockScenario: lock => dispatch(unlockScenario(lock)),
   deleteScenario: id => dispatch(deleteScenario(id)),
   getScenario: id => dispatch(getScenario(id)),
   setScenario: params => dispatch(setScenario(params)),

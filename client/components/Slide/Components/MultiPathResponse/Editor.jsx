@@ -44,7 +44,7 @@ class MultiPathResponseEditor extends React.Component {
       responseId = ''
     } = props.value;
 
-    const open = false;
+    const open = true;
 
     this.state = {
       isReady: false,
@@ -73,9 +73,9 @@ class MultiPathResponseEditor extends React.Component {
   }
 
   async componentDidMount() {
-    const { scenarioId } = this.props;
+    const { scenario } = this.props;
     const { slides: unfiltered, status } = await (await fetch(
-      `/api/scenarios/${scenarioId}/slides`
+      `/api/scenarios/${scenario.id}/slides`
     )).json();
     if (status === 200) {
       // this.slides = unfiltered.filter(({ is_finish }) => !is_finish);
@@ -170,12 +170,22 @@ class MultiPathResponseEditor extends React.Component {
     this.moveButton(fromIndex, toIndex);
   }
 
-  onPathDetailChange(event, { index, name, value }) {
+  onPathDetailChange(event, { index, options, name, value }) {
     if (value === -1) {
       return;
     }
     const { paths } = this.state;
     paths[index][name] = value;
+
+    if (!paths[index].display.trim()) {
+      const { text } =
+        options.find(option => option.value === paths[index].value) || {};
+
+      if (text) {
+        paths[index].display = `Go to ${text}`;
+      }
+    }
+
     this.setState({ paths }, this.delayedUpdateState);
   }
 
@@ -241,7 +251,7 @@ class MultiPathResponseEditor extends React.Component {
       updateState
     } = this;
     const {
-      scenarioId,
+      scenario,
       slideIndex,
       value: { id }
     } = this.props;
@@ -305,10 +315,9 @@ class MultiPathResponseEditor extends React.Component {
     );
     const multiPathNetworkGraphModal = open ? (
       <MultiPathNetworkGraphModal
-        header=""
         onClose={onViewGraphClick}
         open={open}
-        scenarioId={scenarioId}
+        scenario={scenario}
       />
     ) : null;
 
@@ -319,7 +328,7 @@ class MultiPathResponseEditor extends React.Component {
             isEmbedded={true}
             value={{ recallId }}
             slideIndex={slideIndex}
-            scenarioId={scenarioId}
+            scenario={scenario}
             onChange={onRecallChange}
           />
 
@@ -456,7 +465,7 @@ class MultiPathResponseEditor extends React.Component {
 
 MultiPathResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
-  scenarioId: PropTypes.any,
+  scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,

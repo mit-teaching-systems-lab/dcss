@@ -33,7 +33,7 @@ class Slides extends React.Component {
     const activeNonZeroSlideIndex =
       Number(this.props.match.params.activeNonZeroSlideIndex) || 1;
 
-    this.sessionKey = `slides/${this.props.scenarioId}`;
+    this.sessionKey = `slides/${this.props.scenario.id}`;
 
     const { activeSlideIndex, minimized } = Storage.merge(
       this.sessionKey,
@@ -324,10 +324,9 @@ class Slides extends React.Component {
 
     const multiPathNetworkGraphModal = graphOpen ? (
       <MultiPathNetworkGraphModal
-        header={scenario.title}
         onClose={() => this.setState({ graphOpen: false })}
         open={graphOpen}
-        scenarioId={scenarioId}
+        scenario={scenario}
       />
     ) : null;
 
@@ -496,13 +495,13 @@ class Slides extends React.Component {
             {isReady ? (
               <SlideEditor
                 key={`slide-editor-${activeSlideIndex}`}
-                scenarioId={scenarioId}
                 index={activeSlideIndex}
                 noSlide={noSlide}
                 promptToAddSlide={promptToAddSlide}
                 onChange={onSlideChange}
                 onDelete={onSlideDelete}
                 onDuplicate={onSlideDuplicate}
+                scenario={scenario}
                 slides={slides}
                 {...slides[activeSlideIndex]}
               />

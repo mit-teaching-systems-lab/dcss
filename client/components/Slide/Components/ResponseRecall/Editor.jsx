@@ -45,9 +45,9 @@ class ResponseRecallEditor extends React.Component {
   }
 
   async componentDidMount() {
-    const { scenarioId } = this.props;
+    const { scenario } = this.props;
     const response = await fetch(
-      `/api/scenarios/${scenarioId}/slides/prompt-components`
+      `/api/scenarios/${scenario.id}/slides/prompt-components`
     );
 
     const { components, status } = await response.json();
@@ -168,7 +168,7 @@ ResponseRecallEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   isEmbedded: PropTypes.bool,
   recallId: PropTypes.any,
-  scenarioId: PropTypes.any,
+  scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,

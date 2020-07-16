@@ -93,7 +93,7 @@ class TextResponseEditor extends React.Component {
 
   render() {
     const { header, prompt, placeholder, recallId } = this.state;
-    const { scenarioId, slideIndex } = this.props;
+    const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
     return (
       <Form>
@@ -102,7 +102,7 @@ class TextResponseEditor extends React.Component {
             isEmbedded={true}
             value={{ recallId }}
             slideIndex={slideIndex}
-            scenarioId={scenarioId}
+            scenario={scenario}
             onChange={onRecallChange}
           />
           <Form.TextArea
@@ -133,7 +133,7 @@ class TextResponseEditor extends React.Component {
 TextResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   slideIndex: PropTypes.any,
-  scenarioId: PropTypes.any,
+  scenario: PropTypes.object,
   value: PropTypes.shape({
     id: PropTypes.string,
     placeholder: PropTypes.string,

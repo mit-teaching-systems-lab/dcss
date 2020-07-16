@@ -160,7 +160,7 @@ class MultiButtonResponseEditor extends React.Component {
   }
 
   render() {
-    const { scenarioId, slideIndex } = this.props;
+    const { scenario, slideIndex } = this.props;
     const { header, id, prompt, buttons, recallId } = this.state;
 
     const {
@@ -181,7 +181,7 @@ class MultiButtonResponseEditor extends React.Component {
             isEmbedded={true}
             value={{ recallId }}
             slideIndex={slideIndex}
-            scenarioId={scenarioId}
+            scenario={scenario}
             onChange={onRecallChange}
           />
           <Form.TextArea
@@ -290,7 +290,7 @@ class MultiButtonResponseEditor extends React.Component {
 
 MultiButtonResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
-  scenarioId: PropTypes.any,
+  scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,

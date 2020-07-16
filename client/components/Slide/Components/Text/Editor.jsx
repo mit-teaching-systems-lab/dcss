@@ -13,7 +13,7 @@ class TextEditor extends React.Component {
     const { onChange } = this;
     return (
       <RichTextEditor
-        id={this.props.scenarioId}
+        id={this.props.scenario.id}
         options={{
           buttons: 'component',
           minHeight: 330
@@ -35,7 +35,7 @@ class TextEditor extends React.Component {
 }
 
 TextEditor.propTypes = {
-  scenarioId: PropTypes.node,
+  scenario: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   value: PropTypes.shape({
     id: PropTypes.string,

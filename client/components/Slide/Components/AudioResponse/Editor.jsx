@@ -73,7 +73,7 @@ class AudioResponseEditor extends Component {
 
   render() {
     const { header, prompt, recallId } = this.state;
-    const { scenarioId, slideIndex } = this.props;
+    const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
 
     return (
@@ -82,7 +82,7 @@ class AudioResponseEditor extends Component {
           <ResponseRecall
             isEmbedded={true}
             value={{ recallId }}
-            scenarioId={scenarioId}
+            scenario={scenario}
             slideIndex={slideIndex}
             onChange={onRecallChange}
           />
@@ -114,7 +114,7 @@ class AudioResponseEditor extends Component {
 
 AudioResponseEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
-  scenarioId: PropTypes.any,
+  scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,

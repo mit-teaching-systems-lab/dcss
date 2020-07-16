@@ -270,7 +270,7 @@ export default class SlideEditor extends Component {
       onTitleChange
     } = this;
 
-    const { noSlide, promptToAddSlide, scenarioId, slides } = this.props;
+    const { noSlide, promptToAddSlide, scenario, slides } = this.props;
     const { activeComponentIndex, components, mode, title } = this.state;
     const noSlideComponents = components.length === 0;
     const disabled = !!noSlide;
@@ -537,9 +537,9 @@ export default class SlideEditor extends Component {
                                         onClick={onComponentClick}
                                       >
                                         <EditorMenu
+                                          type="component"
                                           isDragging={isDragging}
                                           draghandle={dragHandleProps}
-                                          type="component"
                                           index={index}
                                           items={componentEditorMenuItems}
                                         />
@@ -548,7 +548,7 @@ export default class SlideEditor extends Component {
                                           key={value.id}
                                           id={value.id}
                                           slideIndex={this.props.index}
-                                          scenarioId={scenarioId}
+                                          scenario={scenario}
                                           value={value}
                                           onChange={v =>
                                             onComponentChange(index, v)
@@ -590,7 +590,7 @@ export default class SlideEditor extends Component {
 }
 
 SlideEditor.propTypes = {
-  scenarioId: PropTypes.any,
+  scenario: PropTypes.object,
   slides: PropTypes.array,
   index: PropTypes.number,
   id: PropTypes.number,
