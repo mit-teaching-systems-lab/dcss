@@ -25,7 +25,7 @@ async function getAllScenariosAsync(req, res) {
     const scenarios = await db.getAllScenarios();
     res.send({ scenarios, status: 200 });
   } catch (apiError) {
-    const error = new Error('Error while getting all scenarios');
+    const error = new Error('Error while getting all scenarios.');
     error.status = 500;
     error.stack = apiError.stack;
     throw error;
@@ -38,7 +38,7 @@ async function addScenarioAsync(req, res) {
   let message = '';
 
   if (!authorId) {
-    message = 'No valid user';
+    message = 'Permission denied for this user.';
   }
 
   if (!message && !title) {
@@ -60,7 +60,7 @@ async function addScenarioAsync(req, res) {
     await db.setScenarioCategories(scenario.id, categories);
     res.send({ scenario, status: 201 });
   } catch (apiError) {
-    const error = new Error('Error while creating scenario');
+    const error = new Error('Error while creating scenario.');
     error.status = 500;
     error.stack = apiError.stack;
     throw error;
@@ -70,7 +70,7 @@ async function addScenarioAsync(req, res) {
 async function setScenarioAsync(req, res) {
   const {
     author,
-    author_id,
+    author_id: user_id,
     deleted_at,
     description,
     categories,
@@ -79,31 +79,31 @@ async function setScenarioAsync(req, res) {
     status,
     title
   } = req.body;
-  const scenarioId = Number(req.params.scenario_id);
-  let authorId = author_id;
+  const scenario_id = Number(req.params.scenario_id);
+  let author_id = user_id;
 
   if (author && author.id) {
-    authorId = author.id || author_id;
+    author_id = author.id || user_id;
   }
 
-  if (!authorId && !title && !description) {
-    const scenarioUpdateError = new Error(
-      'Must provide author, author_id, title, or description to update'
-    );
-    scenarioUpdateError.status = 409;
-    throw scenarioUpdateError;
-  }
+  // if (!author_id && !title) {
+  //   const error = new Error(
+  //     'Must provide author, author_id, title, or description to update.'
+  //   );
+  //   error.status = 409;
+  //   throw error;
+  // }
 
   try {
-    const scenario = await db.setScenario(scenarioId, {
-      author_id: authorId,
+    const scenario = await db.setScenario(scenario_id, {
+      author_id,
       deleted_at,
       description,
       status,
       title
     });
 
-    await db.setScenarioCategories(scenarioId, categories);
+    await db.setScenarioCategories(scenario_id, categories);
 
     // If the client set the id to null, that indicates that
     // this is a new consent agreement and the new prose
@@ -112,18 +112,18 @@ async function setScenarioAsync(req, res) {
       const { id, prose } = await db.addScenarioConsent(consent);
 
       await db.setScenarioConsent(
-        scenarioId,
+        scenario_id,
         Object.assign(consent, { id, prose })
       );
     }
 
     if (!finish.id) {
       const { components, id, is_finish } = await addSlide({
+        scenario_id,
         components:
           finish.components ||
           '[{"html": "<h2>Thanks for participating!</h2>","type": "Text"}]',
         is_finish: true,
-        scenario_id: scenarioId,
         title: finish.title || ''
       });
 
