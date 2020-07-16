@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import {
   Button,
   Dropdown,
@@ -99,13 +99,9 @@ class Editor extends Component {
   }
 
   onBeforeUnload(event) {
-    event.returnValue = 'wait...';
-
     if (this.props.scenario.lock) {
       this.props.unlockScenario(this.props.scenario.lock);
     }
-
-    return event.returnValue;
   }
 
   componentWillUnmount() {
@@ -425,10 +421,13 @@ class Editor extends Component {
             <Modal.Actions>
               <Button.Group fluid>
                 <Button
+                  as={Link}
+                  to={{
+                    pathname: '/scenarios/'
+                  }}
+                  aria-label="Go back to scenario list"
                   color="green"
-                  content="Ok, take me back."
-                  name="yes"
-                  onClick={() => this.props.history.goBack()}
+                  content="Go back to scenario list"
                 />
               </Button.Group>
             </Modal.Actions>

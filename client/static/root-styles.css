@@ -73,6 +73,10 @@ td .ui.fluid.selection.dropdown > .text {
   text-overflow: ellipsis !important;
 }
 
+.ui.borderless.icon.menu>.right>.item:last-child {
+  padding-right: 0.4em !important;
+}
+
 /*.ui.form .field>label {
   font-size: 1em !important;
 }
