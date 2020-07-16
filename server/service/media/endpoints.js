@@ -108,13 +108,10 @@ async function uploadImageAsync(req, res) {
 async function getImageGallery(req, res) {
   const images = await db.getImagesByUserId(req.session.user.id);
   const result = images.map(image => {
-    const { url: src, classes = [] } = image;
+    const { url: src, classes } = image;
     const classification = classes
-      .map(classification => {
-        return classification.class;
-      })
-      .join(', ')
-      .trim();
+      ? classes.map(c => c.class).join(', ').trim()
+      : '';
 
     return {
       src,
