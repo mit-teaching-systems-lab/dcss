@@ -25,7 +25,7 @@ import {
   setCohort,
   createCohort
 } from '@actions/cohort';
-import { computePerPageItemsRows } from '@utils/Layout';
+import { computeItemsRowsPerPage } from '@utils/Layout';
 import { getScenarios } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
@@ -175,7 +175,7 @@ export class Cohorts extends React.Component {
     const { user } = this.props;
 
     const defaultRowCount = 2;
-    const { itemsPerPage, rowsPerPage } = computePerPageItemsRows({
+    const { itemsPerPage, rowsPerPage } = computeItemsRowsPerPage({
       defaultRowCount
     });
 

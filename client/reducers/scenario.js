@@ -33,15 +33,15 @@ export const initialScenarioState = {
 export const scenario = (state = initialScenarioState, action) => {
   const { scenario, slides, type } = action;
   switch (type) {
-    case SET_SCENARIO:
     case GET_SCENARIO_SUCCESS:
+    case SET_SCENARIO:
       return {
         ...state,
         ...scenario
       };
     case DELETE_SLIDE_SUCCESS:
-    case SET_SLIDES:
     case GET_SLIDES_SUCCESS:
+    case SET_SLIDES:
       return {
         ...state,
         slides

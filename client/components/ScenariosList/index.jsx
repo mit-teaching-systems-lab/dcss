@@ -12,13 +12,14 @@ import {
   Menu,
   Modal,
   Pagination,
-  Popup
+  Popup,
+  Responsive
 } from '@components/UI';
 import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
-import { computePerPageItemsRows } from '@utils/Layout';
+import { computeItemsRowsPerPage } from '@utils/Layout';
 import { deleteScenario, getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Username from '@components/User/Username';
@@ -44,6 +45,7 @@ const filter = (scenarios, user) => {
     const { status, users } = scenario;
     const scenarioUser = users.find(({ id }) => user.id === id);
     const isAuthor = scenarioUser ? scenarioUser.is_author : false;
+    const isReviewer = scenarioUser ? scenarioUser.is_reviewer : false;
 
     // Show super admin everything
     if (user.is_super) {
@@ -52,8 +54,9 @@ const filter = (scenarios, user) => {
     }
     // This scenario status is "draft", to see it:
     //  - user must be logged in
-    //  - user must be the author
-    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor)) {
+    //  - user must be an author
+    //  - user must be a reviewer
+    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor || !isReviewer)) {
       return accum;
     }
     // This scenario status is "private", to see it:
@@ -271,7 +274,7 @@ class ScenariosList extends Component {
     }
 
     const defaultRowCount = 2;
-    const { itemsPerPage, rowsPerPage } = computePerPageItemsRows({
+    const { itemsPerPage, rowsPerPage } = computeItemsRowsPerPage({
       defaultRowCount
     });
 
@@ -364,9 +367,11 @@ class ScenariosList extends Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
-                    {cards}
-                  </Card.Group>
+                  <Responsive onUpdate={() => console.log("resize")}>
+                    <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
+                      {cards}
+                    </Card.Group>
+                  </Responsive>
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>

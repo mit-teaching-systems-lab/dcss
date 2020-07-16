@@ -8,7 +8,7 @@ const MENU_HEIGHT = 43 + 1 + 1 + 14 + 14;
 const PAGINATOR_HEIGHT = 42 + 14 + 14;
 const TOTAL_UNAVAILABLE_HEIGHT = NAV_HEIGHT + MENU_HEIGHT + PAGINATOR_HEIGHT;
 
-export function computePerPageItemsRows(options) {
+export function computeItemsRowsPerPage(options) {
   const {
     defaultRowCount,
     totalUnavailableHeight,

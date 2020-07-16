@@ -8,7 +8,7 @@ import { Icon, Input, Menu } from '@components/UI';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import UsersTable from './UsersTable';
-import { computePerPageItemsRows } from '@utils/Layout';
+import { computeItemsRowsPerPage } from '@utils/Layout';
 import { getUsers } from '@actions/users';
 import { SITE_ROLE_GROUPS } from './constants';
 
@@ -110,7 +110,7 @@ class Users extends Component {
     const itemsRowHeight = 44;
     const itemsPerRow = 1;
 
-    const { rowsPerPage } = computePerPageItemsRows({
+    const { rowsPerPage } = computeItemsRowsPerPage({
       defaultRowCount,
       totalUnavailableHeight,
       itemsPerRow,
