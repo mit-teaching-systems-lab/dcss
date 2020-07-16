@@ -14,13 +14,15 @@ class ScenarioCardActions extends Component {
     const { isLoggedIn, scenario, user } = this.props;
     const scenarioUser = scenario.users.find(u => u.id === user.id);
 
-    const isAuthorizedToEdit = scenarioUser && (
-      scenarioUser.is_author || scenarioUser.is_owner || user.roles.includes('super_admin')
-    );
+    const isAuthorizedToEdit =
+      scenarioUser &&
+      (scenarioUser.is_author ||
+        scenarioUser.is_owner ||
+        user.roles.includes('super_admin'));
 
-    const isAuthorizedToDelete = scenarioUser && (
-      scenarioUser.is_owner || user.roles.includes('super_admin')
-    );
+    const isAuthorizedToDelete =
+      scenarioUser &&
+      (scenarioUser.is_owner || user.roles.includes('super_admin'));
 
     const editor = Storage.get(`editor/${scenario.id}`, {
       activeTab: 'slides',
@@ -128,7 +130,7 @@ ScenarioCardActions.propTypes = {
 const mapStateToProps = state => {
   const {
     login: { isLoggedIn },
-    user,
+    user
   } = state;
   return { isLoggedIn, user };
 };

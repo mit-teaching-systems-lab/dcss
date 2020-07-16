@@ -358,7 +358,7 @@ class ScenarioEditor extends Component {
                   {...popupProps}
                 />
 
-                {isTestEnv ? dropdowns: null}
+                {isTestEnv ? dropdowns : null}
 
                 {scenarioId !== 'new' ? (
                   <Fragment>
@@ -375,7 +375,7 @@ class ScenarioEditor extends Component {
                 width={8}
                 className="se__grid-column-width-constraint"
               >
-                {!isTestEnv ? dropdowns: null}
+                {!isTestEnv ? dropdowns : null}
 
                 {isTestEnv && scenarioId !== 'new' ? (
                   <ScenarioAuthors scenario={scenario} />

@@ -112,14 +112,11 @@ export const setSlides = slides => ({
   slides
 });
 
-export const deleteScenario = (scenario_id) => async dispatch => {
+export const deleteScenario = scenario_id => async dispatch => {
   try {
-
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}`, {
-        method: 'DELETE'
-      })
-    ).json();
+    const res = await (await fetch(`/api/scenarios/${scenario_id}`, {
+      method: 'DELETE'
+    })).json();
 
     if (res.error) {
       throw res;
@@ -135,21 +132,16 @@ export const deleteScenario = (scenario_id) => async dispatch => {
   }
 };
 
-export const unlockScenario = (lock) => async dispatch => {
+export const unlockScenario = lock => async dispatch => {
   try {
     const body = JSON.stringify(lock);
-    const res = await (
-      await fetch(
-        `/api/scenarios/${scenario_id}/unlock`,
-        {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: 'POST',
-          body
-        }
-      )
-    ).json();
+    const res = await (await fetch(`/api/scenarios/${scenario_id}/unlock`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
 
     if (res.error) {
       throw res;

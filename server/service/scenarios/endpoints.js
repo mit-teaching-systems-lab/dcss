@@ -156,9 +156,7 @@ async function deleteScenarioAsync(req, res) {
   const scenario_id = Number(req.params.scenario_id);
 
   if (!scenario_id) {
-    const error = new Error(
-      'Scenario id required for scenario deletion'
-    );
+    const error = new Error('Scenario id required for scenario deletion');
     error.status = 409;
     throw error;
   }
@@ -179,12 +177,10 @@ async function deleteScenarioAsync(req, res) {
 async function unlockScenarioAsync(req, res) {
   const scenario_id = Number(req.params.scenario_id);
 
-
-
-    const error = new Error(req.body);
-    error.status = 500;
-    error.stack = apiError.stack;
-    throw error;
+  const error = new Error(req.body);
+  error.status = 500;
+  error.stack = apiError.stack;
+  throw error;
 
   // if (!scenario_id) {
   //   const error = new Error(

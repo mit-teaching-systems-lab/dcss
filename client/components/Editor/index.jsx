@@ -19,7 +19,12 @@ import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuIte
 import Scenario from '@components/Scenario';
 import Username from '@components/User/Username';
 import Slides from './Slides';
-import { deleteScenario, getScenario, setScenario, unlockScenario } from '@actions/scenario';
+import {
+  deleteScenario,
+  getScenario,
+  setScenario,
+  unlockScenario
+} from '@actions/scenario';
 import { getUsers } from '@actions/users';
 
 import './editor.css';
@@ -95,7 +100,6 @@ class Editor extends Component {
 
   onBeforeUnload(event) {
     event.returnValue = 'wait...';
-
 
     if (this.props.scenario.lock) {
       this.props.unlockScenario(this.props.scenario.lock);
@@ -398,13 +402,13 @@ class Editor extends Component {
         const scenarioUser = scenario.users.find(u => u.id === user.id);
 
         if (!scenarioUser) {
-          content =
-            'You do not have permission to edit this scenario.';
+          content = 'You do not have permission to edit this scenario.';
         } else {
           const lockHolder = usersById[scenario.lock.user_id];
           content = (
             <Fragment>
-              This scenario is currently being edited by <Username {...lockHolder} />
+              This scenario is currently being edited by{' '}
+              <Username {...lockHolder} />
             </Fragment>
           );
         }
@@ -441,7 +445,9 @@ class Editor extends Component {
       );
     }
 
-    return modal ? modal : (
+    return modal ? (
+      modal
+    ) : (
       <Fragment>
         <Menu attached="top" tabular className="editor__tabmenu">
           {menuItemsForAttachedTabularBar}
@@ -509,7 +515,7 @@ Editor.propTypes = {
   scenario: PropTypes.object,
   user: PropTypes.object,
   usersById: PropTypes.object,
-  getUsers: PropTypes.func.isRequired,
+  getUsers: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state, ownProps) => {

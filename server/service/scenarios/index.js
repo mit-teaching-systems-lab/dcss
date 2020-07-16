@@ -24,8 +24,6 @@ router.get('/', getAllScenarios);
 router.get('/run', getScenarioByRun);
 router.get('/:scenario_id', [lookupScenario(), getScenario]);
 
-
-
 router.put('/', [
   requireUserRole(requiredRoles),
   validateRequestBody,
