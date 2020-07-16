@@ -17,8 +17,10 @@ import { notify } from '@components/Notification';
 import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
+import Username from '@components/User/Username';
 import Slides from './Slides';
-import { getScenario, setScenario } from '@actions/scenario';
+import { deleteScenario, getScenario, setScenario, unlockScenario } from '@actions/scenario';
+import { getUsers } from '@actions/users';
 
 import './editor.css';
 
@@ -34,6 +36,7 @@ class Editor extends Component {
     this.getTab = this.getTab.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onClickScenarioAction = this.onClickScenarioAction.bind(this);
+    this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.setActiveView = this.setActiveView.bind(this);
     this.updateScenario = this.updateScenario.bind(this);
 
@@ -90,21 +93,34 @@ class Editor extends Component {
     }
   }
 
-  componentDidMount() {
+  onBeforeUnload(event) {
+    event.returnValue = 'wait...';
+
+
+    if (this.props.scenario.lock) {
+      this.props.unlockScenario(this.props.scenario.lock);
+    }
+
+    return event.returnValue;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this.onBeforeUnload);
+  }
+
+  async componentDidMount() {
+    await this.props.getUsers();
+
     this.setState(state => ({
       tabs: this.getAllTabs(state.scenarioId)
     }));
+    window.addEventListener('beforeunload', this.onBeforeUnload);
   }
 
   onClick(e, { name: activeTab }) {
     this.setState({ activeTab });
     const { scenarioId } = this.state;
-    // const updated = Storage.merge(this.sessionKey, {
-    //   activeSlideIndex,
-    //   activeTab
-    // });
-
-    let activeNonZeroSlideIndex = Number(
+    const activeNonZeroSlideIndex = Number(
       this.props.match.params.activeNonZeroSlideIndex ||
         this.props.match.params.activeRunSlideIndex
     );
@@ -175,13 +191,9 @@ class Editor extends Component {
   }
 
   // TODO: Move to own async action
-  async deleteScenario(scenarioId) {
-    await (await fetch(`/api/scenarios/${scenarioId}`, {
-      method: 'DELETE'
-    })).json();
-
-    // Hard redirect to clear all previous state from the editor.
-    location.href = '/';
+  async deleteScenario(scenario) {
+    await this.props.deleteScenario(scenario.id);
+    this.props.history.push('/scenarios/');
   }
 
   // TODO: Move to own async action
@@ -334,7 +346,7 @@ class Editor extends Component {
     }
 
     const { scenarioId } = this.state;
-    const { scenario, user } = this.props;
+    const { scenario, user, usersById } = this.props;
 
     const menuItemScenarioStatus = scenario.status !== undefined && (
       <ScenarioStatusMenuItem
@@ -382,15 +394,19 @@ class Editor extends Component {
 
       if (scenario.lock && scenario.lock.user_id !== user.id) {
         modalProps.open = true;
-        if (scenario.users.find(sUser => sUser.id !== user.id)) {
+
+        const scenarioUser = scenario.users.find(u => u.id === user.id);
+
+        if (!scenarioUser) {
           content =
-            'You do not have permission to edit this scenario. Redirecting...';
+            'You do not have permission to edit this scenario.';
         } else {
-          const lockHolder = scenario.users.find(
-            sUser => sUser.id === scenario.lock.user_id
+          const lockHolder = usersById[scenario.lock.user_id];
+          content = (
+            <Fragment>
+              This scenario is currently being edited by <Username {...lockHolder} />
+            </Fragment>
           );
-          const lockHolderUsername = new Username(lockHolder);
-          content = `This scenario is currently being edited by ${lockHolderUsername}`;
         }
         setTimeout(() => {
           this.props.history.push('/scenarios/');
@@ -425,10 +441,8 @@ class Editor extends Component {
       );
     }
 
-    return (
+    return modal ? modal : (
       <Fragment>
-        {modal}
-
         <Menu attached="top" tabular className="editor__tabmenu">
           {menuItemsForAttachedTabularBar}
         </Menu>
@@ -446,7 +460,7 @@ class Editor extends Component {
                 },
                 delete: {
                   onConfirm: () => {
-                    this.deleteScenario(scenarioId);
+                    this.deleteScenario(scenario);
                   }
                 },
                 right: [menuItemScenarioRun, menuItemScenarioStatus]
@@ -489,29 +503,31 @@ Editor.propTypes = {
   }).isRequired,
   isCopyScenario: PropTypes.bool,
   isNewScenario: PropTypes.bool,
+  deleteScenario: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
   scenario: PropTypes.object,
   user: PropTypes.object,
-  users: PropTypes.array
+  usersById: PropTypes.object,
+  getUsers: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
   const scenarioId = Number(ownProps.scenarioId);
-
-  const { scenario, user, users } = state;
-
+  const { scenario, user, usersById } = state;
   return {
     scenarioId,
     scenario,
     user,
-    users
+    usersById
   };
 };
 
 const mapDispatchToProps = dispatch => ({
+  deleteScenario: id => dispatch(deleteScenario(id)),
   getScenario: id => dispatch(getScenario(id)),
-  setScenario: params => dispatch(setScenario(params))
+  setScenario: params => dispatch(setScenario(params)),
+  getUsers: () => dispatch(getUsers())
 });
 
 export default withRouter(

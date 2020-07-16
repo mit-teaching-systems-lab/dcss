@@ -303,37 +303,48 @@ async function setScenarioCategories(scenarioId, categories) {
   return Promise.all(promises);
 }
 
-async function deleteScenario(scenarioId) {
+async function deleteScenario(id) {
   let result;
 
   result = await query(sql`
-        DELETE FROM scenario_consent WHERE scenario_id = ${scenarioId};
-    `);
+    DELETE FROM scenario_consent WHERE scenario_id = ${id};
+  `);
 
   result = await query(sql`
-        DELETE FROM scenario_tag WHERE scenario_id = ${scenarioId};
-    `);
+    DELETE FROM scenario_tag WHERE scenario_id = ${id};
+  `);
 
   // TODO: need to handle the previous result
 
   result = await query(sql`
-        DELETE FROM slide WHERE scenario_id = ${scenarioId};
-    `);
+    DELETE FROM slide WHERE scenario_id = ${id};
+  `);
 
   // TODO: need to handle the previous result
 
   result = await query(sql`
-        DELETE FROM scenario WHERE id = ${scenarioId};
-    `);
+    DELETE FROM scenario WHERE id = ${id};
+  `);
 
   return { deletedCount: result.rowCount };
 }
 
-async function softDeleteScenario(scenarioId) {
+async function softDeleteScenario(id) {
   const result = await query(sql`
     UPDATE scenario
     SET deleted_at = CURRENT_TIMESTAMP
-    WHERE id=${scenarioId}
+    WHERE id = ${id}
+    RETURNING *;
+  `);
+  return result.rows[0];
+}
+
+async function unlockScenario(id) {
+  const result = await query(sql`
+    UPDATE scenario_lock
+    SET ended_at = CURRENT_TIMESTAMP
+    WHERE id = ${id}
+    AND ended_at IS NOT NULL
     RETURNING *;
   `);
   return result.rows[0];

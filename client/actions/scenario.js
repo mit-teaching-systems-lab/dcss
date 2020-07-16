@@ -1,8 +1,12 @@
 import cloneDeep from 'lodash.clonedeep';
 import {
   // GET_SCENARIO,
+  DELETE_SCENARIO_SUCCESS,
+  DELETE_SCENARIO_ERROR,
   GET_SCENARIO_SUCCESS,
   GET_SCENARIO_ERROR,
+  UNLOCK_SCENARIO_SUCCESS,
+  UNLOCK_SCENARIO_ERROR,
   // GET_SCENARIOS,
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIOS_ERROR,
@@ -107,6 +111,59 @@ export const setSlides = slides => ({
   type: SET_SLIDES,
   slides
 });
+
+export const deleteScenario = (scenario_id) => async dispatch => {
+  try {
+
+    const res = await (
+      await fetch(`/api/scenarios/${scenario_id}`, {
+        method: 'DELETE'
+      })
+    ).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { scenario } = res;
+
+    dispatch({ type: DELETE_SCENARIO_SUCCESS, scenario });
+    return scenario;
+  } catch (error) {
+    dispatch({ type: DELETE_SCENARIO_ERROR, error });
+    return null;
+  }
+};
+
+export const unlockScenario = (lock) => async dispatch => {
+  try {
+    const body = JSON.stringify(lock);
+    const res = await (
+      await fetch(
+        `/api/scenarios/${scenario_id}/unlock`,
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST',
+          body
+        }
+      )
+    ).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { scenario } = res;
+
+    dispatch({ type: UNLOCK_SCENARIO_SUCCESS, scenario });
+    return scenario;
+  } catch (error) {
+    dispatch({ type: UNLOCK_SCENARIO_ERROR, error });
+    return null;
+  }
+};
 
 export const deleteSlide = (scenario_id, id) => async dispatch => {
   try {

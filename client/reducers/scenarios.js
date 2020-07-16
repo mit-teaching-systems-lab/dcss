@@ -1,4 +1,6 @@
 import {
+  DELETE_SCENARIO_SUCCESS,
+  UNLOCK_SCENARIO_ERROR,
   GET_SCENARIO_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   // GET_SCENARIOS_ERROR,
@@ -35,6 +37,8 @@ export const scenarios = (state = [], action) => {
         .sort((a, b) => a.id < b.id);
     }
     case SET_SCENARIO:
+    case DELETE_SCENARIO_SUCCESS:
+    case UNLOCK_SCENARIO_ERROR:
     case GET_SCENARIO_SUCCESS: {
       if (!scenario.id) {
         return [...state];
@@ -70,6 +74,8 @@ export const scenariosById = (state = {}, action) => {
       };
     }
     case SET_SCENARIO:
+    case DELETE_SCENARIO_SUCCESS:
+    case UNLOCK_SCENARIO_ERROR:
     case GET_SCENARIO_SUCCESS: {
       if (!scenario.id) {
         return {

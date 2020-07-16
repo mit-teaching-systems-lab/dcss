@@ -340,6 +340,7 @@ class ScenarioEditor extends Component {
     //   />
     // );
 
+    const isTestEnv = location.href.includes('localhost');
     return (
       <Form>
         <Container fluid>
@@ -357,7 +358,7 @@ class ScenarioEditor extends Component {
                   {...popupProps}
                 />
 
-                {dropdowns}
+                {isTestEnv ? dropdowns: null}
 
                 {scenarioId !== 'new' ? (
                   <Fragment>
@@ -374,7 +375,9 @@ class ScenarioEditor extends Component {
                 width={8}
                 className="se__grid-column-width-constraint"
               >
-                {scenarioId !== 'new' ? (
+                {!isTestEnv ? dropdowns: null}
+
+                {isTestEnv && scenarioId !== 'new' ? (
                   <ScenarioAuthors scenario={scenario} />
                 ) : null}
               </Grid.Column>

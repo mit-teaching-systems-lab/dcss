@@ -19,7 +19,7 @@ import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
 import { computePerPageItemsRows } from '@utils/Layout';
-import { getScenarios } from '@actions/scenario';
+import { deleteScenario, getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Username from '@components/User/Username';
 import EditorMenu from '@components/EditorMenu';
@@ -468,9 +468,10 @@ const mapStateToProps = state => {
   return { isLoggedIn, user, scenarios };
 };
 
-const mapDispatchToProps = {
-  getScenarios
-};
+const mapDispatchToProps = dispatch => ({
+  deleteScenario: id => dispatch(deleteScenario(id)),
+  getScenarios: () => dispatch(getScenarios())
+});
 
 export default withRouter(
   connect(

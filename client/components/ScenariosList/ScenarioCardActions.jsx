@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button, Icon } from '@components/UI';
+import { deleteScenario } from '@actions/scenario';
 import Storage from '@utils/Storage';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import './ScenariosList.css';
@@ -10,9 +12,15 @@ import './ScenariosList.css';
 class ScenarioCardActions extends Component {
   render() {
     const { isLoggedIn, scenario, user } = this.props;
+    const scenarioUser = scenario.users.find(u => u.id === user.id);
 
-    const isAuthorized =
-      scenario.author_id === user.id || user.roles.includes('super_admin');
+    const isAuthorizedToEdit = scenarioUser && (
+      scenarioUser.is_author || scenarioUser.is_owner || user.roles.includes('super_admin')
+    );
+
+    const isAuthorizedToDelete = scenarioUser && (
+      scenarioUser.is_owner || user.roles.includes('super_admin')
+    );
 
     const editor = Storage.get(`editor/${scenario.id}`, {
       activeTab: 'slides',
@@ -33,6 +41,7 @@ class ScenarioCardActions extends Component {
     return (
       <Button.Group fluid>
         <Button
+          size="tiny"
           basic
           icon
           as={Link}
@@ -47,8 +56,9 @@ class ScenarioCardActions extends Component {
         </Button>
         {isLoggedIn && (
           <Fragment>
-            <ConfirmAuth isAuthorized={isAuthorized}>
+            <ConfirmAuth isAuthorized={isAuthorizedToEdit}>
               <Button
+                size="tiny"
                 basic
                 icon
                 as={Link}
@@ -62,8 +72,33 @@ class ScenarioCardActions extends Component {
                 <span className={className}>Edit</span>
               </Button>
             </ConfirmAuth>
+            {/*
+            <ConfirmAuth isAuthorized={isAuthorizedToDelete}>
+              <Button
+                size="tiny"
+                basic
+                icon
+                as={Link}
+                to={{ pathname: `/scenarios/` }}
+                aria-label="Delete scenario"
+                className="sc__button sc__hidden-on-mobile"
+                onClick={(event) => {
+                  // event.preventDefault();
+                  (async () => {
+                    await this.props.deleteScenario(scenario.id);
+                    this.props.history.push('/');
+                    this.props.history.goBack();
+                  })();
+                }}
+              >
+                <Icon name="trash alternate outline" />
+                <span className={className}>Delete</span>
+              </Button>
+            </ConfirmAuth>
+            */}
             <ConfirmAuth requiredPermission="create_scenario">
               <Button
+                size="tiny"
                 basic
                 icon
                 as={Link}
@@ -83,6 +118,8 @@ class ScenarioCardActions extends Component {
 }
 
 ScenarioCardActions.propTypes = {
+  deleteScenario: PropTypes.func.isRequired,
+  history: PropTypes.object,
   isLoggedIn: PropTypes.bool.isRequired,
   scenario: PropTypes.object,
   user: PropTypes.object
@@ -91,14 +128,18 @@ ScenarioCardActions.propTypes = {
 const mapStateToProps = state => {
   const {
     login: { isLoggedIn },
-    user
+    user,
   } = state;
   return { isLoggedIn, user };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  deleteScenario: id => dispatch(deleteScenario(id))
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScenarioCardActions);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenarioCardActions)
+);

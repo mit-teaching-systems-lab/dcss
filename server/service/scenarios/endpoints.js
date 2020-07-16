@@ -21,6 +21,7 @@ async function getScenarioLockAsync(req, res) {
 }
 
 async function getAllScenariosAsync(req, res) {
+  throw 1;
   try {
     const scenarios = await db.getAllScenarios();
     res.send({ scenarios, status: 200 });
@@ -152,18 +153,18 @@ async function setScenarioAsync(req, res) {
 }
 
 async function deleteScenarioAsync(req, res) {
-  const scenarioId = req.params.scenario_id;
+  const scenario_id = Number(req.params.scenario_id);
 
-  if (!scenarioId) {
-    const scenarioDeleteError = new Error(
+  if (!scenario_id) {
+    const error = new Error(
       'Scenario id required for scenario deletion'
     );
-    scenarioDeleteError.status = 409;
-    throw scenarioDeleteError;
+    error.status = 409;
+    throw error;
   }
 
   try {
-    const scenario = await db.deleteScenario(scenarioId);
+    const scenario = await db.deleteScenario(scenario_id);
     const result = { scenario, status: 200 };
 
     res.send(result);
@@ -173,6 +174,37 @@ async function deleteScenarioAsync(req, res) {
     error.stack = apiError.stack;
     throw error;
   }
+}
+
+async function unlockScenarioAsync(req, res) {
+  const scenario_id = Number(req.params.scenario_id);
+
+
+
+    const error = new Error(req.body);
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+
+  // if (!scenario_id) {
+  //   const error = new Error(
+  //     'Scenario id required for scenario unlocking'
+  //   );
+  //   error.status = 409;
+  //   throw error;
+  // }
+
+  // try {
+  //   const scenario = await db.unlockScenario(scenario_id);
+  //   const result = { scenario, status: 200 };
+
+  //   res.send(result);
+  // } catch (apiError) {
+  //   const error = new Error('Error while unlocking scenario');
+  //   error.status = 500;
+  //   error.stack = apiError.stack;
+  //   throw error;
+  // }
 }
 
 async function softDeleteScenarioAsync(req, res) {
@@ -347,6 +379,7 @@ exports.getAllScenarios = asyncMiddleware(getAllScenariosAsync);
 exports.addScenario = asyncMiddleware(addScenarioAsync);
 exports.setScenario = asyncMiddleware(setScenarioAsync);
 exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);
+exports.unlockScenario = asyncMiddleware(unlockScenarioAsync);
 exports.softDeleteScenario = asyncMiddleware(softDeleteScenarioAsync);
 exports.copyScenario = asyncMiddleware(copyScenarioAsync);
 exports.getScenarioByRun = asyncMiddleware(getScenarioByRunAsync);
