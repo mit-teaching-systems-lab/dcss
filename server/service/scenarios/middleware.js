@@ -5,8 +5,6 @@ const { getScenario, getScenarioUserRoles } = require('./db');
 
 const scenarioMap = new WeakMap();
 
-const defaultIdParam = req => Number(req.params.scenario_id);
-
 exports.reqScenario = req => {
   if (!scenarioMap.has(req)) {
     throw new Error('Request has not passed through lookupScenario middleware');
@@ -14,19 +12,19 @@ exports.reqScenario = req => {
   return scenarioMap.get(req);
 };
 
-const scenarioForRequest = async (req, getId = defaultIdParam) => {
+const scenarioForRequest = async req => {
   if (scenarioMap.has(req)) {
     return scenarioMap.get(req);
   } else {
-    const scenario = await getScenario(await getId(req));
+    const scenario = await getScenario(Number(req.params.scenario_id));
     scenarioMap.set(req, scenario);
     return scenario;
   }
 };
 
-exports.lookupScenario = (getId = defaultIdParam) =>
+exports.lookupScenario = () =>
   asyncMiddleware(async (req, res, next) => {
-    const scenario = await scenarioForRequest(req, getId);
+    const scenario = await scenarioForRequest(req);
     if (!scenario) {
       const e404 = new Error('Unknown scenario');
       e404.status = 404;
@@ -43,18 +41,20 @@ exports.requireScenarioUserRole = roles => [
       roles = [roles];
     }
 
-    const { roles: siteUserRoles } = await getUserRoles(req.session.user.id);
-
+    const scenario_id = Number(
+      (req.body && req.body.scenario_id) || req.params.scenario_id
+    );
+    const { roles: userRoles } = await getUserRoles(req.session.user.id);
     const { roles: scenarioUserRoles } = await getScenarioUserRoles(
       // Remember: we're not checking the role of the target user,
       // we're verifying the role of the administrating user.
       req.session.user.id,
-      req.body.scenario_id || defaultIdParam(req)
+      scenario_id
     );
 
     if (
       // super admin always gets permission
-      siteUserRoles.includes('super_admin') ||
+      userRoles.includes('super_admin') ||
       // owner always gets permission
       scenarioUserRoles.includes('owner')
     ) {
@@ -66,14 +66,13 @@ exports.requireScenarioUserRole = roles => [
     //
     // Q: should "researcher" be allowed to do this?
     //
-    if (
-      roles.some(role => siteUserRoles.includes(role)) &&
-      roles.some(role => scenarioUserRoles.includes(role))
-    ) {
+    if (roles.some(role => scenarioUserRoles.includes(role))) {
       return next();
     }
 
-    const error = new Error('Access Denied');
+    const error = new Error(
+      'Access Denied: you do not have permission to edit or review this scenario'
+    );
     error.status = 401;
     throw error;
   })
