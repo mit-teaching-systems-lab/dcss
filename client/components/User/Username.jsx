@@ -1,13 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import { Icon, Text } from '@components/UI';
 
+const ICON_SUPER = { className: 'chess queen', title: 'Super' };
+const ICON_ADMIN = { className: 'chess rook', title: 'Admin' };
+const ICON_FACILITATOR = {
+  className: 'chalkboard teacher',
+  title: 'Facilitator'
+};
+const ICON_RESEARCHER = { className: 'user graduate', title: 'Researcher' };
 
-const ICON_SUPER = { name: 'chess queen', title: 'Super' };
-const ICON_ADMIN = { name: 'chess rook', title: 'Admin' };
-const ICON_FACILITATOR = { name: 'chalkboard teacher', title: 'Facilitator' };
-const ICON_RESEARCHER = { name: 'user graduate', title: 'Researcher' };
+const cache = {};
 
 class Username extends Component {
   constructor(props) {
@@ -15,57 +20,62 @@ class Username extends Component {
     const { personalname, username } = this.props;
 
     this.displayName = personalname || username;
-    this.title = personalname
-      ? `${personalname} (${username})`
-      : username;
+    this.title = personalname ? `${personalname} (${username})` : username;
+
+    const { roles } = this.props;
+
+    let iconProps = null;
+
+    if (roles && roles.length) {
+      if (roles.includes('researcher')) {
+        iconProps = ICON_RESEARCHER;
+      }
+      if (roles.includes('facilitator')) {
+        iconProps = ICON_FACILITATOR;
+      }
+      if (roles.includes('admin')) {
+        iconProps = ICON_ADMIN;
+      }
+      if (roles.includes('super_admin')) {
+        iconProps = ICON_SUPER;
+      }
+    }
+
+    this.iconProps = iconProps;
   }
   toString() {
     return this.displayName;
   }
   render() {
+    const { id, roles } = this.props;
 
-    // Get the site-wide user because this component can
-    // be called with a Cohort User or Scenario User and
-    // those will have different roles.
-    const user = this.props.id === this.props.user.id
-      ? this.props.user
-      : this.props.usersById[this.props.id] || null;
+    const key = hash({ id, roles });
+    const cached = cache[key];
 
-    let iconProps = null;
-
-    if (user) {
-      if (user.roles.includes('researcher')) {
-        iconProps = ICON_RESEARCHER;
-      }
-      if (user.roles.includes('facilitator')) {
-        iconProps = ICON_FACILITATOR;
-      }
-      if (user.roles.includes('admin')) {
-        iconProps = ICON_ADMIN;
-      }
-      if (user.roles.includes('super_admin')) {
-        iconProps = ICON_SUPER;
-      }
+    if (cached) {
+      return cached;
     }
 
-    return (
+    const icon = this.iconProps ? (
+      <Icon
+        size="small"
+        {...this.iconProps}
+        style={{
+          marginRight: '0',
+          marginBottom: '0.3em',
+          marginLeft: '0.25em',
+          opacity: '0.25'
+        }}
+      />
+    ) : null;
+
+    cache[key] = (
       <Fragment>
-        <Text title={this.title}>{this.displayName}</Text>
-        {' '}
-        {iconProps ? (
-          <Icon
-            size="small"
-            {...iconProps}
-            style={{
-              marginRight: '0',
-              marginBottom: '0.3em',
-              marginLeft: '0.25em',
-              opacity: '0.25'
-            }}
-          />
-        ) : null}
+        <Text title={this.title}>{this.displayName}</Text> {icon}
       </Fragment>
     );
+
+    return cache[key];
   }
 }
 
@@ -73,14 +83,26 @@ Username.propTypes = {
   id: PropTypes.number,
   is_super: PropTypes.bool,
   personalname: PropTypes.string,
-  username: PropTypes.string,
-  usersById: PropTypes.object
+  roles: PropTypes.array,
+  username: PropTypes.string
 };
 
-const mapStateToProps = state => {
-  console.log(state);
+const mapStateToProps = (state, ownProps) => {
   const { user, usersById } = state;
-  return { user, usersById };
+
+  // Get the site-wide user because this component can
+  // be called with a Cohort User or Scenario User and
+  // those will have different roles.
+  const stateUser =
+    ownProps.id === user.id ? user : usersById[ownProps.id] || { roles: [] };
+
+  const mergedUser = Object.assign({}, ownProps, stateUser);
+  const roles = ownProps.roles.concat(stateUser.roles);
+
+  return {
+    ...mergedUser,
+    roles
+  };
 };
 
 export default connect(

@@ -372,7 +372,12 @@ class ScenariosList extends Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  <Responsive onUpdate={() => console.log('resize')}>
+                  <Responsive
+                    onUpdate={() => {
+                      // eslint-disable-next-line no-console
+                      console.log('resize');
+                    }}
+                  >
                     <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
                       {cards}
                     </Card.Group>

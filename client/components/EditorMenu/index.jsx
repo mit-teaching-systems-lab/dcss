@@ -13,12 +13,20 @@ export default class EditorMenu extends React.Component {
   }
 
   render() {
-    const { className, draghandle = {}, type, items } = this.props;
+    const {
+      className,
+      draghandle = {},
+      type,
+      items,
+      isDragging,
+      ...props
+    } = this.props;
     let menuClassName = 'em__height';
     if (className) {
       menuClassName += ` ${className}`;
     }
 
+    void isDragging;
     // const menuItems = Object.entries(items).reduce((accum, [prop, item]) => {
     //   if (Array.isArray(item)) {
     //     accum.push(...item.filter(x => x));
@@ -27,7 +35,13 @@ export default class EditorMenu extends React.Component {
     // console.log(menuItems);
 
     return (
-      <Menu {...draghandle} icon borderless className={menuClassName}>
+      <Menu
+        {...props}
+        {...draghandle}
+        icon
+        borderless
+        className={menuClassName}
+      >
         {items.left && (
           <React.Fragment>
             {items.left
@@ -97,6 +111,8 @@ export default class EditorMenu extends React.Component {
 
 const VALID_PROPS = ['delete', 'editable', 'left', 'right', 'save'];
 EditorMenu.propTypes = {
+  pointing: PropTypes.bool,
+  secondary: PropTypes.bool,
   className: PropTypes.string,
   draghandle: PropTypes.object,
   isDragging: PropTypes.bool,

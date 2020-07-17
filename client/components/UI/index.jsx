@@ -14,7 +14,6 @@ Modal.Accessible = ModalAccessible;
 import TableCellClickable from './TableCellClickable';
 Table.Cell.Clickable = TableCellClickable;
 
-
 /**
  * Custom Elements, non-extension
  * (Fomantic)

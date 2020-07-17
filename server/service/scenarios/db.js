@@ -92,6 +92,35 @@ async function getScenarioUsers(scenario_id) {
   return result.rows;
 }
 
+async function addScenarioUserRole(scenario_id, user_id, roles) {
+  return withClientTransaction(async client => {
+    const [role] = roles;
+    const result = await client.query(sql`
+      INSERT INTO scenario_user_role (scenario_id, user_id, role)
+      VALUES (${scenario_id}, ${user_id}, ${role})
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+    `);
+    return { addedCount: result.rowCount };
+  });
+}
+
+async function endScenarioUserRole(scenario_id, user_id, roles) {
+  return withClientTransaction(async client => {
+    const [role] = roles;
+    const result = await client.query(sql`
+      UPDATE scenario_user_role
+      SET ended_at = CURRENT_TIMESTAMP
+      WHERE scenario_id = ${scenario_id}
+      AND user_id = ${user_id}
+      AND role = ${role}
+      RETURNING *;
+    `);
+
+    return { deletedCount: result.rowCount };
+  });
+}
+
 exports.getScenarioUserRoles = async (user_id, scenario_id) => {
   const result = await query(sql`
     SELECT ARRAY_AGG(role) AS roles
@@ -432,35 +461,6 @@ async function setScenarioSnapshot(scenario_id, user_id, snapshot) {
       RETURNING *;
     `);
     return result.rowCount && result.rows[0];
-  });
-}
-
-async function addScenarioUserRole(scenario_id, user_id, roles) {
-  return withClientTransaction(async client => {
-    const [role] = roles;
-    const result = await client.query(sql`
-      INSERT INTO scenario_user_role (scenario_id, user_id, role)
-      VALUES (${scenario_id}, ${user_id}, ${role})
-      ON CONFLICT DO NOTHING
-      RETURNING *;
-    `);
-    return { addedCount: result.rowCount };
-  });
-}
-
-async function endScenarioUserRole(scenario_id, user_id, roles) {
-  return withClientTransaction(async client => {
-    const [role] = roles;
-    const result = await client.query(sql`
-      UPDATE scenario_user_role
-      SET ended_at = CURRENT_TIMESTAMP
-      WHERE scenario_id = ${scenario_id}
-      AND user_id = ${user_id}
-      AND role = ${role}
-      RETURNING *;
-    `);
-
-    return { deletedCount: result.rowCount };
   });
 }
 

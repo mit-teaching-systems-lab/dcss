@@ -456,7 +456,7 @@ class Editor extends Component {
               role="dialog"
               aria-modal="true"
               aria-labelledby={ariaLabelledBy}
-              aria-labelledby={ariaDescribedBy}
+              aria-describedby={ariaDescribedBy}
             >
               <Header
                 id={ariaLabelledBy}

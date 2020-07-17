@@ -20,6 +20,7 @@ class ScenarioCardActions extends Component {
         scenarioUser.is_owner ||
         user.roles.includes('super_admin'));
 
+    // eslint-disable-next-line no-unused-vars
     const isAuthorizedToDelete =
       scenarioUser &&
       (scenarioUser.is_owner || user.roles.includes('super_admin'));

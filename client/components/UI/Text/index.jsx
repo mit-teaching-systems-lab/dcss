@@ -1,21 +1,18 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 export class Text extends Component {
   render() {
-    const {
-      children = null,
-      style = {},
-      title = '',
-      ...rest
-    } = this.props;
+    const { children = null, style = {}, title = '', ...rest } = this.props;
 
     const classNames = ['ui'];
+    const props = {};
 
     Object.entries(rest).forEach(([key, value]) => {
-      console.log(key, value);
-      if (value) {
+      if (typeof value === 'boolean' && value) {
         classNames.push(key);
+      } else {
+        props[key] = value;
       }
     });
 
@@ -24,7 +21,13 @@ export class Text extends Component {
     const className = classNames.join(' ');
 
     return (
-      <span aria-label={title} className={className} title={title} style={style}>
+      <span
+        aria-label={title}
+        className={className}
+        title={title}
+        style={style}
+        {...props}
+      >
         {children}
       </span>
     );
