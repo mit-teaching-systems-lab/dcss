@@ -44,7 +44,7 @@ class MultiPathResponseEditor extends React.Component {
       responseId = ''
     } = props.value;
 
-    const open = true;
+    const open = false;
 
     this.state = {
       isReady: false,

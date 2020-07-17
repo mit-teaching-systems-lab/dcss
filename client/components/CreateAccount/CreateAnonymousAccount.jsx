@@ -82,37 +82,39 @@ class CreateAnonymousAccount extends Component {
       ? 'Do you like this anonymous user name?'
       : 'Find an anonymous user name for you.';
     return (
-      <Modal open role="dialog" aria-modal="true" size="small">
-        <Header icon="user outline" content={header} />
-        <Modal.Content>
-          {username ? (
-            <Header as="h1" className="caa__header-centered">
-              <code>{username}</code>
-            </Header>
-          ) : (
-            <Loading />
-          )}
-        </Modal.Content>
-        <Modal.Actions>
-          <Button.Group fluid>
-            <Button
-              color="green"
-              content="Yes, continue"
-              name="yes"
-              onClick={onSubmit}
-            />
-            <Button.Or />
-            <Button
-              color="orange"
-              content="No, see another"
-              name="no"
-              onClick={onClick}
-            />
-            <Button.Or />
-            <Button content="Go back" name="nvm" onClick={onClick} />
-          </Button.Group>
-        </Modal.Actions>
-      </Modal>
+      <Modal.Accessible open={open}>
+        <Modal open role="dialog" aria-modal="true" size="small">
+          <Header icon="user outline" content={header} />
+          <Modal.Content>
+            {username ? (
+              <Header as="h1" className="caa__header-centered">
+                <code>{username}</code>
+              </Header>
+            ) : (
+              <Loading />
+            )}
+          </Modal.Content>
+          <Modal.Actions>
+            <Button.Group fluid>
+              <Button
+                color="green"
+                content="Yes, continue"
+                name="yes"
+                onClick={onSubmit}
+              />
+              <Button.Or />
+              <Button
+                color="orange"
+                content="No, see another"
+                name="no"
+                onClick={onClick}
+              />
+              <Button.Or />
+              <Button content="Go back" name="nvm" onClick={onClick} />
+            </Button.Group>
+          </Modal.Actions>
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

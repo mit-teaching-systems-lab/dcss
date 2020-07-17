@@ -154,98 +154,105 @@ class CreateAccount extends Component {
     }
 
     return (
-      <Modal
-        closeIcon
-        role="dialog"
-        aria-modal="true"
-        size="small"
-        onClose={onCancel}
-        open={true}
-      >
-        <Header icon="user outline" content="Create a new user account" />
-        <Modal.Content>
-          <Form onSubmit={onSubmit}>
-            <Form.Field>
-              <Form.Input
-                required
-                label="Username:"
-                name="username"
-                autoComplete="off"
-                onChange={onChange}
-                onBlur={validFormInput}
-                value={username}
-                {...(error && error.field === 'username'
-                  ? { error: true }
-                  : {})}
-              />
-            </Form.Field>
-            <Form.Field>
-              <Form.Input
-                name="email"
-                label="Email address:"
-                autoComplete="email"
-                placeholder="(Optional)"
-                onChange={onChange}
-                value={email}
-              />
-            </Form.Field>
-            <Form.Field>
-              <Form.Input
-                required
-                label="Password:"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                onChange={onChange}
-                onBlur={validFormInput}
-                value={password}
-                {...(error && error.field === 'password'
-                  ? { error: true }
-                  : {})}
-              />
-            </Form.Field>
-            <Form.Field>
-              <Form.Input
-                required
-                label="Confirm password:"
-                name="confirmPassword"
-                type="password"
-                autoComplete="new-password"
-                onChange={onChange}
-                onBlur={validFormInput}
-                value={confirmPassword}
-                {...(error && error.field === 'confirmPassword'
-                  ? { error: true }
-                  : {})}
-              />
-            </Form.Field>
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <Button.Group fluid>
-                  <Button primary type="submit" onClick={onSubmit} size="large">
-                    Submit
-                  </Button>
-                  <Button.Or />
-                  <Button onClick={onCancel} size="large">
-                    Cancel
-                  </Button>
-                </Button.Group>
-                <Message
-                  floating
-                  {...messageProps}
-                  style={{ textAlign: 'left' }}
-                >
-                  {error.message}
-                </Message>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Actions>
-      </Modal>
+      <Modal.Accessible open={open}>
+        <Modal
+          closeIcon
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="create-a-new-user-account"
+          size="small"
+          onClose={onCancel}
+          open={true}
+        >
+          <Header
+            id="create-a-new-user-account"
+            icon="user outline"
+            content="Create a new user account"
+          />
+          <Modal.Content>
+            <Form onSubmit={onSubmit}>
+              <Form.Field>
+                <Form.Input
+                  required
+                  label="Username:"
+                  name="username"
+                  autoComplete="off"
+                  onChange={onChange}
+                  onBlur={validFormInput}
+                  value={username}
+                  {...(error && error.field === 'username'
+                    ? { error: true }
+                    : {})}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Form.Input
+                  name="email"
+                  label="Email address:"
+                  autoComplete="email"
+                  placeholder="(Optional)"
+                  onChange={onChange}
+                  value={email}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Form.Input
+                  required
+                  label="Password:"
+                  name="password"
+                  type="password"
+                  autoComplete="new-password"
+                  onChange={onChange}
+                  onBlur={validFormInput}
+                  value={password}
+                  {...(error && error.field === 'password'
+                    ? { error: true }
+                    : {})}
+                />
+              </Form.Field>
+              <Form.Field>
+                <Form.Input
+                  required
+                  label="Confirm password:"
+                  name="confirmPassword"
+                  type="password"
+                  autoComplete="new-password"
+                  onChange={onChange}
+                  onBlur={validFormInput}
+                  value={confirmPassword}
+                  {...(error && error.field === 'confirmPassword'
+                    ? { error: true }
+                    : {})}
+                />
+              </Form.Field>
+            </Form>
+          </Modal.Content>
+          <Modal.Actions>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
+                  <Button.Group fluid>
+                    <Button primary type="submit" onClick={onSubmit} size="large">
+                      Submit
+                    </Button>
+                    <Button.Or />
+                    <Button onClick={onCancel} size="large">
+                      Cancel
+                    </Button>
+                  </Button.Group>
+                  <Message
+                    floating
+                    {...messageProps}
+                    style={{ textAlign: 'left' }}
+                  >
+                    {error.message}
+                  </Message>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Actions>
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

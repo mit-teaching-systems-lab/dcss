@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Graph from 'react-graph-vis';
+import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux';
-import { Modal, Ref } from '@components/UI';
+import { Button, Modal, Ref } from '@components/UI';
 import { getSlides } from '@actions/scenario';
+import htmlId from '@utils/html-id';
 
 function makeNodeLabel(index, slide) {
   const quotedSlideTitle = slide.title ? `\n"${slide.title}"` : ``;
@@ -219,21 +221,22 @@ class MultiPathNetworkGraphModal extends Component {
       }
     });
 
-    const description = edges.reduce((accum, edge) => {
+    const description = edges
+      .reduce((accum, edge) => {
+        const fromNodeLabel = nodesById[edge.from];
+        const toNodeLabel = nodesById[edge.to];
+        let pathDescription = `The node labeled "${fromNodeLabel}" leads to the node labeled "${toNodeLabel}"`;
 
-      const fromNodeLabel = nodesById[edge.from];
-      const toNodeLabel = nodesById[edge.to];
-      let pathDescription =
-        `The node labeled "${fromNodeLabel}" leads to the node labeled "${toNodeLabel}"`;
+        if (edge.label) {
+          pathDescription += `, with the label ${edge.label}`;
+        }
 
-      if (edge.label) {
-        pathDescription += `, with the label ${edge.label}`;
-      }
+        pathDescription += '.';
 
-      pathDescription += '.';
-
-      return accum.concat([pathDescription]);
-    }, []).join(' ').trim();
+        return accum.concat([pathDescription]);
+      }, [])
+      .join(' ')
+      .trim();
 
     const graph = {
       nodes,
@@ -293,7 +296,8 @@ class MultiPathNetworkGraphModal extends Component {
         console.log(event);
       }
     };
-    const makeAccessible = (node) => {
+
+    const makeAccessible = node => {
       if (node) {
         const canvas = node.querySelector('canvas');
 
@@ -313,22 +317,37 @@ class MultiPathNetworkGraphModal extends Component {
       }
     };
 
+    const ariaLabelledBy = htmlId();
+    const ariaDescribedBy = htmlId();
+
     return (
-      <Modal
-        role="dialog"
-        aria-modal="true"
-        size="fullscreen"
-        closeIcon
-        open={open}
-        onClose={onClose}
-      >
-        <Modal.Header>{scenario.title}</Modal.Header>
-        <Modal.Content>
-          <Ref innerRef={makeAccessible}>
-            <Graph events={events} graph={graph} options={options} />
-          </Ref>
-        </Modal.Content>
-      </Modal>
+      <Modal.Accessible open={open}>
+        <Modal
+          closeIcon
+          size="fullscreen"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={ariaLabelledBy}
+          aria-describedby={ariaDescribedBy}
+          open={open}
+          onClose={onClose}
+        >
+          <Modal.Header id={ariaLabelledBy}>{scenario.title}</Modal.Header>
+          <Modal.Content id={ariaDescribedBy}>
+            <Ref innerRef={makeAccessible}>
+              <Graph events={events} graph={graph} options={options} />
+            </Ref>
+          </Modal.Content>
+          {/*
+          <Modal.Actions>
+            <Button
+              content="Close"
+              onClick={onClose}
+            />
+          </Modal.Actions>
+          */}
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

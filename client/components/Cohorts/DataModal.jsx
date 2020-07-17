@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Header, Icon, Modal, Table } from '@components/UI';
 import SplitPane from 'react-split-pane';
 import Moment from '@utils/Moment';
+import htmlId from '@utils/html-id';
 import ContentSlide from '@components/Scenario/ContentSlide';
 import './DataTable.css';
 import './Resizer.css';
@@ -15,19 +16,24 @@ const DataModal = props => {
   const { index, isScenarioDataTable, prompts, rows } = props;
   const component = prompts[index];
   const { header, prompt, slide } = component;
+  const ariaLabelledBy = htmlId();
+  const ariaDescribedBy = htmlId();
 
   return (
     <Modal
+      closeIcon
+      className="dtm__view"
+      size="fullscreen"
       role="dialog"
       aria-modal="true"
+      aria-labelledby={ariaLabelledBy}
+      aria-describedby={ariaDescribedBy}
       trigger={props.trigger}
-      size="fullscreen"
-      className="dtm__view"
-      closeIcon
     >
-      <Header className="dtm__header">Responses In Context</Header>
-
-      <Modal.Content scrolling className="dtm__scroll">
+      <Header id={ariaLabelledBy} className="dtm__header">
+        Responses In Context
+      </Header>
+      <Modal.Content id={ariaDescribedBy} scrolling className="dtm__scroll">
         <Modal.Description>
           <SplitPane split="vertical" minSize={500} defaultSize={500}>
             <div>

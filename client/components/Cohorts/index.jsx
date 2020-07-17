@@ -33,6 +33,7 @@ import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
+import htmlId from '@utils/html-id';
 import '../ScenariosList/ScenariosList.css';
 
 export class Cohorts extends React.Component {
@@ -239,6 +240,8 @@ export class Cohorts extends React.Component {
     });
 
     const itemsPerRow = 4;
+    const ariaLabelledBy = htmlId();
+    const ariaDescribedBy = htmlId();
 
     return (
       <React.Fragment>
@@ -286,37 +289,41 @@ export class Cohorts extends React.Component {
             </Grid>
           </Container>
         )}
-        <Modal
-          role="dialog"
-          aria-modal="true"
-          size="small"
-          open={createIsVisible}
-        >
-          <Header icon="group" content="Create a cohort" />
-          <Modal.Content>
-            <Form onSubmit={onCreateCohortSubmit}>
-              <Input
-                fluid
-                focus
-                placeholder="Enter a name for your cohort"
-                name="name"
-                onSubmit={onCreateCohortSubmit}
-                onChange={onCreateCohortChange}
-              />
-            </Form>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button.Group fluid>
-              <Button color="green" onClick={onCreateCohortSubmit}>
-                Create
-              </Button>
-              <Button.Or />
-              <Button color="grey" onClick={onCreateCohortCancel}>
-                Cancel
-              </Button>
-            </Button.Group>
-          </Modal.Actions>
-        </Modal>
+        <Modal.Accessible open={createIsVisible}>
+          <Modal
+            size="small"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={ariaDescribedBy}
+            open={createIsVisible}
+          >
+            <Header id={ariaLabelledBy} icon="group" content="Create a cohort" />
+            <Modal.Content id={ariaDescribedBy}>
+              <Form onSubmit={onCreateCohortSubmit}>
+                <Input
+                  fluid
+                  focus
+                  placeholder="Enter a name for your cohort"
+                  name="name"
+                  onSubmit={onCreateCohortSubmit}
+                  onChange={onCreateCohortChange}
+                />
+              </Form>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button.Group fluid>
+                <Button color="green" onClick={onCreateCohortSubmit}>
+                  Create
+                </Button>
+                <Button.Or />
+                <Button color="grey" onClick={onCreateCohortCancel}>
+                  Cancel
+                </Button>
+              </Button.Group>
+            </Modal.Actions>
+          </Modal>
+        </Modal.Accessible>
       </React.Fragment>
     );
   }
