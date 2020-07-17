@@ -19,6 +19,7 @@ import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuIte
 import Scenario from '@components/Scenario';
 import Username from '@components/User/Username';
 import Slides from './Slides';
+import htmlId from '@utils/html-id';
 import {
   deleteScenario,
   getScenario,
@@ -26,7 +27,6 @@ import {
   endScenarioLock
 } from '@actions/scenario';
 import { getUsers } from '@actions/users';
-
 import './editor.css';
 
 class Editor extends Component {
@@ -102,7 +102,7 @@ class Editor extends Component {
     }
   }
 
-  onBeforeUnload(event) {
+  onBeforeUnload(/* event */) {
     if (this.props.scenario.lock) {
       this.props.endScenarioLock(this.props.scenario.id);
     }
@@ -383,11 +383,11 @@ class Editor extends Component {
         </Menu.Item>
       ) : null;
 
-    const scenarioLockIcon = scenario.lock ? (
-      <Icon name="unlock" />
-    ) : (
-      <Icon name="lock" />
-    );
+    // const scenarioLockIcon = scenario.lock ? (
+    //   <Icon name="unlock" />
+    // ) : (
+    //   <Icon name="lock" />
+    // );
 
     const menuItemScenarioUnlock =
       scenarioId !== 'new' ? (
@@ -446,17 +446,24 @@ class Editor extends Component {
       }
 
       if (modalProps.open) {
-        console.log(this.props.history);
+        const ariaLabelledBy = htmlId();
+        const ariaDescribedBy = htmlId();
         modal = (
           <Modal.Accessible open={modalProps.open}>
             <Modal
               {...modalProps}
+              size="small"
               role="dialog"
               aria-modal="true"
-              size="small"
+              aria-labelledby={ariaLabelledBy}
+              aria-labelledby={ariaDescribedBy}
             >
-              <Header icon="user outline" content={header} />
-              <Modal.Content>{content}</Modal.Content>
+              <Header
+                id={ariaLabelledBy}
+                content={header}
+                icon="user outline"
+              />
+              <Modal.Content id={ariaDescribedBy}>{content}</Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
                   <Button
