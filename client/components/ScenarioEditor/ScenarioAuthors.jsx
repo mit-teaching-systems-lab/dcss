@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import escapeRegExp from 'lodash.escaperegexp';
 import hash from 'object-hash';
 import PropTypes from 'prop-types';
-import { Dropdown, Icon, Input, Menu, Table } from '@components/UI';
+import { Dropdown, Input, Menu, Table, Text } from '@components/UI';
 import {
   setScenario,
   addScenarioUserRole,
@@ -17,6 +17,10 @@ import Username from '@components/User/Username';
 import { notify } from '@components/Notification';
 
 const ROWS_PER_PAGE = 5;
+// const OWNER = { key: 'owner', value: 'owner', text: 'Owner' };
+const AUTHOR = { key: 'author', value: 'author', text: 'Author' };
+const REVIEWER = { key: 'reviewer', value: 'reviewer', text: 'Reviewer' };
+const NONE = { key: 'none', value: null, text: 'None' };
 
 class ScenarioAuthors extends Component {
   constructor(props) {
@@ -44,14 +48,24 @@ class ScenarioAuthors extends Component {
       await getUsers();
     }
 
-    const authors = await getUsersByPermission('edit_scenario');
+    const editors = await getUsersByPermission('edit_scenario');
     const candidates = [
       ...scenario.users,
       ...this.props.users.reduce((accum, user) => {
-        if (scenario.users.find(({ id }) => id === user.id)) {
+        // If this user is already in the scenario, don't add
+        // them to this list.
+        if (scenario.users.find(u => u.id === user.id)) {
           return accum;
         }
-        user.isReviewerOnly = !authors.find(({ id }) => id === user.id);
+        // If the user is anonymous, don't add them to this list.
+        if (user.is_anonymous) {
+          return accum;
+        }
+
+        // If the user has a role that allows them to edit
+        // Q: Should this be moved to server?
+        user.isEditor = !!editors.find(({ id }) => id === user.id);
+
         accum.push(Object.assign({}, user, { roles: [] }));
         return accum;
       }, [])
@@ -66,9 +80,11 @@ class ScenarioAuthors extends Component {
     });
   }
 
-  async onChange(event, { scenario, user, role }) {
+  async onChange(event, props) {
+    const { defaultValue, role, scenario, user } = props;
+
     // eslint-disable-next-line no-console
-    console.log('onChange', scenario, user, role);
+    console.log('onChange', scenario, user, role, defaultValue);
 
     const username = new Username(user);
 
@@ -87,6 +103,7 @@ class ScenarioAuthors extends Component {
         });
       }
     } else {
+      const role = defaultValue;
       const sRoleResult = await this.props.endScenarioUserRole(
         scenario.id,
         user.id,
@@ -156,7 +173,7 @@ class ScenarioAuthors extends Component {
   }
 
   render() {
-    const { scenario, user } = this.props;
+    const { scenario, user, usersById } = this.props;
     const { activePage, isReady, candidates } = this.state;
     const { onChange, onPageChange, onUsersSearchChange } = this;
 
@@ -166,7 +183,7 @@ class ScenarioAuthors extends Component {
 
     const pages = Math.ceil(candidates.length / ROWS_PER_PAGE);
     const index = (activePage - 1) * ROWS_PER_PAGE;
-    const users = candidates.slice(index, index + ROWS_PER_PAGE);
+    const candidatesSlice = candidates.slice(index, index + ROWS_PER_PAGE);
     const columns = {
       username: {
         className: 'users__col-xlarge',
@@ -184,57 +201,59 @@ class ScenarioAuthors extends Component {
 
     const grantableRoles = {};
     const currentScenarioUser = scenario.users.find(u => u.id === user.id);
-    const disabled = !currentScenarioUser.is_owner || !user.is_super;
+    const rows = candidatesSlice.reduce((accum, candidateUser) => {
+      const candidate = Object.assign(
+        {},
+        usersById[candidateUser.id],
+        candidateUser
+      );
 
-    const rows = users.reduce((accum, candidateUser) => {
-      const onRoleChange = (event, { name, value }) => {
+      const onRoleChange = (event, props) => {
+        const user = candidate;
+        const { value: role, defaultValue } = props;
         onChange(event, {
-          user: candidateUser,
+          defaultValue,
+          role,
           scenario,
-          [name]: value
+          user
         });
       };
 
-      const scenarioUser = scenario.users.find(
-        user => user.id === candidateUser.id
-      );
-
-      const scenarioUserIsOwner =
-        scenarioUser && scenarioUser.roles.includes('owner');
-
-      const owner = { key: 'owner', value: 'owner', text: 'Owner' };
-      const author = { key: 'author', value: 'author', text: 'Author' };
-      const reviewer = { key: 'reviewer', value: 'reviewer', text: 'Reviewer' };
       const options = [];
 
-      if (candidateUser.isReviewerOnly) {
-        options.push(reviewer);
+      // If they already have roles, then they are already in this scenario.
+      if (candidate.roles.length) {
+        if (candidate.roles.includes('author')) {
+          options.push(AUTHOR);
+        }
       } else {
-        options.push(author, reviewer);
+        // Potential new scenario collaborators...
+        if (candidate.isEditor) {
+          options.push(AUTHOR);
+        }
       }
+      options.push(REVIEWER, NONE);
 
-      options.push({ key: 'none', value: null, text: 'None' });
+      // The Dropdown must be disabled when:
+      //
+      //  1. The candidate is the owner (owner cannot change ownership yet)
+      //  2. The viewing user is neither super, not owner
+      //
+      const disabled = !currentScenarioUser.is_owner || !user.is_super;
+      const defaultValue = candidate.roles.length ? candidate.roles[0] : null;
+      const key = hash(candidate);
 
-      const defaultValue = scenarioUser ? scenarioUser.roles[0] : null;
-
-      if (scenarioUserIsOwner) {
-        console.log(scenarioUser.roles);
-      }
-
-      const key = hash(candidateUser);
-
-      accum[candidateUser.id] = [
+      accum[candidate.id] = [
         <Table.Cell key={`${key}-1`}>
-          {<Username {...candidateUser} />}{' '}
-          {candidateUser.roles.includes('owner') ? '(owner)' : null}
+          <Username {...candidate} />
         </Table.Cell>,
         <Table.Cell key={`${key}-2`}>
-          {candidateUser.email ? (
-            <a href={`mailto:${candidateUser.email}`}>{candidateUser.email}</a>
+          {candidate.email ? (
+            <a href={`mailto:${candidate.email}`}>{candidate.email}</a>
           ) : null}
         </Table.Cell>,
-        <Table.Cell key={`${key}-3`}>
-          {!scenarioUserIsOwner ? (
+        <Table.Cell textAlign="right" key={`${key}-3`}>
+          {!candidate.is_owner ? (
             <Dropdown
               direction="left"
               name="role"
@@ -245,7 +264,9 @@ class ScenarioAuthors extends Component {
               onChange={onRoleChange}
               style={{ width: '100%', textAlign: 'right' }}
             />
-          ) : null}
+          ) : (
+            <Text grey>Owner</Text>
+          )}
         </Table.Cell>
       ];
       return accum;
@@ -261,18 +282,18 @@ class ScenarioAuthors extends Component {
     };
 
     const left = [
-      <Menu.Item key="menu-item-authors-reviewers">
-        <Icon.Group className="em__icon-group-margin">
-          <Icon name="pencil" />
-        </Icon.Group>
-        Authors & Reviewers ({this.props.scenario.users.length})
+      <Menu.Item key="menu-item-collaborators">
+        Collaborators ({this.props.scenario.users.length})
       </Menu.Item>
     ];
 
     const right = [
-      <Menu.Menu key="menu-menu-search-authors-reviewers" position="right">
+      <Menu.Menu key="menu-menu-search-collaborators" position="right">
+        <Menu.Item key="menu-item-available-collaborators">
+          Available users ({candidates.length})
+        </Menu.Item>
         <Menu.Item
-          key="menu-item-search-authors-reviewers"
+          key="menu-item-search-collaborators"
           name="Search authors & reviewers"
           className="em__search-input-box-right"
         >
@@ -285,7 +306,7 @@ class ScenarioAuthors extends Component {
       </Menu.Menu>
     ];
     const editorMenu = (
-      <EditorMenu type="scenario authors" items={{ left, right }} />
+      <EditorMenu text type="scenario authors" items={{ left, right }} />
     );
 
     return (
@@ -304,15 +325,17 @@ ScenarioAuthors.propTypes = {
   setScenario: PropTypes.func.isRequired,
   user: PropTypes.object,
   users: PropTypes.array,
+  usersById: PropTypes.object,
   getUsers: PropTypes.func.isRequired,
   getUsersByPermission: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => {
-  const { user, users } = state;
+  const { user, users, usersById } = state;
   return {
     user,
-    users
+    users,
+    usersById
   };
 };
 

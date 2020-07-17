@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
-// import { titleCase } from 'change-case';
 import {
   Button,
   Container,
@@ -12,17 +11,19 @@ import {
   Popup,
   Ref
 } from '@components/UI';
-import { getScenario, setScenario } from '@actions/scenario';
-import { getCategories } from '@actions/tags';
-import { getUsersByPermission } from '@actions/users';
 
 import ConfirmAuth from '@components/ConfirmAuth';
-// import EditorMenu from '@components/EditorMenu';
+import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
 import ScenarioAuthors from './ScenarioAuthors';
 import RichTextEditor from '@components/RichTextEditor';
+
+import { getScenario, setScenario } from '@actions/scenario';
+import { getCategories } from '@actions/tags';
+import { getUsersByPermission } from '@actions/users';
+
 import './scenarioEditor.css';
 
 function makeDefaultDescription({ title, description }) {
@@ -31,6 +32,14 @@ function makeDefaultDescription({ title, description }) {
     returnValue = `A scenario about "${title}"`;
   }
   return returnValue;
+}
+
+function createSectionDef(label) {
+  return {
+    label,
+    node: React.createRef(),
+    offsetTop: 0
+  };
 }
 
 class ScenarioEditor extends Component {
@@ -43,12 +52,23 @@ class ScenarioEditor extends Component {
       categories: []
     };
 
+    this.leftcolRef = React.createRef();
+    this.leftcol = {
+      title: createSectionDef('Title'),
+      description: createSectionDef('Description'),
+      authors: createSectionDef('Author'),
+      categories: createSectionDef('Categories'),
+      consentprose: createSectionDef('Consent Agreement'),
+      finish: createSectionDef('Finish Slide')
+    };
+
     this.debouncer = null;
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onConsentChange = this.onConsentChange.bind(this);
     this.onFinishSlideChange = this.onFinishSlideChange.bind(this);
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
+    this.scrollIntoView = this.scrollIntoView.bind(this);
   }
 
   onBeforeUnload() {
@@ -202,8 +222,23 @@ class ScenarioEditor extends Component {
     }
   }
 
+  scrollIntoView(name) {
+    let top = this.leftcolRef.scrollHeight;
+
+    Object.values(this.leftcol).forEach(({ offsetTop }) => {
+      top = Math.min(top, offsetTop);
+    });
+
+    this.leftcolRef.scrollTo(0, this.leftcol[name].offsetTop - top);
+  }
+
   render() {
-    const { onChange, onConsentChange, onFinishSlideChange } = this;
+    const {
+      onChange,
+      onConsentChange,
+      onFinishSlideChange,
+      scrollIntoView
+    } = this;
     const {
       scenarioId,
       scenario,
@@ -218,90 +253,107 @@ class ScenarioEditor extends Component {
 
     const consentAgreementValue = consent.prose || '';
 
+    const innerRef = (node, name) => {
+      this.leftcol[name].node = node;
+      this.leftcol[name].offsetTop = node.offsetTop;
+    };
+
     const formInputTitle = (
-      <Form.Field>
-        <label htmlFor="title">Title</label>
-        <Form.Input
-          focus
-          required
-          id="title"
-          name="title"
-          value={title}
-          onChange={onChange}
-        />
-      </Form.Field>
+      <Ref innerRef={node => innerRef(node, 'title')}>
+        <Form.Field>
+          <label htmlFor="title">Title</label>
+          <Form.Input
+            focus
+            required
+            id="title"
+            name="title"
+            value={title}
+            onChange={onChange}
+          />
+        </Form.Field>
+      </Ref>
     );
 
     const descriptionDefaultValue = makeDefaultDescription(scenario);
 
     const textAreaDescription = (
-      <Form.Field>
-        <label htmlFor="description">Description</label>
-        <Form.TextArea
-          required
-          focus="true"
-          id="description"
-          name="description"
-          rows={1}
-          value={descriptionDefaultValue}
-          onChange={onChange}
-        />
-      </Form.Field>
+      <Ref innerRef={node => innerRef(node, 'description')}>
+        <Form.Field>
+          <label htmlFor="description">Description</label>
+          <Form.TextArea
+            required
+            focus="true"
+            id="description"
+            name="description"
+            rows={1}
+            value={descriptionDefaultValue}
+            onChange={onChange}
+          />
+        </Form.Field>
+      </Ref>
     );
 
     const rteConsent =
       scenarioId !== 'new' ? (
-        <Form.Field required>
-          <label htmlFor="consentprose">Consent Agreement</label>
-          {consentAgreementValue ? (
-            <RichTextEditor
-              id="consentprose"
-              name="consentprose"
-              defaultValue={consent.prose}
-              onChange={onConsentChange}
-              options={{
-                buttons: 'suggestion',
-                minHeight: '150px'
-              }}
-            />
-          ) : null}
-        </Form.Field>
+        <Ref innerRef={node => innerRef(node, 'consentprose')}>
+          <Form.Field required>
+            <label htmlFor="consentprose">Consent Agreement</label>
+            {consentAgreementValue ? (
+              <RichTextEditor
+                id="consentprose"
+                name="consentprose"
+                defaultValue={consent.prose}
+                onChange={onConsentChange}
+                options={{
+                  buttons: 'suggestion',
+                  minHeight: '150px'
+                }}
+              />
+            ) : null}
+          </Form.Field>
+        </Ref>
       ) : null;
 
     const rteFinish =
       scenarioId !== 'new' ? (
-        <Form.Field>
-          <label htmlFor="finish">
-            After a scenario has been completed, the participant will be shown
-            this:
-          </label>
-          <RichTextEditor
-            id="finish"
-            defaultValue={finish.components[0].html}
-            onChange={onFinishSlideChange}
-            options={{
-              buttons: 'suggestion',
-              minHeight: '200px'
-            }}
-          />
-        </Form.Field>
+        <Ref innerRef={node => innerRef(node, 'finish')}>
+          <Form.Field>
+            <label htmlFor="finish">
+              After a scenario has been completed, the participant will be shown
+              this:
+            </label>
+            <RichTextEditor
+              id="finish"
+              defaultValue={finish.components[0].html}
+              onChange={onFinishSlideChange}
+              options={{
+                buttons: 'suggestion',
+                minHeight: '200px'
+              }}
+            />
+          </Form.Field>
+        </Ref>
       ) : null;
 
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
         {this.state.authors.length ? (
-          <AuthorDropdown
-            author={author}
-            options={this.state.authors}
-            onChange={onChange}
-          />
+          <Ref innerRef={node => innerRef(node, 'authors')}>
+            <AuthorDropdown
+              author={author}
+              options={this.state.authors}
+              onChange={onChange}
+            />
+          </Ref>
         ) : null}
         {this.state.categories.length ? (
-          <CategoriesDropdown
-            options={this.state.categories}
-            categories={categories}
-            onChange={onChange}
-          />
+          <Ref innerRef={node => innerRef(node, 'categories')}>
+            <CategoriesDropdown
+              options={this.state.categories}
+              categories={categories}
+              onChange={onChange}
+            />
+          </Ref>
         ) : null}
       </ConfirmAuth>
     );
@@ -320,25 +372,27 @@ class ScenarioEditor extends Component {
         ? 'se__grid-column-height-constraint se__grid-column-width-constraint'
         : '';
 
-    // const left = Object.keys(this.sectionRefs).map((ref, index) => (
-    //   <Menu.Item
-    //     animated
-    //     icon
-    //     key={hash({ ref, index })}
-    //     onClick={() => this.sectionRefs[ref].scrollIntoView()}
-    //   >
-    //     {titleCase(ref)}
-    //   </Menu.Item>
-    // ));
+    const left = Object.entries(this.leftcol).map(
+      ([name, { label }], index) => (
+        <Menu.Item
+          icon
+          key={hash({ label, index })}
+          onClick={() => scrollIntoView(name)}
+        >
+          {label}
+        </Menu.Item>
+      )
+    );
 
-    // const hideEditorMenu = true;
-    // const editorMenu = hideEditorMenu ? null : (
-    //   <EditorMenu
-    //     className="em__sticky"
-    //     type="scenario authors"
-    //     items={{ left }}
-    //   />
-    // );
+    const hideEditorMenu = !location.href.includes('localhost');
+    const editorMenu = hideEditorMenu ? null : (
+      <EditorMenu
+        text
+        className="em__sticky se_em__sticky-special"
+        type="scenario authors"
+        items={{ left }}
+      />
+    );
 
     const isTestEnv = location.href.includes('localhost');
     return (
@@ -346,31 +400,40 @@ class ScenarioEditor extends Component {
         <Container fluid>
           <Grid columns={2} divided>
             <Grid.Row className="se__grid-nowrap">
-              <Grid.Column className={leftColumnClassName} width={8}>
-                <Popup
-                  content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
-                  trigger={formInputTitle}
-                  {...popupProps}
-                />
-                <Popup
-                  content="Enter a description for your scenario. This will appear on the scenario 'entry' slide."
-                  trigger={textAreaDescription}
-                  {...popupProps}
-                />
+              <Ref innerRef={node => (this.leftcolRef = node)}>
+                <Grid.Column className={leftColumnClassName} width={8}>
+                  {editorMenu}
+                  <Popup
+                    content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
+                    trigger={formInputTitle}
+                    {...popupProps}
+                  />
+                  <Popup
+                    content="Enter a description for your scenario. This will appear on the scenario 'entry' slide."
+                    trigger={textAreaDescription}
+                    {...popupProps}
+                  />
 
-                {isTestEnv ? dropdowns : null}
+                  {isTestEnv ? dropdowns : null}
 
-                {scenarioId !== 'new' ? (
-                  <Fragment>
-                    {rteConsent}
-                    {rteFinish}
-                  </Fragment>
-                ) : (
-                  <Button type="submit" primary onClick={onCreateScenarioClick}>
-                    Create this scenario
-                  </Button>
-                )}
-              </Grid.Column>
+                  {scenarioId !== 'new' ? (
+                    <Fragment>
+                      {rteConsent}
+                      {rteFinish}
+                    </Fragment>
+                  ) : (
+                    <Button
+                      type="submit"
+                      primary
+                      onClick={onCreateScenarioClick}
+                    >
+                      Create this scenario
+                    </Button>
+                  )}
+
+                  <div style={{ height: '500px' }}></div>
+                </Grid.Column>
+              </Ref>
               <Grid.Column
                 width={8}
                 className="se__grid-column-width-constraint"
