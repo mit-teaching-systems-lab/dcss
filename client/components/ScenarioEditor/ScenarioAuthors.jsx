@@ -82,34 +82,35 @@ class ScenarioAuthors extends Component {
 
   async onChange(event, props) {
     const { defaultValue, role, scenario, user } = props;
+    const username = Username.from(user);
 
     // eslint-disable-next-line no-console
     console.log('onChange', scenario, user, role, defaultValue);
 
-    const username = new Username(user);
 
     if (role) {
+
       // notify
       // If a role is present (not null), add the role to
       // this user, for this scenario.
-      const sRoleResult = await this.props.addScenarioUserRole(
+      const result = await this.props.addScenarioUserRole(
         scenario.id,
         user.id,
         role
       );
-      if (sRoleResult.addedCount) {
+      if (result.addedCount) {
         notify({
           message: `${username} is now a ${role} in ${scenario.title}`
         });
       }
     } else {
       const role = defaultValue;
-      const sRoleResult = await this.props.endScenarioUserRole(
+      const result = await this.props.endScenarioUserRole(
         scenario.id,
         user.id,
         role
       );
-      if (sRoleResult.deletedCount) {
+      if (result.endedCount) {
         notify({
           message: `${username} is no longer a ${role} in ${scenario.title}`
         });

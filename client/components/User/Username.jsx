@@ -105,7 +105,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(
+const WrappedComponent = connect(
   mapStateToProps,
   null
 )(Username);
+
+WrappedComponent.from = user => {
+  return new Username(user);
+};
+
+export default WrappedComponent;

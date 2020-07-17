@@ -93,31 +93,32 @@ async function getScenarioUsers(scenario_id) {
 }
 
 async function addScenarioUserRole(scenario_id, user_id, roles) {
+  await endScenarioUserRole(scenario_id, user_id);
+
   return withClientTransaction(async client => {
     const [role] = roles;
     const result = await client.query(sql`
       INSERT INTO scenario_user_role (scenario_id, user_id, role)
       VALUES (${scenario_id}, ${user_id}, ${role})
-      ON CONFLICT DO NOTHING
+      ON CONFLICT ON CONSTRAINT scenario_user_role_pkey
+      DO UPDATE SET ended_at = null
+      WHERE scenario_user_role.scenario_id = ${scenario_id}
+      AND scenario_user_role.user_id = ${user_id}
+      AND scenario_user_role.role = ${role}
       RETURNING *;
     `);
     return { addedCount: result.rowCount };
   });
 }
-
-async function endScenarioUserRole(scenario_id, user_id, roles) {
+async function endScenarioUserRole(scenario_id, user_id) {
   return withClientTransaction(async client => {
-    const [role] = roles;
     const result = await client.query(sql`
-      UPDATE scenario_user_role
-      SET ended_at = CURRENT_TIMESTAMP
+      DELETE FROM scenario_user_role
       WHERE scenario_id = ${scenario_id}
       AND user_id = ${user_id}
-      AND role = ${role}
       RETURNING *;
     `);
-
-    return { deletedCount: result.rowCount };
+    return { endedCount: result.rowCount };
   });
 }
 
