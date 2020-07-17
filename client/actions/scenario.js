@@ -200,7 +200,7 @@ export const addScenarioUserRole = (
     });
 
     const result = await (await fetch(
-      '/api/scenarios/${scenario_id}/roles/add',
+      `/api/scenarios/${scenario_id}/roles/add`,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -231,7 +231,7 @@ export const endScenarioUserRole = (
       roles: [role]
     });
     const result = await (await fetch(
-      '/api/scenarios/${scenario_id}/roles/end',
+      `/api/scenarios/${scenario_id}/roles/end`,
       {
         headers: {
           'Content-Type': 'application/json'
