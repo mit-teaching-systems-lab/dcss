@@ -5,7 +5,6 @@ import hash from 'object-hash';
 import PropTypes from 'prop-types';
 import { Dropdown, Icon, Input, Menu, Table } from '@components/UI';
 import {
-  getScenario,
   setScenario,
   addScenarioUserRole,
   endScenarioUserRole
@@ -157,7 +156,7 @@ class ScenarioAuthors extends Component {
   }
 
   render() {
-    const { scenario } = this.props;
+    const { scenario, user } = this.props;
     const { activePage, isReady, candidates } = this.state;
     const { onChange, onPageChange, onUsersSearchChange } = this;
 
@@ -184,6 +183,8 @@ class ScenarioAuthors extends Component {
     };
 
     const grantableRoles = {};
+    const currentScenarioUser = scenario.users.find(u => u.id === user.id);
+    const disabled = !currentScenarioUser.is_owner || !user.is_super;
 
     const rows = users.reduce((accum, candidateUser) => {
       const onRoleChange = (event, { name, value }) => {
@@ -238,6 +239,7 @@ class ScenarioAuthors extends Component {
               direction="left"
               name="role"
               placeholder="______________"
+              disabled={disabled}
               defaultValue={defaultValue}
               options={options}
               onChange={onRoleChange}
@@ -299,7 +301,6 @@ ScenarioAuthors.propTypes = {
   addScenarioUserRole: PropTypes.func,
   endScenarioUserRole: PropTypes.func,
   scenario: PropTypes.object,
-  getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
   user: PropTypes.object,
   users: PropTypes.array,
@@ -318,7 +319,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   addScenarioUserRole: (...params) => dispatch(addScenarioUserRole(...params)),
   endScenarioUserRole: (...params) => dispatch(endScenarioUserRole(...params)),
-  getScenario: id => dispatch(getScenario(id)),
   setScenario: params => dispatch(setScenario(params)),
   getUsers: () => dispatch(getUsers()),
   getUsersByPermission: permission => dispatch(getUsersByPermission(permission))

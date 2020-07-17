@@ -28,6 +28,7 @@ import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioCardActions from './ScenarioCardActions';
+import htmlId from '@utils/html-id';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -44,8 +45,9 @@ const filter = (scenarios, user) => {
   const reduced = scenarios.reduce((accum, scenario) => {
     const { status, users } = scenario;
     const scenarioUser = users.find(({ id }) => user.id === id);
-    const isAuthor = scenarioUser ? scenarioUser.is_author : false;
-    const isReviewer = scenarioUser ? scenarioUser.is_reviewer : false;
+    const isAuthor = scenarioUser && scenarioUser.is_author;
+    const isReviewer = scenarioUser && scenarioUser.is_reviewer;
+    const isAuthorOrReviewer = isAuthor || isReviewer;
 
     // Show super admin everything
     if (user.is_super) {
@@ -56,7 +58,10 @@ const filter = (scenarios, user) => {
     //  - user must be logged in
     //  - user must be an author
     //  - user must be a reviewer
-    if (status === SCENARIO_STATUS_DRAFT && (!isLoggedIn || !isAuthor || !isReviewer)) {
+    if (
+      status === SCENARIO_STATUS_DRAFT &&
+      (!isLoggedIn || !isAuthorOrReviewer)
+    ) {
       return accum;
     }
     // This scenario status is "private", to see it:
@@ -367,7 +372,7 @@ class ScenariosList extends Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  <Responsive onUpdate={() => console.log("resize")}>
+                  <Responsive onUpdate={() => console.log('resize')}>
                     <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
                       {cards}
                     </Card.Group>
@@ -416,20 +421,26 @@ const ScenarioDetailModal = ({ onClose, open, scenario }) => {
     </Fragment>
   );
 
+  const ariaLabelledBy = htmlId();
+  const ariaDescribedBy = htmlId();
   return (
     <Modal
       closeIcon
       role="dialog"
       aria-modal="true"
+      aria-labelledby={ariaLabelledBy}
+      aria-describedby={ariaDescribedBy}
       centered={false}
       open={open}
       onClose={onClose}
     >
-      <Header>{scenario.title}</Header>
+      <Header id={ariaLabelledBy}>
+        {scenario.title}
+      </Header>
       <Modal.Content>
-        <Header>
-          <Header.Subheader aria-label="">{subheader}</Header.Subheader>
-        </Header>
+        {subheader}
+      </Modal.Content>
+      <Modal.Content id={ariaDescribedBy}>
         <Modal.Description className="sc__modal-description">
           {scenario.description}
         </Modal.Description>

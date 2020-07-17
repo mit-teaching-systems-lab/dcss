@@ -173,33 +173,50 @@ async function deleteScenarioAsync(req, res) {
   }
 }
 
-async function unlockScenarioAsync(req, res) {
+async function addScenarioLockAsync(req, res) {
   const scenario_id = Number(req.params.scenario_id);
+  const user_id = Number(req.session.user.id);
+  try {
+    let lock = await db.getScenarioLock(scenario_id);
+    if (!lock) {
+      await db.addScenarioLock(scenario_id, user_id);
+    }
+    const scenario = await db.getScenario(scenario_id);
+    res.send({ scenario, status: 200 });
+  } catch (apiError) {
+    const error = new Error('Error while unlocking scenario');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
 
-  const error = new Error(req.body);
-  error.status = 500;
-  error.stack = apiError.stack;
-  throw error;
+async function endScenarioLockAsync(req, res) {
+  const scenario_id = Number(req.params.scenario_id);
+  const user_id = Number(req.session.user.id);
+  try {
+    const unlock = await db.endScenarioLock(scenario_id, user_id);
 
-  // if (!scenario_id) {
-  //   const error = new Error(
-  //     'Scenario id required for scenario unlocking'
-  //   );
-  //   error.status = 409;
-  //   throw error;
-  // }
+    console.log('.........................................');
+    console.log(unlock);
+    console.log('..........................................');
 
-  // try {
-  //   const scenario = await db.unlockScenario(scenario_id);
-  //   const result = { scenario, status: 200 };
+    const scenario = await db.getScenario(scenario_id);
+    res.send({ scenario, status: 200 });
 
-  //   res.send(result);
-  // } catch (apiError) {
-  //   const error = new Error('Error while unlocking scenario');
-  //   error.status = 500;
-  //   error.stack = apiError.stack;
-  //   throw error;
-  // }
+    const snapshot = await db.setScenarioSnapshot(
+      scenario_id,
+      user_id,
+      scenario
+    );
+
+    console.log(snapshot);
+  } catch (apiError) {
+    const error = new Error('Error while unlocking scenario');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
 }
 
 async function softDeleteScenarioAsync(req, res) {
@@ -370,11 +387,12 @@ async function endScenarioUserRoleAsync(req, res) {
 
 exports.getScenario = asyncMiddleware(getScenarioAsync);
 exports.getScenarioLock = asyncMiddleware(getScenarioLockAsync);
+exports.addScenarioLock = asyncMiddleware(addScenarioLockAsync);
+exports.endScenarioLock = asyncMiddleware(endScenarioLockAsync);
 exports.getAllScenarios = asyncMiddleware(getAllScenariosAsync);
 exports.addScenario = asyncMiddleware(addScenarioAsync);
 exports.setScenario = asyncMiddleware(setScenarioAsync);
 exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);
-exports.unlockScenario = asyncMiddleware(unlockScenarioAsync);
 exports.softDeleteScenario = asyncMiddleware(softDeleteScenarioAsync);
 exports.copyScenario = asyncMiddleware(copyScenarioAsync);
 exports.getScenarioByRun = asyncMiddleware(getScenarioByRunAsync);

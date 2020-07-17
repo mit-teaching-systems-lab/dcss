@@ -23,7 +23,7 @@ import {
   deleteScenario,
   getScenario,
   setScenario,
-  unlockScenario
+  endScenarioLock
 } from '@actions/scenario';
 import { getUsers } from '@actions/users';
 
@@ -94,14 +94,19 @@ class Editor extends Component {
       if (noPersistedView) {
         this.state.activeTab = 'slides';
       }
-      this.props.getScenario(scenarioId);
+
+      // This was how we requested scenarios prior to moving
+      // the call into componentDidMount():
+      //
+      // this.props.getScenario(scenarioId, { lock: true });
     }
   }
 
   onBeforeUnload(event) {
     if (this.props.scenario.lock) {
-      this.props.unlockScenario(this.props.scenario.lock);
+      this.props.endScenarioLock(this.props.scenario.id);
     }
+    // return (event.returnValue = '');
   }
 
   componentWillUnmount() {
@@ -109,6 +114,10 @@ class Editor extends Component {
   }
 
   async componentDidMount() {
+    if (!this.props.isNewScenario) {
+      await this.props.getScenario(this.props.scenarioId, { lock: true });
+    }
+
     await this.props.getUsers();
 
     this.setState(state => ({
@@ -374,6 +383,25 @@ class Editor extends Component {
         </Menu.Item>
       ) : null;
 
+    const scenarioLockIcon = scenario.lock ? (
+      <Icon name="unlock" />
+    ) : (
+      <Icon name="lock" />
+    );
+
+    const menuItemScenarioUnlock =
+      scenarioId !== 'new' ? (
+        <Menu.Item
+          key="scenario-unlock-menu-item"
+          name="Unlock this scenario"
+          onClick={() => {
+            this.props.endScenarioLock(this.props.scenario.id);
+          }}
+        >
+          <Icon name="unlock" />
+        </Menu.Item>
+      ) : null;
+
     const menuItemsForAttachedTabularBar = Object.keys(this.state.tabs).map(
       tabType => {
         return (
@@ -414,28 +442,46 @@ class Editor extends Component {
         }
         setTimeout(() => {
           this.props.history.push('/scenarios/');
-        }, 5000);
+        }, 10000);
       }
 
       if (modalProps.open) {
+        console.log(this.props.history);
         modal = (
-          <Modal {...modalProps} role="dialog" aria-modal="true" size="small">
-            <Header icon="user outline" content={header} />
-            <Modal.Content>{content}</Modal.Content>
-            <Modal.Actions>
-              <Button.Group fluid>
-                <Button
-                  as={Link}
-                  to={{
-                    pathname: '/scenarios/'
-                  }}
-                  aria-label="Go back to scenario list"
-                  color="green"
-                  content="Go back to scenario list"
-                />
-              </Button.Group>
-            </Modal.Actions>
-          </Modal>
+          <Modal.Accessible open={modalProps.open}>
+            <Modal
+              {...modalProps}
+              role="dialog"
+              aria-modal="true"
+              size="small"
+            >
+              <Header icon="user outline" content={header} />
+              <Modal.Content>{content}</Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button
+                    as={Link}
+                    to={{
+                      pathname: '/scenarios/'
+                    }}
+                    aria-label="Go back"
+                    color="green"
+                    content="Go back"
+                  />
+                  <Button.Or />
+                  <Button
+                    as={Link}
+                    to={{
+                      pathname: '/scenarios/'
+                    }}
+                    aria-label="Try again"
+                    color="orange"
+                    content="Try again"
+                  />
+                </Button.Group>
+              </Modal.Actions>
+            </Modal>
+          </Modal.Accessible>
         );
       }
 
@@ -447,6 +493,12 @@ class Editor extends Component {
         </Menu.Menu>
       );
     }
+
+    const right = [
+      menuItemScenarioRun,
+      location.href.includes('localhost') ? menuItemScenarioUnlock : null,
+      menuItemScenarioStatus
+    ];
 
     return modal ? (
       modal
@@ -472,7 +524,7 @@ class Editor extends Component {
                     this.deleteScenario(scenario);
                   }
                 },
-                right: [menuItemScenarioRun, menuItemScenarioStatus]
+                right
               }}
             />
           )}
@@ -512,7 +564,7 @@ Editor.propTypes = {
   }).isRequired,
   isCopyScenario: PropTypes.bool,
   isNewScenario: PropTypes.bool,
-  unlockScenario: PropTypes.func.isRequired,
+  endScenarioLock: PropTypes.func.isRequired,
   deleteScenario: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
@@ -534,9 +586,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  unlockScenario: lock => dispatch(unlockScenario(lock)),
+  endScenarioLock: lock => dispatch(endScenarioLock(lock)),
   deleteScenario: id => dispatch(deleteScenario(id)),
-  getScenario: id => dispatch(getScenario(id)),
+  getScenario: (id, options = {}) => dispatch(getScenario(id, options)),
   setScenario: params => dispatch(setScenario(params)),
   getUsers: () => dispatch(getUsers())
 });

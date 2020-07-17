@@ -10,7 +10,8 @@ const {
   addScenario,
   copyScenario,
   deleteScenario,
-  unlockScenario,
+  addScenarioLock,
+  endScenarioLock,
   getAllScenarios,
   getScenario,
   getScenarioByRun,
@@ -24,6 +25,18 @@ router.get('/', getAllScenarios);
 router.get('/run', getScenarioByRun);
 router.get('/:scenario_id', [lookupScenario(), getScenario]);
 
+router.get('/:scenario_id/lock', [
+  requireUserRole(requiredRoles),
+  requireScenarioUserRole(['owner', 'author', 'reviewer']),
+  addScenarioLock
+]);
+
+router.get('/:scenario_id/unlock', [
+  requireUserRole(requiredRoles),
+  requireScenarioUserRole(['owner', 'author', 'reviewer']),
+  endScenarioLock
+]);
+
 router.put('/', [
   requireUserRole(requiredRoles),
   validateRequestBody,
@@ -32,18 +45,10 @@ router.put('/', [
 
 router.post('/:scenario_id', [
   requireUserRole(requiredRoles),
-  requireScenarioUserRole(['owner', 'author']),
+  requireScenarioUserRole(['owner', 'author', 'reviewer']),
   lookupScenario(),
   validateRequestBody,
   setScenario
-]);
-
-router.post('/:scenario_id/unlock', [
-  requireUserRole(requiredRoles),
-  requireScenarioUserRole(['owner', 'author']),
-  lookupScenario(),
-  validateRequestBody,
-  unlockScenario
 ]);
 
 router.post('/:scenario_id/copy', [

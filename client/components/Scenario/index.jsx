@@ -10,7 +10,12 @@ import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Loading from '@components/Loading';
 import Storage from '@utils/Storage';
-import { getSlides, getScenario, setScenario } from '@actions/scenario';
+import {
+  endScenarioLock,
+  getSlides,
+  getScenario,
+  setScenario
+} from '@actions/scenario';
 import './Scenario.css';
 
 class Scenario extends Component {
@@ -191,49 +196,6 @@ class Scenario extends Component {
     return `${baseurl}/slide/${runSlideIndex}`;
   }
 
-  async getScenarioMetaData() {
-    if (this.state.title && this.state.description) {
-      // eslint-disable-next-line no-console
-      console.log('getScenarioMetaData, if clause');
-      const { title, description, consent, status } = this.state;
-
-      this.props.setScenario({
-        title,
-        description,
-        consent,
-        status
-      });
-
-      return {
-        title,
-        description,
-        consent,
-        status
-      };
-    } else {
-      // eslint-disable-next-line no-console
-      console.log('getScenarioMetaData, else clause');
-      const scenario = await this.props.getScenario(this.props.scenarioId);
-
-      // TODO: determine if this actually does anything
-      this.props.setScenario(scenario);
-
-      return scenario;
-    }
-  }
-
-  // // TODO: remove this and use getSlides()
-  // async getScenarioContent() {
-  //   if (this.props.scenarioId) {
-  //     const response = await fetch(
-  //       `/api/scenarios/${this.props.scenarioId}/slides`
-  //     );
-  //     const { slides } = await response.json();
-  //     return slides;
-  //   }
-  //   return null;
-  // }
-
   async componentDidMount() {
     const {
       cohortId,
@@ -241,11 +203,16 @@ class Scenario extends Component {
       getSlides,
       onResponseChange,
       onRunChange = () => {},
-      scenarioId
+      scenarioId,
+      user
     } = this.props;
 
     const scenario = await (this.props.scenario || getScenario(scenarioId));
     const contents = await getSlides(scenarioId);
+
+    if (scenario.lock && scenario.lock.user_id === user.id) {
+      await this.props.endScenarioLock(scenario.id);
+    }
 
     // Nice try! The requested scenario does not exist.
     if (!scenario) {
@@ -438,11 +405,12 @@ const mapStateToProps = (state, ownProps) => {
   const scenario =
     state.scenariosById[ownProps.scenarioId] || state.scenario || {};
   const { title, description, consent } = scenario;
-  const { run } = state;
-  return { title, description, consent, run };
+  const { run, user } = state;
+  return { title, description, consent, run, user };
 };
 
 const mapDispatchToProps = dispatch => ({
+  endScenarioLock: params => dispatch(endScenarioLock(params)),
   getScenario: params => dispatch(getScenario(params)),
   getSlides: params => dispatch(getSlides(params)),
   setScenario
