@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Graph from 'react-graph-vis';
-import { v4 as uuid } from 'uuid';
 import { connect } from 'react-redux';
-import { Button, Modal, Ref } from '@components/UI';
+import { Modal, Ref } from '@components/UI';
 import { getSlides } from '@actions/scenario';
 import htmlId from '@utils/html-id';
 
@@ -52,7 +51,7 @@ class MultiPathNetworkGraphModal extends Component {
   }
 
   render() {
-    const { header, onClose, open, scenario } = this.props;
+    const { onClose, open, scenario } = this.props;
     const { isReady, slides, width, height } = this.state;
 
     if (!isReady) {
