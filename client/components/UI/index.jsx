@@ -14,7 +14,9 @@ Modal.Accessible = ModalAccessible;
 import TableCellClickable from './TableCellClickable';
 Table.Cell.Clickable = TableCellClickable;
 
+
 /**
- * Supports migration to default export
+ * Custom Elements, non-extension
+ * (Fomantic)
  */
-// export * as default from 'semantic-ui-react';
+export * from './Text';
