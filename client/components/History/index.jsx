@@ -268,6 +268,7 @@ class History extends Component {
                 <Table.HeaderCell colSpan="5">
                   {runsPages > 1 ? (
                     <Pagination
+                      borderless
                       name="runs"
                       siblingRange={1}
                       boundaryRange={0}

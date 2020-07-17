@@ -383,6 +383,7 @@ class ScenariosList extends Component {
                 <Grid.Column stretched>
                   {scenariosPages > 1 ? (
                     <Pagination
+                      borderless
                       name="scenarios"
                       siblingRange={1}
                       boundaryRange={0}
@@ -434,12 +435,8 @@ const ScenarioDetailModal = ({ onClose, open, scenario }) => {
       open={open}
       onClose={onClose}
     >
-      <Header id={ariaLabelledBy}>
-        {scenario.title}
-      </Header>
-      <Modal.Content>
-        {subheader}
-      </Modal.Content>
+      <Header id={ariaLabelledBy}>{scenario.title}</Header>
+      <Modal.Content>{subheader}</Modal.Content>
       <Modal.Content id={ariaDescribedBy}>
         <Modal.Description className="sc__modal-description">
           {scenario.description}

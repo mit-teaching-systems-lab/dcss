@@ -273,6 +273,7 @@ export class Cohorts extends React.Component {
                 <Grid.Column stretched>
                   {cohortsPages > 1 ? (
                     <Pagination
+                      borderless
                       name="cohorts"
                       siblingRange={1}
                       boundaryRange={0}

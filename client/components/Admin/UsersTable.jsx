@@ -51,6 +51,7 @@ class UsersTable extends Component {
           <Table.Row>
             <Table.HeaderCell colSpan="7">
               <Pagination
+                borderless
                 name="users"
                 activePage={activePage}
                 siblingRange={1}

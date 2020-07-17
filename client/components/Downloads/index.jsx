@@ -497,6 +497,7 @@ class Downloads extends Component {
                 <Table.HeaderCell colSpan="4">
                   {downloadsPages > 1 ? (
                     <Pagination
+                      borderless
                       name="downloads"
                       siblingRange={1}
                       boundaryRange={0}
