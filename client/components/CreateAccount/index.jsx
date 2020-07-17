@@ -232,7 +232,12 @@ class CreateAccount extends Component {
               <Grid.Row>
                 <Grid.Column>
                   <Button.Group fluid>
-                    <Button primary type="submit" onClick={onSubmit} size="large">
+                    <Button
+                      primary
+                      type="submit"
+                      onClick={onSubmit}
+                      size="large"
+                    >
                       Submit
                     </Button>
                     <Button.Or />

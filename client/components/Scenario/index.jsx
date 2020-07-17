@@ -374,6 +374,7 @@ Scenario.propTypes = {
   categories: PropTypes.array,
   cohortId: PropTypes.node,
   description: PropTypes.string,
+  endScenarioLock: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   getSlides: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
@@ -398,7 +399,8 @@ Scenario.propTypes = {
   setScenario: PropTypes.func.isRequired,
   slides: PropTypes.array,
   status: PropTypes.number,
-  title: PropTypes.string
+  title: PropTypes.string,
+  user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {

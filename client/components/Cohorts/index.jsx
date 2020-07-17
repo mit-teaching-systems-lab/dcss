@@ -298,7 +298,11 @@ export class Cohorts extends React.Component {
             aria-describedby={ariaDescribedBy}
             open={createIsVisible}
           >
-            <Header id={ariaLabelledBy} icon="group" content="Create a cohort" />
+            <Header
+              id={ariaLabelledBy}
+              icon="group"
+              content="Create a cohort"
+            />
             <Modal.Content id={ariaDescribedBy}>
               <Form onSubmit={onCreateCohortSubmit}>
                 <Input

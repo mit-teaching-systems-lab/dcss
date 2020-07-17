@@ -14,3 +14,8 @@
   overflow-x: hidden;
   height: calc(100vh - 167px) !important;
 }
+
+.se_em__sticky-special {
+  background: white !important;
+  z-index: 10;
+}

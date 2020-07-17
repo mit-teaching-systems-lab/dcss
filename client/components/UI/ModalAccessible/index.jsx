@@ -18,15 +18,8 @@ class ModalAccessible extends Component {
     rootNode.setAttribute('aria-hidden', false);
   }
   render() {
-    const {
-      children,
-      open
-    } = this.props;
-    return open ? (
-      <FocusTrap>
-        {children}
-      </FocusTrap>
-    ) : null;
+    const { children, open } = this.props;
+    return open ? <FocusTrap>{children}</FocusTrap> : null;
   }
 }
 

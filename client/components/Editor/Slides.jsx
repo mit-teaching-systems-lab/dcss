@@ -310,7 +310,7 @@ class Slides extends React.Component {
       onSlideMinMaxChange,
       onSlideOrderChange
     } = this;
-    const { scenarioId, scenario } = this.props;
+    const { scenario } = this.props;
     const { activeSlideIndex, graphOpen, isReady, minimized } = this.state;
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
