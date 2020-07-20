@@ -83,7 +83,7 @@ class ResponseRecallEditor extends React.Component {
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
-      if (!responseId || slideIndex === nonZeroIndex) {
+      if (!responseId || slideIndex === index) {
         return accum;
       }
 
