@@ -254,8 +254,10 @@ class ScenarioEditor extends Component {
     const consentAgreementValue = consent.prose || '';
 
     const innerRef = (node, name) => {
-      this.leftcol[name].node = node;
-      this.leftcol[name].offsetTop = node.offsetTop;
+      if (node) {
+        this.leftcol[name].node = node;
+        this.leftcol[name].offsetTop = node.offsetTop;
+      }
     };
 
     const formInputTitle = (

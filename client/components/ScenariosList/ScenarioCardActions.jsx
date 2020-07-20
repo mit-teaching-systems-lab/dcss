@@ -15,15 +15,11 @@ class ScenarioCardActions extends Component {
     const scenarioUser = scenario.users.find(u => u.id === user.id);
 
     const isAuthorizedToEdit =
-      scenarioUser &&
-      (scenarioUser.is_author ||
-        scenarioUser.is_owner ||
-        user.roles.includes('super_admin'));
+      (scenarioUser && scenarioUser.is_author) || user.is_super;
 
     // eslint-disable-next-line no-unused-vars
     const isAuthorizedToDelete =
-      scenarioUser &&
-      (scenarioUser.is_owner || user.roles.includes('super_admin'));
+      (scenarioUser && scenarioUser.is_owner) || user.is_super;
 
     const editor = Storage.get(`editor/${scenario.id}`, {
       activeTab: 'slides',

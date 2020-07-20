@@ -196,21 +196,14 @@ async function endScenarioLockAsync(req, res) {
   const user_id = Number(req.session.user.id);
   try {
     const unlock = await db.endScenarioLock(scenario_id, user_id);
+    if (unlock) {
+      const scenario = await db.getScenario(scenario_id);
+      res.send({ scenario, status: 200 });
 
-    console.log('.........................................');
-    console.log(unlock);
-    console.log('..........................................');
-
-    const scenario = await db.getScenario(scenario_id);
-    res.send({ scenario, status: 200 });
-
-    const snapshot = await db.setScenarioSnapshot(
-      scenario_id,
-      user_id,
-      scenario
-    );
-
-    console.log(snapshot);
+      await db.setScenarioSnapshot(scenario_id, user_id, scenario);
+    } else {
+      throw new Error('Could not unlock scenario');
+    }
   } catch (apiError) {
     const error = new Error('Error while unlocking scenario');
     error.status = 500;

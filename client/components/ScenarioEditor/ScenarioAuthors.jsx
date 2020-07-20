@@ -87,9 +87,7 @@ class ScenarioAuthors extends Component {
     // eslint-disable-next-line no-console
     console.log('onChange', scenario, user, role, defaultValue);
 
-
     if (role) {
-
       // notify
       // If a role is present (not null), add the role to
       // this user, for this scenario.

@@ -77,7 +77,7 @@ async function getScenarioUsers(scenario_id) {
       personalname,
       roles,
       '{owner}' && roles AS is_owner,
-      '{author}' && roles AS is_author,
+      ('{owner}' && roles) OR ('{author}' && roles) AS is_author,
       '{reviewer}' && roles AS is_reviewer
     FROM users
     INNER JOIN (
@@ -90,6 +90,18 @@ async function getScenarioUsers(scenario_id) {
   `);
 
   return result.rows;
+}
+
+async function endScenarioUserRole(scenario_id, user_id) {
+  return withClientTransaction(async client => {
+    const result = await client.query(sql`
+      DELETE FROM scenario_user_role
+      WHERE scenario_id = ${scenario_id}
+      AND user_id = ${user_id}
+      RETURNING *;
+    `);
+    return { endedCount: result.rowCount };
+  });
 }
 
 async function addScenarioUserRole(scenario_id, user_id, roles) {
@@ -110,19 +122,8 @@ async function addScenarioUserRole(scenario_id, user_id, roles) {
     return { addedCount: result.rowCount };
   });
 }
-async function endScenarioUserRole(scenario_id, user_id) {
-  return withClientTransaction(async client => {
-    const result = await client.query(sql`
-      DELETE FROM scenario_user_role
-      WHERE scenario_id = ${scenario_id}
-      AND user_id = ${user_id}
-      RETURNING *;
-    `);
-    return { endedCount: result.rowCount };
-  });
-}
 
-exports.getScenarioUserRoles = async (user_id, scenario_id) => {
+exports.getScenarioUserRoles = async (scenario_id, user_id) => {
   const result = await query(sql`
     SELECT ARRAY_AGG(role) AS roles
     FROM scenario_user_role
@@ -134,13 +135,13 @@ exports.getScenarioUserRoles = async (user_id, scenario_id) => {
   return { roles };
 };
 
-async function setScenarioUsers(scenario_id, userRoles) {
-  const users = [];
-  for (let { user_id, role } of userRoles) {
-    users.push(await addScenarioUserRole(scenario_id, user_id, [role]));
-  }
-  return users;
-}
+// async function setScenarioUsers(scenario_id, userRoles) {
+//   const users = [];
+//   for (let { user_id, role } of userRoles) {
+//     users.push(await addScenarioUserRole(scenario_id, user_id, [role]));
+//   }
+//   return users;
+// }
 
 async function addScenarioLock(scenario_id, user_id) {
   return withClientTransaction(async client => {
@@ -260,11 +261,12 @@ async function addScenario(user_id, title, description) {
   const consentDefault = consentSelect.rows[0];
   const scenario = scenarioInsert.rows[0];
 
-  const roles = ['owner', 'author'];
-  const users = await setScenarioUsers(
-    scenario.id,
-    roles.map(role => ({ user_id, role }))
-  );
+  // const roles = ['owner', 'author'];
+  // const users = await setScenarioUsers(
+  //   scenario.id,
+  //   roles.map(role => ({ user_id, role }))
+  // );
+  await addScenarioUserRole(scenario.id, user_id, ['owner']);
 
   const consent = await setScenarioConsent(scenario.id, consentDefault);
   const finish = await addFinishSlide(scenario.id);
@@ -272,7 +274,7 @@ async function addScenario(user_id, title, description) {
 
   return {
     ...scenario,
-    users,
+    users: [],
     consent,
     finish,
     lock

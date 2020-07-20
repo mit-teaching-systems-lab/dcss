@@ -46,10 +46,10 @@ exports.requireScenarioUserRole = roles => [
     );
     const { roles: userRoles } = await getUserRoles(req.session.user.id);
     const { roles: scenarioUserRoles } = await getScenarioUserRoles(
+      scenario_id,
       // Remember: we're not checking the role of the target user,
       // we're verifying the role of the administrating user.
-      req.session.user.id,
-      scenario_id
+      req.session.user.id
     );
 
     if (

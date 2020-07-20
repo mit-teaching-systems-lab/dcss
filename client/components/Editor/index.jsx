@@ -103,10 +103,13 @@ class Editor extends Component {
   }
 
   onBeforeUnload(/* event */) {
+    // eslint-disable-next-line no-console
+    console.log(this.props.scenario.lock);
     if (this.props.scenario.lock) {
+      // eslint-disable-next-line no-console
+      console.log(this.props.scenario.id);
       this.props.endScenarioLock(this.props.scenario.id);
     }
-    // return (event.returnValue = '');
   }
 
   componentWillUnmount() {
