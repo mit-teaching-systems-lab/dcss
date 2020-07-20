@@ -1,4 +1,9 @@
-.promptrequiredlabel__icon-margin,
-.promptrequiredlabel__icon-margin:only-child {
-    margin-right: 0rem !important;
+.prl__label-margin {
+  margin-top: 0.90835em !important;
+  margin-right: 1.24em !important;
+}
+
+.prl__icon-margin,
+.prl__icon-margin:only-child {
+  margin-right: 0rem !important;
 }

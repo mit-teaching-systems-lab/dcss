@@ -10,6 +10,9 @@ export { ResponseRecall };
 import * as AudioResponse from './AudioResponse';
 export { AudioResponse };
 
+import * as ConversationPrompt from './ConversationPrompt';
+export { ConversationPrompt };
+
 import * as MultiButtonResponse from './MultiButtonResponse';
 export { MultiButtonResponse };
 

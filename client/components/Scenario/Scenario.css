@@ -6,7 +6,14 @@
 .ui.card.scenario__card--run {
     font-size: 16px;
     width: 93vw;
-    min-height: 85vh;
+    /*
+        top nav has height of 47px
+        font-size is 12px
+        border of 1px
+        ----------------
+        60px
+    */
+    min-height: calc(100vh - 60px);
     max-width: 500px;
     margin-top: 2vh;
 }

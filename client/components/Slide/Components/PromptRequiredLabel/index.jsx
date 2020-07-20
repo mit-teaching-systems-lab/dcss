@@ -8,8 +8,8 @@ const PromptRequiredLabel = ({ fulfilled }) => {
   const name = fulfilled ? 'check' : 'asterisk';
 
   return (
-    <Label color={color} floating>
-      <Icon name={name} className="promptrequiredlabel__icon-margin" />
+    <Label className="prl__label-margin" color={color} floating>
+      <Icon className="prl__icon-margin" name={name} />
     </Label>
   );
 };

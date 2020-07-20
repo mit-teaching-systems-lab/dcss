@@ -1,4 +1,8 @@
+/**
+ * Third Party UI & Add-ons
+ */
 export * from 'semantic-ui-react';
+export * from 'react-semantic-ui-range';
 
 /**
  * Custom Extensions
