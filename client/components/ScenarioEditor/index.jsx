@@ -386,8 +386,9 @@ class ScenarioEditor extends Component {
       )
     );
 
-    const hideEditorMenu = !location.href.includes('localhost');
-    const editorMenu = hideEditorMenu ? null : (
+    // const hideEditorMenu = !location.href.includes('localhost');
+    // const editorMenu = hideEditorMenu ? null : (
+    const editorMenu = (
       <EditorMenu
         text
         className="em__sticky se_em__sticky-special"
@@ -396,7 +397,8 @@ class ScenarioEditor extends Component {
       />
     );
 
-    const isTestEnv = location.href.includes('localhost');
+    // const isTestEnv = location.href.includes('localhost');
+    const isTestEnv = true;
     return (
       <Form>
         <Container fluid>
@@ -437,8 +439,8 @@ class ScenarioEditor extends Component {
                 </Grid.Column>
               </Ref>
               <Grid.Column
-                width={8}
                 className="se__grid-column-width-constraint"
+                width={8}
               >
                 {!isTestEnv ? dropdowns : null}
 

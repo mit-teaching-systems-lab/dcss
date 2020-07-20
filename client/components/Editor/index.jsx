@@ -506,7 +506,8 @@ class Editor extends Component {
 
     const right = [
       menuItemScenarioRun,
-      location.href.includes('localhost') ? menuItemScenarioUnlock : null,
+      // location.href.includes('localhost') ? menuItemScenarioUnlock : null,
+      menuItemScenarioUnlock,
       menuItemScenarioStatus
     ];
 
