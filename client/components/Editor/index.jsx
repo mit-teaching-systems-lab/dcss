@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import {
@@ -10,7 +11,6 @@ import {
   Modal,
   Segment
 } from '@components/UI';
-import PropTypes from 'prop-types';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
 import { notify } from '@components/Notification';
@@ -41,7 +41,7 @@ class Editor extends Component {
     this.getTab = this.getTab.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onClickScenarioAction = this.onClickScenarioAction.bind(this);
-    this.onBeforeUnload = this.onBeforeUnload.bind(this);
+    // this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.setActiveView = this.setActiveView.bind(this);
     this.updateScenario = this.updateScenario.bind(this);
 
@@ -94,26 +94,7 @@ class Editor extends Component {
       if (noPersistedView) {
         this.state.activeTab = 'slides';
       }
-
-      // This was how we requested scenarios prior to moving
-      // the call into componentDidMount():
-      //
-      // this.props.getScenario(scenarioId, { lock: true });
     }
-  }
-
-  onBeforeUnload(/* event */) {
-    // eslint-disable-next-line no-console
-    console.log(this.props.scenario.lock);
-    if (this.props.scenario.lock) {
-      // eslint-disable-next-line no-console
-      console.log(this.props.scenario.id);
-      this.props.endScenarioLock(this.props.scenario.id);
-    }
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('beforeunload', this.onBeforeUnload);
   }
 
   async componentDidMount() {
@@ -126,7 +107,6 @@ class Editor extends Component {
     this.setState(state => ({
       tabs: this.getAllTabs(state.scenarioId)
     }));
-    window.addEventListener('beforeunload', this.onBeforeUnload);
   }
 
   onClick(e, { name: activeTab }) {
@@ -461,11 +441,7 @@ class Editor extends Component {
               aria-labelledby={ariaLabelledBy}
               aria-describedby={ariaDescribedBy}
             >
-              <Header
-                id={ariaLabelledBy}
-                content={header}
-                icon="user outline"
-              />
+              <Header id={ariaLabelledBy} content={header} icon="lock" />
               <Modal.Content id={ariaDescribedBy}>{content}</Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
@@ -478,6 +454,7 @@ class Editor extends Component {
                     color="green"
                     content="Go back"
                   />
+                  {/*
                   <Button.Or />
                   <Button
                     as={Link}
@@ -488,6 +465,7 @@ class Editor extends Component {
                     color="orange"
                     content="Try again"
                   />
+                  */}
                 </Button.Group>
               </Modal.Actions>
             </Modal>
@@ -506,8 +484,7 @@ class Editor extends Component {
 
     const right = [
       menuItemScenarioRun,
-      // location.href.includes('localhost') ? menuItemScenarioUnlock : null,
-      menuItemScenarioUnlock,
+      location.href.includes('localhost') ? menuItemScenarioUnlock : null,
       menuItemScenarioStatus
     ];
 
@@ -597,7 +574,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  endScenarioLock: lock => dispatch(endScenarioLock(lock)),
+  endScenarioLock: id => dispatch(endScenarioLock(id)),
   deleteScenario: id => dispatch(deleteScenario(id)),
   getScenario: (id, options = {}) => dispatch(getScenario(id, options)),
   setScenario: params => dispatch(setScenario(params)),

@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { Button, Dropdown, Icon, Menu } from '@components/UI';
-
+import { endScenarioLock } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import UserMenu from '@components/User/UserMenu';
 
@@ -50,6 +50,12 @@ class Navigation extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
+
+    this.props.history.listen(({ pathname }) => {
+      if (!pathname.startsWith('/editor/') && this.props.scenario.lock) {
+        this.props.endScenarioLock(this.props.scenario.id);
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -64,7 +70,7 @@ class Navigation extends Component {
     const navLinkAuthorized = restrictedNav.map(
       ({ text, path, permission }, index) => {
         const menuItem = (
-          <Menu.Item key={`menu-item-nav-${index}`} href={path}>
+          <Menu.Item key={`menu-item-nav-${index}`} to={path} as={NavLink}>
             {text}
           </Menu.Item>
         );
@@ -82,7 +88,9 @@ class Navigation extends Component {
     );
 
     const navLinkToScenarios = (
-      <Menu.Item href="/scenarios/">Scenarios</Menu.Item>
+      <Menu.Item to="/scenarios/" as={NavLink}>
+        Scenarios
+      </Menu.Item>
     );
 
     //<NavLink to="/scenarios/">Scenarios</NavLink>;
@@ -122,17 +130,26 @@ class Navigation extends Component {
                       <ConfirmAuth requiredPermission="create_scenario">
                         <Menu.Item
                           role="option"
-                          href={`/scenarios/author/${user.username}`}
+                          as={NavLink}
+                          to={`/scenarios/author/${user.username}`}
                         >
                           My Scenarios
                         </Menu.Item>
                       </ConfirmAuth>
                     </Fragment>
                   )}
-                  <Menu.Item role="option" href="/scenarios/official">
+                  <Menu.Item
+                    role="option"
+                    to="/scenarios/official"
+                    as={NavLink}
+                  >
                     Official
                   </Menu.Item>
-                  <Menu.Item role="option" href="/scenarios/community">
+                  <Menu.Item
+                    role="option"
+                    to="/scenarios/community"
+                    as={NavLink}
+                  >
                     Community
                   </Menu.Item>
                 </Dropdown.Menu>
@@ -158,14 +175,26 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
+  endScenarioLock: PropTypes.func,
+  history: PropTypes.object,
   isLoggedIn: PropTypes.bool,
+  scenario: PropTypes.object,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
   const { isLoggedIn } = state.login;
-  const { user } = state;
-  return { user, isLoggedIn };
+  const { user, scenario } = state;
+  return { user, scenario, isLoggedIn };
 };
 
-export default connect(mapStateToProps)(Navigation);
+const mapDispatchToProps = dispatch => ({
+  endScenarioLock: params => dispatch(endScenarioLock(params))
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Navigation)
+);

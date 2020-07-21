@@ -161,8 +161,10 @@ class Display extends Component {
 
     // The fallback value of an AudioResponse or ConversationPrompt
     // will not be an mp3 file path.
-    if (rvalue.endsWith('mp3') &&
-        Object.prototype.hasOwnProperty.call(response, 'transcript')) {
+    if (
+      rvalue.endsWith('mp3') &&
+      Object.prototype.hasOwnProperty.call(response, 'transcript')
+    ) {
       const { transcript } = response;
       content = (
         <Fragment>

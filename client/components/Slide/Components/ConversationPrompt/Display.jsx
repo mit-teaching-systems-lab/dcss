@@ -139,8 +139,8 @@ class Display extends Component {
       config.youtube.playerVars.end = configuration.end;
     }
 
-    const playing = !this.props.isEmbeddedInSVG;
-    const light = this.props.isEmbeddedInSVG;
+    const playing = this.isScenarioRun;
+    const light = !this.isScenarioRun;
     const height = '320px';
     const width = '100%';
 

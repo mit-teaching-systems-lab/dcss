@@ -10,12 +10,7 @@ import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Loading from '@components/Loading';
 import Storage from '@utils/Storage';
-import {
-  endScenarioLock,
-  getSlides,
-  getScenario,
-  setScenario
-} from '@actions/scenario';
+import { getSlides, getScenario, setScenario } from '@actions/scenario';
 import './Scenario.css';
 
 class Scenario extends Component {
@@ -203,16 +198,11 @@ class Scenario extends Component {
       getSlides,
       onResponseChange,
       onRunChange = () => {},
-      scenarioId,
-      user
+      scenarioId
     } = this.props;
 
     const scenario = await (this.props.scenario || getScenario(scenarioId));
     const contents = await getSlides(scenarioId);
-
-    if (scenario.lock && scenario.lock.user_id === user.id) {
-      await this.props.endScenarioLock(scenario.id);
-    }
 
     // Nice try! The requested scenario does not exist.
     if (!scenario) {
@@ -374,7 +364,6 @@ Scenario.propTypes = {
   categories: PropTypes.array,
   cohortId: PropTypes.node,
   description: PropTypes.string,
-  endScenarioLock: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   getSlides: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
@@ -412,7 +401,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  endScenarioLock: params => dispatch(endScenarioLock(params)),
   getScenario: params => dispatch(getScenario(params)),
   getSlides: params => dispatch(getSlides(params)),
   setScenario
