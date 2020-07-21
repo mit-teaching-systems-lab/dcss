@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './AudioResponse.css';
+import './AudioPrompt.css';
 
 function makeMediaURL(file) {
   return file.startsWith('blob:') ? file : `/api/media/${file}`;

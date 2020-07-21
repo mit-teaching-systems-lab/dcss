@@ -3,11 +3,11 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { Message } from '@components/UI';
-import AudioPlayer from '../AudioResponse/AudioPlayer';
-import Transcript from '../AudioResponse/Transcript';
+import AudioPlayer from '../AudioPrompt/AudioPlayer';
+import Transcript from '../AudioPrompt/Transcript';
 import { connect } from 'react-redux';
 import { getResponse } from '@actions/response';
-import '../AudioResponse/AudioResponse.css';
+import '../AudioPrompt/AudioPrompt.css';
 
 class Display extends Component {
   constructor(props) {
@@ -159,7 +159,7 @@ class Display extends Component {
 
     let content = rvalue;
 
-    // The fallback value of an AudioResponse or ConversationPrompt
+    // The fallback value of an AudioPrompt or ConversationPrompt
     // will not be an mp3 file path.
     if (
       rvalue.endsWith('mp3') &&

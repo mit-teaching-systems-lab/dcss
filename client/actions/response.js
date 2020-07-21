@@ -2,8 +2,8 @@ import Storage from '@utils/Storage';
 import {
   GET_RESPONSE_SUCCESS,
   GET_RESPONSE_ERROR,
-  GET_TRANSCRIPT_SUCCESS,
-  GET_TRANSCRIPT_ERROR,
+  GET_TRANSCRIPTION_OUTCOME_SUCCESS,
+  GET_TRANSCRIPTION_OUTCOME_ERROR,
   SET_RESPONSES_SUCCESS,
   SET_RESPONSES_ERROR
 } from './types';
@@ -31,7 +31,10 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
   }
 };
 
-export const getTranscriptOnly = ({ id, responseId }) => async dispatch => {
+export const getTranscriptionOutcome = ({
+  id,
+  responseId
+}) => async dispatch => {
   try {
     const res = await (await fetch(
       `/api/runs/${id}/response/${responseId}/transcript`
@@ -40,11 +43,17 @@ export const getTranscriptOnly = ({ id, responseId }) => async dispatch => {
     if (res.error) {
       throw res;
     }
-    const { transcript } = res;
-    dispatch({ type: GET_TRANSCRIPT_SUCCESS, transcript });
-    return transcript;
+    const { outcome } = res;
+    if (outcome) {
+      dispatch({ type: GET_TRANSCRIPTION_OUTCOME_SUCCESS, outcome });
+      return outcome;
+    }
+    return {
+      response: null,
+      transcript: null
+    };
   } catch (error) {
-    dispatch({ type: GET_TRANSCRIPT_ERROR, error });
+    dispatch({ type: GET_TRANSCRIPTION_OUTCOME_ERROR, error });
     return null;
   }
 };

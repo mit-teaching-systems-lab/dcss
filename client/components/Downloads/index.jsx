@@ -22,6 +22,7 @@ import { getUser } from '@actions/user';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CSV from '@utils/csv';
+import Media from '@utils/Media';
 import { makeHeader } from '@utils/data-table';
 import shorten from '@utils/shorten';
 import '../Cohorts/Cohort.css';
@@ -29,10 +30,6 @@ import '../Cohorts/DataTable.css';
 import './Downloads.css';
 
 const ROWS_PER_PAGE = 10;
-
-function isAudioFile(input) {
-  return /^audio\/\d.+\/AudioResponse/.test(input) && input.endsWith('.mp3');
-}
 
 class Downloads extends Component {
   constructor(props) {
@@ -109,7 +106,7 @@ class Downloads extends Component {
         record.content = content;
         record.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
 
-        if (isAudioFile(value)) {
+        if (Media.isAudioFile(value)) {
           record.content += ` (${location.origin}/api/media/${value})`;
         }
 

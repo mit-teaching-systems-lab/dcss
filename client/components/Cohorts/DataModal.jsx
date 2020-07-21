@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import { Header, Icon, Modal, Table } from '@components/UI';
 import SplitPane from 'react-split-pane';
 import Moment from '@utils/Moment';
+import Media from '@utils/Media';
 import htmlId from '@utils/html-id';
 import ContentSlide from '@components/Scenario/ContentSlide';
 import './DataTable.css';
 import './Resizer.css';
-
-function isAudioFile(input) {
-  return /^audio\/\d.+\/AudioResponse/.test(input) && input.endsWith('.mp3');
-}
 
 const DataModal = props => {
   const { index, isScenarioDataTable, prompts, rows } = props;
@@ -64,7 +61,7 @@ const DataModal = props => {
                     let { 0: left = '', [index + 1]: response = {} } = row;
 
                     const { created_at, ended_at, value } = response;
-                    const isAudioContent = isAudioFile(value);
+                    const isAudioContent = Media.isAudioFile(value);
                     const { content = '' } = response;
                     const difference = Moment(ended_at).diff(created_at);
                     const duration = Moment.duration(difference).format(

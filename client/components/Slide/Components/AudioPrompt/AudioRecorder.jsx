@@ -1,40 +1,25 @@
-import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Header, Icon, Segment } from '@components/UI';
+import { Button, Form, Grid, Icon } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
-import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
-import PromptRequiredLabel from '../PromptRequiredLabel';
-import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
-
-//
-//
-//
-//
-// TODO: Migrate this to use AudioRecorder component
-// import AudioRecorder from './AudioRecorder';
-//
-//
-//
-//
 import AudioPlayer from './AudioPlayer';
 import Transcript from './Transcript';
+import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import { getResponse } from '@actions/response';
-import './AudioResponse.css';
+import './AudioPrompt.css';
 
-class Display extends Component {
+class AudioRecorder extends Component {
   constructor(props) {
     super(props);
 
-    const { persisted = { value: '', transcript: '' } } = this.props;
+    const { transcript = '', value = '' } = this.props;
 
     this.state = {
       blobURL: '',
       isRecording: false,
-      transcript: persisted.transcript,
-      type: '',
-      value: persisted.value
+      transcript,
+      value
     };
 
     this.created_at = new Date().toISOString();
@@ -54,15 +39,19 @@ class Display extends Component {
     if (!this.isScenarioRun) {
       return;
     }
+
+    if (this.props.autostart) {
+      this.onStartClick();
+    }
+
     let {
       getResponse,
-      onResponseChange,
-      persisted = {},
+      onChange,
       responseId,
-      run
+      run,
+      transcript,
+      value
     } = this.props;
-
-    let { name = responseId, transcript = '', value = '' } = persisted;
 
     if (!value || !transcript) {
       const previous = await getResponse({
@@ -77,16 +66,18 @@ class Display extends Component {
     }
 
     if (value) {
-      onResponseChange({}, { name, transcript, value, isFulfilled: true });
+      onChange({}, { name, transcript, value, isFulfilled: true });
       this.setState({ transcript, value });
     }
   }
 
   onStartClick() {
     this.setState({ isRecording: true });
-    this.mp3Recorder.start().then(() => {
+
+    (async () => {
+      await this.mp3Recorder.start();
       this.created_at = new Date().toISOString();
-    });
+    })();
   }
 
   onStopClick() {
@@ -125,18 +116,15 @@ class Display extends Component {
       });
 
       const { created_at } = this;
-      const { recallId } = this.props;
       const transcript = '';
 
-      this.props.onResponseChange(
+      this.props.onChange(
         {},
         {
           created_at,
           ended_at: new Date().toISOString(),
           name,
-          recallId,
           transcript,
-          type,
           value
         }
       );
@@ -152,16 +140,13 @@ class Display extends Component {
   }
 
   onChange(event, { name, value }) {
-    const { created_at } = this;
-    const { recallId } = this.props;
     const transcript = '';
-    this.props.onResponseChange(event, {
+    const { created_at } = this;
+    this.props.onChange(event, {
       created_at,
       ended_at: new Date().toISOString(),
-      recallId,
       name,
       transcript,
-      type,
       value
     });
 
@@ -170,21 +155,14 @@ class Display extends Component {
 
   render() {
     const { isRecording, blobURL, transcript, value } = this.state;
-    const { prompt, recallId, responseId, required, run } = this.props;
-    const { onChange, onFocus } = this;
+    const { responseId, run, showInstructions } = this.props;
+
+    const { onChange, onFocus, onStartClick, onStopClick } = this;
     const isFulfilled = value || blobURL ? true : false;
-    const header = (
-      <Fragment>
-        {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
-      </Fragment>
-    );
     const src = isFulfilled ? blobURL || value : null;
 
     return IS_AUDIO_RECORDING_SUPPORTED ? (
-      <Segment>
-        <Header as="h3">{header}</Header>
-        {recallId && <ResponseRecall run={run} recallId={recallId} />}
-
+      <Fragment>
         <Grid>
           <Grid.Row columns={2}>
             <Grid.Column width={3}>
@@ -192,7 +170,7 @@ class Display extends Component {
                 <Button
                   aria-label="Start recording"
                   className="ar__button"
-                  onClick={this.onStartClick}
+                  onClick={onStartClick}
                 >
                   <Icon.Group size="big">
                     <Icon size="large" name="circle outline" />
@@ -204,7 +182,7 @@ class Display extends Component {
                 <Button
                   aria-label="Stop recording"
                   className="ar__button"
-                  onClick={this.onStopClick}
+                  onClick={onStopClick}
                 >
                   <Icon.Group size="big">
                     <Icon size="large" loading name="circle notch" />
@@ -223,12 +201,14 @@ class Display extends Component {
               <AudioPlayer src={src} />
             </Grid.Column>
           </Grid.Row>
-          <Grid.Row stretched>
-            <Grid.Column className="ar__instruction">
-              Click the microphone to record your response. When you&apos;re
-              done, click the microphone again to stop recording.
-            </Grid.Column>
-          </Grid.Row>
+          {showInstructions ? (
+            <Grid.Row stretched>
+              <Grid.Column className="ar__instruction">
+                Click the microphone to record your response. When you&apos;re
+                done, click the microphone again to stop recording.
+              </Grid.Column>
+            </Grid.Row>
+          ) : null}
         </Grid>
 
         {isFulfilled ? (
@@ -239,41 +219,35 @@ class Display extends Component {
             transcript={transcript}
           />
         ) : null}
-      </Segment>
+      </Fragment>
     ) : (
-      <Segment>
-        <Header as="h3">{header}</Header>
-        {recallId && <ResponseRecall run={run} recallId={recallId} />}
-        <Form>
-          <Form.TextArea
-            name={responseId}
-            placeholder="..."
-            onFocus={onFocus}
-            onChange={onChange}
-          />
-        </Form>
-      </Segment>
+      <Form>
+        <Form.TextArea
+          name={responseId}
+          placeholder="..."
+          onFocus={onFocus}
+          onChange={onChange}
+        />
+      </Form>
     );
   }
 }
 
-Display.defaultProps = {
+AudioRecorder.defaultProps = {
   isEmbeddedInSVG: false
 };
 
-Display.propTypes = {
-  isEmbeddedInSVG: PropTypes.bool,
+AudioRecorder.propTypes = {
+  autostart: PropTypes.bool,
   getResponse: PropTypes.func,
+  isEmbeddedInSVG: PropTypes.bool,
   isRecording: PropTypes.bool,
-  onResponseChange: PropTypes.func,
-  persisted: PropTypes.object,
-  placeholder: PropTypes.string,
-  prompt: PropTypes.string,
-  recallId: PropTypes.string,
-  required: PropTypes.bool,
+  onChange: PropTypes.func,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  type: PropTypes.oneOf([type]).isRequired
+  showInstructions: PropTypes.bool,
+  transcript: PropTypes.string,
+  value: PropTypes.string
 };
 
 const mapStateToProps = state => {
@@ -288,4 +262,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Display);
+)(AudioRecorder);

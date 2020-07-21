@@ -126,11 +126,7 @@ exports.getResponses = async ({ run_id, user_id }) => {
   return result.rows;
 };
 
-exports.getAudioTranscriptResponse = async ({
-  run_id,
-  response_id,
-  user_id
-}) => {
+exports.getResponseTranscript = async ({ run_id, response_id, user_id }) => {
   const result = await query(sql`
     SELECT transcript
     FROM audio_transcript
@@ -148,23 +144,17 @@ exports.getAudioTranscriptResponse = async ({
   return result.rows[0];
 };
 
-exports.getResponseTranscriptOnly = async ({
-  run_id,
-  response_id,
-  user_id
-}) => {
+exports.getTranscriptionOutcome = async ({ run_id, response_id, user_id }) => {
   const likable = `audio/${run_id}/${response_id}/${user_id}/%`;
   const results = await query(sql`
-    SELECT transcript
+    SELECT response, transcript
     FROM audio_transcript
     WHERE key ILIKE ${likable}
     ORDER BY created_at DESC
     LIMIT 1
   `);
 
-  const { transcript } = results.rows[0] || {};
-
-  return transcript || null;
+  return results.rows[0];
 };
 
 exports.finishRun = async function(id) {

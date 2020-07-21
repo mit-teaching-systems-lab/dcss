@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { Container, Header, Segment } from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
-import AudioRecorder from '@components/Slide/Components/AudioResponse/AudioRecorder';
+import AudioRecorder from '@components/Slide/Components/AudioPrompt/AudioRecorder';
 import { getResponse } from '@actions/response';
-import '@components/Slide/Components/AudioResponse/AudioResponse.css';
+import '@components/Slide/Components/AudioPrompt/AudioPrompt.css';
 import './ConversationPrompt.css';
 
 import Hls from 'hls.js';

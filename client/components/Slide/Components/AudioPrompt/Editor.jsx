@@ -5,10 +5,10 @@ import { Container, Form, Message } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
-import './AudioResponse.css';
+import './AudioPrompt.css';
 import '@components/Slide/SlideEditor/SlideEditor.css';
 
-class AudioResponseEditor extends Component {
+class AudioPromptEditor extends Component {
   constructor(props) {
     super(props);
     const { header = '', prompt = '', recallId = '', responseId } = props.value;
@@ -112,7 +112,7 @@ class AudioResponseEditor extends Component {
   }
 }
 
-AudioResponseEditor.propTypes = {
+AudioPromptEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   scenario: PropTypes.object,
   slideIndex: PropTypes.any,
@@ -127,4 +127,4 @@ AudioResponseEditor.propTypes = {
   })
 };
 
-export default AudioResponseEditor;
+export default AudioPromptEditor;

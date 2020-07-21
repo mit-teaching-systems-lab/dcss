@@ -6,7 +6,7 @@ const {
   finishRun,
   getRuns,
   getResponse,
-  getResponseTranscriptOnly,
+  getTranscriptionOutcome,
   getReferrerParams,
   getRunData,
   newOrExistingRun,
@@ -42,7 +42,7 @@ runs.post('/:run_id/response/:response_id', [
 
 runs.get('/:run_id/response/:response_id/transcript', [
   requireUserForRun,
-  getResponseTranscriptOnly
+  getTranscriptionOutcome
 ]);
 runs.get('/:run_id/response/:response_id', [requireUserForRun, getResponse]);
 runs.get('/:run_id/referrer-params', [requireUserForRun, getReferrerParams]);

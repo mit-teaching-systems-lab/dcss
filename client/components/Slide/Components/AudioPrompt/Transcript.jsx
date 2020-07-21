@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getTranscriptOnly } from '@actions/response';
-import './AudioResponse.css';
+import { getTranscriptionOutcome } from '@actions/response';
+import './AudioPrompt.css';
 
 const Blockquote = ({ children }) => {
   return <blockquote className="at__blockquote">{children}</blockquote>;
@@ -26,7 +26,8 @@ class Transcript extends Component {
       transcript
     };
 
-    this.refreshInterval = null;
+    this.interval = null;
+    this.intervalCount = 0;
   }
 
   get isScenarioRun() {
@@ -34,35 +35,39 @@ class Transcript extends Component {
   }
 
   componentWillUnmount() {
-    if (this.refreshInterval) {
-      clearInterval(this.refreshInterval);
+    if (this.interval) {
+      clearInterval(this.interval);
     }
   }
 
   refresh() {
-    this.refreshInterval = setInterval(async () => {
-      const transcript = await this.fetchTranscript();
-
+    this.interval = setInterval(async () => {
+      const { transcript } = await this.fetchTranscriptOutcome();
       if (transcript !== this.state.transcript) {
         this.setState({ transcript });
-        clearInterval(this.refreshInterval);
+        clearInterval(this.interval);
+      }
+
+      if (this.intervalCount === 60) {
+        this.intervalCount = 0;
+        clearInterval(this.interval);
+      } else {
+        this.intervalCount++;
       }
     }, 1000);
   }
 
-  async fetchTranscript() {
+  async fetchTranscriptOutcome() {
     let {
-      getTranscriptOnly,
+      getTranscriptionOutcome,
       responseId,
       run: { id }
     } = this.props;
 
-    const transcript = await getTranscriptOnly({
+    return await getTranscriptionOutcome({
       id,
       responseId
     });
-
-    return transcript;
   }
 
   async componentDidMount() {
@@ -74,7 +79,10 @@ class Transcript extends Component {
 
     // We don't already have a transcript string.
     if (!transcript) {
-      transcript = await this.fetchTranscript();
+      const outcome = await this.fetchTranscriptOutcome();
+      if (outcome.transcript) {
+        transcript = outcome.transcript;
+      }
     }
 
     this.setState({ transcript });
@@ -112,7 +120,7 @@ class Transcript extends Component {
 }
 
 Transcript.propTypes = {
-  getTranscriptOnly: PropTypes.func,
+  getTranscriptionOutcome: PropTypes.func,
   onChange: PropTypes.func,
   responseId: PropTypes.string,
   run: PropTypes.object,
@@ -125,7 +133,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getTranscriptOnly: params => dispatch(getTranscriptOnly(params))
+  getTranscriptionOutcome: params => dispatch(getTranscriptionOutcome(params))
 });
 
 export default connect(

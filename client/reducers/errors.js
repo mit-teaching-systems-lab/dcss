@@ -12,7 +12,7 @@ import {
   GET_SCENARIO_ERROR,
   GET_SCENARIOS_ERROR,
   GET_SLIDES_ERROR,
-  GET_TRANSCRIPT_ERROR,
+  GET_TRANSCRIPTION_OUTCOME_ERROR,
   GET_USER_COHORTS_ERROR,
   GET_USER_ERROR,
   GET_USERS_ERROR,
@@ -140,7 +140,7 @@ const response = (state = null, action) => {
 const transcript = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
-    case GET_TRANSCRIPT_ERROR:
+    case GET_TRANSCRIPTION_OUTCOME_ERROR:
       return {
         ...error
       };

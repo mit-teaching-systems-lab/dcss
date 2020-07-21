@@ -40,7 +40,7 @@ async function getResponseAsync(req, res) {
   const { response_id } = req.params;
 
   const response = await db.getResponse({ run_id, response_id, user_id });
-  const transcript = await db.getAudioTranscriptResponse({
+  const transcript = await db.getResponseTranscript({
     run_id,
     response_id,
     user_id
@@ -53,19 +53,19 @@ async function getResponseAsync(req, res) {
   res.json({ response, status: 200 });
 }
 
-async function getResponseTranscriptOnlyAsync(req, res) {
+async function getTranscriptionOutcomeAsync(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
 
   // This returns a transcript record, not a response
   // object with a transcript!
-  const transcript = await db.getResponseTranscriptOnly({
+  const outcome = await db.getTranscriptionOutcome({
     run_id,
     response_id,
     user_id
   });
 
-  res.json({ transcript, status: 200 });
+  res.json({ outcome, status: 200 });
 }
 
 async function getRunDataAsync(req, res) {
@@ -117,9 +117,7 @@ async function getRunsAsync(req, res) {
 exports.finishRun = asyncMiddleware(finishRunAsync);
 exports.getResponse = asyncMiddleware(getResponseAsync);
 exports.getRunData = asyncMiddleware(getRunDataAsync);
-exports.getResponseTranscriptOnly = asyncMiddleware(
-  getResponseTranscriptOnlyAsync
-);
+exports.getTranscriptionOutcome = asyncMiddleware(getTranscriptionOutcomeAsync);
 exports.getRuns = asyncMiddleware(getRunsAsync);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);

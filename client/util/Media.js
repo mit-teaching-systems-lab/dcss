@@ -23,3 +23,23 @@ export function timeToSec(time) {
     parseFloat(digits[2], 10)
   );
 }
+
+export function isAudioFile(input) {
+  // Previously, this was determined by looking at both the path
+  // and the extension, ie:
+  // return /^audio\/\d.+\/AudioResponse/.test(input) &&
+  //        input.endsWith('.mp3');
+  //
+  // Using /exp/.test(...) provided an implicit cast to string,
+  // which protected us from errors caused by input not being a
+  // string. That's replaced here by explicitly checking whether
+  // input is a string, before checking if it ends with "mp3"
+  return typeof input === 'string' && input.endsWith('.mp3');
+}
+
+export default {
+  IS_AUDIO_RECORDING_SUPPORTED,
+  secToTime,
+  timeToSec,
+  isAudioFile
+};

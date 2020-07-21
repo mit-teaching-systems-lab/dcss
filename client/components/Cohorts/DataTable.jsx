@@ -6,6 +6,7 @@ import hash from 'object-hash';
 import { Icon, Table } from '@components/UI';
 import { diff } from 'deep-diff';
 import Moment from '@utils/Moment';
+import Media from '@utils/Media';
 import { getCohort, getCohortData } from '@actions/cohort';
 import { getRunData } from '@actions/run';
 import { getScenarios } from '@actions/scenario';
@@ -16,10 +17,6 @@ import { makeHeader } from '@utils/data-table';
 import DataModal from './DataModal';
 import DataTableMenu from './DataTableMenu';
 import './DataTable.css';
-
-function isAudioFile(input) {
-  return /^audio\/\d.+\/AudioResponse/.test(input) && input.endsWith('.mp3');
-}
 
 function reduceResponses(key, responses) {
   const responsesReduced = responses.reduce((accum, response) => {
@@ -228,7 +225,7 @@ export class DataTable extends React.Component {
           }
 
           const response = data || {};
-          const isAudioContent = isAudioFile(response.value);
+          const isAudioContent = Media.isAudioFile(response.value);
           let { content = '' } = response;
 
           if (isAudioContent) {
@@ -354,7 +351,7 @@ const DataTableRow = props => {
       {cells.slice(1).map((response = {}, cellIndex) => {
         const cellKey = `${rowKey}-cell-${cellIndex}`;
         const modalKey = `${rowKey}-modal-${cellIndex}`;
-        const isAudioContent = isAudioFile(response.value);
+        const isAudioContent = Media.isAudioFile(response.value);
         const { content = '' } = response;
 
         // microphone

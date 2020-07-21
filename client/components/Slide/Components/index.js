@@ -7,8 +7,8 @@ export { Suggestion };
 import * as ResponseRecall from './ResponseRecall';
 export { ResponseRecall };
 
-import * as AudioResponse from './AudioResponse';
-export { AudioResponse };
+import * as AudioPrompt from './AudioPrompt';
+export { AudioPrompt };
 
 import * as ConversationPrompt from './ConversationPrompt';
 export { ConversationPrompt };

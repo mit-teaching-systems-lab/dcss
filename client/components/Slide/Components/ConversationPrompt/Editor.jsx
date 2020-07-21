@@ -7,7 +7,7 @@ import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
 import { secToTime } from '@utils/Media';
-import '@components/Slide/Components/AudioResponse/AudioResponse.css';
+import '@components/Slide/Components/AudioPrompt/AudioPrompt.css';
 import '@components/Slide/SlideEditor/SlideEditor.css';
 import './ConversationPrompt.css';
 
