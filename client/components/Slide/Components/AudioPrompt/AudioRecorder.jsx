@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Icon } from '@components/UI';
+import { Button, Form, Grid, Icon, Popup } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
 import AudioPlayer from './AudioPlayer';
 import Transcript from './Transcript';
@@ -155,62 +155,64 @@ class AudioRecorder extends Component {
 
   render() {
     const { isRecording, blobURL, transcript, value } = this.state;
-    const { responseId, run, showInstructions } = this.props;
+    const { responseId, run } = this.props;
 
     const { onChange, onFocus, onStartClick, onStopClick } = this;
     const isFulfilled = value || blobURL ? true : false;
     const src = isFulfilled ? blobURL || value : null;
 
+    const instructions =
+      this.props.instructions ||
+      `
+      Click the microphone to record your response. When you&apos;re
+      done, click the microphone again to stop recording.
+    `;
+
+    const trigger = IS_AUDIO_RECORDING_SUPPORTED ? (
+      <Grid.Row columns={2}>
+        <Grid.Column width={3}>
+          {!isRecording ? (
+            <Button
+              aria-label="Start recording"
+              className="ar__button"
+              onClick={onStartClick}
+            >
+              <Icon.Group size="big">
+                <Icon size="large" name="circle outline" />
+                <Icon name="microphone" />
+                <Icon corner="top right" color="red" name="circle" />
+              </Icon.Group>
+            </Button>
+          ) : (
+            <Button
+              aria-label="Stop recording"
+              className="ar__button"
+              onClick={onStopClick}
+            >
+              <Icon.Group size="big">
+                <Icon size="large" loading name="circle notch" />
+                <Icon name="microphone" />
+                <Icon
+                  className="blink"
+                  corner="top right"
+                  color="red"
+                  name="circle"
+                />
+              </Icon.Group>
+            </Button>
+          )}
+        </Grid.Column>
+        <Grid.Column>
+          <AudioPlayer src={src} />
+        </Grid.Column>
+      </Grid.Row>
+    ) : null;
+
     return IS_AUDIO_RECORDING_SUPPORTED ? (
       <Fragment>
         <Grid>
-          <Grid.Row columns={2}>
-            <Grid.Column width={3}>
-              {!isRecording ? (
-                <Button
-                  aria-label="Start recording"
-                  className="ar__button"
-                  onClick={onStartClick}
-                >
-                  <Icon.Group size="big">
-                    <Icon size="large" name="circle outline" />
-                    <Icon name="microphone" />
-                    <Icon corner="top right" color="red" name="circle" />
-                  </Icon.Group>
-                </Button>
-              ) : (
-                <Button
-                  aria-label="Stop recording"
-                  className="ar__button"
-                  onClick={onStopClick}
-                >
-                  <Icon.Group size="big">
-                    <Icon size="large" loading name="circle notch" />
-                    <Icon name="microphone" />
-                    <Icon
-                      className="blink"
-                      corner="top right"
-                      color="red"
-                      name="circle"
-                    />
-                  </Icon.Group>
-                </Button>
-              )}
-            </Grid.Column>
-            <Grid.Column>
-              <AudioPlayer src={src} />
-            </Grid.Column>
-          </Grid.Row>
-          {showInstructions ? (
-            <Grid.Row stretched>
-              <Grid.Column className="ar__instruction">
-                Click the microphone to record your response. When you&apos;re
-                done, click the microphone again to stop recording.
-              </Grid.Column>
-            </Grid.Row>
-          ) : null}
+          <Popup content={instructions} trigger={trigger} />
         </Grid>
-
         {isFulfilled ? (
           <Transcript
             key={src}
@@ -223,8 +225,9 @@ class AudioRecorder extends Component {
     ) : (
       <Form>
         <Form.TextArea
-          name={responseId}
+          autoFocus
           placeholder="..."
+          name={responseId}
           onFocus={onFocus}
           onChange={onChange}
         />
@@ -245,7 +248,7 @@ AudioRecorder.propTypes = {
   onChange: PropTypes.func,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  showInstructions: PropTypes.bool,
+  instructions: PropTypes.string,
   transcript: PropTypes.string,
   value: PropTypes.string
 };
