@@ -119,6 +119,7 @@ class Navigation extends Component {
 
             <Menu.Menu>
               <Dropdown
+                closeOnBlur
                 simple
                 item
                 className="navigation__dropdown"
