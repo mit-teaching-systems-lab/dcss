@@ -37,9 +37,20 @@ export function isAudioFile(input) {
   return typeof input === 'string' && input.endsWith('.mp3');
 }
 
+export function isAudioPrompt(component) {
+  // TODO: I'd prefer to have each component declare a list of
+  // permissions that it needs, however that would require migrating
+  // thousands of existing slide components, which is risky.
+  return (
+    component.type.startsWith('Conversation') ||
+    component.type.startsWith('Audio')
+  );
+}
+
 export default {
   IS_AUDIO_RECORDING_SUPPORTED,
   secToTime,
   timeToSec,
-  isAudioFile
+  isAudioFile,
+  isAudioPrompt
 };

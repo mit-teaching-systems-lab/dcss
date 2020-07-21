@@ -9,6 +9,7 @@ import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Loading from '@components/Loading';
+import Media from '@utils/Media';
 import Storage from '@utils/Storage';
 import { getSlides, getScenario, setScenario } from '@actions/scenario';
 import './Scenario.css';
@@ -227,10 +228,19 @@ class Scenario extends Component {
       contents.splice(contents.indexOf(finish), 1);
     }
 
+    const microphone = this.slides.some(({ components }) =>
+      components.some(c => Media.isAudioPrompt(c))
+    );
+
+    const permissions = {
+      microphone
+    };
+
     const slides = [
       <EntrySlide
         key="entry-slide"
         cohortId={cohortId}
+        permissions={permissions}
         scenarioId={scenarioId}
         scenario={scenario}
         onChange={onRunChange}
