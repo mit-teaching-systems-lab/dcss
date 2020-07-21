@@ -339,7 +339,8 @@ class ScenarioEditor extends Component {
 
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
-        {this.state.authors.length ? (
+        {/*
+          this.state.authors.length ? (
           <Ref innerRef={node => innerRef(node, 'authors')}>
             <AuthorDropdown
               author={author}
@@ -347,7 +348,8 @@ class ScenarioEditor extends Component {
               onChange={onChange}
             />
           </Ref>
-        ) : null}
+        ) : null
+        */}
         {this.state.categories.length ? (
           <Ref innerRef={node => innerRef(node, 'categories')}>
             <CategoriesDropdown
@@ -400,6 +402,10 @@ class ScenarioEditor extends Component {
 
     // const isTestEnv = location.href.includes('localhost');
     const isTestEnv = true;
+    const leftColBottomStyle = scenarioId !== 'new' ? {
+      height: '500px'
+    } : {};
+
     return (
       <Form>
         <Container fluid>
@@ -436,7 +442,7 @@ class ScenarioEditor extends Component {
                     </Button>
                   )}
 
-                  <div style={{ height: '500px' }}></div>
+                  <div style={leftColBottomStyle}></div>
                 </Grid.Column>
               </Ref>
               <Grid.Column

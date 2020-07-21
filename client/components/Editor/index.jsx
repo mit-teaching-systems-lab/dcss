@@ -116,8 +116,13 @@ class Editor extends Component {
     await this.props.getUsers();
 
     this.setState(state => {
+
+      const {
+        scenarioUser
+      } = this.props;
+
       return {
-        activeTab: this.props.scenarioUser.is_reviewer
+        activeTab: scenarioUser && scenarioUser.is_reviewer
           ? 'preview'
           : state.activeTab,
         tabs: this.getAllTabs(state.scenarioId)
@@ -294,6 +299,7 @@ class Editor extends Component {
   }
 
   getAllTabs() {
+    console.log(this.props.isNewScenario);
     const { scenario, scenarioUser } = this.props;
 
     switch (scenario.id) {
