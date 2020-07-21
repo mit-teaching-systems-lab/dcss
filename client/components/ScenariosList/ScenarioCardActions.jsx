@@ -21,6 +21,8 @@ class ScenarioCardActions extends Component {
     const isAuthorizedToDelete =
       (scenarioUser && scenarioUser.is_owner) || user.is_super;
 
+    const isAuthorizedToReview = scenarioUser && scenarioUser.is_reviewer;
+
     const editor = Storage.get(`editor/${scenario.id}`, {
       activeTab: 'slides',
       activeSlideIndex: 1
@@ -69,6 +71,22 @@ class ScenarioCardActions extends Component {
               >
                 <Icon name="edit outline" />
                 <span className={className}>Edit</span>
+              </Button>
+            </ConfirmAuth>
+            <ConfirmAuth isAuthorized={isAuthorizedToReview}>
+              <Button
+                size="tiny"
+                basic
+                icon
+                as={Link}
+                to={{
+                  pathname: `/editor/${scenario.id}/preview/${editor.activeSlideIndex}`
+                }}
+                aria-label="Edit scenario"
+                className="sc__button sc__hidden-on-mobile"
+              >
+                <Icon className="book reader icon" />
+                <span className={className}>Review</span>
               </Button>
             </ConfirmAuth>
             {/*

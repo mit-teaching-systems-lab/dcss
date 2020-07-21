@@ -388,14 +388,15 @@ class ScenarioEditor extends Component {
 
     // const hideEditorMenu = !location.href.includes('localhost');
     // const editorMenu = hideEditorMenu ? null : (
-    const editorMenu = (
-      <EditorMenu
-        text
-        className="em__sticky se_em__sticky-special"
-        type="scenario authors"
-        items={{ left }}
-      />
-    );
+    const editorMenu =
+      scenarioId !== 'new' ? (
+        <EditorMenu
+          text
+          className="em__sticky se_em__sticky-special"
+          type="scenario authors"
+          items={{ left }}
+        />
+      ) : null;
 
     // const isTestEnv = location.href.includes('localhost');
     const isTestEnv = true;

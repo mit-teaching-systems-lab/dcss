@@ -18,12 +18,12 @@
 .ui.form input[type='url'],
 .ui.form select:focus,
 .ui.form textarea {
-    font-size: 1em !important;
+  font-size: 1em !important;
 }
 
 .ui.segment {
-   margin-top: 0.5rem;
-   margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .ui.segment:first-child {

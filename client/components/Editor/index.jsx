@@ -99,14 +99,30 @@ class Editor extends Component {
 
   async componentDidMount() {
     if (!this.props.isNewScenario) {
-      await this.props.getScenario(this.props.scenarioId, { lock: true });
+      const scenario = await this.props.getScenario(this.props.scenarioId, {
+        lock: true
+      });
+
+      const { scenarioUser } = this.props;
+
+      if (
+        scenario.lock.user_id === scenarioUser.id &&
+        scenarioUser.is_reviewer
+      ) {
+        await this.props.endScenarioLock(scenario.id);
+      }
     }
 
     await this.props.getUsers();
 
-    this.setState(state => ({
-      tabs: this.getAllTabs(state.scenarioId)
-    }));
+    this.setState(state => {
+      return {
+        activeTab: this.props.scenarioUser.is_reviewer
+          ? 'preview'
+          : state.activeTab,
+        tabs: this.getAllTabs(state.scenarioId)
+      };
+    });
   }
 
   onClick(e, { name: activeTab }) {
@@ -277,18 +293,27 @@ class Editor extends Component {
     }
   }
 
-  getAllTabs(scenarioId) {
-    switch (scenarioId) {
-      case 'new':
+  getAllTabs() {
+    const { scenario, scenarioUser } = this.props;
+
+    switch (scenario.id) {
+      case undefined:
         return {
           scenario: this.getTab('scenario', 'new')
         };
-      default:
-        return {
-          scenario: this.getTab('scenario', scenarioId),
-          slides: this.getTab('slides', scenarioId),
-          preview: this.getTab('preview', scenarioId)
+      default: {
+        const authorTabs = {
+          scenario: this.getTab('scenario', scenario.id),
+          slides: this.getTab('slides', scenario.id),
+          preview: this.getTab('preview', scenario.id)
         };
+
+        const reviewerTabs = {
+          preview: this.getTab('preview', scenario.id)
+        };
+
+        return scenarioUser.is_reviewer ? reviewerTabs : authorTabs;
+      }
     }
   }
 
@@ -342,7 +367,7 @@ class Editor extends Component {
     }
 
     const { scenarioId } = this.state;
-    const { scenario, user, usersById } = this.props;
+    const { scenario, scenarioUser, user, usersById } = this.props;
 
     const menuItemScenarioStatus = scenario.status !== undefined && (
       <ScenarioStatusMenuItem
@@ -406,11 +431,10 @@ class Editor extends Component {
       };
       let header = '';
       let content = '';
+      const hasLock = scenario.lock && scenario.lock.user_id !== user.id;
 
-      if (scenario.lock && scenario.lock.user_id !== user.id) {
+      if (!scenarioUser.is_reviewer && hasLock) {
         modalProps.open = true;
-
-        const scenarioUser = scenario.users.find(u => u.id === user.id);
 
         if (!scenarioUser) {
           content = 'You do not have permission to edit this scenario.';
@@ -488,6 +512,9 @@ class Editor extends Component {
       menuItemScenarioStatus
     ];
 
+    const canDisplayEditorMenu =
+      scenarioId !== 'new' && !scenarioUser.is_reviewer;
+
     return modal ? (
       modal
     ) : (
@@ -497,7 +524,7 @@ class Editor extends Component {
         </Menu>
 
         <Segment attached="bottom" className="editor__content-pane">
-          {scenarioId !== 'new' && (
+          {canDisplayEditorMenu ? (
             <EditorMenu
               className="em__fullwidth"
               type="scenario"
@@ -515,7 +542,7 @@ class Editor extends Component {
                 right
               }}
             />
-          )}
+          ) : null}
 
           {this.state.tabs[this.state.activeTab]}
         </Segment>
@@ -557,6 +584,7 @@ Editor.propTypes = {
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
   scenario: PropTypes.object,
+  scenarioUser: PropTypes.object,
   user: PropTypes.object,
   usersById: PropTypes.object,
   getUsers: PropTypes.func.isRequired
@@ -565,9 +593,11 @@ Editor.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const scenarioId = Number(ownProps.scenarioId);
   const { scenario, user, usersById } = state;
+  const scenarioUser = scenario.users.find(u => u.id === user.id);
   return {
-    scenarioId,
     scenario,
+    scenarioId,
+    scenarioUser,
     user,
     usersById
   };

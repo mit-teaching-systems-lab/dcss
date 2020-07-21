@@ -37,9 +37,9 @@ export const AuthorDropdown = ({ options, author = {}, onChange }) => {
 
   return (
     <Form.Field>
-      <label>Author</label>
+      <label>Owner</label>
       <Dropdown
-        label="Author"
+        label="Owner"
         name="author"
         placeholder="Select..."
         fluid
