@@ -18,6 +18,7 @@ import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
 import Username from '@components/User/Username';
+// import Review from './Review';
 import Slides from './Slides';
 import htmlId from '@utils/html-id';
 import {
@@ -80,6 +81,7 @@ class Editor extends Component {
     }
 
     this.state = {
+      isReady: false,
       activeSlideIndex,
       activeTab,
       scenarioId,
@@ -123,10 +125,9 @@ class Editor extends Component {
       const { scenarioUser } = this.props;
 
       return {
+        isReady: true,
         activeTab:
-          scenarioUser && scenarioUser.is_reviewer
-            ? 'preview'
-            : state.activeTab,
+          scenarioUser && scenarioUser.is_reviewer ? 'review' : state.activeTab,
         tabs: this.getAllTabs(state.scenarioId)
       };
     });
@@ -295,6 +296,23 @@ class Editor extends Component {
             scenario={this.props.scenario}
           />
         );
+      case 'review':
+        return (
+          <Scenario
+            key={scenarioId}
+            setActiveSlide={activeSlideIndex =>
+              setActiveView({
+                activeSlideIndex,
+                activeTab: 'preview'
+              })
+            }
+            scenarioId={scenarioId}
+            scenario={this.props.scenario}
+          />
+        );
+      // return (
+      //   <Review scenario={this.props.scenario} />
+      // );
       default:
         return null;
     }
@@ -316,7 +334,7 @@ class Editor extends Component {
         };
 
         const reviewerTabs = {
-          preview: this.getTab('preview', scenario.id)
+          review: this.getTab('review', scenario.id)
         };
 
         return scenarioUser && scenarioUser.is_reviewer
@@ -367,6 +385,8 @@ class Editor extends Component {
   }
 
   render() {
+    const { isReady, scenarioId } = this.state;
+
     if (this.props.isCopyScenario) {
       return null;
     }
@@ -375,7 +395,10 @@ class Editor extends Component {
       return null;
     }
 
-    const { scenarioId } = this.state;
+    if (!isReady) {
+      return null;
+    }
+
     const { scenario, scenarioUser, user, usersById } = this.props;
 
     const menuItemScenarioStatus = scenario.status !== undefined && (
@@ -442,17 +465,10 @@ class Editor extends Component {
       let content = '';
       const hasLock = scenario.lock && scenario.lock.user_id !== user.id;
 
-      //
-      // Previously:
-      //
-      // if (!scenarioUser.is_reviewer && hasLock) {
-      //
-      if (hasLock) {
-        modalProps.open = true;
+      if (scenarioUser) {
+        if (!scenarioUser.is_reviewer && hasLock) {
+          modalProps.open = true;
 
-        if (!scenarioUser && !user.is_super) {
-          content = 'You do not have permission to edit this scenario.';
-        } else {
           const lockHolder = usersById[scenario.lock.user_id];
           content = (
             <Fragment>
@@ -460,10 +476,15 @@ class Editor extends Component {
               <Username {...lockHolder} />
             </Fragment>
           );
+          setTimeout(() => {
+            this.props.history.push('/scenarios/');
+          }, 10000);
         }
-        setTimeout(() => {
-          this.props.history.push('/scenarios/');
-        }, 10000);
+      } else {
+        if (!scenarioUser && !user.is_super) {
+          modalProps.open = true;
+          content = 'You do not have permission to access this scenario.';
+        }
       }
 
       if (modalProps.open) {
