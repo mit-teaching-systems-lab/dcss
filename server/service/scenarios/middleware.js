@@ -56,7 +56,7 @@ exports.requireScenarioUserRole = roles => [
       // super admin always gets permission
       userRoles.includes('super_admin') ||
       // owner always gets permission
-      scenarioUserRoles.includes('owner')
+      (scenarioUserRoles && scenarioUserRoles.includes('owner'))
     ) {
       return next();
     }
@@ -66,7 +66,10 @@ exports.requireScenarioUserRole = roles => [
     //
     // Q: should "researcher" be allowed to do this?
     //
-    if (roles.some(role => scenarioUserRoles.includes(role))) {
+    if (
+      scenarioUserRoles &&
+      roles.some(role => scenarioUserRoles.includes(role))
+    ) {
       return next();
     }
 
