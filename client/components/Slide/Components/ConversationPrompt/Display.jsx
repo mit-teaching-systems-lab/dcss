@@ -151,13 +151,13 @@ class Display extends Component {
     const height = '320px';
     const width = '100%';
 
-    // const ref = player => {
-    //   this.player = player;
-    // };
+    const ref = player => {
+      this.player = player;
+    };
 
     const onEnded = () => {
-      this.player.seekTo(this.player.getCurrentTime() - 0.25);
       this.setState({ autostart: true, playing: false });
+      this.player.seekTo(configuration.start);
     };
 
     //
@@ -188,6 +188,7 @@ class Display extends Component {
       onEnded,
       // onProgress,
       playing,
+      ref,
       width,
       url
     };
