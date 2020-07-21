@@ -83,7 +83,7 @@ class Display extends Component {
   }
 
   onStartClick() {
-    this.setState({ isRecording: true });
+    this.setState({ isRecording: true, transcript: '' });
     this.mp3Recorder.start().then(() => {
       this.created_at = new Date().toISOString();
     });

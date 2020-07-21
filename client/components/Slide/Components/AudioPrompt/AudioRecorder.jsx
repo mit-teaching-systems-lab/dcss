@@ -72,7 +72,7 @@ class AudioRecorder extends Component {
   }
 
   onStartClick() {
-    this.setState({ isRecording: true });
+    this.setState({ isRecording: true, transcript: '' });
 
     (async () => {
       await this.mp3Recorder.start();
