@@ -37,6 +37,7 @@ class Navigation extends Component {
     this.state = {
       isMenuOpen
     };
+    this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.onResize = this.onResize.bind(this);
   }
 
@@ -48,20 +49,30 @@ class Navigation extends Component {
     }
   }
 
+  onBeforeUnload() {
+    const {
+      lock
+    } = this.props.scenario;
+
+    if (lock && lock.user_id === this.props.user.id) {
+      this.props.endScenarioLock(this.props.scenario.id);
+    }
+  }
+
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
+    window.addEventListener('beforeunload', this.onBeforeUnload);
 
     this.props.history.listen(({ pathname }) => {
-      if (!pathname.startsWith('/editor/') && this.props.scenario.lock) {
-        if (this.props.scenario.lock.user_id === this.props.user.id) {
-          this.props.endScenarioLock(this.props.scenario.id);
-        }
+      if (!pathname.startsWith('/editor/')) {
+        this.onBeforeUnload();
       }
     });
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('beforeunload', this.onBeforeUnload);
   }
 
   render() {
