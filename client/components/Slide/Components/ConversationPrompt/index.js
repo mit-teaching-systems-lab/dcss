@@ -35,6 +35,7 @@ export const defaultValue = ({ responseId }) => ({
   recallId: '',
   required: true,
   responseId,
+  timeout: 0,
   type,
   url: ''
 });

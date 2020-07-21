@@ -339,8 +339,7 @@ class ScenarioEditor extends Component {
 
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
-        {/*
-          this.state.authors.length ? (
+        {this.state.authors.length && scenarioId === 'new' ? (
           <Ref innerRef={node => innerRef(node, 'authors')}>
             <AuthorDropdown
               author={author}
@@ -348,8 +347,7 @@ class ScenarioEditor extends Component {
               onChange={onChange}
             />
           </Ref>
-        ) : null
-        */}
+        ) : null}
         {this.state.categories.length ? (
           <Ref innerRef={node => innerRef(node, 'categories')}>
             <CategoriesDropdown
@@ -402,9 +400,10 @@ class ScenarioEditor extends Component {
 
     // const isTestEnv = location.href.includes('localhost');
     const isTestEnv = true;
-    const leftColBottomStyle = scenarioId !== 'new' ? {
+    const styleHeight = {
       height: '500px'
-    } : {};
+    };
+    const leftColBottomStyle = scenarioId !== 'new' ? styleHeight : {};
 
     return (
       <Form>

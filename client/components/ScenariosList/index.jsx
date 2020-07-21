@@ -307,9 +307,7 @@ class ScenariosList extends Component {
       >
         <Menu.Item
           name="Create a scenario"
-          as={NavLink}
-          exact
-          to="/editor/new"
+          href="/editor/new"
           className="sc__hidden-on-mobile"
         >
           <Icon.Group className="em__icon-group-margin">

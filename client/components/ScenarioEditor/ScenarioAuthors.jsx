@@ -62,10 +62,13 @@ class ScenarioAuthors extends Component {
           return accum;
         }
 
-        // If the user has a role that allows them to edit
-        // Q: Should this be moved to server?
-        user.isEditor = !!editors.find(({ id }) => id === user.id);
+        // If the user does not have a role that allows them to edit
+        if (!editors.find(({ id }) => id === user.id)) {
+          return accum;
+        }
 
+        // Q: Should this be moved to server?
+        // user.isEditor = !!editors.find(({ id }) => id === user.id);
         accum.push(Object.assign({}, user, { roles: [] }));
         return accum;
       }, [])
@@ -172,7 +175,7 @@ class ScenarioAuthors extends Component {
   }
 
   render() {
-    const { scenario, user, usersById } = this.props;
+    const { scenario, scenarioUser, user, usersById } = this.props;
     const { activePage, isReady, candidates } = this.state;
     const { onChange, onPageChange, onUsersSearchChange } = this;
 
@@ -199,7 +202,6 @@ class ScenarioAuthors extends Component {
     };
 
     const grantableRoles = {};
-    const currentScenarioUser = scenario.users.find(u => u.id === user.id);
     const rows = candidatesSlice.reduce((accum, candidateUser) => {
       const candidate = Object.assign(
         {},
@@ -219,18 +221,21 @@ class ScenarioAuthors extends Component {
       };
 
       const options = [];
+      const roles = usersById[candidate.id].roles;
+
+      if (
+        roles.includes('super_admin') ||
+        roles.includes('admin') ||
+        roles.includes('facilitator')
+      ) {
+        options.push(AUTHOR);
+      }
 
       // If they already have roles, then they are already in this scenario.
-      if (candidate.roles.length) {
-        if (candidate.roles.includes('author')) {
-          options.push(AUTHOR);
-        }
-      } else {
-        // Potential new scenario collaborators...
-        if (candidate.isEditor) {
-          options.push(AUTHOR);
-        }
+      if (!options.length && candidate.roles.includes('author')) {
+        options.push(AUTHOR);
       }
+
       options.push(REVIEWER, NONE);
 
       // The Dropdown must be disabled when:
@@ -238,7 +243,9 @@ class ScenarioAuthors extends Component {
       //  1. The candidate is the owner (owner cannot change ownership yet)
       //  2. The viewing user is neither super, not owner
       //
-      const disabled = !currentScenarioUser.is_owner || !user.is_super;
+
+      const isOwner = !!(scenarioUser && scenarioUser.is_owner);
+      const disabled = !isOwner && !user.is_super;
       const defaultValue = candidate.roles.length ? candidate.roles[0] : null;
       const key = hash(candidate);
 
@@ -321,6 +328,7 @@ ScenarioAuthors.propTypes = {
   addScenarioUserRole: PropTypes.func,
   endScenarioUserRole: PropTypes.func,
   scenario: PropTypes.object,
+  scenarioUser: PropTypes.object,
   setScenario: PropTypes.func.isRequired,
   user: PropTypes.object,
   users: PropTypes.array,
@@ -330,8 +338,10 @@ ScenarioAuthors.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { user, users, usersById } = state;
+  const { scenario, user, users, usersById } = state;
+  const scenarioUser = scenario.users.find(u => u.id === user.id);
   return {
+    scenarioUser,
     user,
     users,
     usersById

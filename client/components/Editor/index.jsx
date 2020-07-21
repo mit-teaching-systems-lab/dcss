@@ -105,26 +105,28 @@ class Editor extends Component {
 
       const { scenarioUser } = this.props;
 
-      if (
-        scenario.lock.user_id === scenarioUser.id &&
-        scenarioUser.is_reviewer
-      ) {
-        await this.props.endScenarioLock(scenario.id);
+      // The viewing user might be a super admin that is not
+      // a collaborator on this scenario.
+      if (scenarioUser) {
+        if (
+          scenario.lock.user_id === scenarioUser.id &&
+          scenarioUser.is_reviewer
+        ) {
+          await this.props.endScenarioLock(scenario.id);
+        }
       }
     }
 
     await this.props.getUsers();
 
     this.setState(state => {
-
-      const {
-        scenarioUser
-      } = this.props;
+      const { scenarioUser } = this.props;
 
       return {
-        activeTab: scenarioUser && scenarioUser.is_reviewer
-          ? 'preview'
-          : state.activeTab,
+        activeTab:
+          scenarioUser && scenarioUser.is_reviewer
+            ? 'preview'
+            : state.activeTab,
         tabs: this.getAllTabs(state.scenarioId)
       };
     });
@@ -299,7 +301,6 @@ class Editor extends Component {
   }
 
   getAllTabs() {
-    console.log(this.props.isNewScenario);
     const { scenario, scenarioUser } = this.props;
 
     switch (scenario.id) {
@@ -318,7 +319,9 @@ class Editor extends Component {
           preview: this.getTab('preview', scenario.id)
         };
 
-        return scenarioUser.is_reviewer ? reviewerTabs : authorTabs;
+        return scenarioUser && scenarioUser.is_reviewer
+          ? reviewerTabs
+          : authorTabs;
       }
     }
   }
@@ -439,10 +442,15 @@ class Editor extends Component {
       let content = '';
       const hasLock = scenario.lock && scenario.lock.user_id !== user.id;
 
-      if (!scenarioUser.is_reviewer && hasLock) {
+      //
+      // Previously:
+      //
+      // if (!scenarioUser.is_reviewer && hasLock) {
+      //
+      if (hasLock) {
         modalProps.open = true;
 
-        if (!scenarioUser) {
+        if (!scenarioUser && !user.is_super) {
           content = 'You do not have permission to edit this scenario.';
         } else {
           const lockHolder = usersById[scenario.lock.user_id];
@@ -518,8 +526,9 @@ class Editor extends Component {
       menuItemScenarioStatus
     ];
 
+    const isNotReviewer = scenarioUser && !scenarioUser.is_reviewer;
     const canDisplayEditorMenu =
-      scenarioId !== 'new' && !scenarioUser.is_reviewer;
+      scenarioId !== 'new' && (isNotReviewer || user.is_super);
 
     return modal ? (
       modal

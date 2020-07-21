@@ -154,7 +154,7 @@ class CreateAccount extends Component {
     }
 
     return (
-      <Modal.Accessible open={open}>
+      <Modal.Accessible open={true}>
         <Modal
           closeIcon
           role="dialog"

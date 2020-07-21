@@ -26,6 +26,7 @@ class Display extends Component {
     this.state = {
       isReady: false,
       autostart: false,
+      playing: this.isScenarioRun,
       transcript: persisted.transcript,
       type: '',
       value: persisted.value
@@ -105,7 +106,14 @@ class Display extends Component {
   }
 
   render() {
-    const { isReady, autostart, isRecording, transcript, value } = this.state;
+    const {
+      isReady,
+      autostart,
+      isRecording,
+      playing,
+      transcript,
+      value
+    } = this.state;
 
     if (!isReady) {
       return null;
@@ -139,13 +147,17 @@ class Display extends Component {
       config.youtube.playerVars.end = configuration.end;
     }
 
-    const playing = this.isScenarioRun;
     const light = !this.isScenarioRun;
     const height = '320px';
     const width = '100%';
 
+    // const ref = player => {
+    //   this.player = player;
+    // };
+
     const onEnded = () => {
-      this.setState({ autostart: true });
+      this.player.seekTo(this.player.getCurrentTime() - 0.25);
+      this.setState({ autostart: true, playing: false });
     };
 
     //
@@ -166,10 +178,6 @@ class Display extends Component {
     //   }
     // };
     //
-    // const ref = player => {
-    //   this.player = player;
-    //   console.log(this.player);
-    // };
     //
 
     const playerProps = {

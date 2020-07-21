@@ -53,7 +53,9 @@ class Navigation extends Component {
 
     this.props.history.listen(({ pathname }) => {
       if (!pathname.startsWith('/editor/') && this.props.scenario.lock) {
-        this.props.endScenarioLock(this.props.scenario.id);
+        if (this.props.scenario.lock.user_id === this.props.user.id) {
+          this.props.endScenarioLock(this.props.scenario.id);
+        }
       }
     });
   }
