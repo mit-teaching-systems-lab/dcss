@@ -367,7 +367,7 @@ class MultiPathResponseEditor extends React.Component {
                   index,
                   options
                 );
-                const key = hash({ id, index });
+                const key = hash({ id, path, index });
                 return (
                   <Table.Row
                     className="mpr__cursor-grab"
