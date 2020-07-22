@@ -153,12 +153,12 @@ class ResponseRecallEditor extends React.Component {
     return this.props.isEmbedded ? (
       <Fragment>
         {formFieldLabelled}
-        {selectedPrompt}
+        {selectedPromptContent}
       </Fragment>
     ) : (
       <Form>
         {formFieldLabelled}
-        {selectedPrompt}
+        {selectedPromptContent}
       </Form>
     );
   }
