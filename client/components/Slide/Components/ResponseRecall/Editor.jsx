@@ -142,19 +142,23 @@ class ResponseRecallEditor extends React.Component {
       />
     );
 
-    const selectedResponsePrompt = recallId
-      ? prompts.find(({ value }) => value === recallId).content
+    const selectedPrompt = recallId
+      ? prompts.find(({ value }) => value === recallId)
+      : null;
+
+    const selectedPromptContent = selectedPrompt
+      ? selectedPrompt.content
       : null;
 
     return this.props.isEmbedded ? (
       <Fragment>
         {formFieldLabelled}
-        {selectedResponsePrompt}
+        {selectedPrompt}
       </Fragment>
     ) : (
       <Form>
         {formFieldLabelled}
-        {selectedResponsePrompt}
+        {selectedPrompt}
       </Form>
     );
   }
