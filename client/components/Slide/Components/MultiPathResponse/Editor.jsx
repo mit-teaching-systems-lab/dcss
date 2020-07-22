@@ -396,6 +396,7 @@ class MultiPathResponseEditor extends React.Component {
                         onBlur={onBlurOrFocus}
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
+                        options={options}
                         key={`button-display-${key}`}
                       />
                     </Table.Cell>
