@@ -6,7 +6,7 @@ import { Container, Form, Message, Ref, Slider } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
-import { secToTime } from '@utils/Media';
+import Media from '@utils/Media';
 import '@components/Slide/Components/AudioPrompt/AudioPrompt.css';
 import '@components/Slide/SlideEditor/SlideEditor.css';
 import './ConversationPrompt.css';
@@ -112,7 +112,14 @@ class ConversationPromptEditor extends Component {
       ...this.state
     };
 
-    path.set(state, name, value);
+    let newValue = value;
+
+    if ((name === 'configuration.start' || name === 'configuration.end') &&
+        typeof value === 'string') {
+      newValue = Media.timeToSec(value);
+    }
+
+    path.set(state, name, newValue);
 
     this.setState(state, this.delayedUpdateState);
   }
@@ -162,7 +169,7 @@ class ConversationPromptEditor extends Component {
     //   console.log(this.player, this.endTimeInput);
     //   if (this.endTimeInput && this.player) {
     //     console.log(this.player.getCurrentTime(), playedSeconds);
-    //     this.endTimeInput.value = secToTime(playedSeconds);
+    //     this.endTimeInput.value = Media.secToTime(playedSeconds);
     //   }
     // };
 
@@ -170,11 +177,11 @@ class ConversationPromptEditor extends Component {
     //   console.log(seconds);
     //   if (this.endTimeInput) {
     //     console.log(seconds);
-    //     this.endTimeInput.value = secToTime(seconds);
+    //     this.endTimeInput.value = Media.secToTime(seconds);
     //   }
     //   if (this.endTimeInput) {
     //     console.log(seconds);
-    //     this.endTimeInput.value = secToTime(seconds);
+    //     this.endTimeInput.value = Media.secToTime(seconds);
     //   }
     // };
 
@@ -217,11 +224,11 @@ class ConversationPromptEditor extends Component {
       this.setState(state, this.delayedUpdateState);
 
       if (this.startTimeInput) {
-        this.startTimeInput.value = secToTime(start);
+        this.startTimeInput.value = Media.secToTime(start);
       }
 
       if (this.endTimeInput) {
-        this.endTimeInput.value = secToTime(end);
+        this.endTimeInput.value = Media.secToTime(end);
       }
     };
 
@@ -247,8 +254,8 @@ class ConversationPromptEditor extends Component {
       style
     };
 
-    const startTimeValue = secToTime(start);
-    const endTimeValue = secToTime(end);
+    const startTimeValue = Media.secToTime(start);
+    const endTimeValue = Media.secToTime(end);
 
     return (
       <Form>
