@@ -302,7 +302,6 @@ class MultiPathNetworkGraphModal extends Component {
       }
     };
 
-
     const events = {
       select(event) {
         // eslint-disable-next-line no-console
@@ -345,7 +344,9 @@ class MultiPathNetworkGraphModal extends Component {
           open={open}
           onClose={onClose}
         >
-          <Modal.Header className="mpr__title-constraint" id={ariaLabelledBy}>Slide Graph for "{scenario.title}"</Modal.Header>
+          <Modal.Header className="mpr__title-constraint" id={ariaLabelledBy}>
+            Slide Graph for "{scenario.title}"
+          </Modal.Header>
           <Modal.Content id={ariaDescribedBy}>
             <Ref innerRef={makeAccessible}>
               <Graph events={events} graph={graph} options={options} />

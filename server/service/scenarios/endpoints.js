@@ -200,7 +200,6 @@ async function endScenarioLockAsync(req, res) {
       const scenario = await db.getScenario(scenario_id);
       res.send({ scenario, status: 200 });
 
-
       const slides = await getScenarioSlides(scenario_id);
       await db.addScenarioSnapshot(scenario_id, user_id, {
         ...scenario,
