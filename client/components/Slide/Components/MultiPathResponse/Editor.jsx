@@ -288,7 +288,7 @@ class MultiPathResponseEditor extends React.Component {
         <Table celled striped>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell className="mpr__slide-preview-constraint mpr__goto-slide-title-constraint">
+              <Table.HeaderCell className="mpr__slide-preview-constraint mpr__title-constraint">
                 {headerCell}
               </Table.HeaderCell>
             </Table.Row>

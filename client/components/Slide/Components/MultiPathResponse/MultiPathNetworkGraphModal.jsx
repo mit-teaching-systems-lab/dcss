@@ -223,7 +223,8 @@ class MultiPathNetworkGraphModal extends Component {
           // edges[edges.length - 1].smooth = {
           lastEdge.smooth = {
             enabled: true,
-            type: 'cubicBezier'
+            type: 'cubicBezier',
+            roundness: 0.5
           };
         }
 
@@ -260,8 +261,8 @@ class MultiPathNetworkGraphModal extends Component {
         color: '#000000',
         smooth: {
           enabled: true,
-          type: 'curvedCW'
-          // roundness: 1
+          type: 'curvedCW',
+          roundness: 0.2
         }
       },
 
@@ -344,7 +345,7 @@ class MultiPathNetworkGraphModal extends Component {
           open={open}
           onClose={onClose}
         >
-          <Modal.Header id={ariaLabelledBy}>{scenario.title}</Modal.Header>
+          <Modal.Header className="mpr__title-constraint" id={ariaLabelledBy}>Slide Graph for "{scenario.title}"</Modal.Header>
           <Modal.Content id={ariaDescribedBy}>
             <Ref innerRef={makeAccessible}>
               <Graph events={events} graph={graph} options={options} />
