@@ -28,6 +28,11 @@
   max-width: 210px !important;
 }
 
+.slides__list-outer-container>.row>.ui.borderless.icon.menu>.right>.item:last-child {
+  padding-left: 0.4em !important;
+  padding-right: 1em !important;
+}
+
 .slides__editor-outer-container {
   width: calc(100vw - 213px) !important;
   flex-wrap: nowrap !important;
