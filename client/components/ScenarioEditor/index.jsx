@@ -267,6 +267,7 @@ class ScenarioEditor extends Component {
           <Form.Input
             focus
             required
+            autoComplete="off"
             id="title"
             name="title"
             value={title}
@@ -284,7 +285,7 @@ class ScenarioEditor extends Component {
           <label htmlFor="description">Description</label>
           <Form.TextArea
             required
-            focus="true"
+            autoComplete="off"
             id="description"
             name="description"
             rows={1}
