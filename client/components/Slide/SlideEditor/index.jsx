@@ -404,7 +404,7 @@ export default class SlideEditor extends Component {
                             </Menu.Item>
                           );
                           const menuItemComponentMovers = (
-                            <Menu.Menu name="Move component" position="right">
+                            <Menu.Menu className="movers" name="Move component" position="right">
                               <Menu.Item
                                 icon="move"
                                 aria-label="Move component"

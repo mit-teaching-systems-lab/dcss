@@ -1,5 +1,5 @@
 export const type = 'ConversationPrompt';
-export const name = 'Conversation Prompt';
+export const name = 'Prompt: Conversation';
 // export const description =
 //   'Embed a video that prompts the participant to respond immediately after it completes playback. Supports video from  YouTube, Twitch, SoundCloud, Streamable, Vimeo, Wistia, Mixcloud, and DailyMotion';
 

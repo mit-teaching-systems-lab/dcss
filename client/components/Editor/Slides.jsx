@@ -353,6 +353,7 @@ class Slides extends React.Component {
                     />
                     {slides.length > 0 && (
                       <Menu.Menu
+                        className="movers"
                         key="menu-item-slide-column-right"
                         position="right"
                       >

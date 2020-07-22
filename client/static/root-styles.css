@@ -77,6 +77,12 @@ td .ui.fluid.selection.dropdown > .text {
   padding-right: 0.4em !important;
 }
 
+.ui.borderless.icon.menu>.menu.movers.right>.item:last-child,
+.menu.movers.right>.item:last-child {
+  padding-left: 0.5em !important;
+  padding-right: 1em !important;
+}
+
 /*.ui.form .field>label {
   font-size: 1em !important;
 }
