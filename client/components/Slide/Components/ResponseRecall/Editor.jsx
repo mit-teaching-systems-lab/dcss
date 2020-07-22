@@ -171,7 +171,7 @@ ResponseRecallEditor.defaultProps = {
 ResponseRecallEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   isEmbedded: PropTypes.bool,
-  recallId: PropTypes.any,
+  recallId: PropTypes.string,
   scenario: PropTypes.object,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
