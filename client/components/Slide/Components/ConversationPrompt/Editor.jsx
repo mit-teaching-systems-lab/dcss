@@ -295,6 +295,7 @@ class ConversationPromptEditor extends Component {
                     name="configuration.start"
                     placeholder="00:00:00"
                     defaultValue={startTimeValue}
+                    onChange={onChange}
                     style={{ width: '6.5em' }}
                   />
                 </Ref>
@@ -305,6 +306,7 @@ class ConversationPromptEditor extends Component {
                     name="configuration.end"
                     placeholder="00:00:00"
                     defaultValue={endTimeValue}
+                    onChange={onChange}
                     style={{ width: '6.5em' }}
                   />
                 </Ref>
