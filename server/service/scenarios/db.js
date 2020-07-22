@@ -455,7 +455,7 @@ async function getHistoryForScenario(params) {
   return { prompts, responses };
 }
 
-async function setScenarioSnapshot(scenario_id, user_id, snapshot) {
+async function addScenarioSnapshot(scenario_id, user_id, snapshot) {
   return withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO scenario_snapshot (scenario_id, user_id, snapshot)
@@ -479,7 +479,7 @@ exports.getScenarioByRun = getScenarioByRun;
 exports.getScenarioPrompts = getScenarioPrompts;
 
 // Scenario Snapshot/History
-exports.setScenarioSnapshot = setScenarioSnapshot;
+exports.addScenarioSnapshot = addScenarioSnapshot;
 
 // Scenario Lock
 exports.addScenarioLock = addScenarioLock;
