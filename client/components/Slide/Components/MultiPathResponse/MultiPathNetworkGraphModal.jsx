@@ -345,7 +345,7 @@ class MultiPathNetworkGraphModal extends Component {
           onClose={onClose}
         >
           <Modal.Header className="mpr__title-constraint" id={ariaLabelledBy}>
-            Slide Graph for "{scenario.title}"
+            Slide Graph for &quot;{scenario.title}&quot;
           </Modal.Header>
           <Modal.Content id={ariaDescribedBy}>
             <Ref innerRef={makeAccessible}>
