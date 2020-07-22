@@ -31,11 +31,20 @@ async function uploadAudioAsync(req, res) {
     const userId = req.session.user.id;
     const key = `audio/${runId}/${responseId}/${userId}/${uuid()}.mp3`;
 
+    const id = await db.getAudioTranscriptByKey(
+      `audio/${runId}/${responseId}/${userId}/`
+    );
+    await db.setAudioTranscript(id, { replaced_at: new Date().toISOString() });
+
     try {
       const s3Location = await uploadToS3(key, buffer);
+      const { response, transcript } = await requestTranscriptionAsync(buffer);
+      await db.addAudioTranscript(key, response, transcript);
+
       res.status = 200;
       res.send({
-        s3Location
+        s3Location,
+        transcript
       });
     } catch (error) {
       res.status = 200;
@@ -43,10 +52,6 @@ async function uploadAudioAsync(req, res) {
         error
       });
     }
-
-    const { response, transcript } = await requestTranscriptionAsync(buffer);
-
-    db.addAudioTranscript({ key, response, transcript });
   });
 }
 

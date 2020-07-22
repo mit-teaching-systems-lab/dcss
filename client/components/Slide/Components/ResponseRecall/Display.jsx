@@ -57,7 +57,7 @@ class Display extends Component {
       response: response || this.state.response
     });
 
-    if (response && response.type === 'AudioResponse') {
+    if (response && response.type.startsWith('Audio')) {
       this.pollForNewResponse();
     }
   }

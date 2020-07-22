@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import hash from 'object-hash';
 import { connect } from 'react-redux';
 import { Button, Form, Grid, Icon, Popup } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
@@ -72,7 +73,7 @@ class AudioRecorder extends Component {
   }
 
   onStartClick() {
-    this.setState({ isRecording: true, transcript: '' });
+    this.setState({ isRecording: true, transcript: '(Recording)' });
 
     (async () => {
       await this.mp3Recorder.start();
@@ -81,7 +82,7 @@ class AudioRecorder extends Component {
   }
 
   onStopClick() {
-    this.setState({ isRecording: false });
+    this.setState({ isRecording: false, transcript: '(Transcribing)' });
 
     (async () => {
       const [buffer, blob] = await (await this.mp3Recorder.stop()).getMp3();
@@ -103,10 +104,13 @@ class AudioRecorder extends Component {
         body.append('runId', run.id);
       }
 
-      const { s3Location: value } = await (await fetch('/api/media/audio', {
-        method: 'POST',
-        body
-      })).json();
+      const { s3Location: value, transcript } = await (await fetch(
+        '/api/media/audio',
+        {
+          method: 'POST',
+          body
+        }
+      )).json();
 
       this.setState(prevState => {
         if (prevState.blobURL) {
@@ -116,7 +120,6 @@ class AudioRecorder extends Component {
       });
 
       const { created_at } = this;
-      const transcript = '';
 
       this.props.onChange(
         {},
@@ -158,7 +161,7 @@ class AudioRecorder extends Component {
     const { responseId, run } = this.props;
 
     const { onChange, onFocus, onStartClick, onStopClick } = this;
-    const isFulfilled = value || blobURL ? true : false;
+    const isFulfilled = value || blobURL || transcript ? true : false;
     const src = isFulfilled ? blobURL || value : null;
 
     const instructions =
@@ -215,7 +218,7 @@ class AudioRecorder extends Component {
         </Grid>
         {isFulfilled ? (
           <Transcript
-            key={src}
+            key={hash({ transcript })}
             responseId={responseId}
             run={run}
             transcript={transcript}

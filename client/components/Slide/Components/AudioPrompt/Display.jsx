@@ -1,5 +1,6 @@
 import { type } from './meta';
 import React, { Component, Fragment } from 'react';
+import hash from 'object-hash';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form, Grid, Header, Icon, Segment } from '@components/UI';
@@ -83,14 +84,16 @@ class Display extends Component {
   }
 
   onStartClick() {
-    this.setState({ isRecording: true, transcript: '' });
-    this.mp3Recorder.start().then(() => {
+    this.setState({ isRecording: true, transcript: '(Recording)' });
+
+    (async () => {
+      await this.mp3Recorder.start();
       this.created_at = new Date().toISOString();
-    });
+    })();
   }
 
   onStopClick() {
-    this.setState({ isRecording: false });
+    this.setState({ isRecording: false, transcript: '(Transcribing)' });
 
     (async () => {
       const [buffer, blob] = await (await this.mp3Recorder.stop()).getMp3();
@@ -112,10 +115,13 @@ class Display extends Component {
         body.append('runId', run.id);
       }
 
-      const { s3Location: value } = await (await fetch('/api/media/audio', {
-        method: 'POST',
-        body
-      })).json();
+      const { s3Location: value, transcript } = await (await fetch(
+        '/api/media/audio',
+        {
+          method: 'POST',
+          body
+        }
+      )).json();
 
       this.setState(prevState => {
         if (prevState.blobURL) {
@@ -126,7 +132,6 @@ class Display extends Component {
 
       const { created_at } = this;
       const { recallId } = this.props;
-      const transcript = '';
 
       this.props.onResponseChange(
         {},
@@ -172,7 +177,7 @@ class Display extends Component {
     const { isRecording, blobURL, transcript, value } = this.state;
     const { prompt, recallId, responseId, required, run } = this.props;
     const { onChange, onFocus } = this;
-    const isFulfilled = value || blobURL ? true : false;
+    const isFulfilled = value || blobURL || transcript ? true : false;
     const header = (
       <Fragment>
         {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
@@ -233,7 +238,7 @@ class Display extends Component {
 
         {isFulfilled ? (
           <Transcript
-            key={src}
+            key={hash({ transcript })}
             responseId={responseId}
             run={run}
             transcript={transcript}

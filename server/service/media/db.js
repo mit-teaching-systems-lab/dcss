@@ -1,7 +1,7 @@
-const { sql } = require('../../util/sqlHelpers');
+const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { withClient, withClientTransaction } = require('../../util/db');
 
-exports.addAudioTranscript = async ({ key, response, transcript }) => {
+exports.addAudioTranscript = async (key, response, transcript) => {
   return await withClientTransaction(async client => {
     // eslint-disable-next-line no-console
     console.log(transcript);
@@ -9,6 +9,29 @@ exports.addAudioTranscript = async ({ key, response, transcript }) => {
       INSERT INTO audio_transcript (key, response, transcript)
       VALUES (${key}, ${response}, ${transcript});
     `);
+  });
+};
+
+exports.getAudioTranscriptByKey = async key => {
+  return await withClientTransaction(async client => {
+    const likable = `%${key}%`;
+    const result = await client.query(sql`
+      SELECT id
+      FROM audio_transcript
+      WHERE key ILIKE ${likable}
+      ORDER BY created_at DESC
+      LIMIT 1
+    `);
+    return result.rowCount && result.rows[0].id;
+  });
+};
+
+exports.setAudioTranscript = async (id, data) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(
+      updateQuery('audio_transcript', { id }, data)
+    );
+    return result.rows[0];
   });
 };
 

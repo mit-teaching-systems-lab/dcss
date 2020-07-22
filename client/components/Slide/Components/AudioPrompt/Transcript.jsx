@@ -23,6 +23,7 @@ class Transcript extends Component {
     const transcript = transcriptFromProps ? transcriptFromProps : null;
 
     this.state = {
+      response: null,
       transcript
     };
 
@@ -42,9 +43,9 @@ class Transcript extends Component {
 
   refresh() {
     this.interval = setInterval(async () => {
-      const { transcript } = await this.fetchTranscriptOutcome();
+      const { response, transcript } = await this.fetchTranscriptOutcome();
       if (transcript !== this.state.transcript) {
-        this.setState({ transcript });
+        this.setState({ response, transcript });
         clearInterval(this.interval);
       }
 
@@ -83,14 +84,19 @@ class Transcript extends Component {
       if (outcome.transcript) {
         transcript = outcome.transcript;
       }
+      this.setState({
+        response: outcome.response,
+        transcript
+      });
     }
 
-    this.setState({ transcript });
-    this.refresh();
+    if (!transcript) {
+      this.refresh();
+    }
   }
 
   render() {
-    const { transcript } = this.state;
+    const { response, transcript } = this.state;
 
     if (!this.isScenarioRun) {
       return (
@@ -107,7 +113,7 @@ class Transcript extends Component {
     // but we still need to determine if the transcript is useful or not.
     if (transcript !== null) {
       // For now, we do an explicit check for empty strings.
-      if (transcript === '') {
+      if (response && transcript === '') {
         content =
           'Transcription process completed, however it appears your audio recording is empty. Please try recording your response again.';
       } else {

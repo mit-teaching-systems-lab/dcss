@@ -50,9 +50,7 @@ class Navigation extends Component {
   }
 
   onBeforeUnload() {
-    const {
-      lock
-    } = this.props.scenario;
+    const { lock } = this.props.scenario;
 
     if (lock && lock.user_id === this.props.user.id) {
       this.props.endScenarioLock(this.props.scenario.id);
