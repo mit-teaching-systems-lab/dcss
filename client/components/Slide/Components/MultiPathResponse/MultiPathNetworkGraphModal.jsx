@@ -6,6 +6,8 @@ import { Modal, Ref } from '@components/UI';
 import { getSlides } from '@actions/scenario';
 import htmlId from '@utils/html-id';
 
+import 'vis-network/dist/vis-network.min.css';
+
 function makeNodeLabel(index, slide) {
   const quotedSlideTitle = slide.title ? `\n"${slide.title}"` : ``;
   return slide.is_finish
@@ -198,6 +200,16 @@ class MultiPathNetworkGraphModal extends Component {
       node.y = rowCounter * nodeHeight + nodePadding * rowCounter ** 3;
 
       colCounter++;
+
+      // EXPERITMENTAL: Try using different edge types to make the
+      // layout more readable.
+      // if (rowCounter === 0) {
+      //   edges[edges.length - 1].smooth = {
+      //     enabled: true,
+      //     type: 'curvedCCW'
+      //   };
+      // }
+
       if (colCounter === nodeCols) {
         // EXPERITMENTAL: Try using different edge types to make the
         // layout more readable.
@@ -205,15 +217,15 @@ class MultiPathNetworkGraphModal extends Component {
         // When we've reached the last column, make the edge connector
         // curve nicely, since it almost always must point all the way
         // back to the left.
-        // const isNotLastNode = nodes.indexOf(node) !== nodes[nodes.length - 1];
-        // const lastEdge = edges[edges.length - 1];
-        // if (isNotLastNode && lastEdge.from && lastEdge.to) {
-        //   // edges[edges.length - 1].smooth = {
-        //   lastEdge.smooth = {
-        //     enabled: true,
-        //     type: 'cubicBezier'
-        //   };
-        // }
+        const isNotLastNode = nodes.indexOf(node) !== nodes[nodes.length - 1];
+        const lastEdge = edges[edges.length - 1];
+        if (isNotLastNode && lastEdge.from && lastEdge.to) {
+          // edges[edges.length - 1].smooth = {
+          lastEdge.smooth = {
+            enabled: true,
+            type: 'cubicBezier'
+          };
+        }
 
         colCounter = 0;
         rowCounter++;
@@ -276,7 +288,7 @@ class MultiPathNetworkGraphModal extends Component {
         hover: false,
         hoverConnectedEdges: true,
         keyboard: {
-          enabled: false,
+          enabled: true,
           speed: { x: 10, y: 10, zoom: 0.02 },
           bindToWindow: true
         },
@@ -288,6 +300,7 @@ class MultiPathNetworkGraphModal extends Component {
         zoomView: true
       }
     };
+
 
     const events = {
       select(event) {
