@@ -115,7 +115,7 @@ class Navigation extends Component {
     const menuItemMyScenarios = isLoggedIn ? (
       <Menu.Item
         role="option"
-        to="/scenarios/mine"
+        to={`/scenarios/author/${user.username}`}
         aria-label={explainMyScenarios}
         as={NavLink}
       >
@@ -173,9 +173,9 @@ class Navigation extends Component {
           <Fragment>
             {menuItemBrandLogo}
             <Dropdown
-              className="navigation__dropdown-mobile"
-              simple
+              basic
               item
+              className="navigation__dropdown-mobile"
               trigger={menuItemGoTo}
             >
               <Dropdown.Menu>
@@ -191,10 +191,10 @@ class Navigation extends Component {
 
             <Menu.Menu>
               <Dropdown
-                simple
+                basic
                 item
                 className="navigation__dropdown"
-                text={menuItemScenarios}
+                trigger={menuItemScenarios}
               >
                 <Dropdown.Menu>
                   <Popup
