@@ -114,8 +114,10 @@ class ConversationPromptEditor extends Component {
 
     let newValue = value;
 
-    if ((name === 'configuration.start' || name === 'configuration.end') &&
-        typeof value === 'string') {
+    if (
+      (name === 'configuration.start' || name === 'configuration.end') &&
+      typeof value === 'string'
+    ) {
       newValue = Media.timeToSec(value);
     }
 
