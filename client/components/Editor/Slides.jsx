@@ -489,7 +489,26 @@ class Slides extends React.Component {
                 </Segment>
               </>
             ) : (
-              <Loading card={{ cols: 1, rows: 3 }} />
+              <Loading
+                group={{
+                  style: {
+                    marginTop: '0.5em',
+                    marginLeft: '0.1em',
+                    marginRight: '0'
+                  }
+                }}
+                card={{
+                  cols: 1,
+                  rows: 4,
+                  style: {
+                    height: '11.8em',
+                    marginTop: '0',
+                    marginRight: '0',
+                    marginBottom: '0.5em',
+                    marginLeft: '0'
+                  }
+                }}
+              />
             )}
           </Grid.Column>
           <Grid.Column className="slides__editor-outer-container">
@@ -507,7 +526,13 @@ class Slides extends React.Component {
                 {...slides[activeSlideIndex]}
               />
             ) : (
-              <Loading card={{ cols: 1, rows: 1 }} />
+              <Loading
+                card={{
+                  cols: 1,
+                  rows: 1,
+                  style: { height: 'calc(100% - 10px)', marginTop: '0.5em' }
+                }}
+              />
             )}
           </Grid.Column>
         </Grid>
