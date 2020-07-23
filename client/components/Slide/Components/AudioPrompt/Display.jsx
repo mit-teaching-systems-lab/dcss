@@ -1,8 +1,8 @@
 import { type } from './meta';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Header, Segment } from '@components/UI';
+import { Header, Segment } from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import AudioRecorder from '@components/Slide/Components/AudioPrompt/AudioRecorder';
@@ -18,7 +18,6 @@ class Display extends Component {
     this.state = {
       isReady: false,
       autostart: false,
-      playing: this.isScenarioRun,
       transcript: persisted.transcript,
       type: '',
       value: persisted.value
@@ -98,14 +97,7 @@ class Display extends Component {
   }
 
   render() {
-    const {
-      isReady,
-      autostart,
-      isRecording,
-      playing,
-      transcript,
-      value
-    } = this.state;
+    const { isReady, autostart, isRecording, transcript, value } = this.state;
 
     if (!isReady) {
       return null;
@@ -115,32 +107,31 @@ class Display extends Component {
     const { onChange } = this;
     const isFulfilled = value ? true : false;
     const header = (
-      <Fragment>
+      <Header as="h3">
         {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
-      </Fragment>
+      </Header>
     );
-
-    const willShowAudioRecorder = isFulfilled || autostart;
+    const recalledResponse = recallId ? (
+      <ResponseRecall run={run} recallId={recallId} />
+    ) : null;
 
     return (
-      <Fragment>
-        <Segment>
-          <Header as="h3">{header}</Header>
-          {recallId && <ResponseRecall run={run} recallId={recallId} />}
-          <AudioRecorder
-            autostart={autostart}
-            getResponse={this.props.getResponse}
-            isEmbeddedInSVG={this.props.isEmbeddedInSVG}
-            isRecording={isRecording}
-            onChange={onChange}
-            prompt={prompt}
-            responseId={responseId}
-            run={run}
-            transcript={transcript}
-            value={value}
-          />
-        </Segment>
-      </Fragment>
+      <Segment>
+        {header}
+        {recalledResponse}
+        <AudioRecorder
+          autostart={autostart}
+          getResponse={this.props.getResponse}
+          isEmbeddedInSVG={this.props.isEmbeddedInSVG}
+          isRecording={isRecording}
+          onChange={onChange}
+          prompt={prompt}
+          responseId={responseId}
+          run={run}
+          transcript={transcript}
+          value={value}
+        />
+      </Segment>
     );
   }
 }

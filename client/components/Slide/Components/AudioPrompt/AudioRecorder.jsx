@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Icon, Popup, Ref } from '@components/UI';
+import { Button, Form, Grid, Icon, Ref } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
 import Transcript from './Transcript';
 import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
@@ -279,6 +279,7 @@ AudioRecorder.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
   isRecording: PropTypes.bool,
   onChange: PropTypes.func,
+  prompt: PropTypes.string,
   responseId: PropTypes.string,
   run: PropTypes.object,
   instructions: PropTypes.string,

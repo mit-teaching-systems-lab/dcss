@@ -131,10 +131,14 @@ class Display extends Component {
     const { onChange } = this;
     const isFulfilled = value ? true : false;
     const header = (
-      <Fragment>
+      <Header as="h3">
         {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
-      </Fragment>
+      </Header>
     );
+
+    const recalledResponse = recallId ? (
+      <ResponseRecall run={run} recallId={recallId} />
+    ) : null;
 
     const config = {
       youtube: {
@@ -202,8 +206,8 @@ class Display extends Component {
         </Container>
         {willShowAudioRecorder ? (
           <Segment>
-            <Header as="h3">{header}</Header>
-            {recallId && <ResponseRecall run={run} recallId={recallId} />}
+            {header}
+            {recalledResponse}
             <AudioRecorder
               autostart={autostart}
               getResponse={this.props.getResponse}
