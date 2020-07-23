@@ -205,7 +205,6 @@ class Display extends Component {
             <Header as="h3">{header}</Header>
             {recallId && <ResponseRecall run={run} recallId={recallId} />}
             <AudioRecorder
-              instructions="Click the microphone icon to stop recording. Press again to begin recording again."
               autostart={autostart}
               getResponse={this.props.getResponse}
               isEmbeddedInSVG={this.props.isEmbeddedInSVG}
