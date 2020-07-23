@@ -74,7 +74,11 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
     ) : (
       <Card.Group doubling style={groupStyle} itemsPerRow={card.cols}>
         {Array.from({ length: card.cols * card.rows }, (_, index) => (
-          <Card className="loading__multi-card" key={`placeholder-${index}-${counter++}`} style={cardStyle}>
+          <Card
+            className="loading__multi-card"
+            key={`placeholder-${index}-${counter++}`}
+            style={cardStyle}
+          >
             <Card.Content className="loading__content" style={cardContentStyle}>
               <Placeholder>
                 <Placeholder.Image square />

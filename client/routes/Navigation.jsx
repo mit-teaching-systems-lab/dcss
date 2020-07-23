@@ -233,14 +233,13 @@ class Navigation extends Component {
       </Menu>
     );
 
-
     return IS_ON_MOBILE ? (
       <div>
-        <Sticky>
-          {topLevelNavigation}
-        </Sticky>
+        <Sticky>{topLevelNavigation}</Sticky>
       </div>
-    ) : topLevelNavigation;
+    ) : (
+      topLevelNavigation
+    );
   }
 }
 
