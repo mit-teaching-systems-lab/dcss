@@ -2,11 +2,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import hash from 'object-hash';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Icon, Popup } from '@components/UI';
+import { Button, Form, Grid, Icon, Popup, Ref } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
-import AudioPlayer from './AudioPlayer';
 import Transcript from './Transcript';
-import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
+import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import { getResponse } from '@actions/response';
 import './AudioPrompt.css';
 
@@ -24,7 +23,9 @@ class AudioRecorder extends Component {
     };
 
     this.created_at = new Date().toISOString();
-    this.mp3Recorder = new MicRecorder({ bitRate: 128 });
+    this.recorder = new MicRecorder({ bitRate: 128 });
+    this.innerRef = this.innerRef.bind(this);
+    this.audioNode = null;
 
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -76,18 +77,36 @@ class AudioRecorder extends Component {
     this.setState({ isRecording: true, transcript: '(Recording)' });
 
     (async () => {
-      await this.mp3Recorder.start();
+      const stream = await this.recorder.start();
       this.created_at = new Date().toISOString();
+
+      if (this.audioNode) {
+        this.audioNode.srcObject = stream;
+        this.audioNode.captureStream =
+          this.audioNode.captureStream || this.audioNode.mozCaptureStream;
+
+        let recorder = new MediaRecorder(this.audioNode.captureStream());
+        this.audioNode.muted = true;
+        recorder.start();
+        this.audioNode.play();
+        // Prevent the user from pausing the player during playback
+        this.audioNode.onpause = () => this.audioNode.play();
+        this.audioNode.onvolumechange = () => (this.audioNode.muted = true);
+      }
     })();
   }
 
   onStopClick() {
+    this.audioNode.pause();
+    this.audioNode.onpause = null;
+    this.audioNode.onvolumechange = null;
+    this.audioNode.muted = false;
+    this.audioNode.srcObject = null;
     this.setState({ isRecording: false, transcript: '(Transcribing)' });
 
     (async () => {
-      const [buffer, blob] = await (await this.mp3Recorder.stop()).getMp3();
+      const [buffer, blob] = await this.recorder.stop().getMp3();
       const blobURL = URL.createObjectURL(blob);
-
       const file = new File(buffer, 'recording.mp3', {
         type: blob.type,
         lastModified: Date.now()
@@ -116,7 +135,7 @@ class AudioRecorder extends Component {
         if (prevState.blobURL) {
           URL.revokeObjectURL(prevState.blobURL);
         }
-        return { blobURL, value, isRecording: false };
+        return { blobURL, transcript, value };
       });
 
       const { created_at } = this;
@@ -131,8 +150,6 @@ class AudioRecorder extends Component {
           value
         }
       );
-
-      this.setState({ transcript, value });
     })();
   }
 
@@ -156,65 +173,76 @@ class AudioRecorder extends Component {
     this.setState({ transcript, value });
   }
 
+  innerRef(node) {
+    if (node && !this.audioNode) {
+      this.audioNode = node;
+    }
+  }
+
   render() {
     const { isRecording, blobURL, transcript, value } = this.state;
     const { responseId, run } = this.props;
 
-    const { onChange, onFocus, onStartClick, onStopClick } = this;
+    const { innerRef, onChange, onFocus, onStartClick, onStopClick } = this;
     const isFulfilled = value || blobURL || transcript ? true : false;
-    const src = isFulfilled ? blobURL || value : null;
+    const src = isFulfilled ? Media.fileToMediaURL(blobURL || value) : null;
 
-    const instructions =
-      this.props.instructions ||
-      `
-      Click the microphone to record your response. When you&apos;re
-      done, click the microphone again to stop recording.
-    `;
+    const instructions = isRecording
+      ? 'Click the microphone to stop recording.'
+      : "Click the microphone to record your response. When you're done, click the microphone again to stop recording.";
 
-    const trigger = IS_AUDIO_RECORDING_SUPPORTED ? (
-      <Grid.Row columns={2}>
-        <Grid.Column width={3}>
-          {!isRecording ? (
-            <Button
-              aria-label="Start recording"
-              className="ar__button"
-              onClick={onStartClick}
-            >
-              <Icon.Group size="big">
-                <Icon size="large" name="circle outline" />
-                <Icon name="microphone" />
-                <Icon corner="top right" color="red" name="circle" />
-              </Icon.Group>
-            </Button>
-          ) : (
-            <Button
-              aria-label="Stop recording"
-              className="ar__button"
-              onClick={onStopClick}
-            >
-              <Icon.Group size="big">
-                <Icon size="large" loading name="circle notch" />
-                <Icon name="microphone" />
-                <Icon
-                  className="blink"
-                  corner="top right"
-                  color="red"
-                  name="circle"
-                />
-              </Icon.Group>
-            </Button>
-          )}
-        </Grid.Column>
-        <Grid.Column>
-          <AudioPlayer src={src} />
-        </Grid.Column>
-      </Grid.Row>
-    ) : null;
+    const audioSrc = src ? { src } : {};
+    const audioProps = {
+      controlslist: 'nodownload',
+      controls: true,
+      ...audioSrc
+    };
 
     return IS_AUDIO_RECORDING_SUPPORTED ? (
       <Fragment>
         <Grid>
-          <Popup content={instructions} trigger={trigger} />
+          <Grid.Row columns={2}>
+            <Grid.Column width={3}>
+              {!isRecording ? (
+                <Button
+                  aria-label="Start recording"
+                  className="ar__button"
+                  onClick={onStartClick}
+                >
+                  <Icon.Group size="big">
+                    <Icon size="large" name="circle outline" />
+                    <Icon name="microphone" />
+                    <Icon corner="top right" color="red" name="circle" />
+                  </Icon.Group>
+                </Button>
+              ) : (
+                <Button
+                  aria-label="Stop recording"
+                  className="ar__button"
+                  onClick={onStopClick}
+                >
+                  <Icon.Group size="big">
+                    <Icon size="large" loading name="circle notch" />
+                    <Icon name="microphone" />
+                    <Icon
+                      className="blink"
+                      corner="top right"
+                      color="red"
+                      name="circle"
+                    />
+                  </Icon.Group>
+                </Button>
+              )}
+            </Grid.Column>
+            <Grid.Column>
+              <Ref innerRef={innerRef}>
+                <audio {...audioProps} />
+              </Ref>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>{instructions}</Grid.Column>
+          </Grid.Row>
         </Grid>
         {isFulfilled ? (
           <Transcript
