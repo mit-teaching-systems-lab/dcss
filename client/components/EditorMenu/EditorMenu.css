@@ -20,9 +20,9 @@
 
 
 .em__fullwidth /* minus left and right padding + margin */ {
-  width: calc(100vw - 31px) !important;
+  width: calc(100vw - 30px) !important;
 }
 
 .ui.segment > .em__fullwidth /* minus left and right padding + margin */ {
-  width: calc(100vw - 31px) !important;
+  width: calc(100vw - 30px) !important;
 }
