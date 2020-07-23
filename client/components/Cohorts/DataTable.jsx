@@ -288,11 +288,11 @@ export class DataTable extends React.Component {
           return (
             <div key={`${tableKeyBase}-container`} className="dt__scroll">
               <Table
-                key={`${tableKeyBase}-table`}
-                celled
                 striped
                 selectable
+                stackable
                 role="grid"
+                key={`${tableKeyBase}-table`}
               >
                 <Table.Header>
                   <Table.Row>

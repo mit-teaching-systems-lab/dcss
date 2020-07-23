@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
-import { Icon, Input, Menu } from '@components/UI';
+import hash from 'object-hash';
+import { Icon, Input, Menu, Table } from '@components/UI';
 
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -123,7 +124,7 @@ class Users extends Component {
         content: 'Username'
       },
       email: {
-        className: 'users__col-large',
+        className: 'users__col-large dl__hidden-on-mobile',
         content: 'Email'
       }
     };
@@ -149,7 +150,12 @@ class Users extends Component {
     Object.assign(columns, grantableRoles);
 
     const rows = users.reduce((accum, user) => {
-      accum[user.id] = [user.username, user.email];
+      accum[user.id] = [
+        user.username,
+        <Table.Cell className="dl__hidden-on-mobile" key={hash(user)}>
+          {user.email}
+        </Table.Cell>
+      ];
       return accum;
     }, {});
 

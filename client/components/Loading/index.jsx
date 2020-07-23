@@ -10,6 +10,8 @@ import {
 } from '@components/UI';
 import './Loading.css';
 
+const MOBILE_WIDTH = 767;
+
 const resolveProps = (props, defaults) => {
   Object.entries(defaults).forEach(([key, val]) => {
     if (!props[key]) {
@@ -53,6 +55,10 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
       ...((card.content && card.content.style) || {})
     };
 
+    if (window.innerWidth < MOBILE_WIDTH) {
+      card.cols = 1;
+    }
+
     return isSingleCard ? (
       <Card
         className="loading__single-card"
@@ -66,9 +72,9 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
         </Card.Content>
       </Card>
     ) : (
-      <Card.Group style={groupStyle} itemsPerRow={card.cols}>
+      <Card.Group doubling style={groupStyle} itemsPerRow={card.cols}>
         {Array.from({ length: card.cols * card.rows }, (_, index) => (
-          <Card key={`placeholder-${index}-${counter++}`} style={cardStyle}>
+          <Card className="loading__multi-card" key={`placeholder-${index}-${counter++}`} style={cardStyle}>
             <Card.Content className="loading__content" style={cardContentStyle}>
               <Placeholder>
                 <Placeholder.Image square />

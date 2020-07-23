@@ -65,9 +65,9 @@
   cursor: pointer;
 }
 
-.sc__card-action-labels {
+./*sc__card-action-labels {
   display: none;
-}
+}*/
 
 .modal .actions .sc__card-action-labels {
   margin-left: 0.5rem !important;
@@ -85,8 +85,15 @@
   }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.98px) {
   .sc__hidden-on-mobile {
     display: none !important;
   }
+
+  .ui.stackable.cards>.card.sc.sc__margin-height {
+    width: calc(100% - 1em)!important;
+  }
 }
+
+
+

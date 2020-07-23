@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Button, Dropdown, Icon, Menu, Popup } from '@components/UI';
+import { Dropdown, Menu, Popup, Sticky } from '@components/UI';
 import { endScenarioLock } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import UserMenu from '@components/User/UserMenu';
@@ -35,32 +35,17 @@ const restrictedNav = [
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    const isMenuOpen = window.innerWidth > MOBILE_WIDTH;
-    this.state = {
-      isMenuOpen
-    };
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
-    this.onResize = this.onResize.bind(this);
-  }
-
-  onResize() {
-    const { isMenuOpen } = this.state;
-
-    if (window.innerWidth > MOBILE_WIDTH && !isMenuOpen) {
-      this.setState({ isMenuOpen: true });
-    }
   }
 
   onBeforeUnload() {
     const { lock } = this.props.scenario;
-
     if (lock && lock.user_id === this.props.user.id) {
       this.props.endScenarioLock(this.props.scenario.id);
     }
   }
 
   componentDidMount() {
-    window.addEventListener('resize', this.onResize);
     window.addEventListener('beforeunload', this.onBeforeUnload);
 
     this.props.history.listen(({ pathname }) => {
@@ -71,16 +56,13 @@ class Navigation extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.onResize);
     window.removeEventListener('beforeunload', this.onBeforeUnload);
   }
 
   render() {
-    const { isMenuOpen } = this.state;
-
     const { isLoggedIn, user } = this.props;
 
-    const navLinkToAuthorized = restrictedNav.map(
+    const menuItemsRequireLogin = restrictedNav.map(
       ({ text, path, permission }, index) => {
         const menuItem = (
           <Menu.Item key={`menu-item-nav-${index}`} to={path} as={NavLink}>
@@ -100,9 +82,11 @@ class Navigation extends Component {
       }
     );
 
+    const menuItemAuthorized = isLoggedIn ? menuItemsRequireLogin : null;
+
     const explainAllScenarios = 'See all scenarios';
     // This is used as the dropdown trigger, in the top menu
-    const navLinkToScenarios = (
+    const menuItemScenarios = (
       <Menu.Item
         role="option"
         to="/scenarios/"
@@ -112,8 +96,9 @@ class Navigation extends Component {
         Scenarios
       </Menu.Item>
     );
+
     // This is used WITHIN the dropdown menu
-    const navLinkToAllScenarios = (
+    const menuItemAllScenarios = (
       <Menu.Item
         role="option"
         to="/scenarios/"
@@ -127,7 +112,7 @@ class Navigation extends Component {
     // to={`/scenarios/author/${user.username}`}
     const explainMyScenarios =
       'See scenarios where I am an owner, author or reviewer';
-    const navLinkToMyScenarios = isLoggedIn ? (
+    const menuItemMyScenarios = isLoggedIn ? (
       <Menu.Item
         role="option"
         to="/scenarios/mine"
@@ -139,7 +124,7 @@ class Navigation extends Component {
     ) : null;
 
     const explainOfficialScenarios = `See scenarios made by ${DCSS_BRAND_LABEL}`;
-    const navLinkToOfficialScenarios = (
+    const menuItemOfficialScenarios = (
       <Menu.Item
         role="option"
         to="/scenarios/official"
@@ -151,7 +136,7 @@ class Navigation extends Component {
     );
 
     const explainCommunityScenarios = 'See scenarios made by the community';
-    const navLinkToCommunityScenarios = (
+    const menuItemCommunityScenarios = (
       <Menu.Item
         role="option"
         to="/scenarios/community"
@@ -162,79 +147,100 @@ class Navigation extends Component {
       </Menu.Item>
     );
 
-    //<NavLink to="/scenarios/">Scenarios</NavLink>;
-    return (
-      <Fragment>
-        <Button
-          icon
-          fluid
-          basic
-          labelPosition="left"
-          className="nav__mobile"
-          id="nav__mobile--button"
-          aria-controls="nav"
-          onClick={() => this.setState({ isMenuOpen: !isMenuOpen })}
-        >
-          <Icon name="content" />
-          MENU
-        </Button>
-        {isMenuOpen && (
-          <Menu id="nav" className="nav" stackable borderless>
-            <Menu.Item className="navigation__menu-item-logo">
-              <NavLink to="/">
-                {process.env.DCSS_BRAND_NAME_TITLE || 'Home'}
-              </NavLink>
-            </Menu.Item>
+    const menuItemBrandLogo = (
+      <Menu.Item className="navigation__menu-item-logo">
+        <NavLink to="/">{process.env.DCSS_BRAND_NAME_TITLE || 'Home'}</NavLink>
+      </Menu.Item>
+    );
+
+    const menuItemUserMenu = isLoggedIn ? (
+      <UserMenu user={user} />
+    ) : (
+      <NavLink to="/login">Log in</NavLink>
+    );
+
+    const menuItemGoTo = (
+      <Menu.Item role="option" aria-label="Go to...">
+        Go to...
+      </Menu.Item>
+    );
+
+    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
+
+    const topLevelNavigation = (
+      <Menu id="nav" aria-controls="nav" borderless>
+        {IS_ON_MOBILE ? (
+          <Fragment>
+            {menuItemBrandLogo}
+            <Dropdown
+              className="navigation__dropdown-mobile"
+              simple
+              item
+              trigger={menuItemGoTo}
+            >
+              <Dropdown.Menu>
+                {menuItemScenarios}
+                {menuItemAuthorized}
+              </Dropdown.Menu>
+            </Dropdown>
+            <Menu.Menu position="right">{menuItemUserMenu}</Menu.Menu>
+          </Fragment>
+        ) : (
+          <Fragment>
+            {menuItemBrandLogo}
 
             <Menu.Menu>
               <Dropdown
                 simple
                 item
                 className="navigation__dropdown"
-                text={navLinkToScenarios}
+                text={menuItemScenarios}
               >
                 <Dropdown.Menu>
                   <Popup
                     position="right center"
                     size="large"
                     content={explainAllScenarios}
-                    trigger={navLinkToAllScenarios}
+                    trigger={menuItemAllScenarios}
                   />
                   <Popup
                     position="right center"
                     size="large"
                     content={explainMyScenarios}
-                    trigger={navLinkToMyScenarios}
+                    trigger={menuItemMyScenarios}
                   />
                   <Popup
                     position="right center"
                     size="large"
                     content={explainOfficialScenarios}
-                    trigger={navLinkToOfficialScenarios}
+                    trigger={menuItemOfficialScenarios}
                   />
                   <Popup
                     position="right center"
                     size="large"
                     content={explainCommunityScenarios}
-                    trigger={navLinkToCommunityScenarios}
+                    trigger={menuItemCommunityScenarios}
                   />
                 </Dropdown.Menu>
               </Dropdown>
             </Menu.Menu>
 
-            {isLoggedIn ? navLinkToAuthorized : null}
+            {menuItemAuthorized}
 
-            <Menu.Menu position="right">
-              {isLoggedIn ? (
-                <UserMenu user={user} />
-              ) : (
-                <NavLink to="/login">Log in</NavLink>
-              )}
-            </Menu.Menu>
-          </Menu>
+            <Menu.Menu position="right">{menuItemUserMenu}</Menu.Menu>
+          </Fragment>
         )}
-      </Fragment>
+      </Menu>
     );
+
+
+    return IS_ON_MOBILE ? (
+      <div>
+        <Sticky>
+          {topLevelNavigation}
+        </Sticky>
+      </div>
+    ) : topLevelNavigation;
   }
 }
 

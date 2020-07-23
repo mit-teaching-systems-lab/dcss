@@ -63,6 +63,10 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
       ? 'This is an anonymous account and cannot be promoted.'
       : tipImmutable;
 
+    if (targetUser.is_anonymous) {
+      disabled = true;
+    }
+
     const roleCheckBox = (
       <RoleCheckbox
         checked={checked}

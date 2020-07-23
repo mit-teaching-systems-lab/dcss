@@ -14,6 +14,7 @@ import DataTable from '@components/Cohorts/DataTable';
 
 import './History.css';
 
+const MOBILE_WIDTH = 767;
 const ROWS_PER_PAGE = 10;
 
 class History extends Component {
@@ -130,6 +131,31 @@ class History extends Component {
     const runsIndex = (activePage - 1) * ROWS_PER_PAGE;
     const runsSlice = runs.slice(runsIndex, runsIndex + ROWS_PER_PAGE);
 
+    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
+
+    const pagination = (
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell colSpan="5">
+            {runsPages > 1 ? (
+              <Pagination
+                borderless
+                name="runs"
+                siblingRange={1}
+                boundaryRange={0}
+                ellipsisItem={null}
+                firstItem={null}
+                lastItem={null}
+                activePage={activePage}
+                onPageChange={onPageChange}
+                totalPages={runsPages}
+              />
+            ) : null}
+          </Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+    );
+
     panes[0].pane.content = !isReady ? (
       <Loading />
     ) : (
@@ -138,25 +164,33 @@ class History extends Component {
           <Message content="No history recorded yet!" />
         ) : (
           <Table
-            fixed
             striped
             selectable
-            unstackable
             role="grid"
             aria-labelledby="header"
             className="h__table--constraints"
           >
+            {IS_ON_MOBILE ? pagination : null}
+
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell style={{ width: '40px' }}></Table.HeaderCell>
-                <Table.HeaderCell className="h__hidden-on-mobile h__table-cell-content">
+                {!IS_ON_MOBILE ? (
+                  <Table.HeaderCell
+                    style={{ width: '40px' }}
+                  ></Table.HeaderCell>
+                ) : null}
+                <Table.HeaderCell className="h__col-medium">
                   Cohort
                 </Table.HeaderCell>
-                <Table.HeaderCell>Scenario</Table.HeaderCell>
-                <Table.HeaderCell className="h__hidden-on-mobile h__table-cell-content h__table-cell-small">
-                  Started
+                <Table.HeaderCell className="h__col-medium">
+                  Scenario
                 </Table.HeaderCell>
-                <Table.HeaderCell className="h__hidden-on-mobile h__table-cell-content h__table-cell-small">
+                {!IS_ON_MOBILE ? (
+                  <Table.HeaderCell className="h__col-small">
+                    Started
+                  </Table.HeaderCell>
+                ) : null}
+                <Table.HeaderCell className="h__col-small">
                   Completed
                 </Table.HeaderCell>
               </Table.Row>
@@ -190,7 +224,7 @@ class History extends Component {
                   ? Moment(run_ended_at).calendar()
                   : 'This run is not complete';
 
-                const startedAtWithPopup = (
+                const createdAtWithPopup = (
                   <Popup
                     size="tiny"
                     content={createdAtAlt}
@@ -223,39 +257,41 @@ class History extends Component {
                   ? 'View your data for this scenario run, from this cohort'
                   : 'View your data for this scenario run';
 
+                const viewDataIcon = (
+                  <Table.Cell.Clickable
+                    className="h__table-cell-first"
+                    content={<Icon name="file alternate outline" />}
+                    onClick={onViewRunDataClick}
+                  />
+                );
+
                 return (
                   <Table.Row {...completeOrIncomplete} key={run_id}>
-                    <Popup
-                      size="tiny"
-                      content={popupContent}
-                      trigger={
-                        <Table.Cell.Clickable
-                          className="h__table-cell-first"
-                          content={<Icon name="file alternate outline" />}
-                          onClick={onViewRunDataClick}
-                        />
-                      }
-                    />
+                    {!IS_ON_MOBILE ? (
+                      <Popup
+                        size="tiny"
+                        content={popupContent}
+                        trigger={viewDataIcon}
+                      />
+                    ) : null}
+
                     <Table.Cell.Clickable
-                      className="h__hidden-on-mobile"
+                      className="h__col-medium"
                       href={cohortPathname}
-                      content={cohortDisplay}
+                      content={cohortDisplay || ' '}
                     />
                     <Table.Cell.Clickable
+                      className="h__col-medium"
                       href={pathname}
                       content={scenario_title}
-                      className="h__table-cell-options"
                     />
-                    <Table.Cell
-                      alt={endedAtAlt}
-                      className="h__hidden-on-mobile"
-                    >
-                      {startedAtWithPopup}
-                    </Table.Cell>
-                    <Table.Cell
-                      alt={endedAtAlt}
-                      className="h__hidden-on-mobile"
-                    >
+                    {!IS_ON_MOBILE ? (
+                      <Table.Cell className="h__col-small" alt={createdAtAlt}>
+                        {createdAtWithPopup}
+                      </Table.Cell>
+                    ) : null}
+
+                    <Table.Cell className="h__col-small" alt={endedAtAlt}>
                       {endedAtWithPopup}
                     </Table.Cell>
                   </Table.Row>
@@ -263,26 +299,7 @@ class History extends Component {
               })}
             </Table.Body>
 
-            <Table.Footer>
-              <Table.Row>
-                <Table.HeaderCell colSpan="5">
-                  {runsPages > 1 ? (
-                    <Pagination
-                      borderless
-                      name="runs"
-                      siblingRange={1}
-                      boundaryRange={0}
-                      ellipsisItem={null}
-                      firstItem={null}
-                      lastItem={null}
-                      activePage={activePage}
-                      onPageChange={onPageChange}
-                      totalPages={runsPages}
-                    />
-                  ) : null}
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Footer>
+            {pagination}
           </Table>
         )}
       </Fragment>

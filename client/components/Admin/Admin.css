@@ -28,9 +28,72 @@
 
 .users__col-small {
   width: 10%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
 .ut__tbody {
   min-height: 231px;
+}
+
+.super:before {
+  content: "Super admin";
+}
+
+.admin:before {
+  content: "Admin";
+}
+
+
+.researcher:before {
+  content: "Researcher";
+}
+
+
+.facilitator:before {
+  content: "Facilitator";
+}
+
+.participant:before {
+  content: "Super admin";
+}
+
+@media only screen and (max-width: 767px) {
+  .users__icon {
+    opacity: 1;
+    color: rgba(0, 0, 0, 0.87);
+    width: 1.18em;
+    height: 1em;
+    font-family: 'Icons';
+    font-size: 1.5em;
+    vertical-align: middle;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    text-align: center;
+    speak: none;
+  }
+
+  .super:before {
+    content: "\f445";
+  }
+
+  .admin:before {
+    content: "\f447";
+  }
+
+
+  .researcher:before {
+    content: "\f501";
+  }
+
+
+  .facilitator:before {
+    content: "\f51c";
+  }
+
+  .participant:before {
+    content: "\f2bd";
+  }
 }

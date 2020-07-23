@@ -143,4 +143,8 @@ td .ui.fluid.selection.dropdown > .text {
   .ui.fluid.buttons .button:only-child {
     border-radius: 0.28571429rem;
   }
+
+  .ui.grid {
+    margin-top: 0rem !important;
+  }
 }

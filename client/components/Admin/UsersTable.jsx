@@ -5,7 +5,7 @@ import { Pagination, Table } from '@components/UI';
 import UserRows from './UserRows';
 
 // import { getUsers } from '@actions/users';
-
+const MOBILE_WIDTH = 767;
 const ROWS_PER_PAGE = 10;
 const USER_ROLES = {
   super_admin: 'Super Admin',
@@ -35,8 +35,29 @@ class UsersTable extends Component {
     const userRowsProps = { cohort, grantableRoles, rows, rowsPerPage };
     const tableRows = <UserRows {...userRowsProps} />;
 
+    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
     return (
       <Table striped selectable unstackable>
+        {IS_ON_MOBILE ? (
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell colSpan="7">
+                <Pagination
+                  borderless
+                  name="users"
+                  activePage={activePage}
+                  siblingRange={1}
+                  boundaryRange={0}
+                  ellipsisItem={null}
+                  firstItem={null}
+                  lastItem={null}
+                  onPageChange={onPageChange}
+                  totalPages={pages}
+                />
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+        ) : null}
         <Table.Header>
           <Table.Row>
             {Object.entries(columns).map(([key, { className, content }]) => (

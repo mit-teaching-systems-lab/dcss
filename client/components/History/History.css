@@ -13,13 +13,35 @@
   width: 15rem !important;
 }
 
-.h__table-cell-content {
+
+.h__col-xxlarge {
+  width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.h__table-cell-small {
+.h__col-xlarge {
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h__col-large {
+  /*width: 30%;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h__col-medium {
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h__col-small {
   width: 15%;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /*.h__table-thead-tbody-tr {
