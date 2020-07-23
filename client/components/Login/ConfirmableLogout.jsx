@@ -19,6 +19,7 @@ class ConfirmableLogout extends Component {
   }
   onCancel() {
     this.setState({ open: false });
+    this.props.onCancel();
   }
   onConfirm() {
     this.setState({ open: false });
@@ -83,7 +84,8 @@ ConfirmableLogout.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   user: PropTypes.object,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  onCancel: PropTypes.func
 };
 
 export default withRouter(ConfirmableLogout);

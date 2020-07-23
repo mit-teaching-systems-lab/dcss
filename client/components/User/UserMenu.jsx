@@ -39,9 +39,11 @@ class UserMenu extends Component {
             <Dropdown.Item onClick={onLogoutClick}>Log out</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        {openSettings ? <UserSettings user={user} open={openSettings} /> : null}
+        {openSettings ? (
+          <UserSettings user={user} open={openSettings} onCancel={() => this.setState({openSettings: false })} />
+        ) : null}
         {openLogout ? (
-          <ConfirmableLogout user={user} open={openLogout} />
+          <ConfirmableLogout user={user} open={openLogout} onCancel={() => this.setState({openLogout: false })} />
         ) : null}
       </Fragment>
     );

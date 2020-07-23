@@ -147,6 +147,7 @@ class UserSettings extends Component {
 
   onCancel() {
     this.setState({ open: false });
+    this.props.onCancel();
   }
 
   render() {
@@ -293,7 +294,8 @@ UserSettings.propTypes = {
   getUser: PropTypes.func,
   setUser: PropTypes.func,
   user: PropTypes.object,
-  open: PropTypes.bool
+  open: PropTypes.bool,
+  onCancel: PropTypes.func
 };
 
 const mapStateToProps = state => {
