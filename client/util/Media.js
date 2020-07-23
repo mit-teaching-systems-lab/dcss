@@ -47,8 +47,13 @@ export function isAudioPrompt(component) {
   );
 }
 
+export function fileToMediaURL(file) {
+  return file.startsWith('blob:') ? file : `/api/media/${file}`;
+}
+
 export default {
   IS_AUDIO_RECORDING_SUPPORTED,
+  fileToMediaURL,
   secToTime,
   timeToSec,
   isAudioFile,
