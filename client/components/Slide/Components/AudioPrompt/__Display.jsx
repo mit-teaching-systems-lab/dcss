@@ -1,31 +1,45 @@
+import { type } from './meta';
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import hash from 'object-hash';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Form, Grid, Icon, Popup, Ref } from '@components/UI';
+import { Button, Form, Grid, Header, Icon, Segment } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
+import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
+import PromptRequiredLabel from '../PromptRequiredLabel';
+import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
+
+//
+//
+//
+//
+// TODO: Migrate this to use AudioRecorder component
+// import AudioRecorder from './AudioRecorder';
+//
+//
+//
+//
+import AudioPlayer from './AudioPlayer';
 import Transcript from './Transcript';
-import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import { getResponse } from '@actions/response';
 import './AudioPrompt.css';
 
-class AudioRecorder extends Component {
+class Display extends Component {
   constructor(props) {
     super(props);
 
-    const { transcript = '', value = '' } = this.props;
+    const { persisted = { value: '', transcript: '' } } = this.props;
 
     this.state = {
       blobURL: '',
       isRecording: false,
-      transcript,
-      value
+      transcript: persisted.transcript,
+      type: '',
+      value: persisted.value
     };
 
     this.created_at = new Date().toISOString();
-    this.recorder = new MicRecorder({ bitRate: 128 });
-    this.innerRef = this.innerRef.bind(this);
-    this.audioNode = null;
+    this.mp3Recorder = new MicRecorder({ bitRate: 128 });
 
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -41,19 +55,15 @@ class AudioRecorder extends Component {
     if (!this.isScenarioRun) {
       return;
     }
-
-    if (this.props.autostart) {
-      this.onStartClick();
-    }
-
     let {
       getResponse,
-      onChange,
+      onResponseChange,
+      persisted = {},
       responseId,
-      run,
-      transcript,
-      value
+      run
     } = this.props;
+
+    let { name = responseId, transcript = '', value = '' } = persisted;
 
     if (!value || !transcript) {
       const previous = await getResponse({
@@ -68,7 +78,7 @@ class AudioRecorder extends Component {
     }
 
     if (value) {
-      onChange({}, { name, transcript, value, isFulfilled: true });
+      onResponseChange({}, { name, transcript, value, isFulfilled: true });
       this.setState({ transcript, value });
     }
   }
@@ -77,36 +87,18 @@ class AudioRecorder extends Component {
     this.setState({ isRecording: true, transcript: '(Recording)' });
 
     (async () => {
-      const stream = await this.recorder.start();
+      await this.mp3Recorder.start();
       this.created_at = new Date().toISOString();
-
-      if (this.audioNode) {
-        this.audioNode.srcObject = stream;
-        this.audioNode.captureStream =
-          this.audioNode.captureStream || this.audioNode.mozCaptureStream;
-
-        let recorder = new MediaRecorder(this.audioNode.captureStream());
-        this.audioNode.muted = true;
-        recorder.start();
-        this.audioNode.play();
-        // Prevent the user from pausing the player during playback
-        this.audioNode.onpause = () => this.audioNode.play();
-        this.audioNode.onvolumechange = () => (this.audioNode.muted = true);
-      }
     })();
   }
 
   onStopClick() {
-    this.audioNode.pause();
-    this.audioNode.onpause = null;
-    this.audioNode.onvolumechange = null;
-    this.audioNode.muted = false;
-    this.audioNode.srcObject = null;
     this.setState({ isRecording: false, transcript: '(Transcribing)' });
 
     (async () => {
-      const [buffer, blob] = await this.recorder.stop().getMp3();
+      const [buffer, blob] = await (await this.mp3Recorder.stop()).getMp3();
       const blobURL = URL.createObjectURL(blob);
+
       const file = new File(buffer, 'recording.mp3', {
         type: blob.type,
         lastModified: Date.now()
@@ -135,21 +127,26 @@ class AudioRecorder extends Component {
         if (prevState.blobURL) {
           URL.revokeObjectURL(prevState.blobURL);
         }
-        return { blobURL, transcript, value };
+        return { blobURL, value, isRecording: false };
       });
 
       const { created_at } = this;
+      const { recallId } = this.props;
 
-      this.props.onChange(
+      this.props.onResponseChange(
         {},
         {
           created_at,
           ended_at: new Date().toISOString(),
           name,
+          recallId,
           transcript,
+          type,
           value
         }
       );
+
+      this.setState({ transcript, value });
     })();
   }
 
@@ -160,59 +157,47 @@ class AudioRecorder extends Component {
   }
 
   onChange(event, { name, value }) {
-    const transcript = '';
     const { created_at } = this;
-    this.props.onChange(event, {
+    const { recallId } = this.props;
+    const transcript = '';
+    this.props.onResponseChange(event, {
       created_at,
       ended_at: new Date().toISOString(),
+      recallId,
       name,
       transcript,
+      type,
       value
     });
 
     this.setState({ transcript, value });
   }
 
-  innerRef(node) {
-    if (node && !this.audioNode) {
-      this.audioNode = node;
-    }
-  }
-
   render() {
     const { isRecording, blobURL, transcript, value } = this.state;
-    const { prompt, responseId, run } = this.props;
-
-    const { innerRef, onChange, onFocus, onStartClick, onStopClick } = this;
+    const { prompt, recallId, responseId, required, run } = this.props;
+    const { onChange, onFocus } = this;
     const isFulfilled = value || blobURL || transcript ? true : false;
-    const src = isFulfilled ? Media.fileToMediaURL(blobURL || value) : null;
-
-    const instructions = isRecording
-      ? 'Click the microphone to stop recording.'
-      : 'Click the microphone to start recording';
-
-    const audioSrc = src ? { src } : {};
-    const audioProps = {
-      controlslist: 'nodownload',
-      controls: true,
-      ...audioSrc
-    };
+    const header = (
+      <Fragment>
+        {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
+      </Fragment>
+    );
+    const src = isFulfilled ? blobURL || value : null;
 
     return IS_AUDIO_RECORDING_SUPPORTED ? (
-      <Fragment>
+      <Segment>
+        <Header as="h3">{header}</Header>
+        {recallId && <ResponseRecall run={run} recallId={recallId} />}
+
         <Grid>
-          {!prompt ? (
-            <Grid.Row className="ar__instructions">
-              <Grid.Column>{instructions}</Grid.Column>
-            </Grid.Row>
-          ) : null}
           <Grid.Row columns={2}>
             <Grid.Column width={3}>
               {!isRecording ? (
                 <Button
                   aria-label="Start recording"
                   className="ar__button"
-                  onClick={onStartClick}
+                  onClick={this.onStartClick}
                 >
                   <Icon.Group size="big">
                     <Icon size="large" name="circle outline" />
@@ -224,7 +209,7 @@ class AudioRecorder extends Component {
                 <Button
                   aria-label="Stop recording"
                   className="ar__button"
-                  onClick={onStopClick}
+                  onClick={this.onStopClick}
                 >
                   <Icon.Group size="big">
                     <Icon size="large" loading name="circle notch" />
@@ -240,12 +225,17 @@ class AudioRecorder extends Component {
               )}
             </Grid.Column>
             <Grid.Column>
-              <Ref innerRef={innerRef}>
-                <audio {...audioProps} />
-              </Ref>
+              <AudioPlayer src={src} />
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row stretched>
+            <Grid.Column className="ar__instruction">
+              Click the microphone to record your response. When you&apos;re
+              done, click the microphone again to stop recording.
             </Grid.Column>
           </Grid.Row>
         </Grid>
+
         {isFulfilled ? (
           <Transcript
             key={hash({ transcript })}
@@ -254,36 +244,41 @@ class AudioRecorder extends Component {
             transcript={transcript}
           />
         ) : null}
-      </Fragment>
+      </Segment>
     ) : (
-      <Form>
-        <Form.TextArea
-          autoFocus
-          placeholder="..."
-          name={responseId}
-          onFocus={onFocus}
-          onChange={onChange}
-        />
-      </Form>
+      <Segment>
+        <Header as="h3">{header}</Header>
+        {recallId && <ResponseRecall run={run} recallId={recallId} />}
+        <Form>
+          <Form.TextArea
+            name={responseId}
+            placeholder="..."
+            onFocus={onFocus}
+            onChange={onChange}
+          />
+        </Form>
+      </Segment>
     );
   }
 }
 
-AudioRecorder.defaultProps = {
+Display.defaultProps = {
   isEmbeddedInSVG: false
 };
 
-AudioRecorder.propTypes = {
-  autostart: PropTypes.bool,
-  getResponse: PropTypes.func,
+Display.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
+  getResponse: PropTypes.func,
   isRecording: PropTypes.bool,
-  onChange: PropTypes.func,
+  onResponseChange: PropTypes.func,
+  persisted: PropTypes.object,
+  placeholder: PropTypes.string,
+  prompt: PropTypes.string,
+  recallId: PropTypes.string,
+  required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  instructions: PropTypes.string,
-  transcript: PropTypes.string,
-  value: PropTypes.string
+  type: PropTypes.oneOf([type]).isRequired
 };
 
 const mapStateToProps = state => {
@@ -298,4 +293,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AudioRecorder);
+)(Display);

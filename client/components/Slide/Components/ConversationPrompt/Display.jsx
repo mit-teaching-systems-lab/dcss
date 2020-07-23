@@ -210,6 +210,7 @@ class Display extends Component {
               isEmbeddedInSVG={this.props.isEmbeddedInSVG}
               isRecording={isRecording}
               onChange={onChange}
+              prompt={prompt}
               responseId={responseId}
               run={run}
               transcript={transcript}

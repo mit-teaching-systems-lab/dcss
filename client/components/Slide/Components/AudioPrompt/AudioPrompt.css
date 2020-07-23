@@ -21,7 +21,6 @@ audio {
   transform: translateX(-53%) translateY(-50%) !important;
 }
 
-
 .blink {
   -webkit-animation: 1s linear infinite blinking_record_led; /* for Safari 4.0 - 8.0 */
   animation: 1s linear infinite blinking_record_led;
@@ -53,6 +52,8 @@ audio {
 }
 
 
-.ar__instruction {
+.ar__instructions {
+  padding: 0px !important;
+  text-align: center !important;
   font-size: 12px !important;
 }
