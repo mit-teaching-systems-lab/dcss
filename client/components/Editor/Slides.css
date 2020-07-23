@@ -42,7 +42,9 @@
 
 .slides__editor-all-outer-container {
   flex-wrap: nowrap !important;
-  height: 100% !important;
+  /*height: 100% !important;*/
+  /* 142px is the sum of the header and menu bar */
+  height: calc(100vh - 142px) !important;
 }
 
 .slides__list-card {
