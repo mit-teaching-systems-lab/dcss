@@ -243,6 +243,18 @@ export class Cohorts extends React.Component {
     const ariaLabelledBy = htmlId();
     const ariaDescribedBy = htmlId();
 
+    const loadingProps = {
+      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem'} }
+    };
+
+    const cardGroup = cards.length ? (
+      <Card.Group doubling itemsPerRow={itemsPerRow} stackable>
+        {cards}
+      </Card.Group>
+    ) : (
+      <Message content="No cohorts yet!" />
+    );
+
     return (
       <React.Fragment>
         <EditorMenu
@@ -252,44 +264,38 @@ export class Cohorts extends React.Component {
             right
           }}
         />
+        <Container fluid>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column stretched>
+                {!isReady ? (
+                  <Loading {...loadingProps} />
+                ) : (
+                  cardGroup
+                )}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column stretched>
+                {cohortsPages > 1 ? (
+                  <Pagination
+                    borderless
+                    name="cohorts"
+                    siblingRange={1}
+                    boundaryRange={0}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    activePage={activePage}
+                    onPageChange={onPageChange}
+                    totalPages={cohortsPages}
+                  />
+                ) : null}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
 
-        {!isReady ? (
-          <Loading card={{ cols: itemsPerRow, rows: rowsPerPage }} />
-        ) : (
-          <Container fluid>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column stretched>
-                  {cards.length ? (
-                    <Card.Group doubling itemsPerRow={itemsPerRow} stackable>
-                      {cards}
-                    </Card.Group>
-                  ) : (
-                    <Message content="No cohorts yet!" />
-                  )}
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column stretched>
-                  {cohortsPages > 1 ? (
-                    <Pagination
-                      borderless
-                      name="cohorts"
-                      siblingRange={1}
-                      boundaryRange={0}
-                      ellipsisItem={null}
-                      firstItem={null}
-                      lastItem={null}
-                      activePage={activePage}
-                      onPageChange={onPageChange}
-                      totalPages={cohortsPages}
-                    />
-                  ) : null}
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
-        )}
         <Modal.Accessible open={createIsVisible}>
           <Modal
             size="small"

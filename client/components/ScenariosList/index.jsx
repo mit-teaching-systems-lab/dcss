@@ -359,50 +359,55 @@ class ScenariosList extends Component {
     ];
 
     const itemsPerRow = 4;
+    const loadingProps = {
+      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem'} }
+    };
 
+    const totalPages = scenariosPages;
+    const paginationProps = {
+      borderless: true,
+      name: 'scenarios',
+      siblingRange: 1,
+      boundaryRange: 0,
+      ellipsisItem: null,
+      firstItem: null,
+      lastItem: null,
+      activePage,
+      onPageChange,
+      totalPages,
+    };
     return (
       <Fragment>
         <EditorMenu type="scenarios" items={{ left, right }} />
-        {!isReady ? (
-          <Loading card={{ cols: itemsPerRow, rows: rowsPerPage }} />
-        ) : (
-          <Container fluid>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column stretched>
-                  <Responsive
-                    onUpdate={() => {
-                      // eslint-disable-next-line no-console
-                      console.log('resize');
-                    }}
-                  >
-                    <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
-                      {cards}
-                    </Card.Group>
-                  </Responsive>
-                </Grid.Column>
-              </Grid.Row>
-              <Grid.Row>
-                <Grid.Column stretched>
-                  {scenariosPages > 1 ? (
-                    <Pagination
-                      borderless
-                      name="scenarios"
-                      siblingRange={1}
-                      boundaryRange={0}
-                      ellipsisItem={null}
-                      firstItem={null}
-                      lastItem={null}
-                      activePage={activePage}
-                      onPageChange={onPageChange}
-                      totalPages={scenariosPages}
-                    />
-                  ) : null}
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Container>
-        )}
+        <Container fluid>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column stretched>
+              {!isReady ? (
+                <Loading {...loadingProps} />
+              ) : (
+                <Responsive
+                  onUpdate={() => {
+                    // eslint-disable-next-line no-console
+                    console.log('resize');
+                  }}
+                >
+                  <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
+                    {cards}
+                  </Card.Group>
+                </Responsive>
+              )}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column stretched>
+                {scenariosPages > 1 ? (
+                  <Pagination {...paginationProps} />
+                ) : null}
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Container>
         {selected ? (
           <ScenarioDetailModal
             open={open}

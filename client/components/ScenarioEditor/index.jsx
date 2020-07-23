@@ -56,7 +56,6 @@ class ScenarioEditor extends Component {
     this.leftcol = {
       title: createSectionDef('Title'),
       description: createSectionDef('Description'),
-      authors: createSectionDef('Author'),
       categories: createSectionDef('Categories'),
       consentprose: createSectionDef('Consent Agreement'),
       finish: createSectionDef('Finish Slide')
@@ -224,11 +223,9 @@ class ScenarioEditor extends Component {
 
   scrollIntoView(name) {
     let top = this.leftcolRef.scrollHeight;
-
     Object.values(this.leftcol).forEach(({ offsetTop }) => {
       top = Math.min(top, offsetTop);
     });
-
     this.leftcolRef.scrollTo(0, this.leftcol[name].offsetTop - top);
   }
 
@@ -252,9 +249,9 @@ class ScenarioEditor extends Component {
     }
 
     const consentAgreementValue = consent.prose || '';
-
     const innerRef = (node, name) => {
       if (node) {
+        console.log(name);
         this.leftcol[name].node = node;
         this.leftcol[name].offsetTop = node.offsetTop;
       }
@@ -341,13 +338,11 @@ class ScenarioEditor extends Component {
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
         {this.state.authors.length && scenarioId === 'new' ? (
-          <Ref innerRef={node => innerRef(node, 'authors')}>
-            <AuthorDropdown
-              author={author}
-              options={this.state.authors}
-              onChange={onChange}
-            />
-          </Ref>
+          <AuthorDropdown
+            author={author}
+            options={this.state.authors}
+            onChange={onChange}
+          />
         ) : null}
         {this.state.categories.length ? (
           <Ref innerRef={node => innerRef(node, 'categories')}>

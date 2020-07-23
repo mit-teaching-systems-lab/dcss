@@ -307,10 +307,15 @@ class Scenario extends Component {
     const activeSlideIndex = activeRunSlideIndex;
     const classes = 'ui centered card scenario__card--run';
 
+    const loadingProps = {
+      card: { cols: 1, rows: 1 },
+      group: {style: { boxShadow: 'none' }}
+    };
+
     if (!isReady) {
       return this.isScenarioRun ? (
         <div className={classes}>
-          <Loading card={{ cols: 1, rows: 1, style: { boxShadow: 'none' } }} />
+          <Loading {...loadingProps} />
         </div>
       ) : null;
     }

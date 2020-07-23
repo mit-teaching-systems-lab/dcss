@@ -74,7 +74,7 @@ td .ui.fluid.selection.dropdown > .text {
 }
 
 .ui.borderless.icon.menu>.right>.item:last-child {
-  padding-right: 0.4em !important;
+  padding-right: 0.5em !important;
 }
 
 .ui.borderless.icon.menu>.menu.movers.right>.item:last-child,
