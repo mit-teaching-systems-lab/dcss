@@ -1,37 +1,37 @@
-.cohort__scrolling-tbody {
+.c__scrolling-tbody {
     display: block;
     height: 231px;
     min-height: 143px;
     overflow: auto;
 }
 
-.cohort__table-container {
+.c__table-container {
     margin-bottom: 1rem;
 }
 
 @media only screen and (max-width: 767px) {
-    .ui.container.cohort__table-container {
+    .ui.container.c__table-container {
         width: auto !important;
         margin-left: 0em !important;
         margin-right: 0em !important;
     }
 }
 
-.cohort__table-thead-tbody-tr {
+.c__table-thead-tbody-tr {
     display: table;
     width: 100%;
     table-layout: fixed;
 }
 
-.cohort__button--transparent {
+.c__button--transparent {
     background: none !important;
 }
 
-.cohort__button-group--transparent {
+.c__button-group--transparent {
     background: none !important;
 }
 
-.cohort__button--spacing {
+.c__button--spacing {
     padding-top: 0rem !important;
     padding-right: 0.5rem !important;
     padding-bottom: 0rem !important;
@@ -43,50 +43,53 @@
     padding: 0.428571em 1.14285714em !important;
 }
 
-.cohort__table--constraints {
+.c__table--constraints {
     width: 100%;
     white-space: nowrap;
     table-layout: fixed;
 }
 
-.cohort__table-cell-first {
+.c__table-cell-first {
     width: 40px;
     text-overflow: unset !important;
 }
 
-.cohort__table-cell-options {
+.c__table-cell-options {
     width: 15rem !important;
 }
 
-.cohort__table-cell-content {
+.c__table-cell-content {
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 @media only screen and (max-width: 767px) {
-    .cohort__table-cell-content {
-        display: none !important;
-    }
+  .c__table-cell-content {
+    display: none !important;
+  }
+  .c__hidden-on-mobile {
+    display: none !important;
+  }
 }
 
-.cohort__table--search {
+.c__table--search {
     margin-left: 0.5rem !important;
 }
 
-.cohort__table-cell--title-button {
+.c__table-cell--title-button {
     background: none;
 }
 
-.cohort__tab-menu--overflow {
+.c__tab-menu--overflow {
     overflow-x: auto;
     overflow-y: hidden;
 }
-.cohort__tab-menu--overflow::-webkit-scrollbar {
+.c__tab-menu--overflow::-webkit-scrollbar {
     height: 2px !important;
 }
 
 
-.cohort__tab-menu--button-transparent {
+.c__tab-menu--button-transparent {
     background-color: none !important;
     margin: -2.5em 0 !important;
 }

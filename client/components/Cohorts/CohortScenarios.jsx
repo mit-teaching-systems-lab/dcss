@@ -230,7 +230,7 @@ export class CohortScenarios extends React.Component {
     );
 
     return (
-      <Container fluid className="cohort__table-container">
+      <Container fluid className="c__table-container">
         {editorMenu}
         <Table
           fixed
@@ -238,30 +238,30 @@ export class CohortScenarios extends React.Component {
           selectable
           role="grid"
           aria-labelledby="header"
-          className="cohort__table--constraints"
+          className="c__table--constraints"
           unstackable
         >
-          <Table.Header className="cohort__table-thead-tbody-tr">
+          <Table.Header className="c__table-thead-tbody-tr">
             <Table.Row>
               <ConfirmAuth
-                isAuthorized={isFacilitator}
                 requiredPermission="edit_scenarios_in_cohort"
+                isAuthorized={isFacilitator}
               >
-                <Table.HeaderCell className="cohort__table-cell-first">
+                <Table.HeaderCell className="c__table-cell-first">
                   <Icon.Group className="em__icon-group-margin">
                     <Icon name="newspaper outline" />
                     <Icon corner="top right" name="add" color="green" />
                   </Icon.Group>
                 </Table.HeaderCell>
-                <Table.HeaderCell className="cohort__table-cell-options">
+                <Table.HeaderCell className="c__table-cell-options c__hidden-on-mobile">
                   Tools
                 </Table.HeaderCell>
               </ConfirmAuth>
               <Table.HeaderCell>Title</Table.HeaderCell>
-              <Table.HeaderCell className="cohort__table-cell-content">
+              <Table.HeaderCell className="c__table-cell-content">
                 {isFacilitator ? 'Author' : 'Started'}
               </Table.HeaderCell>
-              <Table.HeaderCell className="cohort__table-cell-content">
+              <Table.HeaderCell className="c__table-cell-content">
                 {isFacilitator ? 'Description' : 'Completed'}
               </Table.HeaderCell>
             </Table.Row>
@@ -269,9 +269,9 @@ export class CohortScenarios extends React.Component {
 
           {scenarios.length ? (
             <Sortable
-              isAuthorized={isFacilitator}
               tag="tbody"
-              className="cohort__scrolling-tbody"
+              className="c__scrolling-tbody"
+              isAuthorized={isFacilitator}
               onChange={onScenarioOrderChange}
               tableRef={this.tableBody}
               options={{
@@ -355,7 +355,7 @@ export class CohortScenarios extends React.Component {
                   >
                     <Table.Row
                       key={`row-${index}`}
-                      className="cohort__table-thead-tbody-tr"
+                      className="c__table-thead-tbody-tr"
                       style={{ cursor: 'pointer' }}
                       {...completionStatus}
                     >
@@ -365,7 +365,7 @@ export class CohortScenarios extends React.Component {
                       >
                         <Table.Cell
                           key={`cell-checkbox-${index}`}
-                          className="cohort__table-cell-first"
+                          className="c__table-cell-first"
                         >
                           <Checkbox
                             key={`checkbox-${index}`}
@@ -379,13 +379,13 @@ export class CohortScenarios extends React.Component {
                         isAuthorized={isFacilitator}
                         requiredPermission="edit_scenarios_in_cohort"
                       >
-                        <Table.Cell className="cohort__table-cell-options">
+                        <Table.Cell className="c__table-cell-options c__hidden-on-mobile">
                           {checked ? (
                             <Button.Group
                               hidden
                               basic
                               size="small"
-                              className="cohort__button-group--transparent"
+                              className="c__button-group--transparent"
                             >
                               <Popup
                                 size="tiny"
@@ -471,14 +471,14 @@ export class CohortScenarios extends React.Component {
                         href={pathname}
                         content={scenario.title}
                       />
-                      <Table.Cell className="cohort__table-cell-content">
+                      <Table.Cell className="c__table-cell-content">
                         {isFacilitator ? (
                           <Username {...usersById[scenario.author.id]} />
                         ) : (
                           startedAtDisplay
                         )}
                       </Table.Cell>
-                      <Table.Cell className="cohort__table-cell-content">
+                      <Table.Cell className="c__table-cell-content">
                         {isFacilitator ? scenario.description : endedAtDisplay}
                       </Table.Cell>
                     </Table.Row>
@@ -487,10 +487,10 @@ export class CohortScenarios extends React.Component {
               })}
             </Sortable>
           ) : (
-            <Table.Body className="cohort__scrolling-tbody">
+            <Table.Body className="c__scrolling-tbody">
               <Table.Row
                 key={`row-empty-results`}
-                className="cohort__table-thead-tbody-tr"
+                className="c__table-thead-tbody-tr"
               >
                 <Table.Cell>No scenarios match your search</Table.Cell>
               </Table.Row>

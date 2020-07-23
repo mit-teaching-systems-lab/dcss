@@ -30,6 +30,7 @@ import './Cohort.css';
 
 const { facilitator, researcher } = COHORT_ROLE_GROUPS;
 
+const MOBILE_WIDTH = 767;
 const ROWS_PER_PAGE = 10;
 
 export class CohortParticipants extends React.Component {
@@ -203,6 +204,8 @@ export class CohortParticipants extends React.Component {
       scrollIntoView
     } = this;
 
+    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
+
     // Ensure that Facilitator access is applied even if the user just
     // became a facilitator and their session roles haven't updated.
     const isFacilitator =
@@ -226,15 +229,15 @@ export class CohortParticipants extends React.Component {
     const users = cohort.users.slice(index, index + ROWS_PER_PAGE);
     const columns = {
       data: {
-        className: 'cohort__table-cell-first',
+        className: 'c__table-cell-first c__hidden-on-mobile',
         content: ''
       },
       username: {
         className: 'users__col-large',
-        content: 'Username'
+        content: 'User'
       },
       email: {
-        className: 'users__col-large',
+        className: 'users__col-large c__hidden-on-mobile',
         content: 'Email'
       }
     };
@@ -262,7 +265,7 @@ export class CohortParticipants extends React.Component {
       };
       const trigger = (
         <Table.Cell.Clickable
-          className="cohort__table-cell-first"
+          className="c__table-cell-first c__hidden-on-mobile"
           key={`clickabletablecell-${cohortUser.id}`}
           content={<Icon name="file alternate outline" />}
           onClick={onClickAddTab}
@@ -282,17 +285,27 @@ export class CohortParticipants extends React.Component {
         </ConfirmAuth>
       );
 
+      const key = hash(cohortUser);
       const { is_super } = (usersById && usersById[cohortUser.id]) || {};
 
       const username = <Username {...cohortUser} is_super={is_super} />;
 
       const usernameCell = cohortUser.roles.includes('owner') ? (
-        <Table.Cell key={hash(cohortUser)}>{username} (owner)</Table.Cell>
+        <Table.Cell key={key}>{username} (owner)</Table.Cell>
       ) : (
-        <Table.Cell key={hash(cohortUser)}>{username}</Table.Cell>
+        <Table.Cell key={key}>{username}</Table.Cell>
       );
 
-      accum[cohortUser.id] = [popup, usernameCell, cohortUser.email || ''];
+      accum[cohortUser.id] = [
+        <Table.Cell className="c__hidden-on-mobile" key={`popup-${key}`}>
+          {popup}
+        </Table.Cell>,
+        usernameCell,
+        <Table.Cell className="c__hidden-on-mobile" key={`email-${key}`}>
+          {cohortUser.email}
+        </Table.Cell>
+      ];
+
       return accum;
     }, {});
 
@@ -317,17 +330,19 @@ export class CohortParticipants extends React.Component {
         </Icon.Group>
         Participants ({this.props.cohort.users.length})
       </Menu.Item>,
-      <Menu.Item
-        key="menu-item-cohort-participants"
-        name="Control participant list refresh"
-        onClick={onParticipantRefreshChange}
-      >
-        <Icon.Group className="em__icon-group-margin">
-          <Icon name="refresh" />
-          <Icon corner="top right" name={refreshIcon} color={refreshColor} />
-        </Icon.Group>
-        {refreshLabel}
-      </Menu.Item>
+      !IS_ON_MOBILE ? (
+        <Menu.Item
+          key="menu-item-cohort-participants"
+          name="Control participant list refresh"
+          onClick={onParticipantRefreshChange}
+        >
+          <Icon.Group className="em__icon-group-margin">
+            <Icon name="refresh" />
+            <Icon corner="top right" name={refreshIcon} color={refreshColor} />
+          </Icon.Group>
+          {refreshLabel}
+        </Menu.Item>
+      ) : null
     ];
 
     const right = [
@@ -357,7 +372,7 @@ export class CohortParticipants extends React.Component {
       </Ref>
     );
     return (
-      <Container fluid className="cohort__table-container">
+      <Container fluid className="c__table-container">
         {editorMenu}
         <UsersTable {...usersTableProps} />
       </Container>

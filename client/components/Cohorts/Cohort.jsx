@@ -176,7 +176,7 @@ export class Cohort extends React.Component {
 
     return (
       <div>
-        <Menu attached="top" tabular className="cohort__tab-menu--overflow">
+        <Menu attached="top" tabular className="c__tab-menu--overflow">
           <Menu.Item
             active={activeTabKey === 'cohort'}
             content={name}
