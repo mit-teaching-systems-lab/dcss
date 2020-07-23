@@ -125,7 +125,8 @@ class Navigation extends Component {
     );
 
     // to={`/scenarios/author/${user.username}`}
-    const explainMyScenarios = 'See scenarios where I am an owner, author or reviewer';
+    const explainMyScenarios =
+      'See scenarios where I am an owner, author or reviewer';
     const navLinkToMyScenarios = isLoggedIn ? (
       <Menu.Item
         role="option"
@@ -160,10 +161,6 @@ class Navigation extends Component {
         Community
       </Menu.Item>
     );
-
-
-
-
 
     //<NavLink to="/scenarios/">Scenarios</NavLink>;
     return (

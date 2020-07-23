@@ -10,7 +10,6 @@ import {
 } from '@components/UI';
 import './Loading.css';
 
-
 const resolveProps = (props, defaults) => {
   Object.entries(defaults).forEach(([key, val]) => {
     if (!props[key]) {
@@ -20,15 +19,15 @@ const resolveProps = (props, defaults) => {
   return props;
 };
 
-const defaultCardProps = { cols: 1, rows: 1, style: {}, content: { style: {} } };
+const defaultCardProps = {
+  cols: 1,
+  rows: 1,
+  style: {},
+  content: { style: {} }
+};
 const defaultGroupProps = { style: {} };
 
-const Loading = ({
-  card = {},
-  group = {},
-  size = 'medium',
-  children
-}) => {
+const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
   const src =
     size === 'mini' || size === 'small'
       ? '/images/wireframe/short-paragraph.png'
@@ -51,14 +50,13 @@ const Loading = ({
       : { ...(card.style || {}) };
 
     let cardContentStyle = {
-      ...(card.content && card.content.style || {})
+      ...((card.content && card.content.style) || {})
     };
 
     // <Placeholder.Paragraph>
     //   <Placeholder.Line length='medium' />
     //   <Placeholder.Line length='short' />
     // </Placeholder.Paragraph>
-
 
     return isSingleCard ? (
       <Card

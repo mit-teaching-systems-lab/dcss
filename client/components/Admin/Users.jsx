@@ -193,11 +193,7 @@ class Users extends Component {
           }}
         />
 
-        {!isReady ? (
-          <Loading />
-        ) : (
-          <UsersTable {...usersTableProps} />
-        )}
+        {!isReady ? <Loading /> : <UsersTable {...usersTableProps} />}
       </Fragment>
     );
   }

@@ -360,7 +360,7 @@ class ScenariosList extends Component {
 
     const itemsPerRow = 4;
     const loadingProps = {
-      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem'} }
+      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
 
     const totalPages = scenariosPages;
@@ -374,7 +374,7 @@ class ScenariosList extends Component {
       lastItem: null,
       activePage,
       onPageChange,
-      totalPages,
+      totalPages
     };
     return (
       <Fragment>
@@ -383,20 +383,20 @@ class ScenariosList extends Component {
           <Grid>
             <Grid.Row>
               <Grid.Column stretched>
-              {!isReady ? (
-                <Loading {...loadingProps} />
-              ) : (
-                <Responsive
-                  onUpdate={() => {
-                    // eslint-disable-next-line no-console
-                    console.log('resize');
-                  }}
-                >
-                  <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
-                    {cards}
-                  </Card.Group>
-                </Responsive>
-              )}
+                {!isReady ? (
+                  <Loading {...loadingProps} />
+                ) : (
+                  <Responsive
+                    onUpdate={() => {
+                      // eslint-disable-next-line no-console
+                      console.log('resize');
+                    }}
+                  >
+                    <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
+                      {cards}
+                    </Card.Group>
+                  </Responsive>
+                )}
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

@@ -309,7 +309,7 @@ class Scenario extends Component {
 
     const loadingProps = {
       card: { cols: 1, rows: 1 },
-      group: {style: { boxShadow: 'none' }}
+      group: { style: { boxShadow: 'none' } }
     };
 
     if (!isReady) {

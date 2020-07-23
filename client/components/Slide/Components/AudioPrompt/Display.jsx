@@ -111,13 +111,7 @@ class Display extends Component {
       return null;
     }
 
-    const {
-      prompt,
-      recallId,
-      responseId,
-      required,
-      run,
-    } = this.props;
+    const { prompt, recallId, responseId, required, run } = this.props;
     const { onChange } = this;
     const isFulfilled = value ? true : false;
     const header = (

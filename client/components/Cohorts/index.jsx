@@ -244,7 +244,7 @@ export class Cohorts extends React.Component {
     const ariaDescribedBy = htmlId();
 
     const loadingProps = {
-      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem'} }
+      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
 
     const cardGroup = cards.length ? (
@@ -268,11 +268,7 @@ export class Cohorts extends React.Component {
           <Grid>
             <Grid.Row>
               <Grid.Column stretched>
-                {!isReady ? (
-                  <Loading {...loadingProps} />
-                ) : (
-                  cardGroup
-                )}
+                {!isReady ? <Loading {...loadingProps} /> : cardGroup}
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>

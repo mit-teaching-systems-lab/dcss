@@ -40,10 +40,18 @@ class UserMenu extends Component {
           </Dropdown.Menu>
         </Dropdown>
         {openSettings ? (
-          <UserSettings user={user} open={openSettings} onCancel={() => this.setState({openSettings: false })} />
+          <UserSettings
+            user={user}
+            open={openSettings}
+            onCancel={() => this.setState({ openSettings: false })}
+          />
         ) : null}
         {openLogout ? (
-          <ConfirmableLogout user={user} open={openLogout} onCancel={() => this.setState({openLogout: false })} />
+          <ConfirmableLogout
+            user={user}
+            open={openLogout}
+            onCancel={() => this.setState({ openLogout: false })}
+          />
         ) : null}
       </Fragment>
     );
