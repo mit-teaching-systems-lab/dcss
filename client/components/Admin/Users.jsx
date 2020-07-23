@@ -100,10 +100,6 @@ class Users extends Component {
     const { user } = this.props;
     const { isReady, activePage } = this.state;
 
-    if (!isReady) {
-      return <Loading />;
-    }
-
     const defaultRowCount = 10;
     // known total height of all ui that is not a table row
     const totalUnavailableHeight = 459;
@@ -196,7 +192,12 @@ class Users extends Component {
             ]
           }}
         />
-        <UsersTable {...usersTableProps} />
+
+        {!isReady ? (
+          <Loading />
+        ) : (
+          <UsersTable {...usersTableProps} />
+        )}
       </Fragment>
     );
   }

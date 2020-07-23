@@ -9,8 +9,23 @@ import {
   Segment
 } from '@components/UI';
 import './Loading.css';
+
+
+const resolveProps = (props, defaults) => {
+  Object.entries(defaults).forEach(([key, val]) => {
+    if (!props[key]) {
+      props[key] = val;
+    }
+  });
+  return props;
+};
+
+const defaultCardProps = { cols: 1, rows: 1, style: {}, content: { style: {} } };
+const defaultGroupProps = { style: {} };
+
 const Loading = ({
-  card = { cols: 1, rows: 1 },
+  card = {},
+  group = {},
   size = 'medium',
   children
 }) => {
@@ -19,41 +34,51 @@ const Loading = ({
       ? '/images/wireframe/short-paragraph.png'
       : '/images/wireframe/paragraph.png';
 
+  resolveProps(card, defaultCardProps);
+  resolveProps(group, defaultGroupProps);
+
   if (card) {
     let counter = 0;
+    let groupStyle = { ...(group.style || {}) };
+
     let isSingleCard = card.cols === 1 && card.rows === 1;
     let singleCardStyle = {
       width: '100%',
-      height: '100%'
+      height: '90%'
     };
-    let style = isSingleCard
+    let cardStyle = isSingleCard
       ? { ...singleCardStyle, ...(card.style || {}) }
       : { ...(card.style || {}) };
+
+    let cardContentStyle = {
+      ...(card.content && card.content.style || {})
+    };
 
     // <Placeholder.Paragraph>
     //   <Placeholder.Line length='medium' />
     //   <Placeholder.Line length='short' />
     // </Placeholder.Paragraph>
 
+
     return isSingleCard ? (
       <Card
         className="loading__single-card"
-        style={style}
+        style={cardStyle}
         key={`placeholder-${counter++}`}
       >
-        <Card.Content>
+        <Card.Content className="loading__content" style={cardContentStyle}>
           <Placeholder>
-            <Placeholder.Image rectangular />
+            <Placeholder.Image square />
           </Placeholder>
         </Card.Content>
       </Card>
     ) : (
-      <Card.Group style={style} itemsPerRow={card.cols}>
+      <Card.Group style={groupStyle} itemsPerRow={card.cols}>
         {Array.from({ length: card.cols * card.rows }, (_, index) => (
-          <Card key={`placeholder-${index}-${counter++}`}>
-            <Card.Content>
+          <Card key={`placeholder-${index}-${counter++}`} style={cardStyle}>
+            <Card.Content className="loading__content" style={cardContentStyle}>
               <Placeholder>
-                <Placeholder.Image rectangular />
+                <Placeholder.Image square />
               </Placeholder>
             </Card.Content>
           </Card>
@@ -77,6 +102,7 @@ const Loading = ({
 
 Loading.propTypes = {
   card: PropTypes.object,
+  group: PropTypes.object,
   children: PropTypes.array,
   size: PropTypes.string
 };
