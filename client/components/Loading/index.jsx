@@ -53,11 +53,6 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
       ...((card.content && card.content.style) || {})
     };
 
-    // <Placeholder.Paragraph>
-    //   <Placeholder.Line length='medium' />
-    //   <Placeholder.Line length='short' />
-    // </Placeholder.Paragraph>
-
     return isSingleCard ? (
       <Card
         className="loading__single-card"
