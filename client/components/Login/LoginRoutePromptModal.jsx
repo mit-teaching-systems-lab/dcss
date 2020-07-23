@@ -65,17 +65,11 @@ class LoginRoutePromptModal extends Component {
       <Modal open role="dialog" aria-modal="true" size="small">
         <Header
           icon="user outline"
-          content="Log in, Create an account, or Continue anonymously?"
+          content="Create an account, Continue anonymously, or Log in?"
         />
         <Modal.Content>
           <p>Please choose one of the following options:</p>
           <Grid columns={2} divided>
-            <Grid.Row>
-              <Grid.Column>{buttonLogin}</Grid.Column>
-              <Grid.Column>
-                <p>If you already have an account</p>
-              </Grid.Column>
-            </Grid.Row>
             <Grid.Row>
               <Grid.Column>{buttonCreateAccount}</Grid.Column>
               <Grid.Column>
@@ -88,6 +82,12 @@ class LoginRoutePromptModal extends Component {
                 <p>
                   If you do not have an account, and do not wish to create one.
                 </p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>{buttonLogin}</Grid.Column>
+              <Grid.Column>
+                <p>If you already have an account</p>
               </Grid.Column>
             </Grid.Row>
           </Grid>
