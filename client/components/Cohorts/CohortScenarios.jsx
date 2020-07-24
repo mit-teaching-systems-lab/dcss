@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -9,12 +9,14 @@ import {
   Icon,
   Input,
   Menu,
+  Pagination,
   Popup,
   Ref,
   Table
 } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import escapeRegExp from 'lodash.escaperegexp';
+import { computeItemsRowsPerPage } from '@utils/Layout';
 import Moment from '@utils/Moment';
 import Username from '@components/User/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
@@ -28,6 +30,8 @@ import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
 
 import './Cohort.css';
+
+const MOBILE_WIDTH = 767;
 
 export class CohortScenarios extends React.Component {
   constructor(props) {
@@ -43,6 +47,7 @@ export class CohortScenarios extends React.Component {
 
     this.state = {
       isReady: false,
+      activePage: 1,
       scenarios: [],
       cohort: {
         id
@@ -54,9 +59,10 @@ export class CohortScenarios extends React.Component {
     this.scenarios = [];
     this.tableBody = React.createRef();
     this.sectionRef = React.createRef();
-    this.onScenarioOrderChange = this.onScenarioOrderChange.bind(this);
-    this.onScenarioCheckboxClick = this.onScenarioCheckboxClick.bind(this);
-    this.onScenarioSearchChange = this.onScenarioSearchChange.bind(this);
+    this.onCheckboxClick = this.onCheckboxClick.bind(this);
+    this.onOrderChange = this.onOrderChange.bind(this);
+    this.onPageChange = this.onPageChange.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
     this.scrollIntoView = this.scrollIntoView.bind(this);
   }
 
@@ -83,7 +89,7 @@ export class CohortScenarios extends React.Component {
     scrollIntoView(this.tableBody.current.node.firstElementChild);
   }
 
-  onScenarioCheckboxClick(event, { checked, value }) {
+  onCheckboxClick(event, { checked, value }) {
     const { cohort } = this.props;
     if (checked) {
       cohort.scenarios.push(value);
@@ -114,11 +120,11 @@ export class CohortScenarios extends React.Component {
     });
   }
 
-  onScenarioOrderChange(fromIndex, toIndex) {
+  onOrderChange(fromIndex, toIndex) {
     this.moveScenario(fromIndex, toIndex);
   }
 
-  onScenarioSearchChange(event, { value }) {
+  onSearchChange(event, { value }) {
     const { scenarios } = this;
 
     if (value === '') {
@@ -149,15 +155,24 @@ export class CohortScenarios extends React.Component {
     });
   }
 
+  onPageChange(event, { activePage }) {
+    this.setState({
+      activePage
+    });
+  }
+
   render() {
     const {
-      onScenarioOrderChange,
-      onScenarioCheckboxClick,
-      onScenarioSearchChange
+      onOrderChange,
+      onCheckboxClick,
+      onPageChange,
+      onSearchChange
     } = this;
     const { authority, cohort, onClick, runs, user, usersById } = this.props;
-    const { isReady, scenarios } = this.state;
+    const { isReady, activePage, scenarios } = this.state;
     const { isFacilitator, isParticipant } = authority;
+
+    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
 
     if (!isReady) {
       return <Loading />;
@@ -178,7 +193,10 @@ export class CohortScenarios extends React.Component {
       return accum;
     }, []);
 
-    const orderCorrectedScenarios = cohortScenarios;
+    // Use a slice here to prevent the cohortScenarios reference
+    // from being the target of the pushed "reducedScenarios"
+    // in the condition following this line.
+    const orderCorrectedScenarios = cohortScenarios.slice();
 
     if (isFacilitator || user.is_super) {
       orderCorrectedScenarios.push(...reducedScenarios);
@@ -193,7 +211,7 @@ export class CohortScenarios extends React.Component {
           <Input
             icon="search"
             placeholder="Search..."
-            onChange={onScenarioSearchChange}
+            onChange={onSearchChange}
           />
         </Menu.Item>
         {/*
@@ -229,6 +247,28 @@ export class CohortScenarios extends React.Component {
       </Ref>
     );
 
+    const defaultRowCount = 5;
+    // known total height of all ui that is not a table row
+    const totalUnavailableHeight = 600;
+    const itemsRowHeight = 44;
+    const itemsPerRow = 1;
+
+    const { rowsPerPage } = computeItemsRowsPerPage({
+      defaultRowCount,
+      totalUnavailableHeight,
+      itemsPerRow,
+      itemsRowHeight
+    });
+
+    const scenariosPages = Math.ceil(
+      orderCorrectedScenarios.length / rowsPerPage
+    );
+    const scenariosIndex = (activePage - 1) * rowsPerPage;
+    const scenariosSlice = orderCorrectedScenarios.slice(
+      scenariosIndex,
+      scenariosIndex + rowsPerPage
+    );
+
     return (
       <Container fluid className="c__table-container">
         {editorMenu}
@@ -241,7 +281,7 @@ export class CohortScenarios extends React.Component {
           className="c__table--constraints"
           unstackable
         >
-          <Table.Header className="c__table-thead-tbody-tr">
+          <Table.Header>
             <Table.Row>
               <ConfirmAuth
                 requiredPermission="edit_scenarios_in_cohort"
@@ -253,7 +293,7 @@ export class CohortScenarios extends React.Component {
                     <Icon corner="top right" name="add" color="green" />
                   </Icon.Group>
                 </Table.HeaderCell>
-                <Table.HeaderCell className="c__table-cell-options c__hidden-on-mobile">
+                <Table.HeaderCell className="c__table-cell-options">
                   Tools
                 </Table.HeaderCell>
               </ConfirmAuth>
@@ -270,9 +310,9 @@ export class CohortScenarios extends React.Component {
           {scenarios.length ? (
             <Sortable
               tag="tbody"
-              className="c__scrolling-tbody"
+              disabled={IS_ON_MOBILE}
               isAuthorized={isFacilitator}
-              onChange={onScenarioOrderChange}
+              onChange={onOrderChange}
               tableRef={this.tableBody}
               options={{
                 direction: 'vertical',
@@ -280,7 +320,7 @@ export class CohortScenarios extends React.Component {
                 animation: 150
               }}
             >
-              {orderCorrectedScenarios.map((scenario, index) => {
+              {scenariosSlice.map((scenario, index) => {
                 if (!scenario) {
                   return null;
                 }
@@ -296,7 +336,7 @@ export class CohortScenarios extends React.Component {
                   ? 'view_scenarios_in_cohort'
                   : 'edit_scenarios_in_cohort';
 
-                const onClickAddTab = (event, data) => {
+                const onAddTabClick = (event, data) => {
                   onClick(event, {
                     ...data,
                     type: 'scenario',
@@ -355,31 +395,30 @@ export class CohortScenarios extends React.Component {
                   >
                     <Table.Row
                       key={`row-${index}`}
-                      className="c__table-thead-tbody-tr"
                       style={{ cursor: 'pointer' }}
                       {...completionStatus}
                     >
                       <ConfirmAuth
-                        isAuthorized={isFacilitator}
                         requiredPermission="edit_own_cohorts"
+                        isAuthorized={isFacilitator}
                       >
                         <Table.Cell
-                          key={`cell-checkbox-${index}`}
                           className="c__table-cell-first"
+                          key={`cell-checkbox-${index}`}
                         >
                           <Checkbox
                             key={`checkbox-${index}`}
                             value={scenario.id}
                             checked={checked}
-                            onClick={onScenarioCheckboxClick}
+                            onClick={onCheckboxClick}
                           />
                         </Table.Cell>
                       </ConfirmAuth>
                       <ConfirmAuth
-                        isAuthorized={isFacilitator}
                         requiredPermission="edit_scenarios_in_cohort"
+                        isAuthorized={isFacilitator}
                       >
-                        <Table.Cell className="c__table-cell-options c__hidden-on-mobile">
+                        <Table.Cell className="c__table-cell-options">
                           {checked ? (
                             <Button.Group
                               hidden
@@ -387,52 +426,58 @@ export class CohortScenarios extends React.Component {
                               size="small"
                               className="c__button-group--transparent"
                             >
-                              <Popup
-                                size="tiny"
-                                content="Copy cohort scenario link to clipboard"
-                                trigger={
-                                  <Button
-                                    icon
-                                    content={<Icon name="clipboard outline" />}
-                                    onClick={() => copy(url)}
-                                    {...props}
+                              {IS_ON_MOBILE ? null : (
+                                <Fragment>
+                                  <Popup
+                                    size="tiny"
+                                    content="Copy cohort scenario link to clipboard"
+                                    trigger={
+                                      <Button
+                                        icon
+                                        content={
+                                          <Icon name="clipboard outline" />
+                                        }
+                                        onClick={() => copy(url)}
+                                        {...props}
+                                      />
+                                    }
                                   />
-                                }
-                              />
-                              <Popup
-                                size="tiny"
-                                content="Run this cohort scenario as a participant"
-                                trigger={
-                                  <Button
-                                    icon
-                                    content={<Icon name="play" />}
-                                    onClick={() => {
-                                      location.href = url;
-                                    }}
-                                    {...props}
+                                  <Popup
+                                    size="tiny"
+                                    content="Run this cohort scenario as a participant"
+                                    trigger={
+                                      <Button
+                                        icon
+                                        content={<Icon name="play" />}
+                                        onClick={() => {
+                                          location.href = url;
+                                        }}
+                                        {...props}
+                                      />
+                                    }
                                   />
-                                }
-                              />
 
-                              <ConfirmAuth
-                                isAuthorized={isFacilitator}
-                                requiredPermission="view_all_data"
-                              >
-                                <Popup
-                                  content="View cohort reponses to prompts in this scenario"
-                                  trigger={
-                                    <Button
-                                      icon
-                                      content={
-                                        <Icon name="file alternate outline" />
+                                  <ConfirmAuth
+                                    requiredPermission="view_all_data"
+                                    isAuthorized={isFacilitator}
+                                  >
+                                    <Popup
+                                      content="View cohort reponses to prompts in this scenario"
+                                      trigger={
+                                        <Button
+                                          icon
+                                          content={
+                                            <Icon name="file alternate outline" />
+                                          }
+                                          name={scenario.title}
+                                          onClick={onAddTabClick}
+                                          {...props}
+                                        />
                                       }
-                                      name={scenario.title}
-                                      onClick={onClickAddTab}
-                                      {...props}
                                     />
-                                  }
-                                />
-                              </ConfirmAuth>
+                                  </ConfirmAuth>
+                                </Fragment>
+                              )}
                               <Popup
                                 size="tiny"
                                 content="Move scenario up"
@@ -442,7 +487,7 @@ export class CohortScenarios extends React.Component {
                                     aria-label="Move scenario up"
                                     disabled={index === 0}
                                     onClick={() => {
-                                      onScenarioOrderChange(index, index - 1);
+                                      onOrderChange(index, index - 1);
                                     }}
                                   />
                                 }
@@ -458,7 +503,7 @@ export class CohortScenarios extends React.Component {
                                       index === cohortScenarios.length - 1
                                     }
                                     onClick={() => {
-                                      onScenarioOrderChange(index, index + 1);
+                                      onOrderChange(index, index + 1);
                                     }}
                                   />
                                 }
@@ -487,20 +532,57 @@ export class CohortScenarios extends React.Component {
               })}
             </Sortable>
           ) : (
-            <Table.Body className="c__scrolling-tbody">
-              <Table.Row
-                key={`row-empty-results`}
-                className="c__table-thead-tbody-tr"
-              >
+            <Table.Body>
+              <Table.Row key={`row-empty-results`}>
                 <Table.Cell>No scenarios match your search</Table.Cell>
               </Table.Row>
             </Table.Body>
           )}
+
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan={IS_ON_MOBILE ? 3 : 5}>
+                <Pagination
+                  borderless
+                  name="scenarios"
+                  activePage={activePage}
+                  siblingRange={1}
+                  boundaryRange={0}
+                  ellipsisItem={null}
+                  firstItem={null}
+                  lastItem={null}
+                  onPageChange={onPageChange}
+                  totalPages={scenariosPages}
+                />
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
         </Table>
       </Container>
     );
   }
 }
+
+/*
+          <Table.Footer>
+            <Table.Row>
+              <Table.HeaderCell colSpan={7}>
+                <Pagination
+                  borderless
+                  name="scenarios"
+                  activePage={activePage}
+                  siblingRange={1}
+                  boundaryRange={0}
+                  ellipsisItem={null}
+                  firstItem={null}
+                  lastItem={null}
+                  onPageChange={onPageChange}
+                  totalPages={scenariosPages}
+                />
+              </Table.HeaderCell>
+            </Table.Row>
+          </Table.Footer>
+ */
 
 CohortScenarios.propTypes = {
   authority: PropTypes.object,
