@@ -263,17 +263,19 @@ export class CohortParticipants extends React.Component {
           source: cohortUser
         });
       };
+      const key = hash(cohortUser);
+
       const trigger = (
         <Table.Cell.Clickable
           className="c__table-cell-first c__hidden-on-mobile"
-          key={`clickabletablecell-${cohortUser.id}`}
+          key={`p-${key}`}
           content={<Icon name="file alternate outline" />}
           onClick={onClickAddTab}
         />
       );
       const popup = (
         <ConfirmAuth
-          key={`confirmauth-${cohortUser.id}`}
+          key={`c-${key}`}
           isAuthorized={isFacilitator}
           requiredPermission="view_all_data"
         >
@@ -285,23 +287,19 @@ export class CohortParticipants extends React.Component {
         </ConfirmAuth>
       );
 
-      const key = hash(cohortUser);
       const { is_super } = (usersById && usersById[cohortUser.id]) || {};
-
       const username = <Username {...cohortUser} is_super={is_super} />;
 
       const usernameCell = cohortUser.roles.includes('owner') ? (
-        <Table.Cell key={key}>{username} (owner)</Table.Cell>
+        <Table.Cell key={`u-${key}`}>{username} (owner)</Table.Cell>
       ) : (
-        <Table.Cell key={key}>{username}</Table.Cell>
+        <Table.Cell key={`u-${key}`}>{username}</Table.Cell>
       );
 
       accum[cohortUser.id] = [
-        <Table.Cell className="c__hidden-on-mobile" key={`popup-${key}`}>
-          {popup}
-        </Table.Cell>,
+        popup,
         usernameCell,
-        <Table.Cell className="c__hidden-on-mobile" key={`email-${key}`}>
+        <Table.Cell className="c__hidden-on-mobile" key={`e-${key}`}>
           {cohortUser.email}
         </Table.Cell>
       ];
