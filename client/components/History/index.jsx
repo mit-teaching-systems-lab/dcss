@@ -253,14 +253,26 @@ class History extends Component {
                   });
                 };
 
-                const popupContent = cohort
+                const cohortRunData = run_ended_at
                   ? 'View your data for this scenario run, from this cohort'
-                  : 'View your data for this scenario run';
+                  : 'Finish this scenario to view your data';
 
-                const viewDataIcon = (
+                const nonCohortRunData = run_ended_at
+                  ? 'View your data for this scenario run'
+                  : 'Finish this scenario to view your data';
+
+                const popupContent = cohort ? cohortRunData : nonCohortRunData;
+
+                const viewDataIcon = run_ended_at ? (
                   <Table.Cell.Clickable
                     className="h__table-cell-first"
                     content={<Icon name="file alternate outline" />}
+                    onClick={onViewRunDataClick}
+                  />
+                ) : (
+                  <Table.Cell
+                    className="h__table-cell-first"
+                    content={<Icon name="file alternate outline" disabled />}
                     onClick={onViewRunDataClick}
                   />
                 );
