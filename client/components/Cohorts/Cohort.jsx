@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Popup, Segment } from '@components/UI';
+import { Icon, Menu, Segment } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
 import { getCohort, setCohort, linkUserToCohort } from '@actions/cohort';
@@ -174,6 +174,18 @@ export class Cohort extends React.Component {
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
 
+    const menuItemCopyUrl = (
+      <Menu.Item
+        key="menu-item-account-administration"
+        onClick={onCohortUrlCopyClick}
+      >
+        <Icon.Group className="em__icon-group-margin">
+          <Icon name="clipboard outline" />
+        </Icon.Group>
+        Copy cohort link to clipboard
+      </Menu.Item>
+    );
+
     return (
       <div>
         <Menu attached="top" tabular className="c__tab-menu--overflow">
@@ -203,21 +215,7 @@ export class Cohort extends React.Component {
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
             <Menu icon borderless>
-              <Popup
-                size="small"
-                content="Copy cohort link to clipboard"
-                trigger={
-                  <Menu.Item
-                    key="menu-item-account-administration"
-                    onClick={onCohortUrlCopyClick}
-                  >
-                    <Icon.Group className="em__icon-group-margin">
-                      <Icon name="clipboard outline" />
-                    </Icon.Group>
-                    {url}
-                  </Menu.Item>
-                }
-              />
+              {menuItemCopyUrl}
               {/*
                 <Popup
                     content="Run this cohort as a participant"
