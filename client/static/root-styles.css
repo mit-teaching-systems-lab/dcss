@@ -94,6 +94,11 @@ td .ui.fluid.selection.dropdown > .text {
     justify-content: flex-start;
   }
 
+  .ui.bottom.attached.segment {
+    padding: 0.5em 0 0 0 !important;
+    border: unset !important;
+  }
+
   .ui.buttons > .or {
     background: red;
     display: none;
