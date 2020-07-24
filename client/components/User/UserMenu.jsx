@@ -36,7 +36,7 @@ class UserMenu extends Component {
 
     const dropdownProps = {
       simple: true,
-      item: true,
+      item: true
     };
 
     if (IS_ON_MOBILE) {

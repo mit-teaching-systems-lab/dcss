@@ -55,7 +55,6 @@ class Sortable extends Component {
       return null;
     }
 
-
     if (tag) {
       if (!isAuthorized) {
         if (tag === 'tbody') {

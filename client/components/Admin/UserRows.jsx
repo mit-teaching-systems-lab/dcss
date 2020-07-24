@@ -133,6 +133,7 @@ const UserRows = props => {
       targetUser,
       adminUser
     });
+
     return (
       <Table.Row key={hash(targetUser)}>
         {cellsContents.map(content => {
