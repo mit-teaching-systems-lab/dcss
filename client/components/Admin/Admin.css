@@ -45,11 +45,9 @@
   content: "Admin";
 }
 
-
 .researcher:before {
   content: "Researcher";
 }
-
 
 .facilitator:before {
   content: "Facilitator";
@@ -60,8 +58,8 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .users__icon {
-    opacity: 1;
+  .roles_icon {
+    opacity: .9;
     color: rgba(0, 0, 0, 0.87);
     width: 1.18em;
     height: 1em;

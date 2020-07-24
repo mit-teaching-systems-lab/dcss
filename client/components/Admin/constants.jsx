@@ -1,34 +1,34 @@
 export const SUPER_ADMIN = {
   super_admin: {
-    className: 'users__col-small users__icon super',
+    className: 'users__col-small roles_icon super',
     // content: 'Super Admin'
     content: ''
   }
 };
 export const ADMIN = {
   admin: {
-    className: 'users__col-small users__icon admin',
+    className: 'users__col-small roles_icon admin',
     // content: 'Admin'
     content: ''
   }
 };
 export const RESEARCHER = {
   researcher: {
-    className: 'users__col-small users__icon researcher',
+    className: 'users__col-small roles_icon researcher',
     // content: 'Researcher'
     content: ''
   }
 };
 export const FACILITATOR = {
   facilitator: {
-    className: 'users__col-small users__icon facilitator',
+    className: 'users__col-small roles_icon facilitator',
     // content: 'Facilitator'
     content: ''
   }
 };
 export const PARTICIPANT = {
   participant: {
-    className: 'users__col-small users__icon participant',
+    className: 'users__col-small roles_icon participant',
     // content: 'Participant'
     content: ''
   }
