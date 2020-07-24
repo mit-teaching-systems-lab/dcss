@@ -284,7 +284,7 @@ class ConversationPromptEditor extends Component {
 
           <Form.Select
             fluid
-            label="Prompt configuration: "
+            label="Prompt configuration:"
             name="configuration.kind"
             options={options}
             defaultValue={configuration.kind}
