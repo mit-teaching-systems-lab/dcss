@@ -7,6 +7,8 @@ import ConfirmableLogout from '@components/Login/ConfirmableLogout';
 import Username from '@components/User/Username';
 import UserSettings from '@components/User/UserSettings';
 
+const MOBILE_WIDTH = 767;
+
 class UserMenu extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +32,22 @@ class UserMenu extends Component {
     const { onSettingsClick, onLogoutClick } = this;
     const { openSettings, openLogout } = this.state;
     const { user } = this.props;
-    const username = <Username {...user} />;
+    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
+
+    const dropdownProps = {
+      simple: true,
+      item: true,
+    };
+
+    if (IS_ON_MOBILE) {
+      dropdownProps.icon = 'user';
+    } else {
+      dropdownProps.trigger = <Username {...user} />;
+    }
+
     return (
       <Fragment>
-        <Dropdown simple item trigger={username}>
+        <Dropdown {...dropdownProps}>
           <Dropdown.Menu>
             <Dropdown.Item onClick={onSettingsClick}>Settings</Dropdown.Item>
             <Dropdown.Item onClick={onLogoutClick}>Log out</Dropdown.Item>

@@ -44,6 +44,7 @@ class Sortable extends Component {
     const { onChange } = this;
     const {
       children,
+      disabled = false,
       hasOwnDraggables,
       isAuthorized = true,
       tag = '',
@@ -54,11 +55,14 @@ class Sortable extends Component {
       return null;
     }
 
-    if (!isAuthorized) {
-      return <Table.Body>{children}</Table.Body>;
-    }
 
     if (tag) {
+      if (!isAuthorized) {
+        if (tag === 'tbody') {
+          return <Table.Body>{children}</Table.Body>;
+        }
+      }
+
       const onSortableChange = (...args) => {
         onChange({
           source: {
@@ -75,6 +79,10 @@ class Sortable extends Component {
         options = {},
         tableRef = React.createRef()
       } = rest;
+
+      if (disabled) {
+        options.disabled = true;
+      }
 
       return (
         <RSortable
@@ -148,6 +156,7 @@ class Sortable extends Component {
 Sortable.propTypes = {
   isAuthorized: PropTypes.bool,
   children: PropTypes.array,
+  disabled: PropTypes.bool,
   hasOwnDraggables: PropTypes.bool,
   onChange: PropTypes.func,
   overflow: PropTypes.any,
