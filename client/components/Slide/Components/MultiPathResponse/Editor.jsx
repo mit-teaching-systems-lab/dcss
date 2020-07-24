@@ -367,11 +367,12 @@ class MultiPathResponseEditor extends React.Component {
                   index,
                   options
                 );
-                const key = hash({ id, path, index });
+                const baseKey = hash({ id, index });
+                const pathKey = hash({ baseKey, path });
                 return (
                   <Table.Row
                     className="mpr__cursor-grab"
-                    key={`table-row-${key}`}
+                    key={`table-row-${baseKey}`}
                   >
                     <Table.Cell collapsing>
                       <EditorMenu
@@ -397,7 +398,7 @@ class MultiPathResponseEditor extends React.Component {
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
                         options={options}
-                        key={`button-display-${key}`}
+                        key={`path-display-${baseKey}`}
                       />
                     </Table.Cell>
                     <Table.Cell>
@@ -412,7 +413,7 @@ class MultiPathResponseEditor extends React.Component {
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
                         options={options}
-                        key={`dropdown-value-${key}`}
+                        key={`path-node-${pathKey}`}
                       />
                     </Table.Cell>
                   </Table.Row>
