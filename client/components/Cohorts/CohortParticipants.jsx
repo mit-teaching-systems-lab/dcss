@@ -30,7 +30,7 @@ import './Cohort.css';
 
 const { facilitator, researcher } = COHORT_ROLE_GROUPS;
 
-const MOBILE_WIDTH = 767;
+import Layout from '@utils/Layout';
 const ROWS_PER_PAGE = 10;
 
 export class CohortParticipants extends React.Component {
@@ -204,8 +204,6 @@ export class CohortParticipants extends React.Component {
       scrollIntoView
     } = this;
 
-    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
-
     // Ensure that Facilitator access is applied even if the user just
     // became a facilitator and their session roles haven't updated.
     const isFacilitator =
@@ -328,7 +326,7 @@ export class CohortParticipants extends React.Component {
         </Icon.Group>
         Participants ({this.props.cohort.users.length})
       </Menu.Item>,
-      !IS_ON_MOBILE ? (
+      Layout.isNotForMobile() ? (
         <Menu.Item
           key="menu-item-cohort-participants"
           name="Control participant list refresh"
