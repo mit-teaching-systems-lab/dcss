@@ -88,6 +88,46 @@ td .ui.fluid.selection.dropdown > .text {
 }
 */
 @media only screen and (max-width: 767px) {
+
+  #root {
+     margin: 0 0.25em 0 0.25em !important;
+  }
+
+
+  .ui.menu .item>.input input:not([type]),
+  .ui.menu .item>.input input[type='date'],
+  .ui.menu .item>.input input[type='datetime-local'],
+  .ui.menu .item>.input input[type='email'],
+  .ui.menu .item>.input input[type='file'],
+  .ui.menu .item>.input input[type='number'],
+  .ui.menu .item>.input input[type='password'],
+  .ui.menu .item>.input input[type='search'],
+  .ui.menu .item>.input input[type='tel'],
+  .ui.menu .item>.input input[type='text'],
+  .ui.menu .item>.input input[type='time'],
+  .ui.menu .item>.input input[type='url'],
+  .ui.menu .item>.input select:focus,
+  .ui.menu .item>.input textarea {
+    font-size: 1.14286em !important;
+  }
+
+  .ui.form input:not([type]),
+  .ui.form input[type='date'],
+  .ui.form input[type='datetime-local'],
+  .ui.form input[type='email'],
+  .ui.form input[type='file'],
+  .ui.form input[type='number'],
+  .ui.form input[type='password'],
+  .ui.form input[type='search'],
+  .ui.form input[type='tel'],
+  .ui.form input[type='text'],
+  .ui.form input[type='time'],
+  .ui.form input[type='url'],
+  .ui.form select:focus,
+  .ui.form textarea {
+    font-size: 1.14286em !important;
+  }
+
   .ui.modal {
     top: 1rem;
     -webkit-box-pack: start;
