@@ -35,7 +35,15 @@ class UserMenu extends Component {
 
     const dropdownProps = {
       simple: true,
-      item: true
+      item: true,
+      onKeyUp(event) {
+        const key = event.which || event.keyCode;
+        const target = event.target;
+        if (key === 13 || key === 32 &&
+            target.getAttribute('role') === 'option') {
+          target.click();
+        }
+      }
     };
 
     if (Layout.isForMobile()) {

@@ -89,7 +89,6 @@ class Navigation extends Component {
     const menuItemScenarios = (
       <Menu.Item
         role="option"
-        tabIndex="0"
         to="/scenarios/"
         aria-label={explainAllScenarios}
         as={NavLink}
@@ -201,31 +200,35 @@ class Navigation extends Component {
                 className="navigation__dropdown"
                 aria-label={explainAllScenarios}
                 trigger={menuItemScenarios}
+                onKeyUp={(event) => {
+                  const key = event.which || event.keyCode;
+                  const target = event.target;
+                  if (key === 13 || key === 32 &&
+                      target.getAttribute('role') === 'option') {
+                    target.click();
+                  }
+                }}
               >
                 <Dropdown.Menu>
                   <Popup
-                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainAllScenarios}
                     trigger={menuItemAllScenarios}
                   />
                   <Popup
-                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainMyScenarios}
                     trigger={menuItemMyScenarios}
                   />
                   <Popup
-                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainOfficialScenarios}
                     trigger={menuItemOfficialScenarios}
                   />
                   <Popup
-                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainCommunityScenarios}
