@@ -10,7 +10,7 @@ import {
 } from '@components/UI';
 import './Loading.css';
 
-const MOBILE_WIDTH = 767;
+import Layout from '@utils/Layout';
 
 const resolveProps = (props, defaults) => {
   Object.entries(defaults).forEach(([key, val]) => {
@@ -55,7 +55,7 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
       ...((card.content && card.content.style) || {})
     };
 
-    if (window.innerWidth < MOBILE_WIDTH) {
+    if (Layout.isForMobile()) {
       card.cols = 1;
     }
 
