@@ -67,7 +67,7 @@ class ResponseRecallEditor extends React.Component {
 
   render() {
     const {
-      slideIndex,
+      slideId,
       value: { recallId }
     } = this.props;
     const { components } = this.state;
@@ -83,7 +83,7 @@ class ResponseRecallEditor extends React.Component {
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
-      if (!responseId || slideIndex === index) {
+      if (!responseId || slideId === component.slide.id) {
         return accum;
       }
 
@@ -173,6 +173,7 @@ ResponseRecallEditor.propTypes = {
   isEmbedded: PropTypes.bool,
   recallId: PropTypes.string,
   scenario: PropTypes.object,
+  slideId: PropTypes.any,
   slideIndex: PropTypes.any,
   value: PropTypes.shape({
     id: PropTypes.string,

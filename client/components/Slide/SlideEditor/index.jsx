@@ -551,6 +551,7 @@ export default class SlideEditor extends Component {
                                         <ComponentEditor
                                           key={value.id}
                                           id={value.id}
+                                          slideId={this.props.id}
                                           slideIndex={this.props.index}
                                           scenario={scenario}
                                           value={value}
