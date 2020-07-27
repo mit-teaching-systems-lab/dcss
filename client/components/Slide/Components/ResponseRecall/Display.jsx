@@ -187,12 +187,13 @@ class Display extends Component {
 
     return (
       <Message
+        tabIndex="0"
         floating
-        header={prompt}
         style={{
           whiteSpace: 'pre-wrap',
           overflowWrap: 'break-word'
         }}
+        header={prompt}
         content={content}
       />
     );

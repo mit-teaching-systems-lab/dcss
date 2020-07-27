@@ -33,48 +33,50 @@ class ConfirmableLogout extends Component {
     } = this.props;
 
     return (
-      <Modal role="dialog" aria-modal="true" size="small" open={open}>
-        <Header icon="log out" content="Log out confirmation" />
-        <Modal.Content>
-          <Container style={{ textAlign: 'center' }}>
-            <p>You are currently logged in as: </p>
-            <Popup
-              size="small"
-              content="Copy user name to clipboard"
-              trigger={
-                <Button
-                  icon
-                  className="clmi__button"
-                  content={
-                    <React.Fragment>
-                      <code>{username}</code>
-                      <Icon name={name} />
-                    </React.Fragment>
-                  }
-                  onClick={() => {
-                    copy(username);
-                    this.setState({
-                      name: 'clipboard'
-                    });
-                  }}
-                />
-              }
-            />
-            <p>Are you sure you want to log out?</p>
-          </Container>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button.Group fluid>
-            <Button onClick={onConfirm} primary size="large">
-              Yes, log me out
-            </Button>
-            <Button.Or />
-            <Button onClick={onCancel} size="large">
-              Cancel
-            </Button>
-          </Button.Group>
-        </Modal.Actions>
-      </Modal>
+      <Modal.Accessible open={open}>
+        <Modal role="dialog" aria-modal="true" size="small" open={open}>
+          <Header icon="log out" content="Log out confirmation" />
+          <Modal.Content>
+            <Container style={{ textAlign: 'center' }}>
+              <p>You are currently logged in as: </p>
+              <Popup
+                size="small"
+                content="Copy user name to clipboard"
+                trigger={
+                  <Button
+                    icon
+                    className="clmi__button"
+                    content={
+                      <React.Fragment>
+                        <code>{username}</code>
+                        <Icon name={name} />
+                      </React.Fragment>
+                    }
+                    onClick={() => {
+                      copy(username);
+                      this.setState({
+                        name: 'clipboard'
+                      });
+                    }}
+                  />
+                }
+              />
+              <p>Are you sure you want to log out?</p>
+            </Container>
+          </Modal.Content>
+          <Modal.Actions>
+            <Button.Group fluid>
+              <Button onClick={onConfirm} primary size="large">
+                Yes, log me out
+              </Button>
+              <Button.Or />
+              <Button onClick={onCancel} size="large">
+                Cancel
+              </Button>
+            </Button.Group>
+          </Modal.Actions>
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

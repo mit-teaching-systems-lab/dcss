@@ -71,8 +71,8 @@ class ScenarioCard extends React.Component {
       <Card
         className="sc sc__margin-height"
         key={id}
-        ariaLabelledBy={ariaLabelledBy}
-        ariaDescribedBy={ariaDescribedBy}
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
       >
         <Card.Content
           tabIndex="0"

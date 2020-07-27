@@ -192,99 +192,101 @@ class UserSettings extends Component {
     };
 
     return (
-      <Modal
-        closeIcon
-        role="dialog"
-        aria-modal="true"
-        size="small"
-        onClose={onCancel}
-        open={open}
-      >
-        <Header icon="settings" content="Settings" />
-        <Modal.Content>
-          <Form onSubmit={onSubmit}>
-            <Form.Field>
-              <label htmlFor="username">Username:</label>
-              <Form.Input
-                name="username"
-                autoComplete="username"
-                placeholder="..."
-                defaultValue={username || ''}
-                onChange={onChange}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="personalname">
-                Personal name (full name, or alias):
-              </label>
-              <Form.Input
-                name="personalname"
-                autoComplete="personalname"
-                placeholder="..."
-                defaultValue={personalname || ''}
-                onChange={onChange}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="email">Email address:</label>
-              <Form.Input
-                name="email"
-                autoComplete="email"
-                placeholder="jane@example.com"
-                defaultValue={email || ''}
-                onChange={onChange}
-              />
-            </Form.Field>
-            <div {...anonymousModeFormProps}>
+      <Modal.Accessible open={open}>
+        <Modal
+          closeIcon
+          role="dialog"
+          aria-modal="true"
+          size="small"
+          onClose={onCancel}
+          open={open}
+        >
+          <Header icon="settings" content="Settings" />
+          <Modal.Content>
+            <Form onSubmit={onSubmit}>
               <Form.Field>
-                <label htmlFor="password">New password:</label>
+                <label htmlFor="username">Username:</label>
                 <Form.Input
-                  name="password"
-                  autoComplete="new-password"
-                  type="password"
-                  defaultValue={password || ''}
+                  name="username"
+                  autoComplete="username"
+                  placeholder="..."
+                  defaultValue={username || ''}
                   onChange={onChange}
                 />
               </Form.Field>
               <Form.Field>
-                <label htmlFor="confirmPassword">Confirm new password:</label>
+                <label htmlFor="personalname">
+                  Personal name (full name, or alias):
+                </label>
                 <Form.Input
-                  name="confirmPassword"
-                  autoComplete="new-password"
-                  type="password"
-                  defaultValue={confirmPassword || ''}
+                  name="personalname"
+                  autoComplete="personalname"
+                  placeholder="..."
+                  defaultValue={personalname || ''}
                   onChange={onChange}
                 />
               </Form.Field>
-            </div>
-            <div {...anonymousModeMessageProps}>
-              <Message color="orange" content={anonymousMode} />
-            </div>
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <Button.Group fluid>
-                  <Button primary type="submit" onClick={onSubmit} size="large">
-                    Save
-                  </Button>
-                  <Button.Or />
-                  <Button onClick={onCancel} size="large">
-                    Close
-                  </Button>
-                </Button.Group>
-                <Message
-                  floating
-                  {...messageProps}
-                  style={{ textAlign: 'left' }}
+              <Form.Field>
+                <label htmlFor="email">Email address:</label>
+                <Form.Input
+                  name="email"
+                  autoComplete="email"
+                  placeholder="jane@example.com"
+                  defaultValue={email || ''}
+                  onChange={onChange}
                 />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Actions>
-      </Modal>
+              </Form.Field>
+              <div {...anonymousModeFormProps}>
+                <Form.Field>
+                  <label htmlFor="password">New password:</label>
+                  <Form.Input
+                    name="password"
+                    autoComplete="new-password"
+                    type="password"
+                    defaultValue={password || ''}
+                    onChange={onChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label htmlFor="confirmPassword">Confirm new password:</label>
+                  <Form.Input
+                    name="confirmPassword"
+                    autoComplete="new-password"
+                    type="password"
+                    defaultValue={confirmPassword || ''}
+                    onChange={onChange}
+                  />
+                </Form.Field>
+              </div>
+              <div {...anonymousModeMessageProps}>
+                <Message color="orange" content={anonymousMode} />
+              </div>
+            </Form>
+          </Modal.Content>
+          <Modal.Actions>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
+                  <Button.Group fluid>
+                    <Button primary type="submit" size="large" onClick={onSubmit}>
+                      Save
+                    </Button>
+                    <Button.Or />
+                    <Button tabIndex="0" size="large" onClick={onCancel}>
+                      Close
+                    </Button>
+                  </Button.Group>
+                  <Message
+                    floating
+                    {...messageProps}
+                    style={{ textAlign: 'left' }}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Actions>
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

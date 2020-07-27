@@ -5,7 +5,7 @@ import { getTranscriptionOutcome } from '@actions/response';
 import './AudioPrompt.css';
 
 const Blockquote = ({ children }) => {
-  return <blockquote className="at__blockquote">{children}</blockquote>;
+  return <blockquote className="at__blockquote" tabIndex="0">{children}</blockquote>;
 };
 
 Blockquote.propTypes = {
