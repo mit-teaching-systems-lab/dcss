@@ -22,6 +22,7 @@ import { getUser } from '@actions/user';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CSV from '@utils/csv';
+import Layout from '@utils/Layout';
 import Media from '@utils/Media';
 import { makeHeader } from '@utils/data-table';
 import shorten from '@utils/shorten';
@@ -447,6 +448,14 @@ class Downloads extends Component {
       buttonProps.disabled = true;
     }
 
+    const cohortSelect = Layout.isNotForMobile()
+      ? menuItemCohortSelect.props.children
+      : 'Cohort name';
+
+    const scenarioSelect = Layout.isNotForMobile()
+      ? menuItemScenarioSelect.props.children
+      : 'Scenario title';
+
     return (
       <Fragment>
         {menuBar}
@@ -471,12 +480,10 @@ class Downloads extends Component {
                   </Button>
                 </Table.HeaderCell>
                 <Table.HeaderCell className="dtr__cell-fluid-half-th">
-                  {menuItemCohortSelect.props.children}
+                  {cohortSelect}
                 </Table.HeaderCell>
                 <Table.HeaderCell className="dtr__cell-fluid-half-th">
-                  {user.is_super
-                    ? menuItemScenarioSelect.props.children
-                    : 'Scenario'}
+                  {user.is_super ? scenarioSelect : 'Scenario'}
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
