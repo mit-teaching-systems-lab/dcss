@@ -2,23 +2,23 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Dropdown, Menu, Popup, Sticky } from '@components/UI';
+import { Dropdown, Menu, Popup } from '@components/UI';
 import { endScenarioLock } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import UserMenu from '@components/User/UserMenu';
+import Layout from '@utils/Layout';
 
 const DCSS_BRAND_LABEL = process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
 
-const MOBILE_WIDTH = 767;
 const restrictedNav = [
-  {
-    text: 'History',
-    path: '/history'
-  },
   {
     text: 'Cohorts',
     path: '/cohorts',
     permission: 'view_own_cohorts'
+  },
+  {
+    text: 'History',
+    path: '/history'
   },
   {
     text: 'Downloads',
@@ -165,11 +165,9 @@ class Navigation extends Component {
       </Menu.Item>
     );
 
-    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
-
     const topLevelNavigation = (
       <Menu id="nav" aria-controls="nav" borderless>
-        {IS_ON_MOBILE ? (
+        {Layout.isForMobile() ? (
           <Fragment>
             {menuItemBrandLogo}
             <Dropdown
@@ -233,13 +231,7 @@ class Navigation extends Component {
       </Menu>
     );
 
-    return IS_ON_MOBILE ? (
-      <div>
-        <Sticky>{topLevelNavigation}</Sticky>
-      </div>
-    ) : (
-      topLevelNavigation
-    );
+    return topLevelNavigation;
   }
 }
 
