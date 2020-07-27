@@ -205,3 +205,14 @@
 }
 
 
+
+@media only screen and (max-width: 767px) {
+  .dt__cell-truncated {
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    text-overflow: ellipsis !important;
+    width: 100px;
+    max-width: 100px;
+    min-width: 100px;
+  }
+}

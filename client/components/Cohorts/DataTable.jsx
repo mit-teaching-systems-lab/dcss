@@ -290,7 +290,7 @@ export class DataTable extends React.Component {
               <Table
                 striped
                 selectable
-                stackable
+                unstackable
                 role="grid"
                 key={`${tableKeyBase}-table`}
               >
