@@ -47,7 +47,7 @@ export const CohortCard = ({ id, created_at, name, roles, users }) => {
         <Card.Header>
           <NavLink to={`/cohort/${id}`}>{name}</NavLink>
         </Card.Header>
-        <Card.Meta title={`Created on ${calendar}`}>
+        <Card.Meta title={`Created ${calendar}`}>
           Created {createdBy} {fromNow}
         </Card.Meta>
         <Card.Description>{''}</Card.Description>
