@@ -14,7 +14,7 @@ import DataTable from '@components/Cohorts/DataTable';
 
 import './History.css';
 
-const MOBILE_WIDTH = 767;
+import Layout from '@utils/Layout';
 const ROWS_PER_PAGE = 10;
 
 class History extends Component {
@@ -131,13 +131,11 @@ class History extends Component {
     const runsIndex = (activePage - 1) * ROWS_PER_PAGE;
     const runsSlice = runs.slice(runsIndex, runsIndex + ROWS_PER_PAGE);
 
-    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
-
-    const pagination = (
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell colSpan="5">
-            {runsPages > 1 ? (
+    const pagination =
+      runsPages > 1 ? (
+        <Table.Footer>
+          <Table.Row>
+            <Table.HeaderCell colSpan="5">
               <Pagination
                 borderless
                 name="runs"
@@ -150,11 +148,10 @@ class History extends Component {
                 onPageChange={onPageChange}
                 totalPages={runsPages}
               />
-            ) : null}
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-    );
+            </Table.HeaderCell>
+          </Table.Row>
+        </Table.Footer>
+      ) : null;
 
     panes[0].pane.content = !isReady ? (
       <Loading />
@@ -166,26 +163,23 @@ class History extends Component {
           <Table
             striped
             selectable
+            unstackable
             role="grid"
             aria-labelledby="header"
             className="h__table--constraints"
           >
-            {IS_ON_MOBILE ? pagination : null}
+            {Layout.isForMobile() ? pagination : null}
 
             <Table.Header>
               <Table.Row>
-                {!IS_ON_MOBILE ? (
-                  <Table.HeaderCell
-                    style={{ width: '40px' }}
-                  ></Table.HeaderCell>
-                ) : null}
+                <Table.HeaderCell style={{ width: '40px' }}></Table.HeaderCell>
                 <Table.HeaderCell className="h__col-medium">
-                  Cohort
+                  Cohort name
                 </Table.HeaderCell>
                 <Table.HeaderCell className="h__col-medium">
-                  Scenario
+                  Scenario title
                 </Table.HeaderCell>
-                {!IS_ON_MOBILE ? (
+                {Layout.isNotForMobile() ? (
                   <Table.HeaderCell className="h__col-small">
                     Started
                   </Table.HeaderCell>
@@ -273,20 +267,16 @@ class History extends Component {
                   <Table.Cell
                     className="h__table-cell-first"
                     content={<Icon name="file alternate outline" disabled />}
-                    onClick={onViewRunDataClick}
                   />
                 );
 
                 return (
                   <Table.Row {...completeOrIncomplete} key={run_id}>
-                    {!IS_ON_MOBILE ? (
-                      <Popup
-                        size="tiny"
-                        content={popupContent}
-                        trigger={viewDataIcon}
-                      />
-                    ) : null}
-
+                    <Popup
+                      size="tiny"
+                      content={popupContent}
+                      trigger={viewDataIcon}
+                    />
                     <Table.Cell.Clickable
                       className="h__col-medium"
                       href={cohortPathname}
@@ -297,7 +287,7 @@ class History extends Component {
                       href={pathname}
                       content={scenario_title}
                     />
-                    {!IS_ON_MOBILE ? (
+                    {Layout.isNotForMobile() ? (
                       <Table.Cell className="h__col-small" alt={createdAtAlt}>
                         {createdAtWithPopup}
                       </Table.Cell>
