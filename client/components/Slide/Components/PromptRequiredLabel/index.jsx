@@ -1,15 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Label } from '@components/UI';
+import { Icon, Label, Popup } from '@components/UI';
 import './PromptRequiredLabel.css';
 
 const PromptRequiredLabel = ({ fulfilled }) => {
   const color = fulfilled ? 'green' : 'red';
   const name = fulfilled ? 'check' : 'asterisk';
-
+  const content = fulfilled ? 'This required prompt has been fulfilled.' : 'This prompt requires a response.';
+  const position = 'top right';
+  const size = 'small';
+  const trigger = <Icon className="prl__icon-margin" name={name} />;
   return (
-    <Label className="prl__label-margin" color={color} floating>
-      <Icon className="prl__icon-margin" name={name} />
+    <Label
+      className="prl__label-margin"
+      aria-label={content}
+      color={color}
+      floating
+    >
+      <Popup
+        pinned
+        content={content}
+        position={position}
+        size={size}
+        trigger={trigger}
+      />
     </Label>
   );
 };
