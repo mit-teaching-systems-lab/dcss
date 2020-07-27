@@ -67,35 +67,37 @@ class FinishSlide extends React.Component {
     );
     return (
       <React.Fragment>
-        <Modal
-          role="dialog"
-          aria-modal="true"
-          size="tiny"
-          open={isConfirmBoxOpen}
-        >
-          <Header>
-            <Icon.Group className="em__icon-group-margin">
-              <Icon name="newspaper outline" />
-              <Icon corner="top right" name="check circle" color="orange" />
-            </Icon.Group>
+        <Modal.Accessible open={isConfirmBoxOpen}>
+          <Modal
+            role="dialog"
+            aria-modal="true"
+            size="tiny"
+            open={isConfirmBoxOpen}
+          >
+            <Header>
+              <Icon.Group className="em__icon-group-margin">
+                <Icon name="newspaper outline" />
+                <Icon corner="top right" name="check circle" color="orange" />
+              </Icon.Group>
 
-            <Header.Content>Ready to finish this scenario?</Header.Content>
-          </Header>
-          <Modal.Content>
-            If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
-          </Modal.Content>
-          <Modal.Actions>
-            <Button.Group fluid>
-              <Button color="green" onClick={onConfirm}>
-                I&apos;m done!
-              </Button>
-              <Button.Or />
-              <Button color="grey" onClick={onCancel}>
-                Go back
-              </Button>
-            </Button.Group>
-          </Modal.Actions>
-        </Modal>
+              <Header.Content tabIndex="0">Ready to finish this scenario?</Header.Content>
+            </Header>
+            <Modal.Content tabIndex="0">
+              If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
+            </Modal.Content>
+            <Modal.Actions>
+              <Button.Group fluid>
+                <Button color="green" onClick={onConfirm}>
+                  I&apos;m done!
+                </Button>
+                <Button.Or />
+                <Button color="grey" onClick={onCancel}>
+                  Go back
+                </Button>
+              </Button.Group>
+            </Modal.Actions>
+          </Modal>
+        </Modal.Accessible>
         <Card centered className={className}>
           {extra}
           <Card.Content>

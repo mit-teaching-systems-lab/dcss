@@ -78,7 +78,7 @@ class Display extends Component {
     const { onClick } = this;
     return paths && paths.length ? (
       <Segment>
-        {prompt ? <Header as="h3">{prompt}</Header> : null}
+        {prompt ? <Header as="h3" tabIndex="0">{prompt}</Header> : null}
         {recallId ? <ResponseRecall run={run} recallId={recallId} /> : null}
 
         <List>

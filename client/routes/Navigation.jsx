@@ -89,6 +89,7 @@ class Navigation extends Component {
     const menuItemScenarios = (
       <Menu.Item
         role="option"
+        tabIndex="0"
         to="/scenarios/"
         aria-label={explainAllScenarios}
         as={NavLink}
@@ -101,6 +102,7 @@ class Navigation extends Component {
     const menuItemAllScenarios = (
       <Menu.Item
         role="option"
+        tabIndex="0"
         to="/scenarios/"
         aria-label={explainAllScenarios}
         as={NavLink}
@@ -115,6 +117,7 @@ class Navigation extends Component {
     const menuItemMyScenarios = isLoggedIn ? (
       <Menu.Item
         role="option"
+        tabIndex="0"
         to={`/scenarios/author/${user.username}`}
         aria-label={explainMyScenarios}
         as={NavLink}
@@ -127,6 +130,7 @@ class Navigation extends Component {
     const menuItemOfficialScenarios = (
       <Menu.Item
         role="option"
+        tabIndex="0"
         to="/scenarios/official"
         aria-label={explainOfficialScenarios}
         as={NavLink}
@@ -139,6 +143,7 @@ class Navigation extends Component {
     const menuItemCommunityScenarios = (
       <Menu.Item
         role="option"
+        tabIndex="0"
         to="/scenarios/community"
         aria-label={explainCommunityScenarios}
         as={NavLink}
@@ -156,7 +161,9 @@ class Navigation extends Component {
     const menuItemUserMenu = isLoggedIn ? (
       <UserMenu user={user} />
     ) : (
-      <NavLink to="/login">Log in</NavLink>
+      <Menu.Item to="/login" as={NavLink}>
+        Log in
+      </Menu.Item>
     );
 
     const menuItemGoTo = (
@@ -189,31 +196,36 @@ class Navigation extends Component {
 
             <Menu.Menu>
               <Dropdown
-                basic
+                simple
                 item
                 className="navigation__dropdown"
+                aria-label={explainAllScenarios}
                 trigger={menuItemScenarios}
               >
                 <Dropdown.Menu>
                   <Popup
+                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainAllScenarios}
                     trigger={menuItemAllScenarios}
                   />
                   <Popup
+                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainMyScenarios}
                     trigger={menuItemMyScenarios}
                   />
                   <Popup
+                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainOfficialScenarios}
                     trigger={menuItemOfficialScenarios}
                   />
                   <Popup
+                    tabIndex="0"
                     position="right center"
                     size="large"
                     content={explainCommunityScenarios}

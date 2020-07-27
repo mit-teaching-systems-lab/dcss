@@ -42,15 +42,14 @@ class ScenarioCardActions extends Component {
     return (
       <Button.Group fluid>
         <Button
+          tabIndex="0"
+          aria-label="Run scenario"
+          className="sc__button"
           size="tiny"
           basic
           icon
           as={Link}
-          to={{
-            pathname: `/run/${scenario.id}/slide/${run.activeRunSlideIndex}`
-          }}
-          aria-label="Run scenario"
-          className="sc__button"
+          to={`/run/${scenario.id}/slide/${run.activeRunSlideIndex}`}
         >
           <Icon name="play" />
           <span className={className}>Run</span>
@@ -59,13 +58,12 @@ class ScenarioCardActions extends Component {
           <Fragment>
             <ConfirmAuth isAuthorized={isAuthorizedToEdit}>
               <Button
+                tabIndex="0"
                 size="tiny"
                 basic
                 icon
                 as={Link}
-                to={{
-                  pathname: `/editor/${scenario.id}/${editor.activeTab}/${editor.activeSlideIndex}`
-                }}
+                to={`/editor/${scenario.id}/${editor.activeTab}/${editor.activeSlideIndex}`}
                 aria-label="Edit scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
@@ -75,13 +73,12 @@ class ScenarioCardActions extends Component {
             </ConfirmAuth>
             <ConfirmAuth isAuthorized={isAuthorizedToReview}>
               <Button
+                tabIndex="0"
                 size="tiny"
                 basic
                 icon
                 as={Link}
-                to={{
-                  pathname: `/editor/${scenario.id}/preview/${editor.activeSlideIndex}`
-                }}
+                to={`/editor/${scenario.id}/preview/${editor.activeSlideIndex}`}
                 aria-label="Edit scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
@@ -115,11 +112,12 @@ class ScenarioCardActions extends Component {
             */}
             <ConfirmAuth requiredPermission="create_scenario">
               <Button
+                tabIndex="0"
                 size="tiny"
                 basic
                 icon
                 as={Link}
-                to={{ pathname: `/editor/copy/${scenario.id}` }}
+                to={`/editor/copy/${scenario.id}`}
                 aria-label="Copy scenario"
                 className="sc__button sc__hidden-on-mobile"
               >

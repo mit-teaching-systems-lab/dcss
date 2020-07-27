@@ -207,6 +207,7 @@ class EntrySlide extends React.Component {
     const consentAgreement = (
       <div>
         <p
+          tabIndex="0"
           className="entryslide__consent-inner-container"
           dangerouslySetInnerHTML={{
             __html
@@ -232,15 +233,16 @@ class EntrySlide extends React.Component {
     return (
       <Card id="entry" key="entry" centered className={className}>
         <Card.Content style={{ flexGrow: '0' }}>
-          <Card.Header>{title}</Card.Header>
+          <Card.Header tabIndex="0">{title}</Card.Header>
         </Card.Content>
         <Card.Content>
-          <p className="entryslide__description-inner-container">
+          <p tabIndex="0" className="entryslide__description-inner-container">
             {description}
           </p>
 
           {run && run.updated_at !== null ? (
             <Message
+              tabIndex="0"
               size="large"
               color="olive"
               header="In Progress"
@@ -249,6 +251,7 @@ class EntrySlide extends React.Component {
           ) : null}
           {consent ? (
             <Message
+              tabIndex="0"
               size="large"
               color="yellow"
               header="Consent Agreement"

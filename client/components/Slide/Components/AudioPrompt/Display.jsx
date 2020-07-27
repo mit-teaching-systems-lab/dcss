@@ -107,7 +107,7 @@ class Display extends Component {
     const { onChange } = this;
     const isFulfilled = value ? true : false;
     const header = (
-      <Header as="h3">
+      <Header as="h3" tabIndex="0">
         {prompt} {required && <PromptRequiredLabel fulfilled={isFulfilled} />}
       </Header>
     );

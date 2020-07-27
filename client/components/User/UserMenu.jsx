@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { Dropdown } from '@components/UI';
 
 import ConfirmableLogout from '@components/Login/ConfirmableLogout';
@@ -48,8 +49,12 @@ class UserMenu extends Component {
       <Fragment>
         <Dropdown {...dropdownProps}>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={onSettingsClick}>Settings</Dropdown.Item>
-            <Dropdown.Item onClick={onLogoutClick}>Log out</Dropdown.Item>
+            <Dropdown.Item tabIndex="0" onClick={onSettingsClick}>
+              Settings
+            </Dropdown.Item>
+            <Dropdown.Item tabIndex="0" onClick={onLogoutClick}>
+              Log out
+            </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         {openSettings ? (

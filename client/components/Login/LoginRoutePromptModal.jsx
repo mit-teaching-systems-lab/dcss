@@ -62,37 +62,40 @@ class LoginRoutePromptModal extends Component {
       </Button>
     );
     return (
-      <Modal open role="dialog" aria-modal="true" size="small">
-        <Header
-          icon="user outline"
-          content="Create an account, Continue anonymously, or Log in?"
-        />
-        <Modal.Content>
-          <p>Please choose one of the following options:</p>
-          <Grid columns={2} divided>
-            <Grid.Row>
-              <Grid.Column>{buttonCreateAccount}</Grid.Column>
-              <Grid.Column>
-                <p>If you do not have an account, but wish to create one.</p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>{buttonCreateAnonymous}</Grid.Column>
-              <Grid.Column>
-                <p>
-                  If you do not have an account, and do not wish to create one.
-                </p>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>{buttonLogin}</Grid.Column>
-              <Grid.Column>
-                <p>If you already have an account</p>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-      </Modal>
+      <Modal.Accessible open>
+        <Modal open role="dialog" aria-modal="true" size="small">
+          <Header
+            icon="user outline"
+            content="Create an account, Continue anonymously, or Log in?"
+          />
+          <Modal.Content>
+            <p>Please choose one of the following options:</p>
+            <Grid columns={2} divided>
+              <Grid.Row>
+                <Grid.Column>{buttonCreateAccount}</Grid.Column>
+                <Grid.Column>
+                  <p>If you do not have an account, but wish to create one.</p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>{buttonCreateAnonymous}</Grid.Column>
+                <Grid.Column>
+                  <p>
+                    If you do not have an account, and do not wish to create
+                    one.
+                  </p>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>{buttonLogin}</Grid.Column>
+                <Grid.Column>
+                  <p>If you already have an account</p>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Content>
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
 import { logIn, logOut } from '@actions';
@@ -117,56 +117,71 @@ class Login extends Component {
     }
 
     return (
-      <Modal open role="dialog" aria-modal="true" size="small">
-        <Header icon="user outline" content="Log In" />
-        <Modal.Content>
-          <Form onSubmit={onSubmit}>
-            <Form.Field>
-              <label htmlFor="username">Username</label>
-              <Form.Input
-                name="username"
-                autoComplete="username"
-                onChange={onChange}
-                value={username}
-              />
-            </Form.Field>
-            <Form.Field>
-              <label htmlFor="password">Password</label>
-              <Form.Input
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                onChange={onChange}
-                value={password}
-              />
-            </Form.Field>
-          </Form>
-        </Modal.Content>
-        <Modal.Actions>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <Button.Group fluid>
-                  <Button primary type="submit" onClick={onSubmit} size="large">
-                    Log in
-                  </Button>
-                  <Button.Or />
-                  <Button size="large" onClick={onCreateAccountClick}>
-                    Create an account
-                  </Button>
-                </Button.Group>
-                <Message
-                  floating
-                  {...messageProps}
-                  style={{ textAlign: 'left' }}
-                >
-                  {error.message}
-                </Message>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Actions>
-      </Modal>
+      <Modal.Accessible open>
+        <Modal open role="dialog" aria-modal="true" size="small">
+          <Header tabIndex="0" icon="user outline" content="Log In" />
+          <Modal.Content>
+            <Form onSubmit={onSubmit}>
+              <Form.Field>
+                <label htmlFor="username">Username</label>
+                <Form.Input
+                  aria-description="user name"
+                  id="username"
+                  name="username"
+                  autoComplete="username"
+                  onChange={onChange}
+                  value={username}
+                />
+              </Form.Field>
+              <Form.Field>
+                <label htmlFor="password">Password</label>
+                <Form.Input
+                  aria-description="password"
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  onChange={onChange}
+                  value={password}
+                />
+              </Form.Field>
+            </Form>
+          </Modal.Content>
+          <Modal.Actions>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
+                  <Button.Group fluid>
+                    <Button
+                      primary
+                      type="submit"
+                      onClick={onSubmit}
+                      size="large"
+                    >
+                      Log in
+                    </Button>
+                    <Button.Or />
+                    <Button size="large" onClick={onCreateAccountClick}>
+                      Create an account
+                    </Button>
+                    <Button.Or />
+                    <Button to="/scenarios/" size="large" as={NavLink}>
+                      Go back to scenarios
+                    </Button>
+                  </Button.Group>
+                  <Message
+                    floating
+                    {...messageProps}
+                    style={{ textAlign: 'left' }}
+                  >
+                    {error.message}
+                  </Message>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Actions>
+        </Modal>
+      </Modal.Accessible>
     );
   }
 }

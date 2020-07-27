@@ -82,7 +82,7 @@ class CreateAnonymousAccount extends Component {
       ? 'Do you like this anonymous user name?'
       : 'Find an anonymous user name for you.';
     return (
-      <Modal.Accessible open={open}>
+      <Modal.Accessible open>
         <Modal open role="dialog" aria-modal="true" size="small">
           <Header icon="user outline" content={header} />
           <Modal.Content>
@@ -110,7 +110,11 @@ class CreateAnonymousAccount extends Component {
                 onClick={onClick}
               />
               <Button.Or />
-              <Button content="Go back" name="nvm" onClick={onClick} />
+              <Button
+                content="Go back to log in"
+                name="nvm"
+                onClick={onClick}
+              />
             </Button.Group>
           </Modal.Actions>
         </Modal>
