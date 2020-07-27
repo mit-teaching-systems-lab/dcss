@@ -248,7 +248,9 @@ class ContentSlide extends React.Component {
       <Card id={slide.id} key={slide.id} centered className={cardClass}>
         {slide.title ? (
           <Card.Content style={{ flexGrow: '0' }}>
-            <Card.Header tabIndex="0" key={`header${slide.id}`}>{slide.title}</Card.Header>
+            <Card.Header tabIndex="0" key={`header${slide.id}`}>
+              {slide.title}
+            </Card.Header>
           </Card.Content>
         ) : null}
         <Card.Content key={`content${slide.id}`}>

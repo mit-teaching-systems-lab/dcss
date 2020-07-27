@@ -187,7 +187,9 @@ class Display extends Component {
 
     return IS_AUDIO_RECORDING_SUPPORTED ? (
       <Segment>
-        <Header as="h3" tabIndex="0">{header}</Header>
+        <Header as="h3" tabIndex="0">
+          {header}
+        </Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
 
         <Grid>
@@ -247,7 +249,9 @@ class Display extends Component {
       </Segment>
     ) : (
       <Segment>
-        <Header as="h3" tabIndex="0">{header}</Header>
+        <Header as="h3" tabIndex="0">
+          {header}
+        </Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
         <Form>
           <Form.TextArea

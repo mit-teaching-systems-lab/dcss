@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { Dropdown } from '@components/UI';
 
 import ConfirmableLogout from '@components/Login/ConfirmableLogout';

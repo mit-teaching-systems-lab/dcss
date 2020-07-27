@@ -89,7 +89,9 @@ class Display extends React.Component {
 
     return buttons && buttons.length ? (
       <Segment>
-        <Header as="h3" tabIndex="0">{header}</Header>
+        <Header as="h3" tabIndex="0">
+          {header}
+        </Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
         <List>
           {buttons.map(({ display, value }, index) => {
