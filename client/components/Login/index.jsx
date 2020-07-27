@@ -92,8 +92,9 @@ class Login extends Component {
     }
   }
 
-  doLogout() {
-    this.props.logOut();
+  async doLogout() {
+    await this.props.logOut();
+    this.props.history.push('/scenarios');
   }
 
   render() {
