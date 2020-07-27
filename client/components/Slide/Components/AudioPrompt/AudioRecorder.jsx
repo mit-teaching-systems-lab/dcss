@@ -193,7 +193,7 @@ class AudioRecorder extends Component {
 
     const audioSrc = src ? { src } : {};
     const audioProps = {
-      controlslist: 'nodownload',
+      controlsList: 'nodownload',
       controls: true,
       ...audioSrc
     };
@@ -259,7 +259,7 @@ class AudioRecorder extends Component {
       <Form>
         <Form.TextArea
           autoFocus
-          placeholder="..."
+          placeholder="Your response"
           name={responseId}
           onFocus={onFocus}
           onChange={onChange}

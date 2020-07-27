@@ -5,7 +5,7 @@ export { default as Editor } from './Editor';
 export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
   id: '',
-  placeholder: '',
+  placeholder: 'Your response',
   prompt: '',
   recallId: '',
   required: true,

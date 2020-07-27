@@ -6,7 +6,7 @@ export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
   header: '',
   id: '',
-  prompt: 'Click the microphone to record your response',
+  prompt: '',
   recallId: '',
   required: true,
   responseId,
