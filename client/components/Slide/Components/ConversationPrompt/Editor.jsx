@@ -289,7 +289,6 @@ class ConversationPromptEditor extends Component {
             options={options}
             defaultValue={configuration.kind}
             onChange={onChange}
-            onBlur={updateState}
           />
 
           {configuration.kind === 'slice' ? (
