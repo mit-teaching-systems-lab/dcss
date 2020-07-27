@@ -90,7 +90,7 @@ td .ui.fluid.selection.dropdown > .text {
 @media only screen and (max-width: 767px) {
 
   #root {
-     margin: 0 0.25em 0 0.25em !important;
+    width: calc(100vw - 21px) !important;
   }
 
 
