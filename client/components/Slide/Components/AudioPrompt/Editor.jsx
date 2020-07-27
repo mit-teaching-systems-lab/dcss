@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Container, Form, Message } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
@@ -38,7 +38,7 @@ class AudioPromptEditor extends Component {
       responseId
     };
 
-    if (hash(this.state) !== hash(lastProps)) {
+    if (Identity.key(this.state) !== Identity.key(lastProps)) {
       this.updateState();
     }
   }

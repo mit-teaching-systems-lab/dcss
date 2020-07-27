@@ -1,6 +1,6 @@
 import { type } from './meta';
 import React, { Component, Fragment } from 'react';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Button, Form, Grid, Header, Icon, Segment } from '@components/UI';
@@ -187,7 +187,7 @@ class Display extends Component {
 
     return IS_AUDIO_RECORDING_SUPPORTED ? (
       <Segment>
-        <Header as="h3">{header}</Header>
+        <Header as="h3" tabIndex="0">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
 
         <Grid>
@@ -238,7 +238,7 @@ class Display extends Component {
 
         {isFulfilled ? (
           <Transcript
-            key={hash({ transcript })}
+            key={Identity.key({ transcript })}
             responseId={responseId}
             run={run}
             transcript={transcript}
@@ -247,7 +247,7 @@ class Display extends Component {
       </Segment>
     ) : (
       <Segment>
-        <Header as="h3">{header}</Header>
+        <Header as="h3" tabIndex="0">{header}</Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
         <Form>
           <Form.TextArea

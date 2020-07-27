@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Container, Form, Icon, Input, Menu, Table } from '@components/UI';
 import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';
@@ -61,7 +61,7 @@ class MultiButtonResponseEditor extends React.Component {
       responseId
     };
 
-    if (hash(this.state) !== hash(lastProps)) {
+    if (Identity.key(this.state) !== Identity.key(lastProps)) {
       this.updateState();
     }
   }
@@ -212,7 +212,7 @@ class MultiButtonResponseEditor extends React.Component {
             >
               {buttons.map(({ display, value }, index) => {
                 const onBlurOrFocus = preventEmptyButtonField.bind(this, index);
-                const key = hash({ id, index });
+                const key = Identity.key({ id, index });
                 return (
                   <Table.Row className="mbr__cursor-grab" key={`row-${key}`}>
                     <Table.Cell collapsing>

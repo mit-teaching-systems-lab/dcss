@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Card, Container, Grid, Responsive } from '@components/UI';
 // import Loading from '@components/Loading';
 import SlideComponents from '@components/SlideComponents';
@@ -51,7 +51,7 @@ class Review extends Component {
                 <Card.Group doubling stackable itemsPerRow={4}>
                   {slides.map(slide => {
                     return (
-                      <Card key={hash(slide)}>
+                      <Card key={Identity.key(slide)}>
                         <Card.Content>
                           <Card.Header>
                             Slide #{slide.index}{' '}

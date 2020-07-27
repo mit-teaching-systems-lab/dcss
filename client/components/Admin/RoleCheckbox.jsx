@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import hash from 'object-hash';
+// import Identity from '@utils/Identity';
 import { Checkbox, Popup } from '@components/UI';
 import { notify } from '@components/Notification';
 import { addCohortUserRole, deleteCohortUserRole } from '@actions/cohort';

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import path from 'object-path';
 import { Container, Form, Message, Ref, Slider } from '@components/UI';
 import { type } from './meta';
@@ -71,7 +71,7 @@ class ConversationPromptEditor extends Component {
       url
     };
 
-    if (hash(this.state) !== hash(lastProps)) {
+    if (Identity.key(this.state) !== Identity.key(lastProps)) {
       this.updateState();
     }
   }

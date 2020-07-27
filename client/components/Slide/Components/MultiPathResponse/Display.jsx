@@ -1,7 +1,7 @@
 import { type } from './meta';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { connect } from 'react-redux';
 import { Button, Header, List, Segment } from '@components/UI';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
@@ -86,7 +86,7 @@ class Display extends Component {
             const { display, value } = path;
             const selectedIcon =
               previousValue === value ? { icon: 'checkmark' } : {};
-            const key = hash({ path, index });
+            const key = Identity.key({ path, index });
             return (
               <List.Item key={`list-item-${key}`}>
                 <Button

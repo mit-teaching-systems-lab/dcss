@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Icon, Table } from '@components/UI';
 import { diff } from 'deep-diff';
 import Moment from '@utils/Moment';
@@ -248,7 +248,7 @@ export class DataTable extends React.Component {
         csv += `${prepared.join(',')}\n`;
       });
 
-      CSV.download(hash({ prefix, subject }), csv);
+      CSV.download(Identity.key({ prefix, subject }), csv);
     });
   }
 

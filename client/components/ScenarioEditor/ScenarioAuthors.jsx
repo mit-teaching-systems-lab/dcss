@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import escapeRegExp from 'lodash.escaperegexp';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import PropTypes from 'prop-types';
 import { Dropdown, Input, Menu, Table, Text } from '@components/UI';
 import {
@@ -247,7 +247,7 @@ class ScenarioAuthors extends Component {
       const isOwner = !!(scenarioUser && scenarioUser.is_owner);
       const disabled = !isOwner && !user.is_super;
       const defaultValue = candidate.roles.length ? candidate.roles[0] : null;
-      const key = hash(candidate);
+      const key = Identity.key(candidate);
 
       accum[candidate.id] = [
         <Table.Cell key={`${key}-1`}>

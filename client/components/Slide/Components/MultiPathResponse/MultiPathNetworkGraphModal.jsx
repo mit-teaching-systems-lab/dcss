@@ -4,7 +4,7 @@ import Graph from 'react-graph-vis';
 import { connect } from 'react-redux';
 import { Modal, Ref } from '@components/UI';
 import { getSlides } from '@actions/scenario';
-import htmlId from '@utils/html-id';
+import Identity from '@utils/Identity';
 
 import 'vis-network/dist/vis-network.min.css';
 
@@ -329,8 +329,8 @@ class MultiPathNetworkGraphModal extends Component {
       }
     };
 
-    const ariaLabelledBy = htmlId();
-    const ariaDescribedBy = htmlId();
+    const ariaLabelledBy = Identity.id();
+    const ariaDescribedBy = Identity.id();
 
     return (
       <Modal.Accessible open={open}>

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import { Parser } from 'json2csv';
@@ -133,7 +133,7 @@ class Downloads extends Component {
         fields.push('cohort_id');
       }
 
-      const file = hash({ cohort, id });
+      const file = Identity.key({ cohort, id });
       const parser = new Parser({ fields });
       const csv = parser.parse(records);
 
@@ -200,7 +200,7 @@ class Downloads extends Component {
         };
 
         dropdownCohortSelectOptions.push({
-          key: hash({ cohort, index }),
+          key: Identity.key({ cohort, index }),
           value: cohort.id,
           text: shorten(cohort.name, 50)
         });
@@ -218,7 +218,7 @@ class Downloads extends Component {
 
             return (
               <Table.Row
-                key={hash({ ...cohort, id })}
+                key={Identity.key({ ...cohort, id })}
                 created_at={Date.now(cohort.created_at)}
               >
                 {index === 0 ? (
@@ -275,7 +275,7 @@ class Downloads extends Component {
           };
 
           dropdownScenarioSelectOptions.push({
-            key: hash({ scenario, index }),
+            key: Identity.key({ scenario, index }),
             value: scenario.id,
             text: shorten(scenario.title, 50)
           });
@@ -289,7 +289,7 @@ class Downloads extends Component {
 
           accum.push(
             <Table.Row
-              key={hash({ scenario })}
+              key={Identity.key({ scenario })}
               created_at={Date.now(scenario.created_at)}
             >
               <Table.Cell style={{ minWidth: '47px' }}> </Table.Cell>

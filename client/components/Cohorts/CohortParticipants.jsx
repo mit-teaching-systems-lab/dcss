@@ -15,7 +15,7 @@ import {
   Table
 } from '@components/UI';
 import escapeRegExp from 'lodash.escaperegexp';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
 import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
@@ -261,7 +261,7 @@ export class CohortParticipants extends React.Component {
           source: cohortUser
         });
       };
-      const key = hash(cohortUser);
+      const key = Identity.key(cohortUser);
 
       const trigger = (
         <Table.Cell.Clickable

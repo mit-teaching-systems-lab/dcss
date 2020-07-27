@@ -1,7 +1,7 @@
 import { type } from './meta';
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Message } from '@components/UI';
 import AudioPlayer from '../AudioPrompt/AudioPlayer';
 import Transcript from '../AudioPrompt/Transcript';
@@ -81,7 +81,7 @@ class Display extends Component {
       if (previous) {
         const { response } = previous;
 
-        if (hash(response) !== hash(this.state.response)) {
+        if (Identity.key(response) !== Identity.key(this.state.response)) {
           clearInterval(this.interval);
           this.setState({
             response

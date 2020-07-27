@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Header, Message, Modal } from '@components/UI';
-import htmlId from '@utils/html-id';
+import Identity from '@utils/Identity';
 import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import './EntrySlide.css';
 
@@ -134,8 +134,8 @@ class EntrySlide extends React.Component {
       this.props.onNextClick();
     };
 
-    const ariaLabelledBy = htmlId();
-    const ariaDescribedBy = htmlId();
+    const ariaLabelledBy = Identity.id();
+    const ariaDescribedBy = Identity.id();
     const permissionConfirmation = showPermissionConfirmation ? (
       <Modal.Accessible open={showPermissionConfirmation}>
         <Modal

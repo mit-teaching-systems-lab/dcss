@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Card, Icon } from '@components/UI';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
+import Identity from '@utils/Identity';
 import ScenarioCardActions from './ScenarioCardActions';
 import './ScenariosList.css';
 

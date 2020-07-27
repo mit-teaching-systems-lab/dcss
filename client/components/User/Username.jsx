@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Icon, Text } from '@components/UI';
 
 const ICON_SUPER = { className: 'chess queen', title: 'Super' };
@@ -49,7 +49,7 @@ class Username extends Component {
   render() {
     const { id, roles } = this.props;
 
-    const key = hash({ id, roles });
+    const key = Identity.key({ id, roles });
     const cached = cache[key];
 
     if (cached) {

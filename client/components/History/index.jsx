@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
@@ -335,7 +335,7 @@ class History extends Component {
         <Fragment>
           {sources.map(source => (
             <DataTable
-              key={hash(source)}
+              key={Identity.key(source)}
               source={source}
               leftColVisible={false}
               onClick={() => onSubDataTableMenuClick({}, { name, source })}

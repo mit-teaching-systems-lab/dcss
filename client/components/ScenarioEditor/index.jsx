@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import {
   Button,
   Container,
@@ -373,7 +373,7 @@ class ScenarioEditor extends Component {
       ([name, { label }], index) => (
         <Menu.Item
           icon
-          key={hash({ label, index })}
+          key={Identity.key({ label, index })}
           onClick={() => scrollIntoView(name)}
         >
           {label}

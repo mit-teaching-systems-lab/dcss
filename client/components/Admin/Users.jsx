@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Icon, Input, Menu, Table } from '@components/UI';
 
 import EditorMenu from '@components/EditorMenu';
@@ -152,7 +152,7 @@ class Users extends Component {
     const rows = users.reduce((accum, user) => {
       accum[user.id] = [
         user.username,
-        <Table.Cell className="dl__hidden-on-mobile" key={hash(user)}>
+        <Table.Cell className="dl__hidden-on-mobile" key={Identity.key(user)}>
           {user.email}
         </Table.Cell>
       ];

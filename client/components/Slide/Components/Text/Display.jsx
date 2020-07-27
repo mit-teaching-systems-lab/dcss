@@ -2,7 +2,7 @@ import { type } from './meta';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import RichTextEditor from '@components/RichTextEditor';
-import nextKey from '@utils/key';
+import Identity from '@utils/Identity';
 import './Text.css';
 
 class Display extends Component {
@@ -16,7 +16,7 @@ class Display extends Component {
 
   render() {
     const { html: defaultValue } = this.props;
-    const key = nextKey();
+    const key = Identity.key();
     const mode = 'display';
 
     return <RichTextEditor key={key} defaultValue={defaultValue} mode={mode} />;

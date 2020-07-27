@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Table } from '@components/UI';
 import RoleCheckbox from './RoleCheckbox';
 import {
@@ -78,7 +78,10 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
       />
     );
     return (
-      <Table.Cell textAlign="center" key={hash(role + targetUser.id + index)}>
+      <Table.Cell
+        textAlign="center"
+        key={Identity.key(role + targetUser.id + index)}
+      >
         {targetUser.id ? roleCheckBox : null}
       </Table.Cell>
     );
@@ -135,14 +138,18 @@ const UserRows = props => {
     });
 
     return (
-      <Table.Row key={hash(targetUser)}>
+      <Table.Row key={Identity.key(targetUser)}>
         {cellsContents.map(content => {
           // This is for supporting Table.Cell.Clickable and
           // similar other valid table cell stand-ins.
           if (React.isValidElement(content)) {
             return content;
           }
-          return <Table.Cell key={hash(content)}>{content || ' '}</Table.Cell>;
+          return (
+            <Table.Cell key={Identity.key(content)}>
+              {content || ' '}
+            </Table.Cell>
+          );
         })}
         {roleCells}
       </Table.Row>

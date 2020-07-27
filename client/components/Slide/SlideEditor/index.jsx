@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { v4 as uuid } from 'uuid';
 import {
   Checkbox,
@@ -456,7 +456,10 @@ export default class SlideEditor extends Component {
                             }
 
                             const menuItemRequiredCheckbox = (
-                              <Menu.Item key={hash(props)} name={menuItemTip}>
+                              <Menu.Item
+                                key={Identity.key(props)}
+                                name={menuItemTip}
+                              >
                                 <Checkbox
                                   {...props}
                                   onChange={(event, { checked }) =>

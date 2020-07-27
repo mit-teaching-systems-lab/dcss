@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { connect } from 'react-redux';
 import { Button, Form, Grid, Icon, Ref } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
@@ -203,7 +203,7 @@ class AudioRecorder extends Component {
         <Grid>
           {!prompt ? (
             <Grid.Row className="ar__instructions">
-              <Grid.Column>{instructions}</Grid.Column>
+              <Grid.Column tabIndex="0">{instructions}</Grid.Column>
             </Grid.Row>
           ) : null}
           <Grid.Row columns={2}>
@@ -248,7 +248,7 @@ class AudioRecorder extends Component {
         </Grid>
         {isFulfilled ? (
           <Transcript
-            key={hash({ transcript })}
+            key={Identity.key({ transcript })}
             responseId={responseId}
             run={run}
             transcript={transcript}

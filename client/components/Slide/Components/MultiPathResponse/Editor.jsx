@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import {
   Container,
   Dropdown,
@@ -115,7 +115,7 @@ class MultiPathResponseEditor extends React.Component {
     //   };
     // }
 
-    // if (hash(stateValue) !== hash(propsValue)) {
+    // if (Identity.key(stateValue) !== Identity.key(propsValue)) {
     //   this.updateState();
     // }
   }
@@ -302,7 +302,7 @@ class MultiPathResponseEditor extends React.Component {
           </Table.Body>
         </Table>
       );
-      const key = hash({ text, value });
+      const key = Identity.key({ text, value });
       return {
         key,
         text,
@@ -367,8 +367,8 @@ class MultiPathResponseEditor extends React.Component {
                   index,
                   options
                 );
-                const baseKey = hash({ id, index });
-                const pathKey = hash({ baseKey, path });
+                const baseKey = Identity.key({ id, index });
+                const pathKey = Identity.key({ baseKey, path });
                 return (
                   <Table.Row
                     className="mpr__cursor-grab"

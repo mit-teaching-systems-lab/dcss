@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { Menu, Popup } from '@components/UI';
 import * as Components from '@components/Slide/Components';
 import './SlideComponentSelect.css';
@@ -30,7 +30,7 @@ const ComponentItems = ({ onComponentItemClick }) => {
       <Popup
         pinned
         position="left center"
-        key={hash(item)}
+        key={Identity.key(item)}
         header={header}
         content={content}
         trigger={trigger}

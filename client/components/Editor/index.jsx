@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import {
   Button,
   Dropdown,
@@ -20,7 +20,7 @@ import Scenario from '@components/Scenario';
 import Username from '@components/User/Username';
 // import Review from './Review';
 import Slides from './Slides';
-import htmlId from '@utils/html-id';
+import Identity from '@utils/Identity';
 import {
   deleteScenario,
   getScenario,
@@ -488,8 +488,8 @@ class Editor extends Component {
       }
 
       if (modalProps.open) {
-        const ariaLabelledBy = htmlId();
-        const ariaDescribedBy = htmlId();
+        const ariaLabelledBy = Identity.id();
+        const ariaDescribedBy = Identity.id();
         modal = (
           <Modal.Accessible open={modalProps.open}>
             <Modal
@@ -505,22 +505,16 @@ class Editor extends Component {
               <Modal.Actions>
                 <Button.Group fluid>
                   <Button
-                    as={Link}
-                    to={{
-                      pathname: '/scenarios/'
-                    }}
-                    aria-label="Go back"
+                    to="/scenarios/"
                     color="green"
-                    content="Go back"
+                    content="Go back to scenarios"
+                    as={NavLink}
                   />
                   {/*
                   <Button.Or />
                   <Button
-                    as={Link}
-                    to={{
-                      pathname: '/scenarios/'
-                    }}
-                    aria-label="Try again"
+                    as={NavLink}
+                    to="/scenarios/"
                     color="orange"
                     content="Try again"
                   />

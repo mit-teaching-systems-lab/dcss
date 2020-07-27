@@ -29,7 +29,7 @@ import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioCardActions from './ScenarioCardActions';
-import htmlId from '@utils/html-id';
+import Identity from '@utils/Identity';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -451,8 +451,8 @@ const ScenarioDetailModal = ({ onClose, open, scenario }) => {
     </span>
   );
 
-  const ariaLabelledBy = htmlId();
-  const ariaDescribedBy = htmlId();
+  const ariaLabelledBy = Identity.id();
+  const ariaDescribedBy = Identity.id();
   return (
     <Modal.Accessible open={open}>
       <Modal

@@ -1,4 +1,4 @@
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import {
   SemanticToastContainer as Notification,
   toast
@@ -36,7 +36,7 @@ export function notify({
     props.type = undefined;
   }
 
-  const key = hash(props);
+  const key = Identity.key(props);
 
   if (!cache.has(key)) {
     cache.add(key);

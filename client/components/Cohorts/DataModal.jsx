@@ -4,7 +4,7 @@ import { Header, Icon, Modal, Table } from '@components/UI';
 import SplitPane from 'react-split-pane';
 import Moment from '@utils/Moment';
 import Media from '@utils/Media';
-import htmlId from '@utils/html-id';
+import Identity from '@utils/Identity';
 import ContentSlide from '@components/Scenario/ContentSlide';
 import './DataTable.css';
 import './Resizer.css';
@@ -13,8 +13,8 @@ const DataModal = props => {
   const { index, isScenarioDataTable, prompts, rows } = props;
   const component = prompts[index];
   const { header, prompt, slide } = component;
-  const ariaLabelledBy = htmlId();
-  const ariaDescribedBy = htmlId();
+  const ariaLabelledBy = Identity.id();
+  const ariaDescribedBy = Identity.id();
 
   return (
     <Modal

@@ -1,5 +1,5 @@
 import Zip from 'jszip';
-import hash from 'object-hash';
+import Identity from '@utils/Identity';
 import { saveAs } from 'file-saver';
 import slugify from 'slugify';
 
@@ -13,7 +13,7 @@ const downloadZipAsync = async files => {
   files.forEach(([file, contents]) => zip.file(file, contents));
 
   const blob = await zip.generateAsync({ type: 'blob' });
-  saveAs(blob, `${hash(files)}.zip`);
+  saveAs(blob, `${Identity.key(files)}.zip`);
 };
 
 const download = (filename, content) => {

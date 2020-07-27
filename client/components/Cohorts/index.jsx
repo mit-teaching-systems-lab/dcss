@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import hash from 'object-hash';
 import escapeRegExp from 'lodash.escaperegexp';
 import {
   Button,
@@ -33,7 +32,7 @@ import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
-import htmlId from '@utils/html-id';
+import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
 
 export class Cohorts extends React.Component {
@@ -236,12 +235,12 @@ export class Cohorts extends React.Component {
       cohortsIndex + itemsPerPage
     );
     const cards = cohortsSlice.map(cohort => {
-      return <CohortCard key={hash(cohort)} id={cohort.id} />;
+      return <CohortCard key={Identity.key(cohort)} id={cohort.id} />;
     });
 
     const itemsPerRow = 4;
-    const ariaLabelledBy = htmlId();
-    const ariaDescribedBy = htmlId();
+    const ariaLabelledBy = Identity.id();
+    const ariaDescribedBy = Identity.id();
 
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
