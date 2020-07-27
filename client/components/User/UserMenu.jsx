@@ -39,8 +39,10 @@ class UserMenu extends Component {
       onKeyUp(event) {
         const key = event.which || event.keyCode;
         const target = event.target;
-        if (key === 13 || key === 32 &&
-            target.getAttribute('role') === 'option') {
+        if (
+          key === 13 ||
+          (key === 32 && target.getAttribute('role') === 'option')
+        ) {
           target.click();
         }
       }

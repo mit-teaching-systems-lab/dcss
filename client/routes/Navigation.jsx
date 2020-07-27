@@ -200,11 +200,13 @@ class Navigation extends Component {
                 className="navigation__dropdown"
                 aria-label={explainAllScenarios}
                 trigger={menuItemScenarios}
-                onKeyUp={(event) => {
+                onKeyUp={event => {
                   const key = event.which || event.keyCode;
                   const target = event.target;
-                  if (key === 13 || key === 32 &&
-                      target.getAttribute('role') === 'option') {
+                  if (
+                    key === 13 ||
+                    (key === 32 && target.getAttribute('role') === 'option')
+                  ) {
                     target.click();
                   }
                 }}

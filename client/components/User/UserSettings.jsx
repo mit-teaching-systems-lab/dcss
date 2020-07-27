@@ -268,7 +268,12 @@ class UserSettings extends Component {
               <Grid.Row>
                 <Grid.Column>
                   <Button.Group fluid>
-                    <Button primary type="submit" size="large" onClick={onSubmit}>
+                    <Button
+                      primary
+                      type="submit"
+                      size="large"
+                      onClick={onSubmit}
+                    >
                       Save
                     </Button>
                     <Button.Or />
