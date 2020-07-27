@@ -6,7 +6,9 @@ import './PromptRequiredLabel.css';
 const PromptRequiredLabel = ({ fulfilled }) => {
   const color = fulfilled ? 'green' : 'red';
   const name = fulfilled ? 'check' : 'asterisk';
-  const content = fulfilled ? 'This required prompt has been fulfilled.' : 'This prompt requires a response.';
+  const content = fulfilled
+    ? 'This required prompt has been fulfilled.'
+    : 'This prompt requires a response.';
   const position = 'top right';
   const size = 'small';
   const trigger = <Icon className="prl__icon-margin" name={name} />;
