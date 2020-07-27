@@ -19,8 +19,9 @@ import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
-import { computeItemsRowsPerPage } from '@utils/Layout';
+import Layout from '@utils/Layout';
 import { deleteScenario, getScenarios } from '@actions/scenario';
+import Boundary from '@components/Boundary';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Username from '@components/User/Username';
 import EditorMenu from '@components/EditorMenu';
@@ -240,6 +241,10 @@ class ScenariosList extends Component {
       replacementHeading = `${viewHeading}, nothing matches '${value}'`;
     }
 
+    if (Layout.isForMobile()) {
+      replacementHeading = `'${value}'`;
+    }
+
     this.setState({
       activePage: 1,
       heading: replacementHeading,
@@ -279,7 +284,8 @@ class ScenariosList extends Component {
     }
 
     const defaultRowCount = 2;
-    const { itemsPerPage, rowsPerPage } = computeItemsRowsPerPage({
+    const { itemsPerPage, rowsPerPage } = Layout.computeItemsRowsPerPage({
+      itemsRowHeight: Layout.isForMobile() ? 250 : 293,
       defaultRowCount
     });
 
@@ -300,6 +306,24 @@ class ScenariosList extends Component {
       );
     });
 
+    const onCopyClick = () => {
+      copy(url);
+      notify({
+        message: `Copied: ${url}`
+      });
+    };
+
+    const menuItemScenarioLinkCopyLeft = Layout.isForMobile() ? (
+      <Menu.Item
+        key="menu-item-scenario-link-copy-left"
+        style={{ width: '45%' }}
+        className="em__overflow-truncated"
+        onClick={onCopyClick}
+      >
+        {heading} ({scenarios.length})
+      </Menu.Item>
+    ) : null;
+
     const left = [
       <ConfirmAuth
         key="menu-item-scenario-create"
@@ -316,22 +340,17 @@ class ScenariosList extends Component {
           </Icon.Group>
           Create a Scenario
         </Menu.Item>
-      </ConfirmAuth>
+      </ConfirmAuth>,
+
+      menuItemScenarioLinkCopyLeft
     ];
 
-    const onCopyClick = () => {
-      copy(url);
-      notify({
-        message: `Copied: ${url}`
-      });
-    };
-
-    const menuItemScenarioLinkCopy = (
+    const menuItemScenarioLinkCopyRight = Layout.isNotForMobile() ? (
       <Menu.Item className="sc__hidden-on-mobile" onClick={onCopyClick}>
         {heading} ({scenarios.length})
         <Icon name="clipboard outline" />
       </Menu.Item>
-    );
+    ) : null;
 
     const menuItemScenarioSearch = (
       <Menu.Item>
@@ -348,7 +367,7 @@ class ScenariosList extends Component {
         <Popup
           size="small"
           content="Copy the url to these scenarios"
-          trigger={menuItemScenarioLinkCopy}
+          trigger={menuItemScenarioLinkCopyRight}
         />
         <Popup
           size="small"
@@ -381,6 +400,7 @@ class ScenariosList extends Component {
         <EditorMenu type="scenarios" items={{ left, right }} />
         <Container fluid>
           <Grid>
+            <Boundary top />
             <Grid.Row>
               <Grid.Column stretched>
                 {!isReady ? (
@@ -399,6 +419,7 @@ class ScenariosList extends Component {
                 )}
               </Grid.Column>
             </Grid.Row>
+            <Boundary bottom />
             <Grid.Row>
               <Grid.Column stretched>
                 {scenariosPages > 1 ? (
@@ -425,35 +446,37 @@ const ScenarioDetailModal = ({ onClose, open, scenario }) => {
   const createdAtAlt = Moment(scenario.created_at).calendar();
   const username = <Username {...scenario.author} />;
   const subheader = (
-    <Fragment>
-      Created by {username} ({createdAt} on {createdAtAlt})
-    </Fragment>
+    <span title={createdAtAlt}>
+      Created by {username} ({createdAt})
+    </span>
   );
 
   const ariaLabelledBy = htmlId();
   const ariaDescribedBy = htmlId();
   return (
-    <Modal
-      closeIcon
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={ariaLabelledBy}
-      aria-describedby={ariaDescribedBy}
-      centered={false}
-      open={open}
-      onClose={onClose}
-    >
-      <Header id={ariaLabelledBy}>{scenario.title}</Header>
-      <Modal.Content>{subheader}</Modal.Content>
-      <Modal.Content id={ariaDescribedBy}>
-        <Modal.Description className="sc__modal-description">
-          {scenario.description}
-        </Modal.Description>
-      </Modal.Content>
-      <Modal.Actions>
-        <ScenarioCardActions scenario={scenario} />
-      </Modal.Actions>
-    </Modal>
+    <Modal.Accessible open={open}>
+      <Modal
+        closeIcon
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
+        centered={false}
+        open={open}
+        onClose={onClose}
+      >
+        <Header id={ariaLabelledBy}>{scenario.title}</Header>
+        <Modal.Content>{subheader}</Modal.Content>
+        <Modal.Content id={ariaDescribedBy}>
+          <Modal.Description className="sc__modal-description">
+            {scenario.description}
+          </Modal.Description>
+        </Modal.Content>
+        <Modal.Actions>
+          <ScenarioCardActions scenario={scenario} />
+        </Modal.Actions>
+      </Modal>
+    </Modal.Accessible>
   );
 };
 
