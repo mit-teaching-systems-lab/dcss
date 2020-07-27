@@ -31,7 +31,7 @@ import { getUsers } from '@actions/users';
 
 import './Cohort.css';
 
-const MOBILE_WIDTH = 767;
+import Layout from '@utils/Layout';
 
 export class CohortScenarios extends React.Component {
   constructor(props) {
@@ -172,8 +172,6 @@ export class CohortScenarios extends React.Component {
     const { isReady, activePage, scenarios } = this.state;
     const { isFacilitator, isParticipant } = authority;
 
-    const IS_ON_MOBILE = window.innerWidth <= MOBILE_WIDTH;
-
     if (!isReady) {
       return <Loading />;
     }
@@ -310,7 +308,7 @@ export class CohortScenarios extends React.Component {
           {scenarios.length ? (
             <Sortable
               tag="tbody"
-              disabled={IS_ON_MOBILE}
+              disabled={Layout.isForMobile()}
               isAuthorized={isFacilitator}
               onChange={onOrderChange}
               tableRef={this.tableBody}
@@ -426,7 +424,7 @@ export class CohortScenarios extends React.Component {
                               size="small"
                               className="c__button-group--transparent"
                             >
-                              {IS_ON_MOBILE ? null : (
+                              {Layout.isForMobile() ? null : (
                                 <Fragment>
                                   <Popup
                                     size="tiny"
@@ -541,7 +539,7 @@ export class CohortScenarios extends React.Component {
 
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan={IS_ON_MOBILE ? 3 : 5}>
+              <Table.HeaderCell colSpan={Layout.isForMobile() ? 3 : 5}>
                 <Pagination
                   borderless
                   name="scenarios"
