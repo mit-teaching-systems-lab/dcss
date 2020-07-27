@@ -52,7 +52,9 @@ class FinishSlide extends React.Component {
     const { cohortId, slide } = this.props;
     const { isConfirmBoxOpen } = this.state;
     const components = (slide && slide.components) || [{ html: '' }];
-    const className = `scenario__card--run${isConfirmBoxOpen ? '-hidden' : ''}`;
+    const className = `scenario__slide-column-card${
+      isConfirmBoxOpen ? '-hidden' : ''
+    }`;
 
     const extra = (
       <Card.Content extra>

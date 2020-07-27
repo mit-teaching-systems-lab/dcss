@@ -183,7 +183,7 @@ class ContentSlide extends React.Component {
     if (!isReady) {
       return null;
     }
-    const cardClass = run ? 'scenario__card--run' : 'scenario__card';
+    const cardClass = run ? 'scenario__slide-column-card' : 'scenario__card';
     const runOnly = run ? { run } : {};
     const hasPrompt = slide.components.some(component => component.responseId);
     const hasOwnNavigation = slide.components.some(
@@ -246,9 +246,11 @@ class ContentSlide extends React.Component {
 
     return (
       <Card id={slide.id} key={slide.id} centered className={cardClass}>
-        <Card.Content style={{ flexGrow: '0' }}>
-          <Card.Header key={`header${slide.id}`}>{slide.title}</Card.Header>
-        </Card.Content>
+        {slide.title ? (
+          <Card.Content style={{ flexGrow: '0' }}>
+            <Card.Header key={`header${slide.id}`}>{slide.title}</Card.Header>
+          </Card.Content>
+        ) : null}
         <Card.Content key={`content${slide.id}`}>
           <SlideComponents
             {...runOnly}

@@ -95,7 +95,7 @@ class EntrySlide extends React.Component {
     const { run, scenario } = this.props;
     const { isReady, permissions, showPermissionConfirmation } = this.state;
     const { title, description, consent } = scenario;
-    const className = run ? 'scenario__card--run' : 'scenario__card';
+    const className = run ? 'scenario__slide-column-card' : 'scenario__card';
     const __html = consent.prose;
     const isConsentAgreementAcknowledged =
       run && run.consent_acknowledged_by_user;

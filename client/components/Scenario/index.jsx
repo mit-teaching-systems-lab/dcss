@@ -8,6 +8,7 @@ import scrollIntoView from '@components/util/scrollIntoView';
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
+import Boundary from '@components/Boundary';
 import Loading from '@components/Loading';
 import Media from '@utils/Media';
 import Storage from '@utils/Storage';
@@ -305,7 +306,7 @@ class Scenario extends Component {
     const { activeRunSlideIndex, isReady, slides } = this.state;
     // This assignement only exists to keep modes separate below.
     const activeSlideIndex = activeRunSlideIndex;
-    const classes = 'ui centered card scenario__card--run';
+    const classes = 'ui centered card scenario__slide-column-card';
 
     const loadingProps = {
       card: { cols: 1, rows: 1 },
@@ -334,7 +335,10 @@ class Scenario extends Component {
 
     return this.isScenarioRun ? (
       <Grid columns={1}>
-        <Grid.Column>{slides && slides[activeRunSlideIndex]}</Grid.Column>
+        <Boundary top />
+        <Grid.Column className="scenario__slide-column">
+          {slides && slides[activeRunSlideIndex]}
+        </Grid.Column>
       </Grid>
     ) : (
       <Segment className="scenario__slide-preview-pane">
