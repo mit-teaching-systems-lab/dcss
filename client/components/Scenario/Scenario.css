@@ -1,47 +1,63 @@
 .ui.card.scenario__card {
-    width: 80%;
-    max-width: 500px;
+  width: 80%;
+  max-width: 500px;
 }
 
-.ui.card.scenario__card--run {
-    font-size: 16px;
-    width: 93vw;
-    /*
-        top nav has height of 47px
-        font-size is 12px
-        border of 1px
-        ----------------
-        60px
-    */
-    min-height: calc(100vh - 60px);
-    max-width: 500px;
-    margin-top: 2vh;
+.ui.card.scenario__slide-column-card {
+  font-size: 16px;
+  width: 93vw;
+  /*
+    top nav has height of 47px
+    font-size is 12px
+    border of 1px
+    ----------------
+    60px
+  */
+  min-height: calc(100vh - 60px);
+  max-width: 500px;
+  margin-top: 2vh;
 }
 
-.ui.card.scenario__card--run-hidden {
-    visibility: hidden;
+.ui.card.scenario__slide-column-card-hidden {
+  visibility: hidden;
 }
 
 .scenario__card .scenario__card--button {
-    padding: 5% 40% 2% 40%;
+  padding: 5% 40% 2% 40%;
 }
 
-.ui.card.scenario__card--run .scenario__card--button {
-    position: absolute;
-    bottom: 0;
-    padding: 10% 40%;
+.ui.card.scenario__slide-column-card .scenario__card--button {
+  position: absolute;
+  bottom: 0;
+  padding: 10% 40%;
 }
 
 .scenario__slide-preview-pane {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: calc(100vh - 167px) !important;
-    padding: 1px !important;
-    border: 0 !important;
-    box-shadow: 0 0 0 0 !important;
-    -webkit-box-shadow: 0 0 0 0 !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: calc(100vh - 167px) !important;
+  padding: 1px !important;
+  border: 0 !important;
+  box-shadow: 0 0 0 0 !important;
+  -webkit-box-shadow: 0 0 0 0 !important;
 }
 
 .scenario__slide-preview-selected {
-    border: 1px solid gold !important;
+  border: 1px solid gold !important;
+}
+
+@media only screen and (max-width: 767px) {
+  /*.ui.centered.card.scenario__slide-column-card {}*/
+
+  .scenario__slide-column {
+    padding-top: 0 !important;
+  }
+
+  .scenario__slide-column>.ui.card.scenario__slide-column-card {
+    box-shadow: unset !important;
+    min-height: calc(100vh - 80px);
+    margin-left: 0em !important;
+    margin-right: 0em !important;
+    width: calc(100% - 0.2em) !important;
+  }
 }
