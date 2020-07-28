@@ -247,7 +247,10 @@ export class Cohorts extends React.Component {
     };
 
     const cardGroup = (
-      <Card.Group.Stackable fallback="No cohorts yet!" itemsPerRow={itemsPerRow}>
+      <Card.Group.Stackable
+        fallback="No cohorts yet!"
+        itemsPerRow={itemsPerRow}
+      >
         {cards}
       </Card.Group.Stackable>
     );

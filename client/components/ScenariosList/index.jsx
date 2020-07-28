@@ -396,7 +396,6 @@ class ScenariosList extends Component {
       totalPages
     };
 
-
     const cardGroup = (
       <Card.Group.Stackable
         fallback="Sorry, there are no scenarios here."

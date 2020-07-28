@@ -20,7 +20,7 @@ CardGroupStackable.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]).isRequired,
-  fallback: PropTypes.string,
+  fallback: PropTypes.string
 };
 
 export default CardGroupStackable;
