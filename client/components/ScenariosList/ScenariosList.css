@@ -5,10 +5,10 @@
 .ui.buttons > .sc__button {
   -webkit-box-shadow: unset !important;
   box-shadow: unset !important;
+  background-color: transparent !important;
 }
-
-.ui.basic.button.sc__button:hover {
-  background-color: #cacbcd !important;
+.ui.buttons > .sc__button:hover {
+  background-color: rgba(0,0,0,.03) !important;
 }
 
 .ui.card.sc__margin-height {
