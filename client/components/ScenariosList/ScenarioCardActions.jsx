@@ -46,7 +46,6 @@ class ScenarioCardActions extends Component {
           aria-label="Run scenario"
           className="sc__button"
           size="tiny"
-          basic
           icon
           as={Link}
           to={`/run/${scenario.id}/slide/${run.activeRunSlideIndex}`}
@@ -60,7 +59,6 @@ class ScenarioCardActions extends Component {
               <Button
                 tabIndex="0"
                 size="tiny"
-                basic
                 icon
                 as={Link}
                 to={`/editor/${scenario.id}/${editor.activeTab}/${editor.activeSlideIndex}`}
@@ -75,7 +73,6 @@ class ScenarioCardActions extends Component {
               <Button
                 tabIndex="0"
                 size="tiny"
-                basic
                 icon
                 as={Link}
                 to={`/editor/${scenario.id}/preview/${editor.activeSlideIndex}`}
@@ -90,7 +87,6 @@ class ScenarioCardActions extends Component {
             <ConfirmAuth isAuthorized={isAuthorizedToDelete}>
               <Button
                 size="tiny"
-                basic
                 icon
                 as={Link}
                 to={{ pathname: `/scenarios/` }}
@@ -114,7 +110,6 @@ class ScenarioCardActions extends Component {
               <Button
                 tabIndex="0"
                 size="tiny"
-                basic
                 icon
                 as={Link}
                 to={`/editor/copy/${scenario.id}`}
