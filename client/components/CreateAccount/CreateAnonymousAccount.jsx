@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Header, Modal } from '@components/UI';
+import { LiveAnnouncer, LiveMessage } from 'react-aria-live';
+import { Button, Container, Header, Modal } from '@components/UI';
 import { logIn } from '@actions';
-import Loading from '@components/Loading';
 import anonymousUsername from './anonymousUsername';
 import './CreateAnonymousAccount.css';
 
@@ -78,22 +78,39 @@ class CreateAnonymousAccount extends Component {
   render() {
     const { username } = this.state;
     const { onClick, onSubmit } = this;
-    const header = username
-      ? 'Do you like this anonymous user name?'
-      : 'Find an anonymous user name for you.';
+    const header = 'Pick an anonymous username.';
+    const content = 'Do you like this anonymous username?';
+
+    const ariaLabelAnonymousUsername = `${content} ${username}`;
+    const ariaLabelledBy = 'dialog-anonymous-username-labelled';
+
     return (
       <Modal.Accessible open>
-        <Modal open role="dialog" aria-modal="true" size="small">
-          <Header icon="user outline" content={header} />
-          <Modal.Content>
-            {username ? (
-              <Header as="h1" className="caa__header-centered">
+        <Modal
+          open
+          role="dialog"
+          size="small"
+          aria-modal="true"
+          aria-labelledby={ariaLabelledBy}
+        >
+          <Header
+            icon="user outline"
+            tabIndex="0"
+            id={ariaLabelledBy}
+            content={header}
+          />
+          <LiveAnnouncer>
+            <Modal.Content className="caa__centered" tabIndex="0">
+              <LiveMessage
+                aria-live="polite"
+                message={ariaLabelAnonymousUsername}
+              />
+              <Container>{content}</Container>
+              <Container>
                 <code>{username}</code>
-              </Header>
-            ) : (
-              <Loading />
-            )}
-          </Modal.Content>
+              </Container>
+            </Modal.Content>
+          </LiveAnnouncer>
           <Modal.Actions>
             <Button.Group fluid>
               <Button

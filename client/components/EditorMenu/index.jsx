@@ -65,14 +65,14 @@ export default class EditorMenu extends React.Component {
             size="small"
             content={`Save ${type}`}
             trigger={
-              <Menu.Item
+              <Menu.Item.Tabbable
                 aria-label={`Save ${type}`}
                 disabled={items.save.disabled}
                 name={`save-${type}`}
                 onClick={items.save.onClick}
               >
                 <Icon name="save outline" />
-              </Menu.Item>
+              </Menu.Item.Tabbable>
             }
           />
         )}

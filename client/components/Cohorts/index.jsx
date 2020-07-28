@@ -13,7 +13,6 @@ import {
   Icon,
   Input,
   Menu,
-  Message,
   Modal,
   Pagination
 } from '@components/UI';

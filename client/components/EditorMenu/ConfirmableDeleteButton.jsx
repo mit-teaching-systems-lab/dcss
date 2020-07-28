@@ -47,29 +47,31 @@ class ConfirmableDeleteButton extends Component {
     );
 
     const trigger = (
-      <Menu.Item disabled={disabled} onClick={onClick}>
+      <Menu.Item.Tabbable disabled={disabled} onClick={onClick}>
         <Icon name="trash alternate outline" aria-label={ariaLabel} />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
     return (
       <Fragment>
         <Popup size="small" content={ariaLabel} trigger={trigger} />
-        <Modal role="dialog" aria-modal="true" size="small" open={open}>
-          <Header
-            icon="trash alternate outline"
-            content="Delete confirmation"
-          />
-          <Modal.Content>{content}</Modal.Content>
-          <Modal.Actions>
-            <Button.Group fluid>
-              {confirmButton}
-              <Button.Or />
-              <Button onClick={onCancel} size="large">
-                No
-              </Button>
-            </Button.Group>
-          </Modal.Actions>
-        </Modal>
+        <Modal.Accessible open={open}>
+          <Modal role="dialog" aria-modal="true" size="small" open={open}>
+            <Header
+              icon="trash alternate outline"
+              content="Delete confirmation"
+            />
+            <Modal.Content>{content}</Modal.Content>
+            <Modal.Actions>
+              <Button.Group tabIndex="0" fluid>
+                {confirmButton}
+                <Button.Or />
+                <Button size="large" onClick={onCancel}>
+                  No
+                </Button>
+              </Button.Group>
+            </Modal.Actions>
+          </Modal>
+        </Modal.Accessible>
       </Fragment>
     );
   }
