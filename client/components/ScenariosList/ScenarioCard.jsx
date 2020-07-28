@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Card, Icon } from '@components/UI';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
+import Events from '@utils/Events';
 import Identity from '@utils/Identity';
 import ScenarioCardActions from './ScenarioCardActions';
 import './ScenariosList.css';
@@ -65,6 +66,7 @@ class ScenarioCard extends React.Component {
           title={title}
           description={description}
           onClick={onRestoreClick}
+          onKeyUp={(...args) => Events.onKeyUp(...args, onRestoreClick)}
         />
       </ConfirmAuth>
     ) : (
@@ -78,6 +80,7 @@ class ScenarioCard extends React.Component {
           tabIndex="0"
           className="sc sc__cursor-pointer"
           onClick={onClick}
+          onKeyUp={(...args) => Events.onKeyUp(...args, onClick)}
         >
           <Card.Header id={ariaLabelledBy}>
             {officialCheckmark} {title}
