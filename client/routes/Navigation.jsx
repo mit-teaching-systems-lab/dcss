@@ -65,9 +65,13 @@ class Navigation extends Component {
     const menuItemsRequireLogin = restrictedNav.map(
       ({ text, path, permission }, index) => {
         const menuItem = (
-          <Menu.Item key={`menu-item-nav-${index}`} to={path} as={NavLink}>
+          <Menu.Item.Tabbable
+            key={`menu-item-nav-${index}`}
+            to={path}
+            as={NavLink}
+          >
             {text}
-          </Menu.Item>
+          </Menu.Item.Tabbable>
         );
         return permission ? (
           <ConfirmAuth
@@ -87,88 +91,84 @@ class Navigation extends Component {
     const explainAllScenarios = 'See all scenarios';
     // This is used as the dropdown trigger, in the top menu
     const menuItemScenarios = (
-      <Menu.Item
+      <Menu.Item.Tabbable
         role="option"
         to="/scenarios/"
         aria-label={explainAllScenarios}
         as={NavLink}
       >
         Scenarios
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     // This is used WITHIN the dropdown menu
     const menuItemAllScenarios = (
-      <Menu.Item
+      <Menu.Item.Tabbable
         role="option"
-        tabIndex="0"
         to="/scenarios/"
         aria-label={explainAllScenarios}
         as={NavLink}
       >
         All
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     // to={`/scenarios/author/${user.username}`}
     const explainMyScenarios =
       'See scenarios where I am an owner, author or reviewer';
     const menuItemMyScenarios = isLoggedIn ? (
-      <Menu.Item
+      <Menu.Item.Tabbable
         role="option"
-        tabIndex="0"
         to={`/scenarios/author/${user.username}`}
         aria-label={explainMyScenarios}
         as={NavLink}
       >
         Mine
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
 
     const explainOfficialScenarios = `See scenarios made by ${DCSS_BRAND_LABEL}`;
     const menuItemOfficialScenarios = (
-      <Menu.Item
+      <Menu.Item.Tabbable
         role="option"
-        tabIndex="0"
         to="/scenarios/official"
         aria-label={explainOfficialScenarios}
         as={NavLink}
       >
         Official
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const explainCommunityScenarios = 'See scenarios made by the community';
     const menuItemCommunityScenarios = (
-      <Menu.Item
+      <Menu.Item.Tabbable
         role="option"
-        tabIndex="0"
         to="/scenarios/community"
         aria-label={explainCommunityScenarios}
         as={NavLink}
       >
         Community
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const menuItemBrandLogo = (
-      <Menu.Item className="navigation__menu-item-logo">
+      <Menu.Item.Tabbable className="navigation__menu-item-logo">
         <NavLink to="/">{process.env.DCSS_BRAND_NAME_TITLE || 'Home'}</NavLink>
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const menuItemUserMenu = isLoggedIn ? (
       <UserMenu user={user} />
     ) : (
-      <Menu.Item to="/login" as={NavLink}>
+      <Menu.Item.Tabbable to="/login" as={NavLink}>
         Log in
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const menuItemGoTo = (
-      <Menu.Item role="option" aria-label="Go to...">
+      <Menu.Item.Tabbable role="option" aria-label="Go to...">
         Go to...
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const topLevelNavigation = (

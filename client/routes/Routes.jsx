@@ -37,6 +37,16 @@ const makeEditorProps = props => ({
 });
 
 const Routes = ({ isLoggedIn }) => {
+  const routeRenderAdmin = props => (
+    <Admin {...props} isLoggedIn={isLoggedIn} />
+  );
+  const routeRenderCohorts = props => (
+    <Cohorts {...props} activeTab="cohorts" />
+  );
+  const routeRenderCohort = props => <Cohort {...props} activeTab="cohort" />;
+  const routeRenderCohortRuns = props => <Cohort {...props} activeTab="runs" />;
+  const routeRenderDownloads = props => <Downloads {...props} />;
+  const routeRenderRun = props => <Run {...props} />;
   return (
     <Switch>
       <Route exact path="/" component={ScenariosListAll} />
@@ -66,58 +76,57 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <InterceptAnonymizableRoute
-        isLoggedIn={isLoggedIn}
         path="/run/:scenarioId/slide/:activeRunSlideIndex"
-      >
-        <Route render={props => <Run {...props} />} />
-      </InterceptAnonymizableRoute>
-      <InterceptAnonymizableRoute
         isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderRun} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
         path="/run/:scenarioId"
+        isLoggedIn={isLoggedIn}
       >
-        <Route component={Run} />
+        <Route render={routeRenderRun} />
       </InterceptAnonymizableRoute>
 
       <InterceptAnonymizableRoute
-        isLoggedIn={isLoggedIn}
         path="/cohort/:cohortId/run/:scenarioId/slide/:activeRunSlideIndex"
+        isLoggedIn={isLoggedIn}
       >
-        <Route render={props => <Run {...props} />} />
+        <Route render={routeRenderRun} />
       </InterceptAnonymizableRoute>
 
       <InterceptAnonymizableRoute
-        isLoggedIn={isLoggedIn}
         path="/cohort/:cohortId/run/:scenarioId"
+        isLoggedIn={isLoggedIn}
       >
-        <Route render={props => <Run {...props} />} />
+        <Route render={routeRenderRun} />
       </InterceptAnonymizableRoute>
 
-      <RedirectRouteForInactiveSession isLoggedIn={isLoggedIn} path="/admin">
+      <RedirectRouteForInactiveSession path="/admin" isLoggedIn={isLoggedIn}>
         <ConfirmAuth path="/admin" requiredPermission="edit_permissions">
-          <Route
-            render={props => <Admin {...props} isLoggedIn={isLoggedIn} />}
-          />
+          <Route render={routeRenderAdmin} />
         </ConfirmAuth>
       </RedirectRouteForInactiveSession>
 
       <ConfirmAuth path="/cohorts" requiredPermission="view_own_cohorts">
-        <Route render={props => <Cohorts {...props} activeTab="cohorts" />} />
+        <Route render={routeRenderCohorts} />
       </ConfirmAuth>
 
       <InterceptAnonymizableRoute
+        path="/cohort/:id"
         isLoggedIn={isLoggedIn}
         exact
-        path="/cohort/:id"
       >
-        <Route render={props => <Cohort {...props} activeTab="cohort" />} />
+        <Route render={routeRenderCohort} />
       </InterceptAnonymizableRoute>
 
       <ConfirmAuth
-        exact
         path="/cohort/:id/runs"
         requiredPermission="view_run_data"
+        exact
       >
-        <Route component={props => <Cohort {...props} activeTab="runs" />} />
+        <Route component={routeRenderCohortRuns} />
       </ConfirmAuth>
       <ConfirmAuth path="/editor/new" requiredPermission="create_scenario">
         <Route component={NewScenario} />
@@ -127,8 +136,8 @@ const Routes = ({ isLoggedIn }) => {
       </ConfirmAuth>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id/scenario/:activeNonZeroSlideIndex"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/editor/:id/scenario/:activeNonZeroSlideIndex"
@@ -145,8 +154,8 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id/scenario"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/editor/:id/scenario"
@@ -163,8 +172,8 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id/slides/:activeNonZeroSlideIndex"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/editor/:id/slides/:activeNonZeroSlideIndex"
@@ -179,8 +188,8 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id/slides"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/editor/:id/slides"
@@ -195,8 +204,8 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id/preview/:activeRunSlideIndex"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/editor/:id/preview/:activeRunSlideIndex"
@@ -211,8 +220,8 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id/preview"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/editor/:id/preview"
@@ -227,8 +236,8 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/editor/:id"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth path="/editor/:id" requiredPermission="create_scenario">
           <Route
@@ -242,47 +251,47 @@ const Routes = ({ isLoggedIn }) => {
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
-        path="/downloads/:activePage"
-      >
-        <ConfirmAuth
-          path="/downloads/:activePage"
-          requiredPermission="view_run_data"
-        >
-          <Route exact component={Downloads} />
-        </ConfirmAuth>
-      </RedirectRouteForInactiveSession>
-
-      <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
-        path="/downloads"
-      >
-        <ConfirmAuth path="/downloads" requiredPermission="view_run_data">
-          <Route exact component={Downloads} />
-        </ConfirmAuth>
-      </RedirectRouteForInactiveSession>
-
-      <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/downloads/:type/:id/:activePage"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/downloads/:type/:id/:activePage"
           requiredPermission="view_run_data"
         >
-          <Route render={props => <Downloads {...props} />} />
+          <Route render={routeRenderDownloads} />
         </ConfirmAuth>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
-        isLoggedIn={isLoggedIn}
         path="/downloads/:type/:id"
+        isLoggedIn={isLoggedIn}
       >
         <ConfirmAuth
           path="/downloads/:type/:id"
           requiredPermission="view_run_data"
         >
-          <Route render={props => <Downloads {...props} />} />
+          <Route render={routeRenderDownloads} />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        path="/downloads/:activePage"
+        isLoggedIn={isLoggedIn}
+      >
+        <ConfirmAuth
+          path="/downloads/:activePage"
+          requiredPermission="view_run_data"
+        >
+          <Route render={routeRenderDownloads} />
+        </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        path="/downloads"
+        isLoggedIn={isLoggedIn}
+      >
+        <ConfirmAuth path="/downloads" requiredPermission="view_run_data">
+          <Route exact component={Downloads} />
         </ConfirmAuth>
       </RedirectRouteForInactiveSession>
 
@@ -296,6 +305,7 @@ const Routes = ({ isLoggedIn }) => {
       >
         <Route component={LoginRoutePromptModal} />
       </RedirectRouteForActiveSession>
+
       <RedirectRouteForActiveSession
         isLoggedIn={isLoggedIn}
         exact
@@ -303,6 +313,7 @@ const Routes = ({ isLoggedIn }) => {
       >
         <Route component={CreateAccount} />
       </RedirectRouteForActiveSession>
+
       <Route exact path="/login/anonymous" component={CreateAnonymousAccount} />
 
       <Route component={ForOhFor} />
