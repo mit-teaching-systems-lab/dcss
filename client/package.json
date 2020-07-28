@@ -85,6 +85,7 @@
     "query-string": "^6.9.0",
     "react": "^16.9.0",
     "react-addons-shallow-compare": "^15.6.2",
+    "react-aria-live": "^2.0.5",
     "react-beautiful-dnd": "^13.0.0",
     "react-cytoscapejs": "^1.2.1",
     "react-dom": "^16.9.0",
