@@ -19,6 +19,7 @@ import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuIte
 import Scenario from '@components/Scenario';
 import Username from '@components/User/Username';
 // import Review from './Review';
+import { makeDefaultDescription } from './scenario';
 import Slides from './Slides';
 import Identity from '@utils/Identity';
 import {
@@ -358,6 +359,10 @@ class Editor extends Component {
 
     // TODO: Move to own async action
     return scenario => {
+      if (method === 'PUT' && !scenario.description) {
+        scenario.description = makeDefaultDescription(scenario);
+      }
+
       return fetch(endpoint, {
         method,
         headers: {
@@ -403,6 +408,7 @@ class Editor extends Component {
 
     const menuItemScenarioStatus = scenario.status !== undefined && (
       <ScenarioStatusMenuItem
+        tabIndex="0"
         key="scenario-status-menu-item"
         name="Set scenario status"
         status={scenario.status}
@@ -412,7 +418,7 @@ class Editor extends Component {
 
     const menuItemScenarioRun =
       scenarioId !== 'new' ? (
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="scenario-run-menu-item"
           name="Run this scenario"
           onClick={() => {
@@ -420,7 +426,7 @@ class Editor extends Component {
           }}
         >
           <Icon name="play" />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       ) : null;
 
     // const scenarioLockIcon = scenario.lock ? (
@@ -431,7 +437,7 @@ class Editor extends Component {
 
     const menuItemScenarioUnlock =
       scenarioId !== 'new' ? (
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="scenario-unlock-menu-item"
           name="Unlock this scenario"
           onClick={() => {
@@ -439,13 +445,13 @@ class Editor extends Component {
           }}
         >
           <Icon name="unlock" />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       ) : null;
 
     const menuItemsForAttachedTabularBar = Object.keys(this.state.tabs).map(
       tabType => {
         return (
-          <Menu.Item
+          <Menu.Item.Tabbable
             key={tabType}
             name={tabType}
             active={this.state.activeTab === tabType}
@@ -528,9 +534,9 @@ class Editor extends Component {
 
       menuItemsForAttachedTabularBar.push(
         <Menu.Menu key="menu-menu-item-tabs-right" position="right">
-          <Menu.Item className="editor__righttitle">
+          <Menu.Item.Tabbable className="editor__righttitle">
             {this.props.scenario.title}
-          </Menu.Item>
+          </Menu.Item.Tabbable>
         </Menu.Menu>
       );
     }

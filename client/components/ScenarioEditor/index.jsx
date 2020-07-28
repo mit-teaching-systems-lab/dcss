@@ -14,6 +14,7 @@ import {
 
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
+import { makeDefaultDescription } from '@components/Editor/scenario';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
@@ -25,14 +26,6 @@ import { getCategories } from '@actions/tags';
 import { getUsersByPermission } from '@actions/users';
 
 import './scenarioEditor.css';
-
-function makeDefaultDescription({ title, description }) {
-  let returnValue = description;
-  if (!returnValue && title) {
-    returnValue = `A scenario about "${title}"`;
-  }
-  return returnValue;
-}
 
 function createSectionDef(label) {
   return {
@@ -273,7 +266,10 @@ class ScenarioEditor extends Component {
       </Ref>
     );
 
-    const descriptionDefaultValue = makeDefaultDescription(scenario);
+    const descriptionDefaultValue =
+      this.props.scenarioId === 'new'
+        ? makeDefaultDescription(scenario)
+        : scenario.description;
 
     const textAreaDescription = (
       <Ref innerRef={node => innerRef(node, 'description')}>
