@@ -210,7 +210,7 @@ export class Cohorts extends React.Component {
     const menuItemSearchCohorts =
       cohorts.length > itemsPerPage ? (
         <Menu.Menu key="menu-right-search-cohorts" position="right">
-          <Menu.Item key="menu-item-search-cohorts" name="Search cohorts">
+          <Menu.Item name="Search cohorts">
             <Input
               icon="search"
               placeholder="Search..."
@@ -246,12 +246,10 @@ export class Cohorts extends React.Component {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
 
-    const cardGroup = cards.length ? (
-      <Card.Group doubling itemsPerRow={itemsPerRow} stackable>
+    const cardGroup = (
+      <Card.Group.Stackable fallback="No cohorts yet!" itemsPerRow={itemsPerRow}>
         {cards}
-      </Card.Group>
-    ) : (
-      <Message content="No cohorts yet!" />
+      </Card.Group.Stackable>
     );
 
     return (

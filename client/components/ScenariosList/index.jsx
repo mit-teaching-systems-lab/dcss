@@ -395,6 +395,17 @@ class ScenariosList extends Component {
       onPageChange,
       totalPages
     };
+
+
+    const cardGroup = (
+      <Card.Group.Stackable
+        fallback="Sorry, there are no scenarios here."
+        itemsPerRow={itemsPerRow}
+      >
+        {cards}
+      </Card.Group.Stackable>
+    );
+
     return (
       <Fragment>
         <EditorMenu type="scenarios" items={{ left, right }} />
@@ -412,9 +423,7 @@ class ScenariosList extends Component {
                       console.log('resize');
                     }}
                   >
-                    <Card.Group doubling stackable itemsPerRow={itemsPerRow}>
-                      {cards}
-                    </Card.Group>
+                    {cardGroup}
                   </Responsive>
                 )}
               </Grid.Column>

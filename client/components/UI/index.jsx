@@ -7,7 +7,10 @@ export * from 'react-semantic-ui-range';
 /**
  * Custom Extensions
  */
-import { Form, Modal, Table } from 'semantic-ui-react';
+import { Card, Form, Modal, Table } from 'semantic-ui-react';
+
+import CardGroupStackable from './CardGroupStackable';
+Card.Group.Stackable = CardGroupStackable;
 
 import FormFieldLabelled from './FormFieldLabelled';
 Form.Field.Labelled = FormFieldLabelled;
