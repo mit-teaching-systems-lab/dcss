@@ -187,8 +187,9 @@ class ContentSlide extends React.Component {
     const runOnly = run ? { run } : {};
     const hasPrompt = slide.components.some(component => component.responseId);
     const hasOwnNavigation = slide.components.some(
-      component => component.disableDefaultNavigation
+      component => component.disableDefaultNavigation && component.paths.length
     );
+
     const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next slide';
     const submitNextOrFinish = isLastSlide ? 'Finish' : proceedButtonLabel;
 
