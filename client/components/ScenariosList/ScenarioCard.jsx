@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, Icon } from '@components/UI';
+import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
 import Events from '@utils/Events';
@@ -27,7 +28,7 @@ class ScenarioCard extends React.Component {
       const originalScenario = this.state.scenario;
       originalScenario.deleted_at = null;
 
-      const { scenario } = await (await fetch(
+      await (await fetch(
         `/api/scenarios/${originalScenario.id}`,
         {
           method: 'POST',
@@ -38,9 +39,7 @@ class ScenarioCard extends React.Component {
         }
       )).json();
 
-      if (scenario.deleted_at === null) {
-        this.setState({ scenario });
-      }
+      await this.props.getScenarios();
     }
   }
 
@@ -108,7 +107,9 @@ const mapStateToProps = state => {
   return { user };
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  getScenarios: () => dispatch(getScenarios()),
+});
 
 export default connect(
   mapStateToProps,
