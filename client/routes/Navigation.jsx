@@ -6,6 +6,7 @@ import { Dropdown, Menu, Popup } from '@components/UI';
 import { endScenarioLock } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import UserMenu from '@components/User/UserMenu';
+import Events from '@utils/Events';
 import Layout from '@utils/Layout';
 
 const DCSS_BRAND_LABEL = process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
@@ -102,16 +103,16 @@ class Navigation extends Component {
     );
 
     // This is used WITHIN the dropdown menu
-    const menuItemAllScenarios = (
-      <Menu.Item.Tabbable
-        role="option"
-        to="/scenarios/"
-        aria-label={explainAllScenarios}
-        as={NavLink}
-      >
-        All
-      </Menu.Item.Tabbable>
-    );
+    // const menuItemAllScenarios = (
+    //   <Menu.Item.Tabbable
+    //     role="option"
+    //     to="/scenarios/"
+    //     aria-label={explainAllScenarios}
+    //     as={NavLink}
+    //   >
+    //     All
+    //   </Menu.Item.Tabbable>
+    // );
 
     // to={`/scenarios/author/${user.username}`}
     const explainMyScenarios =
@@ -201,23 +202,20 @@ class Navigation extends Component {
                 aria-label={explainAllScenarios}
                 trigger={menuItemScenarios}
                 onKeyUp={event => {
-                  const key = event.which || event.keyCode;
-                  const target = event.target;
-                  if (
-                    key === 13 ||
-                    (key === 32 && target.getAttribute('role') === 'option')
-                  ) {
-                    target.click();
+                  if (event.target.getAttribute('role') === 'option') {
+                    Events.onKeyUp(event, {}, () => event.target.click());
                   }
                 }}
               >
                 <Dropdown.Menu>
+                  {/*
                   <Popup
                     position="right center"
                     size="large"
                     content={explainAllScenarios}
                     trigger={menuItemAllScenarios}
                   />
+                  */}
                   <Popup
                     position="right center"
                     size="large"
