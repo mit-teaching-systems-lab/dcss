@@ -202,7 +202,7 @@ export class CohortScenarios extends React.Component {
 
     const right = [
       <Menu.Menu key="menu-menu-search-cohort-scenarios" position="right">
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="menu-item-search-cohort-scenarios"
           name="Search cohort scenarios"
         >
@@ -211,13 +211,13 @@ export class CohortScenarios extends React.Component {
             placeholder="Search..."
             onChange={onSearchChange}
           />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
         {/*
-        <Menu.Item
+        <Menu.Item.Tabbable
           onClick={() => this.sectionRef.scrollIntoView()}
         >
             <Icon name="angle double up" />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
         */}
       </Menu.Menu>
     ];
@@ -228,7 +228,7 @@ export class CohortScenarios extends React.Component {
           type="cohort scenarios"
           items={{
             left: [
-              <Menu.Item
+              <Menu.Item.Tabbable
                 key="menu-item-cohort-scenarios"
                 name="Scenarios in this Cohort"
                 onClick={this.scrollIntoView}
@@ -237,7 +237,7 @@ export class CohortScenarios extends React.Component {
                   <Icon name="newspaper outline" />
                 </Icon.Group>
                 Scenarios ({cohortScenarios.length})
-              </Menu.Item>
+              </Menu.Item.Tabbable>
             ],
             right: user.is_super || isFacilitator ? right : []
           }}

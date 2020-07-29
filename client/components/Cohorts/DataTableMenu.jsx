@@ -37,21 +37,21 @@ export class DataTableMenu extends Component {
     const { run } = this.props;
 
     const menuItemClose = (
-      <Menu.Item name="close" onClick={onClick}>
+      <Menu.Item.Tabbable name="close" onClick={onClick}>
         <Icon name="close" />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const menuItemRefresh = (
-      <Menu.Item name="refresh" onClick={onClick}>
+      <Menu.Item.Tabbable name="refresh" onClick={onClick}>
         <Icon name="refresh" />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const menuItemDownload = (
-      <Menu.Item name="download" onClick={onClick}>
+      <Menu.Item.Tabbable name="download" onClick={onClick}>
         <Icon name="download" />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const shouldShowRefresh = !run || (run && run.run_ended_at === null);

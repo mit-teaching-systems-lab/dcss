@@ -316,7 +316,7 @@ export class CohortParticipants extends React.Component {
     };
 
     const left = [
-      <Menu.Item
+      <Menu.Item.Tabbable
         key="menu-item-cohort-participants"
         name="Participants in this Cohort"
         onClick={scrollIntoView}
@@ -325,9 +325,9 @@ export class CohortParticipants extends React.Component {
           <Icon name="group" />
         </Icon.Group>
         Participants ({this.props.cohort.users.length})
-      </Menu.Item>,
+      </Menu.Item.Tabbable>,
       Layout.isNotForMobile() ? (
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="menu-item-cohort-participants"
           name="Control participant list refresh"
           onClick={onParticipantRefreshChange}
@@ -337,13 +337,13 @@ export class CohortParticipants extends React.Component {
             <Icon corner="top right" name={refreshIcon} color={refreshColor} />
           </Icon.Group>
           {refreshLabel}
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       ) : null
     ];
 
     const right = [
       <Menu.Menu key="menu-menu-search-cohort-participants" position="right">
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="menu-item-search-cohort-participants"
           name="Search cohort participants"
         >
@@ -352,13 +352,13 @@ export class CohortParticipants extends React.Component {
             placeholder="Search..."
             onChange={onParticipantSearchChange}
           />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
         {/*
-        <Menu.Item
+        <Menu.Item.Tabbable
           onClick={() => this.sectionRef.scrollIntoView()}
         >
             <Icon name="angle double up" />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
         */}
       </Menu.Menu>
     ];

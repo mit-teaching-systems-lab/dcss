@@ -174,17 +174,17 @@ class Users extends Component {
           type="administration"
           items={{
             left: [
-              <Menu.Item key="menu-item-account-administration">
+              <Menu.Item.Tabbable key="menu-item-account-administration">
                 <Icon.Group className="em__icon-group-margin">
                   <Icon name="user" />
                   <Icon corner="top right" name="cogs" color="orange" />
                 </Icon.Group>
                 Users ({totalUserCount})
-              </Menu.Item>
+              </Menu.Item.Tabbable>
             ],
             right: [
               <Menu.Menu key="menu-item-account-search" position="right">
-                <Menu.Item
+                <Menu.Item.Tabbable
                   key="menu-item-search-accounts"
                   name="Search user accounts"
                 >
@@ -193,7 +193,7 @@ class Users extends Component {
                     placeholder="Search..."
                     onChange={onUserSearchChange}
                   />
-                </Menu.Item>
+                </Menu.Item.Tabbable>
               </Menu.Menu>
             ]
           }}

@@ -57,7 +57,7 @@ class Admin extends Component {
     return isReady ? (
       <div>
         <Menu attached="top" tabular>
-          <Menu.Item
+          <Menu.Item.Tabbable
             content="Access Control"
             name="users"
             active={activeTab === 'users'}

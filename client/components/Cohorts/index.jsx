@@ -183,7 +183,7 @@ export class Cohorts extends React.Component {
         key="menu-item-create-cohort-auth"
         requiredPermission="create_cohort"
       >
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="menu-item-create-cohort"
           name="Create a cohort"
           onClick={onOpenCreateCohortClick}
@@ -193,29 +193,29 @@ export class Cohorts extends React.Component {
             <Icon corner="top right" name="add" color="green" />
           </Icon.Group>
           Create a Cohort
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       </ConfirmAuth>
     );
 
     const menuItemCountCohorts = (
-      <Menu.Item key="menu-item-count-cohort" name="Cohorts">
+      <Menu.Item.Tabbable key="menu-item-count-cohort" name="Cohorts">
         <Icon.Group className="em__icon-group-margin">
           <Icon name="group" />
         </Icon.Group>
         Cohorts {cohorts.length ? `(${cohorts.length})` : null}
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     const menuItemSearchCohorts =
       cohorts.length > itemsPerPage ? (
         <Menu.Menu key="menu-right-search-cohorts" position="right">
-          <Menu.Item name="Search cohorts">
+          <Menu.Item.Tabbable name="Search cohorts">
             <Input
               icon="search"
               placeholder="Search..."
               onChange={onCohortSearchChange}
             />
-          </Menu.Item>
+          </Menu.Item.Tabbable>
         </Menu.Menu>
       ) : null;
 

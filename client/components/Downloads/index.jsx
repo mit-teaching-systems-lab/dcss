@@ -331,12 +331,12 @@ class Downloads extends Component {
       downloadsIndex + ROWS_PER_PAGE
     );
     const menuItemDownloadsCount = (
-      <Menu.Item key="menu-item-downloads-count">
+      <Menu.Item.Tabbable key="menu-item-downloads-count">
         <Icon.Group className="em__icon-group-margin">
           {downloadRunIcon.props.children}
         </Icon.Group>
         Downloads ({downloads.length})
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     /*
@@ -348,12 +348,12 @@ class Downloads extends Component {
           : scenariosById[filter.id].title;
     }
     const menuItemFilterDisplay = filter ? (
-      <Menu.Item key="menu-item-filter-display">
+      <Menu.Item.Tabbable key="menu-item-filter-display">
         <Icon.Group className="em__icon-group-margin">
           {downloadRunIcon.props.children}
         </Icon.Group>
         {shorten(filterDisplay, 50)}
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
   */
     const pushFilterToHistory = ({ id, type }) => {
@@ -364,7 +364,7 @@ class Downloads extends Component {
     };
 
     const menuItemCohortSelect = dropdownCohortSelectOptions ? (
-      <Menu.Item key="menu-item-cohort-select" style={{ width: '30%' }}>
+      <Menu.Item.Tabbable key="menu-item-cohort-select" style={{ width: '30%' }}>
         <Dropdown
           fluid
           item
@@ -379,11 +379,11 @@ class Downloads extends Component {
             pushFilterToHistory({ id, type: 'cohort' });
           }}
         />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
 
     const menuItemScenarioSelect = dropdownScenarioSelectOptions ? (
-      <Menu.Item key="menu-item-scenario-select" style={{ width: '30%' }}>
+      <Menu.Item.Tabbable key="menu-item-scenario-select" style={{ width: '30%' }}>
         <Dropdown
           fluid
           item
@@ -398,29 +398,29 @@ class Downloads extends Component {
             pushFilterToHistory({ id, type: 'scenario' });
           }}
         />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
 
     /*
     const menuItemClearSelect = filter ? (
-      <Menu.Item
+      <Menu.Item.Tabbable
         key="menu-item-clear-select"
         as={NavLink}
         exact
         to="/downloads/1"
       >
         <Icon name="x" /> Clear filter
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
     const menuItemDownloadsSearch = (
       <Menu.Menu key="menu-item-downloads-search" position="right">
-        <Menu.Item name="Search downloads">
+        <Menu.Item.Tabbable name="Search downloads">
           <Input
             icon="search"
             placeholder="Search..."
             onChange={onDownloadSearchChange}
           />
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       </Menu.Menu>
     );
     */

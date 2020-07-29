@@ -426,7 +426,7 @@ class MultiPathResponseEditor extends React.Component {
                 <Table.HeaderCell />
                 <Table.HeaderCell colSpan="2">
                   <Menu floated="right" borderless>
-                    <Menu.Item icon onClick={onViewGraphClick}>
+                    <Menu.Item.Tabbable icon onClick={onViewGraphClick}>
                       <Icon.Group
                         size="large"
                         className="em__icon-group-margin"
@@ -437,8 +437,8 @@ class MultiPathResponseEditor extends React.Component {
                         />
                       </Icon.Group>
                       View slides graph
-                    </Menu.Item>
-                    <Menu.Item icon onClick={onPathAddClick}>
+                    </Menu.Item.Tabbable>
+                    <Menu.Item.Tabbable icon onClick={onPathAddClick}>
                       <Icon.Group
                         size="large"
                         className="em__icon-group-margin"
@@ -447,7 +447,7 @@ class MultiPathResponseEditor extends React.Component {
                         <Icon corner="top right" name="add" color="green" />
                       </Icon.Group>
                       Add another slide choice
-                    </Menu.Item>
+                    </Menu.Item.Tabbable>
                   </Menu>
                 </Table.HeaderCell>
               </Table.Row>

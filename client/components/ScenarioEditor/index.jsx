@@ -367,13 +367,13 @@ class ScenarioEditor extends Component {
 
     const left = Object.entries(this.leftcol).map(
       ([name, { label }], index) => (
-        <Menu.Item
+        <Menu.Item.Tabbable
           icon
           key={Identity.key({ label, index })}
           onClick={() => scrollIntoView(name)}
         >
           {label}
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       )
     );
 

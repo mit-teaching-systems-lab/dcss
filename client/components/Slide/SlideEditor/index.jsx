@@ -42,7 +42,7 @@ const MenuItemModeToggler = props => {
     });
   };
   return (
-    <Menu.Item
+    <Menu.Item.Tabbable
       key="menu-item-slide-mode-toggle"
       aria-label={`Edit ${type}`}
       name={`edit-${type}`}
@@ -50,7 +50,7 @@ const MenuItemModeToggler = props => {
       onClick={onClick}
     >
       <Icon {...iconProps} />
-    </Menu.Item>
+    </Menu.Item.Tabbable>
   );
 };
 
@@ -276,13 +276,13 @@ export default class SlideEditor extends Component {
     const disabled = !!noSlide;
     const editorMenuItems = {
       left: [
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="menu-item-slide-number"
           name="Slide number"
           className="slideeditormenu__slide-number-width header"
         >
           {this.props.index + 1}
-        </Menu.Item>,
+        </Menu.Item.Tabbable>,
 
         <Menu.Item key="menu-item-slide-title" name="Slide title">
           <Input
@@ -306,13 +306,13 @@ export default class SlideEditor extends Component {
         }
       },
       right: [
-        <Menu.Item
+        <Menu.Item.Tabbable
           key="menu-item-slide-duplicate"
           name="Duplicate slide"
           onClick={() => this.props.onDuplicate(this.props.index)}
         >
           <Icon name="copy outline" />
-        </Menu.Item>,
+        </Menu.Item.Tabbable>,
 
         <MenuItemModeToggler
           key="menu-item-mode-toggler"
@@ -393,7 +393,7 @@ export default class SlideEditor extends Component {
                             activeComponentIndex === index;
                           const description = `${index + 1}, `;
                           const menuItemComponentDuplicate = (
-                            <Menu.Item
+                            <Menu.Item.Tabbable
                               name="Duplicate this component"
                               aria-label="Duplicate this component"
                               onClick={() => {
@@ -401,7 +401,7 @@ export default class SlideEditor extends Component {
                               }}
                             >
                               <Icon name="copy outline" />
-                            </Menu.Item>
+                            </Menu.Item.Tabbable>
                           );
                           const menuItemComponentMovers = (
                             <Menu.Menu
@@ -409,12 +409,12 @@ export default class SlideEditor extends Component {
                               name="Move component"
                               position="right"
                             >
-                              <Menu.Item
+                              <Menu.Item.Tabbable
                                 icon="move"
                                 aria-label="Move component"
                                 disabled={components.length <= 1}
                               />
-                              <Menu.Item
+                              <Menu.Item.Tabbable
                                 icon="caret up"
                                 aria-label={`Move component ${description} up`}
                                 disabled={index === 0}
@@ -422,7 +422,7 @@ export default class SlideEditor extends Component {
                                   onComponentOrderChange(index, index - 1);
                                 }}
                               />
-                              <Menu.Item
+                              <Menu.Item.Tabbable
                                 icon="caret down"
                                 aria-label={`Move component ${description} down`}
                                 disabled={index === components.length - 1}
@@ -456,7 +456,7 @@ export default class SlideEditor extends Component {
                             }
 
                             const menuItemRequiredCheckbox = (
-                              <Menu.Item
+                              <Menu.Item.Tabbable
                                 key={Identity.key(props)}
                                 name={menuItemTip}
                               >
@@ -469,7 +469,7 @@ export default class SlideEditor extends Component {
                                     })
                                   }
                                 />
-                              </Menu.Item>
+                              </Menu.Item.Tabbable>
                             );
 
                             right.unshift(menuItemRequiredCheckbox);
@@ -491,12 +491,12 @@ export default class SlideEditor extends Component {
 
                           const componentEditorMenuItems = {
                             left: [
-                              <Menu.Item
+                              <Menu.Item.Tabbable
                                 className="ser__component-card"
                                 key={`menu-item-component-card-${index}`}
                               >
                                 <ComponentCard />
-                              </Menu.Item>
+                              </Menu.Item.Tabbable>
                             ],
                             save: {
                               onClick: updateSlide

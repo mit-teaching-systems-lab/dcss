@@ -342,13 +342,13 @@ class Slides extends React.Component {
                       size="small"
                       content="Add a slide"
                       trigger={
-                        <Menu.Item name="Add a slide" onClick={onSlideAdd}>
+                        <Menu.Item.Tabbable name="Add a slide" onClick={onSlideAdd}>
                           <Icon
                             size="large"
                             name="plus square outline"
                             className="em__icon-group-margin"
                           />
-                        </Menu.Item>
+                        </Menu.Item.Tabbable>
                       }
                     />
                     {slides.length > 0 && (
@@ -361,7 +361,7 @@ class Slides extends React.Component {
                           size="small"
                           content="View slides graph"
                           trigger={
-                            <Menu.Item
+                            <Menu.Item.Tabbable
                               name="Add a slide"
                               onClick={() => this.setState({ graphOpen: true })}
                             >
@@ -369,19 +369,19 @@ class Slides extends React.Component {
                                 name="fork"
                                 style={{ transform: 'rotate(90deg)' }}
                               />
-                            </Menu.Item>
+                            </Menu.Item.Tabbable>
                           }
                         />
                         <Popup
                           size="small"
                           content={minMaxText}
                           trigger={
-                            <Menu.Item
+                            <Menu.Item.Tabbable
                               key="menu-item-slide-min-max-toggler"
                               onClick={onSlideMinMaxChange}
                             >
                               <Icon name={minMaxIcon} />
-                            </Menu.Item>
+                            </Menu.Item.Tabbable>
                           }
                         />
                       </Menu.Menu>
@@ -423,10 +423,10 @@ class Slides extends React.Component {
                                     className="slides__list-card-header-menu-items"
                                     style={{ margin: '0 !important' }}
                                   >
-                                    <Menu.Item name={`${index + 1}`} />
+                                    <Menu.Item.Tabbable name={`${index + 1}`} />
 
                                     {slide.title && (
-                                      <Menu.Item
+                                      <Menu.Item.Tabbable
                                         className="slides__list-card-header-title"
                                         name={slide.title}
                                         content={slide.title}

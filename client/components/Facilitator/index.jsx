@@ -47,13 +47,13 @@ class Facilitator extends Component {
     return (
       <div>
         <Menu attached="top" tabular>
-          <Menu.Item
+          <Menu.Item.Tabbable
             content="Cohorts"
             name="cohorts"
             active={activeTab === 'cohorts'}
             onClick={onClick}
           />
-          <Menu.Item
+          <Menu.Item.Tabbable
             content="Search"
             name="runs"
             active={activeTab === 'runs'}

@@ -175,7 +175,7 @@ export class Cohort extends React.Component {
     Storage.set(this.sessionKey, { activeTabKey, tabs });
 
     const menuItemCopyUrl = (
-      <Menu.Item
+      <Menu.Item.Tabbable
         key="menu-item-account-administration"
         onClick={onCohortUrlCopyClick}
       >
@@ -183,13 +183,13 @@ export class Cohort extends React.Component {
           <Icon name="clipboard outline" />
         </Icon.Group>
         Copy cohort link to clipboard
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
 
     return (
       <div>
         <Menu attached="top" tabular className="c__tab-menu--overflow">
-          <Menu.Item
+          <Menu.Item.Tabbable
             active={activeTabKey === 'cohort'}
             content={name}
             key="cohort"
@@ -200,7 +200,7 @@ export class Cohort extends React.Component {
           {tabs.map(({ menuItem }) => {
             const { content, key, icon } = menuItem;
             return (
-              <Menu.Item
+              <Menu.Item.Tabbable
                 active={activeTabKey === key}
                 content={content}
                 key={key}
@@ -220,7 +220,7 @@ export class Cohort extends React.Component {
                 <Popup
                     content="Run this cohort as a participant"
                     trigger={
-                        <Menu.Item
+                        <Menu.Item.Tabbable
                             icon
                             content={<Icon name="play" />}
                             onClick={() => {
@@ -234,7 +234,7 @@ export class Cohort extends React.Component {
                 <Popup
                     content="Download the data from this data table tab"
                     trigger={
-                        <Menu.Item
+                        <Menu.Item.Tabbable
                             icon
                             content={<Icon name="download" />}
                             onClick={() => {

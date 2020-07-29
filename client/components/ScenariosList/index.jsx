@@ -314,14 +314,14 @@ class ScenariosList extends Component {
     };
 
     const menuItemScenarioLinkCopyLeft = Layout.isForMobile() ? (
-      <Menu.Item
+      <Menu.Item.Tabbable
         key="menu-item-scenario-link-copy-left"
         style={{ width: '45%' }}
         className="em__overflow-truncated"
         onClick={onCopyClick}
       >
         {heading} ({scenarios.length})
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
 
     const left = [
@@ -329,7 +329,7 @@ class ScenariosList extends Component {
         key="menu-item-scenario-create"
         requiredPermission="create_scenario"
       >
-        <Menu.Item
+        <Menu.Item.Tabbable
           name="Create a scenario"
           href="/editor/new"
           className="sc__hidden-on-mobile"
@@ -339,28 +339,28 @@ class ScenariosList extends Component {
             <Icon corner="top right" name="add" color="green" />
           </Icon.Group>
           Create a Scenario
-        </Menu.Item>
+        </Menu.Item.Tabbable>
       </ConfirmAuth>,
 
       menuItemScenarioLinkCopyLeft
     ];
 
     const menuItemScenarioLinkCopyRight = Layout.isNotForMobile() ? (
-      <Menu.Item className="sc__hidden-on-mobile" onClick={onCopyClick}>
+      <Menu.Item.Tabbable className="sc__hidden-on-mobile" onClick={onCopyClick}>
         {heading} ({scenarios.length})
         <Icon name="clipboard outline" />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ) : null;
 
     const menuItemScenarioSearch = (
-      <Menu.Item>
+      <Menu.Item.Tabbable>
         <Input
           icon="search"
           placeholder="Search..."
           defaultValue={value || ''}
           onChange={onSearchChange}
         />
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     );
     const right = [
       <Menu.Menu key="menu-item-scenario-search" position="right">

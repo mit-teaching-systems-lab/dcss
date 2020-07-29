@@ -288,16 +288,16 @@ class ScenarioAuthors extends Component {
     };
 
     const left = [
-      <Menu.Item key="menu-item-collaborators">
+      <Menu.Item.Tabbable key="menu-item-collaborators">
         Collaborators ({this.props.scenario.users.length})
-      </Menu.Item>
+      </Menu.Item.Tabbable>
     ];
 
     const right = [
       <Menu.Menu key="menu-menu-search-collaborators" position="right">
-        <Menu.Item key="menu-item-available-collaborators">
+        <Menu.Item.Tabbable key="menu-item-available-collaborators">
           Available users ({candidates.length})
-        </Menu.Item>
+        </Menu.Item.Tabbable>
         <Menu.Item
           key="menu-item-search-collaborators"
           name="Search authors & reviewers"
