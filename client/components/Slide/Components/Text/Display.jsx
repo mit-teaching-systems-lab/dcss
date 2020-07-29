@@ -16,7 +16,7 @@ class Display extends Component {
 
   render() {
     const { html: defaultValue } = this.props;
-    const key = Identity.key();
+    const key = Identity.id();
     const mode = 'display';
 
     return <RichTextEditor key={key} defaultValue={defaultValue} mode={mode} />;

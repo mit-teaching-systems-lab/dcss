@@ -23,7 +23,7 @@ const rando = (...props) => {
 };
 
 export function key(...props) {
-  return `${rando(...props)}${increment++}`;
+  return hash(...props);
 }
 
 export function id() {
