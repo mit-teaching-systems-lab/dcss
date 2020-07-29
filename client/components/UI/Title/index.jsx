@@ -4,14 +4,12 @@ import { Helmet } from 'react-helmet';
 
 let brandTitle = null;
 
-const Title = ({ content, override }) => {
+export const Title = ({ content, override }) => {
   if (!brandTitle) {
     brandTitle = document.title;
   }
 
-  const title = override
-    ? content
-    : `${brandTitle}: ${content}`;
+  const title = override ? content : `${brandTitle}: ${content}`;
 
   return (
     <Helmet>
@@ -28,5 +26,3 @@ Title.propTypes = {
   content: PropTypes.any,
   override: PropTypes.bool
 };
-
-export default Title;

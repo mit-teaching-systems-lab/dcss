@@ -342,7 +342,10 @@ class Slides extends React.Component {
                       size="small"
                       content="Add a slide"
                       trigger={
-                        <Menu.Item.Tabbable name="Add a slide" onClick={onSlideAdd}>
+                        <Menu.Item.Tabbable
+                          name="Add a slide"
+                          onClick={onSlideAdd}
+                        >
                           <Icon
                             size="large"
                             name="plus square outline"

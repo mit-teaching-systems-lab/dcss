@@ -33,4 +33,4 @@ export * from './Text';
 /**
  * Custom Elements
  */
-export Title from './Title';
+export * from './Title';

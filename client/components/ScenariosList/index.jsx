@@ -348,7 +348,10 @@ class ScenariosList extends Component {
 
     const scenariosHeading = `${heading} (${scenarios.length})`;
     const menuItemScenarioLinkCopyRight = Layout.isNotForMobile() ? (
-      <Menu.Item.Tabbable className="sc__hidden-on-mobile" onClick={onCopyClick}>
+      <Menu.Item.Tabbable
+        className="sc__hidden-on-mobile"
+        onClick={onCopyClick}
+      >
         {scenariosHeading}
         <Icon name="clipboard outline" />
       </Menu.Item.Tabbable>

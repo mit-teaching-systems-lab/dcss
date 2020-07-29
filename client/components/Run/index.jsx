@@ -174,6 +174,7 @@ Run.propTypes = {
   setRun: PropTypes.func,
   scenarioId: PropTypes.node,
   scenario: PropTypes.object,
+  getScenario: PropTypes.func,
   linkRunToCohort: PropTypes.func,
   location: PropTypes.shape({
     pathname: PropTypes.string,
@@ -222,7 +223,7 @@ const mapDispatchToProps = dispatch => ({
   linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),
   linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
   getScenario: params => dispatch(getScenario(params)),
-  getUser: params => dispatch(getUser(params)),
+  getUser: params => dispatch(getUser(params))
 });
 
 export default withRouter(

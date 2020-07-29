@@ -262,7 +262,11 @@ class MultiButtonResponseEditor extends React.Component {
                 <Table.HeaderCell />
                 <Table.HeaderCell colSpan="2">
                   <Menu floated="right" borderless>
-                    <Menu.Item.Tabbable icon floated="right" onClick={onButtonAddClick}>
+                    <Menu.Item.Tabbable
+                      icon
+                      floated="right"
+                      onClick={onButtonAddClick}
+                    >
                       <Icon.Group
                         size="large"
                         className="em__icon-group-margin"

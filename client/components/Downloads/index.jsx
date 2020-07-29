@@ -365,7 +365,10 @@ class Downloads extends Component {
     };
 
     const menuItemCohortSelect = dropdownCohortSelectOptions ? (
-      <Menu.Item.Tabbable key="menu-item-cohort-select" style={{ width: '30%' }}>
+      <Menu.Item.Tabbable
+        key="menu-item-cohort-select"
+        style={{ width: '30%' }}
+      >
         <Dropdown
           fluid
           item
@@ -384,7 +387,10 @@ class Downloads extends Component {
     ) : null;
 
     const menuItemScenarioSelect = dropdownScenarioSelectOptions ? (
-      <Menu.Item.Tabbable key="menu-item-scenario-select" style={{ width: '30%' }}>
+      <Menu.Item.Tabbable
+        key="menu-item-scenario-select"
+        style={{ width: '30%' }}
+      >
         <Dropdown
           fluid
           item

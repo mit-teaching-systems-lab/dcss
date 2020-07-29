@@ -22,7 +22,10 @@ const ComponentItems = ({ onComponentItemClick }) => {
     const { Card, name: header, description: content } = Components[item];
 
     const trigger = (
-      <Menu.Item.Tabbable style={style} onClick={() => onComponentItemClick(item)}>
+      <Menu.Item.Tabbable
+        style={style}
+        onClick={() => onComponentItemClick(item)}
+      >
         <Card />
       </Menu.Item.Tabbable>
     );
