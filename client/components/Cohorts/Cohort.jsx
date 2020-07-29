@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Segment } from '@components/UI';
+import { Icon, Menu, Segment, Title } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
 import { getCohort, setCohort, linkUserToCohort } from '@actions/cohort';
@@ -188,6 +188,7 @@ export class Cohort extends React.Component {
 
     return (
       <div>
+        <Title content={cohort.name} />
         <Menu attached="top" tabular className="c__tab-menu--overflow">
           <Menu.Item.Tabbable
             active={activeTabKey === 'cohort'}

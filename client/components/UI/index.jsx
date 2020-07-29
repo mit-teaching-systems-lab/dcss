@@ -5,7 +5,7 @@ export * from 'semantic-ui-react';
 export * from 'react-semantic-ui-range';
 
 /**
- * Custom Extensions
+ * Custom Elements, Semantic UI React Extensions
  */
 import { Card, Form, Menu, Modal, Table } from 'semantic-ui-react';
 
@@ -29,3 +29,8 @@ Table.Cell.Clickable = TableCellClickable;
  * (Fomantic)
  */
 export * from './Text';
+
+/**
+ * Custom Elements
+ */
+export Title from './Title';

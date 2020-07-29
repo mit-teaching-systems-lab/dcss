@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Menu, Segment } from '@components/UI';
+import { Menu, Segment, Title } from '@components/UI';
 
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
@@ -56,6 +56,7 @@ class Admin extends Component {
     const { onClick } = this;
     return isReady ? (
       <div>
+        <Title content="User Access Control" />
         <Menu attached="top" tabular>
           <Menu.Item.Tabbable
             content="Access Control"

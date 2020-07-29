@@ -13,7 +13,8 @@ import {
   Modal,
   Pagination,
   Popup,
-  Responsive
+  Responsive,
+  Title
 } from '@components/UI';
 import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
@@ -345,9 +346,10 @@ class ScenariosList extends Component {
       menuItemScenarioLinkCopyLeft
     ];
 
+    const scenariosHeading = `${heading} (${scenarios.length})`;
     const menuItemScenarioLinkCopyRight = Layout.isNotForMobile() ? (
       <Menu.Item.Tabbable className="sc__hidden-on-mobile" onClick={onCopyClick}>
-        {heading} ({scenarios.length})
+        {scenariosHeading}
         <Icon name="clipboard outline" />
       </Menu.Item.Tabbable>
     ) : null;
@@ -407,6 +409,7 @@ class ScenariosList extends Component {
 
     return (
       <Fragment>
+        <Title content={scenariosHeading} />
         <EditorMenu type="scenarios" items={{ left, right }} />
         <Container fluid>
           <Grid>

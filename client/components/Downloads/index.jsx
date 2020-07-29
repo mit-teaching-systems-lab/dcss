@@ -13,7 +13,8 @@ import {
   /*Input,*/
   Menu,
   Pagination,
-  Table
+  Table,
+  Title
 } from '@components/UI';
 import { getAllCohorts, getCohorts } from '@actions/cohort';
 import { getHistoryForScenario } from '@actions/history';
@@ -458,6 +459,7 @@ class Downloads extends Component {
 
     return (
       <Fragment>
+        <Title content="Downloads" />
         {menuBar}
         <Container fluid>
           <Table role="grid" unstackable striped>

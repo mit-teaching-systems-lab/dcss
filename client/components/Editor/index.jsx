@@ -9,7 +9,8 @@ import {
   Icon,
   Menu,
   Modal,
-  Segment
+  Segment,
+  Title
 } from '@components/UI';
 import Storage from '@utils/Storage';
 import EditorMenu from '@components/EditorMenu';
@@ -551,10 +552,14 @@ class Editor extends Component {
     const canDisplayEditorMenu =
       scenarioId !== 'new' && (isNotReviewer || user.is_super);
 
+    const pageTitle = `Editing "${scenario.title}"`;
+
     return modal ? (
       modal
     ) : (
       <Fragment>
+        <Title content={pageTitle} />
+
         <Menu attached="top" tabular className="editor__tabmenu">
           {menuItemsForAttachedTabularBar}
         </Menu>

@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
 import Storage from '@utils/Storage';
 import Scenario from '@components/Scenario';
+import { Title } from '@components/UI';
 import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getResponse, setResponses } from '@actions/response';
 import { getRun, setRun } from '@actions/run';
+import { getScenario } from '@actions/scenario';
 
 class Run extends Component {
   constructor(props) {
@@ -44,10 +46,15 @@ class Run extends Component {
     const {
       cohortId,
       location: { search },
+      scenario,
       scenarioId
     } = this.props;
 
-    const run = await this.props.getRun(scenarioId);
+    if (!scenario) {
+      await this.props.getScenario(scenarioId);
+    }
+
+    const run = await this.props.getRun(this.props.scenario.id);
 
     if (run) {
       if (cohortId) {
@@ -119,7 +126,7 @@ class Run extends Component {
 
   render() {
     const { onChange, onResponseChange, onSubmit } = this;
-    const { cohortId, scenarioId } = this.props;
+    const { activeRunSlideIndex, cohortId, scenario } = this.props;
     const { isReady, baseurl } = this.state;
 
     if (!isReady || !this.props.run) {
@@ -130,21 +137,26 @@ class Run extends Component {
     // first acknowledging the consent form!
     if (
       !this.props.run.consent_acknowledged_by_user &&
-      this.props.activeRunSlideIndex !== 0
+      activeRunSlideIndex !== 0
     ) {
       location.href = `${baseurl}/slide/0`;
     }
 
+    const pageTitle = `${this.props.scenario.title}, Slide #${activeRunSlideIndex}`;
+
     return (
-      <Scenario
-        baseurl={baseurl}
-        cohortId={cohortId}
-        scenarioId={scenarioId}
-        onResponseChange={onResponseChange}
-        onRunChange={onChange}
-        onSubmit={onSubmit}
-        setActiveSlide={() => {}}
-      />
+      <Fragment>
+        <Title content={pageTitle} />
+        <Scenario
+          baseurl={baseurl}
+          cohortId={cohortId}
+          scenarioId={scenario.id}
+          onResponseChange={onResponseChange}
+          onRunChange={onChange}
+          onSubmit={onSubmit}
+          setActiveSlide={() => {}}
+        />
+      </Fragment>
     );
   }
 }
@@ -157,10 +169,11 @@ Run.propTypes = {
   getUser: PropTypes.func,
   getResponse: PropTypes.func,
   setResponses: PropTypes.func,
-  scenarioId: PropTypes.node,
   run: PropTypes.object,
   getRun: PropTypes.func,
   setRun: PropTypes.func,
+  scenarioId: PropTypes.node,
+  scenario: PropTypes.object,
   linkRunToCohort: PropTypes.func,
   location: PropTypes.shape({
     pathname: PropTypes.string,
@@ -185,12 +198,15 @@ const mapStateToProps = (state, ownProps) => {
   const { permissions } = state.login;
   const { cohort, responses, run, user } = state;
 
+  const scenarioId = Number(ownProps.scenarioId || params.scenarioId);
+  const scenario = state.scenariosById[scenarioId];
   return {
     activeRunSlideIndex: Number(
       ownProps.activeRunSlideIndex || params.activeRunSlideIndex
     ),
     cohortId: Number(ownProps.cohortId || params.cohortId),
     scenarioId: Number(ownProps.scenarioId || params.scenarioId),
+    scenario,
     cohort,
     responses,
     run,
@@ -199,13 +215,14 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getUser: params => dispatch(getUser(params)),
   getResponse: params => dispatch(getResponse(params)),
   setResponses: (...params) => dispatch(setResponses(...params)),
   getRun: params => dispatch(getRun(params)),
   setRun: (...params) => dispatch(setRun(...params)),
   linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),
-  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params))
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
+  getScenario: params => dispatch(getScenario(params)),
+  getUser: params => dispatch(getUser(params)),
 });
 
 export default withRouter(

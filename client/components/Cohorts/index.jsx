@@ -14,7 +14,8 @@ import {
   Input,
   Menu,
   Modal,
-  Pagination
+  Pagination,
+  Title
 } from '@components/UI';
 import {
   getAllCohorts,
@@ -254,8 +255,11 @@ export class Cohorts extends React.Component {
       </Card.Group.Stackable>
     );
 
+    const pageTitle = `Cohorts (${cohorts.length})`;
     return (
       <React.Fragment>
+        <Title content={pageTitle} />
+
         <EditorMenu
           type="cohorts"
           items={{
