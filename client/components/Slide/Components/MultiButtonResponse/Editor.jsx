@@ -20,7 +20,12 @@ class MultiButtonResponseEditor extends React.Component {
           value: "Value button represents"
       }
       */
-      buttons = [],
+      buttons = [
+        {
+          display: 'This is displayed on the button.',
+          value: 'This is the value that the button represents.'
+        }
+      ],
       header = '',
       prompt = '',
       recallId = '',
