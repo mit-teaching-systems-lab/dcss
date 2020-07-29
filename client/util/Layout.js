@@ -30,21 +30,21 @@ export function computeItemsRowsPerPage(options) {
     ? window.innerHeight - totalUnavailableHeight
     : window.innerHeight - TOTAL_UNAVAILABLE_HEIGHT;
 
-  const boundaries = {
-    top: document.getElementById('boundary-top'),
-    bottom: document.getElementById('boundary-bottom')
-  };
+  // const boundaries = {
+  //   top: document.getElementById('boundary-top'),
+  //   bottom: document.getElementById('boundary-bottom')
+  // };
 
-  // If a top boundary exists, override the const based available height.
-  if (boundaries.top) {
-    availableHeight = window.innerHeight - boundaries.top.offsetTop;
-  }
+  // // If a top boundary exists, override the const based available height.
+  // if (boundaries.top) {
+  //   availableHeight = window.innerHeight - boundaries.top.offsetTop;
+  // }
 
-  if (boundaries.bottom) {
-    // If a bottom boundary exists, subtract its vertical space from the
-    // available height.
-    availableHeight -= window.innerHeight - boundaries.bottom.offsetTop;
-  }
+  // if (boundaries.bottom) {
+  //   // If a bottom boundary exists, subtract its vertical space from the
+  //   // available height.
+  //   availableHeight -= window.innerHeight - boundaries.bottom.offsetTop;
+  // }
 
   let rowsPerPage = defaultRowCount;
   const countDownFrom = rowsPerPage * 2;
