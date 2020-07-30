@@ -131,6 +131,9 @@ class History extends Component {
     const runsIndex = (activePage - 1) * ROWS_PER_PAGE;
     const runsSlice = runs.slice(runsIndex, runsIndex + ROWS_PER_PAGE);
 
+    if (!isReady) {
+      return <Loading />;
+    }
     const pagination =
       runsPages > 1 ? (
         <Table.Footer>

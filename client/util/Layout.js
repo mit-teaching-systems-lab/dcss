@@ -8,6 +8,7 @@ export function isNotForMobile() {
   return window.innerWidth > MOBILE_WIDTH;
 }
 
+
 const NAV_HEIGHT = 40 + 7;
 // height + border-top + border-bottom + margin-top + margin-bottom;
 const MENU_HEIGHT = 43 + 1 + 1 + 14 + 14;
@@ -18,17 +19,24 @@ const PAGINATOR_HEIGHT = 42 + 14 + 14;
 const ITEMS_ROW_HEIGHT = 266;
 const TOTAL_UNAVAILABLE_HEIGHT = NAV_HEIGHT + MENU_HEIGHT + PAGINATOR_HEIGHT;
 
+
+const PAGE_HORIZONTAL_MARGIN_PADDING = (7 * 2) + (14 * 2);
+const ITEMS_COL_WIDTH = 320;
+
 export function computeItemsRowsPerPage(options) {
-  const {
+  let {
     defaultRowCount,
     totalUnavailableHeight,
     itemsPerRow,
-    itemsRowHeight
+    itemsRowHeight,
+    itemsColWidth
   } = options;
 
   let availableHeight = totalUnavailableHeight
     ? window.innerHeight - totalUnavailableHeight
     : window.innerHeight - TOTAL_UNAVAILABLE_HEIGHT;
+
+  let availableWidth = window.innerWidth - PAGE_HORIZONTAL_MARGIN_PADDING;
 
   // const boundaries = {
   //   top: document.getElementById('boundary-top'),
@@ -47,13 +55,29 @@ export function computeItemsRowsPerPage(options) {
   // }
 
   let rowsPerPage = defaultRowCount;
-  const countDownFrom = rowsPerPage * 2;
+  const countDownRowsFrom = rowsPerPage * 2;
   const rowHeight = itemsRowHeight || ITEMS_ROW_HEIGHT;
 
-  for (let i = countDownFrom; i > rowsPerPage; i--) {
+  for (let i = countDownRowsFrom; i > rowsPerPage; i--) {
     const checkRowHeight = availableHeight / i;
     if (checkRowHeight >= rowHeight) {
       rowsPerPage = i;
+      break;
+    }
+  }
+
+
+  if (isForMobile()) {
+    itemsPerPage = rowsPerPage;
+  }
+
+  const countDownColsFrom = itemsPerRow * 2;
+  const colWidth = itemsColWidth || ITEMS_COL_WIDTH;
+
+  for (let i = countDownColsFrom; i >= itemsPerRow; i--) {
+    const checkColWidth = (availableWidth / i) + 100;
+    if (checkColWidth >= colWidth + 100) {
+      itemsPerRow = i;
       break;
     }
   }
@@ -62,10 +86,8 @@ export function computeItemsRowsPerPage(options) {
     ? rowsPerPage * itemsPerRow
     : rowsPerPage * ITEMS_PER_ROW;
 
-  if (isForMobile()) {
-    itemsPerPage = rowsPerPage;
-  }
   return {
+    itemsPerRow,
     itemsPerPage,
     rowsPerPage
   };

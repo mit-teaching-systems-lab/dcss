@@ -285,8 +285,10 @@ class ScenariosList extends Component {
     }
 
     const defaultRowCount = 2;
-    const { itemsPerPage, rowsPerPage } = Layout.computeItemsRowsPerPage({
+    const { itemsPerRow, itemsPerPage, rowsPerPage } = Layout.computeItemsRowsPerPage({
+      itemsColWidth: Layout.isForMobile() ? 320 : 320,
       itemsRowHeight: Layout.isForMobile() ? 250 : 293,
+      itemsPerRow: 4,
       defaultRowCount
     });
 
@@ -382,7 +384,6 @@ class ScenariosList extends Component {
       </Menu.Menu>
     ];
 
-    const itemsPerRow = 4;
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
@@ -410,6 +411,7 @@ class ScenariosList extends Component {
       </Card.Group.Stackable>
     );
 
+    this.timeout = null;
     return (
       <Fragment>
         <Title content={scenariosHeading} />
@@ -419,18 +421,18 @@ class ScenariosList extends Component {
             <Boundary top />
             <Grid.Row>
               <Grid.Column stretched>
-                {!isReady ? (
-                  <Loading {...loadingProps} />
-                ) : (
-                  <Responsive
-                    onUpdate={() => {
-                      // eslint-disable-next-line no-console
-                      console.log('resize');
-                    }}
-                  >
-                    {cardGroup}
-                  </Responsive>
-                )}
+                <Responsive
+                  onUpdate={() => {
+                    if (this.timeout) {
+                      clearTimeout(this.timeout);
+                    }
+                    this.timeout = setTimeout(() => this.forceUpdate(), 100);
+                  }}
+                >
+                  {!isReady ? (
+                    <Loading {...loadingProps} />
+                  ) : cardGroup}
+                </Responsive>
               </Grid.Column>
             </Grid.Row>
             <Boundary bottom />
