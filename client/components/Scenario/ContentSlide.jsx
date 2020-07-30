@@ -17,6 +17,9 @@ const hasValidPromptOptions = component => {
   if (component.buttons && component.buttons.length === 0) {
     return false;
   }
+  if (Reflect.has(component, 'url') && !component.url) {
+    return false;
+  }
   return true;
 };
 
