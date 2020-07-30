@@ -6,6 +6,25 @@ import Storage from '@utils/Storage';
 import SlideComponents from '@components/SlideComponents';
 import { getResponse } from '@actions/response';
 
+
+const hasValidNavigationOverrider = (component) => {
+  return component.disableDefaultNavigation && component.paths.length;
+};
+
+const hasValidPromptOptions = (component) => {
+  if (component.paths && component.paths.length === 0) {
+    return false;
+  }
+  if (component.buttons && component.buttons.length === 0) {
+    return false;
+  }
+  return true;
+};
+
+const hasValidPrompt = (component) => {
+  return component.responseId && hasValidPromptOptions(component);
+};
+
 class ContentSlide extends React.Component {
   constructor(props) {
     super(props);
@@ -15,8 +34,24 @@ class ContentSlide extends React.Component {
     } = this.props;
 
     const required = components.reduce((accum, component) => {
-      if (component.required && !component.disableDefaultNavigation) {
-        accum.push(component.responseId);
+      if (component.required) {
+        let mustTrackRequiredPrompt = true;
+
+        if (!hasValidNavigationOverrider(component)) {
+          const isValidPrompt = hasValidPromptOptions(component);
+
+          if (isValidPrompt !== mustTrackRequiredPrompt) {
+            mustTrackRequiredPrompt = isValidPrompt;
+          }
+        }
+
+        if (hasValidNavigationOverrider(component)) {
+          mustTrackRequiredPrompt = false;
+        }
+
+        if (mustTrackRequiredPrompt) {
+          accum.push(component.responseId);
+        }
       }
       return accum;
     }, []);
@@ -185,10 +220,8 @@ class ContentSlide extends React.Component {
     }
     const cardClass = run ? 'scenario__slide-column-card' : 'scenario__card';
     const runOnly = run ? { run } : {};
-    const hasPrompt = slide.components.some(component => component.responseId);
-    const hasOwnNavigation = slide.components.some(
-      component => component.disableDefaultNavigation && component.paths.length
-    );
+    const hasPrompt = slide.components.some(hasValidPrompt);
+    const hasOwnNavigation = slide.components.some(hasValidNavigationOverrider);
 
     const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next slide';
     const submitNextOrFinish = isLastSlide ? 'Finish' : proceedButtonLabel;
