@@ -199,7 +199,7 @@ class Display extends Component {
 
     const willShowAudioRecorder = isFulfilled || autostart;
 
-    return (
+    return url ? (
       <Fragment>
         <Container className="cp__video-wrapper">
           <Player {...playerProps} />
@@ -223,7 +223,7 @@ class Display extends Component {
           </Segment>
         ) : null}
       </Fragment>
-    );
+    ) : null;
   }
 }
 

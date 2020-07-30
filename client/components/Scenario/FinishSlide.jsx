@@ -57,7 +57,7 @@ class FinishSlide extends React.Component {
     }`;
 
     const extra = (
-      <Card.Content extra>
+      <Card.Content>
         {this.isCohortScenarioRun ? (
           <NavLink to={`/cohort/${cohortId}`}>Return to cohort</NavLink>
         ) : (
