@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { NavLink } from 'react-router-dom';
+import { Button, Card, Header, Icon, Modal } from '@components/UI';
+import Identity from '@utils/Identity';
 import './Scenario.css';
 
 class FinishSlide extends React.Component {
@@ -57,7 +58,7 @@ class FinishSlide extends React.Component {
     }`;
 
     const extra = (
-      <Card.Content extra tabIndex="0">
+      <Card.Content extra>
         {this.isCohortScenarioRun ? (
           <NavLink to={`/cohort/${cohortId}`}>Return to cohort</NavLink>
         ) : (
@@ -65,26 +66,31 @@ class FinishSlide extends React.Component {
         )}
       </Card.Content>
     );
+
+    const ariaLabelledby = Identity.id();
+    const ariaDescribedby = Identity.id();
+    const ariaLabel = `Ready to finish this scenario? If you're ready to finish, click "I'm done!"`;
+
     return (
       <React.Fragment>
         <Modal.Accessible open={isConfirmBoxOpen}>
           <Modal
             role="dialog"
-            aria-modal="true"
             size="tiny"
+            aria-modal="true"
             open={isConfirmBoxOpen}
           >
-            <Header>
+            <Header aria-label={ariaLabel}>
               <Icon.Group className="em__icon-group-margin">
                 <Icon name="newspaper outline" />
                 <Icon corner="top right" name="check circle" color="orange" />
               </Icon.Group>
 
-              <Header.Content tabIndex="0">
+              <Header.Content>
                 Ready to finish this scenario?
               </Header.Content>
             </Header>
-            <Modal.Content tabIndex="0">
+            <Modal.Content>
               If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
             </Modal.Content>
             <Modal.Actions>
