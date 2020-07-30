@@ -495,8 +495,8 @@ class Editor extends Component {
       }
 
       if (modalProps.open) {
-        const ariaLabelledBy = Identity.id();
-        const ariaDescribedBy = Identity.id();
+        const ariaLabelledby = Identity.id();
+        const ariaDescribedby = Identity.id();
         modal = (
           <Modal.Accessible open={modalProps.open}>
             <Modal
@@ -504,11 +504,11 @@ class Editor extends Component {
               size="small"
               role="dialog"
               aria-modal="true"
-              aria-labelledby={ariaLabelledBy}
-              aria-describedby={ariaDescribedBy}
+              aria-labelledby={ariaLabelledby}
+              aria-describedby={ariaDescribedby}
             >
-              <Header id={ariaLabelledBy} content={header} icon="lock" />
-              <Modal.Content id={ariaDescribedBy}>{content}</Modal.Content>
+              <Header id={ariaLabelledby} content={header} icon="lock" />
+              <Modal.Content id={ariaDescribedby}>{content}</Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
                   <Button

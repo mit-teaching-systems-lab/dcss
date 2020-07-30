@@ -52,8 +52,8 @@ class ScenarioCard extends React.Component {
     const isAuthorized =
       scenario.author_id === user.id || user.roles.includes('super_admin');
 
-    const ariaLabelledBy = Identity.id();
-    const ariaDescribedBy = Identity.id();
+    const ariaLabelledby = Identity.id();
+    const ariaDescribedby = Identity.id();
     return deleted_at ? (
       <ConfirmAuth isAuthorized={isAuthorized}>
         <DeletedCard
@@ -69,8 +69,8 @@ class ScenarioCard extends React.Component {
       <Card
         className="sc sc__margin-height"
         key={id}
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
+        aria-labelledby={ariaLabelledby}
+        aria-describedby={ariaDescribedby}
       >
         <Card.Content
           tabIndex="0"
@@ -78,10 +78,10 @@ class ScenarioCard extends React.Component {
           onClick={onClick}
           onKeyUp={(...args) => Events.onKeyUp(...args, onClick)}
         >
-          <Card.Header id={ariaLabelledBy}>
+          <Card.Header id={ariaLabelledby}>
             {officialCheckmark} {title}
           </Card.Header>
-          <Card.Description id={ariaDescribedBy}>
+          <Card.Description id={ariaDescribedby}>
             {description}
           </Card.Description>
         </Card.Content>

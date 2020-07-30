@@ -134,24 +134,24 @@ class EntrySlide extends React.Component {
       this.props.onNextClick();
     };
 
-    const ariaLabelledBy = Identity.id();
-    const ariaDescribedBy = Identity.id();
+    const ariaLabelledby = Identity.id();
+    const ariaDescribedby = Identity.id();
     const permissionConfirmation = showPermissionConfirmation ? (
       <Modal.Accessible open={showPermissionConfirmation}>
         <Modal
           size="small"
           role="dialog"
           aria-modal="true"
-          aria-labelledby={ariaLabelledBy}
-          aria-describedby={ariaDescribedBy}
+          aria-labelledby={ariaLabelledby}
+          aria-describedby={ariaDescribedby}
           open={showPermissionConfirmation}
         >
           <Header
             icon="cog"
             content="Requesting Permission"
-            id={ariaLabelledBy}
+            id={ariaLabelledby}
           />
-          <Modal.Content id={ariaDescribedBy}>
+          <Modal.Content id={ariaDescribedby}>
             This scenario needs permission to record responses using your
             device&apos;s microphone.
           </Modal.Content>

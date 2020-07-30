@@ -82,7 +82,7 @@ class CreateAnonymousAccount extends Component {
     const content = 'Do you like this anonymous username?';
 
     const ariaLabelAnonymousUsername = `${content} ${username}`;
-    const ariaLabelledBy = 'dialog-anonymous-username-labelled';
+    const ariaLabelledby = 'dialog-anonymous-username-labelled';
 
     return (
       <Modal.Accessible open>
@@ -91,12 +91,12 @@ class CreateAnonymousAccount extends Component {
           role="dialog"
           size="small"
           aria-modal="true"
-          aria-labelledby={ariaLabelledBy}
+          aria-labelledby={ariaLabelledby}
         >
           <Header
             icon="user outline"
             tabIndex="0"
-            id={ariaLabelledBy}
+            id={ariaLabelledby}
             content={header}
           />
           <LiveAnnouncer>

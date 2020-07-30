@@ -13,8 +13,8 @@ const DataModal = props => {
   const { index, isScenarioDataTable, prompts, rows } = props;
   const component = prompts[index];
   const { header, prompt, slide } = component;
-  const ariaLabelledBy = Identity.id();
-  const ariaDescribedBy = Identity.id();
+  const ariaLabelledby = Identity.id();
+  const ariaDescribedby = Identity.id();
 
   return (
     <Modal
@@ -23,14 +23,14 @@ const DataModal = props => {
       size="fullscreen"
       role="dialog"
       aria-modal="true"
-      aria-labelledby={ariaLabelledBy}
-      aria-describedby={ariaDescribedBy}
+      aria-labelledby={ariaLabelledby}
+      aria-describedby={ariaDescribedby}
       trigger={props.trigger}
     >
-      <Header id={ariaLabelledBy} className="dtm__header">
+      <Header id={ariaLabelledby} className="dtm__header">
         Responses In Context
       </Header>
-      <Modal.Content id={ariaDescribedBy} scrolling className="dtm__scroll">
+      <Modal.Content id={ariaDescribedby} scrolling className="dtm__scroll">
         <Modal.Description>
           <SplitPane split="vertical" minSize={500} defaultSize={500}>
             <div>

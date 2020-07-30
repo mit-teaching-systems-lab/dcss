@@ -329,8 +329,8 @@ class MultiPathNetworkGraphModal extends Component {
       }
     };
 
-    const ariaLabelledBy = Identity.id();
-    const ariaDescribedBy = Identity.id();
+    const ariaLabelledby = Identity.id();
+    const ariaDescribedby = Identity.id();
 
     return (
       <Modal.Accessible open={open}>
@@ -339,15 +339,15 @@ class MultiPathNetworkGraphModal extends Component {
           size="fullscreen"
           role="dialog"
           aria-modal="true"
-          aria-labelledby={ariaLabelledBy}
-          aria-describedby={ariaDescribedBy}
+          aria-labelledby={ariaLabelledby}
+          aria-describedby={ariaDescribedby}
           open={open}
           onClose={onClose}
         >
-          <Modal.Header className="mpr__title-constraint" id={ariaLabelledBy}>
+          <Modal.Header className="mpr__title-constraint" id={ariaLabelledby}>
             Slide Graph for &quot;{scenario.title}&quot;
           </Modal.Header>
-          <Modal.Content id={ariaDescribedBy}>
+          <Modal.Content id={ariaDescribedby}>
             <Ref innerRef={makeAccessible}>
               <Graph events={events} graph={graph} options={options} />
             </Ref>

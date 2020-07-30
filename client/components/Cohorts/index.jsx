@@ -239,8 +239,8 @@ export class Cohorts extends React.Component {
     });
 
     const itemsPerRow = 4;
-    const ariaLabelledBy = Identity.id();
-    const ariaDescribedBy = Identity.id();
+    const ariaLabelledby = Identity.id();
+    const ariaDescribedby = Identity.id();
 
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
@@ -300,16 +300,16 @@ export class Cohorts extends React.Component {
             size="small"
             role="dialog"
             aria-modal="true"
-            aria-labelledby={ariaLabelledBy}
-            aria-describedby={ariaDescribedBy}
+            aria-labelledby={ariaLabelledby}
+            aria-describedby={ariaDescribedby}
             open={createIsVisible}
           >
             <Header
-              id={ariaLabelledBy}
+              id={ariaLabelledby}
               icon="group"
               content="Create a cohort"
             />
-            <Modal.Content id={ariaDescribedBy}>
+            <Modal.Content id={ariaDescribedby}>
               <Form onSubmit={onCreateCohortSubmit}>
                 <Input
                   fluid

@@ -465,23 +465,23 @@ const ScenarioDetailModal = ({ onClose, open, scenario }) => {
     </span>
   );
 
-  const ariaLabelledBy = Identity.id();
-  const ariaDescribedBy = Identity.id();
+  const ariaLabelledby = Identity.id();
+  const ariaDescribedby = Identity.id();
   return (
     <Modal.Accessible open={open}>
       <Modal
         closeIcon
         role="dialog"
         aria-modal="true"
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
+        aria-labelledby={ariaLabelledby}
+        aria-describedby={ariaDescribedby}
         centered={false}
         open={open}
         onClose={onClose}
       >
-        <Header id={ariaLabelledBy}>{scenario.title}</Header>
+        <Header id={ariaLabelledby}>{scenario.title}</Header>
         <Modal.Content>{subheader}</Modal.Content>
-        <Modal.Content id={ariaDescribedBy}>
+        <Modal.Content id={ariaDescribedby}>
           <Modal.Description className="sc__modal-description">
             {scenario.description}
           </Modal.Description>
