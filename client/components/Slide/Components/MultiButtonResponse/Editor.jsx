@@ -20,12 +20,7 @@ class MultiButtonResponseEditor extends React.Component {
           value: "Value button represents"
       }
       */
-      buttons = [
-        {
-          display: 'This is displayed on the button.',
-          value: 'This is the value that the button represents.'
-        }
-      ],
+      buttons = [],
       header = '',
       prompt = '',
       recallId = '',
@@ -261,6 +256,17 @@ class MultiButtonResponseEditor extends React.Component {
                 );
               })}
             </Sortable>
+
+            {!buttons.length ? (
+              <Table.Body>
+                <Table.Row key={Identity.key({ id, ['empty']: true })} negative>
+                  <Table.Cell colSpan={3}>
+                    This prompt is empty! Please create at least one button, otherwise
+                    this prompt will not appear in the slide.
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            ) : null}
 
             <Table.Footer fullWidth>
               <Table.Row>

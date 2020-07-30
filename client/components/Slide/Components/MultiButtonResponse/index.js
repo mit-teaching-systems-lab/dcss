@@ -6,6 +6,12 @@ export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
   header: '',
   id: '',
+  buttons: [
+    {
+      display: '',
+      value: ''
+    }
+  ],
   recallId: '',
   required: true,
   responseId,

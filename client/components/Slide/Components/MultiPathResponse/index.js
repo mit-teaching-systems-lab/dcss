@@ -8,6 +8,12 @@ export const defaultValue = ({ responseId }) => ({
   disableDefaultNavigation: true,
   header: '',
   id: '',
+  paths: [
+    {
+      display: '',
+      value: null
+    }
+  ],
   recallId: '',
   required: true,
   responseId,

@@ -33,12 +33,7 @@ class MultiPathResponseEditor extends React.Component {
           id: Slide id,
       }
       */
-      paths = [
-        {
-          display: '',
-          value: null
-        }
-      ],
+      paths = [],
       prompt = '',
       recallId = '',
       responseId = ''
@@ -420,6 +415,17 @@ class MultiPathResponseEditor extends React.Component {
                 );
               })}
             </Sortable>
+
+            {!paths.length ? (
+              <Table.Body>
+                <Table.Row key={Identity.key({ id, ['empty']: true })} negative>
+                  <Table.Cell colSpan={3}>
+                    This prompt is empty! Please create at least one slide choice,
+                    otherwise this prompt will not appear in the slide.
+                  </Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            ) : null}
 
             <Table.Footer fullWidth>
               <Table.Row>
