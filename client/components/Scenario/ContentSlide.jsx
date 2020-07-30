@@ -6,12 +6,11 @@ import Storage from '@utils/Storage';
 import SlideComponents from '@components/SlideComponents';
 import { getResponse } from '@actions/response';
 
-
-const hasValidNavigationOverrider = (component) => {
+const hasValidNavigationOverrider = component => {
   return component.disableDefaultNavigation && component.paths.length;
 };
 
-const hasValidPromptOptions = (component) => {
+const hasValidPromptOptions = component => {
   if (component.paths && component.paths.length === 0) {
     return false;
   }
@@ -21,7 +20,7 @@ const hasValidPromptOptions = (component) => {
   return true;
 };
 
-const hasValidPrompt = (component) => {
+const hasValidPrompt = component => {
   return component.responseId && hasValidPromptOptions(component);
 };
 

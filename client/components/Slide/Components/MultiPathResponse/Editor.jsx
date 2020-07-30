@@ -420,8 +420,8 @@ class MultiPathResponseEditor extends React.Component {
               <Table.Body>
                 <Table.Row key={Identity.key({ id, ['empty']: true })} negative>
                   <Table.Cell colSpan={3}>
-                    This prompt is empty! Please create at least one slide choice,
-                    otherwise this prompt will not appear in the slide.
+                    This prompt is empty! Please create at least one slide
+                    choice, otherwise this prompt will not appear in the slide.
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
