@@ -200,17 +200,26 @@ class ContentSlide extends React.Component {
     );
 
     const hasPendingRequiredFields = !!required.length && !!pending.length;
-    const color = pending.length ? 'red' : 'green';
-    const content = pending.length
+    const onClick = hasPendingRequiredFields ? () => {} : onNextClick;
+    const color = hasPendingRequiredFields ? 'red' : 'green';
+    const content = hasPendingRequiredFields
       ? awaitingRequiredPrompts
       : submitNextOrFinish;
-    const onClick = pending.length ? () => {} : onNextClick;
+    let ariaLabel = hasPendingRequiredFields
+      ? `There are ${pending.length} pending prompts that require a response`
+      : 'Click to submit your responses to these prompts';
+
+    if (!hasPrompt && !pending.length) {
+      ariaLabel = 'Click to proceed to the next slide';
+    }
 
     const fwdButtonProps = {
+      'aria-label': ariaLabel,
       color,
       content,
       onClick
     };
+
     let fwdButtonTip = hasPrompt
       ? 'Submit and go to next slide'
       : 'Go to the next slide';
@@ -254,7 +263,7 @@ class ContentSlide extends React.Component {
             </Card.Header>
           </Card.Content>
         ) : null}
-        <Card.Content key={`content${slide.id}`}>
+        <Card.Content tabIndex="0" key={`content${slide.id}`}>
           <SlideComponents
             {...runOnly}
             components={slide.components}
@@ -284,6 +293,7 @@ class ContentSlide extends React.Component {
                     trigger={
                       <Button
                         color="yellow"
+                        aria-label={skipButtonTip}
                         name={skipOrKeep}
                         onClick={onSkip}
                         content={skipButtonContent}
