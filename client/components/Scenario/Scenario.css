@@ -18,6 +18,11 @@
   margin-top: 2vh;
 }
 
+.ui.card.scenario__slide-column-card>.content:first-child {
+  overflow-y: scroll;
+  height: calc(100vh - 120px) !important;
+}
+
 .ui.card.scenario__slide-column-card-hidden {
   visibility: hidden;
 }
