@@ -4,6 +4,7 @@ const { reqScenario } = require('./middleware');
 const { getUserById } = require('../auth/db');
 const {
   addSlide,
+  deleteSlide,
   getScenarioSlides,
   setAllSlides,
   setSlide
@@ -250,11 +251,21 @@ async function copyScenarioAsync(req, res) {
 
   try {
     const userId = req.session.user.id;
-    const { title, description, categories, finish } = reqScenario(req);
+    const { title, description, categories } = reqScenario(req);
     const scenario = await db.addScenario(userId, `${title} COPY`, description);
-    const slides = (await getScenarioSlides(scenarioId)).filter(
-      ({ is_finish }) => !is_finish
-    );
+    const sourceSlides = await getScenarioSlides(scenarioId);
+
+    const slides = sourceSlides.filter(({ is_finish }) => !is_finish);
+    const sourceFinishSlide = sourceSlides.find(({ is_finish }) => is_finish);
+
+    await deleteSlide(scenario.id, scenario.finish.id);
+
+    const finish = await addSlide({
+      scenario_id: scenario.id,
+      title: sourceFinishSlide.title,
+      components: sourceFinishSlide.components,
+      is_finish: true
+    });
 
     // When copying a scenario, not only do new responseIds need to be set,
     // but any recallIds that refer to old responseIds must be mapped to
@@ -283,6 +294,17 @@ async function copyScenarioAsync(req, res) {
           // it for mapping to recallId in a second pass.
           responseIdMap[component.responseId] = uuid();
           component.responseId = responseIdMap[component.responseId];
+
+          // If we encounter a MultiPathPrompt component, we need to check
+          // if it has a path to the old scenario's FINISH slide. If yes,
+          // then we need to replace that id with our new finish slide id.
+          if (component.paths) {
+            component.paths.forEach((path, index) => {
+              if (String(path.value) === String(sourceFinishSlide.id)) {
+                component.paths[index].value = finish.id;
+              }
+            });
+          }
         }
 
         // If any slide uses a ResponseRecall component, add the slide
@@ -303,8 +325,9 @@ async function copyScenarioAsync(req, res) {
       }
     }
 
+    await setAllSlides(scenario.id, [...slides]);
+
     await db.setScenarioCategories(scenario.id, categories);
-    await setAllSlides(scenario.id, slides);
 
     const consent = await db.getScenarioConsent(scenarioId);
     const { id, prose } = await db.addScenarioConsent(consent);
