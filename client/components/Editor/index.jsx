@@ -109,6 +109,11 @@ class Editor extends Component {
 
       const { scenarioUser } = this.props;
 
+      if (!scenario.lock) {
+        this.props.history.push('/scenarios');
+        return;
+      }
+
       // The viewing user might be a super admin that is not
       // a collaborator on this scenario.
       if (scenarioUser) {
@@ -410,17 +415,28 @@ class Editor extends Component {
     const menuItemScenarioStatus = scenario.status !== undefined && (
       <ScenarioStatusMenuItem
         tabIndex="0"
-        key="scenario-status-menu-item"
+        key="menu-item-scenario-status"
         name="Set scenario status"
         status={scenario.status}
         onClick={this.onClickScenarioAction}
       />
     );
 
+    const menuItemScenarioCopy =
+      scenarioId !== 'new' ? (
+        <Menu.Item.Tabbable
+          key="menu-item-scenario-run"
+          name="Copy this scenario"
+          onClick={() => this.copyScenario(scenario.id)}
+        >
+          <Icon name="copy outline" />
+        </Menu.Item.Tabbable>
+      ) : null;
+
     const menuItemScenarioRun =
       scenarioId !== 'new' ? (
         <Menu.Item.Tabbable
-          key="scenario-run-menu-item"
+          key="menu-item-scenario-run"
           name="Run this scenario"
           onClick={() => {
             this.props.history.push(`/run/${scenarioId}/slide/0`);
@@ -439,7 +455,7 @@ class Editor extends Component {
     const menuItemScenarioUnlock =
       scenarioId !== 'new' ? (
         <Menu.Item.Tabbable
-          key="scenario-unlock-menu-item"
+          key="menu-item-scenario-unlock"
           name="Unlock this scenario"
           onClick={() => {
             this.props.endScenarioLock(this.props.scenario.id);
@@ -543,6 +559,7 @@ class Editor extends Component {
     }
 
     const right = [
+      menuItemScenarioCopy,
       menuItemScenarioRun,
       location.href.includes('localhost') ? menuItemScenarioUnlock : null,
       menuItemScenarioStatus
@@ -564,7 +581,7 @@ class Editor extends Component {
           {menuItemsForAttachedTabularBar}
         </Menu>
 
-        <Segment attached="bottom" className="editor__content-pane">
+        <Segment attached="bottom" className="editor__content">
           {canDisplayEditorMenu ? (
             <EditorMenu
               className="em__fullwidth"

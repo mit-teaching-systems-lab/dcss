@@ -63,7 +63,7 @@ export default class EditorMenu extends React.Component {
         {items.save && (
           <Popup
             size="small"
-            content={`Save ${type}`}
+            content={`Save this ${type}`}
             trigger={
               <Menu.Item.Tabbable
                 aria-label={`Save ${type}`}
@@ -78,7 +78,7 @@ export default class EditorMenu extends React.Component {
         )}
         {items.delete && (
           <ConfirmableDeleteButton
-            aria-label={`Delete ${type}`}
+            aria-label={`Delete this ${type}`}
             disabled={items.delete.disabled}
             name={`delete-${type}`}
             itemType={type}

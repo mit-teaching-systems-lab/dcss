@@ -362,7 +362,7 @@ class Slides extends React.Component {
                       >
                         <Popup
                           size="small"
-                          content="View slides graph"
+                          content="View slides sequence graph"
                           trigger={
                             <Menu.Item.Tabbable
                               name="Add a slide"

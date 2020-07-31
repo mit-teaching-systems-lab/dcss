@@ -54,24 +54,21 @@ class ScenarioStatusMenuItem extends React.Component {
     if (!this.state.statusOptions) {
       return null;
     }
+
+    const statusAsIcon = this.getStatusDisplay({ asIcon: true });
+    const statusAsText = this.getStatusDisplay({ asIcon: false });
+    const dropdownTrigger = (
+      <React.Fragment>
+        <Icon.Group className="em__icon-group-margin">
+          <Icon name="pencil alternate" />
+          {statusAsIcon}
+        </Icon.Group>
+        {statusAsText}
+      </React.Fragment>
+    );
     return (
       <Menu.Menu key="menu-item-scenario-status">
-        <Dropdown
-          item
-          text={
-            <React.Fragment>
-              <Icon.Group className="em__icon-group-margin">
-                <Icon name="pencil alternate" />
-                {this.getStatusDisplay({
-                  asIcon: true
-                })}
-              </Icon.Group>
-              {this.getStatusDisplay({
-                asIcon: false
-              })}
-            </React.Fragment>
-          }
-        >
+        <Dropdown item text={dropdownTrigger}>
           <Dropdown.Menu>
             {this.state.statusOptions.map(({ id, name, description }) => (
               <Dropdown.Item

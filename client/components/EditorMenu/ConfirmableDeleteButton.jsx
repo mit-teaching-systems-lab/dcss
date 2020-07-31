@@ -32,7 +32,7 @@ class ConfirmableDeleteButton extends Component {
 
     const { open } = this.state;
 
-    const ariaLabel = `Delete ${itemType}`.trim();
+    const ariaLabel = `Delete this ${itemType}`.trim();
     const content = itemType
       ? `Are you sure you want to delete this ${itemType}?`
       : `Are you sure you want to delete?`;

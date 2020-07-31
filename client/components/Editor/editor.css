@@ -1,4 +1,4 @@
-.editor__content-pane {
+.editor__content {
   /*height: 100% !important;*/
   /*height: 90vh !important;*/
   height: calc(100vh - 100px) !important;

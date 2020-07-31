@@ -38,7 +38,7 @@ class Review extends Component {
     });
 
     return (
-      <Container fluid className="scenario__slide-preview-pane">
+      <Container fluid className="scenario__slide-preview-viewport">
         <Grid>
           <Grid.Row>
             <Grid.Column stretched>
