@@ -3,7 +3,11 @@
   max-width: 500px;
 }
 
-.ui.card.scenario__slide-column-card {
+.scenario__slide-preview {
+  margin-bottom: 1em !important;
+}
+
+.ui.card.scenario__slide-card {
   font-size: 16px;
   width: 93vw;
   /*
@@ -18,12 +22,40 @@
   margin-top: 2vh;
 }
 
-.ui.card.scenario__slide-column-card>.content:first-child {
+.ui.card.scenario__slide-card-preview {
+  font-size: 16px;
+  width: 93vw;
+  /*
+    top nav has height of 47px
+    tabs has height of 47px
+    editor menu has height of 45px
+    + padding and margins
+    ----------------
+    180px
+  */
+  min-height: calc(100vh - 180px);
+  max-width: 500px;
+  margin-top: 2vh;
+}
+
+.ui.card.scenario__slide-card .scenario__slide-card-header,
+.ui.card.scenario__slide-card .scenario__slide-card-header-preview,
+.ui.card.scenario__slide-card-preview .scenario__slide-card-header,
+.ui.card.scenario__slide-card-preview .scenario__slide-card-header-preview {
+  flex-grow: 0 !important;
+}
+
+.ui.card.scenario__slide-card .scenario__slide-card-content {
+  overflow-y: scroll;
+  height: calc(100vh - 180px) !important;
+}
+
+.ui.card.scenario__slide-card .scenario__slide-card-content-preview {
   overflow-y: scroll;
   height: calc(100vh - 120px) !important;
 }
 
-.ui.card.scenario__slide-column-card-hidden {
+.ui.card.scenario__slide-card-hidden {
   visibility: hidden;
 }
 
@@ -31,13 +63,13 @@
   padding: 5% 40% 2% 40%;
 }
 
-.ui.card.scenario__slide-column-card .scenario__card--button {
+.ui.card.scenario__slide-card .scenario__card--button {
   position: absolute;
   bottom: 0;
   padding: 10% 40%;
 }
 
-.scenario__slide-preview-pane {
+.scenario__slide-preview-viewport {
   overflow-y: scroll;
   overflow-x: hidden;
   height: calc(100vh - 167px) !important;
@@ -47,18 +79,18 @@
   -webkit-box-shadow: 0 0 0 0 !important;
 }
 
-.scenario__slide-preview-selected {
+.scenario__slide-card-preview-selected > .scenario__slide-card-preview {
   border: 1px solid gold !important;
 }
 
 @media only screen and (max-width: 767px) {
-  /*.ui.centered.card.scenario__slide-column-card {}*/
+  /*.ui.centered.card.scenario__slide-card {}*/
 
   .scenario__slide-column {
     padding-top: 0 !important;
   }
 
-  .scenario__slide-column>.ui.card.scenario__slide-column-card {
+  .scenario__slide-column>.ui.card.scenario__slide-card {
     box-shadow: unset !important;
     min-height: calc(100vh - 80px);
     margin-left: 0em !important;

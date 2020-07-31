@@ -49,61 +49,52 @@ class FinishSlide extends React.Component {
 
   render() {
     const { onCancel, onConfirm } = this;
-    const { cohortId, slide } = this.props;
+    const { cohortId, scenarioId, slide } = this.props;
     const { isConfirmBoxOpen } = this.state;
     const components = (slide && slide.components) || [{ html: '' }];
-    const className = `scenario__slide-column-card${
+    const className = `scenario__slide-card${
       isConfirmBoxOpen ? '-hidden' : ''
     }`;
 
-    const extra = (
-      <Card.Content>
-        {this.isCohortScenarioRun ? (
-          <NavLink to={`/cohort/${cohortId}`}>Return to cohort</NavLink>
-        ) : (
-          <NavLink to="/scenarios/">Return to scenarios</NavLink>
-        )}
-      </Card.Content>
+    const scenarioCardContentClass = this.isScenarioRun
+      ? 'scenario__slide-card-content'
+      : 'scenario__slide-card-content-preview';
+
+    const returnToX = this.isCohortScenarioRun ? (
+      <Button primary to={`/cohort/${cohortId}`} as={NavLink}>
+        Return to cohort
+      </Button>
+    ) : (
+      <Button primary to="/scenarios" as={NavLink}>
+        Return to scenarios
+      </Button>
+    );
+
+    const rerunThisUrl = this.isCohortScenarioRun
+      ? `/cohort/${cohortId}/run/${scenarioId}/slide/0`
+      : `/run/${scenarioId}/slide/0`;
+
+    const rerunThisX = (
+      <Button onClick={() => (location.href = rerunThisUrl)}>
+        Rerun this scenario
+      </Button>
     );
 
     const ariaLabel = `Ready to finish this scenario? If you're ready to finish, click "I'm done!"`;
 
     return (
       <React.Fragment>
-        <Modal.Accessible open={isConfirmBoxOpen}>
-          <Modal
-            role="dialog"
-            size="tiny"
-            aria-modal="true"
-            open={isConfirmBoxOpen}
-          >
-            <Header aria-label={ariaLabel}>
-              <Icon.Group className="em__icon-group-margin">
-                <Icon name="newspaper outline" />
-                <Icon corner="top right" name="check circle" color="orange" />
-              </Icon.Group>
-
-              <Header.Content>Ready to finish this scenario?</Header.Content>
-            </Header>
-            <Modal.Content>
-              If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
-            </Modal.Content>
-            <Modal.Actions>
-              <Button.Group fluid>
-                <Button color="green" onClick={onConfirm}>
-                  I&apos;m done!
-                </Button>
-                <Button.Or />
-                <Button color="grey" onClick={onCancel}>
-                  Go back
-                </Button>
-              </Button.Group>
-            </Modal.Actions>
-          </Modal>
-        </Modal.Accessible>
         <Card centered className={className}>
-          {extra}
-          <Card.Content>
+          <Card.Content className="scenario__slide-card-header">
+            <Card.Header>
+              <Button.Group fluid>
+                {returnToX}
+                <Button.Or />
+                {rerunThisX}
+              </Button.Group>
+            </Card.Header>
+          </Card.Content>
+          <Card.Content tabIndex="0" className={scenarioCardContentClass}>
             {components &&
               components.map(({ html: __html }, index) => (
                 <p
@@ -115,6 +106,39 @@ class FinishSlide extends React.Component {
               ))}
           </Card.Content>
         </Card>
+        {isConfirmBoxOpen ? (
+          <Modal.Accessible open={isConfirmBoxOpen}>
+            <Modal
+              role="dialog"
+              size="tiny"
+              aria-modal="true"
+              open={isConfirmBoxOpen}
+            >
+              <Header aria-label={ariaLabel}>
+                <Icon.Group className="em__icon-group-margin">
+                  <Icon name="newspaper outline" />
+                  <Icon corner="top right" name="check circle" color="orange" />
+                </Icon.Group>
+
+                <Header.Content>Ready to finish this scenario?</Header.Content>
+              </Header>
+              <Modal.Content>
+                If you&apos;re ready to finish, click &quot;I&apos;m done!&quot;
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button color="green" onClick={onConfirm}>
+                    I&apos;m done!
+                  </Button>
+                  <Button.Or />
+                  <Button color="grey" onClick={onCancel}>
+                    Go back
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
       </React.Fragment>
     );
   }

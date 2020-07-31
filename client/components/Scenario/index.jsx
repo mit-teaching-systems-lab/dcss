@@ -306,7 +306,7 @@ class Scenario extends Component {
     const { activeRunSlideIndex, isReady, slides } = this.state;
     // This assignement only exists to keep modes separate below.
     const activeSlideIndex = activeRunSlideIndex;
-    const classes = 'ui centered card scenario__slide-column-card';
+    const classes = 'ui centered card scenario__slide-card';
 
     const loadingProps = {
       card: { cols: 1, rows: 1 },
@@ -341,12 +341,12 @@ class Scenario extends Component {
         </Grid.Column>
       </Grid>
     ) : (
-      <Segment className="scenario__slide-preview-pane">
+      <Segment className="scenario__slide-preview-viewport">
         {slides.map((slide, index) => {
           const isActiveSlide = activeSlideIndex === index;
           const className = isActiveSlide
-            ? `${classes} scenario__slide-preview-selected`
-            : classes;
+            ? 'scenario__slide-preview scenario__slide-card-preview-selected'
+            : 'scenario__slide-preview';
 
           return index === 0 || index === slides.length - 1 ? (
             slide

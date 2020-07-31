@@ -95,7 +95,10 @@ class EntrySlide extends React.Component {
     const { run, scenario } = this.props;
     const { isReady, permissions, showPermissionConfirmation } = this.state;
     const { title, description, consent } = scenario;
-    const className = run ? 'scenario__slide-column-card' : 'scenario__card';
+    const cardClass = this.isScenarioRun
+      ? 'scenario__slide-card'
+      : 'scenario__slide-card-preview';
+
     const __html = consent.prose;
     const isConsentAgreementAcknowledged =
       run && run.consent_acknowledged_by_user;
@@ -213,26 +216,12 @@ class EntrySlide extends React.Component {
             __html
           }}
         />
-
-        {!isConsentAgreementAcknowledged ? (
-          <Button.Group fluid>
-            <Button onClick={this.onClick} positive>
-              Yes, I consent
-            </Button>
-            <Button.Or />
-            <Button onClick={this.onClick} negative>
-              No, I do not consent
-            </Button>
-          </Button.Group>
-        ) : (
-          postConsentAcknowledgement
-        )}
       </div>
     );
 
     return (
-      <Card id="entry" key="entry" centered className={className}>
-        <Card.Content style={{ flexGrow: '0' }}>
+      <Card id="entry" key="entry" centered className={cardClass}>
+        <Card.Content className="scenario__slide-card-header">
           <Card.Header tabIndex="0">{title}</Card.Header>
         </Card.Content>
         <Card.Content>
@@ -258,6 +247,21 @@ class EntrySlide extends React.Component {
               content={consentAgreement}
             />
           ) : null}
+        </Card.Content>
+        <Card.Content extra>
+          {!isConsentAgreementAcknowledged ? (
+            <Button.Group fluid>
+              <Button onClick={this.onClick} positive>
+                Yes, I consent
+              </Button>
+              <Button.Or />
+              <Button onClick={this.onClick} negative>
+                No, I do not consent
+              </Button>
+            </Button.Group>
+          ) : (
+            postConsentAcknowledgement
+          )}
         </Card.Content>
       </Card>
     );
