@@ -442,7 +442,7 @@ class MultiPathResponseEditor extends React.Component {
                           style={{ transform: 'rotate(90deg)' }}
                         />
                       </Icon.Group>
-                      View slides graph
+                      View slides sequence graph
                     </Menu.Item.Tabbable>
                     <Menu.Item.Tabbable icon onClick={onPathAddClick}>
                       <Icon.Group

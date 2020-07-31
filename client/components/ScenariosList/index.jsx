@@ -285,7 +285,11 @@ class ScenariosList extends Component {
     }
 
     const defaultRowCount = 2;
-    const { itemsPerRow, itemsPerPage, rowsPerPage } = Layout.computeItemsRowsPerPage({
+    const {
+      itemsPerRow,
+      itemsPerPage,
+      rowsPerPage
+    } = Layout.computeItemsRowsPerPage({
       itemsColWidth: Layout.isForMobile() ? 320 : 320,
       itemsRowHeight: Layout.isForMobile() ? 250 : 293,
       itemsPerRow: 4,
@@ -429,9 +433,7 @@ class ScenariosList extends Component {
                     this.timeout = setTimeout(() => this.forceUpdate(), 100);
                   }}
                 >
-                  {!isReady ? (
-                    <Loading {...loadingProps} />
-                  ) : cardGroup}
+                  {!isReady ? <Loading {...loadingProps} /> : cardGroup}
                 </Responsive>
               </Grid.Column>
             </Grid.Row>
