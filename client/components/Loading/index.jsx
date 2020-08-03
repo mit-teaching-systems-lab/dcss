@@ -80,7 +80,7 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
             style={cardStyle}
           >
             <Card.Content className="loading__content" style={cardContentStyle}>
-              <Placeholder>
+              <Placeholder className="fluid">
                 <Placeholder.Image square />
               </Placeholder>
             </Card.Content>

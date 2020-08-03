@@ -3,13 +3,15 @@
   height: calc(100vh - 60px) !important;
 }
 
-
 .loading__content {
   padding: 0em !important;
   overflow: hidden !important;
+  height: 100% !important;
 }
 
-
+.loading__content .ui.placeholder.fluid {
+  height: 100% !important;
+}
 
 @media only screen and (max-width: 767.98px) {
   .ui.cards>.card.loading__multi-card {
