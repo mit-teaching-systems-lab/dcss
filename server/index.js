@@ -15,6 +15,7 @@ const scenariosRouter = require('./service/scenarios');
 const statusRouter = require('./service/status');
 const tagsRouter = require('./service/tags');
 
+const { logRequestAndResponse } = require('./service/log/middleware');
 const { getDbConfig } = require('./util/dbConfig');
 const { errorHandler } = require('./util/api');
 
@@ -38,6 +39,8 @@ app.use(
     cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
   })
 );
+
+app.use(logRequestAndResponse);
 
 app.use('/auth', authRouter);
 app.use('/cohort', cohortRouter);

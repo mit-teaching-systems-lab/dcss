@@ -23,13 +23,17 @@ export const getUsers = () => async dispatch => {
  */
 export const getUsersByPermission = permission => async () => {
   try {
-    const authors = await (await fetch('/api/roles/user/permission', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ permission })
-    })).json();
+    // PREVIOUSLY:
+    // const authors = await (await fetch('/api/roles/user/permission', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify({ permission })
+    // })).json();
+    const authors = await (await fetch(
+      `/api/roles/user/permission/${permission}`
+    )).json();
     return authors;
   } catch (error) {
     return error;

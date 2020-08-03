@@ -19,7 +19,13 @@ router.get('/all', [
 ]);
 
 router.get('/permission', [getUserPermissions]);
-router.post('/user/permission', [
+// PREVIOUSLY:
+// ("/user/permission/" was handled by POST:)
+// router.post('/user/permission', [
+//   requireUserRole(['admin', 'super_admin', 'facilitator']),
+//   getUsersByPermission
+// ]);
+router.get('/user/permission/:permission', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
   getUsersByPermission
 ]);
