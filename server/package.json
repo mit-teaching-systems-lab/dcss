@@ -37,6 +37,7 @@
     "file-type": "^14.6.2",
     "ibm-watson": "^5.2.0",
     "multer": "^1.4.2",
+    "object-hash": "^2.0.3",
     "pg": "^7.12.1",
     "s3-proxy": "^1.2.1",
     "url-parse": "^1.4.7",

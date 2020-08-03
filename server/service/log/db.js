@@ -1,5 +1,5 @@
-const { sql, updateQuery } = require('../../util/sqlHelpers');
-const { withClient, withClientTransaction } = require('../../util/db');
+const { sql } = require('../../util/sqlHelpers');
+const { withClientTransaction } = require('../../util/db');
 
 exports.addCapturedRequestAndResponse = async capture => {
   return await withClientTransaction(async client => {

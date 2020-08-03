@@ -39,15 +39,12 @@ exports.logRequestAndResponse = asyncMiddleware(async (req, res, next) => {
   // Don't log this if it looks identical to the last request.
   // Sometimes similar requests are made by different components.
   if (lastRequest[lastRequestKey] && lastRequest[lastRequestKey][hashed]) {
-    console.log('SKIPPING DUPLICATE');
     return next();
   }
 
-  if (!lastRequest[lastRequestKey]) {
-    lastRequest[lastRequestKey] = {};
-  }
-
-  lastRequest[lastRequestKey][hashed] = true;
+  lastRequest[lastRequestKey] = {
+    [hashed]: true
+  };
 
   const capture = {
     request
