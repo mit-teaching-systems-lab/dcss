@@ -427,6 +427,7 @@ export class CohortScenarios extends React.Component {
                               {Layout.isForMobile() ? null : (
                                 <Fragment>
                                   <Popup
+                                    inverted
                                     size="tiny"
                                     content="Copy cohort scenario link to clipboard"
                                     trigger={
@@ -441,6 +442,7 @@ export class CohortScenarios extends React.Component {
                                     }
                                   />
                                   <Popup
+                                    inverted
                                     size="tiny"
                                     content="Run this cohort scenario as a participant"
                                     trigger={
@@ -460,6 +462,7 @@ export class CohortScenarios extends React.Component {
                                     isAuthorized={isFacilitator}
                                   >
                                     <Popup
+                                      inverted
                                       content="View cohort reponses to prompts in this scenario"
                                       trigger={
                                         <Button
@@ -477,6 +480,7 @@ export class CohortScenarios extends React.Component {
                                 </Fragment>
                               )}
                               <Popup
+                                inverted
                                 size="tiny"
                                 content="Move scenario up"
                                 trigger={
@@ -491,6 +495,7 @@ export class CohortScenarios extends React.Component {
                                 }
                               />
                               <Popup
+                                inverted
                                 size="tiny"
                                 content="Move scenario down"
                                 trigger={

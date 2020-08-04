@@ -53,7 +53,7 @@ class ConfirmableDeleteButton extends Component {
     );
     return (
       <Fragment>
-        <Popup size="small" content={ariaLabel} trigger={trigger} />
+        <Popup inverted size="tiny" content={ariaLabel} trigger={trigger} />
         <Modal role="dialog" aria-modal="true" size="small" open={open}>
           <Header
             icon="trash alternate outline"

@@ -60,6 +60,7 @@ export class DataTableMenu extends Component {
       <Menu borderless icon>
         <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
           <Popup
+            inverted
             size="tiny"
             content="Close this data table tab"
             trigger={menuItemClose}
@@ -67,12 +68,14 @@ export class DataTableMenu extends Component {
         </ConfirmAuth>
         {shouldShowRefresh ? (
           <Popup
+            inverted
             size="tiny"
             content="Refresh this data"
             trigger={menuItemRefresh}
           />
         ) : null}
         <Popup
+          inverted
           size="tiny"
           content="Download a csv file containing these responses"
           trigger={menuItemDownload}

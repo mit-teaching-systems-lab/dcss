@@ -405,11 +405,13 @@ class ScenarioEditor extends Component {
                 <Grid.Column className={leftColumnClassName} width={8}>
                   {editorMenu}
                   <Popup
+                    inverted
                     content="Enter a title for your scenario. This will appear on the scenario 'entry' slide."
                     trigger={formInputTitle}
                     {...popupProps}
                   />
                   <Popup
+                    inverted
                     content="Enter a description for your scenario. This will appear on the scenario 'entry' slide."
                     trigger={textAreaDescription}
                     {...popupProps}

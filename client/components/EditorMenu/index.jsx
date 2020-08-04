@@ -49,7 +49,8 @@ export default class EditorMenu extends React.Component {
               .map((item, index) => {
                 return item.props.name ? (
                   <Popup
-                    size="small"
+                    inverted
+                    size="tiny"
                     key={index}
                     content={item.props.name}
                     trigger={item}
@@ -62,7 +63,8 @@ export default class EditorMenu extends React.Component {
         )}
         {items.save && (
           <Popup
-            size="small"
+            inverted
+            size="tiny"
             content={`Save this ${type}`}
             trigger={
               <Menu.Item.Tabbable
@@ -93,7 +95,8 @@ export default class EditorMenu extends React.Component {
               .map((item, index) => {
                 return item.props.name ? (
                   <Popup
-                    size="small"
+                    inverted
+                    size="tiny"
                     key={index}
                     content={item.props.name}
                     trigger={item}

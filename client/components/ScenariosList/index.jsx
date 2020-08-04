@@ -376,12 +376,14 @@ class ScenariosList extends Component {
     const right = [
       <Menu.Menu key="menu-item-scenario-search" position="right">
         <Popup
-          size="small"
+          inverted
+          size="tiny"
           content="Copy the url to these scenarios"
           trigger={menuItemScenarioLinkCopyRight}
         />
         <Popup
-          size="small"
+          inverted
+          size="tiny"
           content="Search scenarios"
           trigger={menuItemScenarioSearch}
         />

@@ -10,7 +10,7 @@ const PromptRequiredLabel = ({ fulfilled }) => {
     ? 'This required prompt has been fulfilled.'
     : 'This prompt requires a response.';
   const position = 'top right';
-  const size = 'small';
+  const size = 'tiny';
   const trigger = <Icon className="prl__icon-margin" name={name} />;
   return (
     <Label
@@ -20,6 +20,7 @@ const PromptRequiredLabel = ({ fulfilled }) => {
       floating
     >
       <Popup
+        inverted
         pinned
         content={content}
         position={position}

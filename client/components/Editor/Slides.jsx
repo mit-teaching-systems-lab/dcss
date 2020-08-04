@@ -339,7 +339,8 @@ class Slides extends React.Component {
                 <Grid.Row>
                   <Menu icon borderless className="em__height">
                     <Popup
-                      size="small"
+                      inverted
+                      size="tiny"
                       content="Add a slide"
                       trigger={
                         <Menu.Item.Tabbable
@@ -361,7 +362,8 @@ class Slides extends React.Component {
                         position="right"
                       >
                         <Popup
-                          size="small"
+                          inverted
+                          size="tiny"
                           content="View slides sequence graph"
                           trigger={
                             <Menu.Item.Tabbable
@@ -376,7 +378,8 @@ class Slides extends React.Component {
                           }
                         />
                         <Popup
-                          size="small"
+                          inverted
+                          size="tiny"
                           content={minMaxText}
                           trigger={
                             <Menu.Item.Tabbable

@@ -40,7 +40,8 @@ class ConfirmableLogout extends Component {
             <Container style={{ textAlign: 'center' }}>
               <p>You are currently logged in as: </p>
               <Popup
-                size="small"
+                inverted
+                size="tiny"
                 content="Copy user name to clipboard"
                 trigger={
                   <Button

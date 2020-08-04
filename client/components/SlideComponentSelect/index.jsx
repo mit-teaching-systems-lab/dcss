@@ -31,6 +31,7 @@ const ComponentItems = ({ onComponentItemClick }) => {
     );
     return (
       <Popup
+        inverted
         pinned
         position="left center"
         key={Identity.key(item)}
