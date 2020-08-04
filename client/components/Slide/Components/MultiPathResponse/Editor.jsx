@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import escapeRegExp from 'lodash.escaperegexp';
 import Identity from '@utils/Identity';
 import {
   Container,
@@ -56,6 +57,7 @@ class MultiPathResponseEditor extends React.Component {
     this.onPathDeleteClick = this.onPathDeleteClick.bind(this);
     this.onPathDetailChange = this.onPathDetailChange.bind(this);
     this.onPathOrderChange = this.onPathOrderChange.bind(this);
+    this.onPathSearchChange = this.onPathSearchChange.bind(this);
 
     this.onChange = this.onChange.bind(this);
     this.onRecallChange = this.onRecallChange.bind(this);
@@ -184,6 +186,13 @@ class MultiPathResponseEditor extends React.Component {
     this.setState({ paths }, this.delayedUpdateState);
   }
 
+  onPathSearchChange(options, query) {
+    const re = new RegExp(escapeRegExp(query));
+    return options.filter(
+      (option, index) => re.test(option.text) || String(index + 1) === query
+    );
+  }
+
   moveButton(fromIndex, toIndex) {
     const { paths } = this.state;
     const moving = paths[fromIndex];
@@ -238,6 +247,7 @@ class MultiPathResponseEditor extends React.Component {
       onPathDeleteClick,
       onPathDetailChange,
       onPathOrderChange,
+      onPathSearchChange,
       onRecallChange,
       onChange,
       onViewGraphClick,
@@ -384,9 +394,9 @@ class MultiPathResponseEditor extends React.Component {
                     </Table.Cell>
                     <Table.Cell>
                       <Input
+                        fluid
                         name="display"
                         autoComplete="off"
-                        fluid
                         index={index}
                         value={display}
                         onBlur={onBlurOrFocus}
@@ -398,15 +408,16 @@ class MultiPathResponseEditor extends React.Component {
                     </Table.Cell>
                     <Table.Cell>
                       <Dropdown
-                        name="value"
                         closeOnChange
                         fluid
                         selection
+                        name="value"
                         index={index}
                         defaultValue={defaultValue}
                         onBlur={onBlurOrFocus}
                         onFocus={onBlurOrFocus}
                         onChange={onPathDetailChange}
+                        search={onPathSearchChange}
                         options={options}
                         key={`path-node-${pathKey}`}
                       />
