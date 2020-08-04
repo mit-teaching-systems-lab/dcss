@@ -74,7 +74,7 @@ class Display extends Component {
 
   render() {
     const { paths, prompt, recallId, responseId, run } = this.props;
-    const { value: previousValue } = this.state;
+    // const { value: previousValue } = this.state;
     const { onClick } = this;
     return paths && paths.length ? (
       <Segment>
