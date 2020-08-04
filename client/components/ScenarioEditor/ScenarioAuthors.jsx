@@ -258,7 +258,11 @@ class ScenarioAuthors extends Component {
             <a href={`mailto:${candidate.email}`}>{candidate.email}</a>
           ) : null}
         </Table.Cell>,
-        <Table.Cell className="users__col-medium" textAlign="right" key={`${key}-3`}>
+        <Table.Cell
+          className="users__col-medium"
+          textAlign="right"
+          key={`${key}-3`}
+        >
           {!candidate.is_owner ? (
             <Dropdown
               direction="left"

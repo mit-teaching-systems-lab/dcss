@@ -88,8 +88,8 @@ class Display extends Component {
         <List>
           {paths.map((path, index) => {
             const { display, value } = path;
-            const selectedIcon =
-              previousValue === value ? { icon: 'checkmark' } : {};
+            // const selectedIcon =
+            // previousValue === value ? { icon: 'checkmark' } : {};
             const key = Identity.key({ path, index });
             return (
               <List.Item key={`list-item-${key}`}>
