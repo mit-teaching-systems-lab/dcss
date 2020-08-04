@@ -6,30 +6,35 @@
   width: 50%;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap !important;
 }
 
 .users__col-xlarge {
   width: 40%;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap !important;
 }
 
 .users__col-large {
   /*width: 30%;*/
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap !important;
 }
 
 .users__col-medium {
   width: 20%;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap !important;
 }
 
 .users__col-small {
   width: 10%;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap !important;
 }
 
 
@@ -81,11 +86,9 @@
     content: "\f447";
   }
 
-
   .researcher:before {
     content: "\f501";
   }
-
 
   .facilitator:before {
     content: "\f51c";

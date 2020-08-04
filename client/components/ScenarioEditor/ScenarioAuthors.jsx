@@ -250,15 +250,15 @@ class ScenarioAuthors extends Component {
       const key = Identity.key(candidate);
 
       accum[candidate.id] = [
-        <Table.Cell key={`${key}-1`}>
+        <Table.Cell className="users__col-xlarge" key={`${key}-1`}>
           <Username {...candidate} />
         </Table.Cell>,
-        <Table.Cell key={`${key}-2`}>
+        <Table.Cell className="users__col-xlarge" key={`${key}-2`}>
           {candidate.email ? (
             <a href={`mailto:${candidate.email}`}>{candidate.email}</a>
           ) : null}
         </Table.Cell>,
-        <Table.Cell textAlign="right" key={`${key}-3`}>
+        <Table.Cell className="users__col-medium" textAlign="right" key={`${key}-3`}>
           {!candidate.is_owner ? (
             <Dropdown
               direction="left"

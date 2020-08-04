@@ -143,7 +143,7 @@ class CreateAccount extends Component {
 
   render() {
     const { email, confirmPassword, error, password, username } = this.state;
-    const { onChange, onCancel, onSubmit, validFormInput } = this;
+    const { onChange, onCancel, onSubmit } = this;
     const messageProps = {
       hidden: true,
       color: 'red'
@@ -178,7 +178,6 @@ class CreateAccount extends Component {
                   name="username"
                   autoComplete="off"
                   onChange={onChange}
-                  onBlur={validFormInput}
                   value={username}
                   {...(error && error.field === 'username'
                     ? { error: true }
@@ -203,7 +202,6 @@ class CreateAccount extends Component {
                   type="password"
                   autoComplete="new-password"
                   onChange={onChange}
-                  onBlur={validFormInput}
                   value={password}
                   {...(error && error.field === 'password'
                     ? { error: true }
@@ -218,7 +216,6 @@ class CreateAccount extends Component {
                   type="password"
                   autoComplete="new-password"
                   onChange={onChange}
-                  onBlur={validFormInput}
                   value={confirmPassword}
                   {...(error && error.field === 'confirmPassword'
                     ? { error: true }

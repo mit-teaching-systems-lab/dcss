@@ -126,9 +126,9 @@ class Login extends Component {
                 <label htmlFor="username">Username</label>
                 <Form.Input
                   aria-description="user name"
+                  autoComplete="username"
                   id="username"
                   name="username"
-                  autoComplete="username"
                   onChange={onChange}
                   value={username}
                 />
@@ -137,10 +137,10 @@ class Login extends Component {
                 <label htmlFor="password">Password</label>
                 <Form.Input
                   aria-description="password"
+                  autoComplete="current-password"
                   id="password"
                   name="password"
                   type="password"
-                  autoComplete="current-password"
                   onChange={onChange}
                   value={password}
                 />
@@ -154,9 +154,9 @@ class Login extends Component {
                   <Button.Group fluid>
                     <Button
                       primary
+                      size="large"
                       type="submit"
                       onClick={onSubmit}
-                      size="large"
                     >
                       Log in
                     </Button>
