@@ -258,7 +258,7 @@ class ContentSlide extends React.Component {
     };
 
     let fwdButtonTip = hasPrompt
-      ? 'Submit and go to next slide'
+      ? 'Submit and continue'
       : 'Go to the next slide';
 
     let skipButtonTip =
@@ -321,9 +321,10 @@ class ContentSlide extends React.Component {
           <Card.Content extra>
             <Popup
               size="small"
-              content="Go back to the previous slide"
+              content="Go to the previous slide"
               trigger={
                 <Button
+                  aria-label="Go to the previous slide"
                   color="grey"
                   content="Previous"
                   floated="left"
