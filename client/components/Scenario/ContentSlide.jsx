@@ -227,7 +227,7 @@ class ContentSlide extends React.Component {
     const hasPrompt = slide.components.some(hasValidPrompt);
     const hasOwnNavigation = slide.components.some(hasValidNavigationOverrider);
 
-    const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next slide';
+    const proceedButtonLabel = hasPrompt ? 'Submit' : 'Next';
     const submitNextOrFinish = isLastSlide ? 'Finish' : proceedButtonLabel;
 
     const awaitingRequiredPrompts = (
@@ -263,8 +263,8 @@ class ContentSlide extends React.Component {
 
     let skipButtonTip =
       skipOrKeep === 'skip'
-        ? 'Skip these prompts and go to next slide'
-        : 'Keep these responses and go to next slide';
+        ? 'Skip these prompts and continue'
+        : 'Keep these responses and continue';
 
     let requiredReponses = ` (${pending.length} required response${
       pending.length > 1 ? 's are' : ' is'
@@ -324,10 +324,10 @@ class ContentSlide extends React.Component {
               content="Go back to the previous slide"
               trigger={
                 <Button
-                  floated="left"
                   color="grey"
+                  content="Previous"
+                  floated="left"
                   onClick={onBackClick}
-                  content={'Previous slide'}
                 />
               }
             />
