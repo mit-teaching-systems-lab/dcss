@@ -100,7 +100,6 @@ class Display extends Component {
                   name={responseId}
                   value={value}
                   onClick={onClick}
-                  {...selectedIcon}
                 />
               </List.Item>
             );
