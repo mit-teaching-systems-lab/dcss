@@ -222,7 +222,8 @@ class History extends Component {
                   : 'This run is not complete';
 
                 const createdAtWithPopup = (
-                  <Popup inverted
+                  <Popup
+                    inverted
                     size="tiny"
                     content={createdAtAlt}
                     trigger={createdAt}
@@ -230,7 +231,12 @@ class History extends Component {
                 );
 
                 const endedAtWithPopup = (
-                  <Popup inverted size="tiny" content={endedAtAlt} trigger={endedAt} />
+                  <Popup
+                    inverted
+                    size="tiny"
+                    content={endedAtAlt}
+                    trigger={endedAt}
+                  />
                 );
 
                 const pathname = cohort_id
@@ -275,7 +281,8 @@ class History extends Component {
 
                 return (
                   <Table.Row {...completeOrIncomplete} key={run_id}>
-                    <Popup inverted
+                    <Popup
+                      inverted
                       size="tiny"
                       content={popupContent}
                       trigger={viewDataIcon}

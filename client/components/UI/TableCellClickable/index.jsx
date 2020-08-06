@@ -29,7 +29,11 @@ const ClickableTableCell = props => {
     </Table.Cell>
   );
 
-  return popup ? <Popup inverted size="tiny" content={popup} trigger={cell} /> : cell;
+  return popup ? (
+    <Popup inverted size="tiny" content={popup} trigger={cell} />
+  ) : (
+    cell
+  );
 };
 
 ClickableTableCell.propTypes = {
