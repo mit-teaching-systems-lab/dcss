@@ -188,11 +188,11 @@ class ScenarioAuthors extends Component {
     const candidatesSlice = candidates.slice(index, index + ROWS_PER_PAGE);
     const columns = {
       username: {
-        className: 'users__col-xlarge',
+        className: 'users__col-large',
         content: 'User'
       },
       email: {
-        className: 'users__col-xlarge',
+        className: 'users__col-large',
         content: 'Email'
       },
       role: {
@@ -250,16 +250,16 @@ class ScenarioAuthors extends Component {
       const key = Identity.key(candidate);
 
       accum[candidate.id] = [
-        <Table.Cell className="users__col-xlarge" key={`${key}-1`}>
+        <Table.Cell className="users__col-large" key={`${key}-1`}>
           <Username {...candidate} />
         </Table.Cell>,
-        <Table.Cell className="users__col-xlarge" key={`${key}-2`}>
+        <Table.Cell className="users__col-large" key={`${key}-2`}>
           {candidate.email ? (
             <a href={`mailto:${candidate.email}`}>{candidate.email}</a>
           ) : null}
         </Table.Cell>,
         <Table.Cell
-          className="users__col-medium"
+          className="users__col-medium-overflow-visible"
           textAlign="right"
           key={`${key}-3`}
         >

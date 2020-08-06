@@ -30,6 +30,10 @@
   white-space: nowrap !important;
 }
 
+.users__col-medium-overflow-visible {
+  width: 20%;
+}
+
 .users__col-small {
   width: 10%;
   overflow: hidden;
