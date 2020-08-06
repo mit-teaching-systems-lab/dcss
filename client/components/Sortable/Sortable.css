@@ -7,12 +7,13 @@ Previously, this file defined:
 .sortable__draggable-outer-container {}
 
 .sortable__draggable-outer-container > div {
-    margin-bottom: 0.5em!important;
+  margin-bottom: 0.5em!important;
 }
 
 .sortable__selected {
-    border: 0px;
-    box-shadow: 0 1px 3px 0 gold, 0 0 0 1px gold !important;
+  border: 0px;
+  box-shadow: 0 1px 3px 0 gold, 0 0 0 1px gold !important;
+  /*background-color: rgb(255, 215, 0, 0.15) !important;*/
 }
 
 .draggable {
