@@ -11,6 +11,25 @@ exports.getScenarioSlides = async scenarioId => {
   return results.rows;
 };
 
+// exports.getCollaboratorSlides = async user_id => {
+//   const results = await query(sql`
+//     SELECT id, title, components, is_finish
+//     FROM slide
+//     WHERE scenario_id IN (
+//       SELECT scenario.id AS scenario_id
+//       FROM scenario
+//       JOIN scenario_user_role ON scenario_user_role.scenario_id = scenario.id
+//       WHERE deleted_at IS NULL
+//       AND scenario_user_role.user_id = ${user_id}
+//       AND scenario_user_role.role IN ('owner', 'author')
+//     )
+//     AND is_finish IS FALSE
+//     ORDER BY "order";
+//   `);
+//   return results.rows;
+// };
+
+
 exports.addSlide = async ({
   scenario_id,
   title,
