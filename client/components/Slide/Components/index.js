@@ -8,7 +8,7 @@ import * as ResponseRecall from './ResponseRecall';
 export { ResponseRecall };
 
 import * as AudioPrompt from './AudioPrompt';
-export { AudioPrompt };
+export { AudioPrompt, AudioPrompt as AudioResponse };
 
 import * as ConversationPrompt from './ConversationPrompt';
 export { ConversationPrompt };

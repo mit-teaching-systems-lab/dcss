@@ -123,7 +123,7 @@ AudioPromptEditor.propTypes = {
     recallId: PropTypes.string,
     required: PropTypes.bool,
     responseId: PropTypes.string,
-    type: PropTypes.oneOf([type])
+    type: PropTypes.oneOf([type, 'AudioResponse'])
   })
 };
 

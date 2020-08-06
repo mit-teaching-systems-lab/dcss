@@ -152,7 +152,7 @@ Display.propTypes = {
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  type: PropTypes.oneOf([type]).isRequired
+  type: PropTypes.oneOf([type, 'AudioResponse'])
 };
 
 const mapStateToProps = state => {
