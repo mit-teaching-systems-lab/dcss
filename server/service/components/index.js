@@ -3,7 +3,7 @@ const components = new Router();
 const {
   getComponents,
   getComponentsByUserId,
-  getComponentsByScenarioId,
+  getComponentsByScenarioId
 } = require('./endpoints');
 
 components.get('/', getComponents);

@@ -18,4 +18,6 @@ async function getComponentsByScenarioIdAsync(req, res) {
 
 exports.getComponents = asyncMiddleware(getComponentsAsync);
 exports.getComponentsByUserId = asyncMiddleware(getComponentsByUserIdAsync);
-exports.getComponentsByScenarioId = asyncMiddleware(getComponentsByScenarioIdAsync);
+exports.getComponentsByScenarioId = asyncMiddleware(
+  getComponentsByScenarioIdAsync
+);

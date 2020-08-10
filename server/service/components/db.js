@@ -20,7 +20,7 @@ exports.getComponentsByUserId = async user_id => {
     ORDER BY "order"
   `);
 
-  return results.rows.reduce((accum, {scenario_id, components}) => {
+  return results.rows.reduce((accum, { scenario_id, components }) => {
     return accum.concat(
       components.reduce((accum, component) => {
         if (omitThese.includes(component.type)) {
@@ -43,7 +43,7 @@ exports.getComponentsByScenarioId = async scenario_id => {
     ORDER BY "order"
   `);
 
-  return results.rows.reduce((accum, {scenario_id, components}) => {
+  return results.rows.reduce((accum, { scenario_id, components }) => {
     return accum.concat(
       components.reduce((accum, component) => {
         if (omitThese.includes(component.type)) {
@@ -55,4 +55,3 @@ exports.getComponentsByScenarioId = async scenario_id => {
     );
   }, []);
 };
-

@@ -407,6 +407,7 @@ class Editor extends Component {
     }
 
     const { scenario, scenarioUser, user, usersById } = this.props;
+    const isNotNew = scenarioId !== 'new';
 
     const menuItemScenarioStatus = scenario.status !== undefined && (
       <ScenarioStatusMenuItem
@@ -418,29 +419,27 @@ class Editor extends Component {
       />
     );
 
-    const menuItemScenarioCopy =
-      scenarioId !== 'new' ? (
-        <Menu.Item.Tabbable
-          key="menu-item-scenario-run"
-          name="Copy this scenario"
-          onClick={() => this.copyScenario(scenario.id)}
-        >
-          <Icon name="copy outline" />
-        </Menu.Item.Tabbable>
-      ) : null;
+    const menuItemScenarioCopy = isNotNew ? (
+      <Menu.Item.Tabbable
+        key="menu-item-scenario-run"
+        name="Copy this scenario"
+        onClick={() => this.copyScenario(scenario.id)}
+      >
+        <Icon name="copy outline" />
+      </Menu.Item.Tabbable>
+    ) : null;
 
-    const menuItemScenarioRun =
-      scenarioId !== 'new' ? (
-        <Menu.Item.Tabbable
-          key="menu-item-scenario-run"
-          name="Run this scenario"
-          onClick={() => {
-            this.props.history.push(`/run/${scenarioId}/slide/0`);
-          }}
-        >
-          <Icon name="play" />
-        </Menu.Item.Tabbable>
-      ) : null;
+    const menuItemScenarioRun = isNotNew ? (
+      <Menu.Item.Tabbable
+        key="menu-item-scenario-run"
+        name="Run this scenario"
+        onClick={() => {
+          this.props.history.push(`/run/${scenarioId}/slide/0`);
+        }}
+      >
+        <Icon name="play" />
+      </Menu.Item.Tabbable>
+    ) : null;
 
     // const scenarioLockIcon = scenario.lock ? (
     //   <Icon name="unlock" />
@@ -448,18 +447,17 @@ class Editor extends Component {
     //   <Icon name="lock" />
     // );
 
-    const menuItemScenarioUnlock =
-      scenarioId !== 'new' ? (
-        <Menu.Item.Tabbable
-          key="menu-item-scenario-unlock"
-          name="Unlock this scenario"
-          onClick={() => {
-            this.props.endScenarioLock(this.props.scenario.id);
-          }}
-        >
-          <Icon name="unlock" />
-        </Menu.Item.Tabbable>
-      ) : null;
+    const menuItemScenarioUnlock = isNotNew ? (
+      <Menu.Item.Tabbable
+        key="menu-item-scenario-unlock"
+        name="Unlock this scenario"
+        onClick={() => {
+          this.props.endScenarioLock(this.props.scenario.id);
+        }}
+      >
+        <Icon name="unlock" />
+      </Menu.Item.Tabbable>
+    ) : null;
 
     const menuItemsForAttachedTabularBar = Object.keys(this.state.tabs).map(
       tabType => {
@@ -476,7 +474,7 @@ class Editor extends Component {
 
     let modal = null;
 
-    if (scenarioId !== 'new') {
+    if (isNotNew) {
       const modalProps = {
         open: false
       };
@@ -562,8 +560,7 @@ class Editor extends Component {
     ];
 
     const isNotReviewer = scenarioUser && !scenarioUser.is_reviewer;
-    const canDisplayEditorMenu =
-      scenarioId !== 'new' && (isNotReviewer || user.is_super);
+    const canDisplayEditorMenu = isNotNew && (isNotReviewer || user.is_super);
 
     const pageTitle = `Editing "${scenario.title}"`;
 
