@@ -1,6 +1,8 @@
 import cloneDeep from 'lodash.clonedeep';
 import {
   // GET_SCENARIO,
+  COPY_SCENARIO_SUCCESS,
+  COPY_SCENARIO_ERROR,
   DELETE_SCENARIO_SUCCESS,
   DELETE_SCENARIO_ERROR,
   GET_SCENARIO_SUCCESS,
@@ -26,22 +28,6 @@ import {
 
 import { initialScenarioState } from '@reducers/scenario';
 
-export const getScenarios = () => async dispatch => {
-  try {
-    const res = await (await fetch('/api/scenarios')).json();
-    if (res.error) {
-      throw res;
-    }
-    const { scenarios } = res;
-
-    dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
-    return scenarios;
-  } catch (error) {
-    dispatch({ type: GET_SCENARIOS_ERROR, error });
-    return null;
-  }
-};
-
 export const getScenario = (id, options) => async dispatch => {
   let url = `/api/scenarios/${id}`;
 
@@ -62,10 +48,27 @@ export const getScenario = (id, options) => async dispatch => {
       throw res;
     }
     const { scenario } = res;
+
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return scenario;
   } catch (error) {
     dispatch({ type: GET_SCENARIO_ERROR, error });
+    return null;
+  }
+};
+
+export const getScenarios = () => async dispatch => {
+  try {
+    const res = await (await fetch('/api/scenarios')).json();
+    if (res.error) {
+      throw res;
+    }
+    const { scenarios } = res;
+
+    dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+    return scenarios;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIOS_ERROR, error });
     return null;
   }
 };
@@ -80,7 +83,6 @@ export const getSlides = id => async dispatch => {
     const { slides } = res;
 
     dispatch({ type: GET_SLIDES_SUCCESS, slides });
-
     return slides;
   } catch (error) {
     dispatch({ type: GET_SLIDES_ERROR, error });
@@ -123,6 +125,30 @@ export const setSlides = slides => ({
   type: SET_SLIDES,
   slides
 });
+
+export const copyScenario = scenario_id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/scenarios/${scenario_id}/copy`, {
+      method: 'POST'
+    })).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    if (res.status !== 201) {
+      return null;
+    }
+
+    const { scenario } = res;
+
+    dispatch({ type: COPY_SCENARIO_SUCCESS, scenario });
+    return scenario;
+  } catch (error) {
+    dispatch({ type: COPY_SCENARIO_ERROR, error });
+    return null;
+  }
+};
 
 export const deleteScenario = scenario_id => async dispatch => {
   try {
@@ -211,6 +237,7 @@ export const addScenarioUserRole = (
     )).json();
 
     const { scenario } = result;
+
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return result;
   } catch (error) {
@@ -240,7 +267,9 @@ export const endScenarioUserRole = (
         body
       }
     )).json();
+
     const { scenario } = result;
+
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return result;
   } catch (error) {

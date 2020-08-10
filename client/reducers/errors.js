@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import {
+  COPY_SCENARIO_ERROR,
   DELETE_SCENARIO_ERROR,
   UNLOCK_SCENARIO_ERROR,
   GET_ALL_COHORTS_ERROR,
@@ -83,6 +84,7 @@ const cohortlink = (state = null, action) => {
 const scenario = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
+    case COPY_SCENARIO_ERROR:
     case DELETE_SCENARIO_ERROR:
     case UNLOCK_SCENARIO_ERROR:
     case GET_SCENARIO_ERROR:

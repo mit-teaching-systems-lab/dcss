@@ -24,6 +24,7 @@ import { makeDefaultDescription } from './scenario';
 import Slides from './Slides';
 import Identity from '@utils/Identity';
 import {
+  copyScenario,
   deleteScenario,
   getScenario,
   setScenario,
@@ -192,28 +193,23 @@ class Editor extends Component {
     }
   }
 
-  // TODO: Move to own async action
-  async copyScenario(scenarioId) {
-    if (!scenarioId) return;
+  async copyScenario(id) {
+    if (!id) {
+      return;
+    }
 
-    const { scenario, status } = await (await fetch(
-      `/api/scenarios/${scenarioId}/copy`,
-      {
-        method: 'POST'
-      }
-    )).json();
+    const scenario = await this.props.copyScenario(id);
 
-    if (status !== 201) {
+    if (!scenario) {
       notify({ type: 'error', message: 'Error saving copy.' });
       return;
     }
 
-    // Hard refresh to clear all previous state from the editor.
-    // TODO: determine if this can be handled by pushing to history
+    // Hard redirect to clear all previous state from the editor.
+    // DO NOT USE this.props.history.push(...)
     location.href = `/editor/${scenario.id}`;
   }
 
-  // TODO: Move to own async action
   async deleteScenario(scenario) {
     await this.props.deleteScenario(scenario.id);
     this.props.history.push('/scenarios/');
@@ -638,6 +634,7 @@ Editor.propTypes = {
   isCopyScenario: PropTypes.bool,
   isNewScenario: PropTypes.bool,
   endScenarioLock: PropTypes.func.isRequired,
+  copyScenario: PropTypes.func.isRequired,
   deleteScenario: PropTypes.func.isRequired,
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
@@ -663,6 +660,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   endScenarioLock: id => dispatch(endScenarioLock(id)),
+  copyScenario: id => dispatch(copyScenario(id)),
   deleteScenario: id => dispatch(deleteScenario(id)),
   getScenario: (id, options = {}) => dispatch(getScenario(id, options)),
   setScenario: params => dispatch(setScenario(params)),
