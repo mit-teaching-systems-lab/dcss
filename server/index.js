@@ -9,14 +9,15 @@ const authRouter = require('./service/auth');
 const componentsRouter = require('./service/components');
 const cohortRouter = require('./service/cohort');
 const historyRouter = require('./service/history');
+const logsRouter = require('./service/logs');
+const mediaRouter = require('./service/media');
 const rolesRouter = require('./service/roles');
 const runsRouter = require('./service/runs');
-const mediaRouter = require('./service/media');
 const scenariosRouter = require('./service/scenarios');
 const statusRouter = require('./service/status');
 const tagsRouter = require('./service/tags');
 
-const { logRequestAndResponse } = require('./service/log/middleware');
+const { logRequestAndResponse } = require('./service/logs/middleware');
 const { getDbConfig } = require('./util/dbConfig');
 const { errorHandler } = require('./util/api');
 
@@ -47,6 +48,7 @@ app.use('/auth', authRouter);
 app.use('/components', componentsRouter);
 app.use('/cohort', cohortRouter);
 app.use('/history', historyRouter);
+app.use('/logs', logsRouter);
 app.use('/media', mediaRouter);
 app.use('/roles', rolesRouter);
 app.use('/runs', runsRouter);

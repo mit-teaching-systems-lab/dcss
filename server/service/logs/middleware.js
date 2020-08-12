@@ -27,10 +27,13 @@ exports.logRequestAndResponse = asyncMiddleware(async (req, res, next) => {
     body
   };
 
-  const lastRequestKey = hash(session.user);
-  const hashed = hash({
+  const {
+    user
+  } = session;
+
+  const lastRequestKey = hash({
     url,
-    user: session.user,
+    user,
     query,
     params,
     body
@@ -38,13 +41,11 @@ exports.logRequestAndResponse = asyncMiddleware(async (req, res, next) => {
 
   // Don't log this if it looks identical to the last request.
   // Sometimes similar requests are made by different components.
-  if (lastRequest[lastRequestKey] && lastRequest[lastRequestKey][hashed]) {
+  if (lastRequest[lastRequestKey]) {
     return next();
   }
 
-  lastRequest[lastRequestKey] = {
-    [hashed]: true
-  };
+  lastRequest[lastRequestKey] = true;
 
   const capture = {
     request
@@ -53,7 +54,7 @@ exports.logRequestAndResponse = asyncMiddleware(async (req, res, next) => {
   const send = res.send.bind(res);
 
   res.send = (...args) => {
-    capture.response = args;
+    capture.response = args[0];
     // This is an async function, however it does not need to be awaited here.
     addCapturedRequestAndResponse(capture);
 

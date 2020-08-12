@@ -97,7 +97,7 @@ const mapStateToProps = (state, ownProps) => {
     ownProps.id === user.id ? user : usersById[ownProps.id] || { roles: [] };
 
   const mergedUser = Object.assign({}, ownProps, stateUser);
-  const roles = ownProps.roles.concat(stateUser.roles);
+  const roles = (ownProps.roles || []).concat(stateUser.roles);
 
   return {
     ...mergedUser,

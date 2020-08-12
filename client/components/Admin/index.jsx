@@ -7,7 +7,10 @@ import { Menu, Segment, Title } from '@components/UI';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import Users from './Users';
+import Activity from './Activity';
 import './Admin.css';
+
+const IS_LOCAL_DEV = location.href.includes('localhost');
 
 class Admin extends Component {
   constructor(props) {
@@ -19,9 +22,11 @@ class Admin extends Component {
       isReady: false,
       activeTab,
       tabs: {
+        activity: this.getTab('activity'),
         users: this.getTab('users')
       }
     };
+
     this.onClick = this.onClick.bind(this);
     this.getTab = this.getTab.bind(this);
   }
@@ -46,6 +51,8 @@ class Admin extends Component {
     switch (name) {
       case 'users':
         return <Users {...this.props} />;
+      case 'activity':
+        return <Activity {...this.props} />;
       default:
         return null;
     }
@@ -56,7 +63,7 @@ class Admin extends Component {
     const { onClick } = this;
     return isReady ? (
       <div>
-        <Title content="User Access Control" />
+        <Title content="Administration" />
         <Menu attached="top" tabular>
           <Menu.Item.Tabbable
             content="Access Control"
@@ -64,6 +71,14 @@ class Admin extends Component {
             active={activeTab === 'users'}
             onClick={onClick}
           />
+          {IS_LOCAL_DEV ? (
+            <Menu.Item.Tabbable
+              content="Activity Viewer"
+              name="activity"
+              active={activeTab === 'activity'}
+              onClick={onClick}
+            />
+          ) : null}
         </Menu>
         <Segment attached="bottom" className="facilitator__content-pane">
           {this.state.tabs[this.state.activeTab]}

@@ -4,6 +4,7 @@ import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
 import { history } from './history';
 import login from './login';
+import { logs, logsById } from './logs';
 import { response, responses, responsesById } from './response';
 import { run, runs, runsById } from './run';
 import { scenario } from './scenario';
@@ -19,6 +20,8 @@ export default combineReducers({
   errors,
   history,
   login,
+  logs,
+  logsById,
   response,
   responses,
   responsesById,
