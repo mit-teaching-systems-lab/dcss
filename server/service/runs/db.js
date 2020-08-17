@@ -95,7 +95,7 @@ exports.getRunResponses = async ({ run_id }) => {
             response_id,
             run_response.response,
             run_response.response->>'value' as value,
-            audio_transcript.transcript as transcript,
+            audio_transcripts.transcript as transcript,
             CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
                 ELSE TRUE
             END as is_skip,
@@ -107,7 +107,7 @@ exports.getRunResponses = async ({ run_id }) => {
         JOIN run ON run.id = run_response.run_id
         JOIN users ON users.id = run.user_id
         JOIN scenario ON scenario.id = run.scenario_id
-        LEFT JOIN audio_transcript ON audio_transcript.key = run_response.response->>'value'
+        LEFT JOIN audio_transcripts ON audio_transcripts.key = run_response.response->>'value'
         WHERE run_response.run_id = ${run_id}
         ORDER BY run_response.id ASC
     `);
@@ -148,15 +148,13 @@ exports.getResponseTranscript = async ({ run_id, response_id, user_id }) => {
 
 exports.getTranscriptionOutcome = async ({ run_id, response_id, user_id }) => {
   const likable = `%audio/${run_id}/${response_id}/${user_id}/%`;
-  const results = await query(sql`
+  const result = await query(sql`
     SELECT response, transcript
-    FROM audio_transcript
+    FROM audio_transcripts
     WHERE key ILIKE ${likable}
-    AND replaced_at IS NULL
-    ORDER BY created_at DESC
-    LIMIT 1
   `);
-  return results.rows[0];
+
+  return result.rows[0];
 };
 
 exports.finishRun = async function(id) {

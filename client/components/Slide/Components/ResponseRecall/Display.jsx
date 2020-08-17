@@ -58,7 +58,9 @@ class Display extends Component {
     });
 
     if (response && response.type.startsWith('Audio')) {
-      this.pollForNewResponse();
+      // This may no longer be necessary, now that we're
+      // creating the transcripts and awaiting their completion.
+      // this.pollForNewResponse();
     }
   }
 
