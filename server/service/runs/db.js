@@ -127,22 +127,23 @@ exports.getResponses = async ({ run_id, user_id }) => {
 };
 
 exports.getResponseTranscript = async ({ run_id, response_id, user_id }) => {
-  const result = await query(sql`
-    SELECT transcript
-    FROM audio_transcript
-    JOIN (
-      SELECT response->>'value' as audio_key
-      FROM run_response
-      WHERE response_id = ${response_id}
-      AND run_id = ${run_id}
-      AND user_id = ${user_id}
-      ORDER BY created_at DESC
-      LIMIT 1
-    ) AS audio_keys ON audio_keys.audio_key = audio_transcript.key
-    WHERE replaced_at IS NULL
-  `);
+  // const result = await query(sql`
+  //   SELECT transcript
+  //   FROM audio_transcript
+  //   JOIN (
+  //     SELECT response->>'value' as audio_key
+  //     FROM run_response
+  //     WHERE response_id = ${response_id}
+  //     AND run_id = ${run_id}
+  //     AND user_id = ${user_id}
+  //     ORDER BY created_at DESC
+  //     LIMIT 1
+  //   ) AS audio_keys ON audio_keys.audio_key = audio_transcript.key
+  //   WHERE replaced_at IS NULL
+  // `);
+  // return result.rows[0];
 
-  return result.rows[0];
+  return exports.getTranscriptionOutcome({ run_id, response_id, user_id });
 };
 
 exports.getTranscriptionOutcome = async ({ run_id, response_id, user_id }) => {
