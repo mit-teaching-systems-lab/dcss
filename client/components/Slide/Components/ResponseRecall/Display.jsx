@@ -8,6 +8,10 @@ import Transcript from '../AudioPrompt/Transcript';
 import { connect } from 'react-redux';
 import { getResponse } from '@actions/response';
 import '../AudioPrompt/AudioPrompt.css';
+import {
+  AUDIO_PLAYBACK_MANUAL_PAUSE,
+  AUDIO_PLAYBACK_MANUAL_PLAY
+} from '@hoc/withRunEventCapturing';
 
 class Display extends Component {
   constructor(props) {
@@ -165,9 +169,32 @@ class Display extends Component {
     // will not be an mp3 file path.
     if (Object.prototype.hasOwnProperty.call(response, 'transcript')) {
       const { transcript } = response;
+      const src = rvalue;
+      const audioSrc = src ? { src } : {};
+      const eventContext = {
+        ...audioSrc,
+        recallId: this.props.recallId
+      };
+
+      const onPlayOrPause = event => {
+        const which =
+          event.type === 'play'
+            ? AUDIO_PLAYBACK_MANUAL_PLAY
+            : AUDIO_PLAYBACK_MANUAL_PAUSE;
+
+        this.props.saveRunEvent(which, eventContext);
+      };
+
+      const audioProps = {
+        controlsList: 'nodownload',
+        controls: true,
+        onPlay: onPlayOrPause,
+        onPause: onPlayOrPause,
+        ...audioSrc
+      };
       content = (
         <Fragment>
-          <AudioPlayer src={rvalue} />
+          <AudioPlayer {...audioProps} />
           <Transcript responseId={recallId} run={run} transcript={transcript} />
         </Fragment>
       );
@@ -215,6 +242,7 @@ Display.propTypes = {
   // from being mis-indentified as a "Response" component.
   recallId: PropTypes.string,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
   type: PropTypes.oneOf([type])
 };

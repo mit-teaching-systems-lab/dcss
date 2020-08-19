@@ -2,13 +2,7 @@ const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
 
 async function getLogsAsync(req, res) {
-  const {
-    begin,
-    end,
-    offset,
-    limit,
-    direction
-  } = req.params;
+  const { begin, end, offset, limit, direction } = req.params;
   const queryBy = req.url.includes('range/date') ? 'date' : 'count';
 
   let min, max;

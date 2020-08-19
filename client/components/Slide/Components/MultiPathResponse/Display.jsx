@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Button, Header, List, Segment } from '@components/UI';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { getResponse } from '@actions/response';
+import { BUTTON_PRESS } from '@hoc/withRunEventCapturing';
 
 class Display extends Component {
   constructor(props) {
@@ -57,6 +58,13 @@ class Display extends Component {
 
     const { created_at } = this;
     const { onResponseChange, recallId } = this.props;
+
+    this.props.saveRunEvent(BUTTON_PRESS, {
+      prompt: this.props.prompt,
+      responseId: this.props.responseId,
+      content,
+      value
+    });
 
     onResponseChange(event, {
       hasOwnNavigation: true,
@@ -131,6 +139,7 @@ Display.propTypes = {
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
   type: PropTypes.oneOf([type]).isRequired
 };

@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Popup, Table } from 'semantic-ui-react';
-import { detect } from 'detect-browser';
-
-const IS_ANDROID = detect()
-  .os.toLowerCase()
-  .includes('android');
+import { IS_ANDROID } from '@utils/constants';
 
 const ClickableTableCell = props => {
   const { children, content, href, popup, ...rest } = props;

@@ -166,6 +166,12 @@ class Navigation extends Component {
       </Menu.Item.Tabbable>
     );
 
+    // const menuItemBugReport = (
+    //   <Menu.Item.Tabbable to="https://form.asana.com?hash=7d5e154fd719cf063ef8f8bccaa40556c49b0f4c89157730ef86b701d374f265&id=1189279338202577" as={NavLink}>
+    //     <Icon name="bug" />
+    //   </Menu.Item.Tabbable>
+    // );
+
     const menuItemGoTo = (
       <Menu.Item.Tabbable role="option" aria-label="Go to...">
         Go to...

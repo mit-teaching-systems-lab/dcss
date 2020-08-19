@@ -128,6 +128,7 @@ class Display extends Component {
           prompt={prompt}
           responseId={responseId}
           run={run}
+          saveRunEvent={this.props.saveRunEvent}
           transcript={transcript}
           value={value}
         />
@@ -152,6 +153,7 @@ Display.propTypes = {
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   type: PropTypes.oneOf([type, 'AudioResponse'])
 };
 

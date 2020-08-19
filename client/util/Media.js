@@ -1,8 +1,4 @@
-import { detect } from 'detect-browser';
-
-export const IS_AUDIO_RECORDING_SUPPORTED = ['chrome', 'firefox'].includes(
-  detect().name
-);
+export * from './constants';
 
 export function secToTime(duration) {
   let seconds = parseInt(duration % 60);
@@ -47,12 +43,23 @@ export function isAudioPrompt(component) {
   );
 }
 
-export function fileToMediaURL(file) {
-  return file.startsWith('blob:') ? file : `/api/media/${file}`;
+const seen = {};
+
+export function fileToMediaURL(input) {
+  if (seen[input]) {
+    return seen[input];
+  }
+
+  const isBlob = input.startsWith('blob:');
+  const other = !input.startsWith('/api/media/')
+    ? `/api/media/${input}`
+    : input;
+
+  seen[input] = isBlob ? input : other;
+  return seen[input];
 }
 
 export default {
-  IS_AUDIO_RECORDING_SUPPORTED,
   fileToMediaURL,
   secToTime,
   timeToSec,

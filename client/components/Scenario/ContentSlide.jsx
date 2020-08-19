@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Card, Icon, Popup } from '@components/UI';
-import Storage from '@utils/Storage';
-import SlideComponents from '@components/SlideComponents';
 import { getResponse } from '@actions/response';
+import SlideComponents from '@components/SlideComponents';
+import { Button, Card, Icon, Popup } from '@components/UI';
+import { POINTER_SELECT, SLIDE_ARRIVAL } from '@hoc/withRunEventCapturing';
+import Storage from '@utils/Storage';
 
 const hasValidNavigationOverrider = component => {
   return component.disableDefaultNavigation && component.paths.length;
@@ -71,6 +72,8 @@ class ContentSlide extends React.Component {
       skipOrKeep: 'skip'
     };
 
+    this.previousSelection = '';
+    this.onPointerUp = this.onPointerUp.bind(this);
     this.onSkip = this.onSkip.bind(this);
     this.onInterceptResponseChange = this.onInterceptResponseChange.bind(this);
   }
@@ -91,6 +94,7 @@ class ContentSlide extends React.Component {
       getResponse,
       responsesById,
       run: { id },
+      slide,
       slide: { components }
     } = this.props;
 
@@ -112,6 +116,22 @@ class ContentSlide extends React.Component {
 
     if (this.isScenarioRun) {
       window.scrollTo(0, 0);
+    }
+
+    this.props.saveRunEvent(SLIDE_ARRIVAL, { slide });
+  }
+
+  onPointerUp(/*event*/) {
+    if (this.isScenarioRun) {
+      const selection = (window.getSelection() || '').toString();
+      if (selection) {
+        if (selection !== this.previousSelection) {
+          this.props.saveRunEvent(POINTER_SELECT, { selection });
+        } else {
+          // This was a "deselect", so clear the previous selection
+          this.previousSelection = '';
+        }
+      }
     }
   }
 
@@ -213,9 +233,10 @@ class ContentSlide extends React.Component {
       onGotoClick,
       onNextClick,
       run,
+      saveRunEvent,
       slide
     } = this.props;
-    const { onInterceptResponseChange, onSkip } = this;
+    const { onInterceptResponseChange, onPointerUp, onSkip } = this;
 
     if (!isReady) {
       return null;
@@ -223,7 +244,8 @@ class ContentSlide extends React.Component {
     const cardClass = this.isScenarioRun
       ? 'scenario__slide-card'
       : 'scenario__slide-card-preview';
-    const runOnly = run ? { run } : {};
+
+    const slideComponentsProps = run ? { run, saveRunEvent } : {};
     const hasPrompt = slide.components.some(hasValidPrompt);
     const hasOwnNavigation = slide.components.some(hasValidNavigationOverrider);
 
@@ -300,7 +322,13 @@ class ContentSlide extends React.Component {
     }
 
     return (
-      <Card id={slide.id} key={slide.id} centered className={cardClass}>
+      <Card
+        centered
+        id={slide.id}
+        key={slide.id}
+        className={cardClass}
+        onPointerUp={onPointerUp}
+      >
         {slide.title ? (
           <Card.Content className="scenario__slide-card-header">
             <Card.Header tabIndex="0">{slide.title}</Card.Header>
@@ -312,7 +340,7 @@ class ContentSlide extends React.Component {
           key={`content${slide.id}`}
         >
           <SlideComponents
-            {...runOnly}
+            {...slideComponentsProps}
             components={slide.components}
             onResponseChange={onResponseChange}
           />
@@ -378,7 +406,8 @@ ContentSlide.propTypes = {
   onResponseChange: PropTypes.func,
   responsesById: PropTypes.object,
   run: PropTypes.object,
-  slide: PropTypes.object
+  slide: PropTypes.object,
+  saveRunEvent: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {

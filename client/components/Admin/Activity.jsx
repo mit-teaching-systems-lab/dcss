@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import JSONTree from 'react-json-tree';
-import Identity from '@utils/Identity';
+// import Identity from '@utils/Identity';
 import {
   Grid,
   Header,
@@ -13,8 +13,8 @@ import {
   List,
   Menu,
   Message,
-  Pagination,
-  Table
+  Pagination
+  // Table
 } from '@components/UI';
 
 import EditorMenu from '@components/EditorMenu';
@@ -23,13 +23,13 @@ import Username from '@components/User/Username';
 import { computeItemsRowsPerPage } from '@utils/Layout';
 import Moment from '@utils/Moment';
 import { getLogs } from '@actions/logs';
-import { SITE_ROLE_GROUPS } from './constants';
+// import { SITE_ROLE_GROUPS } from './constants';
 
-const { super_admin, admin, facilitator, researcher } = SITE_ROLE_GROUPS;
+// const { super_admin, admin, facilitator, researcher } = SITE_ROLE_GROUPS;
 
 const ActivityItem = props => {
-  console.log(props);
-  const { capture, created_at, id } = props;
+  // console.log(props);
+  const { capture, created_at /*, id */ } = props;
 
   const {
     request: {
@@ -39,7 +39,6 @@ const ActivityItem = props => {
     }
   } = capture;
 
-
   if (!user) {
     return null;
   }
@@ -47,11 +46,17 @@ const ActivityItem = props => {
   return (
     <List.Content>
       <List.Description>
-        {<Username {...user} />}{' '}made a <code>{method}</code> request to{' '}
+        {<Username {...user} />} made a <code>{method}</code> request to{' '}
         <code>{url}</code> {Moment(created_at).calendar()}
       </List.Description>
     </List.Content>
   );
+};
+
+ActivityItem.propTypes = {
+  capture: PropTypes.object,
+  created_at: PropTypes.string,
+  id: PropTypes.any
 };
 
 class Activity extends Component {
@@ -145,7 +150,7 @@ class Activity extends Component {
       onActivityRecordClick,
       onActivitySearchChange
     } = this;
-    const { user } = this.props;
+    // const { user } = this.props;
     const { isReady, activePage, id } = this.state;
 
     const defaultRowCount = 10;
@@ -168,13 +173,9 @@ class Activity extends Component {
 
     const json = id ? this.props.logsById[id] : null;
 
-    let request = json
-      ? json.capture.request
-      : null;
+    let request = json ? json.capture.request : null;
 
-    let response = json
-      ? json.capture.response
-      : null;
+    let response = json ? json.capture.response : null;
 
     if (Array.isArray(response)) {
       [response] = response;
@@ -221,28 +222,38 @@ class Activity extends Component {
             <Grid.Row>
               <Grid.Column width={4}>
                 <List selection divided relaxed>
-                  {logs.map(log => {
-                    return (
-                      <List.Item
-                        as="a"
-                        active={log.id === id}
-                        id={log.id}
-                        key={log.id}
-                        onClick={onActivityRecordClick}
-                      >
-                        <ActivityItem {...log} />
-                      </List.Item>
-                    );
-                  }).filter(Boolean)}
+                  {logs
+                    .map(log => {
+                      return (
+                        <List.Item
+                          as="a"
+                          active={log.id === id}
+                          id={log.id}
+                          key={log.id}
+                          onClick={onActivityRecordClick}
+                        >
+                          <ActivityItem {...log} />
+                        </List.Item>
+                      );
+                    })
+                    .filter(Boolean)}
                 </List>
               </Grid.Column>
               <Grid.Column width={12}>
                 {json ? (
                   <Fragment>
-                    <Header as='h3'>Request</Header>
-                    <JSONTree theme="monokai" data={request} invertTheme={true} />
-                    <Header as='h3'>Response</Header>
-                    <JSONTree theme="monokai" data={response} invertTheme={true} />
+                    <Header as="h3">Request</Header>
+                    <JSONTree
+                      theme="monokai"
+                      data={request}
+                      invertTheme={true}
+                    />
+                    <Header as="h3">Response</Header>
+                    <JSONTree
+                      theme="monokai"
+                      data={response}
+                      invertTheme={true}
+                    />
                   </Fragment>
                 ) : (
                   <Message
@@ -279,6 +290,7 @@ Activity.propTypes = {
   }).isRequired,
   user: PropTypes.object,
   logs: PropTypes.array,
+  logsById: PropTypes.object,
   getLogs: PropTypes.func
 };
 

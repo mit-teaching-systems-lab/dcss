@@ -13,6 +13,12 @@ import Loading from '@components/Loading';
 import Media from '@utils/Media';
 import Storage from '@utils/Storage';
 import { getSlides, getScenario, setScenario } from '@actions/scenario';
+import withRunEventCapturing, {
+  SCENARIO_START,
+  SLIDE_GOTO,
+  SLIDE_NEXT,
+  SLIDE_PREVIOUS
+} from '@hoc/withRunEventCapturing';
 import './Scenario.css';
 
 class Scenario extends Component {
@@ -92,16 +98,31 @@ class Scenario extends Component {
             event.stopPropagation();
           }
 
+          const formerRunSlideIndex = this.state.activeRunSlideIndex;
+
+          // Pop the last slide index from slide history, or get the
+          // active slide index, minus 1, and go there.
+          const activeRunSlideIndex =
+            this.slideHistory.pop() || this.state.activeRunSlideIndex - 1;
+          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
+
+          this.props.saveRunEvent(SLIDE_PREVIOUS, {
+            url: location.href,
+            timestamp: Date.now(),
+            from: {
+              pathname: location.pathname,
+              slide: this.slides[formerRunSlideIndex - 1]
+            },
+            to: {
+              pathname: pathToSlide,
+              slide: this.slides[activeRunSlideIndex - 1]
+            }
+          });
+
           (async () => {
             if (onSubmit) {
               await onSubmit();
             }
-
-            // Pop the last slide index from slide history, or get the
-            // active slide index, minus 1, and go there.
-            const activeRunSlideIndex =
-              this.slideHistory.pop() || this.state.activeRunSlideIndex - 1;
-            const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
             this.setState({ activeRunSlideIndex }, () => {
               if (location.pathname !== pathToSlide) {
@@ -121,27 +142,39 @@ class Scenario extends Component {
             return;
           }
 
+          const { slideHistory } = this;
+
+          // Set the former run slide to the value stored for the active run slide
+          const formerRunSlideIndex = this.state.activeRunSlideIndex;
+          slideHistory.push(formerRunSlideIndex);
+          Storage.merge(this.runKey, { slideHistory });
+
+          // Set the active run slide to the next slide index + 1
+          const nextSlideIndex = this.slides.findIndex(
+            slide => slide.id === nextSlideId
+          );
+
+          const activeRunSlideIndex = nextSlideIndex + 1;
+          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
+
+          this.props.saveRunEvent(SLIDE_GOTO, {
+            url: location.href,
+            timestamp: Date.now(),
+            from: {
+              pathname: location.pathname,
+              slide: this.slides[formerRunSlideIndex - 1]
+            },
+            to: {
+              pathname: pathToSlide,
+              slide: this.slides[activeRunSlideIndex - 1]
+            }
+          });
+
           (async () => {
             if (onSubmit) {
               await onSubmit();
             }
 
-            const { slideHistory } = this;
-
-            // Set the former run slide to the value stored for the active run slide
-            const formerRunSlideIndex = this.state.activeRunSlideIndex;
-
-            slideHistory.push(formerRunSlideIndex);
-
-            Storage.merge(this.runKey, { slideHistory });
-
-            // Set the active run slide to the next slide index + 1
-            const nextSlideIndex = this.slides.findIndex(
-              slide => slide.id === nextSlideId
-            );
-
-            const activeRunSlideIndex = nextSlideIndex + 1;
-            const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
             this.setState({ activeRunSlideIndex }, () => {
               if (location.pathname !== pathToSlide) {
                 history.push(pathToSlide);
@@ -150,21 +183,42 @@ class Scenario extends Component {
           })();
         };
       case 'next':
+      case 'start':
       case 'finish':
         return event => {
           if (!this.isScenarioRun) {
             event.stopPropagation();
           }
 
+          const formerRunSlideIndex = this.state.activeRunSlideIndex;
+          const activeRunSlideIndex = formerRunSlideIndex + 1;
+          const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
+          this.slideHistory.push(formerRunSlideIndex);
+
+          if (type === 'start') {
+            this.props.saveRunEvent(SCENARIO_START, {
+              scenario: this.props.scenario
+            });
+          } else {
+            this.props.saveRunEvent(SLIDE_NEXT, {
+              url: location.href,
+              timestamp: Date.now(),
+              from: {
+                pathname: location.pathname,
+                slide: this.slides[formerRunSlideIndex - 1]
+              },
+              to: {
+                pathname: pathToSlide,
+                slide: this.slides[activeRunSlideIndex - 1]
+              }
+            });
+          }
+
           (async () => {
             if (onSubmit) {
               await onSubmit();
             }
-            const formerRunSlideIndex = this.state.activeRunSlideIndex;
-            const activeRunSlideIndex = formerRunSlideIndex + 1;
-            const pathToSlide = `${baseurl}/slide/${activeRunSlideIndex}`;
 
-            this.slideHistory.push(formerRunSlideIndex);
             this.setState({ activeRunSlideIndex }, () => {
               if (location.pathname !== pathToSlide) {
                 history.push(pathToSlide);
@@ -200,6 +254,7 @@ class Scenario extends Component {
       getSlides,
       onResponseChange,
       onRunChange = () => {},
+      saveRunEvent,
       scenarioId
     } = this.props;
 
@@ -241,11 +296,12 @@ class Scenario extends Component {
       <EntrySlide
         key="entry-slide"
         cohortId={cohortId}
-        permissions={permissions}
-        scenarioId={scenarioId}
-        scenario={scenario}
         onChange={onRunChange}
-        onNextClick={this.getOnClickHandler('next')}
+        onNextClick={this.getOnClickHandler('start')}
+        permissions={permissions}
+        saveRunEvent={saveRunEvent}
+        scenario={scenario}
+        scenarioId={scenarioId}
       />
     ];
 
@@ -254,17 +310,18 @@ class Scenario extends Component {
       slides.push(
         <ContentSlide
           key={index}
-          slide={slide}
           cohortId={cohortId}
-          scenarioId={scenarioId}
           isLastSlide={isLastSlide}
-          onRequiredPromptChange={pending => {
-            this.hasRequiredPrompts = !!pending;
-          }}
           onBackClick={this.getOnClickHandler('back')}
           onGotoClick={this.getOnClickHandler('goto')}
           onNextClick={this.getOnClickHandler(isLastSlide ? 'finish' : 'next')}
+          onRequiredPromptChange={pending => {
+            this.hasRequiredPrompts = !!pending;
+          }}
           onResponseChange={onResponseChange}
+          saveRunEvent={saveRunEvent}
+          scenarioId={scenarioId}
+          slide={slide}
         />
       );
     });
@@ -273,11 +330,12 @@ class Scenario extends Component {
     slides.push(
       <FinishSlide
         key="finish-slide"
-        slide={finish}
         cohortId={cohortId}
-        scenarioId={scenarioId}
         onBackClick={this.getOnClickHandler('back')}
         onChange={onRunChange}
+        saveRunEvent={saveRunEvent}
+        scenarioId={scenarioId}
+        slide={finish}
       />
     );
 
@@ -401,6 +459,7 @@ Scenario.propTypes = {
   onRunChange: PropTypes.func,
   onSubmit: PropTypes.func,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
   scenarioId: PropTypes.node,
   setActiveSlide: PropTypes.func,
@@ -416,7 +475,7 @@ const mapStateToProps = (state, ownProps) => {
     state.scenariosById[ownProps.scenarioId] || state.scenario || {};
   const { title, description, consent } = scenario;
   const { run, user } = state;
-  return { title, description, consent, run, user };
+  return { title, description, consent, run, scenario, user };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -425,9 +484,11 @@ const mapDispatchToProps = dispatch => ({
   setScenario
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Scenario)
+export default withRunEventCapturing(
+  withRouter(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Scenario)
+  )
 );

@@ -6,6 +6,7 @@ import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { connect } from 'react-redux';
 import { getResponse } from '@actions/response';
+import { BUTTON_PRESS } from '@hoc/withRunEventCapturing';
 
 class Display extends React.Component {
   constructor(props) {
@@ -57,14 +58,23 @@ class Display extends React.Component {
     }
   }
 
-  onClick(event, { name, value }) {
+  onClick(event, { name, value, content }) {
     if (!this.isScenarioRun) {
       event.stopPropagation();
     }
 
     const { created_at } = this;
     const { onResponseChange, recallId } = this.props;
+
+    this.props.saveRunEvent(BUTTON_PRESS, {
+      prompt: this.props.prompt,
+      responseId: this.props.responseId,
+      content,
+      value
+    });
+
     onResponseChange(event, {
+      content,
       created_at,
       ended_at: new Date().toISOString(),
       name,
@@ -126,13 +136,14 @@ Display.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
   buttons: PropTypes.array,
   getResponse: PropTypes.func,
+  onResponseChange: PropTypes.func,
   persisted: PropTypes.object,
   prompt: PropTypes.string,
   recallId: PropTypes.string,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  onResponseChange: PropTypes.func,
+  saveRunEvent: PropTypes.func,
   type: PropTypes.oneOf([type]).isRequired
 };
 

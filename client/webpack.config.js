@@ -60,6 +60,7 @@ module.exports = {
       '@actions': path.resolve(__dirname, 'actions'),
       '@client': __dirname,
       '@components': path.resolve(__dirname, 'components'),
+      '@hoc': path.resolve(__dirname, 'hoc'),
       '@reducers': path.resolve(__dirname, 'reducers'),
       '@routes': path.resolve(__dirname, 'routes'),
       '@utils': path.resolve(__dirname, 'util'),

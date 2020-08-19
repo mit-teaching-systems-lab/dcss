@@ -70,6 +70,18 @@ exports.upsertResponse = async ({
   return result.rows[0];
 };
 
+exports.saveRunEvent = async (run_id, name, context) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      INSERT INTO run_event (run_id, name, context)
+      VALUES (${run_id}, ${name}, ${context})
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
 exports.getResponse = async ({ run_id, response_id, user_id }) => {
   const result = await query(sql`
         SELECT * FROM run_response

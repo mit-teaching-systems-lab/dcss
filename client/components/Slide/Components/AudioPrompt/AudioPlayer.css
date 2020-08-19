@@ -1,0 +1,9 @@
+.ap__container,
+.ap__progress-box {
+  width: 100%;
+}
+
+.ap__progress-bar {
+  margin: 0.6rem 0 0.6rem 0 !important;
+}
+

@@ -10,6 +10,7 @@ const {
   getReferrerParams,
   getRunData,
   newOrExistingRun,
+  saveRunEvent,
   revokeConsentForRun,
   updateRun,
   upsertResponse
@@ -22,6 +23,8 @@ runs.put('/new-or-existing/scenario/:scenario_id', [
   newOrExistingRun
 ]);
 runs.get('/', [requireUser, getRuns]);
+
+runs.put('/:run_id/event/:name', [requireUserForRun, saveRunEvent]);
 
 runs.put('/:run_id/finish', [requireUserForRun, finishRun]);
 

@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 import { Button, Card, Header, Message, Modal } from '@components/UI';
 import Identity from '@utils/Identity';
 import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
+import {
+  AUDIO_RECORD_PERMISSION_DENIED,
+  AUDIO_RECORD_PERMISSION_GRANTED,
+  SCENARIO_CONSENT_ARRIVAL,
+  SCENARIO_CONSENT_ACKNOWLEDGE,
+  SCENARIO_CONSENT_CONTINUE
+} from '@hoc/withRunEventCapturing';
 import './EntrySlide.css';
 
 class EntrySlide extends React.Component {
@@ -37,6 +44,7 @@ class EntrySlide extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.onContinueClick = this.onContinueClick.bind(this);
   }
 
   get isScenarioRun() {
@@ -44,17 +52,22 @@ class EntrySlide extends React.Component {
   }
 
   onClick(event, data) {
-    if (!this.props.run) {
+    if (!this.isScenarioRun) {
       alert('Consent cannot be granted in Preview');
       return null;
     }
     if (data.positive || data.negative) {
       const consent_acknowledged_by_user = true;
       const consent_granted_by_user = !data.negative;
-      this.props.onChange(event, {
+      const consent = {
         consent_acknowledged_by_user,
         consent_granted_by_user
+      };
+      this.props.saveRunEvent(SCENARIO_CONSENT_ACKNOWLEDGE, {
+        scenario: this.props.scenario,
+        consent
       });
+      this.props.onChange(event, consent);
     }
   }
 
@@ -91,6 +104,11 @@ class EntrySlide extends React.Component {
     this.setState({ permissionsRequestOpen: true });
   }
 
+  onContinueClick(scenario) {
+    this.props.saveRunEvent(SCENARIO_CONSENT_CONTINUE, { scenario });
+    this.props.onNextClick();
+  }
+
   render() {
     const { run, scenario } = this.props;
     const { isReady, permissions, showPermissionConfirmation } = this.state;
@@ -122,19 +140,30 @@ class EntrySlide extends React.Component {
     const continueThisScenario =
       isPermissionRequired && IS_AUDIO_RECORDING_SUPPORTED
         ? () => this.setState({ showPermissionConfirmation: true })
-        : this.props.onNextClick;
+        : () => this.onContinueClick(scenario);
 
     const onPermissionConfirmationClick = async (event, { name }) => {
       const { permissions } = this.state;
+      let hasGranted = false;
 
       if (name === 'yes') {
         const constraints = {
           audio: permissions.microphone === 'prompt'
         };
         const stream = await navigator.mediaDevices.getUserMedia(constraints);
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach(track => {
+          hasGranted = true;
+          track.stop();
+        });
       }
-      this.props.onNextClick();
+
+      const which = hasGranted
+        ? AUDIO_RECORD_PERMISSION_GRANTED
+        : AUDIO_RECORD_PERMISSION_DENIED;
+
+      this.props.saveRunEvent(which, { scenario });
+
+      this.onContinueClick(scenario);
     };
 
     const ariaLabelledby = Identity.id();
@@ -219,6 +248,13 @@ class EntrySlide extends React.Component {
       </div>
     );
 
+    // This is an initial arrival.
+    if (this.isScenarioRun && !run.updated_at) {
+      this.props.saveRunEvent(SCENARIO_CONSENT_ARRIVAL, {
+        scenario
+      });
+    }
+
     return (
       <Card id="entry" key="entry" centered className={cardClass}>
         <Card.Content className="scenario__slide-card-header">
@@ -273,6 +309,7 @@ EntrySlide.propTypes = {
   onNextClick: PropTypes.func,
   permissions: PropTypes.object,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   scenario: PropTypes.object
 };
 

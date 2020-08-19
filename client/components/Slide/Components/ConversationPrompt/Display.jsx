@@ -9,6 +9,10 @@ import AudioRecorder from '@components/Slide/Components/AudioPrompt/AudioRecorde
 import { getResponse } from '@actions/response';
 import '@components/Slide/Components/AudioPrompt/AudioPrompt.css';
 import './ConversationPrompt.css';
+import {
+  VIDEO_PLAYBACK_INSTANT_END,
+  VIDEO_PLAYBACK_INSTANT_START
+} from '@hoc/withRunEventCapturing';
 
 import Hls from 'hls.js';
 import Player from 'react-player';
@@ -159,10 +163,48 @@ class Display extends Component {
       this.player = player;
     };
 
+    const context = {
+      prompt,
+      responseId
+    };
+
+    const onEvent = (which, eventContext) => {
+      this.props.saveRunEvent(which, {
+        ...context,
+        ...eventContext
+      });
+    };
+
     const onEnded = () => {
+      onEvent(VIDEO_PLAYBACK_INSTANT_END, {});
       this.setState({ autostart: true, playing: false });
       this.player.seekTo(configuration.start);
     };
+
+    const onStart = () => {
+      onEvent(VIDEO_PLAYBACK_INSTANT_START, {});
+    };
+
+    /*
+
+    TODO: figure out how to differentiate "user clicked play/pause" from "program play/pause"
+    let isPaused = false;
+    const onPause = (event) => {
+      if (!isPaused) {
+        isPaused = true;
+        onEvent(VIDEO_PLAYBACK_INSTANT_INTERRUPTION_PAUSE, {});
+      }
+    };
+
+    const onPlay = (event) => {
+      if (isPaused) {
+        isPaused = false;
+        onEvent(VIDEO_PLAYBACK_INSTANT_INTERRUPTION_PLAY, {});
+      }
+    };
+    onPause,
+    onPlay,
+    */
 
     //
     //
@@ -190,7 +232,7 @@ class Display extends Component {
       light,
       height,
       onEnded,
-      // onProgress,
+      onStart,
       playing,
       ref,
       width,
@@ -217,6 +259,7 @@ class Display extends Component {
               prompt={prompt}
               responseId={responseId}
               run={run}
+              saveRunEvent={this.props.saveRunEvent}
               transcript={transcript}
               value={value}
             />
@@ -244,6 +287,7 @@ Display.propTypes = {
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   type: PropTypes.oneOf([type]).isRequired,
   url: PropTypes.string
 };

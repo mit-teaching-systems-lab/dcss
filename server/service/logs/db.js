@@ -1,5 +1,5 @@
 const { sql } = require('../../util/sqlHelpers');
-const { query } = require('../../util/db');
+const { query, withClientTransaction } = require('../../util/db');
 const hash = require('object-hash');
 
 exports.getLogs = async (queryBy, min, max, direction) => {
@@ -32,24 +32,15 @@ exports.getLogs = async (queryBy, min, max, direction) => {
       return false;
     }
 
-    const {
-      url,
-      session,
-      headers,
-      method,
-      query,
-      params,
-      body
-    } = row.capture.request;
+    const { url, session, method, query, params, body } = row.capture.request;
 
-    const {
-      user
-    } = session;
+    const { user } = session;
 
     const key = hash({
       url,
       user,
       query,
+      method,
       params,
       body
     });
@@ -63,7 +54,6 @@ exports.getLogs = async (queryBy, min, max, direction) => {
     return true;
   });
 };
-
 
 exports.addCapturedRequestAndResponse = async capture => {
   return await withClientTransaction(async client => {

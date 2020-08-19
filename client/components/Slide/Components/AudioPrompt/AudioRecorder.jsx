@@ -4,10 +4,19 @@ import Identity from '@utils/Identity';
 import { connect } from 'react-redux';
 import { Button, Form, Grid, Icon, Ref } from '@components/UI';
 import MicRecorder from 'mic-recorder-to-mp3';
+import AudioPlayer from './AudioPlayer';
 import Transcript from './Transcript';
 import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import { getResponse } from '@actions/response';
 import './AudioPrompt.css';
+import {
+  AUDIO_PLAYBACK_MANUAL_PAUSE,
+  AUDIO_PLAYBACK_MANUAL_PLAY,
+  AUDIO_RECORD_INSTANT_START,
+  AUDIO_RECORD_INSTANT_STOP,
+  AUDIO_RECORD_MANUAL_START,
+  AUDIO_RECORD_MANUAL_STOP
+} from '@hoc/withRunEventCapturing';
 
 class AudioRecorder extends Component {
   constructor(props) {
@@ -77,6 +86,15 @@ class AudioRecorder extends Component {
     this.setState({ isRecording: true, transcript: '(Recording)' });
 
     (async () => {
+      const which = this.props.autostart
+        ? AUDIO_RECORD_INSTANT_START
+        : AUDIO_RECORD_MANUAL_START;
+
+      this.props.saveRunEvent(which, {
+        prompt: this.props.prompt,
+        responseId: this.props.responseId
+      });
+
       const stream = await this.recorder.start();
       this.created_at = new Date().toISOString();
 
@@ -130,6 +148,16 @@ class AudioRecorder extends Component {
           body
         }
       )).json();
+
+      const which = this.props.autostart
+        ? AUDIO_RECORD_INSTANT_STOP
+        : AUDIO_RECORD_MANUAL_STOP;
+
+      this.props.saveRunEvent(which, {
+        prompt: this.props.prompt,
+        responseId: this.props.responseId,
+        transcript
+      });
 
       this.setState(prevState => {
         if (prevState.blobURL) {
@@ -192,9 +220,33 @@ class AudioRecorder extends Component {
       : 'Click the microphone to start recording';
 
     const audioSrc = src ? { src } : {};
+    const eventContext = {
+      ...audioSrc,
+      prompt: this.props.prompt,
+      responseId: this.props.responseId
+    };
+
+    const onAudioPlayerPlayOrPause = event => {
+      // Since we use the AudioPlayer(audio) element
+      // as a "meter" during recording, calling "play"
+      // on the element will cause this event handler
+      // to be called. We don't want to save a "play start"
+      // event after "record start", but before "record stop".
+      if (!isRecording) {
+        const which =
+          event.type === 'play'
+            ? AUDIO_PLAYBACK_MANUAL_PLAY
+            : AUDIO_PLAYBACK_MANUAL_PAUSE;
+
+        this.props.saveRunEvent(which, eventContext);
+      }
+    };
+
     const audioProps = {
       controlsList: 'nodownload',
       controls: true,
+      onPlay: onAudioPlayerPlayOrPause,
+      onPause: onAudioPlayerPlayOrPause,
       ...audioSrc
     };
 
@@ -241,7 +293,7 @@ class AudioRecorder extends Component {
             </Grid.Column>
             <Grid.Column>
               <Ref innerRef={innerRef}>
-                <audio {...audioProps} />
+                <AudioPlayer {...audioProps} />
               </Ref>
             </Grid.Column>
           </Grid.Row>
@@ -276,13 +328,14 @@ AudioRecorder.defaultProps = {
 AudioRecorder.propTypes = {
   autostart: PropTypes.bool,
   getResponse: PropTypes.func,
+  instructions: PropTypes.string,
   isEmbeddedInSVG: PropTypes.bool,
   isRecording: PropTypes.bool,
   onChange: PropTypes.func,
   prompt: PropTypes.string,
   responseId: PropTypes.string,
   run: PropTypes.object,
-  instructions: PropTypes.string,
+  saveRunEvent: PropTypes.func,
   transcript: PropTypes.string,
   value: PropTypes.string
 };

@@ -17,6 +17,11 @@ exports.logRequestAndResponse = asyncMiddleware(async (req, res, next) => {
 
   const { url, session, headers, method, query, params, body } = req;
 
+  // Don't log run events
+  if (url.includes('/event/')) {
+    return next();
+  }
+
   const request = {
     url,
     session,
@@ -27,9 +32,7 @@ exports.logRequestAndResponse = asyncMiddleware(async (req, res, next) => {
     body
   };
 
-  const {
-    user
-  } = session;
+  const { user } = session;
 
   const lastRequestKey = hash({
     url,

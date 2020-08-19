@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Card, Header, Icon, Modal } from '@components/UI';
+import { SCENARIO_COMPLETE } from '@hoc/withRunEventCapturing';
 import './Scenario.css';
 
 class FinishSlide extends React.Component {
@@ -44,6 +46,10 @@ class FinishSlide extends React.Component {
     this.setState({ isConfirmBoxOpen: false });
     this.props.onChange(event, {
       ended_at: new Date().toISOString()
+    });
+
+    this.props.saveRunEvent(SCENARIO_COMPLETE, {
+      scenario: this.props.scenario
     });
   }
 
@@ -150,7 +156,15 @@ FinishSlide.propTypes = {
   back: PropTypes.string,
   onBackClick: PropTypes.func,
   onChange: PropTypes.func,
+  run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
+  scenario: PropTypes.object,
   slide: PropTypes.object
 };
 
-export default FinishSlide;
+const mapStateToProps = state => {
+  const { run } = state;
+  return { run };
+};
+
+export default connect(mapStateToProps)(FinishSlide);

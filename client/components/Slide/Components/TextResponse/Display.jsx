@@ -6,6 +6,11 @@ import PromptRequiredLabel from '../PromptRequiredLabel';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { connect } from 'react-redux';
 import { getResponse } from '@actions/response';
+import {
+  TEXT_INPUT_CHANGE,
+  TEXT_INPUT_ENTER,
+  TEXT_INPUT_EXIT
+} from '@hoc/withRunEventCapturing';
 
 import './TextResponse.css';
 
@@ -19,7 +24,9 @@ class Display extends Component {
       value: persisted.value
     };
 
+    this.defaultValue = persisted.value;
     this.created_at = '';
+    this.onBlur = this.onBlur.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onChange = this.onChange.bind(this);
   }
@@ -60,10 +67,30 @@ class Display extends Component {
     }
   }
 
+  onBlur() {
+    const { value } = this.state;
+
+    if (this.defaultValue !== value) {
+      this.props.saveRunEvent(TEXT_INPUT_CHANGE, {
+        value
+      });
+    }
+
+    this.props.saveRunEvent(TEXT_INPUT_EXIT, {
+      value
+    });
+
+    this.defaultValue = value;
+  }
+
   onFocus() {
     if (!this.created_at) {
       this.created_at = new Date().toISOString();
     }
+    const { value } = this.state;
+    this.props.saveRunEvent(TEXT_INPUT_ENTER, {
+      value
+    });
   }
 
   onChange(event, { name, value }) {
@@ -91,7 +118,7 @@ class Display extends Component {
       run
     } = this.props;
     const { value } = this.state;
-    const { onFocus, onChange } = this;
+    const { onBlur, onFocus, onChange } = this;
     const fulfilled = value ? true : false;
     const header = (
       <React.Fragment>
@@ -114,6 +141,7 @@ class Display extends Component {
               name={responseId}
               placeholder={placeholder}
               onFocus={onFocus}
+              onBlur={onBlur}
               onChange={onChange}
               defaultValue={value}
             />
@@ -139,6 +167,7 @@ Display.propTypes = {
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
   type: PropTypes.oneOf([type]).isRequired
 };
 

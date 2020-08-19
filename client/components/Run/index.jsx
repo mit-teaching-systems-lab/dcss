@@ -11,6 +11,10 @@ import { getUser } from '@actions/user';
 import { getResponse, setResponses } from '@actions/response';
 import { getRun, setRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
+import withRunEventCapturing, {
+  PROMPT_RESPONSE_SUBMITTED,
+  SCENARIO_ARRIVAL
+} from '@hoc/withRunEventCapturing';
 
 class Run extends Component {
   constructor(props) {
@@ -82,6 +86,10 @@ class Run extends Component {
       }
 
       this.setState({ isReady: true });
+
+      this.props.saveRunEvent(SCENARIO_ARRIVAL, {
+        scenario: this.props.scenario
+      });
     }
 
     window.addEventListener('beforeunload', this.submitIfPendingResponses);
@@ -119,7 +127,16 @@ class Run extends Component {
 
   async onSubmit() {
     if (this.props.run) {
-      await this.props.setResponses(this.props.run.id, [...this.responses]);
+      const responses = [...this.responses];
+      await this.props.setResponses(this.props.run.id, responses);
+
+      responses.forEach(([response_id, submission]) => {
+        this.props.saveRunEvent(PROMPT_RESPONSE_SUBMITTED, {
+          response_id,
+          submission
+        });
+      });
+
       this.responses.clear();
     }
   }
@@ -165,17 +182,13 @@ Run.propTypes = {
   activeRunSlideIndex: PropTypes.number,
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
-  linkUserToCohort: PropTypes.func,
-  getUser: PropTypes.func,
   getResponse: PropTypes.func,
-  setResponses: PropTypes.func,
-  run: PropTypes.object,
   getRun: PropTypes.func,
-  setRun: PropTypes.func,
-  scenarioId: PropTypes.node,
-  scenario: PropTypes.object,
   getScenario: PropTypes.func,
+  getUser: PropTypes.func,
+  history: PropTypes.shape({ push: PropTypes.func.isRequired }),
   linkRunToCohort: PropTypes.func,
+  linkUserToCohort: PropTypes.func,
   location: PropTypes.shape({
     pathname: PropTypes.string,
     search: PropTypes.string,
@@ -188,9 +201,12 @@ Run.propTypes = {
     }).isRequired,
     url: PropTypes.string
   }),
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }),
+  run: PropTypes.object,
+  saveRunEvent: PropTypes.func,
+  scenario: PropTypes.object,
+  scenarioId: PropTypes.node,
+  setResponses: PropTypes.func,
+  setRun: PropTypes.func,
   user: PropTypes.object
 };
 
@@ -226,9 +242,11 @@ const mapDispatchToProps = dispatch => ({
   getUser: params => dispatch(getUser(params))
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Run)
+export default withRunEventCapturing(
+  withRouter(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Run)
+  )
 );

@@ -108,6 +108,13 @@ async function finishRunAsync(req, res) {
   res.json(await db.finishRun(id));
 }
 
+async function saveRunEventAsync(req, res) {
+  const { id } = await runForRequest(req);
+  const { name, context } = req.body;
+  const event = await db.saveRunEvent(id, name, context);
+  res.json({ status: 201, event });
+}
+
 async function getRunsAsync(req, res) {
   const { id: user_id } = req.session.user;
   const runs = await db.getRuns(user_id);
@@ -115,12 +122,13 @@ async function getRunsAsync(req, res) {
 }
 
 exports.finishRun = asyncMiddleware(finishRunAsync);
+exports.getReferrerParams = asyncMiddleware(getReferrerParamsAsync);
 exports.getResponse = asyncMiddleware(getResponseAsync);
 exports.getRunData = asyncMiddleware(getRunDataAsync);
 exports.getTranscriptionOutcome = asyncMiddleware(getTranscriptionOutcomeAsync);
 exports.getRuns = asyncMiddleware(getRunsAsync);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
+exports.saveRunEvent = asyncMiddleware(saveRunEventAsync);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);
-exports.getReferrerParams = asyncMiddleware(getReferrerParamsAsync);
 exports.updateRun = asyncMiddleware(updateRunAsync);
 exports.upsertResponse = asyncMiddleware(upsertResponseAsync);

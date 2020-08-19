@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Container, Icon, Message } from '@components/UI';
 import RichTextEditor from '@components/RichTextEditor';
+import { SUGGESTION_CLOSE, SUGGESTION_OPEN } from '@hoc/withRunEventCapturing';
 
 class Display extends React.Component {
   constructor(props) {
@@ -18,14 +19,27 @@ class Display extends React.Component {
   }
 
   onClick() {
+    const { color, html, id, type } = this.props;
     const { open } = this.state;
+
+    const which = open ? SUGGESTION_CLOSE : SUGGESTION_OPEN;
+
+    this.props.saveRunEvent(which, {
+      component: {
+        color,
+        html,
+        id,
+        type
+      }
+    });
+
     this.setState({ open: !open });
   }
 
   render() {
     const { color, html } = this.props;
     const { open } = this.state;
-    const { onClick } = this;
+    const { onClick, onClick: onDismiss } = this;
     const icon = <Icon name="info circle" />;
     const content = open ? (
       <RichTextEditor mode="display" defaultValue={html} />
@@ -33,7 +47,6 @@ class Display extends React.Component {
       <>{icon} Information</>
     );
 
-    const onDismiss = onClick;
     const props = open
       ? { color, content, onDismiss }
       : { color, content, onClick };
@@ -54,7 +67,9 @@ Display.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
   color: PropTypes.string.isRequired,
   html: PropTypes.string.isRequired,
+  id: PropTypes.string,
   open: PropTypes.bool,
+  saveRunEvent: PropTypes.func,
   type: PropTypes.oneOf([type]).isRequired
 };
 

@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 import Storage from '@utils/Storage';
 
-const SlideComponents = ({
-  asSVG = false,
-  components,
-  onResponseChange,
-  run
-}) => {
+const SlideComponents = props => {
+  const {
+    asSVG = false,
+    components,
+    onResponseChange,
+    run,
+    saveRunEvent
+  } = props;
   const emptyValue = { value: '' };
-  const runOnly = run ? { run } : {};
-  const style = {
+  const componentDisplayProps = run ? { run } : {};
+  const outerStyle = {
     height: '100px',
     overflow: 'hidden',
     margin: '-1rem !important'
@@ -20,39 +22,33 @@ const SlideComponents = ({
   const width = '100%';
   const height = '100%';
 
-  // Attempted to use this, but does not provide the
-  // interaction prevention that an SVG rect overlay provides:
-  // (from https://sequelize.org/v5/)
-  //
-  // transform: scale(0.4);
-  // transform-origin: 0 0;
-  // width: 250%;
-  //
   return asSVG ? (
-    <div style={style}>
-      <svg width="500" height="1000">
+    <div style={outerStyle}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="500" height="1000">
         {/* intentionally break out */}
         <foreignObject transform={transform} width={width} height={height}>
-          {/*
+          <section>
+            {/*
             Only the first three components
             will be rendered. This prevents
             the UI from getting sluggish for
             the sake of rendering these
             entirely non-functional version.
           */}
-          {components.slice(0, 3).map((value, index) => {
-            const { type } = value;
-            if (!Components[type]) return;
-            const { Display } = Components[type];
-            return (
-              <Display
-                isEmbeddedInSVG={true}
-                key={`component-svg-${index}`}
-                persisted={{}}
-                {...value}
-              />
-            );
-          })}
+            {components.slice(0, 3).map((value, index) => {
+              const { type } = value;
+              if (!Components[type]) return;
+              const { Display } = Components[type];
+              return (
+                <Display
+                  isEmbeddedInSVG={true}
+                  key={`component-svg-${index}`}
+                  persisted={{}}
+                  {...value}
+                />
+              );
+            })}
+          </section>
         </foreignObject>
         <rect
           x="0"
@@ -65,8 +61,8 @@ const SlideComponents = ({
       </svg>
     </div>
   ) : (
-    components.map((value, index) => {
-      const { type, responseId = null } = value;
+    components.map((component, index) => {
+      const { type, responseId = null } = component;
       if (!Components[type]) return;
 
       const { Display } = Components[type];
@@ -74,13 +70,21 @@ const SlideComponents = ({
         ? Storage.get(`run/${run.id}/${responseId}`, emptyValue)
         : emptyValue;
 
+      const saveRunEventWithComponent = (name, context) => {
+        saveRunEvent.call(props, name, {
+          ...context,
+          component
+        });
+      };
+
       return (
         <Display
           key={`component-html-${index}`}
           persisted={persisted}
           onResponseChange={onResponseChange}
-          {...runOnly}
-          {...value}
+          saveRunEvent={saveRunEventWithComponent}
+          {...componentDisplayProps}
+          {...component}
         />
       );
     })
@@ -91,6 +95,7 @@ SlideComponents.propTypes = {
   asSVG: PropTypes.bool,
   components: PropTypes.array,
   onResponseChange: PropTypes.func,
-  run: PropTypes.object
+  run: PropTypes.object,
+  saveRunEvent: PropTypes.func
 };
 export default SlideComponents;

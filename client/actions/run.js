@@ -5,6 +5,8 @@ import {
   GET_RUNS_ERROR,
   GET_RUN_DATA_SUCCESS,
   GET_RUN_DATA_ERROR,
+  SAVE_RUN_EVENT_SUCCESS,
+  SAVE_RUN_EVENT_ERROR,
   SET_RUN,
   SET_RUN_SUCCESS,
   SET_RUN_ERROR
@@ -91,6 +93,50 @@ export const getRunData = run_id => async dispatch => {
     return { prompts, responses };
   } catch (error) {
     dispatch({ type: GET_RUN_DATA_ERROR, error });
+    return null;
+  }
+};
+
+export const saveRunEvent = (run_id, name, data) => async dispatch => {
+  try {
+    const timestamp = Date.now();
+    const url = location.href;
+    const context = {
+      timestamp,
+      url,
+      ...data
+    };
+
+    const body = JSON.stringify({
+      name,
+      context
+    });
+
+    const res = await (await fetch(`/api/runs/${run_id}/event/${name}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    if (res.status !== 201) {
+      throw res;
+    }
+
+    // This nested block provides a new scope contour
+    // for the "event" binding creating on the next line.
+    // Without this, it would interfere with the parameter
+    // named "event"
+    const { event } = res;
+    dispatch({ type: SAVE_RUN_EVENT_SUCCESS, name, event });
+    return event;
+  } catch (error) {
+    dispatch({ type: SAVE_RUN_EVENT_ERROR, error });
     return null;
   }
 };
