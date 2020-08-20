@@ -23,6 +23,10 @@ AudioPlayer.propTypes = {
 
 TODO: Finish implementation of custom player:
 
+Use https://alexanderwallin.github.io/react-player-controls/
+(see: https://reactjsexample.com/dumb-and-useful-react-components-for-media-players/)
+
+
 import { Button, Menu, Icon, Progress, Ref } from '@components/UI';
 import './AudioPlayer.css';
 class AudioPlayer extends Component {
