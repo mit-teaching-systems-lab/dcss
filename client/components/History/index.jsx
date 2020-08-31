@@ -107,7 +107,6 @@ class History extends Component {
         }
       }
 
-      console.log(panes);
       this.setState({
         isReady: true,
         panes

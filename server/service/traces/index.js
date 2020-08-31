@@ -1,24 +1,21 @@
 const { Router } = require('express');
-const { validateRequestBody } = require('../../util/requestValidation');
+// const { validateRequestBody } = require('../../util/requestValidation');
 const { requireUser } = require('../auth/middleware');
-const { requireUserForRun } = require('./middleware');
-const {
-  getTraces
-} = require('./endpoints');
+// const { requireUserForRun } = require('./middleware');
+const { getTraces } = require('./endpoints');
 
 const traces = new Router();
 
 traces.get('/user/:user_id', [requireUser, getTraces]);
-traces.get('/cohort/:cohort_id/scenario/:scenario_id', [requireUser, getTraces]);
+traces.get('/cohort/:cohort_id/scenario/:scenario_id', [
+  requireUser,
+  getTraces
+]);
 traces.get('/cohort/:cohort_id', [requireUser, getTraces]);
 traces.get('/scenario/:scenario_id', [requireUser, getTraces]);
 traces.get('', [requireUser, getTraces]);
 
 module.exports = traces;
-
-
-
-
 
 /*
 

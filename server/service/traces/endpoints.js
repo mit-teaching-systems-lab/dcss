@@ -1,7 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
-const { runForRequest } = require('./middleware');
-
+// const { runForRequest } = require('./middleware');
 
 /*
 
@@ -14,27 +13,21 @@ const { runForRequest } = require('./middleware');
 
 */
 async function getTracesAsync(req, res) {
-  const {
-    params
-  } = req;
+  const { params } = req;
 
   const noParams = Object.entries(params).length === 0;
   let events = [];
 
   if (noParams) {
     events = await db.getTraces();
-
   } else {
-
-    const {
-      cohort_id,
-      run_id,
-      scenario_id,
-      user_id
-    } = params;
+    const { cohort_id, run_id, scenario_id, user_id } = params;
 
     if (cohort_id && scenario_id) {
-      events = await db.getTracesByCohortIdAndScenarioId(cohort_id, scenario_id);
+      events = await db.getTracesByCohortIdAndScenarioId(
+        cohort_id,
+        scenario_id
+      );
     }
 
     if (cohort_id && !scenario_id) {

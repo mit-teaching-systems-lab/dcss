@@ -1,5 +1,5 @@
-const { sql, updateQuery } = require('../../util/sqlHelpers');
-const { query, withClientTransaction } = require('../../util/db');
+const { sql } = require('../../util/sqlHelpers');
+const { query } = require('../../util/db');
 
 async function getTraces() {
   const result = await query(sql`

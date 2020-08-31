@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Header, Icon, Modal, Table } from '@components/UI';
+import { Header, Modal, Table } from '@components/UI';
 import SplitPane from 'react-split-pane';
 import Moment from '@utils/Moment';
 import Media from '@utils/Media';
@@ -70,15 +70,15 @@ const DataModal = props => {
                       Moment.globalFormat
                     );
 
-                        // {content && content !== response.value ? (
-                        //   content
-                        // ) : (
-                        //   <audio
-                        //     controls="controls"
-                        //     src={`/api/media/${response.value}`}
-                        //   />
-                        // )}
-                        // <Icon name="microphone" />
+                    // {content && content !== response.value ? (
+                    //   content
+                    // ) : (
+                    //   <audio
+                    //     controls="controls"
+                    //     src={`/api/media/${response.value}`}
+                    //   />
+                    // )}
+                    // <Icon name="microphone" />
 
                     const display = isAudioContent ? (
                       <Fragment>
