@@ -16,6 +16,7 @@ const runsRouter = require('./service/runs');
 const scenariosRouter = require('./service/scenarios');
 const statusRouter = require('./service/status');
 const tagsRouter = require('./service/tags');
+const tracesRouter = require('./service/traces');
 
 const { logRequestAndResponse } = require('./service/logs/middleware');
 const { getDbConfig } = require('./util/dbConfig');
@@ -55,6 +56,7 @@ app.use('/runs', runsRouter);
 app.use('/scenarios', scenariosRouter);
 app.use('/status', statusRouter);
 app.use('/tags', tagsRouter);
+app.use('/traces', tracesRouter);
 
 // This handles 404 results from router -- answers all remaining requests
 app.use((req, res, next) => {

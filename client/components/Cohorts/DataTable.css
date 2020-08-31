@@ -1,6 +1,7 @@
 .dtm__view {
   height: 100% !important;
   width: calc(100% - 1em) !important;
+  left: unset !important;
   margin: -0.5em 0.5em 0.5em 0.5em !important;
 }
 
@@ -9,6 +10,7 @@
 }
 
 .ui.fullscreen.modal.dtm__view {
+  left: unset !important;
   width: calc(100% - 1em) !important;
 }
 

@@ -21,25 +21,46 @@ class History extends Component {
   constructor(props) {
     super(props);
 
+    let activeIndex = 0;
+
     const panes = [
       {
         menuItem: 'History',
         pane: {
           key: 'main-history',
           content: null
-        }
+        },
+        scenario: null
       }
     ];
+
+    const runId = Number(this.props.match.params.runId) || null;
+    const scenarioId = Number(this.props.match.params.scenarioId) || null;
+
+    if (scenarioId) {
+      activeIndex = 1;
+      const sources = runId ? [{ runId }] : [];
+      panes.push({
+        pane: {
+          key: Identity.key(scenarioId),
+          content: null
+        },
+        scenarioId,
+        sources
+      });
+    }
+
     this.state = {
-      isReady: false,
-      activeIndex: 0,
+      // TODO: figure out if this is used anywhere
+      activeIndex,
       activePage: 1,
-      sources: [],
-      panes
+      isReady: false,
+      panes,
+      sources: []
     };
+
     this.tableRef = null;
     this.onRunDataClick = this.onRunDataClick.bind(this);
-    this.onDataTableMenuClick = this.onDataTableMenuClick.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onTabChange = this.onTabChange.bind(this);
   }
@@ -54,8 +75,42 @@ class History extends Component {
       await this.props.getScenarios();
       await this.props.getRuns();
 
+      const { panes } = this.state;
+
+      // Direct URL, eg.
+      //
+      // - /history/scenario/:scenarioId/run/:runId
+      // - /history/scenario/:scenarioId
+      //
+      if (panes.length === 2) {
+        const pane = panes[1];
+        const participantId = this.props.user.id;
+        const scenario = this.props.scenariosById[pane.scenarioId];
+
+        pane.scenario = scenario;
+        pane.menuItem = scenario.title;
+
+        if (pane.sources.length) {
+          pane.sources.forEach(
+            source => (source.participantId = participantId)
+          );
+        } else {
+          pane.sources = this.props.runs.reduce((accum, run) => {
+            if (run.scenario_id === pane.scenarioId) {
+              accum.push({
+                runId: run.run_id,
+                participantId
+              });
+            }
+            return accum;
+          }, []);
+        }
+      }
+
+      console.log(panes);
       this.setState({
-        isReady: true
+        isReady: true,
+        panes
       });
     }
   }
@@ -68,58 +123,51 @@ class History extends Component {
 
   onRunDataClick(event, props) {
     const {
-      menuItem,
+      scenario,
       run: { run_id: runId }
     } = props;
-
     const { panes } = this.state;
-    const activeIndex = panes.findIndex(
-      ({ pane }) => pane.key === `tab-${runId}`
+    const index = panes.findIndex(
+      pane => pane.scenario && pane.scenario.id === scenario.id
     );
+    const menuItem = scenario.title;
+    const source = {
+      participantId: this.props.user.id,
+      runId
+    };
 
-    if (activeIndex > -1) {
-      this.setState({ activeIndex });
-    } else {
-      const index = panes.findIndex(pane => pane.menuItem === menuItem);
-      const source = {
-        participantId: this.props.user.id,
-        runId
-      };
-
-      if (index !== -1) {
-        if (!panes[index].sources.find(source => source.runId === runId)) {
-          panes[index].sources.push(source);
-        }
-      } else {
-        panes.push({
-          menuItem,
-          pane: {
-            key: `tab-${runId}`,
-            content: null
-          },
-          sources: [source]
-        });
+    if (index !== -1) {
+      if (!panes[index].sources.find(source => source.runId === runId)) {
+        panes[index].sources.push(source);
       }
-
-      this.setState({ activeIndex: panes.length - 1, panes });
+    } else {
+      const key = Identity.key(scenario.id);
+      panes.push({
+        menuItem,
+        pane: {
+          key,
+          content: null
+        },
+        scenario,
+        sources: [source]
+      });
     }
-  }
 
-  onDataTableMenuClick(event, { name, key }) {
-    const { panes } = this.state;
+    const activeIndex = index > -1 ? index : panes.length - 1;
 
-    if (name === 'close') {
-      const indexOf = panes.findIndex(({ pane }) => pane.key === key);
-      const activeIndex = indexOf - 1;
-      panes.splice(indexOf, 1);
-      this.setState({ activeIndex, panes });
-    }
+    this.setState({ activeIndex, panes });
+    this.props.history.push(`/history/scenario/${scenario.id}`);
   }
 
   onTabChange(event, { activeIndex }) {
-    this.setState({
-      activeIndex
-    });
+    const scenario = activeIndex
+      ? this.state.panes[activeIndex].scenario
+      : null;
+
+    const pathName = scenario ? `/history/scenario/${scenario.id}` : `/history`;
+
+    this.setState({ activeIndex });
+    this.props.history.push(pathName);
   }
 
   render() {
@@ -202,6 +250,7 @@ class History extends Component {
                   scenario_title,
                   cohort_id
                 } = run;
+                const scenario = this.props.scenariosById[scenario_id];
                 const completeOrIncomplete = run_ended_at
                   ? { positive: true }
                   : { negative: true };
@@ -252,7 +301,7 @@ class History extends Component {
                   onRunDataClick(event, {
                     ...props,
                     run,
-                    menuItem: scenario_title
+                    scenario
                   });
                 };
 
@@ -279,6 +328,10 @@ class History extends Component {
                   />
                 );
 
+                const cohortDisplayCellClassName = !cohortDisplay
+                  ? 'h__col-medium dt__cell-data-missing'
+                  : 'h__col-medium';
+
                 return (
                   <Table.Row {...completeOrIncomplete} key={run_id}>
                     <Popup
@@ -288,7 +341,7 @@ class History extends Component {
                       trigger={viewDataIcon}
                     />
                     <Table.Cell.Clickable
-                      className="h__col-medium"
+                      className={cohortDisplayCellClassName}
                       href={cohortPathname}
                       content={cohortDisplay || ' '}
                     />
@@ -335,7 +388,8 @@ class History extends Component {
             panes.splice(index, 1);
           }
 
-          this.setState({ activeIndex, panes });
+          this.setState({ panes });
+          this.onTabChange(event, { activeIndex });
         }
       };
 
@@ -367,24 +421,32 @@ class History extends Component {
 }
 
 History.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
-  runs: PropTypes.array,
-  runsById: PropTypes.object,
   cohortsById: PropTypes.object,
-  scenarios: PropTypes.array,
   getCohorts: PropTypes.func,
   getRuns: PropTypes.func,
   getScenarios: PropTypes.func,
-  onClick: PropTypes.func,
   getUser: PropTypes.func,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
+  match: PropTypes.shape({
+    path: PropTypes.string,
+    params: PropTypes.shape({
+      runId: PropTypes.node,
+      scenarioId: PropTypes.node
+    }).isRequired
+  }).isRequired,
+  onClick: PropTypes.func,
+  runs: PropTypes.array,
+  runsById: PropTypes.object,
+  scenarios: PropTypes.array,
+  scenariosById: PropTypes.object,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { cohortsById, runs, runsById, scenarios, user } = state;
-  return { cohortsById, runs, runsById, scenarios, user };
+  const { cohortsById, runs, runsById, scenarios, scenariosById, user } = state;
+  return { cohortsById, runs, runsById, scenarios, scenariosById, user };
 };
 
 const mapDispatchToProps = dispatch => ({

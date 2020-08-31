@@ -21,11 +21,12 @@ exports.getRuns = async function(user_id) {
             scenario.id as scenario_id,
             scenario.title as scenario_title,
             scenario.description as scenario_description,
-            scenario.id as scenario_id
+            scenario.id as scenario_id,
+            run.user_id as user_id
         FROM run
         JOIN scenario ON scenario.id = run.scenario_id
         LEFT JOIN cohort_run ON cohort_run.run_id = run.id
-        WHERE user_id = ${user_id}
+        WHERE run.user_id = ${user_id}
         ORDER BY run.created_at DESC;
     `);
   return result.rows;

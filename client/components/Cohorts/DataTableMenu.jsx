@@ -62,7 +62,7 @@ export class DataTableMenu extends Component {
           <Popup
             inverted
             size="tiny"
-            content="Close this data table tab"
+            content="Close this data table"
             trigger={menuItemClose}
           />
         </ConfirmAuth>

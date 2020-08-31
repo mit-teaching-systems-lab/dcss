@@ -68,9 +68,23 @@ const Routes = ({ isLoggedIn }) => {
       />
 
       <RedirectRouteForInactiveSession
+        path="/history/scenario/:scenarioId/run/:runId"
         isLoggedIn={isLoggedIn}
+      >
+        <Route component={History} />
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        path="/history/scenario/:scenarioId"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route component={History} />
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
         exact
         path="/history"
+        isLoggedIn={isLoggedIn}
       >
         <Route component={History} />
       </RedirectRouteForInactiveSession>
@@ -114,17 +128,17 @@ const Routes = ({ isLoggedIn }) => {
       </ConfirmAuth>
 
       <InterceptAnonymizableRoute
+        exact
         path="/cohort/:id"
         isLoggedIn={isLoggedIn}
-        exact
       >
         <Route render={routeRenderCohort} />
       </InterceptAnonymizableRoute>
 
       <ConfirmAuth
+        exact
         path="/cohort/:id/runs"
         requiredPermission="view_run_data"
-        exact
       >
         <Route component={routeRenderCohortRuns} />
       </ConfirmAuth>
@@ -299,17 +313,17 @@ const Routes = ({ isLoggedIn }) => {
       <Route exact path="/login" component={Login} />
 
       <RedirectRouteForActiveSession
-        isLoggedIn={isLoggedIn}
         exact
         path="/login/create-account"
+        isLoggedIn={isLoggedIn}
       >
         <Route component={LoginRoutePromptModal} />
       </RedirectRouteForActiveSession>
 
       <RedirectRouteForActiveSession
-        isLoggedIn={isLoggedIn}
         exact
         path="/login/new"
+        isLoggedIn={isLoggedIn}
       >
         <Route component={CreateAccount} />
       </RedirectRouteForActiveSession>

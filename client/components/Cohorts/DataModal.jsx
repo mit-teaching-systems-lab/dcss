@@ -6,6 +6,8 @@ import Moment from '@utils/Moment';
 import Media from '@utils/Media';
 import Identity from '@utils/Identity';
 import ContentSlide from '@components/Scenario/ContentSlide';
+import AudioPlayer from '@components/Slide/Components/AudioPrompt/AudioPlayer';
+import Transcript from '@components/Slide/Components/AudioPrompt/Transcript';
 import './DataTable.css';
 import './Resizer.css';
 
@@ -68,17 +70,20 @@ const DataModal = props => {
                       Moment.globalFormat
                     );
 
+                        // {content && content !== response.value ? (
+                        //   content
+                        // ) : (
+                        //   <audio
+                        //     controls="controls"
+                        //     src={`/api/media/${response.value}`}
+                        //   />
+                        // )}
+                        // <Icon name="microphone" />
+
                     const display = isAudioContent ? (
                       <Fragment>
-                        {content && content !== response.value ? (
-                          content
-                        ) : (
-                          <audio
-                            src={`/api/media/${response.value}`}
-                            controls="controls"
-                          />
-                        )}
-                        <Icon name="microphone" />
+                        <AudioPlayer src={response.value} />
+                        <Transcript transcript={response.content} />
                       </Fragment>
                     ) : (
                       content
