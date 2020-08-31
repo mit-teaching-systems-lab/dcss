@@ -295,45 +295,47 @@ export class Cohorts extends React.Component {
           </Grid>
         </Container>
 
-        <Modal.Accessible open={createIsVisible}>
-          <Modal
-            size="small"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby={ariaLabelledby}
-            aria-describedby={ariaDescribedby}
-            open={createIsVisible}
-          >
-            <Header
-              id={ariaLabelledby}
-              icon="group"
-              content="Create a cohort"
-            />
-            <Modal.Content id={ariaDescribedby}>
-              <Form onSubmit={onCreateCohortSubmit}>
-                <Input
-                  fluid
-                  focus
-                  placeholder="Enter a name for your cohort"
-                  name="name"
-                  onSubmit={onCreateCohortSubmit}
-                  onChange={onCreateCohortChange}
-                />
-              </Form>
-            </Modal.Content>
-            <Modal.Actions>
-              <Button.Group fluid>
-                <Button color="green" onClick={onCreateCohortSubmit}>
-                  Create
-                </Button>
-                <Button.Or />
-                <Button color="grey" onClick={onCreateCohortCancel}>
-                  Cancel
-                </Button>
-              </Button.Group>
-            </Modal.Actions>
-          </Modal>
-        </Modal.Accessible>
+        {createIsVisible ? (
+          <Modal.Accessible open={createIsVisible}>
+            <Modal
+              size="small"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={ariaLabelledby}
+              aria-describedby={ariaDescribedby}
+              open={createIsVisible}
+            >
+              <Header
+                icon="group"
+                content="Create a cohort"
+                id={ariaLabelledby}
+              />
+              <Modal.Content id={ariaDescribedby}>
+                <Form onSubmit={onCreateCohortSubmit}>
+                  <Input
+                    fluid
+                    focus
+                    placeholder="Enter a name for your cohort"
+                    name="name"
+                    onSubmit={onCreateCohortSubmit}
+                    onChange={onCreateCohortChange}
+                  />
+                </Form>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button color="green" onClick={onCreateCohortSubmit}>
+                    Create
+                  </Button>
+                  <Button.Or />
+                  <Button color="grey" onClick={onCreateCohortCancel}>
+                    Cancel
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
       </React.Fragment>
     );
   }
