@@ -27,6 +27,7 @@ class AudioRecorder extends Component {
     this.state = {
       blobURL: '',
       isRecording: false,
+      hasPreviousResponse: false,
       transcript,
       value
     };
@@ -51,18 +52,18 @@ class AudioRecorder extends Component {
       return;
     }
 
-    if (this.props.autostart) {
-      this.onStartClick();
+    let { getResponse, onChange, persisted = {}, responseId, run } = this.props;
+    let { name = responseId, transcript = '', value = '' } = persisted;
+    let needsFulfillmentSignal = false;
+    let hasPreviousResponse = false;
+
+    if (!transcript && this.props.transcript) {
+      transcript = this.props.transcript;
     }
 
-    let {
-      getResponse,
-      onChange,
-      responseId,
-      run,
-      transcript,
-      value
-    } = this.props;
+    if (!value && this.props.value) {
+      value = this.props.value;
+    }
 
     if (!value || !transcript) {
       const previous = await getResponse({
@@ -73,12 +74,32 @@ class AudioRecorder extends Component {
       if (previous && previous.response) {
         value = previous.response.value;
         transcript = previous.response.transcript;
+        hasPreviousResponse = true;
+        needsFulfillmentSignal = true;
       }
     }
 
-    if (value) {
+    if ((value || transcript) && needsFulfillmentSignal) {
       onChange({}, { name, transcript, value, isFulfilled: true });
-      this.setState({ transcript, value });
+    }
+
+    const update = {
+      hasPreviousResponse
+    };
+
+    if (value || transcript) {
+      if (this.state.transcript !== transcript) {
+        update.transcript = transcript;
+      }
+      if (this.state.value !== value) {
+        update.value = value;
+      }
+    }
+
+    this.setState(update);
+
+    if (this.props.autostart) {
+      this.onStartClick();
     }
   }
 
@@ -141,6 +162,26 @@ class AudioRecorder extends Component {
         body.append('runId', run.id);
       }
 
+      const { created_at } = this;
+      const ended_at = new Date().toISOString();
+      const isOverride = true;
+
+      // This is necessary to "release" the hold made by required
+      // response prompts. This will allow large audio files to
+      // upload in the background, while enabling participants
+      // to proceed with the scenario.
+      this.props.onChange(
+        {},
+        {
+          isOverride,
+          created_at,
+          ended_at,
+          name,
+          transcript: '',
+          value: ''
+        }
+      );
+
       const { s3Location: value, transcript } = await (await fetch(
         '/api/media/audio',
         {
@@ -166,13 +207,14 @@ class AudioRecorder extends Component {
         return { blobURL, transcript, value };
       });
 
-      const { created_at } = this;
-
+      // This will have the actual transcript of the response
+      // which will override the dummy response that was
+      // sent prior to uploading the audio for transcription.
       this.props.onChange(
         {},
         {
           created_at,
-          ended_at: new Date().toISOString(),
+          ended_at,
           name,
           transcript,
           value
@@ -208,12 +250,19 @@ class AudioRecorder extends Component {
   }
 
   render() {
-    const { isRecording, blobURL, transcript, value } = this.state;
+    const {
+      isRecording,
+      blobURL,
+      hasPreviousResponse,
+      transcript,
+      value
+    } = this.state;
     const { prompt, responseId, run } = this.props;
 
     const { innerRef, onChange, onFocus, onStartClick, onStopClick } = this;
-    const isFulfilled = value || blobURL || transcript ? true : false;
-    const src = isFulfilled ? Media.fileToMediaURL(blobURL || value) : null;
+    const isFulfilled = blobURL || value || transcript ? true : false;
+    const src =
+      blobURL || value ? Media.fileToMediaURL(blobURL || value) : null;
 
     const instructions = isRecording
       ? 'Click the microphone to stop recording.'
@@ -249,6 +298,8 @@ class AudioRecorder extends Component {
       onPause: onAudioPlayerPlayOrPause,
       ...audioSrc
     };
+
+    // console.log('isFulfilled?', isFulfilled);
 
     return IS_AUDIO_RECORDING_SUPPORTED ? (
       <Fragment>
@@ -298,9 +349,9 @@ class AudioRecorder extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        {isFulfilled ? (
+        {hasPreviousResponse || isFulfilled ? (
           <Transcript
-            key={Identity.key({ transcript })}
+            key={Identity.key({ responseId, transcript })}
             responseId={responseId}
             run={run}
             transcript={transcript}
@@ -332,6 +383,7 @@ AudioRecorder.propTypes = {
   isEmbeddedInSVG: PropTypes.bool,
   isRecording: PropTypes.bool,
   onChange: PropTypes.func,
+  persisted: PropTypes.object,
   prompt: PropTypes.string,
   responseId: PropTypes.string,
   run: PropTypes.object,

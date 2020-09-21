@@ -92,15 +92,18 @@ class Display extends Component {
     });
   }
 
-  onChange(event, { name, value }) {
+  onChange(event, { isOverride, isFulfilled, name, transcript = '', value }) {
     const { created_at } = this;
     const { recallId } = this.props;
-    const transcript = '';
+    const ended_at = new Date().toISOString();
+
     this.props.onResponseChange(event, {
       created_at,
-      ended_at: new Date().toISOString(),
-      recallId,
+      ended_at,
+      isFulfilled,
+      isOverride,
       name,
+      recallId,
       transcript,
       type,
       value
@@ -124,6 +127,7 @@ class Display extends Component {
     }
 
     const {
+      persisted,
       prompt,
       configuration,
       recallId,
@@ -256,6 +260,7 @@ class Display extends Component {
               isEmbeddedInSVG={this.props.isEmbeddedInSVG}
               isRecording={isRecording}
               onChange={onChange}
+              persisted={persisted}
               prompt={prompt}
               responseId={responseId}
               run={run}

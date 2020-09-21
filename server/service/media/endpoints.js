@@ -4,6 +4,10 @@ const Multer = require('multer');
 const uuid = require('uuid/v4');
 
 const db = require('./db');
+const {
+  getLastResponseOrderedById,
+  updateResponse
+} = require('../runs/db');
 const { asyncMiddleware } = require('../../util/api');
 const { uploadToS3, requestFromS3 } = require('./s3');
 const {
@@ -27,19 +31,70 @@ async function uploadAudioAsync(req, res) {
     }
 
     const buffer = req.file.buffer;
-    const { runId, responseId } = req.body;
-    const userId = req.session.user.id;
-    const key = `audio/${runId}/${responseId}/${userId}/${uuid()}.mp3`;
+    const { runId: run_id, responseId: response_id } = req.body;
+    const user_id = req.session.user.id;
+    const key = `audio/${run_id}/${response_id}/${user_id}/${uuid()}.mp3`;
 
     const id = await db.getAudioTranscriptByKey(
-      `audio/${runId}/${responseId}/${userId}/`
+      `audio/${run_id}/${response_id}/${user_id}/`
     );
-    await db.setAudioTranscript(id, { replaced_at: new Date().toISOString() });
+
+    if (id) {
+      await db.setAudioTranscript(id, {
+        replaced_at: new Date().toISOString()
+      });
+    }
 
     try {
       const s3Location = await uploadToS3(key, buffer);
+
+      // Since the upload process may take a very long time, we'll need
+      // to check AGAIN to see if there is a recorded response waiting for
+      // some value to be updated.
+      {
+        const previous = await getLastResponseOrderedById({
+          run_id,
+          response_id,
+          user_id
+        });
+        // console.log('(media) PREVIOUSLY 1', previous);
+
+        if (previous && !previous.response.value) {
+          const response = {
+            ...previous.response,
+            value: s3Location
+          };
+
+          // console.log('(media) UPDATED 1', response);
+          await updateResponse(previous.id, { response });
+        }
+      }
+
+      // This could take a very long time
       const { response, transcript } = await requestTranscriptionAsync(buffer);
+
       await db.addAudioTranscript(key, response, transcript);
+
+      // Since the transcription process may take a very long time, we'll need
+      // to check AGAIN to see if there is a recorded response waiting for
+      // some value to be updated.
+      {
+        const previous = await getLastResponseOrderedById({
+          run_id,
+          response_id,
+          user_id
+        });
+        // console.log('(media) PREVIOUSLY 2', previous);
+
+        if (previous && !previous.response.value) {
+          const response = {
+            ...previous.response,
+            value: s3Location
+          };
+          // console.log('(media) UPDATED 2', response);
+          await updateResponse(previous.id, { response });
+        }
+      }
 
       res.status = 200;
       res.send({

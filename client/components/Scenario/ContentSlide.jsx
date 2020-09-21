@@ -168,7 +168,7 @@ class ContentSlide extends React.Component {
   }
 
   onInterceptResponseChange(event, data) {
-    const { name, value } = data;
+    const { isOverride, name, value } = data;
     const { pending, required } = this.state;
     if (!this.props.run || (this.props.run && !this.props.run.id)) {
       // TODO: implement some kind of feedback to
@@ -180,18 +180,26 @@ class ContentSlide extends React.Component {
 
     const { run } = this.props;
 
+    // console.log('isOverride', isOverride);
     // If we have a response change for a responseId that
     // was marked required, and the value isn't empty,
     // then it can be removed from the list.
     if (required.includes(name)) {
-      if (value !== '') {
+      if (value !== '' || isOverride) {
         if (pending.includes(name)) {
           pending.splice(pending.indexOf(name), 1);
         }
       } else {
-        // Otherwise, if it is not empty, but was
-        // previously removed, add it back.
-        pending.push(name);
+        // If intercepted response change was NOT
+        // a fulfillment signal, then we need to add
+        // the response prompt id back, because for whatever
+        // reason, it's now empty.
+        //
+        if (!data.isFulfilled) {
+          // Otherwise, if it is not empty, but was
+          // previously removed, add it back.
+          pending.push(name);
+        }
       }
     }
 

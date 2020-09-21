@@ -56,21 +56,6 @@ exports.updateRun = async function(id, data) {
   return result.rows[0];
 };
 
-exports.upsertResponse = async ({
-  run_id,
-  response_id,
-  response,
-  user_id,
-  created_at,
-  ended_at
-}) => {
-  const result = await query(sql`
-        INSERT INTO run_response (run_id, response_id, response, user_id, created_at, ended_at)
-        VALUES (${run_id}, ${response_id}, ${response}, ${user_id}, ${created_at}, ${ended_at});
-    `);
-  return result.rows[0];
-};
-
 exports.saveRunEvent = async (run_id, name, context) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
@@ -83,6 +68,13 @@ exports.saveRunEvent = async (run_id, name, context) => {
   });
 };
 
+async function updateResponse(id, data) {
+  const result = await query(updateQuery('run_response', { id }, data));
+  return result.rows[0];
+}
+
+exports.updateResponse = updateResponse;
+
 exports.getResponse = async ({ run_id, response_id, user_id }) => {
   const result = await query(sql`
         SELECT * FROM run_response
@@ -94,6 +86,52 @@ exports.getResponse = async ({ run_id, response_id, user_id }) => {
     `);
   return result.rows[0];
 };
+
+async function getLastResponseOrderedById({ run_id, response_id, user_id }) {
+  const result = await query(sql`
+      SELECT * FROM run_response
+      WHERE response_id = ${response_id}
+      AND run_id = ${run_id}
+      AND user_id = ${user_id}
+      ORDER BY id DESC
+      LIMIT 1;
+  `);
+  return result.rows[0];
+}
+
+exports.getLastResponseOrderedById = getLastResponseOrderedById;
+
+async function upsertResponse({
+  run_id,
+  response_id,
+  response,
+  user_id,
+  created_at,
+  ended_at
+}) {
+  const previous = await getLastResponseOrderedById({
+    run_id,
+    response_id,
+    user_id
+  });
+
+  if (previous && !previous.response.value) {
+    return await updateResponse(previous.id, {
+      response: {
+        ...previous.response,
+        ...response
+      }
+    });
+  }
+
+  const result = await query(sql`
+    INSERT INTO run_response (run_id, response_id, response, user_id, created_at, ended_at)
+    VALUES (${run_id}, ${response_id}, ${response}, ${user_id}, ${created_at}, ${ended_at});
+  `);
+  return result.rows[0];
+}
+
+exports.upsertResponse = upsertResponse;
 
 exports.getRunResponses = async ({ run_id }) => {
   return await withClientTransaction(async client => {

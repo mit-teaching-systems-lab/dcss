@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
-import { Icon, Table } from '@components/UI';
+import { Icon, Message, Table } from '@components/UI';
 import { diff } from 'deep-diff';
 import Moment from '@utils/Moment';
 import Media from '@utils/Media';
@@ -282,7 +282,9 @@ export class DataTable extends React.Component {
     return (
       <Fragment>
         <DataTableMenu source={source} onClick={onDataTableMenuClick} />
-        {!tables.length ? <div>There is no data recorded yet.</div> : null}
+        {!tables.length ? (
+          <Message>There is no data recorded yet.</Message>
+        ) : null}
         {tables.map(({ prompts, rows }, index) => {
           const tableKeyBase = `data-table-${index}`;
           return (

@@ -102,14 +102,6 @@ class Transcript extends Component {
   render() {
     const { response, transcript } = this.state;
 
-    if (!this.isScenarioRun) {
-      return (
-        <Blockquote>
-          Participant response transcriptions will appear here.
-        </Blockquote>
-      );
-    }
-
     let content =
       'Transcription in progress. This may take a few minutes, depending on the length of your audio recording.';
 
@@ -122,6 +114,14 @@ class Transcript extends Component {
           'Transcription process completed, however it appears your audio recording is empty. Please try recording your response again.';
       } else {
         content = transcript;
+      }
+    }
+
+    if (!this.isScenarioRun) {
+      if (transcript) {
+        content = transcript;
+      } else {
+        content = 'Transcript will appear here.';
       }
     }
 

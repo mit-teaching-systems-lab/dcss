@@ -46,7 +46,7 @@ async function getResponseAsync(req, res) {
     user_id
   });
 
-  if (transcript) {
+  if (response && transcript) {
     Object.assign(response.response, transcript);
   }
 
