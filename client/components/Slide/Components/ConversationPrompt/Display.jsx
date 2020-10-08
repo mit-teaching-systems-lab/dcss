@@ -16,7 +16,6 @@ import {
 
 import Hls from 'hls.js';
 import Player from 'react-player';
-
 import { YOUTUBE_PLAYER_DISPLAY_VARS } from './constants';
 
 window.Hls = Hls;
@@ -206,29 +205,27 @@ class Display extends Component {
         onEvent(VIDEO_PLAYBACK_INSTANT_INTERRUPTION_PLAY, {});
       }
     };
-    onPause,
-    onPlay,
     */
 
-    //
-    //
-    // TODO: support for "start" and "end" in other players
-    // will be need to be manually set.
-    //
-    // const onProgress = ({playedSeconds}) => {
-    //   console.log("duration: ", duration);
-    //   console.log("playedSeconds: ", playedSeconds);
-    //   console.log("triggerAt: ", triggerAt);
-    //   if (configuration.kind === 'slice' && playedSeconds >= triggerAt) {
-    //     this.setState({ autostart: true });
-    //   } else {
-    //     if (duration && playedSeconds >= duration - 0.5) {
-    //       console.log("almost the end");
-    //     }
-    //   }
-    // };
-    //
-    //
+
+    /*
+    TODO: support for "start" and "end" in other players
+    will be need to be manually set.
+
+    const onProgress = ({playedSeconds}) => {
+      console.log("duration: ", duration);
+      console.log("playedSeconds: ", playedSeconds);
+      console.log("triggerAt: ", triggerAt);
+      if (configuration.kind === 'slice' && playedSeconds >= triggerAt) {
+        this.setState({ autostart: true });
+      } else {
+        if (duration && playedSeconds >= duration - 0.5) {
+          console.log("almost the end");
+        }
+      }
+    };
+
+    */
 
     const playerProps = {
       className: 'cp__video-player',

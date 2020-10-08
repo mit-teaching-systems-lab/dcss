@@ -47,54 +47,27 @@ async function uploadAudioAsync(req, res) {
 
     try {
       const s3Location = await uploadToS3(key, buffer);
+      const identifiers = {
+        run_id,
+        response_id,
+        user_id
+      };
 
-      // Since the upload process may take a very long time, we'll need
-      // to check AGAIN to see if there is a recorded response waiting for
-      // some value to be updated.
-      {
-        const previous = await getLastResponseOrderedById({
-          run_id,
-          response_id,
-          user_id
-        });
-        // console.log('(media) PREVIOUSLY 1', previous);
-
-        if (previous && !previous.response.value) {
-          const response = {
-            ...previous.response,
-            value: s3Location
-          };
-
-          // console.log('(media) UPDATED 1', response);
-          await updateResponse(previous.id, { response });
-        }
-      }
+      // Check if a response has been saved. This may have occurred while
+      // the upload to S3 was in progress.
+      await updateResponseIfExists(s3Location, identifiers);
 
       // This could take a very long time
       const { response, transcript } = await requestTranscriptionAsync(buffer);
 
       await db.addAudioTranscript(key, response, transcript);
 
-      // Since the transcription process may take a very long time, we'll need
-      // to check AGAIN to see if there is a recorded response waiting for
-      // some value to be updated.
-      {
-        const previous = await getLastResponseOrderedById({
-          run_id,
-          response_id,
-          user_id
-        });
-        // console.log('(media) PREVIOUSLY 2', previous);
-
-        if (previous && !previous.response.value) {
-          const response = {
-            ...previous.response,
-            value: s3Location
-          };
-          // console.log('(media) UPDATED 2', response);
-          await updateResponse(previous.id, { response });
-        }
-      }
+      // The previous call to updateResponseIfExists may have had nothing to do
+      // at the time that it was called. Since the transcription process may
+      // take a very long time, and during that time this response might be saved,
+      // (ie. before this operation has responded to the client), so we must
+      // check again to ensure that the response receives the s3Location value.
+      await updateResponseIfExists(s3Location, identifiers);
 
       res.status = 200;
       res.send({
@@ -108,6 +81,18 @@ async function uploadAudioAsync(req, res) {
       });
     }
   });
+}
+
+async function updateResponseIfExists(value, identifiers) {
+  const previous = await getLastResponseOrderedById(identifiers);
+
+  if (previous && !previous.response.value) {
+    const response = {
+      ...previous.response,
+      value
+    };
+    await updateResponse(previous.id, { response });
+  }
 }
 
 async function uploadImageAsync(req, res) {
