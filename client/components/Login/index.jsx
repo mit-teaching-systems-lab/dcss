@@ -125,7 +125,6 @@ class Login extends Component {
               <Form.Field>
                 <label htmlFor="username">Username</label>
                 <Form.Input
-                  aria-description="user name"
                   autoComplete="username"
                   id="username"
                   name="username"
@@ -136,7 +135,6 @@ class Login extends Component {
               <Form.Field>
                 <label htmlFor="password">Password</label>
                 <Form.Input
-                  aria-description="password"
                   autoComplete="current-password"
                   id="password"
                   name="password"

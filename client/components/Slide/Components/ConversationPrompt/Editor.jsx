@@ -24,7 +24,7 @@ class ConversationPromptEditor extends Component {
       header = '',
       player,
       prompt = '',
-      configuration,
+      configuration = {},
       recallId = '',
       responseId,
       url

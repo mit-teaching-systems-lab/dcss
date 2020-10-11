@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<div class=\\"ui segment\\"><h3 tabindex=\\"0\\" class=\\"ui header\\"> </h3><form class=\\"ui form\\"><div class=\\"field\\"><textarea rows=\\"3\\"></textarea></div></form></div>"`;

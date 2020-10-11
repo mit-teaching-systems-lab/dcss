@@ -172,6 +172,8 @@ export class CohortScenarios extends React.Component {
     const { isReady, activePage, scenarios } = this.state;
     const { isFacilitator, isParticipant } = authority;
 
+    const isOnlyParticipant = isParticipant && !isFacilitator;
+
     if (!isReady) {
       return <Loading />;
     }
@@ -544,7 +546,7 @@ export class CohortScenarios extends React.Component {
 
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan={Layout.isForMobile() ? 3 : 5}>
+              <Table.HeaderCell colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}>
                 <Pagination
                   borderless
                   name="scenarios"

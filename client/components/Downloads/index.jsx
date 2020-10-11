@@ -242,10 +242,10 @@ class Downloads extends Component {
                   verticalAlign="top"
                   className="dtr__cell-fluid-half"
                 >
-                  {cohort.name}
+                  {cohort && cohort.name}
                 </Table.Cell>
                 <Table.Cell verticalAlign="top" className="dt__cell-truncated">
-                  {scenario.title}
+                  {scenario && scenario.title}
                 </Table.Cell>
               </Table.Row>
             );

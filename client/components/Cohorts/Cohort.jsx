@@ -217,36 +217,6 @@ export class Cohort extends React.Component {
           <Segment attached="bottom">
             <Menu icon borderless>
               {menuItemCopyUrl}
-              {/*
-                <Popup
-                    content="Run this cohort as a participant"
-                    trigger={
-                        <Menu.Item.Tabbable
-                            icon
-                            content={<Icon name="play" />}
-                            onClick={() => {
-                                alert(
-                                    'View cohort as participant. (Feature not available in this version)'
-                                );
-                            }}
-                        />
-                    }
-                />
-                <Popup
-                    content="Download the data from this data table tab"
-                    trigger={
-                        <Menu.Item.Tabbable
-                            icon
-                            content={<Icon name="download" />}
-                            onClick={() => {
-                                alert(
-                                    'Download all data from this cohort. (Feature not available in this version)'
-                                );
-                            }}
-                        />
-                    }
-                />
-            */}
             </Menu>
             <CohortScenarios
               key="cohort-scenarios"
@@ -327,7 +297,7 @@ Cohort.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const id = Number(ownProps.match.params.id);
+  const id = Number(ownProps.match.params.id) || ownProps.id;
   const { permissions } = state.login;
   const { cohortsById, scenarios, user } = state;
   const cohort = cohortsById[id] || { ...state.cohort, id };

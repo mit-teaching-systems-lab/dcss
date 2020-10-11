@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<div class=\\"ui card sc sc__margin-height deleted\\"><div class=\\"content\\"><div class=\\"header strike\\"></div><div class=\\"description strike\\"></div></div><div class=\\"extra content\\"><div class=\\"ui buttons sc__edit-buttons\\"><button name=\\"restore\\" class=\\"ui button\\">Restore</button></div></div></div>"`;

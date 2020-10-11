@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import changeCase from 'change-case';
 import { Dropdown, Menu, Icon } from '@components/UI';
 
-let cachedStatusOptions = null;
+let cachedStatusOptions = [];
 
 class ScenarioStatusMenuItem extends React.Component {
   constructor(props) {
@@ -51,7 +51,7 @@ class ScenarioStatusMenuItem extends React.Component {
   }
 
   render() {
-    if (!this.state.statusOptions) {
+    if (!this.state.statusOptions.length) {
       return null;
     }
 

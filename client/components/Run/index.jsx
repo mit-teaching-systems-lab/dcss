@@ -50,12 +50,18 @@ class Run extends Component {
     const {
       cohortId,
       location: { search },
-      scenario,
       scenarioId
     } = this.props;
 
-    if (!scenario) {
+    if (!this.props.scenario) {
       await this.props.getScenario(scenarioId);
+    }
+
+    // When running via jest, it appears that mapStateToProps
+    // doesn't get called as part of the previous async
+    // operation's dispatch.
+    if (!this.props.scenario) {
+      return;
     }
 
     const run = await this.props.getRun(this.props.scenario.id);
@@ -68,7 +74,6 @@ class Run extends Component {
           const { id, users } = cohort;
           const { user } = this.props;
 
-          // console.log(cohort.users);
           if (!users.find(({ id }) => id === user.id)) {
             // For now we'll default all unknown
             // users as "participant".
@@ -76,7 +81,6 @@ class Run extends Component {
           }
         }
       }
-
       const referrer_params = Storage.get('app/referrer_params');
       if (search || referrer_params) {
         await this.props.setRun(run.id, {

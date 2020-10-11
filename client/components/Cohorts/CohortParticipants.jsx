@@ -17,7 +17,7 @@ import {
 import escapeRegExp from 'lodash.escaperegexp';
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
-import { getCohort, getCohortParticipants, setCohort } from '@actions/cohort';
+import { getCohort, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
 import Username from '@components/User/Username';
 import UsersTable from '@components/Admin/UsersTable';
@@ -75,9 +75,6 @@ export class CohortParticipants extends React.Component {
     this.tableBody = React.createRef();
     this.sectionRef = React.createRef();
     this.onPageChange = this.onPageChange.bind(this);
-    this.onParticipantCheckboxClick = this.onParticipantCheckboxClick.bind(
-      this
-    );
     this.onParticipantSearchChange = this.onParticipantSearchChange.bind(this);
     this.onParticipantRefreshChange = this.onParticipantRefreshChange.bind(
       this
@@ -117,8 +114,6 @@ export class CohortParticipants extends React.Component {
   async componentWillUnmount() {
     clearInterval(this.refreshInterval);
   }
-
-  onParticipantCheckboxClick() {}
 
   scrollIntoView() {
     scrollIntoView(this.tableBody.current.node.firstElementChild);
@@ -203,14 +198,10 @@ export class CohortParticipants extends React.Component {
       onParticipantSearchChange,
       scrollIntoView
     } = this;
-
     // Ensure that Facilitator access is applied even if the user just
     // became a facilitator and their session roles haven't updated.
     const isFacilitator =
       user.roles.includes('facilitator') || authority.isFacilitator;
-
-    // NOTE: The checkbox is temporarily disabled
-    // const { onParticipantCheckboxClick } = this;
 
     if (!isReady) {
       return <Loading />;
@@ -354,13 +345,6 @@ export class CohortParticipants extends React.Component {
             onChange={onParticipantSearchChange}
           />
         </Menu.Item.Tabbable>
-        {/*
-        <Menu.Item.Tabbable
-          onClick={() => this.sectionRef.scrollIntoView()}
-        >
-            <Icon name="angle double up" />
-        </Menu.Item.Tabbable>
-        */}
       </Menu.Menu>
     ];
     const editorMenu = (
@@ -400,7 +384,6 @@ CohortParticipants.propTypes = {
   }).isRequired,
   onClick: PropTypes.func,
   getCohort: PropTypes.func,
-  getCohortParticipants: PropTypes.func,
   setCohort: PropTypes.func,
   scenarios: PropTypes.array,
   user: PropTypes.object,
@@ -417,7 +400,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
-  getCohortParticipants: id => dispatch(getCohortParticipants(id)),
   setCohort: params => dispatch(setCohort(params)),
   getUsers: () => dispatch(getUsers())
 });

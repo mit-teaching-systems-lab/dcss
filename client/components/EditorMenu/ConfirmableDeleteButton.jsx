@@ -38,8 +38,8 @@ class ConfirmableDeleteButton extends Component {
       : `Are you sure you want to delete?`;
 
     const onConfirmClick = () => {
-      onConfirm();
-      onComplete();
+      onConfirm && onConfirm();
+      onComplete && onComplete();
     };
 
     const confirmButton = (
@@ -78,7 +78,9 @@ class ConfirmableDeleteButton extends Component {
 ConfirmableDeleteButton.propTypes = {
   disabled: PropTypes.bool,
   itemType: PropTypes.string,
-  onConfirm: PropTypes.func.isRequired
+  onCancel: PropTypes.func,
+  onComplete: PropTypes.func,
+  onConfirm: PropTypes.func,
 };
 
 class ConfirmButton extends Component {

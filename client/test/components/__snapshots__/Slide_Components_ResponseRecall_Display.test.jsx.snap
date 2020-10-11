@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<div style=\\"white-space: pre-wrap; overflow-wrap: break-word;\\" class=\\"ui floating message\\"><div class=\\"content\\"><p>Participant response will appear here during scenario run.</p></div></div>"`;

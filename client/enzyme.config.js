@@ -1,0 +1,12 @@
+import 'regenerator-runtime/runtime';
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
+
+if (window) {
+  window.scrollTo = function() {};
+  Element.prototype.scrollIntoView = function() {};
+}
+
+

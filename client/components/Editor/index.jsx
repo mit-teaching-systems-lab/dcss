@@ -19,6 +19,8 @@ import ScenarioEditor from '@components/ScenarioEditor';
 import ScenarioStatusMenuItem from '@components/EditorMenu/ScenarioStatusMenuItem';
 import Scenario from '@components/Scenario';
 import Username from '@components/User/Username';
+// Review is presently not in use, but will be introduced along
+// with more features for scenario collaboration.
 // import Review from './Review';
 import { makeDefaultDescription } from './scenario';
 import Slides from './Slides';
@@ -109,8 +111,7 @@ class Editor extends Component {
       });
 
       const { scenarioUser } = this.props;
-
-      if (!scenario.lock) {
+      if (scenario && !scenario.lock) {
         this.props.history.push('/scenarios');
         return;
       }

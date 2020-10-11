@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<i aria-label=\\"Prompt: Choose Next Slide\\" class=\\"fork clockwise rotated icon\\"></i>Prompt: Choose Next Slide"`;

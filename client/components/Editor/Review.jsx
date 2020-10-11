@@ -45,7 +45,7 @@ class Review extends Component {
               <Responsive
                 onUpdate={() => {
                   // eslint-disable-next-line no-console
-                  console.log('resize');
+                  // console.log('resize');
                 }}
               >
                 <Card.Group doubling stackable itemsPerRow={4}>

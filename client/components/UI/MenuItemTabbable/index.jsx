@@ -24,7 +24,7 @@ const MenuItemTabbable = ({ children, ...props }) => {
 
   return (
     <Menu.Item tabIndex="0" {...menuItemProps}>
-      {children}
+      {children || null}
     </Menu.Item>
   );
 };

@@ -88,7 +88,7 @@ class ScenarioAuthors extends Component {
     const username = Username.from(user);
 
     // eslint-disable-next-line no-console
-    console.log('onChange', scenario, user, role, defaultValue);
+    // console.log('onChange', scenario, user, role, defaultValue);
 
     if (role) {
       // notify
@@ -343,6 +343,7 @@ ScenarioAuthors.propTypes = {
 
 const mapStateToProps = state => {
   const { scenario, user, users, usersById } = state;
+  // TODO: Migrate this entire component to `usersById`
   const scenarioUser = scenario.users.find(u => u.id === user.id);
   return {
     scenarioUser,

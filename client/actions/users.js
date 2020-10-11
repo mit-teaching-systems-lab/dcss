@@ -7,7 +7,7 @@ export const setUsers = users => ({
 
 export const getUsers = () => async dispatch => {
   try {
-    const { users } = await (await fetch('/api/roles/all')).json();
+    const { users = [] } = await (await fetch('/api/roles/all')).json();
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   } catch (error) {

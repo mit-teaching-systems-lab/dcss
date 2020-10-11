@@ -19,7 +19,10 @@ class ModalAccessible extends Component {
     if (!rootNode) {
       rootNode = document.getElementById('root');
     }
-    rootNode.setAttribute('aria-hidden', true);
+
+    if (rootNode) {
+      rootNode.setAttribute('aria-hidden', true);
+    }
 
     if (this.props.open && !this.state.activeTrap) {
       this.mountTrap();
@@ -33,7 +36,10 @@ class ModalAccessible extends Component {
     if (!rootNode) {
       rootNode = document.getElementById('root');
     }
-    rootNode.setAttribute('aria-hidden', false);
+
+    if (rootNode) {
+      rootNode.setAttribute('aria-hidden', false);
+    }
   }
   mountTrap() {
     this.setState({ activeTrap: true });
@@ -62,7 +68,7 @@ ModalAccessible.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired
+  ])
 };
 
 export default ModalAccessible;

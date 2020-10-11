@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<i aria-label=\\"Prompt: Text Input\\" class=\\"keyboard icon\\"></i>Prompt: Text Input"`;

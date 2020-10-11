@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<div history=\\"[object Object]\\" class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" aria-label=\\"Save undefined\\" class=\\"item\\"><i aria-hidden=\\"true\\" class=\\"save outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><i aria-label=\\"Delete this undefined\\" class=\\"trash alternate outline icon\\"></i></a></div>"`;

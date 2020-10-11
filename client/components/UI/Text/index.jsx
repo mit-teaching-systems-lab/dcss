@@ -38,7 +38,7 @@ Text.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
+  ]),
   style: PropTypes.object,
   title: PropTypes.string
 };

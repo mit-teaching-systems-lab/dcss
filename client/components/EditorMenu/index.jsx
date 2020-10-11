@@ -18,6 +18,7 @@ export default class EditorMenu extends React.Component {
       draghandle = {},
       type,
       items,
+      // DO NOT DELETE THIS
       isDragging,
       ...props
     } = this.props;
@@ -26,22 +27,20 @@ export default class EditorMenu extends React.Component {
       menuClassName += ` ${className}`;
     }
 
+    // DO NOT DELETE THIS
     void isDragging;
-    // const menuItems = Object.entries(items).reduce((accum, [prop, item]) => {
-    //   if (Array.isArray(item)) {
-    //     accum.push(...item.filter(x => x));
-    //   }
-    // }, []);
-    // console.log(menuItems);
+
+    // DO NOT CHANGE THE ORDER OF PROPS!
+    const menuProps = {
+      ...props,
+      ...draghandle,
+      icon: true,
+      borderless: true,
+      className: menuClassName
+    };
 
     return (
-      <Menu
-        {...props}
-        {...draghandle}
-        icon
-        borderless
-        className={menuClassName}
-      >
+      <Menu {...menuProps}>
         {items.left && (
           <React.Fragment>
             {items.left

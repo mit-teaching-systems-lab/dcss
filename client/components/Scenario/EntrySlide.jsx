@@ -17,7 +17,7 @@ class EntrySlide extends React.Component {
   constructor(props) {
     super(props);
 
-    const { permissions } = this.props;
+    const { permissions = {} } = this.props;
 
     this.state = {
       isReady: false,

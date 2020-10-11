@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<form class=\\"ui form\\"><div class=\\"field\\"><textarea placeholder=\\"Your response\\" rows=\\"3\\"></textarea></div></form>"`;

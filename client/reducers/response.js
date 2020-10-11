@@ -23,7 +23,7 @@ export const response = (state = initialState, action) => {
       };
 
       // eslint-disable-next-line no-console
-      console.log(newState);
+      // console.log(newState);
       return newState;
     }
     default:

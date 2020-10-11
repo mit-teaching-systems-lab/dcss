@@ -69,7 +69,7 @@ export default function(Component) {
       if (location.pathname.includes('/run/')) {
         // this === this.props
         // eslint-disable-next-line no-console
-        console.log(event, context);
+        // console.log(event, context);
         dispatch(saveRunEvent(this.run.id, event, context));
       }
     }

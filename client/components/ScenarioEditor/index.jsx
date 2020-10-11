@@ -332,14 +332,14 @@ class ScenarioEditor extends Component {
 
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
-        {this.state.authors.length && scenarioId === 'new' ? (
+        {this.state.authors && this.state.authors.length && scenarioId === 'new' ? (
           <AuthorDropdown
             author={author}
             options={this.state.authors}
             onChange={onChange}
           />
         ) : null}
-        {this.state.categories.length ? (
+        {this.state.categories && this.state.categories.length ? (
           <Ref innerRef={node => innerRef(node, 'categories')}>
             <CategoriesDropdown
               options={this.state.categories}

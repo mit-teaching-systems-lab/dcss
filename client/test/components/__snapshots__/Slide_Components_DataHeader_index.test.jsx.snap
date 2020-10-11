@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot 1 1`] = `"<div class=\\"ui red message\\"><div class=\\"content\\"><div class=\\"required field\\"><label>Data header</label><div class=\\"ui input\\"><input name=\\"header\\" required=\\"\\" type=\\"text\\" value=\\"\\"></div></div>This will only appear in data downloads, as the column header or row name.</div></div>"`;
