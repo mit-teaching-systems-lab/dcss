@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { logIn } from '@actions';
+import { logIn } from '@actions/login';
 import { getSession } from '@actions/user';
 
 import Notification from '@components/Notification';
@@ -24,21 +24,21 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    const { getSession, logIn } = this.props;
     let { isReady } = this.state;
 
     if (!isReady) {
-      await getSession();
+      await this.props.getSession();
 
       // After getSession() is resolved,
       // this.props.user.id will be set if
       // there is a valid, active session.
       if (this.props.user.id) {
+        // TODO: move this into async action
         const { permissions } = await (await fetch(
           '/api/roles/permission'
         )).json();
 
-        logIn({
+        await this.props.logIn({
           ...this.props.user,
           permissions
         });

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
-import { logIn } from '@actions';
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -111,6 +110,8 @@ class CreateAccount extends Component {
       password,
       username
     });
+
+    // TODO: move this to async action
     const { error, message } = await (await fetch('/api/auth/signup', {
       method: 'POST',
       headers: {
@@ -264,7 +265,6 @@ CreateAccount.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   location: PropTypes.object,
-  logIn: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   username: PropTypes.string
 };
@@ -274,13 +274,9 @@ const mapStateToProps = state => {
   return { isLoggedIn, username };
 };
 
-const mapDispatchToProps = {
-  logIn
-};
-
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
   )(CreateAccount)
 );

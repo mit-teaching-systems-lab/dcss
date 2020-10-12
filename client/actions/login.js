@@ -1,13 +1,16 @@
 import { LOG_IN, LOG_OUT } from './types';
 import Storage from '@utils/Storage';
 
-export const logIn = userData => ({
-  type: LOG_IN,
-  payload: {
-    ...userData,
-    isLoggedIn: true
-  }
-});
+export const logIn = (userData) => async dispatch => {
+  dispatch({
+    type: LOG_IN,
+    payload: {
+      ...userData,
+      isLoggedIn: true
+    }
+  });
+};
+
 
 const method = 'POST';
 
@@ -24,7 +27,7 @@ export const logOut = () => async dispatch => {
     Storage.clear();
 
     // Previously, we would step outside of react and react-router to
-    // force a real request after logout.
+    // force a real request after logout, but that's no longer necessary.
     // location.href = `${location.origin}/login/create-account`;
   } catch (error) {
     void error;

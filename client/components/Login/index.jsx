@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
-import { logIn, logOut } from '@actions';
+import { logOut } from '@actions/login';
 import './Login.css';
 
 const method = 'POST';
@@ -190,7 +190,6 @@ Login.propTypes = {
   }).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   location: PropTypes.object,
-  logIn: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
   mode: PropTypes.string,
   username: PropTypes.string
@@ -202,7 +201,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-  logIn,
   logOut
 };
 
