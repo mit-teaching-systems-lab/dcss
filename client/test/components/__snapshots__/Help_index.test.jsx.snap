@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Snapshot 1 1`] = `"<button class=\\"ui icon button\\"><i aria-hidden=\\"true\\" class=\\"help circle icon\\"></i></button>"`;
