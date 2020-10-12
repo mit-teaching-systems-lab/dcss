@@ -20,7 +20,10 @@ const cohortInitialState = {
 export const cohort = (state = cohortInitialState, action) => {
   const { type, cohort, users } = action;
 
-  if (type === SET_COHORT_SUCCESS || type === GET_COHORT_SUCCESS) {
+  if (type === SET_COHORT_SUCCESS ||
+      type === GET_COHORT_SUCCESS ||
+      type === GET_COHORT_PARTICIPANTS_SUCCESS) {
+
     return {
       ...state,
       ...cohort
@@ -33,13 +36,6 @@ export const cohort = (state = cohortInitialState, action) => {
       ...state,
       ...cohort,
       role: 'owner'
-    };
-  }
-
-  if (type === GET_COHORT_PARTICIPANTS_SUCCESS) {
-    return {
-      ...state,
-      users: cohort.users
     };
   }
 

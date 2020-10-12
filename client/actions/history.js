@@ -17,7 +17,7 @@ export const getHistoryForScenario = (
 
     const { history } = res;
 
-    dispatch({ type: GET_RUN_HISTORY_SUCCESS, ...history });
+    dispatch({ type: GET_RUN_HISTORY_SUCCESS, history });
     return { ...history };
   } catch (error) {
     dispatch({ type: GET_RUN_HISTORY_ERROR, error });

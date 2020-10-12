@@ -20,7 +20,7 @@ export const mounter = (Component, defaultProps = {}) => {
   };
 };
 
-export const store = (state = {}) => {
+export const createStore = (state = {}) => {
   return createStoreWithMiddleWare(rootReducer, mergeDeepRight(rootReducer({}, {}), state));
 };
 
@@ -28,7 +28,7 @@ export const reduxer = (Component, props = {}, state = {}) => {
   const history = createMemoryHistory();
   return function reduxWrap() {
     return (
-      <Provider store={store(state)}>
+      <Provider store={createStore(state)}>
         <Router history={history}>
           <Component {...props} />
         </Router>

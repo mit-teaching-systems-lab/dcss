@@ -2,11 +2,12 @@ import { combineReducers } from 'redux';
 
 import {
   COPY_SCENARIO_ERROR,
+  CREATE_COHORT_ERROR,
   DELETE_SCENARIO_ERROR,
-  UNLOCK_SCENARIO_ERROR,
   GET_ALL_COHORTS_ERROR,
   GET_COHORT_ERROR,
   GET_COHORT_RUN_DATA_ERROR,
+  GET_COHORT_PARTICIPANTS_ERROR,
   GET_RESPONSE_ERROR,
   GET_RUN_ERROR,
   GET_RUNS_ERROR,
@@ -23,13 +24,16 @@ import {
   SET_RUN_ERROR,
   SET_SCENARIO_ERROR,
   SET_SCENARIOS_ERROR,
-  SET_USER_ERROR
+  SET_USER_ERROR,
+  UNLOCK_SCENARIO_ERROR,
 } from '@actions/types';
 
 // eslint-disable-next-line no-unused-vars
 const cohort = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
+    case CREATE_COHORT_ERROR:
+    case GET_COHORT_PARTICIPANTS_ERROR:
     case GET_COHORT_ERROR:
     case SET_COHORT_ERROR:
       return {

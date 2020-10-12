@@ -50,21 +50,30 @@ export const createCohort = ({ name }) => async dispatch => {
   }
 };
 
+// TODO: the tests need to be updated
+// TODO: this needs to be renamed "setCohortScenarios"
+// TODO: the actions needs to be renamed "SET_COHORT_SCENARIOS_*"
+// TODO: the reducers need to be updated
 export const setCohort = cohort => async dispatch => {
-  // dispatch({ type: SET_COHORT, cohort });
   try {
     const { scenarios } = cohort;
     const body = JSON.stringify({
       scenarios
     });
-    await (await fetch(`/api/cohort/${cohort.id}/scenarios`, {
+    const res = await (await fetch(`/api/cohort/${cohort.id}/scenarios`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body
     })).json();
+
+    if (res.error) {
+      throw res;
+    }
+
     dispatch({ type: SET_COHORT_SUCCESS, cohort });
+    return cohort;
   } catch (error) {
     dispatch({ type: SET_COHORT_ERROR, error });
     return null;
@@ -92,12 +101,12 @@ export const getCohort = id => async dispatch => {
 
 export const getCohorts = () => async dispatch => {
   try {
-    const response = await (await fetch('/api/cohort/my')).json();
+    const res = await (await fetch('/api/cohort/my')).json();
 
-    if (response.error) {
-      throw response;
+    if (res.error) {
+      throw res;
     }
-    const { cohorts } = response;
+    const { cohorts } = res;
     dispatch({ type: GET_USER_COHORTS_SUCCESS, cohorts });
   } catch (error) {
     dispatch({ type: GET_USER_COHORTS_ERROR, error });
@@ -132,10 +141,8 @@ export const getCohortParticipants = id => async dispatch => {
       cohort: { users }
     } = res;
 
-    // Dispatch the entire "cohort", but only the "users" property
-    // will be used in the reducer.
+    // Dispatch the entire "cohort", but return only the users
     dispatch({ type: GET_COHORT_PARTICIPANTS_SUCCESS, cohort });
-    // return the cohort to the promise action for redirection purposes
     return users;
   } catch (error) {
     dispatch({ type: GET_COHORT_PARTICIPANTS_ERROR, error });
