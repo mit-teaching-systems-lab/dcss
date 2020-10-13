@@ -27,7 +27,8 @@ afterEach(() => {
 });
 
 test('CREATE_COHORT_SUCCESS', async () => {
-  let diff = {
+  const state = store.getState();
+  const diff = {
     name: 'Fake Cohort',
     id: 42
   };
@@ -96,6 +97,7 @@ test('CREATE_COHORT_ERROR', async () => {
 
 
 test('SET_COHORT_SUCCESS', async () => {
+  const state = store.getState();
   const cohort = state.cohorts[1];
 
   fetch.mockImplementation(() => {
@@ -158,6 +160,7 @@ test('SET_COHORT_ERROR', async () => {
 });
 
 test('GET_COHORT_SUCCESS', async () => {
+  const state = store.getState();
   const cohort = state.cohorts[1];
 
   fetch.mockImplementation(() => {
@@ -251,6 +254,7 @@ test('GET_ALL_COHORTS_ERROR', async () => {
 });
 
 test('GET_COHORT_PARTICIPANTS_SUCCESS', async () => {
+  const state = store.getState();
   const cohort = state.cohorts[1];
 
   fetch.mockImplementation(() => {
@@ -343,6 +347,7 @@ test('GET_USER_COHORTS_ERROR', async () => {
   }
 });
 test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
+  const state = store.getState();
   const cohort = state.cohorts[1];
 
   fetch.mockImplementation(() => {
@@ -364,6 +369,7 @@ test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
 });
 
 test('SET_COHORT_USER_ROLE_SUCCESS', async () => {
+  const state = store.getState();
   const cohort = state.cohorts[1];
 
   fetch.mockImplementation(() => {

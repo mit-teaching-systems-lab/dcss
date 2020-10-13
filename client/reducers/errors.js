@@ -6,8 +6,9 @@ import {
   DELETE_SCENARIO_ERROR,
   GET_ALL_COHORTS_ERROR,
   GET_COHORT_ERROR,
-  GET_COHORT_RUN_DATA_ERROR,
   GET_COHORT_PARTICIPANTS_ERROR,
+  GET_COHORT_RUN_DATA_ERROR,
+  GET_LOGS_ERROR,
   GET_RESPONSE_ERROR,
   GET_RUN_ERROR,
   GET_RUNS_ERROR,
@@ -50,6 +51,19 @@ const cohorts = (state = null, action) => {
   switch (type) {
     case GET_ALL_COHORTS_ERROR:
     case GET_USER_COHORTS_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+const logs = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case GET_LOGS_ERROR:
       return {
         ...error
       };
@@ -214,6 +228,7 @@ export default combineReducers({
   cohortdata,
   cohortlink,
   cohorts,
+  logs,
   response,
   run,
   runs,

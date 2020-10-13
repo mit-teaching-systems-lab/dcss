@@ -40,3 +40,10 @@ export const reduxer = (Component, props = {}, state = {}) => {
 export const snapshot = wrapper => {
   return wrapper.html();
 };
+
+export const makeById = (records) => {
+  return records.reduce((accum, record) => {
+    accum[record.id] = record;
+    return accum;
+  }, {});
+};

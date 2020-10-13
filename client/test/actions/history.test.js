@@ -27,6 +27,7 @@ afterEach(() => {
 });
 
 test('GET_RUN_HISTORY_SUCCESS', async () => {
+  const state = store.getState();
   const history = { prompts: [{id: 1, prompt: 'how are you?'}], responses: [{id: 1, value: 'Fine, I guess'}] };
   fetch.mockImplementation(() => {
     return Promise.resolve({

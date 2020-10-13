@@ -1,7 +1,7 @@
 module.exports = {
   cohort: {
     id: 2,
-    created_at: '2020-08-31T14:01:08.656Z',
+    created_at: '2020-02-31T14:01:02.656Z',
     name: 'A New Cohort That Exists In Bootstrap State For Testing',
     runs: [],
     scenarios: [],
@@ -42,7 +42,7 @@ module.exports = {
     {
       id: 2,
       name: 'A New Cohort That Exists In Bootstrap State For Testing',
-      created_at: '2020-08-31T14:01:08.656Z',
+      created_at: '2020-02-31T14:01:02.656Z',
       runs: [],
       scenarios: [],
       users: [
@@ -77,15 +77,15 @@ module.exports = {
     {
       id: 1,
       name: 'First Cohort',
-      created_at: '2020-07-24T14:52:28.429Z',
+      created_at: '2020-03-24T14:52:28.429Z',
       runs: [
         {
           id: 11,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-28T19:44:03.069Z',
-          updated_at: '2020-07-31T17:01:43.139Z',
-          ended_at: '2020-07-31T17:01:43.128Z',
+          created_at: '2020-03-28T19:44:03.069Z',
+          updated_at: '2020-03-31T17:01:43.139Z',
+          ended_at: '2020-03-31T17:01:43.128Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -97,9 +97,9 @@ module.exports = {
           id: 28,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:01:52.908Z',
-          updated_at: '2020-07-31T17:02:00.309Z',
-          ended_at: '2020-07-31T17:02:00.296Z',
+          created_at: '2020-03-31T17:01:52.902Z',
+          updated_at: '2020-03-31T17:02:00.309Z',
+          ended_at: '2020-03-31T17:02:00.296Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -111,9 +111,9 @@ module.exports = {
           id: 29,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:02:51.357Z',
-          updated_at: '2020-07-31T17:02:57.054Z',
-          ended_at: '2020-07-31T17:02:57.043Z',
+          created_at: '2020-03-31T17:02:51.357Z',
+          updated_at: '2020-03-31T17:02:57.054Z',
+          ended_at: '2020-03-31T17:02:57.043Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -125,9 +125,9 @@ module.exports = {
           id: 30,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:05:34.501Z',
-          updated_at: '2020-07-31T17:05:39.144Z',
-          ended_at: '2020-07-31T17:05:39.136Z',
+          created_at: '2020-03-31T17:05:34.501Z',
+          updated_at: '2020-03-31T17:05:39.144Z',
+          ended_at: '2020-03-31T17:05:39.136Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -139,9 +139,9 @@ module.exports = {
           id: 31,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:07:15.447Z',
-          updated_at: '2020-07-31T17:07:20.331Z',
-          ended_at: '2020-07-31T17:07:20.321Z',
+          created_at: '2020-03-31T17:07:15.447Z',
+          updated_at: '2020-03-31T17:07:20.331Z',
+          ended_at: '2020-03-31T17:07:20.321Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -190,15 +190,15 @@ module.exports = {
     '1': {
       id: 1,
       name: 'First Cohort',
-      created_at: '2020-07-24T14:52:28.429Z',
+      created_at: '2020-03-24T14:52:28.429Z',
       runs: [
         {
           id: 28,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:01:52.908Z',
-          updated_at: '2020-07-31T17:02:00.309Z',
-          ended_at: '2020-07-31T17:02:00.296Z',
+          created_at: '2020-03-31T17:01:52.902Z',
+          updated_at: '2020-03-31T17:02:00.309Z',
+          ended_at: '2020-03-31T17:02:00.296Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -210,9 +210,9 @@ module.exports = {
           id: 29,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:02:51.357Z',
-          updated_at: '2020-07-31T17:02:57.054Z',
-          ended_at: '2020-07-31T17:02:57.043Z',
+          created_at: '2020-03-31T17:02:51.357Z',
+          updated_at: '2020-03-31T17:02:57.054Z',
+          ended_at: '2020-03-31T17:02:57.043Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -224,9 +224,9 @@ module.exports = {
           id: 30,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:05:34.501Z',
-          updated_at: '2020-07-31T17:05:39.144Z',
-          ended_at: '2020-07-31T17:05:39.136Z',
+          created_at: '2020-03-31T17:05:34.501Z',
+          updated_at: '2020-03-31T17:05:39.144Z',
+          ended_at: '2020-03-31T17:05:39.136Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -238,9 +238,9 @@ module.exports = {
           id: 31,
           user_id: 2,
           scenario_id: 7,
-          created_at: '2020-07-31T17:07:15.447Z',
-          updated_at: '2020-07-31T17:07:20.331Z',
-          ended_at: '2020-07-31T17:07:20.321Z',
+          created_at: '2020-03-31T17:07:15.447Z',
+          updated_at: '2020-03-31T17:07:20.331Z',
+          ended_at: '2020-03-31T17:07:20.321Z',
           consent_id: 8,
           consent_acknowledged_by_user: true,
           consent_granted_by_user: true,
@@ -287,7 +287,7 @@ module.exports = {
     '2': {
       id: 2,
       name: 'A New Cohort That Exists In Bootstrap State For Testing',
-      created_at: '2020-08-31T14:01:08.656Z',
+      created_at: '2020-02-31T14:01:02.656Z',
       runs: [],
       scenarios: [],
       users: [
@@ -372,8 +372,234 @@ module.exports = {
     is_anonymous: false,
     is_super: true
   },
-  logs: [],
-  logsById: {},
+  logs: [
+    {
+      id: 885,
+      created_at: '2020-10-13T00:51:05.143Z',
+      capture: {
+        request: {
+          url: '/runs/116/update',
+          body: {
+            ended_at: '2020-10-13T00:51:05.116Z'
+          },
+          query: {},
+          method: 'POST',
+          params: {},
+          headers: {
+            host: 'localhost:3000',
+            accept: '*/*',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            origin: 'http://localhost:3000',
+            referer: 'http://localhost:3000/run/8/slide/2',
+            connection: 'close',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'content-type': 'application/json',
+            'content-length': '39',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.9'
+          },
+          session: {
+            user: {
+              id: 2,
+              email: 'rick@bocoup.com',
+              roles: [
+                'participant',
+                'super_admin',
+                'facilitator',
+                'researcher'
+              ],
+              is_super: true,
+              username: 'rwaldron',
+              is_anonymous: false,
+              personalname: 'Rick Waldron'
+            },
+            cookie: {
+              path: '/',
+              expires: '2020-11-12T00:51:05.142Z',
+              httpOnly: true,
+              originalMaxAge: 2592000000
+            }
+          }
+        },
+        response: '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+      }
+    },
+    {
+      id: 884,
+      created_at: '2020-10-13T00:50:42.232Z',
+      capture: {
+        request: {
+          url: '/runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9',
+          body: {
+            type: 'TextResponse',
+            value: 'sdfsdfsdfsdf',
+            isSkip: false,
+            content: '',
+            ended_at: '2020-10-13T00:50:35.645Z',
+            created_at: '2020-10-13T00:50:34.648Z'
+          },
+          query: {},
+          method: 'POST',
+          params: {},
+          headers: {
+            host: 'localhost:3000',
+            accept: '*/*',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            origin: 'http://localhost:3000',
+            referer: 'http://localhost:3000/run/8/slide/1',
+            connection: 'close',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'content-type': 'application/json',
+            'content-length': '152',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.9'
+          },
+          session: {
+            user: {
+              id: 2,
+              email: 'rick@bocoup.com',
+              roles: [
+                'participant',
+                'super_admin',
+                'facilitator',
+                'researcher'
+              ],
+              is_super: true,
+              username: 'rwaldron',
+              is_anonymous: false,
+              personalname: 'Rick Waldron'
+            },
+            cookie: {
+              path: '/',
+              expires: '2020-11-12T00:50:42.232Z',
+              httpOnly: true,
+              originalMaxAge: 2592000000
+            }
+          }
+        }
+      }
+    }
+  ],
+  logsById: {
+    '884': {
+      id: 884,
+      created_at: '2020-10-13T00:50:42.232Z',
+      capture: {
+        request: {
+          url: '/runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9',
+          body: {
+            type: 'TextResponse',
+            value: 'sdfsdfsdfsdf',
+            isSkip: false,
+            content: '',
+            ended_at: '2020-10-13T00:50:35.645Z',
+            created_at: '2020-10-13T00:50:34.648Z'
+          },
+          query: {},
+          method: 'POST',
+          params: {},
+          headers: {
+            host: 'localhost:3000',
+            accept: '*/*',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            origin: 'http://localhost:3000',
+            referer: 'http://localhost:3000/run/8/slide/1',
+            connection: 'close',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'content-type': 'application/json',
+            'content-length': '152',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.9'
+          },
+          session: {
+            user: {
+              id: 2,
+              email: 'rick@bocoup.com',
+              roles: [
+                'participant',
+                'super_admin',
+                'facilitator',
+                'researcher'
+              ],
+              is_super: true,
+              username: 'rwaldron',
+              is_anonymous: false,
+              personalname: 'Rick Waldron'
+            },
+            cookie: {
+              path: '/',
+              expires: '2020-11-12T00:50:42.232Z',
+              httpOnly: true,
+              originalMaxAge: 2592000000
+            }
+          }
+        }
+      }
+    },
+    '885': {
+      id: 885,
+      created_at: '2020-10-13T00:51:05.143Z',
+      capture: {
+        request: {
+          url: '/runs/116/update',
+          body: {
+            ended_at: '2020-10-13T00:51:05.116Z'
+          },
+          query: {},
+          method: 'POST',
+          params: {},
+          headers: {
+            host: 'localhost:3000',
+            accept: '*/*',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            origin: 'http://localhost:3000',
+            referer: 'http://localhost:3000/run/8/slide/2',
+            connection: 'close',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'content-type': 'application/json',
+            'content-length': '39',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-origin',
+            'accept-encoding': 'gzip, deflate, br',
+            'accept-language': 'en-US,en;q=0.9'
+          },
+          session: {
+            user: {
+              id: 2,
+              email: 'rick@bocoup.com',
+              roles: [
+                'participant',
+                'super_admin',
+                'facilitator',
+                'researcher'
+              ],
+              is_super: true,
+              username: 'rwaldron',
+              is_anonymous: false,
+              personalname: 'Rick Waldron'
+            },
+            cookie: {
+              path: '/',
+              expires: '2020-11-12T00:51:05.142Z',
+              httpOnly: true,
+              originalMaxAge: 2592000000
+            }
+          }
+        },
+        response: '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+      }
+    }
+  },
   response: {},
   responses: [],
   responsesById: {},
@@ -392,8 +618,8 @@ module.exports = {
   runs: [
     {
       run_id: 31,
-      run_created_at: '2020-07-31T17:07:15.447Z',
-      run_ended_at: '2020-07-31T17:07:20.321Z',
+      run_created_at: '2020-03-31T17:07:15.447Z',
+      run_ended_at: '2020-03-31T17:07:20.321Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -404,8 +630,8 @@ module.exports = {
     },
     {
       run_id: 30,
-      run_created_at: '2020-07-31T17:05:34.501Z',
-      run_ended_at: '2020-07-31T17:05:39.136Z',
+      run_created_at: '2020-03-31T17:05:34.501Z',
+      run_ended_at: '2020-03-31T17:05:39.136Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -416,8 +642,8 @@ module.exports = {
     },
     {
       run_id: 29,
-      run_created_at: '2020-07-31T17:02:51.357Z',
-      run_ended_at: '2020-07-31T17:02:57.043Z',
+      run_created_at: '2020-03-31T17:02:51.357Z',
+      run_ended_at: '2020-03-31T17:02:57.043Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -428,8 +654,8 @@ module.exports = {
     },
     {
       run_id: 28,
-      run_created_at: '2020-07-31T17:01:52.908Z',
-      run_ended_at: '2020-07-31T17:02:00.296Z',
+      run_created_at: '2020-03-31T17:01:52.902Z',
+      run_ended_at: '2020-03-31T17:02:00.296Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -442,8 +668,8 @@ module.exports = {
   runsById: {
     '27': {
       run_id: 27,
-      run_created_at: '2020-07-31T16:59:42.363Z',
-      run_ended_at: '2020-07-31T16:59:49.447Z',
+      run_created_at: '2020-03-31T16:59:42.363Z',
+      run_ended_at: '2020-03-31T16:59:49.447Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: null,
@@ -454,8 +680,8 @@ module.exports = {
     },
     '28': {
       run_id: 28,
-      run_created_at: '2020-07-31T17:01:52.908Z',
-      run_ended_at: '2020-07-31T17:02:00.296Z',
+      run_created_at: '2020-03-31T17:01:52.902Z',
+      run_ended_at: '2020-03-31T17:02:00.296Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -466,8 +692,8 @@ module.exports = {
     },
     '29': {
       run_id: 29,
-      run_created_at: '2020-07-31T17:02:51.357Z',
-      run_ended_at: '2020-07-31T17:02:57.043Z',
+      run_created_at: '2020-03-31T17:02:51.357Z',
+      run_ended_at: '2020-03-31T17:02:57.043Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -478,8 +704,8 @@ module.exports = {
     },
     '30': {
       run_id: 30,
-      run_created_at: '2020-07-31T17:05:34.501Z',
-      run_ended_at: '2020-07-31T17:05:39.136Z',
+      run_created_at: '2020-03-31T17:05:34.501Z',
+      run_ended_at: '2020-03-31T17:05:39.136Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -490,8 +716,8 @@ module.exports = {
     },
     '31': {
       run_id: 31,
-      run_created_at: '2020-07-31T17:07:15.447Z',
-      run_ended_at: '2020-07-31T17:07:20.321Z',
+      run_created_at: '2020-03-31T17:07:15.447Z',
+      run_ended_at: '2020-03-31T17:07:20.321Z',
       consent_acknowledged_by_user: true,
       consent_granted_by_user: true,
       cohort_id: 1,
@@ -597,7 +823,7 @@ module.exports = {
       }
     ],
     id: 42,
-    created_at: '2020-08-31T17:50:28.089Z',
+    created_at: '2020-02-31T17:50:28.029Z',
     updated_at: null,
     deleted_at: null
   },
@@ -606,7 +832,7 @@ module.exports = {
       id: 42,
       title: 'Multiplayer Scenario',
       description: 'A scenario about "Multiplayer Scenario"',
-      created_at: '2020-08-31T17:50:28.089Z',
+      created_at: '2020-02-31T17:50:28.029Z',
       updated_at: null,
       status: 1,
       deleted_at: null,
@@ -667,7 +893,7 @@ module.exports = {
       id: 42,
       title: 'Multiplayer Scenario',
       description: 'A scenario about "Multiplayer Scenario"',
-      created_at: '2020-08-31T17:50:28.089Z',
+      created_at: '2020-02-31T17:50:28.029Z',
       updated_at: null,
       status: 1,
       deleted_at: null,
