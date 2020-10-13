@@ -63,16 +63,22 @@ export const setResponses = (id, submitted) => async dispatch => {
   const responsesById = {};
   try {
     for (let [responseId, body] of submitted) {
-      responses.push(body);
-      responsesById[responseId] = body;
-
-      await fetch(`/api/runs/${id}/response/${responseId}`, {
+      const res = await (await fetch(`/api/runs/${id}/response/${responseId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(body)
-      });
+      })).json();
+
+      if (res.error) {
+        throw res;
+      }
+
+      const {response} = res;
+
+      responses.push(response);
+      responsesById[responseId] = response;
 
       if (Storage.has(`run/${id}/${responseId}`)) {
         Storage.delete(`run/${id}/${responseId}`);

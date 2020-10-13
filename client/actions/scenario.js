@@ -136,10 +136,6 @@ export const copyScenario = scenario_id => async dispatch => {
       throw res;
     }
 
-    if (res.status !== 201) {
-      return null;
-    }
-
     const { scenario } = res;
 
     dispatch({ type: COPY_SCENARIO_SUCCESS, scenario });

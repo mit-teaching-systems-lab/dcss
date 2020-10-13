@@ -40,7 +40,7 @@ export const createCohort = ({ name }) => async dispatch => {
       throw res;
     }
     const { cohort } = res;
-
+    cohort.role = 'owner';
     dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
     // return the cohort to the promise action for redirection purposes
     return cohort;
