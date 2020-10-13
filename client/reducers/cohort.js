@@ -18,24 +18,16 @@ const cohortInitialState = {
 };
 
 export const cohort = (state = cohortInitialState, action) => {
-  const { type, cohort, users } = action;
+  const { cohort, type, users } = action;
 
-  if (type === SET_COHORT_SUCCESS ||
+  if (type === CREATE_COHORT_SUCCESS ||
+      type === SET_COHORT_SUCCESS ||
       type === GET_COHORT_SUCCESS ||
       type === GET_COHORT_PARTICIPANTS_SUCCESS) {
 
     return {
       ...state,
       ...cohort
-    };
-  }
-
-  if (type === CREATE_COHORT_SUCCESS) {
-    // console.log('CREATED: ', { ...cohort });
-    return {
-      ...state,
-      ...cohort,
-      role: 'owner'
     };
   }
 
@@ -56,8 +48,9 @@ export const cohort = (state = cohortInitialState, action) => {
 };
 
 export const cohorts = (state = [], action) => {
-  const { type, cohorts } = action;
-  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
+  const { cohorts, type } = action;
+  if (type === GET_USER_COHORTS_SUCCESS ||
+      type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.slice();
   }
 
@@ -65,9 +58,10 @@ export const cohorts = (state = [], action) => {
 };
 
 export const cohortsById = (state = {}, action) => {
-  const { type, cohorts } = action;
+  const { cohorts, type } = action;
 
-  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
+  if (type === GET_USER_COHORTS_SUCCESS ||
+      type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.reduce((accum, cohort) => {
       accum[cohort.id] = cohort;
       return accum;

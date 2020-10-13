@@ -10,6 +10,7 @@ import {
   GET_COHORT_RUN_DATA_ERROR,
   GET_LOGS_ERROR,
   GET_RESPONSE_ERROR,
+  GET_RESPONSES_ERROR,
   GET_RUN_ERROR,
   GET_RUNS_ERROR,
   GET_SCENARIO_ERROR,
@@ -22,6 +23,8 @@ import {
   LINK_RUN_TO_COHORT_ERROR,
   SET_COHORT_ERROR,
   SET_RESPONSE_ERROR,
+  SET_RESPONSES_ERROR,
+  SET_USER_ROLE_ERROR,
   SET_RUN_ERROR,
   SET_SCENARIO_ERROR,
   SET_SCENARIOS_ERROR,
@@ -99,6 +102,74 @@ const cohortlink = (state = null, action) => {
 };
 
 // eslint-disable-next-line no-unused-vars
+const response = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case SET_RESPONSE_ERROR:
+    case GET_RESPONSE_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+const responses = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case SET_RESPONSES_ERROR:
+    case GET_RESPONSES_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+const role = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case SET_USER_ROLE_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+const run = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case SET_RUN_ERROR:
+    case GET_RUN_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
+const runs = (state = null, action) => {
+  const { error = {}, type } = action;
+  switch (type) {
+    case GET_RUNS_ERROR:
+      return {
+        ...error
+      };
+    default:
+      return null;
+  }
+};
+
+// eslint-disable-next-line no-unused-vars
 const scenario = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
@@ -143,20 +214,6 @@ const slides = (state = null, action) => {
 };
 
 // eslint-disable-next-line no-unused-vars
-const response = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case SET_RESPONSE_ERROR:
-    case GET_RESPONSE_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
 const transcript = (state = null, action) => {
   const { error = {}, type } = action;
   switch (type) {
@@ -169,32 +226,6 @@ const transcript = (state = null, action) => {
   }
 };
 
-// eslint-disable-next-line no-unused-vars
-const run = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case SET_RUN_ERROR:
-    case GET_RUN_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const runs = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_RUNS_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
 
 // eslint-disable-next-line no-unused-vars
 const user = (state = null, action) => {
@@ -230,6 +261,8 @@ export default combineReducers({
   cohorts,
   logs,
   response,
+  responses,
+  role,
   run,
   runs,
   scenario,
