@@ -21,7 +21,7 @@
     "storybook": "start-storybook -p 6006",
     "test": "jest",
     "watch": "jest --watch --bail=1",
-    "watch:coverage": "jest --watch --coverage --bail=1"
+    "watch:coverage": "jest --watchAll --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
