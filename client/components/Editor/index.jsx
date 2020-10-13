@@ -244,6 +244,7 @@ class Editor extends Component {
     Object.assign(data, updates);
 
     const submitCallback = this.getSubmitCallback();
+    // TODO: Move to own async action
     const response = await (await submitCallback(data)).json();
 
     switch (response.status) {

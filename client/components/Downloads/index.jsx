@@ -87,6 +87,7 @@ class Downloads extends Component {
     const files = [];
 
     for (let id of scenarioIds) {
+      // TODO: change this to an object parameter
       const { prompts, responses } = await getHistoryForScenario(
         id,
         cohort && cohort.id
