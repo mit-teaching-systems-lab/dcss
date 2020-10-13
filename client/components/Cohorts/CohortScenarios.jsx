@@ -22,7 +22,7 @@ import Username from '@components/User/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
-import scrollIntoView from '@components/util/scrollIntoView';
+import scrollIntoView from '@utils/scrollIntoView';
 import Sortable from '@components/Sortable';
 import { getCohort, setCohort } from '@actions/cohort';
 import { getScenarios } from '@actions/scenario';

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from '@components/UI';
 
-import scrollIntoView from '@components/util/scrollIntoView';
+import scrollIntoView from '@utils/scrollIntoView';
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';

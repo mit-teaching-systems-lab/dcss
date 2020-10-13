@@ -23,7 +23,7 @@ import Username from '@components/User/Username';
 import UsersTable from '@components/Admin/UsersTable';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
-import scrollIntoView from '@components/util/scrollIntoView';
+import scrollIntoView from '@utils/scrollIntoView';
 import { getUsers } from '@actions/users';
 import { COHORT_ROLE_GROUPS } from '../Admin/constants';
 import './Cohort.css';

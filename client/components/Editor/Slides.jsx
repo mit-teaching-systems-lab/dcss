@@ -22,7 +22,7 @@ import Sortable from '@components/Sortable';
 import SlideEditor from '@components/Slide/SlideEditor';
 import MultiPathNetworkGraphModal from '@components/Slide/Components/MultiPathResponse/MultiPathNetworkGraphModal';
 import SlideComponents from '@components/SlideComponents';
-import scrollIntoView from '@components/util/scrollIntoView';
+import scrollIntoView from '@utils/scrollIntoView';
 import { deleteSlide, getSlides, setSlides } from '@actions/scenario';
 import './Slides.css';
 
