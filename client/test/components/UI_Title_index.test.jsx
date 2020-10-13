@@ -1,8 +1,9 @@
 import {
+  fetchImplementation,
   mounter,
   reduxer,
   snapshot,
-  state
+  state,
 } from '../bootstrap';
 import {
   unmountComponentAtNode
@@ -26,14 +27,7 @@ beforeEach(() => {
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({});
-      },
-    });
-  });
+  fetchImplementation(fetch);
 });
 
 afterEach(() => {
