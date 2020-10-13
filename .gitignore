@@ -1,5 +1,6 @@
 .DS_Store
 .env
+coverage
 dist
 node_modules
 yarn-error.log
