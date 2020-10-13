@@ -349,26 +349,14 @@ async function setScenarioCategories(scenarioId, categories) {
 }
 
 async function deleteScenario(id) {
-  let result;
-
-  result = await query(sql`
-    DELETE FROM scenario_consent WHERE scenario_id = ${id};
-  `);
-
-  result = await query(sql`
-    DELETE FROM scenario_tag WHERE scenario_id = ${id};
-  `);
-
-  // TODO: need to handle the previous result
-
-  result = await query(sql`
-    DELETE FROM slide WHERE scenario_id = ${id};
-  `);
-
-  // TODO: need to handle the previous result
-
-  result = await query(sql`
-    DELETE FROM scenario WHERE id = ${id};
+  let result = await query(sql`
+    DELETE FROM scenario_snapshot WHERE scenario_id >= ${id};
+    DELETE FROM scenario_lock WHERE scenario_id >= ${id};
+    DELETE FROM scenario_consent WHERE scenario_id >= ${id};
+    DELETE FROM scenario_user_role WHERE scenario_id >= ${id};
+    DELETE FROM scenario_tag WHERE scenario_id >= ${id};
+    DELETE FROM slide WHERE scenario_id >= ${id};
+    DELETE FROM scenario WHERE id >= ${id};
   `);
 
   return { deletedCount: result.rowCount };

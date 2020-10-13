@@ -12,19 +12,19 @@ const {
 const db = require('./db');
 
 async function getScenarioAsync(req, res) {
-  res.send({ scenario: reqScenario(req), status: 200 });
+  res.send({ scenario: reqScenario(req) });
 }
 
 async function getScenarioLockAsync(req, res) {
   const scenario = db.getScenarioLock(req.params.scenario_id, req.params.lock);
 
-  res.send({ scenario, status: 200 });
+  res.send({ scenario });
 }
 
 async function getAllScenariosAsync(req, res) {
   try {
     const scenarios = await db.getAllScenarios();
-    res.send({ scenarios, status: 200 });
+    res.send({ scenarios });
   } catch (apiError) {
     const error = new Error('Error while getting all scenarios.');
     error.status = 500;
@@ -59,7 +59,7 @@ async function addScenarioAsync(req, res) {
   try {
     const scenario = await db.addScenario(authorId, title, description);
     await db.setScenarioCategories(scenario.id, categories);
-    res.send({ scenario, status: 201 });
+    res.status(201).json({ scenario });
   } catch (apiError) {
     const error = new Error('Error while creating scenario.');
     error.status = 500;
@@ -143,7 +143,7 @@ async function setScenarioAsync(req, res) {
       finish
     });
 
-    res.send({ scenario, status: 200 });
+    res.status(200).send({ scenario });
   } catch (apiError) {
     const error = new Error('Error while updating scenario');
     error.status = 500;
@@ -163,9 +163,7 @@ async function deleteScenarioAsync(req, res) {
 
   try {
     const scenario = await db.deleteScenario(scenario_id);
-    const result = { scenario, status: 200 };
-
-    res.send(result);
+    res.send({ scenario });
   } catch (apiError) {
     const error = new Error('Error while deleting scenario');
     error.status = 500;
@@ -183,7 +181,7 @@ async function addScenarioLockAsync(req, res) {
       await db.addScenarioLock(scenario_id, user_id);
     }
     const scenario = await db.getScenario(scenario_id);
-    res.send({ scenario, status: 200 });
+    res.send({ scenario });
   } catch (apiError) {
     const error = new Error('Error while unlocking scenario');
     error.status = 500;
@@ -199,7 +197,7 @@ async function endScenarioLockAsync(req, res) {
     const unlock = await db.endScenarioLock(scenario_id, user_id);
     if (unlock) {
       const scenario = await db.getScenario(scenario_id);
-      res.send({ scenario, status: 200 });
+      res.send({ scenario });
 
       const slides = await getScenarioSlides(scenario_id);
       await db.addScenarioSnapshot(scenario_id, user_id, {
@@ -229,7 +227,7 @@ async function softDeleteScenarioAsync(req, res) {
   try {
     const scenario = await db.softDeleteScenario(scenarioId);
 
-    res.send({ scenario, status: 200 });
+    res.send({ scenario });
   } catch (apiError) {
     const error = new Error('Error while soft deleting scenario');
     error.status = 500;
@@ -354,7 +352,7 @@ async function copyScenarioAsync(req, res) {
 async function getScenarioByRunAsync(req, res) {
   const userId = req.session.user.id;
   const scenarios = await db.getScenarioByRun(userId);
-  res.send({ scenarios, status: 200 });
+  res.send({ scenarios });
 }
 
 async function addScenarioUserRoleAsync(req, res) {

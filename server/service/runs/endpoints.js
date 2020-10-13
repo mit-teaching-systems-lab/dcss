@@ -10,62 +10,77 @@ async function newOrExistingRunAsync(req, res) {
   // TODO: investigate using ON CONFLICT RETURN *
   let run = await db.fetchRun({ scenario_id, user_id });
 
-  if (!run) {
-    const { id: consent_id } = await getScenarioConsent(scenario_id);
-    run = await db.createRun({ scenario_id, user_id, consent_id });
+  try {
+    if (!run) {
+      const { id: consent_id } = await getScenarioConsent(scenario_id);
+      run = await db.createRun({ scenario_id, user_id, consent_id });
+    }
+    res.json({ run });
+  } catch (error) {
+    res.status(500).json({ error });
   }
-
-  res.json({ run, status: 200 });
 }
 
 async function upsertResponseAsync(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
   const { created_at, ended_at, ...response } = req.body;
+  const newResponse = {
+    run_id,
+    response_id,
+    response,
+    user_id,
+    created_at,
+    ended_at
+  };
 
-  res.json(
-    await db.upsertResponse({
-      run_id,
-      response_id,
-      response,
-      user_id,
-      created_at,
-      ended_at
-    })
-  );
+  try {
+    const response = await db.upsertResponse(newResponse);
+    res.json({ response });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function getResponseAsync(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
 
-  const response = await db.getResponse({ run_id, response_id, user_id });
-  const transcript = await db.getResponseTranscript({
-    run_id,
-    response_id,
-    user_id
-  });
+  try {
+    const response = await db.getResponse({ run_id, response_id, user_id });
+    const transcript = await db.getResponseTranscript({
+      run_id,
+      response_id,
+      user_id
+    });
 
-  if (response && transcript) {
-    Object.assign(response.response, transcript);
+    if (response && transcript) {
+      Object.assign(response.response, transcript);
+    }
+
+    res.json({ response });
+  } catch (error) {
+    res.status(500).json({ error });
   }
-
-  res.json({ response, status: 200 });
 }
 
 async function getTranscriptionOutcomeAsync(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
 
-  // This returns a transcript record, not a response
-  // object with a transcript!
-  const outcome = await db.getTranscriptionOutcome({
-    run_id,
-    response_id,
-    user_id
-  });
+  try {
+    // This returns a transcript record, not a response
+    // object with a transcript!
+    const outcome = await db.getTranscriptionOutcome({
+      run_id,
+      response_id,
+      user_id
+    });
 
-  res.json({ outcome, status: 200 });
+    res.json({ outcome });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function getRunDataAsync(req, res) {
@@ -73,52 +88,79 @@ async function getRunDataAsync(req, res) {
   const responses = await db.getRunResponses({ run_id });
   const prompts = {};
 
-  for (const response of responses) {
-    if (!prompts[response.scenario_id]) {
-      prompts[response.scenario_id] = [
-        await getScenarioPrompts(response.scenario_id)
-      ];
+  try {
+    for (const response of responses) {
+      if (!prompts[response.scenario_id]) {
+        prompts[response.scenario_id] = [
+          await getScenarioPrompts(response.scenario_id)
+        ];
+      }
     }
-  }
 
-  res.json({ prompts, responses, status: 200 });
+    res.json({ prompts, responses });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function updateRunAsync(req, res) {
   const { id } = await runForRequest(req);
   const body = req.body;
-  const run = await db.updateRun(id, body);
-
-  res.json({ run, status: 200 });
+  try {
+    const run = await db.updateRun(id, body);
+    res.json({ run });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function revokeConsentForRunAsync(req, res) {
   const { id } = await runForRequest(req);
-  const run = await db.updateRun(id, { consent_granted_by_user: false });
-  res.json({ status: 200, run });
+  try {
+    const run = await db.updateRun(id, { consent_granted_by_user: false });
+    res.json({ run });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function getReferrerParamsAsync(req, res) {
-  const { referrer_params } = await runForRequest(req);
-  res.json({ status: 200, referrer_params });
+  try {
+    const { referrer_params } = await runForRequest(req);
+    res.json({ referrer_params });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function finishRunAsync(req, res) {
-  const { id } = await runForRequest(req);
-  res.json(await db.finishRun(id));
+  try {
+    const { id } = await runForRequest(req);
+    res.json(await db.finishRun(id));
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function saveRunEventAsync(req, res) {
   const { id } = await runForRequest(req);
   const { name, context } = req.body;
-  const event = await db.saveRunEvent(id, name, context);
-  res.json({ status: 201, event });
+  try {
+    const event = await db.saveRunEvent(id, name, context);
+    res.status(201).json({ event });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 async function getRunsAsync(req, res) {
   const { id: user_id } = req.session.user;
-  const runs = await db.getRuns(user_id);
-  res.json({ status: 200, runs });
+  try {
+    const runs = await db.getRuns(user_id);
+    res.json({ runs });
+  } catch (error) {
+    res.status(500).json({ error });
+  }
 }
 
 exports.finishRun = asyncMiddleware(finishRunAsync);

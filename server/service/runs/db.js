@@ -126,7 +126,8 @@ async function upsertResponse({
 
   const result = await query(sql`
     INSERT INTO run_response (run_id, response_id, response, user_id, created_at, ended_at)
-    VALUES (${run_id}, ${response_id}, ${response}, ${user_id}, ${created_at}, ${ended_at});
+    VALUES (${run_id}, ${response_id}, ${response}, ${user_id}, ${created_at}, ${ended_at})
+    RETURNING *;
   `);
   return result.rows[0];
 }
