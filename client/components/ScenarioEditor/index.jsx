@@ -167,9 +167,9 @@ class ScenarioEditor extends Component {
 
   async onSubmit(updatedScenario) {
     const { postSubmitCB, submitCB } = this.props;
-    const scenario = updatedScenario || this.props.scenario;
+    const newScenario = updatedScenario || this.props.scenario;
 
-    if (!scenario.title) {
+    if (!newScenario.title) {
       notify({
         type: 'error',
         message: `Scenario title cannot be empty.`
@@ -177,13 +177,15 @@ class ScenarioEditor extends Component {
       return;
     }
 
-    if (!scenario.description) {
+    if (!newScenario.description) {
       // If description is any kind of falsy value, ensure that
       // it's saved as an empty string.
-      scenario.description = '';
+      newScenario.description = '';
     }
 
-    const response = await (await submitCB(scenario)).json();
+    // TODO: Move to own async action
+    const response = await submitCB(newScenario);
+    const { scenario, error } = await response.json();
 
     let type = 'success';
     let message = '';
@@ -197,20 +199,20 @@ class ScenarioEditor extends Component {
         break;
       }
       default:
-        if (response.message) {
-          type = response.error ? 'error' : type;
-          message = response.message;
+        if (error) {
+          type = 'error';
+          message = error.message;
         }
         break;
     }
     notify({ type, message });
 
-    if (response.error) {
+    if (error) {
       return;
     }
 
     if (postSubmitCB) {
-      postSubmitCB(response.scenario);
+      postSubmitCB(scenario);
     }
   }
 
