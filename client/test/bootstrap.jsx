@@ -47,3 +47,14 @@ export const makeById = (records) => {
     return accum;
   }, {});
 };
+
+export const fetchImplementation = (fetch, status = 200, resolveValue = {}) => {
+  fetch.mockImplementation(async () => {
+    return {
+      status,
+      async json() {
+        return resolveValue;
+      },
+    };
+  });
+};

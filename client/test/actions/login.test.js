@@ -1,16 +1,17 @@
 import assert from 'assert';
 import {
+  createStore,
+  fetchImplementation,
+  makeById,
   state,
-  createStore
 } from '../bootstrap';
 
 import * as actions from '../../actions/login';
 import * as types from '../../actions/types';
 import Storage from '../../util/Storage';
-
 jest.mock('../../util/Storage');
 
-let original = JSON.parse(JSON.stringify(state));
+const original = JSON.parse(JSON.stringify(state));
 let store;
 
 beforeAll(() => {
@@ -24,7 +25,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createStore(original);
+  store = createStore({});
   fetch.mockImplementation(() => {});
   Storage.clear.mockImplementation(() => {});
 });
@@ -35,10 +36,6 @@ afterEach(() => {
 });
 
 test('LOG_IN', async () => {
-  const store = createStore({
-    login: {}
-  });
-
   await store.dispatch(actions.logIn({ username: 'me', otherdata: true }));
   assert.deepEqual(store.getState().login,  {
     isLoggedIn: true,
@@ -49,10 +46,6 @@ test('LOG_IN', async () => {
 });
 
 test('LOG_OUT', async () => {
-  const store = createStore({
-    login: {}
-  });
-
   await store.dispatch(actions.logIn({ username: 'me', otherdata: true }));
   assert.deepEqual(store.getState().login,  {
     isLoggedIn: true,

@@ -1,13 +1,17 @@
 import assert from 'assert';
 import {
+  createStore,
+  fetchImplementation,
+  makeById,
   state,
-  createStore
 } from '../bootstrap';
 
 import * as actions from '../../actions/cohort';
 import * as types from '../../actions/types';
 
-let original = JSON.parse(JSON.stringify(state));
+const error = new Error('something unexpected happened on the server');
+const original = JSON.parse(JSON.stringify(state));
+
 let store;
 
 beforeAll(() => {
@@ -19,7 +23,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createStore(original);
+  store = createStore({});
 });
 
 afterEach(() => {
@@ -27,23 +31,9 @@ afterEach(() => {
 });
 
 test('CREATE_COHORT_SUCCESS', async () => {
-  const state = store.getState();
-  const diff = {
-    name: 'Fake Cohort',
-    id: 42
-  };
-  let newCohort;
+  let cohort = { ...state.cohort, name: 'Fake Cohort' };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        newCohort = Object.assign({}, state.cohort, diff);
-        const cohort = newCohort;
-        return Promise.resolve({ cohort });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { cohort });
 
   const returnValue = await store.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
 
@@ -56,25 +46,18 @@ test('CREATE_COHORT_SUCCESS', async () => {
     }
   ]);
 
-  const { cohort } = store.getState();
+  const cohortWithOwnerRole = {
+    ...cohort,
+    role: 'owner',
+  };
 
-  // The current cohort that's now in state, should look like the "newCohort",
-  // but must have a "role": "owner", which was added in the process.
-  assert.deepEqual(cohort, Object.assign(newCohort, { role: 'owner'}));
-  assert.deepEqual(returnValue, Object.assign(newCohort, { role: 'owner'}));
+  assert.deepEqual(store.getState().cohort, cohortWithOwnerRole, 1);
+  assert.deepEqual(returnValue, cohortWithOwnerRole, 2);
 });
 
 test('CREATE_COHORT_ERROR', async () => {
-  const error = new Error('something unexpected happened on the server');
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ error });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
 
@@ -97,19 +80,12 @@ test('CREATE_COHORT_ERROR', async () => {
 
 
 test('SET_COHORT_SUCCESS', async () => {
-  const state = store.getState();
-  const cohort = state.cohorts[1];
+  const cohort = {
+    ...state.cohorts[1]
+  };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohort });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { cohort });
 
-  assert.notDeepEqual(cohort.id, state.cohort.id);
 
   const returnValue = await store.dispatch(actions.setCohort(cohort));
 
@@ -127,17 +103,11 @@ test('SET_COHORT_SUCCESS', async () => {
 });
 
 test('SET_COHORT_ERROR', async () => {
-  const cohort = state.cohorts[1];
-  const error = new Error('something unexpected happened on the server');
+  const cohort = {
+    ...state.cohorts[1]
+  };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ error });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.setCohort(cohort));
 
@@ -149,30 +119,16 @@ test('SET_COHORT_ERROR', async () => {
       body: '{"scenarios":[7,1,9,8]}'
     }
   ]);
-
-  {
-    const { errors: { cohort } } = store.getState();
-    // The current value of the errors.cohort property will
-    // be whatever error info the server returned.
-    assert.deepEqual(error, cohort.error);
-    assert.deepEqual(returnValue, null);
-  }
+  assert.deepEqual(store.getState().errors.cohort.error, error);
+  assert.deepEqual(returnValue, null);
 });
 
 test('GET_COHORT_SUCCESS', async () => {
-  const state = store.getState();
-  const cohort = state.cohorts[1];
+  const cohort = {
+    ...state.cohorts[1]
+  };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohort });
-      },
-    });
-  });
-
-  assert.notDeepEqual(cohort.id, state.cohort.id);
+  fetchImplementation(fetch, 200, { cohort });
 
   const returnValue = await store.dispatch(actions.getCohort(2));
 
@@ -181,209 +137,123 @@ test('GET_COHORT_SUCCESS', async () => {
 });
 
 test('GET_COHORT_ERROR', async () => {
-  const cohort = state.cohorts[1];
-  const error = new Error('something unexpected happened on the server');
+  const cohort = {
+    ...state.cohorts[1]
+  };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ error });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getCohort(2));
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/2' ]);
-
-  {
-    const { errors: { cohort } } = store.getState();
-    // The current value of the errors.cohort property will
-    // be whatever error info the server returned.
-    assert.deepEqual(error, cohort.error);
-    assert.deepEqual(returnValue, null);
-  }
+  assert.deepEqual(store.getState().errors.cohort.error, error);
+  assert.deepEqual(returnValue, null);
 });
 
 test('GET_ALL_COHORTS_SUCCESS', async () => {
   const cohorts = state.cohorts.slice();
-  const store = createStore({
-    cohorts: []
-  });
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohorts });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { cohorts });
 
   const returnValue = await store.dispatch(actions.getAllCohorts());
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/all' ]);
-  assert.deepEqual(store.getState().cohorts.length, 2);
+  assert.deepEqual(store.getState().cohorts, cohorts);
+  assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
 });
 
 test('GET_ALL_COHORTS_ERROR', async () => {
-  const cohort = state.cohorts[1];
-  const error = new Error('something unexpected happened on the server');
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ error });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getAllCohorts());
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/all' ]);
-
-  {
-    const { errors: { cohorts } } = store.getState();
-    // The current value of the errors.cohort property will
-    // be whatever error info the server returned.
-    assert.deepEqual(error, cohorts.error);
-    assert.deepEqual(returnValue, null);
-  }
+  assert.deepEqual(store.getState().errors.cohorts.error, error);
+  assert.deepEqual(returnValue, null);
 });
 
 test('GET_COHORT_PARTICIPANTS_SUCCESS', async () => {
-  const state = store.getState();
-  const cohort = state.cohorts[1];
+  const cohort = {
+    ...state.cohorts[1]
+  };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohort });
-      },
-    });
-  });
-
-  assert.notDeepEqual(cohort, state.cohort);
+  fetchImplementation(fetch, 200, { cohort });
 
   const returnValue = await store.dispatch(actions.getCohortParticipants(1));
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1' ]);
 
+  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1' ]);
   assert.deepEqual(store.getState().cohort.users, cohort.users);
   assert.deepEqual(returnValue, cohort.users);
 });
 
 test('GET_COHORT_PARTICIPANTS_ERROR', async () => {
-  const error = new Error('something unexpected happened on the server');
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ error });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getCohortParticipants(1));
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1' ]);
-
-  {
-    const { errors: { cohort } } = store.getState();
-    // The current value of the errors.cohort property will
-    // be whatever error info the server returned.
-    assert.deepEqual(error, cohort.error);
-    assert.deepEqual(returnValue, null);
-  }
+  assert.deepEqual(store.getState().errors.cohort.error, error);
+  assert.deepEqual(returnValue, null);
 });
 
 test('GET_USER_COHORTS_SUCCESS', async () => {
   const cohorts = state.cohorts.slice();
-  const store = createStore({
-    cohorts: []
-  });
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohorts });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { cohorts });
 
   const returnValue = await store.dispatch(actions.getCohorts());
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/my' ]);
-  assert.deepEqual(store.getState().cohorts.length, 2);
+  assert.deepEqual(store.getState().cohorts, cohorts);
+  assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
 });
 
 test('GET_USER_COHORTS_ERROR', async () => {
-  const cohort = state.cohorts[1];
-  const error = new Error('something unexpected happened on the server');
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ error });
-      },
-    });
-  });
+  fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getCohorts());
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/my' ]);
-
-  {
-    const { errors: { cohorts } } = store.getState();
-    // The current value of the errors.cohort property will
-    // be whatever error info the server returned.
-    assert.deepEqual(error, cohorts.error);
-    assert.deepEqual(returnValue, null);
-  }
+  assert.deepEqual(store.getState().errors.cohorts.error, error);
+  assert.deepEqual(returnValue, null);
 });
+
 test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
-  const state = store.getState();
-  const cohort = state.cohorts[1];
+  const cohort = {
+    ...state.cohorts[1]
+  };
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohort });
-      },
-    });
-  });
-
-  assert.notDeepEqual(cohort, state.cohort);
+  fetchImplementation(fetch, 200, { cohort });
 
   const returnValue = await store.dispatch(actions.linkRunToCohort(2, 29));
 
   assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/2/run/29' ]);
   assert.deepEqual(returnValue, cohort);
-  assert.deepEqual(store.getState().cohort.id, cohort.id);
+  assert.deepEqual(store.getState().cohort, cohort);
 });
 
 test('SET_COHORT_USER_ROLE_SUCCESS', async () => {
-  const state = store.getState();
-  const cohort = state.cohorts[1];
-
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohort, addedCount: 1 });
-      },
-    });
-  });
-
-  assert.notDeepEqual(cohort, state.cohort);
-
   {
+    let cohort = {
+      ...state.cohorts[1],
+      users: [
+        {
+          id: 2,
+          email: 'owner@email.com',
+          username: 'owner',
+          cohort_id: 1,
+          roles: [ 'boss' ],
+          is_anonymous: false,
+          is_owner: true
+        }
+      ]
+    };
+
+    fetchImplementation(fetch, 200, { cohort, addedCount: 1 });
+
     const returnValue = await store.dispatch(actions.addCohortUserRole(cohort.id, 2, 'boss'));
 
     assert.deepEqual(fetch.mock.calls[0], [
@@ -394,21 +264,29 @@ test('SET_COHORT_USER_ROLE_SUCCESS', async () => {
         body: '{"cohort_id":1,"user_id":2,"roles":["boss"]}'
       }
     ]);
-
-    assert.notDeepEqual(state.cohort, cohort);
+    assert.deepEqual(store.getState().cohort.users, cohort.users);
     assert.equal(returnValue.addedCount, 1);
   }
 
-  fetch.mockImplementation(() => {
-    return Promise.resolve({
-      status: 200,
-      json() {
-        return Promise.resolve({ cohort, deletedCount: 1 });
-      },
-    });
-  });
-
   {
+
+    let cohort = {
+      ...state.cohorts[1],
+      users: [
+        {
+          id: 2,
+          email: 'owner@email.com',
+          username: 'owner',
+          cohort_id: 1,
+          roles: [],
+          is_anonymous: false,
+          is_owner: true
+        }
+      ]
+    };
+
+    fetchImplementation(fetch, 200, { cohort, deletedCount: 1 });
+
     const returnValue = await store.dispatch(actions.deleteCohortUserRole(cohort.id, 2, 'boss'));
 
     assert.deepEqual(fetch.mock.calls[1], [
@@ -419,8 +297,7 @@ test('SET_COHORT_USER_ROLE_SUCCESS', async () => {
         body: '{"cohort_id":1,"user_id":2,"roles":["boss"]}'
       }
     ]);
-
-    assert.notDeepEqual(state.cohort, cohort);
+    assert.deepEqual(store.getState().cohort.users, cohort.users);
     assert.equal(returnValue.deletedCount, 1);
   }
 });
