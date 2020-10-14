@@ -194,18 +194,23 @@ async function endScenarioLockAsync(req, res) {
   const scenario_id = Number(req.params.scenario_id);
   const user_id = Number(req.session.user.id);
   try {
-    const unlock = await db.endScenarioLock(scenario_id, user_id);
-    if (unlock) {
-      const scenario = await db.getScenario(scenario_id);
+    const scenario = await db.getScenario(scenario_id);
+    const lock = await db.getScenarioLock(scenario_id);
+    if (!lock) {
       res.send({ scenario });
-
-      const slides = await getScenarioSlides(scenario_id);
-      await db.addScenarioSnapshot(scenario_id, user_id, {
-        ...scenario,
-        slides
-      });
     } else {
-      throw new Error('Could not unlock scenario');
+      const unlock = await db.endScenarioLock(scenario_id, user_id);
+      if (unlock) {
+        res.send({ scenario });
+
+        const slides = await getScenarioSlides(scenario_id);
+        await db.addScenarioSnapshot(scenario_id, user_id, {
+          ...scenario,
+          slides
+        });
+      } else {
+        throw new Error('Could not unlock scenario');
+      }
     }
   } catch (apiError) {
     const error = new Error('Error while unlocking scenario');
