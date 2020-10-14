@@ -2,6 +2,13 @@
     "init": {
         "driver": "pg"
     },
+    "test": {
+        "driver": "pg",
+        "user": "tm",
+        "password": "teachermoments",
+        "host": "localhost",
+        "database": "teachermoments-test"
+    },
     "dev": {
         "driver": "pg",
         "user": "tm",

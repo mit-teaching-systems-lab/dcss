@@ -1,19 +1,19 @@
 {
-  "name": "threeflows",
+  "name": "dcss",
   "version": "2.0.0-prealpha.0",
-  "description": "Teacher Moments: Practice spaces for teacher preparation programs",
+  "description": "Digital Clinical Simulation Software (DCSS, pronounced 'Decks')",
   "private": true,
   "engines": {
     "node": "12.x"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
+    "url": "git+https://github.com/bocoup/dcss.git"
   },
   "bugs": {
-    "url": "https://github.com/mit-teaching-systems-lab/threeflows/issues"
+    "url": "https://github.com/bocoup/dcss/issues"
   },
-  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
+  "homepage": "https://github.com/bocoup/dcss#readme",
   "main": "server/index.js",
   "workspaces": [
     "client",
@@ -23,19 +23,23 @@
   "scripts": {
     "build": "yarn workspace client run build",
     "create-migration": "yarn workspace server run create-migration",
-    "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
-    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
-    "db-init-local": "yarn workspace server run db-init-local",
+    "db-create:dev": "yarn workspace server run db-create:dev",
+    "db-create:test": "yarn workspace server run db-create:test",
+    "db-create:dev:role": "yarn workspace server run db-create:dev:role",
+    "db-create:test:role": "yarn workspace server run db-create:test:role",
+    "db-init:dev": "yarn workspace server run db-init:dev",
+    "db-init:test": "yarn workspace server run db-init:test",
     "db-migrate-down": "yarn workspace server run db-migrate-down",
     "db-migrate-up": "yarn workspace server run db-migrate-up",
-    "dev": "npm-run-all --parallel dev:*",
+    "config:dev": "export $(cat config/dev); npm-run-all --parallel dev:*",
+    "config:test": "export $(cat config/test); npm-run-all --parallel dev:*",
     "dev:client": "yarn workspace client run dev",
     "dev:server": "yarn workspace server run dev",
     "jest": "yarn workspace test run test",
-    "lint": "npm-run-all \"lint:* {@}\" -c --",
-    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern \"**/*.js\"",
+    "lint": "npm-run-all 'lint:* {@}' -c --",
+    "lint:js": "eslint --ext .json --ext .js . --ignore-pattern '**/*.js'",
     "lint:packages": "yarn workspaces run lint",
-    "prettier": "prettier --write \"**/*.{js,jsx,json,css}\"",
+    "prettier": "prettier --write '**/*.{js,jsx,json,css}'",
     "postinstall": "node ./scripts/postinstall.js",
     "storybook": "yarn workspaces run storybook",
     "test": "npm-run-all jest lint -c"

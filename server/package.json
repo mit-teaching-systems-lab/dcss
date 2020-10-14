@@ -1,25 +1,32 @@
 {
   "name": "server",
   "version": "2.0.0-prealpha.0",
-  "description": "Server for the Teacher Moments app",
+  "description": "Server for DCSS/Decks (Teacher Moments, Interpret Me)",
   "license": "MIT",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
+    "url": "git+https://github.com/bocoup/decks.git"
   },
-  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
+  "homepage": "https://github.com/bocoup/decks#readme",
   "main": "index.js",
   "scripts": {
     "create-migration": "node migrations/helpers/create-migration.js",
-    "db-create-dev": "db-migrate --env init db:create teachermoments || echo \"Error setting up database\"",
-    "db-create-role-dev": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo \"Error creating role\"",
-    "db-init-local": "yarn db-create-dev && yarn db-create-role-dev && yarn db-migrate-up",
+    "db-create:dev": "db-migrate --env init db:create teachermoments || echo 'Error setting up database'",
+    "db-create:test": "db-migrate --env init db:create teachermoments-test || echo 'Error setting up database'",
+    "db-create:dev:role": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo 'Error creating role'",
+    "db-create:test:role": "psql -c \"CREATE ROLE tm WITH LOGIN PASSWORD 'teachermoments'\" || echo 'Error creating role'",
+    "db-init:dev": "yarn db-create:dev && yarn db-create:dev:role && yarn db-migrate-up:dev",
+    "db-init:test": "yarn db-create:test && yarn db-create:test:role && yarn db-migrate-up:test",
+    "db-migrate-down:dev": "db-migrate --env=dev down",
+    "db-migrate-down:test": "db-migrate --env=test down",
+    "db-migrate-up:dev": "db-migrate --env=dev up",
+    "db-migrate-up:test": "db-migrate --env=test up",
     "db-migrate-down": "db-migrate down",
     "db-migrate-up": "db-migrate up",
     "dev": "nodemon index.js",
     "lint": "eslint --ext js .",
-    "prettier": "prettier --write \"**/*.js\"",
+    "prettier": "prettier --write '**/*.js'",
     "seed:super-admin": "node seed/super-admin.js",
     "test": "yarn workspace test run test:server"
   },
@@ -48,6 +55,7 @@
     "eslint": "^6.2.2",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
-    "nodemon": "^1.19.1"
+    "nodemon": "^1.19.1",
+    "supertest": "^5.0.0"
   }
 }

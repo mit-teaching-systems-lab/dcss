@@ -1,13 +1,13 @@
 {
   "name": "client",
   "version": "2.0.0-prealpha.0",
-  "description": "Frontend for the Teacher Moments app",
+  "description": "Client for DCSS/Decks (Teacher Moments, Interpret Me)",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mit-teaching-systems-lab/threeflows.git"
+    "url": "git+https://github.com/github.com/bocoup/decks.git"
   },
-  "homepage": "https://github.com/mit-teaching-systems-lab/threeflows#readme",
+  "homepage": "https://github.com/github.com/bocoup/decks#readme",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode=production",

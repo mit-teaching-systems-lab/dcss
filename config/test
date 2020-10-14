@@ -1,10 +1,10 @@
 PGUSER=tm
 PGPASSWORD=teachermoments
-PGDATABASE=teachermoments
+PGDATABASE=teachermoments-test
 PGHOST=localhost
 PGPORT=5432
 
 AWS_PROFILE=tsl
 S3_BUCKET=v2-moments-dev
 ENV=dev
-DB_CONFIG=dev
+DB_CONFIG=test

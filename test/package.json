@@ -1,10 +1,10 @@
 {
   "name": "test",
   "version": "2.0.0-prealpha.0",
-  "description": "Test suite for the Teacher Moments app",
+  "description": "Server testing for DCSS/Decks (Teacher Moments, Interpret Me)",
   "license": "MIT",
   "private": true,
-  "repository": "git+https://github.com/mit-teaching-systems-lab/threeflows.git",
+  "repository": "git+https://github.com/bocoup/dcss.git",
   "scripts": {
     "lint": "eslint --ext js . **/*.js",
     "prettier": "prettier --write \"**/*.js\"",
@@ -19,6 +19,7 @@
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.9.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "supertest": "^5.0.0"
   }
 }

@@ -1,5 +1,11 @@
 const envConfig = require('dotenv').config().parsed || {};
-const devConfig = require('../database.json').dev;
+const databases = require('../database.json');
+
+const config = process.env.DB_CONFIG
+  ? process.env.DB_CONFIG
+  : 'dev';
+
+const devConfig = databases[config];
 
 exports.getDbConfig = function() {
   // This is the environment variable Heroku exposes
