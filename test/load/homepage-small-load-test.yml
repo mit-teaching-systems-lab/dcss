@@ -1,5 +1,5 @@
 config:
-  target: 'https://teacher-moments.herokuapp.com/'
+  target: 'https://teacher-moments-staging.herokuapp.com/'
   phases:
     - duration: 60
       arrivalRate: 2

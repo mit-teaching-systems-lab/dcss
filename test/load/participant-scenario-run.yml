@@ -1,5 +1,5 @@
 config:
-  target: 'https://teacher-moments.herokuapp.com'
+  target: 'https://teacher-moments-staging.herokuapp.com'
   payload:
       # path is relative to the location of the test script
       -
