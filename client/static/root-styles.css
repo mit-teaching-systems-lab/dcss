@@ -27,34 +27,32 @@
 }
 
 .ui.segment:first-child {
-   margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 .ui.menu {
   /*margin: 0.5rem 0 !important;*/
 }
 
-.ui.borderless.icon.menu>.item,
-.ui.borderless.icon.menu>.right>.item {
+.ui.borderless.icon.menu > .item,
+.ui.borderless.icon.menu > .right > .item {
   padding: 0em 1em !important;
 }
 
 .ui.menu:first-child,
-.ui.menu[class*="top attached"]:first-child
- {
+.ui.menu[class*='top attached']:first-child {
   margin-top: 0 !important;
 }
 
-.ui[class*="top attached"].menu {
+.ui[class*='top attached'].menu {
   margin-top: 0.5rem !important;
   margin-bottom: 0 !important;
 }
 
-
-.ui.modal>.close {
+.ui.modal > .close {
   top: 1.0535rem !important;
   right: 1rem !important;
-  color: rgba(0,0,0,.87) !important;
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 
 .ui.modal > .actions {
@@ -73,12 +71,12 @@ td .ui.fluid.selection.dropdown > .text {
   text-overflow: ellipsis !important;
 }
 
-.ui.borderless.icon.menu>.right>.item:last-child {
+.ui.borderless.icon.menu > .right > .item:last-child {
   padding-right: 0.5em !important;
 }
 
-.ui.borderless.icon.menu>.menu.movers.right>.item:last-child,
-.menu.movers.right>.item:last-child {
+.ui.borderless.icon.menu > .menu.movers.right > .item:last-child,
+.menu.movers.right > .item:last-child {
   padding-left: 0.5em !important;
   padding-right: 1em !important;
 }
@@ -88,26 +86,24 @@ td .ui.fluid.selection.dropdown > .text {
 }
 */
 @media only screen and (max-width: 767px) {
-
   #root {
     width: calc(100vw - 21px) !important;
   }
 
-
-  .ui.menu .item>.input input:not([type]),
-  .ui.menu .item>.input input[type='date'],
-  .ui.menu .item>.input input[type='datetime-local'],
-  .ui.menu .item>.input input[type='email'],
-  .ui.menu .item>.input input[type='file'],
-  .ui.menu .item>.input input[type='number'],
-  .ui.menu .item>.input input[type='password'],
-  .ui.menu .item>.input input[type='search'],
-  .ui.menu .item>.input input[type='tel'],
-  .ui.menu .item>.input input[type='text'],
-  .ui.menu .item>.input input[type='time'],
-  .ui.menu .item>.input input[type='url'],
-  .ui.menu .item>.input select:focus,
-  .ui.menu .item>.input textarea {
+  .ui.menu .item > .input input:not([type]),
+  .ui.menu .item > .input input[type='date'],
+  .ui.menu .item > .input input[type='datetime-local'],
+  .ui.menu .item > .input input[type='email'],
+  .ui.menu .item > .input input[type='file'],
+  .ui.menu .item > .input input[type='number'],
+  .ui.menu .item > .input input[type='password'],
+  .ui.menu .item > .input input[type='search'],
+  .ui.menu .item > .input input[type='tel'],
+  .ui.menu .item > .input input[type='text'],
+  .ui.menu .item > .input input[type='time'],
+  .ui.menu .item > .input input[type='url'],
+  .ui.menu .item > .input select:focus,
+  .ui.menu .item > .input textarea {
     font-size: 1.14286em !important;
   }
 

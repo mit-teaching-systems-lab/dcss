@@ -56,7 +56,7 @@
 
 .c__table-cell-options {
   width: 15rem !important;
-  padding: .18571429em .78571429em !important;
+  padding: 0.18571429em 0.78571429em !important;
 }
 
 .c__table-cell-content {
@@ -67,7 +67,7 @@
 @media only screen and (max-width: 767px) {
   .c__table-cell-options {
     width: 7rem !important;
-    padding: .18571429em .78571429em !important;
+    padding: 0.18571429em 0.78571429em !important;
   }
   .c__table-cell-content {
     display: none !important;
@@ -92,7 +92,6 @@
 .c__tab-menu--overflow::-webkit-scrollbar {
   height: 2px !important;
 }
-
 
 .c__tab-menu--button-transparent {
   background-color: none !important;

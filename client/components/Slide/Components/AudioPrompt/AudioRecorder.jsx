@@ -182,13 +182,12 @@ class AudioRecorder extends Component {
         }
       );
 
-      const { s3Location: value, transcript } = await (await fetch(
-        '/api/media/audio',
-        {
+      const { s3Location: value, transcript } = await (
+        await fetch('/api/media/audio', {
           method: 'POST',
           body
-        }
-      )).json();
+        })
+      ).json();
 
       const which = this.props.autostart
         ? AUDIO_RECORD_INSTANT_STOP
@@ -401,7 +400,4 @@ const mapDispatchToProps = dispatch => ({
   getResponse: params => dispatch(getResponse(params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AudioRecorder);
+export default connect(mapStateToProps, mapDispatchToProps)(AudioRecorder);

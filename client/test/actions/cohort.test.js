@@ -3,7 +3,7 @@ import {
   createStore,
   fetchImplementation,
   makeById,
-  state,
+  state
 } from '../bootstrap';
 
 import * as actions from '../../actions/cohort';
@@ -35,7 +35,9 @@ test('CREATE_COHORT_SUCCESS', async () => {
 
   fetchImplementation(fetch, 200, { cohort });
 
-  const returnValue = await store.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
+  const returnValue = await store.dispatch(
+    actions.createCohort({ name: 'Fake Cohort' })
+  );
 
   assert.deepEqual(fetch.mock.calls[0], [
     '/api/cohort',
@@ -48,7 +50,7 @@ test('CREATE_COHORT_SUCCESS', async () => {
 
   const cohortWithOwnerRole = {
     ...cohort,
-    role: 'owner',
+    role: 'owner'
   };
 
   assert.deepEqual(store.getState().cohort, cohortWithOwnerRole, 1);
@@ -56,10 +58,11 @@ test('CREATE_COHORT_SUCCESS', async () => {
 });
 
 test('CREATE_COHORT_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
+  const returnValue = await store.dispatch(
+    actions.createCohort({ name: 'Fake Cohort' })
+  );
 
   assert.deepEqual(fetch.mock.calls[0], [
     '/api/cohort',
@@ -70,7 +73,9 @@ test('CREATE_COHORT_ERROR', async () => {
     }
   ]);
 
-  const { errors: { cohort } } = store.getState();
+  const {
+    errors: { cohort }
+  } = store.getState();
 
   // The current value of the errors.cohort property will
   // be whatever error info the server returned.
@@ -78,14 +83,12 @@ test('CREATE_COHORT_ERROR', async () => {
   assert.equal(returnValue, null);
 });
 
-
 test('SET_COHORT_SUCCESS', async () => {
   const cohort = {
     ...state.cohorts[1]
   };
 
   fetchImplementation(fetch, 200, { cohort });
-
 
   const returnValue = await store.dispatch(actions.setCohort(cohort));
 
@@ -139,11 +142,10 @@ describe('GET_COHORT_SUCCESS', () => {
 
     const returnValue = await store.dispatch(actions.getCohort(2));
 
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/2' ]);
+    assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/2']);
     assert.deepEqual(store.getState().cohort.id, cohort.id);
   });
 });
-
 
 test('GET_COHORT_ERROR', async () => {
   const cohort = {
@@ -154,7 +156,7 @@ test('GET_COHORT_ERROR', async () => {
 
   const returnValue = await store.dispatch(actions.getCohort(2));
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/2' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/2']);
   assert.deepEqual(store.getState().errors.cohort.error, error);
   assert.deepEqual(returnValue, null);
 });
@@ -166,18 +168,17 @@ test('GET_ALL_COHORTS_SUCCESS', async () => {
 
   const returnValue = await store.dispatch(actions.getAllCohorts());
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/all' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/all']);
   assert.deepEqual(store.getState().cohorts, cohorts);
   assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
 });
 
 test('GET_ALL_COHORTS_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getAllCohorts());
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/all' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/all']);
   assert.deepEqual(store.getState().errors.cohorts.error, error);
   assert.deepEqual(returnValue, null);
 });
@@ -191,18 +192,17 @@ test('GET_COHORT_PARTICIPANTS_SUCCESS', async () => {
 
   const returnValue = await store.dispatch(actions.getCohortParticipants(1));
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1']);
   assert.deepEqual(store.getState().cohort.users, cohort.users);
   assert.deepEqual(returnValue, cohort.users);
 });
 
 test('GET_COHORT_PARTICIPANTS_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getCohortParticipants(1));
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1']);
   assert.deepEqual(store.getState().errors.cohort.error, error);
   assert.deepEqual(returnValue, null);
 });
@@ -214,18 +214,17 @@ test('GET_USER_COHORTS_SUCCESS', async () => {
 
   const returnValue = await store.dispatch(actions.getCohorts());
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/my' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/my']);
   assert.deepEqual(store.getState().cohorts, cohorts);
   assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
 });
 
 test('GET_USER_COHORTS_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getCohorts());
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/my' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/my']);
   assert.deepEqual(store.getState().errors.cohorts.error, error);
   assert.deepEqual(returnValue, null);
 });
@@ -239,7 +238,7 @@ test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
 
   const returnValue = await store.dispatch(actions.linkRunToCohort(2, 29));
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/2/run/29' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/2/run/29']);
   assert.deepEqual(returnValue, cohort);
   assert.deepEqual(store.getState().cohort, cohort);
 });
@@ -249,20 +248,19 @@ test('LINK_RUN_TO_COHORT_ERROR', async () => {
 
   const returnValue = await store.dispatch(actions.linkRunToCohort(2, 29));
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/2/run/29' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/2/run/29']);
   assert.deepEqual(store.getState().errors.cohortlink.error, error);
   assert.deepEqual(returnValue, null);
 });
 
 describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
-
   const payload = { prompts: [], responses: [] };
 
   test('Scenario', async () => {
     fetchImplementation(fetch, 200, payload);
 
     const returnValue = await store.dispatch(actions.getCohortData(1, 2, 3));
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1/scenario/3' ]);
+    assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1/scenario/3']);
     assert.deepEqual(returnValue, payload);
   });
 
@@ -270,7 +268,7 @@ describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
     fetchImplementation(fetch, 200, payload);
 
     const returnValue = await store.dispatch(actions.getCohortData(1, 2));
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1/participant/2' ]);
+    assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1/participant/2']);
     assert.deepEqual(returnValue, payload);
   });
 });
@@ -280,7 +278,7 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.getCohortData(1, 2, 3));
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1/scenario/3' ]);
+    assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1/scenario/3']);
     assert.deepEqual(store.getState().errors.cohortdata.error, error);
     assert.deepEqual(returnValue, null);
   });
@@ -289,22 +287,22 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.getCohortData(1, 2));
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1/participant/2' ]);
+    assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1/participant/2']);
     assert.deepEqual(store.getState().errors.cohortdata.error, error);
     assert.deepEqual(returnValue, null);
   });
 });
 
 describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
-
-
   test('linkUserToCohort', async () => {
     let users = state.users.slice();
 
     fetchImplementation(fetch, 200, { users });
 
-    const returnValue = await store.dispatch(actions.linkUserToCohort(1, 'boss'));
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/cohort/1/join/boss' ]);
+    const returnValue = await store.dispatch(
+      actions.linkUserToCohort(1, 'boss')
+    );
+    assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1/join/boss']);
     assert.deepEqual(store.getState().cohort.users, users);
     assert.equal(returnValue, users);
   });
@@ -318,7 +316,7 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
-          roles: [ 'boss' ],
+          roles: ['boss'],
           is_anonymous: false,
           is_owner: true
         }
@@ -327,7 +325,9 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { cohort, addedCount: 1 });
 
-    const returnValue = await store.dispatch(actions.addCohortUserRole(cohort.id, 2, 'boss'));
+    const returnValue = await store.dispatch(
+      actions.addCohortUserRole(cohort.id, 2, 'boss')
+    );
 
     assert.deepEqual(fetch.mock.calls[0], [
       '/api/cohort/${cohort_id}/roles/add',
@@ -342,7 +342,6 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
   });
 
   test('deleteCohortUserRole', async () => {
-
     let cohort = {
       ...state.cohorts[1],
       users: [
@@ -360,7 +359,9 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { cohort, deletedCount: 1 });
 
-    const returnValue = await store.dispatch(actions.deleteCohortUserRole(cohort.id, 2, 'boss'));
+    const returnValue = await store.dispatch(
+      actions.deleteCohortUserRole(cohort.id, 2, 'boss')
+    );
 
     assert.deepEqual(fetch.mock.calls[0], [
       '/api/cohort/${cohort_id}/roles/delete',
@@ -376,11 +377,12 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
 });
 
 describe('SET_COHORT_USER_ROLE_ERROR', () => {
-
   test('linkUserToCohort', async () => {
     fetchImplementation(fetch, 200, { error });
 
-    const returnValue = await store.dispatch(actions.linkUserToCohort(1, 'boss'));
+    const returnValue = await store.dispatch(
+      actions.linkUserToCohort(1, 'boss')
+    );
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });
@@ -388,7 +390,9 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
   test('addCohortUserRole', async () => {
     fetchImplementation(fetch, 200, { error });
 
-    const returnValue = await store.dispatch(actions.addCohortUserRole(1, 2, 'boss'));
+    const returnValue = await store.dispatch(
+      actions.addCohortUserRole(1, 2, 'boss')
+    );
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });
@@ -396,7 +400,9 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
   test('deleteCohortUserRole', async () => {
     fetchImplementation(fetch, 200, { error });
 
-    const returnValue = await store.dispatch(actions.deleteCohortUserRole(1, 2, 'boss'));
+    const returnValue = await store.dispatch(
+      actions.deleteCohortUserRole(1, 2, 'boss')
+    );
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });

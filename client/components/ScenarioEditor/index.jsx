@@ -334,7 +334,9 @@ class ScenarioEditor extends Component {
 
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
-        {this.state.authors && this.state.authors.length && scenarioId === 'new' ? (
+        {this.state.authors &&
+        this.state.authors.length &&
+        scenarioId === 'new' ? (
           <AuthorDropdown
             author={author}
             options={this.state.authors}
@@ -514,7 +516,4 @@ const mapDispatchToProps = dispatch => ({
   getUsersByPermission: permission => dispatch(getUsersByPermission(permission))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScenarioEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(ScenarioEditor);

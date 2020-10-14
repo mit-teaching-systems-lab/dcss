@@ -51,7 +51,4 @@ ConfirmAuth.propTypes = {
   requiredPermission: PropTypes.string
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(ConfirmAuth);
+export default connect(mapStateToProps, null)(ConfirmAuth);

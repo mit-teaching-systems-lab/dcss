@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
 // import thunk from 'redux-thunk';
-import { createMemoryHistory } from 'history'
+import { createMemoryHistory } from 'history';
 import { mergeDeepRight } from 'ramda';
 import rootReducer from '../reducers';
 import { createStoreWithMiddleWare } from '../store';
@@ -21,7 +21,10 @@ export const mounter = (Component, defaultProps = {}) => {
 };
 
 export const createStore = (state = {}) => {
-  return createStoreWithMiddleWare(rootReducer, mergeDeepRight(rootReducer({}, {}), state));
+  return createStoreWithMiddleWare(
+    rootReducer,
+    mergeDeepRight(rootReducer({}, {}), state)
+  );
 };
 
 export const reduxer = (Component, props = {}, state = {}) => {
@@ -41,7 +44,7 @@ export const snapshot = wrapper => {
   return wrapper.html();
 };
 
-export const makeById = (records) => {
+export const makeById = records => {
   return records.reduce((accum, record) => {
     accum[record.id] = record;
     return accum;
@@ -54,7 +57,7 @@ export const fetchImplementation = (fetch, status = 200, resolveValue = {}) => {
       status,
       async json() {
         return resolveValue;
-      },
+      }
     };
   });
 };

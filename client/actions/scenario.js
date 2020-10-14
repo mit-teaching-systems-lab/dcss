@@ -128,9 +128,11 @@ export const setSlides = slides => ({
 
 export const copyScenario = scenario_id => async dispatch => {
   try {
-    const res = await (await fetch(`/api/scenarios/${scenario_id}/copy`, {
-      method: 'POST'
-    })).json();
+    const res = await (
+      await fetch(`/api/scenarios/${scenario_id}/copy`, {
+        method: 'POST'
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -148,9 +150,11 @@ export const copyScenario = scenario_id => async dispatch => {
 
 export const deleteScenario = scenario_id => async dispatch => {
   try {
-    const res = await (await fetch(`/api/scenarios/${scenario_id}`, {
-      method: 'DELETE'
-    })).json();
+    const res = await (
+      await fetch(`/api/scenarios/${scenario_id}`, {
+        method: 'DELETE'
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -168,9 +172,9 @@ export const deleteScenario = scenario_id => async dispatch => {
 
 export const endScenarioLock = scenario_id => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/scenarios/${scenario_id}/unlock`
-    )).json();
+    const res = await (
+      await fetch(`/api/scenarios/${scenario_id}/unlock`)
+    ).json();
 
     if (res.error) {
       throw res;
@@ -188,12 +192,11 @@ export const endScenarioLock = scenario_id => async dispatch => {
 
 export const deleteSlide = (scenario_id, id) => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/scenarios/${scenario_id}/slides/${id}`,
-      {
+    const res = await (
+      await fetch(`/api/scenarios/${scenario_id}/slides/${id}`, {
         method: 'DELETE'
-      }
-    )).json();
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -221,16 +224,15 @@ export const addScenarioUserRole = (
       roles: [role]
     });
 
-    const result = await (await fetch(
-      `/api/scenarios/${scenario_id}/roles/add`,
-      {
+    const result = await (
+      await fetch(`/api/scenarios/${scenario_id}/roles/add`, {
         headers: {
           'Content-Type': 'application/json'
         },
         method: 'POST',
         body
-      }
-    )).json();
+      })
+    ).json();
 
     const { scenario } = result;
 
@@ -253,16 +255,15 @@ export const endScenarioUserRole = (
       user_id,
       roles: [role]
     });
-    const result = await (await fetch(
-      `/api/scenarios/${scenario_id}/roles/end`,
-      {
+    const result = await (
+      await fetch(`/api/scenarios/${scenario_id}/roles/end`, {
         headers: {
           'Content-Type': 'application/json'
         },
         method: 'POST',
         body
-      }
-    )).json();
+      })
+    ).json();
 
     const { scenario } = result;
 

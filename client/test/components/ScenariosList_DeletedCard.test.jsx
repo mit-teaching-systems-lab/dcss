@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import DeletedCard from '../../components/ScenariosList/DeletedCard.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('DeletedCard', () => {
@@ -50,7 +44,7 @@ test('Snapshot 1', () => {
     title: '',
     description: '',
     id: '',
-    onClick() {},
+    onClick() {}
   };
   const mounted = mounter(reduxer(DeletedCard, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

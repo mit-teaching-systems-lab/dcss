@@ -28,13 +28,15 @@ import {
 
 export const createCohort = ({ name }) => async dispatch => {
   try {
-    const res = await (await fetch('/api/cohort', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name })
-    })).json();
+    const res = await (
+      await fetch('/api/cohort', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name })
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -60,13 +62,15 @@ export const setCohort = cohort => async dispatch => {
     const body = JSON.stringify({
       scenarios
     });
-    const res = await (await fetch(`/api/cohort/${cohort.id}/scenarios`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
+    const res = await (
+      await fetch(`/api/cohort/${cohort.id}/scenarios`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -181,9 +185,9 @@ export const getCohortData = (
 
 export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/cohort/${cohort_id}/run/${run_id}`
-    )).json();
+    const res = await (
+      await fetch(`/api/cohort/${cohort_id}/run/${run_id}`)
+    ).json();
     if (res.error) {
       throw res;
     }
@@ -199,9 +203,9 @@ export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
 // This is used to link the CURRENT user to a cohort once they've landed on the cohort page
 export const linkUserToCohort = (cohort_id, role) => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/cohort/${cohort_id}/join/${role}`
-    )).json();
+    const res = await (
+      await fetch(`/api/cohort/${cohort_id}/join/${role}`)
+    ).json();
     if (res.error) {
       throw res;
     }
@@ -227,13 +231,15 @@ export const addCohortUserRole = (
       user_id,
       roles: [role]
     });
-    const res = await (await fetch('/api/cohort/${cohort_id}/roles/add', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body
-    })).json();
+    const res = await (
+      await fetch('/api/cohort/${cohort_id}/roles/add', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      })
+    ).json();
     if (res.error) {
       throw res;
     }
@@ -258,13 +264,15 @@ export const deleteCohortUserRole = (
       user_id,
       roles: [role]
     });
-    const res = await (await fetch('/api/cohort/${cohort_id}/roles/delete', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body
-    })).json();
+    const res = await (
+      await fetch('/api/cohort/${cohort_id}/roles/delete', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      })
+    ).json();
     if (res.error) {
       throw res;
     }

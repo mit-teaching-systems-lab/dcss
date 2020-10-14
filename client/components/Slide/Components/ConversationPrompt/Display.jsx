@@ -207,7 +207,6 @@ class Display extends Component {
     };
     */
 
-
     /*
     TODO: support for "start" and "end" in other players
     will be need to be manually set.
@@ -303,7 +302,4 @@ const mapDispatchToProps = dispatch => ({
   getResponse: params => dispatch(getResponse(params))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Display);
+export default connect(mapStateToProps, mapDispatchToProps)(Display);

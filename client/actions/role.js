@@ -6,13 +6,15 @@ export const addUserRole = (user_id, role) => async dispatch => {
       user_id,
       roles: [role]
     });
-    const res = await (await fetch('/api/roles/add', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body
-    })).json();
+    const res = await (
+      await fetch('/api/roles/add', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -32,13 +34,15 @@ export const deleteUserRole = (user_id, role) => async dispatch => {
       user_id,
       roles: [role]
     });
-    const res = await (await fetch('/api/roles/delete', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      body
-    })).json();
+    const res = await (
+      await fetch('/api/roles/delete', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method: 'POST',
+        body
+      })
+    ).json();
 
     if (res.error) {
       throw res;

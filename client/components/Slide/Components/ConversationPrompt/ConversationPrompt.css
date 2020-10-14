@@ -40,7 +40,7 @@
 }
 
 .cp__video-player {
-/*  max-width: 640px;
+  /*  max-width: 640px;
   max-height: 320px;
 */
   position: absolute;
@@ -52,7 +52,7 @@
   padding: 0.7em;
 }
 
-input[type="range"] {
+input[type='range'] {
   padding-left: 0 !important;
   padding-right: 0 !important;
 }

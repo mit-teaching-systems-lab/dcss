@@ -4,7 +4,7 @@ import {
   createStore,
   fetchImplementation,
   makeById,
-  state,
+  state
 } from '../bootstrap';
 
 import * as actions from '../../actions/users';
@@ -57,7 +57,7 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, { users });
 
     const returnValue = await store.dispatch(actions.getUsers());
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/roles/all' ]);
+    assert.deepEqual(fetch.mock.calls[0], ['/api/roles/all']);
     assert.deepEqual(store.getState().usersById, makeById(users));
     assert.deepEqual(store.getState().users, users);
     assert.deepEqual(returnValue, users);
@@ -68,19 +68,18 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, {});
 
     const returnValue = await store.dispatch(actions.getUsers());
-    assert.deepEqual(fetch.mock.calls[0], [ '/api/roles/all' ]);
-    assert.deepEqual(store.getState().usersById,{});
+    assert.deepEqual(fetch.mock.calls[0], ['/api/roles/all']);
+    assert.deepEqual(store.getState().usersById, {});
     assert.deepEqual(store.getState().users, []);
     assert.deepEqual(returnValue, []);
   });
 });
 
 test('GET_USERS_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getUsers());
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/roles/all' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/all']);
   assert.deepEqual(store.getState().errors.users.error, error);
   assert.equal(returnValue, null);
 });
@@ -90,17 +89,20 @@ test('GET_USERS_BY_PERMISSION_SUCCESS', async () => {
 
   fetchImplementation(fetch, 200, { users });
 
-  const returnValue = await store.dispatch(actions.getUsersByPermission('boss'));
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/roles/user/permission/boss' ]);
+  const returnValue = await store.dispatch(
+    actions.getUsersByPermission('boss')
+  );
+  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/user/permission/boss']);
   assert.deepEqual(returnValue, users);
 });
 
 test('GET_USERS_BY_PERMISSION_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.getUsersByPermission('boss'));
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/roles/user/permission/boss' ]);
+  const returnValue = await store.dispatch(
+    actions.getUsersByPermission('boss')
+  );
+  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/user/permission/boss']);
   assert.deepEqual(store.getState().errors.users.error, error);
   assert.equal(returnValue, null);
 });

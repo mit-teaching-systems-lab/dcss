@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import PromptRequiredLabel from '../../components/Slide/Components/PromptRequiredLabel/index.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('PromptRequiredLabel', () => {
@@ -46,7 +40,7 @@ test('PromptRequiredLabel', () => {
 
 test('Snapshot 1', () => {
   const props = {
-    ...sharedProps,
+    ...sharedProps
   };
   const mounted = mounter(reduxer(PromptRequiredLabel, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

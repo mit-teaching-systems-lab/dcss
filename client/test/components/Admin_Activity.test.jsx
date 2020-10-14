@@ -3,21 +3,13 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import Activity from '../../components/Admin/Activity.jsx';
 
-import {
-  getLogs
-} from '../../actions/logs';
+import { getLogs } from '../../actions/logs';
 jest.mock('../../actions/logs');
 
 beforeAll(() => {
@@ -43,8 +35,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('Activity', () => {
@@ -54,7 +46,7 @@ test('Activity', () => {
 test('Snapshot 1', () => {
   const props = {
     ...sharedProps,
-    logs: [],
+    logs: []
   };
   const mounted = mounter(reduxer(Activity, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

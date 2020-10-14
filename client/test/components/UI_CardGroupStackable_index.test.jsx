@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import CardGroupStackable from '../../components/UI/CardGroupStackable/index.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('CardGroupStackable', () => {
@@ -47,7 +41,7 @@ test('CardGroupStackable', () => {
 test('Snapshot 1', () => {
   const props = {
     ...sharedProps,
-    children: [],
+    children: []
   };
   const mounted = mounter(reduxer(CardGroupStackable, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

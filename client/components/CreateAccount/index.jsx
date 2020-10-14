@@ -112,13 +112,15 @@ class CreateAccount extends Component {
     });
 
     // TODO: move this to async action
-    const { error, message } = await (await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
+    const { error, message } = await (
+      await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+    ).json();
 
     if (error) {
       const field = message.includes('username') ? 'username' : 'email';
@@ -274,9 +276,4 @@ const mapStateToProps = state => {
   return { isLoggedIn, username };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    null
-  )(CreateAccount)
-);
+export default withRouter(connect(mapStateToProps, null)(CreateAccount));

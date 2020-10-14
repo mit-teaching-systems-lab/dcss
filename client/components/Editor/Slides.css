@@ -58,7 +58,7 @@
 }
 
 .slides__list-card-content-header {
-  padding: 0.5em 0.5em 0 0.5em  !important;
+  padding: 0.5em 0.5em 0 0.5em !important;
 }
 
 .slides__list-card-content-header.header.ui.menu {
@@ -82,7 +82,7 @@
 }
 
 .slides__list-card-content > .header > .normal {
-  font-size: 1rem!important;
+  font-size: 1rem !important;
   font-weight: 400;
 }
 

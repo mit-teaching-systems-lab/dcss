@@ -13,7 +13,7 @@ module.exports = {
         show() {},
         hide() {},
         enabled() {},
-        disabled() {},
+        disabled() {}
       },
       core: {
         focusEdge() {},
@@ -22,7 +22,7 @@ module.exports = {
           element: {
             wysiwyg: {
               blur() {},
-              focus() {},
+              focus() {}
             }
           }
         }
@@ -30,6 +30,3 @@ module.exports = {
     };
   }
 };
-
-
-

@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import EditorMenu from '../../components/EditorMenu/index.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('EditorMenu', () => {
@@ -56,8 +50,8 @@ test('Snapshot 1', () => {
       right: null,
       save: {
         onClick() {}
-      },
-    },
+      }
+    }
   };
   const mounted = mounter(reduxer(EditorMenu, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

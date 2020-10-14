@@ -341,6 +341,11 @@ exports.linkUserToCohort = async (cohort_id, user_id, role, action) => {
       `);
     }
 
+    if (!result.rows.length) {
+      // eslint-disable-next-line no-console
+      console.log(result);
+    }
+
     const users = await getCohortUsers(cohort_id);
 
     return users;

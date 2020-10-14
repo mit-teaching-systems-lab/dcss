@@ -3,32 +3,20 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import Cohort from '../../components/Cohorts/Cohort.jsx';
 
 import {
   GET_COHORT_SUCCESS,
   GET_USER_SUCCESS,
-  GET_USERS_SUCCESS,
+  GET_USERS_SUCCESS
 } from '../../actions/types';
-import {
-  getCohort
-} from '../../actions/cohort';
-import {
-  getUser
-} from '../../actions/user';
-import {
-  getUsers
-} from '../../actions/users';
+import { getCohort } from '../../actions/cohort';
+import { getUser } from '../../actions/user';
+import { getUsers } from '../../actions/users';
 jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
@@ -45,22 +33,24 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  getCohort.mockImplementation(() => async (dispatch) => {
+  getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 2,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
       scenarios: [],
-      users: [{
-        id: 2,
-        email: 'owner@email.com',
-        username: 'owner',
-        cohort_id: 2,
-        roles: ['owner', 'facilitator'],
-        is_anonymous: false,
-        is_owner: true,
-      }, ],
+      users: [
+        {
+          id: 2,
+          email: 'owner@email.com',
+          username: 'owner',
+          cohort_id: 2,
+          roles: ['owner', 'facilitator'],
+          is_anonymous: false,
+          is_owner: true
+        }
+      ],
       roles: ['owner', 'facilitator'],
       usersById: {
         2: {
@@ -70,9 +60,9 @@ beforeEach(() => {
           cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
-          is_owner: true,
-        },
-      },
+          is_owner: true
+        }
+      }
     };
     dispatch({
       type: GET_COHORT_SUCCESS,
@@ -80,7 +70,7 @@ beforeEach(() => {
     });
     return cohort;
   });
-  getUser.mockImplementation(() => async (dispatch) => {
+  getUser.mockImplementation(() => async dispatch => {
     const user = {
       id: 2,
       email: 'owner@email.com',
@@ -89,7 +79,7 @@ beforeEach(() => {
       roles: ['owner'],
       is_owner: true,
       is_author: true,
-      is_reviewer: false,
+      is_reviewer: false
     };
     dispatch({
       type: GET_USER_SUCCESS,
@@ -97,17 +87,19 @@ beforeEach(() => {
     });
     return user;
   });
-  getUsers.mockImplementation(() => async (dispatch) => {
-    const users = [{
-      id: 2,
-      email: 'owner@email.com',
-      username: 'owner',
-      personalname: 'Owner Account',
-      roles: ['owner'],
-      is_owner: true,
-      is_author: true,
-      is_reviewer: false,
-    }, ];
+  getUsers.mockImplementation(() => async dispatch => {
+    const users = [
+      {
+        id: 2,
+        email: 'owner@email.com',
+        username: 'owner',
+        personalname: 'Owner Account',
+        roles: ['owner'],
+        is_owner: true,
+        is_author: true,
+        is_reviewer: false
+      }
+    ];
     dispatch({
       type: GET_USERS_SUCCESS,
       users
@@ -124,8 +116,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('Cohort', () => {
@@ -135,7 +127,7 @@ test('Cohort', () => {
 test('Snapshot 1', () => {
   const props = {
     ...sharedProps,
-    id: 2,
+    id: 2
   };
   const mounted = mounter(reduxer(Cohort, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

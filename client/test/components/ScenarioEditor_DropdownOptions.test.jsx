@@ -3,19 +3,13 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import {
   AuthorDropdown,
-  CategoriesDropdown,
+  CategoriesDropdown
 } from '../../components/ScenarioEditor/DropdownOptions.jsx';
 
 beforeAll(() => {
@@ -39,8 +33,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('AuthorDropdown', () => {
@@ -53,7 +47,7 @@ test('Snapshot 1', () => {
     options: [],
     categories: [],
     authors: [],
-    onChange() {},
+    onChange() {}
   };
   const mounted = mounter(reduxer(AuthorDropdown, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();
@@ -69,7 +63,7 @@ test('Snapshot 1', () => {
     options: [],
     categories: [],
     authors: [],
-    onChange() {},
+    onChange() {}
   };
   const mounted = mounter(reduxer(CategoriesDropdown, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

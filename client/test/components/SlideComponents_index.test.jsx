@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import SlideComponents from '../../components/SlideComponents/index.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('SlideComponents', () => {
@@ -52,7 +46,7 @@ test('Snapshot 1', () => {
     run: {
       id: 2
     },
-    saveRunEvent() {},
+    saveRunEvent() {}
   };
   const mounted = mounter(reduxer(SlideComponents, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

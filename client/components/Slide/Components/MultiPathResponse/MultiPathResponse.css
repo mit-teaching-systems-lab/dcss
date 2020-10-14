@@ -3,7 +3,6 @@
   margin-right: 0.5rem !important;
 }
 
-
 .mpr__thead-background {
   background: rgb(245, 245, 245) !important;
   -webkit-box-shadow: -1px -1px 0 1px rgb(245, 245, 245) !important;
@@ -68,7 +67,7 @@
   left: 45px !important;
 }
 .vis-up:before {
-  content: "\f077";
+  content: '\f077';
   /*content: "\f139";*/
 }
 
@@ -78,7 +77,7 @@
   left: 45px !important;
 }
 .vis-down:before {
-  content: "\f078";
+  content: '\f078';
   /*content: "\f13a";*/
 }
 
@@ -88,7 +87,7 @@
   left: 20px !important;
 }
 .vis-left:before {
-  content: "\f053";
+  content: '\f053';
   /*content: "\f137";*/
 }
 
@@ -98,7 +97,7 @@
   left: 70px !important;
 }
 .vis-right:before {
-  content: "\f054";
+  content: '\f054';
   /*content: "\f138";*/
 }
 
@@ -106,7 +105,7 @@
   background: unset !important;
 }
 .vis-zoomIn:before {
-  content: "\f067";
+  content: '\f067';
   /*content: "\f055";*/
 }
 
@@ -114,7 +113,7 @@
   background: unset !important;
 }
 .vis-zoomOut:before {
-  content: "\f068";
+  content: '\f068';
   /*content: "\f056";*/
 }
 
@@ -122,6 +121,5 @@
   background: unset !important;
 }
 .vis-zoomExtends:before {
-  content: "\f065";
+  content: '\f065';
 }
-

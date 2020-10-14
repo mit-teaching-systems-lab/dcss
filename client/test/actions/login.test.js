@@ -3,7 +3,7 @@ import {
   createStore,
   fetchImplementation,
   makeById,
-  state,
+  state
 } from '../bootstrap';
 
 import * as actions from '../../actions/login';
@@ -37,7 +37,7 @@ afterEach(() => {
 
 test('LOG_IN', async () => {
   await store.dispatch(actions.logIn({ username: 'me', otherdata: true }));
-  assert.deepEqual(store.getState().login,  {
+  assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
     username: 'me',
     permissions: [],
@@ -47,7 +47,7 @@ test('LOG_IN', async () => {
 
 test('LOG_OUT', async () => {
   await store.dispatch(actions.logIn({ username: 'me', otherdata: true }));
-  assert.deepEqual(store.getState().login,  {
+  assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
     username: 'me',
     permissions: [],
@@ -56,7 +56,7 @@ test('LOG_OUT', async () => {
   await store.dispatch(actions.logOut({ username: null, permissions: [] }));
   assert.equal(Storage.clear.mock.calls.length, 1);
   assert.equal(fetch.mock.calls.length, 1);
-  assert.deepEqual(store.getState().login,  {
+  assert.deepEqual(store.getState().login, {
     isLoggedIn: false,
     username: 'me',
     permissions: [],

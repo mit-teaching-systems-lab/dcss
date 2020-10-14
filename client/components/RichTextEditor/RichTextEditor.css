@@ -28,6 +28,6 @@
 
 .rt__container::after {
   display: block;
-  content: "";
+  content: '';
   clear: both;
 }

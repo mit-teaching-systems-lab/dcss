@@ -315,7 +315,4 @@ const mapDispatchToProps = dispatch => ({
   getUser: () => dispatch(getUser())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(UserSettings);
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);

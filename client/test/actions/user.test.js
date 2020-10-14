@@ -4,7 +4,7 @@ import {
   createStore,
   fetchImplementation,
   makeById,
-  state,
+  state
 } from '../bootstrap';
 
 import * as actions from '../../actions/user';
@@ -46,7 +46,15 @@ test('SET_USERS_SUCCESS', async () => {
 
   fetchImplementation(fetch, 200, { user });
 
-  const returnValue = await store.dispatch(actions.setUser({x: 1}));
+  const returnValue = await store.dispatch(actions.setUser({ x: 1 }));
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/auth/update',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{"x":1}'
+    }
+  ]);
   assert.deepEqual(store.getState().user, user);
   assert.equal(returnValue, user);
 
@@ -54,11 +62,17 @@ test('SET_USERS_SUCCESS', async () => {
 });
 
 test('SET_USER_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.setUser({x:1}));
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/auth/me' ]);
+  const returnValue = await store.dispatch(actions.setUser({ x: 1 }));
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/auth/update',
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{"x":1}'
+    }
+  ]);
   assert.deepEqual(store.getState().errors.user.error, error);
   assert.equal(returnValue, null);
 });
@@ -70,17 +84,16 @@ test('GET_USERS_SUCCESS', async () => {
 
   const returnValue = await store.dispatch(actions.getUser());
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/auth/me' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/me']);
   assert.deepEqual(store.getState().user, user);
   assert.deepEqual(returnValue, user);
 });
 
 test('GET_USER_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getUser());
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/auth/me' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/me']);
   assert.deepEqual(store.getState().errors.user.error, error);
   assert.equal(returnValue, null);
 });
@@ -91,16 +104,15 @@ test('GET_SESSION_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { user });
 
   const returnValue = await store.dispatch(actions.getSession());
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/auth/session' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/session']);
   assert.deepEqual(returnValue, user);
 });
 
 test('GET_SESSION_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getSession());
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/auth/session' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/session']);
   assert.deepEqual(store.getState().errors.session.error, error);
   assert.equal(returnValue, null);
 });

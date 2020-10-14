@@ -90,7 +90,7 @@
     padding-top: 0 !important;
   }
 
-  .scenario__slide-column>.ui.card.scenario__slide-card {
+  .scenario__slide-column > .ui.card.scenario__slide-card {
     box-shadow: unset !important;
     min-height: calc(100vh - 80px);
     margin-left: 0em !important;

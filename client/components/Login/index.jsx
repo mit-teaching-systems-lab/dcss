@@ -68,13 +68,15 @@ class Login extends Component {
       password
     });
 
-    const { error, message } = await (await fetch('/api/auth/login', {
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      method,
-      body
-    })).json();
+    const { error, message } = await (
+      await fetch('/api/auth/login', {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        method,
+        body
+      })
+    ).json();
 
     if (error) {
       this.setState({
@@ -204,9 +206,4 @@ const mapDispatchToProps = {
   logOut
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

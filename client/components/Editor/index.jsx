@@ -666,9 +666,4 @@ const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers())
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Editor)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Editor));

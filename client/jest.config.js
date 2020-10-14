@@ -27,7 +27,7 @@ module.exports = {
     'detect-browser': '<rootDir>/test/__mocks__/modules/detect-browser.js',
     // 'moment': '<rootDir>/../node_modules/moment/moment.js',
     '@utils/Moment': '<rootDir>/test/__mocks__/modules/moment.js',
-    'suneditor': '<rootDir>/test/__mocks__/modules/suneditor.js',
+    suneditor: '<rootDir>/test/__mocks__/modules/suneditor.js',
 
     // Mocked Assets
     // This matches '@alias/foo/bar/style.css'
@@ -44,7 +44,7 @@ module.exports = {
     '^@reducers(.*)': '<rootDir>/reducers/$1',
     '^@routes(.*)': '<rootDir>/routes/$1',
     '^@utils(.*)': '<rootDir>/util/$1',
-    '^@server(.*)': '<rootDir>/../server/$1',
+    '^@server(.*)': '<rootDir>/../server/$1'
   },
 
   // transform: {
@@ -58,10 +58,7 @@ module.exports = {
   testEnvironment: 'jsdom',
 
   // The glob patterns Jest uses to detect test files
-  testMatch: [
-    '<rootDir>/test/**/*.test.js',
-    '<rootDir>/test/**/*.test.jsx'
-  ],
+  testMatch: ['<rootDir>/test/**/*.test.js', '<rootDir>/test/**/*.test.jsx'],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['\\\\node_modules\\\\'],
@@ -73,5 +70,5 @@ module.exports = {
   transformIgnorePatterns: ['./node_modules/'],
 
   // Indicates whether each individual test should be reported during the run
-  verbose: true,
+  verbose: true
 };

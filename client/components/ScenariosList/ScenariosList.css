@@ -8,7 +8,7 @@
   background-color: transparent !important;
 }
 .ui.buttons > .sc__button:hover {
-  background-color: rgba(0,0,0,.03) !important;
+  background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
 .ui.card.sc__margin-height {
@@ -19,14 +19,14 @@
 .ui.four.cards {
   /*margin-left: -.5em !important;*/
   margin-left: -0.35em !important;
-  margin-right: -.5em !important;
+  margin-right: -0.5em !important;
 }
 
-.ui.four.cards>.card {
+.ui.four.cards > .card {
   width: calc(25% - 1em) !important;
   margin-bottom: 0 !important;
-  margin-left: .5em !important;
-  margin-right: .5em !important;
+  margin-left: 0.5em !important;
+  margin-right: 0.5em !important;
 }
 
 .ui.card.sc .header {
@@ -45,7 +45,7 @@
 }
 
 .ui.card.sc a {
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, 0.87);
 }
 
 .deleted {
@@ -58,7 +58,7 @@
 
 .sc__modal-description {
   max-height: 50vh !important;
-  overflow-y: scroll  !important;
+  overflow-y: scroll !important;
 }
 
 .sc__cursor-pointer {
@@ -90,10 +90,7 @@
     display: none !important;
   }
 
-  .ui.stackable.cards>.card.sc.sc__margin-height {
-    width: calc(100% - 1em)!important;
+  .ui.stackable.cards > .card.sc.sc__margin-height {
+    width: calc(100% - 1em) !important;
   }
 }
-
-
-

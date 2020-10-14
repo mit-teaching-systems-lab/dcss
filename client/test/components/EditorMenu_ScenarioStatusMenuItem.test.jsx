@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import ScenarioStatusMenuItem from '../../components/EditorMenu/ScenarioStatusMenuItem.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('ScenarioStatusMenuItem', () => {
@@ -47,7 +41,7 @@ test('ScenarioStatusMenuItem', () => {
 test('Snapshot 1', () => {
   const props = {
     ...sharedProps,
-    onClick() {},
+    onClick() {}
   };
   const mounted = mounter(reduxer(ScenarioStatusMenuItem, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

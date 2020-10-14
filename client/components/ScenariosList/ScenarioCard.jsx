@@ -28,13 +28,15 @@ class ScenarioCard extends React.Component {
       const originalScenario = this.state.scenario;
       originalScenario.deleted_at = null;
 
-      await (await fetch(`/api/scenarios/${originalScenario.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(originalScenario)
-      })).json();
+      await (
+        await fetch(`/api/scenarios/${originalScenario.id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(originalScenario)
+        })
+      ).json();
 
       await this.props.getScenarios();
     }
@@ -109,7 +111,4 @@ const mapDispatchToProps = dispatch => ({
   getScenarios: () => dispatch(getScenarios())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScenarioCard);
+export default connect(mapStateToProps, mapDispatchToProps)(ScenarioCard);

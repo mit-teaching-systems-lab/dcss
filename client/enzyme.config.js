@@ -8,5 +8,3 @@ if (window) {
   window.scrollTo = function() {};
   Element.prototype.scrollIntoView = function() {};
 }
-
-

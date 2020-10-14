@@ -4,7 +4,7 @@ import {
   createStore,
   fetchImplementation,
   makeById,
-  state,
+  state
 } from '../bootstrap';
 
 import * as actions from '../../actions/role';
@@ -41,7 +41,6 @@ afterEach(() => {
 });
 
 describe('SET_USER_ROLE_SUCCESS', () => {
-
   test('addUserRole', async () => {
     fetchImplementation(fetch, 200, { addedCount: 1 });
 

@@ -4,10 +4,11 @@ Previously, this file defined:
     width:100%!important;
 }
 */
-.sortable__draggable-outer-container {}
+.sortable__draggable-outer-container {
+}
 
 .sortable__draggable-outer-container > div {
-  margin-bottom: 0.5em!important;
+  margin-bottom: 0.5em !important;
 }
 
 .sortable__selected {

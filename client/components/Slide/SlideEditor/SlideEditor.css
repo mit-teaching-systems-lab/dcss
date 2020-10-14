@@ -27,9 +27,9 @@
 
 .ser__component-select-pane-outer > .icon {
   border: 1px solid red !important;
-  font-size: 1em!important;
+  font-size: 1em !important;
   float: none !important;
-  margin: 0 .75em 0 0!important;
+  margin: 0 0.75em 0 0 !important;
 }
 
 .ser__component-select a i {
@@ -58,11 +58,10 @@
   padding: 0.5em !important;
   border: 0 !important;
   box-shadow: 0 !important;
-  background-color: #F5F5F5 !important;
+  background-color: #f5f5f5 !important;
   /*z-index: 10;*/
 }
 
-
-.ui.form .field>label {
+.ui.form .field > label {
   padding-left: 3px !important;
 }

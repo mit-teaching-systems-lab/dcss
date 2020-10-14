@@ -1,5 +1,5 @@
 .admin__content-pane {
-    height: 83vh !important;
+  height: 83vh !important;
 }
 
 .users__col-xxlarge {
@@ -41,34 +41,33 @@
   white-space: nowrap !important;
 }
 
-
 .ut__tbody {
   min-height: 231px;
 }
 
 .super:before {
-  content: "Super admin";
+  content: 'Super admin';
 }
 
 .admin:before {
-  content: "Admin";
+  content: 'Admin';
 }
 
 .researcher:before {
-  content: "Researcher";
+  content: 'Researcher';
 }
 
 .facilitator:before {
-  content: "Facilitator";
+  content: 'Facilitator';
 }
 
 .participant:before {
-  content: "Super admin";
+  content: 'Super admin';
 }
 
 @media only screen and (max-width: 767px) {
   .roles_icon {
-    opacity: .9;
+    opacity: 0.9;
     color: rgba(0, 0, 0, 0.87);
     width: 1.18em;
     height: 1em;
@@ -83,22 +82,22 @@
   }
 
   .super:before {
-    content: "\f445";
+    content: '\f445';
   }
 
   .admin:before {
-    content: "\f447";
+    content: '\f447';
   }
 
   .researcher:before {
-    content: "\f501";
+    content: '\f501';
   }
 
   .facilitator:before {
-    content: "\f51c";
+    content: '\f51c';
   }
 
   .participant:before {
-    content: "\f2bd";
+    content: '\f2bd';
   }
 }

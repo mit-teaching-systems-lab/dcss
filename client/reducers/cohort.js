@@ -20,11 +20,12 @@ const cohortInitialState = {
 export const cohort = (state = cohortInitialState, action) => {
   const { cohort, type, users } = action;
 
-  if (type === CREATE_COHORT_SUCCESS ||
-      type === SET_COHORT_SUCCESS ||
-      type === GET_COHORT_SUCCESS ||
-      type === GET_COHORT_PARTICIPANTS_SUCCESS) {
-
+  if (
+    type === CREATE_COHORT_SUCCESS ||
+    type === SET_COHORT_SUCCESS ||
+    type === GET_COHORT_SUCCESS ||
+    type === GET_COHORT_PARTICIPANTS_SUCCESS
+  ) {
     return {
       ...state,
       ...cohort
@@ -49,8 +50,7 @@ export const cohort = (state = cohortInitialState, action) => {
 
 export const cohorts = (state = [], action) => {
   const { cohorts, type } = action;
-  if (type === GET_USER_COHORTS_SUCCESS ||
-      type === GET_ALL_COHORTS_SUCCESS) {
+  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.slice();
   }
 
@@ -60,8 +60,7 @@ export const cohorts = (state = [], action) => {
 export const cohortsById = (state = {}, action) => {
   const { cohorts, type } = action;
 
-  if (type === GET_USER_COHORTS_SUCCESS ||
-      type === GET_ALL_COHORTS_SUCCESS) {
+  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.reduce((accum, cohort) => {
       accum[cohort.id] = cohort;
       return accum;

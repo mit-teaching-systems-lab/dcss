@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import ConfirmAuth from '../../components/ConfirmAuth/index.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('ConfirmAuth', () => {
@@ -47,7 +41,7 @@ test('ConfirmAuth', () => {
 test('Snapshot 1', () => {
   const props = {
     ...sharedProps,
-    children: [],
+    children: []
   };
   const mounted = mounter(reduxer(ConfirmAuth, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

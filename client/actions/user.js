@@ -45,13 +45,15 @@ export const setUser = data => async dispatch => {
   try {
     if (Object.values(data).length) {
       const body = JSON.stringify(data);
-      const res = await (await fetch('/api/auth/update', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body
-      })).json();
+      const res = await (
+        await fetch('/api/auth/update', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body
+        })
+      ).json();
 
       if (res.error) {
         throw res;

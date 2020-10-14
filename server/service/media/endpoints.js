@@ -4,10 +4,7 @@ const Multer = require('multer');
 const uuid = require('uuid/v4');
 
 const db = require('./db');
-const {
-  getLastResponseOrderedById,
-  updateResponse
-} = require('../runs/db');
+const { getLastResponseOrderedById, updateResponse } = require('../runs/db');
 const { asyncMiddleware } = require('../../util/api');
 const { uploadToS3, requestFromS3 } = require('./s3');
 const {

@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import DataTable from '../../components/Cohorts/DataTable.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('DataTable', () => {
@@ -51,8 +45,8 @@ test('Snapshot 1', () => {
       cohortId: null,
       participantId: null,
       runId: null,
-      scenarioId: null,
-    },
+      scenarioId: null
+    }
   };
   const mounted = mounter(reduxer(DataTable, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

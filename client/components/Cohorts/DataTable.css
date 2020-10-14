@@ -80,7 +80,6 @@
   position: sticky;
   top: 0;
   margin-top: 1px;
-
 }
 
 .dtm__grid-nowrap {
@@ -111,7 +110,7 @@
 
 .dt__scroll th:last-child,
 .dt__scroll td:last-child {
-  border-right: 1px solid rgba(34,36,38,.15) !important;
+  border-right: 1px solid rgba(34, 36, 38, 0.15) !important;
 }
 
 .dtm__view .dt__scroll {
@@ -129,7 +128,7 @@
 
 .dt__scroll td,
 .dt__scroll th {
-  padding: .78571429em .78571429em;
+  padding: 0.78571429em 0.78571429em;
   min-width: 150px;
   max-width: 250px;
 }
@@ -137,7 +136,6 @@
 .dt__scroll td:nth-child(2) {
   border-left: 1px transparent !important;
 }
-
 
 .dt__scroll thead th {
   overflow: hidden !important;
@@ -149,8 +147,8 @@
   position: -webkit-sticky; /* for Safari */
   position: sticky;
   top: 0;
-  border-top: 1px solid rgba(34, 36, 38, .1) !important;
-  border-left: 1px solid rgba(34, 36, 38, .1) !important;
+  border-top: 1px solid rgba(34, 36, 38, 0.1) !important;
+  border-left: 1px solid rgba(34, 36, 38, 0.1) !important;
   border-right: none !important;
 }
 
@@ -168,8 +166,6 @@
   text-align: left !important;
 }
 
-
-
 .dt__scroll thead th:first-child {
   left: 0;
   z-index: 1;
@@ -178,8 +174,8 @@
   min-width: 150px;
   width: 150px;
   max-width: 150px;
-  border-right: 1px solid rgba(34, 36, 38, .1) !important;
-  border-left: 1px solid rgba(34, 36, 38, .1) !important;
+  border-right: 1px solid rgba(34, 36, 38, 0.1) !important;
+  border-left: 1px solid rgba(34, 36, 38, 0.1) !important;
 }
 
 .dt__scroll thead th:nth-child(2) {
@@ -196,17 +192,15 @@
   width: 150px;
   max-width: 150px;
   background: rgb(249, 250, 251);
-  border-right: 1px solid rgba(34, 36, 38, .1) !important;
+  border-right: 1px solid rgba(34, 36, 38, 0.1) !important;
   border-bottom: 1px solid rgba(34, 36, 38, 0.1);
-  border-left: 1px solid rgba(34, 36, 38, .1) !important;
+  border-left: 1px solid rgba(34, 36, 38, 0.1) !important;
 }
 
 .dt__scroll tbody td {
   border-top: none !important;
   border-bottom: 1px solid rgba(34, 36, 38, 0.1);
 }
-
-
 
 @media only screen and (max-width: 767px) {
   .dt__cell-truncated {

@@ -14,7 +14,7 @@
 }
 
 @media only screen and (max-width: 767.98px) {
-  .ui.cards>.card.loading__multi-card {
+  .ui.cards > .card.loading__multi-card {
     margin: 0 0.2em 1em 0.2em !important;
   }
 }

@@ -40,7 +40,7 @@ export const responses = (state = [], action) => {
     case GET_RESPONSE_SUCCESS:
     case SET_RESPONSE_SUCCESS:
       responses.push(data);
-      // then.. fall through!
+    // then.. fall through!
     case GET_RESPONSES_SUCCESS:
     case SET_RESPONSES_SUCCESS: {
       const seen = {
@@ -116,7 +116,6 @@ export const responsesById = (state = {}, action) => {
       return state;
   }
 };
-
 
 /*
 WIP: replacement implementation.

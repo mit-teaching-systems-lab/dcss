@@ -1,7 +1,7 @@
 import { LOG_IN, LOG_OUT } from './types';
 import Storage from '@utils/Storage';
 
-export const logIn = (userData) => async dispatch => {
+export const logIn = userData => async dispatch => {
   dispatch({
     type: LOG_IN,
     payload: {
@@ -10,7 +10,6 @@ export const logIn = (userData) => async dispatch => {
     }
   });
 };
-
 
 const method = 'POST';
 

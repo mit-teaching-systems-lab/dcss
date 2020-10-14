@@ -3,7 +3,7 @@ import {
   createStore,
   fetchImplementation,
   makeById,
-  state,
+  state
 } from '../bootstrap';
 
 import * as actions from '../../actions/logs';
@@ -37,7 +37,6 @@ afterEach(() => {
 });
 
 describe('GET_LOGS_SUCCESS', () => {
-
   describe('Default', () => {
     const direction = 'DESC';
     const queryBy = 'date';
@@ -53,7 +52,7 @@ describe('GET_LOGS_SUCCESS', () => {
       const returnValue = await store.dispatch(actions.getLogs({}));
       const defaultRequestPath = `/api/logs/range/date/${min}/${max}/DESC`;
 
-      assert.deepEqual(fetch.mock.calls[0], [ defaultRequestPath ]);
+      assert.deepEqual(fetch.mock.calls[0], [defaultRequestPath]);
       assert.deepEqual(store.getState().logsById, makeById(logs));
       assert.deepEqual(store.getState().logs, logs);
       assert.deepEqual(returnValue, logs);
@@ -72,14 +71,18 @@ describe('GET_LOGS_SUCCESS', () => {
       const logs = state.logs.slice();
       fetchImplementation(fetch, 200, { logs });
 
-      const returnValue = await store.dispatch(actions.getLogs({
-        direction,
-        queryBy,
-        min,
-        max,
-      }));
+      const returnValue = await store.dispatch(
+        actions.getLogs({
+          direction,
+          queryBy,
+          min,
+          max
+        })
+      );
 
-      assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/date/2019-12-27/2020-01-01/DESC' ]);
+      assert.deepEqual(fetch.mock.calls[0], [
+        '/api/logs/range/date/2019-12-27/2020-01-01/DESC'
+      ]);
       assert.deepEqual(store.getState().logsById, makeById(logs));
       assert.deepEqual(store.getState().logs, logs);
       assert.deepEqual(returnValue, logs);
@@ -89,14 +92,18 @@ describe('GET_LOGS_SUCCESS', () => {
       const logs = state.logs.slice();
       fetchImplementation(fetch, 200, { logs });
 
-      const returnValue = await store.dispatch(actions.getLogs({
-        direction: 'ASC',
-        queryBy,
-        min,
-        max,
-      }));
+      const returnValue = await store.dispatch(
+        actions.getLogs({
+          direction: 'ASC',
+          queryBy,
+          min,
+          max
+        })
+      );
 
-      assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/date/2019-12-27/2020-01-01/ASC' ]);
+      assert.deepEqual(fetch.mock.calls[0], [
+        '/api/logs/range/date/2019-12-27/2020-01-01/ASC'
+      ]);
       assert.deepEqual(store.getState().logsById, makeById(logs));
       assert.deepEqual(store.getState().logs, logs);
       assert.deepEqual(returnValue, logs);
@@ -113,14 +120,18 @@ describe('GET_LOGS_SUCCESS', () => {
       const logs = state.logs.slice();
       fetchImplementation(fetch, 200, { logs });
 
-      const returnValue = await store.dispatch(actions.getLogs({
-        direction,
-        queryBy,
-        min,
-        max,
-      }));
+      const returnValue = await store.dispatch(
+        actions.getLogs({
+          direction,
+          queryBy,
+          min,
+          max
+        })
+      );
 
-      assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/count/1/10/DESC' ]);
+      assert.deepEqual(fetch.mock.calls[0], [
+        '/api/logs/range/count/1/10/DESC'
+      ]);
       assert.deepEqual(store.getState().logsById, makeById(logs));
       assert.deepEqual(store.getState().logs, logs);
       assert.deepEqual(returnValue, logs);
@@ -130,14 +141,16 @@ describe('GET_LOGS_SUCCESS', () => {
       const logs = state.logs.slice();
       fetchImplementation(fetch, 200, { logs });
 
-      const returnValue = await store.dispatch(actions.getLogs({
-        direction: 'ASC',
-        queryBy,
-        min,
-        max,
-      }));
+      const returnValue = await store.dispatch(
+        actions.getLogs({
+          direction: 'ASC',
+          queryBy,
+          min,
+          max
+        })
+      );
 
-      assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/count/1/10/ASC' ]);
+      assert.deepEqual(fetch.mock.calls[0], ['/api/logs/range/count/1/10/ASC']);
       assert.deepEqual(store.getState().logsById, makeById(logs));
       assert.deepEqual(store.getState().logs, logs);
       assert.deepEqual(returnValue, logs);
@@ -153,14 +166,16 @@ test('GET_LOGS_ERROR', async () => {
   const min = 1;
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.getLogs({
-    direction,
-    queryBy,
-    min,
-    max,
-  }));
+  const returnValue = await store.dispatch(
+    actions.getLogs({
+      direction,
+      queryBy,
+      min,
+      max
+    })
+  );
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/count/1/10/DESC' ]);
+  assert.deepEqual(fetch.mock.calls[0], ['/api/logs/range/count/1/10/DESC']);
   assert.deepEqual(store.getState().errors.logs.error, error);
   assert.equal(returnValue, null);
 });

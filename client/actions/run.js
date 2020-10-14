@@ -14,15 +14,14 @@ import {
 
 export const getRun = scenario_id => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/runs/new-or-existing/scenario/${scenario_id}`,
-      {
+    const res = await (
+      await fetch(`/api/runs/new-or-existing/scenario/${scenario_id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         }
-      }
-    )).json();
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -56,13 +55,15 @@ export const setRun = (id, data) => async dispatch => {
   dispatch({ type: SET_RUN, run: { id, ...data } });
   try {
     const body = JSON.stringify(data);
-    const res = await (await fetch(`/api/runs/${id}/update`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
+    const res = await (
+      await fetch(`/api/runs/${id}/update`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+    ).json();
 
     if (res.error) {
       throw res;
@@ -112,13 +113,15 @@ export const saveRunEvent = (run_id, name, data) => async dispatch => {
       context
     });
 
-    const res = await (await fetch(`/api/runs/${run_id}/event/${name}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
+    const res = await (
+      await fetch(`/api/runs/${run_id}/event/${name}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+    ).json();
 
     if (res.error) {
       throw res;

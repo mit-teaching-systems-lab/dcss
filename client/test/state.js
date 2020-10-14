@@ -11,28 +11,19 @@ module.exports = {
         email: 'owner@email.com',
         username: 'owner',
         cohort_id: 2,
-        roles: [
-          'owner',
-          'facilitator'
-        ],
+        roles: ['owner', 'facilitator'],
         is_anonymous: false,
         is_owner: true
       }
     ],
-    roles: [
-      'owner',
-      'facilitator'
-    ],
+    roles: ['owner', 'facilitator'],
     usersById: {
       '2': {
         id: 2,
         email: 'owner@email.com',
         username: 'owner',
         cohort_id: 2,
-        roles: [
-          'owner',
-          'facilitator'
-        ],
+        roles: ['owner', 'facilitator'],
         is_anonymous: false,
         is_owner: true
       }
@@ -51,10 +42,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -65,10 +53,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -150,22 +135,14 @@ module.exports = {
           run_id: 31
         }
       ],
-      scenarios: [
-        7,
-        1,
-        9,
-        8
-      ],
+      scenarios: [7, 1, 9, 8],
       users: [
         {
           id: 2,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -176,10 +153,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -249,22 +223,14 @@ module.exports = {
           run_id: 31
         }
       ],
-      scenarios: [
-        7,
-        1,
-        9,
-        8
-      ],
+      scenarios: [7, 1, 9, 8],
       users: [
         {
           id: 2,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -275,10 +241,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -296,10 +259,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -310,10 +270,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
-          roles: [
-            'owner',
-            'facilitator'
-          ],
+          roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
@@ -363,12 +320,7 @@ module.exports = {
     personalname: 'Owner Account',
     email: 'owner@email.com',
     id: 2,
-    roles: [
-      'participant',
-      'super_admin',
-      'facilitator',
-      'researcher'
-    ],
+    roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
     is_anonymous: false,
     is_super: true
   },
@@ -388,11 +340,13 @@ module.exports = {
           headers: {
             host: 'localhost:3000',
             accept: '*/*',
-            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie:
+              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/2',
             connection: 'close',
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent':
+              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '39',
             'sec-fetch-dest': 'empty',
@@ -424,7 +378,8 @@ module.exports = {
             }
           }
         },
-        response: '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+        response:
+          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
       }
     },
     {
@@ -447,11 +402,13 @@ module.exports = {
           headers: {
             host: 'localhost:3000',
             accept: '*/*',
-            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie:
+              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/1',
             connection: 'close',
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent':
+              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '152',
             'sec-fetch-dest': 'empty',
@@ -507,11 +464,13 @@ module.exports = {
           headers: {
             host: 'localhost:3000',
             accept: '*/*',
-            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie:
+              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/1',
             connection: 'close',
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent':
+              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '152',
             'sec-fetch-dest': 'empty',
@@ -560,11 +519,13 @@ module.exports = {
           headers: {
             host: 'localhost:3000',
             accept: '*/*',
-            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie:
+              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/2',
             connection: 'close',
-            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent':
+              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '39',
             'sec-fetch-dest': 'empty',
@@ -596,7 +557,8 @@ module.exports = {
             }
           }
         },
-        response: '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+        response:
+          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
       }
     }
   },
@@ -734,18 +696,14 @@ module.exports = {
       personalname: 'Owner Account',
       email: 'owner@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'super_admin',
-        'facilitator',
-        'researcher'
-      ],
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_super: true
     },
     categories: [],
     consent: {
       id: 57,
-      prose: '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
+      prose:
+        '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
     },
     description: 'A scenario about "Multiplayer Scenario"',
     finish: {
@@ -783,7 +741,8 @@ module.exports = {
         components: [
           {
             id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
-            html: '<p><span style="font-size: 18px;"><strong>As the "Teacher" in this scenario, you will be guiding a student through solving a complex problem with multiple variants.</strong></span></p>',
+            html:
+              '<p><span style="font-size: 18px;"><strong>As the "Teacher" in this scenario, you will be guiding a student through solving a complex problem with multiple variants.</strong></span></p>',
             type: 'Text'
           },
           {
@@ -799,7 +758,8 @@ module.exports = {
           },
           {
             id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-            html: '<p><span style="font-size: 18px;"><strong>Welcome, here\'s a brief description of the problem we will solve together today!</strong></span></p>',
+            html:
+              '<p><span style="font-size: 18px;"><strong>Welcome, here\'s a brief description of the problem we will solve together today!</strong></span></p>',
             type: 'Text'
           }
         ],
@@ -814,9 +774,7 @@ module.exports = {
         email: 'owner@email.com',
         username: 'owner',
         personalname: 'Owner Account',
-        roles: [
-          'owner'
-        ],
+        roles: ['owner'],
         is_owner: true,
         is_author: true,
         is_reviewer: false
@@ -842,9 +800,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           personalname: 'Owner Account',
-          roles: [
-            'owner'
-          ],
+          roles: ['owner'],
           is_owner: true,
           is_author: true,
           is_reviewer: false
@@ -856,18 +812,14 @@ module.exports = {
         personalname: 'Owner Account',
         email: 'owner@email.com',
         is_anonymous: false,
-        roles: [
-          'participant',
-          'super_admin',
-          'facilitator',
-          'researcher'
-        ],
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_super: true
       },
       categories: [],
       consent: {
         id: 57,
-        prose: '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
+        prose:
+          '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
       },
       finish: {
         id: 1,
@@ -903,9 +855,7 @@ module.exports = {
           email: 'owner@email.com',
           username: 'owner',
           personalname: 'Owner Account',
-          roles: [
-            'owner'
-          ],
+          roles: ['owner'],
           is_owner: true,
           is_author: true,
           is_reviewer: false
@@ -917,18 +867,14 @@ module.exports = {
         personalname: 'Owner Account',
         email: 'owner@email.com',
         is_anonymous: false,
-        roles: [
-          'participant',
-          'super_admin',
-          'facilitator',
-          'researcher'
-        ],
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_super: true
       },
       categories: [],
       consent: {
         id: 57,
-        prose: '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
+        prose:
+          '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
       },
       finish: {
         id: 1,
@@ -957,12 +903,7 @@ module.exports = {
     personalname: 'Owner Name',
     email: 'owner@email.com',
     id: 2,
-    roles: [
-      'participant',
-      'super_admin',
-      'facilitator',
-      'researcher'
-    ],
+    roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
     is_anonymous: false,
     is_super: true
   },
@@ -973,12 +914,7 @@ module.exports = {
       personalname: 'Owner Name',
       email: 'owner@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'super_admin',
-        'facilitator',
-        'researcher'
-      ],
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_super: true
     },
     {
@@ -987,9 +923,7 @@ module.exports = {
       personalname: null,
       email: null,
       is_anonymous: true,
-      roles: [
-        'participant'
-      ],
+      roles: ['participant'],
       is_super: false
     },
     {
@@ -998,10 +932,7 @@ module.exports = {
       personalname: 'Heartfull Cougar',
       email: 'heartfull-cougar@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'facilitator'
-      ],
+      roles: ['participant', 'facilitator'],
       is_super: false
     },
     {
@@ -1010,10 +941,7 @@ module.exports = {
       personalname: 'Perfect Oryx',
       email: 'perfect-oryx@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'facilitator'
-      ],
+      roles: ['participant', 'facilitator'],
       is_super: false
     }
   ],
@@ -1024,12 +952,7 @@ module.exports = {
       personalname: 'Owner Name',
       email: 'owner@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'super_admin',
-        'facilitator',
-        'researcher'
-      ],
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_super: true
     },
     '3': {
@@ -1038,10 +961,7 @@ module.exports = {
       personalname: 'Heartfull Cougar',
       email: 'heartfull-cougar@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'facilitator'
-      ],
+      roles: ['participant', 'facilitator'],
       is_super: false
     },
     '4': {
@@ -1050,9 +970,7 @@ module.exports = {
       personalname: null,
       email: null,
       is_anonymous: true,
-      roles: [
-        'participant'
-      ],
+      roles: ['participant'],
       is_super: false
     },
     '5': {
@@ -1061,10 +979,7 @@ module.exports = {
       personalname: 'Perfect Oryx',
       email: 'perfect-oryx@email.com',
       is_anonymous: false,
-      roles: [
-        'participant',
-        'facilitator'
-      ],
+      roles: ['participant', 'facilitator'],
       is_super: false
     }
   }

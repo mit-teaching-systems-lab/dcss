@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import ContentSlide from '../../components/Scenario/ContentSlide.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('ContentSlide', () => {
@@ -49,7 +43,7 @@ test('Snapshot 1', () => {
     ...sharedProps,
     slide: {
       components: []
-    },
+    }
   };
   const mounted = mounter(reduxer(ContentSlide, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

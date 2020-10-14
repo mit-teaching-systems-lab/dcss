@@ -2,7 +2,7 @@ import {
   GET_USERS_SUCCESS,
   GET_USERS_ERROR,
   GET_USERS_BY_PERMISSION_SUCCESS,
-  GET_USERS_BY_PERMISSION_ERROR,
+  GET_USERS_BY_PERMISSION_ERROR
 } from './types';
 
 // Previously...
@@ -26,7 +26,7 @@ export const getUsers = () => async dispatch => {
       throw res;
     }
 
-    const {users = []} = res;
+    const { users = [] } = res;
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   } catch (error) {
@@ -43,13 +43,13 @@ export const getUsers = () => async dispatch => {
  */
 export const getUsersByPermission = permission => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/roles/user/permission/${permission}`
-    )).json();
+    const res = await (
+      await fetch(`/api/roles/user/permission/${permission}`)
+    ).json();
     if (res.error) {
       throw res;
     }
-    const { users }  = res;
+    const { users } = res;
 
     void GET_USERS_BY_PERMISSION_SUCCESS;
 

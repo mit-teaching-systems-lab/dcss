@@ -3,9 +3,9 @@ import QueryString from 'query-string';
 
 class Search extends React.Component {
   static async query(view, params) {
-    return await (await fetch(
-      `/api/search/${view}?${QueryString.stringify(params)}`
-    )).json();
+    return await (
+      await fetch(`/api/search/${view}?${QueryString.stringify(params)}`)
+    ).json();
   }
 }
 

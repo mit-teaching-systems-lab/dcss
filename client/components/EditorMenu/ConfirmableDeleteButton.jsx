@@ -80,7 +80,7 @@ ConfirmableDeleteButton.propTypes = {
   itemType: PropTypes.string,
   onCancel: PropTypes.func,
   onComplete: PropTypes.func,
-  onConfirm: PropTypes.func,
+  onConfirm: PropTypes.func
 };
 
 class ConfirmButton extends Component {

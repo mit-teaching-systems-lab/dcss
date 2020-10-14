@@ -361,7 +361,4 @@ const mapDispatchToProps = dispatch => ({
   getUsersByPermission: permission => dispatch(getUsersByPermission(permission))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ScenarioAuthors);
+export default connect(mapStateToProps, mapDispatchToProps)(ScenarioAuthors);

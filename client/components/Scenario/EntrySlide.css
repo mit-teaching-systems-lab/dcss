@@ -1,9 +1,9 @@
 .entryslide__description-inner-container {
-    max-height: 10rem;
-    overflow-y: auto;
+  max-height: 10rem;
+  overflow-y: auto;
 }
 
 .entryslide__consent-inner-container {
-    max-height: 25rem;
-    overflow-y: auto;
+  max-height: 25rem;
+  overflow-y: auto;
 }

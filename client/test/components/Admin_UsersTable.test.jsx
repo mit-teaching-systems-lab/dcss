@@ -3,16 +3,10 @@ import {
   mounter,
   reduxer,
   snapshot,
-  state,
+  state
 } from '../bootstrap';
-import {
-  unmountComponentAtNode
-} from 'react-dom';
-import {
-  cleanup,
-  fireEvent,
-  render
-} from '@testing-library/react';
+import { unmountComponentAtNode } from 'react-dom';
+import { cleanup, fireEvent, render } from '@testing-library/react';
 import UsersTable from '../../components/Admin/UsersTable.jsx';
 
 beforeAll(() => {
@@ -36,8 +30,8 @@ afterEach(() => {
 
 const sharedProps = {
   history: {
-    push() {},
-  },
+    push() {}
+  }
 };
 
 test('UsersTable', () => {
@@ -54,15 +48,17 @@ test('Snapshot 1', () => {
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
       scenarios: [],
-      users: [{
-        id: 2,
-        email: 'owner@email.com',
-        username: 'owner',
-        cohort_id: 2,
-        roles: ['owner', 'facilitator'],
-        is_anonymous: false,
-        is_owner: true,
-      }, ],
+      users: [
+        {
+          id: 2,
+          email: 'owner@email.com',
+          username: 'owner',
+          cohort_id: 2,
+          roles: ['owner', 'facilitator'],
+          is_anonymous: false,
+          is_owner: true
+        }
+      ],
       roles: ['owner', 'facilitator'],
       usersById: {
         2: {
@@ -72,16 +68,16 @@ test('Snapshot 1', () => {
           cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
-          is_owner: true,
-        },
-      },
+          is_owner: true
+        }
+      }
     },
     columns: {},
     grantableRoles: {},
     onPageChange() {},
     rowsPerPage: 1,
     pages: 2,
-    rows: {},
+    rows: {}
   };
   const mounted = mounter(reduxer(UsersTable, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

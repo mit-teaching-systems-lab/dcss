@@ -546,7 +546,9 @@ export class CohortScenarios extends React.Component {
 
           <Table.Footer>
             <Table.Row>
-              <Table.HeaderCell colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}>
+              <Table.HeaderCell
+                colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}
+              >
                 <Pagination
                   borderless
                   name="scenarios"
@@ -639,8 +641,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CohortScenarios)
+  connect(mapStateToProps, mapDispatchToProps)(CohortScenarios)
 );
