@@ -341,7 +341,9 @@ exports.linkUserToCohort = async (cohort_id, user_id, role, action) => {
       `);
     }
 
-    return result && result.rows.length && getCohortUsers(cohort_id);
+    const users = await getCohortUsers(cohort_id);
+
+    return users;
   });
 };
 
