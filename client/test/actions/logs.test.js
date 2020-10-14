@@ -147,12 +147,20 @@ describe('GET_LOGS_SUCCESS', () => {
 
 test('GET_LOGS_ERROR', async () => {
   const error = new Error('something unexpected happened on the server');
-
+  const direction = 'DESC';
+  const queryBy = 'count';
+  const max = 10;
+  const min = 1;
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.getLogs({}));
+  const returnValue = await store.dispatch(actions.getLogs({
+    direction,
+    queryBy,
+    min,
+    max,
+  }));
 
-  assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/date/2020-10-08/2020-10-13/DESC' ]);
+  assert.deepEqual(fetch.mock.calls[0], [ '/api/logs/range/count/1/10/DESC' ]);
   assert.deepEqual(store.getState().errors.logs.error, error);
   assert.equal(returnValue, null);
 });

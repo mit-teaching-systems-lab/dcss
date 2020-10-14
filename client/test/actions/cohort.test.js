@@ -381,7 +381,6 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.linkUserToCohort(1, 'boss'));
-    console.log(store.getState().errors);
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });
