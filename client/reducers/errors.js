@@ -12,6 +12,7 @@ import {
   GET_RESPONSE_ERROR,
   GET_RESPONSES_ERROR,
   GET_RUN_ERROR,
+  GET_RUN_HISTORY_ERROR,
   GET_RUNS_ERROR,
   GET_SCENARIO_ERROR,
   GET_SCENARIOS_ERROR,
@@ -22,253 +23,98 @@ import {
   GET_USERS_ERROR,
   LINK_RUN_TO_COHORT_ERROR,
   SET_COHORT_ERROR,
+  SET_COHORT_USER_ROLE_ERROR,
   SET_RESPONSE_ERROR,
   SET_RESPONSES_ERROR,
-  SET_USER_ROLE_ERROR,
   SET_RUN_ERROR,
   SET_SCENARIO_ERROR,
   SET_SCENARIOS_ERROR,
   SET_USER_ERROR,
+  SET_USER_ROLE_ERROR,
   UNLOCK_SCENARIO_ERROR,
 } from '@actions/types';
 
-// eslint-disable-next-line no-unused-vars
-const cohort = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case CREATE_COHORT_ERROR:
-    case GET_COHORT_PARTICIPANTS_ERROR:
-    case GET_COHORT_ERROR:
-    case SET_COHORT_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
+const errorActionsMap = {
+  cohort: [
+    CREATE_COHORT_ERROR,
+    GET_COHORT_PARTICIPANTS_ERROR,
+    GET_COHORT_ERROR,
+    SET_COHORT_ERROR,
+  ],
+  cohorts: [
+    GET_ALL_COHORTS_ERROR,
+    GET_USER_COHORTS_ERROR,
+  ],
+  history: [
+    GET_RUN_HISTORY_ERROR,
+  ],
+  logs: [
+    GET_LOGS_ERROR,
+  ],
+  cohortdata: [
+    GET_COHORT_RUN_DATA_ERROR,
+  ],
+  cohortlink: [
+    LINK_RUN_TO_COHORT_ERROR,
+  ],
+  cohortuser: [
+    SET_COHORT_USER_ROLE_ERROR,
+  ],
+  response: [
+    SET_RESPONSE_ERROR,
+    GET_RESPONSE_ERROR,
+  ],
+  responses: [
+    SET_RESPONSES_ERROR,
+    GET_RESPONSES_ERROR,
+  ],
+  role: [
+    SET_USER_ROLE_ERROR,
+  ],
+  run: [
+    SET_RUN_ERROR,
+    GET_RUN_ERROR,
+  ],
+  runs: [
+    GET_RUNS_ERROR,
+  ],
+  scenario: [
+    COPY_SCENARIO_ERROR,
+    DELETE_SCENARIO_ERROR,
+    UNLOCK_SCENARIO_ERROR,
+    GET_SCENARIO_ERROR,
+    SET_SCENARIO_ERROR,
+  ],
+  scenarios: [
+    GET_SCENARIOS_ERROR,
+    SET_SCENARIOS_ERROR,
+  ],
+  slides: [
+    GET_SLIDES_ERROR,
+  ],
+  transcript: [
+    GET_TRANSCRIPTION_OUTCOME_ERROR,
+  ],
+  user: [
+    GET_USER_ERROR,
+    SET_USER_ERROR,
+  ],
+  users: [
+    GET_USERS_ERROR,
+  ]
 };
 
-// eslint-disable-next-line no-unused-vars
-const cohorts = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_ALL_COHORTS_ERROR:
-    case GET_USER_COHORTS_ERROR:
-      return {
-        ...error
-      };
-    default:
+export default combineReducers(
+  Object.entries(errorActionsMap).reduce((accum, [key, actions]) => {
+    accum[key] = (state = null, action) => {
+      const { error = {}, type } = action;
+      if (actions && actions.includes(type)) {
+        return {
+          ...error
+        };
+      }
       return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const logs = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_LOGS_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const cohortdata = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_COHORT_RUN_DATA_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const cohortlink = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case LINK_RUN_TO_COHORT_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const response = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case SET_RESPONSE_ERROR:
-    case GET_RESPONSE_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const responses = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case SET_RESPONSES_ERROR:
-    case GET_RESPONSES_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const role = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case SET_USER_ROLE_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const run = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case SET_RUN_ERROR:
-    case GET_RUN_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const runs = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_RUNS_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const scenario = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case COPY_SCENARIO_ERROR:
-    case DELETE_SCENARIO_ERROR:
-    case UNLOCK_SCENARIO_ERROR:
-    case GET_SCENARIO_ERROR:
-    case SET_SCENARIO_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const scenarios = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_SCENARIOS_ERROR:
-    case SET_SCENARIOS_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const slides = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_SLIDES_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const transcript = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_TRANSCRIPTION_OUTCOME_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-
-// eslint-disable-next-line no-unused-vars
-const user = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_USER_ERROR:
-    case SET_USER_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-// eslint-disable-next-line no-unused-vars
-const users = (state = null, action) => {
-  const { error = {}, type } = action;
-  switch (type) {
-    case GET_USERS_ERROR:
-      return {
-        ...error
-      };
-    default:
-      return null;
-  }
-};
-
-export default combineReducers({
-  cohort,
-  cohortdata,
-  cohortlink,
-  cohorts,
-  logs,
-  response,
-  responses,
-  role,
-  run,
-  runs,
-  scenario,
-  scenarios,
-  slides,
-  transcript,
-  user,
-  users
-});
+    };
+    return accum;
+  }, {})
+);
