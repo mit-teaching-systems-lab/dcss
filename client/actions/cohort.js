@@ -196,22 +196,26 @@ export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
     return null;
   }
 };
-// This is used to
+// This is used to link the CURRENT user to a cohort once they've landed on the cohort page
 export const linkUserToCohort = (cohort_id, role) => async dispatch => {
   try {
-    const users = await (await fetch(
+    const res = await (await fetch(
       `/api/cohort/${cohort_id}/join/${role}`
     )).json();
-    if (users.error) {
-      throw users;
+    if (res.error) {
+      throw res;
     }
+
+    const { users } = res;
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
+    return users;
   } catch (error) {
     dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
     return null;
   }
 };
 
+// This is used to link OTHER users to a cohort
 export const addCohortUserRole = (
   cohort_id,
   user_id,
@@ -223,18 +227,20 @@ export const addCohortUserRole = (
       user_id,
       roles: [role]
     });
-    const result = await (await fetch('/api/cohort/${cohort_id}/roles/add', {
+    const res = await (await fetch('/api/cohort/${cohort_id}/roles/add', {
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'POST',
       body
     })).json();
-
-    const { cohort } = result;
+    if (res.error) {
+      throw res;
+    }
+    const { cohort } = res;
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS });
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
-    return result;
+    return res;
   } catch (error) {
     dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
     return null;
@@ -252,17 +258,21 @@ export const deleteCohortUserRole = (
       user_id,
       roles: [role]
     });
-    const result = await (await fetch('/api/cohort/${cohort_id}/roles/delete', {
+    const res = await (await fetch('/api/cohort/${cohort_id}/roles/delete', {
       headers: {
         'Content-Type': 'application/json'
       },
       method: 'POST',
       body
     })).json();
-    const { cohort } = result;
+    if (res.error) {
+      throw res;
+    }
+
+    const { cohort } = res;
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS });
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
-    return result;
+    return res;
   } catch (error) {
     dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
     return null;
