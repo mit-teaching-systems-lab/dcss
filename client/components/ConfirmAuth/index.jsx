@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 const ConfirmAuth = ({
   children,
   isAuthorized,
-  permissions,
+  permissions = [],
   requiredPermission,
   ...rest
 }) => {
