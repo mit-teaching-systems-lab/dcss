@@ -1,41 +1,61 @@
-import { GET_USERS_SUCCESS, GET_USERS_ERROR } from './types';
+import {
+  GET_USERS_SUCCESS,
+  GET_USERS_ERROR,
+  GET_USERS_BY_PERMISSION_SUCCESS,
+  GET_USERS_BY_PERMISSION_ERROR,
+} from './types';
 
-export const setUsers = users => ({
-  type: GET_USERS_SUCCESS,
-  users
-});
+// Previously...
+// export const setUsers = users => ({
+//   type: GET_USERS_SUCCESS,
+//   users
+// });
+
+export const setUsers = users => async dispatch => {
+  dispatch({
+    type: GET_USERS_SUCCESS,
+    users
+  });
+};
 
 export const getUsers = () => async dispatch => {
   try {
-    const { users = [] } = await (await fetch('/api/roles/all')).json();
+    const res = await (await fetch('/api/roles/all')).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const {users = []} = res;
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   } catch (error) {
     dispatch({ type: GET_USERS_ERROR, error });
-    return error;
+    return null;
   }
 };
 
 /**
- * getUsersByPermission does not dispatch because it's called on a scenario specific basis.
+ * getUsersByPermission dispatch is not used by any reducer, because the returned values do not
+ * need to be stored in memory.
  * @param  {string} permission The permission to filter users on.
  * @return {array}             An array of users that have this permission.
  */
-export const getUsersByPermission = permission => async () => {
+export const getUsersByPermission = permission => async dispatch => {
   try {
-    // PREVIOUSLY:
-    // const authors = await (await fetch('/api/roles/user/permission', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify({ permission })
-    // })).json();
-    const authors = await (await fetch(
+    const res = await (await fetch(
       `/api/roles/user/permission/${permission}`
     )).json();
-    return authors;
+    if (res.error) {
+      throw res;
+    }
+    const { users }  = res;
+
+    void GET_USERS_BY_PERMISSION_SUCCESS;
+
+    return users;
   } catch (error) {
-    return error;
+    dispatch({ type: GET_USERS_BY_PERMISSION_ERROR, error });
+    return null;
   }
 };

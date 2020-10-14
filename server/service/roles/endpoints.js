@@ -42,9 +42,8 @@ exports.getUserPermissions = asyncMiddleware(async function getUserPermissions(
 exports.getUsersByPermission = asyncMiddleware(
   async function getUsersByPermission(req, res) {
     const permission = req.params.permission;
-    const usersWithPermission = await db.getUsersByPermission(permission);
-
-    res.send(usersWithPermission);
+    const users = await db.getUsersByPermission(permission);
+    res.send({ users });
   }
 );
 
