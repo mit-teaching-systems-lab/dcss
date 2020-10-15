@@ -327,12 +327,12 @@ module.exports = {
   logs: [
     {
       id: 885,
-      created_at: '2020-10-13T00:51:05.143Z',
+      created_at: '2020-01-01T00:51:05.143Z',
       capture: {
         request: {
           url: '/runs/116/update',
           body: {
-            ended_at: '2020-10-13T00:51:05.116Z'
+            ended_at: '2020-01-01T00:51:05.116Z'
           },
           query: {},
           method: 'POST',
@@ -379,12 +379,12 @@ module.exports = {
           }
         },
         response:
-          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-01-01T00:50:30.425Z","updated_at":"2020-01-01T00:51:05.138Z","ended_at":"2020-01-01T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
       }
     },
     {
       id: 884,
-      created_at: '2020-10-13T00:50:42.232Z',
+      created_at: '2020-01-01T00:50:42.232Z',
       capture: {
         request: {
           url: '/runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9',
@@ -393,8 +393,8 @@ module.exports = {
             value: 'sdfsdfsdfsdf',
             isSkip: false,
             content: '',
-            ended_at: '2020-10-13T00:50:35.645Z',
-            created_at: '2020-10-13T00:50:34.648Z'
+            ended_at: '2020-01-01T00:50:35.645Z',
+            created_at: '2020-01-01T00:50:34.648Z'
           },
           query: {},
           method: 'POST',
@@ -446,7 +446,7 @@ module.exports = {
   logsById: {
     '884': {
       id: 884,
-      created_at: '2020-10-13T00:50:42.232Z',
+      created_at: '2020-01-01T00:50:42.232Z',
       capture: {
         request: {
           url: '/runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9',
@@ -455,8 +455,8 @@ module.exports = {
             value: 'sdfsdfsdfsdf',
             isSkip: false,
             content: '',
-            ended_at: '2020-10-13T00:50:35.645Z',
-            created_at: '2020-10-13T00:50:34.648Z'
+            ended_at: '2020-01-01T00:50:35.645Z',
+            created_at: '2020-01-01T00:50:34.648Z'
           },
           query: {},
           method: 'POST',
@@ -506,12 +506,12 @@ module.exports = {
     },
     '885': {
       id: 885,
-      created_at: '2020-10-13T00:51:05.143Z',
+      created_at: '2020-01-01T00:51:05.143Z',
       capture: {
         request: {
           url: '/runs/116/update',
           body: {
-            ended_at: '2020-10-13T00:51:05.116Z'
+            ended_at: '2020-01-01T00:51:05.116Z'
           },
           query: {},
           method: 'POST',
@@ -558,7 +558,7 @@ module.exports = {
           }
         },
         response:
-          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-10-13T00:50:30.425Z","updated_at":"2020-10-13T00:51:05.138Z","ended_at":"2020-10-13T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-01-01T00:50:30.425Z","updated_at":"2020-01-01T00:51:05.138Z","ended_at":"2020-01-01T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
       }
     }
   },
