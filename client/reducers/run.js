@@ -41,7 +41,7 @@ export const runsById = (state = {}, action) => {
     case GET_RUNS_SUCCESS: {
       if (typeof runs !== 'undefined') {
         const runsById = runs.reduce((accum, run) => {
-          accum[run.run_id] = run;
+          accum[run.run_id || run.id] = run;
           return accum;
         }, {});
 
