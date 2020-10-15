@@ -27,7 +27,7 @@ async function getLogsAsync(req, res) {
     direction
   );
 
-  res.json({ logs, status: 200 });
+  res.json({ logs });
 }
 
 exports.getLogs = asyncMiddleware(getLogsAsync);

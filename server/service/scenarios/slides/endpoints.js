@@ -6,7 +6,7 @@ const db = require('./db');
 exports.getSlides = asyncMiddleware(async (req, res) => {
   const { id } = reqScenario(req);
   const slides = await db.getScenarioSlides(id);
-  res.json({ slides, status: 200 });
+  res.json({ slides });
 });
 
 exports.getPromptComponentsByScenarioId = asyncMiddleware(async (req, res) => {
@@ -32,7 +32,7 @@ exports.getPromptComponentsByScenarioId = asyncMiddleware(async (req, res) => {
     }
     return accum;
   }, []);
-  res.json({ components, status: 200 });
+  res.json({ components });
 });
 
 exports.addSlide = asyncMiddleware(async (req, res) => {
@@ -45,8 +45,7 @@ exports.addSlide = asyncMiddleware(async (req, res) => {
       order,
       components,
       is_finish
-    }),
-    status: 200
+    })
   });
 });
 
@@ -57,8 +56,7 @@ exports.orderSlides = asyncMiddleware(async (req, res) => {
     return id;
   });
   res.json({
-    slides: await db.setSlideOrder(scenario_id, slide_ids),
-    status: 200
+    slides: await db.setSlideOrder(scenario_id, slide_ids)
   });
 });
 
@@ -72,8 +70,7 @@ exports.setSlide = asyncMiddleware(async (req, res) => {
       order,
       components,
       is_finish
-    }),
-    status: 200
+    })
   });
 });
 
@@ -81,8 +78,7 @@ exports.setAllSlides = asyncMiddleware(async (req, res) => {
   const { id: scenario_id } = reqScenario(req);
   const { slides } = req.body;
   res.json({
-    slides: await db.setAllSlides(scenario_id, slides),
-    status: 200
+    slides: await db.setAllSlides(scenario_id, slides)
   });
 });
 
@@ -96,10 +92,7 @@ exports.deleteSlide = asyncMiddleware(async (req, res) => {
 
     if (count === 1) {
       const slides = await db.getScenarioSlides(scenario_id);
-      res.json({
-        slides,
-        status: 200
-      });
+      res.json({ slides });
     }
   } catch (apiError) {
     const error = new Error('Error while deleting slide');

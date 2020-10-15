@@ -12,7 +12,7 @@ exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
     error.status = 409;
     throw error;
   }
-  res.json({ users, status: 200 });
+  res.json({ users });
 });
 
 exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(

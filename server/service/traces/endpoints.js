@@ -55,7 +55,7 @@ async function getTracesAsync(req, res) {
     return accum;
   }, {});
 
-  res.json({ status: 200, traces });
+  res.json({ traces });
 }
 
 exports.getTraces = asyncMiddleware(getTracesAsync);

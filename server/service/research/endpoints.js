@@ -12,7 +12,7 @@ async function getAllCohortGrantsAsync(req, res) {
     throw error;
   }
 
-  res.json({ cohorts, status: 200 });
+  res.json({ cohorts });
 }
 
 exports.getAllCohortGrants = asyncMiddleware(getAllCohortGrantsAsync);
