@@ -8,12 +8,12 @@ async function newOrExistingRunAsync(req, res) {
   const { id: user_id } = req.session.user;
 
   // TODO: investigate using ON CONFLICT RETURN *
-  let run = await db.fetchRun({ scenario_id, user_id });
+  let run = await db.getRunByScenarioAndUserId(scenario_id, user_id);
 
   try {
     if (!run) {
       const { id: consent_id } = await getScenarioConsent(scenario_id);
-      run = await db.createRun({ scenario_id, user_id, consent_id });
+      run = await db.createRun(scenario_id, user_id, consent_id);
     }
     res.json({ run });
   } catch (error) {

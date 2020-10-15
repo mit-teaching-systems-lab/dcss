@@ -12,6 +12,7 @@ exports.getRunById = async function(id) {
 exports.getRuns = async function(user_id) {
   const result = await query(sql`
         SELECT
+            run.id as id,
             run.id as run_id,
             run.created_at as run_created_at,
             run.ended_at as run_ended_at,
@@ -32,7 +33,7 @@ exports.getRuns = async function(user_id) {
   return result.rows;
 };
 
-exports.fetchRun = async function({ scenario_id, user_id }) {
+exports.getRunByScenarioAndUserId = async function(scenario_id, user_id) {
   const result = await query(sql`
         SELECT * FROM run
         WHERE scenario_id=${scenario_id}
@@ -42,7 +43,7 @@ exports.fetchRun = async function({ scenario_id, user_id }) {
   return result.rows[0];
 };
 
-exports.createRun = async function({ scenario_id, user_id, consent_id }) {
+exports.createRun = async function(scenario_id, user_id, consent_id) {
   const result = await query(sql`
         INSERT INTO run (scenario_id, user_id, consent_id)
         VALUES (${scenario_id}, ${user_id}, ${consent_id})

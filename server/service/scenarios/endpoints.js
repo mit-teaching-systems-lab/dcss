@@ -7,7 +7,8 @@ const {
   deleteSlide,
   getScenarioSlides,
   setAllSlides,
-  setSlide
+  setSlide,
+  setSlideOrder
 } = require('./slides/db');
 const db = require('./db');
 
@@ -258,28 +259,31 @@ async function copyScenarioAsync(req, res) {
     const scenario = await db.addScenario(userId, `${title} COPY`, description);
     const sourceSlides = await getScenarioSlides(scenarioId);
 
-    const slides = sourceSlides.filter(({ is_finish }) => !is_finish);
-    const sourceFinishSlide = sourceSlides.find(({ is_finish }) => is_finish);
-
     await deleteSlide(scenario.id, scenario.finish.id);
-
-    const finish = await addSlide({
-      scenario_id: scenario.id,
-      title: sourceFinishSlide.title,
-      components: sourceFinishSlide.components,
-      is_finish: true
-    });
 
     // When copying a scenario, not only do new responseIds need to be set,
     // but any recallIds that refer to old responseIds must be mapped to
     // the copy's responseId
     const slidesNeedRecallIdUpdate = [];
+    // Additionally, multipath ids need to be remapped.
+    const slidesNeedPathSlideIdUpdate = [];
     const responseIdMap = {};
-
+    const slideIdMap = {};
+    const slides = [];
     // 1. Find all response components and assign each one a new responseId,
     //    while saving a mapping of "old response id" => "new response id"
     //    to be used in remapping the recallIds.
-    for (const slide of slides) {
+    for (let sourceSlide of sourceScenarioSlides) {
+
+      const slide = await addSlide({
+        scenario_id: scenario.id,
+        title: sourceSlide.title,
+        components: sourceSlide.components,
+        is_finish: sourceSlide.is_finish
+      });
+
+      slideIdMap[sourceSlide.id] = slide.id;
+
       for (const component of slide.components) {
         // When a response component has been
         // found, assign it a newly generated responseId,
@@ -298,15 +302,10 @@ async function copyScenarioAsync(req, res) {
           responseIdMap[component.responseId] = uuid();
           component.responseId = responseIdMap[component.responseId];
 
-          // If we encounter a MultiPathPrompt component, we need to check
-          // if it has a path to the old scenario's FINISH slide. If yes,
-          // then we need to replace that id with our new finish slide id.
+          // If we encounter a MultiPathPrompt component...
           if (component.paths) {
-            component.paths.forEach((path, index) => {
-              if (String(path.value) === String(sourceFinishSlide.id)) {
-                component.paths[index].value = finish.id;
-              }
-            });
+            // Add the slide to an update list.
+            slidesNeedPathSlideIdUpdate.push(slide);
           }
         }
 
@@ -319,6 +318,8 @@ async function copyScenarioAsync(req, res) {
         // Make sure that all components have a new id
         component.id = uuid();
       }
+
+      slides.push(slide);
     }
 
     // 2. If any slide has been flagged for recallId remapping, update them.
@@ -328,10 +329,29 @@ async function copyScenarioAsync(req, res) {
       }
     }
 
-    await setAllSlides(scenario.id, [...slides]);
+    // 3. If any slide contains a multipath component, the paths need to be updated.
+    for (const slide of slidesNeedPathSlideIdUpdate) {
+      if (!slide.is_finish) {
+        for (const component of slide.components) {
+          if (component.paths) {
+            for (let componentPath of component.paths) {
+              componentPath.value = slideIdMap[componentPath.value];
+            }
+          }
+        }
+      }
+    }
+
+    const ids = [];
+
+    for (let {id, components} of slides) {
+      await setSlide(id, {components});
+      ids.push(id);
+    }
+
+    await setSlideOrder(scenario.id, ids);
 
     await db.setScenarioCategories(scenario.id, categories);
-
     const consent = await db.getScenarioConsent(scenarioId);
     const { id, prose } = await db.addScenarioConsent(consent);
 
@@ -339,6 +359,8 @@ async function copyScenarioAsync(req, res) {
       scenario.id,
       Object.assign(consent, { id, prose })
     );
+
+    const finish = slides.find(({ is_finish }) => is_finish);
 
     Object.assign(scenario, {
       consent,
