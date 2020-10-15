@@ -22,12 +22,37 @@ async function getScenarioLockAsync(req, res) {
   res.send({ scenario });
 }
 
-async function getAllScenariosAsync(req, res) {
+async function getScenariosAsync(req, res) {
   try {
-    const scenarios = await db.getAllScenarios();
+    const scenarios = await db.getScenarios();
     res.send({ scenarios });
   } catch (apiError) {
     const error = new Error('Error while getting all scenarios.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
+async function getScenariosCountAsync(req, res) {
+  try {
+    const count = await db.getScenariosCount();
+    res.send({ count });
+  } catch (apiError) {
+    const error = new Error('Error while getting scenarios count.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
+async function getScenariosSliceAsync(req, res) {
+  const { direction, offset, limit } = req.params;
+  try {
+    const scenarios = await db.getScenariosSlice(direction, offset, limit);
+    res.send({ scenarios });
+  } catch (apiError) {
+    const error = new Error('Error while getting scenarios in range.');
     error.status = 500;
     error.stack = apiError.stack;
     throw error;
@@ -434,7 +459,9 @@ exports.getScenario = asyncMiddleware(getScenarioAsync);
 exports.getScenarioLock = asyncMiddleware(getScenarioLockAsync);
 exports.addScenarioLock = asyncMiddleware(addScenarioLockAsync);
 exports.endScenarioLock = asyncMiddleware(endScenarioLockAsync);
-exports.getAllScenarios = asyncMiddleware(getAllScenariosAsync);
+exports.getScenarios = asyncMiddleware(getScenariosAsync);
+exports.getScenariosCount = asyncMiddleware(getScenariosCountAsync);
+exports.getScenariosSlice = asyncMiddleware(getScenariosSliceAsync);
 exports.addScenario = asyncMiddleware(addScenarioAsync);
 exports.setScenario = asyncMiddleware(setScenarioAsync);
 exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);

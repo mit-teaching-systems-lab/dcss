@@ -123,7 +123,7 @@ async function addScenarioUserRole(scenario_id, user_id, roles) {
   });
 }
 
-exports.getScenarioUserRoles = async (scenario_id, user_id) => {
+async function getScenarioUserRoles(scenario_id, user_id) {
   const result = await query(sql`
     SELECT ARRAY_AGG(role) AS roles
     FROM scenario_user_role
@@ -133,7 +133,7 @@ exports.getScenarioUserRoles = async (scenario_id, user_id) => {
   `);
   const roles = result.rows.length ? result.rows[0].roles : [];
   return { roles };
-};
+}
 
 // async function setScenarioUsers(scenario_id, userRoles) {
 //   const users = [];
@@ -213,9 +213,11 @@ async function getScenario(scenario_id) {
   };
 }
 
-async function getAllScenarios() {
+async function getScenarios() {
   const results = await query(sql`
-    SELECT * FROM scenario ORDER BY created_at DESC;
+    SELECT *
+    FROM scenario
+    ORDER BY created_at DESC;
   `);
 
   const scenarios = [];
@@ -246,6 +248,46 @@ async function getAllScenarios() {
   }
 
   return scenarios;
+}
+
+async function getScenariosSlice(direction, offset, limit) {
+
+  // This intentionally does not use the sql`` because that
+  // tag will attempt to put quotes around the output of
+  // ${direction.toUpperCase()}
+  const results = await query(`
+    SELECT id
+    FROM scenario
+    ORDER BY id ${direction.toUpperCase()}
+    OFFSET ${offset}
+    LIMIT ${limit}
+  `);
+
+  const scenarios = [];
+
+  for (const row of results.rows) {
+    scenarios.push(await getScenario(row.id));
+  }
+
+  return scenarios;
+}
+
+async function getScenariosCount() {
+
+  // This intentionally does not use the sql`` because that
+  // tag will attempt to put quotes around the output of
+  // ${direction.toUpperCase()}
+  const results = await query(`
+    SELECT COUNT(id) FROM scenario
+  `);
+
+  let count = 0;
+
+  if (results.rows.length) {
+    ({ count } = results.rows[0]);
+  }
+
+  return count;
 }
 
 async function addScenario(user_id, title, description) {
@@ -461,10 +503,14 @@ exports.setScenario = setScenario;
 exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
 exports.softDeleteScenario = softDeleteScenario;
-exports.getAllScenarios = getAllScenarios;
 exports.getHistoryForScenario = getHistoryForScenario;
 exports.getScenarioByRun = getScenarioByRun;
 exports.getScenarioPrompts = getScenarioPrompts;
+
+// Scenarios
+exports.getScenarios = getScenarios;
+exports.getScenariosCount = getScenariosCount;
+exports.getScenariosSlice = getScenariosSlice;
 
 // Scenario Snapshot/History
 exports.addScenarioSnapshot = addScenarioSnapshot;
@@ -475,6 +521,7 @@ exports.getScenarioLock = getScenarioLock;
 exports.endScenarioLock = endScenarioLock;
 
 // Scenario Roles
+exports.getScenarioUserRoles = getScenarioUserRoles;
 exports.addScenarioUserRole = addScenarioUserRole;
 exports.endScenarioUserRole = endScenarioUserRole;
 

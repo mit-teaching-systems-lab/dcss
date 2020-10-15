@@ -12,16 +12,21 @@ const {
   deleteScenario,
   addScenarioLock,
   endScenarioLock,
-  getAllScenarios,
+  getScenarios,
+  getScenariosCount,
+  getScenariosSlice,
   getScenario,
   getScenarioByRun,
   setScenario,
   softDeleteScenario,
   addScenarioUserRole,
-  endScenarioUserRole
+  endScenarioUserRole,
 } = require('./endpoints.js');
 
-router.get('/', getAllScenarios);
+router.get('/', getScenarios);
+router.get('/count', getScenariosCount);
+router.get('/:direction/:offset/:limit', getScenariosSlice);
+
 router.get('/run', getScenarioByRun);
 router.get('/:scenario_id', [lookupScenario(), getScenario]);
 

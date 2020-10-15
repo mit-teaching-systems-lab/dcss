@@ -25,7 +25,7 @@ import {
   createCohort
 } from '@actions/cohort';
 import { computeItemsRowsPerPage } from '@utils/Layout';
-import { getScenarios } from '@actions/scenario';
+import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
@@ -68,8 +68,8 @@ export class Cohorts extends React.Component {
       } else {
         await this.props.getCohorts();
       }
-      await this.props.getScenarios();
-      await this.props.getUser();
+
+      await this.props.getScenariosIncrementally();
 
       this.setState({
         activePage: 1,
@@ -359,7 +359,7 @@ Cohorts.propTypes = {
   getCohorts: PropTypes.func,
   getCohort: PropTypes.func,
   setCohort: PropTypes.func,
-  getScenarios: PropTypes.func,
+  getScenariosIncrementally: PropTypes.func,
   scenarios: PropTypes.array,
   match: PropTypes.shape({
     path: PropTypes.string,
@@ -382,7 +382,7 @@ const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
-  getScenarios: () => dispatch(getScenarios()),
+  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
   createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });

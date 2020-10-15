@@ -1,9 +1,10 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
-const { query, withClient } = require('../../util/db');
+const { query } = require('../../util/db');
 const { saltHashPassword } = require('../../util/pwHash');
 
 async function getUserByProps({ id, username, email }) {
-  // This query looks a little ugly, but it allows us to pass in empty stuff for id, username or email!
+  // This query looks a little ugly, but it allows us to pass in empty
+  // stuff for id, username or email!
   // SELECT * FROM users WHERE id = ${id}
   const result = await query(sql`
     SELECT * FROM users WHERE id = ${id}
@@ -20,10 +21,7 @@ async function getUserById(id) {
   return result.rows[0];
 }
 
-exports.getUserByProps = getUserByProps;
-exports.getUserById = getUserById;
-
-exports.createUser = async function({ email, username, password }) {
+async function createUser({ email, username, password }) {
   let salt, passwordHash;
   if (password) {
     let passwordObj = saltHashPassword(password);
@@ -52,9 +50,9 @@ exports.createUser = async function({ email, username, password }) {
     const user = getUserByProps({ username });
     return getUserById(user.id);
   }
-};
+}
 
-exports.updateUser = async function(id, updates) {
+async function updateUser(id, updates) {
   const prepared = Object.entries(updates).reduce((accum, [key, value]) => {
     if (key === 'password') {
       let { passwordHash: hash, salt } = saltHashPassword(value);
@@ -71,16 +69,23 @@ exports.updateUser = async function(id, updates) {
   } = await query(updateQuery('users', { id }, prepared));
 
   return getUserById(user.id);
+}
+
+async function getUserRoles(id) {
+  const result = await query(sql`
+    SELECT ARRAY_AGG(role) AS roles
+    FROM user_role
+    WHERE user_id = ${id};
+  `);
+  const roles = result.rows.length
+    ? result.rows[0].roles
+    : [];
+
+  return { roles };
 };
 
-exports.getUserRoles = async user_id => {
-  return withClient(async client => {
-    const result = await client.query(sql`
-      SELECT ARRAY_AGG(role) AS roles
-      FROM user_role
-      WHERE user_id = ${user_id};
-    `);
-    const roles = result.rows.length ? result.rows[0].roles : [];
-    return { roles };
-  });
-};
+exports.getUserByProps = getUserByProps;
+exports.getUserById = getUserById;
+exports.createUser = createUser;
+exports.updateUser = updateUser;
+exports.getUserRoles = getUserRoles;

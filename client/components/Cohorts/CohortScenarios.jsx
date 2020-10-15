@@ -25,7 +25,7 @@ import Loading from '@components/Loading';
 import scrollIntoView from '@utils/scrollIntoView';
 import Sortable from '@components/Sortable';
 import { getCohort, setCohort } from '@actions/cohort';
-import { getScenarios } from '@actions/scenario';
+import { getScenariosIncrementally } from '@actions/scenario';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
 
@@ -72,7 +72,7 @@ export class CohortScenarios extends React.Component {
     } = this.state;
 
     await this.props.getCohort(Number(id));
-    await this.props.getScenarios();
+    await this.props.getScenariosIncrementally();
     await this.props.getRuns();
     await this.props.getUsers();
 
@@ -614,7 +614,7 @@ CohortScenarios.propTypes = {
     }).isRequired
   }).isRequired,
   onClick: PropTypes.func,
-  getScenarios: PropTypes.func,
+  getScenariosIncrementally: PropTypes.func,
   scenarios: PropTypes.array,
   getRuns: PropTypes.func,
   runs: PropTypes.array,
@@ -635,7 +635,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
-  getScenarios: () => dispatch(getScenarios()),
+  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers())
 });

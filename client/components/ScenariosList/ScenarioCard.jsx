@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, Icon } from '@components/UI';
-import { getScenarios } from '@actions/scenario';
+import { getScenario } from '@actions/scenario';
 import ConfirmAuth from '@client/components/ConfirmAuth';
 import DeletedCard from './DeletedCard';
 import Events from '@utils/Events';
@@ -38,7 +38,8 @@ class ScenarioCard extends React.Component {
         })
       ).json();
 
-      await this.props.getScenarios();
+      // Revive scenario by requesting restored record from server
+      await this.props.getScenario(originalScenario.id);
     }
   }
 
@@ -97,7 +98,7 @@ class ScenarioCard extends React.Component {
 
 ScenarioCard.propTypes = {
   onClick: PropTypes.func,
-  getScenarios: PropTypes.func,
+  getScenario: PropTypes.func,
   scenario: PropTypes.object,
   user: PropTypes.object
 };
@@ -108,7 +109,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getScenarios: () => dispatch(getScenarios())
+  getScenario: (id) => dispatch(getScenario(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScenarioCard);

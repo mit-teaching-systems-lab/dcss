@@ -21,7 +21,7 @@ import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
 import Layout from '@utils/Layout';
-import { deleteScenario, getScenarios } from '@actions/scenario';
+import { deleteScenario, getScenariosIncrementally } from '@actions/scenario';
 import Boundary from '@components/Boundary';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Username from '@components/User/Username';
@@ -46,6 +46,12 @@ const filter = (scenarios, user) => {
   const isLoggedIn = !!(user || user.id);
   const reduced = scenarios.reduce((accum, scenario) => {
     const { status, users } = scenario;
+
+    // If "users" is undefined, this scenario may have been deleted.
+    if (!users) {
+      return accum;
+    }
+
     const scenarioUser = users.find(({ id }) => user.id === id);
     const isAuthor = scenarioUser && scenarioUser.is_author;
     const isReviewer = scenarioUser && scenarioUser.is_reviewer;
@@ -110,7 +116,7 @@ class ScenariosList extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getScenarios();
+    await this.props.getScenariosIncrementally();
 
     this.scenarios = filter(this.props.scenarios, this.props.user);
 
@@ -291,7 +297,7 @@ class ScenariosList extends Component {
       rowsPerPage
     } = Layout.computeItemsRowsPerPage({
       itemsColWidth: Layout.isForMobile() ? 320 : 320,
-      itemsRowHeight: Layout.isForMobile() ? 250 : 293,
+      itemsRowHeight: Layout.isForMobile() ? 200 : 243,
       itemsPerRow: 4,
       defaultRowCount
     });
@@ -511,7 +517,7 @@ ScenariosList.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   category: PropTypes.string,
-  getScenarios: PropTypes.func,
+  getScenariosIncrementally: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
   location: PropTypes.object,
   match: PropTypes.shape({
@@ -534,7 +540,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
-  getScenarios: () => dispatch(getScenarios())
+  getScenariosIncrementally: () => dispatch(getScenariosIncrementally())
 });
 
 export default withRouter(

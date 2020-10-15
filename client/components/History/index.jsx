@@ -7,7 +7,7 @@ import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
 import Moment from '@utils/Moment';
 import { getRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
-import { getScenarios } from '@actions/scenario';
+import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import DataTable from '@components/Cohorts/DataTable';
@@ -72,7 +72,7 @@ class History extends Component {
       this.props.history.push('/logout');
     } else {
       await this.props.getCohorts();
-      await this.props.getScenarios();
+      await this.props.getScenariosIncrementally();
       await this.props.getRuns();
 
       const { panes } = this.state;
@@ -423,7 +423,7 @@ History.propTypes = {
   cohortsById: PropTypes.object,
   getCohorts: PropTypes.func,
   getRuns: PropTypes.func,
-  getScenarios: PropTypes.func,
+  getScenariosIncrementally: PropTypes.func,
   getUser: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -451,7 +451,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getRuns: () => dispatch(getRuns()),
-  getScenarios: () => dispatch(getScenarios()),
+  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
   getUser: () => dispatch(getUser())
 });
 

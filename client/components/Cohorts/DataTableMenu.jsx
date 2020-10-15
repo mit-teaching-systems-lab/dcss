@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Menu, Popup } from '@components/UI';
 import { getCohort } from '@actions/cohort';
-import { getScenarios } from '@actions/scenario';
 import ConfirmAuth from '@components/ConfirmAuth';
 import './Cohort.css';
 
@@ -95,7 +94,6 @@ DataTableMenu.propTypes = {
     users: PropTypes.array
   }),
   getCohort: PropTypes.func,
-  getScenarios: PropTypes.func,
   onClick: PropTypes.func,
   run: PropTypes.object,
   runsById: PropTypes.object,
@@ -117,8 +115,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohort: id => dispatch(getCohort(id)),
-  getScenarios: () => dispatch(getScenarios())
+  getCohort: id => dispatch(getCohort(id))
 });
 
 export default withRouter(

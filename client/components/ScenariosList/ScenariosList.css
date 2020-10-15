@@ -12,7 +12,7 @@
 }
 
 .ui.card.sc__margin-height {
-  height: 20rem !important;
+  height: 19rem !important;
   margin-bottom: 0 !important;
 }
 
@@ -39,8 +39,8 @@
 .ui.card.sc .description {
   /*4rem !important;*/
   /*max-height: 10rem !important;*/
-  height: 9.25rem !important;
-  max-height: 9.25rem !important;
+  height: 6.25rem !important;
+  max-height: 6.25rem !important;
   overflow-y: auto !important;
 }
 
@@ -65,10 +65,10 @@
   cursor: pointer;
 }
 
-./*sc__card-action-labels {
+/*.sc__card-action-labels {
   display: none;
-}*/
-
+}
+*/
 .modal .actions .sc__card-action-labels {
   margin-left: 0.5rem !important;
   display: inline-block;

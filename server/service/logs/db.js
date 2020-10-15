@@ -17,9 +17,9 @@ exports.getLogs = async (queryBy, min, max, direction) => {
   if (queryBy === 'count') {
     selection = `
       SELECT * FROM log
+      ORDER BY id ${direction.toUpperCase()}
       OFFSET ${min}
       LIMIT ${max}
-      ORDER BY id ${direction.toUpperCase()}
     `;
   }
 

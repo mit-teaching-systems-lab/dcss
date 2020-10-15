@@ -12,6 +12,8 @@ import {
   // GET_SCENARIOS,
   GET_SCENARIOS_SUCCESS,
   GET_SCENARIOS_ERROR,
+  GET_SCENARIOS_COUNT_SUCCESS,
+  GET_SCENARIOS_COUNT_ERROR,
   // GET_SLIDES,
   GET_SLIDES_SUCCESS,
   GET_SLIDES_ERROR,
@@ -25,6 +27,7 @@ import {
   // SET_SCENARIOS_ERROR,
   SET_SLIDES
 } from './types';
+import store from '@client/store';
 
 import { initialScenarioState } from '@reducers/scenario';
 
@@ -67,6 +70,61 @@ export const getScenarios = () => async dispatch => {
 
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIOS_ERROR, error });
+    return null;
+  }
+};
+
+export const getScenariosCount = () => async dispatch => {
+  try {
+    const res = await (await fetch('/api/scenarios/count')).json();
+    if (res.error) {
+      throw res;
+    }
+    const count = Number(res.count);
+
+    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
+    return count;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIOS_COUNT_ERROR, error });
+    return null;
+  }
+};
+
+export const getScenariosIncrementally = () => async dispatch => {
+  const thunk = getScenariosCount();
+  const count = await thunk(store.dispatch);
+
+  if (count === store.getState().scenarios.length) {
+    return store.getState().scenarios;
+  }
+
+  try {
+    let captured = [];
+    let scenarios = [];
+    let direction = 'DESC';
+    let offset = 0;
+    let limit = 30;
+    do {
+      const url = `/api/scenarios/${direction}/${offset}/${limit}`;
+      const res = await (await fetch(url)).json();
+
+      if (res.error) {
+        throw res;
+      }
+
+      ({ scenarios } = res);
+
+      if (scenarios.length) {
+        dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+        captured.push(...scenarios);
+
+        offset += limit;
+      }
+    } while (scenarios.length === limit);
+
+    return captured;
   } catch (error) {
     dispatch({ type: GET_SCENARIOS_ERROR, error });
     return null;

@@ -32,7 +32,8 @@ class ScenarioCardActions extends Component {
       activeRunSlideIndex: 0
     });
 
-    if (editor.activeSlideIndex === null) {
+    // Using == to match both undefined and null
+    if (editor.activeSlideIndex == null) {
       editor.activeSlideIndex = 1;
       Storage.set(`editor/${scenario.id}`, editor);
     }

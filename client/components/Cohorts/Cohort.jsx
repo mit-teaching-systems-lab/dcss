@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { Icon, Menu, Segment, Title } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
-import { getCohort, setCohort, linkUserToCohort } from '@actions/cohort';
-import { getScenarios } from '@actions/scenario';
+import { getCohort, linkUserToCohort } from '@actions/cohort';
+import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
 import DataTable from './DataTable';
@@ -55,7 +55,7 @@ export class Cohort extends React.Component {
         await this.props.getCohort(this.props.cohort.id);
       }
 
-      await this.props.getScenarios();
+      await this.props.getScenariosIncrementally();
       // Not sure this is necessary?
       await this.props.getUsers();
 
@@ -288,9 +288,8 @@ Cohort.propTypes = {
   }).isRequired,
   onChange: PropTypes.func,
   getCohort: PropTypes.func,
-  setCohort: PropTypes.func,
   linkUserToCohort: PropTypes.func,
-  getScenarios: PropTypes.func,
+  getScenariosIncrementally: PropTypes.func,
   getUser: PropTypes.func,
   user: PropTypes.object,
   getUsers: PropTypes.func
@@ -329,11 +328,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
-  getScenarios: () => dispatch(getScenarios()),
-  setCohort: params => dispatch(setCohort(params)),
-  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
+  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
   getUser: () => dispatch(getUser()),
-  getUsers: () => dispatch(getUsers())
+  getUsers: () => dispatch(getUsers()),
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cohort));

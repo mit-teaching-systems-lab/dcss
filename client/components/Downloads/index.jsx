@@ -18,7 +18,7 @@ import {
 } from '@components/UI';
 import { getAllCohorts, getCohorts } from '@actions/cohort';
 import { getHistoryForScenario } from '@actions/history';
-import { getScenarios } from '@actions/scenario';
+import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -55,7 +55,7 @@ class Downloads extends Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      await this.props.getScenarios();
+      await this.props.getScenariosIncrementally();
 
       if (this.props.user.is_super) {
         await this.props.getAllCohorts();
@@ -556,7 +556,7 @@ Downloads.propTypes = {
   scenariosById: PropTypes.object,
   getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
-  getScenarios: PropTypes.func,
+  getScenariosIncrementally: PropTypes.func,
   getHistoryForScenario: PropTypes.func,
   getUser: PropTypes.func,
   onClick: PropTypes.func,
@@ -589,7 +589,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
-  getScenarios: () => dispatch(getScenarios()),
+  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
   getHistoryForScenario: (...params) =>
     dispatch(getHistoryForScenario(...params)),
   getUser: () => dispatch(getUser())
