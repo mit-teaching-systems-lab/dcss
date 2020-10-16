@@ -60,6 +60,22 @@ export let getScenario = (id, options) => async dispatch => {
   }
 };
 
+export let getScenariosCount = () => async dispatch => {
+  try {
+    const res = await (await fetch('/api/scenarios/count')).json();
+    if (res.error) {
+      throw res;
+    }
+    const count = Number(res.count);
+
+    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
+    return count;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIOS_COUNT_ERROR, error });
+    return null;
+  }
+};
+
 export let getScenarios = () => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
@@ -85,27 +101,13 @@ export let getScenarios = () => async (dispatch, getState) => {
   }
 };
 
-export let getScenariosCount = () => async dispatch => {
-  try {
-    const res = await (await fetch('/api/scenarios/count')).json();
-    if (res.error) {
-      throw res;
-    }
-    const count = Number(res.count);
-
-    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
-    return count;
-  } catch (error) {
-    dispatch({ type: GET_SCENARIOS_COUNT_ERROR, error });
-    return null;
-  }
-};
-
-export let getScenariosByStatus = (status) => async (dispatch, getState) => {
+export let getScenariosByStatus = status => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
   if (state.login.isLoggedIn && count === state.scenarios.length) {
-    const scenarios = state.scenarios.filter(scenario => scenario.status === status);
+    const scenarios = state.scenarios.filter(
+      scenario => scenario.status === status
+    );
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
   }
@@ -125,7 +127,12 @@ export let getScenariosByStatus = (status) => async (dispatch, getState) => {
   }
 };
 
-const getScenariosIncrementallyRequest = async (direction, offset, limit, dispatch) => {
+const getScenariosIncrementallyRequest = async (
+  direction,
+  offset,
+  limit,
+  dispatch
+) => {
   const url = `/api/scenarios/${direction}/${offset}/${limit}`;
   const res = await (await fetch(url)).json();
 
@@ -142,12 +149,23 @@ const getScenariosIncrementallyRequest = async (direction, offset, limit, dispat
   return scenarios;
 };
 
-const getScenariosIncrementallyNext = async (direction, offset, limit, dispatch, updater) => {
+const getScenariosIncrementallyNext = async (
+  direction,
+  offset,
+  limit,
+  dispatch,
+  updater
+) => {
   let captured = [];
   let scenarios = [];
   do {
     offset += limit;
-    scenarios = await getScenariosIncrementallyRequest(direction, offset, limit, dispatch);
+    scenarios = await getScenariosIncrementallyRequest(
+      direction,
+      offset,
+      limit,
+      dispatch
+    );
     captured.push(...scenarios);
   } while (scenarios.length === limit);
 
@@ -156,21 +174,44 @@ const getScenariosIncrementallyNext = async (direction, offset, limit, dispatch,
   }
 };
 
-const getScenariosIncrementallyFirst = async (direction, offset, limit, dispatch, updater) => {
+const getScenariosIncrementallyFirst = async (
+  direction,
+  offset,
+  limit,
+  dispatch,
+  updater
+) => {
   let resolver;
-  let deferred = new Promise((resolve) => {resolver = resolve;});
+  let deferred = new Promise(resolve => {
+    resolver = resolve;
+  });
 
-  getScenariosIncrementallyRequest(direction, offset, limit, dispatch, updater).then(scenarios => {
+  getScenariosIncrementallyRequest(
+    direction,
+    offset,
+    limit,
+    dispatch,
+    updater
+  ).then(scenarios => {
     resolver(scenarios);
 
     if (scenarios.length === limit) {
-      getScenariosIncrementallyNext(direction, offset, limit, dispatch, updater);
+      getScenariosIncrementallyNext(
+        direction,
+        offset,
+        limit,
+        dispatch,
+        updater
+      );
     }
   });
   return deferred;
 };
 
-export let getScenariosIncrementally = (updater) => async (dispatch, getState) => {
+export let getScenariosIncrementally = updater => async (
+  dispatch,
+  getState
+) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
   if (state.login.isLoggedIn && count === state.scenarios.length) {
@@ -183,12 +224,20 @@ export let getScenariosIncrementally = (updater) => async (dispatch, getState) =
   let offset = 0;
   let limit = 30;
   const returnValue = await getScenariosIncrementallyFirst(
-    direction, offset, limit, dispatch, updater
+    direction,
+    offset,
+    limit,
+    dispatch,
+    updater
   );
   return returnValue;
 };
 
-export let getScenariosSlice = (direction = 'DESC', offset = 0, limit = 30) => async (dispatch, getState) => {
+export let getScenariosSlice = (
+  direction = 'DESC',
+  offset = 0,
+  limit = 30
+) => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
   if (state.login.isLoggedIn && count === state.scenarios.length) {
@@ -198,7 +247,6 @@ export let getScenariosSlice = (direction = 'DESC', offset = 0, limit = 30) => a
   }
 
   try {
-
     const url = `/api/scenarios/${direction}/${offset}/${limit}`;
     const res = await (await fetch(url)).json();
 
@@ -213,7 +261,6 @@ export let getScenariosSlice = (direction = 'DESC', offset = 0, limit = 30) => a
     dispatch({ type: GET_SCENARIOS_ERROR, error });
     return null;
   }
-
 };
 
 export let getSlides = id => async dispatch => {

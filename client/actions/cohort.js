@@ -220,11 +220,7 @@ export let linkUserToCohort = (cohort_id, role) => async dispatch => {
 };
 
 // This is used to link OTHER users to a cohort
-export let addCohortUserRole = (
-  cohort_id,
-  user_id,
-  role
-) => async dispatch => {
+export let addCohortUserRole = (cohort_id, user_id, role) => async dispatch => {
   try {
     const body = JSON.stringify({
       cohort_id,
