@@ -17,7 +17,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createStore(original);
+  store = createStore({});
 });
 
 afterEach(() => {
@@ -40,7 +40,7 @@ test('GET_RUN_HISTORY_SUCCESS', async () => {
   }
 
   {
-    const store = createStore(original);
+    const store = createStore({});
     const returnValue = await store.dispatch(
       actions.getHistoryForScenario(42, 1)
     );
