@@ -1,0 +1,12 @@
+module.exports = {
+  presets: ['@babel/env'],
+  plugins: [
+    ['@babel/plugin-proposal-class-properties'],
+    ['@babel/plugin-proposal-export-default-from'],
+    ['@babel/plugin-proposal-export-namespace-from'],
+    ['@babel/plugin-proposal-logical-assignment-operators'],
+    ['@babel/plugin-proposal-nullish-coalescing-operator'],
+    ['@babel/plugin-proposal-numeric-separator'],
+    ['@babel/plugin-proposal-optional-chaining']
+  ]
+};
