@@ -729,7 +729,7 @@ module.exports = {
     lock: {
       scenario_id: 42,
       user_id: 2,
-      created_at: '2020-10-10T23:54:19.934Z',
+      created_at: '2020-01-01T23:54:19.934Z',
       ended_at: null
     },
     slides: [
@@ -844,7 +844,7 @@ module.exports = {
       lock: {
         scenario_id: 42,
         user_id: 2,
-        created_at: '2020-10-10T23:54:19.934Z',
+        created_at: '2020-01-01T23:54:19.934Z',
         ended_at: null
       }
     }
@@ -899,7 +899,7 @@ module.exports = {
       lock: {
         scenario_id: 42,
         user_id: 2,
-        created_at: '2020-10-10T23:54:19.934Z',
+        created_at: '2020-01-01T23:54:19.934Z',
         ended_at: null
       }
     }

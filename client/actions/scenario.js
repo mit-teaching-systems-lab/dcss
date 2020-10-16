@@ -85,7 +85,30 @@ export let getScenarios = () => async (dispatch, getState) => {
   }
 };
 
-export const getScenariosByStatus = (status) => async dispatch => {
+export let getScenariosCount = () => async dispatch => {
+  try {
+    const res = await (await fetch('/api/scenarios/count')).json();
+    if (res.error) {
+      throw res;
+    }
+    const count = Number(res.count);
+
+    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
+    return count;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIOS_COUNT_ERROR, error });
+    return null;
+  }
+};
+
+export let getScenariosByStatus = (status) => async (dispatch, getState) => {
+  const state = getState();
+  const count = await store.dispatch(getScenariosCount());
+  if (state.login.isLoggedIn && count === state.scenarios.length) {
+    const scenarios = state.scenarios.filter(scenario => scenario.status === status);
+    dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+    return scenarios;
+  }
 
   try {
     const res = await (await fetch(`/api/scenarios/status/${status}`)).json();
@@ -98,22 +121,6 @@ export const getScenariosByStatus = (status) => async dispatch => {
     return scenarios;
   } catch (error) {
     dispatch({ type: GET_SCENARIOS_ERROR, error });
-    return null;
-  }
-};
-
-export const getScenariosCount = () => async dispatch => {
-  try {
-    const res = await (await fetch('/api/scenarios/count')).json();
-    if (res.error) {
-      throw res;
-    }
-    const count = Number(res.count);
-
-    dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
-    return count;
-  } catch (error) {
-    dispatch({ type: GET_SCENARIOS_COUNT_ERROR, error });
     return null;
   }
 };
@@ -181,7 +188,35 @@ export let getScenariosIncrementally = (updater) => async (dispatch, getState) =
   return returnValue;
 };
 
-export const getSlides = id => async dispatch => {
+export let getScenariosSlice = (direction = 'DESC', offset = 0, limit = 30) => async (dispatch, getState) => {
+  const state = getState();
+  const count = await store.dispatch(getScenariosCount());
+  if (state.login.isLoggedIn && count === state.scenarios.length) {
+    const { scenarios } = state;
+    dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+    return scenarios;
+  }
+
+  try {
+
+    const url = `/api/scenarios/${direction}/${offset}/${limit}`;
+    const res = await (await fetch(url)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { scenarios = [] } = res;
+
+    dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+    return scenarios;
+  } catch (error) {
+    dispatch({ type: GET_SCENARIOS_ERROR, error });
+    return null;
+  }
+
+};
+
+export let getSlides = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/scenarios/${id}/slides`)).json();
 
