@@ -99,7 +99,7 @@ describe('SET_USER_ROLE_ERROR', () => {
     const returnValue = await store.dispatch(actions.deleteUserRole(1, 'boss'));
 
     assert.deepEqual(fetch.mock.calls[0], [
-      '/api/roles/add',
+      '/api/roles/delete',
       {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
