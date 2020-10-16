@@ -10,7 +10,7 @@ import { cleanup, fireEvent, render } from '@testing-library/react';
 import Slides from '../../components/Editor/Slides.jsx';
 
 import { GET_SLIDES_SUCCESS } from '../../actions/types';
-import { getSlides } from '../../actions/scenario';
+import * as scenarioActions from '../../actions/scenario';
 jest.mock('../../actions/scenario');
 
 beforeAll(() => {
@@ -25,7 +25,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  getSlides.mockImplementation(() => async dispatch => {
+  scenarioActions.getSlides = jest.fn();
+  scenarioActions.getSlides.mockImplementation(() => async dispatch => {
     const slides = [
       {
         id: 1,

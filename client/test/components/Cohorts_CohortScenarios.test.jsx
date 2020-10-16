@@ -14,9 +14,9 @@ import {
   GET_USER_SUCCESS,
   GET_USERS_SUCCESS
 } from '../../actions/types';
-import { getCohort } from '../../actions/cohort';
-import { getUser } from '../../actions/user';
-import { getUsers } from '../../actions/users';
+import * as cohortActions from '../../actions/cohort';
+import * as userActions from '../../actions/user';
+import * as usersActions from '../../actions/users';
 jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
@@ -33,7 +33,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  getCohort.mockImplementation(() => async dispatch => {
+  cohortActions.getCohort = jest.fn();
+  cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 2,
       created_at: '2020-08-31T14:01:08.656Z',
@@ -70,7 +71,8 @@ beforeEach(() => {
     });
     return cohort;
   });
-  getUser.mockImplementation(() => async dispatch => {
+  usersActions.getUser = jest.fn();
+  usersActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       id: 2,
       email: 'owner@email.com',
@@ -87,7 +89,8 @@ beforeEach(() => {
     });
     return user;
   });
-  getUsers.mockImplementation(() => async dispatch => {
+  usersActions.getUsers = jest.fn();
+  usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
         id: 2,

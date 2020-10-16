@@ -8,7 +8,7 @@ import {
 import { unmountComponentAtNode } from 'react-dom';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import {
-  AuthorDropdown,
+  OwnerDropdown,
   CategoriesDropdown
 } from '../../components/ScenarioEditor/DropdownOptions.jsx';
 
@@ -37,8 +37,8 @@ const sharedProps = {
   }
 };
 
-test('AuthorDropdown', () => {
-  expect(AuthorDropdown).toBeDefined();
+test('OwnerDropdown', () => {
+  expect(OwnerDropdown).toBeDefined();
 });
 
 test('Snapshot 1', () => {
@@ -46,10 +46,12 @@ test('Snapshot 1', () => {
     ...sharedProps,
     options: [],
     categories: [],
-    authors: [],
+    author: {
+      id: null
+    },
     onChange() {}
   };
-  const mounted = mounter(reduxer(AuthorDropdown, props, state))();
+  const mounted = mounter(reduxer(OwnerDropdown, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();
 });
 
@@ -62,7 +64,9 @@ test('Snapshot 1', () => {
     ...sharedProps,
     options: [],
     categories: [],
-    authors: [],
+    author: {
+      id: null
+    },
     onChange() {}
   };
   const mounted = mounter(reduxer(CategoriesDropdown, props, state))();

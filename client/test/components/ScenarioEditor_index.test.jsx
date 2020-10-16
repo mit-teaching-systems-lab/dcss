@@ -9,7 +9,7 @@ import { unmountComponentAtNode } from 'react-dom';
 import { cleanup, fireEvent, render } from '@testing-library/react';
 import ScenarioEditor from '../../components/ScenarioEditor/index.jsx';
 
-import { getUsersByPermission } from '../../actions/users';
+import * as usersActions from '../../actions/users';
 jest.mock('../../actions/users');
 
 beforeAll(() => {
@@ -24,7 +24,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  getUsersByPermission.mockImplementation(() => async dispatch => {
+  usersActions.getUsersByPermission = jest.fn();
+  usersActions.getUsersByPermission.mockImplementation(() => async dispatch => {
     return [
       {
         id: 2,

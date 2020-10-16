@@ -43,9 +43,7 @@ test('Snapshot 1', () => {
     ...sharedProps,
     components: [],
     onResponseChange() {},
-    run: {
-      id: 2
-    },
+    run: null,
     saveRunEvent() {}
   };
   const mounted = mounter(reduxer(SlideComponents, props, state))();

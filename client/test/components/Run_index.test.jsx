@@ -14,8 +14,8 @@ import {
   SET_RUN_SUCCESS,
   GET_SCENARIO_SUCCESS
 } from '../../actions/types';
-import { getRun, setRun } from '../../actions/run';
-import { getScenario } from '../../actions/scenario';
+import * as runActions from '../../actions/run';
+import * as scenarioActions from '../../actions/scenario';
 jest.mock('../../actions/run');
 jest.mock('../../actions/scenario');
 
@@ -43,21 +43,24 @@ beforeEach(() => {
     consent_granted_by_user: true,
     referrer_params: null
   };
-  getRun.mockImplementation(() => async dispatch => {
+  runActions.getRun = jest.fn();
+  runActions.getRun.mockImplementation(() => async dispatch => {
     dispatch({
       type: GET_RUN_SUCCESS,
       run
     });
     return run;
   });
-  setRun.mockImplementation(() => async dispatch => {
+  runActions.setRun = jest.fn();
+  runActions.setRun.mockImplementation(() => async dispatch => {
     dispatch({
       type: SET_RUN_SUCCESS,
       run
     });
     return run;
   });
-  getScenario.mockImplementation(() => async dispatch => {
+  scenarioActions.getScenario = jest.fn();
+  scenarioActions.getScenario.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
         id: 2,
