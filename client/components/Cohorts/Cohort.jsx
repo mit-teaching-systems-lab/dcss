@@ -6,7 +6,6 @@ import { Icon, Menu, Segment, Title } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
 import { getCohort, linkUserToCohort } from '@actions/cohort';
-import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
 import DataTable from './DataTable';
@@ -55,7 +54,6 @@ export class Cohort extends React.Component {
         await this.props.getCohort(this.props.cohort.id);
       }
 
-      await this.props.getScenariosIncrementally();
       // Not sure this is necessary?
       await this.props.getUsers();
 
@@ -258,7 +256,6 @@ export class Cohort extends React.Component {
 Cohort.propTypes = {
   activeTabKey: PropTypes.string,
   authority: PropTypes.object,
-  scenarios: PropTypes.array,
   runs: PropTypes.array,
   users: PropTypes.array,
   cohort: PropTypes.shape({
@@ -289,7 +286,6 @@ Cohort.propTypes = {
   onChange: PropTypes.func,
   getCohort: PropTypes.func,
   linkUserToCohort: PropTypes.func,
-  getScenariosIncrementally: PropTypes.func,
   getUser: PropTypes.func,
   user: PropTypes.object,
   getUsers: PropTypes.func
@@ -298,7 +294,7 @@ Cohort.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id) || ownProps.id;
   const { permissions } = state.login;
-  const { cohortsById, scenarios, user } = state;
+  const { cohortsById, user } = state;
   const cohort = cohortsById[id] || { ...state.cohort, id };
 
   const cohortUser = cohort.users.find(
@@ -323,12 +319,11 @@ const mapStateToProps = (state, ownProps) => {
     authority.isParticipant = true;
   }
 
-  return { authority, cohort, scenarios, user: { ...user, permissions } };
+  return { authority, cohort, user: { ...user, permissions } };
 };
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
-  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers()),
   linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),

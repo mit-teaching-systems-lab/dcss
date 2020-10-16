@@ -40,9 +40,11 @@ const SCENARIO_STATUS_PRIVATE = 3;
 /* eslint-enable */
 
 const filter = (scenarios, user) => {
-  if (!scenarios.length) {
+
+  if (!scenarios || !scenarios.length) {
     return [];
   }
+
   const isLoggedIn = !!(user || user.id);
   const reduced = scenarios.reduce((accum, scenario) => {
     const { status, users } = scenario;
@@ -96,6 +98,7 @@ class ScenariosList extends Component {
 
     const { category } = this.props;
     const value = decodeURIComponent(window.location.search.replace('?q=', ''));
+    const scenarios = filter(this.props.scenarios, this.props.user);
     this.state = {
       open: false,
       activePage: 1,
@@ -103,78 +106,31 @@ class ScenariosList extends Component {
       isReady: false,
       selected: null,
       heading: '',
-      scenarios: [],
+      scenarios,
       viewHeading: '',
       value
     };
-    this.scenarios = [];
+    this.scenarios = scenarios;
     this.onPageChange = this.onPageChange.bind(this);
     this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
     this.onScenarioModalClose = this.onScenarioModalClose.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
-    this.reduceScenarios = this.reduceScenarios.bind(this);
   }
 
   async componentDidMount() {
-    await this.props.getScenariosIncrementally();
+    const { value } = this.state;
+    const scenarios = await this.props.getScenariosIncrementally((scenarios) => {
+      this.scenarios = filter(this.props.scenarios, this.props.user);
+      this.setState({ scenarios: this.scenarios });
 
-    this.scenarios = filter(this.props.scenarios, this.props.user);
-
-    await this.reduceScenarios();
-
-    if (this.state.value) {
-      this.onSearchChange(
-        {},
-        {
-          value: this.state.value
-        }
-      );
-    }
-  }
-
-  async reduceScenarios() {
-    const { category } = this.state;
-    let scenarios = [];
-    let heading = '';
-    let authorUsername = '';
-
-    switch (category) {
-      case 'all': {
-        scenarios.push(...this.scenarios);
-        heading = 'All Scenarios';
-        break;
+      if (value) {
+        this.onSearchChange({}, { value });
       }
-      case 'author': {
-        authorUsername = this.props.match.params.username;
-        heading = `Scenarios by ${authorUsername}`;
-        scenarios.push(
-          ...this.scenarios.filter(({ author: { username } }) => {
-            return username === authorUsername;
-          })
-        );
-
-        if (scenarios.length === 0) {
-          heading = `There are no scenarios by ${authorUsername}`;
-        }
-
-        break;
-      }
-      case 'official':
-      case 'community': {
-        scenarios = this.scenarios.filter(({ categories }) => {
-          return !category || categories.includes(category);
-        });
-        heading = `${changeCase.titleCase(category)} Scenarios`;
-        break;
-      }
-    }
+    });
 
     this.setState({
       isReady: true,
-      activePage: 1,
-      heading,
       scenarios,
-      viewHeading: heading
     });
   }
 
@@ -200,6 +156,7 @@ class ScenariosList extends Component {
 
   onSearchChange(event, props) {
     const scenarios = this.scenarios.slice(0);
+
     const { viewHeading } = this.state;
     const { value } = props;
     let replacementHeading = '';
@@ -210,6 +167,10 @@ class ScenariosList extends Component {
         heading: viewHeading,
         scenarios
       });
+
+      this.props.history.push(
+        `${this.props.location.pathname}`
+      );
 
       return;
     }
@@ -268,10 +229,10 @@ class ScenariosList extends Component {
     const { isLoggedIn } = this.props;
     const {
       activePage,
+      category,
       isReady,
       heading,
       open,
-      scenarios,
       selected,
       value
     } = this.state;
@@ -283,6 +244,52 @@ class ScenariosList extends Component {
     } = this;
 
     const { origin, pathname } = window.location;
+
+
+    let useTheseScenarios = this.state.scenarios;
+
+    if (!value && !useTheseScenarios) {
+      useTheseScenarios = this.props.scenarios;
+    }
+
+
+    let sourceScenarios = filter(useTheseScenarios, this.props.user);
+    let scenarios = [];
+    let displayHeading = '';
+    let authorUsername = '';
+
+    switch (category) {
+      case 'all': {
+        scenarios.push(...sourceScenarios);
+        displayHeading = 'All Scenarios';
+        break;
+      }
+      case 'author': {
+        authorUsername = this.props.match.params.username;
+        displayHeading = `Scenarios by ${authorUsername}`;
+        scenarios.push(
+          ...sourceScenarios.filter(({ author: { username } }) => {
+            return username === authorUsername;
+          })
+        );
+
+        if (scenarios.length === 0) {
+          displayHeading = `There are no scenarios by ${authorUsername}`;
+        }
+
+        break;
+      }
+      case 'official':
+      case 'community': {
+        scenarios = sourceScenarios.filter(({ categories }) => {
+          return !category || categories.includes(category);
+        });
+        displayHeading = `${changeCase.titleCase(category)} Scenarios`;
+        break;
+      }
+    }
+
+    displayHeading = `${displayHeading} ${heading}`;
 
     let url = `${origin}${pathname}`;
 
@@ -333,7 +340,7 @@ class ScenariosList extends Component {
         className="em__overflow-truncated"
         onClick={onCopyClick}
       >
-        {heading} ({scenarios.length})
+        {displayHeading} ({scenarios.length})
       </Menu.Item.Tabbable>
     ) : null;
 
@@ -358,7 +365,7 @@ class ScenariosList extends Component {
       menuItemScenarioLinkCopyLeft
     ];
 
-    const scenariosHeading = `${heading} (${scenarios.length})`;
+    const scenariosHeading = `${displayHeading} (${scenarios.length})`;
     const menuItemScenarioLinkCopyRight = Layout.isNotForMobile() ? (
       <Menu.Item.Tabbable
         className="sc__hidden-on-mobile"
@@ -535,12 +542,13 @@ const mapStateToProps = state => {
     scenarios,
     user
   } = state;
+
   return { isLoggedIn, user, scenarios };
 };
 
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
-  getScenariosIncrementally: () => dispatch(getScenariosIncrementally())
+  getScenariosIncrementally: (updater) => dispatch(getScenariosIncrementally(updater))
 });
 
 export default withRouter(
