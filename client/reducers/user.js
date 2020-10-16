@@ -24,6 +24,11 @@ export const user = (state = initialState, action) => {
     case GET_SESSION_SUCCESS:
     case GET_USER_SUCCESS:
     case SET_USER_SUCCESS: {
+      if (user === null) {
+        return {
+          ...initialState
+        };
+      }
       return {
         ...state,
         ...user

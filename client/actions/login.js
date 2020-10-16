@@ -1,11 +1,11 @@
-import { LOG_IN, LOG_OUT } from './types';
+import { LOG_IN, LOG_OUT, SET_USER_SUCCESS } from './types';
 import Storage from '@utils/Storage';
 
-export const logIn = userData => async dispatch => {
+export let logIn = login => async dispatch => {
   dispatch({
     type: LOG_IN,
-    payload: {
-      ...userData,
+    login: {
+      ...login,
       isLoggedIn: true
     }
   });
@@ -13,11 +13,9 @@ export const logIn = userData => async dispatch => {
 
 const method = 'POST';
 
-export const logOut = () => async dispatch => {
-  const payload = {
-    isLoggedIn: false
-  };
-  dispatch({ type: LOG_OUT, payload });
+export let logOut = () => async dispatch => {
+  dispatch({ type: LOG_OUT, login: null });
+  dispatch({ type: SET_USER_SUCCESS, user: null });
   try {
     await fetch('/api/auth/logout', {
       method

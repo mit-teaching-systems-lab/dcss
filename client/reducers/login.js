@@ -7,12 +7,17 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  switch (action.type) {
-    case LOG_IN:
-    case LOG_OUT: {
+  const { login, type } = action;
+  switch (type) {
+    case LOG_IN: {
       return {
         ...state,
-        ...action.payload
+        ...login
+      };
+    }
+    case LOG_OUT: {
+      return {
+        ...initialState
       };
     }
     default:

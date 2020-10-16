@@ -36,30 +36,44 @@ afterEach(() => {
 });
 
 test('LOG_IN', async () => {
-  await store.dispatch(actions.logIn({ username: 'me', otherdata: true }));
+  const login = {
+    username: 'me',
+    permissions: ['a', 'b', 'c'],
+    otherdata: true
+  };
+
+  await store.dispatch(actions.logIn(login));
   assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
-    username: 'me',
-    permissions: [],
-    otherdata: true
+    ...login,
   });
 });
 
 test('LOG_OUT', async () => {
-  await store.dispatch(actions.logIn({ username: 'me', otherdata: true }));
+  const login = {
+    username: 'me',
+    permissions: ['a', 'b', 'c'],
+    otherdata: true
+  };
+
+  await store.dispatch(actions.logIn(login));
   assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
-    username: 'me',
-    permissions: [],
-    otherdata: true
+    ...login,
   });
-  await store.dispatch(actions.logOut({ username: null, permissions: [] }));
+  await store.dispatch(actions.logOut());
   assert.equal(Storage.clear.mock.calls.length, 1);
   assert.equal(fetch.mock.calls.length, 1);
   assert.deepEqual(store.getState().login, {
     isLoggedIn: false,
-    username: 'me',
-    permissions: [],
-    otherdata: true
+    username: '',
+    permissions: []
+  });
+  assert.deepEqual(store.getState().user, {
+    username: null,
+    personalname: null,
+    email: null,
+    id: null,
+    roles: []
   });
 });
