@@ -1,6 +1,6 @@
 import { GET_LOGS_SUCCESS, GET_LOGS_ERROR } from './types';
 
-export const getLogs = ({
+export let getLogs = ({
   queryBy = 'date',
   min,
   max,

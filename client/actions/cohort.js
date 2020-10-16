@@ -26,7 +26,7 @@ import {
   SET_COHORT_USER_ROLE_ERROR
 } from './types';
 
-export const createCohort = ({ name }) => async dispatch => {
+export let createCohort = ({ name }) => async dispatch => {
   try {
     const res = await (
       await fetch('/api/cohort', {
@@ -56,7 +56,7 @@ export const createCohort = ({ name }) => async dispatch => {
 // TODO: this needs to be renamed "setCohortScenarios"
 // TODO: the actions needs to be renamed "SET_COHORT_SCENARIOS_*"
 // TODO: the reducers need to be updated
-export const setCohort = cohort => async dispatch => {
+export let setCohort = cohort => async dispatch => {
   try {
     const { scenarios } = cohort;
     const body = JSON.stringify({
@@ -84,7 +84,7 @@ export const setCohort = cohort => async dispatch => {
   }
 };
 
-export const getCohort = id => async dispatch => {
+export let getCohort = id => async dispatch => {
   if (Number.isNaN(id)) {
     return;
   }
@@ -103,7 +103,7 @@ export const getCohort = id => async dispatch => {
   }
 };
 
-export const getCohorts = () => async dispatch => {
+export let getCohorts = () => async dispatch => {
   try {
     const res = await (await fetch('/api/cohort/my')).json();
 
@@ -118,7 +118,7 @@ export const getCohorts = () => async dispatch => {
   }
 };
 
-export const getAllCohorts = () => async dispatch => {
+export let getAllCohorts = () => async dispatch => {
   try {
     const res = await (await fetch('/api/cohort/all')).json();
     if (res.error) {
@@ -133,7 +133,7 @@ export const getAllCohorts = () => async dispatch => {
   }
 };
 
-export const getCohortParticipants = id => async dispatch => {
+export let getCohortParticipants = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/cohort/${id}`)).json();
 
@@ -154,7 +154,7 @@ export const getCohortParticipants = id => async dispatch => {
   }
 };
 
-export const getCohortData = (
+export let getCohortData = (
   cohort_id,
   participant_id,
   scenario_id
@@ -183,7 +183,7 @@ export const getCohortData = (
   }
 };
 
-export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
+export let linkRunToCohort = (cohort_id, run_id) => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/cohort/${cohort_id}/run/${run_id}`)
@@ -201,7 +201,7 @@ export const linkRunToCohort = (cohort_id, run_id) => async dispatch => {
   }
 };
 // This is used to link the CURRENT user to a cohort once they've landed on the cohort page
-export const linkUserToCohort = (cohort_id, role) => async dispatch => {
+export let linkUserToCohort = (cohort_id, role) => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/cohort/${cohort_id}/join/${role}`)
@@ -220,7 +220,7 @@ export const linkUserToCohort = (cohort_id, role) => async dispatch => {
 };
 
 // This is used to link OTHER users to a cohort
-export const addCohortUserRole = (
+export let addCohortUserRole = (
   cohort_id,
   user_id,
   role
@@ -253,7 +253,7 @@ export const addCohortUserRole = (
   }
 };
 
-export const deleteCohortUserRole = (
+export let deleteCohortUserRole = (
   cohort_id,
   user_id,
   role

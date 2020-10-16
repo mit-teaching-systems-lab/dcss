@@ -7,7 +7,7 @@ import {
   SET_USER_ERROR
 } from './types';
 
-export const getUser = () => async dispatch => {
+export let getUser = () => async dispatch => {
   try {
     const res = await (await fetch('/api/auth/me')).json();
 
@@ -24,7 +24,7 @@ export const getUser = () => async dispatch => {
   }
 };
 
-export const getSession = () => async dispatch => {
+export let getSession = () => async dispatch => {
   try {
     const res = await (await fetch('/api/auth/session')).json();
 
@@ -41,7 +41,7 @@ export const getSession = () => async dispatch => {
   }
 };
 
-export const setUser = data => async dispatch => {
+export let setUser = data => async dispatch => {
   try {
     if (Object.values(data).length) {
       const body = JSON.stringify(data);

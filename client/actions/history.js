@@ -1,6 +1,6 @@
 import { GET_RUN_HISTORY_SUCCESS, GET_RUN_HISTORY_ERROR } from './types';
 
-export const getHistoryForScenario = (
+export let getHistoryForScenario = (
   scenario_id,
   cohort_id
 ) => async dispatch => {

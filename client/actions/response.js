@@ -8,7 +8,7 @@ import {
   SET_RESPONSES_ERROR
 } from './types';
 
-export const getResponse = ({ id, responseId }) => async dispatch => {
+export let getResponse = ({ id, responseId }) => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/runs/${id}/response/${responseId}`)
@@ -31,7 +31,7 @@ export const getResponse = ({ id, responseId }) => async dispatch => {
   }
 };
 
-export const getTranscriptionOutcome = ({
+export let getTranscriptionOutcome = ({
   id,
   responseId
 }) => async dispatch => {
@@ -58,7 +58,7 @@ export const getTranscriptionOutcome = ({
   }
 };
 
-export const setResponses = (id, submitted) => async dispatch => {
+export let setResponses = (id, submitted) => async dispatch => {
   const responses = [];
   const responsesById = {};
   try {

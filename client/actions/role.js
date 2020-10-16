@@ -1,6 +1,6 @@
 import { SET_USER_ROLE_SUCCESS, SET_USER_ROLE_ERROR } from './types';
 
-export const addUserRole = (user_id, role) => async dispatch => {
+export let addUserRole = (user_id, role) => async dispatch => {
   try {
     const body = JSON.stringify({
       user_id,
@@ -28,7 +28,7 @@ export const addUserRole = (user_id, role) => async dispatch => {
   }
 };
 
-export const deleteUserRole = (user_id, role) => async dispatch => {
+export let deleteUserRole = (user_id, role) => async dispatch => {
   try {
     const body = JSON.stringify({
       user_id,

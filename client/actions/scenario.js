@@ -31,7 +31,7 @@ import store from '@client/store';
 
 import { initialScenarioState } from '@reducers/scenario';
 
-export const getScenario = (id, options) => async dispatch => {
+export let getScenario = (id, options) => async dispatch => {
   let url = `/api/scenarios/${id}`;
 
   if (options) {
@@ -60,8 +60,8 @@ export const getScenario = (id, options) => async dispatch => {
   }
 };
 
-export const getScenarios = () => async dispatch => {
-  const state = store.getState();
+export let getScenarios = () => async (dispatch, getState) => {
+  const state = getState();
   const count = await store.dispatch(getScenariosCount());
 
   if (state.login.isLoggedIn && count === state.scenarios.length) {
@@ -163,8 +163,8 @@ const getScenariosIncrementallyFirst = async (direction, offset, limit, dispatch
   return deferred;
 };
 
-export const getScenariosIncrementally = (updater) => async dispatch => {
-  const state = store.getState();
+export let getScenariosIncrementally = (updater) => async (dispatch, getState) => {
+  const state = getState();
   const count = await store.dispatch(getScenariosCount());
   if (state.login.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;
@@ -198,7 +198,7 @@ export const getSlides = id => async dispatch => {
   }
 };
 
-export const setScenario = scenario => {
+export let setScenario = scenario => {
   if (scenario === null) {
     const clone = cloneDeep(initialScenarioState);
     return {
@@ -224,17 +224,17 @@ export const setScenario = scenario => {
   };
 };
 
-export const setScenarios = scenarios => ({
+export let setScenarios = scenarios => ({
   type: SET_SCENARIOS,
   scenarios
 });
 
-export const setSlides = slides => ({
+export let setSlides = slides => ({
   type: SET_SLIDES,
   slides
 });
 
-export const copyScenario = scenario_id => async dispatch => {
+export let copyScenario = scenario_id => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/scenarios/${scenario_id}/copy`, {
@@ -256,7 +256,7 @@ export const copyScenario = scenario_id => async dispatch => {
   }
 };
 
-export const deleteScenario = scenario_id => async dispatch => {
+export let deleteScenario = scenario_id => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/scenarios/${scenario_id}`, {
@@ -278,7 +278,7 @@ export const deleteScenario = scenario_id => async dispatch => {
   }
 };
 
-export const endScenarioLock = scenario_id => async dispatch => {
+export let endScenarioLock = scenario_id => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/scenarios/${scenario_id}/unlock`)
@@ -298,7 +298,7 @@ export const endScenarioLock = scenario_id => async dispatch => {
   }
 };
 
-export const deleteSlide = (scenario_id, id) => async dispatch => {
+export let deleteSlide = (scenario_id, id) => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/scenarios/${scenario_id}/slides/${id}`, {
@@ -320,7 +320,7 @@ export const deleteSlide = (scenario_id, id) => async dispatch => {
   }
 };
 
-export const addScenarioUserRole = (
+export let addScenarioUserRole = (
   scenario_id,
   user_id,
   role
@@ -352,7 +352,7 @@ export const addScenarioUserRole = (
   }
 };
 
-export const endScenarioUserRole = (
+export let endScenarioUserRole = (
   scenario_id,
   user_id,
   role

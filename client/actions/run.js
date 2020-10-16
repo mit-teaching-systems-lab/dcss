@@ -12,7 +12,7 @@ import {
   SET_RUN_ERROR
 } from './types';
 
-export const getRun = scenario_id => async dispatch => {
+export let getRun = scenario_id => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/runs/new-or-existing/scenario/${scenario_id}`, {
@@ -35,7 +35,7 @@ export const getRun = scenario_id => async dispatch => {
   }
 };
 
-export const getRuns = () => async dispatch => {
+export let getRuns = () => async dispatch => {
   try {
     const res = await (await fetch('/api/runs')).json();
 
@@ -51,7 +51,7 @@ export const getRuns = () => async dispatch => {
   }
 };
 
-export const setRun = (id, data) => async dispatch => {
+export let setRun = (id, data) => async dispatch => {
   dispatch({ type: SET_RUN, run: { id, ...data } });
   try {
     const body = JSON.stringify(data);
@@ -79,7 +79,7 @@ export const setRun = (id, data) => async dispatch => {
   }
 };
 
-export const getRunData = run_id => async dispatch => {
+export let getRunData = run_id => async dispatch => {
   try {
     const endpoint = `/api/runs/${run_id}`;
     const res = await (await fetch(endpoint)).json();
@@ -98,7 +98,7 @@ export const getRunData = run_id => async dispatch => {
   }
 };
 
-export const saveRunEvent = (run_id, name, data) => async dispatch => {
+export let saveRunEvent = (run_id, name, data) => async dispatch => {
   try {
     const timestamp = Date.now();
     const url = location.href;

@@ -6,19 +6,19 @@ import {
 } from './types';
 
 // Previously...
-// export const setUsers = users => ({
+// export let setUsers = users => ({
 //   type: GET_USERS_SUCCESS,
 //   users
 // });
 
-export const setUsers = users => async dispatch => {
+export let setUsers = users => async dispatch => {
   dispatch({
     type: GET_USERS_SUCCESS,
     users
   });
 };
 
-export const getUsers = () => async dispatch => {
+export let getUsers = () => async dispatch => {
   try {
     const res = await (await fetch('/api/roles/all')).json();
 
@@ -41,7 +41,7 @@ export const getUsers = () => async dispatch => {
  * @param  {string} permission The permission to filter users on.
  * @return {array}             An array of users that have this permission.
  */
-export const getUsersByPermission = permission => async dispatch => {
+export let getUsersByPermission = permission => async dispatch => {
   try {
     const res = await (
       await fetch(`/api/roles/user/permission/${permission}`)

@@ -1,6 +1,6 @@
 import { GET_CATEGORIES_SUCCESS, GET_CATEGORIES_ERROR } from './types';
 
-export const getCategories = () => async dispatch => {
+export let getCategories = () => async dispatch => {
   try {
     const res = await (await fetch('/api/tags/categories')).json();
 
