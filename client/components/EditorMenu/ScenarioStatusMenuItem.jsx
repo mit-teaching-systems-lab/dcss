@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import changeCase from 'change-case';
-import Identity from '@utils/Identity';
 import { Dropdown, Menu, Icon } from '@components/UI';
 
 let cachedStatusOptions = [];
@@ -53,10 +52,13 @@ class ScenarioStatusMenuItem extends React.Component {
   }
 
   onChange(_, { name, value: id }) {
-    this.props.onChange({}, {
-      name,
-      id
-    });
+    this.props.onChange(
+      {},
+      {
+        name,
+        id
+      }
+    );
   }
 
   render() {
@@ -76,8 +78,12 @@ class ScenarioStatusMenuItem extends React.Component {
       </React.Fragment>
     );
 
-    const options = this.state.statusOptions.map(({ id, name, description }) =>
-      ({ key: id, value: id, content: `${name} (${description})` })
+    const options = this.state.statusOptions.map(
+      ({ id, name, description }) => ({
+        key: id,
+        value: id,
+        content: `${name} (${description})`
+      })
     );
 
     return (

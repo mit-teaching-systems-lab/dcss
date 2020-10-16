@@ -22,7 +22,7 @@ import Username from '@components/User/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
-import {SCENARIO_IS_PUBLIC} from '@components/Scenario/constants';
+import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import scrollIntoView from '@utils/scrollIntoView';
 import Sortable from '@components/Sortable';
 import { getCohort, setCohort } from '@actions/cohort';
@@ -184,7 +184,6 @@ export class CohortScenarios extends React.Component {
     const cohortScenarios = cohort.scenarios.map(id =>
       scenarios.find(scenario => scenario.id === id)
     );
-
 
     // This is the list of scenarios that are available,
     // but NOT in the cohort. The order is by id, descending
@@ -637,7 +636,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
-  getScenariosByStatus: (status) => dispatch(getScenariosByStatus(status)),
+  getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers())
 });

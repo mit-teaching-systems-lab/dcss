@@ -450,7 +450,7 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getCohortData: (...params) => dispatch(getCohortData(...params)),
   getRunData: (...params) => dispatch(getRunData(...params)),
-  getScenariosByStatus: (status) => dispatch(getScenariosByStatus(status)),
+  getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getUser: () => dispatch(getUser())
 });
 

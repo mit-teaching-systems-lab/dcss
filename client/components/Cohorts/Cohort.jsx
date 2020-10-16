@@ -326,7 +326,7 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers()),
-  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
+  linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cohort));
