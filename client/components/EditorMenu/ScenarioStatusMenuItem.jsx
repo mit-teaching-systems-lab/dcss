@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import changeCase from 'change-case';
+import Identity from '@utils/Identity';
 import { Dropdown, Menu, Icon } from '@components/UI';
 
 let cachedStatusOptions = [];
@@ -13,21 +14,22 @@ class ScenarioStatusMenuItem extends React.Component {
       statusOptions: cachedStatusOptions
     };
 
-    if (!cachedStatusOptions) {
-      this.fetchStatusOptions();
-    }
+    this.onChange = this.onChange.bind(this);
   }
 
-  async fetchStatusOptions() {
-    const statusOptions = await (cachedStatusOptions ||
-      (await fetch('/api/status')).json());
+  async componentDidMount() {
+    if (this.state.statusOptions.length) {
+      return;
+    }
+
+    const statusOptions = await (await fetch('/api/status')).json();
 
     statusOptions.forEach(
       statusOption =>
         (statusOption.name = changeCase.titleCase(statusOption.name))
     );
 
-    cachedStatusOptions = statusOptions; // eslint-disable-line require-atomic-updates
+    cachedStatusOptions.push(...statusOptions); // eslint-disable-line require-atomic-updates
 
     this.setState({ statusOptions });
   }
@@ -50,6 +52,13 @@ class ScenarioStatusMenuItem extends React.Component {
     );
   }
 
+  onChange(_, { name, value: id }) {
+    this.props.onChange({}, {
+      name,
+      id
+    });
+  }
+
   render() {
     if (!this.state.statusOptions.length) {
       return null;
@@ -66,31 +75,29 @@ class ScenarioStatusMenuItem extends React.Component {
         {statusAsText}
       </React.Fragment>
     );
+
+    const options = this.state.statusOptions.map(({ id, name, description }) =>
+      ({ key: id, value: id, content: `${name} (${description})` })
+    );
+
     return (
-      <Menu.Menu key="menu-item-scenario-status">
-        <Dropdown item text={dropdownTrigger}>
-          <Dropdown.Menu>
-            {this.state.statusOptions.map(({ id, name, description }) => (
-              <Dropdown.Item
-                name="save-status"
-                id={id}
-                key={id}
-                onClick={this.props.onClick}
-              >
-                {name} ({description})
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
+      <Menu.Menu>
+        <Dropdown
+          item
+          name="save-status"
+          trigger={dropdownTrigger}
+          onChange={this.onChange}
+          options={options}
+          value={this.props.status}
+        />
       </Menu.Menu>
     );
   }
 }
 
 ScenarioStatusMenuItem.propTypes = {
-  // scenario: PropTypes.object,
   status: PropTypes.number,
-  onClick: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired
 };
 
 export default ScenarioStatusMenuItem;

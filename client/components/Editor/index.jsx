@@ -247,16 +247,11 @@ class Editor extends Component {
     // TODO: Move to own async action
     const response = await (await submitCallback(data)).json();
 
-    switch (response.status) {
-      case 200:
-        this.props.setScenario(response.scenario);
-        notify({ type: 'success', message: 'Scenario saved' });
-        break;
-      default:
-        if (response.error) {
-          notify({ type: 'error', message: response.message });
-        }
-        break;
+    if (response.error) {
+      notify({ type: 'error', message: response.message });
+    } else {
+      this.props.setScenario(response.scenario);
+      notify({ type: 'success', message: 'Scenario saved' });
     }
   }
 
@@ -417,7 +412,7 @@ class Editor extends Component {
         key="menu-item-scenario-status"
         name="Set scenario status"
         status={scenario.status}
-        onClick={this.onClickScenarioAction}
+        onChange={this.onClickScenarioAction}
       />
     );
 

@@ -17,7 +17,7 @@ import EditorMenu from '@components/EditorMenu';
 import { makeDefaultDescription } from '@components/Editor/scenario';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
-import { AuthorDropdown, CategoriesDropdown } from './DropdownOptions';
+import { OwnerDropdown, CategoriesDropdown } from './DropdownOptions';
 import ScenarioAuthors from './ScenarioAuthors';
 import RichTextEditor from '@components/RichTextEditor';
 
@@ -332,18 +332,20 @@ class ScenarioEditor extends Component {
         </Ref>
       ) : null;
 
+
+    const showOwnerDropdown = this.state.authors && this.state.authors.length && scenarioId === 'new';
+    const showCategoryDropdown = this.state.categories && this.state.categories.length;
+
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
-        {this.state.authors &&
-        this.state.authors.length &&
-        scenarioId === 'new' ? (
-          <AuthorDropdown
+        {showOwnerDropdown ? (
+          <OwnerDropdown
             author={author}
             options={this.state.authors}
             onChange={onChange}
           />
         ) : null}
-        {this.state.categories && this.state.categories.length ? (
+        {showCategoryDropdown ? (
           <Ref innerRef={node => innerRef(node, 'categories')}>
             <CategoriesDropdown
               options={this.state.categories}

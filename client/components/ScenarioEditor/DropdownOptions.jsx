@@ -25,8 +25,8 @@ export const CategoriesDropdown = ({ options, categories, onChange }) => {
   );
 };
 
-export const AuthorDropdown = ({ options, author = {}, onChange }) => {
-  const onAuthorChange = (event, { name, value: id }) => {
+export const OwnerDropdown = ({ options, author = {}, onChange }) => {
+  const onOwnerChange = (event, { name, value: id }) => {
     const value = options.find(author => author.id === id);
     onChange(event, {
       name,
@@ -51,7 +51,7 @@ export const AuthorDropdown = ({ options, author = {}, onChange }) => {
           value: author.id
         }))}
         defaultValue={defaultValue}
-        onChange={onAuthorChange}
+        onChange={onOwnerChange}
       />
     </Form.Field>
   );
@@ -63,7 +63,7 @@ CategoriesDropdown.propTypes = {
   onChange: PropTypes.func.isRequired
 };
 
-AuthorDropdown.propTypes = {
+OwnerDropdown.propTypes = {
   author: PropTypes.object,
   options: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired
