@@ -451,7 +451,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getRuns: () => dispatch(getRuns()),
-  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
+  getScenariosIncrementally: (updater) => dispatch(getScenariosIncrementally(updater)),
   getUser: () => dispatch(getUser())
 });
 

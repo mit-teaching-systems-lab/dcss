@@ -25,11 +25,12 @@ import {
   createCohort
 } from '@actions/cohort';
 import { computeItemsRowsPerPage } from '@utils/Layout';
-import { getScenariosIncrementally } from '@actions/scenario';
+import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
+import {SCENARIO_IS_PUBLIC} from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
 import Identity from '@utils/Identity';
@@ -69,13 +70,13 @@ export class Cohorts extends React.Component {
         await this.props.getCohorts();
       }
 
-      await this.props.getScenariosIncrementally();
+      const scenarios = await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
 
       this.setState({
         activePage: 1,
         isReady: true,
         cohorts: this.props.cohorts,
-        scenarios: this.props.scenarios
+        scenarios,
       });
     }
   }
@@ -359,7 +360,7 @@ Cohorts.propTypes = {
   getCohorts: PropTypes.func,
   getCohort: PropTypes.func,
   setCohort: PropTypes.func,
-  getScenariosIncrementally: PropTypes.func,
+  getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
   match: PropTypes.shape({
     path: PropTypes.string,
@@ -382,7 +383,7 @@ const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
-  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
+  getScenariosByStatus: (updater) => dispatch(getScenariosByStatus(updater)),
   createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });

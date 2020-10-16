@@ -46,6 +46,19 @@ async function getScenariosCountAsync(req, res) {
   }
 }
 
+async function getScenariosByStatusAsync(req, res) {
+  const { status } = req.params;
+  try {
+    const scenarios = await db.getScenariosByStatus(Number(status));
+    res.send({ scenarios });
+  } catch (apiError) {
+    const error = new Error('Error while getting scenarios by status.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
 async function getScenariosSliceAsync(req, res) {
   const { direction, offset, limit } = req.params;
   try {
@@ -460,6 +473,7 @@ exports.getScenarioLock = asyncMiddleware(getScenarioLockAsync);
 exports.addScenarioLock = asyncMiddleware(addScenarioLockAsync);
 exports.endScenarioLock = asyncMiddleware(endScenarioLockAsync);
 exports.getScenarios = asyncMiddleware(getScenariosAsync);
+exports.getScenariosByStatus = asyncMiddleware(getScenariosByStatusAsync);
 exports.getScenariosCount = asyncMiddleware(getScenariosCountAsync);
 exports.getScenariosSlice = asyncMiddleware(getScenariosSliceAsync);
 exports.addScenario = asyncMiddleware(addScenarioAsync);

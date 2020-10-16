@@ -22,10 +22,11 @@ import Username from '@components/User/Username';
 import ConfirmAuth from '@components/ConfirmAuth';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
+import {SCENARIO_IS_PUBLIC} from '@components/Scenario/constants';
 import scrollIntoView from '@utils/scrollIntoView';
 import Sortable from '@components/Sortable';
 import { getCohort, setCohort } from '@actions/cohort';
-import { getScenariosIncrementally } from '@actions/scenario';
+import { getScenariosByStatus } from '@actions/scenario';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
 
@@ -72,7 +73,7 @@ export class CohortScenarios extends React.Component {
     } = this.state;
 
     await this.props.getCohort(Number(id));
-    await this.props.getScenariosIncrementally();
+    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     await this.props.getRuns();
     await this.props.getUsers();
 
@@ -183,6 +184,7 @@ export class CohortScenarios extends React.Component {
     const cohortScenarios = cohort.scenarios.map(id =>
       scenarios.find(scenario => scenario.id === id)
     );
+
 
     // This is the list of scenarios that are available,
     // but NOT in the cohort. The order is by id, descending
@@ -614,7 +616,7 @@ CohortScenarios.propTypes = {
     }).isRequired
   }).isRequired,
   onClick: PropTypes.func,
-  getScenariosIncrementally: PropTypes.func,
+  getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
   getRuns: PropTypes.func,
   runs: PropTypes.array,
@@ -635,7 +637,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   setCohort: params => dispatch(setCohort(params)),
-  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
+  getScenariosByStatus: (status) => dispatch(getScenariosByStatus(status)),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers())
 });

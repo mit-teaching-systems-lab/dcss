@@ -9,9 +9,10 @@ import Moment from '@utils/Moment';
 import Media from '@utils/Media';
 import { getCohort, getCohortData } from '@actions/cohort';
 import { getRunData } from '@actions/run';
-import { getScenariosIncrementally } from '@actions/scenario';
+import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
+import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CSV from '@utils/csv';
 import { makeHeader } from '@utils/data-table';
 import DataModal from './DataModal';
@@ -73,7 +74,7 @@ export class DataTable extends React.Component {
       await this.props.getCohort(cohortId);
     }
 
-    await this.props.getScenariosIncrementally();
+    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     await this.props.getUser();
 
     if (participantId || runId || scenarioId) {
@@ -434,7 +435,7 @@ DataTable.propTypes = {
   getCohort: PropTypes.func,
   getCohortData: PropTypes.func,
   getRunData: PropTypes.func,
-  getScenariosIncrementally: PropTypes.func,
+  getScenariosByStatus: PropTypes.func,
   getUser: PropTypes.func,
   user: PropTypes.object
 };
@@ -449,7 +450,7 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
   getCohortData: (...params) => dispatch(getCohortData(...params)),
   getRunData: (...params) => dispatch(getRunData(...params)),
-  getScenariosIncrementally: () => dispatch(getScenariosIncrementally()),
+  getScenariosByStatus: (status) => dispatch(getScenariosByStatus(status)),
   getUser: () => dispatch(getUser())
 });
 

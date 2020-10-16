@@ -217,7 +217,7 @@ async function getScenarios() {
   const results = await query(sql`
     SELECT *
     FROM scenario
-    ORDER BY created_at DESC;
+    ORDER BY id DESC;
   `);
 
   const scenarios = [];
@@ -250,6 +250,22 @@ async function getScenarios() {
   return scenarios;
 }
 
+async function getScenariosByStatus(status) {
+  const results = await query(sql`
+    SELECT *
+    FROM scenario
+    WHERE status = ${status}
+    ORDER BY id DESC;
+  `);
+
+  const scenarios = [];
+  for (const row of results.rows) {
+    scenarios.push(await getScenario(row.id));
+  }
+
+  return scenarios;
+}
+
 async function getScenariosSlice(direction, offset, limit) {
 
   // This intentionally does not use the sql`` because that
@@ -274,10 +290,7 @@ async function getScenariosSlice(direction, offset, limit) {
 
 async function getScenariosCount() {
 
-  // This intentionally does not use the sql`` because that
-  // tag will attempt to put quotes around the output of
-  // ${direction.toUpperCase()}
-  const results = await query(`
+  const results = await query(sql`
     SELECT COUNT(id) FROM scenario
   `);
 
@@ -509,6 +522,7 @@ exports.getScenarioPrompts = getScenarioPrompts;
 
 // Scenarios
 exports.getScenarios = getScenarios;
+exports.getScenariosByStatus = getScenariosByStatus;
 exports.getScenariosCount = getScenariosCount;
 exports.getScenariosSlice = getScenariosSlice;
 

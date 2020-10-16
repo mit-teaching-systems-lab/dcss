@@ -13,6 +13,7 @@ const {
   addScenarioLock,
   endScenarioLock,
   getScenarios,
+  getScenariosByStatus,
   getScenariosCount,
   getScenariosSlice,
   getScenario,
@@ -25,6 +26,7 @@ const {
 
 router.get('/', getScenarios);
 router.get('/count', getScenariosCount);
+router.get('/status/:status', getScenariosByStatus);
 router.get('/:direction/:offset/:limit', getScenariosSlice);
 
 router.get('/run', getScenarioByRun);
