@@ -8,32 +8,25 @@ import {
 
 import * as actions from '../../actions/logs';
 import * as types from '../../actions/types';
-import Storage from '../../util/Storage';
-
-jest.mock('../../util/Storage');
 
 const original = JSON.parse(JSON.stringify(state));
 let store;
 
 beforeAll(() => {
   (window || global).fetch = jest.fn();
-  Storage.clear = jest.fn();
 });
 
 afterAll(() => {
   fetch.mockRestore();
-  Storage.clear.mockRestore();
 });
 
 beforeEach(() => {
   store = createStore({});
   fetch.mockImplementation(() => {});
-  Storage.clear.mockImplementation(() => {});
 });
 
 afterEach(() => {
   fetch.mockReset();
-  Storage.clear.mockReset();
 });
 
 describe('GET_LOGS_SUCCESS', () => {
