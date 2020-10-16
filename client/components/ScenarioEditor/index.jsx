@@ -332,9 +332,10 @@ class ScenarioEditor extends Component {
         </Ref>
       ) : null;
 
-
-    const showOwnerDropdown = this.state.authors && this.state.authors.length && scenarioId === 'new';
-    const showCategoryDropdown = this.state.categories && this.state.categories.length;
+    const showOwnerDropdown =
+      this.state.authors && this.state.authors.length && scenarioId === 'new';
+    const showCategoryDropdown =
+      this.state.categories && this.state.categories.length;
 
     const dropdowns = (
       <ConfirmAuth requiredPermission="edit_scenario">
