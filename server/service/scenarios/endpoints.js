@@ -6,7 +6,6 @@ const {
   addSlide,
   deleteSlide,
   getScenarioSlides,
-  setAllSlides,
   setSlide,
   setSlideOrder
 } = require('./slides/db');
@@ -311,8 +310,7 @@ async function copyScenarioAsync(req, res) {
     // 1. Find all response components and assign each one a new responseId,
     //    while saving a mapping of "old response id" => "new response id"
     //    to be used in remapping the recallIds.
-    for (let sourceSlide of sourceScenarioSlides) {
-
+    for (let sourceSlide of sourceSlides) {
       const slide = await addSlide({
         scenario_id: scenario.id,
         title: sourceSlide.title,
@@ -382,8 +380,8 @@ async function copyScenarioAsync(req, res) {
 
     const ids = [];
 
-    for (let {id, components} of slides) {
-      await setSlide(id, {components});
+    for (let { id, components } of slides) {
+      await setSlide(id, { components });
       ids.push(id);
     }
 

@@ -40,7 +40,6 @@ const SCENARIO_STATUS_PRIVATE = 3;
 /* eslint-enable */
 
 const filter = (scenarios, user) => {
-
   if (!scenarios || !scenarios.length) {
     return [];
   }
@@ -119,7 +118,7 @@ class ScenariosList extends Component {
 
   async componentDidMount() {
     const { value } = this.state;
-    const scenarios = await this.props.getScenariosIncrementally((scenarios) => {
+    const scenarios = await this.props.getScenariosIncrementally(() => {
       this.scenarios = filter(this.props.scenarios, this.props.user);
       this.setState({ scenarios: this.scenarios });
 
@@ -130,7 +129,7 @@ class ScenariosList extends Component {
 
     this.setState({
       isReady: true,
-      scenarios,
+      scenarios
     });
   }
 
@@ -168,9 +167,7 @@ class ScenariosList extends Component {
         scenarios
       });
 
-      this.props.history.push(
-        `${this.props.location.pathname}`
-      );
+      this.props.history.push(`${this.props.location.pathname}`);
 
       return;
     }
@@ -245,13 +242,11 @@ class ScenariosList extends Component {
 
     const { origin, pathname } = window.location;
 
-
     let useTheseScenarios = this.state.scenarios;
 
     if (!value && !useTheseScenarios) {
       useTheseScenarios = this.props.scenarios;
     }
-
 
     let sourceScenarios = filter(useTheseScenarios, this.props.user);
     let scenarios = [];
@@ -548,7 +543,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
-  getScenariosIncrementally: (updater) => dispatch(getScenariosIncrementally(updater))
+  getScenariosIncrementally: updater =>
+    dispatch(getScenariosIncrementally(updater))
 });
 
 export default withRouter(

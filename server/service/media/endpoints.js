@@ -12,6 +12,18 @@ const {
   requestTranscriptionAsync
 } = require('./watson');
 
+async function updateResponseIfExists(value, identifiers) {
+  const previous = await getLastResponseOrderedById(identifiers);
+
+  if (previous && !previous.response.value) {
+    const response = {
+      ...previous.response,
+      value
+    };
+    await updateResponse(previous.id, { response });
+  }
+}
+
 async function uploadAudioAsync(req, res) {
   const storage = Multer.memoryStorage();
   const upload = Multer({ storage });
@@ -78,18 +90,6 @@ async function uploadAudioAsync(req, res) {
       });
     }
   });
-}
-
-async function updateResponseIfExists(value, identifiers) {
-  const previous = await getLastResponseOrderedById(identifiers);
-
-  if (previous && !previous.response.value) {
-    const response = {
-      ...previous.response,
-      value
-    };
-    await updateResponse(previous.id, { response });
-  }
 }
 
 async function uploadImageAsync(req, res) {

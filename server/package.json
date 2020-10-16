@@ -28,7 +28,11 @@
     "lint": "eslint --ext js .",
     "prettier": "prettier --write '**/*.js'",
     "seed:super-admin": "node seed/super-admin.js",
-    "test": "yarn workspace test run test:server"
+    "test": "yarn workspace test run test:server",
+    "test:endpoints:setup": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test",
+    "test:endpoints:run": "jest",
+    "t:e:s": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test",
+    "t:e:r": "jest"
   },
   "dependencies": {
     "aws-sdk": "^2.518.0",

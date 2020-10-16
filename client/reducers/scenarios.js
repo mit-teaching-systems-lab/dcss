@@ -4,7 +4,7 @@ import {
   GET_SCENARIO_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   SET_SCENARIO,
-  SET_SCENARIOS,
+  SET_SCENARIOS
 } from '@actions/types';
 
 export const scenarios = (state = [], action) => {

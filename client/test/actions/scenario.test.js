@@ -49,16 +49,21 @@ test('COPY_SCENARIO_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { scenario });
 
   const returnValue = await store.dispatch(actions.copyScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/copy', {'method': 'POST'}]);
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/scenarios/1/copy',
+    { method: 'POST' }
+  ]);
   assert.deepEqual(returnValue, scenario);
 });
 
 test('COPY_SCENARIO_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.copyScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/copy', {'method': 'POST'}]);
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/scenarios/1/copy',
+    { method: 'POST' }
+  ]);
   assert.equal(returnValue, null);
 });
 
@@ -70,21 +75,25 @@ test('DELETE_SCENARIO_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { scenario });
 
   const returnValue = await store.dispatch(actions.deleteScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1', {'method': 'DELETE'}]);
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/scenarios/1',
+    { method: 'DELETE' }
+  ]);
   assert.deepEqual(returnValue, scenario);
 });
 
 test('DELETE_SCENARIO_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.deleteScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1', {'method': 'DELETE'}]);
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/scenarios/1',
+    { method: 'DELETE' }
+  ]);
   assert.equal(returnValue, null);
 });
 
 describe('GET_SCENARIO_SUCCESS', () => {
-
   test('getScenario, options.{}', async () => {
     const scenario = {
       ...state.scenarios[0]
@@ -104,7 +113,9 @@ describe('GET_SCENARIO_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { scenario });
 
-    const returnValue = await store.dispatch(actions.getScenario(1, { lock: true }));
+    const returnValue = await store.dispatch(
+      actions.getScenario(1, { lock: true })
+    );
     assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/lock']);
     assert.deepEqual(returnValue, scenario);
   });
@@ -116,7 +127,9 @@ describe('GET_SCENARIO_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { scenario });
 
-    const returnValue = await store.dispatch(actions.getScenario(1, { unlock: true }));
+    const returnValue = await store.dispatch(
+      actions.getScenario(1, { unlock: true })
+    );
     assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/unlock']);
     assert.deepEqual(returnValue, scenario);
   });
@@ -127,12 +140,15 @@ describe('GET_SCENARIO_SUCCESS', () => {
     };
     const addedCount = 1;
     const payload = {
-      addedCount, scenario
+      addedCount,
+      scenario
     };
 
     fetchImplementation(fetch, 200, payload);
 
-    const returnValue = await store.dispatch(actions.addScenarioUserRole(1, 2, 3));
+    const returnValue = await store.dispatch(
+      actions.addScenarioUserRole(1, 2, 3)
+    );
     assert.deepEqual(fetch.mock.calls[0], [
       '/api/scenarios/1/roles/add',
       {
@@ -150,12 +166,15 @@ describe('GET_SCENARIO_SUCCESS', () => {
     };
     const endedCount = 1;
     const payload = {
-      endedCount, scenario
+      endedCount,
+      scenario
     };
 
     fetchImplementation(fetch, 200, payload);
 
-    const returnValue = await store.dispatch(actions.endScenarioUserRole(1, 2, 3));
+    const returnValue = await store.dispatch(
+      actions.endScenarioUserRole(1, 2, 3)
+    );
     assert.deepEqual(fetch.mock.calls[0], [
       '/api/scenarios/1/roles/end',
       {
@@ -169,7 +188,6 @@ describe('GET_SCENARIO_SUCCESS', () => {
 });
 
 describe('GET_SCENARIO_ERROR', () => {
-
   test('getScenario', async () => {
     fetchImplementation(fetch, 200, { error });
 
@@ -181,7 +199,9 @@ describe('GET_SCENARIO_ERROR', () => {
   test('addScenarioUserRole', async () => {
     fetchImplementation(fetch, 200, { error });
 
-    const returnValue = await store.dispatch(actions.addScenarioUserRole(1, 2, 3));
+    const returnValue = await store.dispatch(
+      actions.addScenarioUserRole(1, 2, 3)
+    );
     assert.deepEqual(fetch.mock.calls[0], [
       '/api/scenarios/1/roles/add',
       {
@@ -196,7 +216,9 @@ describe('GET_SCENARIO_ERROR', () => {
   test('endScenarioUserRole', async () => {
     fetchImplementation(fetch, 200, { error });
 
-    const returnValue = await store.dispatch(actions.endScenarioUserRole(1, 2, 3));
+    const returnValue = await store.dispatch(
+      actions.endScenarioUserRole(1, 2, 3)
+    );
     assert.deepEqual(fetch.mock.calls[0], [
       '/api/scenarios/1/roles/end',
       {
@@ -222,7 +244,6 @@ test('UNLOCK_SCENARIO_SUCCESS', async () => {
 });
 
 test('UNLOCK_SCENARIO_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.endScenarioLock(1));
@@ -234,7 +255,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
   let scenarios = [];
 
   beforeEach(() => {
-    scenarios = Array.from({length: 90}, (_, id) => {
+    scenarios = Array.from({ length: 90 }, (_, id) => {
       return {
         ...original.scenarios[0],
         id
@@ -244,14 +265,13 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     store = createStore({
       scenarios: [],
       login: {
-        isLoggedIn: false,
-      },
+        isLoggedIn: false
+      }
     });
   });
 
   describe('getScenarios', () => {
     test('default', async () => {
-
       fetchImplementation(fetch, 200, { scenarios });
 
       const returnValue = await store.dispatch(actions.getScenarios());
@@ -266,8 +286,8 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       fetchImplementation(fetch, 200, { scenarios });
@@ -281,12 +301,11 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: true,
-        },
+          isLoggedIn: true
+        }
       });
 
       fetchImplementation(fetch, 200, { count: 90 });
@@ -301,10 +320,11 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosIncrementally', () => {
     test('(state.login.isLoggedIn && count === state.scenarios.length) === false', async () => {
-
       fetchImplementation(fetch, 200, { scenarios });
 
-      const returnValue = await store.dispatch(actions.getScenariosIncrementally());
+      const returnValue = await store.dispatch(
+        actions.getScenariosIncrementally()
+      );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
       assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
@@ -313,16 +333,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: true,
-        },
+          isLoggedIn: true
+        }
       });
 
       fetchImplementation(fetch, 200, { count: 90 });
-      const returnValue = await store.dispatch(actions.getScenariosIncrementally());
+      const returnValue = await store.dispatch(
+        actions.getScenariosIncrementally()
+      );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
       assert.deepEqual(fetch.mock.calls.length, 1);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
@@ -331,17 +352,18 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn) === false', async () => {
-
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       fetchImplementation(fetch, 200, { scenarios });
 
-      const returnValue = await store.dispatch(actions.getScenariosIncrementally());
+      const returnValue = await store.dispatch(
+        actions.getScenariosIncrementally()
+      );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
       assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
@@ -350,17 +372,18 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('getScenariosIncrementallyFirst', async () => {
-
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       fetchImplementation(fetch, 200, { scenarios });
 
-      const returnValue = await store.dispatch(actions.getScenariosIncrementally());
+      const returnValue = await store.dispatch(
+        actions.getScenariosIncrementally()
+      );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
       assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
@@ -371,21 +394,21 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosSlice', () => {
     test('default, cache is empty', async () => {
-
       store = createStore({
         scenarios: [],
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       const status = 200;
       const expected = scenarios.slice(0, 30);
 
       fetch.mockImplementation(async () => {
-        const resolveValue = fetch.mock.calls.length === 1
-          ? { count: 90 }
-          : { scenarios: expected };
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : { scenarios: expected };
 
         return {
           status,
@@ -404,21 +427,21 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('default, cache has entries, not full', async () => {
-
       store = createStore({
         scenarios: scenarios.slice(0, 30),
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       const status = 200;
       const expected = scenarios.slice(0, 30);
 
       fetch.mockImplementation(async () => {
-        const resolveValue = fetch.mock.calls.length === 1
-          ? { count: 90 }
-          : { scenarios: expected };
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : { scenarios: expected };
 
         return {
           status,
@@ -437,21 +460,21 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('ASC, cache is empty', async () => {
-
       store = createStore({
         scenarios: [],
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       const status = 200;
       const expected = scenarios.slice(0, 30);
 
       fetch.mockImplementation(async () => {
-        const resolveValue = fetch.mock.calls.length === 1
-          ? { count: 90 }
-          : { scenarios: expected };
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : { scenarios: expected };
 
         return {
           status,
@@ -461,7 +484,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
-      const returnValue = await store.dispatch(actions.getScenariosSlice('ASC'));
+      const returnValue = await store.dispatch(
+        actions.getScenariosSlice('ASC')
+      );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
       assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/ASC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
@@ -470,21 +495,21 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('ASC, cache has entries, not full', async () => {
-
       store = createStore({
         scenarios: scenarios.slice(0, 30),
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       const status = 200;
       const expected = scenarios.slice(0, 30);
 
       fetch.mockImplementation(async () => {
-        const resolveValue = fetch.mock.calls.length === 1
-          ? { count: 90 }
-          : { scenarios: expected };
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : { scenarios: expected };
 
         return {
           status,
@@ -494,7 +519,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
-      const returnValue = await store.dispatch(actions.getScenariosSlice('ASC'));
+      const returnValue = await store.dispatch(
+        actions.getScenariosSlice('ASC')
+      );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
       assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/ASC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
@@ -503,12 +530,11 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: true,
-        },
+          isLoggedIn: true
+        }
       });
 
       fetchImplementation(fetch, 200, { count: 90 });
@@ -521,20 +547,18 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosByStatus', () => {
     test('default', async () => {
-
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: false,
-        },
+          isLoggedIn: false
+        }
       });
 
       const status = 200;
 
       fetch.mockImplementation(async () => {
-        const resolveValue = fetch.mock.calls.length === 1
-          ? { count: 90 }
-          : { scenarios };
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { scenarios };
 
         return {
           status,
@@ -553,9 +577,8 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-
-      scenarios = Array.from({length: 90}, (_, id) => {
-        const status = id % 3 === 0 ? 3 : (id % 2 === 0 ? 2 : 1);
+      scenarios = Array.from({ length: 90 }, (_, id) => {
+        const status = id % 3 === 0 ? 3 : id % 2 === 0 ? 2 : 1;
 
         return {
           ...original.scenarios[0],
@@ -567,8 +590,8 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       store = createStore({
         scenarios,
         login: {
-          isLoggedIn: true,
-        },
+          isLoggedIn: true
+        }
       });
 
       fetchImplementation(fetch, 200, { count: 90 });
@@ -582,11 +605,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 });
 
 describe('GET_SCENARIOS_ERROR', () => {
-
   let scenarios = [];
 
   beforeEach(() => {
-    scenarios = Array.from({length: 90}, (_, id) => {
+    scenarios = Array.from({ length: 90 }, (_, id) => {
       return {
         ...original.scenarios[0],
         id
@@ -596,8 +618,8 @@ describe('GET_SCENARIOS_ERROR', () => {
     store = createStore({
       scenarios: [],
       login: {
-        isLoggedIn: false,
-      },
+        isLoggedIn: false
+      }
     });
   });
 
@@ -640,7 +662,6 @@ test('GET_SCENARIOS_COUNT_SUCCESS', async () => {
 });
 
 test('GET_SCENARIOS_COUNT_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getScenariosCount());
@@ -659,7 +680,6 @@ test('GET_SLIDES_SUCCESS', async () => {
 });
 
 test('GET_SLIDES_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getSlides(1));
@@ -673,22 +693,26 @@ test('DELETE_SLIDE_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { slides });
 
   const returnValue = await store.dispatch(actions.deleteSlide(42, 1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/42/slides/1', { method: 'DELETE' }]);
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/scenarios/42/slides/1',
+    { method: 'DELETE' }
+  ]);
   assert.deepEqual(returnValue, slides);
 });
 
 test('DELETE_SLIDE_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.deleteSlide(42, 1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/42/slides/1', { method: 'DELETE' }]);
+  assert.deepEqual(fetch.mock.calls[0], [
+    '/api/scenarios/42/slides/1',
+    { method: 'DELETE' }
+  ]);
   assert.equal(returnValue, null);
 });
 
 // DEPRECATED SYNC ACTIONS THAT ARE STILL USED
 test('SET_SCENARIO', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   // Default, empty
@@ -701,7 +725,6 @@ test('SET_SCENARIO', async () => {
 });
 
 test('SET_SCENARIOS', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   // Default, empty
@@ -714,7 +737,6 @@ test('SET_SCENARIOS', async () => {
 });
 
 test('SET_SLIDES', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   // Default, empty

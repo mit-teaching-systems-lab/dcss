@@ -21,7 +21,7 @@ const {
   setScenario,
   softDeleteScenario,
   addScenarioUserRole,
-  endScenarioUserRole,
+  endScenarioUserRole
 } = require('./endpoints.js');
 
 router.get('/', getScenarios);

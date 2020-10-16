@@ -45,7 +45,7 @@ test('LOG_IN', async () => {
   await store.dispatch(actions.logIn(login));
   assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
-    ...login,
+    ...login
   });
 });
 
@@ -59,7 +59,7 @@ test('LOG_OUT', async () => {
   await store.dispatch(actions.logIn(login));
   assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
-    ...login,
+    ...login
   });
   await store.dispatch(actions.logOut());
   assert.equal(Storage.clear.mock.calls.length, 1);

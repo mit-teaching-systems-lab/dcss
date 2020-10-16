@@ -77,12 +77,10 @@ async function getUserRoles(id) {
     FROM user_role
     WHERE user_id = ${id};
   `);
-  const roles = result.rows.length
-    ? result.rows[0].roles
-    : [];
+  const roles = result.rows.length ? result.rows[0].roles : [];
 
   return { roles };
-};
+}
 
 exports.getUserByProps = getUserByProps;
 exports.getUserById = getUserById;

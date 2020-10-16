@@ -1,4 +1,4 @@
-const {app, listener} = require('./server');
+const { app, listener } = require('./server');
 // Heroku uses $PORT
 const port = process.env.PORT || 5000;
 
@@ -7,4 +7,4 @@ listener.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
 
-module.exports = {app, listener};
+module.exports = { app, listener };

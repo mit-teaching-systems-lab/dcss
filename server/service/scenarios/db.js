@@ -267,7 +267,6 @@ async function getScenariosByStatus(status) {
 }
 
 async function getScenariosSlice(direction, offset, limit) {
-
   // This intentionally does not use the sql`` because that
   // tag will attempt to put quotes around the output of
   // ${direction.toUpperCase()}
@@ -289,7 +288,6 @@ async function getScenariosSlice(direction, offset, limit) {
 }
 
 async function getScenariosCount() {
-
   const results = await query(sql`
     SELECT COUNT(id) FROM scenario
   `);

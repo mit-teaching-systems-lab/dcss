@@ -1,9 +1,7 @@
 const envConfig = require('dotenv').config().parsed || {};
 const databases = require('../database.json');
 
-const config = process.env.DB_CONFIG
-  ? process.env.DB_CONFIG
-  : 'dev';
+const config = process.env.DB_CONFIG ? process.env.DB_CONFIG : 'dev';
 
 const devConfig = databases[config];
 

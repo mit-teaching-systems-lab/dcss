@@ -75,7 +75,6 @@ describe('SET_USER_ROLE_SUCCESS', () => {
 
 describe('SET_USER_ROLE_ERROR', () => {
   test('addUserRole', async () => {
-
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.addUserRole(1, 'boss'));
@@ -93,7 +92,6 @@ describe('SET_USER_ROLE_ERROR', () => {
   });
 
   test('deleteUserRole', async () => {
-
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.deleteUserRole(1, 'boss'));

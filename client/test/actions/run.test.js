@@ -58,7 +58,6 @@ test('GET_RUN_SUCCESS', async () => {
 });
 
 test('GET_RUN_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getRun(1));
@@ -93,7 +92,6 @@ test('SET_RUN_SUCCESS', async () => {
 });
 
 test('SET_RUN_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.setRun(1, {}));
@@ -123,7 +121,6 @@ test('GET_RUNS_SUCCESS', async () => {
 });
 
 test('GET_RUNS_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getRuns());
@@ -144,7 +141,6 @@ test('SAVE_RUN_EVENT_SUCCESS', async () => {
 });
 
 test('GET_RUN_DATA_ERROR', async () => {
-
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getRunData(1));
@@ -165,7 +161,8 @@ test('SAVE_RUN_EVENT_SUCCESS', async () => {
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: '{"name":"NAME","context":{"timestamp":"TIMESTAMP","url":"http://localhost/"}}'
+      body:
+        '{"name":"NAME","context":{"timestamp":"TIMESTAMP","url":"http://localhost/"}}'
     }
   ]);
   assert.deepEqual(returnValue, event);
@@ -181,7 +178,8 @@ test('SAVE_RUN_EVENT_ERROR', async () => {
     {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: '{"name":"NAME","context":{"timestamp":"TIMESTAMP","url":"http://localhost/"}}'
+      body:
+        '{"name":"NAME","context":{"timestamp":"TIMESTAMP","url":"http://localhost/"}}'
     }
   ]);
   assert.deepEqual(store.getState().errors.event.error, error);

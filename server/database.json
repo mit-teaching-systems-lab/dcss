@@ -1,31 +1,31 @@
 {
-    "init": {
-        "driver": "pg"
-    },
-    "test": {
-        "driver": "pg",
-        "user": "tm",
-        "password": "teachermoments",
-        "host": "localhost",
-        "database": "teachermoments-test"
-    },
-    "dev": {
-        "driver": "pg",
-        "user": "tm",
-        "password": "teachermoments",
-        "host": "localhost",
-        "database": "teachermoments"
-    },
-    "staging": {
-        "driver": "pg",
-        "connectionString": {"ENV": "DATABASE_URL"},
-        "ssl": true,
-        "sslmode": "require"
-    },
-    "prod": {
-        "driver": "pg",
-        "connectionString": {"ENV": "DATABASE_URL"},
-        "ssl": true,
-        "sslmode": "require"
-    }
+  "init": {
+    "driver": "pg"
+  },
+  "test": {
+    "driver": "pg",
+    "user": "tm",
+    "password": "teachermoments",
+    "host": "localhost",
+    "database": "teachermoments-test"
+  },
+  "dev": {
+    "driver": "pg",
+    "user": "tm",
+    "password": "teachermoments",
+    "host": "localhost",
+    "database": "teachermoments"
+  },
+  "staging": {
+    "driver": "pg",
+    "connectionString": { "ENV": "DATABASE_URL" },
+    "ssl": true,
+    "sslmode": "require"
+  },
+  "prod": {
+    "driver": "pg",
+    "connectionString": { "ENV": "DATABASE_URL" },
+    "ssl": true,
+    "sslmode": "require"
+  }
 }

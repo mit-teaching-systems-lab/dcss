@@ -109,7 +109,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getScenario: (id) => dispatch(getScenario(id))
+  getScenario: id => dispatch(getScenario(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ScenarioCard);
