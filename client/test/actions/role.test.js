@@ -12,6 +12,7 @@ import * as types from '../../actions/types';
 import Storage from '../../util/Storage';
 jest.mock('../../util/Storage');
 
+const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
 let store;
 
@@ -72,21 +73,40 @@ describe('SET_USER_ROLE_SUCCESS', () => {
   });
 });
 
-test('SET_USER_ROLE_ERROR', async () => {
-  const error = new Error('something unexpected happened on the server');
+describe('SET_USER_ROLE_ERROR', () => {
+  test('addUserRole', async () => {
 
-  fetchImplementation(fetch, 200, { error });
+    fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.addUserRole(1, 'boss'));
+    const returnValue = await store.dispatch(actions.addUserRole(1, 'boss'));
 
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/roles/add',
-    {
-      headers: { 'Content-Type': 'application/json' },
-      method: 'POST',
-      body: '{"user_id":1,"roles":["boss"]}'
-    }
-  ]);
-  assert.deepEqual(store.getState().errors.role.error, error);
-  assert.equal(returnValue, null);
+    assert.deepEqual(fetch.mock.calls[0], [
+      '/api/roles/add',
+      {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: '{"user_id":1,"roles":["boss"]}'
+      }
+    ]);
+    assert.deepEqual(store.getState().errors.role.error, error);
+    assert.equal(returnValue, null);
+  });
+
+  test('deleteUserRole', async () => {
+
+    fetchImplementation(fetch, 200, { error });
+
+    const returnValue = await store.dispatch(actions.deleteUserRole(1, 'boss'));
+
+    assert.deepEqual(fetch.mock.calls[0], [
+      '/api/roles/add',
+      {
+        headers: { 'Content-Type': 'application/json' },
+        method: 'POST',
+        body: '{"user_id":1,"roles":["boss"]}'
+      }
+    ]);
+    assert.deepEqual(store.getState().errors.role.error, error);
+    assert.equal(returnValue, null);
+  });
 });
