@@ -21,7 +21,11 @@ import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
 import Moment from '@utils/Moment';
 import Layout from '@utils/Layout';
-import { deleteScenario, getScenariosIncrementally } from '@actions/scenario';
+import {
+  deleteScenario,
+  getScenariosCount,
+  getScenariosSlice
+} from '@actions/scenario';
 import Boundary from '@components/Boundary';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Username from '@components/User/Username';
@@ -118,19 +122,40 @@ class ScenariosList extends Component {
 
   async componentDidMount() {
     const { value } = this.state;
-    const scenarios = await this.props.getScenariosIncrementally(() => {
-      this.scenarios = filter(this.props.scenarios, this.props.user);
-      this.setState({ scenarios: this.scenarios });
+    const count = await this.props.getScenariosCount();
+    const scenarios = [];
+
+    if (count === this.props.scenarios.length) {
+      scenarios.push(...filter(this.props.scenarios, this.props.user));
+      this.scenarios = scenarios;
+      this.setState({
+        isReady: true,
+        scenarios
+      });
 
       if (value) {
         this.onSearchChange({}, { value });
       }
-    });
+    } else {
+      const limit = 20;
+      let offset = 0;
+      do {
+        this.scenarios.push(
+          ...(await this.props.getScenariosSlice('DESC', offset, limit))
+        );
 
-    this.setState({
-      isReady: true,
-      scenarios
-    });
+        this.setState({
+          isReady: true,
+          scenarios: this.scenarios
+        });
+
+        if (value) {
+          this.onSearchChange({}, { value });
+        }
+
+        offset += limit;
+      } while (count > this.props.scenarios.length);
+    }
   }
 
   onScenarioCardClick(selected) {
@@ -519,7 +544,8 @@ ScenariosList.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   category: PropTypes.string,
-  getScenariosIncrementally: PropTypes.func,
+  getScenariosCount: PropTypes.func,
+  getScenariosSlice: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
   location: PropTypes.object,
   match: PropTypes.shape({
@@ -543,8 +569,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
-  getScenariosIncrementally: updater =>
-    dispatch(getScenariosIncrementally(updater))
+  getScenariosCount: () => dispatch(getScenariosCount()),
+  getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params))
 });
 
 export default withRouter(
