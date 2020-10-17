@@ -71,10 +71,12 @@ class MultiPathResponseEditor extends React.Component {
 
   async componentDidMount() {
     const { scenario } = this.props;
-    const { slides: unfiltered, status } = await (
+
+    // TODO: move to async action
+    const { slides } = await (
       await fetch(`/api/scenarios/${scenario.id}/slides`)
     ).json();
-    this.slides = unfiltered;
+    this.slides = slides;
     this.setState({
       isReady: true
     });
