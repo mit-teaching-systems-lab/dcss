@@ -27,7 +27,7 @@ const {
 router.get('/', getScenarios);
 router.get('/count', getScenariosCount);
 router.get('/status/:status', getScenariosByStatus);
-router.get('/:direction/:offset/:limit', getScenariosSlice);
+router.get('/slice/:direction/:offset/:limit', getScenariosSlice);
 
 router.get('/run', getScenarioByRun);
 router.get('/:scenario_id', [lookupScenario(), getScenario]);
