@@ -425,7 +425,7 @@ class ScenariosList extends Component {
     ];
 
     const loadingProps = {
-      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
+      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '18rem' } }
     };
 
     const totalPages = scenariosPages;
