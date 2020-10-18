@@ -420,7 +420,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -453,7 +453,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
       const returnValue = await store.dispatch(actions.getScenariosSlice());
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -488,7 +488,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         actions.getScenariosSlice('ASC')
       );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/ASC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/ASC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -523,7 +523,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         actions.getScenariosSlice('ASC')
       );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/ASC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/ASC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -646,7 +646,7 @@ describe('GET_SCENARIOS_ERROR', () => {
 
     const returnValue = await store.dispatch(actions.getScenariosSlice());
     assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-    assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
+    assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
     assert.equal(returnValue, null);
   });
 });

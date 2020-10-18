@@ -251,7 +251,7 @@ class MultiPathResponseEditor extends React.Component {
       onChange,
       onViewGraphClick,
       preventEmptyButtonField,
-      slides,
+      slides = [],
       updateState
     } = this;
     const {
