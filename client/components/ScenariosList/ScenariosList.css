@@ -39,8 +39,8 @@
 .ui.card.sc .description {
   /*4rem !important;*/
   /*max-height: 10rem !important;*/
-  height: 6.25rem !important;
-  max-height: 6.25rem !important;
+  height: 8rem !important;
+  max-height: 8rem !important;
   overflow-y: auto !important;
 }
 

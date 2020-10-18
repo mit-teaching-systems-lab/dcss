@@ -250,7 +250,10 @@ class Editor extends Component {
     if (response.error) {
       notify({ type: 'error', message: response.message });
     } else {
-      this.props.setScenario(response.scenario);
+      this.props.setScenario({
+        ...this.props.scenario,
+        ...response.scenario
+      });
       notify({ type: 'success', message: 'Scenario saved' });
     }
   }

@@ -38,7 +38,6 @@ export const scenarios = (state = [], action) => {
     case UNLOCK_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
 
-      console.log(scenario);
       if (!scenario.id) {
         return [...state];
       }
@@ -46,7 +45,10 @@ export const scenarios = (state = [], action) => {
       const index = state.findIndex(({ id }) => id === scenario.id);
 
       if (index !== -1) {
-        state[index] = scenario;
+        state[index] = {
+          ...state[index],
+          ...scenario
+        };
       } else {
         state.push(scenario);
       }
@@ -77,7 +79,6 @@ export const scenariosById = (state = {}, action) => {
     case UNLOCK_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
 
-      console.log(scenario);
       if (!scenario.id) {
         return {
           ...state
@@ -85,7 +86,10 @@ export const scenariosById = (state = {}, action) => {
       }
       return {
         ...state,
-        [scenario.id]: scenario
+        [scenario.id]: {
+          ...(state[scenario.id] || {}),
+          scenario
+        }
       };
     }
     default:

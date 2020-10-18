@@ -47,7 +47,6 @@ const filter = (scenarios, user) => {
   if (!scenarios || !scenarios.length) {
     return [];
   }
-
   const isLoggedIn = !!(user || user.id);
   const reduced = scenarios.reduce((accum, scenario) => {
     const { status, users } = scenario;
@@ -71,6 +70,7 @@ const filter = (scenarios, user) => {
     //  - user must be logged in
     //  - user must be an author
     //  - user must be a reviewer
+
     if (
       status === SCENARIO_STATUS_DRAFT &&
       (!isLoggedIn || !isAuthorOrReviewer)
@@ -101,18 +101,21 @@ class ScenariosList extends Component {
 
     const { category } = this.props;
     const value = decodeURIComponent(window.location.search.replace('?q=', ''));
-    const scenarios = filter(this.props.scenarios, this.props.user);
+    const scenarios = this.props.scenarios;
+
     this.state = {
-      open: false,
       activePage: 1,
       category,
-      isReady: false,
-      selected: null,
       heading: '',
+      isReady: false,
+      open: false,
       scenarios,
+      selected: null,
+      value,
       viewHeading: '',
-      value
     };
+
+    this.timeout = null;
     this.scenarios = scenarios;
     this.onPageChange = this.onPageChange.bind(this);
     this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
@@ -123,14 +126,13 @@ class ScenariosList extends Component {
   async componentDidMount() {
     const { value } = this.state;
     const count = await this.props.getScenariosCount();
-    const scenarios = [];
 
     if (count === this.props.scenarios.length) {
-      scenarios.push(...filter(this.props.scenarios, this.props.user));
-      this.scenarios = scenarios;
+      this.scenarios = this.props.scenarios;
+
       this.setState({
         isReady: true,
-        scenarios
+        scenarios: this.scenarios
       });
 
       if (value) {
@@ -140,9 +142,7 @@ class ScenariosList extends Component {
       const limit = 20;
       let offset = 0;
       do {
-        this.scenarios.push(
-          ...(await this.props.getScenariosSlice('DESC', offset, limit))
-        );
+        this.scenarios.push(...(await this.props.getScenariosSlice('DESC', offset, limit)));
 
         this.setState({
           isReady: true,
@@ -267,13 +267,14 @@ class ScenariosList extends Component {
 
     const { origin, pathname } = window.location;
 
-    let useTheseScenarios = this.state.scenarios;
+    let sourceScenarios = filter(
+      // If there's an active search, use the search filtered set
+      // of scenarios from state. Otherwise, use the status filtered
+      // set from this.scenarios (the untouched backup).
+      value ? this.state.scenarios : this.scenarios.slice(0),
+      this.props.user
+    );
 
-    if (!value && !useTheseScenarios) {
-      useTheseScenarios = this.props.scenarios;
-    }
-
-    let sourceScenarios = filter(useTheseScenarios, this.props.user);
     let scenarios = [];
     let displayHeading = '';
     let authorUsername = '';
