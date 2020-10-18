@@ -112,7 +112,7 @@ class ScenariosList extends Component {
       scenarios,
       selected: null,
       value,
-      viewHeading: '',
+      viewHeading: ''
     };
 
     this.timeout = null;
@@ -142,7 +142,9 @@ class ScenariosList extends Component {
       const limit = 20;
       let offset = 0;
       do {
-        this.scenarios.push(...(await this.props.getScenariosSlice('DESC', offset, limit)));
+        this.scenarios.push(
+          ...(await this.props.getScenariosSlice('DESC', offset, limit))
+        );
 
         this.setState({
           isReady: true,
