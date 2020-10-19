@@ -581,6 +581,25 @@ beforeEach(() => {
     return categories;
   });
 
+  const statusOptions = [
+    {
+      id: 1,
+      name: 'draft',
+      description: 'Visible only to author'
+    },
+    {
+      id: 2,
+      name: 'public',
+      description: 'Visible to everyone'
+    },
+    {
+      id: 3,
+      name: 'private',
+      description: 'Visible only to logged in users'
+    }
+  ];
+  fetchImplementation(fetch, 200, statusOptions);
+
   delete window.location;
   // eslint-disable-next-line
   window.location = {
@@ -699,7 +718,17 @@ test('Snapshot 1', () => {
       deleted_at: null
     },
     isCopyScenario: true,
-    scenarioId: 1
+    scenarioId: 1,
+    scenarioUser: {
+      id: 2,
+      email: 'owner@email.com',
+      username: 'owner',
+      personalname: 'Owner Account',
+      roles: ['owner'],
+      is_owner: true,
+      is_author: true,
+      is_reviewer: false
+    }
   };
   const mounted = mounter(reduxer(Editor, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();
@@ -800,7 +829,17 @@ test('Snapshot 2', () => {
       deleted_at: null
     },
     isNewScenario: true,
-    scenarioId: 1
+    scenarioId: 1,
+    scenarioUser: {
+      id: 2,
+      email: 'owner@email.com',
+      username: 'owner',
+      personalname: 'Owner Account',
+      roles: ['owner'],
+      is_owner: true,
+      is_author: true,
+      is_reviewer: false
+    }
   };
   const mounted = mounter(reduxer(Editor, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();
@@ -900,7 +939,17 @@ test('Snapshot 3', () => {
       updated_at: null,
       deleted_at: null
     },
-    scenarioId: 1
+    scenarioId: 1,
+    scenarioUser: {
+      id: 2,
+      email: 'owner@email.com',
+      username: 'owner',
+      personalname: 'Owner Account',
+      roles: ['owner'],
+      is_owner: true,
+      is_author: true,
+      is_reviewer: false
+    }
   };
   const mounted = mounter(reduxer(Editor, props, state))();
   expect(snapshot(mounted)).toMatchSnapshot();

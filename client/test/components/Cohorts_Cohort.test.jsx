@@ -109,8 +109,8 @@ beforeEach(() => {
     });
     return cohort;
   });
-  usersActions.getUser = jest.fn();
-  usersActions.getUser.mockImplementation(() => async dispatch => {
+  userActions.getUser = jest.fn();
+  userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       id: 2,
       email: 'owner@email.com',
