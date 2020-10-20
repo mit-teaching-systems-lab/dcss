@@ -31,7 +31,7 @@ import '../Cohorts/Cohort.css';
 import '../Cohorts/DataTable.css';
 import './Downloads.css';
 
-const ROWS_PER_PAGE = 10;
+const ROWS_PER_PAGE = 20;
 
 class Downloads extends Component {
   constructor(props) {
@@ -128,12 +128,13 @@ class Downloads extends Component {
         'ended_at',
         'type',
         'referrer_params',
-        'consent_granted_by_user'
+        'consent_granted_by_user',
+        'cohort_id'
       ];
 
-      if (cohort) {
-        fields.push('cohort_id');
-      }
+      // if (cohort) {
+      //   fields.push('cohort_id');
+      // }
 
       const file = Identity.key({ cohort, id });
       const parser = new Parser({ fields });

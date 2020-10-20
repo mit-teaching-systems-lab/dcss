@@ -33,47 +33,84 @@ async function getHistoryForScenario(request) {
   } = request.params;
   const { is_super } = request.session.user;
 
-  let superSelect;
-  let regularSelect;
+  let select;
 
   if (cohort_id) {
-    superSelect = sql`
-      SELECT run_id, consent_granted_by_user
-      FROM cohort_run
-      JOIN run ON run.id = cohort_run.run_id
-      WHERE run.scenario_id = ${scenario_id};
-    `;
-
-    regularSelect = sql`
-      SELECT run_id, consent_granted_by_user
-      FROM cohort_run
-      JOIN run ON run.id = cohort_run.run_id
-      WHERE run.consent_granted_by_user = true
-      AND run.scenario_id = ${scenario_id};
+    select = `
+      SELECT
+        run.user_id as user_id,
+        username,
+        run.id as run_id,
+        run.referrer_params as referrer_params,
+        response_id,
+        run_response.response,
+        run_response.response->>'value' as value,
+        run_response.response->>'content' as content,
+        audio_transcripts.transcript as transcript,
+        CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+            ELSE TRUE
+        END as is_skip,
+        run_response.response->>'type' as type,
+        run_response.created_at as created_at,
+        run_response.ended_at as ended_at,
+        run.consent_granted_by_user,
+        cohort_run.cohort_id
+      FROM run_response
+      JOIN run ON run.id = run_response.run_id
+      JOIN cohort_run ON cohort_run.run_id = run_response.run_id
+      JOIN users ON users.id = run.user_id
+      LEFT JOIN audio_transcripts ON audio_transcripts.key = run_response.response->>'value'
+      WHERE run.scenario_id = ${scenario_id}
+      AND cohort_run.cohort_id = ${cohort_id}
+      ${!is_super ? 'AND consent_granted_by_user = true' : ''}
+      ORDER BY run_response.id ASC
     `;
   } else {
-    superSelect = sql`
-      SELECT id AS run_id, consent_granted_by_user
-      FROM run
-      WHERE scenario_id = ${scenario_id};
-    `;
-
-    regularSelect = sql`
-      SELECT id AS run_id, consent_granted_by_user
-      FROM run
-      WHERE consent_granted_by_user = true
-      AND scenario_id = ${scenario_id};
+    select = `
+      SELECT
+        run.user_id as user_id,
+        username,
+        run.id as run_id,
+        run.referrer_params as referrer_params,
+        response_id,
+        run_response.response,
+        run_response.response->>'value' as value,
+        run_response.response->>'content' as content,
+        audio_transcripts.transcript as transcript,
+        CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+            ELSE TRUE
+        END as is_skip,
+        run_response.response->>'type' as type,
+        run_response.created_at as created_at,
+        run_response.ended_at as ended_at,
+        run.consent_granted_by_user,
+        cohort_run.cohort_id
+      FROM run_response
+      JOIN run ON run.id = run_response.run_id
+      JOIN users ON users.id = run.user_id
+      LEFT JOIN cohort_run ON cohort_run.run_id = run_response.run_id
+      LEFT JOIN audio_transcripts ON audio_transcripts.key = run_response.response->>'value'
+      WHERE run.scenario_id = ${scenario_id}
+      ${!is_super ? 'AND consent_granted_by_user = true' : ''}
+      ORDER BY run_response.id ASC
     `;
   }
-  const select = is_super ? superSelect : regularSelect;
-
-  const results = await query(select);
   const prompts = await getScenarioPrompts(scenario_id);
-  const responses = [];
-
-  for (const { run_id } of results.rows) {
-    responses.push(await getRunResponses({ run_id }));
-  }
+  const {rows: [scenario]} = await query(`
+    SELECT
+      title as scenario_title
+    FROM scenario
+    WHERE id = ${scenario_id}
+  `);
+  const result = await query(select);
+  const responses = result.rows.map(row => {
+    return {
+      scenario_id,
+      ...scenario,
+      ...row,
+    };
+  });
+  console.log(responses);
 
   return { prompts, responses };
 }

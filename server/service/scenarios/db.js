@@ -461,6 +461,8 @@ async function getScenarioPrompts(scenario_id) {
   return components;
 }
 
+
+// TODO: determine if this is still in use
 async function getHistoryForScenario(params) {
   const {
     // TODO: implement support for limiting by cohort
@@ -490,7 +492,7 @@ async function getHistoryForScenario(params) {
   const responses = [];
 
   for (const { run_id } of results.rows) {
-    responses.push(await getRunResponses({ run_id }));
+    responses.push(await getRunResponses(run_id));
   }
 
   return { prompts, responses };

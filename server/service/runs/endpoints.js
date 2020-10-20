@@ -85,7 +85,7 @@ async function getTranscriptionOutcomeAsync(req, res) {
 
 async function getRunDataAsync(req, res) {
   const { run_id } = req.params;
-  const responses = await db.getRunResponses({ run_id });
+  const responses = await db.getRunResponses(run_id);
   const prompts = {};
 
   try {

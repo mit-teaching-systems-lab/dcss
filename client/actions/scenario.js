@@ -133,7 +133,7 @@ const getScenariosIncrementallyRequest = async (
   limit,
   dispatch
 ) => {
-  const url = `/api/scenarios/${direction}/${offset}/${limit}`;
+  const url = `/api/scenarios/slice/${direction}/${offset}/${limit}`;
   const res = await (await fetch(url)).json();
 
   if (res.error) {
