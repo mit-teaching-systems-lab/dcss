@@ -210,8 +210,8 @@ export class CohortParticipants extends React.Component {
     const refreshIcon = refresh ? 'play' : 'square';
     const refreshColor = refresh ? 'green' : 'red';
     const refreshLabel = refresh
-      ? 'Automattically refreshing this list'
-      : 'List will refresh when page is reloaded';
+      ? 'This list will refresh automatically'
+      : 'This list will refresh when page is reloaded';
 
     const pages = Math.ceil(cohort.users.length / ROWS_PER_PAGE);
     const index = (activePage - 1) * ROWS_PER_PAGE;
