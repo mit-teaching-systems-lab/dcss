@@ -23,12 +23,13 @@ function reduceResponses(key, responses) {
   const responsesReduced = responses.reduce((accum, response) => {
     const {
       [key]: property,
+      content = '',
       value,
       transcript = '',
       is_skip,
       response_id,
-      response: { content = '' }
     } = response;
+
     response.content = content;
     response.content += (is_skip
       ? '(skipped)'

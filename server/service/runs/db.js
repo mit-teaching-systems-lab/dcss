@@ -138,27 +138,29 @@ exports.upsertResponse = upsertResponse;
 exports.getRunResponses = async (run_id) => {
   const result = await query(sql`
     SELECT
-        run.user_id as user_id,
-        username,
-        scenario.id as scenario_id,
-        scenario.title as scenario_title,
-        run.id as run_id,
-        run.referrer_params as referrer_params,
-        response_id,
-        run_response.response,
-        run_response.response->>'value' as value,
-        audio_transcripts.transcript as transcript,
-        CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
-            ELSE TRUE
-        END as is_skip,
-        run_response.response->>'type' as type,
-        run_response.created_at as created_at,
-        run_response.ended_at as ended_at,
-        run.consent_granted_by_user
+      run.user_id as user_id,
+      username,
+      scenario.id as scenario_id,
+      scenario.title as scenario_title,
+      run.id as run_id,
+      run.referrer_params as referrer_params,
+      response_id,
+      run_response.response->>'value' as value,
+      run_response.response->>'content' as content,
+      audio_transcripts.transcript as transcript,
+      CASE run_response.response->>'isSkip' WHEN 'false' THEN FALSE
+          ELSE TRUE
+      END as is_skip,
+      run_response.response->>'type' as type,
+      run_response.created_at as created_at,
+      run_response.ended_at as ended_at,
+      run.consent_granted_by_user,
+      cohort_run.cohort_id
     FROM run_response
     JOIN run ON run.id = run_response.run_id
     JOIN users ON users.id = run.user_id
     JOIN scenario ON scenario.id = run.scenario_id
+    LEFT JOIN cohort_run ON cohort_run.run_id = run_response.run_id
     LEFT JOIN audio_transcripts ON audio_transcripts.key = run_response.response->>'value'
     WHERE run_response.run_id = ${run_id}
     ORDER BY run_response.id ASC

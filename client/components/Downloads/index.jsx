@@ -98,9 +98,9 @@ class Downloads extends Component {
         const {
           is_skip,
           response_id,
-          response: { content = '' },
-          transcript,
-          value
+          content = '',
+          transcript = '',
+          value = ''
         } = record;
         const prompt = prompts.find(
           prompt => prompt.responseId === response_id
