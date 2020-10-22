@@ -7,10 +7,9 @@ module.exports = {
     scenarios: [],
     users: [
       {
-        id: 2,
+        id: 999,
         email: 'owner@email.com',
         username: 'owner',
-        cohort_id: 2,
         roles: ['owner', 'facilitator'],
         is_anonymous: false,
         is_owner: true
@@ -18,11 +17,10 @@ module.exports = {
     ],
     roles: ['owner', 'facilitator'],
     usersById: {
-      '2': {
-        id: 2,
+      '999': {
+        id: 999,
         email: 'owner@email.com',
         username: 'owner',
-        cohort_id: 2,
         roles: ['owner', 'facilitator'],
         is_anonymous: false,
         is_owner: true
@@ -38,21 +36,19 @@ module.exports = {
       scenarios: [],
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
-          cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
       ],
       usersById: {
-        '2': {
-          id: 2,
+        '999': {
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
-          cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
@@ -138,7 +134,7 @@ module.exports = {
       scenarios: [7, 1, 9, 8],
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
@@ -148,8 +144,8 @@ module.exports = {
         }
       ],
       usersById: {
-        '2': {
-          id: 2,
+        '999': {
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
@@ -226,7 +222,7 @@ module.exports = {
       scenarios: [7, 1, 9, 8],
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
@@ -236,8 +232,8 @@ module.exports = {
         }
       ],
       usersById: {
-        '2': {
-          id: 2,
+        '999': {
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 1,
@@ -255,21 +251,19 @@ module.exports = {
       scenarios: [],
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
-          cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
         }
       ],
       usersById: {
-        '2': {
-          id: 2,
+        '999': {
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
-          cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
           is_owner: true
@@ -339,14 +333,11 @@ module.exports = {
           params: {},
           headers: {
             host: 'localhost:3000',
-            accept: '*/*',
-            cookie:
-              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/2',
             connection: 'close',
-            'user-agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '39',
             'sec-fetch-dest': 'empty',
@@ -357,8 +348,8 @@ module.exports = {
           },
           session: {
             user: {
-              id: 2,
-              email: 'rick@bocoup.com',
+              id: 999,
+              email: 'owner@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -366,20 +357,19 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'rwaldron',
+              username: 'owner',
               is_anonymous: false,
-              personalname: 'Rick Waldron'
+              personalname: 'Owner Account'
             },
             cookie: {
               path: '/',
-              expires: '2020-11-12T00:51:05.142Z',
+              expires: '2020-05-12T00:51:05.142Z',
               httpOnly: true,
               originalMaxAge: 2592000000
             }
           }
         },
-        response:
-          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-01-01T00:50:30.425Z","updated_at":"2020-01-01T00:51:05.138Z","ended_at":"2020-01-01T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+        response: '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-01-01T00:50:30.425Z","updated_at":"2020-01-01T00:51:05.138Z","ended_at":"2020-01-01T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
       }
     },
     {
@@ -401,14 +391,11 @@ module.exports = {
           params: {},
           headers: {
             host: 'localhost:3000',
-            accept: '*/*',
-            cookie:
-              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/1',
             connection: 'close',
-            'user-agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '152',
             'sec-fetch-dest': 'empty',
@@ -419,8 +406,8 @@ module.exports = {
           },
           session: {
             user: {
-              id: 2,
-              email: 'rick@bocoup.com',
+              id: 999,
+              email: 'owner@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -428,13 +415,13 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'rwaldron',
+              username: 'owner',
               is_anonymous: false,
-              personalname: 'Rick Waldron'
+              personalname: 'Owner Account'
             },
             cookie: {
               path: '/',
-              expires: '2020-11-12T00:50:42.232Z',
+              expires: '2020-05-12T00:50:42.232Z',
               httpOnly: true,
               originalMaxAge: 2592000000
             }
@@ -463,14 +450,11 @@ module.exports = {
           params: {},
           headers: {
             host: 'localhost:3000',
-            accept: '*/*',
-            cookie:
-              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/1',
             connection: 'close',
-            'user-agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '152',
             'sec-fetch-dest': 'empty',
@@ -481,8 +465,8 @@ module.exports = {
           },
           session: {
             user: {
-              id: 2,
-              email: 'rick@bocoup.com',
+              id: 999,
+              email: 'owner@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -490,13 +474,13 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'rwaldron',
+              username: 'owner',
               is_anonymous: false,
-              personalname: 'Rick Waldron'
+              personalname: 'Owner Account'
             },
             cookie: {
               path: '/',
-              expires: '2020-11-12T00:50:42.232Z',
+              expires: '2020-05-12T00:50:42.232Z',
               httpOnly: true,
               originalMaxAge: 2592000000
             }
@@ -518,14 +502,11 @@ module.exports = {
           params: {},
           headers: {
             host: 'localhost:3000',
-            accept: '*/*',
-            cookie:
-              '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
+            cookie: '_ga=GA1.1.585879633.1536761668; connect.sid=s%3AcwNKX0lbxVQLmVrxdn5_GQNrxBSBqjjw.HGR5DGKA%2BlDKy72mK1BCvQLiOb3mYBCBL5XNFNQxMFk',
             origin: 'http://localhost:3000',
             referer: 'http://localhost:3000/run/8/slide/2',
             connection: 'close',
-            'user-agent':
-              'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
+            'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36',
             'content-type': 'application/json',
             'content-length': '39',
             'sec-fetch-dest': 'empty',
@@ -536,8 +517,8 @@ module.exports = {
           },
           session: {
             user: {
-              id: 2,
-              email: 'rick@bocoup.com',
+              id: 999,
+              email: 'owner@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -545,20 +526,19 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'rwaldron',
+              username: 'owner',
               is_anonymous: false,
-              personalname: 'Rick Waldron'
+              personalname: 'Owner Account'
             },
             cookie: {
               path: '/',
-              expires: '2020-11-12T00:51:05.142Z',
+              expires: '2020-05-12T00:51:05.142Z',
               httpOnly: true,
               originalMaxAge: 2592000000
             }
           }
         },
-        response:
-          '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-01-01T00:50:30.425Z","updated_at":"2020-01-01T00:51:05.138Z","ended_at":"2020-01-01T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
+        response: '{"run":{"id":116,"user_id":2,"scenario_id":8,"created_at":"2020-01-01T00:50:30.425Z","updated_at":"2020-01-01T00:51:05.138Z","ended_at":"2020-01-01T00:51:05.116Z","consent_id":1,"consent_acknowledged_by_user":true,"consent_granted_by_user":true,"referrer_params":null},"status":200}'
       }
     }
   },
@@ -750,8 +730,7 @@ module.exports = {
         components: [
           {
             id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
-            html:
-              '<p><span style="font-size: 18px;"><strong>As the "Teacher" in this scenario, you will be guiding a student through solving a complex problem with multiple variants.</strong></span></p>',
+            html: '<p><span style="font-size: 18px;"><strong>As the "Teacher" in this scenario, you will be guiding a student through solving a complex problem with multiple variants.</strong></span></p>',
             type: 'Text'
           },
           {
@@ -767,8 +746,7 @@ module.exports = {
           },
           {
             id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-            html:
-              '<p><span style="font-size: 18px;"><strong>Welcome, here\'s a brief description of the problem we will solve together today!</strong></span></p>',
+            html: '<p><span style="font-size: 18px;"><strong>Welcome, here\'s a brief description of the problem we will solve together today!</strong></span></p>',
             type: 'Text'
           }
         ],
@@ -779,7 +757,7 @@ module.exports = {
     title: 'Multiplayer Scenario',
     users: [
       {
-        id: 2,
+        id: 999,
         email: 'owner@email.com',
         username: 'owner',
         personalname: 'Owner Account',
@@ -805,7 +783,7 @@ module.exports = {
       deleted_at: null,
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           personalname: 'Owner Account',
@@ -816,7 +794,7 @@ module.exports = {
         }
       ],
       author: {
-        id: 2,
+        id: 999,
         username: 'owner',
         personalname: 'Owner Account',
         email: 'owner@email.com',
@@ -827,8 +805,7 @@ module.exports = {
       categories: [],
       consent: {
         id: 57,
-        prose:
-          '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
+        prose: '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
       },
       finish: {
         id: 1,
@@ -843,7 +820,7 @@ module.exports = {
       },
       lock: {
         scenario_id: 42,
-        user_id: 2,
+        user_id: 999,
         created_at: '2020-01-01T23:54:19.934Z',
         ended_at: null
       }
@@ -860,7 +837,7 @@ module.exports = {
       deleted_at: null,
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           personalname: 'Owner Account',
@@ -871,7 +848,7 @@ module.exports = {
         }
       ],
       author: {
-        id: 2,
+        id: 999,
         username: 'owner',
         personalname: 'Owner Account',
         email: 'owner@email.com',
@@ -882,8 +859,7 @@ module.exports = {
       categories: [],
       consent: {
         id: 57,
-        prose:
-          '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
+        prose: '<p>Educators and researchers in the <a href="http://tsl.mit.edu/">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href="https://couhes.mit.edu/">MIT\'s IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>'
       },
       finish: {
         id: 1,
@@ -898,7 +874,7 @@ module.exports = {
       },
       lock: {
         scenario_id: 42,
-        user_id: 2,
+        user_id: 999,
         created_at: '2020-01-01T23:54:19.934Z',
         ended_at: null
       }
@@ -918,7 +894,7 @@ module.exports = {
   },
   users: [
     {
-      id: 2,
+      id: 999,
       username: 'owner',
       personalname: 'Owner Name',
       email: 'owner@email.com',
@@ -955,8 +931,8 @@ module.exports = {
     }
   ],
   usersById: {
-    '2': {
-      id: 2,
+    '999': {
+      id: 999,
       username: 'owner',
       personalname: 'Owner Name',
       email: 'owner@email.com',

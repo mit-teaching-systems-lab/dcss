@@ -5,9 +5,9 @@ import {
   SET_RESPONSES_SUCCESS
 } from '@actions/types';
 
-const initialState = {};
+import { responseInitialState } from './initial-states';
 
-export const response = (state = initialState, action) => {
+export const response = (state = responseInitialState, action) => {
   const { response = {}, type } = action;
 
   switch (type) {

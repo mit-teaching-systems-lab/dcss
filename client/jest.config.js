@@ -22,11 +22,13 @@ module.exports = {
 
   moduleNameMapper: {
     // Third Party
-    'focus-trap-react': '<rootDir>/test/__mocks__/modules/focus-trap-react.js',
-    'focus-trap': '<rootDir>/test/__mocks__/modules/focus-trap-react.js',
+    'focus-trap-react': '<rootDir>/test/__mocks__/modules/return-children.js',
+    'focus-trap': '<rootDir>/test/__mocks__/modules/return-children.js',
     'detect-browser': '<rootDir>/test/__mocks__/modules/detect-browser.js',
     // 'moment': '<rootDir>/../node_modules/moment/moment.js',
     '@utils/Moment': '<rootDir>/test/__mocks__/modules/moment.js',
+
+    'react-sortablejs': '<rootDir>/test/__mocks__/modules/return-children.js',
     suneditor: '<rootDir>/test/__mocks__/modules/suneditor.js',
 
     // Mocked Assets
@@ -58,7 +60,11 @@ module.exports = {
   testEnvironment: 'jsdom',
 
   // The glob patterns Jest uses to detect test files
-  testMatch: ['<rootDir>/test/**/*.test.js', '<rootDir>/test/**/*.test.jsx'],
+  testMatch: [
+    '<rootDir>/test/**/*.test.js',
+    '<rootDir>/test/**/*.test.jsx'
+
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: ['\\\\node_modules\\\\'],

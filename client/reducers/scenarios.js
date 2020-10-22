@@ -86,7 +86,7 @@ export const scenariosById = (state = {}, action) => {
         ...state,
         [scenario.id]: {
           ...(state[scenario.id] || {}),
-          scenario
+          ...scenario
         }
       };
     }

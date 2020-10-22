@@ -26,10 +26,7 @@ async function getScenarioPrompts(scenario_id) {
 }
 
 async function getHistoryForScenario(request) {
-  const {
-    cohort_id,
-    scenario_id
-  } = request.params;
+  const { cohort_id, scenario_id } = request.params;
   const { is_super } = request.session.user;
 
   let select = `
@@ -37,6 +34,7 @@ async function getHistoryForScenario(request) {
       run.user_id as user_id,
       username,
       run.id as run_id,
+      run.scenario_id as scenario_id,
       run.referrer_params as referrer_params,
       response_id,
       run_response.response->>'value' as value,
@@ -64,7 +62,9 @@ async function getHistoryForScenario(request) {
   `;
 
   const prompts = await getScenarioPrompts(scenario_id);
-  const {rows: [scenario]} = await query(`
+  const {
+    rows: [scenario]
+  } = await query(`
     SELECT
       title as scenario_title
     FROM scenario
@@ -75,7 +75,7 @@ async function getHistoryForScenario(request) {
     return {
       scenario_id,
       ...scenario,
-      ...row,
+      ...row
     };
   });
   console.log(responses);

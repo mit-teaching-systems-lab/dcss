@@ -8,17 +8,10 @@ import {
   SET_COHORT_USER_ROLE_SUCCESS
 } from '../actions/types';
 
-const cohortInitialState = {
-  id: null,
-  created_at: '',
-  name: '',
-  runs: [],
-  scenarios: [],
-  users: []
-};
+import { cohortInitialState } from './initial-states';
 
 export const cohort = (state = cohortInitialState, action) => {
-  const { cohort, type, users } = action;
+  const { cohort, type, users, usersById } = action;
 
   if (
     type === CREATE_COHORT_SUCCESS ||
@@ -33,10 +26,11 @@ export const cohort = (state = cohortInitialState, action) => {
   }
 
   if (type === SET_COHORT_USER_ROLE_SUCCESS) {
-    if (users) {
+    if (users || usersById) {
       return {
         ...state,
-        users
+        users,
+        usersById
       };
     } else {
       return {

@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;
+exports[`Snapshot 1 1 1`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;
+
+exports[`Snapshot 1 2 1`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;

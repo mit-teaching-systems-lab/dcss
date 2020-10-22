@@ -24,7 +24,6 @@ import UsersTable from '@components/Admin/UsersTable';
 import ConfirmAuth from '@components/ConfirmAuth';
 import Loading from '@components/Loading';
 import scrollIntoView from '@utils/scrollIntoView';
-import { getUsers } from '@actions/users';
 import { COHORT_ROLE_GROUPS } from '../Admin/constants';
 import './Cohort.css';
 
@@ -387,7 +386,6 @@ CohortParticipants.propTypes = {
   setCohort: PropTypes.func,
   scenarios: PropTypes.array,
   user: PropTypes.object,
-  getUsers: PropTypes.func,
   usersById: PropTypes.object
 };
 
@@ -400,8 +398,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
-  setCohort: params => dispatch(setCohort(params)),
-  getUsers: () => dispatch(getUsers())
+  setCohort: params => dispatch(setCohort(params))
 });
 
 export default withRouter(

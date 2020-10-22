@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+exports[`Snapshot 1 1 1`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+
+exports[`Snapshot 1 1 2`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+
+exports[`Snapshot 1 2 1`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+
+exports[`Snapshot 1 2 2`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;

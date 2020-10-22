@@ -6,31 +6,9 @@ import {
   SET_SLIDES
 } from '@actions/types';
 
-export const initialScenarioState = {
-  // TODO: Phase out author
-  author: {
-    id: null,
-    username: ''
-  },
-  categories: [],
-  consent: {
-    id: null,
-    prose: ''
-  },
-  description: undefined,
-  finish: {
-    components: [],
-    is_finish: true,
-    title: ''
-  },
-  lock: null,
-  slides: [],
-  status: 1,
-  title: '',
-  users: []
-};
+import { scenarioInitialState } from './initial-states';
 
-export const scenario = (state = initialScenarioState, action) => {
+export const scenario = (state = scenarioInitialState, action) => {
   const { scenario, slides, type } = action;
   switch (type) {
     case GET_SCENARIO_SUCCESS:

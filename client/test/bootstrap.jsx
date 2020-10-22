@@ -2,22 +2,17 @@ import { Router } from 'react-router';
 import { mount } from 'enzyme';
 import React from 'react';
 import { Provider } from 'react-redux';
-// import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
 import { createMemoryHistory } from 'history';
 import { mergeDeepRight } from 'ramda';
 import rootReducer from '../reducers';
 import { createStoreWithMiddleWare } from '../store';
+import configureMockStore from 'redux-mock-store';
 
 export const state = require('./state');
 
-export const mounter = (Component, defaultProps = {}) => {
-  return (customProps = {}) => {
-    const props = {
-      ...defaultProps,
-      ...customProps
-    };
-    return mount(<Component {...props} />);
-  };
+export const mounter = (Component, attachTo) => {
+  return mount(<Component />, { attachTo });
 };
 
 export const createStore = (state = {}) => {
@@ -25,6 +20,11 @@ export const createStore = (state = {}) => {
     rootReducer,
     mergeDeepRight(rootReducer({}, {}), state)
   );
+};
+
+export const createMockStore = (state = {}) => {
+  const configured = configureMockStore([thunk]);
+  return configured(state);
 };
 
 export const reduxer = (Component, props = {}, state = {}) => {
@@ -40,7 +40,7 @@ export const reduxer = (Component, props = {}, state = {}) => {
   };
 };
 
-export const snapshot = wrapper => {
+export const snapshotter = wrapper => {
   return wrapper.html();
 };
 

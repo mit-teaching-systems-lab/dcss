@@ -326,7 +326,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         actions.getScenariosIncrementally()
       );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -365,7 +365,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         actions.getScenariosIncrementally()
       );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -385,7 +385,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         actions.getScenariosIncrementally()
       );
       assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/DESC/0/30']);
+      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);

@@ -1,18 +1,21 @@
+import React from 'react';
+import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
   reduxer,
-  snapshot,
-  state
+  snapshotter,
+  state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { mount, render, shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import CohortParticipants from '../../components/Cohorts/CohortParticipants.jsx';
 
 import {
   GET_COHORT_SUCCESS,
   GET_USER_SUCCESS,
-  GET_USERS_SUCCESS
+  GET_USERS_SUCCESS,
 } from '../../actions/types';
 import * as cohortActions from '../../actions/cohort';
 import * as userActions from '../../actions/user';
@@ -21,11 +24,19 @@ jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
 
+const original = JSON.parse(JSON.stringify(state));
+let container = null;
+let commonProps = null;
+let commonState = null;
+
 beforeAll(() => {
   (window || global).fetch = jest.fn();
 });
 
-let container = null;
+afterAll(() => {
+  fetch.mockRestore();
+});
+
 beforeEach(() => {
   container = document.createElement('div');
   container.setAttribute('id', 'root');
@@ -34,7 +45,7 @@ beforeEach(() => {
   fetchImplementation(fetch);
 
   cohortActions.getCohort = jest.fn();
-  cohortActions.getCohort.mockImplementation(() => async dispatch => {
+  cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
     const cohort = {
       id: 2,
       created_at: '2020-08-31T14:01:08.656Z',
@@ -43,97 +54,119 @@ beforeEach(() => {
       scenarios: [],
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
-        }
+          is_owner: true,
+        },
       ],
       roles: ['owner', 'facilitator'],
       usersById: {
-        2: {
-          id: 2,
+        999: {
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
-        }
-      }
+          is_owner: true,
+        },
+      },
     };
-    dispatch({
-      type: GET_COHORT_SUCCESS,
-      cohort
-    });
+    dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
   usersActions.getUser = jest.fn();
-  usersActions.getUser.mockImplementation(() => async dispatch => {
+  usersActions.getUser.mockImplementation(() => async (dispatch) => {
     const user = {
-      id: 2,
+      id: 999,
       email: 'owner@email.com',
       username: 'owner',
       personalname: 'Owner Account',
       roles: ['owner'],
       is_owner: true,
       is_author: true,
-      is_reviewer: false
+      is_reviewer: false,
     };
-    dispatch({
-      type: GET_USER_SUCCESS,
-      user
-    });
+    dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
   usersActions.getUsers = jest.fn();
-  usersActions.getUsers.mockImplementation(() => async dispatch => {
+  usersActions.getUsers.mockImplementation(() => async (dispatch) => {
     const users = [
       {
-        id: 2,
+        id: 999,
         email: 'owner@email.com',
         username: 'owner',
         personalname: 'Owner Account',
         roles: ['owner'],
         is_owner: true,
         is_author: true,
-        is_reviewer: false
-      }
+        is_reviewer: false,
+      },
     ];
-    dispatch({
-      type: GET_USERS_SUCCESS,
-      users
-    });
+    dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   });
+
+  commonProps = {
+    history: {
+      push() {},
+    },
+  };
+
+  commonState = JSON.parse(JSON.stringify(original));
 });
 
 afterEach(() => {
+  fetch.mockReset();
   unmountComponentAtNode(container);
   container.remove();
   container = null;
+  commonProps = null;
+  commonState = null;
 });
-
-const sharedProps = {
-  history: {
-    push() {}
-  }
-};
 
 test('CohortParticipants', () => {
   expect(CohortParticipants).toBeDefined();
 });
 
-test('Snapshot 1', () => {
+test('Snapshot 1 1', async () => {
+  const Component = CohortParticipants;
+
   const props = {
-    ...sharedProps,
-    authority: {}
+    ...commonProps,
+    authority: {},
   };
-  const mounted = mounter(reduxer(CohortParticipants, props, state))();
-  expect(snapshot(mounted)).toMatchSnapshot();
+
+  const state = {
+    ...{},
+  };
+
+  const reduxed = reduxer(Component, props, state);
+  const mounted = mounter(reduxed, container);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+});
+
+test('Snapshot 1 2', async () => {
+  const Component = CohortParticipants;
+
+  const props = {
+    ...commonProps,
+    authority: {},
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const reduxed = reduxer(Component, props, state);
+  const mounted = mounter(reduxed, container);
+  expect(snapshotter(mounted)).toMatchSnapshot();
 });
 
 /*{INJECTION}*/
+

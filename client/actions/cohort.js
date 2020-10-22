@@ -210,9 +210,12 @@ export let linkUserToCohort = (cohort_id, role) => async dispatch => {
       throw res;
     }
 
-    const { users } = res;
-    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users });
-    return users;
+    const { users, usersById } = res;
+    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users, usersById });
+    return {
+      users,
+      usersById
+    };
   } catch (error) {
     dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
     return null;

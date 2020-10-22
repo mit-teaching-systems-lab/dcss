@@ -27,7 +27,7 @@ function reduceResponses(key, responses) {
       value,
       transcript = '',
       is_skip,
-      response_id,
+      response_id
     } = response;
 
     response.content = content;

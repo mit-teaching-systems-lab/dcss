@@ -4,15 +4,9 @@ import {
   SET_USER_SUCCESS
 } from '@actions/types';
 
-const initialState = {
-  username: null,
-  personalname: null,
-  email: null,
-  id: null,
-  roles: []
-};
+import { userInitialState } from './initial-states';
 
-export const user = (state = initialState, action) => {
+export const user = (state = userInitialState, action) => {
   const { user, type } = action;
   switch (type) {
     // GET_SESSION_SUCCESS, GET_USER_SUCCESS, SET_USER_SUCCESS:
@@ -26,7 +20,7 @@ export const user = (state = initialState, action) => {
     case SET_USER_SUCCESS: {
       if (user === null) {
         return {
-          ...initialState
+          ...userInitialState
         };
       }
       return {

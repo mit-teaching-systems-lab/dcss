@@ -54,10 +54,11 @@ export class Cohort extends React.Component {
         await this.props.getCohort(this.props.cohort.id);
       }
 
-      // Not sure this is necessary?
-      await this.props.getUsers();
+      const { authority, cohort, user } = this.props;
 
-      const { cohort, user } = this.props;
+      if (authority.isFacilitator) {
+        await this.props.getUsers();
+      }
 
       if (cohort.id === null) {
         this.props.history.push('/cohorts');
@@ -213,9 +214,11 @@ export class Cohort extends React.Component {
 
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
-            <Menu icon borderless>
-              {menuItemCopyUrl}
-            </Menu>
+            {isFacilitator ? (
+              <Menu icon borderless>
+                {menuItemCopyUrl}
+              </Menu>
+            ) : null}
             <CohortScenarios
               key="cohort-scenarios"
               id={id}

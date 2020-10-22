@@ -4,9 +4,9 @@ import {
   SET_RUN_SUCCESS
 } from '@actions/types';
 
-const initialState = {};
+import { runInitialState } from './initial-states';
 
-export const run = (state = initialState, action) => {
+export const run = (state = runInitialState, action) => {
   const { run, type } = action;
 
   switch (type) {

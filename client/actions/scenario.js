@@ -29,7 +29,7 @@ import {
 } from './types';
 import store from '@client/store';
 
-import { initialScenarioState } from '@reducers/scenario';
+import { scenarioInitialState } from '@reducers/initial-states';
 
 export let getScenario = (id, options) => async dispatch => {
   let url = `/api/scenarios/${id}`;
@@ -174,7 +174,7 @@ const getScenariosIncrementallyNext = async (
   }
 };
 
-const getScenariosIncrementallyFirst = async (
+export const getScenariosIncrementallyFirst = async (
   direction,
   offset,
   limit,
@@ -282,7 +282,7 @@ export let getSlides = id => async dispatch => {
 
 export let setScenario = scenario => {
   if (scenario === null) {
-    const clone = cloneDeep(initialScenarioState);
+    const clone = cloneDeep(scenarioInitialState);
     return {
       type: SET_SCENARIO,
       scenario: {

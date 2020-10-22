@@ -1,46 +1,64 @@
+import React from 'react';
+import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
   reduxer,
-  snapshot,
-  state
+  snapshotter,
+  state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
-import { cleanup, fireEvent, render } from '@testing-library/react';
+import { mount, render, shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import UsersTable from '../../components/Admin/UsersTable.jsx';
+
+const original = JSON.parse(JSON.stringify(state));
+let container = null;
+let commonProps = null;
+let commonState = null;
 
 beforeAll(() => {
   (window || global).fetch = jest.fn();
 });
 
-let container = null;
+afterAll(() => {
+  fetch.mockRestore();
+});
+
 beforeEach(() => {
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  commonProps = {
+    history: {
+      push() {},
+    },
+  };
+
+  commonState = JSON.parse(JSON.stringify(original));
 });
 
 afterEach(() => {
+  fetch.mockReset();
   unmountComponentAtNode(container);
   container.remove();
   container = null;
+  commonProps = null;
+  commonState = null;
 });
-
-const sharedProps = {
-  history: {
-    push() {}
-  }
-};
 
 test('UsersTable', () => {
   expect(UsersTable).toBeDefined();
 });
 
-test('Snapshot 1', () => {
+test('Snapshot 1 1', async () => {
+  const Component = UsersTable;
+
   const props = {
-    ...sharedProps,
+    ...commonProps,
     activePage: 0,
     cohort: {
       id: 2,
@@ -50,37 +68,97 @@ test('Snapshot 1', () => {
       scenarios: [],
       users: [
         {
-          id: 2,
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
-        }
+          is_owner: true,
+        },
       ],
       roles: ['owner', 'facilitator'],
       usersById: {
-        2: {
-          id: 2,
+        999: {
+          id: 999,
           email: 'owner@email.com',
           username: 'owner',
           cohort_id: 2,
           roles: ['owner', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
-        }
-      }
+          is_owner: true,
+        },
+      },
     },
     columns: {},
     grantableRoles: {},
     onPageChange() {},
     rowsPerPage: 1,
     pages: 2,
-    rows: {}
+    rows: {},
   };
-  const mounted = mounter(reduxer(UsersTable, props, state))();
-  expect(snapshot(mounted)).toMatchSnapshot();
+
+  const state = {
+    ...{},
+  };
+
+  const reduxed = reduxer(Component, props, state);
+  const mounted = mounter(reduxed, container);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+});
+
+test('Snapshot 1 2', async () => {
+  const Component = UsersTable;
+
+  const props = {
+    ...commonProps,
+    activePage: 0,
+    cohort: {
+      id: 2,
+      created_at: '2020-08-31T14:01:08.656Z',
+      name: 'A New Cohort That Exists Within Inline Props',
+      runs: [],
+      scenarios: [],
+      users: [
+        {
+          id: 999,
+          email: 'owner@email.com',
+          username: 'owner',
+          cohort_id: 2,
+          roles: ['owner', 'facilitator'],
+          is_anonymous: false,
+          is_owner: true,
+        },
+      ],
+      roles: ['owner', 'facilitator'],
+      usersById: {
+        999: {
+          id: 999,
+          email: 'owner@email.com',
+          username: 'owner',
+          cohort_id: 2,
+          roles: ['owner', 'facilitator'],
+          is_anonymous: false,
+          is_owner: true,
+        },
+      },
+    },
+    columns: {},
+    grantableRoles: {},
+    onPageChange() {},
+    rowsPerPage: 1,
+    pages: 2,
+    rows: {},
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const reduxed = reduxer(Component, props, state);
+  const mounted = mounter(reduxed, container);
+  expect(snapshotter(mounted)).toMatchSnapshot();
 });
 
 /*{INJECTION}*/
+

@@ -1,5 +1,6 @@
 import assert from 'assert';
 import {
+  createMockStore,
   createStore,
   fetchImplementation,
   makeById,
@@ -12,6 +13,7 @@ import * as types from '../../actions/types';
 const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
 
+let mockStore;
 let store;
 
 beforeAll(() => {
@@ -23,6 +25,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  mockStore = createMockStore({});
   store = createStore({});
 });
 
@@ -55,6 +58,9 @@ test('CREATE_COHORT_SUCCESS', async () => {
 
   assert.deepEqual(store.getState().cohort, cohortWithOwnerRole, 1);
   assert.deepEqual(returnValue, cohortWithOwnerRole, 2);
+
+  await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
 
 test('CREATE_COHORT_ERROR', async () => {
@@ -81,6 +87,9 @@ test('CREATE_COHORT_ERROR', async () => {
   // be whatever error info the server returned.
   assert.deepEqual(error, cohort.error);
   assert.equal(returnValue, null);
+
+  await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
 
 test('SET_COHORT_SUCCESS', async () => {
@@ -103,6 +112,9 @@ test('SET_COHORT_SUCCESS', async () => {
 
   assert.equal(store.getState().cohort.id, cohort.id);
   assert.deepEqual(returnValue, cohort);
+
+  await mockStore.dispatch(actions.setCohort(cohort));
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
 
 test('SET_COHORT_ERROR', async () => {
@@ -124,6 +136,9 @@ test('SET_COHORT_ERROR', async () => {
   ]);
   assert.deepEqual(store.getState().errors.cohort.error, error);
   assert.deepEqual(returnValue, null);
+
+  await mockStore.dispatch(actions.setCohort(cohort));
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
 
 describe('GET_COHORT_SUCCESS', () => {
@@ -131,6 +146,9 @@ describe('GET_COHORT_SUCCESS', () => {
     const returnValue = await store.dispatch(actions.getCohort(NaN));
     assert.equal(fetch.mock.calls.length, 0);
     assert.equal(returnValue, undefined);
+
+    await mockStore.dispatch(actions.getCohort(NaN));
+    expect(mockStore.getActions()).toMatchSnapshot();
   });
 
   test('Valid Cohort ID', async () => {
@@ -144,6 +162,9 @@ describe('GET_COHORT_SUCCESS', () => {
 
     assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/2']);
     assert.deepEqual(store.getState().cohort.id, cohort.id);
+
+    await mockStore.dispatch(actions.getCohort(2));
+    expect(mockStore.getActions()).toMatchSnapshot();
   });
 });
 
@@ -159,6 +180,9 @@ test('GET_COHORT_ERROR', async () => {
   assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/2']);
   assert.deepEqual(store.getState().errors.cohort.error, error);
   assert.deepEqual(returnValue, null);
+
+  await mockStore.dispatch(actions.getCohort(2));
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
 
 test('GET_ALL_COHORTS_SUCCESS', async () => {
@@ -171,6 +195,9 @@ test('GET_ALL_COHORTS_SUCCESS', async () => {
   assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/all']);
   assert.deepEqual(store.getState().cohorts, cohorts);
   assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
+
+  await mockStore.dispatch(actions.getAllCohorts());
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
 
 test('GET_ALL_COHORTS_ERROR', async () => {
@@ -295,16 +322,22 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
 
 describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
   test('linkUserToCohort', async () => {
-    let users = state.users.slice();
+    let users = state.cohort.users.slice();
+    let usersById = {
+      ...state.cohort.usersById
+    };
+    let cohortUsers = { users, usersById };
 
-    fetchImplementation(fetch, 200, { users });
+    fetchImplementation(fetch, 200, cohortUsers);
 
     const returnValue = await store.dispatch(
       actions.linkUserToCohort(1, 'boss')
     );
+
     assert.deepEqual(fetch.mock.calls[0], ['/api/cohort/1/join/boss']);
-    assert.deepEqual(store.getState().cohort.users, users);
-    assert.equal(returnValue, users);
+    assert.deepEqual(store.getState().cohort.users, cohortUsers.users);
+    assert.deepEqual(store.getState().cohort.usersById, cohortUsers.usersById);
+    assert.deepEqual(returnValue, cohortUsers);
   });
 
   test('addCohortUserRole', async () => {

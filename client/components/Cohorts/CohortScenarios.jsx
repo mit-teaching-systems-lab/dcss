@@ -75,7 +75,10 @@ export class CohortScenarios extends React.Component {
     await this.props.getCohort(Number(id));
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     await this.props.getRuns();
-    await this.props.getUsers();
+
+    if (this.props.authority.isFacilitator) {
+      await this.props.getUsers();
+    }
 
     // See note above, re: scenarios list backup
     const scenarios = this.props.scenarios.slice();
@@ -225,23 +228,44 @@ export class CohortScenarios extends React.Component {
       </Menu.Menu>
     ];
 
+    const scenariosLength = cohortScenarios.length;
+
+    const cohortScenariosCountWithIcon = (
+      <Fragment>
+        <Icon.Group className="em__icon-group-margin">
+          <Icon name="newspaper outline" />
+        </Icon.Group>
+        Scenarios ({scenariosLength})
+      </Fragment>
+    );
+
+    const cohortScenariosCountDescription = `${cohort.name} has ${scenariosLength} scenarios.`;
+
+    const menuItemCohortScenariosCountWithIcon = isFacilitator ? (
+      <Menu.Item.Tabbable
+        key="menu-item-cohort-scenarios"
+        name={cohortScenariosCountDescription}
+        aria-label={cohortScenariosCountDescription}
+        onClick={this.scrollIntoView}
+      >
+        {cohortScenariosCountWithIcon}
+      </Menu.Item.Tabbable>
+    ) : (
+      <Menu.Item.Tabbable
+        key="menu-item-cohort-scenarios"
+        name={cohortScenariosCountDescription}
+        aria-label={cohortScenariosCountDescription}
+      >
+        {cohortScenariosCountWithIcon}
+      </Menu.Item.Tabbable>
+    );
+
     const editorMenu = (
       <Ref innerRef={node => (this.sectionRef = node)}>
         <EditorMenu
           type="cohort scenarios"
           items={{
-            left: [
-              <Menu.Item.Tabbable
-                key="menu-item-cohort-scenarios"
-                name="Scenarios in this Cohort"
-                onClick={this.scrollIntoView}
-              >
-                <Icon.Group className="em__icon-group-margin">
-                  <Icon name="newspaper outline" />
-                </Icon.Group>
-                Scenarios ({cohortScenarios.length})
-              </Menu.Item.Tabbable>
-            ],
+            left: [menuItemCohortScenariosCountWithIcon],
             right: user.is_super || isFacilitator ? right : []
           }}
         />

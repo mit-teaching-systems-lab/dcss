@@ -203,6 +203,10 @@ class ScenarioAuthors extends Component {
 
     const grantableRoles = {};
     const rows = candidatesSlice.reduce((accum, candidateUser) => {
+      if (!usersById[candidateUser.id]) {
+        return accum;
+      }
+
       const candidate = Object.assign(
         {},
         usersById[candidateUser.id],

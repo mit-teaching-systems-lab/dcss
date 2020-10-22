@@ -239,7 +239,7 @@ class History extends Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body>
+            <Table.Body key={Identity.key(runsSlice)}>
               {runsSlice.map(run => {
                 const {
                   run_id,

@@ -1,11 +1,8 @@
 import { GET_RUN_HISTORY_SUCCESS } from '@actions/types';
 
-const initialState = {
-  prompts: [],
-  responses: []
-};
+import { historyInitialState } from './initial-states';
 
-export const history = (state = initialState, action) => {
+export const history = (state = historyInitialState, action) => {
   const { history, type } = action;
   switch (type) {
     case GET_RUN_HISTORY_SUCCESS:

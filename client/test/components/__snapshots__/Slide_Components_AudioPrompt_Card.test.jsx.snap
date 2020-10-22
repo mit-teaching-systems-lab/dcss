@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1`] = `"<i aria-label=\\"Prompt: Audio Input\\" class=\\"microphone icon\\"></i>Prompt: Audio Input"`;
+exports[`Snapshot 1 1 1`] = `"<i aria-label=\\"Prompt: Audio Input\\" class=\\"microphone icon\\"></i>Prompt: Audio Input"`;
+
+exports[`Snapshot 1 2 1`] = `"<i aria-label=\\"Prompt: Audio Input\\" class=\\"microphone icon\\"></i>Prompt: Audio Input"`;

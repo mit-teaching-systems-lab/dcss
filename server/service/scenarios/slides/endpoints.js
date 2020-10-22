@@ -3,14 +3,16 @@ const { asyncMiddleware } = require('../../../util/api');
 const { reqScenario } = require('../middleware');
 const db = require('./db');
 
-exports.getSlides = asyncMiddleware(async (req, res) => {
+async function getSlidesAsync(req, res) {
   const { id } = reqScenario(req);
+  console.log('getSlides', id);
   const slides = await db.getScenarioSlides(id);
   res.json({ slides });
-});
+}
 
-exports.getPromptComponentsByScenarioId = asyncMiddleware(async (req, res) => {
+async function getPromptComponentsByScenarioIdAsync(req, res) {
   const { id } = reqScenario(req);
+  console.log('getPromptComponentsByScenarioId', id);
   const slides = await db.getScenarioSlides(id);
   const components = slides.reduce((accum, slide, index) => {
     if (slide.is_finish) {
@@ -33,9 +35,9 @@ exports.getPromptComponentsByScenarioId = asyncMiddleware(async (req, res) => {
     return accum;
   }, []);
   res.json({ components });
-});
+}
 
-exports.addSlide = asyncMiddleware(async (req, res) => {
+async function addSlideAsync(req, res) {
   const { id: scenario_id } = reqScenario(req);
   const { title, order, components, is_finish = false } = req.body;
   res.json({
@@ -47,9 +49,9 @@ exports.addSlide = asyncMiddleware(async (req, res) => {
       is_finish
     })
   });
-});
+}
 
-exports.orderSlides = asyncMiddleware(async (req, res) => {
+async function orderSlidesAsync(req, res) {
   const { id: scenario_id } = reqScenario(req);
   const slide_ids = req.body.slides.map(id => {
     if (typeof id === 'object') return id.id;
@@ -58,9 +60,9 @@ exports.orderSlides = asyncMiddleware(async (req, res) => {
   res.json({
     slides: await db.setSlideOrder(scenario_id, slide_ids)
   });
-});
+}
 
-exports.setSlide = asyncMiddleware(async (req, res) => {
+async function setSlideAsync(req, res) {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { slide_id } = req.params;
   const { title, order, components, is_finish = false } = req.body;
@@ -72,17 +74,17 @@ exports.setSlide = asyncMiddleware(async (req, res) => {
       is_finish
     })
   });
-});
+}
 
-exports.setAllSlides = asyncMiddleware(async (req, res) => {
+async function setAllSlidesAsync(req, res) {
   const { id: scenario_id } = reqScenario(req);
   const { slides } = req.body;
   res.json({
     slides: await db.setAllSlides(scenario_id, slides)
   });
-});
+}
 
-exports.deleteSlide = asyncMiddleware(async (req, res) => {
+async function deleteSlideAsync(req, res) {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { id: scenario_id } = reqScenario(req);
   const id = Number(req.params.slide_id);
@@ -100,4 +102,14 @@ exports.deleteSlide = asyncMiddleware(async (req, res) => {
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
+
+exports.getSlides = asyncMiddleware(getSlidesAsync);
+exports.getPromptComponentsByScenarioId = asyncMiddleware(
+  getPromptComponentsByScenarioIdAsync
+);
+exports.addSlide = asyncMiddleware(addSlideAsync);
+exports.orderSlides = asyncMiddleware(orderSlidesAsync);
+exports.setSlide = asyncMiddleware(setSlideAsync);
+exports.setAllSlides = asyncMiddleware(setAllSlidesAsync);
+exports.deleteSlide = asyncMiddleware(deleteSlideAsync);

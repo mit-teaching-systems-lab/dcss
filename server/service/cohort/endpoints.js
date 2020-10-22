@@ -40,22 +40,37 @@ async function linkCohortToRunAsync(req, res) {
 async function joinCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { id: cohort_id, role } = req.params;
-  const users = await db.linkUserToCohort(cohort_id, user_id, role, 'join');
-  res.json({ users });
+  const cohortUsers = await db.linkUserToCohort(
+    cohort_id,
+    user_id,
+    role,
+    'join'
+  );
+  res.json(cohortUsers);
 }
 
 async function quitCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { id: cohort_id, role } = req.params;
-  const users = await db.linkUserToCohort(cohort_id, user_id, role, 'quit');
-  res.json({ users });
+  const cohortUsers = await db.linkUserToCohort(
+    cohort_id,
+    user_id,
+    role,
+    'quit'
+  );
+  res.json(cohortUsers);
 }
 
 async function doneCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { id: cohort_id, role } = req.params;
-  const users = await db.linkUserToCohort(cohort_id, user_id, role, 'done');
-  res.json({ users });
+  const cohortUsers = await db.linkUserToCohort(
+    cohort_id,
+    user_id,
+    role,
+    'done'
+  );
+  res.json(cohortUsers);
 }
 
 async function setCohort(req, res) {
@@ -92,6 +107,8 @@ async function getCohortDataAsync(req, res) {
 async function getCohortParticipantDataAsync(req, res) {
   const { id, participant_id } = req.params;
 
+  console.log('??????????????????', id, participant_id);
+
   const responses = await db.getCohortRunResponses({
     id,
     participant_id
@@ -100,6 +117,7 @@ async function getCohortParticipantDataAsync(req, res) {
   const prompts = {};
 
   for (const response of responses) {
+    console.log(response);
     if (!prompts[response.scenario_id]) {
       prompts[response.scenario_id] = [
         await getScenarioPrompts(response.scenario_id)

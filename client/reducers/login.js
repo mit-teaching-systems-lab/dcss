@@ -1,12 +1,8 @@
 import { LOG_IN, LOG_OUT } from '@actions/types';
 
-const initialState = {
-  isLoggedIn: false,
-  username: '',
-  permissions: []
-};
+import { loginInitialState } from './initial-states';
 
-export default function(state = initialState, action) {
+export default function(state = loginInitialState, action) {
   const { login, type } = action;
   switch (type) {
     case LOG_IN: {
@@ -17,7 +13,7 @@ export default function(state = initialState, action) {
     }
     case LOG_OUT: {
       return {
-        ...initialState
+        ...loginInitialState
       };
     }
     default:
