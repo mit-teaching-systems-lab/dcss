@@ -57,27 +57,7 @@ test('OwnerDropdown', () => {
   expect(OwnerDropdown).toBeDefined();
 });
 
-test('Snapshot 1 1', async () => {
-  const Component = OwnerDropdown;
-
-  const props = {
-    ...commonProps,
-    options: [],
-    categories: [],
-    author: { id: null },
-    onChange() {},
-  };
-
-  const state = {
-    ...{},
-  };
-
-  const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-});
-
-test('Snapshot 1 2', async () => {
+test('Snapshot 1 1', async (done) => {
   const Component = OwnerDropdown;
 
   const props = {
@@ -93,35 +73,23 @@ test('Snapshot 1 2', async () => {
   };
 
   const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
+  const wrapper = mounter(reduxed);
+  expect(snapshotter(reduxed)).toMatchSnapshot();
+  expect(snapshotter(wrapper)).toMatchSnapshot();
+
+  const component = wrapper.findWhere((n) => {
+    return n.type() === Component;
+  });
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
 });
 
 test('CategoriesDropdown', () => {
   expect(CategoriesDropdown).toBeDefined();
 });
 
-test('Snapshot 1 1', async () => {
-  const Component = CategoriesDropdown;
-
-  const props = {
-    ...commonProps,
-    options: [],
-    categories: [],
-    author: { id: null },
-    onChange() {},
-  };
-
-  const state = {
-    ...{},
-  };
-
-  const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-});
-
-test('Snapshot 1 2', async () => {
+test('Snapshot 1 1', async (done) => {
   const Component = CategoriesDropdown;
 
   const props = {
@@ -137,8 +105,16 @@ test('Snapshot 1 2', async () => {
   };
 
   const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
+  const wrapper = mounter(reduxed);
+  expect(snapshotter(reduxed)).toMatchSnapshot();
+  expect(snapshotter(wrapper)).toMatchSnapshot();
+
+  const component = wrapper.findWhere((n) => {
+    return n.type() === Component;
+  });
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
 });
 
 /*{INJECTION}*/

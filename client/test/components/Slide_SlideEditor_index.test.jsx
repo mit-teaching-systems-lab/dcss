@@ -54,42 +54,7 @@ test('SlideEditor', () => {
   expect(SlideEditor).toBeDefined();
 });
 
-test('Snapshot 1 1', async () => {
-  const Component = SlideEditor;
-
-  const props = {
-    ...commonProps,
-    slides: [
-      {
-        id: 1,
-        title: '',
-        components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-        is_finish: true,
-      },
-      {
-        id: 2,
-        title: '',
-        components: [
-          {
-            id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
-            html: '<p>Hi!</p>',
-            type: 'Text',
-          },
-        ],
-      },
-    ],
-  };
-
-  const state = {
-    ...{},
-  };
-
-  const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-});
-
-test('Snapshot 1 2', async () => {
+test('Snapshot 1 1', async (done) => {
   const Component = SlideEditor;
 
   const props = {
@@ -120,8 +85,16 @@ test('Snapshot 1 2', async () => {
   };
 
   const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
+  const wrapper = mounter(reduxed);
+  expect(snapshotter(reduxed)).toMatchSnapshot();
+  expect(snapshotter(wrapper)).toMatchSnapshot();
+
+  const component = wrapper.findWhere((n) => {
+    return n.type() === Component;
+  });
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
 });
 
 /*{INJECTION}*/

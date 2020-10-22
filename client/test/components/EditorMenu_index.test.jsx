@@ -54,30 +54,7 @@ test('EditorMenu', () => {
   expect(EditorMenu).toBeDefined();
 });
 
-test('Snapshot 1 1', async () => {
-  const Component = EditorMenu;
-
-  const props = {
-    ...commonProps,
-    items: {
-      delete: { onConfirm() {} },
-      editable: null,
-      left: null,
-      right: null,
-      save: { onClick() {} },
-    },
-  };
-
-  const state = {
-    ...{},
-  };
-
-  const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-});
-
-test('Snapshot 1 2', async () => {
+test('Snapshot 1 1', async (done) => {
   const Component = EditorMenu;
 
   const props = {
@@ -96,8 +73,16 @@ test('Snapshot 1 2', async () => {
   };
 
   const reduxed = reduxer(Component, props, state);
-  const mounted = mounter(reduxed, container);
-  expect(snapshotter(mounted)).toMatchSnapshot();
+  const wrapper = mounter(reduxed);
+  expect(snapshotter(reduxed)).toMatchSnapshot();
+  expect(snapshotter(wrapper)).toMatchSnapshot();
+
+  const component = wrapper.findWhere((n) => {
+    return n.type() === Component;
+  });
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
 });
 
 /*{INJECTION}*/

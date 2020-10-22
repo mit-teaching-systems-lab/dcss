@@ -2,8 +2,12 @@
 
 exports[`Snapshot 1 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
 
+exports[`Snapshot 1 1 2`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
+
 exports[`Snapshot 1 2 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
 
 exports[`Snapshot 2 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
+
+exports[`Snapshot 2 1 2`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
 
 exports[`Snapshot 2 2 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;

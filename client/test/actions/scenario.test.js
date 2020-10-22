@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import assert from 'assert';
 import {
-  createStore,
+  createPseudoRealStore,
   fetchImplementation,
   makeById,
   state
@@ -29,7 +29,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createStore({});
+  store = createPseudoRealStore({});
   fetch.mockImplementation(() => {});
   Storage.has.mockImplementation(() => true);
   Storage.delete.mockImplementation(() => {});
@@ -262,7 +262,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       };
     });
 
-    store = createStore({
+    store = createPseudoRealStore({
       scenarios: [],
       login: {
         isLoggedIn: false
@@ -283,7 +283,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === false', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: false
@@ -301,7 +301,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: true
@@ -333,7 +333,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: true
@@ -352,7 +352,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn) === false', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: false
@@ -372,7 +372,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('getScenariosIncrementallyFirst', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: false
@@ -394,7 +394,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosSlice', () => {
     test('default, cache is empty', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios: [],
         login: {
           isLoggedIn: false
@@ -427,7 +427,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('default, cache has entries, not full', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios: scenarios.slice(0, 30),
         login: {
           isLoggedIn: false
@@ -460,7 +460,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('ASC, cache is empty', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios: [],
         login: {
           isLoggedIn: false
@@ -495,7 +495,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('ASC, cache has entries, not full', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios: scenarios.slice(0, 30),
         login: {
           isLoggedIn: false
@@ -530,7 +530,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: true
@@ -547,7 +547,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosByStatus', () => {
     test('default', async () => {
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: false
@@ -587,7 +587,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
-      store = createStore({
+      store = createPseudoRealStore({
         scenarios,
         login: {
           isLoggedIn: true
@@ -615,7 +615,7 @@ describe('GET_SCENARIOS_ERROR', () => {
       };
     });
 
-    store = createStore({
+    store = createPseudoRealStore({
       scenarios: [],
       login: {
         isLoggedIn: false

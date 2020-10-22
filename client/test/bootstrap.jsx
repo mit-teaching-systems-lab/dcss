@@ -11,11 +11,8 @@ import configureMockStore from 'redux-mock-store';
 
 export const state = require('./state');
 
-export const mounter = (Component, attachTo) => {
-  return mount(<Component />, { attachTo });
-};
 
-export const createStore = (state = {}) => {
+export const createPseudoRealStore = (state = {}) => {
   return createStoreWithMiddleWare(
     rootReducer,
     mergeDeepRight(rootReducer({}, {}), state)
@@ -29,9 +26,10 @@ export const createMockStore = (state = {}) => {
 
 export const reduxer = (Component, props = {}, state = {}) => {
   const history = createMemoryHistory();
-  return function reduxWrap() {
+  const store = createPseudoRealStore(state);
+  return function BootstrapWrapper() {
     return (
-      <Provider store={createStore(state)}>
+      <Provider store={store}>
         <Router history={history}>
           <Component {...props} />
         </Router>
@@ -41,7 +39,11 @@ export const reduxer = (Component, props = {}, state = {}) => {
 };
 
 export const snapshotter = wrapper => {
-  return wrapper.html();
+  return wrapper.html
+    ? wrapper.html()
+    : wrapper.text
+      ? wrapper.text()
+      : JSON.stringify(wrapper);
 };
 
 export const makeById = records => {
@@ -60,4 +62,13 @@ export const fetchImplementation = (fetch, status = 200, resolveValue = {}) => {
       }
     };
   });
+};
+
+export const mounter = (Component, attachTo) => {
+  const rendered = <Component />;
+  const wrapper = attachTo
+    ? mount(rendered, { attachTo })
+    : mount(rendered);
+
+  return wrapper;
 };

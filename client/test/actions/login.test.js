@@ -1,6 +1,6 @@
 import assert from 'assert';
 import {
-  createStore,
+  createPseudoRealStore,
   fetchImplementation,
   makeById,
   state
@@ -25,7 +25,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createStore({});
+  store = createPseudoRealStore({});
   fetch.mockImplementation(() => {});
   Storage.clear.mockImplementation(() => {});
 });

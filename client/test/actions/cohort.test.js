@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {
   createMockStore,
-  createStore,
+  createPseudoRealStore,
   fetchImplementation,
   makeById,
   state
@@ -26,7 +26,7 @@ afterAll(() => {
 
 beforeEach(() => {
   mockStore = createMockStore({});
-  store = createStore({});
+  store = createPseudoRealStore({});
 });
 
 afterEach(() => {

@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { createStore, fetchImplementation, state } from '../bootstrap';
+import { createPseudoRealStore, fetchImplementation, state } from '../bootstrap';
 
 import * as actions from '../../actions/history';
 import * as types from '../../actions/types';
@@ -17,7 +17,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createStore({});
+  store = createPseudoRealStore({});
 });
 
 afterEach(() => {
@@ -40,7 +40,7 @@ test('GET_RUN_HISTORY_SUCCESS', async () => {
   }
 
   {
-    const store = createStore({});
+    const store = createPseudoRealStore({});
     const returnValue = await store.dispatch(
       actions.getHistoryForScenario(42, 1)
     );
