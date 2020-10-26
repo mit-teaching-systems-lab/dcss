@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card 1`] = `"<i aria-label=\\"Prompt: Text Input\\" class=\\"keyboard icon\\"></i>Prompt: Text Input"`;
+
+exports[`Card 2`] = `"<i aria-label=\\"Prompt: Text Input\\" class=\\"keyboard icon\\"></i>Prompt: Text Input"`;
+
+exports[`Snapshot 1 1`] = `
+Object {
+  "id": "",
+  "placeholder": "Your response",
+  "prompt": "",
+  "recallId": "",
+  "required": true,
+  "responseId": undefined,
+  "timeout": 0,
+  "type": "TextResponse",
+}
+`;
+
+exports[`Snapshot 2 1`] = `
+Object {
+  "id": "",
+  "placeholder": "Your response",
+  "prompt": "",
+  "recallId": "",
+  "required": true,
+  "responseId": "XYZ",
+  "timeout": 0,
+  "type": "TextResponse",
+}
+`;

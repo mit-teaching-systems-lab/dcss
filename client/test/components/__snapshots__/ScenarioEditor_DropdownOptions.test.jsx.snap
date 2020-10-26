@@ -1,17 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div class=\\"field\\"><label>Owner</label><div label=\\"Owner\\" name=\\"author\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"false\\" class=\\"ui fluid selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
+exports[`Render 1 1 1`] = `"<div class=\\"field\\"><label>Owner</label><div label=\\"Owner\\" name=\\"author\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"false\\" class=\\"ui fluid selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div class=\\"field\\"><label>Categories</label><div label=\\"Categories\\" name=\\"categories\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"true\\" class=\\"ui fluid multiple selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
+exports[`Render 1 1 2`] = `"<div class=\\"field\\"><label>Owner</label><div label=\\"Owner\\" name=\\"author\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"false\\" class=\\"ui fluid selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
 
-exports[`Snapshot 1 1 3`] = `"<div class=\\"field\\"><label>Owner</label><div label=\\"Owner\\" name=\\"author\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"false\\" class=\\"ui fluid selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="field"
+  >
+    <label>
+      Owner
+    </label>
+    <div
+      aria-expanded="false"
+      aria-multiselectable="false"
+      class="ui fluid selection dropdown"
+      label="Owner"
+      name="author"
+      role="listbox"
+      tabindex="0"
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="default text"
+        role="alert"
+      >
+        Select...
+      </div>
+      <i
+        aria-hidden="true"
+        class="dropdown icon"
+      />
+      <div
+        class="menu transition"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Snapshot 1 1 4`] = `undefined`;
+exports[`Render 1 1 4`] = `"<div class=\\"field\\"><label>Categories</label><div label=\\"Categories\\" name=\\"categories\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"true\\" class=\\"ui fluid multiple selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
 
-exports[`Snapshot 1 1 5`] = `"<div class=\\"field\\"><label>Categories</label><div label=\\"Categories\\" name=\\"categories\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"true\\" class=\\"ui fluid multiple selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
+exports[`Render 1 1 5`] = `"<div class=\\"field\\"><label>Categories</label><div label=\\"Categories\\" name=\\"categories\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"true\\" class=\\"ui fluid multiple selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
 
-exports[`Snapshot 1 1 6`] = `"<div class=\\"field\\"><label>Categories</label><div label=\\"Categories\\" name=\\"categories\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"true\\" class=\\"ui fluid multiple selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
-
-exports[`Snapshot 1 2 1`] = `"<div class=\\"field\\"><label>Owner</label><div label=\\"Owner\\" name=\\"author\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"false\\" class=\\"ui fluid selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
-
-exports[`Snapshot 1 2 2`] = `"<div class=\\"field\\"><label>Categories</label><div label=\\"Categories\\" name=\\"categories\\" role=\\"listbox\\" aria-expanded=\\"false\\" aria-multiselectable=\\"true\\" class=\\"ui fluid multiple selection dropdown\\" tabindex=\\"0\\"><div class=\\"default text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Select...</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"></div></div></div>"`;
+exports[`Render 1 1 6`] = `
+<DocumentFragment>
+  <div
+    class="field"
+  >
+    <label>
+      Categories
+    </label>
+    <div
+      aria-expanded="false"
+      aria-multiselectable="true"
+      class="ui fluid multiple selection dropdown"
+      label="Categories"
+      name="categories"
+      role="listbox"
+      tabindex="0"
+    >
+      <div
+        aria-atomic="true"
+        aria-live="polite"
+        class="default text"
+        role="alert"
+      >
+        Select...
+      </div>
+      <i
+        aria-hidden="true"
+        class="dropdown icon"
+      />
+      <div
+        class="menu transition"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

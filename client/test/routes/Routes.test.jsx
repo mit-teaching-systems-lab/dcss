@@ -9,7 +9,7 @@ import {
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 import { mount, render, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+import renderer from 'react-test-renderer';
 import Routes from '../../routes/Routes.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -59,23 +59,31 @@ test('Snapshot 1 1', async (done) => {
 
   const props = {
     ...commonProps,
+    isLoggedIn: true,
+    user: {
+      id: 999,
+      email: 'owner@email.com',
+      username: 'owner',
+      personalname: 'Owner Account',
+      roles: ['owner'],
+      is_owner: true,
+      is_author: true,
+      is_reviewer: false,
+    },
   };
 
   const state = {
     ...commonState,
   };
 
-  const reduxed = reduxer(Component, props, state);
-  const wrapper = mounter(reduxed);
-  expect(snapshotter(reduxed)).toMatchSnapshot();
-  expect(snapshotter(wrapper)).toMatchSnapshot();
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
 
-  const component = wrapper.findWhere((n) => {
+  const component = mounted.findWhere((n) => {
     return n.type() === Component;
   });
   expect(snapshotter(component)).toMatchSnapshot();
-
-  console.log(component.type());
 
   done();
 });

@@ -1,4 +1,9 @@
 import React from 'react';
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
+
 import assert from 'assert';
 import {
   fetchImplementation,
@@ -8,8 +13,21 @@ import {
   state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
-import { mount, render, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+
+import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Identity from '@utils/Identity';
+jest.mock('@utils/Identity', () => {
+  let count = 0;
+  return {
+    ...jest.requireActual('@utils/Identity'),
+    id() {
+      return ++count;
+    },
+  };
+});
 import Display from '../../components/Slide/Components/MultiPathResponse/Display.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -22,7 +40,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -32,17 +50,12 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  commonProps = {
-    history: {
-      push() {},
-    },
-  };
-
+  commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -54,20 +67,23 @@ test('Display', () => {
   expect(Display).toBeDefined();
 });
 
-test('Snapshot 1 1', async (done) => {
+test('Render 1 1', async (done) => {
   const Component = Display;
 
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
     header: '',
+    prompt: '',
+    responseId: 'ABC',
+    recallId: '',
     onChange() {},
     scenario: {
       author: {
         id: 999,
-        username: 'owner',
-        personalname: 'Owner Account',
-        email: 'owner@email.com',
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_super: true,
@@ -86,7 +102,7 @@ test('Snapshot 1 1', async (done) => {
       lock: {
         scenario_id: 42,
         user_id: 999,
-        created_at: '2020-10-10T23:54:19.934Z',
+        created_at: '2020-02-31T23:54:19.934Z',
         ended_at: null,
       },
       slides: [
@@ -111,7 +127,9 @@ test('Snapshot 1 1', async (done) => {
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
               type: 'TextResponse',
               header: 'TextResponse-1',
-              prompt: ',timeout: 0,recallId: ',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
               placeholder: 'Your response',
@@ -130,11 +148,11 @@ test('Snapshot 1 1', async (done) => {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          personalname: 'Owner Account',
-          roles: ['owner'],
-          is_owner: true,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
           is_author: true,
           is_reviewer: false,
         },
@@ -144,20 +162,373 @@ test('Snapshot 1 1', async (done) => {
       updated_at: null,
       deleted_at: null,
     },
+    paths: [],
   };
 
   const state = {
     ...commonState,
   };
 
-  const reduxed = reduxer(Component, props, state);
-  const wrapper = mounter(reduxed);
-  expect(snapshotter(reduxed)).toMatchSnapshot();
-  expect(snapshotter(wrapper)).toMatchSnapshot();
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
 
-  const component = wrapper.findWhere((n) => {
-    return n.type() === Component;
-  });
+  const component = mount(<ConnectedRoutedComponent {...props} />);
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 2 1', async (done) => {
+  const Component = Display;
+
+  const props = {
+    ...commonProps,
+    type: 'MultiPathResponse',
+    header: '',
+    prompt: '',
+    responseId: 'ABC',
+    recallId: 'XYZ',
+    onChange() {},
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: 'A Multiplayer Scenario',
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+        ],
+        is_finish: true,
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null,
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          ],
+          is_finish: true,
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text',
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response',
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text',
+            },
+          ],
+          is_finish: false,
+        },
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false,
+        },
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+    },
+    paths: [],
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  const component = mount(<ConnectedRoutedComponent {...props} />);
+  component.setProps({ paths: [{ display: 'Path 1', value: '1' }] });
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 3 1', async (done) => {
+  const Component = Display;
+
+  const props = {
+    ...commonProps,
+    type: 'MultiPathResponse',
+    header: '',
+    prompt: '',
+    responseId: 'ABC',
+    recallId: 'XYZ',
+    onChange() {},
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: 'A Multiplayer Scenario',
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+        ],
+        is_finish: true,
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null,
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          ],
+          is_finish: true,
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text',
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response',
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text',
+            },
+          ],
+          is_finish: false,
+        },
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false,
+        },
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+    },
+    paths: [],
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  const component = mount(<ConnectedRoutedComponent {...props} />);
+  component.setProps({ header: 'header' });
+  expect(snapshotter(component)).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 4 1', async (done) => {
+  const Component = Display;
+
+  const props = {
+    ...commonProps,
+    type: 'MultiPathResponse',
+    header: '',
+    prompt: '',
+    responseId: 'ABC',
+    recallId: 'XYZ',
+    onChange() {},
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: 'A Multiplayer Scenario',
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+        ],
+        is_finish: true,
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null,
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          ],
+          is_finish: true,
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text',
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response',
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text',
+            },
+          ],
+          is_finish: false,
+        },
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false,
+        },
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+    },
+    paths: [],
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  delete window.location;
+  window.location = {
+    pathname: '/run/',
+  };
+  const component = mount(<ConnectedRoutedComponent {...props} />);
+  component.setProps({ header: 'header' });
   expect(snapshotter(component)).toMatchSnapshot();
 
   done();

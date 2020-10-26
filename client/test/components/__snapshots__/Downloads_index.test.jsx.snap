@@ -1,9 +1,654 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
+exports[`Render 1 1 1`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
+exports[`Render 1 1 2`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
 
-exports[`Snapshot 1 1 3`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui card loading__single-card"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Snapshot 1 2 1`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
+exports[`Render 1 1 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      <i
+        class="icons em__icon-group-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="file alternate outline icon"
+        />
+        <i
+          aria-hidden="true"
+          class="green download top right corner icon"
+        />
+      </i>
+      Downloads (4)
+    </div>
+  </div>
+  <div
+    class="ui fluid container"
+  >
+    <table
+      class="ui striped unstackable table"
+      role="grid"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+            colspan="2"
+          >
+            <button
+              class="ui basic compact disabled button"
+              disabled=""
+              tabindex="-1"
+            >
+              <i
+                class="large icons"
+              >
+                <i
+                  aria-hidden="true"
+                  class="filter icon"
+                />
+              </i>
+            </button>
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find cohort
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find cohort
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    A New Cohort That Exists Within Inline Props
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find scenario
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find scenario
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Multiplayer Scenario
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Some Other Scenario
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+          created_at="1577836800050"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"A New Cohort That Exists Within Inline Props\\""
+            class="top aligned"
+            rowspan="2"
+            style="cursor: pointer;"
+          >
+            <i
+              class="big icons ig__multiple-file"
+            >
+              <i
+                aria-hidden="true"
+                class="file archive outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Multiplayer Scenario\\", from the cohort \\"A New Cohort That Exists Within Inline Props\\""
+            class="top aligned"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            A New Cohort That Exists Within Inline Props
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Multiplayer Scenario
+          </td>
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800050"
+        >
+          <td
+            aria-label="Download a csv file containing responses to only \\"Some Other Scenario\\", from the cohort \\"A New Cohort That Exists Within Inline Props\\""
+            class="top aligned"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            A New Cohort That Exists Within Inline Props
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Some Other Scenario
+          </td>
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800050"
+        >
+          <td
+            class=""
+            style="min-width: 47px;"
+          >
+             
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Multiplayer Scenario\\""
+            class="top aligned"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half dt__cell-data-missing"
+          />
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Multiplayer Scenario
+          </td>
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800050"
+        >
+          <td
+            class=""
+            style="min-width: 47px;"
+          >
+             
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Some Other Scenario\\""
+            class="top aligned"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half dt__cell-data-missing"
+          />
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Some Other Scenario
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+            colspan="4"
+          />
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
+
+exports[`Render 2 1 2`] = `"<div style=\\"width: 100%; height: 90%;\\" class=\\"ui card loading__single-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder\\"><div class=\\"square image\\"></div></div></div></div>"`;
+
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui card loading__single-card"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      <i
+        class="icons em__icon-group-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="file alternate outline icon"
+        />
+        <i
+          aria-hidden="true"
+          class="green download top right corner icon"
+        />
+      </i>
+      Downloads (2)
+    </div>
+  </div>
+  <div
+    class="ui fluid container"
+  >
+    <table
+      class="ui striped unstackable table"
+      role="grid"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+            colspan="2"
+          >
+            <button
+              class="ui basic compact disabled button"
+              disabled=""
+              tabindex="-1"
+            >
+              <i
+                class="large icons"
+              >
+                <i
+                  aria-hidden="true"
+                  class="filter icon"
+                />
+              </i>
+            </button>
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find cohort
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find cohort
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    A New Cohort That Exists Within Inline Props
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            Scenario
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+          created_at="1577836800150"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"A New Cohort That Exists Within Inline Props\\""
+            class="top aligned"
+            rowspan="2"
+            style="cursor: pointer;"
+          >
+            <i
+              class="big icons ig__multiple-file"
+            >
+              <i
+                aria-hidden="true"
+                class="file archive outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Multiplayer Scenario\\", from the cohort \\"A New Cohort That Exists Within Inline Props\\""
+            class="top aligned"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            A New Cohort That Exists Within Inline Props
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Multiplayer Scenario
+          </td>
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800150"
+        >
+          <td
+            aria-label="Download a csv file containing responses to only \\"Some Other Scenario\\", from the cohort \\"A New Cohort That Exists Within Inline Props\\""
+            class="top aligned"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            A New Cohort That Exists Within Inline Props
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Some Other Scenario
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+            colspan="4"
+          />
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
+`;

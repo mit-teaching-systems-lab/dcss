@@ -1,13 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
+exports[`Render 1 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
+exports[`Render 1 1 2`] = `null`;
 
-exports[`Snapshot 1 2 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><div class=\\"ui red message\\"><i aria-hidden=\\"true\\" class=\\"close icon\\"></i><div class=\\"content\\"><div class=\\"sun-editor-editable rt__container\\"></div></div></div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui container"
+    style="margin: 1rem 0px 1rem 0px;"
+  >
+    <div
+      class="ui red message"
+    >
+      <i
+        aria-hidden="true"
+        class="close icon"
+      />
+      <div
+        class="content"
+      >
+        <div
+          class="sun-editor-editable rt__container"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Snapshot 2 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
+exports[`Render 2 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
 
-exports[`Snapshot 2 1 2`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
+exports[`Render 2 1 2`] = `null`;
 
-exports[`Snapshot 2 2 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui container"
+    style="margin: 1rem 0px 1rem 0px;"
+  >
+    <button
+      class="ui red icon button"
+    >
+      <i
+        aria-hidden="true"
+        class="info circle icon"
+      />
+       Information
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 3 1 1`] = `"<div style=\\"margin: 1rem 0px 1rem 0px;\\" class=\\"ui container\\"><button class=\\"ui red icon button\\"><i aria-hidden=\\"true\\" class=\\"info circle icon\\"></i> Information</button></div>"`;
+
+exports[`Render 3 1 2`] = `null`;
+
+exports[`Render 3 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui container"
+    style="margin: 1rem 0px 1rem 0px;"
+  >
+    <button
+      class="ui red icon button"
+    >
+      <i
+        aria-hidden="true"
+        class="info circle icon"
+      />
+       Information
+    </button>
+  </div>
+</DocumentFragment>
+`;

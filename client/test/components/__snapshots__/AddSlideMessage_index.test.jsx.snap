@@ -1,13 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+exports[`Render 1 1 1`] = `"<div aria-label=\\"Add a slide\\" style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+exports[`Render 1 1 2`] = `"<div aria-label=\\"Add a slide\\" style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
 
-exports[`Snapshot 1 1 3`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    aria-label="Add a slide"
+    class="ui icon message"
+    style="cursor: pointer;"
+  >
+    <i
+      aria-hidden="true"
+      class="plus square outline huge icon"
+    />
+    <div
+      class="content"
+    >
+      <div
+        class="header"
+      >
+        Click to add a slide
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Snapshot 1 1 4`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
-
-exports[`Snapshot 1 2 1`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
-
-exports[`Snapshot 1 2 2`] = `"<div style=\\"cursor: pointer;\\" class=\\"ui icon message\\"><i aria-hidden=\\"true\\" class=\\"plus square outline huge icon\\"></i><div class=\\"content\\"><div class=\\"header\\">Click to add a slide</div></div></div>"`;
+exports[`Render 1 1 4`] = `
+<DocumentFragment>
+  <div
+    aria-label="Add a slide"
+    class="ui icon message"
+    style="cursor: pointer;"
+  >
+    <i
+      aria-hidden="true"
+      class="plus square outline huge icon"
+    />
+    <div
+      class="content"
+    >
+      <div
+        class="header"
+      >
+        Click to add a slide
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

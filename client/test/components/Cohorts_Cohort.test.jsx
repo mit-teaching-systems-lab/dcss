@@ -1,4 +1,9 @@
 import React from 'react';
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
+
 import assert from 'assert';
 import {
   fetchImplementation,
@@ -8,11 +13,25 @@ import {
   state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
-import { mount, render, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+
+import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Identity from '@utils/Identity';
+jest.mock('@utils/Identity', () => {
+  let count = 0;
+  return {
+    ...jest.requireActual('@utils/Identity'),
+    id() {
+      return ++count;
+    },
+  };
+});
 import Cohort from '../../components/Cohorts/Cohort.jsx';
 
 import {
+  SET_COHORT_USER_ROLE_SUCCESS,
   GET_COHORT_SUCCESS,
   GET_USER_SUCCESS,
   GET_USERS_SUCCESS,
@@ -34,7 +53,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -47,32 +66,50 @@ beforeEach(() => {
   cohortActions.getCohort = jest.fn();
   cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
     const cohort = {
-      id: 2,
+      id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [],
+      scenarios: [42, 99],
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          cohort_id: 2,
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          cohort_id: 1,
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true,
+          is_super: true,
+        },
+        {
+          id: 555,
+          email: 'regs@email.com',
+          username: 'regs',
+          cohort_id: 1,
+          roles: ['researcher'],
+          is_anonymous: false,
+          is_super: false,
         },
       ],
-      roles: ['owner', 'facilitator'],
+      roles: ['super', 'facilitator'],
       usersById: {
         999: {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          cohort_id: 2,
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          cohort_id: 1,
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true,
+          is_super: true,
+        },
+        555: {
+          id: 555,
+          email: 'regs@email.com',
+          username: 'regs',
+          cohort_id: 1,
+          roles: ['researcher'],
+          is_anonymous: false,
+          is_super: false,
         },
       },
     };
@@ -82,49 +119,66 @@ beforeEach(() => {
   cohortActions.linkUserToCohort = jest.fn();
   cohortActions.linkUserToCohort.mockImplementation(() => async (dispatch) => {
     const cohort = {
-      id: 2,
+      id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [],
+      scenarios: [42, 99],
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          cohort_id: 2,
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          cohort_id: 1,
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true,
+          is_super: true,
+        },
+        {
+          id: 555,
+          email: 'regs@email.com',
+          username: 'regs',
+          cohort_id: 1,
+          roles: ['researcher'],
+          is_anonymous: false,
+          is_super: false,
         },
       ],
-      roles: ['owner', 'facilitator'],
+      roles: ['super', 'facilitator'],
       usersById: {
         999: {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          cohort_id: 2,
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          cohort_id: 1,
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true,
+          is_super: true,
+        },
+        555: {
+          id: 555,
+          email: 'regs@email.com',
+          username: 'regs',
+          cohort_id: 1,
+          roles: ['researcher'],
+          is_anonymous: false,
+          is_super: false,
         },
       },
     };
-    dispatch({ type: GET_COHORT_SUCCESS, cohort });
+    dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, cohort });
     return cohort;
   });
   userActions.getUser = jest.fn();
   userActions.getUser.mockImplementation(() => async (dispatch) => {
     const user = {
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
       id: 999,
-      email: 'owner@email.com',
-      username: 'owner',
-      personalname: 'Owner Account',
-      roles: ['owner'],
-      is_owner: true,
-      is_author: true,
-      is_reviewer: false,
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_anonymous: false,
+      is_super: true,
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -133,31 +187,34 @@ beforeEach(() => {
   usersActions.getUsers.mockImplementation(() => async (dispatch) => {
     const users = [
       {
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
         id: 999,
-        email: 'owner@email.com',
-        username: 'owner',
-        personalname: 'Owner Account',
-        roles: ['owner'],
-        is_owner: true,
-        is_author: true,
-        is_reviewer: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_anonymous: false,
+        is_super: true,
+      },
+      {
+        username: 'regs',
+        personalname: 'Regs User',
+        email: 'regs@email.com',
+        id: 555,
+        roles: ['participant', 'facilitator', 'researcher'],
+        is_anonymous: false,
+        is_super: false,
       },
     ];
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   });
 
-  commonProps = {
-    history: {
-      push() {},
-    },
-  };
-
+  commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -169,7 +226,7 @@ test('Cohort', () => {
   expect(Cohort).toBeDefined();
 });
 
-test('Snapshot 1 1', async (done) => {
+test('Render 1 1', async (done) => {
   const Component = Cohort;
 
   const props = {
@@ -181,15 +238,15 @@ test('Snapshot 1 1', async (done) => {
     ...commonState,
   };
 
-  const reduxed = reduxer(Component, props, state);
-  const wrapper = mounter(reduxed);
-  expect(snapshotter(reduxed)).toMatchSnapshot();
-  expect(snapshotter(wrapper)).toMatchSnapshot();
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
 
-  const component = wrapper.findWhere((n) => {
-    return n.type() === Component;
-  });
-  expect(snapshotter(component)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

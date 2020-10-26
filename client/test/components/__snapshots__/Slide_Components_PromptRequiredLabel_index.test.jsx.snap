@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;
+exports[`Render 1 1 1`] = `"<div aria-label=\\"This required prompt has been fulfilled.\\" class=\\"ui green floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"check icon prl__icon-margin\\"></i></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;
+exports[`Render 1 1 2`] = `"<div aria-label=\\"This required prompt has been fulfilled.\\" class=\\"ui green floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"check icon prl__icon-margin\\"></i></div>"`;
 
-exports[`Snapshot 1 1 3`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;
+exports[`Render 1 1 3`] = `"<div aria-label=\\"This required prompt has been fulfilled.\\" class=\\"ui green floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"check icon prl__icon-margin\\"></i></div>"`;
 
-exports[`Snapshot 1 2 1`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;
+exports[`Render 2 1 1`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;
+
+exports[`Render 2 1 2`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;
+
+exports[`Render 2 1 3`] = `"<div aria-label=\\"This prompt requires a response.\\" class=\\"ui red floating label prl__label-margin\\"><i aria-hidden=\\"true\\" class=\\"asterisk icon prl__icon-margin\\"></i></div>"`;

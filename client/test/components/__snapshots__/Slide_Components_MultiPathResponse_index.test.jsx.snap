@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card 1`] = `"<i aria-label=\\"Prompt: Choose Next Slide\\" class=\\"fork clockwise rotated icon\\"></i>Prompt: Choose Next Slide"`;
+
+exports[`Card 2`] = `"<i aria-label=\\"Prompt: Choose Next Slide\\" class=\\"fork clockwise rotated icon\\"></i>Prompt: Choose Next Slide"`;
+
+exports[`Snapshot 1 1`] = `
+Object {
+  "disableDefaultNavigation": true,
+  "disableRequireCheckbox": true,
+  "header": "",
+  "id": "",
+  "paths": Array [
+    Object {
+      "display": "",
+      "value": null,
+    },
+  ],
+  "recallId": "",
+  "required": true,
+  "responseId": undefined,
+  "timeout": 0,
+  "type": "MultiPathResponse",
+}
+`;
+
+exports[`Snapshot 2 1`] = `
+Object {
+  "disableDefaultNavigation": true,
+  "disableRequireCheckbox": true,
+  "header": "",
+  "id": "",
+  "paths": Array [
+    Object {
+      "display": "",
+      "value": null,
+    },
+  ],
+  "recallId": "",
+  "required": true,
+  "responseId": undefined,
+  "timeout": 0,
+  "type": "MultiPathResponse",
+}
+`;
+
+exports[`Snapshot 3 1`] = `
+Object {
+  "disableDefaultNavigation": true,
+  "disableRequireCheckbox": true,
+  "header": "",
+  "id": "",
+  "paths": Array [
+    Object {
+      "display": "",
+      "value": null,
+    },
+  ],
+  "recallId": "",
+  "required": true,
+  "responseId": "XYZ",
+  "timeout": 0,
+  "type": "MultiPathResponse",
+}
+`;

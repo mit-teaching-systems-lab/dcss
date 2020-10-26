@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card 1`] = `"<i aria-label=\\"Prompt: Audio Input\\" class=\\"microphone icon\\"></i>Prompt: Audio Input"`;
+
+exports[`Card 2`] = `"<i aria-label=\\"Prompt: Audio Input\\" class=\\"microphone icon\\"></i>Prompt: Audio Input"`;
+
+exports[`Snapshot 1 1`] = `
+Object {
+  "header": "",
+  "id": "",
+  "prompt": "",
+  "recallId": "",
+  "required": true,
+  "responseId": undefined,
+  "timeout": 0,
+  "type": "AudioPrompt",
+}
+`;
+
+exports[`Snapshot 2 1`] = `
+Object {
+  "header": "",
+  "id": "",
+  "prompt": "",
+  "recallId": "",
+  "required": true,
+  "responseId": undefined,
+  "timeout": 0,
+  "type": "AudioPrompt",
+}
+`;
+
+exports[`Snapshot 3 1`] = `
+Object {
+  "header": "",
+  "id": "",
+  "prompt": "",
+  "recallId": "",
+  "required": true,
+  "responseId": "XYZ",
+  "timeout": 0,
+  "type": "AudioPrompt",
+}
+`;

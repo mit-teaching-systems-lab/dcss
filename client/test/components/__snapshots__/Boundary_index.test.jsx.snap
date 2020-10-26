@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
+exports[`Render 1 1 1`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
+exports[`Render 1 1 2`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
 
-exports[`Snapshot 1 1 3`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
-
-exports[`Snapshot 1 2 1`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
+exports[`Render 1 1 3`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color:red;height:1px;width:100vw;z-index:9007199254740991\\"></div>"`;

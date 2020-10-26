@@ -1,17 +1,434 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checked checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\" checked=\\"\\"><label>Default to visible?</label></div>"`;
+exports[`Render 1 1 1`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checked checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\" checked=\\"\\"><label>Default to visible?</label></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checked checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\" checked=\\"\\"><label>Default to visible?</label></div>"`;
+exports[`Render 1 1 2`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checked checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\" checked=\\"\\"><label>Default to visible?</label></div>"`;
 
-exports[`Snapshot 1 1 3`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checked checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\" checked=\\"\\"><label>Default to visible?</label></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui search selection dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="string"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="text"
+      role="alert"
+    >
+      Red
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        aria-selected="true"
+        class="active selected item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Red
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Orange
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Yellow
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Olive
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Green
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Teal
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Blue
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Violet
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Purple
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Pink
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Brown
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Grey
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui red message"
+  >
+    <textarea />
+  </div>
+  <div
+    class="ui checked checkbox"
+  >
+    <input
+      checked=""
+      class="hidden"
+      name="open"
+      readonly=""
+      tabindex="0"
+      type="checkbox"
+      value=""
+    />
+    <label>
+      Default to visible?
+    </label>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Snapshot 1 2 1`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checked checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\" checked=\\"\\"><label>Default to visible?</label></div>"`;
+exports[`Render 2 1 1`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label>Default to visible?</label></div>"`;
 
-exports[`Snapshot 2 1 1`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label>Default to visible?</label></div>"`;
+exports[`Render 2 1 2`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label>Default to visible?</label></div>"`;
 
-exports[`Snapshot 2 1 2`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label>Default to visible?</label></div>"`;
-
-exports[`Snapshot 2 1 3`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label>Default to visible?</label></div>"`;
-
-exports[`Snapshot 2 2 1`] = `"<div role=\\"combobox\\" aria-expanded=\\"false\\" class=\\"ui search selection dropdown\\"><input aria-autocomplete=\\"list\\" autocomplete=\\"off\\" class=\\"search\\" tabindex=\\"0\\" type=\\"string\\" value=\\"\\"><div class=\\"text\\" role=\\"alert\\" aria-live=\\"polite\\" aria-atomic=\\"true\\">Red</div><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div role=\\"listbox\\" class=\\"menu transition\\"><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"true\\" aria-selected=\\"true\\" class=\\"active selected item\\"><span class=\\"text\\">Red</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Orange</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Yellow</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Olive</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Green</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Teal</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Blue</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Violet</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Purple</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Pink</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Brown</span></div><div style=\\"pointer-events: all;\\" role=\\"option\\" aria-checked=\\"false\\" aria-selected=\\"false\\" class=\\"item\\"><span class=\\"text\\">Grey</span></div></div></div><div class=\\"ui red message\\"><textarea></textarea></div><div class=\\"ui checkbox\\"><input class=\\"hidden\\" name=\\"open\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label>Default to visible?</label></div>"`;
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui search selection dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="string"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="text"
+      role="alert"
+    >
+      Red
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        aria-selected="true"
+        class="active selected item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Red
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Orange
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Yellow
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Olive
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Green
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Teal
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Blue
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Violet
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Purple
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Pink
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Brown
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          Grey
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    class="ui red message"
+  >
+    <textarea />
+  </div>
+  <div
+    class="ui checkbox"
+  >
+    <input
+      class="hidden"
+      name="open"
+      readonly=""
+      tabindex="0"
+      type="checkbox"
+      value=""
+    />
+    <label>
+      Default to visible?
+    </label>
+  </div>
+</DocumentFragment>
+`;

@@ -1,4 +1,9 @@
 import React from 'react';
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
+
 import assert from 'assert';
 import {
   fetchImplementation,
@@ -8,8 +13,21 @@ import {
   state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
-import { mount, render, shallow } from 'enzyme';
-import toJson from 'enzyme-to-json';
+
+import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Identity from '@utils/Identity';
+jest.mock('@utils/Identity', () => {
+  let count = 0;
+  return {
+    ...jest.requireActual('@utils/Identity'),
+    id() {
+      return ++count;
+    },
+  };
+});
 import AddSlideMessage from '../../components/AddSlideMessage/index.jsx';
 
 import { Icon, Message } from '@components/UI';
@@ -24,7 +42,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -34,17 +52,12 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  commonProps = {
-    history: {
-      push() {},
-    },
-  };
-
+  commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -56,7 +69,7 @@ test('AddSlideMessage', () => {
   expect(AddSlideMessage).toBeDefined();
 });
 
-test('Snapshot 1 1', async (done) => {
+test('Render 1 1', async (done) => {
   const Component = AddSlideMessage;
 
   const props = {
@@ -68,24 +81,22 @@ test('Snapshot 1 1', async (done) => {
     ...commonState,
   };
 
-  const reduxed = reduxer(Component, props, state);
-  const wrapper = mounter(reduxed);
-  expect(snapshotter(reduxed)).toMatchSnapshot();
-  expect(snapshotter(wrapper)).toMatchSnapshot();
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
 
-  const component = wrapper.findWhere((n) => {
-    return n.type() === Component;
-  });
-  expect(snapshotter(component)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
-  const element = shallow(React.createElement(Component, props));
-  const iconComponent = element.find(Icon);
-  const messageComponent = element.find(Message);
+  userEvent.click(screen.getByLabelText('Add a slide'));
 
-  messageComponent.simulate('click');
-  assert.equal(element.props().onClick.mock.calls.length, 1);
+  expect(asFragment()).toMatchSnapshot();
 
-  expect(snapshotter(component)).toMatchSnapshot();
+  expect(props.onClick.mock.calls.length).toBe(1);
+
   done();
 });
 

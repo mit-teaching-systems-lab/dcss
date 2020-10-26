@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card 1`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;
+
+exports[`Card 2`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;
+
+exports[`Snapshot 1 1`] = `
+Object {
+  "html": "",
+  "id": "",
+  "type": "Text",
+}
+`;

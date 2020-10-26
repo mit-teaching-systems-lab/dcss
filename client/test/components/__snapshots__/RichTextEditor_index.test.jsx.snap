@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<textarea></textarea>"`;
+exports[`Render 1 1 1`] = `"<textarea></textarea>"`;
 
-exports[`Snapshot 1 1 2`] = `"<textarea></textarea>"`;
+exports[`Render 1 1 2`] = `"<textarea></textarea>"`;
 
-exports[`Snapshot 1 1 3`] = `"<textarea></textarea>"`;
-
-exports[`Snapshot 1 2 1`] = `"<textarea></textarea>"`;
+exports[`Render 1 1 3`] = `"<textarea></textarea>"`;
