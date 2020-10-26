@@ -4,4 +4,50 @@ exports[`Render 1 1 1`] = `"<div role=\\"listbox\\" aria-expanded=\\"false\\" cl
 
 exports[`Render 1 1 2`] = `"<div role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown\\" tabindex=\\"0\\"><span aria-label=\\"Super User (super)\\" class=\\"ui text\\" title=\\"Super User (super)\\">Super User</span> <i title=\\"Super\\" style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\" aria-hidden=\\"true\\" class=\\"small icon chess queen\\"></i><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Settings</div><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Log out</div></div></div>"`;
 
-exports[`Render 1 1 3`] = `"<div role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown\\" tabindex=\\"0\\"><span aria-label=\\"Super User (super)\\" class=\\"ui text\\" title=\\"Super User (super)\\">Super User</span> <i title=\\"Super\\" style=\\"margin-right:0;margin-bottom:0.3em;margin-left:0.25em;opacity:0.25\\" aria-hidden=\\"true\\" class=\\"small icon chess queen\\"></i><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Settings</div><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Log out</div></div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui item simple dropdown"
+    role="listbox"
+    tabindex="0"
+  >
+    <span
+      aria-label="Super User (super)"
+      class="ui text"
+      title="Super User (super)"
+    >
+      Super User
+    </span>
+     
+    <i
+      aria-hidden="true"
+      class="small icon chess queen"
+      style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+      title="Super"
+    />
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition"
+    >
+      <div
+        class="item"
+        role="option"
+        tabindex="0"
+      >
+        Settings
+      </div>
+      <div
+        class="item"
+        role="option"
+        tabindex="0"
+      >
+        Log out
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

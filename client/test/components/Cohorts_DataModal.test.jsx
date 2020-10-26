@@ -18,16 +18,12 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
+jest.mock('@components/Slide/Components/AudioPrompt/Transcript', () => {
+  return (props) => {
+    return <div>@components/Slide/Components/AudioPrompt/Transcript</div>;
   };
 });
+
 import DataModal from '../../components/Cohorts/DataModal.jsx';
 
 const original = JSON.parse(JSON.stringify(state));

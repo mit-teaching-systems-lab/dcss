@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import ScenarioStatusMenuItem from '../../components/EditorMenu/ScenarioStatusMenuItem.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -80,7 +70,7 @@ test('Render 1 1', async (done) => {
 
   const props = {
     ...commonProps,
-    onChange() {},
+    onChange: jest.fn(),
     status: 1,
   };
 
@@ -95,60 +85,17 @@ test('Render 1 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
-  done();
-});
+  userEvent.click(await screen.findByRole('listbox'));
+  expect(asFragment()).toMatchSnapshot();
 
-test('Render 2 1', async (done) => {
-  const Component = ScenarioStatusMenuItem;
-
-  const props = {
-    ...commonProps,
-    onChange() {},
-    status: 2,
-  };
-
-  const state = {
-    ...commonState,
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
-
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
-
-  done();
-});
-
-test('Render 3 1', async (done) => {
-  const Component = ScenarioStatusMenuItem;
-
-  const props = {
-    ...commonProps,
-    onChange() {},
-    status: 3,
-  };
-
-  const state = {
-    ...commonState,
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
-
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  userEvent.click(
+    await screen.findByText('Private (Visible only to logged in users)')
+  );
+  expect(props.onChange.mock.calls.length).toBe(1);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

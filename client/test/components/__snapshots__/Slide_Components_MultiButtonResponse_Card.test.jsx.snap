@@ -4,4 +4,12 @@ exports[`Render 1 1 1`] = `"<i aria-label=\\"Prompt: Multiple Buttons\\" class=\
 
 exports[`Render 1 1 2`] = `"<i aria-label=\\"Prompt: Multiple Buttons\\" class=\\"hand pointer outline icon\\"></i>Prompt: Multiple Buttons"`;
 
-exports[`Render 1 1 3`] = `"<i aria-label=\\"Prompt: Multiple Buttons\\" class=\\"hand pointer outline icon\\"></i>Prompt: Multiple Buttons"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Multiple Buttons"
+    class="hand pointer outline icon"
+  />
+  Prompt: Multiple Buttons
+</DocumentFragment>
+`;

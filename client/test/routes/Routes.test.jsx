@@ -1,4 +1,9 @@
 import React from 'react';
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
+
 import assert from 'assert';
 import {
   fetchImplementation,
@@ -8,9 +13,39 @@ import {
   state,
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
-import { mount, render, shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+
+import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import Identity from '@utils/Identity';
+jest.mock('@utils/Identity', () => {
+  let count = 0;
+  return {
+    ...jest.requireActual('@utils/Identity'),
+    id() {
+      return ++count;
+    },
+  };
+});
 import Routes from '../../routes/Routes.jsx';
+
+import Editor from '@components/Editor';
+import Login from '@components/Login';
+import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
+import ScenariosList from '@components/ScenariosList';
+jest.mock('@components/Editor', () => {
+  return (props) => <div>@components/Editor</div>;
+});
+jest.mock('@components/Login', () => {
+  return (props) => <div>@components/Login</div>;
+});
+jest.mock('@components/Login/LoginRoutePromptModal', () => {
+  return (props) => <div>@components/Login/LoginRoutePromptModal</div>;
+});
+jest.mock('@components/ScenariosList', () => {
+  return (props) => <div>@components/ScenariosList</div>;
+});
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -22,7 +57,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -32,17 +67,12 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  commonProps = {
-    history: {
-      push() {},
-    },
-  };
-
+  commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();
   container = null;
@@ -54,21 +84,20 @@ test('Routes', () => {
   expect(Routes).toBeDefined();
 });
 
-test('Snapshot 1 1', async (done) => {
+test('Render 1 1', async (done) => {
   const Component = Routes;
 
   const props = {
     ...commonProps,
     isLoggedIn: true,
     user: {
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
       id: 999,
-      email: 'owner@email.com',
-      username: 'owner',
-      personalname: 'Owner Account',
-      roles: ['owner'],
-      is_owner: true,
-      is_author: true,
-      is_reviewer: false,
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_anonymous: false,
+      is_super: true,
     },
   };
 
@@ -79,11 +108,12 @@ test('Snapshot 1 1', async (done) => {
   const ConnectedRoutedComponent = reduxer(Component, props, state);
   const mounted = mounter(ConnectedRoutedComponent);
   expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
 
-  const component = mounted.findWhere((n) => {
-    return n.type() === Component;
-  });
-  expect(snapshotter(component)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

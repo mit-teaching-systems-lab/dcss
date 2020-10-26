@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import DataTable from '../../components/Cohorts/DataTable.jsx';
 
 const original = JSON.parse(JSON.stringify(state));

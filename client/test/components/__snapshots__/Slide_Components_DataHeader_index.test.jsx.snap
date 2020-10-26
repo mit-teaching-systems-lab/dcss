@@ -4,4 +4,33 @@ exports[`Render 1 1 1`] = `"<div class=\\"ui red message\\"><div class=\\"conten
 
 exports[`Render 1 1 2`] = `"<div class=\\"ui red message\\"><div class=\\"content\\"><div class=\\"required field\\"><label>Data header</label><div class=\\"ui input\\"><input name=\\"header\\" required=\\"\\" type=\\"text\\" value=\\"\\"></div></div>This will only appear in data downloads, as the column header or row name.</div></div>"`;
 
-exports[`Render 1 1 3`] = `"<div class=\\"ui red message\\"><div class=\\"content\\"><div class=\\"required field\\"><label>Data header</label><div class=\\"ui input\\"><input type=\\"text\\" name=\\"header\\" required=\\"\\"/></div></div>This will only appear in data downloads, as the column header or row name.</div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui red message"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="required field"
+      >
+        <label>
+          Data header
+        </label>
+        <div
+          class="ui input"
+        >
+          <input
+            name="header"
+            required=""
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+      This will only appear in data downloads, as the column header or row name.
+    </div>
+  </div>
+</DocumentFragment>
+`;

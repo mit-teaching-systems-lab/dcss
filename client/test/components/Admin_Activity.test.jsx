@@ -18,22 +18,12 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import Activity from '../../components/Admin/Activity.jsx';
-
 import { List } from '@components/UI';
 import { GET_LOGS_SUCCESS } from '../../actions/types';
 import * as logsActions from '../../actions/logs';
 jest.mock('../../actions/logs');
+
+import Activity from '../../components/Admin/Activity.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;

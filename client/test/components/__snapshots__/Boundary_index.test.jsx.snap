@@ -4,4 +4,12 @@ exports[`Render 1 1 1`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"ba
 
 exports[`Render 1 1 2`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div>"`;
 
-exports[`Render 1 1 3`] = `"<div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color:red;height:1px;width:100vw;z-index:9007199254740991\\"></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    hidden=""
+    id="boundary-top"
+    style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+  />
+</DocumentFragment>
+`;

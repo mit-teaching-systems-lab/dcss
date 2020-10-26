@@ -18,19 +18,9 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import AddSlideMessage from '../../components/AddSlideMessage/index.jsx';
-
 import { Icon, Message } from '@components/UI';
+
+import AddSlideMessage from '../../components/AddSlideMessage/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;

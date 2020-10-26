@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import ScenariosList from '../../components/ScenariosList/index.jsx';
-
 import {
   GET_COHORT_SUCCESS,
   GET_SCENARIOS_COUNT_SUCCESS,
@@ -45,6 +33,8 @@ jest.mock('../../actions/cohort');
 jest.mock('../../actions/scenario');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
+
+import ScenariosList from '../../components/ScenariosList/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -73,7 +63,7 @@ beforeEach(() => {
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [42, 99],
+      scenarios: [99],
       users: [
         {
           id: 999,
@@ -198,7 +188,7 @@ beforeEach(() => {
             },
           ],
           status: 1,
-          title: 'Multiplayer Scenario',
+          title: 'Multiplayer Scenario 2',
           users: [
             {
               id: 999,
@@ -300,8 +290,8 @@ test('Render 1 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
@@ -382,7 +372,7 @@ test('Render 2 1', async (done) => {
           },
         ],
         status: 1,
-        title: 'Multiplayer Scenario',
+        title: 'Multiplayer Scenario 2',
         users: [
           {
             id: 999,
@@ -414,8 +404,8 @@ test('Render 2 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

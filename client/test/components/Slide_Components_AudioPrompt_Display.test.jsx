@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import Display from '../../components/Slide/Components/AudioPrompt/Display.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -144,7 +134,7 @@ test('Render 1 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,
@@ -260,7 +250,7 @@ test('Render 2 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,
@@ -377,7 +367,7 @@ test('Render 3 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,
@@ -494,7 +484,7 @@ test('Render 4 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,
@@ -611,7 +601,7 @@ test('Render 5 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,
@@ -728,7 +718,7 @@ test('Render 6 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,

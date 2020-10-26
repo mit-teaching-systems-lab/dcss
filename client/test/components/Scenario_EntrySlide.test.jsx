@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import EntrySlide from '../../components/Scenario/EntrySlide.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -139,7 +129,7 @@ test('Render 1 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,

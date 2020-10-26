@@ -1,5 +1,159 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Snapshot 1 1 1`] = `"<div id=\\"nav\\" aria-controls=\\"nav\\" class=\\"ui borderless menu\\"><div tabindex=\\"0\\" class=\\"item navigation__menu-item-logo\\"><a aria-current=\\"page\\" class=\\"active\\" href=\\"/\\">Home</a></div><div class=\\"menu\\"><div aria-label=\\"See all scenarios\\" role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown navigation__dropdown\\" tabindex=\\"0\\"><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See all scenarios\\" href=\\"/scenarios/\\">Scenarios</a><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See scenarios where I am an owner, author or reviewer\\" href=\\"/scenarios/author/super\\">Mine</a><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See scenarios made by Teaching Systems Lab\\" href=\\"/scenarios/official\\">Official</a><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See scenarios made by the community\\" href=\\"/scenarios/community\\">Community</a></div></div></div><a class=\\"item\\" tabindex=\\"0\\" href=\\"/cohorts\\">Cohorts</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/history\\">History</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/downloads\\">Downloads</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/admin\\">Admin</a><div class=\\"right menu\\"><div role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown\\" tabindex=\\"0\\"><span aria-label=\\"Super User (super)\\" class=\\"ui text\\" title=\\"Super User (super)\\">Super User</span> <i title=\\"Super\\" style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\" aria-hidden=\\"true\\" class=\\"small icon chess queen\\"></i><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Settings</div><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Log out</div></div></div></div></div>"`;
+exports[`Render 1 1 1`] = `"<div id=\\"nav\\" aria-controls=\\"nav\\" class=\\"ui borderless menu\\"><div tabindex=\\"0\\" class=\\"item navigation__menu-item-logo\\"><a aria-current=\\"page\\" class=\\"active\\" href=\\"/\\">Home</a></div><div class=\\"menu\\"><div aria-label=\\"See all scenarios\\" role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown navigation__dropdown\\" tabindex=\\"0\\"><a class=\\"item\\" role=\\"option\\" aria-label=\\"See all scenarios\\" tabindex=\\"0\\" href=\\"/scenarios/\\">Scenarios</a><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><a class=\\"item\\" role=\\"option\\" aria-label=\\"See scenarios where I am an owner, author or reviewer\\" tabindex=\\"0\\" href=\\"/scenarios/author/super\\">Mine</a><a class=\\"item\\" role=\\"option\\" aria-label=\\"See scenarios made by Teaching Systems Lab\\" tabindex=\\"0\\" href=\\"/scenarios/official\\">Official</a><a class=\\"item\\" role=\\"option\\" aria-label=\\"See scenarios made by the community\\" tabindex=\\"0\\" href=\\"/scenarios/community\\">Community</a></div></div></div><a class=\\"item\\" tabindex=\\"0\\" href=\\"/cohorts\\">Cohorts</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/history\\">History</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/downloads\\">Downloads</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/admin\\">Admin</a><div class=\\"right menu\\"><div role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown\\" tabindex=\\"0\\"><span aria-label=\\"Super User (super)\\" class=\\"ui text\\" title=\\"Super User (super)\\">Super User</span> <i title=\\"Super\\" style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\" aria-hidden=\\"true\\" class=\\"small icon chess queen\\"></i><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Settings</div><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Log out</div></div></div></div></div>"`;
 
-exports[`Snapshot 1 1 2`] = `"<div id=\\"nav\\" aria-controls=\\"nav\\" class=\\"ui borderless menu\\"><div tabindex=\\"0\\" class=\\"item navigation__menu-item-logo\\"><a aria-current=\\"page\\" class=\\"active\\" href=\\"/\\">Home</a></div><div class=\\"menu\\"><div aria-label=\\"See all scenarios\\" role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown navigation__dropdown\\" tabindex=\\"0\\"><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See all scenarios\\" href=\\"/scenarios/\\">Scenarios</a><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See scenarios where I am an owner, author or reviewer\\" href=\\"/scenarios/author/super\\">Mine</a><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See scenarios made by Teaching Systems Lab\\" href=\\"/scenarios/official\\">Official</a><a class=\\"item\\" tabindex=\\"0\\" role=\\"option\\" aria-label=\\"See scenarios made by the community\\" href=\\"/scenarios/community\\">Community</a></div></div></div><a class=\\"item\\" tabindex=\\"0\\" href=\\"/cohorts\\">Cohorts</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/history\\">History</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/downloads\\">Downloads</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/admin\\">Admin</a><div class=\\"right menu\\"><div role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown\\" tabindex=\\"0\\"><span aria-label=\\"Super User (super)\\" class=\\"ui text\\" title=\\"Super User (super)\\">Super User</span> <i title=\\"Super\\" style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\" aria-hidden=\\"true\\" class=\\"small icon chess queen\\"></i><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Settings</div><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Log out</div></div></div></div></div>"`;
+exports[`Render 1 1 2`] = `"<div id=\\"nav\\" aria-controls=\\"nav\\" class=\\"ui borderless menu\\"><div tabindex=\\"0\\" class=\\"item navigation__menu-item-logo\\"><a aria-current=\\"page\\" class=\\"active\\" href=\\"/\\">Home</a></div><div class=\\"menu\\"><div aria-label=\\"See all scenarios\\" role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown navigation__dropdown\\" tabindex=\\"0\\"><a class=\\"item\\" role=\\"option\\" aria-label=\\"See all scenarios\\" tabindex=\\"0\\" href=\\"/scenarios/\\">Scenarios</a><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><a class=\\"item\\" role=\\"option\\" aria-label=\\"See scenarios where I am an owner, author or reviewer\\" tabindex=\\"0\\" href=\\"/scenarios/author/super\\">Mine</a><a class=\\"item\\" role=\\"option\\" aria-label=\\"See scenarios made by Teaching Systems Lab\\" tabindex=\\"0\\" href=\\"/scenarios/official\\">Official</a><a class=\\"item\\" role=\\"option\\" aria-label=\\"See scenarios made by the community\\" tabindex=\\"0\\" href=\\"/scenarios/community\\">Community</a></div></div></div><a class=\\"item\\" tabindex=\\"0\\" href=\\"/cohorts\\">Cohorts</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/history\\">History</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/downloads\\">Downloads</a><a class=\\"item\\" tabindex=\\"0\\" href=\\"/admin\\">Admin</a><div class=\\"right menu\\"><div role=\\"listbox\\" aria-expanded=\\"false\\" class=\\"ui item simple dropdown\\" tabindex=\\"0\\"><span aria-label=\\"Super User (super)\\" class=\\"ui text\\" title=\\"Super User (super)\\">Super User</span> <i title=\\"Super\\" style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\" aria-hidden=\\"true\\" class=\\"small icon chess queen\\"></i><i aria-hidden=\\"true\\" class=\\"dropdown icon\\"></i><div class=\\"menu transition\\"><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Settings</div><div tabindex=\\"0\\" role=\\"option\\" class=\\"item\\">Log out</div></div></div></div></div>"`;
+
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    aria-controls="nav"
+    class="ui borderless menu"
+    id="nav"
+  >
+    <div
+      class="item navigation__menu-item-logo"
+      tabindex="0"
+    >
+      <a
+        aria-current="page"
+        class="active"
+        href="/"
+      >
+        Home
+      </a>
+    </div>
+    <div
+      class="menu"
+    >
+      <div
+        aria-expanded="false"
+        aria-label="See all scenarios"
+        class="ui item simple dropdown navigation__dropdown"
+        role="listbox"
+        tabindex="0"
+      >
+        <a
+          aria-label="See all scenarios"
+          class="item"
+          href="/scenarios/"
+          role="option"
+          tabindex="0"
+        >
+          Scenarios
+        </a>
+        <i
+          aria-hidden="true"
+          class="dropdown icon"
+        />
+        <div
+          class="menu transition"
+        >
+          <a
+            aria-label="See scenarios where I am an owner, author or reviewer"
+            class="item"
+            href="/scenarios/author/super"
+            role="option"
+            tabindex="0"
+          >
+            Mine
+          </a>
+          <a
+            aria-label="See scenarios made by Teaching Systems Lab"
+            class="item"
+            href="/scenarios/official"
+            role="option"
+            tabindex="0"
+          >
+            Official
+          </a>
+          <a
+            aria-label="See scenarios made by the community"
+            class="item"
+            href="/scenarios/community"
+            role="option"
+            tabindex="0"
+          >
+            Community
+          </a>
+        </div>
+      </div>
+    </div>
+    <a
+      class="item"
+      href="/cohorts"
+      tabindex="0"
+    >
+      Cohorts
+    </a>
+    <a
+      class="item"
+      href="/history"
+      tabindex="0"
+    >
+      History
+    </a>
+    <a
+      class="item"
+      href="/downloads"
+      tabindex="0"
+    >
+      Downloads
+    </a>
+    <a
+      class="item"
+      href="/admin"
+      tabindex="0"
+    >
+      Admin
+    </a>
+    <div
+      class="right menu"
+    >
+      <div
+        aria-expanded="false"
+        class="ui item simple dropdown"
+        role="listbox"
+        tabindex="0"
+      >
+        <span
+          aria-label="Super User (super)"
+          class="ui text"
+          title="Super User (super)"
+        >
+          Super User
+        </span>
+         
+        <i
+          aria-hidden="true"
+          class="small icon chess queen"
+          style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+          title="Super"
+        />
+        <i
+          aria-hidden="true"
+          class="dropdown icon"
+        />
+        <div
+          class="menu transition"
+        >
+          <div
+            class="item"
+            role="option"
+            tabindex="0"
+          >
+            Settings
+          </div>
+          <div
+            class="item"
+            role="option"
+            tabindex="0"
+          >
+            Log out
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

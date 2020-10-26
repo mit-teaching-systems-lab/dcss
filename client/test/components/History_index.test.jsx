@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import History from '../../components/History/index.jsx';
-
 import {
   GET_ALL_COHORTS_SUCCESS,
   GET_USER_COHORTS_SUCCESS,
@@ -48,6 +36,8 @@ jest.mock('../../actions/run');
 jest.mock('../../actions/scenario');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
+
+import History from '../../components/History/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -77,7 +67,7 @@ beforeEach(() => {
         created_at: '2020-08-31T14:01:08.656Z',
         name: 'A New Cohort That Exists Within Inline Props',
         runs: [],
-        scenarios: [42, 99],
+        scenarios: [99],
         users: [
           {
             id: 999,
@@ -256,7 +246,7 @@ beforeEach(() => {
             },
           ],
           status: 1,
-          title: 'Multiplayer Scenario',
+          title: 'Multiplayer Scenario 2',
           users: [
             {
               id: 999,
@@ -409,7 +399,7 @@ test('Render 1 1', async (done) => {
         },
       ],
       status: 1,
-      title: 'Multiplayer Scenario',
+      title: 'Multiplayer Scenario 2',
       users: [
         {
           id: 999,
@@ -443,7 +433,7 @@ test('Render 1 1', async (done) => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  await screen.findByText('Cohort name');
+  await screen.findByRole('columnheader', { name: /cohort name/i });
 
   expect(asFragment()).toMatchSnapshot();
 

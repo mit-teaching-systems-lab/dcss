@@ -4,4 +4,19 @@ exports[`Render 1 1 1`] = `"<div class=\\"ui fitted checkbox\\"><input class=\\"
 
 exports[`Render 1 1 2`] = `"<div class=\\"ui fitted checkbox\\"><input class=\\"hidden\\" readonly=\\"\\" tabindex=\\"0\\" type=\\"checkbox\\" value=\\"\\"><label></label></div>"`;
 
-exports[`Render 1 1 3`] = `"<div class=\\"ui fitted checkbox\\"><input type=\\"checkbox\\" class=\\"hidden\\" readonly=\\"\\" tabindex=\\"0\\"/><label></label></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui fitted checkbox"
+  >
+    <input
+      class="hidden"
+      readonly=""
+      tabindex="0"
+      type="checkbox"
+      value=""
+    />
+    <label />
+  </div>
+</DocumentFragment>
+`;

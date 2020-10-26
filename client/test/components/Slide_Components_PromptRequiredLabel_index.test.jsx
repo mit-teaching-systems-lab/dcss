@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import PromptRequiredLabel from '../../components/Slide/Components/PromptRequiredLabel/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -86,8 +76,8 @@ test('Render 1 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
@@ -111,8 +101,8 @@ test('Render 2 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

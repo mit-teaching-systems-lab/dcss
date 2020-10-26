@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import AudioRecorder from '../../components/Slide/Components/AudioPrompt/AudioRecorder.jsx';
-
 import {
   GET_RESPONSE_SUCCESS,
   GET_TRANSCRIPTION_OUTCOME_SUCCESS,
@@ -45,9 +33,16 @@ jest.mock('@components/Slide/Components/AudioPrompt/AudioPlayer', () => {
     return <audio {...props} />;
   };
 });
+jest.mock('@components/Slide/Components/AudioPrompt/Transcript', () => {
+  return (props) => {
+    return <div>@components/Slide/Components/AudioPrompt/Transcript</div>;
+  };
+});
 
 import Media, * as MediaConstants from '@utils/Media';
 let audioNode;
+
+import AudioRecorder from '../../components/Slide/Components/AudioPrompt/AudioRecorder.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -193,8 +188,8 @@ test('Render 1 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
@@ -247,8 +242,8 @@ test('Render 2 1', async (done) => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  fireEvent.focus(screen.getByPlaceholderText('Your response'));
-  fireEvent.change(screen.getByPlaceholderText('Your response'), {
+  fireEvent.focus(screen.getByRole('textbox'));
+  fireEvent.change(screen.getByRole('textbox'), {
     target: { value: 'something the user typed' },
   });
 
@@ -315,7 +310,7 @@ test('Render 3 1', async (done) => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  userEvent.click(screen.getByLabelText('Start recording'));
+  userEvent.click(screen.getByRole('button', { name: /start recording/i }));
 
   await waitFor(() => typeof audioNode.onpause === 'function');
 
@@ -330,7 +325,7 @@ test('Render 3 1', async (done) => {
 
   expect(asFragment()).toMatchSnapshot();
 
-  userEvent.click(screen.getByLabelText('Stop recording'));
+  userEvent.click(screen.getByRole('button', { name: /stop recording/i }));
 
   expect(asFragment()).toMatchSnapshot();
 

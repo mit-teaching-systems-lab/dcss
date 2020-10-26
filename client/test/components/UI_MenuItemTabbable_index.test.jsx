@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import MenuItemTabbable from '../../components/UI/MenuItemTabbable/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -72,6 +62,11 @@ test('Render 1 1', async (done) => {
 
   const props = {
     ...commonProps,
+    children: [React.createElement('div', { key: 'abcdef1' }, 'A')],
+    onClick: jest.fn(),
+    onKeyUp: jest.fn(),
+    popup: '',
+    tabIndex: 0,
   };
 
   const state = {
@@ -85,8 +80,123 @@ test('Render 1 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 2 1', async (done) => {
+  const Component = MenuItemTabbable;
+
+  const props = {
+    ...commonProps,
+    children: React.createElement('div', { key: 'abcdef2' }, 'B'),
+    onClick: jest.fn(),
+    onKeyUp: jest.fn(),
+    popup: 'x',
+    tabIndex: 0,
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 3 1', async (done) => {
+  const Component = MenuItemTabbable;
+
+  const props = {
+    ...commonProps,
+    children: [],
+    onClick: jest.fn(),
+    onKeyUp: jest.fn(),
+    popup: 'x',
+    tabIndex: 0,
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 4 1', async (done) => {
+  const Component = MenuItemTabbable;
+
+  const props = {
+    ...commonProps,
+    children: null,
+    onClick: jest.fn(),
+    onKeyUp: jest.fn(),
+    popup: 'x',
+    tabIndex: 0,
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 5 1', async (done) => {
+  const Component = MenuItemTabbable;
+
+  const props = {
+    ...commonProps,
+    onClick: jest.fn(),
+    onKeyUp: jest.fn(),
+    popup: 'x',
+    tabIndex: 0,
+  };
+
+  const state = {
+    ...commonState,
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const mounted = mounter(ConnectedRoutedComponent);
+  expect(snapshotter(mounted)).toMatchSnapshot();
+  expect(
+    snapshotter(mounted.findWhere((n) => n.type() === Component))
+  ).toMatchSnapshot();
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

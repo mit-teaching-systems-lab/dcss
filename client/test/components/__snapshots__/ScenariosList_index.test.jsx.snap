@@ -1,13 +1,463 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `"<div class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" href=\\"/editor/new\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
+exports[`Render 1 1 1`] = `"<div class=\\"ui borderless icon em__height menu\\"><a href=\\"/editor/new\\" tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
 
-exports[`Render 1 1 2`] = `"<div class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" href=\\"/editor/new\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
+exports[`Render 1 1 2`] = `"<div class=\\"ui borderless icon em__height menu\\"><a href=\\"/editor/new\\" tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
 
-exports[`Render 1 1 3`] = `"<div class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" href=\\"/editor/new\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input type=\\"text\\" placeholder=\\"Search...\\" value=\\"\\"/><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color:red;height:1px;width:100vw;z-index:9007199254740991\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color:red;height:1px;width:100vw;z-index:9007199254740991\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless icon em__height menu"
+  >
+    <a
+      class="item sc__hidden-on-mobile"
+      href="/editor/new"
+      tabindex="0"
+    >
+      <i
+        class="icons em__icon-group-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="newspaper outline icon"
+        />
+        <i
+          aria-hidden="true"
+          class="green add top right corner icon"
+        />
+      </i>
+      Create a Scenario
+    </a>
+    <div
+      class="right menu"
+    >
+      <a
+        class="item sc__hidden-on-mobile"
+        tabindex="0"
+      >
+          (0)
+        <i
+          aria-hidden="true"
+          class="clipboard outline icon"
+        />
+      </a>
+      <a
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </a>
+    </div>
+  </div>
+  <div
+    class="ui fluid container"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        hidden=""
+        id="boundary-top"
+        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+      />
+      <div
+        class="row"
+      >
+        <div
+          class="stretched column"
+        >
+          <div>
+            <div
+              class="ui doubling four cards"
+            >
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        hidden=""
+        id="boundary-bottom"
+        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+      />
+      <div
+        class="row"
+      >
+        <div
+          class="stretched column"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Render 2 1 1`] = `"<div class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" href=\\"/editor/new\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
+exports[`Render 2 1 1`] = `"<div class=\\"ui borderless icon em__height menu\\"><a href=\\"/editor/new\\" tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
 
-exports[`Render 2 1 2`] = `"<div class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" href=\\"/editor/new\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
+exports[`Render 2 1 2`] = `"<div class=\\"ui borderless icon em__height menu\\"><a href=\\"/editor/new\\" tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input placeholder=\\"Search...\\" type=\\"text\\" value=\\"\\"><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height: 18rem;\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
 
-exports[`Render 2 1 3`] = `"<div class=\\"ui borderless icon em__height menu\\"><a tabindex=\\"0\\" href=\\"/editor/new\\" class=\\"item sc__hidden-on-mobile\\"><i class=\\"icons em__icon-group-margin\\"><i aria-hidden=\\"true\\" class=\\"newspaper outline icon\\"></i><i aria-hidden=\\"true\\" class=\\"green add top right corner icon\\"></i></i>Create a Scenario</a><div class=\\"right menu\\"><a tabindex=\\"0\\" class=\\"item sc__hidden-on-mobile\\">  (0)<i aria-hidden=\\"true\\" class=\\"clipboard outline icon\\"></i></a><a tabindex=\\"0\\" class=\\"item\\"><div class=\\"ui icon input\\"><input type=\\"text\\" placeholder=\\"Search...\\" value=\\"\\"/><i aria-hidden=\\"true\\" class=\\"search icon\\"></i></div></a></div></div><div class=\\"ui fluid container\\"><div class=\\"ui grid\\"><div hidden=\\"\\" id=\\"boundary-top\\" style=\\"background-color:red;height:1px;width:100vw;z-index:9007199254740991\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"><div><div class=\\"ui doubling four cards\\"><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div><div style=\\"height:18rem\\" class=\\"ui card loading__multi-card\\"><div class=\\"content loading__content\\"><div class=\\"ui placeholder fluid\\"><div class=\\"square image\\"></div></div></div></div></div></div></div></div><div hidden=\\"\\" id=\\"boundary-bottom\\" style=\\"background-color:red;height:1px;width:100vw;z-index:9007199254740991\\"></div><div class=\\"row\\"><div class=\\"stretched column\\"></div></div></div></div>"`;
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless icon em__height menu"
+  >
+    <a
+      class="item sc__hidden-on-mobile"
+      href="/editor/new"
+      tabindex="0"
+    >
+      <i
+        class="icons em__icon-group-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="newspaper outline icon"
+        />
+        <i
+          aria-hidden="true"
+          class="green add top right corner icon"
+        />
+      </i>
+      Create a Scenario
+    </a>
+    <div
+      class="right menu"
+    >
+      <a
+        class="item sc__hidden-on-mobile"
+        tabindex="0"
+      >
+          (0)
+        <i
+          aria-hidden="true"
+          class="clipboard outline icon"
+        />
+      </a>
+      <a
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </a>
+    </div>
+  </div>
+  <div
+    class="ui fluid container"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        hidden=""
+        id="boundary-top"
+        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+      />
+      <div
+        class="row"
+      >
+        <div
+          class="stretched column"
+        >
+          <div>
+            <div
+              class="ui doubling four cards"
+            >
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="ui card loading__multi-card"
+                style="height: 18rem;"
+              >
+                <div
+                  class="content loading__content"
+                >
+                  <div
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        hidden=""
+        id="boundary-bottom"
+        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+      />
+      <div
+        class="row"
+      >
+        <div
+          class="stretched column"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

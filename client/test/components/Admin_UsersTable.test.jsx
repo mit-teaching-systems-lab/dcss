@@ -18,16 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
 import UsersTable from '../../components/Admin/UsersTable.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -78,7 +68,7 @@ test('Render 1 1', async (done) => {
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [42, 99],
+      scenarios: [99],
       users: [
         {
           id: 999,

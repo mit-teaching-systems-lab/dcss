@@ -4,4 +4,8 @@ exports[`Render 1 1 1`] = `"<textarea></textarea>"`;
 
 exports[`Render 1 1 2`] = `"<textarea></textarea>"`;
 
-exports[`Render 1 1 3`] = `"<textarea></textarea>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <textarea />
+</DocumentFragment>
+`;

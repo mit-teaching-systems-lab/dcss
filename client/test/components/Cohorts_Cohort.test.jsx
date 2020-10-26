@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import Cohort from '../../components/Cohorts/Cohort.jsx';
-
 import {
   SET_COHORT_USER_ROLE_SUCCESS,
   GET_COHORT_SUCCESS,
@@ -42,6 +30,17 @@ import * as usersActions from '../../actions/users';
 jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
+jest.mock('@components/Cohorts/DataTable', () => {
+  return (props) => <div>@components/Cohorts/DataTable</div>;
+});
+jest.mock('@components/Cohorts/CohortParticipants', () => {
+  return (props) => <div>@components/Cohorts/CohortParticipants</div>;
+});
+jest.mock('@components/Cohorts/CohortScenarios', () => {
+  return (props) => <div>@components/Cohorts/CohortScenarios</div>;
+});
+
+import Cohort from '../../components/Cohorts/Cohort.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -70,7 +69,7 @@ beforeEach(() => {
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [42, 99],
+      scenarios: [99],
       users: [
         {
           id: 999,
@@ -123,7 +122,7 @@ beforeEach(() => {
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [42, 99],
+      scenarios: [99],
       users: [
         {
           id: 999,

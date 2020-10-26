@@ -4,4 +4,12 @@ exports[`Render 1 1 1`] = `"<i aria-label=\\"Participant Suggestion\\" class=\\"
 
 exports[`Render 1 1 2`] = `"<i aria-label=\\"Participant Suggestion\\" class=\\"info icon\\"></i>Participant Suggestion"`;
 
-exports[`Render 1 1 3`] = `"<i aria-label=\\"Participant Suggestion\\" class=\\"info icon\\"></i>Participant Suggestion"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Participant Suggestion"
+    class="info icon"
+  />
+  Participant Suggestion
+</DocumentFragment>
+`;

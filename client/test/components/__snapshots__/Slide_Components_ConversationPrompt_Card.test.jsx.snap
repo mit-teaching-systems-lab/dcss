@@ -4,4 +4,12 @@ exports[`Render 1 1 1`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"co
 
 exports[`Render 1 1 2`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i>Prompt: Conversation"`;
 
-exports[`Render 1 1 3`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i>Prompt: Conversation"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Conversation"
+    class="conversation icon"
+  />
+  Prompt: Conversation
+</DocumentFragment>
+`;

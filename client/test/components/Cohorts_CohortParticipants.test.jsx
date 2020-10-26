@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import CohortParticipants from '../../components/Cohorts/CohortParticipants.jsx';
-
 import {
   GET_COHORT_SUCCESS,
   GET_USER_SUCCESS,
@@ -41,6 +29,8 @@ import * as usersActions from '../../actions/users';
 jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
+
+import CohortParticipants from '../../components/Cohorts/CohortParticipants.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -69,7 +59,7 @@ beforeEach(() => {
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
       runs: [],
-      scenarios: [42, 99],
+      scenarios: [99],
       users: [
         {
           id: 999,
@@ -191,8 +181,8 @@ test('Render 1 1', async (done) => {
     snapshotter(mounted.findWhere((n) => n.type() === Component))
   ).toMatchSnapshot();
 
-  const shallowRendered = shallow(<ConnectedRoutedComponent />);
-  expect(snapshotter(shallowRendered)).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

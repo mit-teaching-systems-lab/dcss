@@ -4,10 +4,20 @@ exports[`Render 1 1 1`] = `"<audio></audio>"`;
 
 exports[`Render 1 1 2`] = `"<audio></audio>"`;
 
-exports[`Render 1 1 3`] = `"<audio></audio>"`;
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <audio />
+</DocumentFragment>
+`;
 
 exports[`Render 2 1 1`] = `"<audio src=\\"\\"></audio>"`;
 
 exports[`Render 2 1 2`] = `"<audio src=\\"\\"></audio>"`;
 
-exports[`Render 2 1 3`] = `"<audio src=\\"\\"></audio>"`;
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <audio
+    src=""
+  />
+</DocumentFragment>
+`;

@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    },
-  };
-});
-import Downloads from '../../components/Downloads/index.jsx';
-
 import {
   GET_ALL_COHORTS_SUCCESS,
   GET_USER_COHORTS_SUCCESS,
@@ -47,6 +35,8 @@ jest.mock('../../actions/scenario');
 jest.mock('../../actions/user');
 
 jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-01').getTime());
+
+import Downloads from '../../components/Downloads/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -76,7 +66,7 @@ beforeEach(() => {
         created_at: '2020-08-31T14:01:08.656Z',
         name: 'A New Cohort That Exists Within Inline Props',
         runs: [],
-        scenarios: [42, 99],
+        scenarios: [99],
         users: [
           {
             id: 999,
@@ -131,7 +121,7 @@ beforeEach(() => {
         created_at: '2020-08-31T14:01:08.656Z',
         name: 'A New Cohort That Exists Within Inline Props',
         runs: [],
-        scenarios: [42, 99],
+        scenarios: [99],
         users: [
           {
             id: 999,
@@ -313,7 +303,7 @@ beforeEach(() => {
             },
           ],
           status: 1,
-          title: 'Multiplayer Scenario',
+          title: 'Multiplayer Scenario 2',
           users: [
             {
               id: 999,
@@ -457,17 +447,18 @@ test('Render 1 1', async (done) => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(
-    await screen.findByLabelText(
-      'Download a csv file containing responses to only "Multiplayer Scenario"'
-    )
+    await screen.findByRole('button', {
+      name: /download a csv file containing responses to only "multiplayer scenario 2"/i,
+    })
   );
-  userEvent.click(
-    await screen.findByLabelText(
-      'Download a csv file containing responses to only "Some Other Scenario"'
-    )
-  );
-
   expect(asFragment()).toMatchSnapshot();
+  expect(
+    (
+      await screen.findAllByRole('button', {
+        name: /download a csv file containing responses to only "some other scenario"/i,
+      })
+    ).length
+  ).toBe(2);
 
   done();
 });
@@ -507,19 +498,6 @@ test('Render 2 1', async (done) => {
   });
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
-
-  userEvent.click(
-    await screen.findByLabelText(
-      'Download a zip containing csv files containing responses for all scenarios in "A New Cohort That Exists Within Inline Props"'
-    )
-  );
-  userEvent.click(
-    await screen.findByLabelText(
-      'Download a csv file containing responses to only "Multiplayer Scenario", from the cohort "A New Cohort That Exists Within Inline Props"'
-    )
-  );
-
   expect(asFragment()).toMatchSnapshot();
 
   done();

@@ -1,8 +1,14 @@
 import 'regenerator-runtime/runtime';
-import { configure } from 'enzyme';
+import * as tldom from '@testing-library/dom'
+import * as enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-configure({ adapter: new Adapter() });
+tldom.configure({
+  throwSuggestions: true
+});
+enzyme.configure({
+  adapter: new Adapter()
+});
 
 if (window) {
   window.scrollTo = function() {};
@@ -10,7 +16,6 @@ if (window) {
   window.MediaRecorder = function() {};
   window.MediaRecorder.prototype.start = jest.fn();
   window.MediaRecorder.prototype.stop = jest.fn();
-
   window.URL.createObjectURL = jest.fn();
 }
 
@@ -37,3 +42,13 @@ jest.mock('react-beautiful-dnd', () => ({
     ),
   DragDropContext: ({ children }) => children
 }));
+
+jest.mock("@utils/Identity", () => {
+  let count = 0;
+  return {
+    ...jest.requireActual("@utils/Identity"),
+    id() {
+      return ++count;
+    },
+  };
+});
