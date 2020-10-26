@@ -22,11 +22,14 @@ module.exports = {
 
   moduleNameMapper: {
     // Third Party
+    'file-saver': '<rootDir>/test/__mocks__/modules/file-saver.js',
     'focus-trap-react': '<rootDir>/test/__mocks__/modules/return-children.js',
     'focus-trap': '<rootDir>/test/__mocks__/modules/return-children.js',
     'detect-browser': '<rootDir>/test/__mocks__/modules/detect-browser.js',
     // 'moment': '<rootDir>/../node_modules/moment/moment.js',
+    '@utils/Media': '<rootDir>/test/__mocks__/modules/media.js',
     '@utils/Moment': '<rootDir>/test/__mocks__/modules/moment.js',
+    '@utils/Recorder': '<rootDir>/test/__mocks__/modules/recorder.js',
 
     'react-sortablejs': '<rootDir>/test/__mocks__/modules/return-children.js',
     suneditor: '<rootDir>/test/__mocks__/modules/suneditor.js',
@@ -76,5 +79,7 @@ module.exports = {
   transformIgnorePatterns: ['./node_modules/'],
 
   // Indicates whether each individual test should be reported during the run
-  verbose: true
+  verbose: true,
+
+  snapshotSerializers: ['enzyme-to-json/serializer']
 };

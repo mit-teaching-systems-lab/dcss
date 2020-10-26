@@ -1,6 +1,6 @@
+import React from 'react';
 import { Router } from 'react-router';
 import { mount } from 'enzyme';
-import React from 'react';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { createMemoryHistory } from 'history';
@@ -8,6 +8,7 @@ import { mergeDeepRight } from 'ramda';
 import rootReducer from '../reducers';
 import { createStoreWithMiddleWare } from '../store';
 import configureMockStore from 'redux-mock-store';
+import toJson from 'enzyme-to-json'
 
 export const state = require('./state');
 
@@ -39,11 +40,20 @@ export const reduxer = (Component, props = {}, state = {}) => {
 };
 
 export const snapshotter = wrapper => {
-  return wrapper.html
-    ? wrapper.html()
-    : wrapper.text
-      ? wrapper.text()
-      : JSON.stringify(wrapper);
+  try {
+    return wrapper.html
+      ? wrapper.html()
+      : wrapper.text
+        ? wrapper.text()
+        : JSON.stringify(wrapper);
+  } catch (error) {
+    try {
+      return toJson(wrapper);
+    } catch (error) {
+      void error;
+    }
+  }
+  return '';
 };
 
 export const makeById = records => {

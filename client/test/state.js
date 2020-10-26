@@ -8,22 +8,22 @@ module.exports = {
     users: [
       {
         id: 999,
-        email: 'owner@email.com',
-        username: 'owner',
-        roles: ['owner', 'facilitator'],
+        email: 'super@email.com',
+        username: 'super',
+        roles: ['super', 'facilitator'],
         is_anonymous: false,
-        is_owner: true
+        is_super: true
       }
     ],
-    roles: ['owner', 'facilitator'],
+    roles: ['super', 'facilitator'],
     usersById: {
       '999': {
         id: 999,
-        email: 'owner@email.com',
-        username: 'owner',
-        roles: ['owner', 'facilitator'],
+        email: 'super@email.com',
+        username: 'super',
+        roles: ['super', 'facilitator'],
         is_anonymous: false,
-        is_owner: true
+        is_super: true
       }
     }
   },
@@ -37,21 +37,21 @@ module.exports = {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       ],
       usersById: {
         '999': {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       }
     },
@@ -135,23 +135,23 @@ module.exports = {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
+          email: 'super@email.com',
+          username: 'super',
           cohort_id: 1,
-          roles: ['owner', 'facilitator'],
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       ],
       usersById: {
         '999': {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
+          email: 'super@email.com',
+          username: 'super',
           cohort_id: 1,
-          roles: ['owner', 'facilitator'],
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       }
     }
@@ -223,23 +223,23 @@ module.exports = {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
+          email: 'super@email.com',
+          username: 'super',
           cohort_id: 1,
-          roles: ['owner', 'facilitator'],
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       ],
       usersById: {
         '999': {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
+          email: 'super@email.com',
+          username: 'super',
           cohort_id: 1,
-          roles: ['owner', 'facilitator'],
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       }
     },
@@ -252,21 +252,21 @@ module.exports = {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       ],
       usersById: {
         '999': {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          roles: ['owner', 'facilitator'],
+          email: 'super@email.com',
+          username: 'super',
+          roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_owner: true
+          is_super: true
         }
       }
     }
@@ -292,7 +292,7 @@ module.exports = {
   },
   login: {
     isLoggedIn: true,
-    username: 'owner',
+    username: 'super',
     permissions: [
       'create_cohort',
       'edit_scenarios_in_cohort',
@@ -311,8 +311,8 @@ module.exports = {
       'view_run_data',
       'view_all_run_data'
     ],
-    personalname: 'Owner Account',
-    email: 'owner@email.com',
+    personalname: 'Super User',
+    email: 'super@email.com',
     id: 2,
     roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
     is_anonymous: false,
@@ -349,7 +349,7 @@ module.exports = {
           session: {
             user: {
               id: 999,
-              email: 'owner@email.com',
+              email: 'super@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -357,9 +357,9 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'owner',
+              username: 'super',
               is_anonymous: false,
-              personalname: 'Owner Account'
+              personalname: 'Super User'
             },
             cookie: {
               path: '/',
@@ -407,7 +407,7 @@ module.exports = {
           session: {
             user: {
               id: 999,
-              email: 'owner@email.com',
+              email: 'super@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -415,9 +415,9 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'owner',
+              username: 'super',
               is_anonymous: false,
-              personalname: 'Owner Account'
+              personalname: 'Super User'
             },
             cookie: {
               path: '/',
@@ -466,7 +466,7 @@ module.exports = {
           session: {
             user: {
               id: 999,
-              email: 'owner@email.com',
+              email: 'super@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -474,9 +474,9 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'owner',
+              username: 'super',
               is_anonymous: false,
-              personalname: 'Owner Account'
+              personalname: 'Super User'
             },
             cookie: {
               path: '/',
@@ -518,7 +518,7 @@ module.exports = {
           session: {
             user: {
               id: 999,
-              email: 'owner@email.com',
+              email: 'super@email.com',
               roles: [
                 'participant',
                 'super_admin',
@@ -526,9 +526,9 @@ module.exports = {
                 'researcher'
               ],
               is_super: true,
-              username: 'owner',
+              username: 'super',
               is_anonymous: false,
-              personalname: 'Owner Account'
+              personalname: 'Super User'
             },
             cookie: {
               path: '/',
@@ -681,9 +681,9 @@ module.exports = {
   scenario: {
     author: {
       id: 2,
-      username: 'owner',
-      personalname: 'Owner Account',
-      email: 'owner@email.com',
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
       is_anonymous: false,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_super: true
@@ -758,11 +758,11 @@ module.exports = {
     users: [
       {
         id: 999,
-        email: 'owner@email.com',
-        username: 'owner',
-        personalname: 'Owner Account',
-        roles: ['owner'],
-        is_owner: true,
+        email: 'super@email.com',
+        username: 'super',
+        personalname: 'Super User',
+        roles: ['super'],
+        is_super: true,
         is_author: true,
         is_reviewer: false
       }
@@ -784,20 +784,20 @@ module.exports = {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          personalname: 'Owner Account',
-          roles: ['owner'],
-          is_owner: true,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
           is_author: true,
           is_reviewer: false
         }
       ],
       author: {
         id: 999,
-        username: 'owner',
-        personalname: 'Owner Account',
-        email: 'owner@email.com',
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_super: true
@@ -838,20 +838,20 @@ module.exports = {
       users: [
         {
           id: 999,
-          email: 'owner@email.com',
-          username: 'owner',
-          personalname: 'Owner Account',
-          roles: ['owner'],
-          is_owner: true,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
           is_author: true,
           is_reviewer: false
         }
       ],
       author: {
         id: 999,
-        username: 'owner',
-        personalname: 'Owner Account',
-        email: 'owner@email.com',
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_super: true
@@ -884,9 +884,9 @@ module.exports = {
     categories: []
   },
   user: {
-    username: 'owner',
-    personalname: 'Owner Name',
-    email: 'owner@email.com',
+    username: 'super',
+    personalname: 'Super User',
+    email: 'super@email.com',
     id: 2,
     roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
     is_anonymous: false,
@@ -895,9 +895,9 @@ module.exports = {
   users: [
     {
       id: 999,
-      username: 'owner',
-      personalname: 'Owner Name',
-      email: 'owner@email.com',
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
       is_anonymous: false,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_super: true
@@ -933,9 +933,9 @@ module.exports = {
   usersById: {
     '999': {
       id: 999,
-      username: 'owner',
-      personalname: 'Owner Name',
-      email: 'owner@email.com',
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
       is_anonymous: false,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_super: true

@@ -2,14 +2,7 @@ import hash from 'object-hash';
 
 let increment = 1;
 
-const rando = (...props) => {
-  if (props) {
-    if (props.length === 1) {
-      return hash(props);
-    }
-    return hash({ ...props });
-  }
-
+const rando = () => {
   let returnValue;
   while (
     (returnValue = Math.random()

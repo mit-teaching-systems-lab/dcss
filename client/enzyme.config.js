@@ -7,6 +7,11 @@ configure({ adapter: new Adapter() });
 if (window) {
   window.scrollTo = function() {};
   Element.prototype.scrollIntoView = function() {};
+  window.MediaRecorder = function() {};
+  window.MediaRecorder.prototype.start = jest.fn();
+  window.MediaRecorder.prototype.stop = jest.fn();
+
+  window.URL.createObjectURL = jest.fn();
 }
 
 jest.mock('react-beautiful-dnd', () => ({
