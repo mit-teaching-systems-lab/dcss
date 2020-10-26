@@ -26,7 +26,25 @@ export const runs = (state = [], action) => {
 
   switch (type) {
     case GET_RUNS_SUCCESS:
-      return runs;
+      const seen = {
+        /*
+        run.id: index
+         */
+      };
+      return [...state, ...runs]
+        .reduce((accum, run) => {
+          // If we've already seen this run, then it was already
+          // in "state" and we should replace it with the newer version.
+          const index = seen[run.id];
+          if (index !== undefined) {
+            accum[index] = run;
+          } else {
+            seen[run.id] = accum.length;
+            accum.push(run);
+          }
+          return accum;
+        }, [])
+        .sort((a, b) => a.id < b.id);
     default:
       return state;
   }

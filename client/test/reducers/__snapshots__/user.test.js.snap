@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`user GET_SESSION_SUCCESS 1`] = `
+Object {
+  "email": "super@email.com",
+  "id": 2,
+  "is_anonymous": false,
+  "is_super": true,
+  "personalname": "Super User",
+  "roles": Array [
+    "participant",
+    "super_admin",
+    "facilitator",
+    "researcher",
+  ],
+  "username": "super",
+}
+`;
+
+exports[`user GET_SESSION_SUCCESS 2`] = `
+Object {
+  "email": "super@email.com",
+  "id": 2,
+  "is_anonymous": false,
+  "is_super": true,
+  "personalname": "Super User",
+  "roles": Array [
+    "participant",
+    "super_admin",
+    "facilitator",
+    "researcher",
+  ],
+  "username": "super",
+}
+`;
+
+exports[`user GET_USER_SUCCESS 1`] = `
+Object {
+  "email": "super@email.com",
+  "id": 2,
+  "is_anonymous": false,
+  "is_super": true,
+  "personalname": "Super User",
+  "roles": Array [
+    "participant",
+    "super_admin",
+    "facilitator",
+    "researcher",
+  ],
+  "username": "super",
+}
+`;
+
+exports[`user GET_USER_SUCCESS 2`] = `
+Object {
+  "email": "super@email.com",
+  "id": 2,
+  "is_anonymous": false,
+  "is_super": true,
+  "personalname": "Super User",
+  "roles": Array [
+    "participant",
+    "super_admin",
+    "facilitator",
+    "researcher",
+  ],
+  "username": "super",
+}
+`;
+
+exports[`user SET_USER_SUCCESS 1`] = `
+Object {
+  "email": "super@email.com",
+  "id": 2,
+  "is_anonymous": false,
+  "is_super": true,
+  "personalname": "Super User",
+  "roles": Array [
+    "participant",
+    "super_admin",
+    "facilitator",
+    "researcher",
+  ],
+  "username": "super",
+}
+`;
+
+exports[`user SET_USER_SUCCESS 2`] = `
+Object {
+  "email": "super@email.com",
+  "id": 2,
+  "is_anonymous": false,
+  "is_super": true,
+  "personalname": "Super User",
+  "roles": Array [
+    "participant",
+    "super_admin",
+    "facilitator",
+    "researcher",
+  ],
+  "username": "super",
+}
+`;

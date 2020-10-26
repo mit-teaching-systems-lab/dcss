@@ -37,7 +37,7 @@ export const scenarios = (state = [], action) => {
     case DELETE_SCENARIO_SUCCESS:
     case UNLOCK_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
-      if (!scenario.id) {
+      if (!scenario || !scenario.id) {
         return [...state];
       }
 
@@ -77,7 +77,7 @@ export const scenariosById = (state = {}, action) => {
     case DELETE_SCENARIO_SUCCESS:
     case UNLOCK_SCENARIO_SUCCESS:
     case GET_SCENARIO_SUCCESS: {
-      if (!scenario.id) {
+      if (!scenario || !scenario.id) {
         return {
           ...state
         };
