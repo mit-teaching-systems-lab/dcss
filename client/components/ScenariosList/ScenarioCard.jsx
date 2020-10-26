@@ -28,6 +28,7 @@ class ScenarioCard extends React.Component {
       const originalScenario = this.state.scenario;
       originalScenario.deleted_at = null;
 
+      // TODO: move to async action
       await (
         await fetch(`/api/scenarios/${originalScenario.id}`, {
           method: 'POST',

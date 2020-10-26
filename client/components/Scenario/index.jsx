@@ -78,7 +78,7 @@ class Scenario extends Component {
   }
 
   get isScenarioRun() {
-    return location.pathname.includes('/run/');
+    return window.location.pathname.includes('/run/');
   }
 
   get isCohortScenarioRun() {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
 import { connect } from 'react-redux';
 import { Button, Form, Grid, Icon, Ref } from '@components/UI';
-import MicRecorder from 'mic-recorder-to-mp3';
+import Recorder from '@utils/Recorder';
 import AudioPlayer from './AudioPlayer';
 import Transcript from './Transcript';
 import Media, { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
@@ -33,9 +33,9 @@ class AudioRecorder extends Component {
     };
 
     this.created_at = new Date().toISOString();
-    this.recorder = new MicRecorder({ bitRate: 128 });
+    this.recorder = new Recorder({ bitRate: 128 });
     this.innerRef = this.innerRef.bind(this);
-    this.audioNode = null;
+    this.audioNode = this.props.audioNode || null;
 
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -44,15 +44,14 @@ class AudioRecorder extends Component {
   }
 
   get isScenarioRun() {
-    return location.pathname.includes('/run/');
+    return window.location.pathname.includes('/run/');
   }
 
   async componentDidMount() {
     if (!this.isScenarioRun) {
       return;
     }
-
-    let { getResponse, onChange, persisted = {}, responseId, run } = this.props;
+    let { persisted = {}, responseId, run } = this.props;
     let { name = responseId, transcript = '', value = '' } = persisted;
     let needsFulfillmentSignal = false;
     let hasPreviousResponse = false;
@@ -66,7 +65,7 @@ class AudioRecorder extends Component {
     }
 
     if (!value || !transcript) {
-      const previous = await getResponse({
+      const previous = await this.props.getResponse({
         id: run.id,
         responseId
       });
@@ -80,7 +79,15 @@ class AudioRecorder extends Component {
     }
 
     if ((value || transcript) && needsFulfillmentSignal) {
-      onChange({}, { name, transcript, value, isFulfilled: true });
+      this.props.onChange(
+        {},
+        {
+          name,
+          transcript,
+          value,
+          isFulfilled: true
+        }
+      );
     }
 
     const update = {
@@ -144,7 +151,8 @@ class AudioRecorder extends Component {
     this.setState({ isRecording: false, transcript: '(Transcribing)' });
 
     (async () => {
-      const [buffer, blob] = await this.recorder.stop().getMp3();
+      const mp3 = await this.recorder.stop().getMp3();
+      const [buffer, blob] = mp3;
       const blobURL = URL.createObjectURL(blob);
       const file = new File(buffer, 'recording.mp3', {
         type: blob.type,
@@ -298,8 +306,6 @@ class AudioRecorder extends Component {
       ...audioSrc
     };
 
-    // console.log('isFulfilled?', isFulfilled);
-
     return IS_AUDIO_RECORDING_SUPPORTED ? (
       <Fragment>
         <Grid>
@@ -376,6 +382,7 @@ AudioRecorder.defaultProps = {
 };
 
 AudioRecorder.propTypes = {
+  audioNode: PropTypes.object,
   autostart: PropTypes.bool,
   getResponse: PropTypes.func,
   instructions: PropTypes.string,
