@@ -22,9 +22,9 @@ import Username from '@components/User/Username';
 // Review is presently not in use, but will be introduced along
 // with more features for scenario collaboration.
 // import Review from './Review';
-import { makeDefaultDescription } from './scenario';
-import Slides from './Slides';
+import Slides from '@components/Editor/Slides';
 import Identity from '@utils/Identity';
+import { makeDefaultDescription } from './scenario';
 import {
   copyScenario,
   deleteScenario,
@@ -440,12 +440,6 @@ class Editor extends Component {
         <Icon name="play" />
       </Menu.Item.Tabbable>
     ) : null;
-
-    // const scenarioLockIcon = scenario.lock ? (
-    //   <Icon name="unlock" />
-    // ) : (
-    //   <Icon name="lock" />
-    // );
 
     const menuItemScenarioUnlock = isNotNew ? (
       <Menu.Item.Tabbable

@@ -12,12 +12,17 @@ const ClickableTableCell = props => {
   const hasChildren = children && children.length !== 0;
   const child = hasChildren ? children : content;
 
-  const link = href && child ? <Link to={href}>{child}</Link> : child;
+  const role = 'button';
+  const style = { cursor: 'pointer' };
+  const link = href && child ? (
+    <Link to={href}>{child}</Link>
+  ) : child;
 
   const cell = (
     <Table.Cell
       {...rest}
-      style={{ cursor: 'pointer' }}
+      role={role}
+      style={style}
       onClick={onClick}
       onTouchStart={onClick}
     >

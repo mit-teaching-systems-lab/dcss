@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import changeCase from 'change-case';
 import { Dropdown, Menu, Icon } from '@components/UI';
+import Identity from '@utils/Identity';
 
 let cachedStatusOptions = [];
 
@@ -80,7 +81,7 @@ class ScenarioStatusMenuItem extends React.Component {
 
     const options = this.state.statusOptions.map(
       ({ id, name, description }) => ({
-        key: id,
+        key: Identity.key({ id, name, description }),
         value: id,
         content: `${name} (${description})`
       })

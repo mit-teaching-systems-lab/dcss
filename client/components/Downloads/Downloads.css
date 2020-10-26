@@ -1,3 +1,23 @@
+.dl__left_col_empty {
+  border-bottom: 0px !important;
+  border-top: 0px !important;
+  background: white;
+  min-width: 47px;
+}
+
+.dl__left_col_icon {
+  border-right: 1px solid rgba(34,36,38,.1);
+  border-bottom: 0px;
+  border-top: 0px;
+  background: white;
+  min-width: 47px;
+}
+
+.dl__table tbody td {
+  min-height: 45px !important;
+  height: 45px !important;
+}
+
 .dl__button {
   /*background: none !important;*/
 }

@@ -13,31 +13,31 @@ import Storage from '@utils/Storage';
  * doesn't update when navigating to exact same component.
  */
 
-export const NewScenario = props => {
+export const NewScenario = (props = {}) => {
   return <Editor {...props} isNewScenario={true} />;
 };
 
-export const CopyScenario = props => {
+export const CopyScenario = (props = {}) => {
   return <Editor {...props} isCopyScenario={true} />;
 };
 
-export const ScenariosListAll = props => {
+export const ScenariosListAll = (props = {}) => {
   return <ScenariosList {...props} category="all" />;
 };
 
-export const ScenariosListAuthor = props => {
+export const ScenariosListAuthor = (props = {}) => {
   return <ScenariosList {...props} category="author" />;
 };
 
-export const ScenariosListCommunity = props => {
+export const ScenariosListCommunity = (props = {}) => {
   return <ScenariosList {...props} category="community" />;
 };
 
-export const ScenariosListOfficial = props => {
+export const ScenariosListOfficial = (props = {}) => {
   return <ScenariosList {...props} category="official" />;
 };
 
-export const Logout = props => {
+export const Logout = (props = {}) => {
   return <Login {...props} mode="logout" />;
 };
 
@@ -49,7 +49,7 @@ export const InterceptAnonymizableRoute = ({
   return (
     <Route
       {...rest}
-      render={props => {
+      render={(props = {}) => {
         return isLoggedIn ? children : <LoginRoutePromptModal {...props} />;
       }}
     />

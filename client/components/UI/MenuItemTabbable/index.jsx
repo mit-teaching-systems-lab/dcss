@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Menu } from 'semantic-ui-react';
+import { Menu, Popup } from 'semantic-ui-react';
 import Events from '@utils/Events';
 
 const noOp = () => {};
 
-const MenuItemTabbable = ({ children, ...props }) => {
+const MenuItemTabbable = ({ children, popup, ...props }) => {
   const onClick = props.onClick || noOp;
   const onAnyKeyUp = props.onKeyUp || noOp;
   const onKeyUp = (event, data) => {
@@ -22,10 +22,25 @@ const MenuItemTabbable = ({ children, ...props }) => {
     tabIndex
   };
 
-  return (
-    <Menu.Item tabIndex="0" {...menuItemProps}>
-      {children || null}
+  const nested = Array.isArray(children)
+    ? (children.length && children || null)
+    : children;
+
+  const menuItem = (
+    <Menu.Item {...menuItemProps}>
+      {nested || null}
     </Menu.Item>
+  );
+
+  return popup ? (
+    <Popup
+      inverted
+      size="tiny"
+      content={popup}
+      trigger={menuItem}
+    />
+  ) : (
+    menuItem
   );
 };
 
@@ -36,6 +51,7 @@ MenuItemTabbable.propTypes = {
   ]),
   onClick: PropTypes.func,
   onKeyUp: PropTypes.func,
+  popup: PropTypes.string,
   tabIndex: PropTypes.any
 };
 

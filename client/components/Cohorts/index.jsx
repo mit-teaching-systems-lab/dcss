@@ -24,7 +24,6 @@ import {
   setCohort,
   createCohort
 } from '@actions/cohort';
-import { computeItemsRowsPerPage } from '@utils/Layout';
 import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import ConfirmAuth from '@components/ConfirmAuth';
@@ -33,6 +32,7 @@ import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
 import CohortEmpty from './CohortEmpty';
+import { computeItemsRowsPerPage } from '@utils/Layout';
 import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
 
@@ -350,13 +350,7 @@ Cohorts.propTypes = {
   }).isRequired,
   cohorts: PropTypes.array,
   cohort: PropTypes.object,
-  status: PropTypes.oneOf(['success', 'error', 'requesting', 'init']),
   ids: PropTypes.arrayOf(PropTypes.number),
-  error: PropTypes.shape({
-    message: PropTypes.string,
-    stack: PropTypes.string,
-    status: PropTypes.oneOf([PropTypes.string, PropTypes.number])
-  }),
   createCohort: PropTypes.func,
   getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,

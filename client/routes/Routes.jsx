@@ -30,23 +30,23 @@ import {
   ScenariosListOfficial
 } from './RouteComponents';
 
-const makeEditorProps = props => ({
+const makeEditorProps = (props = {}) => ({
   ...props,
   activeNonZeroSlideIndex: Number(props.match.params.index || 1),
   scenarioId: props.match.params.id
 });
 
 const Routes = ({ isLoggedIn }) => {
-  const routeRenderAdmin = props => (
+  const routeRenderAdmin = (props = {}) => (
     <Admin {...props} isLoggedIn={isLoggedIn} />
   );
-  const routeRenderCohorts = props => (
+  const routeRenderCohorts = (props = {}) => (
     <Cohorts {...props} activeTab="cohorts" />
   );
-  const routeRenderCohort = props => <Cohort {...props} activeTab="cohort" />;
-  const routeRenderCohortRuns = props => <Cohort {...props} activeTab="runs" />;
-  const routeRenderDownloads = props => <Downloads {...props} />;
-  const routeRenderRun = props => <Run {...props} />;
+  const routeRenderCohort = (props = {}) => <Cohort {...props} activeTab="cohort" />;
+  const routeRenderCohortRuns = (props = {}) => <Cohort {...props} activeTab="runs" />;
+  const routeRenderDownloads = (props = {}) => <Downloads {...props} />;
+  const routeRenderRun = (props = {}) => <Run {...props} />;
   return (
     <Switch>
       <Route exact path="/" component={ScenariosListAll} />
@@ -158,7 +158,7 @@ const Routes = ({ isLoggedIn }) => {
           requiredPermission="create_scenario"
         >
           <Route
-            render={props => {
+            render={(props = {}) => {
               return (
                 <Editor {...makeEditorProps(props)} activeTab="scenario" />
               );
@@ -176,7 +176,7 @@ const Routes = ({ isLoggedIn }) => {
           requiredPermission="create_scenario"
         >
           <Route
-            render={props => {
+            render={(props = {}) => {
               return (
                 <Editor {...makeEditorProps(props)} activeTab="scenario" />
               );
@@ -194,7 +194,7 @@ const Routes = ({ isLoggedIn }) => {
           requiredPermission="create_scenario"
         >
           <Route
-            render={props => {
+            render={(props = {}) => {
               return <Editor {...makeEditorProps(props)} activeTab="slides" />;
             }}
           />
@@ -210,7 +210,7 @@ const Routes = ({ isLoggedIn }) => {
           requiredPermission="create_scenario"
         >
           <Route
-            render={props => {
+            render={(props = {}) => {
               return <Editor {...makeEditorProps(props)} activeTab="slides" />;
             }}
           />
@@ -226,7 +226,7 @@ const Routes = ({ isLoggedIn }) => {
           requiredPermission="create_scenario"
         >
           <Route
-            render={props => {
+            render={(props = {}) => {
               return <Editor {...makeEditorProps(props)} activeTab="preview" />;
             }}
           />
@@ -242,7 +242,7 @@ const Routes = ({ isLoggedIn }) => {
           requiredPermission="create_scenario"
         >
           <Route
-            render={props => {
+            render={(props = {}) => {
               return <Editor {...makeEditorProps(props)} activeTab="preview" />;
             }}
           />
@@ -255,7 +255,7 @@ const Routes = ({ isLoggedIn }) => {
       >
         <ConfirmAuth path="/editor/:id" requiredPermission="create_scenario">
           <Route
-            render={props => {
+            render={(props = {}) => {
               return (
                 <Editor {...makeEditorProps(props)} activeTab="scenario" />
               );

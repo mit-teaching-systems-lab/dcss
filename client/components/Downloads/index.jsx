@@ -31,7 +31,33 @@ import '../Cohorts/Cohort.css';
 import '../Cohorts/DataTable.css';
 import './Downloads.css';
 
-const ROWS_PER_PAGE = 20;
+const ROWS_PER_PAGE = 10;
+
+function getFilterSubject(filter, props) {
+  if (!filter) {
+    return null;
+  }
+
+  const subject = {
+    ...filter,
+    label: '',
+    contents: null
+  };
+
+  if (filter.type === 'cohort') {
+    let cohort = props.cohortsById[filter.id];
+    subject.label = cohort.name;
+    subject.contents = cohort;
+  }
+
+  if (filter.type === 'scenario') {
+    let scenario = props.scenariosById[filter.id];
+    subject.label = scenario.title;
+    subject.contents = scenario;
+  }
+
+  return subject;
+}
 
 class Downloads extends Component {
   constructor(props) {
@@ -175,7 +201,7 @@ class Downloads extends Component {
     };
 
     const downloadZipIcon = (
-      <Icon.Group size="big" className="ig__multiple-file">
+      <Icon.Group size="large" className="ig__multiple-file">
         <Icon name="file archive outline" />
         <Icon name="download" corner="top right" color="green" />
       </Icon.Group>
@@ -234,11 +260,18 @@ class Downloads extends Component {
                     verticalAlign="top"
                     aria-label={clabel}
                     popup={clabel}
-                    rowSpan={cohort.scenarios.length}
                     content={downloadZipIcon}
                     onClick={onDownloadByCohortClick}
                   />
-                ) : null}
+                ) : (
+                  <Table.Cell.Clickable
+                    className="dl__left_col_empty"
+                    verticalAlign="top"
+                    aria-label={clabel}
+                    popup={clabel}
+                    onClick={onDownloadByCohortClick}
+                  />
+                )}
 
                 <Table.Cell.Clickable
                   verticalAlign="top"
@@ -304,7 +337,7 @@ class Downloads extends Component {
               key={Identity.key({ scenario })}
               created_at={Date.now(scenario.created_at)}
             >
-              <Table.Cell style={{ minWidth: '47px' }}> </Table.Cell>
+              <Table.Cell className="dl__left_col_empty"> </Table.Cell>
               <Table.Cell.Clickable
                 verticalAlign="top"
                 popup={label}
@@ -343,12 +376,40 @@ class Downloads extends Component {
       downloadsIndex,
       downloadsIndex + ROWS_PER_PAGE
     );
-    const menuItemDownloadsCount = (
-      <Menu.Item.Tabbable key="menu-item-downloads-count">
+
+    const filterSubject = getFilterSubject(filter, this.props);
+    const menuItemDownloadsFilterDisplay = filterSubject
+      ? `Showing downloads for ${filterSubject.type} "${filterSubject.label}"`
+      : 'Downloads';
+
+    const menuItemDownloadsFilterClearLabel = filterSubject ?
+      `Clear filter for ${filterSubject.type} "${filterSubject.label}", and see all downloads.`
+      : null;
+
+    const menuItemDownloadsFilterClear = filterSubject ? (
+      <Menu.Item.Tabbable
+        key="menu-item-downloads-filter-clear"
+        aria-label={menuItemDownloadsFilterClearLabel}
+        popup={menuItemDownloadsFilterClearLabel}
+        onClick={() => {
+          this.props.history.push('/downloads');
+          this.setState({ filter: null });
+        }}
+      >
+        (See all)
+      </Menu.Item.Tabbable>
+    ) : null;
+
+    const menuItemDownloads = (
+      <Menu.Item.Tabbable
+        key="menu-item-downloads-count"
+        aria-label={menuItemDownloadsFilterDisplay}
+        popup={menuItemDownloadsFilterDisplay}
+      >
         <Icon.Group className="em__icon-group-margin">
           {downloadRunIcon.props.children}
         </Icon.Group>
-        Downloads ({downloads.length})
+        {menuItemDownloadsFilterDisplay} ({downloads.length})
       </Menu.Item.Tabbable>
     );
 
@@ -450,7 +511,8 @@ class Downloads extends Component {
         items={{
           left: [
             // filter ? menuItemFilterDisplay : menuItemDownloadsCount,
-            menuItemDownloadsCount
+            menuItemDownloads,
+            menuItemDownloadsFilterClear
           ],
           right: [
             // menuItemCohortSelect,
@@ -461,12 +523,6 @@ class Downloads extends Component {
         }}
       />
     );
-
-    const buttonProps = { compact: true, basic: true };
-
-    if (!filter) {
-      buttonProps.disabled = true;
-    }
 
     const fallbackCohortHeader = 'Cohort name';
 
@@ -494,24 +550,14 @@ class Downloads extends Component {
         <Title content="Downloads" />
         {menuBar}
         <Container fluid>
-          <Table role="grid" unstackable striped>
+          <Table className="dl__table" role="grid" unstackable definition>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell colSpan={2}>
-                  <Button
-                    {...buttonProps}
-                    onClick={() => {
-                      this.props.history.push('/downloads');
-                      this.setState({ filter: null });
-                    }}
-                  >
-                    <Icon.Group size="large">
-                      <Icon name="filter" />
-                      {filter ? (
-                        <Icon corner="top right" name="x" color="red" />
-                      ) : null}
-                    </Icon.Group>
-                  </Button>
+                <Table.HeaderCell>
+                  {' '}
+                </Table.HeaderCell>
+                <Table.HeaderCell>
+                  {' '}
                 </Table.HeaderCell>
                 <Table.HeaderCell className="dtr__cell-fluid-half-th">
                   {cohortSelect}
@@ -530,7 +576,7 @@ class Downloads extends Component {
                 </Table.Row>
               )}
             </Table.Body>
-            <Table.Footer>
+            <Table.Footer fullWidth>
               <Table.Row>
                 <Table.HeaderCell colSpan="4">
                   {downloadsPages > 1 ? (

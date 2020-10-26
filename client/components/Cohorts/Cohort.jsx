@@ -8,9 +8,9 @@ import Storage from '@utils/Storage';
 import { getCohort, linkUserToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
-import DataTable from './DataTable';
-import CohortParticipants from './CohortParticipants';
-import CohortScenarios from './CohortScenarios';
+import DataTable from '@components/Cohorts/DataTable';
+import CohortParticipants from '@components/Cohorts/CohortParticipants';
+import CohortScenarios from '@components/Cohorts/CohortScenarios';
 import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
 
