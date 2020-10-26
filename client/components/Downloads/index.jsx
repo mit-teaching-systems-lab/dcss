@@ -219,6 +219,11 @@ class Downloads extends Component {
               requestDownload({ cohort, scenarioId: id });
             };
 
+            const stitle = scenario && scenario.title || '';
+
+            const clabel = `Download a zip containing csv files containing responses for all scenarios in "${cohort.name}"`;
+            const slabel = `Download a csv file containing responses to only "${stitle}", from the cohort "${cohort.name}"`;
+
             return (
               <Table.Row
                 key={Identity.key({ ...cohort, id })}
@@ -227,7 +232,8 @@ class Downloads extends Component {
                 {index === 0 ? (
                   <Table.Cell.Clickable
                     verticalAlign="top"
-                    popup="Download a zip containing csv files containing responses for all scenarios in this cohort"
+                    aria-label={clabel}
+                    popup={clabel}
                     rowSpan={cohort.scenarios.length}
                     content={downloadZipIcon}
                     onClick={onDownloadByCohortClick}
@@ -236,7 +242,8 @@ class Downloads extends Component {
 
                 <Table.Cell.Clickable
                   verticalAlign="top"
-                  popup="Download a csv file containing responses to only this scenario, from this cohort"
+                  aria-label={slabel}
+                  popup={slabel}
                   content={downloadRunIcon}
                   onClick={onDownloadByScenarioRunClick}
                 />
@@ -290,6 +297,8 @@ class Downloads extends Component {
             return accum;
           }
 
+          const label = `Download a csv file containing responses to only "${scenario.title}"`;
+
           accum.push(
             <Table.Row
               key={Identity.key({ scenario })}
@@ -298,7 +307,8 @@ class Downloads extends Component {
               <Table.Cell style={{ minWidth: '47px' }}> </Table.Cell>
               <Table.Cell.Clickable
                 verticalAlign="top"
-                popup="Download a csv file containing responses to only this scenario"
+                popup={label}
+                aria-label={label}
                 content={downloadRunIcon}
                 onClick={onDownloadByScenarioRunClick}
               />
@@ -453,17 +463,31 @@ class Downloads extends Component {
     );
 
     const buttonProps = { compact: true, basic: true };
+
     if (!filter) {
       buttonProps.disabled = true;
     }
 
-    const cohortSelect = Layout.isNotForMobile()
+    const fallbackCohortHeader = 'Cohort name';
+
+    const nonMobileCohortSelect = menuItemCohortSelect
       ? menuItemCohortSelect.props.children
-      : 'Cohort name';
+      : fallbackCohortHeader;
+
+    const cohortSelect = Layout.isNotForMobile()
+      ? nonMobileCohortSelect
+      : fallbackCohortHeader;
+
+    const fallbackScenarioHeader = 'Scenario title';
+
+    const nonMobileScenarioSelect = menuItemScenarioSelect
+      ? menuItemScenarioSelect.props.children
+      : fallbackScenarioHeader;
 
     const scenarioSelect = Layout.isNotForMobile()
-      ? menuItemScenarioSelect.props.children
-      : 'Scenario title';
+      ? nonMobileScenarioSelect
+      : fallbackScenarioHeader;
+
 
     return (
       <Fragment>

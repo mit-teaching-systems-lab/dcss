@@ -6,6 +6,7 @@ function AddSlideMessage({ onClick }) {
   return (
     <Message
       icon
+      aria-label="Add a slide"
       onClick={onClick}
       style={{
         cursor: 'pointer',

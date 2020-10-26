@@ -239,7 +239,7 @@ class History extends Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body key={Identity.key(runsSlice)}>
+            <Table.Body key={Identity.key({runsSlice})}>
               {runsSlice.map(run => {
                 const {
                   run_id,
@@ -293,7 +293,6 @@ class History extends Component {
 
                 const cohort = cohortsById[cohort_id];
                 const cohortPathname = cohort ? `/cohort/${cohort_id}` : null;
-
                 const cohortDisplay = cohort ? cohort.name : null;
 
                 const onViewRunDataClick = (event, props) => {
@@ -305,24 +304,26 @@ class History extends Component {
                 };
 
                 const cohortRunData = run_ended_at
-                  ? 'View your data for this scenario run, from this cohort'
-                  : 'Finish this scenario to view your data';
+                  ? `View your data for this scenario run, from cohort "${cohortDisplay}"`
+                  : `Finish this "${scenario_title}" to view your data`;
 
                 const nonCohortRunData = run_ended_at
-                  ? 'View your data for this scenario run'
-                  : 'Finish this scenario to view your data';
+                  ? `View your data for this run of scenario "${scenario_title}"`
+                  : `Finish this "${scenario_title}" to view your data`;
 
                 const popupContent = cohort ? cohortRunData : nonCohortRunData;
 
                 const viewDataIcon = run_ended_at ? (
                   <Table.Cell.Clickable
                     className="h__table-cell-first"
+                    aria-label={popupContent}
                     content={<Icon name="file alternate outline" />}
                     onClick={onViewRunDataClick}
                   />
                 ) : (
                   <Table.Cell
                     className="h__table-cell-first"
+                    aria-label={popupContent}
                     content={<Icon name="file alternate outline" disabled />}
                   />
                 );
@@ -332,7 +333,7 @@ class History extends Component {
                   : 'h__col-medium';
 
                 return (
-                  <Table.Row {...completeOrIncomplete} key={run_id}>
+                  <Table.Row {...completeOrIncomplete} key={Identity.key(run)}>
                     <Popup
                       inverted
                       size="tiny"
