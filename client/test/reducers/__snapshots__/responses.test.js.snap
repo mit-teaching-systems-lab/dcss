@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`responses GET_RESPONSE_SUCCESS 2 1`] = `
+Array [
+  Object {
+    "id": 1,
+    "response": Object {
+      "id": 1,
+    },
+    "response_id": "ABC",
+  },
+]
+`;
+
+exports[`responses GET_RESPONSES_SUCCESS 1 1`] = `
+Array [
+  Object {
+    "id": 1,
+    "response": Object {
+      "id": 1,
+    },
+    "response_id": "ABC",
+  },
+  Object {
+    "id": 2,
+    "response": Object {
+      "id": 2,
+    },
+    "response_id": "DEF",
+  },
+  Object {
+    "id": 3,
+    "response": Object {
+      "id": 3,
+    },
+    "response_id": "GHI",
+  },
+]
+`;
+
+exports[`responses GET_RESPONSES_SUCCESS 1 2`] = `
+Object {
+  "ABC": Object {
+    "id": 1,
+    "response": Object {
+      "id": 1,
+    },
+    "response_id": "ABC",
+  },
+  "DEF": Object {
+    "id": 2,
+    "response": Object {
+      "id": 2,
+    },
+    "response_id": "DEF",
+  },
+  "GHI": Object {
+    "id": 3,
+    "response": Object {
+      "id": 3,
+    },
+    "response_id": "GHI",
+  },
+}
+`;
+
+exports[`responses GET_RESPONSES_SUCCESS 2 1`] = `
+Object {
+  "ABC": Object {
+    "id": 1,
+    "response": Object {
+      "id": 1,
+    },
+    "response_id": "ABC",
+  },
+  "DEF": Object {
+    "id": 2,
+    "response": Object {
+      "id": 2,
+    },
+    "response_id": "DEF",
+  },
+  "GHI": Object {
+    "id": 3,
+    "response": Object {
+      "id": 3,
+    },
+    "response_id": "GHI",
+  },
+}
+`;
+
+exports[`responses GET_RESPONSES_SUCCESS 3 1`] = `
+Array [
+  Object {
+    "id": 1,
+    "response": Object {
+      "id": 1,
+    },
+  },
+  Object {
+    "id": 2,
+    "response": Object {
+      "id": 2,
+    },
+    "response_id": "DEF",
+  },
+  Object {
+    "id": 3,
+    "response": Object {
+      "id": 3,
+    },
+    "response_id": "GHI",
+  },
+]
+`;
+
+exports[`responses GET_RESPONSES_SUCCESS 3 2`] = `
+Object {
+  "DEF": Object {
+    "id": 2,
+    "response": Object {
+      "id": 2,
+    },
+    "response_id": "DEF",
+  },
+  "GHI": Object {
+    "id": 3,
+    "response": Object {
+      "id": 3,
+    },
+    "response_id": "GHI",
+  },
+}
+`;
