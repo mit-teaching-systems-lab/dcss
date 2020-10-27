@@ -33,7 +33,7 @@ class Login extends Component {
       password
     };
 
-    this.onCreateAccountClick = this.onCreateAccountClick.bind(this);
+    // this.onCreateAccountClick = this.onCreateAccountClick.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -43,11 +43,15 @@ class Login extends Component {
     if (mode === 'logout') {
       this.doLogout();
     }
+
+    if (mode === 'reset') {
+      this.doLogout();
+    }
   }
 
-  onCreateAccountClick() {
-    this.props.history.push('/login/create-account');
-  }
+  // onCreateAccountClick() {
+  //   this.props.history.push('/login/create-account');
+  // }
 
   onChange(event, { name, value }) {
     this.setState({ [name]: value });
@@ -118,6 +122,10 @@ class Login extends Component {
       messageProps.hidden = false;
     }
 
+    const style = {
+      width: '33%'
+    };
+
     return (
       <Modal.Accessible open>
         <Modal open role="dialog" aria-modal="true" size="small">
@@ -151,21 +159,25 @@ class Login extends Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column>
+                  <Button
+                    primary
+                    size="large"
+                    type="submit"
+                    onClick={onSubmit}
+                    style={{width: '100%'}}
+                  >
+                    Log in
+                  </Button>
                   <Button.Group fluid>
-                    <Button
-                      primary
-                      size="large"
-                      type="submit"
-                      onClick={onSubmit}
-                    >
-                      Log in
+                    <Button to="/login/reset" size="large" as={NavLink} style={style}>
+                      Reset Password
                     </Button>
                     <Button.Or />
-                    <Button size="large" onClick={onCreateAccountClick}>
+                    <Button to="/login/create-account" size="large" as={NavLink} style={style}>
                       Create an account
                     </Button>
                     <Button.Or />
-                    <Button to="/scenarios/" size="large" as={NavLink}>
+                    <Button to="/scenarios/" size="large" as={NavLink} style={style}>
                       Go back to scenarios
                     </Button>
                   </Button.Group>

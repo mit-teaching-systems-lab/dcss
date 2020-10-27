@@ -5,6 +5,7 @@ const {
   createUser,
   loginUser,
   requireUser,
+  resetUserPassword,
   respondWithUser,
   respondWithUserAndUpdatedSession,
   updateUser
@@ -25,6 +26,11 @@ router.post('/signup', [
   checkForDuplicate,
   createUser,
   respondWithUser
+]);
+
+router.post('/reset', [
+  validateRequestBody,
+  resetUserPassword
 ]);
 
 router.post('/update', [

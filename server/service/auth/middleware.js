@@ -1,3 +1,7 @@
+const Sendgrid = require('sendgrid')(process.env.SENDGRID_API_KEY);
+const Nodemailer = require('nodemailer');
+const Crypto = require('crypto-js');
+const generatePassword = require('password-generator');
 const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
 const db = require('./db');
@@ -111,7 +115,7 @@ async function loginUserAsync(req, res, next) {
   // Case when user is found
   if (existing) {
     const user = await db.getUserById(existing.id);
-    const { salt, hash } = existing;
+    const { single_use_password, salt, hash } = existing;
 
     // Case when a user with a password is attempts to
     // log in without a password
@@ -146,6 +150,15 @@ async function loginUserAsync(req, res, next) {
     req.session.user = {
       ...user
     };
+
+    if (single_use_password) {
+      await db.updateUser(user.id, {
+        single_use_password: false,
+        password: ''
+      });
+    }
+
+
     return next();
   }
 
@@ -154,8 +167,116 @@ async function loginUserAsync(req, res, next) {
   throw error;
 }
 
+async function resetUserPasswordAsync(req, res) {
+
+  // First, check if this is a raw email address. If it is,
+  // don't do the reset.
+  {
+    const { email } = req.body;
+    const existing = await db.getUserByProps({ email });
+    if (existing) {
+      res.json({ reset: false });
+    }
+  }
+
+  const email = Crypto.AES.decrypt(
+    req.body.email,
+    process.env.SESSION_SECRET || 'mit tsl teacher moments'
+  ).toString(Crypto.enc.Utf8);
+
+  console.log(email);
+
+  const user = await db.getUserByProps({ email });
+  let reset = true;
+
+  if (user) {
+    // 1. Make a new password.
+    let password = generatePassword(12, false, /[\w\d\?\-]/, '');
+
+    // 2. Update the user account with new password.
+    await db.updateUser(user.id, {
+      single_use_password: true,
+      password,
+    });
+
+    console.log(password);
+    // 3. Email the temporary password to the user.
+    //
+    const subject = `${process.env.DCSS_BRAND_NAME_TITLE || ''} Single Use Password Request`.trim();
+    const text = `
+You are receiving this email because you (or someone else) have made a request to reset your ${process.env.DCSS_BRAND_NAME_TITLE || ''} password.
+The following password may only be used once. After you've logged in, go to Settings and update your password.
+\n\n
+Single use password: ${password}\n\n
+`;
+    if (process.env.SENDGRID_API_KEY) {
+      const request = Sendgrid.emptyRequest({
+        method: 'POST',
+        path: '/v3/mail/send',
+        body: {
+          personalizations: [
+            {
+              to: [
+                {
+                  email,
+                },
+              ],
+              subject,
+            },
+          ],
+          from: {
+            email: 'no-reply@example.com',
+          },
+          content: [
+            {
+              type: 'text/plain',
+              value: text,
+            },
+          ],
+        },
+      });
+
+      try {
+        await Sendgrid.API(request);
+
+      } catch (error) {
+        error.status = 401;
+        throw error;
+      }
+    } else {
+      const transport = Nodemailer.createTransport({
+        host: 'smtp.mailtrap.io',
+        port: 2525,
+        auth: {
+          user: process.env.NODEMAILER_EMAIL,
+          pass: process.env.NODEMAILER_PASS
+        }
+      });
+
+      const mailOptions = {
+        to: email,
+        from: 'no-reply@example.com',
+        subject,
+        text
+      };
+
+      try {
+        await transport.sendMail(mailOptions);
+      } catch (error) {
+        error.status = 401;
+        throw error;
+      }
+    }
+  } else {
+    reset = false
+  }
+
+  return res.json({ reset });
+}
+
 exports.createUser = asyncMiddleware(createUserAsync);
 exports.loginUser = asyncMiddleware(loginUserAsync);
+exports.resetUserPassword = asyncMiddleware(resetUserPasswordAsync);
 exports.updateUser = asyncMiddleware(updateUserAsync);
 exports.checkForDuplicate = asyncMiddleware(checkForDuplicateAsync);
 exports.respondWithUserAndUpdatedSession = asyncMiddleware(

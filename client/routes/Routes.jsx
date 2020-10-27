@@ -12,6 +12,7 @@ import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAcc
 import Editor from '@components/Editor';
 import ForOhFor from '@components/ForOhFor';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
+import ResetRoutePromptModal from '@components/Login/ResetRoutePromptModal';
 import Login from '@components/Login';
 import History from '@components/History';
 
@@ -318,6 +319,14 @@ const Routes = ({ isLoggedIn }) => {
         isLoggedIn={isLoggedIn}
       >
         <Route component={LoginRoutePromptModal} />
+      </RedirectRouteForActiveSession>
+
+      <RedirectRouteForActiveSession
+        exact
+        path="/login/reset"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route component={ResetRoutePromptModal} />
       </RedirectRouteForActiveSession>
 
       <RedirectRouteForActiveSession

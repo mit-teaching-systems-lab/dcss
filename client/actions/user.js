@@ -1,3 +1,4 @@
+import Crypto from 'crypto-js';
 import {
   GET_SESSION_SUCCESS,
   GET_SESSION_ERROR,
@@ -65,6 +66,32 @@ export let setUser = data => async dispatch => {
     }
   } catch (error) {
     dispatch({ type: SET_USER_ERROR, error });
+    return null;
+  }
+};
+
+export let resetPassword = data => async dispatch => {
+  try {
+    if (Object.values(data).length) {
+      data.email = Crypto.AES.encrypt(data.email, SESSION_SECRET).toString();
+      const body = JSON.stringify(data);
+      const res = await (
+        await fetch('/api/auth/reset', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body
+        })
+      ).json();
+
+      if (res.error) {
+        throw res;
+      }
+      const { reset } = res;
+      return reset;
+    }
+  } catch (error) {
     return null;
   }
 };

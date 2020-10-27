@@ -53,6 +53,7 @@
     "compression-webpack-plugin": "^4.0.0",
     "copy-text-to-clipboard": "^2.1.1",
     "copy-webpack-plugin": "^5.0.4",
+    "crypto-js": "^4.0.0",
     "css-loader": "^3.2.0",
     "deep-diff": "^1.0.2",
     "deep-object-diff": "^1.1.0",

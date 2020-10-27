@@ -92,6 +92,9 @@ module.exports = {
     ]),
     // Optimize moment locales
     new MomentLocalesPlugin(),
+    new DefinePlugin({
+      SESSION_SECRET: `"${process.env.SESSION_SECRET || 'mit tsl teacher moments'}"`
+    }),
     new DefinePlugin(DCSS_BRAND_VARS)
     // TODO: enable this compression
     // new CompressionPlugin({
