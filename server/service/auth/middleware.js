@@ -1,4 +1,4 @@
-const Sendgrid = require('sendgrid')(process.env.SENDGRID_API_KEY);
+const Sendgrid = require('@sendgrid/mail');
 const Nodemailer = require('nodemailer');
 const Crypto = require('crypto-js');
 const generatePassword = require('password-generator');
@@ -6,6 +6,8 @@ const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
 const db = require('./db');
 // const { getUserRoles } = require('../roles/db');
+
+Sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.requireUser = (req, res, next) => {
   if (!req.session.user) {
@@ -199,7 +201,6 @@ async function resetUserPasswordAsync(req, res) {
       password,
     });
 
-    console.log(password);
     // 3. Email the temporary password to the user.
     //
     const subject = `${process.env.DCSS_BRAND_NAME_TITLE || ''} Single Use Password Request`.trim();
@@ -209,37 +210,18 @@ The following password may only be used once. After you've logged in, go to Sett
 \n\n
 Single use password: ${password}\n\n
 `;
+    const message = {
+      to: email,
+      from: process.env.SENDGRID_SENDER,
+      subject,
+      text
+    };
     if (process.env.SENDGRID_API_KEY) {
-      const request = Sendgrid.emptyRequest({
-        method: 'POST',
-        path: '/v3/mail/send',
-        body: {
-          personalizations: [
-            {
-              to: [
-                {
-                  email,
-                },
-              ],
-              subject,
-            },
-          ],
-          from: {
-            email: 'no-reply@example.com',
-          },
-          content: [
-            {
-              type: 'text/plain',
-              value: text,
-            },
-          ],
-        },
-      });
 
       try {
-        await Sendgrid.API(request);
-
+        await Sendgrid.send(message);
       } catch (error) {
+        console.log("SENDGRID:", error);
         error.status = 401;
         throw error;
       }
@@ -253,15 +235,8 @@ Single use password: ${password}\n\n
         }
       });
 
-      const mailOptions = {
-        to: email,
-        from: 'no-reply@example.com',
-        subject,
-        text
-      };
-
       try {
-        await transport.sendMail(mailOptions);
+        await transport.sendMail(message);
       } catch (error) {
         error.status = 401;
         throw error;
