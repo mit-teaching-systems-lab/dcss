@@ -74,6 +74,7 @@ export let resetPassword = data => async dispatch => {
   try {
     if (Object.values(data).length) {
       data.email = Crypto.AES.encrypt(data.email, SESSION_SECRET).toString();
+      data.href = location.href;
       const body = JSON.stringify(data);
       const res = await (
         await fetch('/api/auth/reset', {

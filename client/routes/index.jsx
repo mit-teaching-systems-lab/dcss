@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { logIn } from '@actions/login';
+import { setIsLoggedIn } from '@actions/login';
 import { getSession } from '@actions/user';
 
 import Notification from '@components/Notification';
@@ -38,7 +38,7 @@ class App extends Component {
           await fetch('/api/roles/permission')
         ).json();
 
-        await this.props.logIn({
+        await this.props.setIsLoggedIn({
           ...this.props.user,
           permissions
         });
@@ -71,7 +71,7 @@ class App extends Component {
 App.propTypes = {
   getSession: PropTypes.func,
   isLoggedIn: PropTypes.bool,
-  logIn: PropTypes.func,
+  setIsLoggedIn: PropTypes.func,
   user: PropTypes.object
 };
 
@@ -83,7 +83,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getSession: options => dispatch(getSession(options)),
-  logIn: params => dispatch(logIn(params))
+  setIsLoggedIn: params => dispatch(setIsLoggedIn(params))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

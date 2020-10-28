@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
-import { logOut } from '@actions/login';
+import { logIn, logOut } from '@actions/login';
 import './Login.css';
 
 const method = 'POST';
@@ -49,10 +49,6 @@ class Login extends Component {
     }
   }
 
-  // onCreateAccountClick() {
-  //   this.props.history.push('/login/create-account');
-  // }
-
   onChange(event, { name, value }) {
     this.setState({ [name]: value });
   }
@@ -63,24 +59,7 @@ class Login extends Component {
   }
 
   async doLogin() {
-    let { from, username, password } = this.state;
-
-    username = username.trim();
-
-    const body = JSON.stringify({
-      username,
-      password
-    });
-
-    const { error, message } = await (
-      await fetch('/api/auth/login', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method,
-        body
-      })
-    ).json();
+    const { error, message } = await this.props.logIn(this.state);
 
     if (error) {
       this.setState({
@@ -89,6 +68,7 @@ class Login extends Component {
         }
       });
     } else {
+      const { from } = this.state;
       // Step outside of react to force a real reload
       // after signup and session create
       //
@@ -204,6 +184,7 @@ Login.propTypes = {
   }).isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   location: PropTypes.object,
+  logIn: PropTypes.func.isRequired,
   logOut: PropTypes.func.isRequired,
   mode: PropTypes.string,
   username: PropTypes.string
@@ -214,8 +195,9 @@ const mapStateToProps = state => {
   return { isLoggedIn, username, permissions };
 };
 
-const mapDispatchToProps = {
-  logOut
-};
+const mapDispatchToProps = dispatch => ({
+  logIn: params => dispatch(logIn(params)),
+  logOut: () => dispatch(logOut()),
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

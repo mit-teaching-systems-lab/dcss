@@ -111,7 +111,12 @@ async function updateUserAsync(req, res, next) {
 }
 
 async function loginUserAsync(req, res, next) {
-  const { username, email, password } = req.body;
+  const { username, email } = req.body;
+  const password = Crypto.AES.decrypt(
+    req.body.password,
+    process.env.SESSION_SECRET || 'mit tsl teacher moments'
+  ).toString(Crypto.enc.Utf8);
+
   const existing = await db.getUserByProps({ username, email });
 
   // Case when user is found
@@ -183,6 +188,7 @@ async function resetUserPasswordAsync(req, res) {
     }
   }
 
+  const href = req.body.href.replace(/\/reset/, '');
   const email = Crypto.AES.decrypt(
     req.body.email,
     process.env.SESSION_SECRET || 'mit tsl teacher moments'
@@ -204,18 +210,30 @@ async function resetUserPasswordAsync(req, res) {
 
     // 3. Email the temporary password to the user.
     //
-    const subject = `${process.env.DCSS_BRAND_NAME_TITLE || ''} Single Use Password Request`.trim();
+    const subject = `${process.env.DCSS_BRAND_NAME_TITLE || ''} Single-use password request`.trim();
     const text = `
-You are receiving this email because you (or someone else) have made a request to reset your ${process.env.DCSS_BRAND_NAME_TITLE || ''} password.
+You are receiving this email because you (or someone else) made a request to reset your ${process.env.DCSS_BRAND_NAME_TITLE || ''} password.
 The following password may only be used once. After you've logged in, go to Settings and update your password.
 \n\n
-Single use password: ${password}\n\n
+Single-use password: ${password}\n\n
+
+Manage your account here: ${href}
+`;
+    const html = `<p>You are receiving this email because you (or someone else) made a request to reset your ${process.env.DCSS_BRAND_NAME_TITLE || ''} password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+<p>
+Single-use password: <code>${password}</code>
+</p>
+
+<p>
+<a href="${href}">Manage your account here</a>
+</p>
 `;
     const message = {
       to: email,
-      from: process.env.SENDGRID_SENDER,
+      from: `${process.env.DCSS_BRAND_NAME_TITLE || ''} <${process.env.SENDGRID_SENDER}>`,
       subject,
-      text
+      text,
+      html
     };
     if (process.env.SENDGRID_API_KEY) {
 
