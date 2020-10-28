@@ -16,8 +16,6 @@
   "devDependencies": {
     "artillery": "^1.6.0-29",
     "eslint": "^6.2.2",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
     "jest": "^26.6.0",
     "prettier": "^1.18.2",
     "supertest": "^5.0.0"
