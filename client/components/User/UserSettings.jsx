@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
 import { getUser, setUser } from '@actions/user';
 import './User.css';
@@ -146,8 +147,12 @@ class UserSettings extends Component {
   }
 
   onCancel() {
-    this.setState({ open: false });
-    this.props.onCancel();
+    if (this.props.onCancel) {
+      this.setState({ open: false });
+      this.props.onCancel();
+    } else {
+      this.props.history.push('/scenarios');
+    }
   }
 
   render() {
@@ -297,6 +302,9 @@ class UserSettings extends Component {
 }
 
 UserSettings.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired
+  }).isRequired,
   errors: PropTypes.object,
   getUser: PropTypes.func,
   setUser: PropTypes.func,
@@ -315,4 +323,9 @@ const mapDispatchToProps = dispatch => ({
   getUser: () => dispatch(getUser())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(UserSettings)
+);

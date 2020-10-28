@@ -1,11 +1,11 @@
-import { LOG_IN, LOG_OUT } from '@actions/types';
+import { LOG_OUT, SET_IS_LOGGED_IN } from '@actions/types';
 
 import { loginInitialState } from './initial-states';
 
 export default function(state = loginInitialState, action) {
   const { login, type } = action;
   switch (type) {
-    case LOG_IN: {
+    case SET_IS_LOGGED_IN: {
       return {
         ...state,
         ...login

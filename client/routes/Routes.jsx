@@ -4,19 +4,18 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import Admin from '@components/Admin';
-import Cohorts from '@components/Cohorts';
 import Cohort from '@components/Cohorts/Cohort';
+import Cohorts from '@components/Cohorts';
 import ConfirmAuth from '@components/ConfirmAuth';
 import CreateAccount from '@components/CreateAccount';
 import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';
+import Downloads from '@components/Downloads';
 import Editor from '@components/Editor';
 import ForOhFor from '@components/ForOhFor';
+import History from '@components/History';
+import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import ResetRoutePromptModal from '@components/Login/ResetRoutePromptModal';
-import Login from '@components/Login';
-import History from '@components/History';
-
-import Downloads from '@components/Downloads';
 import Run from '@components/Run';
 import {
   CopyScenario,
@@ -30,6 +29,7 @@ import {
   ScenariosListCommunity,
   ScenariosListOfficial
 } from './RouteComponents';
+import UserSettings from '@components/User/UserSettings';
 
 const makeEditorProps = (props = {}) => ({
   ...props,
@@ -37,17 +37,25 @@ const makeEditorProps = (props = {}) => ({
   scenarioId: props.match.params.id
 });
 
-const Routes = ({ isLoggedIn }) => {
+const Routes = ({ isLoggedIn, user }) => {
   const routeRenderAdmin = (props = {}) => (
     <Admin {...props} isLoggedIn={isLoggedIn} />
   );
   const routeRenderCohorts = (props = {}) => (
     <Cohorts {...props} activeTab="cohorts" />
   );
-  const routeRenderCohort = (props = {}) => <Cohort {...props} activeTab="cohort" />;
-  const routeRenderCohortRuns = (props = {}) => <Cohort {...props} activeTab="runs" />;
+  const routeRenderCohort = (props = {}) => (
+    <Cohort {...props} activeTab="cohort" />
+  );
+  const routeRenderCohortRuns = (props = {}) => (
+    <Cohort {...props} activeTab="runs" />
+  );
   const routeRenderDownloads = (props = {}) => <Downloads {...props} />;
   const routeRenderRun = (props = {}) => <Run {...props} />;
+  const routeRenderUserSettings = (props = {}) => (
+    <UserSettings {...props} user={user} open={true} />
+  );
+
   return (
     <Switch>
       <Route exact path="/" component={ScenariosListAll} />
@@ -308,6 +316,14 @@ const Routes = ({ isLoggedIn }) => {
         <ConfirmAuth path="/downloads" requiredPermission="view_run_data">
           <Route exact component={Downloads} />
         </ConfirmAuth>
+      </RedirectRouteForInactiveSession>
+
+      <RedirectRouteForInactiveSession
+        exact
+        path="/settings"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderUserSettings} />
       </RedirectRouteForInactiveSession>
 
       <Route exact path="/logout" component={Logout} />
