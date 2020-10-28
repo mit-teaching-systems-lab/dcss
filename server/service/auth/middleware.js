@@ -171,8 +171,10 @@ async function loginUserAsync(req, res, next) {
 
 async function resetUserPasswordAsync(req, res) {
 
-  // First, check if this is a raw email address. If it is,
-  // don't do the reset.
+  // First, check if this is a raw email address.
+  // If it is, don't do the reset. We should only
+  // receive encoded email values. That prevents
+  // this endpoint from becoming a spam generator.
   {
     const { email } = req.body;
     const existing = await db.getUserByProps({ email });
@@ -186,10 +188,9 @@ async function resetUserPasswordAsync(req, res) {
     process.env.SESSION_SECRET || 'mit tsl teacher moments'
   ).toString(Crypto.enc.Utf8);
 
-  console.log(email);
-
   const user = await db.getUserByProps({ email });
   let reset = true;
+  let reason = 'Success';
 
   if (user) {
     // 1. Make a new password.
@@ -243,10 +244,11 @@ Single use password: ${password}\n\n
       }
     }
   } else {
-    reset = false
+    reset = false;
+    reason = 'The email provided does not match any existing account.';
   }
 
-  return res.json({ reset });
+  return res.json({ reset, reason });
 }
 
 exports.createUser = asyncMiddleware(createUserAsync);
