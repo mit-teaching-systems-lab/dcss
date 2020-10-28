@@ -23,7 +23,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
   Storage.has.mockRestore();
   Storage.delete.mockRestore();
 });
@@ -36,9 +36,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  fetch.mockReset();
-  Storage.has.mockReset();
-  Storage.delete.mockReset();
+  jest.resetAllMocks();
 });
 
 test('SET_USERS_SUCCESS', async () => {

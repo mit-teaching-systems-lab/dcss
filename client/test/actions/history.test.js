@@ -13,7 +13,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -21,7 +21,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
 });
 
 test('GET_RUN_HISTORY_SUCCESS', async () => {

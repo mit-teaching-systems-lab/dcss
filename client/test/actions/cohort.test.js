@@ -21,7 +21,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -30,7 +30,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
 });
 
 test('CREATE_COHORT_SUCCESS', async () => {

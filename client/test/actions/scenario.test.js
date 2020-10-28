@@ -9,7 +9,6 @@ import {
 
 import * as actions from '../../actions/scenario';
 import * as types from '../../actions/types';
-import Storage from '../../util/Storage';
 jest.mock('../../util/Storage');
 
 const error = new Error('something unexpected happened on the server');
@@ -18,27 +17,19 @@ let store;
 
 beforeAll(() => {
   (window || global).fetch = jest.fn();
-  Storage.has = jest.fn();
-  Storage.delete = jest.fn();
 });
 
 afterAll(() => {
-  fetch.mockRestore();
-  Storage.has.mockRestore();
-  Storage.delete.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
   store = createPseudoRealStore({});
   fetch.mockImplementation(() => {});
-  Storage.has.mockImplementation(() => true);
-  Storage.delete.mockImplementation(() => {});
 });
 
 afterEach(() => {
-  fetch.mockReset();
-  Storage.has.mockReset();
-  Storage.delete.mockReset();
+  jest.resetAllMocks();
 });
 
 test('COPY_SCENARIO_SUCCESS', async () => {

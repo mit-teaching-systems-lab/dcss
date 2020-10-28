@@ -28,18 +28,18 @@ describe('login', () => {
     assert.deepEqual(reducer(undefined, {}), loginInitialState);
   });
 
-  test('LOG_IN', () => {
+  test('SET_IS_LOGGED_IN', () => {
     const action = {
-      type: types.LOG_IN,
+      type: types.SET_IS_LOGGED_IN,
       login
     };
     assert.deepEqual(reducer(undefined, action), login);
     assert.deepEqual(reducer(undefined, action), login);
   });
 
-  test('LOG_IN', () => {
+  test('SET_IS_LOGGED_IN', () => {
     const action = {
-      type: types.LOG_IN,
+      type: types.SET_IS_LOGGED_IN,
       login
     };
     assert.deepEqual(reducer(state, action), login);

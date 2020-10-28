@@ -20,8 +20,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
-  Storage.clear.mockRestore();
+  jest.restoreAllMocks();
 });
 
 beforeEach(() => {
@@ -31,18 +30,17 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  fetch.mockReset();
-  Storage.clear.mockReset();
+  jest.resetAllMocks();
 });
 
-test('LOG_IN', async () => {
+test('SET_IS_LOGGED_IN', async () => {
   const login = {
     username: 'me',
     permissions: ['a', 'b', 'c'],
     otherdata: true
   };
 
-  await store.dispatch(actions.logIn(login));
+  await store.dispatch(actions.setIsLoggedIn(login));
   assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
     ...login
@@ -56,7 +54,7 @@ test('LOG_OUT', async () => {
     otherdata: true
   };
 
-  await store.dispatch(actions.logIn(login));
+  await store.dispatch(actions.setIsLoggedIn(login));
   assert.deepEqual(store.getState().login, {
     isLoggedIn: true,
     ...login

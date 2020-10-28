@@ -23,7 +23,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  fetch.mockRestore();
+  jest.restoreAllMocks();
   Storage.has.mockRestore();
   Storage.delete.mockRestore();
 });
@@ -36,7 +36,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  fetch.mockReset();
+  jest.resetAllMocks();
   Storage.has.mockReset();
   Storage.delete.mockReset();
 });
