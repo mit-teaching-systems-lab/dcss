@@ -175,7 +175,7 @@ export class Cohorts extends React.Component {
       onPageChange
     } = this;
 
-    const { user } = this.props;
+    const { user, permissions } = this.props;
 
     const defaultRowCount = 2;
     const { itemsPerPage, rowsPerPage } = computeItemsRowsPerPage({
@@ -224,7 +224,7 @@ export class Cohorts extends React.Component {
       ) : null;
 
     const left = [
-      user.permissions.includes('create_cohort')
+      permissions.includes('create_cohort')
         ? menuItemCreateCohorts
         : menuItemCountCohorts
     ];
@@ -365,13 +365,14 @@ Cohorts.propTypes = {
     }).isRequired
   }).isRequired,
   getUser: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
+  permissions: PropTypes.array,
 };
 
 const mapStateToProps = state => {
   const { permissions } = state.session;
   const { cohort, cohorts, scenarios, user } = state;
-  return { cohort, cohorts, scenarios, user: { ...user, permissions } };
+  return { cohort, cohorts, permissions, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({

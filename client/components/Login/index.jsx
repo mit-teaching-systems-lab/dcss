@@ -67,10 +67,6 @@ class Login extends Component {
     } else {
       const { from } = this.state;
       // Step outside of react to force a real reload
-      // after signup and session create
-      //
-      // TODO: assess whether this should be necessary or not.
-      //
       location.href = from ? `${from.pathname}${from.search}` : '/';
     }
   }
@@ -202,8 +198,8 @@ Login.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn, permissions } = state.session;
-  return { isLoggedIn, permissions };
+  const { isLoggedIn } = state.session;
+  return { isLoggedIn };
 };
 
 const mapDispatchToProps = dispatch => ({

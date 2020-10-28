@@ -296,25 +296,21 @@ Cohort.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id) || ownProps.id;
-  const { permissions } = state.session;
   const { cohortsById, user } = state;
   const cohort = cohortsById[id] || { ...state.cohort, id };
 
   const cohortUser = cohort.users.find(
     cohortMember => cohortMember.id === user.id
   );
+  const cohortRoles = cohortUser && cohortUser.roles || [];
   const authority = {
-    isOwner: (cohortUser && cohortUser.roles.includes('owner')) || false,
-    isFacilitator:
-      (cohortUser && cohortUser.roles.includes('facilitator')) || false,
-    isResearcher:
-      (cohortUser && cohortUser.roles.includes('researcher')) || false,
-    isParticipant:
-      (cohortUser && cohortUser.roles.includes('participant')) || false
+    isOwner: (cohortRoles.includes('owner')) || false,
+    isFacilitator: (cohortRoles.includes('facilitator')) || false,
+    isResearcher: (cohortRoles.includes('researcher')) || false,
+    isParticipant: (cohortRoles.includes('participant')) || false
   };
 
   // Super admins have unrestricted access to cohorts
-
   if (user.is_super) {
     authority.isOwner = true;
     authority.isFacilitator = true;
@@ -322,7 +318,7 @@ const mapStateToProps = (state, ownProps) => {
     authority.isParticipant = true;
   }
 
-  return { authority, cohort, user: { ...user, permissions } };
+  return { authority, cohort, user };
 };
 
 const mapDispatchToProps = dispatch => ({

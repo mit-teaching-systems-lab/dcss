@@ -103,15 +103,13 @@ DataTableMenu.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { permissions } = state.session;
   const { cohort, runsById, scenarios, user } = state;
-
   const run =
     ownProps.source && ownProps.source.runId
       ? runsById[ownProps.source.runId]
       : null;
 
-  return { cohort, run, scenarios, user: { ...user, permissions } };
+  return { cohort, run, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
