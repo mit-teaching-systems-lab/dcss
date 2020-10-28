@@ -414,7 +414,7 @@ export let addScenarioUserRole = (
       roles: [role]
     });
 
-    const result = await (
+    const res = await (
       await fetch(`/api/scenarios/${scenario_id}/roles/add`, {
         headers: {
           'Content-Type': 'application/json'
@@ -424,10 +424,14 @@ export let addScenarioUserRole = (
       })
     ).json();
 
-    const { scenario } = result;
+    if (res.error) {
+      throw res;
+    }
+
+    const { scenario } = res;
 
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
-    return result;
+    return res;
   } catch (error) {
     dispatch({ type: GET_SCENARIO_ERROR, error });
     return null;
@@ -445,7 +449,7 @@ export let endScenarioUserRole = (
       user_id,
       roles: [role]
     });
-    const result = await (
+    const res = await (
       await fetch(`/api/scenarios/${scenario_id}/roles/end`, {
         headers: {
           'Content-Type': 'application/json'
@@ -455,10 +459,14 @@ export let endScenarioUserRole = (
       })
     ).json();
 
-    const { scenario } = result;
+    if (res.error) {
+      throw res;
+    }
+
+    const { scenario } = res;
 
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
-    return result;
+    return res;
   } catch (error) {
     dispatch({ type: GET_SCENARIO_ERROR, error });
     return null;

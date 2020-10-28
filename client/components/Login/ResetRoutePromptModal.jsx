@@ -83,7 +83,11 @@ class ResetRoutePromptModal extends Component {
           />
           <Modal.Content tabIndex="0">
             <p>
-              Enter the email that you used to create your account and hit "Reset". If there is an account associated with that email, a single-use password will be sent to the email address provided:
+              Enter the email that you used to create your account and hit "Reset". If there is an account associated with that email, a single-use password will be sent to the email address provided.
+
+            </p>
+            <p>
+              <b>Be sure to check your spam folder!</b>
             </p>
             <Form onSubmit={onSubmit}>
               <Form.Field>
@@ -107,6 +111,7 @@ class ResetRoutePromptModal extends Component {
                   <Button.Group fluid>
                     <Button
                       primary
+                      aria-label="Click to reset your password and recieve a single-use password by email."
                       size="large"
                       type="submit"
                       onClick={onSubmit}
@@ -114,7 +119,12 @@ class ResetRoutePromptModal extends Component {
                       Reset
                     </Button>
                     <Button.Or />
-                    <Button to="/login" size="large" as={NavLink}>
+                    <Button
+                      aria-label="Click to go back to log in."
+                      to="/login"
+                      size="large"
+                      as={NavLink}
+                    >
                       Cancel
                     </Button>
                   </Button.Group>
