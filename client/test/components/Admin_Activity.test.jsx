@@ -84,8 +84,8 @@ test('Render 1 1', async (done) => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  expect(mounted.find('EditorMenu')).toHaveLength(1);
-  expect(mounted.find('Pagination')).toHaveLength(1);
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
@@ -106,8 +106,18 @@ test('Render 2 1', async (done) => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  expect(mounted.find('EditorMenu')).toHaveLength(1);
-  expect(mounted.find('Pagination')).toHaveLength(1);
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByText('Activity');
+
+  userEvent.click(
+    await screen.getByRole('listitem', {
+      name: /super user made a post request to \/runs\/116\/update 12\/31\/2019/i,
+    })
+  );
+
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
@@ -136,8 +146,8 @@ test('Render 3 1', async (done) => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  expect(mounted.find('EditorMenu')).toHaveLength(1);
-  expect(mounted.find('Pagination')).toHaveLength(1);
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
@@ -392,8 +402,8 @@ test('Render 4 1', async (done) => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  expect(mounted.find('EditorMenu')).toHaveLength(1);
-  expect(mounted.find('Pagination')).toHaveLength(1);
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });
