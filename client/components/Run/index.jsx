@@ -247,5 +247,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRunEventCapturing(
-  withRouter(connect(mapStateToProps, mapDispatchToProps)(Run))
+  withRouter(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Run)
+  )
 );

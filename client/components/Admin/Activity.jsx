@@ -29,11 +29,7 @@ import { getLogs } from '@actions/logs';
 
 const ActivityListItem = props => {
   const { active, item, onClick } = props;
-  const {
-    capture,
-    created_at,
-    id
-  } = item;
+  const { capture, created_at, id } = item;
   const {
     request: {
       method,
@@ -49,12 +45,15 @@ const ActivityListItem = props => {
   const description = (
     <Fragment>
       {<Username {...user} />}
-      made a <code>{method}</code> request to{' '}
-      <code>{url}</code> {Moment(created_at).calendar()}
+      made a <code>{method}</code> request to <code>{url}</code>{' '}
+      {Moment(created_at).calendar()}
     </Fragment>
   );
 
-  const ariaLabel = `${user.personalname || user.username} made a ${method} request to ${url} ${Moment(created_at).calendar()}`;
+  const ariaLabel = `${user.personalname ||
+    user.username} made a ${method} request to ${url} ${Moment(
+    created_at
+  ).calendar()}`;
 
   return (
     <List.Item
@@ -65,9 +64,7 @@ const ActivityListItem = props => {
       onClick={onClick}
     >
       <List.Content>
-        <List.Description>
-          {description}
-        </List.Description>
+        <List.Description>{description}</List.Description>
       </List.Content>
     </List.Item>
   );
@@ -242,14 +239,16 @@ class Activity extends Component {
             <Grid.Row>
               <Grid.Column width={4}>
                 <List selection divided relaxed>
-                  {logs.map(item => (
-                    <ActivityListItem
-                      onClick={onActivityRecordClick}
-                      active={item.id === id}
-                      item={item}
-                      key={Identity.key(item)}
-                    />
-                  )).filter(Boolean)}
+                  {logs
+                    .map(item => (
+                      <ActivityListItem
+                        onClick={onActivityRecordClick}
+                        active={item.id === id}
+                        item={item}
+                        key={Identity.key(item)}
+                      />
+                    ))
+                    .filter(Boolean)}
                 </List>
               </Grid.Column>
               <Grid.Column width={12}>
@@ -317,5 +316,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Activity)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Activity)
 );

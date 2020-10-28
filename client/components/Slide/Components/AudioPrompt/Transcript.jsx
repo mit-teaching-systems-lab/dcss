@@ -146,4 +146,7 @@ const mapDispatchToProps = dispatch => ({
   getTranscriptionOutcome: params => dispatch(getTranscriptionOutcome(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Transcript);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Transcript);

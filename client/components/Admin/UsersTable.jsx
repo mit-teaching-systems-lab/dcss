@@ -98,4 +98,7 @@ const mapStateToProps = (state, ownProps) => {
 //   // getUsers: () => dispatch(getUsers())
 // });
 
-export default connect(mapStateToProps, null)(UsersTable);
+export default connect(
+  mapStateToProps,
+  null
+)(UsersTable);

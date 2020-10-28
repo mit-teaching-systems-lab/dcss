@@ -332,4 +332,9 @@ const mapDispatchToProps = dispatch => ({
   linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cohort));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Cohort)
+);

@@ -10,9 +10,9 @@ import {
 
 export let getResponse = ({ id, responseId }) => async dispatch => {
   try {
-    const res = await (
-      await fetch(`/api/runs/${id}/response/${responseId}`)
-    ).json();
+    const res = await (await fetch(
+      `/api/runs/${id}/response/${responseId}`
+    )).json();
 
     if (res.error) {
       throw res;
@@ -33,9 +33,9 @@ export let getResponse = ({ id, responseId }) => async dispatch => {
 
 export let getTranscriptionOutcome = ({ id, responseId }) => async dispatch => {
   try {
-    const res = await (
-      await fetch(`/api/runs/${id}/response/${responseId}/transcript`)
-    ).json();
+    const res = await (await fetch(
+      `/api/runs/${id}/response/${responseId}/transcript`
+    )).json();
 
     if (res.error) {
       throw res;
@@ -60,15 +60,13 @@ export let setResponses = (id, submitted) => async dispatch => {
   const responsesById = {};
   try {
     for (let [responseId, body] of submitted) {
-      const res = await (
-        await fetch(`/api/runs/${id}/response/${responseId}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(body)
-        })
-      ).json();
+      const res = await (await fetch(`/api/runs/${id}/response/${responseId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })).json();
 
       if (res.error) {
         throw res;

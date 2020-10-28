@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Form, Grid, Header, Icon, Modal } from '@components/UI';
+import { Button, Form, Grid, Header, Modal } from '@components/UI';
 import { getUser, resetPassword } from '@actions/user';
 import { logOut } from '@actions/login';
 import './LoginRoutePromptModal.css';
@@ -15,7 +15,6 @@ class ResetRoutePromptModal extends Component {
       isReady: false,
       email: ''
     };
-
 
     this.onChange = this.onChange.bind(this);
     this.onBlurOrFocus = this.onBlurOrFocus.bind(this);
@@ -42,36 +41,29 @@ class ResetRoutePromptModal extends Component {
     this.setState({ [name]: value });
   }
 
-  async onSubmit(event, { name, value }) {
-
+  onSubmit() {
     if (!confirm('Are you sure you want to reset your password?')) {
       this.props.history.push('/login');
       return;
     }
 
-    const {
-      email
-    } = this.state;
-
-    const result = await this.props.resetPassword({ email });
-
-    if (result) {
-      this.props.history.push('/login');
-    }
+    (async () => {
+      const { email } = this.state;
+      const result = await this.props.resetPassword({ email });
+      if (result) {
+        this.props.history.push('/login');
+      }
+    })();
   }
 
   render() {
-    const { isReady, redirect } = this.state;
+    const { isReady } = this.state;
 
     if (!isReady) {
       return null;
     }
 
-    const {
-      onChange,
-      onBlurOrFocus,
-      onSubmit
-    } = this;
+    const { onChange, onBlurOrFocus, onSubmit } = this;
 
     return (
       <Modal.Accessible open>
@@ -83,8 +75,10 @@ class ResetRoutePromptModal extends Component {
           />
           <Modal.Content tabIndex="0">
             <p>
-              Enter the email that you used to create your account and hit "Reset". If there is an account associated with that email, a single-use password will be sent to the email address provided.
-
+              Enter the email that you used to create your account and hit
+              &quot;Reset&quot;. If there is an account associated with that
+              email, a single-use password will be sent to the email address
+              provided.
             </p>
             <p>
               <b>Be sure to check your spam folder!</b>
@@ -145,9 +139,9 @@ ResetRoutePromptModal.propTypes = {
   }).isRequired,
   location: PropTypes.object,
   logOut: PropTypes.func,
-  user: PropTypes.object,
+  resetPassword: PropTypes.func,
+  user: PropTypes.object
 };
-
 
 const mapStateToProps = state => {
   const { user } = state;
@@ -157,7 +151,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   logOut: () => dispatch(logOut()),
   getUser: () => dispatch(getUser()),
-  resetPassword: (params) => dispatch(resetPassword(params))
+  resetPassword: params => dispatch(resetPassword(params))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ResetRoutePromptModal));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResetRoutePromptModal)
+);

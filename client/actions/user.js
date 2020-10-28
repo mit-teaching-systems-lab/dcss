@@ -46,15 +46,13 @@ export let setUser = data => async dispatch => {
   try {
     if (Object.values(data).length) {
       const body = JSON.stringify(data);
-      const res = await (
-        await fetch('/api/auth/update', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body
-        })
-      ).json();
+      const res = await (await fetch('/api/auth/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })).json();
 
       if (res.error) {
         throw res;
@@ -70,21 +68,19 @@ export let setUser = data => async dispatch => {
   }
 };
 
-export let resetPassword = data => async dispatch => {
+export let resetPassword = data => async () => {
   try {
     if (Object.values(data).length) {
       data.email = Crypto.AES.encrypt(data.email, SESSION_SECRET).toString();
       data.href = location.href;
       const body = JSON.stringify(data);
-      const res = await (
-        await fetch('/api/auth/reset', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body
-        })
-      ).json();
+      const res = await (await fetch('/api/auth/reset', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })).json();
 
       if (res.error) {
         throw res;

@@ -124,4 +124,7 @@ const mapDispatchToProps = dispatch => ({
   deleteCohortUserRole: (...params) => dispatch(deleteCohortUserRole(...params))
 });
 
-export default connect(null, mapDispatchToProps)(RoleCheckbox);
+export default connect(
+  null,
+  mapDispatchToProps
+)(RoleCheckbox);

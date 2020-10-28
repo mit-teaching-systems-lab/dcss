@@ -6,8 +6,6 @@ import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
 import { logIn, logOut } from '@actions/login';
 import './Login.css';
 
-const method = 'POST';
-
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -33,7 +31,6 @@ class Login extends Component {
       password
     };
 
-    // this.onCreateAccountClick = this.onCreateAccountClick.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
@@ -85,7 +82,7 @@ class Login extends Component {
 
   render() {
     const { error, password, username } = this.state;
-    const { onChange, onCreateAccountClick, onSubmit } = this;
+    const { onChange, onSubmit } = this;
 
     // Previously, we would not render anything here and
     // allow the action handler to set location.href.
@@ -144,20 +141,35 @@ class Login extends Component {
                     size="large"
                     type="submit"
                     onClick={onSubmit}
-                    style={{width: '100%'}}
+                    style={{ width: '100%' }}
                   >
                     Log in
                   </Button>
                   <Button.Group fluid>
-                    <Button to="/login/reset" size="large" as={NavLink} style={style}>
+                    <Button
+                      to="/login/reset"
+                      size="large"
+                      as={NavLink}
+                      style={style}
+                    >
                       Reset Password
                     </Button>
                     <Button.Or />
-                    <Button to="/login/create-account" size="large" as={NavLink} style={style}>
+                    <Button
+                      to="/login/create-account"
+                      size="large"
+                      as={NavLink}
+                      style={style}
+                    >
                       Create an account
                     </Button>
                     <Button.Or />
-                    <Button to="/scenarios/" size="large" as={NavLink} style={style}>
+                    <Button
+                      to="/scenarios/"
+                      size="large"
+                      as={NavLink}
+                      style={style}
+                    >
                       Go back to scenarios
                     </Button>
                   </Button.Group>
@@ -197,7 +209,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   logIn: params => dispatch(logIn(params)),
-  logOut: () => dispatch(logOut()),
+  logOut: () => dispatch(logOut())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Login)
+);

@@ -239,10 +239,9 @@ class History extends Component {
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-            <Table.Body key={Identity.key({runsSlice})}>
+            <Table.Body key={Identity.key({ runsSlice })}>
               {runsSlice.map(run => {
                 const {
-                  run_id,
                   run_created_at,
                   run_ended_at,
                   scenario_id,
@@ -458,5 +457,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(History)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(History)
 );

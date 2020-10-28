@@ -256,4 +256,7 @@ const mapDispatchToProps = dispatch => ({
   getResponse: params => dispatch(getResponse(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Display);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Display);

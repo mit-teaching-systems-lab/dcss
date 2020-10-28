@@ -39,7 +39,7 @@ export const CohortCard = ({ id, created_at, name, roles, users }) => {
   const calendar = Moment(created_at).calendar();
   const owner = users.find(user => user.roles.includes('owner'));
   const createdBy = !yourRoles.includes('owner')
-    ? (owner && owner.username || null)
+    ? (owner && owner.username) || null
     : null;
 
   return (

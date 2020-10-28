@@ -402,5 +402,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CohortParticipants)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CohortParticipants)
 );

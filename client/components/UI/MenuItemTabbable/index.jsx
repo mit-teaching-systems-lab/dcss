@@ -23,22 +23,13 @@ const MenuItemTabbable = ({ children, popup, ...props }) => {
   };
 
   const nested = Array.isArray(children)
-    ? (children.length && children || null)
+    ? (children.length && children) || null
     : children;
 
-  const menuItem = (
-    <Menu.Item {...menuItemProps}>
-      {nested || null}
-    </Menu.Item>
-  );
+  const menuItem = <Menu.Item {...menuItemProps}>{nested || null}</Menu.Item>;
 
   return popup ? (
-    <Popup
-      inverted
-      size="tiny"
-      content={popup}
-      trigger={menuItem}
-    />
+    <Popup inverted size="tiny" content={popup} trigger={menuItem} />
   ) : (
     menuItem
   );

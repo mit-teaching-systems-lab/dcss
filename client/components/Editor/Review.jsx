@@ -119,4 +119,7 @@ const mapDispatchToProps = dispatch => ({
   getSlides: params => dispatch(getSlides(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Review);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Review);

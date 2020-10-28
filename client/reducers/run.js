@@ -25,7 +25,7 @@ export const runs = (state = [], action) => {
   const { runs, type } = action;
 
   switch (type) {
-    case GET_RUNS_SUCCESS:
+    case GET_RUNS_SUCCESS: {
       const seen = {
         /*
         run.id: index
@@ -45,6 +45,7 @@ export const runs = (state = [], action) => {
           return accum;
         }, [])
         .sort((a, b) => a.id < b.id);
+    }
     default:
       return state;
   }

@@ -75,5 +75,8 @@ export default function(Component) {
     }
   });
 
-  return connect(mapStateToProps, mapDispatchToProps)(WithRunEventCapturing);
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(WithRunEventCapturing);
 }

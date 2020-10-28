@@ -428,4 +428,7 @@ const mapDispatchToProps = dispatch => ({
   getResponse: params => dispatch(getResponse(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContentSlide);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContentSlide);

@@ -577,5 +577,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenariosList)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenariosList)
 );

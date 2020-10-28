@@ -228,4 +228,9 @@ const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Users));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Users)
+);

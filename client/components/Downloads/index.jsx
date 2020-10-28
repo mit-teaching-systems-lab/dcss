@@ -6,7 +6,6 @@ import { Parser } from 'json2csv';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
-  Button,
   Container,
   Dropdown,
   Icon,
@@ -245,7 +244,7 @@ class Downloads extends Component {
               requestDownload({ cohort, scenarioId: id });
             };
 
-            const stitle = scenario && scenario.title || '';
+            const stitle = (scenario && scenario.title) || '';
 
             const clabel = `Download a zip containing csv files containing responses for all scenarios in "${cohort.name}"`;
             const slabel = `Download a csv file containing responses to only "${stitle}", from the cohort "${cohort.name}"`;
@@ -382,8 +381,8 @@ class Downloads extends Component {
       ? `Showing downloads for ${filterSubject.type} "${filterSubject.label}"`
       : 'Downloads';
 
-    const menuItemDownloadsFilterClearLabel = filterSubject ?
-      `Clear filter for ${filterSubject.type} "${filterSubject.label}", and see all downloads.`
+    const menuItemDownloadsFilterClearLabel = filterSubject
+      ? `Clear filter for ${filterSubject.type} "${filterSubject.label}", and see all downloads.`
       : null;
 
     const menuItemDownloadsFilterClear = filterSubject ? (
@@ -544,7 +543,6 @@ class Downloads extends Component {
       ? nonMobileScenarioSelect
       : fallbackScenarioHeader;
 
-
     return (
       <Fragment>
         <Title content="Downloads" />
@@ -553,12 +551,8 @@ class Downloads extends Component {
           <Table className="dl__table" role="grid" unstackable definition>
             <Table.Header>
               <Table.Row>
-                <Table.HeaderCell>
-                  {' '}
-                </Table.HeaderCell>
-                <Table.HeaderCell>
-                  {' '}
-                </Table.HeaderCell>
+                <Table.HeaderCell> </Table.HeaderCell>
+                <Table.HeaderCell> </Table.HeaderCell>
                 <Table.HeaderCell className="dtr__cell-fluid-half-th">
                   {cohortSelect}
                 </Table.HeaderCell>
@@ -668,5 +662,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Downloads)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Downloads)
 );

@@ -34,9 +34,9 @@ class App extends Component {
       // there is a valid, active session.
       if (this.props.user.id) {
         // TODO: move this into async action
-        const { permissions } = await (
-          await fetch('/api/roles/permission')
-        ).json();
+        const { permissions } = await (await fetch(
+          '/api/roles/permission'
+        )).json();
 
         await this.props.setIsLoggedIn({
           ...this.props.user,
@@ -86,4 +86,7 @@ const mapDispatchToProps = dispatch => ({
   setIsLoggedIn: params => dispatch(setIsLoggedIn(params))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

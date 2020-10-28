@@ -14,9 +14,7 @@ const ClickableTableCell = props => {
 
   const role = 'button';
   const style = { cursor: 'pointer' };
-  const link = href && child ? (
-    <Link to={href}>{child}</Link>
-  ) : child;
+  const link = href && child ? <Link to={href}>{child}</Link> : child;
 
   const cell = (
     <Table.Cell
