@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
 import PropTypes from 'prop-types';
 import JSONTree from 'react-json-tree';
-// import Identity from '@utils/Identity';
+import Identity from '@utils/Identity';
 import {
   Grid,
   Header,
@@ -27,10 +27,13 @@ import { getLogs } from '@actions/logs';
 
 // const { super_admin, admin, facilitator, researcher } = SITE_ROLE_GROUPS;
 
-const ActivityItem = props => {
-  // console.log(props);
-  const { capture, created_at /*, id */ } = props;
-
+const ActivityListItem = props => {
+  const { active, item, onClick } = props;
+  const {
+    capture,
+    created_at,
+    id
+  } = item;
   const {
     request: {
       method,
@@ -43,20 +46,37 @@ const ActivityItem = props => {
     return null;
   }
 
+  const description = (
+    <Fragment>
+      {<Username {...user} />}
+      made a <code>{method}</code> request to{' '}
+      <code>{url}</code> {Moment(created_at).calendar()}
+    </Fragment>
+  );
+
+  const ariaLabel = `${user.personalname || user.username} made a ${method} request to ${url} ${Moment(created_at).calendar()}`;
+
   return (
-    <List.Content>
-      <List.Description>
-        {<Username {...user} />} made a <code>{method}</code> request to{' '}
-        <code>{url}</code> {Moment(created_at).calendar()}
-      </List.Description>
-    </List.Content>
+    <List.Item
+      as="a"
+      aria-label={ariaLabel}
+      active={active}
+      id={id}
+      onClick={onClick}
+    >
+      <List.Content>
+        <List.Description>
+          {description}
+        </List.Description>
+      </List.Content>
+    </List.Item>
   );
 };
 
-ActivityItem.propTypes = {
-  capture: PropTypes.object,
-  created_at: PropTypes.string,
-  id: PropTypes.any
+ActivityListItem.propTypes = {
+  active: PropTypes.bool,
+  item: PropTypes.object,
+  onClick: PropTypes.func
 };
 
 class Activity extends Component {
@@ -222,21 +242,14 @@ class Activity extends Component {
             <Grid.Row>
               <Grid.Column width={4}>
                 <List selection divided relaxed>
-                  {logs
-                    .map(log => {
-                      return (
-                        <List.Item
-                          as="a"
-                          active={log.id === id}
-                          id={log.id}
-                          key={log.id}
-                          onClick={onActivityRecordClick}
-                        >
-                          <ActivityItem {...log} />
-                        </List.Item>
-                      );
-                    })
-                    .filter(Boolean)}
+                  {logs.map(item => (
+                    <ActivityListItem
+                      onClick={onActivityRecordClick}
+                      active={item.id === id}
+                      item={item}
+                      key={Identity.key(item)}
+                    />
+                  )).filter(Boolean)}
                 </List>
               </Grid.Column>
               <Grid.Column width={12}>
