@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -19,7 +19,7 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 jest.mock('@components/Slide/Components/AudioPrompt/Transcript', () => {
-  return (props) => {
+  return props => {
     return <div>@components/Slide/Components/AudioPrompt/Transcript</div>;
   };
 });
@@ -63,7 +63,7 @@ test('DataModal', () => {
   expect(DataModal).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = DataModal;
 
   const props = {
@@ -71,11 +71,11 @@ test('Render 1 1', async (done) => {
     index: 0,
     isScenarioDataTable: false,
     prompts: [{ header: '', prompt: '', slide: {} }],
-    rows: [],
+    rows: []
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -87,4 +87,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

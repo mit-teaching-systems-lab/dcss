@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -57,7 +57,7 @@ test('UsersTable', () => {
   expect(UsersTable).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = UsersTable;
 
   const props = {
@@ -77,7 +77,7 @@ test('Render 1 1', async (done) => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         {
           id: 555,
@@ -86,8 +86,8 @@ test('Render 1 1', async (done) => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
+          is_super: false
+        }
       ],
       roles: ['super', 'facilitator'],
       usersById: {
@@ -98,7 +98,7 @@ test('Render 1 1', async (done) => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         555: {
           id: 555,
@@ -107,20 +107,20 @@ test('Render 1 1', async (done) => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
-      },
+          is_super: false
+        }
+      }
     },
     columns: {},
     grantableRoles: {},
     onPageChange() {},
     rowsPerPage: 1,
     pages: 2,
-    rows: {},
+    rows: {}
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -132,4 +132,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

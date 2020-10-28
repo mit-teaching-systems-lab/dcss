@@ -14,7 +14,6 @@ describe('scenario', () => {
   let slides;
 
   beforeEach(() => {
-
     state = {
       id: Infinity,
       title: 'The Wrong One'
@@ -26,9 +25,7 @@ describe('scenario', () => {
 
     scenario.slides = [];
 
-    slides = [
-      ...original.scenario.slides
-    ];
+    slides = [...original.scenario.slides];
   });
 
   test('initial state', () => {
@@ -75,7 +72,7 @@ describe('scenario', () => {
   test('DELETE_SLIDE_SUCCESS', () => {
     const action = {
       type: types.DELETE_SLIDE_SUCCESS,
-      slides: slides.slice(1,2)
+      slides: slides.slice(1, 2)
     };
     expect(reducer.scenario(state, action)).toMatchSnapshot();
     expect(reducer.scenario(state, action)).toMatchSnapshot();

@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -57,7 +57,7 @@ test('SlideEditor', () => {
   expect(SlideEditor).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = SlideEditor;
 
   const props = {
@@ -67,7 +67,7 @@ test('Render 1 1', async (done) => {
         id: 1,
         title: '',
         components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-        is_finish: true,
+        is_finish: true
       },
       {
         id: 2,
@@ -76,15 +76,15 @@ test('Render 1 1', async (done) => {
           {
             id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
             html: '<p>Hi!</p>',
-            type: 'Text',
-          },
-        ],
-      },
-    ],
+            type: 'Text'
+          }
+        ]
+      }
+    ]
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -96,4 +96,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

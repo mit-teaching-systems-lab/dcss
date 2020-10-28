@@ -5,7 +5,7 @@ import { mounter, snapshotter } from '../bootstrap';
 import {
   type,
   name,
-  description,
+  description
 } from '@components/Slide/Components/MultiButtonResponse/meta';
 import Card from '@components/Slide/Components/MultiButtonResponse/Card';
 import Display from '@components/Slide/Components/MultiButtonResponse/Display';
@@ -66,4 +66,3 @@ test('Snapshot 3', () => {
 });
 
 /*{INJECTION}*/
-

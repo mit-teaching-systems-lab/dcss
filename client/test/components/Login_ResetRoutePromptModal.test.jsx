@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -21,7 +21,7 @@ import userEvent from '@testing-library/user-event';
 import {
   LOG_OUT,
   GET_USER_SUCCESS,
-  SET_USER_SUCCESS,
+  SET_USER_SUCCESS
 } from '../../actions/types';
 import * as loginActions from '../../actions/login';
 import * as userActions from '../../actions/user';
@@ -29,6 +29,7 @@ jest.mock('../../actions/login');
 jest.mock('../../actions/user');
 
 jest.mock('../../components/UI/ModalAccessible', () => {
+  // eslint-disable-next-line react/prop-types
   return ({ children }) => <div>{children}</div>;
 });
 
@@ -55,13 +56,13 @@ beforeEach(() => {
   fetchImplementation(fetch);
 
   loginActions.logOut = jest.fn();
-  loginActions.logOut.mockImplementation(() => async (dispatch) => {
+  loginActions.logOut.mockImplementation(() => async dispatch => {
     dispatch({ type: LOG_OUT, login: null });
     dispatch({ type: SET_USER_SUCCESS, user: null });
   });
 
   userActions.getUser = jest.fn();
-  userActions.getUser.mockImplementation(() => async (dispatch) => {
+  userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
       personalname: 'Super User',
@@ -69,14 +70,14 @@ beforeEach(() => {
       id: 999,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_anonymous: false,
-      is_super: true,
+      is_super: true
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
 
   userActions.resetPassword = jest.fn();
-  userActions.resetPassword.mockImplementation(() => async (dispatch) => {
+  userActions.resetPassword.mockImplementation(() => async dispatch => {
     return true;
   });
 
@@ -97,15 +98,15 @@ test('ResetRoutePromptModal', () => {
   expect(ResetRoutePromptModal).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = ResetRoutePromptModal;
 
   const props = {
-    ...commonProps,
+    ...commonProps
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -114,7 +115,7 @@ test('Render 1 1', async (done) => {
   expect(asFragment()).toMatchSnapshot();
 
   await screen.findByRole('button', {
-    name: /click to reset your password and recieve a single-use password by email./i,
+    name: /click to reset your password and recieve a single-use password by email./i
   });
 
   expect(asFragment()).toMatchSnapshot();
@@ -123,4 +124,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

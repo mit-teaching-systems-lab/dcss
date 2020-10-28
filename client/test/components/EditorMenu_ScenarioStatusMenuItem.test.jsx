@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -43,7 +43,7 @@ beforeEach(() => {
   const statusOptions = [
     { id: 1, name: 'draft', description: 'Visible only to author' },
     { id: 2, name: 'public', description: 'Visible to everyone' },
-    { id: 3, name: 'private', description: 'Visible only to logged in users' },
+    { id: 3, name: 'private', description: 'Visible only to logged in users' }
   ];
 
   fetchImplementation(fetch, 200, statusOptions);
@@ -65,17 +65,17 @@ test('ScenarioStatusMenuItem', () => {
   expect(ScenarioStatusMenuItem).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = ScenarioStatusMenuItem;
 
   const props = {
     ...commonProps,
     onChange: jest.fn(),
-    status: 1,
+    status: 1
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -96,4 +96,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

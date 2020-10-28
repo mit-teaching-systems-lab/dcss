@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -57,7 +57,7 @@ test('Display', () => {
   expect(Display).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = Display;
 
   const props = {
@@ -76,7 +76,7 @@ test('Render 1 1', async (done) => {
         email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-        is_super: true,
+        is_super: true
       },
       categories: [],
       consent: { id: 57, prose: '' },
@@ -85,24 +85,24 @@ test('Render 1 1', async (done) => {
         id: 1,
         title: '',
         components: [
-          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
         ],
-        is_finish: true,
+        is_finish: true
       },
       lock: {
         scenario_id: 42,
         user_id: 999,
         created_at: '2020-02-31T23:54:19.934Z',
-        ended_at: null,
+        ended_at: null
       },
       slides: [
         {
           id: 1,
           title: '',
           components: [
-            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
           ],
-          is_finish: true,
+          is_finish: true
         },
         {
           id: 2,
@@ -111,7 +111,7 @@ test('Render 1 1', async (done) => {
             {
               id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
               html: '<p>paragraph</p>',
-              type: 'Text',
+              type: 'Text'
             },
             {
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
@@ -122,16 +122,16 @@ test('Render 1 1', async (done) => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response',
+              placeholder: 'Your response'
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
               html: '<p>?</p>',
-              type: 'Text',
-            },
+              type: 'Text'
+            }
           ],
-          is_finish: false,
-        },
+          is_finish: false
+        }
       ],
       status: 1,
       title: 'Multiplayer Scenario 2',
@@ -144,19 +144,19 @@ test('Render 1 1', async (done) => {
           roles: ['super'],
           is_super: true,
           is_author: true,
-          is_reviewer: false,
-        },
+          is_reviewer: false
+        }
       ],
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null,
+      deleted_at: null
     },
-    paths: [],
+    paths: []
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -167,7 +167,7 @@ test('Render 1 1', async (done) => {
   done();
 });
 
-test('Render 2 1', async (done) => {
+test('Render 2 1', async done => {
   const Component = Display;
 
   const props = {
@@ -186,7 +186,7 @@ test('Render 2 1', async (done) => {
         email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-        is_super: true,
+        is_super: true
       },
       categories: [],
       consent: { id: 57, prose: '' },
@@ -195,24 +195,24 @@ test('Render 2 1', async (done) => {
         id: 1,
         title: '',
         components: [
-          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
         ],
-        is_finish: true,
+        is_finish: true
       },
       lock: {
         scenario_id: 42,
         user_id: 999,
         created_at: '2020-02-31T23:54:19.934Z',
-        ended_at: null,
+        ended_at: null
       },
       slides: [
         {
           id: 1,
           title: '',
           components: [
-            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
           ],
-          is_finish: true,
+          is_finish: true
         },
         {
           id: 2,
@@ -221,7 +221,7 @@ test('Render 2 1', async (done) => {
             {
               id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
               html: '<p>paragraph</p>',
-              type: 'Text',
+              type: 'Text'
             },
             {
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
@@ -232,16 +232,16 @@ test('Render 2 1', async (done) => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response',
+              placeholder: 'Your response'
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
               html: '<p>?</p>',
-              type: 'Text',
-            },
+              type: 'Text'
+            }
           ],
-          is_finish: false,
-        },
+          is_finish: false
+        }
       ],
       status: 1,
       title: 'Multiplayer Scenario 2',
@@ -254,19 +254,19 @@ test('Render 2 1', async (done) => {
           roles: ['super'],
           is_super: true,
           is_author: true,
-          is_reviewer: false,
-        },
+          is_reviewer: false
+        }
       ],
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null,
+      deleted_at: null
     },
-    paths: [],
+    paths: []
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -278,7 +278,7 @@ test('Render 2 1', async (done) => {
   done();
 });
 
-test('Render 3 1', async (done) => {
+test('Render 3 1', async done => {
   const Component = Display;
 
   const props = {
@@ -297,7 +297,7 @@ test('Render 3 1', async (done) => {
         email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-        is_super: true,
+        is_super: true
       },
       categories: [],
       consent: { id: 57, prose: '' },
@@ -306,24 +306,24 @@ test('Render 3 1', async (done) => {
         id: 1,
         title: '',
         components: [
-          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
         ],
-        is_finish: true,
+        is_finish: true
       },
       lock: {
         scenario_id: 42,
         user_id: 999,
         created_at: '2020-02-31T23:54:19.934Z',
-        ended_at: null,
+        ended_at: null
       },
       slides: [
         {
           id: 1,
           title: '',
           components: [
-            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
           ],
-          is_finish: true,
+          is_finish: true
         },
         {
           id: 2,
@@ -332,7 +332,7 @@ test('Render 3 1', async (done) => {
             {
               id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
               html: '<p>paragraph</p>',
-              type: 'Text',
+              type: 'Text'
             },
             {
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
@@ -343,16 +343,16 @@ test('Render 3 1', async (done) => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response',
+              placeholder: 'Your response'
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
               html: '<p>?</p>',
-              type: 'Text',
-            },
+              type: 'Text'
+            }
           ],
-          is_finish: false,
-        },
+          is_finish: false
+        }
       ],
       status: 1,
       title: 'Multiplayer Scenario 2',
@@ -365,19 +365,19 @@ test('Render 3 1', async (done) => {
           roles: ['super'],
           is_super: true,
           is_author: true,
-          is_reviewer: false,
-        },
+          is_reviewer: false
+        }
       ],
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null,
+      deleted_at: null
     },
-    paths: [],
+    paths: []
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -389,7 +389,7 @@ test('Render 3 1', async (done) => {
   done();
 });
 
-test('Render 4 1', async (done) => {
+test('Render 4 1', async done => {
   const Component = Display;
 
   const props = {
@@ -408,7 +408,7 @@ test('Render 4 1', async (done) => {
         email: 'super@email.com',
         is_anonymous: false,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-        is_super: true,
+        is_super: true
       },
       categories: [],
       consent: { id: 57, prose: '' },
@@ -417,24 +417,24 @@ test('Render 4 1', async (done) => {
         id: 1,
         title: '',
         components: [
-          { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
         ],
-        is_finish: true,
+        is_finish: true
       },
       lock: {
         scenario_id: 42,
         user_id: 999,
         created_at: '2020-02-31T23:54:19.934Z',
-        ended_at: null,
+        ended_at: null
       },
       slides: [
         {
           id: 1,
           title: '',
           components: [
-            { html: '<h2>Thanks for participating!</h2>', type: 'Text' },
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
           ],
-          is_finish: true,
+          is_finish: true
         },
         {
           id: 2,
@@ -443,7 +443,7 @@ test('Render 4 1', async (done) => {
             {
               id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
               html: '<p>paragraph</p>',
-              type: 'Text',
+              type: 'Text'
             },
             {
               id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
@@ -454,16 +454,16 @@ test('Render 4 1', async (done) => {
               recallId: '',
               required: true,
               responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response',
+              placeholder: 'Your response'
             },
             {
               id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
               html: '<p>?</p>',
-              type: 'Text',
-            },
+              type: 'Text'
+            }
           ],
-          is_finish: false,
-        },
+          is_finish: false
+        }
       ],
       status: 1,
       title: 'Multiplayer Scenario 2',
@@ -476,26 +476,26 @@ test('Render 4 1', async (done) => {
           roles: ['super'],
           is_super: true,
           is_author: true,
-          is_reviewer: false,
-        },
+          is_reviewer: false
+        }
       ],
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null,
+      deleted_at: null
     },
-    paths: [],
+    paths: []
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
   const component = mount(<ConnectedRoutedComponent {...props} />);
   component.setProps({ header: 'header' });
@@ -505,4 +505,3 @@ test('Render 4 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

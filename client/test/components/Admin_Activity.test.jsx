@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -46,7 +46,7 @@ beforeEach(() => {
   fetchImplementation(fetch);
 
   logsActions.getLogs = jest.fn();
-  logsActions.getLogs.mockImplementation(() => async (dispatch) => {
+  logsActions.getLogs.mockImplementation(() => async dispatch => {
     const logs = JSON.parse(JSON.stringify(original.logs));
     dispatch({ type: GET_LOGS_SUCCESS, logs });
     return logs;
@@ -69,17 +69,17 @@ test('Activity', () => {
   expect(Activity).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = Activity;
 
   const props = {
     ...commonProps,
     logs: [],
-    logsById: {},
+    logsById: {}
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -90,18 +90,18 @@ test('Render 1 1', async (done) => {
   done();
 });
 
-test('Render 2 1', async (done) => {
+test('Render 2 1', async done => {
   const Component = Activity;
 
   const props = {
     ...commonProps,
     user: null,
     logs: [],
-    logsById: {},
+    logsById: {}
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -113,7 +113,7 @@ test('Render 2 1', async (done) => {
 
   userEvent.click(
     await screen.getByRole('listitem', {
-      name: /super user made a post request to \/runs\/116\/update 12\/31\/2019/i,
+      name: /super user made a post request to \/runs\/116\/update 12\/31\/2019/i
     })
   );
 
@@ -122,7 +122,7 @@ test('Render 2 1', async (done) => {
   done();
 });
 
-test('Render 3 1', async (done) => {
+test('Render 3 1', async done => {
   const Component = Activity;
 
   const props = {
@@ -134,14 +134,14 @@ test('Render 3 1', async (done) => {
       id: 999,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_anonymous: false,
-      is_super: true,
+      is_super: true
     },
     logs: [],
-    logsById: {},
+    logsById: {}
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -152,7 +152,7 @@ test('Render 3 1', async (done) => {
   done();
 });
 
-test('Render 4 1', async (done) => {
+test('Render 4 1', async done => {
   const Component = Activity;
 
   const props = {
@@ -164,7 +164,7 @@ test('Render 4 1', async (done) => {
       id: 999,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_anonymous: false,
-      is_super: true,
+      is_super: true
     },
     logs: [
       {
@@ -192,7 +192,7 @@ test('Render 4 1', async (done) => {
               'sec-fetch-mode': 'cors',
               'sec-fetch-site': 'same-origin',
               'accept-encoding': 'gzip, deflate, br',
-              'accept-language': 'en-US,en;q=0.9',
+              'accept-language': 'en-US,en;q=0.9'
             },
             session: {
               user: {
@@ -202,23 +202,23 @@ test('Render 4 1', async (done) => {
                   'participant',
                   'super_admin',
                   'facilitator',
-                  'researcher',
+                  'researcher'
                 ],
                 is_super: true,
                 username: 'super',
                 is_anonymous: false,
-                personalname: 'Super User',
+                personalname: 'Super User'
               },
               cookie: {
                 path: '/',
                 expires: '2020-05-12T00:51:05.142Z',
                 httpOnly: true,
-                originalMaxAge: 2592000000,
-              },
-            },
+                originalMaxAge: 2592000000
+              }
+            }
           },
-          response: '',
-        },
+          response: ''
+        }
       },
       {
         id: 884,
@@ -232,7 +232,7 @@ test('Render 4 1', async (done) => {
               isSkip: false,
               content: '',
               ended_at: '2020-01-01T00:50:35.645Z',
-              created_at: '2020-01-01T00:50:34.648Z',
+              created_at: '2020-01-01T00:50:34.648Z'
             },
             query: {},
             method: 'POST',
@@ -252,7 +252,7 @@ test('Render 4 1', async (done) => {
               'sec-fetch-mode': 'cors',
               'sec-fetch-site': 'same-origin',
               'accept-encoding': 'gzip, deflate, br',
-              'accept-language': 'en-US,en;q=0.9',
+              'accept-language': 'en-US,en;q=0.9'
             },
             session: {
               user: {
@@ -262,23 +262,23 @@ test('Render 4 1', async (done) => {
                   'participant',
                   'super_admin',
                   'facilitator',
-                  'researcher',
+                  'researcher'
                 ],
                 is_super: true,
                 username: 'super',
                 is_anonymous: false,
-                personalname: 'Super User',
+                personalname: 'Super User'
               },
               cookie: {
                 path: '/',
                 expires: '2020-05-12T00:50:42.232Z',
                 httpOnly: true,
-                originalMaxAge: 2592000000,
-              },
-            },
-          },
-        },
-      },
+                originalMaxAge: 2592000000
+              }
+            }
+          }
+        }
+      }
     ],
     logsById: {
       884: {
@@ -293,7 +293,7 @@ test('Render 4 1', async (done) => {
               isSkip: false,
               content: '',
               ended_at: '2020-01-01T00:50:35.645Z',
-              created_at: '2020-01-01T00:50:34.648Z',
+              created_at: '2020-01-01T00:50:34.648Z'
             },
             query: {},
             method: 'POST',
@@ -313,7 +313,7 @@ test('Render 4 1', async (done) => {
               'sec-fetch-mode': 'cors',
               'sec-fetch-site': 'same-origin',
               'accept-encoding': 'gzip, deflate, br',
-              'accept-language': 'en-US,en;q=0.9',
+              'accept-language': 'en-US,en;q=0.9'
             },
             session: {
               user: {
@@ -323,22 +323,22 @@ test('Render 4 1', async (done) => {
                   'participant',
                   'super_admin',
                   'facilitator',
-                  'researcher',
+                  'researcher'
                 ],
                 is_super: true,
                 username: 'super',
                 is_anonymous: false,
-                personalname: 'Super User',
+                personalname: 'Super User'
               },
               cookie: {
                 path: '/',
                 expires: '2020-05-12T00:50:42.232Z',
                 httpOnly: true,
-                originalMaxAge: 2592000000,
-              },
-            },
-          },
-        },
+                originalMaxAge: 2592000000
+              }
+            }
+          }
+        }
       },
       885: {
         id: 885,
@@ -365,7 +365,7 @@ test('Render 4 1', async (done) => {
               'sec-fetch-mode': 'cors',
               'sec-fetch-site': 'same-origin',
               'accept-encoding': 'gzip, deflate, br',
-              'accept-language': 'en-US,en;q=0.9',
+              'accept-language': 'en-US,en;q=0.9'
             },
             session: {
               user: {
@@ -375,29 +375,29 @@ test('Render 4 1', async (done) => {
                   'participant',
                   'super_admin',
                   'facilitator',
-                  'researcher',
+                  'researcher'
                 ],
                 is_super: true,
                 username: 'super',
                 is_anonymous: false,
-                personalname: 'Super User',
+                personalname: 'Super User'
               },
               cookie: {
                 path: '/',
                 expires: '2020-05-12T00:51:05.142Z',
                 httpOnly: true,
-                originalMaxAge: 2592000000,
-              },
-            },
+                originalMaxAge: 2592000000
+              }
+            }
           },
-          response: '}',
-        },
-      },
-    },
+          response: '}'
+        }
+      }
+    }
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -409,4 +409,3 @@ test('Render 4 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

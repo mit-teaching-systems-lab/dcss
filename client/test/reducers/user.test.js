@@ -14,7 +14,6 @@ describe('user', () => {
   let slides;
 
   beforeEach(() => {
-
     state = {
       id: Infinity,
       username: 'Someone Else'
@@ -56,5 +55,4 @@ describe('user', () => {
     expect(reducer.user(state, action)).toMatchSnapshot();
     expect(reducer.user(state, action)).toMatchSnapshot();
   });
-
 });

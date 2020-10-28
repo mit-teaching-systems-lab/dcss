@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -22,7 +22,7 @@ import {
   SET_COHORT_USER_ROLE_SUCCESS,
   GET_COHORT_SUCCESS,
   GET_USER_SUCCESS,
-  GET_USERS_SUCCESS,
+  GET_USERS_SUCCESS
 } from '../../actions/types';
 import * as cohortActions from '../../actions/cohort';
 import * as userActions from '../../actions/user';
@@ -31,13 +31,13 @@ jest.mock('../../actions/cohort');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
 jest.mock('@components/Cohorts/DataTable', () => {
-  return (props) => <div>@components/Cohorts/DataTable</div>;
+  return props => <div>@components/Cohorts/DataTable</div>;
 });
 jest.mock('@components/Cohorts/CohortParticipants', () => {
-  return (props) => <div>@components/Cohorts/CohortParticipants</div>;
+  return props => <div>@components/Cohorts/CohortParticipants</div>;
 });
 jest.mock('@components/Cohorts/CohortScenarios', () => {
-  return (props) => <div>@components/Cohorts/CohortScenarios</div>;
+  return props => <div>@components/Cohorts/CohortScenarios</div>;
 });
 
 import Cohort from '../../components/Cohorts/Cohort.jsx';
@@ -63,7 +63,7 @@ beforeEach(() => {
   fetchImplementation(fetch);
 
   cohortActions.getCohort = jest.fn();
-  cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
+  cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
@@ -78,7 +78,7 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         {
           id: 555,
@@ -87,8 +87,8 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
+          is_super: false
+        }
       ],
       roles: ['super', 'facilitator'],
       usersById: {
@@ -99,7 +99,7 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         555: {
           id: 555,
@@ -108,15 +108,15 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
-      },
+          is_super: false
+        }
+      }
     };
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
   cohortActions.linkUserToCohort = jest.fn();
-  cohortActions.linkUserToCohort.mockImplementation(() => async (dispatch) => {
+  cohortActions.linkUserToCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
@@ -131,7 +131,7 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         {
           id: 555,
@@ -140,8 +140,8 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
+          is_super: false
+        }
       ],
       roles: ['super', 'facilitator'],
       usersById: {
@@ -152,7 +152,7 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         555: {
           id: 555,
@@ -161,15 +161,15 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
-      },
+          is_super: false
+        }
+      }
     };
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, cohort });
     return cohort;
   });
   userActions.getUser = jest.fn();
-  userActions.getUser.mockImplementation(() => async (dispatch) => {
+  userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
       personalname: 'Super User',
@@ -177,13 +177,13 @@ beforeEach(() => {
       id: 999,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_anonymous: false,
-      is_super: true,
+      is_super: true
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
   usersActions.getUsers = jest.fn();
-  usersActions.getUsers.mockImplementation(() => async (dispatch) => {
+  usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
         username: 'super',
@@ -192,7 +192,7 @@ beforeEach(() => {
         id: 999,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_anonymous: false,
-        is_super: true,
+        is_super: true
       },
       {
         username: 'regs',
@@ -201,8 +201,8 @@ beforeEach(() => {
         id: 555,
         roles: ['participant', 'facilitator', 'researcher'],
         is_anonymous: false,
-        is_super: false,
-      },
+        is_super: false
+      }
     ];
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
@@ -225,16 +225,16 @@ test('Cohort', () => {
   expect(Cohort).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = Cohort;
 
   const props = {
     ...commonProps,
-    id: 2,
+    id: 2
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -246,4 +246,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

@@ -5,7 +5,7 @@ import { mounter, snapshotter } from '../bootstrap';
 import {
   type,
   name,
-  description,
+  description
 } from '@components/Slide/Components/ConversationPrompt/meta';
 import Card from '@components/Slide/Components/ConversationPrompt/Card';
 import Display from '@components/Slide/Components/ConversationPrompt/Display';
@@ -66,4 +66,3 @@ test('Snapshot 3', () => {
 });
 
 /*{INJECTION}*/
-

@@ -15,14 +15,11 @@ describe('users', () => {
   let usersById;
 
   beforeEach(() => {
-    users = [
-      ...original.users
-    ];
+    users = [...original.users];
 
     usersById = {
       ...original.usersById
     };
-
   });
 
   test('initial state', () => {
@@ -58,7 +55,6 @@ describe('users', () => {
     expect(reducer.usersById(undefined, action)).toMatchSnapshot();
     expect(reducer.usersById(undefined, action)).toMatchSnapshot();
   });
-
 
   test('GET_USERS_SUCCESS dedupe', () => {
     const action = {

@@ -14,12 +14,12 @@ describe('login', () => {
   beforeEach(() => {
     state = {
       isLoggedIn: false,
-      username: '',
+      username: ''
     };
     login = {
       isLoggedIn: true,
       permissions: [],
-      username: 'super',
+      username: 'super'
     };
   });
 

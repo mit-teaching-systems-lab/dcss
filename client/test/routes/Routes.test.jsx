@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -25,7 +25,7 @@ jest.mock('@utils/Identity', () => {
     ...jest.requireActual('@utils/Identity'),
     id() {
       return ++count;
-    },
+    }
   };
 });
 import Routes from '../../routes/Routes.jsx';
@@ -35,16 +35,16 @@ import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
 import ScenariosList from '@components/ScenariosList';
 jest.mock('@components/Editor', () => {
-  return (props) => <div>@components/Editor</div>;
+  return props => <div>@components/Editor</div>;
 });
 jest.mock('@components/Login', () => {
-  return (props) => <div>@components/Login</div>;
+  return props => <div>@components/Login</div>;
 });
 jest.mock('@components/Login/LoginRoutePromptModal', () => {
-  return (props) => <div>@components/Login/LoginRoutePromptModal</div>;
+  return props => <div>@components/Login/LoginRoutePromptModal</div>;
 });
 jest.mock('@components/ScenariosList', () => {
-  return (props) => <div>@components/ScenariosList</div>;
+  return props => <div>@components/ScenariosList</div>;
 });
 
 const original = JSON.parse(JSON.stringify(state));
@@ -84,7 +84,7 @@ test('Routes', () => {
   expect(Routes).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = Routes;
 
   const props = {
@@ -97,19 +97,19 @@ test('Render 1 1', async (done) => {
       id: 999,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_anonymous: false,
-      is_super: true,
-    },
+      is_super: true
+    }
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
   const mounted = mounter(ConnectedRoutedComponent);
   expect(snapshotter(mounted)).toMatchSnapshot();
   expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
+    snapshotter(mounted.findWhere(n => n.type() === Component))
   ).toMatchSnapshot();
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -119,4 +119,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

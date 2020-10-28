@@ -8,10 +8,9 @@ import { mergeDeepRight } from 'ramda';
 import rootReducer from '../reducers';
 import { createStoreWithMiddleWare } from '../store';
 import configureMockStore from 'redux-mock-store';
-import toJson from 'enzyme-to-json'
+import toJson from 'enzyme-to-json';
 
 export const state = require('./state');
-
 
 export const createPseudoRealStore = (state = {}) => {
   return createStoreWithMiddleWare(
@@ -41,11 +40,9 @@ export const reduxer = (Component, props = {}, state = {}) => {
 
 export const snapshotter = wrapper => {
   try {
-    return wrapper.html
-      ? wrapper.html()
-      : wrapper.text
-        ? wrapper.text()
-        : JSON.stringify(wrapper);
+    const text = wrapper.text ? wrapper.text() : JSON.stringify(wrapper);
+
+    return wrapper.html ? wrapper.html() : text;
   } catch (error) {
     try {
       return toJson(wrapper);
@@ -76,9 +73,7 @@ export const fetchImplementation = (fetch, status = 200, resolveValue = {}) => {
 
 export const mounter = (Component, attachTo) => {
   const rendered = <Component />;
-  const wrapper = attachTo
-    ? mount(rendered, { attachTo })
-    : mount(rendered);
+  const wrapper = attachTo ? mount(rendered, { attachTo }) : mount(rendered);
 
   return wrapper;
 };

@@ -5,7 +5,7 @@ import { mounter, snapshotter } from '../bootstrap';
 import {
   type,
   name,
-  description,
+  description
 } from '@components/Slide/Components/TextResponse/meta';
 import Card from '@components/Slide/Components/TextResponse/Card';
 import Display from '@components/Slide/Components/TextResponse/Display';
@@ -60,4 +60,3 @@ test('Snapshot 2', () => {
 });
 
 /*{INJECTION}*/
-

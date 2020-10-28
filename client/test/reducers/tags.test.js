@@ -12,9 +12,7 @@ describe('categories', () => {
   let categories;
 
   beforeEach(() => {
-    categories = [
-      1, 2, 3
-    ];
+    categories = [1, 2, 3];
   });
 
   test('initial state', () => {

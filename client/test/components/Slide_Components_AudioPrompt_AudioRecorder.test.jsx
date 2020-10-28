@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -20,7 +20,7 @@ import userEvent from '@testing-library/user-event';
 
 import {
   GET_RESPONSE_SUCCESS,
-  GET_TRANSCRIPTION_OUTCOME_SUCCESS,
+  GET_TRANSCRIPTION_OUTCOME_SUCCESS
 } from '../../actions/types';
 import * as responseActions from '@actions/response';
 jest.mock('../../actions/response');
@@ -28,13 +28,13 @@ jest.mock('../../actions/response');
 globalThis.audioPlayerProps = {};
 import AudioPlayer from '@components/Slide/Components/AudioPrompt/AudioPlayer';
 jest.mock('@components/Slide/Components/AudioPrompt/AudioPlayer', () => {
-  return (props) => {
+  return props => {
     Object.assign(globalThis.audioPlayerProps, props);
     return <audio {...props} />;
   };
 });
 jest.mock('@components/Slide/Components/AudioPrompt/Transcript', () => {
-  return (props) => {
+  return props => {
     return <div>@components/Slide/Components/AudioPrompt/Transcript</div>;
   };
 });
@@ -65,7 +65,7 @@ beforeEach(() => {
   fetchImplementation(fetch);
 
   responseActions.getResponse = jest.fn();
-  responseActions.getResponse.mockImplementation(() => async (dispatch) => {
+  responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {
       id: 457,
       run_id: 147,
@@ -76,23 +76,23 @@ beforeEach(() => {
         isSkip: false,
         content: '',
         response: { results: [], result_index: 0 },
-        transcript: '',
+        transcript: ''
       },
       created_at: '2020-04-25T18:03:38.384Z',
       ended_at: '2020-04-25T18:03:45.464Z',
       response_id: '719df986-9b4c-4dae-90b7-3227d82128b2',
       user_id: 2,
-      updated_at: '2020-04-25T18:03:48.310Z',
+      updated_at: '2020-04-25T18:03:48.310Z'
     };
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
   });
   responseActions.getTranscriptionOutcome = jest.fn();
   responseActions.getTranscriptionOutcome.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const outcome = {
         response: {},
-        transcript: '',
+        transcript: ''
       };
       dispatch({ type: GET_TRANSCRIPTION_OUTCOME_SUCCESS, outcome });
       return outcome;
@@ -105,38 +105,38 @@ beforeEach(() => {
     srcObject: {
       value: null,
       configurable: true,
-      writable: true,
+      writable: true
     },
     muted: {
       value: false,
       configurable: true,
-      writable: true,
+      writable: true
     },
     onpause: {
       value: null,
       configurable: true,
-      writable: true,
+      writable: true
     },
     onvolumechange: {
       value: null,
       configurable: true,
-      writable: true,
+      writable: true
     },
     captureStream: {
       value: jest.fn(),
       configurable: true,
-      writable: true,
+      writable: true
     },
     pause: {
       value: jest.fn(),
       configurable: true,
-      writable: true,
+      writable: true
     },
     play: {
       value: jest.fn(),
       configurable: true,
-      writable: true,
-    },
+      writable: true
+    }
   });
 
   jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-01').getTime());
@@ -158,7 +158,7 @@ test('AudioRecorder', () => {
   expect(AudioRecorder).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -174,11 +174,11 @@ test('Render 1 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -189,7 +189,7 @@ test('Render 1 1', async (done) => {
   done();
 });
 
-test('Render 2 1', async (done) => {
+test('Render 2 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -207,23 +207,23 @@ test('Render 2 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   Object.defineProperty(MediaConstants, 'IS_AUDIO_RECORDING_SUPPORTED', {
     value: false,
-    configurable: true,
+    configurable: true
   });
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
@@ -234,7 +234,7 @@ test('Render 2 1', async (done) => {
 
   fireEvent.focus(screen.getByRole('textbox'));
   fireEvent.change(screen.getByRole('textbox'), {
-    target: { value: 'something the user typed' },
+    target: { value: 'something the user typed' }
   });
 
   expect(asFragment()).toMatchSnapshot();
@@ -244,13 +244,13 @@ test('Render 2 1', async (done) => {
 
   Object.defineProperty(MediaConstants, 'IS_AUDIO_RECORDING_SUPPORTED', {
     value: true,
-    configurable: true,
+    configurable: true
   });
 
   done();
 });
 
-test('Render 3 1', async (done) => {
+test('Render 3 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -268,22 +268,22 @@ test('Render 3 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   responseActions.getResponse = jest.fn();
-  responseActions.getResponse.mockImplementation(() => async (dispatch) => {
+  responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {};
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
@@ -323,7 +323,7 @@ test('Render 3 1', async (done) => {
   done();
 });
 
-test('Render 4 1', async (done) => {
+test('Render 4 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -341,22 +341,22 @@ test('Render 4 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   responseActions.getResponse = jest.fn();
-  responseActions.getResponse.mockImplementation(() => async (dispatch) => {
+  responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {};
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
@@ -371,7 +371,7 @@ test('Render 4 1', async (done) => {
   done();
 });
 
-test('Render 5 1', async (done) => {
+test('Render 5 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -389,18 +389,18 @@ test('Render 5 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -409,7 +409,7 @@ test('Render 5 1', async (done) => {
   done();
 });
 
-test('Render 6 1', async (done) => {
+test('Render 6 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -427,18 +427,18 @@ test('Render 6 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -447,7 +447,7 @@ test('Render 6 1', async (done) => {
   done();
 });
 
-test('Render 7 1', async (done) => {
+test('Render 7 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -465,18 +465,18 @@ test('Render 7 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -485,7 +485,7 @@ test('Render 7 1', async (done) => {
   done();
 });
 
-test('Render 8 1', async (done) => {
+test('Render 8 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -503,18 +503,18 @@ test('Render 8 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -523,7 +523,7 @@ test('Render 8 1', async (done) => {
   done();
 });
 
-test('Render 9 1', async (done) => {
+test('Render 9 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -541,18 +541,18 @@ test('Render 9 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -561,7 +561,7 @@ test('Render 9 1', async (done) => {
   done();
 });
 
-test('Render 10 1', async (done) => {
+test('Render 10 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -579,18 +579,18 @@ test('Render 10 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -599,7 +599,7 @@ test('Render 10 1', async (done) => {
   done();
 });
 
-test('Render 11 1', async (done) => {
+test('Render 11 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -617,18 +617,18 @@ test('Render 11 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: 'hi',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -637,7 +637,7 @@ test('Render 11 1', async (done) => {
   done();
 });
 
-test('Render 12 1', async (done) => {
+test('Render 12 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -655,18 +655,18 @@ test('Render 12 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: 'hi',
-    value: 'hi.mp3',
+    value: 'hi.mp3'
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -675,7 +675,7 @@ test('Render 12 1', async (done) => {
   done();
 });
 
-test('Render 13 1', async (done) => {
+test('Render 13 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -693,22 +693,22 @@ test('Render 13 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   responseActions.getResponse = jest.fn();
-  responseActions.getResponse.mockImplementation(() => async (dispatch) => {
+  responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {};
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
@@ -723,7 +723,7 @@ test('Render 13 1', async (done) => {
   done();
 });
 
-test('Render 14 1', async (done) => {
+test('Render 14 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -741,18 +741,18 @@ test('Render 14 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -761,7 +761,7 @@ test('Render 14 1', async (done) => {
   done();
 });
 
-test('Render 15 1', async (done) => {
+test('Render 15 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -779,18 +779,18 @@ test('Render 15 1', async (done) => {
     run: {},
     saveRunEvent: jest.fn(),
     transcript: '',
-    value: '',
+    value: ''
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -799,7 +799,7 @@ test('Render 15 1', async (done) => {
   done();
 });
 
-test('Render 16 1', async (done) => {
+test('Render 16 1', async done => {
   const Component = AudioRecorder;
 
   const props = {
@@ -815,18 +815,18 @@ test('Render 16 1', async (done) => {
     prompt: 'record now',
     responseId: 'ABC',
     run: {},
-    saveRunEvent: jest.fn(),
+    saveRunEvent: jest.fn()
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   delete window.location;
   window.location = {
-    pathname: '/run/',
+    pathname: '/run/'
   };
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -836,4 +836,3 @@ test('Render 16 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

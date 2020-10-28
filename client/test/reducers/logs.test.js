@@ -15,12 +15,8 @@ describe('logs', () => {
   let logsById;
 
   beforeEach(() => {
-    state = [
-      ...original.logs.slice(0, 1)
-    ];
-    logs = [
-      ...original.logs
-    ];
+    state = [...original.logs.slice(0, 1)];
+    logs = [...original.logs];
     logsById = {
       ...original.logsById
     };

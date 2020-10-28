@@ -17,7 +17,6 @@ describe('scenarios', () => {
   let scenariosById;
 
   beforeEach(() => {
-
     state = {
       id: Infinity,
       title: 'The Wrong One'
@@ -27,14 +26,11 @@ describe('scenarios', () => {
       ...original.scenario
     };
 
-    scenarios = [
-      ...original.scenarios
-    ];
+    scenarios = [...original.scenarios];
 
     scenariosById = {
       ...original.scenariosById
     };
-
   });
 
   test('initial state', () => {

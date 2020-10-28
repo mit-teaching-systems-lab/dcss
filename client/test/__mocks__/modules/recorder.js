@@ -5,10 +5,7 @@ MockRecorder.prototype.stop = function() {
   return this;
 };
 MockRecorder.prototype.getMp3 = async function() {
-  return [
-    new Uint8Array(2),
-    new Blob()
-  ]
+  return [new Uint8Array(2), new Blob()];
 };
 
 if (window) {

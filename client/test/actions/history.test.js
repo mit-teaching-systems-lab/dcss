@@ -1,5 +1,9 @@
 import assert from 'assert';
-import { createPseudoRealStore, fetchImplementation, state } from '../bootstrap';
+import {
+  createPseudoRealStore,
+  fetchImplementation,
+  state
+} from '../bootstrap';
 
 import * as actions from '../../actions/history';
 import * as types from '../../actions/types';

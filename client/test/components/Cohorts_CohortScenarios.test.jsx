@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -20,8 +20,9 @@ import userEvent from '@testing-library/user-event';
 
 import {
   GET_COHORT_SUCCESS,
+  SET_COHORT_SUCCESS,
   GET_USER_SUCCESS,
-  GET_USERS_SUCCESS,
+  GET_USERS_SUCCESS
 } from '../../actions/types';
 import * as cohortActions from '../../actions/cohort';
 import * as userActions from '../../actions/user';
@@ -53,7 +54,7 @@ beforeEach(() => {
   fetchImplementation(fetch);
 
   cohortActions.getCohort = jest.fn();
-  cohortActions.getCohort.mockImplementation(() => async (dispatch) => {
+  cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
@@ -68,7 +69,7 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         {
           id: 555,
@@ -77,8 +78,8 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
+          is_super: false
+        }
       ],
       roles: ['super', 'facilitator'],
       usersById: {
@@ -89,7 +90,7 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['super', 'facilitator'],
           is_anonymous: false,
-          is_super: true,
+          is_super: true
         },
         555: {
           id: 555,
@@ -98,20 +99,20 @@ beforeEach(() => {
           cohort_id: 1,
           roles: ['researcher'],
           is_anonymous: false,
-          is_super: false,
-        },
-      },
+          is_super: false
+        }
+      }
     };
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
   cohortActions.setCohort = jest.fn();
-  cohortActions.setCohort.mockImplementation((cohort) => async (dispatch) => {
+  cohortActions.setCohort.mockImplementation(cohort => async dispatch => {
     dispatch({ type: SET_COHORT_SUCCESS, cohort });
     return cohort;
   });
   usersActions.getUser = jest.fn();
-  usersActions.getUser.mockImplementation(() => async (dispatch) => {
+  usersActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
       personalname: 'Super User',
@@ -119,13 +120,13 @@ beforeEach(() => {
       id: 999,
       roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
       is_anonymous: false,
-      is_super: true,
+      is_super: true
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
   usersActions.getUsers = jest.fn();
-  usersActions.getUsers.mockImplementation(() => async (dispatch) => {
+  usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
         username: 'super',
@@ -134,7 +135,7 @@ beforeEach(() => {
         id: 999,
         roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
         is_anonymous: false,
-        is_super: true,
+        is_super: true
       },
       {
         username: 'regs',
@@ -143,8 +144,8 @@ beforeEach(() => {
         id: 555,
         roles: ['participant', 'facilitator', 'researcher'],
         is_anonymous: false,
-        is_super: false,
-      },
+        is_super: false
+      }
     ];
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
@@ -167,16 +168,16 @@ test('CohortScenarios', () => {
   expect(CohortScenarios).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = CohortScenarios;
 
   const props = {
     ...commonProps,
-    authority: {},
+    authority: {}
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -185,4 +186,3 @@ test('Render 1 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

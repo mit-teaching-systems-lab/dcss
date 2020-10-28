@@ -19,18 +19,20 @@ describe('responses', () => {
   beforeEach(() => {
     state = [];
     response = {
-      id: 1, response_id: 'ABC', response: { id: 1 }
+      id: 1,
+      response_id: 'ABC',
+      response: { id: 1 }
     };
     responses = [
       { id: 1, response_id: 'ABC', response: { id: 1 } },
       { id: 1, response_id: 'ABC', response: { id: 1 } }, // this is intentional
       { id: 2, response_id: 'DEF', response: { id: 2 } },
-      { id: 3, response_id: 'GHI', response: { id: 3 } },
+      { id: 3, response_id: 'GHI', response: { id: 3 } }
     ];
     responsesById = {
-      'ABC': { id: 1, response_id: 'ABC', response: { id: 1 } },
-      'DEF': { id: 2, response_id: 'DEF', response: { id: 2 } },
-      'GHI': { id: 3, response_id: 'GHI', response: { id: 3 } },
+      ABC: { id: 1, response_id: 'ABC', response: { id: 1 } },
+      DEF: { id: 2, response_id: 'DEF', response: { id: 2 } },
+      GHI: { id: 3, response_id: 'GHI', response: { id: 3 } }
     };
   });
 
@@ -84,7 +86,7 @@ describe('responses', () => {
         { id: 1, response: { id: 1 } },
         { id: 1, response: { id: 1 } }, // this is intentional
         { id: 2, response_id: 'DEF', response: { id: 2 } },
-        { id: 3, response_id: 'GHI', response: { id: 3 } },
+        { id: 3, response_id: 'GHI', response: { id: 3 } }
       ]
     };
     expect(reducer.responses(state, action)).toMatchSnapshot();

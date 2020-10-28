@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import assert from 'assert';
@@ -10,7 +10,7 @@ import {
   mounter,
   reduxer,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -57,16 +57,16 @@ test('PromptRequiredLabel', () => {
   expect(PromptRequiredLabel).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = PromptRequiredLabel;
 
   const props = {
     ...commonProps,
-    fulfilled: true,
+    fulfilled: true
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -77,16 +77,16 @@ test('Render 1 1', async (done) => {
   done();
 });
 
-test('Render 2 1', async (done) => {
+test('Render 2 1', async done => {
   const Component = PromptRequiredLabel;
 
   const props = {
     ...commonProps,
-    fulfilled: false,
+    fulfilled: false
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -98,4 +98,3 @@ test('Render 2 1', async (done) => {
 });
 
 /*{INJECTION}*/
-

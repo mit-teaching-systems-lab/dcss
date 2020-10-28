@@ -3,7 +3,7 @@ const Media = {
   timeToSec: jest.fn(),
   isAudioFile: jest.fn(),
   isAudioPrompt: jest.fn(),
-  fileToMediaURL: jest.fn(),
+  fileToMediaURL: jest.fn()
 };
 
 export default Media;
