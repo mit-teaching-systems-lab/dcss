@@ -2,4 +2,8 @@
 
 exports[`Render 1 1 1`] = `<DocumentFragment />`;
 
-exports[`Render 2 1 1`] = `<DocumentFragment />`;
+exports[`Render 1 1 2`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;

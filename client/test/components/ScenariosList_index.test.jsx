@@ -211,8 +211,8 @@ beforeEach(() => {
       return scenarios;
     }
   );
-  usersActions.getUser = jest.fn();
-  usersActions.getUser.mockImplementation(() => async (dispatch) => {
+  userActions.getUser = jest.fn();
+  userActions.getUser.mockImplementation(() => async (dispatch) => {
     const user = {
       username: 'super',
       personalname: 'Super User',
@@ -284,11 +284,6 @@ test('Render 1 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -398,11 +393,6 @@ test('Render 2 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

@@ -1,10 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 1 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 1 1 3`] = `
+exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -60,49 +56,45 @@ exports[`Render 1 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 2 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
+exports[`Render 2 1 1`] = `"<form class=\\"ui form\\"><div class=\\"field\\"><textarea placeholder=\\"Your response\\" name=\\"ABC\\" rows=\\"3\\"></textarea></div></form>"`;
 
-exports[`Render 2 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
+exports[`Render 2 1 2`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <textarea
+        name="ABC"
+        placeholder="Your response"
+        rows="3"
+      />
+    </div>
+  </form>
+</DocumentFragment>
+`;
 
-exports[`Render 2 1 3`] = `"<form class=\\"ui form\\"><div class=\\"field\\"><textarea placeholder=\\"Your response\\" name=\\"ABC\\" rows=\\"3\\"></textarea></div></form>"`;
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="field"
+    >
+      <textarea
+        name="ABC"
+        placeholder="Your response"
+        rows="3"
+      />
+    </div>
+  </form>
+</DocumentFragment>
+`;
 
 exports[`Render 2 1 4`] = `
-<DocumentFragment>
-  <form
-    class="ui form"
-  >
-    <div
-      class="field"
-    >
-      <textarea
-        name="ABC"
-        placeholder="Your response"
-        rows="3"
-      />
-    </div>
-  </form>
-</DocumentFragment>
-`;
-
-exports[`Render 2 1 5`] = `
-<DocumentFragment>
-  <form
-    class="ui form"
-  >
-    <div
-      class="field"
-    >
-      <textarea
-        name="ABC"
-        placeholder="Your response"
-        rows="3"
-      />
-    </div>
-  </form>
-</DocumentFragment>
-`;
-
-exports[`Render 2 1 6`] = `
 Object {
   "created_at": "2020-01-01T00:00:00.000Z",
   "ended_at": "2020-01-01T00:00:00.000Z",
@@ -114,9 +106,120 @@ Object {
 
 exports[`Render 3 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
 
-exports[`Render 3 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
+exports[`Render 3 1 2`] = `
+<DocumentFragment>
+  <div
+    class="ui grid"
+  >
+    <div
+      class="row ar__instructions"
+    >
+      <div
+        class="column"
+        tabindex="0"
+      >
+        Click the microphone to start recording
+      </div>
+    </div>
+    <div
+      class="two column row"
+    >
+      <div
+        class="three wide column"
+      >
+        <button
+          aria-label="Start recording"
+          class="ui button ar__button"
+        >
+          <i
+            class="big icons"
+          >
+            <i
+              aria-hidden="true"
+              class="circle outline large icon"
+            />
+            <i
+              aria-hidden="true"
+              class="microphone icon"
+            />
+            <i
+              aria-hidden="true"
+              class="red circle top right corner icon"
+            />
+          </i>
+        </button>
+      </div>
+      <div
+        class="column"
+      >
+        <audio
+          controls=""
+          controlslist="nodownload"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Render 3 1 3`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
+exports[`Render 3 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui grid"
+  >
+    <div
+      class="row ar__instructions"
+    >
+      <div
+        class="column"
+        tabindex="0"
+      >
+        Click the microphone to stop recording.
+      </div>
+    </div>
+    <div
+      class="two column row"
+    >
+      <div
+        class="three wide column"
+      >
+        <button
+          aria-label="Stop recording"
+          class="ui button ar__button"
+        >
+          <i
+            class="big icons"
+          >
+            <i
+              aria-hidden="true"
+              class="circle notch large loading icon"
+            />
+            <i
+              aria-hidden="true"
+              class="microphone icon"
+            />
+            <i
+              aria-hidden="true"
+              class="red circle top right corner icon blink"
+            />
+          </i>
+        </button>
+      </div>
+      <div
+        class="column"
+      >
+        <audio
+          controls=""
+          controlslist="nodownload"
+        />
+      </div>
+    </div>
+  </div>
+  <div>
+    @components/Slide/Components/AudioPrompt/Transcript
+  </div>
+</DocumentFragment>
+`;
 
 exports[`Render 3 1 4`] = `
 <DocumentFragment>
@@ -130,7 +233,7 @@ exports[`Render 3 1 4`] = `
         class="column"
         tabindex="0"
       >
-        Click the microphone to start recording
+        Click the microphone to stop recording.
       </div>
     </div>
     <div
@@ -140,7 +243,7 @@ exports[`Render 3 1 4`] = `
         class="three wide column"
       >
         <button
-          aria-label="Start recording"
+          aria-label="Stop recording"
           class="ui button ar__button"
         >
           <i
@@ -148,7 +251,7 @@ exports[`Render 3 1 4`] = `
           >
             <i
               aria-hidden="true"
-              class="circle outline large icon"
+              class="circle notch large loading icon"
             />
             <i
               aria-hidden="true"
@@ -156,7 +259,7 @@ exports[`Render 3 1 4`] = `
             />
             <i
               aria-hidden="true"
-              class="red circle top right corner icon"
+              class="red circle top right corner icon blink"
             />
           </i>
         </button>
@@ -170,129 +273,14 @@ exports[`Render 3 1 4`] = `
         />
       </div>
     </div>
+  </div>
+  <div>
+    @components/Slide/Components/AudioPrompt/Transcript
   </div>
 </DocumentFragment>
 `;
 
 exports[`Render 3 1 5`] = `
-<DocumentFragment>
-  <div
-    class="ui grid"
-  >
-    <div
-      class="row ar__instructions"
-    >
-      <div
-        class="column"
-        tabindex="0"
-      >
-        Click the microphone to stop recording.
-      </div>
-    </div>
-    <div
-      class="two column row"
-    >
-      <div
-        class="three wide column"
-      >
-        <button
-          aria-label="Stop recording"
-          class="ui button ar__button"
-        >
-          <i
-            class="big icons"
-          >
-            <i
-              aria-hidden="true"
-              class="circle notch large loading icon"
-            />
-            <i
-              aria-hidden="true"
-              class="microphone icon"
-            />
-            <i
-              aria-hidden="true"
-              class="red circle top right corner icon blink"
-            />
-          </i>
-        </button>
-      </div>
-      <div
-        class="column"
-      >
-        <audio
-          controls=""
-          controlslist="nodownload"
-        />
-      </div>
-    </div>
-  </div>
-  <div>
-    @components/Slide/Components/AudioPrompt/Transcript
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Render 3 1 6`] = `
-<DocumentFragment>
-  <div
-    class="ui grid"
-  >
-    <div
-      class="row ar__instructions"
-    >
-      <div
-        class="column"
-        tabindex="0"
-      >
-        Click the microphone to stop recording.
-      </div>
-    </div>
-    <div
-      class="two column row"
-    >
-      <div
-        class="three wide column"
-      >
-        <button
-          aria-label="Stop recording"
-          class="ui button ar__button"
-        >
-          <i
-            class="big icons"
-          >
-            <i
-              aria-hidden="true"
-              class="circle notch large loading icon"
-            />
-            <i
-              aria-hidden="true"
-              class="microphone icon"
-            />
-            <i
-              aria-hidden="true"
-              class="red circle top right corner icon blink"
-            />
-          </i>
-        </button>
-      </div>
-      <div
-        class="column"
-      >
-        <audio
-          controls=""
-          controlslist="nodownload"
-        />
-      </div>
-    </div>
-  </div>
-  <div>
-    @components/Slide/Components/AudioPrompt/Transcript
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Render 3 1 7`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -353,11 +341,7 @@ exports[`Render 3 1 7`] = `
 
 exports[`Render 4 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
 
-exports[`Render 4 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 4 1 3`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 4 1 4`] = `
+exports[`Render 4 1 2`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -413,11 +397,7 @@ exports[`Render 4 1 4`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 5 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 5 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 5 1 3`] = `
+exports[`Render 5 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -473,11 +453,7 @@ exports[`Render 5 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 6 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 6 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 6 1 3`] = `
+exports[`Render 6 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -533,11 +509,7 @@ exports[`Render 6 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 7 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 7 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 7 1 3`] = `
+exports[`Render 7 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -593,11 +565,7 @@ exports[`Render 7 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 8 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 8 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 8 1 3`] = `
+exports[`Render 8 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -653,11 +621,7 @@ exports[`Render 8 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 9 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 9 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"row ar__instructions\\"><div tabindex=\\"0\\" class=\\"column\\">Click the microphone to start recording</div></div><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 9 1 3`] = `
+exports[`Render 9 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -713,11 +677,7 @@ exports[`Render 9 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 10 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 10 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 10 1 3`] = `
+exports[`Render 10 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -763,11 +723,7 @@ exports[`Render 10 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 11 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div><div>@components/Slide/Components/AudioPrompt/Transcript</div>"`;
-
-exports[`Render 11 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div><div>@components/Slide/Components/AudioPrompt/Transcript</div>"`;
-
-exports[`Render 11 1 3`] = `
+exports[`Render 11 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -816,11 +772,7 @@ exports[`Render 11 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 12 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Stop recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle notch large loading icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon blink\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div><div>@components/Slide/Components/AudioPrompt/Transcript</div>"`;
-
-exports[`Render 12 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Stop recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle notch large loading icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon blink\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div><div>@components/Slide/Components/AudioPrompt/Transcript</div>"`;
-
-exports[`Render 12 1 3`] = `
+exports[`Render 12 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -871,11 +823,7 @@ exports[`Render 12 1 3`] = `
 
 exports[`Render 13 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
 
-exports[`Render 13 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 13 1 3`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 13 1 4`] = `
+exports[`Render 13 1 2`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -921,11 +869,7 @@ exports[`Render 13 1 4`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 14 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 14 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 14 1 3`] = `
+exports[`Render 14 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -971,11 +915,7 @@ exports[`Render 14 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 15 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 15 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 15 1 3`] = `
+exports[`Render 15 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"
@@ -1021,11 +961,7 @@ exports[`Render 15 1 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Render 16 1 1`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 16 1 2`] = `"<div class=\\"ui grid\\"><div class=\\"two column row\\"><div class=\\"three wide column\\"><button aria-label=\\"Start recording\\" class=\\"ui button ar__button\\"><i class=\\"big icons\\"><i aria-hidden=\\"true\\" class=\\"circle outline large icon\\"></i><i aria-hidden=\\"true\\" class=\\"microphone icon\\"></i><i aria-hidden=\\"true\\" class=\\"red circle top right corner icon\\"></i></i></button></div><div class=\\"column\\"><audio controlslist=\\"nodownload\\" controls=\\"\\"></audio></div></div></div>"`;
-
-exports[`Render 16 1 3`] = `
+exports[`Render 16 1 1`] = `
 <DocumentFragment>
   <div
     class="ui grid"

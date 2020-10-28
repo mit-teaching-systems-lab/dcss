@@ -83,11 +83,6 @@ test('Render 1 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   expect(mounted.find('EditorMenu')).toHaveLength(1);
   expect(mounted.find('Pagination')).toHaveLength(1);
@@ -110,11 +105,6 @@ test('Render 2 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   expect(mounted.find('EditorMenu')).toHaveLength(1);
   expect(mounted.find('Pagination')).toHaveLength(1);
@@ -145,11 +135,6 @@ test('Render 3 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   expect(mounted.find('EditorMenu')).toHaveLength(1);
   expect(mounted.find('Pagination')).toHaveLength(1);
@@ -406,11 +391,6 @@ test('Render 4 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   expect(mounted.find('EditorMenu')).toHaveLength(1);
   expect(mounted.find('Pagination')).toHaveLength(1);

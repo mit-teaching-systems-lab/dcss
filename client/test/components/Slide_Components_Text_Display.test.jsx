@@ -156,11 +156,6 @@ test('Render 1 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const component = shallow(<Component {...props} />);
   expect(snapshotter(component)).toMatchSnapshot();
@@ -267,11 +262,6 @@ test('Render 2 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const component = shallow(<Component {...props} />);
   component.setProps({ html: 'something else' });
@@ -379,11 +369,6 @@ test('Render 3 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   delete window.location;
   window.location = {

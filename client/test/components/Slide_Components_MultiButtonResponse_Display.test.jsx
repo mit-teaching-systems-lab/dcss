@@ -160,11 +160,6 @@ test('Render 1 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
   expect(snapshotter(component)).toMatchSnapshot();
@@ -275,11 +270,6 @@ test('Render 2 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
   component.setProps({ buttons: [{ display: 'Button 1', value: '1' }] });
@@ -391,11 +381,6 @@ test('Render 3 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
   component.setProps({ header: 'header' });
@@ -507,11 +492,6 @@ test('Render 4 1', async (done) => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere((n) => n.type() === Component))
-  ).toMatchSnapshot();
 
   delete window.location;
   window.location = {
