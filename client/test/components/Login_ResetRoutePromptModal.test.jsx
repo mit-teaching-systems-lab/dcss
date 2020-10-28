@@ -23,9 +23,9 @@ import {
   GET_USER_SUCCESS,
   SET_USER_SUCCESS
 } from '../../actions/types';
-import * as loginActions from '../../actions/login';
+import * as sessionActions from '../../actions/session';
 import * as userActions from '../../actions/user';
-jest.mock('../../actions/login');
+jest.mock('../../actions/session');
 jest.mock('../../actions/user');
 
 jest.mock('../../components/UI/ModalAccessible', () => {
@@ -55,9 +55,9 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  loginActions.logOut = jest.fn();
-  loginActions.logOut.mockImplementation(() => async dispatch => {
-    dispatch({ type: LOG_OUT, login: null });
+  sessionActions.logOut = jest.fn();
+  sessionActions.logOut.mockImplementation(() => async dispatch => {
+    dispatch({ type: LOG_OUT, session: null });
     dispatch({ type: SET_USER_SUCCESS, user: null });
   });
 

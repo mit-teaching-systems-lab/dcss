@@ -37,8 +37,8 @@ const ConfirmAuth = ({
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn, username, permissions } = state.login;
-  return { isLoggedIn, username, permissions };
+  const { isLoggedIn, permissions } = state.session;
+  return { isLoggedIn, permissions };
 };
 
 ConfirmAuth.propTypes = {

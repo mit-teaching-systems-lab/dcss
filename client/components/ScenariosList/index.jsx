@@ -562,7 +562,7 @@ ScenariosList.propTypes = {
 
 const mapStateToProps = state => {
   const {
-    login: { isLoggedIn },
+    session: { isLoggedIn },
     scenarios,
     user
   } = state;

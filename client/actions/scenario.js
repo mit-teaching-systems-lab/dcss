@@ -80,7 +80,7 @@ export let getScenarios = () => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
 
-  if (state.login.isLoggedIn && count === state.scenarios.length) {
+  if (state.session.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
@@ -104,7 +104,7 @@ export let getScenarios = () => async (dispatch, getState) => {
 export let getScenariosByStatus = status => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
-  if (state.login.isLoggedIn && count === state.scenarios.length) {
+  if (state.session.isLoggedIn && count === state.scenarios.length) {
     const scenarios = state.scenarios.filter(
       scenario => scenario.status === status
     );
@@ -214,7 +214,7 @@ export let getScenariosIncrementally = updater => async (
 ) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
-  if (state.login.isLoggedIn && count === state.scenarios.length) {
+  if (state.session.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
@@ -240,7 +240,7 @@ export let getScenariosSlice = (
 ) => async (dispatch, getState) => {
   const state = getState();
   const count = await store.dispatch(getScenariosCount());
-  if (state.login.isLoggedIn && count === state.scenarios.length) {
+  if (state.session.isLoggedIn && count === state.scenarios.length) {
     const { scenarios } = state;
     dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
     return scenarios;

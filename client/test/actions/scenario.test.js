@@ -255,7 +255,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
     store = createPseudoRealStore({
       scenarios: [],
-      login: {
+      session: {
         isLoggedIn: false
       }
     });
@@ -273,10 +273,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       assert.deepEqual(returnValue, scenarios);
     });
 
-    test('(state.login.isLoggedIn && count === state.scenarios.length) === false', async () => {
+    test('(state.session.isLoggedIn && count === state.scenarios.length) === false', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -291,10 +291,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       assert.deepEqual(returnValue, scenarios);
     });
 
-    test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
+    test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: true
         }
       });
@@ -310,7 +310,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
   });
 
   describe('getScenariosIncrementally', () => {
-    test('(state.login.isLoggedIn && count === state.scenarios.length) === false', async () => {
+    test('(state.session.isLoggedIn && count === state.scenarios.length) === false', async () => {
       fetchImplementation(fetch, 200, { scenarios });
 
       const returnValue = await store.dispatch(
@@ -323,10 +323,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       assert.deepEqual(returnValue, scenarios);
     });
 
-    test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
+    test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: true
         }
       });
@@ -342,10 +342,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       assert.deepEqual(returnValue, scenarios);
     });
 
-    test('(state.login.isLoggedIn) === false', async () => {
+    test('(state.session.isLoggedIn) === false', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -365,7 +365,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     test('getScenariosIncrementallyFirst', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -387,7 +387,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     test('default, cache is empty', async () => {
       store = createPseudoRealStore({
         scenarios: [],
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -420,7 +420,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     test('default, cache has entries, not full', async () => {
       store = createPseudoRealStore({
         scenarios: scenarios.slice(0, 30),
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -453,7 +453,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     test('ASC, cache is empty', async () => {
       store = createPseudoRealStore({
         scenarios: [],
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -488,7 +488,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     test('ASC, cache has entries, not full', async () => {
       store = createPseudoRealStore({
         scenarios: scenarios.slice(0, 30),
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -520,10 +520,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       assert.deepEqual(returnValue, expected);
     });
 
-    test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
+    test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: true
         }
       });
@@ -540,7 +540,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     test('default', async () => {
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: false
         }
       });
@@ -567,7 +567,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       assert.deepEqual(returnValue, scenarios);
     });
 
-    test('(state.login.isLoggedIn && count === state.scenarios.length) === true', async () => {
+    test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
       scenarios = Array.from({ length: 90 }, (_, id) => {
         const status = id % 3 === 0 ? 3 : id % 2 === 0 ? 2 : 1;
 
@@ -580,7 +580,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
       store = createPseudoRealStore({
         scenarios,
-        login: {
+        session: {
           isLoggedIn: true
         }
       });
@@ -608,7 +608,7 @@ describe('GET_SCENARIOS_ERROR', () => {
 
     store = createPseudoRealStore({
       scenarios: [],
-      login: {
+      session: {
         isLoggedIn: false
       }
     });

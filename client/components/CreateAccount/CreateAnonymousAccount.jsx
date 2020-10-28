@@ -145,13 +145,12 @@ CreateAnonymousAccount.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   location: PropTypes.object,
-  isLoggedIn: PropTypes.bool.isRequired,
-  username: PropTypes.string
+  isLoggedIn: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn, username } = state.login;
-  return { isLoggedIn, username };
+  const { isLoggedIn } = state.session;
+  return { isLoggedIn };
 };
 
 export default withRouter(

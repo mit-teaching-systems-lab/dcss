@@ -442,7 +442,7 @@ DataTable.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { permissions } = state.login;
+  const { permissions } = state.session;
   const { cohort, runsById, scenarios, user } = state;
   return { cohort, runsById, scenarios, user: { ...user, permissions } };
 };

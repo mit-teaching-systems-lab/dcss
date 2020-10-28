@@ -265,7 +265,7 @@ Navigation.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn } = state.login;
+  const { isLoggedIn } = state.session;
   const { user, scenario } = state;
   return { user, scenario, isLoggedIn };
 };

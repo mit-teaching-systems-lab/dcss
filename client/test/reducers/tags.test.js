@@ -25,8 +25,20 @@ describe('categories', () => {
       type: types.GET_CATEGORIES_SUCCESS,
       categories
     };
-    expect(reducer.categories(undefined, action)).toMatchSnapshot();
-    expect(reducer.categories(undefined, action)).toMatchSnapshot();
+    expect(reducer.categories(undefined, action)).toMatchInlineSnapshot(`
+      Array [
+        1,
+        2,
+        3,
+      ]
+    `);
+    expect(reducer.categories(undefined, action)).toMatchInlineSnapshot(`
+      Array [
+        1,
+        2,
+        3,
+      ]
+    `);
   });
 
   test('GET_CATEGORIES_SUCCESS dedupe', () => {
@@ -34,7 +46,31 @@ describe('categories', () => {
       type: types.GET_CATEGORIES_SUCCESS,
       categories: [...categories, ...categories, ...categories]
     };
-    expect(reducer.categories(undefined, action)).toMatchSnapshot();
-    expect(reducer.categories(undefined, action)).toMatchSnapshot();
+    expect(reducer.categories(undefined, action)).toMatchInlineSnapshot(`
+      Array [
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+      ]
+    `);
+    expect(reducer.categories(undefined, action)).toMatchInlineSnapshot(`
+      Array [
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+        1,
+        2,
+        3,
+      ]
+    `);
   });
 });

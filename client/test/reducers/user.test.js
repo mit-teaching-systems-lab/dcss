@@ -34,8 +34,38 @@ describe('user', () => {
       type: types.GET_USER_SUCCESS,
       user
     };
-    expect(reducer.user(undefined, action)).toMatchSnapshot();
-    expect(reducer.user(undefined, action)).toMatchSnapshot();
+    expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "email": "super@email.com",
+        "id": 2,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "super",
+      }
+    `);
+    expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "email": "super@email.com",
+        "id": 2,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "super",
+      }
+    `);
   });
 
   test('GET_SESSION_SUCCESS', () => {
@@ -43,8 +73,38 @@ describe('user', () => {
       type: types.GET_SESSION_SUCCESS,
       user
     };
-    expect(reducer.user(undefined, action)).toMatchSnapshot();
-    expect(reducer.user(undefined, action)).toMatchSnapshot();
+    expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "email": "super@email.com",
+        "id": 2,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "super",
+      }
+    `);
+    expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "email": "super@email.com",
+        "id": 2,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "super",
+      }
+    `);
   });
 
   test('SET_USER_SUCCESS', () => {
@@ -52,7 +112,37 @@ describe('user', () => {
       type: types.SET_USER_SUCCESS,
       user
     };
-    expect(reducer.user(state, action)).toMatchSnapshot();
-    expect(reducer.user(state, action)).toMatchSnapshot();
+    expect(reducer.user(state, action)).toMatchInlineSnapshot(`
+      Object {
+        "email": "super@email.com",
+        "id": 2,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "super",
+      }
+    `);
+    expect(reducer.user(state, action)).toMatchInlineSnapshot(`
+      Object {
+        "email": "super@email.com",
+        "id": 2,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "username": "super",
+      }
+    `);
   });
 });

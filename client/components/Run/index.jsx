@@ -216,7 +216,7 @@ Run.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
-  const { permissions } = state.login;
+  const { permissions } = state.session;
   const { cohort, responses, run, user } = state;
 
   const scenarioId = Number(ownProps.scenarioId || params.scenarioId);

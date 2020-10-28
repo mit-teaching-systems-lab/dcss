@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
 import { history } from './history';
-import login from './login';
+import { session } from './session';
 import { logs, logsById } from './logs';
 import { response, responses, responsesById } from './response';
 import { run, runs, runsById } from './run';
@@ -19,7 +19,6 @@ export default combineReducers({
   cohortsById,
   errors,
   history,
-  login,
   logs,
   logsById,
   response,
@@ -31,6 +30,7 @@ export default combineReducers({
   scenario,
   scenarios,
   scenariosById,
+  session,
   tags,
   user,
   users,

@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    }
-  };
-});
-import routes from '../../routes/index.jsx';
-
 import Notification from '@components/Notification';
 import BackButtonHistory from '@client/routes/BackButtonHistory';
 import Navigation from '@client/routes/Navigation';
@@ -46,6 +34,8 @@ jest.mock('@client/routes/Navigation', () => {
 jest.mock('@client/routes/Routes', () => {
   return props => <div>@client/routes/Routes</div>;
 });
+
+import routes from '../../routes/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -106,11 +96,6 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere(n => n.type() === Component))
-  ).toMatchSnapshot();
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

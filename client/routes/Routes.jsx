@@ -366,7 +366,7 @@ Routes.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn } = state.login;
+  const { isLoggedIn } = state.session;
   const { user } = state;
   return { user, isLoggedIn };
 };

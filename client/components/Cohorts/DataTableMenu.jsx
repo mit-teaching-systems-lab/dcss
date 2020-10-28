@@ -103,7 +103,7 @@ DataTableMenu.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { permissions } = state.login;
+  const { permissions } = state.session;
   const { cohort, runsById, scenarios, user } = state;
 
   const run =

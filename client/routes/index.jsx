@@ -3,9 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import { setIsLoggedIn } from '@actions/login';
-import { getSession } from '@actions/user';
-
+import { getPermissions, getSession } from '@actions/session';
 import Notification from '@components/Notification';
 import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
@@ -28,20 +26,11 @@ class App extends Component {
 
     if (!isReady) {
       await this.props.getSession();
-
       // After getSession() is resolved,
       // this.props.user.id will be set if
       // there is a valid, active session.
       if (this.props.user.id) {
-        // TODO: move this into async action
-        const { permissions } = await (await fetch(
-          '/api/roles/permission'
-        )).json();
-
-        await this.props.setIsLoggedIn({
-          ...this.props.user,
-          permissions
-        });
+        await this.props.getPermissions();
       }
       isReady = true;
     }
@@ -71,19 +60,19 @@ class App extends Component {
 App.propTypes = {
   getSession: PropTypes.func,
   isLoggedIn: PropTypes.bool,
-  setIsLoggedIn: PropTypes.func,
+  getPermissions: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn } = state.login;
+  const { isLoggedIn } = state.session;
   const { user } = state;
-  return { user, isLoggedIn };
+  return { isLoggedIn, user };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getSession: options => dispatch(getSession(options)),
-  setIsLoggedIn: params => dispatch(setIsLoggedIn(params))
+  getSession: () => dispatch(getSession()),
+  getPermissions: () => dispatch(getPermissions())
 });
 
 export default connect(

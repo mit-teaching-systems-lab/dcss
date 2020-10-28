@@ -296,7 +296,7 @@ Cohort.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id) || ownProps.id;
-  const { permissions } = state.login;
+  const { permissions } = state.session;
   const { cohortsById, user } = state;
   const cohort = cohortsById[id] || { ...state.cohort, id };
 

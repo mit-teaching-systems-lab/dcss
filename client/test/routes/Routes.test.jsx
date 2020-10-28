@@ -18,18 +18,6 @@ import { mount, shallow } from 'enzyme';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Identity from '@utils/Identity';
-jest.mock('@utils/Identity', () => {
-  let count = 0;
-  return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
-    }
-  };
-});
-import Routes from '../../routes/Routes.jsx';
-
 import Editor from '@components/Editor';
 import Login from '@components/Login';
 import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
@@ -46,6 +34,8 @@ jest.mock('@components/Login/LoginRoutePromptModal', () => {
 jest.mock('@components/ScenariosList', () => {
   return props => <div>@components/ScenariosList</div>;
 });
+
+import Routes from '../../routes/Routes.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -106,11 +96,6 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  const mounted = mounter(ConnectedRoutedComponent);
-  expect(snapshotter(mounted)).toMatchSnapshot();
-  expect(
-    snapshotter(mounted.findWhere(n => n.type() === Component))
-  ).toMatchSnapshot();
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

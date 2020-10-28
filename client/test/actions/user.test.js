@@ -95,22 +95,3 @@ test('GET_USER_ERROR', async () => {
   assert.deepEqual(store.getState().errors.user.error, error);
   assert.equal(returnValue, null);
 });
-
-test('GET_SESSION_SUCCESS', async () => {
-  const user = { ...state.user };
-
-  fetchImplementation(fetch, 200, { user });
-
-  const returnValue = await store.dispatch(actions.getSession());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/session']);
-  assert.deepEqual(returnValue, user);
-});
-
-test('GET_SESSION_ERROR', async () => {
-  fetchImplementation(fetch, 200, { error });
-
-  const returnValue = await store.dispatch(actions.getSession());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/session']);
-  assert.deepEqual(store.getState().errors.session.error, error);
-  assert.equal(returnValue, null);
-});

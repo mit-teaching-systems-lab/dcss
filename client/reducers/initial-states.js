@@ -13,9 +13,8 @@ export const historyInitialState = {
   responses: []
 };
 
-export const loginInitialState = {
+export const sessionInitialState = {
   isLoggedIn: false,
-  username: '',
   permissions: []
 };
 

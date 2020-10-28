@@ -4,7 +4,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Modal } from '@components/UI';
 import { getUser, resetPassword } from '@actions/user';
-import { logOut } from '@actions/login';
+import { logOut } from '@actions/session';
 import './LoginRoutePromptModal.css';
 
 class ResetRoutePromptModal extends Component {

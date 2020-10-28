@@ -290,7 +290,7 @@ module.exports = {
     prompts: [],
     responses: []
   },
-  login: {
+  session: {
     isLoggedIn: true,
     username: 'super',
     permissions: [

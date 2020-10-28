@@ -463,7 +463,7 @@ test('Render 1 2', async done => {
   };
 
   const state = {
-    login: {
+    session: {
       isLoggedIn: true,
       username: 'super',
       permissions: [

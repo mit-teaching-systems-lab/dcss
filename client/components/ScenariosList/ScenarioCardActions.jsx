@@ -138,7 +138,7 @@ ScenarioCardActions.propTypes = {
 
 const mapStateToProps = state => {
   const {
-    login: { isLoggedIn },
+    session: { isLoggedIn },
     user
   } = state;
   return { isLoggedIn, user };
