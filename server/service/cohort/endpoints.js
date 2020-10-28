@@ -106,9 +106,6 @@ async function getCohortDataAsync(req, res) {
 
 async function getCohortParticipantDataAsync(req, res) {
   const { id, participant_id } = req.params;
-
-  console.log('??????????????????', id, participant_id);
-
   const responses = await db.getCohortRunResponses({
     id,
     participant_id
@@ -117,7 +114,6 @@ async function getCohortParticipantDataAsync(req, res) {
   const prompts = {};
 
   for (const response of responses) {
-    console.log(response);
     if (!prompts[response.scenario_id]) {
       prompts[response.scenario_id] = [
         await getScenarioPrompts(response.scenario_id)

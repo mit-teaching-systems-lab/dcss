@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import * as tldom from '@testing-library/dom'
+import * as tldom from '@testing-library/dom';
 import * as enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -43,12 +43,12 @@ jest.mock('react-beautiful-dnd', () => ({
   DragDropContext: ({ children }) => children
 }));
 
-jest.mock("@utils/Identity", () => {
+jest.mock('@utils/Identity', () => {
   let count = 0;
   return {
-    ...jest.requireActual("@utils/Identity"),
+    ...jest.requireActual('@utils/Identity'),
     id() {
       return ++count;
-    },
+    }
   };
 });

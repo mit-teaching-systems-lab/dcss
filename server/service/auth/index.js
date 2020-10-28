@@ -28,10 +28,7 @@ router.post('/signup', [
   respondWithUser
 ]);
 
-router.post('/reset', [
-  validateRequestBody,
-  resetUserPassword
-]);
+router.post('/reset', [validateRequestBody, resetUserPassword]);
 
 router.post('/update', [
   requireUser,

@@ -5,14 +5,12 @@ const db = require('./db');
 
 async function getSlidesAsync(req, res) {
   const { id } = reqScenario(req);
-  console.log('getSlides', id);
   const slides = await db.getScenarioSlides(id);
   res.json({ slides });
 }
 
 async function getPromptComponentsByScenarioIdAsync(req, res) {
   const { id } = reqScenario(req);
-  console.log('getPromptComponentsByScenarioId', id);
   const slides = await db.getScenarioSlides(id);
   const components = slides.reduce((accum, slide, index) => {
     if (slide.is_finish) {

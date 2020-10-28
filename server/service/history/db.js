@@ -1,7 +1,5 @@
-const { sql } = require('../../util/sqlHelpers');
 const { query } = require('../../util/db');
 const { getScenarioSlides } = require('../scenarios/slides/db');
-const { getRunResponses } = require('../runs/db');
 
 async function getScenarioPrompts(scenario_id) {
   const slides = await getScenarioSlides(scenario_id);
@@ -78,7 +76,6 @@ async function getHistoryForScenario(request) {
       ...row
     };
   });
-  console.log(responses);
 
   return { prompts, responses };
 }

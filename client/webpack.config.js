@@ -16,6 +16,7 @@ const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
   {}
 );
 
+const SESSION_SECRET = process.env.SESSION_SECRET || 'mit tsl teacher moments';
 const mode = process.argv.mode || 'development';
 
 module.exports = {
@@ -93,7 +94,7 @@ module.exports = {
     // Optimize moment locales
     new MomentLocalesPlugin(),
     new DefinePlugin({
-      SESSION_SECRET: `"${process.env.SESSION_SECRET || 'mit tsl teacher moments'}"`
+      SESSION_SECRET: `"${SESSION_SECRET}"`
     }),
     new DefinePlugin(DCSS_BRAND_VARS)
     // TODO: enable this compression

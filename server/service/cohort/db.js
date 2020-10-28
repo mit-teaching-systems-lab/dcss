@@ -1,5 +1,5 @@
 const { sql } = require('../../util/sqlHelpers');
-const { query, withClient, withClientTransaction } = require('../../util/db');
+const { query, withClientTransaction } = require('../../util/db');
 // const rolesDb = require('../roles/db');
 
 async function getCohortScenarios(cohort_id) {
@@ -63,7 +63,6 @@ async function getCohortUsers(cohort_id) {
     ) cur
     ON users.id = cur.user_id;
   `);
-  console.log(result.rows);
   const users = result.rows;
   const usersById = users.reduce((accum, user) => {
     accum[user.id] = user;
@@ -196,8 +195,16 @@ exports.setCohortScenarios = async (id, scenarios) => {
   });
 };
 
-exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
-  let responses = [];
+exports.getCohortRunResponses = async ({
+  id,
+  participant_id /*, scenario_id */
+}) => {
+  // let responses = [];
+
+  let andClause = participant_id
+    ? `run.user_id = ${participant_id}`
+    : 'run.scenario_id = ${scenario_id}';
+
   let select = `
     SELECT
       run.user_id as user_id,
@@ -225,11 +232,7 @@ exports.getCohortRunResponses = async ({ id, scenario_id, participant_id }) => {
     JOIN users ON users.id = run.user_id
     LEFT JOIN audio_transcripts ON audio_transcripts.key = run_response.response->>'value'
     WHERE cohort_run.cohort_id = ${id}
-    AND ${
-      participant_id
-        ? `run.user_id = ${participant_id}`
-        : 'run.scenario_id = ${scenario_id}'
-    }
+    AND ${andClause}
     ORDER BY cohort_run.run_id DESC
   `;
 

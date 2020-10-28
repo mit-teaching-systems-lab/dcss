@@ -1,7 +1,7 @@
 const Sendgrid = require('@sendgrid/mail');
 const Nodemailer = require('nodemailer');
 const Crypto = require('crypto-js');
-const generatePassword = require('password-generator');
+const passwordGenerator = require('password-generator');
 const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
 const db = require('./db');
@@ -165,7 +165,6 @@ async function loginUserAsync(req, res, next) {
       });
     }
 
-
     return next();
   }
 
@@ -175,7 +174,6 @@ async function loginUserAsync(req, res, next) {
 }
 
 async function resetUserPasswordAsync(req, res) {
-
   // First, check if this is a raw email address.
   // If it is, don't do the reset. We should only
   // receive encoded email values. That prevents
@@ -200,26 +198,29 @@ async function resetUserPasswordAsync(req, res) {
 
   if (user) {
     // 1. Make a new password.
-    let password = generatePassword(12, false, /[\w\d\?\-]/, '');
+    let password = passwordGenerator(12, false, /[\w\d?-]/, '');
 
     // 2. Update the user account with new password.
     await db.updateUser(user.id, {
       single_use_password: true,
-      password,
+      password
     });
 
     // 3. Email the temporary password to the user.
     //
-    const subject = `${process.env.DCSS_BRAND_NAME_TITLE || ''} Single-use password request`.trim();
+
+    const brandTitle = process.env.DCSS_BRAND_NAME_TITLE || '';
+    const subject = `${process.env.DCSS_BRAND_NAME_TITLE ||
+      ''} Single-use password request`.trim();
     const text = `
-You are receiving this email because you (or someone else) made a request to reset your ${process.env.DCSS_BRAND_NAME_TITLE || ''} password.
+You are receiving this email because you (or someone else) made a request to reset your ${brandTitle} password.
 The following password may only be used once. After you've logged in, go to Settings and update your password.
 \n\n
 Single-use password: ${password}\n\n
 
 Manage your account here: ${href}
 `;
-    const html = `<p>You are receiving this email because you (or someone else) made a request to reset your ${process.env.DCSS_BRAND_NAME_TITLE || ''} password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+    const html = `<p>You are receiving this email because you (or someone else) made a request to reset your ${brandTitle} password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
 <p>
 Single-use password: <code>${password}</code>
 </p>
@@ -230,17 +231,15 @@ Single-use password: <code>${password}</code>
 `;
     const message = {
       to: email,
-      from: `${process.env.DCSS_BRAND_NAME_TITLE || ''} <${process.env.SENDGRID_SENDER}>`,
+      from: `${brandTitle} <${process.env.SENDGRID_SENDER}>`,
       subject,
       text,
       html
     };
     if (process.env.SENDGRID_API_KEY) {
-
       try {
         await Sendgrid.send(message);
       } catch (error) {
-        console.log("SENDGRID:", error);
         error.status = 401;
         throw error;
       }

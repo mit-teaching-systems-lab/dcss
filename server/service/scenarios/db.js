@@ -461,7 +461,6 @@ async function getScenarioPrompts(scenario_id) {
   return components;
 }
 
-
 // TODO: determine if this is still in use
 async function getHistoryForScenario(params) {
   const {
