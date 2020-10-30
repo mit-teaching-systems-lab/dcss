@@ -156,6 +156,7 @@ const getScenariosIncrementallyNext = async (
   dispatch,
   updater
 ) => {
+  const count = await store.dispatch(getScenariosCount());
   let captured = [];
   let scenarios = [];
   do {
@@ -167,7 +168,7 @@ const getScenariosIncrementallyNext = async (
       dispatch
     );
     captured.push(...scenarios);
-  } while (scenarios.length === limit);
+  } while (captured.length < count);
 
   if (updater) {
     updater(scenarios);
