@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Button, Icon } from '@components/UI';
 import { deleteScenario } from '@actions/scenario';
 import Storage from '@utils/Storage';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import Gate from '@client/components/Gate';
 import './ScenariosList.css';
 
 class ScenarioCardActions extends Component {
@@ -56,7 +56,7 @@ class ScenarioCardActions extends Component {
         </Button>
         {isLoggedIn && (
           <Fragment>
-            <ConfirmAuth isAuthorized={isAuthorizedToEdit}>
+            <Gate isAuthorized={isAuthorizedToEdit}>
               <Button
                 tabIndex="0"
                 size="tiny"
@@ -69,8 +69,8 @@ class ScenarioCardActions extends Component {
                 <Icon name="edit outline" />
                 <span className={className}>Edit</span>
               </Button>
-            </ConfirmAuth>
-            <ConfirmAuth isAuthorized={isAuthorizedToReview}>
+            </Gate>
+            <Gate isAuthorized={isAuthorizedToReview}>
               <Button
                 tabIndex="0"
                 size="tiny"
@@ -83,9 +83,9 @@ class ScenarioCardActions extends Component {
                 <Icon className="book reader icon" />
                 <span className={className}>Review</span>
               </Button>
-            </ConfirmAuth>
+            </Gate>
             {/*
-            <ConfirmAuth isAuthorized={isAuthorizedToDelete}>
+            <Gate isAuthorized={isAuthorizedToDelete}>
               <Button
                 size="tiny"
                 icon
@@ -105,9 +105,9 @@ class ScenarioCardActions extends Component {
                 <Icon name="trash alternate outline" />
                 <span className={className}>Delete</span>
               </Button>
-            </ConfirmAuth>
+            </Gate>
             */}
-            <ConfirmAuth requiredPermission="create_scenario">
+            <Gate requiredPermission="create_scenario">
               <Button
                 tabIndex="0"
                 size="tiny"
@@ -120,7 +120,7 @@ class ScenarioCardActions extends Component {
                 <Icon name="copy outline" />
                 <span className={className}>Copy</span>
               </Button>
-            </ConfirmAuth>
+            </Gate>
           </Fragment>
         )}
       </Button.Group>

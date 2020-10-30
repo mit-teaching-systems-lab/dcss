@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { Dropdown, Menu, Popup } from '@components/UI';
 import { endScenarioLock } from '@actions/scenario';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import UserMenu from '@components/User/UserMenu';
 import Events from '@utils/Events';
 import Layout from '@utils/Layout';
@@ -75,12 +75,12 @@ class Navigation extends Component {
           </Menu.Item.Tabbable>
         );
         return permission ? (
-          <ConfirmAuth
+          <Gate
             key={`confirmed-menu-item-nav-${index}`}
             requiredPermission={permission}
           >
             {menuItem}
-          </ConfirmAuth>
+          </Gate>
         ) : (
           menuItem
         );

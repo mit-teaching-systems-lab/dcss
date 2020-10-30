@@ -26,7 +26,7 @@ import {
 } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
@@ -175,7 +175,7 @@ export class Cohorts extends React.Component {
       onPageChange
     } = this;
 
-    const { user, permissions } = this.props;
+    const { permissions } = this.props;
 
     const defaultRowCount = 2;
     const { itemsPerPage, rowsPerPage } = computeItemsRowsPerPage({
@@ -183,7 +183,7 @@ export class Cohorts extends React.Component {
     });
 
     const menuItemCreateCohorts = (
-      <ConfirmAuth
+      <Gate
         key="menu-item-create-cohort-auth"
         requiredPermission="create_cohort"
       >
@@ -198,7 +198,7 @@ export class Cohorts extends React.Component {
           </Icon.Group>
           Create a Cohort
         </Menu.Item.Tabbable>
-      </ConfirmAuth>
+      </Gate>
     );
 
     const menuItemCountCohorts = (
@@ -366,7 +366,7 @@ Cohorts.propTypes = {
   }).isRequired,
   getUser: PropTypes.func,
   user: PropTypes.object,
-  permissions: PropTypes.array,
+  permissions: PropTypes.array
 };
 
 const mapStateToProps = state => {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const ConfirmAuth = ({
+const Gate = ({
   children,
   isAuthorized,
   permissions = [],
@@ -26,26 +26,32 @@ const ConfirmAuth = ({
     isAccessGranted = isAuthorized && permissions.includes(requiredPermission);
   }
 
+  const protectedChild = children || null;
+
   return (
     <Route
       {...rest}
       render={() => {
-        return isAccessGranted ? children : null;
+        return isAccessGranted ? protectedChild : null;
       }}
     />
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { isLoggedIn, permissions } = state.session;
-  return { isLoggedIn, permissions };
+  return {
+    children: ownProps.children || null,
+    isLoggedIn,
+    permissions
+  };
 };
 
-ConfirmAuth.propTypes = {
+Gate.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired,
+  ]),
   isAuthorized: PropTypes.bool,
   permissions: PropTypes.node,
   requiredPermission: PropTypes.string
@@ -54,4 +60,4 @@ ConfirmAuth.propTypes = {
 export default connect(
   mapStateToProps,
   null
-)(ConfirmAuth);
+)(Gate);

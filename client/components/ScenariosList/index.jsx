@@ -27,7 +27,7 @@ import {
   getScenariosSlice
 } from '@actions/scenario';
 import Boundary from '@components/Boundary';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import Username from '@components/User/Username';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -156,7 +156,7 @@ class ScenariosList extends Component {
         }
 
         offset += limit;
-      } while (count > this.props.scenarios.length);
+      } while (this.scenarios.length < count);
     }
   }
 
@@ -368,7 +368,7 @@ class ScenariosList extends Component {
     ) : null;
 
     const left = [
-      <ConfirmAuth
+      <Gate
         key="menu-item-scenario-create"
         requiredPermission="create_scenario"
       >
@@ -383,7 +383,7 @@ class ScenariosList extends Component {
           </Icon.Group>
           Create a Scenario
         </Menu.Item.Tabbable>
-      </ConfirmAuth>,
+      </Gate>,
 
       menuItemScenarioLinkCopyLeft
     ];

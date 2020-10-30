@@ -302,12 +302,12 @@ const mapStateToProps = (state, ownProps) => {
   const cohortUser = cohort.users.find(
     cohortMember => cohortMember.id === user.id
   );
-  const cohortRoles = cohortUser && cohortUser.roles || [];
+  const cohortRoles = (cohortUser && cohortUser.roles) || [];
   const authority = {
-    isOwner: (cohortRoles.includes('owner')) || false,
-    isFacilitator: (cohortRoles.includes('facilitator')) || false,
-    isResearcher: (cohortRoles.includes('researcher')) || false,
-    isParticipant: (cohortRoles.includes('participant')) || false
+    isOwner: cohortRoles.includes('owner') || false,
+    isFacilitator: cohortRoles.includes('facilitator') || false,
+    isResearcher: cohortRoles.includes('researcher') || false,
+    isParticipant: cohortRoles.includes('participant') || false
   };
 
   // Super admins have unrestricted access to cohorts

@@ -19,7 +19,7 @@ import escapeRegExp from 'lodash.escaperegexp';
 import { computeItemsRowsPerPage } from '@utils/Layout';
 import Moment from '@utils/Moment';
 import Username from '@components/User/Username';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
@@ -308,7 +308,7 @@ export class CohortScenarios extends React.Component {
         >
           <Table.Header>
             <Table.Row>
-              <ConfirmAuth
+              <Gate
                 requiredPermission="edit_scenarios_in_cohort"
                 isAuthorized={isFacilitator}
               >
@@ -321,7 +321,7 @@ export class CohortScenarios extends React.Component {
                 <Table.HeaderCell className="c__table-cell-options">
                   Tools
                 </Table.HeaderCell>
-              </ConfirmAuth>
+              </Gate>
               <Table.HeaderCell>Title</Table.HeaderCell>
               <Table.HeaderCell className="c__table-cell-content">
                 {isFacilitator ? 'Author' : 'Started'}
@@ -414,7 +414,7 @@ export class CohortScenarios extends React.Component {
                   : {};
 
                 return (
-                  <ConfirmAuth
+                  <Gate
                     key={`confirm-${index}`}
                     requiredPermission={requiredPermission}
                   >
@@ -423,7 +423,7 @@ export class CohortScenarios extends React.Component {
                       style={{ cursor: 'pointer' }}
                       {...completionStatus}
                     >
-                      <ConfirmAuth
+                      <Gate
                         requiredPermission="edit_own_cohorts"
                         isAuthorized={isFacilitator}
                       >
@@ -438,8 +438,8 @@ export class CohortScenarios extends React.Component {
                             onClick={onCheckboxClick}
                           />
                         </Table.Cell>
-                      </ConfirmAuth>
-                      <ConfirmAuth
+                      </Gate>
+                      <Gate
                         requiredPermission="edit_scenarios_in_cohort"
                         isAuthorized={isFacilitator}
                       >
@@ -484,7 +484,7 @@ export class CohortScenarios extends React.Component {
                                     }
                                   />
 
-                                  <ConfirmAuth
+                                  <Gate
                                     requiredPermission="view_all_data"
                                     isAuthorized={isFacilitator}
                                   >
@@ -503,7 +503,7 @@ export class CohortScenarios extends React.Component {
                                         />
                                       }
                                     />
-                                  </ConfirmAuth>
+                                  </Gate>
                                 </Fragment>
                               )}
                               <Popup
@@ -541,7 +541,7 @@ export class CohortScenarios extends React.Component {
                             </Button.Group>
                           ) : null}
                         </Table.Cell>
-                      </ConfirmAuth>
+                      </Gate>
                       <Table.Cell.Clickable
                         href={pathname}
                         content={scenario.title}
@@ -557,7 +557,7 @@ export class CohortScenarios extends React.Component {
                         {isFacilitator ? scenario.description : endedAtDisplay}
                       </Table.Cell>
                     </Table.Row>
-                  </ConfirmAuth>
+                  </Gate>
                 );
               })}
             </Sortable>

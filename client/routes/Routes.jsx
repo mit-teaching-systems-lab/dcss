@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import Admin from '@components/Admin';
 import Cohort from '@components/Cohorts/Cohort';
 import Cohorts from '@components/Cohorts';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import CreateAccount from '@components/CreateAccount';
 import CreateAnonymousAccount from '@components/CreateAccount/CreateAnonymousAccount';
 import Downloads from '@components/Downloads';
@@ -127,14 +127,14 @@ const Routes = ({ isLoggedIn, user }) => {
       </InterceptAnonymizableRoute>
 
       <RedirectRouteForInactiveSession path="/admin" isLoggedIn={isLoggedIn}>
-        <ConfirmAuth path="/admin" requiredPermission="edit_permissions">
+        <Gate path="/admin" requiredPermission="edit_permissions">
           <Route render={routeRenderAdmin} />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
-      <ConfirmAuth path="/cohorts" requiredPermission="view_own_cohorts">
+      <Gate path="/cohorts" requiredPermission="view_own_cohorts">
         <Route render={routeRenderCohorts} />
-      </ConfirmAuth>
+      </Gate>
 
       <InterceptAnonymizableRoute
         exact
@@ -144,25 +144,21 @@ const Routes = ({ isLoggedIn, user }) => {
         <Route render={routeRenderCohort} />
       </InterceptAnonymizableRoute>
 
-      <ConfirmAuth
-        exact
-        path="/cohort/:id/runs"
-        requiredPermission="view_run_data"
-      >
+      <Gate exact path="/cohort/:id/runs" requiredPermission="view_run_data">
         <Route component={routeRenderCohortRuns} />
-      </ConfirmAuth>
-      <ConfirmAuth path="/editor/new" requiredPermission="create_scenario">
+      </Gate>
+      <Gate path="/editor/new" requiredPermission="create_scenario">
         <Route component={NewScenario} />
-      </ConfirmAuth>
-      <ConfirmAuth path="/editor/copy/:id" requiredPermission="create_scenario">
+      </Gate>
+      <Gate path="/editor/copy/:id" requiredPermission="create_scenario">
         <Route component={CopyScenario} />
-      </ConfirmAuth>
+      </Gate>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id/scenario/:activeNonZeroSlideIndex"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
+        <Gate
           path="/editor/:id/scenario/:activeNonZeroSlideIndex"
           requiredPermission="create_scenario"
         >
@@ -173,17 +169,14 @@ const Routes = ({ isLoggedIn, user }) => {
               );
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id/scenario"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
-          path="/editor/:id/scenario"
-          requiredPermission="create_scenario"
-        >
+        <Gate path="/editor/:id/scenario" requiredPermission="create_scenario">
           <Route
             render={(props = {}) => {
               return (
@@ -191,14 +184,14 @@ const Routes = ({ isLoggedIn, user }) => {
               );
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id/slides/:activeNonZeroSlideIndex"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
+        <Gate
           path="/editor/:id/slides/:activeNonZeroSlideIndex"
           requiredPermission="create_scenario"
         >
@@ -207,30 +200,27 @@ const Routes = ({ isLoggedIn, user }) => {
               return <Editor {...makeEditorProps(props)} activeTab="slides" />;
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id/slides"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
-          path="/editor/:id/slides"
-          requiredPermission="create_scenario"
-        >
+        <Gate path="/editor/:id/slides" requiredPermission="create_scenario">
           <Route
             render={(props = {}) => {
               return <Editor {...makeEditorProps(props)} activeTab="slides" />;
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id/preview/:activeRunSlideIndex"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
+        <Gate
           path="/editor/:id/preview/:activeRunSlideIndex"
           requiredPermission="create_scenario"
         >
@@ -239,30 +229,27 @@ const Routes = ({ isLoggedIn, user }) => {
               return <Editor {...makeEditorProps(props)} activeTab="preview" />;
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id/preview"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
-          path="/editor/:id/preview"
-          requiredPermission="create_scenario"
-        >
+        <Gate path="/editor/:id/preview" requiredPermission="create_scenario">
           <Route
             render={(props = {}) => {
               return <Editor {...makeEditorProps(props)} activeTab="preview" />;
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/editor/:id"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth path="/editor/:id" requiredPermission="create_scenario">
+        <Gate path="/editor/:id" requiredPermission="create_scenario">
           <Route
             render={(props = {}) => {
               return (
@@ -270,52 +257,46 @@ const Routes = ({ isLoggedIn, user }) => {
               );
             }}
           />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/downloads/:type/:id/:activePage"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
+        <Gate
           path="/downloads/:type/:id/:activePage"
           requiredPermission="view_run_data"
         >
           <Route render={routeRenderDownloads} />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/downloads/:type/:id"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
-          path="/downloads/:type/:id"
-          requiredPermission="view_run_data"
-        >
+        <Gate path="/downloads/:type/:id" requiredPermission="view_run_data">
           <Route render={routeRenderDownloads} />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/downloads/:activePage"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth
-          path="/downloads/:activePage"
-          requiredPermission="view_run_data"
-        >
+        <Gate path="/downloads/:activePage" requiredPermission="view_run_data">
           <Route render={routeRenderDownloads} />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession
         path="/downloads"
         isLoggedIn={isLoggedIn}
       >
-        <ConfirmAuth path="/downloads" requiredPermission="view_run_data">
+        <Gate path="/downloads" requiredPermission="view_run_data">
           <Route exact component={Downloads} />
-        </ConfirmAuth>
+        </Gate>
       </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession

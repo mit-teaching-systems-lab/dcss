@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, Icon } from '@components/UI';
 import { getScenario } from '@actions/scenario';
-import ConfirmAuth from '@client/components/ConfirmAuth';
+import Gate from '@client/components/Gate';
 import DeletedCard from './DeletedCard';
 import Events from '@utils/Events';
 import Identity from '@utils/Identity';
@@ -57,7 +57,7 @@ class ScenarioCard extends React.Component {
     const ariaLabelledby = Identity.id();
     const ariaDescribedby = Identity.id();
     return deleted_at ? (
-      <ConfirmAuth isAuthorized={isAuthorized}>
+      <Gate isAuthorized={isAuthorized}>
         <DeletedCard
           tabIndex="0"
           id={id}
@@ -66,7 +66,7 @@ class ScenarioCard extends React.Component {
           onClick={onRestoreClick}
           onKeyUp={(...args) => Events.onKeyUp(...args, onRestoreClick)}
         />
-      </ConfirmAuth>
+      </Gate>
     ) : (
       <Card
         className="sc sc__margin-height"

@@ -12,7 +12,7 @@ import {
   Ref
 } from '@components/UI';
 
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import EditorMenu from '@components/EditorMenu';
 import { makeDefaultDescription } from '@components/Editor/scenario';
 import Loading from '@components/Loading';
@@ -338,7 +338,7 @@ class ScenarioEditor extends Component {
       this.state.categories && this.state.categories.length;
 
     const dropdowns = (
-      <ConfirmAuth requiredPermission="edit_scenario">
+      <Gate requiredPermission="edit_scenario">
         {showOwnerDropdown ? (
           <OwnerDropdown
             author={author}
@@ -355,7 +355,7 @@ class ScenarioEditor extends Component {
             />
           </Ref>
         ) : null}
-      </ConfirmAuth>
+      </Gate>
     );
 
     // This call is wrapped to prevent the form submit handler from

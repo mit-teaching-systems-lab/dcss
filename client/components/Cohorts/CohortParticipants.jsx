@@ -21,7 +21,7 @@ import { getCohort, setCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
 import Username from '@components/User/Username';
 import UsersTable from '@components/Admin/UsersTable';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import Loading from '@components/Loading';
 import scrollIntoView from '@utils/scrollIntoView';
 import { COHORT_ROLE_GROUPS } from '../Admin/constants';
@@ -262,7 +262,7 @@ export class CohortParticipants extends React.Component {
         />
       );
       const popup = (
-        <ConfirmAuth
+        <Gate
           key={`c-${key}`}
           isAuthorized={isFacilitator}
           requiredPermission="view_all_data"
@@ -273,7 +273,7 @@ export class CohortParticipants extends React.Component {
             content="View cohort reponses from this participant"
             trigger={trigger}
           />
-        </ConfirmAuth>
+        </Gate>
       );
 
       const { is_super } = (usersById && usersById[cohortUser.id]) || {};

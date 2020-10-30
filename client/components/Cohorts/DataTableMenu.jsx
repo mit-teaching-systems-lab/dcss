@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Menu, Popup } from '@components/UI';
 import { getCohort } from '@actions/cohort';
-import ConfirmAuth from '@components/ConfirmAuth';
+import Gate from '@components/Gate';
 import './Cohort.css';
 
 export class DataTableMenu extends Component {
@@ -57,14 +57,14 @@ export class DataTableMenu extends Component {
 
     return (
       <Menu borderless icon>
-        <ConfirmAuth requiredPermission="edit_scenarios_in_cohort">
+        <Gate requiredPermission="edit_scenarios_in_cohort">
           <Popup
             inverted
             size="tiny"
             content="Close this data table"
             trigger={menuItemClose}
           />
-        </ConfirmAuth>
+        </Gate>
         {shouldShowRefresh ? (
           <Popup
             inverted
