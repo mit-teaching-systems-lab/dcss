@@ -1,37 +1,33 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import './Text.css';
 
-export class Text extends Component {
-  render() {
-    const { children = null, style = {}, title = '', ...rest } = this.props;
+export function Text({ children = null, style = {}, title = '', ...rest }) {
+  const classNames = ['ui'];
+  const props = {};
+  Object.entries(rest).forEach(([key, value]) => {
+    if (typeof value === 'boolean' && value) {
+      classNames.push(key);
+    } else {
+      props[key] = value;
+    }
+  });
 
-    const classNames = ['ui'];
-    const props = {};
+  classNames.push('text');
 
-    Object.entries(rest).forEach(([key, value]) => {
-      if (typeof value === 'boolean' && value) {
-        classNames.push(key);
-      } else {
-        props[key] = value;
-      }
-    });
+  const className = classNames.join(' ');
 
-    classNames.push('text');
-
-    const className = classNames.join(' ');
-
-    return (
-      <span
-        aria-label={title}
-        className={className}
-        title={title}
-        style={style}
-        {...props}
-      >
-        {children}
-      </span>
-    );
-  }
+  return (
+    <span
+      aria-label={title}
+      className={className}
+      title={title}
+      style={style}
+      {...props}
+    >
+      {children}
+    </span>
+  );
 }
 
 Text.propTypes = {

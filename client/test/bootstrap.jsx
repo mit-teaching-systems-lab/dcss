@@ -9,8 +9,15 @@ import rootReducer from '../reducers';
 import { createStoreWithMiddleWare } from '../store';
 import configureMockStore from 'redux-mock-store';
 import toJson from 'enzyme-to-json';
+import { prettyDOM } from '@testing-library/react';
 
 export const state = require('./state');
+
+export const serialize = container => {
+  return prettyDOM(container, Infinity, {
+    highlight: false
+  });
+};
 
 export const createPseudoRealStore = (state = {}) => {
   return createStoreWithMiddleWare(

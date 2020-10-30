@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
+import { notify } from '@components/Notification';
+import {
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Modal,
+  Text
+} from '@components/UI';
 import { getUser, setUser } from '@actions/user';
 import './User.css';
 
@@ -32,62 +41,49 @@ class UserSettings extends Component {
       }
     };
 
-    this.timeout = null;
-    this.validFormInput = this.validFormInput.bind(this);
+    this.validateFormInput = this.validateFormInput.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-  componentWillUnmount() {
-    clearTimeout(this.timeout);
-  }
-  validFormInput() {
+
+  validateFormInput() {
     const { confirmPassword, password, username } = this.state;
+    let field = '';
+    let message = '';
 
     if (!username) {
+      field = 'username';
+      message = 'Username must not be empty.';
+    } else {
+      if (password) {
+        if (!confirmPassword) {
+          field = 'confirmPassword';
+          message = 'Please confirm your new password.';
+        } else {
+          if (password !== confirmPassword) {
+            field = 'confirmPassword';
+            message = 'Passwords do not match.';
+          }
+        }
+      }
+    }
+
+    if (message) {
+      notify({ message, color: 'red', time: 3000 });
       this.setState({
         error: {
-          field: 'username',
-          message: 'Please enter a username.'
+          field,
+          message
         }
       });
       return false;
     }
-
-    if (password) {
-      if (!confirmPassword) {
-        this.setState({
-          error: {
-            field: 'password',
-            message: 'Please confirm your new password.'
-          }
-        });
-        return false;
-      } else {
-        if (password !== confirmPassword) {
-          this.setState({
-            error: {
-              field: 'password',
-              message: 'Password confirmation does not match.'
-            }
-          });
-          return false;
-        }
-      }
-    }
-
-    this.setState({
-      error: {
-        field: '',
-        message: ''
-      }
-    });
-
     return true;
   }
 
   async onSubmit() {
-    if (!this.validFormInput()) {
+    if (!this.validateFormInput()) {
       return;
     }
 
@@ -110,40 +106,22 @@ class UserSettings extends Component {
       updates.password = password;
     }
 
-    const result = await this.props.setUser(updates);
-
-    if (!result) {
-      return;
-    }
+    await this.props.setUser(updates);
 
     if (this.props.errors.user) {
-      this.setState({
-        error: {
-          message: this.props.errors.user.message
-        }
-      });
-    } else {
-      this.setState({
-        success: {
-          message: 'User settings updated!'
-        }
-      });
+      const { message } = this.props.errors.user;
 
-      this.timeout = setTimeout(() => {
+      if (message === 'Username is already in use.') {
         this.setState({
-          success: {
-            message: ''
+          error: {
+            field: 'username',
+            message
           }
         });
-      }, 3000);
+      }
+    } else {
+      notify({ message: 'Settings updated!', color: 'green' });
     }
-  }
-
-  onChange(event, { name, value }) {
-    if (this.state.message) {
-      this.setState({ error: { field: '', message: '' } });
-    }
-    this.setState({ [name]: value });
   }
 
   onCancel() {
@@ -155,36 +133,18 @@ class UserSettings extends Component {
     }
   }
 
+  onChange(event, { name, value }) {
+    if (this.state.error.message) {
+      this.setState({ error: { field: '', message: '' } });
+    }
+    this.setState({ [name]: value });
+  }
+
   render() {
-    const { onChange, onCancel, onSubmit } = this;
-    const {
-      username,
-      personalname,
-      email,
-      confirmPassword,
-      password,
-      open,
-      error,
-      success
-    } = this.state;
+    const { onCancel, onChange, onSubmit } = this;
+    const { username, personalname, email, open, error } = this.state;
 
     const { user } = this.props;
-
-    const messageProps = {
-      hidden: true
-    };
-
-    if (error.message) {
-      messageProps.hidden = false;
-      messageProps.color = 'red';
-      messageProps.content = error.message;
-    }
-
-    if (success.message) {
-      messageProps.hidden = false;
-      messageProps.color = 'green';
-      messageProps.content = success.message;
-    }
 
     const anonymousModeFormProps = {
       className: user.is_anonymous ? 'us__anonymous-form' : 'us__reified-form'
@@ -210,56 +170,91 @@ class UserSettings extends Component {
           <Modal.Content>
             <Form onSubmit={onSubmit}>
               <Form.Field>
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="username">
+                  Username:{' '}
+                  {error.field === 'username' ? (
+                    <Text right error>
+                      {error.message}
+                    </Text>
+                  ) : null}
+                </label>
                 <Form.Input
+                  aria-label="Username"
                   name="username"
                   autoComplete="username"
                   placeholder="..."
                   defaultValue={username || ''}
                   onChange={onChange}
+                  {...(error.field === 'username' && { error: true })}
                 />
               </Form.Field>
               <Form.Field>
                 <label htmlFor="personalname">
-                  Personal name (full name, or alias):
+                  Personal name (full name, or alias):{' '}
+                  {error.field === 'personalname' ? (
+                    <Text error>{error.message}</Text>
+                  ) : null}
                 </label>
                 <Form.Input
+                  aria-label="Personal name"
                   name="personalname"
                   autoComplete="personalname"
                   placeholder="..."
                   defaultValue={personalname || ''}
                   onChange={onChange}
+                  {...(error.field === 'personalname' && { error: true })}
                 />
               </Form.Field>
               <Form.Field>
-                <label htmlFor="email">Email address:</label>
+                <label htmlFor="email">
+                  Email address:{' '}
+                  {error.field === 'email' ? (
+                    <Text error>{error.message}</Text>
+                  ) : null}
+                </label>
                 <Form.Input
+                  aria-label="Email address"
                   name="email"
                   autoComplete="email"
                   placeholder="jane@example.com"
                   defaultValue={email || ''}
                   onChange={onChange}
+                  {...(error.field === 'email' && { error: true })}
                 />
               </Form.Field>
               <div {...anonymousModeFormProps}>
                 <Form.Field>
-                  <label htmlFor="password">New password:</label>
+                  <label htmlFor="password">
+                    New password:{' '}
+                    {error.field === 'password' ? (
+                      <Text error>{error.message}</Text>
+                    ) : null}
+                  </label>
                   <Form.Input
+                    aria-label="New password"
                     name="password"
                     autoComplete="new-password"
                     type="password"
-                    defaultValue={password || ''}
+                    defaultValue=""
                     onChange={onChange}
+                    {...(error.field === 'password' && { error: true })}
                   />
                 </Form.Field>
                 <Form.Field>
-                  <label htmlFor="confirmPassword">Confirm new password:</label>
+                  <label htmlFor="confirmPassword">
+                    Confirm new password:{' '}
+                    {error.field === 'confirmPassword' ? (
+                      <Text error>{error.message}</Text>
+                    ) : null}
+                  </label>
                   <Form.Input
+                    aria-label="Confirm new password"
                     name="confirmPassword"
                     autoComplete="new-password"
                     type="password"
-                    defaultValue={confirmPassword || ''}
+                    defaultValue=""
                     onChange={onChange}
+                    {...(error.field === 'confirmPassword' && { error: true })}
                   />
                 </Form.Field>
               </div>
@@ -286,11 +281,6 @@ class UserSettings extends Component {
                       Close
                     </Button>
                   </Button.Group>
-                  <Message
-                    floating
-                    {...messageProps}
-                    style={{ textAlign: 'left' }}
-                  />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
