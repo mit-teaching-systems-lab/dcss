@@ -4,56 +4,12 @@ exports[`Card 1`] = `"<i aria-label=\\"Prompt: Multiple Buttons\\" class=\\"hand
 
 exports[`Card 2`] = `"<i aria-label=\\"Prompt: Multiple Buttons\\" class=\\"hand pointer outline icon\\"></i>Prompt: Multiple Buttons"`;
 
-exports[`Snapshot 1 1`] = `
-Object {
-  "buttons": Array [
-    Object {
-      "display": "",
-      "value": "",
-    },
-  ],
-  "header": "",
-  "id": "",
-  "recallId": "",
-  "required": true,
-  "responseId": undefined,
-  "timeout": 0,
-  "type": "MultiButtonResponse",
-}
-`;
-
-exports[`Snapshot 2 1`] = `
-Object {
-  "buttons": Array [
-    Object {
-      "display": "",
-      "value": "",
-    },
-  ],
-  "header": "",
-  "id": "",
-  "recallId": "",
-  "required": true,
-  "responseId": undefined,
-  "timeout": 0,
-  "type": "MultiButtonResponse",
-}
-`;
-
-exports[`Snapshot 3 1`] = `
-Object {
-  "buttons": Array [
-    Object {
-      "display": "",
-      "value": "",
-    },
-  ],
-  "header": "",
-  "id": "",
-  "recallId": "",
-  "required": true,
-  "responseId": "XYZ",
-  "timeout": 0,
-  "type": "MultiButtonResponse",
-}
+exports[`Card 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Multiple Buttons"
+    class="hand pointer outline icon"
+  />
+  Prompt: Multiple Buttons
+</DocumentFragment>
 `;

@@ -4,10 +4,12 @@ exports[`Card 1`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"
 
 exports[`Card 2`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;
 
-exports[`Snapshot 1 1`] = `
-Object {
-  "html": "",
-  "id": "",
-  "type": "Text",
-}
+exports[`Card 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Rich Text Editor"
+    class="edit icon"
+  />
+  Rich Text Editor
+</DocumentFragment>
 `;

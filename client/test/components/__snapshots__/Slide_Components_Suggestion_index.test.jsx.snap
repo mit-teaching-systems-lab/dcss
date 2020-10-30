@@ -4,29 +4,12 @@ exports[`Card 1`] = `"<i aria-label=\\"Participant Suggestion\\" class=\\"info i
 
 exports[`Card 2`] = `"<i aria-label=\\"Participant Suggestion\\" class=\\"info icon\\"></i>Participant Suggestion"`;
 
-exports[`Snapshot 1 1`] = `
-Object {
-  "color": "grey",
-  "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
-  "id": "",
-  "type": "Suggestion",
-}
-`;
-
-exports[`Snapshot 2 1`] = `
-Object {
-  "color": "grey",
-  "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
-  "id": "",
-  "type": "Suggestion",
-}
-`;
-
-exports[`Snapshot 3 1`] = `
-Object {
-  "color": "grey",
-  "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
-  "id": "",
-  "type": "Suggestion",
-}
+exports[`Card 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Participant Suggestion"
+    class="info icon"
+  />
+  Participant Suggestion
+</DocumentFragment>
 `;

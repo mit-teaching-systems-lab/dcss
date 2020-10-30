@@ -4,28 +4,12 @@ exports[`Card 1`] = `"<i aria-label=\\"Prompt: Text Input\\" class=\\"keyboard i
 
 exports[`Card 2`] = `"<i aria-label=\\"Prompt: Text Input\\" class=\\"keyboard icon\\"></i>Prompt: Text Input"`;
 
-exports[`Snapshot 1 1`] = `
-Object {
-  "id": "",
-  "placeholder": "Your response",
-  "prompt": "",
-  "recallId": "",
-  "required": true,
-  "responseId": undefined,
-  "timeout": 0,
-  "type": "TextResponse",
-}
-`;
-
-exports[`Snapshot 2 1`] = `
-Object {
-  "id": "",
-  "placeholder": "Your response",
-  "prompt": "",
-  "recallId": "",
-  "required": true,
-  "responseId": "XYZ",
-  "timeout": 0,
-  "type": "TextResponse",
-}
+exports[`Card 3`] = `
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Text Input"
+    class="keyboard icon"
+  />
+  Prompt: Text Input
+</DocumentFragment>
 `;

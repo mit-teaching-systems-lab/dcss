@@ -1,6 +1,22 @@
 import React from 'react';
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect
+}));
+
 import assert from 'assert';
-import { mounter, snapshotter } from '../bootstrap';
+import {
+  fetchImplementation,
+  mounter,
+  reduxer,
+  snapshotter,
+  state
+} from '../bootstrap';
+import { unmountComponentAtNode } from 'react-dom';
+
+import { mount, shallow } from 'enzyme';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import {
   type,
@@ -12,57 +28,102 @@ import Display from '@components/Slide/Components/Suggestion/Display';
 import Editor from '@components/Slide/Components/Suggestion/Editor';
 import * as component from '../../components/Slide/Components/Suggestion/index.js';
 
-beforeEach(() => {});
+let container = null;
 
-afterEach(() => {});
+beforeAll(() => {
+  (window || global).fetch = jest.fn();
+});
+
+afterAll(() => {
+  jest.restoreAllMocks();
+});
+
+beforeEach(() => {
+  container = document.createElement('div');
+  container.setAttribute('id', 'root');
+  document.body.appendChild(container);
+
+  fetchImplementation(fetch);
+});
+
+afterEach(() => {
+  jest.resetAllMocks();
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
 test('type', () => {
-  assert.equal(component.type, type);
+  expect(component.type).toBe(type);
 });
 
 test('name', () => {
-  assert.equal(component.name, name);
+  expect(component.name).toBe(name);
 });
 
 test('description', () => {
-  assert.equal(component.description, description);
+  expect(component.description).toBe(description);
 });
 
 test('Display', () => {
-  assert.equal(component.Display, Display);
+  expect(component.Display).toBe(Display);
 });
 
 test('Editor', () => {
-  assert.equal(component.Editor, Editor);
+  expect(component.Editor).toBe(Editor);
 });
 
-test('Card', () => {
-  assert.equal(component.Card, Card);
-
+test('Card', async () => {
+  expect(component.Card).toBe(Card);
   expect(snapshotter(mounter(component.Card))).toMatchSnapshot();
   expect(snapshotter(mounter(Card))).toMatchSnapshot();
-  assert.equal(
-    snapshotter(mounter(Card)),
-    snapshotter(mounter(component.Card))
-  );
+  expect(snapshotter(mounter(Card))).toBe(snapshotter(mounter(component.Card)));
+
+  const { Card: ComponentCard } = component;
+
+  const ConnectedRoutedComponent = reduxer(ComponentCard);
+  const { asFragment } = render(<ConnectedRoutedComponent />);
+  await screen.getByLabelText(component.name);
+  expect(asFragment()).toMatchSnapshot();
 });
 
-test('Snapshot 1', () => {
+test('Render 1', async () => {
   const params = {};
 
-  expect(component.defaultValue(params)).toMatchSnapshot();
+  expect(component.defaultValue(params)).toMatchInlineSnapshot(`
+    Object {
+      "color": "grey",
+      "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
+      "id": "",
+      "type": "Suggestion",
+    }
+  `);
 });
 
-test('Snapshot 2', () => {
+test('Render 2', async () => {
   const params = { recallId: 'ABC' };
 
-  expect(component.defaultValue(params)).toMatchSnapshot();
+  expect(component.defaultValue(params)).toMatchInlineSnapshot(`
+    Object {
+      "color": "grey",
+      "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
+      "id": "",
+      "type": "Suggestion",
+    }
+  `);
 });
 
-test('Snapshot 3', () => {
+test('Render 3', async () => {
   const params = { recallId: 'ABC', responseId: 'XYZ' };
 
-  expect(component.defaultValue(params)).toMatchSnapshot();
+  expect(component.defaultValue(params)).toMatchInlineSnapshot(`
+    Object {
+      "color": "grey",
+      "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
+      "id": "",
+      "type": "Suggestion",
+    }
+  `);
 });
 
 /*{INJECTION}*/
