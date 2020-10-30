@@ -201,15 +201,17 @@ async function resetUserPasswordAsync(req, res) {
     // 1. Make a new password.
     let password = passwordGenerator(12, false, /[\w\d?-]/, '');
 
-    // 2. Update the user account with new password.
-    await db.updateUser(user.id, {
+    // 2. Update the user account(s) with new password.
+    //    Why is that plural? Because we've allowed users to create
+    //    multiple accounts with the same email address, since we
+    //    don't actually require an email add address, nor does it
+    //    necessarily indicate the identity of any given user.
+    await db.updateUserWhere({ email }, {
       single_use_password: true,
       password
     });
 
     // 3. Email the temporary password to the user.
-    //
-
     const brandTitle = process.env.DCSS_BRAND_NAME_TITLE || '';
     const subject = `${process.env.DCSS_BRAND_NAME_TITLE ||
       ''} Single-use password request`.trim();

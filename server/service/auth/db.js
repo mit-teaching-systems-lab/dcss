@@ -52,8 +52,8 @@ async function createUser({ email, username, password }) {
   }
 }
 
-async function updateUser(id, updates) {
-  const prepared = Object.entries(updates).reduce((accum, [key, value]) => {
+function prepareUserData(updates) {
+  return Object.entries(updates).reduce((accum, [key, value]) => {
     if (key === 'password') {
       let { passwordHash: hash, salt } = saltHashPassword(value);
       accum.hash = hash;
@@ -63,12 +63,19 @@ async function updateUser(id, updates) {
     }
     return accum;
   }, {});
+}
 
+async function updateUserWhere(where, updates) {
+  const prepared = prepareUserData(updates);
   const {
     rows: [user]
-  } = await query(updateQuery('users', { id }, prepared));
+  } = await query(updateQuery('users', where, prepared));
 
   return getUserById(user.id);
+}
+
+async function updateUser(id, updates) {
+  return updateUserWhere({ id }, updates);
 }
 
 async function getUserRoles(id) {
@@ -86,4 +93,5 @@ exports.getUserByProps = getUserByProps;
 exports.getUserById = getUserById;
 exports.createUser = createUser;
 exports.updateUser = updateUser;
+exports.updateUserWhere = updateUserWhere;
 exports.getUserRoles = getUserRoles;
