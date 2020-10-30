@@ -42,7 +42,7 @@ async function checkForDuplicateAsync(req, res, next) {
   const username = req.body.username || req.params.username;
   const user = await db.getUserByProps({ username });
   if (user) {
-    const error = new Error('User exists.');
+    const error = new Error('Username is already in use.');
     error.status = 409;
     throw error;
   }
