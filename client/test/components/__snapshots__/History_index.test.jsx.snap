@@ -1,296 +1,306 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui card loading__single-card"
-    style="width: 100%; height: 90%;"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content loading__content"
+      class=\\"ui card loading__single-card\\"
+      style=\\"width: 100%; height: 90%;\\"
     >
       <div
-        class="ui placeholder"
+        class=\\"content loading__content\\"
       >
         <div
-          class="square image"
-        />
+          class=\\"ui placeholder\\"
+        >
+          <div
+            class=\\"square image\\"
+          />
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 1 1 2`] = `
-<DocumentFragment>
+"<body>
+  <div
+    id=\\"root\\"
+  />
   <div>
-    <div
-      class="ui attached tabular menu"
-    >
-      <a
-        class="active item"
+    <div>
+      <div
+        class=\\"ui attached tabular menu\\"
       >
-        History
-      </a>
-    </div>
-    <div
-      class="ui bottom attached segment active tab"
-    >
-      <table
-        aria-labelledby="header"
-        class="ui selectable striped unstackable table h__table--constraints"
-        role="grid"
+        <a
+          class=\\"active item\\"
+        >
+          History
+        </a>
+      </div>
+      <div
+        class=\\"ui bottom attached segment active tab\\"
       >
-        <thead
-          class=""
+        <table
+          aria-labelledby=\\"header\\"
+          class=\\"ui selectable striped unstackable table h__table--constraints\\"
+          role=\\"grid\\"
         >
-          <tr
-            class=""
+          <thead
+            class=\\"\\"
           >
-            <th
-              class=""
-              style="width: 40px;"
-            />
-            <th
-              class="h__col-medium"
+            <tr
+              class=\\"\\"
             >
-              Cohort name
-            </th>
-            <th
-              class="h__col-medium"
-            >
-              Scenario title
-            </th>
-            <th
-              class="h__col-small"
-            >
-              Started
-            </th>
-            <th
-              class="h__col-small"
-            >
-              Completed
-            </th>
-          </tr>
-        </thead>
-        <tbody
-          class=""
-        >
-          <tr
-            class="positive"
-          >
-            <td
-              aria-label="View your data for this scenario run, from cohort \\"A New Cohort That Exists Within Inline Props\\""
-              class="h__table-cell-first"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <i
-                aria-hidden="true"
-                class="file alternate outline icon"
+              <th
+                class=\\"\\"
+                style=\\"width: 40px;\\"
               />
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1"
+              <th
+                class=\\"h__col-medium\\"
               >
-                A New Cohort That Exists Within Inline Props
-              </a>
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1/run/7/slide/0"
+                Cohort name
+              </th>
+              <th
+                class=\\"h__col-medium\\"
               >
-                Multi Button Prompt
-              </a>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
-            >
-              <span>
-                7 months ago
-              </span>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
-            >
-              <span>
-                7 months ago
-              </span>
-            </td>
-          </tr>
-          <tr
-            class="positive"
+                Scenario title
+              </th>
+              <th
+                class=\\"h__col-small\\"
+              >
+                Started
+              </th>
+              <th
+                class=\\"h__col-small\\"
+              >
+                Completed
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=\\"\\"
           >
-            <td
-              aria-label="View your data for this scenario run, from cohort \\"A New Cohort That Exists Within Inline Props\\""
-              class="h__table-cell-first"
-              role="button"
-              style="cursor: pointer;"
+            <tr
+              class=\\"positive\\"
             >
-              <i
-                aria-hidden="true"
-                class="file alternate outline icon"
-              />
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1"
+              <td
+                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+                class=\\"h__table-cell-first\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
               >
-                A New Cohort That Exists Within Inline Props
-              </a>
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1/run/7/slide/0"
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
               >
-                Multi Button Prompt
-              </a>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
-            >
-              <span>
-                7 months ago
-              </span>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
-            >
-              <span>
-                7 months ago
-              </span>
-            </td>
-          </tr>
-          <tr
-            class="positive"
-          >
-            <td
-              aria-label="View your data for this scenario run, from cohort \\"A New Cohort That Exists Within Inline Props\\""
-              class="h__table-cell-first"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <i
-                aria-hidden="true"
-                class="file alternate outline icon"
-              />
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1"
+                <a
+                  href=\\"/cohort/1\\"
+                >
+                  A New Cohort That Exists Within Inline Props
+                </a>
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
               >
-                A New Cohort That Exists Within Inline Props
-              </a>
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1/run/7/slide/0"
+                <a
+                  href=\\"/cohort/1/run/7/slide/0\\"
+                >
+                  Multi Button Prompt
+                </a>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
               >
-                Multi Button Prompt
-              </a>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
-            >
-              <span>
-                7 months ago
-              </span>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
-            >
-              <span>
-                7 months ago
-              </span>
-            </td>
-          </tr>
-          <tr
-            class="positive"
-          >
-            <td
-              aria-label="View your data for this scenario run, from cohort \\"A New Cohort That Exists Within Inline Props\\""
-              class="h__table-cell-first"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <i
-                aria-hidden="true"
-                class="file alternate outline icon"
-              />
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
-            >
-              <a
-                href="/cohort/1"
+                <span>
+                  7 months ago
+                </span>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
               >
-                A New Cohort That Exists Within Inline Props
-              </a>
-            </td>
-            <td
-              class="h__col-medium"
-              role="button"
-              style="cursor: pointer;"
+                <span>
+                  7 months ago
+                </span>
+              </td>
+            </tr>
+            <tr
+              class=\\"positive\\"
             >
-              <a
-                href="/cohort/1/run/7/slide/0"
+              <td
+                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+                class=\\"h__table-cell-first\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
               >
-                Multi Button Prompt
-              </a>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1\\"
+                >
+                  A New Cohort That Exists Within Inline Props
+                </a>
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1/run/7/slide/0\\"
+                >
+                  Multi Button Prompt
+                </a>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  7 months ago
+                </span>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  7 months ago
+                </span>
+              </td>
+            </tr>
+            <tr
+              class=\\"positive\\"
             >
-              <span>
-                7 months ago
-              </span>
-            </td>
-            <td
-              alt="03/31/2020"
-              class="h__col-small"
+              <td
+                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+                class=\\"h__table-cell-first\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1\\"
+                >
+                  A New Cohort That Exists Within Inline Props
+                </a>
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1/run/7/slide/0\\"
+                >
+                  Multi Button Prompt
+                </a>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  7 months ago
+                </span>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  7 months ago
+                </span>
+              </td>
+            </tr>
+            <tr
+              class=\\"positive\\"
             >
-              <span>
-                7 months ago
-              </span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              <td
+                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+                class=\\"h__table-cell-first\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1\\"
+                >
+                  A New Cohort That Exists Within Inline Props
+                </a>
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1/run/7/slide/0\\"
+                >
+                  Multi Button Prompt
+                </a>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  7 months ago
+                </span>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  7 months ago
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

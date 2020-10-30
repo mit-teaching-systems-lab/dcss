@@ -1,64 +1,79 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui container"
-    style="margin: 1rem 0px 1rem 0px;"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="ui red message"
+      class=\\"ui container\\"
+      style=\\"margin: 1rem 0px 1rem 0px;\\"
     >
-      <i
-        aria-hidden="true"
-        class="close icon"
-      />
       <div
-        class="content"
+        class=\\"ui red message\\"
       >
-        <div
-          class="sun-editor-editable rt__container"
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"close icon\\"
         />
+        <div
+          class=\\"content\\"
+        >
+          <div
+            class=\\"sun-editor-editable rt__container\\"
+          />
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 2 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui container"
-    style="margin: 1rem 0px 1rem 0px;"
-  >
-    <button
-      class="ui red icon button"
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui container\\"
+      style=\\"margin: 1rem 0px 1rem 0px;\\"
     >
-      <i
-        aria-hidden="true"
-        class="info circle icon"
-      />
-       Information
-    </button>
+      <button
+        class=\\"ui red icon button\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"info circle icon\\"
+        />
+         Information
+      </button>
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 3 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui container"
-    style="margin: 1rem 0px 1rem 0px;"
-  >
-    <button
-      class="ui red icon button"
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui container\\"
+      style=\\"margin: 1rem 0px 1rem 0px;\\"
     >
-      <i
-        aria-hidden="true"
-        class="info circle icon"
-      />
-       Information
-    </button>
+      <button
+        class=\\"ui red icon button\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"info circle icon\\"
+        />
+         Information
+      </button>
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

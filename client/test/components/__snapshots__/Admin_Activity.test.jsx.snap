@@ -1,1311 +1,1365 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="item"
-      tabindex="0"
+      class=\\"ui borderless icon em__height menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
+      <div
+        class=\\"item\\"
+        tabindex=\\"0\\"
       >
         <i
-          aria-hidden="true"
-          class="icon history"
-        />
-      </i>
-      Activity
-    </div>
-    <div
-      class="right menu"
-    >
-      <div
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
-        >
-          <input
-            placeholder="Search..."
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="ui celled grid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="four wide column"
-      >
-        <div
-          class="ui divided selection relaxed list"
-          role="list"
-        >
-          <a
-            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
-            class="item"
-            id="885"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/update
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-          <a
-            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
-            class="item"
-            id="884"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="twelve wide column"
-      >
-        <div
-          class="ui icon message"
+          class=\\"icons em__icon-group-margin\\"
         >
           <i
-            aria-hidden="true"
-            class="arrow left icon"
+            aria-hidden=\\"true\\"
+            class=\\"icon history\\"
           />
+        </i>
+        Activity
+      </div>
+      <div
+        class=\\"right menu\\"
+      >
+        <div
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
           <div
-            class="content"
+            class=\\"ui icon input\\"
           >
-            <div
-              class="header"
-            >
-              Activity viewer
-            </div>
-            <p>
-              Select an activity entry from the log on the left to explore the details here.
-            </p>
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
           </div>
         </div>
       </div>
     </div>
+    <div
+      class=\\"ui celled grid\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"four wide column\\"
+        >
+          <div
+            class=\\"ui divided selection relaxed list\\"
+            role=\\"list\\"
+          >
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"885\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/update
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"884\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"twelve wide column\\"
+        >
+          <div
+            class=\\"ui icon message\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"arrow left icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"header\\"
+              >
+                Activity viewer
+              </div>
+              <p>
+                Select an activity entry from the log on the left to explore the details here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-label=\\"Pagination Navigation\\"
+      class=\\"ui borderless pagination menu\\"
+      name=\\"logs\\"
+      role=\\"navigation\\"
+    >
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Previous item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"prevItem\\"
+        value=\\"1\\"
+      >
+        ⟨
+      </a>
+      <a
+        aria-current=\\"true\\"
+        aria-disabled=\\"false\\"
+        class=\\"active item\\"
+        tabindex=\\"0\\"
+        type=\\"pageItem\\"
+        value=\\"1\\"
+      >
+        1
+      </a>
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Next item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"nextItem\\"
+        value=\\"1\\"
+      >
+        ⟩
+      </a>
+    </div>
   </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
-  </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 2 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="item"
-      tabindex="0"
+      class=\\"ui borderless icon em__height menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
+      <div
+        class=\\"item\\"
+        tabindex=\\"0\\"
       >
         <i
-          aria-hidden="true"
-          class="icon history"
-        />
-      </i>
-      Activity
-    </div>
-    <div
-      class="right menu"
-    >
-      <div
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
-        >
-          <input
-            placeholder="Search..."
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="ui celled grid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="four wide column"
-      >
-        <div
-          class="ui divided selection relaxed list"
-          role="list"
-        >
-          <a
-            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
-            class="item"
-            id="885"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/update
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-          <a
-            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
-            class="item"
-            id="884"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="twelve wide column"
-      >
-        <div
-          class="ui icon message"
+          class=\\"icons em__icon-group-margin\\"
         >
           <i
-            aria-hidden="true"
-            class="arrow left icon"
+            aria-hidden=\\"true\\"
+            class=\\"icon history\\"
           />
+        </i>
+        Activity
+      </div>
+      <div
+        class=\\"right menu\\"
+      >
+        <div
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
           <div
-            class="content"
+            class=\\"ui icon input\\"
           >
-            <div
-              class="header"
-            >
-              Activity viewer
-            </div>
-            <p>
-              Select an activity entry from the log on the left to explore the details here.
-            </p>
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
           </div>
         </div>
       </div>
     </div>
+    <div
+      class=\\"ui celled grid\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"four wide column\\"
+        >
+          <div
+            class=\\"ui divided selection relaxed list\\"
+            role=\\"list\\"
+          >
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"885\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/update
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"884\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"twelve wide column\\"
+        >
+          <div
+            class=\\"ui icon message\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"arrow left icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"header\\"
+              >
+                Activity viewer
+              </div>
+              <p>
+                Select an activity entry from the log on the left to explore the details here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-label=\\"Pagination Navigation\\"
+      class=\\"ui borderless pagination menu\\"
+      name=\\"logs\\"
+      role=\\"navigation\\"
+    >
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Previous item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"prevItem\\"
+        value=\\"1\\"
+      >
+        ⟨
+      </a>
+      <a
+        aria-current=\\"true\\"
+        aria-disabled=\\"false\\"
+        class=\\"active item\\"
+        tabindex=\\"0\\"
+        type=\\"pageItem\\"
+        value=\\"1\\"
+      >
+        1
+      </a>
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Next item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"nextItem\\"
+        value=\\"1\\"
+      >
+        ⟩
+      </a>
+    </div>
   </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
-  </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 2 1 2`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="item"
-      tabindex="0"
+      class=\\"ui borderless icon em__height menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
+      <div
+        class=\\"item\\"
+        tabindex=\\"0\\"
       >
         <i
-          aria-hidden="true"
-          class="icon history"
-        />
-      </i>
-      Activity
-    </div>
-    <div
-      class="right menu"
-    >
-      <div
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
+          class=\\"icons em__icon-group-margin\\"
         >
-          <input
-            placeholder="Search..."
-            type="text"
-          />
           <i
-            aria-hidden="true"
-            class="search icon"
+            aria-hidden=\\"true\\"
+            class=\\"icon history\\"
           />
-        </div>
+        </i>
+        Activity
       </div>
-    </div>
-  </div>
-  <div
-    class="ui celled grid"
-  >
-    <div
-      class="row"
-    >
       <div
-        class="four wide column"
+        class=\\"right menu\\"
       >
         <div
-          class="ui divided selection relaxed list"
-          role="list"
+          class=\\"item\\"
+          tabindex=\\"0\\"
         >
-          <a
-            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
-            class="active item"
-            id="885"
-            role="listitem"
+          <div
+            class=\\"ui icon input\\"
           >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/update
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-          <a
-            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
-            class="item"
-            id="884"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
         </div>
       </div>
+    </div>
+    <div
+      class=\\"ui celled grid\\"
+    >
       <div
-        class="twelve wide column"
+        class=\\"row\\"
       >
-        <h3
-          class="ui header"
+        <div
+          class=\\"four wide column\\"
         >
-          Request
-        </h3>
-        <ul
-          style="border: 0px; padding: 0px; margin: 0.5em 0px 0.5em 0.125em; list-style: none; background-color: rgb(255, 255, 250);"
-        >
-          <li
-            style="position: relative; padding-top: 0.25em; margin-left: 0px; padding-left: 0px;"
+          <div
+            class=\\"ui divided selection relaxed list\\"
+            role=\\"list\\"
           >
-            <div
-              style="display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;"
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
+              class=\\"active item\\"
+              id=\\"885\\"
+              role=\\"listitem\\"
             >
               <div
-                style="margin-left: 0px; transition: 150ms; transform: rotateZ(90deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);"
+                class=\\"content\\"
               >
-                ▶
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/update
+                  </code>
+                   
+                  12/31/2019
+                </div>
               </div>
-            </div>
-            <label
-              style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;"
-            >
-              <span>
-                root:
-              </span>
-            </label>
-            <span
-              style="padding-left: 0.5em; cursor: default; color: rgb(122, 118, 100);"
-            >
-              <span>
-                <span
-                  style="margin-left: 0.3em; margin-right: 0.3em;"
-                >
-                  {}
-                </span>
-                 7 keys
-              </span>
-            </span>
-            <ul
-              style="padding: 0px; margin: 0px; list-style: none; display: block;"
-            >
-              <li
-                style="padding-top: 0.25em; padding-right: 0px; margin-left: 0.875em; word-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em; word-break: break-all;"
-              >
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px 0.5em 0px 0px;"
-                >
-                  <span>
-                    url:
-                  </span>
-                </label>
-                <span
-                  style="color: rgb(71, 131, 0);"
-                >
-                  "/runs/116/update"
-                </span>
-              </li>
-              <li
-                style="position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;"
-              >
-                <div
-                  style="display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;"
-                >
-                  <div
-                    style="margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);"
-                  >
-                    ▶
-                  </div>
-                </div>
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;"
-                >
-                  <span>
-                    body:
-                  </span>
-                </label>
-                <span
-                  style="padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);"
-                >
-                  <span>
-                    <span
-                      style="margin-left: 0.3em; margin-right: 0.3em;"
-                    >
-                      {}
-                    </span>
-                     1 key
-                  </span>
-                </span>
-                <ul
-                  style="padding: 0px; margin: 0px; list-style: none; display: block;"
-                />
-              </li>
-              <li
-                style="position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 1.125em;"
-              >
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: default;"
-                >
-                  <span>
-                    query:
-                  </span>
-                </label>
-                <span
-                  style="padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);"
-                >
-                  <span>
-                    <span
-                      style="margin-left: 0.3em; margin-right: 0.3em;"
-                    >
-                      {}
-                    </span>
-                     0 keys
-                  </span>
-                </span>
-                <ul
-                  style="padding: 0px; margin: 0px; list-style: none; display: block;"
-                />
-              </li>
-              <li
-                style="padding-top: 0.25em; padding-right: 0px; margin-left: 0.875em; word-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em; word-break: break-all;"
-              >
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px 0.5em 0px 0px;"
-                >
-                  <span>
-                    method:
-                  </span>
-                </label>
-                <span
-                  style="color: rgb(71, 131, 0);"
-                >
-                  "POST"
-                </span>
-              </li>
-              <li
-                style="position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 1.125em;"
-              >
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: default;"
-                >
-                  <span>
-                    params:
-                  </span>
-                </label>
-                <span
-                  style="padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);"
-                >
-                  <span>
-                    <span
-                      style="margin-left: 0.3em; margin-right: 0.3em;"
-                    >
-                      {}
-                    </span>
-                     0 keys
-                  </span>
-                </span>
-                <ul
-                  style="padding: 0px; margin: 0px; list-style: none; display: block;"
-                />
-              </li>
-              <li
-                style="position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;"
-              >
-                <div
-                  style="display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;"
-                >
-                  <div
-                    style="margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);"
-                  >
-                    ▶
-                  </div>
-                </div>
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;"
-                >
-                  <span>
-                    headers:
-                  </span>
-                </label>
-                <span
-                  style="padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);"
-                >
-                  <span>
-                    <span
-                      style="margin-left: 0.3em; margin-right: 0.3em;"
-                    >
-                      {}
-                    </span>
-                     13 keys
-                  </span>
-                </span>
-                <ul
-                  style="padding: 0px; margin: 0px; list-style: none; display: block;"
-                />
-              </li>
-              <li
-                style="position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;"
-              >
-                <div
-                  style="display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;"
-                >
-                  <div
-                    style="margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);"
-                  >
-                    ▶
-                  </div>
-                </div>
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;"
-                >
-                  <span>
-                    session:
-                  </span>
-                </label>
-                <span
-                  style="padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);"
-                >
-                  <span>
-                    <span
-                      style="margin-left: 0.3em; margin-right: 0.3em;"
-                    >
-                      {}
-                    </span>
-                     2 keys
-                  </span>
-                </span>
-                <ul
-                  style="padding: 0px; margin: 0px; list-style: none; display: block;"
-                />
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <h3
-          class="ui header"
-        >
-          Response
-        </h3>
-        <ul
-          style="border: 0px; padding: 0px; margin: 0.5em 0px 0.5em 0.125em; list-style: none; background-color: rgb(255, 255, 250);"
-        >
-          <li
-            style="position: relative; padding-top: 0.25em; margin-left: 0px; padding-left: 0px;"
-          >
-            <div
-              style="display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;"
+            </a>
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"884\\"
+              role=\\"listitem\\"
             >
               <div
-                style="margin-left: 0px; transition: 150ms; transform: rotateZ(90deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);"
-              >
-                ▶
-              </div>
-            </div>
-            <label
-              style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;"
-            >
-              <span>
-                root:
-              </span>
-            </label>
-            <span
-              style="padding-left: 0.5em; cursor: default; color: rgb(122, 118, 100);"
-            >
-              <span>
-                <span
-                  style="margin-left: 0.3em; margin-right: 0.3em;"
-                >
-                  {}
-                </span>
-                 2 keys
-              </span>
-            </span>
-            <ul
-              style="padding: 0px; margin: 0px; list-style: none; display: block;"
-            >
-              <li
-                style="position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;"
+                class=\\"content\\"
               >
                 <div
-                  style="display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;"
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"twelve wide column\\"
+        >
+          <h3
+            class=\\"ui header\\"
+          >
+            Request
+          </h3>
+          <ul
+            style=\\"border: 0px; padding: 0px; margin: 0.5em 0px 0.5em 0.125em; list-style: none; background-color: rgb(255, 255, 250);\\"
+          >
+            <li
+              style=\\"position: relative; padding-top: 0.25em; margin-left: 0px; padding-left: 0px;\\"
+            >
+              <div
+                style=\\"display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;\\"
+              >
+                <div
+                  style=\\"margin-left: 0px; transition: 150ms; transform: rotateZ(90deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);\\"
+                >
+                  ▶
+                </div>
+              </div>
+              <label
+                style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;\\"
+              >
+                <span>
+                  root
+                  :
+                </span>
+              </label>
+              <span
+                style=\\"padding-left: 0.5em; cursor: default; color: rgb(122, 118, 100);\\"
+              >
+                <span>
+                  <span
+                    style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                  >
+                    {}
+                  </span>
+                   
+                  7 keys
+                </span>
+              </span>
+              <ul
+                style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+              >
+                <li
+                  style=\\"padding-top: 0.25em; padding-right: 0px; margin-left: 0.875em; word-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em; word-break: break-all;\\"
+                >
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px 0.5em 0px 0px;\\"
+                  >
+                    <span>
+                      url
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"color: rgb(71, 131, 0);\\"
+                  >
+                    \\"/runs/116/update\\"
+                  </span>
+                </li>
+                <li
+                  style=\\"position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;\\"
                 >
                   <div
-                    style="margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);"
+                    style=\\"display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;\\"
                   >
-                    ▶
-                  </div>
-                </div>
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;"
-                >
-                  <span>
-                    run:
-                  </span>
-                </label>
-                <span
-                  style="padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);"
-                >
-                  <span>
-                    <span
-                      style="margin-left: 0.3em; margin-right: 0.3em;"
+                    <div
+                      style=\\"margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);\\"
                     >
-                      {}
+                      ▶
+                    </div>
+                  </div>
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;\\"
+                  >
+                    <span>
+                      body
+                      :
                     </span>
-                     10 keys
+                  </label>
+                  <span
+                    style=\\"padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);\\"
+                  >
+                    <span>
+                      <span
+                        style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                      >
+                        {}
+                      </span>
+                       
+                      1 key
+                    </span>
                   </span>
-                </span>
-                <ul
-                  style="padding: 0px; margin: 0px; list-style: none; display: block;"
-                />
-              </li>
-              <li
-                style="padding-top: 0.25em; padding-right: 0px; margin-left: 0.875em; word-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em; word-break: break-all;"
+                  <ul
+                    style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+                  />
+                </li>
+                <li
+                  style=\\"position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 1.125em;\\"
+                >
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: default;\\"
+                  >
+                    <span>
+                      query
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);\\"
+                  >
+                    <span>
+                      <span
+                        style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                      >
+                        {}
+                      </span>
+                       
+                      0 keys
+                    </span>
+                  </span>
+                  <ul
+                    style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+                  />
+                </li>
+                <li
+                  style=\\"padding-top: 0.25em; padding-right: 0px; margin-left: 0.875em; word-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em; word-break: break-all;\\"
+                >
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px 0.5em 0px 0px;\\"
+                  >
+                    <span>
+                      method
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"color: rgb(71, 131, 0);\\"
+                  >
+                    \\"POST\\"
+                  </span>
+                </li>
+                <li
+                  style=\\"position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 1.125em;\\"
+                >
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: default;\\"
+                  >
+                    <span>
+                      params
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);\\"
+                  >
+                    <span>
+                      <span
+                        style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                      >
+                        {}
+                      </span>
+                       
+                      0 keys
+                    </span>
+                  </span>
+                  <ul
+                    style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+                  />
+                </li>
+                <li
+                  style=\\"position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;\\"
+                >
+                  <div
+                    style=\\"display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;\\"
+                  >
+                    <div
+                      style=\\"margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);\\"
+                    >
+                      ▶
+                    </div>
+                  </div>
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;\\"
+                  >
+                    <span>
+                      headers
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);\\"
+                  >
+                    <span>
+                      <span
+                        style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                      >
+                        {}
+                      </span>
+                       
+                      13 keys
+                    </span>
+                  </span>
+                  <ul
+                    style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+                  />
+                </li>
+                <li
+                  style=\\"position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;\\"
+                >
+                  <div
+                    style=\\"display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;\\"
+                  >
+                    <div
+                      style=\\"margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);\\"
+                    >
+                      ▶
+                    </div>
+                  </div>
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;\\"
+                  >
+                    <span>
+                      session
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);\\"
+                  >
+                    <span>
+                      <span
+                        style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                      >
+                        {}
+                      </span>
+                       
+                      2 keys
+                    </span>
+                  </span>
+                  <ul
+                    style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+                  />
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <h3
+            class=\\"ui header\\"
+          >
+            Response
+          </h3>
+          <ul
+            style=\\"border: 0px; padding: 0px; margin: 0.5em 0px 0.5em 0.125em; list-style: none; background-color: rgb(255, 255, 250);\\"
+          >
+            <li
+              style=\\"position: relative; padding-top: 0.25em; margin-left: 0px; padding-left: 0px;\\"
+            >
+              <div
+                style=\\"display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;\\"
               >
-                <label
-                  style="display: inline-block; color: rgb(12, 127, 149); margin: 0px 0.5em 0px 0px;"
+                <div
+                  style=\\"margin-left: 0px; transition: 150ms; transform: rotateZ(90deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);\\"
                 >
-                  <span>
-                    status:
-                  </span>
-                </label>
-                <span
-                  style="color: rgb(198, 96, 0);"
-                >
-                  200
+                  ▶
+                </div>
+              </div>
+              <label
+                style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;\\"
+              >
+                <span>
+                  root
+                  :
                 </span>
-              </li>
-            </ul>
-          </li>
-        </ul>
+              </label>
+              <span
+                style=\\"padding-left: 0.5em; cursor: default; color: rgb(122, 118, 100);\\"
+              >
+                <span>
+                  <span
+                    style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                  >
+                    {}
+                  </span>
+                   
+                  2 keys
+                </span>
+              </span>
+              <ul
+                style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+              >
+                <li
+                  style=\\"position: relative; padding-top: 0.25em; margin-left: 0.875em; padding-left: 0px;\\"
+                >
+                  <div
+                    style=\\"display: inline-block; padding-right: 0.5em; padding-left: 0px; cursor: pointer;\\"
+                  >
+                    <div
+                      style=\\"margin-left: 0px; transition: 150ms; transform: rotateZ(0deg); transform-origin: 45% 50%; position: relative; line-height: 1.1em; font-size: 0.75em; color: rgb(12, 127, 149);\\"
+                    >
+                      ▶
+                    </div>
+                  </div>
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px; padding: 0px; cursor: pointer;\\"
+                  >
+                    <span>
+                      run
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"padding-left: 0.5em; cursor: default; color: rgb(71, 131, 0);\\"
+                  >
+                    <span>
+                      <span
+                        style=\\"margin-left: 0.3em; margin-right: 0.3em;\\"
+                      >
+                        {}
+                      </span>
+                       
+                      10 keys
+                    </span>
+                  </span>
+                  <ul
+                    style=\\"padding: 0px; margin: 0px; list-style: none; display: block;\\"
+                  />
+                </li>
+                <li
+                  style=\\"padding-top: 0.25em; padding-right: 0px; margin-left: 0.875em; word-wrap: break-word; padding-left: 2.125em; text-indent: -0.5em; word-break: break-all;\\"
+                >
+                  <label
+                    style=\\"display: inline-block; color: rgb(12, 127, 149); margin: 0px 0.5em 0px 0px;\\"
+                  >
+                    <span>
+                      status
+                      :
+                    </span>
+                  </label>
+                  <span
+                    style=\\"color: rgb(198, 96, 0);\\"
+                  >
+                    200
+                  </span>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <div
+      aria-label=\\"Pagination Navigation\\"
+      class=\\"ui borderless pagination menu\\"
+      name=\\"logs\\"
+      role=\\"navigation\\"
+    >
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Previous item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"prevItem\\"
+        value=\\"1\\"
+      >
+        ⟨
+      </a>
+      <a
+        aria-current=\\"true\\"
+        aria-disabled=\\"false\\"
+        class=\\"active item\\"
+        tabindex=\\"0\\"
+        type=\\"pageItem\\"
+        value=\\"1\\"
+      >
+        1
+      </a>
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Next item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"nextItem\\"
+        value=\\"1\\"
+      >
+        ⟩
+      </a>
+    </div>
   </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
-  </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 3 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="item"
-      tabindex="0"
+      class=\\"ui borderless icon em__height menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
+      <div
+        class=\\"item\\"
+        tabindex=\\"0\\"
       >
         <i
-          aria-hidden="true"
-          class="icon history"
-        />
-      </i>
-      Activity
-    </div>
-    <div
-      class="right menu"
-    >
-      <div
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
-        >
-          <input
-            placeholder="Search..."
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="ui celled grid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="four wide column"
-      >
-        <div
-          class="ui divided selection relaxed list"
-          role="list"
-        >
-          <a
-            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
-            class="item"
-            id="885"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/update
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-          <a
-            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
-            class="item"
-            id="884"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="twelve wide column"
-      >
-        <div
-          class="ui icon message"
+          class=\\"icons em__icon-group-margin\\"
         >
           <i
-            aria-hidden="true"
-            class="arrow left icon"
+            aria-hidden=\\"true\\"
+            class=\\"icon history\\"
           />
+        </i>
+        Activity
+      </div>
+      <div
+        class=\\"right menu\\"
+      >
+        <div
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
           <div
-            class="content"
+            class=\\"ui icon input\\"
           >
-            <div
-              class="header"
-            >
-              Activity viewer
-            </div>
-            <p>
-              Select an activity entry from the log on the left to explore the details here.
-            </p>
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
           </div>
         </div>
       </div>
     </div>
+    <div
+      class=\\"ui celled grid\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"four wide column\\"
+        >
+          <div
+            class=\\"ui divided selection relaxed list\\"
+            role=\\"list\\"
+          >
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"885\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/update
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"884\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"twelve wide column\\"
+        >
+          <div
+            class=\\"ui icon message\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"arrow left icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"header\\"
+              >
+                Activity viewer
+              </div>
+              <p>
+                Select an activity entry from the log on the left to explore the details here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-label=\\"Pagination Navigation\\"
+      class=\\"ui borderless pagination menu\\"
+      name=\\"logs\\"
+      role=\\"navigation\\"
+    >
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Previous item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"prevItem\\"
+        value=\\"1\\"
+      >
+        ⟨
+      </a>
+      <a
+        aria-current=\\"true\\"
+        aria-disabled=\\"false\\"
+        class=\\"active item\\"
+        tabindex=\\"0\\"
+        type=\\"pageItem\\"
+        value=\\"1\\"
+      >
+        1
+      </a>
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Next item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"nextItem\\"
+        value=\\"1\\"
+      >
+        ⟩
+      </a>
+    </div>
   </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
-  </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 4 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="item"
-      tabindex="0"
+      class=\\"ui borderless icon em__height menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
+      <div
+        class=\\"item\\"
+        tabindex=\\"0\\"
       >
         <i
-          aria-hidden="true"
-          class="icon history"
-        />
-      </i>
-      Activity
-    </div>
-    <div
-      class="right menu"
-    >
-      <div
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
-        >
-          <input
-            placeholder="Search..."
-            type="text"
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    class="ui celled grid"
-  >
-    <div
-      class="row"
-    >
-      <div
-        class="four wide column"
-      >
-        <div
-          class="ui divided selection relaxed list"
-          role="list"
-        >
-          <a
-            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
-            class="item"
-            id="885"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/update
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-          <a
-            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
-            class="item"
-            id="884"
-            role="listitem"
-          >
-            <div
-              class="content"
-            >
-              <div
-                class="description"
-              >
-                <span
-                  aria-label="Super User (super)"
-                  class="ui text"
-                  title="Super User (super)"
-                >
-                  Super User
-                </span>
-                 
-                <i
-                  aria-hidden="true"
-                  class="small icon chess queen"
-                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-                  title="Super"
-                />
-                made a 
-                <code>
-                  POST
-                </code>
-                 request to 
-                <code>
-                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                </code>
-                 12/31/2019
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div
-        class="twelve wide column"
-      >
-        <div
-          class="ui icon message"
+          class=\\"icons em__icon-group-margin\\"
         >
           <i
-            aria-hidden="true"
-            class="arrow left icon"
+            aria-hidden=\\"true\\"
+            class=\\"icon history\\"
           />
+        </i>
+        Activity
+      </div>
+      <div
+        class=\\"right menu\\"
+      >
+        <div
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
           <div
-            class="content"
+            class=\\"ui icon input\\"
           >
-            <div
-              class="header"
-            >
-              Activity viewer
-            </div>
-            <p>
-              Select an activity entry from the log on the left to explore the details here.
-            </p>
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
           </div>
         </div>
       </div>
     </div>
+    <div
+      class=\\"ui celled grid\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"four wide column\\"
+        >
+          <div
+            class=\\"ui divided selection relaxed list\\"
+            role=\\"list\\"
+          >
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"885\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/update
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+            <a
+              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
+              class=\\"item\\"
+              id=\\"884\\"
+              role=\\"listitem\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <div
+                  class=\\"description\\"
+                >
+                  <span
+                    aria-label=\\"Super User (super)\\"
+                    class=\\"ui text\\"
+                    title=\\"Super User (super)\\"
+                  >
+                    Super User
+                  </span>
+                   
+                  <i
+                    aria-hidden=\\"true\\"
+                    class=\\"small icon chess queen\\"
+                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                    title=\\"Super\\"
+                  />
+                  made a 
+                  <code>
+                    POST
+                  </code>
+                   request to 
+                  <code>
+                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                  </code>
+                   
+                  12/31/2019
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"twelve wide column\\"
+        >
+          <div
+            class=\\"ui icon message\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"arrow left icon\\"
+            />
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"header\\"
+              >
+                Activity viewer
+              </div>
+              <p>
+                Select an activity entry from the log on the left to explore the details here.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      aria-label=\\"Pagination Navigation\\"
+      class=\\"ui borderless pagination menu\\"
+      name=\\"logs\\"
+      role=\\"navigation\\"
+    >
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Previous item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"prevItem\\"
+        value=\\"1\\"
+      >
+        ⟨
+      </a>
+      <a
+        aria-current=\\"true\\"
+        aria-disabled=\\"false\\"
+        class=\\"active item\\"
+        tabindex=\\"0\\"
+        type=\\"pageItem\\"
+        value=\\"1\\"
+      >
+        1
+      </a>
+      <a
+        aria-current=\\"false\\"
+        aria-disabled=\\"false\\"
+        aria-label=\\"Next item\\"
+        class=\\"item\\"
+        tabindex=\\"0\\"
+        type=\\"nextItem\\"
+        value=\\"1\\"
+      >
+        ⟩
+      </a>
+    </div>
   </div>
-  <div
-    aria-label="Pagination Navigation"
-    class="ui borderless pagination menu"
-    name="logs"
-    role="navigation"
-  >
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Previous item"
-      class="item"
-      tabindex="0"
-      type="prevItem"
-      value="1"
-    >
-      ⟨
-    </a>
-    <a
-      aria-current="true"
-      aria-disabled="false"
-      class="active item"
-      tabindex="0"
-      type="pageItem"
-      value="1"
-    >
-      1
-    </a>
-    <a
-      aria-current="false"
-      aria-disabled="false"
-      aria-label="Next item"
-      class="item"
-      tabindex="0"
-      type="nextItem"
-      value="1"
-    >
-      ⟩
-    </a>
-  </div>
-</DocumentFragment>
+</body>"
 `;

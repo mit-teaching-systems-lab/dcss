@@ -1,15 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <audio />
-</DocumentFragment>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <audio />
+  </div>
+</body>"
 `;
 
 exports[`Render 2 1 1`] = `
-<DocumentFragment>
-  <audio
-    src=""
+"<body>
+  <div
+    id=\\"root\\"
   />
-</DocumentFragment>
+  <div>
+    <audio
+      src=\\"\\"
+    />
+  </div>
+</body>"
 `;

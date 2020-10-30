@@ -1,145 +1,150 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <form
-    class="ui form"
-  >
-    <div
-      class="ui fluid container"
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <form
+      class=\\"ui form\\"
     >
       <div
-        class="field"
+        class=\\"ui fluid container\\"
       >
-        <label>
-          Enter url of the video you want to play:
-        </label>
         <div
-          class="ui input"
+          class=\\"field\\"
         >
-          <input
-            name="url"
-            type="text"
-            value=""
-          />
+          <label>
+            Enter url of the video you want to play:
+          </label>
+          <div
+            class=\\"ui input\\"
+          >
+            <input
+              name=\\"url\\"
+              type=\\"text\\"
+              value=\\"\\"
+            />
+          </div>
         </div>
-      </div>
-      <div
-        class="ui container cp__video-wrapper"
-      >
         <div
-          class="cp__video-player"
-          style="width: 100%; height: 100%;"
-        />
-      </div>
-      <div
-        class="field"
-      >
-        <label>
-          Prompt configuration:
-        </label>
-        <div
-          aria-expanded="false"
-          class="ui fluid selection dropdown"
-          name="configuration.kind"
-          role="listbox"
-          tabindex="0"
+          class=\\"ui container cp__video-wrapper\\"
         >
           <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="text"
-            role="alert"
+            class=\\"cp__video-player\\"
+            style=\\"width: 100%; height: 100%;\\"
           />
+        </div>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Prompt configuration:
+          </label>
+          <div
+            aria-expanded=\\"false\\"
+            class=\\"ui fluid selection dropdown\\"
+            name=\\"configuration.kind\\"
+            role=\\"listbox\\"
+            tabindex=\\"0\\"
+          >
+            <div
+              aria-atomic=\\"true\\"
+              aria-live=\\"polite\\"
+              class=\\"text\\"
+              role=\\"alert\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"dropdown icon\\"
+            />
+            <div
+              class=\\"menu transition\\"
+            >
+              <div
+                aria-checked=\\"false\\"
+                aria-selected=\\"true\\"
+                class=\\"selected item\\"
+                role=\\"option\\"
+                style=\\"pointer-events: all;\\"
+              >
+                <span
+                  class=\\"text\\"
+                >
+                  Play the entire video and prompt for a response at the end
+                </span>
+              </div>
+              <div
+                aria-checked=\\"false\\"
+                aria-selected=\\"false\\"
+                class=\\"item\\"
+                role=\\"option\\"
+                style=\\"pointer-events: all;\\"
+              >
+                <span
+                  class=\\"text\\"
+                >
+                  Play a section of the video, prompt for a response at the end of the section
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=\\"field\\"
+        >
+          <label>
+            Enter text content to display before the audio recording controls:
+          </label>
+          <textarea
+            name=\\"prompt\\"
+            rows=\\"3\\"
+          />
+        </div>
+        <div
+          class=\\"ui red message\\"
+        >
+          <div
+            class=\\"content\\"
+          >
+            <div
+              class=\\"required field\\"
+            >
+              <label>
+                Data header
+              </label>
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  name=\\"header\\"
+                  required=\\"\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+            This will only appear in data downloads, as the column header or row name.
+          </div>
+        </div>
+        <div
+          class=\\"ui orange icon message\\"
+        >
           <i
-            aria-hidden="true"
-            class="dropdown icon"
+            aria-hidden=\\"true\\"
+            class=\\"warning sign icon\\"
           />
           <div
-            class="menu transition"
+            class=\\"content\\"
           >
-            <div
-              aria-checked="false"
-              aria-selected="true"
-              class="selected item"
-              role="option"
-              style="pointer-events: all;"
-            >
-              <span
-                class="text"
-              >
-                Play the entire video and prompt for a response at the end
-              </span>
-            </div>
-            <div
-              aria-checked="false"
-              aria-selected="false"
-              class="item"
-              role="option"
-              style="pointer-events: all;"
-            >
-              <span
-                class="text"
-              >
-                Play a section of the video, prompt for a response at the end of the section
-              </span>
-            </div>
+            <p>
+              This component will fallback to a text input prompt when the participant's browser or device does not support audio recording.
+            </p>
           </div>
         </div>
       </div>
-      <div
-        class="field"
-      >
-        <label>
-          Enter text content to display before the audio recording controls:
-        </label>
-        <textarea
-          name="prompt"
-          rows="3"
-        />
-      </div>
-      <div
-        class="ui red message"
-      >
-        <div
-          class="content"
-        >
-          <div
-            class="required field"
-          >
-            <label>
-              Data header
-            </label>
-            <div
-              class="ui input"
-            >
-              <input
-                name="header"
-                required=""
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          This will only appear in data downloads, as the column header or row name.
-        </div>
-      </div>
-      <div
-        class="ui orange icon message"
-      >
-        <i
-          aria-hidden="true"
-          class="warning sign icon"
-        />
-        <div
-          class="content"
-        >
-          <p>
-            This component will fallback to a text input prompt when the participant's browser or device does not support audio recording.
-          </p>
-        </div>
-      </div>
-    </div>
-  </form>
-</DocumentFragment>
+    </form>
+  </div>
+</body>"
 `;

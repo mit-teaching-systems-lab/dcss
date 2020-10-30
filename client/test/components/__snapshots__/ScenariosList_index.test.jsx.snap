@@ -1,455 +1,465 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
-    <a
-      class="item sc__hidden-on-mobile"
-      href="/editor/new"
-      tabindex="0"
-    >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="newspaper outline icon"
-        />
-        <i
-          aria-hidden="true"
-          class="green add top right corner icon"
-        />
-      </i>
-      Create a Scenario
-    </a>
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="right menu"
+      class=\\"ui borderless icon em__height menu\\"
     >
       <a
-        class="item sc__hidden-on-mobile"
-        tabindex="0"
+        class=\\"item sc__hidden-on-mobile\\"
+        href=\\"/editor/new\\"
+        tabindex=\\"0\\"
       >
-          (0)
         <i
-          aria-hidden="true"
-          class="clipboard outline icon"
-        />
-      </a>
-      <a
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
+          class=\\"icons em__icon-group-margin\\"
         >
-          <input
-            placeholder="Search..."
-            type="text"
-            value=""
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"newspaper outline icon\\"
           />
           <i
-            aria-hidden="true"
-            class="search icon"
+            aria-hidden=\\"true\\"
+            class=\\"green add top right corner icon\\"
           />
-        </div>
+        </i>
+        Create a Scenario
       </a>
+      <div
+        class=\\"right menu\\"
+      >
+        <a
+          class=\\"item sc__hidden-on-mobile\\"
+          tabindex=\\"0\\"
+        >
+            (0)
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"clipboard outline icon\\"
+          />
+        </a>
+        <a
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+              value=\\"\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
-  <div
-    class="ui fluid container"
-  >
     <div
-      class="ui grid"
+      class=\\"ui fluid container\\"
     >
       <div
-        hidden=""
-        id="boundary-top"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
+        class=\\"ui grid\\"
       >
         <div
-          class="stretched column"
+          hidden=\\"\\"
+          id=\\"boundary-top\\"
+          style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
+        />
+        <div
+          class=\\"row\\"
         >
-          <div>
-            <div
-              class="ui doubling four cards"
-            >
+          <div
+            class=\\"stretched column\\"
+          >
+            <div>
               <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
+                class=\\"ui doubling four cards\\"
               >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        hidden=""
-        id="boundary-bottom"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
-      >
         <div
-          class="stretched column"
+          hidden=\\"\\"
+          id=\\"boundary-bottom\\"
+          style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
         />
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"stretched column\\"
+          />
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 2 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon em__height menu"
-  >
-    <a
-      class="item sc__hidden-on-mobile"
-      href="/editor/new"
-      tabindex="0"
-    >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="newspaper outline icon"
-        />
-        <i
-          aria-hidden="true"
-          class="green add top right corner icon"
-        />
-      </i>
-      Create a Scenario
-    </a>
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="right menu"
+      class=\\"ui borderless icon em__height menu\\"
     >
       <a
-        class="item sc__hidden-on-mobile"
-        tabindex="0"
+        class=\\"item sc__hidden-on-mobile\\"
+        href=\\"/editor/new\\"
+        tabindex=\\"0\\"
       >
-          (0)
         <i
-          aria-hidden="true"
-          class="clipboard outline icon"
-        />
-      </a>
-      <a
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
+          class=\\"icons em__icon-group-margin\\"
         >
-          <input
-            placeholder="Search..."
-            type="text"
-            value=""
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"newspaper outline icon\\"
           />
           <i
-            aria-hidden="true"
-            class="search icon"
+            aria-hidden=\\"true\\"
+            class=\\"green add top right corner icon\\"
           />
-        </div>
+        </i>
+        Create a Scenario
       </a>
+      <div
+        class=\\"right menu\\"
+      >
+        <a
+          class=\\"item sc__hidden-on-mobile\\"
+          tabindex=\\"0\\"
+        >
+            (0)
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"clipboard outline icon\\"
+          />
+        </a>
+        <a
+          class=\\"item\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"ui icon input\\"
+          >
+            <input
+              placeholder=\\"Search...\\"
+              type=\\"text\\"
+              value=\\"\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"search icon\\"
+            />
+          </div>
+        </a>
+      </div>
     </div>
-  </div>
-  <div
-    class="ui fluid container"
-  >
     <div
-      class="ui grid"
+      class=\\"ui fluid container\\"
     >
       <div
-        hidden=""
-        id="boundary-top"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
+        class=\\"ui grid\\"
       >
         <div
-          class="stretched column"
+          hidden=\\"\\"
+          id=\\"boundary-top\\"
+          style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
+        />
+        <div
+          class=\\"row\\"
         >
-          <div>
-            <div
-              class="ui doubling four cards"
-            >
+          <div
+            class=\\"stretched column\\"
+          >
+            <div>
               <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
+                class=\\"ui doubling four cards\\"
               >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  class=\\"ui card loading__multi-card\\"
+                  style=\\"height: 18rem;\\"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class=\\"content loading__content\\"
                   >
                     <div
-                      class="square image"
-                    />
+                      class=\\"ui placeholder fluid\\"
+                    >
+                      <div
+                        class=\\"square image\\"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        hidden=""
-        id="boundary-bottom"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
-      >
         <div
-          class="stretched column"
+          hidden=\\"\\"
+          id=\\"boundary-bottom\\"
+          style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
         />
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"stretched column\\"
+          />
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

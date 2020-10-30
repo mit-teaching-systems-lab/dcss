@@ -1,49 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    aria-expanded="false"
-    class="ui item simple dropdown"
-    role="listbox"
-    tabindex="0"
-  >
-    <span
-      aria-label="Super User (super)"
-      class="ui text"
-      title="Super User (super)"
-    >
-      Super User
-    </span>
-     
-    <i
-      aria-hidden="true"
-      class="small icon chess queen"
-      style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-      title="Super"
-    />
-    <i
-      aria-hidden="true"
-      class="dropdown icon"
-    />
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="menu transition"
+      aria-expanded=\\"false\\"
+      class=\\"ui item simple dropdown\\"
+      role=\\"listbox\\"
+      tabindex=\\"0\\"
     >
-      <div
-        class="item"
-        role="option"
-        tabindex="0"
+      <span
+        aria-label=\\"Super User (super)\\"
+        class=\\"ui text\\"
+        title=\\"Super User (super)\\"
       >
-        Settings
-      </div>
+        Super User
+      </span>
+       
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"small icon chess queen\\"
+        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+        title=\\"Super\\"
+      />
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"dropdown icon\\"
+      />
       <div
-        class="item"
-        role="option"
-        tabindex="0"
+        class=\\"menu transition\\"
       >
-        Log out
+        <div
+          class=\\"item\\"
+          role=\\"option\\"
+          tabindex=\\"0\\"
+        >
+          Settings
+        </div>
+        <div
+          class=\\"item\\"
+          role=\\"option\\"
+          tabindex=\\"0\\"
+        >
+          Log out
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

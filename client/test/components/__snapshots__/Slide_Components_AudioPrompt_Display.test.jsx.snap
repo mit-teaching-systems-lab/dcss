@@ -14,4 +14,11 @@ exports[`Render 6 1 1`] = `""`;
 
 exports[`Render 6 1 2`] = `""`;
 
-exports[`Render 6 1 3`] = `<DocumentFragment />`;
+exports[`Render 6 1 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;

@@ -5,11 +5,16 @@ exports[`Card 1`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversa
 exports[`Card 2`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i>Prompt: Conversation"`;
 
 exports[`Card 3`] = `
-<DocumentFragment>
-  <i
-    aria-label="Prompt: Conversation"
-    class="conversation icon"
+"<body>
+  <div
+    id=\\"root\\"
   />
-  Prompt: Conversation
-</DocumentFragment>
+  <div>
+    <i
+      aria-label=\\"Prompt: Conversation\\"
+      class=\\"conversation icon\\"
+    />
+    Prompt: Conversation
+  </div>
+</body>"
 `;

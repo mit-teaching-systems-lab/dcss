@@ -1,81 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui centered card scenario__slide-card-preview"
-    id="entry"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content scenario__slide-card-header"
+      class=\\"ui centered card scenario__slide-card-preview\\"
+      id=\\"entry\\"
     >
       <div
-        class="header"
-        tabindex="0"
-      >
-        Multiplayer Scenario 2
-      </div>
-    </div>
-    <div
-      class="content"
-    >
-      <p
-        class="entryslide__description-inner-container"
-        tabindex="0"
-      >
-        A Multiplayer Scenario
-      </p>
-      <div
-        class="ui olive large message"
-        tabindex="0"
+        class=\\"content scenario__slide-card-header\\"
       >
         <div
-          class="content"
+          class=\\"header\\"
+          tabindex=\\"0\\"
         >
-          <div
-            class="header"
-          >
-            In Progress
-          </div>
-          <p>
-            This scenario is currently in progress
-          </p>
+          Multiplayer Scenario 2
         </div>
       </div>
       <div
-        class="ui yellow large message"
-        tabindex="0"
+        class=\\"content\\"
       >
+        <p
+          class=\\"entryslide__description-inner-container\\"
+          tabindex=\\"0\\"
+        >
+          A Multiplayer Scenario
+        </p>
         <div
-          class="content"
+          class=\\"ui olive large message\\"
+          tabindex=\\"0\\"
         >
           <div
-            class="header"
+            class=\\"content\\"
           >
-            Consent Agreement
+            <div
+              class=\\"header\\"
+            >
+              In Progress
+            </div>
+            <p>
+              This scenario is currently in progress
+            </p>
           </div>
-          <div>
-            <p
-              class="entryslide__consent-inner-container"
-              tabindex="0"
-            />
+        </div>
+        <div
+          class=\\"ui yellow large message\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"content\\"
+          >
+            <div
+              class=\\"header\\"
+            >
+              Consent Agreement
+            </div>
+            <div>
+              <p
+                class=\\"entryslide__consent-inner-container\\"
+                tabindex=\\"0\\"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      class="extra content"
-    >
       <div
-        class="ui fluid buttons"
+        class=\\"extra content\\"
       >
-        <button
-          class="ui green button"
+        <div
+          class=\\"ui fluid buttons\\"
         >
-          Continue this scenario
-        </button>
+          <button
+            class=\\"ui green button\\"
+          >
+            Continue this scenario
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

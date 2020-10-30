@@ -1,34 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui card sc sc__margin-height deleted"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content"
+      class=\\"ui card sc sc__margin-height deleted\\"
     >
       <div
-        class="header strike"
-      />
-      <div
-        class="description strike"
-      />
-    </div>
-    <div
-      class="extra content"
-    >
-      <div
-        class="ui buttons sc__edit-buttons"
+        class=\\"content\\"
       >
-        <button
-          class="ui button"
-          name="restore"
+        <div
+          class=\\"header strike\\"
+        />
+        <div
+          class=\\"description strike\\"
+        />
+      </div>
+      <div
+        class=\\"extra content\\"
+      >
+        <div
+          class=\\"ui buttons sc__edit-buttons\\"
         >
-          Restore
-        </button>
+          <button
+            class=\\"ui button\\"
+            name=\\"restore\\"
+          >
+            Restore
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

@@ -1,15 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
-  >
-    <i
-      aria-label="Delete this undefined"
-      class="trash alternate outline icon"
-    />
-  </a>
-</DocumentFragment>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      <i
+        aria-label=\\"Delete this undefined\\"
+        class=\\"trash alternate outline icon\\"
+      />
+    </a>
+  </div>
+</body>"
 `;

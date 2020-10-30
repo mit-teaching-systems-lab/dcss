@@ -1,157 +1,174 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
 
 exports[`Render 1 1 2`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      aria-expanded="true"
-      class="ui active visible item dropdown"
-      name="save-status"
-      role="listbox"
-      tabindex="0"
+      class=\\"menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="pencil alternate icon"
-        />
-        <i
-          aria-hidden="true"
-          class="pink check top right corner icon"
-        />
-      </i>
-      Draft (Visible only to author)
-      <i
-        aria-hidden="true"
-        class="dropdown icon"
-      />
       <div
-        class="visible menu transition"
+        aria-expanded=\\"true\\"
+        class=\\"ui active visible item dropdown\\"
+        name=\\"save-status\\"
+        role=\\"listbox\\"
+        tabindex=\\"0\\"
       >
-        <div
-          aria-checked="true"
-          aria-selected="true"
-          class="active selected item"
-          role="option"
-          style="pointer-events: all;"
+        <i
+          class=\\"icons em__icon-group-margin\\"
         >
-          <span
-            class="text"
-          >
-            Draft (Visible only to author)
-          </span>
-        </div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"pencil alternate icon\\"
+          />
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"pink check top right corner icon\\"
+          />
+        </i>
+        Draft (Visible only to author)
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"dropdown icon\\"
+        />
         <div
-          aria-checked="false"
-          aria-selected="false"
-          class="item"
-          role="option"
-          style="pointer-events: all;"
+          class=\\"visible menu transition\\"
         >
-          <span
-            class="text"
+          <div
+            aria-checked=\\"true\\"
+            aria-selected=\\"true\\"
+            class=\\"active selected item\\"
+            role=\\"option\\"
+            style=\\"pointer-events: all;\\"
           >
-            Public (Visible to everyone)
-          </span>
-        </div>
-        <div
-          aria-checked="false"
-          aria-selected="false"
-          class="item"
-          role="option"
-          style="pointer-events: all;"
-        >
-          <span
-            class="text"
+            <span
+              class=\\"text\\"
+            >
+              Draft (Visible only to author)
+            </span>
+          </div>
+          <div
+            aria-checked=\\"false\\"
+            aria-selected=\\"false\\"
+            class=\\"item\\"
+            role=\\"option\\"
+            style=\\"pointer-events: all;\\"
           >
-            Private (Visible only to logged in users)
-          </span>
+            <span
+              class=\\"text\\"
+            >
+              Public (Visible to everyone)
+            </span>
+          </div>
+          <div
+            aria-checked=\\"false\\"
+            aria-selected=\\"false\\"
+            class=\\"item\\"
+            role=\\"option\\"
+            style=\\"pointer-events: all;\\"
+          >
+            <span
+              class=\\"text\\"
+            >
+              Private (Visible only to logged in users)
+            </span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 1 1 3`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="menu"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      aria-expanded="false"
-      class="ui item dropdown"
-      name="save-status"
-      role="listbox"
-      tabindex="0"
+      class=\\"menu\\"
     >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="pencil alternate icon"
-        />
-        <i
-          aria-hidden="true"
-          class="pink check top right corner icon"
-        />
-      </i>
-      Draft (Visible only to author)
-      <i
-        aria-hidden="true"
-        class="dropdown icon"
-      />
       <div
-        class="menu transition"
+        aria-expanded=\\"false\\"
+        class=\\"ui item dropdown\\"
+        name=\\"save-status\\"
+        role=\\"listbox\\"
+        tabindex=\\"0\\"
       >
-        <div
-          aria-checked="true"
-          aria-selected="false"
-          class="active item"
-          role="option"
-          style="pointer-events: all;"
+        <i
+          class=\\"icons em__icon-group-margin\\"
         >
-          <span
-            class="text"
-          >
-            Draft (Visible only to author)
-          </span>
-        </div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"pencil alternate icon\\"
+          />
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"pink check top right corner icon\\"
+          />
+        </i>
+        Draft (Visible only to author)
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"dropdown icon\\"
+        />
         <div
-          aria-checked="false"
-          aria-selected="false"
-          class="item"
-          role="option"
-          style="pointer-events: all;"
+          class=\\"menu transition\\"
         >
-          <span
-            class="text"
+          <div
+            aria-checked=\\"true\\"
+            aria-selected=\\"false\\"
+            class=\\"active item\\"
+            role=\\"option\\"
+            style=\\"pointer-events: all;\\"
           >
-            Public (Visible to everyone)
-          </span>
-        </div>
-        <div
-          aria-checked="false"
-          aria-selected="true"
-          class="selected item"
-          role="option"
-          style="pointer-events: all;"
-        >
-          <span
-            class="text"
+            <span
+              class=\\"text\\"
+            >
+              Draft (Visible only to author)
+            </span>
+          </div>
+          <div
+            aria-checked=\\"false\\"
+            aria-selected=\\"false\\"
+            class=\\"item\\"
+            role=\\"option\\"
+            style=\\"pointer-events: all;\\"
           >
-            Private (Visible only to logged in users)
-          </span>
+            <span
+              class=\\"text\\"
+            >
+              Public (Visible to everyone)
+            </span>
+          </div>
+          <div
+            aria-checked=\\"false\\"
+            aria-selected=\\"true\\"
+            class=\\"selected item\\"
+            role=\\"option\\"
+            style=\\"pointer-events: all;\\"
+          >
+            <span
+              class=\\"text\\"
+            >
+              Private (Visible only to logged in users)
+            </span>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

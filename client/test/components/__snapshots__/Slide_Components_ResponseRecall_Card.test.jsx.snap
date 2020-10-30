@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <i
-    aria-label="Embed Previous Response"
-    class="comment alternate outline icon"
+"<body>
+  <div
+    id=\\"root\\"
   />
-  Embed Previous Response
-</DocumentFragment>
+  <div>
+    <i
+      aria-label=\\"Embed Previous Response\\"
+      class=\\"comment alternate outline icon\\"
+    />
+    Embed Previous Response
+  </div>
+</body>"
 `;

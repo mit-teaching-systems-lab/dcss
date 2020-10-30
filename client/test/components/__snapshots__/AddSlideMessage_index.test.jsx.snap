@@ -1,49 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    aria-label="Add a slide"
-    class="ui icon message"
-    style="cursor: pointer;"
-  >
-    <i
-      aria-hidden="true"
-      class="plus square outline huge icon"
-    />
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content"
+      aria-label=\\"Add a slide\\"
+      class=\\"ui icon message\\"
+      style=\\"cursor: pointer;\\"
     >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"plus square outline huge icon\\"
+      />
       <div
-        class="header"
+        class=\\"content\\"
       >
-        Click to add a slide
+        <div
+          class=\\"header\\"
+        >
+          Click to add a slide
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 1 1 2`] = `
-<DocumentFragment>
+"<body>
   <div
-    aria-label="Add a slide"
-    class="ui icon message"
-    style="cursor: pointer;"
-  >
-    <i
-      aria-hidden="true"
-      class="plus square outline huge icon"
-    />
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content"
+      aria-label=\\"Add a slide\\"
+      class=\\"ui icon message\\"
+      style=\\"cursor: pointer;\\"
     >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"plus square outline huge icon\\"
+      />
       <div
-        class="header"
+        class=\\"content\\"
       >
-        Click to add a slide
+        <div
+          class=\\"header\\"
+        >
+          Click to add a slide
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

@@ -1,54 +1,85 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
-  >
-    <div>
-      A
-    </div>
-  </a>
-</DocumentFragment>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      <div>
+        A
+      </div>
+    </a>
+  </div>
+</body>"
 `;
 
 exports[`Render 2 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
-  >
-    <div>
-      B
-    </div>
-  </a>
-</DocumentFragment>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      <div>
+        B
+      </div>
+    </a>
+  </div>
+</body>"
 `;
 
 exports[`Render 3 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
+"<body>
+  <div
+    id=\\"root\\"
   />
-</DocumentFragment>
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      
+    </a>
+  </div>
+</body>"
 `;
 
 exports[`Render 4 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
+"<body>
+  <div
+    id=\\"root\\"
   />
-</DocumentFragment>
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      
+    </a>
+  </div>
+</body>"
 `;
 
 exports[`Render 5 1 1`] = `
-<DocumentFragment>
-  <a
-    class="item"
-    tabindex="0"
+"<body>
+  <div
+    id=\\"root\\"
   />
-</DocumentFragment>
+  <div>
+    <a
+      class=\\"item\\"
+      tabindex=\\"0\\"
+    >
+      
+    </a>
+  </div>
+</body>"
 `;

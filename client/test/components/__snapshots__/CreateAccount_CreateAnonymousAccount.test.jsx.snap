@@ -1,3 +1,111 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Render 1 1 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    aria-hidden=\\"true\\"
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"dialog-anonymous-username-labelled\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <div
+        class=\\"ui header\\"
+        id=\\"dialog-anonymous-username-labelled\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Pick an anonymous username.
+        </div>
+      </div>
+      <div
+        class=\\"caa__centered content\\"
+        tabindex=\\"0\\"
+      >
+        <div
+          class=\\"ui container\\"
+        >
+          Do you like this anonymous username?
+        </div>
+        <div
+          class=\\"ui container\\"
+        >
+          <code />
+        </div>
+      </div>
+      <div>
+        <div
+          aria-live=\\"assertive\\"
+          role=\\"log\\"
+          style=\\"border: 0px; height: 1px; margin: -1px; overflow: hidden; white-space: nowrap; padding: 0px; width: 1px; position: absolute;\\"
+        />
+        <div
+          aria-live=\\"assertive\\"
+          role=\\"log\\"
+          style=\\"border: 0px; height: 1px; margin: -1px; overflow: hidden; white-space: nowrap; padding: 0px; width: 1px; position: absolute;\\"
+        />
+        <div
+          aria-live=\\"polite\\"
+          role=\\"log\\"
+          style=\\"border: 0px; height: 1px; margin: -1px; overflow: hidden; white-space: nowrap; padding: 0px; width: 1px; position: absolute;\\"
+        >
+          Do you like this anonymous username? 
+        </div>
+        <div
+          aria-live=\\"polite\\"
+          role=\\"log\\"
+          style=\\"border: 0px; height: 1px; margin: -1px; overflow: hidden; white-space: nowrap; padding: 0px; width: 1px; position: absolute;\\"
+        />
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui green button\\"
+            name=\\"yes\\"
+          >
+            Yes, continue
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui orange button\\"
+            name=\\"no\\"
+          >
+            No, see another
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+            name=\\"nvm\\"
+          >
+            Go back to log in
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;

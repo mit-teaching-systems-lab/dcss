@@ -1,18 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui fitted checkbox"
-  >
-    <input
-      class="hidden"
-      readonly=""
-      tabindex="0"
-      type="checkbox"
-      value=""
-    />
-    <label />
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui fitted checkbox\\"
+    >
+      <input
+        class=\\"hidden\\"
+        readonly=\\"\\"
+        tabindex=\\"0\\"
+        type=\\"checkbox\\"
+        value=\\"\\"
+      />
+      <label />
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

@@ -1,66 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <form
-    class="ui form"
-  >
-    <div
-      class="ui fluid container"
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <form
+      class=\\"ui form\\"
     >
       <div
-        class="field"
-      >
-        <label>
-          Enter text content to display before the audio recording controls:
-        </label>
-        <textarea
-          name="prompt"
-          rows="3"
-        />
-      </div>
-      <div
-        class="ui red message"
+        class=\\"ui fluid container\\"
       >
         <div
-          class="content"
+          class=\\"field\\"
+        >
+          <label>
+            Enter text content to display before the audio recording controls:
+          </label>
+          <textarea
+            name=\\"prompt\\"
+            rows=\\"3\\"
+          />
+        </div>
+        <div
+          class=\\"ui red message\\"
         >
           <div
-            class="required field"
+            class=\\"content\\"
           >
-            <label>
-              Data header
-            </label>
             <div
-              class="ui input"
+              class=\\"required field\\"
             >
-              <input
-                name="header"
-                required=""
-                type="text"
-                value=""
-              />
+              <label>
+                Data header
+              </label>
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  name=\\"header\\"
+                  required=\\"\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
             </div>
+            This will only appear in data downloads, as the column header or row name.
           </div>
-          This will only appear in data downloads, as the column header or row name.
         </div>
-      </div>
-      <div
-        class="ui orange icon message"
-      >
-        <i
-          aria-hidden="true"
-          class="warning sign icon"
-        />
         <div
-          class="content"
+          class=\\"ui orange icon message\\"
         >
-          <p>
-            This component will fallback to a text input prompt when the participant's browser or device does not support audio recording.
-          </p>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"warning sign icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            <p>
+              This component will fallback to a text input prompt when the participant's browser or device does not support audio recording.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </form>
-</DocumentFragment>
+    </form>
+  </div>
+</body>"
 `;

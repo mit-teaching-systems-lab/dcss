@@ -1,32 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui red message"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content"
+      class=\\"ui red message\\"
     >
       <div
-        class="required field"
+        class=\\"content\\"
       >
-        <label>
-          Data header
-        </label>
         <div
-          class="ui input"
+          class=\\"required field\\"
         >
-          <input
-            name="header"
-            required=""
-            type="text"
-            value=""
-          />
+          <label>
+            Data header
+          </label>
+          <div
+            class=\\"ui input\\"
+          >
+            <input
+              name=\\"header\\"
+              required=\\"\\"
+              type=\\"text\\"
+              value=\\"\\"
+            />
+          </div>
         </div>
+        This will only appear in data downloads, as the column header or row name.
       </div>
-      This will only appear in data downloads, as the column header or row name.
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

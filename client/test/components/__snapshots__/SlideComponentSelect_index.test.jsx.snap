@@ -1,98 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui fluid vertical menu"
-  >
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui fluid vertical menu\\"
     >
-      <i
-        aria-label="Rich Text Editor"
-        class="edit icon"
-      />
-      Rich Text Editor
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Participant Suggestion"
-        class="info icon"
-      />
-      Participant Suggestion
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Embed Previous Response"
-        class="comment alternate outline icon"
-      />
-      Embed Previous Response
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Prompt: Audio Input"
-        class="microphone icon"
-      />
-      Prompt: Audio Input
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Prompt: Choose Next Slide"
-        class="fork clockwise rotated icon"
-      />
-      Prompt: Choose Next Slide
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Prompt: Conversation"
-        class="conversation icon"
-      />
-      Prompt: Conversation
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Prompt: Multiple Buttons"
-        class="hand pointer outline icon"
-      />
-      Prompt: Multiple Buttons
-    </a>
-    <a
-      class="item"
-      style="float: none !important;"
-      tabindex="0"
-    >
-      <i
-        aria-label="Prompt: Text Input"
-        class="keyboard icon"
-      />
-      Prompt: Text Input
-    </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Rich Text Editor\\"
+          class=\\"edit icon\\"
+        />
+        Rich Text Editor
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Participant Suggestion\\"
+          class=\\"info icon\\"
+        />
+        Participant Suggestion
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Embed Previous Response\\"
+          class=\\"comment alternate outline icon\\"
+        />
+        Embed Previous Response
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Prompt: Audio Input\\"
+          class=\\"microphone icon\\"
+        />
+        Prompt: Audio Input
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Prompt: Choose Next Slide\\"
+          class=\\"fork clockwise rotated icon\\"
+        />
+        Prompt: Choose Next Slide
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Prompt: Conversation\\"
+          class=\\"conversation icon\\"
+        />
+        Prompt: Conversation
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Prompt: Multiple Buttons\\"
+          class=\\"hand pointer outline icon\\"
+        />
+        Prompt: Multiple Buttons
+      </a>
+      <a
+        class=\\"item\\"
+        style=\\"float: none !important;\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-label=\\"Prompt: Text Input\\"
+          class=\\"keyboard icon\\"
+        />
+        Prompt: Text Input
+      </a>
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

@@ -1,7 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <textarea />
-</DocumentFragment>
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <textarea />
+  </div>
+</body>"
 `;

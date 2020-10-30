@@ -1,34 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui centered card scenario__slide-card-preview"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content scenario__slide-card-content-preview no-title"
-      tabindex="0"
-    />
-    <div
-      class="extra content"
+      class=\\"ui centered card scenario__slide-card-preview\\"
     >
-      <button
-        aria-label="Go to the previous slide"
-        class="ui grey left floated button"
-      >
-        Previous
-      </button>
       <div
-        class="ui right floated buttons"
+        class=\\"content scenario__slide-card-content-preview no-title\\"
+        tabindex=\\"0\\"
+      />
+      <div
+        class=\\"extra content\\"
       >
         <button
-          aria-label="Click to proceed to the next slide"
-          class="ui green button"
+          aria-label=\\"Go to the previous slide\\"
+          class=\\"ui grey left floated button\\"
         >
-          Next
+          Previous
         </button>
+        <div
+          class=\\"ui right floated buttons\\"
+        >
+          <button
+            aria-label=\\"Click to proceed to the next slide\\"
+            class=\\"ui green button\\"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

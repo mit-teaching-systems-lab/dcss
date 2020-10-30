@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <i
-    aria-label="Prompt: Text Input"
-    class="keyboard icon"
+"<body>
+  <div
+    id=\\"root\\"
   />
-  Prompt: Text Input
-</DocumentFragment>
+  <div>
+    <i
+      aria-label=\\"Prompt: Text Input\\"
+      class=\\"keyboard icon\\"
+    />
+    Prompt: Text Input
+  </div>
+</body>"
 `;

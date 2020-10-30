@@ -1,37 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui borderless icon menu"
-  >
-    <a
-      class="item"
-      tabindex="0"
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui borderless icon menu\\"
     >
-      <i
-        aria-hidden="true"
-        class="close icon"
-      />
-    </a>
-    <a
-      class="item"
-      tabindex="0"
-    >
-      <i
-        aria-hidden="true"
-        class="refresh icon"
-      />
-    </a>
-    <a
-      class="item"
-      tabindex="0"
-    >
-      <i
-        aria-hidden="true"
-        class="download icon"
-      />
-    </a>
+      <a
+        class=\\"item\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"close icon\\"
+        />
+      </a>
+      <a
+        class=\\"item\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"refresh icon\\"
+        />
+      </a>
+      <a
+        class=\\"item\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"download icon\\"
+        />
+      </a>
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

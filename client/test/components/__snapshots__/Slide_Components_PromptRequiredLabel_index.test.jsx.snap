@@ -1,29 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    aria-label="This required prompt has been fulfilled."
-    class="ui green floating label prl__label-margin"
-  >
-    <i
-      aria-hidden="true"
-      class="check icon prl__icon-margin"
-    />
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      aria-label=\\"This required prompt has been fulfilled.\\"
+      class=\\"ui green floating label prl__label-margin\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"check icon prl__icon-margin\\"
+      />
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
 
 exports[`Render 2 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    aria-label="This prompt requires a response."
-    class="ui red floating label prl__label-margin"
-  >
-    <i
-      aria-hidden="true"
-      class="asterisk icon prl__icon-margin"
-    />
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      aria-label=\\"This prompt requires a response.\\"
+      class=\\"ui red floating label prl__label-margin\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"asterisk icon prl__icon-margin\\"
+      />
+    </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

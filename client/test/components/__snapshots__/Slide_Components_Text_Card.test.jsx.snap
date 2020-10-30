@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
-  <i
-    aria-label="Rich Text Editor"
-    class="edit icon"
+"<body>
+  <div
+    id=\\"root\\"
   />
-  Rich Text Editor
-</DocumentFragment>
+  <div>
+    <i
+      aria-label=\\"Rich Text Editor\\"
+      class=\\"edit icon\\"
+    />
+    Rich Text Editor
+  </div>
+</body>"
 `;

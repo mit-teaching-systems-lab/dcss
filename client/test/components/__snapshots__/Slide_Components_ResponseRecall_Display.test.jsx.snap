@@ -1,18 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui floating message"
-    style="white-space: pre-wrap; overflow-wrap: break-word;"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="content"
+      class=\\"ui floating message\\"
+      style=\\"white-space: pre-wrap; overflow-wrap: break-word;\\"
     >
-      <p>
-        Participant response will appear here during scenario run.
-      </p>
+      <div
+        class=\\"content\\"
+      >
+        <p>
+          Participant response will appear here during scenario run.
+        </p>
+      </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;

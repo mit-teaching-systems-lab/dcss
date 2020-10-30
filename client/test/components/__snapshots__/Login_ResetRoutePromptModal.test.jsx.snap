@@ -1,9 +1,126 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
 
 exports[`Render 1 1 2`] = `
-<DocumentFragment>
-  <div />
-</DocumentFragment>
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div />
+  </div>
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Reset your password
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+        tabindex=\\"0\\"
+      >
+        <p>
+          Enter the email that you used to create your account and hit \\"Reset\\". If there is an account associated with that email, a single-use password will be sent to the email address provided.
+        </p>
+        <p>
+          <b>
+            Be sure to check your spam folder!
+          </b>
+        </p>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  autocomplete=\\"email\\"
+                  id=\\"email\\"
+                  name=\\"email\\"
+                  type=\\"email\\"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  aria-label=\\"Click to reset your password and recieve a single-use password by email.\\"
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Reset
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <a
+                  aria-label=\\"Click to go back to log in.\\"
+                  class=\\"ui large button\\"
+                  href=\\"/login\\"
+                  role=\\"button\\"
+                >
+                  Cancel
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
 `;

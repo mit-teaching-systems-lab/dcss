@@ -1,220 +1,225 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-<DocumentFragment>
+"<body>
   <div
-    class="ui grid"
-  >
+    id=\\"root\\"
+  />
+  <div>
     <div
-      class="stretched column"
+      class=\\"ui grid\\"
     >
       <div
-        class="row"
+        class=\\"stretched column\\"
       >
         <div
-          class="ui borderless icon em__height menu"
-          mode="edit"
-        >
-          <a
-            class="item slideeditormenu__slide-number-width header"
-            tabindex="0"
-          >
-            Slide Number
-          </a>
-          <a
-            class="item"
-          >
-            <div
-              class="ui input"
-            >
-              <input
-                id="title-undefined"
-                name="title"
-                placeholder="Slide title"
-                type="text"
-                value=""
-              />
-            </div>
-          </a>
-          <a
-            aria-label="Save slide"
-            class="item"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="save outline icon"
-            />
-          </a>
-          <a
-            class="item"
-            tabindex="0"
-          >
-            <i
-              aria-label="Delete this slide"
-              class="trash alternate outline icon"
-            />
-          </a>
-          <a
-            class="item"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="copy outline icon"
-            />
-          </a>
-          <a
-            aria-label="Edit Slide"
-            class="disabled item"
-            tabindex="0"
-          >
-            <i
-              aria-hidden="true"
-              class="eye icon"
-            />
-          </a>
-        </div>
-      </div>
-      <div
-        class="row"
-      >
-        <div
-          class="ui two column grid"
+          class=\\"row\\"
         >
           <div
-            class="row ser__component-pane"
+            class=\\"ui borderless icon em__height menu\\"
+            mode=\\"edit\\"
           >
-            <div
-              class="column ser__component-layout-pane-outer"
+            <a
+              class=\\"item slideeditormenu__slide-number-width header\\"
+              tabindex=\\"0\\"
+            >
+              Slide Number
+            </a>
+            <a
+              class=\\"item\\"
             >
               <div
-                class="ui segment ser__component-layout-pane"
+                class=\\"ui input\\"
+              >
+                <input
+                  id=\\"title-undefined\\"
+                  name=\\"title\\"
+                  placeholder=\\"Slide title\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </a>
+            <a
+              aria-label=\\"Save slide\\"
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"save outline icon\\"
+              />
+            </a>
+            <a
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-label=\\"Delete this slide\\"
+                class=\\"trash alternate outline icon\\"
+              />
+            </a>
+            <a
+              class=\\"item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"copy outline icon\\"
+              />
+            </a>
+            <a
+              aria-label=\\"Edit Slide\\"
+              class=\\"disabled item\\"
+              tabindex=\\"0\\"
+            >
+              <i
+                aria-hidden=\\"true\\"
+                class=\\"eye icon\\"
+              />
+            </a>
+          </div>
+        </div>
+        <div
+          class=\\"row\\"
+        >
+          <div
+            class=\\"ui two column grid\\"
+          >
+            <div
+              class=\\"row ser__component-pane\\"
+            >
+              <div
+                class=\\"column ser__component-layout-pane-outer\\"
               >
                 <div
-                  class="ui floating icon message"
+                  class=\\"ui segment ser__component-layout-pane\\"
                 >
-                  <i
-                    class="huge icons em__icon-group-margin"
-                  >
-                    <i
-                      aria-hidden="true"
-                      class="newspaper outline icon"
-                    />
-                    <i
-                      aria-hidden="true"
-                      class="green add top right corner icon"
-                    />
-                  </i>
                   <div
-                    class="content"
+                    class=\\"ui floating icon message\\"
                   >
-                    <div
-                      class="header"
+                    <i
+                      class=\\"huge icons em__icon-group-margin\\"
                     >
-                      Add content to this slide!
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"newspaper outline icon\\"
+                      />
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"green add top right corner icon\\"
+                      />
+                    </i>
+                    <div
+                      class=\\"content\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Add content to this slide!
+                      </div>
+                      <p>
+                        Select a content component from the menu to right.
+                      </p>
                     </div>
-                    <p>
-                      Select a content component from the menu to right.
-                    </p>
                   </div>
                 </div>
               </div>
-            </div>
-            <div
-              class="column ser__component-select-pane-outer"
-            >
               <div
-                class="ui fluid vertical ser__component-select menu"
+                class=\\"column ser__component-select-pane-outer\\"
               >
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
+                <div
+                  class=\\"ui fluid vertical ser__component-select menu\\"
                 >
-                  <i
-                    aria-label="Rich Text Editor"
-                    class="edit icon"
-                  />
-                  Rich Text Editor
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Participant Suggestion"
-                    class="info icon"
-                  />
-                  Participant Suggestion
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Embed Previous Response"
-                    class="comment alternate outline icon"
-                  />
-                  Embed Previous Response
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Prompt: Audio Input"
-                    class="microphone icon"
-                  />
-                  Prompt: Audio Input
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Prompt: Choose Next Slide"
-                    class="fork clockwise rotated icon"
-                  />
-                  Prompt: Choose Next Slide
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Prompt: Conversation"
-                    class="conversation icon"
-                  />
-                  Prompt: Conversation
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Prompt: Multiple Buttons"
-                    class="hand pointer outline icon"
-                  />
-                  Prompt: Multiple Buttons
-                </a>
-                <a
-                  class="item"
-                  style="float: none !important;"
-                  tabindex="0"
-                >
-                  <i
-                    aria-label="Prompt: Text Input"
-                    class="keyboard icon"
-                  />
-                  Prompt: Text Input
-                </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Rich Text Editor\\"
+                      class=\\"edit icon\\"
+                    />
+                    Rich Text Editor
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Participant Suggestion\\"
+                      class=\\"info icon\\"
+                    />
+                    Participant Suggestion
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Embed Previous Response\\"
+                      class=\\"comment alternate outline icon\\"
+                    />
+                    Embed Previous Response
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Audio Input\\"
+                      class=\\"microphone icon\\"
+                    />
+                    Prompt: Audio Input
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Choose Next Slide\\"
+                      class=\\"fork clockwise rotated icon\\"
+                    />
+                    Prompt: Choose Next Slide
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Conversation\\"
+                      class=\\"conversation icon\\"
+                    />
+                    Prompt: Conversation
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Multiple Buttons\\"
+                      class=\\"hand pointer outline icon\\"
+                    />
+                    Prompt: Multiple Buttons
+                  </a>
+                  <a
+                    class=\\"item\\"
+                    style=\\"float: none !important;\\"
+                    tabindex=\\"0\\"
+                  >
+                    <i
+                      aria-label=\\"Prompt: Text Input\\"
+                      class=\\"keyboard icon\\"
+                    />
+                    Prompt: Text Input
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -222,5 +227,5 @@ exports[`Render 1 1 1`] = `
       </div>
     </div>
   </div>
-</DocumentFragment>
+</body>"
 `;
