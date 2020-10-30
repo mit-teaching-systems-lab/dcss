@@ -9,6 +9,7 @@ import {
   fetchImplementation,
   mounter,
   reduxer,
+  serialize,
   snapshotter,
   state
 } from '../bootstrap';

@@ -1,66 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      class=\\"ui fluid buttons\\"
+    class="ui fluid buttons"
+  >
+    <a
+      aria-label="Run scenario"
+      class="ui tiny icon button sc__button"
+      href="/run/42/slide/0"
+      role="button"
+      tabindex="0"
     >
-      <a
-        aria-label=\\"Run scenario\\"
-        class=\\"ui tiny icon button sc__button\\"
-        href=\\"/run/42/slide/0\\"
-        role=\\"button\\"
-        tabindex=\\"0\\"
+      <i
+        aria-hidden="true"
+        class="play icon"
+      />
+      <span
+        class="sc__card-action-labels"
       >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"play icon\\"
-        />
-        <span
-          class=\\"sc__card-action-labels\\"
-        >
-          Run
-        </span>
-      </a>
-      <a
-        aria-label=\\"Edit scenario\\"
-        class=\\"ui tiny icon button sc__button sc__hidden-on-mobile\\"
-        href=\\"/editor/42/slides/1\\"
-        role=\\"button\\"
-        tabindex=\\"0\\"
+        Run
+      </span>
+    </a>
+    <a
+      aria-label="Edit scenario"
+      class="ui tiny icon button sc__button sc__hidden-on-mobile"
+      href="/editor/42/slides/1"
+      role="button"
+      tabindex="0"
+    >
+      <i
+        aria-hidden="true"
+        class="edit outline icon"
+      />
+      <span
+        class="sc__card-action-labels"
       >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"edit outline icon\\"
-        />
-        <span
-          class=\\"sc__card-action-labels\\"
-        >
-          Edit
-        </span>
-      </a>
-      <a
-        aria-label=\\"Copy scenario\\"
-        class=\\"ui tiny icon button sc__button sc__hidden-on-mobile\\"
-        href=\\"/editor/copy/42\\"
-        role=\\"button\\"
-        tabindex=\\"0\\"
+        Edit
+      </span>
+    </a>
+    <a
+      aria-label="Copy scenario"
+      class="ui tiny icon button sc__button sc__hidden-on-mobile"
+      href="/editor/copy/42"
+      role="button"
+      tabindex="0"
+    >
+      <i
+        aria-hidden="true"
+        class="copy outline icon"
+      />
+      <span
+        class="sc__card-action-labels"
       >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"copy outline icon\\"
-        />
-        <span
-          class=\\"sc__card-action-labels\\"
-        >
-          Copy
-        </span>
-      </a>
-    </div>
+        Copy
+      </span>
+    </a>
   </div>
-</body>"
+</DocumentFragment>
 `;

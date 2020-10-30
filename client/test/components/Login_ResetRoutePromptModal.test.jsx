@@ -9,13 +9,20 @@ import {
   fetchImplementation,
   mounter,
   reduxer,
+  serialize,
   snapshotter,
   state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
 import { mount, shallow } from 'enzyme';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  fireEvent,
+  prettyDOM,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import {
@@ -118,7 +125,7 @@ test('Render 1 1', async done => {
     name: /click to reset your password and recieve a single-use password by email./i
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });

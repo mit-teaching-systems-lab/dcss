@@ -1,48 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui centered card scenario__slide-card"
+  >
     <div
-      class=\\"ui centered card scenario__slide-card\\"
+      class="content scenario__slide-card-header"
     >
       <div
-        class=\\"content scenario__slide-card-header\\"
+        class="header"
       >
         <div
-          class=\\"header\\"
+          class="ui fluid buttons"
         >
-          <div
-            class=\\"ui fluid buttons\\"
+          <a
+            class="ui primary button"
+            href="/scenarios"
+            role="button"
           >
-            <a
-              class=\\"ui primary button\\"
-              href=\\"/scenarios\\"
-              role=\\"button\\"
-            >
-              Return to scenarios
-            </a>
-            <div
-              class=\\"or\\"
-            />
-            <button
-              class=\\"ui button\\"
-            >
-              Rerun this scenario
-            </button>
-          </div>
+            Return to scenarios
+          </a>
+          <div
+            class="or"
+          />
+          <button
+            class="ui button"
+          >
+            Rerun this scenario
+          </button>
         </div>
       </div>
-      <div
-        class=\\"content scenario__slide-card-content-preview\\"
-        tabindex=\\"0\\"
-      >
-        <p />
-      </div>
+    </div>
+    <div
+      class="content scenario__slide-card-content-preview"
+      tabindex="0"
+    >
+      <p />
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;

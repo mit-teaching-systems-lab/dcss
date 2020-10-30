@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Audio Input"
+    class="microphone icon"
   />
-  <div>
-    <i
-      aria-label=\\"Prompt: Audio Input\\"
-      class=\\"microphone icon\\"
-    />
-    Prompt: Audio Input
-  </div>
-</body>"
+  Prompt: Audio Input
+</DocumentFragment>
 `;

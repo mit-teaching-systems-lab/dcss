@@ -1,13 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div />
-</body>"
-`;
+exports[`Render 1 1 1`] = `<DocumentFragment />`;
 
 exports[`Render 1 1 2`] = `
 "<body>

@@ -17,6 +17,9 @@ export const serialize = container => {
   return prettyDOM(container, Infinity, {
     highlight: false
   });
+  // const template = document.createElement('template');
+  // template.innerHTML = dom;
+  // return template.content;
 };
 
 export const createPseudoRealStore = (state = {}) => {

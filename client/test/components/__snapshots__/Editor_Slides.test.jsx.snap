@@ -1,112 +1,107 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui fluid container"
+  >
     <div
-      class=\\"ui fluid container\\"
+      class="ui grid slides__editor-all-outer-container"
     >
       <div
-        class=\\"ui grid slides__editor-all-outer-container\\"
+        class="three wide column slides__list-outer-container"
       >
         <div
-          class=\\"three wide column slides__list-outer-container\\"
+          class="ui doubling one cards"
+          style="margin-top: 0.5em; margin-left: 0.1em; margin-right: 0px;"
         >
           <div
-            class=\\"ui doubling one cards\\"
-            style=\\"margin-top: 0.5em; margin-left: 0.1em; margin-right: 0px;\\"
+            class="ui card loading__multi-card"
+            style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
           >
             <div
-              class=\\"ui card loading__multi-card\\"
-              style=\\"height: 11.8em; margin: 0px 0px 0.5em 0px;\\"
+              class="content loading__content"
             >
               <div
-                class=\\"content loading__content\\"
+                class="ui placeholder fluid"
               >
                 <div
-                  class=\\"ui placeholder fluid\\"
-                >
-                  <div
-                    class=\\"square image\\"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class=\\"ui card loading__multi-card\\"
-              style=\\"height: 11.8em; margin: 0px 0px 0.5em 0px;\\"
-            >
-              <div
-                class=\\"content loading__content\\"
-              >
-                <div
-                  class=\\"ui placeholder fluid\\"
-                >
-                  <div
-                    class=\\"square image\\"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class=\\"ui card loading__multi-card\\"
-              style=\\"height: 11.8em; margin: 0px 0px 0.5em 0px;\\"
-            >
-              <div
-                class=\\"content loading__content\\"
-              >
-                <div
-                  class=\\"ui placeholder fluid\\"
-                >
-                  <div
-                    class=\\"square image\\"
-                  />
-                </div>
-              </div>
-            </div>
-            <div
-              class=\\"ui card loading__multi-card\\"
-              style=\\"height: 11.8em; margin: 0px 0px 0.5em 0px;\\"
-            >
-              <div
-                class=\\"content loading__content\\"
-              >
-                <div
-                  class=\\"ui placeholder fluid\\"
-                >
-                  <div
-                    class=\\"square image\\"
-                  />
-                </div>
+                  class="square image"
+                />
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class=\\"column slides__editor-outer-container\\"
-        >
           <div
-            class=\\"ui card loading__single-card\\"
-            style=\\"width: 100%; height: calc(100% - 10px); margin-top: 0.5em;\\"
+            class="ui card loading__multi-card"
+            style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
           >
             <div
-              class=\\"content loading__content\\"
+              class="content loading__content"
             >
               <div
-                class=\\"ui placeholder\\"
+                class="ui placeholder fluid"
               >
                 <div
-                  class=\\"square image\\"
+                  class="square image"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="ui card loading__multi-card"
+            style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
+          >
+            <div
+              class="content loading__content"
+            >
+              <div
+                class="ui placeholder fluid"
+              >
+                <div
+                  class="square image"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="ui card loading__multi-card"
+            style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
+          >
+            <div
+              class="content loading__content"
+            >
+              <div
+                class="ui placeholder fluid"
+              >
+                <div
+                  class="square image"
                 />
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div
+        class="column slides__editor-outer-container"
+      >
+        <div
+          class="ui card loading__single-card"
+          style="width: 100%; height: calc(100% - 10px); margin-top: 0.5em;"
+        >
+          <div
+            class="content loading__content"
+          >
+            <div
+              class="ui placeholder"
+            >
+              <div
+                class="square image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;

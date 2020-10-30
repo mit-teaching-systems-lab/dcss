@@ -9,13 +9,20 @@ import {
   fetchImplementation,
   mounter,
   reduxer,
+  serialize,
   snapshotter,
   state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
 import { mount, shallow } from 'enzyme';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  fireEvent,
+  prettyDOM,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Gate from '../../components/Gate/index.jsx';
@@ -180,9 +187,9 @@ test('Render 6 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  render(<ConnectedRoutedComponent {...props} />);
   await screen.findByText('@components/Gate');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -203,9 +210,9 @@ test('Render 7 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  render(<ConnectedRoutedComponent {...props} />);
   await screen.findByText('@components/Gate');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -225,9 +232,9 @@ test('Render 8 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  render(<ConnectedRoutedComponent {...props} />);
   await screen.findByText('@components/Gate');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });

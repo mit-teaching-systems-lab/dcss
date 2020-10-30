@@ -1,34 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      class=\\"ui borderless icon em__height menu\\"
+    class="ui borderless icon em__height menu"
+  >
+    <a
+      aria-label="Save undefined"
+      class="item"
+      tabindex="0"
     >
-      <a
-        aria-label=\\"Save undefined\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"save outline icon\\"
-        />
-      </a>
-      <a
-        class=\\"item\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-label=\\"Delete this undefined\\"
-          class=\\"trash alternate outline icon\\"
-        />
-      </a>
-    </div>
+      <i
+        aria-hidden="true"
+        class="save outline icon"
+      />
+    </a>
+    <a
+      class="item"
+      tabindex="0"
+    >
+      <i
+        aria-label="Delete this undefined"
+        class="trash alternate outline icon"
+      />
+    </a>
   </div>
-</body>"
+</DocumentFragment>
 `;

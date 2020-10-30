@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
+    hidden=""
+    id="boundary-top"
+    style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
   />
-  <div>
-    <div
-      hidden=\\"\\"
-      id=\\"boundary-top\\"
-      style=\\"background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;\\"
-    />
-  </div>
-</body>"
+</DocumentFragment>
 `;

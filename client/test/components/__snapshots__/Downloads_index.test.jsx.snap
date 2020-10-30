@@ -1,29 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui card loading__single-card"
+    style="width: 100%; height: 90%;"
+  >
     <div
-      class=\\"ui card loading__single-card\\"
-      style=\\"width: 100%; height: 90%;\\"
+      class="content loading__content"
     >
       <div
-        class=\\"content loading__content\\"
+        class="ui placeholder"
       >
         <div
-          class=\\"ui placeholder\\"
-        >
-          <div
-            class=\\"square image\\"
-          />
-        </div>
+          class="square image"
+        />
       </div>
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;
 
 exports[`Render 1 1 2`] = `
@@ -378,27 +373,22 @@ exports[`Render 1 1 2`] = `
 `;
 
 exports[`Render 2 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui card loading__single-card"
+    style="width: 100%; height: 90%;"
+  >
     <div
-      class=\\"ui card loading__single-card\\"
-      style=\\"width: 100%; height: 90%;\\"
+      class="content loading__content"
     >
       <div
-        class=\\"content loading__content\\"
+        class="ui placeholder"
       >
         <div
-          class=\\"ui placeholder\\"
-        >
-          <div
-            class=\\"square image\\"
-          />
-        </div>
+          class="square image"
+        />
       </div>
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;

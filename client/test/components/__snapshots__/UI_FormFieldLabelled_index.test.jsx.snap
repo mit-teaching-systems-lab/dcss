@@ -1,14 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
+    class="field"
   />
-  <div>
-    <div
-      class=\\"field\\"
-    />
-  </div>
-</body>"
+</DocumentFragment>
 `;

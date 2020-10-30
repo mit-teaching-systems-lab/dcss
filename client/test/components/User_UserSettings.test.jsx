@@ -117,8 +117,8 @@ test('Render 1 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   const userName = await screen.findByRole('textbox', { name: /username/i });
   const personalName = await screen.findByRole('textbox', {
@@ -178,8 +178,8 @@ test('Render 2 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Conversation"
+    class="conversation icon"
   />
-  <div>
-    <i
-      aria-label=\\"Prompt: Conversation\\"
-      class=\\"conversation icon\\"
-    />
-    Prompt: Conversation
-  </div>
-</body>"
+  Prompt: Conversation
+</DocumentFragment>
 `;

@@ -9,13 +9,20 @@ import {
   fetchImplementation,
   mounter,
   reduxer,
+  serialize,
   snapshotter,
   state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
 import { mount, shallow } from 'enzyme';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  fireEvent,
+  prettyDOM,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Icon, Message } from '@components/UI';
@@ -78,7 +85,7 @@ test('Render 1 1', async done => {
 
   userEvent.click(screen.getByLabelText('Add a slide'));
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(props.onClick.mock.calls.length).toBe(1);
 

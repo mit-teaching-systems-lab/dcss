@@ -1,17 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <blockquote
-      class=\\"at__blockquote\\"
-      tabindex=\\"0\\"
-    >
-      Transcript will appear here.
-    </blockquote>
-  </div>
-</body>"
+<DocumentFragment>
+  <blockquote
+    class="at__blockquote"
+    tabindex="0"
+  >
+    Transcript will appear here.
+  </blockquote>
+</DocumentFragment>
 `;

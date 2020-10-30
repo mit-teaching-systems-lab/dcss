@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
+<DocumentFragment>
+  <i
+    aria-label="Participant Suggestion"
+    class="info icon"
   />
-  <div>
-    <i
-      aria-label=\\"Participant Suggestion\\"
-      class=\\"info icon\\"
-    />
-    Participant Suggestion
-  </div>
-</body>"
+  Participant Suggestion
+</DocumentFragment>
 `;

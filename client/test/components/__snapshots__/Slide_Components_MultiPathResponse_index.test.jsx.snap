@@ -5,16 +5,11 @@ exports[`Card 1`] = `"<i aria-label=\\"Prompt: Choose Next Slide\\" class=\\"for
 exports[`Card 2`] = `"<i aria-label=\\"Prompt: Choose Next Slide\\" class=\\"fork clockwise rotated icon\\"></i>Prompt: Choose Next Slide"`;
 
 exports[`Card 3`] = `
-"<body>
-  <div
-    id=\\"root\\"
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Choose Next Slide"
+    class="fork clockwise rotated icon"
   />
-  <div>
-    <i
-      aria-label=\\"Prompt: Choose Next Slide\\"
-      class=\\"fork clockwise rotated icon\\"
-    />
-    Prompt: Choose Next Slide
-  </div>
-</body>"
+  Prompt: Choose Next Slide
+</DocumentFragment>
 `;

@@ -1,16 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
+<DocumentFragment>
+  <i
+    aria-label="Prompt: Choose Next Slide"
+    class="fork clockwise rotated icon"
   />
-  <div>
-    <i
-      aria-label=\\"Prompt: Choose Next Slide\\"
-      class=\\"fork clockwise rotated icon\\"
-    />
-    Prompt: Choose Next Slide
-  </div>
-</body>"
+  Prompt: Choose Next Slide
+</DocumentFragment>
 `;

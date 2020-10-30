@@ -1,465 +1,458 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui borderless icon em__height menu"
+  >
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class="item"
+      tabindex="0"
     >
-      <div
-        class=\\"item\\"
-        tabindex=\\"0\\"
+      <i
+        class="icons em__icon-group-margin"
       >
         <i
-          class=\\"icons em__icon-group-margin\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"user icon\\"
-          />
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"orange cogs top right corner icon\\"
-          />
-        </i>
-        Users (
-        4
-        )
-      </div>
+          aria-hidden="true"
+          class="user icon"
+        />
+        <i
+          aria-hidden="true"
+          class="orange cogs top right corner icon"
+        />
+      </i>
+      Users (4)
+    </div>
+    <div
+      class="right menu"
+    >
       <div
-        class=\\"right menu\\"
+        class="item"
+        tabindex="0"
       >
         <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
+          class="ui icon input"
         >
-          <div
-            class=\\"ui icon input\\"
-          >
-            <input
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
-          </div>
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
       </div>
     </div>
-    <table
-      class=\\"ui selectable striped unstackable table\\"
-    >
-      <thead
-        class=\\"\\"
-      >
-        <tr
-          class=\\"\\"
-        >
-          <th
-            class=\\"users__col-large\\"
-          >
-            Username
-          </th>
-          <th
-            class=\\"users__col-large dl__hidden-on-mobile\\"
-          >
-            Email
-          </th>
-          <th
-            class=\\"users__col-small roles_icon super\\"
-          />
-          <th
-            class=\\"users__col-small roles_icon admin\\"
-          />
-          <th
-            class=\\"users__col-small roles_icon facilitator\\"
-          />
-          <th
-            class=\\"users__col-small roles_icon researcher\\"
-          />
-        </tr>
-      </thead>
-      <tbody
-        class=\\"ut__tbody\\"
-      >
-        <tr
-          class=\\"\\"
-        >
-          <td
-            class=\\"\\"
-          >
-            heartfull-cougar
-          </td>
-          <td
-            class=\\"dl__hidden-on-mobile\\"
-          >
-            heartfull-cougar@email.com
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui checked fitted checkbox\\"
-            >
-              <input
-                checked=\\"\\"
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-        </tr>
-        <tr
-          class=\\"\\"
-        >
-          <td
-            class=\\"\\"
-          >
-            credible-lyrebird
-          </td>
-          <td
-            class=\\"dl__hidden-on-mobile\\"
-          />
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui disabled fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                disabled=\\"\\"
-                readonly=\\"\\"
-                tabindex=\\"-1\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui disabled fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                disabled=\\"\\"
-                readonly=\\"\\"
-                tabindex=\\"-1\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui disabled fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                disabled=\\"\\"
-                readonly=\\"\\"
-                tabindex=\\"-1\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui disabled fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                disabled=\\"\\"
-                readonly=\\"\\"
-                tabindex=\\"-1\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-        </tr>
-        <tr
-          class=\\"\\"
-        >
-          <td
-            class=\\"\\"
-          >
-            perfect-oryx
-          </td>
-          <td
-            class=\\"dl__hidden-on-mobile\\"
-          >
-            perfect-oryx@email.com
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui checked fitted checkbox\\"
-            >
-              <input
-                checked=\\"\\"
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-        </tr>
-        <tr
-          class=\\"\\"
-        >
-          <td
-            class=\\"\\"
-          >
-            super
-          </td>
-          <td
-            class=\\"dl__hidden-on-mobile\\"
-          >
-            super@email.com
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui checked fitted checkbox\\"
-            >
-              <input
-                checked=\\"\\"
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui fitted checkbox\\"
-            >
-              <input
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui checked fitted checkbox\\"
-            >
-              <input
-                checked=\\"\\"
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-          <td
-            class=\\"center aligned\\"
-          >
-            <div
-              class=\\"ui checked fitted checkbox\\"
-            >
-              <input
-                checked=\\"\\"
-                class=\\"hidden\\"
-                readonly=\\"\\"
-                tabindex=\\"0\\"
-                type=\\"checkbox\\"
-                value=\\"\\"
-              />
-              <label />
-            </div>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot
-        class=\\"\\"
-      >
-        <tr
-          class=\\"\\"
-        >
-          <th
-            class=\\"\\"
-            colspan=\\"7\\"
-          >
-            <div
-              aria-label=\\"Pagination Navigation\\"
-              class=\\"ui borderless pagination menu\\"
-              name=\\"users\\"
-              role=\\"navigation\\"
-            >
-              <a
-                aria-current=\\"false\\"
-                aria-disabled=\\"false\\"
-                aria-label=\\"Previous item\\"
-                class=\\"item\\"
-                tabindex=\\"0\\"
-                type=\\"prevItem\\"
-                value=\\"1\\"
-              >
-                ⟨
-              </a>
-              <a
-                aria-current=\\"true\\"
-                aria-disabled=\\"false\\"
-                class=\\"active item\\"
-                tabindex=\\"0\\"
-                type=\\"pageItem\\"
-                value=\\"1\\"
-              >
-                1
-              </a>
-              <a
-                aria-current=\\"false\\"
-                aria-disabled=\\"false\\"
-                aria-label=\\"Next item\\"
-                class=\\"item\\"
-                tabindex=\\"0\\"
-                type=\\"nextItem\\"
-                value=\\"1\\"
-              >
-                ⟩
-              </a>
-            </div>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
   </div>
-</body>"
+  <table
+    class="ui selectable striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          Username
+        </th>
+        <th
+          class="users__col-large dl__hidden-on-mobile"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-small roles_icon super"
+        />
+        <th
+          class="users__col-small roles_icon admin"
+        />
+        <th
+          class="users__col-small roles_icon facilitator"
+        />
+        <th
+          class="users__col-small roles_icon researcher"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          heartfull-cougar
+        </td>
+        <td
+          class="dl__hidden-on-mobile"
+        >
+          heartfull-cougar@email.com
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui checked fitted checkbox"
+          >
+            <input
+              checked=""
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          credible-lyrebird
+        </td>
+        <td
+          class="dl__hidden-on-mobile"
+        />
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui disabled fitted checkbox"
+          >
+            <input
+              class="hidden"
+              disabled=""
+              readonly=""
+              tabindex="-1"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui disabled fitted checkbox"
+          >
+            <input
+              class="hidden"
+              disabled=""
+              readonly=""
+              tabindex="-1"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui disabled fitted checkbox"
+          >
+            <input
+              class="hidden"
+              disabled=""
+              readonly=""
+              tabindex="-1"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui disabled fitted checkbox"
+          >
+            <input
+              class="hidden"
+              disabled=""
+              readonly=""
+              tabindex="-1"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          perfect-oryx
+        </td>
+        <td
+          class="dl__hidden-on-mobile"
+        >
+          perfect-oryx@email.com
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui checked fitted checkbox"
+          >
+            <input
+              checked=""
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+        >
+          super
+        </td>
+        <td
+          class="dl__hidden-on-mobile"
+        >
+          super@email.com
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui checked fitted checkbox"
+          >
+            <input
+              checked=""
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui fitted checkbox"
+          >
+            <input
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui checked fitted checkbox"
+          >
+            <input
+              checked=""
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+        <td
+          class="center aligned"
+        >
+          <div
+            class="ui checked fitted checkbox"
+          >
+            <input
+              checked=""
+              class="hidden"
+              readonly=""
+              tabindex="0"
+              type="checkbox"
+              value=""
+            />
+            <label />
+          </div>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
 `;

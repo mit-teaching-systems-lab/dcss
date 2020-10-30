@@ -1,85 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="field"
+  >
+    <label>
+      Owner
+    </label>
     <div
-      class=\\"field\\"
+      aria-expanded="false"
+      aria-multiselectable="false"
+      class="ui fluid selection dropdown"
+      label="Owner"
+      name="author"
+      role="listbox"
+      tabindex="0"
     >
-      <label>
-        Owner
-      </label>
       <div
-        aria-expanded=\\"false\\"
-        aria-multiselectable=\\"false\\"
-        class=\\"ui fluid selection dropdown\\"
-        label=\\"Owner\\"
-        name=\\"author\\"
-        role=\\"listbox\\"
-        tabindex=\\"0\\"
+        aria-atomic="true"
+        aria-live="polite"
+        class="default text"
+        role="alert"
       >
-        <div
-          aria-atomic=\\"true\\"
-          aria-live=\\"polite\\"
-          class=\\"default text\\"
-          role=\\"alert\\"
-        >
-          Select...
-        </div>
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"dropdown icon\\"
-        />
-        <div
-          class=\\"menu transition\\"
-        />
+        Select...
       </div>
+      <i
+        aria-hidden="true"
+        class="dropdown icon"
+      />
+      <div
+        class="menu transition"
+      />
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;
 
 exports[`Render 1 1 2`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="field"
+  >
+    <label>
+      Categories
+    </label>
     <div
-      class=\\"field\\"
+      aria-expanded="false"
+      aria-multiselectable="true"
+      class="ui fluid multiple selection dropdown"
+      label="Categories"
+      name="categories"
+      role="listbox"
+      tabindex="0"
     >
-      <label>
-        Categories
-      </label>
       <div
-        aria-expanded=\\"false\\"
-        aria-multiselectable=\\"true\\"
-        class=\\"ui fluid multiple selection dropdown\\"
-        label=\\"Categories\\"
-        name=\\"categories\\"
-        role=\\"listbox\\"
-        tabindex=\\"0\\"
+        aria-atomic="true"
+        aria-live="polite"
+        class="default text"
+        role="alert"
       >
-        <div
-          aria-atomic=\\"true\\"
-          aria-live=\\"polite\\"
-          class=\\"default text\\"
-          role=\\"alert\\"
-        >
-          Select...
-        </div>
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"dropdown icon\\"
-        />
-        <div
-          class=\\"menu transition\\"
-        />
+        Select...
       </div>
+      <i
+        aria-hidden="true"
+        class="dropdown icon"
+      />
+      <div
+        class="menu transition"
+      />
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;

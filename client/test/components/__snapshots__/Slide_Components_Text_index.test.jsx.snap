@@ -5,16 +5,11 @@ exports[`Card 1`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"
 exports[`Card 2`] = `"<i aria-label=\\"Rich Text Editor\\" class=\\"edit icon\\"></i>Rich Text Editor"`;
 
 exports[`Card 3`] = `
-"<body>
-  <div
-    id=\\"root\\"
+<DocumentFragment>
+  <i
+    aria-label="Rich Text Editor"
+    class="edit icon"
   />
-  <div>
-    <i
-      aria-label=\\"Rich Text Editor\\"
-      class=\\"edit icon\\"
-    />
-    Rich Text Editor
-  </div>
-</body>"
+  Rich Text Editor
+</DocumentFragment>
 `;

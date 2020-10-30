@@ -1,79 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui container"
+    style="margin: 1rem 0px 1rem 0px;"
+  >
     <div
-      class=\\"ui container\\"
-      style=\\"margin: 1rem 0px 1rem 0px;\\"
+      class="ui red message"
     >
+      <i
+        aria-hidden="true"
+        class="close icon"
+      />
       <div
-        class=\\"ui red message\\"
+        class="content"
       >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"close icon\\"
-        />
         <div
-          class=\\"content\\"
-        >
-          <div
-            class=\\"sun-editor-editable rt__container\\"
-          />
-        </div>
+          class="sun-editor-editable rt__container"
+        />
       </div>
     </div>
   </div>
-</body>"
+</DocumentFragment>
 `;
 
 exports[`Render 2 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      class=\\"ui container\\"
-      style=\\"margin: 1rem 0px 1rem 0px;\\"
+    class="ui container"
+    style="margin: 1rem 0px 1rem 0px;"
+  >
+    <button
+      class="ui red icon button"
     >
-      <button
-        class=\\"ui red icon button\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"info circle icon\\"
-        />
-         Information
-      </button>
-    </div>
+      <i
+        aria-hidden="true"
+        class="info circle icon"
+      />
+       Information
+    </button>
   </div>
-</body>"
+</DocumentFragment>
 `;
 
 exports[`Render 3 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
-    <div
-      class=\\"ui container\\"
-      style=\\"margin: 1rem 0px 1rem 0px;\\"
+    class="ui container"
+    style="margin: 1rem 0px 1rem 0px;"
+  >
+    <button
+      class="ui red icon button"
     >
-      <button
-        class=\\"ui red icon button\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"info circle icon\\"
-        />
-         Information
-      </button>
-    </div>
+      <i
+        aria-hidden="true"
+        class="info circle icon"
+      />
+       Information
+    </button>
   </div>
-</body>"
+</DocumentFragment>
 `;

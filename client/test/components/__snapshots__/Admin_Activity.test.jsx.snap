@@ -1,417 +1,403 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui borderless icon em__height menu"
+  >
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class="item"
+      tabindex="0"
     >
-      <div
-        class=\\"item\\"
-        tabindex=\\"0\\"
+      <i
+        class="icons em__icon-group-margin"
       >
         <i
-          class=\\"icons em__icon-group-margin\\"
+          aria-hidden="true"
+          class="icon history"
+        />
+      </i>
+      Activity
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
         >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"icon history\\"
+          <input
+            placeholder="Search..."
+            type="text"
           />
-        </i>
-        Activity
-      </div>
-      <div
-        class=\\"right menu\\"
-      >
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"ui icon input\\"
-          >
-            <input
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
-          </div>
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
       </div>
-    </div>
-    <div
-      class=\\"ui celled grid\\"
-    >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"four wide column\\"
-        >
-          <div
-            class=\\"ui divided selection relaxed list\\"
-            role=\\"list\\"
-          >
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"885\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/update
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"884\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div
-          class=\\"twelve wide column\\"
-        >
-          <div
-            class=\\"ui icon message\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"arrow left icon\\"
-            />
-            <div
-              class=\\"content\\"
-            >
-              <div
-                class=\\"header\\"
-              >
-                Activity viewer
-              </div>
-              <p>
-                Select an activity entry from the log on the left to explore the details here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      aria-label=\\"Pagination Navigation\\"
-      class=\\"ui borderless pagination menu\\"
-      name=\\"logs\\"
-      role=\\"navigation\\"
-    >
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Previous item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"prevItem\\"
-        value=\\"1\\"
-      >
-        ⟨
-      </a>
-      <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Next item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"nextItem\\"
-        value=\\"1\\"
-      >
-        ⟩
-      </a>
     </div>
   </div>
-</body>"
+  <div
+    class="ui celled grid"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="four wide column"
+      >
+        <div
+          class="ui divided selection relaxed list"
+          role="list"
+        >
+          <a
+            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
+            class="item"
+            id="885"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/update
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+          <a
+            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
+            class="item"
+            id="884"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="twelve wide column"
+      >
+        <div
+          class="ui icon message"
+        >
+          <i
+            aria-hidden="true"
+            class="arrow left icon"
+          />
+          <div
+            class="content"
+          >
+            <div
+              class="header"
+            >
+              Activity viewer
+            </div>
+            <p>
+              Select an activity entry from the log on the left to explore the details here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="Pagination Navigation"
+    class="ui borderless pagination menu"
+    name="logs"
+    role="navigation"
+  >
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Previous item"
+      class="item"
+      tabindex="0"
+      type="prevItem"
+      value="1"
+    >
+      ⟨
+    </a>
+    <a
+      aria-current="true"
+      aria-disabled="false"
+      class="active item"
+      tabindex="0"
+      type="pageItem"
+      value="1"
+    >
+      1
+    </a>
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Next item"
+      class="item"
+      tabindex="0"
+      type="nextItem"
+      value="1"
+    >
+      ⟩
+    </a>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Render 2 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui borderless icon em__height menu"
+  >
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class="item"
+      tabindex="0"
     >
-      <div
-        class=\\"item\\"
-        tabindex=\\"0\\"
+      <i
+        class="icons em__icon-group-margin"
       >
         <i
-          class=\\"icons em__icon-group-margin\\"
+          aria-hidden="true"
+          class="icon history"
+        />
+      </i>
+      Activity
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
         >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"icon history\\"
+          <input
+            placeholder="Search..."
+            type="text"
           />
-        </i>
-        Activity
-      </div>
-      <div
-        class=\\"right menu\\"
-      >
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"ui icon input\\"
-          >
-            <input
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
-          </div>
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
       </div>
-    </div>
-    <div
-      class=\\"ui celled grid\\"
-    >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"four wide column\\"
-        >
-          <div
-            class=\\"ui divided selection relaxed list\\"
-            role=\\"list\\"
-          >
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"885\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/update
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"884\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div
-          class=\\"twelve wide column\\"
-        >
-          <div
-            class=\\"ui icon message\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"arrow left icon\\"
-            />
-            <div
-              class=\\"content\\"
-            >
-              <div
-                class=\\"header\\"
-              >
-                Activity viewer
-              </div>
-              <p>
-                Select an activity entry from the log on the left to explore the details here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      aria-label=\\"Pagination Navigation\\"
-      class=\\"ui borderless pagination menu\\"
-      name=\\"logs\\"
-      role=\\"navigation\\"
-    >
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Previous item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"prevItem\\"
-        value=\\"1\\"
-      >
-        ⟨
-      </a>
-      <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Next item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"nextItem\\"
-        value=\\"1\\"
-      >
-        ⟩
-      </a>
     </div>
   </div>
-</body>"
+  <div
+    class="ui celled grid"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="four wide column"
+      >
+        <div
+          class="ui divided selection relaxed list"
+          role="list"
+        >
+          <a
+            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
+            class="item"
+            id="885"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/update
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+          <a
+            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
+            class="item"
+            id="884"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="twelve wide column"
+      >
+        <div
+          class="ui icon message"
+        >
+          <i
+            aria-hidden="true"
+            class="arrow left icon"
+          />
+          <div
+            class="content"
+          >
+            <div
+              class="header"
+            >
+              Activity viewer
+            </div>
+            <p>
+              Select an activity entry from the log on the left to explore the details here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="Pagination Navigation"
+    class="ui borderless pagination menu"
+    name="logs"
+    role="navigation"
+  >
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Previous item"
+      class="item"
+      tabindex="0"
+      type="prevItem"
+      value="1"
+    >
+      ⟨
+    </a>
+    <a
+      aria-current="true"
+      aria-disabled="false"
+      class="active item"
+      tabindex="0"
+      type="pageItem"
+      value="1"
+    >
+      1
+    </a>
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Next item"
+      class="item"
+      tabindex="0"
+      type="nextItem"
+      value="1"
+    >
+      ⟩
+    </a>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Render 2 1 2`] = `
@@ -951,415 +937,401 @@ exports[`Render 2 1 2`] = `
 `;
 
 exports[`Render 3 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui borderless icon em__height menu"
+  >
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class="item"
+      tabindex="0"
     >
-      <div
-        class=\\"item\\"
-        tabindex=\\"0\\"
+      <i
+        class="icons em__icon-group-margin"
       >
         <i
-          class=\\"icons em__icon-group-margin\\"
+          aria-hidden="true"
+          class="icon history"
+        />
+      </i>
+      Activity
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
         >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"icon history\\"
+          <input
+            placeholder="Search..."
+            type="text"
           />
-        </i>
-        Activity
-      </div>
-      <div
-        class=\\"right menu\\"
-      >
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"ui icon input\\"
-          >
-            <input
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
-          </div>
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
       </div>
-    </div>
-    <div
-      class=\\"ui celled grid\\"
-    >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"four wide column\\"
-        >
-          <div
-            class=\\"ui divided selection relaxed list\\"
-            role=\\"list\\"
-          >
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"885\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/update
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"884\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div
-          class=\\"twelve wide column\\"
-        >
-          <div
-            class=\\"ui icon message\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"arrow left icon\\"
-            />
-            <div
-              class=\\"content\\"
-            >
-              <div
-                class=\\"header\\"
-              >
-                Activity viewer
-              </div>
-              <p>
-                Select an activity entry from the log on the left to explore the details here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      aria-label=\\"Pagination Navigation\\"
-      class=\\"ui borderless pagination menu\\"
-      name=\\"logs\\"
-      role=\\"navigation\\"
-    >
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Previous item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"prevItem\\"
-        value=\\"1\\"
-      >
-        ⟨
-      </a>
-      <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Next item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"nextItem\\"
-        value=\\"1\\"
-      >
-        ⟩
-      </a>
     </div>
   </div>
-</body>"
+  <div
+    class="ui celled grid"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="four wide column"
+      >
+        <div
+          class="ui divided selection relaxed list"
+          role="list"
+        >
+          <a
+            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
+            class="item"
+            id="885"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/update
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+          <a
+            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
+            class="item"
+            id="884"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="twelve wide column"
+      >
+        <div
+          class="ui icon message"
+        >
+          <i
+            aria-hidden="true"
+            class="arrow left icon"
+          />
+          <div
+            class="content"
+          >
+            <div
+              class="header"
+            >
+              Activity viewer
+            </div>
+            <p>
+              Select an activity entry from the log on the left to explore the details here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="Pagination Navigation"
+    class="ui borderless pagination menu"
+    name="logs"
+    role="navigation"
+  >
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Previous item"
+      class="item"
+      tabindex="0"
+      type="prevItem"
+      value="1"
+    >
+      ⟨
+    </a>
+    <a
+      aria-current="true"
+      aria-disabled="false"
+      class="active item"
+      tabindex="0"
+      type="pageItem"
+      value="1"
+    >
+      1
+    </a>
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Next item"
+      class="item"
+      tabindex="0"
+      type="nextItem"
+      value="1"
+    >
+      ⟩
+    </a>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Render 4 1 1`] = `
-"<body>
+<DocumentFragment>
   <div
-    id=\\"root\\"
-  />
-  <div>
+    class="ui borderless icon em__height menu"
+  >
     <div
-      class=\\"ui borderless icon em__height menu\\"
+      class="item"
+      tabindex="0"
     >
-      <div
-        class=\\"item\\"
-        tabindex=\\"0\\"
+      <i
+        class="icons em__icon-group-margin"
       >
         <i
-          class=\\"icons em__icon-group-margin\\"
+          aria-hidden="true"
+          class="icon history"
+        />
+      </i>
+      Activity
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
         >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"icon history\\"
+          <input
+            placeholder="Search..."
+            type="text"
           />
-        </i>
-        Activity
-      </div>
-      <div
-        class=\\"right menu\\"
-      >
-        <div
-          class=\\"item\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"ui icon input\\"
-          >
-            <input
-              placeholder=\\"Search...\\"
-              type=\\"text\\"
-            />
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"search icon\\"
-            />
-          </div>
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
       </div>
-    </div>
-    <div
-      class=\\"ui celled grid\\"
-    >
-      <div
-        class=\\"row\\"
-      >
-        <div
-          class=\\"four wide column\\"
-        >
-          <div
-            class=\\"ui divided selection relaxed list\\"
-            role=\\"list\\"
-          >
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/update 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"885\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/update
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-            <a
-              aria-label=\\"Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019\\"
-              class=\\"item\\"
-              id=\\"884\\"
-              role=\\"listitem\\"
-            >
-              <div
-                class=\\"content\\"
-              >
-                <div
-                  class=\\"description\\"
-                >
-                  <span
-                    aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
-                    title=\\"Super User (super)\\"
-                  >
-                    Super User
-                  </span>
-                   
-                  <i
-                    aria-hidden=\\"true\\"
-                    class=\\"small icon chess queen\\"
-                    style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                    title=\\"Super\\"
-                  />
-                  made a 
-                  <code>
-                    POST
-                  </code>
-                   request to 
-                  <code>
-                    /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
-                  </code>
-                   
-                  12/31/2019
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-        <div
-          class=\\"twelve wide column\\"
-        >
-          <div
-            class=\\"ui icon message\\"
-          >
-            <i
-              aria-hidden=\\"true\\"
-              class=\\"arrow left icon\\"
-            />
-            <div
-              class=\\"content\\"
-            >
-              <div
-                class=\\"header\\"
-              >
-                Activity viewer
-              </div>
-              <p>
-                Select an activity entry from the log on the left to explore the details here.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      aria-label=\\"Pagination Navigation\\"
-      class=\\"ui borderless pagination menu\\"
-      name=\\"logs\\"
-      role=\\"navigation\\"
-    >
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Previous item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"prevItem\\"
-        value=\\"1\\"
-      >
-        ⟨
-      </a>
-      <a
-        aria-current=\\"true\\"
-        aria-disabled=\\"false\\"
-        class=\\"active item\\"
-        tabindex=\\"0\\"
-        type=\\"pageItem\\"
-        value=\\"1\\"
-      >
-        1
-      </a>
-      <a
-        aria-current=\\"false\\"
-        aria-disabled=\\"false\\"
-        aria-label=\\"Next item\\"
-        class=\\"item\\"
-        tabindex=\\"0\\"
-        type=\\"nextItem\\"
-        value=\\"1\\"
-      >
-        ⟩
-      </a>
     </div>
   </div>
-</body>"
+  <div
+    class="ui celled grid"
+  >
+    <div
+      class="row"
+    >
+      <div
+        class="four wide column"
+      >
+        <div
+          class="ui divided selection relaxed list"
+          role="list"
+        >
+          <a
+            aria-label="Super User made a POST request to /runs/116/update 12/31/2019"
+            class="item"
+            id="885"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/update
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+          <a
+            aria-label="Super User made a POST request to /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9 12/31/2019"
+            class="item"
+            id="884"
+            role="listitem"
+          >
+            <div
+              class="content"
+            >
+              <div
+                class="description"
+              >
+                <span
+                  aria-label="Super User (super)"
+                  class="ui text"
+                  title="Super User (super)"
+                >
+                  Super User
+                </span>
+                 
+                <i
+                  aria-hidden="true"
+                  class="small icon chess queen"
+                  style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+                  title="Super"
+                />
+                made a 
+                <code>
+                  POST
+                </code>
+                 request to 
+                <code>
+                  /runs/116/response/be18ddc1-7e06-496c-9f33-42bfe6ac05b9
+                </code>
+                 12/31/2019
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div
+        class="twelve wide column"
+      >
+        <div
+          class="ui icon message"
+        >
+          <i
+            aria-hidden="true"
+            class="arrow left icon"
+          />
+          <div
+            class="content"
+          >
+            <div
+              class="header"
+            >
+              Activity viewer
+            </div>
+            <p>
+              Select an activity entry from the log on the left to explore the details here.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    aria-label="Pagination Navigation"
+    class="ui borderless pagination menu"
+    name="logs"
+    role="navigation"
+  >
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Previous item"
+      class="item"
+      tabindex="0"
+      type="prevItem"
+      value="1"
+    >
+      ⟨
+    </a>
+    <a
+      aria-current="true"
+      aria-disabled="false"
+      class="active item"
+      tabindex="0"
+      type="pageItem"
+      value="1"
+    >
+      1
+    </a>
+    <a
+      aria-current="false"
+      aria-disabled="false"
+      aria-label="Next item"
+      class="item"
+      tabindex="0"
+      type="nextItem"
+      value="1"
+    >
+      ⟩
+    </a>
+  </div>
+</DocumentFragment>
 `;

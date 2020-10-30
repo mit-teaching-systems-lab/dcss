@@ -1,87 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render 1 1 1`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <table
-      class=\\"ui selectable striped unstackable table\\"
+<DocumentFragment>
+  <table
+    class="ui selectable striped unstackable table"
+  >
+    <thead
+      class=""
     >
-      <thead
-        class=\\"\\"
-      >
-        <tr
-          class=\\"\\"
-        />
-      </thead>
-      <tbody
-        class=\\"ut__tbody\\"
+      <tr
+        class=""
       />
-      <tfoot
-        class=\\"\\"
+    </thead>
+    <tbody
+      class="ut__tbody"
+    />
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
       >
-        <tr
-          class=\\"\\"
+        <th
+          class=""
+          colspan="7"
         >
-          <th
-            class=\\"\\"
-            colspan=\\"7\\"
+          <div
+            aria-label="Pagination Navigation"
+            class="ui borderless pagination menu"
+            name="users"
+            role="navigation"
           >
-            <div
-              aria-label=\\"Pagination Navigation\\"
-              class=\\"ui borderless pagination menu\\"
-              name=\\"users\\"
-              role=\\"navigation\\"
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
             >
-              <a
-                aria-current=\\"false\\"
-                aria-disabled=\\"false\\"
-                aria-label=\\"Previous item\\"
-                class=\\"item\\"
-                tabindex=\\"0\\"
-                type=\\"prevItem\\"
-                value=\\"1\\"
-              >
-                ⟨
-              </a>
-              <a
-                aria-current=\\"false\\"
-                aria-disabled=\\"false\\"
-                class=\\"item\\"
-                tabindex=\\"0\\"
-                type=\\"pageItem\\"
-                value=\\"1\\"
-              >
-                1
-              </a>
-              <a
-                aria-current=\\"false\\"
-                aria-disabled=\\"false\\"
-                class=\\"item\\"
-                tabindex=\\"0\\"
-                type=\\"pageItem\\"
-                value=\\"2\\"
-              >
-                2
-              </a>
-              <a
-                aria-current=\\"false\\"
-                aria-disabled=\\"false\\"
-                aria-label=\\"Next item\\"
-                class=\\"item\\"
-                tabindex=\\"0\\"
-                type=\\"nextItem\\"
-                value=\\"1\\"
-              >
-                ⟩
-              </a>
-            </div>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-</body>"
+              ⟨
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              class="item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              class="item"
+              tabindex="0"
+              type="pageItem"
+              value="2"
+            >
+              2
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
 `;

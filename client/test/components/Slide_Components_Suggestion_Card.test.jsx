@@ -9,13 +9,20 @@ import {
   fetchImplementation,
   mounter,
   reduxer,
+  serialize,
   snapshotter,
   state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
 import { mount, shallow } from 'enzyme';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  fireEvent,
+  prettyDOM,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Card from '../../components/Slide/Components/Suggestion/Card.jsx';

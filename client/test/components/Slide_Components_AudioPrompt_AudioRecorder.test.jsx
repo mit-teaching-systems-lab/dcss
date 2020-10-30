@@ -9,13 +9,20 @@ import {
   fetchImplementation,
   mounter,
   reduxer,
+  serialize,
   snapshotter,
   state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
 import { mount, shallow } from 'enzyme';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import {
+  fireEvent,
+  prettyDOM,
+  render,
+  screen,
+  waitFor
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import {
@@ -231,13 +238,14 @@ test('Render 2 1', async done => {
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   fireEvent.focus(screen.getByRole('textbox'));
   fireEvent.change(screen.getByRole('textbox'), {
     target: { value: 'something the user typed' }
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(props.onChange.mock.calls.length).toBe(1);
   expect(props.onChange.mock.calls[0][1]).toMatchSnapshot();
@@ -294,12 +302,13 @@ test('Render 3 1', async done => {
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(screen.getByRole('button', { name: /start recording/i }));
 
   await waitFor(() => typeof audioNode.onpause === 'function');
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   audioNode.onpause();
 
@@ -308,11 +317,11 @@ test('Render 3 1', async done => {
   audioNode.onvolumechange();
   expect(audioNode.muted).toBe(true);
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(screen.getByRole('button', { name: /stop recording/i }));
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(audioNode.pause.mock.calls.length).not.toBe(0);
   expect(audioNode.onpause).toBe(null);
@@ -367,6 +376,7 @@ test('Render 4 1', async done => {
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -719,6 +729,7 @@ test('Render 13 1', async done => {
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
