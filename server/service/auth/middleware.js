@@ -121,7 +121,6 @@ async function loginUserAsync(req, res, next) {
 
   // Case when user is found
   if (existing) {
-    const user = await db.getUserById(existing.id);
     const { single_use_password, salt, hash } = existing;
 
     // Case when a user with a password is attempts to
@@ -152,6 +151,8 @@ async function loginUserAsync(req, res, next) {
         }
       }
     }
+
+    const user = await db.getUserById(existing.id);
 
     // eslint-disable-next-line require-atomic-updates
     req.session.user = {
