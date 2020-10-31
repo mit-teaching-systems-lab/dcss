@@ -30,9 +30,9 @@
     "seed:super-admin": "node seed/super-admin.js",
     "test": "yarn workspace test run test:server",
     "test:endpoints:setup": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test",
-    "test:endpoints:run": "jest",
+    "test:endpoints:run": "jest --watchAll --bail=1 --coverage",
     "t:e:s": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test",
-    "t:e:r": "jest"
+    "t:e:r": "jest --watchAll --bail=1 --coverage"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.3.0",
