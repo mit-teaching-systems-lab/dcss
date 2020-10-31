@@ -1,3 +1,5 @@
+import indefinite from 'indefinite';
+
 const animals = 'aardvark agouti akita albatross alligator alpaca angelfish ant anteater antelope ape armadillo baboon badger bandicoot barnacle barracuda bat beagle bear bearded-dragon beaver bee beetle binturong bird bison bloodhound bluejay boar bobcat bonobo buffalo bulldog bullfrog butterfly caecilian caiman camel capybara caracal caribou cassowary cat caterpillar catfish cattle centipede chameleon chamois cheetah chicken chihuahua chimpanzee chinchilla chinook chipmunk clam cobra collie coral cougar coyote crab crane crocodile crow cuttlefish dachshund dalmatian deer dingo dinosaur dodo dogfish dolphin donkey dormouse dotterel dove dragon dragonfly duck eagle eel elephant elk emu falcon fennec ferret finch fish flamingo flounder fox frog gazelle gecko gerbil gibbon giraffe gnu goat goldfinch goldfish goose gopher gorilla goshawk grasshopper greyhound grouse gull guppy hamster hare harrier hawk hedgehog heron herring himalayan hippopotamus hornet horse human hummingbird hyena hyrax ibis iguana impala indri insect jackal jaguar jellyfish kangaroo kelpie kingfisher kinkajou kiwi koala labradoodle ladybird lapwing lark lemming lemur leopard liger lion lionfish lizard llama lobster locust loris lynx lyrebird macaw magpie mallard manatee mandrill mastiff meerkat mink mole mongoose monkey moorhen moose mosquito moth mouse mule narwhal newt nightingale ocelot octopus okapi opossum orangutan oryx ostrich otter owl ox oyster paca pademelon panda panther parrot partridge patagonian-mara peacock peafowl pelican penguin persian pheasant pig pigeon piranha platypus pointer pony poodle porcupine porpoise possum prairie-dog prawn puffin pug puma python quail rabbit raccoon ragdoll rail ram rat rattlesnake raven reindeer rhinoceros robin rook rottweiler salamander salmon sand-dollar sandpiper sardine scorpion sea-lion seahorse seal serval shark sheep shrew shrimp skunk sloth snail snake snowshoe sparrow spider sponge spotted-genet squid squirrel starfish starling stingray stork swallow swan tang tapir tarsier termite tetra tiger toad tortoise toucan trout turkey turtle umbrellabird urchin viper vulture wallaby walrus warthog wasp weasel whale whippet wildebeest wolf wolverine wombat woodpecker wren xeme xolo yak yellowhammer zebra zebu zonkey zorilla zorse'.split(
   ' '
 );
@@ -9,5 +11,6 @@ const adjectives = 'accountable adaptable adept adventurous affable agreeable al
 export default function() {
   const animal = animals[Math.floor(Math.random() * animals.length)];
   const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
-  return `${adjective}-${animal}`;
+  const article = indefinite(adjective, { articleOnly: true });
+  return `${article}-${adjective}-${animal}`;
 }
