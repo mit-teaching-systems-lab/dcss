@@ -299,7 +299,7 @@ UserSettings.propTypes = {
   open: PropTypes.bool,
   onCancel: PropTypes.func,
   setUser: PropTypes.func,
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {

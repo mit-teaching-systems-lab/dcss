@@ -6,7 +6,6 @@ import {
   SET_USER_ERROR
 } from './types';
 
-
 export const signUp = params => async dispatch => {
   try {
     let { email = '', username = '', password = '' } = params;
@@ -68,10 +67,12 @@ export let getUser = () => async dispatch => {
 export let setUser = params => async dispatch => {
   try {
     if (Object.values(params).length) {
-
       if (params.password) {
         /* SESSION_SECRET is "embedded" by webpack */
-        params.password = Crypto.AES.encrypt(params.password, SESSION_SECRET).toString();
+        params.password = Crypto.AES.encrypt(
+          params.password,
+          SESSION_SECRET
+        ).toString();
       }
 
       const body = JSON.stringify(params);

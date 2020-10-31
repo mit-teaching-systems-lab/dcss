@@ -97,7 +97,6 @@ class CreateAccount extends Component {
       return false;
     }
     return true;
-
   }
 
   async onSubmit() {
@@ -263,7 +262,7 @@ CreateAccount.propTypes = {
   }).isRequired,
   location: PropTypes.object,
   signUp: PropTypes.func,
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
@@ -273,7 +272,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => ({
   getUser: (id, params) => dispatch(getUser(id, params)),
-  signUp: (params) => dispatch(signUp(params))
+  signUp: params => dispatch(signUp(params))
 });
 
 export default withRouter(
