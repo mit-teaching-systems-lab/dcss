@@ -168,7 +168,7 @@ const getScenariosIncrementallyNext = async (
       dispatch
     );
     captured.push(...scenarios);
-  } while (captured.length < count);
+  } while (offset < count);
 
   if (updater) {
     updater(scenarios);
