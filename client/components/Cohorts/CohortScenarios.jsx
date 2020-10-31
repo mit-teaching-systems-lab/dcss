@@ -51,7 +51,7 @@ export class CohortScenarios extends React.Component {
       activePage: 1,
       scenarios: [],
       cohort: {
-        id
+        id: Number(id)
       }
     };
     // This is used as a back up copy of
@@ -72,7 +72,7 @@ export class CohortScenarios extends React.Component {
       cohort: { id }
     } = this.state;
 
-    await this.props.getCohort(Number(id));
+    await this.props.getCohort(id);
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     await this.props.getRuns();
 
@@ -218,13 +218,6 @@ export class CohortScenarios extends React.Component {
             onChange={onSearchChange}
           />
         </Menu.Item.Tabbable>
-        {/*
-        <Menu.Item.Tabbable
-          onClick={() => this.sectionRef.scrollIntoView()}
-        >
-            <Icon name="angle double up" />
-        </Menu.Item.Tabbable>
-        */}
       </Menu.Menu>
     ];
 

@@ -60,7 +60,7 @@ exports[`Render 1 1 2`] = `
               >
                 <input
                   aria-label=\\"Username\\"
-                  autocomplete=\\"username\\"
+                  autocomplete=\\"off\\"
                   name=\\"username\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
@@ -86,7 +86,6 @@ exports[`Render 1 1 2`] = `
               >
                 <input
                   aria-label=\\"Personal name\\"
-                  autocomplete=\\"personalname\\"
                   name=\\"personalname\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
@@ -290,7 +289,7 @@ exports[`Render 1 1 4`] = `
               >
                 <input
                   aria-label=\\"Username\\"
-                  autocomplete=\\"username\\"
+                  autocomplete=\\"off\\"
                   name=\\"username\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
@@ -316,7 +315,6 @@ exports[`Render 1 1 4`] = `
               >
                 <input
                   aria-label=\\"Personal name\\"
-                  autocomplete=\\"personalname\\"
                   name=\\"personalname\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"

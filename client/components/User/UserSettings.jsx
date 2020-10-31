@@ -181,7 +181,7 @@ class UserSettings extends Component {
                 <Form.Input
                   aria-label="Username"
                   name="username"
-                  autoComplete="username"
+                  autoComplete="off"
                   placeholder="..."
                   defaultValue={username || ''}
                   onChange={onChange}
@@ -198,7 +198,6 @@ class UserSettings extends Component {
                 <Form.Input
                   aria-label="Personal name"
                   name="personalname"
-                  autoComplete="personalname"
                   placeholder="..."
                   defaultValue={personalname || ''}
                   onChange={onChange}
@@ -292,15 +291,15 @@ class UserSettings extends Component {
 }
 
 UserSettings.propTypes = {
+  errors: PropTypes.object,
+  getUser: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  errors: PropTypes.object,
-  getUser: PropTypes.func,
+  open: PropTypes.bool,
+  onCancel: PropTypes.func,
   setUser: PropTypes.func,
   user: PropTypes.object,
-  open: PropTypes.bool,
-  onCancel: PropTypes.func
 };
 
 const mapStateToProps = state => {

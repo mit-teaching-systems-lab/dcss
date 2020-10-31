@@ -9,6 +9,13 @@ const db = require('./db');
 
 Sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
+function decrypt(encryptedString) {
+  return Crypto.AES.decrypt(
+    encryptedString,
+    process.env.SESSION_SECRET || 'mit tsl teacher moments'
+  ).toString(Crypto.enc.Utf8);
+}
+
 exports.requireUser = (req, res, next) => {
   if (!req.session.user) {
     const error = new Error('Not logged in!');
@@ -50,18 +57,19 @@ async function checkForDuplicateAsync(req, res, next) {
 }
 
 async function createUserAsync(req, res, next) {
-  const { username, password, email } = req.body;
+  let { username, password, email } = req.body;
+
+  if (password) {
+    password = decrypt(password);
+  }
+
   const created = await db.createUser({ email, username, password });
-  // const { roles } = await getUserRoles(created.id);
 
   if (!created) {
     const error = new Error('User could not be created.');
     error.status = 500;
     throw error;
   }
-
-  // const anonymous =
-  //   typeof password === 'undefined' || typeof email === 'undefined';
 
   //eslint-disable-next-line require-atomic-updates
   req.session.user = {
@@ -72,7 +80,12 @@ async function createUserAsync(req, res, next) {
 }
 
 async function updateUserAsync(req, res, next) {
-  const { username, password, email, personalname } = req.body;
+  let { username, personalname, password, email } = req.body;
+
+  if (password) {
+    password = decrypt(password);
+  }
+
   const { id } = req.session.user;
   const updates = {};
 
@@ -112,11 +125,9 @@ async function updateUserAsync(req, res, next) {
 
 async function loginUserAsync(req, res, next) {
   const { username, email } = req.body;
-  const password = Crypto.AES.decrypt(
-    req.body.password,
-    process.env.SESSION_SECRET || 'mit tsl teacher moments'
-  ).toString(Crypto.enc.Utf8);
+  const password = decrypt(req.body.password);
 
+  console.log(username, email);
   const existing = await db.getUserByProps({ username, email });
 
   // Case when user is found
@@ -188,10 +199,7 @@ async function resetUserPasswordAsync(req, res) {
   }
 
   const href = req.body.href.replace(/\/reset/, '');
-  const email = Crypto.AES.decrypt(
-    req.body.email,
-    process.env.SESSION_SECRET || 'mit tsl teacher moments'
-  ).toString(Crypto.enc.Utf8);
+  const email = decrypt(req.body.email);
 
   const user = await db.getUserByProps({ email });
   let reset = true;

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
+import { notify } from '@components/Notification';
+import { Button, Form, Grid, Header, Modal, Text } from '@components/UI';
+import { signUp, getUser } from '@actions/user';
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -64,38 +66,38 @@ class CreateAccount extends Component {
 
     const { confirmPassword, password, username } = this.state;
 
+    let field = '';
+    let message = '';
+
     if (!username) {
+      field = 'username';
+      message = 'Username must not be empty.';
+    } else {
+      if (password) {
+        if (!confirmPassword) {
+          field = 'confirmPassword';
+          message = 'Please confirm your new password.';
+        } else {
+          if (password !== confirmPassword) {
+            field = 'confirmPassword';
+            message = 'Passwords do not match.';
+          }
+        }
+      }
+    }
+
+    if (message) {
+      notify({ message, color: 'red', time: 3000 });
       this.setState({
         error: {
-          field: 'username',
-          message: 'Please enter a username.'
+          field,
+          message
         }
       });
       return false;
     }
-
-    if (!password) {
-      this.setState({
-        error: {
-          field: 'password',
-          message: 'Please enter a password.'
-        }
-      });
-      return false;
-    }
-
-    if (password !== confirmPassword) {
-      this.setState({
-        error: {
-          field: 'confirmPassword',
-          message: 'Password fields do not match.'
-        }
-      });
-      return false;
-    }
-
-    this.setState({ error });
     return true;
+
   }
 
   async onSubmit() {
@@ -105,25 +107,14 @@ class CreateAccount extends Component {
 
     const { email, from, password, username } = this.state;
 
-    const body = JSON.stringify({
-      email,
-      password,
-      username
-    });
+    await this.props.signUp({ email, username, password });
 
-    // TODO: move this to async action
-    const { error, message } = await (await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
-
-    if (error) {
+    if (this.props.errors.user) {
+      const { message } = this.props.errors.user;
       const field = message.includes('username') ? 'username' : 'email';
       this.setState({ error: { field, message } });
     } else {
+      await notify({ message: 'User created!', color: 'green' });
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';
@@ -143,16 +134,8 @@ class CreateAccount extends Component {
   }
 
   render() {
-    const { email, confirmPassword, error, password, username } = this.state;
-    const { onChange, onCancel, onSubmit } = this;
-    const messageProps = {
-      hidden: true,
-      color: 'red'
-    };
-
-    if (error.message) {
-      messageProps.hidden = false;
-    }
+    const { onCancel, onChange, onSubmit } = this;
+    const { email, error, confirmPassword, password, username } = this.state;
 
     return (
       <Modal.Accessible open={true}>
@@ -173,54 +156,73 @@ class CreateAccount extends Component {
           <Modal.Content>
             <Form onSubmit={onSubmit}>
               <Form.Field>
+                <label htmlFor="username">
+                  Username:{' '}
+                  {error.field === 'username' ? (
+                    <Text right error>
+                      {error.message}
+                    </Text>
+                  ) : null}
+                </label>
                 <Form.Input
-                  required
-                  label="Username:"
+                  aria-label="Username"
                   name="username"
                   autoComplete="off"
+                  placeholder="..."
+                  defaultValue={username || ''}
                   onChange={onChange}
-                  value={username}
-                  {...(error && error.field === 'username'
-                    ? { error: true }
-                    : {})}
+                  {...(error.field === 'username' && { error: true })}
                 />
               </Form.Field>
               <Form.Field>
+                <label htmlFor="email">
+                  Email address:{' '}
+                  {error.field === 'email' ? (
+                    <Text error>{error.message}</Text>
+                  ) : null}
+                </label>
                 <Form.Input
+                  aria-label="Email address"
                   name="email"
-                  label="Email address:"
                   autoComplete="email"
-                  placeholder="(Optional)"
+                  placeholder="jane@example.com"
+                  defaultValue={email || ''}
                   onChange={onChange}
-                  value={email}
+                  {...(error.field === 'email' && { error: true })}
                 />
               </Form.Field>
               <Form.Field>
+                <label htmlFor="password">
+                  New password:{' '}
+                  {error.field === 'password' ? (
+                    <Text error>{error.message}</Text>
+                  ) : null}
+                </label>
                 <Form.Input
-                  required
-                  label="Password:"
+                  aria-label="New password"
                   name="password"
-                  type="password"
                   autoComplete="new-password"
+                  type="password"
+                  defaultValue=""
                   onChange={onChange}
-                  value={password}
-                  {...(error && error.field === 'password'
-                    ? { error: true }
-                    : {})}
+                  {...(error.field === 'password' && { error: true })}
                 />
               </Form.Field>
               <Form.Field>
+                <label htmlFor="confirmPassword">
+                  Confirm new password:{' '}
+                  {error.field === 'confirmPassword' ? (
+                    <Text error>{error.message}</Text>
+                  ) : null}
+                </label>
                 <Form.Input
-                  required
-                  label="Confirm password:"
+                  aria-label="Confirm new password"
                   name="confirmPassword"
-                  type="password"
                   autoComplete="new-password"
+                  type="password"
+                  defaultValue=""
                   onChange={onChange}
-                  value={confirmPassword}
-                  {...(error && error.field === 'confirmPassword'
-                    ? { error: true }
-                    : {})}
+                  {...(error.field === 'confirmPassword' && { error: true })}
                 />
               </Form.Field>
             </Form>
@@ -232,24 +234,17 @@ class CreateAccount extends Component {
                   <Button.Group fluid>
                     <Button
                       primary
+                      size="large"
                       type="submit"
                       onClick={onSubmit}
-                      size="large"
                     >
                       Submit
                     </Button>
                     <Button.Or />
-                    <Button onClick={onCancel} size="large">
+                    <Button size="large" onClick={onCancel}>
                       Cancel
                     </Button>
                   </Button.Group>
-                  <Message
-                    floating
-                    {...messageProps}
-                    style={{ textAlign: 'left' }}
-                  >
-                    {error.message}
-                  </Message>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -261,21 +256,29 @@ class CreateAccount extends Component {
 }
 
 CreateAccount.propTypes = {
+  errors: PropTypes.object,
+  getUser: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   location: PropTypes.object,
-  isLoggedIn: PropTypes.bool.isRequired
+  signUp: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn } = state.session;
-  return { isLoggedIn };
+  const { errors, user } = state;
+  return { errors, user };
 };
+
+const mapDispatchToProps = dispatch => ({
+  getUser: (id, params) => dispatch(getUser(id, params)),
+  signUp: (params) => dispatch(signUp(params))
+});
 
 export default withRouter(
   connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
   )(CreateAccount)
 );

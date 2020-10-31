@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LiveAnnouncer, LiveMessage } from 'react-aria-live';
 import { Button, Container, Header, Modal } from '@components/UI';
+import { notify } from '@components/Notification';
+import { signUp, getUser } from '@actions/user';
 import anonymousUsername from './anonymousUsername';
 import './CreateAnonymousAccount.css';
 
@@ -44,22 +46,14 @@ class CreateAnonymousAccount extends Component {
 
   async onSubmit() {
     const { from, username } = this.state;
-    const body = JSON.stringify({
-      username
-    });
 
-    // TODO: move this to async action
-    const { error, message } = await (await fetch('/api/auth/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body
-    })).json();
+    await this.props.signUp({ username });
 
-    if (error) {
-      this.setState({ message });
+    if (this.props.errors.user) {
+      const { message } = this.props.errors.user;
+      await notify({ message, color: 'red' });
     } else {
+      await notify({ message: 'User created!', color: 'green' });
       // Step outside of react to force a real reload
       // after signup and session create
       location.href = from ? `${from.pathname}${from.search}` : '/';
@@ -141,21 +135,31 @@ class CreateAnonymousAccount extends Component {
 }
 
 CreateAnonymousAccount.propTypes = {
+  errors: PropTypes.object,
+  getUser: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   location: PropTypes.object,
-  isLoggedIn: PropTypes.bool.isRequired
+  signUp: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = state => {
-  const { isLoggedIn } = state.session;
-  return { isLoggedIn };
+  const { errors, user } = state;
+  return { errors, user };
 };
+
+const mapDispatchToProps = dispatch => ({
+  getUser: (id, params) => dispatch(getUser(id, params)),
+  signUp: (params) => dispatch(signUp(params))
+});
 
 export default withRouter(
   connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
   )(CreateAnonymousAccount)
 );
+
+
