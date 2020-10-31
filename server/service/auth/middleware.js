@@ -18,7 +18,7 @@ function decrypt(encryptedString) {
 
 exports.requireUser = (req, res, next) => {
   if (!req.session.user) {
-    const error = new Error('Not logged in!');
+    const error = new Error('User is not authenticated.');
     error.status = 401;
     throw error;
   }
@@ -29,11 +29,11 @@ exports.respondWithUser = (req, res) => {
   return res.json({ user: req.session.user });
 };
 
-async function respondWithUserAndUpdatedSessionAsync(req, res) {
+async function refreshSessionAsync(req, res, next) {
   const user = await db.getUserById(req.session.user.id);
   if (!user) {
     const error = new Error('User does not exist.');
-    error.status = 409;
+    error.status = 404;
     throw error;
   }
 
@@ -42,7 +42,7 @@ async function respondWithUserAndUpdatedSessionAsync(req, res) {
     ...user
   };
 
-  return res.json({ user: req.session.user });
+  next();
 }
 
 async function checkForDuplicateAsync(req, res, next) {
@@ -62,7 +62,6 @@ async function createUserAsync(req, res, next) {
   if (password) {
     password = decrypt(password);
   }
-
   const created = await db.createUser({ email, username, password });
 
   if (!created) {
@@ -125,9 +124,12 @@ async function updateUserAsync(req, res, next) {
 
 async function loginUserAsync(req, res, next) {
   const { username, email } = req.body;
-  const password = decrypt(req.body.password);
+  let password = req.body.password;
 
-  console.log(username, email);
+  if (password) {
+    password = decrypt(password);
+  }
+
   const existing = await db.getUserByProps({ username, email });
 
   // Case when user is found
@@ -151,6 +153,7 @@ async function loginUserAsync(req, res, next) {
         error.status = 401;
         throw error;
       }
+
 
       // Reified user login: has password and provided it.
       if (hash && salt) {
@@ -177,12 +180,12 @@ async function loginUserAsync(req, res, next) {
       });
     }
 
-    return next();
+    next();
+  } else {
+    const error = new Error('Authentication failed.');
+    error.status = 401;
+    throw error;
   }
-
-  const error = new Error('Authentication failed.');
-  error.status = 401;
-  throw error;
 }
 
 async function resetUserPasswordAsync(req, res) {
@@ -270,8 +273,8 @@ Single-use password: <code>${password}</code>
       try {
         await transport.sendMail(message);
       } catch (error) {
-        error.status = 401;
-        throw error;
+        reset = false;
+        reason = error.message;
       }
     }
   } else {
@@ -287,6 +290,6 @@ exports.loginUser = asyncMiddleware(loginUserAsync);
 exports.resetUserPassword = asyncMiddleware(resetUserPasswordAsync);
 exports.updateUser = asyncMiddleware(updateUserAsync);
 exports.checkForDuplicate = asyncMiddleware(checkForDuplicateAsync);
-exports.respondWithUserAndUpdatedSession = asyncMiddleware(
-  respondWithUserAndUpdatedSessionAsync
+exports.refreshSession = asyncMiddleware(
+  refreshSessionAsync
 );

@@ -6,12 +6,12 @@ const { getScenarioPrompts } = require('../scenarios/db');
 async function createCohortAsync(req, res) {
   const user_id = req.session.user.id;
   const { name } = req.body;
-  const cohort = await db.createCohort({ name, user_id });
+  const cohort = await db.createCohort(name, user_id);
   res.json({ cohort });
 }
 
 async function getCohortAsync(req, res) {
-  const { id } = req.params;
+  const id = Number(req.params.id);
   const cohort = await db.getCohort(id);
   res.json({ cohort });
 }
@@ -28,12 +28,10 @@ async function getAllCohortsAsync(req, res) {
 }
 
 async function linkCohortToRunAsync(req, res) {
-  const { id, run_id } = req.params;
-
+  const id = Number(req.params.id);
+  const run_id = Number(req.params.run_id);
   await db.linkCohortToRun(id, run_id);
-
   const cohort = await db.getCohort(id);
-
   res.json({ cohort });
 }
 
@@ -83,24 +81,20 @@ async function setCohort(req, res) {
   //
   // const { id } = req.params;
   const { cohort } = req.body;
-
   res.json({ cohort });
 }
 
 async function setCohortScenariosAsync(req, res) {
-  const { id } = req.params;
+  const id = Number(req.params.id);
   const { scenarios } = req.body;
-
   await db.setCohortScenarios(id, scenarios);
   res.json({ scenarios });
 }
 
 async function getCohortDataAsync(req, res) {
   const { id, scenario_id } = req.params;
-
   const prompts = await getScenarioPrompts(scenario_id);
   const responses = await db.getCohortRunResponses({ id, scenario_id });
-
   res.json({ prompts, responses });
 }
 
@@ -116,11 +110,10 @@ async function getCohortParticipantDataAsync(req, res) {
   for (const response of responses) {
     if (!prompts[response.scenario_id]) {
       prompts[response.scenario_id] = [
-        await getScenarioPrompts(response.scenario_id)
+        ...(await getScenarioPrompts(response.scenario_id))
       ];
     }
   }
-
   res.json({ prompts, responses });
 }
 
@@ -130,16 +123,19 @@ async function listUserCohortsAsync(req, res) {
 }
 
 async function addCohortUserRoleAsync(req, res) {
+  console.log("addCohortUserRole", 1);
   const { cohort_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
+  console.log("addCohortUserRole", 2);
   if (!user.id || !roles.length) {
-    const error = new Error('User and roles must be defined');
+    const error = new Error('User and roles must be defined.');
     error.status = 409;
     throw error;
   }
 
   // TODO: Further Permissions Checks - can this user edit these roles?
 
+  console.log("addCohortUserRole", 3);
   try {
     const result = await db.addCohortUserRole(cohort_id, user_id, roles);
     const cohort = await db.getCohort(cohort_id);
@@ -147,8 +143,9 @@ async function addCohortUserRoleAsync(req, res) {
       cohort,
       ...result
     });
+  console.log("addCohortUserRole", 4);
   } catch (apiError) {
-    const error = new Error('Error while adding roles');
+    const error = new Error('Error while adding roles.');
     error.status = 500;
     error.stack = apiError.stack;
     throw error;
@@ -159,7 +156,7 @@ async function deleteCohortUserRoleAsync(req, res) {
   const { cohort_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
-    const error = new Error('User and roles must be defined');
+    const error = new Error('User and roles must be defined.');
     error.status = 409;
     throw error;
   }
@@ -174,7 +171,7 @@ async function deleteCohortUserRoleAsync(req, res) {
       ...result
     });
   } catch (apiError) {
-    const error = new Error('Error while deleting roles');
+    const error = new Error('Error while deleting roles.');
     error.status = 500;
     error.stack = apiError.stack;
     throw error;

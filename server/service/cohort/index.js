@@ -5,13 +5,12 @@ const {
   requireUser
 } = require('../auth/middleware');
 const {
-  // Use for restricting access to site-wide cohort creation
+  // Use for restricting access to site-wide interactions
   requireUserRole
 } = require('../roles/middleware');
 const {
   // Use for restricting access to cohort-specific interactions
   requireCohortUserRole
-  // checkCanEditCohortUserRoles
 } = require('./middleware');
 
 const {
@@ -40,7 +39,7 @@ const {
 } = require('./endpoints');
 
 const requiredSiteRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
-// const requiredCohortRoles = ['owner', 'facilitator'];
+const requiredCohortRoles = ['owner', 'facilitator'];
 
 router.put('/', [
   requireUser,
@@ -48,7 +47,10 @@ router.put('/', [
   validateRequestBody,
   createCohort
 ]);
+
+// TODO: determine whether this is in use.
 router.get('/', [requireUser, listUserCohorts]);
+
 router.post('/:id', [
   requireUser,
   requireUserRole(requiredSiteRoles),
@@ -73,7 +75,11 @@ router.get('/:id/participant/:participant_id', [
   getCohortParticipantData
 ]);
 
-router.get('/:id/run/:run_id', [requireUserForRun, linkCohortToRun]);
+router.get('/:id/run/:run_id', [
+  requireUser,
+  requireUserForRun,
+  linkCohortToRun
+]);
 
 // These are used for interactions by the CURRENT USER
 router.get('/:id/join/:role', [requireUser, joinCohort]);
@@ -82,13 +88,15 @@ router.get('/:id/done', [requireUser, doneCohort]);
 
 // These are used for ACCESS CONTROL of other users.
 router.post('/:id/roles/add', [
+  requireUser,
+  requireCohortUserRole(requiredCohortRoles),
   validateRequestBody,
-  requireCohortUserRole(['owner', 'facilitator']),
   addCohortUserRole
 ]);
 router.post('/:id/roles/delete', [
+  requireUser,
+  requireCohortUserRole(requiredCohortRoles),
   validateRequestBody,
-  requireCohortUserRole(['owner', 'facilitator']),
   deleteCohortUserRole
 ]);
 

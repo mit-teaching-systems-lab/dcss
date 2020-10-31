@@ -24,30 +24,54 @@ runs.put('/new-or-existing/scenario/:scenario_id', [
 ]);
 runs.get('/', [requireUser, getRuns]);
 
-runs.put('/:run_id/event/:name', [requireUserForRun, saveRunEvent]);
+runs.put('/:run_id/event/:name', [
+  requireUser,
+  requireUserForRun,
+  saveRunEvent
+]);
 
-runs.put('/:run_id/finish', [requireUserForRun, finishRun]);
+runs.put('/:run_id/finish', [
+  requireUser,
+  requireUserForRun,
+  finishRun
+]);
 
 runs.post('/:run_id/update', [
+  requireUser,
   requireUserForRun,
   validateRequestBody,
   updateRun
 ]);
 
 runs.get('/:run_id', [requireUser, getRunData]);
-runs.get('/:run_id/consent/revoke', [requireUserForRun, revokeConsentForRun]);
+
+runs.get('/:run_id/consent/revoke', [
+  requireUser,
+  requireUserForRun,
+  revokeConsentForRun
+]);
 
 runs.post('/:run_id/response/:response_id', [
-  requireUserForRun,
+  requireUser, requireUserForRun,
   validateRequestBody,
   upsertResponse
 ]);
 
 runs.get('/:run_id/response/:response_id/transcript', [
-  requireUserForRun,
+  requireUser, requireUserForRun,
   getTranscriptionOutcome
 ]);
-runs.get('/:run_id/response/:response_id', [requireUserForRun, getResponse]);
-runs.get('/:run_id/referrer-params', [requireUserForRun, getReferrerParams]);
+
+runs.get('/:run_id/response/:response_id', [
+  requireUser,
+  requireUserForRun,
+  getResponse
+]);
+
+runs.get('/:run_id/referrer-params', [
+  requireUser,
+  requireUserForRun,
+  getReferrerParams
+]);
 
 module.exports = runs;

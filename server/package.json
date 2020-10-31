@@ -62,6 +62,6 @@
   "devDependencies": {
     "eslint": "^6.2.2",
     "nodemon": "^1.19.1",
-    "supertest": "^5.0.0"
+    "supertest": "^6.0.0"
   }
 }

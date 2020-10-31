@@ -75,7 +75,7 @@ async function getCohortUsers(cohort_id) {
   };
 }
 
-exports.createCohort = async ({ name, user_id }) => {
+exports.createCohort = async (name, user_id) => {
   if (!(name && user_id)) {
     throw new Error(
       'Creating cohort requires user id and a name to be provided'
@@ -170,7 +170,7 @@ exports.setCohort = async () => {
   // });
 };
 
-exports.setCohortScenarios = async (id, scenarios) => {
+exports.setCohortScenarios = async (id, scenarioIds) => {
   return await withClientTransaction(async client => {
     await client.query(sql`
       DELETE FROM cohort_scenario
@@ -181,23 +181,24 @@ exports.setCohortScenarios = async (id, scenarios) => {
     //
     // INSERT INTO cohort_scenario (cohort_id, scenario_id)
     //   SELECT ${id} as cohort_id, t.scenario_id
-    //   FROM jsonb_array_elements_text(${scenarios}) AS t (scenario_id)
+    //   FROM jsonb_array_elements_text(${scenarioIds}) AS t (scenario_id)
     // ON CONFLICT DO NOTHING;
 
-    for (const scenario_id of scenarios) {
+    for (const scenario_id of scenarioIds) {
       await client.query(sql`
         INSERT INTO cohort_scenario (cohort_id, scenario_id)
         VALUES (${Number(id)}, ${Number(scenario_id)});
       `);
     }
 
-    return scenarios;
+    return scenarioIds;
   });
 };
 
 exports.getCohortRunResponses = async ({
   id,
-  participant_id /*, scenario_id */
+  participant_id,
+  scenario_id
 }) => {
   // let responses = [];
 
@@ -224,7 +225,7 @@ exports.getCohortRunResponses = async ({
       run_response.response->>'type' as type,
       run_response.created_at as created_at,
       run_response.ended_at as ended_at,
-      run.consent_granted_by_userrun.consent_granted_by_user,
+      run.consent_granted_by_user,
       cohort_run.cohort_id
     FROM run_response
     JOIN cohort_run ON run_response.run_id = cohort_run.run_id

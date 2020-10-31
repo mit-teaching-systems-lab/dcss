@@ -7,7 +7,7 @@ const {
   requireUser,
   resetUserPassword,
   respondWithUser,
-  respondWithUserAndUpdatedSession,
+  refreshSession,
   updateUser
 } = require('./middleware');
 const {
@@ -17,8 +17,16 @@ const {
 
 const router = Router();
 
-router.get('/me', requireUser, respondWithUser);
-router.get('/session', requireUser, respondWithUserAndUpdatedSession);
+router.get('/me', [
+  requireUser,
+  respondWithUser
+]);
+
+router.get('/session', [
+  requireUser,
+  refreshSession,
+  respondWithUser
+]);
 
 router.post('/signup', [
   validateRequestBody,
@@ -54,7 +62,7 @@ router.post('/login', [
 
 router.post('/logout', (req, res) => {
   delete req.session.user;
-  req.session.destroy(() => res.send('ok'));
+  req.session.destroy(() => res.json({ logout: true }));
 });
 
 module.exports = router;
