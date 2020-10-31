@@ -48,7 +48,7 @@ class UserSettings extends Component {
   }
 
   validateFormInput() {
-    const { confirmPassword, password, username } = this.state;
+    const { confirmPassword, email, password, username } = this.state;
     let field = '';
     let message = '';
 
@@ -56,14 +56,19 @@ class UserSettings extends Component {
       field = 'username';
       message = 'Username must not be empty.';
     } else {
-      if (password) {
-        if (!confirmPassword) {
-          field = 'confirmPassword';
-          message = 'Please confirm your new password.';
-        } else {
-          if (password !== confirmPassword) {
+      if (this.props.user.email && !email) {
+        field = 'email';
+        message = 'Email must not be empty.';
+      } else {
+        if (password) {
+          if (!confirmPassword) {
             field = 'confirmPassword';
-            message = 'Passwords do not match.';
+            message = 'Please confirm your new password.';
+          } else {
+            if (password !== confirmPassword) {
+              field = 'confirmPassword';
+              message = 'Passwords do not match.';
+            }
           }
         }
       }
@@ -299,7 +304,7 @@ UserSettings.propTypes = {
   open: PropTypes.bool,
   onCancel: PropTypes.func,
   setUser: PropTypes.func,
-  user: PropTypes.object
+  user: PropTypes.object,
 };
 
 const mapStateToProps = state => {
