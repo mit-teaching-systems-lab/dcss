@@ -143,28 +143,28 @@ class Login extends Component {
                   </Button>
                   <Button.Group fluid>
                     <Button
+                      className="login__buttons"
                       to="/login/reset"
                       size="large"
                       as={NavLink}
-                      style={style}
                     >
                       Reset Password
                     </Button>
                     <Button.Or />
                     <Button
+                      className="login__buttons"
                       to="/login/create-account"
                       size="large"
                       as={NavLink}
-                      style={style}
                     >
                       Create an account
                     </Button>
                     <Button.Or />
                     <Button
+                      className="login__buttons"
                       to="/scenarios/"
                       size="large"
                       as={NavLink}
-                      style={style}
                     >
                       Go back to scenarios
                     </Button>

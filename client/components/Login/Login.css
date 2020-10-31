@@ -1,3 +1,13 @@
 .modal__action-height {
   min-height: 75px;
 }
+
+.login__buttons {
+  width: 33%;
+}
+
+@media only screen and (max-width: 767px) {
+  .login__buttons {
+    width: 100%;
+  }
+}
