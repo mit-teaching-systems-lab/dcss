@@ -6,8 +6,10 @@ exports.apiError = (res, error) => {
     message
   };
 
-  if (process.env.NODE_ENV !== 'production' &&
-      process.env.NODE_ENV !== 'test') {
+  if (
+    process.env.NODE_ENV !== 'production' &&
+    process.env.NODE_ENV !== 'test'
+  ) {
     result.stack = error.stack;
     console.error(error.stack);
   }

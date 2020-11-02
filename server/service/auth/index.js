@@ -17,16 +17,9 @@ const {
 
 const router = Router();
 
-router.get('/me', [
-  requireUser,
-  respondWithUser
-]);
+router.get('/me', [requireUser, respondWithUser]);
 
-router.get('/session', [
-  requireUser,
-  refreshSession,
-  respondWithUser
-]);
+router.get('/session', [requireUser, refreshSession, respondWithUser]);
 
 router.post('/signup', [
   validateRequestBody,

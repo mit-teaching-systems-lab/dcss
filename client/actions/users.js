@@ -43,9 +43,9 @@ export let getUsers = () => async dispatch => {
  */
 export let getUsersByPermission = permission => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/roles/user/permission/${permission}`
-    )).json();
+    const res = await (
+      await fetch(`/api/roles/user/permission/${permission}`)
+    ).json();
     if (res.error) {
       throw res;
     }

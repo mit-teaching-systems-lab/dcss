@@ -195,11 +195,7 @@ exports.setCohortScenarios = async (id, scenarioIds) => {
   });
 };
 
-exports.getCohortRunResponses = async ({
-  id,
-  participant_id,
-  scenario_id
-}) => {
+exports.getCohortRunResponses = async ({ id, participant_id, scenario_id }) => {
   // let responses = [];
 
   let andClause = participant_id

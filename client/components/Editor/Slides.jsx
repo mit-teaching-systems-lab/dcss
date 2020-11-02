@@ -578,9 +578,4 @@ const mapDispatchToProps = dispatch => ({
   setSlides: params => dispatch(setSlides(params))
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Slides)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Slides));

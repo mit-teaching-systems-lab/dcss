@@ -149,8 +149,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ScenarioCardActions)
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioCardActions)
 );

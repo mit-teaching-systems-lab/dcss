@@ -154,7 +154,6 @@ async function loginUserAsync(req, res, next) {
         throw error;
       }
 
-
       // Reified user login: has password and provided it.
       if (hash && salt) {
         const { passwordHash } = validateHashPassword(password, salt);
@@ -290,6 +289,4 @@ exports.loginUser = asyncMiddleware(loginUserAsync);
 exports.resetUserPassword = asyncMiddleware(resetUserPasswordAsync);
 exports.updateUser = asyncMiddleware(updateUserAsync);
 exports.checkForDuplicate = asyncMiddleware(checkForDuplicateAsync);
-exports.refreshSession = asyncMiddleware(
-  refreshSessionAsync
-);
+exports.refreshSession = asyncMiddleware(refreshSessionAsync);

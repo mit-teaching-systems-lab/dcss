@@ -134,7 +134,7 @@ class CreateAccount extends Component {
 
   render() {
     const { onCancel, onChange, onSubmit } = this;
-    const { email, error, confirmPassword, password, username } = this.state;
+    const { email, error, username } = this.state;
 
     return (
       <Modal.Accessible open={true}>
@@ -276,8 +276,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(CreateAccount)
+  connect(mapStateToProps, mapDispatchToProps)(CreateAccount)
 );

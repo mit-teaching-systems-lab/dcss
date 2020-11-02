@@ -30,11 +30,7 @@ runs.put('/:run_id/event/:name', [
   saveRunEvent
 ]);
 
-runs.put('/:run_id/finish', [
-  requireUser,
-  requireUserForRun,
-  finishRun
-]);
+runs.put('/:run_id/finish', [requireUser, requireUserForRun, finishRun]);
 
 runs.post('/:run_id/update', [
   requireUser,
@@ -52,13 +48,15 @@ runs.get('/:run_id/consent/revoke', [
 ]);
 
 runs.post('/:run_id/response/:response_id', [
-  requireUser, requireUserForRun,
+  requireUser,
+  requireUserForRun,
   validateRequestBody,
   upsertResponse
 ]);
 
 runs.get('/:run_id/response/:response_id/transcript', [
-  requireUser, requireUserForRun,
+  requireUser,
+  requireUserForRun,
   getTranscriptionOutcome
 ]);
 

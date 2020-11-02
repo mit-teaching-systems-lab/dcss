@@ -455,8 +455,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(DataTable)
+  connect(mapStateToProps, mapDispatchToProps)(DataTable)
 );

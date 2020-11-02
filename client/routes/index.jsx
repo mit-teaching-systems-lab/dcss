@@ -75,7 +75,4 @@ const mapDispatchToProps = dispatch => ({
   getPermissions: () => dispatch(getPermissions())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

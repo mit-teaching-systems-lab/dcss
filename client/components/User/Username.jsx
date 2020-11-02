@@ -105,10 +105,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const WrappedComponent = connect(
-  mapStateToProps,
-  null
-)(Username);
+const WrappedComponent = connect(mapStateToProps, null)(Username);
 
 WrappedComponent.from = user => {
   return new Username(user);

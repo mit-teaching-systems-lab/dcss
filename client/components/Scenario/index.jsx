@@ -485,10 +485,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRunEventCapturing(
-  withRouter(
-    connect(
-      mapStateToProps,
-      mapDispatchToProps
-    )(Scenario)
-  )
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(Scenario))
 );

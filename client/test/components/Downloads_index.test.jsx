@@ -455,9 +455,11 @@ test('Render 1 1', async done => {
   );
   expect(serialize()).toMatchSnapshot();
   expect(
-    (await screen.findAllByRole('button', {
-      name: /download a csv file containing responses to only "some other scenario"/i
-    })).length
+    (
+      await screen.findAllByRole('button', {
+        name: /download a csv file containing responses to only "some other scenario"/i
+      })
+    ).length
   ).toBe(2);
 
   done();

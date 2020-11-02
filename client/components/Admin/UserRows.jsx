@@ -171,7 +171,4 @@ const mapStateToProps = state => {
   return { adminUser: user, usersById };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(UserRows);
+export default connect(mapStateToProps, null)(UserRows);

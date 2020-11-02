@@ -662,8 +662,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Downloads)
+  connect(mapStateToProps, mapDispatchToProps)(Downloads)
 );

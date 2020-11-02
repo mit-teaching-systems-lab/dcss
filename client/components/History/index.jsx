@@ -457,8 +457,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(History)
+  connect(mapStateToProps, mapDispatchToProps)(History)
 );

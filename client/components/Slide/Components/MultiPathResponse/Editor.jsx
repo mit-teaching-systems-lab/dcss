@@ -73,9 +73,9 @@ class MultiPathResponseEditor extends React.Component {
     const { scenario } = this.props;
 
     // TODO: move to async action
-    const { slides } = await (await fetch(
-      `/api/scenarios/${scenario.id}/slides`
-    )).json();
+    const { slides } = await (
+      await fetch(`/api/scenarios/${scenario.id}/slides`)
+    ).json();
     this.slides = slides;
     this.setState({
       isReady: true

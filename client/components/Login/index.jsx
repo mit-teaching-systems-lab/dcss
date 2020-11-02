@@ -95,10 +95,6 @@ class Login extends Component {
       messageProps.hidden = false;
     }
 
-    const style = {
-      width: '33%'
-    };
-
     return (
       <Modal.Accessible open>
         <Modal open role="dialog" aria-modal="true" size="small">
@@ -207,9 +203,4 @@ const mapDispatchToProps = dispatch => ({
   logOut: () => dispatch(logOut())
 });
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Login)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

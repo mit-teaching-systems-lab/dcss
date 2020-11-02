@@ -123,10 +123,8 @@ async function listUserCohortsAsync(req, res) {
 }
 
 async function addCohortUserRoleAsync(req, res) {
-  console.log("addCohortUserRole", 1);
   const { cohort_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
-  console.log("addCohortUserRole", 2);
   if (!user.id || !roles.length) {
     const error = new Error('User and roles must be defined.');
     error.status = 409;
@@ -135,7 +133,6 @@ async function addCohortUserRoleAsync(req, res) {
 
   // TODO: Further Permissions Checks - can this user edit these roles?
 
-  console.log("addCohortUserRole", 3);
   try {
     const result = await db.addCohortUserRole(cohort_id, user_id, roles);
     const cohort = await db.getCohort(cohort_id);
@@ -143,7 +140,6 @@ async function addCohortUserRoleAsync(req, res) {
       cohort,
       ...result
     });
-  console.log("addCohortUserRole", 4);
   } catch (apiError) {
     const error = new Error('Error while adding roles.');
     error.status = 500;
