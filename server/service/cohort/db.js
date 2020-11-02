@@ -204,7 +204,7 @@ exports.getCohortRunResponses = async ({
 
   let andClause = participant_id
     ? `run.user_id = ${participant_id}`
-    : 'run.scenario_id = ${scenario_id}';
+    : `run.scenario_id = ${scenario_id}`;
 
   let select = `
     SELECT
