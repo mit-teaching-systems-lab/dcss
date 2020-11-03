@@ -139,7 +139,7 @@ test('Render 3 1', async done => {
       personalname: 'Super User',
       email: 'super@email.com',
       id: 999,
-      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      roles: ['participant', 'super_admin'],
       is_anonymous: false,
       is_super: true
     },
@@ -169,7 +169,7 @@ test('Render 4 1', async done => {
       personalname: 'Super User',
       email: 'super@email.com',
       id: 999,
-      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      roles: ['participant', 'super_admin'],
       is_anonymous: false,
       is_super: true
     },

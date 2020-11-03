@@ -87,7 +87,7 @@ test('Render 1 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -198,7 +198,7 @@ test('Render 2 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -310,7 +310,7 @@ test('Render 3 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -422,7 +422,7 @@ test('Render 4 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -534,7 +534,7 @@ test('Render 5 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -646,7 +646,7 @@ test('Render 6 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',

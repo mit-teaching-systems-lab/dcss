@@ -75,7 +75,7 @@ beforeEach(() => {
       personalname: 'Super User',
       email: 'super@email.com',
       id: 999,
-      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      roles: ['participant', 'super_admin'],
       is_anonymous: false,
       is_super: true
     };

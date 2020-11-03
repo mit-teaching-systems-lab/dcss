@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
@@ -38,21 +37,10 @@ export class CohortScenarios extends React.Component {
   constructor(props) {
     super(props);
 
-    let {
-      params: { id }
-    } = this.props.match;
-
-    if (!id && this.props.id) {
-      id = this.props.id;
-    }
-
     this.state = {
       isReady: false,
       activePage: 1,
-      scenarios: [],
-      cohort: {
-        id: Number(id)
-      }
+      scenarios: []
     };
     // This is used as a back up copy of
     // scenarios when the list is filtered
@@ -68,11 +56,7 @@ export class CohortScenarios extends React.Component {
   }
 
   async componentDidMount() {
-    const {
-      cohort: { id }
-    } = this.state;
-
-    await this.props.getCohort(id);
+    await this.props.getCohort(this.props.id);
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     await this.props.getRuns();
 
@@ -90,7 +74,7 @@ export class CohortScenarios extends React.Component {
   }
 
   scrollIntoView() {
-    scrollIntoView(this.tableBody.current.node.firstElementChild);
+    scrollIntoView(this.tableBody.current?.node?.firstElementChild);
   }
 
   onCheckboxClick(event, { checked, value }) {
@@ -354,9 +338,8 @@ export class CohortScenarios extends React.Component {
                   ? 'view_scenarios_in_cohort'
                   : 'edit_scenarios_in_cohort';
 
-                const onAddTabClick = (event, data) => {
+                const onAddTabClick = event => {
                   onClick(event, {
-                    ...data,
                     type: 'scenario',
                     source: scenario
                   });
@@ -425,6 +408,9 @@ export class CohortScenarios extends React.Component {
                           key={`cell-checkbox-${index}`}
                         >
                           <Checkbox
+                            aria-label={
+                              checked ? `Remove scenario` : `Add scenario`
+                            }
                             key={`checkbox-${index}`}
                             value={scenario.id}
                             checked={checked}
@@ -452,10 +438,9 @@ export class CohortScenarios extends React.Component {
                                     content="Copy cohort scenario link to clipboard"
                                     trigger={
                                       <Button
-                                        icon
-                                        content={
-                                          <Icon name="clipboard outline" />
-                                        }
+                                        aria-label="Copy cohort scenario link to clipboard"
+                                        data-testid="copy-cohort-scenario-link"
+                                        icon="clipboard outline"
                                         onClick={() => copy(url)}
                                         {...props}
                                       />
@@ -467,8 +452,9 @@ export class CohortScenarios extends React.Component {
                                     content="Run this cohort scenario as a participant"
                                     trigger={
                                       <Button
-                                        icon
-                                        content={<Icon name="play" />}
+                                        aria-label="Run this cohort scenario as a participant"
+                                        data-testid="run-cohort-as-participant"
+                                        icon="play"
                                         onClick={() => {
                                           location.href = url;
                                         }}
@@ -486,10 +472,9 @@ export class CohortScenarios extends React.Component {
                                       content="View cohort reponses to prompts in this scenario"
                                       trigger={
                                         <Button
-                                          icon
-                                          content={
-                                            <Icon name="file alternate outline" />
-                                          }
+                                          aria-label="View cohort reponses to prompts in this scenario"
+                                          data-testid="view-cohort-responses"
+                                          icon="file alternate outline"
                                           name={scenario.title}
                                           onClick={onAddTabClick}
                                           {...props}
@@ -505,8 +490,10 @@ export class CohortScenarios extends React.Component {
                                 content="Move scenario up"
                                 trigger={
                                   <Button
-                                    icon="caret up"
                                     aria-label="Move scenario up"
+                                    data-testid="move-up"
+                                    icon="caret up"
+                                    tabIndex={0}
                                     disabled={index === 0}
                                     onClick={() => {
                                       onOrderChange(index, index - 1);
@@ -520,8 +507,10 @@ export class CohortScenarios extends React.Component {
                                 content="Move scenario down"
                                 trigger={
                                   <Button
-                                    icon="caret down"
                                     aria-label="Move scenario down"
+                                    data-testid="move-down"
+                                    icon="caret down"
+                                    tabIndex={0}
                                     disabled={
                                       index === cohortScenarios.length - 1
                                     }
@@ -556,32 +545,34 @@ export class CohortScenarios extends React.Component {
             </Sortable>
           ) : (
             <Table.Body>
-              <Table.Row key={`row-empty-results`}>
+              <Table.Row key="row-empty-results">
                 <Table.Cell>No scenarios match your search</Table.Cell>
               </Table.Row>
             </Table.Body>
           )}
 
-          <Table.Footer>
-            <Table.Row>
-              <Table.HeaderCell
-                colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}
-              >
-                <Pagination
-                  borderless
-                  name="scenarios"
-                  activePage={activePage}
-                  siblingRange={1}
-                  boundaryRange={0}
-                  ellipsisItem={null}
-                  firstItem={null}
-                  lastItem={null}
-                  onPageChange={onPageChange}
-                  totalPages={scenariosPages}
-                />
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Footer>
+          <Gate isAuthorized={isFacilitator}>
+            <Table.Footer>
+              <Table.Row>
+                <Table.HeaderCell
+                  colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}
+                >
+                  <Pagination
+                    borderless
+                    name="scenarios"
+                    activePage={activePage}
+                    siblingRange={1}
+                    boundaryRange={0}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    onPageChange={onPageChange}
+                    totalPages={scenariosPages}
+                  />
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Footer>
+          </Gate>
         </Table>
       </Container>
     );
@@ -611,6 +602,7 @@ export class CohortScenarios extends React.Component {
 
 CohortScenarios.propTypes = {
   authority: PropTypes.object,
+  id: PropTypes.any,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     name: PropTypes.string,
@@ -621,16 +613,6 @@ CohortScenarios.propTypes = {
   }),
   getCohort: PropTypes.func,
   setCohort: PropTypes.func,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
-  id: PropTypes.any,
-  match: PropTypes.shape({
-    path: PropTypes.string,
-    params: PropTypes.shape({
-      id: PropTypes.node
-    }).isRequired
-  }).isRequired,
   onClick: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
@@ -658,6 +640,4 @@ const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers())
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CohortScenarios)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CohortScenarios);

@@ -280,10 +280,13 @@ export class DataTable extends React.Component {
 
     return (
       <Fragment>
-        <DataTableMenu source={source} onClick={onDataTableMenuClick} />
         {!tables.length ? (
-          <Message>There is no data recorded yet.</Message>
-        ) : null}
+          <Message>
+            There is no data recorded yet. Completed scenarios will appear here.
+          </Message>
+        ) : (
+          <DataTableMenu source={source} onClick={onDataTableMenuClick} />
+        )}
         {tables.map(({ prompts, rows }, index) => {
           const tableKeyBase = `data-table-${index}`;
           return (

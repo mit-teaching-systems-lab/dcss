@@ -72,24 +72,57 @@ beforeEach(() => {
         id: 1,
         created_at: '2020-08-31T14:01:08.656Z',
         name: 'A New Cohort That Exists Within Inline Props',
-        runs: [],
+        runs: [
+          {
+            id: 11,
+            user_id: 333,
+            scenario_id: 99,
+            created_at: '2020-03-28T19:44:03.069Z',
+            updated_at: '2020-03-31T17:01:43.139Z',
+            ended_at: '2020-03-31T17:01:43.128Z',
+            consent_id: 8,
+            consent_acknowledged_by_user: true,
+            consent_granted_by_user: true,
+            referrer_params: null,
+            cohort_id: 1,
+            run_id: 11
+          }
+        ],
         scenarios: [99],
         users: [
           {
-            id: 999,
-            email: 'super@email.com',
             username: 'super',
-            cohort_id: 1,
-            roles: ['super', 'facilitator'],
+            personalname: 'Super User',
+            email: 'super@email.com',
+            id: 999,
+            roles: ['participant', 'super_admin'],
             is_anonymous: false,
             is_super: true
           },
           {
+            username: 'facilitator',
+            personalname: 'Facilitator User',
+            email: 'facilitator@email.com',
             id: 555,
-            email: 'regs@email.com',
-            username: 'regs',
-            cohort_id: 1,
-            roles: ['researcher'],
+            roles: ['participant', 'facilitator', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          {
+            username: 'researcher',
+            personalname: 'Researcher User',
+            email: 'researcher@email.com',
+            id: 444,
+            roles: ['participant', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          {
+            username: 'participant',
+            personalname: 'Participant User',
+            email: 'participant@email.com',
+            id: 333,
+            roles: ['participant'],
             is_anonymous: false,
             is_super: false
           }
@@ -97,20 +130,38 @@ beforeEach(() => {
         roles: ['super', 'facilitator'],
         usersById: {
           999: {
-            id: 999,
-            email: 'super@email.com',
             username: 'super',
-            cohort_id: 1,
-            roles: ['super', 'facilitator'],
+            personalname: 'Super User',
+            email: 'super@email.com',
+            id: 999,
+            roles: ['participant', 'super_admin'],
             is_anonymous: false,
             is_super: true
           },
           555: {
+            username: 'facilitator',
+            personalname: 'Facilitator User',
+            email: 'facilitator@email.com',
             id: 555,
-            email: 'regs@email.com',
-            username: 'regs',
-            cohort_id: 1,
-            roles: ['researcher'],
+            roles: ['participant', 'facilitator', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          444: {
+            username: 'researcher',
+            personalname: 'Researcher User',
+            email: 'researcher@email.com',
+            id: 444,
+            roles: ['participant', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          333: {
+            username: 'participant',
+            personalname: 'Participant User',
+            email: 'participant@email.com',
+            id: 333,
+            roles: ['participant'],
             is_anonymous: false,
             is_super: false
           }
@@ -127,24 +178,57 @@ beforeEach(() => {
         id: 1,
         created_at: '2020-08-31T14:01:08.656Z',
         name: 'A New Cohort That Exists Within Inline Props',
-        runs: [],
+        runs: [
+          {
+            id: 11,
+            user_id: 333,
+            scenario_id: 99,
+            created_at: '2020-03-28T19:44:03.069Z',
+            updated_at: '2020-03-31T17:01:43.139Z',
+            ended_at: '2020-03-31T17:01:43.128Z',
+            consent_id: 8,
+            consent_acknowledged_by_user: true,
+            consent_granted_by_user: true,
+            referrer_params: null,
+            cohort_id: 1,
+            run_id: 11
+          }
+        ],
         scenarios: [99],
         users: [
           {
-            id: 999,
-            email: 'super@email.com',
             username: 'super',
-            cohort_id: 1,
-            roles: ['super', 'facilitator'],
+            personalname: 'Super User',
+            email: 'super@email.com',
+            id: 999,
+            roles: ['participant', 'super_admin'],
             is_anonymous: false,
             is_super: true
           },
           {
+            username: 'facilitator',
+            personalname: 'Facilitator User',
+            email: 'facilitator@email.com',
             id: 555,
-            email: 'regs@email.com',
-            username: 'regs',
-            cohort_id: 1,
-            roles: ['researcher'],
+            roles: ['participant', 'facilitator', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          {
+            username: 'researcher',
+            personalname: 'Researcher User',
+            email: 'researcher@email.com',
+            id: 444,
+            roles: ['participant', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          {
+            username: 'participant',
+            personalname: 'Participant User',
+            email: 'participant@email.com',
+            id: 333,
+            roles: ['participant'],
             is_anonymous: false,
             is_super: false
           }
@@ -152,20 +236,38 @@ beforeEach(() => {
         roles: ['super', 'facilitator'],
         usersById: {
           999: {
-            id: 999,
-            email: 'super@email.com',
             username: 'super',
-            cohort_id: 1,
-            roles: ['super', 'facilitator'],
+            personalname: 'Super User',
+            email: 'super@email.com',
+            id: 999,
+            roles: ['participant', 'super_admin'],
             is_anonymous: false,
             is_super: true
           },
           555: {
+            username: 'facilitator',
+            personalname: 'Facilitator User',
+            email: 'facilitator@email.com',
             id: 555,
-            email: 'regs@email.com',
-            username: 'regs',
-            cohort_id: 1,
-            roles: ['researcher'],
+            roles: ['participant', 'facilitator', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          444: {
+            username: 'researcher',
+            personalname: 'Researcher User',
+            email: 'researcher@email.com',
+            id: 444,
+            roles: ['participant', 'researcher'],
+            is_anonymous: false,
+            is_super: false
+          },
+          333: {
+            username: 'participant',
+            personalname: 'Participant User',
+            email: 'participant@email.com',
+            id: 333,
+            roles: ['participant'],
             is_anonymous: false,
             is_super: false
           }
@@ -233,7 +335,7 @@ beforeEach(() => {
       personalname: 'Super User',
       email: 'super@email.com',
       id: 999,
-      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      roles: ['participant', 'super_admin'],
       is_anonymous: false,
       is_super: true
     };
@@ -256,7 +358,7 @@ beforeEach(() => {
           },
           categories: [],
           consent: { id: 57, prose: '' },
-          description: 'A Multiplayer Scenario',
+          description: "This is the description of 'A Multiplayer Scenario'",
           finish: {
             id: 1,
             title: '',
@@ -340,7 +442,7 @@ beforeEach(() => {
           },
           categories: [],
           consent: { id: 69, prose: '' },
-          description: 'Some Other Scenario',
+          description: "This is the description of 'Some Other Scenario'",
           finish: {
             id: 11,
             title: '',
@@ -482,9 +584,9 @@ test('Render 2 1', async done => {
   userActions.getUser = jest.fn();
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
-      username: 'regs',
-      personalname: 'Regs User',
-      email: 'regs@email.com',
+      username: 'facilitator',
+      personalname: 'Facilitator User',
+      email: 'facilitator@email.com',
       id: 555,
       roles: ['participant', 'facilitator', 'researcher'],
       is_anonymous: false,

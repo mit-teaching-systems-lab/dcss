@@ -22,17 +22,19 @@ module.exports = {
 
   moduleNameMapper: {
     // Third Party
+    'copy-text-to-clipboard':
+      '<rootDir>/test/__mocks__/modules/copy-text-to-clipboard.js',
     'file-saver': '<rootDir>/test/__mocks__/modules/file-saver.js',
     'focus-trap-react': '<rootDir>/test/__mocks__/modules/return-children.js',
     'focus-trap': '<rootDir>/test/__mocks__/modules/return-children.js',
     'detect-browser': '<rootDir>/test/__mocks__/modules/detect-browser.js',
+    'react-sortablejs': '<rootDir>/test/__mocks__/modules/react-sortablejs.js',
+    suneditor: '<rootDir>/test/__mocks__/modules/suneditor.js',
+
     // 'moment': '<rootDir>/../node_modules/moment/moment.js',
     '@utils/Media': '<rootDir>/test/__mocks__/modules/media.js',
     '@utils/Moment': '<rootDir>/test/__mocks__/modules/moment.js',
     '@utils/Recorder': '<rootDir>/test/__mocks__/modules/recorder.js',
-
-    'react-sortablejs': '<rootDir>/test/__mocks__/modules/return-children.js',
-    suneditor: '<rootDir>/test/__mocks__/modules/suneditor.js',
 
     // Mocked Assets
     // This matches '@alias/foo/bar/style.css'

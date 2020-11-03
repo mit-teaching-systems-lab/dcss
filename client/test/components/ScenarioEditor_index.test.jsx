@@ -77,7 +77,7 @@ beforeEach(() => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -166,7 +166,7 @@ beforeEach(() => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -255,7 +255,7 @@ beforeEach(() => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -344,7 +344,7 @@ beforeEach(() => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -433,7 +433,7 @@ beforeEach(() => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',
@@ -517,14 +517,14 @@ beforeEach(() => {
         personalname: 'Super User',
         email: 'super@email.com',
         id: 999,
-        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        roles: ['participant', 'super_admin'],
         is_anonymous: false,
         is_super: true
       },
       {
-        username: 'regs',
-        personalname: 'Regs User',
-        email: 'regs@email.com',
+        username: 'facilitator',
+        personalname: 'Facilitator User',
+        email: 'facilitator@email.com',
         id: 555,
         roles: ['participant', 'facilitator', 'researcher'],
         is_anonymous: false,
@@ -543,14 +543,14 @@ beforeEach(() => {
         personalname: 'Super User',
         email: 'super@email.com',
         id: 999,
-        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        roles: ['participant', 'super_admin'],
         is_anonymous: false,
         is_super: true
       },
       {
-        username: 'regs',
-        personalname: 'Regs User',
-        email: 'regs@email.com',
+        username: 'facilitator',
+        personalname: 'Facilitator User',
+        email: 'facilitator@email.com',
         id: 555,
         roles: ['participant', 'facilitator', 'researcher'],
         is_anonymous: false,
@@ -606,7 +606,7 @@ test('Render 1 1', async done => {
       },
       categories: [],
       consent: { id: 57, prose: '' },
-      description: 'A Multiplayer Scenario',
+      description: "This is the description of 'A Multiplayer Scenario'",
       finish: {
         id: 1,
         title: '',

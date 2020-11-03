@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "../../.eslintrc.json"
+  ],
+  "env": {
+    "jest": true
+  },
+  "rules": {
+    "no-import-assign": ["off"],
+    "no-unused-vars": ["off"]
+  }
+}
