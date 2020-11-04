@@ -232,6 +232,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
@@ -314,9 +315,10 @@ beforeEach(() => {
           personalname: 'Facilitator User',
           email: 'facilitator@email.com',
           id: 555,
-          roles: ['participant', 'facilitator', 'researcher'],
+          roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          is_owner: true
         },
         {
           username: 'researcher',
@@ -334,6 +336,15 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
+          is_super: false
+        },
+        {
+          username: 'anonymous',
+          personalname: 'Anonymous User',
+          email: 'anonymous@email.com',
+          id: 222,
+          roles: ['participant'],
+          is_anonymous: true,
           is_super: false
         }
       ],
@@ -353,9 +364,10 @@ beforeEach(() => {
           personalname: 'Facilitator User',
           email: 'facilitator@email.com',
           id: 555,
-          roles: ['participant', 'facilitator', 'researcher'],
+          roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          is_owner: true
         },
         444: {
           username: 'researcher',
@@ -373,6 +385,15 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
+          is_super: false
+        },
+        222: {
+          username: 'anonymous',
+          personalname: 'Anonymous User',
+          email: 'anonymous@email.com',
+          id: 222,
+          roles: ['participant'],
+          is_anonymous: true,
           is_super: false
         }
       }
@@ -392,9 +413,10 @@ beforeEach(() => {
       personalname: 'Facilitator User',
       email: 'facilitator@email.com',
       id: 555,
-      roles: ['participant', 'facilitator', 'researcher'],
+      roles: ['participant', 'facilitator', 'researcher', 'owner'],
       is_anonymous: false,
-      is_super: false
+      is_super: false,
+      is_owner: true
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -416,8 +438,36 @@ beforeEach(() => {
         personalname: 'Facilitator User',
         email: 'facilitator@email.com',
         id: 555,
-        roles: ['participant', 'facilitator', 'researcher'],
+        roles: ['participant', 'facilitator', 'researcher', 'owner'],
         is_anonymous: false,
+        is_super: false,
+        is_owner: true
+      },
+      {
+        username: 'researcher',
+        personalname: 'Researcher User',
+        email: 'researcher@email.com',
+        id: 444,
+        roles: ['participant', 'researcher'],
+        is_anonymous: false,
+        is_super: false
+      },
+      {
+        username: 'participant',
+        personalname: 'Participant User',
+        email: 'participant@email.com',
+        id: 333,
+        roles: ['participant'],
+        is_anonymous: false,
+        is_super: false
+      },
+      {
+        username: 'anonymous',
+        personalname: 'Anonymous User',
+        email: 'anonymous@email.com',
+        id: 222,
+        roles: ['participant'],
+        is_anonymous: true,
         is_super: false
       }
     ];
@@ -430,6 +480,8 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
   jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();
@@ -612,111 +664,7 @@ test('Render 4 1', async done => {
   userEvent.click(await screen.getAllByTestId('view-cohort-responses')[0]);
   expect(asFragment()).toMatchSnapshot();
   expect(props.onClick.mock.calls.length).toBe(1);
-  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot(`
-    Object {
-      "source": Object {
-        "author": Object {
-          "email": "super@email.com",
-          "id": 999,
-          "is_anonymous": false,
-          "is_super": true,
-          "personalname": "Super User",
-          "roles": Array [
-            "participant",
-            "super_admin",
-            "facilitator",
-            "researcher",
-          ],
-          "username": "super",
-        },
-        "categories": Array [],
-        "consent": Object {
-          "id": 69,
-          "prose": "",
-        },
-        "created_at": "2020-07-31T17:50:28.089Z",
-        "deleted_at": null,
-        "description": "This is the description of 'Some Other Scenario'",
-        "finish": Object {
-          "components": Array [
-            Object {
-              "html": "<h2>Bye!</h2>",
-              "type": "Text",
-            },
-          ],
-          "id": 11,
-          "is_finish": true,
-          "title": "",
-        },
-        "id": 99,
-        "lock": Object {
-          "created_at": "2020-02-31T23:54:19.934Z",
-          "ended_at": null,
-          "scenario_id": 42,
-          "user_id": 999,
-        },
-        "slides": Array [
-          Object {
-            "components": Array [
-              Object {
-                "html": "<h2>Bye!</h2>",
-                "type": "Text",
-              },
-            ],
-            "id": 11,
-            "is_finish": true,
-            "title": "",
-          },
-          Object {
-            "components": Array [
-              Object {
-                "html": "<p>HTML!</p>",
-                "id": "b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
-                "type": "Text",
-              },
-              Object {
-                "header": "TextResponse-1",
-                "id": "aede9380-c7a3-4ef7-add7-eb6677358c9e",
-                "placeholder": "Your response",
-                "prompt": "",
-                "recallId": "",
-                "required": true,
-                "responseId": "be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-                "timeout": 0,
-                "type": "TextResponse",
-              },
-              Object {
-                "html": "<p>?</p>",
-                "id": "f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-                "type": "Text",
-              },
-            ],
-            "id": 22,
-            "is_finish": false,
-            "title": "",
-          },
-        ],
-        "status": 2,
-        "title": "Some Other Scenario",
-        "updated_at": null,
-        "users": Array [
-          Object {
-            "email": "super@email.com",
-            "id": 999,
-            "is_author": true,
-            "is_reviewer": false,
-            "is_super": true,
-            "personalname": "Super User",
-            "roles": Array [
-              "super",
-            ],
-            "username": "super",
-          },
-        ],
-      },
-      "type": "scenario",
-    }
-  `);
+  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot();
 
   done();
 });
@@ -747,9 +695,10 @@ test('Render 5 1', async done => {
       personalname: 'Facilitator User',
       email: 'facilitator@email.com',
       id: 555,
-      roles: ['participant', 'facilitator', 'researcher'],
+      roles: ['participant', 'facilitator', 'researcher', 'owner'],
       is_anonymous: false,
-      is_super: false
+      is_super: false,
+      is_owner: true
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;

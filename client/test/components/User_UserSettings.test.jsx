@@ -50,6 +50,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
@@ -90,6 +91,8 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
   jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();
@@ -149,16 +152,7 @@ test('Render 1 1', async done => {
   userEvent.click(saveButton);
 
   expect(userActions.setUser.mock.calls.length).toBe(1);
-  expect(userActions.setUser.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      Object {
-        "email": "new@email.com",
-        "password": "123456789",
-        "personalname": "New Name",
-      },
-      undefined,
-    ]
-  `);
+  expect(userActions.setUser.mock.calls[0]).toMatchInlineSnapshot();
   expect(serialize()).toMatchSnapshot();
 
   done();

@@ -57,6 +57,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
@@ -102,9 +103,10 @@ beforeEach(() => {
             personalname: 'Facilitator User',
             email: 'facilitator@email.com',
             id: 555,
-            roles: ['participant', 'facilitator', 'researcher'],
+            roles: ['participant', 'facilitator', 'researcher', 'owner'],
             is_anonymous: false,
-            is_super: false
+            is_super: false,
+            is_owner: true
           },
           {
             username: 'researcher',
@@ -122,6 +124,15 @@ beforeEach(() => {
             id: 333,
             roles: ['participant'],
             is_anonymous: false,
+            is_super: false
+          },
+          {
+            username: 'anonymous',
+            personalname: 'Anonymous User',
+            email: 'anonymous@email.com',
+            id: 222,
+            roles: ['participant'],
+            is_anonymous: true,
             is_super: false
           }
         ],
@@ -141,9 +152,10 @@ beforeEach(() => {
             personalname: 'Facilitator User',
             email: 'facilitator@email.com',
             id: 555,
-            roles: ['participant', 'facilitator', 'researcher'],
+            roles: ['participant', 'facilitator', 'researcher', 'owner'],
             is_anonymous: false,
-            is_super: false
+            is_super: false,
+            is_owner: true
           },
           444: {
             username: 'researcher',
@@ -161,6 +173,15 @@ beforeEach(() => {
             id: 333,
             roles: ['participant'],
             is_anonymous: false,
+            is_super: false
+          },
+          222: {
+            username: 'anonymous',
+            personalname: 'Anonymous User',
+            email: 'anonymous@email.com',
+            id: 222,
+            roles: ['participant'],
+            is_anonymous: true,
             is_super: false
           }
         }
@@ -208,9 +229,10 @@ beforeEach(() => {
             personalname: 'Facilitator User',
             email: 'facilitator@email.com',
             id: 555,
-            roles: ['participant', 'facilitator', 'researcher'],
+            roles: ['participant', 'facilitator', 'researcher', 'owner'],
             is_anonymous: false,
-            is_super: false
+            is_super: false,
+            is_owner: true
           },
           {
             username: 'researcher',
@@ -228,6 +250,15 @@ beforeEach(() => {
             id: 333,
             roles: ['participant'],
             is_anonymous: false,
+            is_super: false
+          },
+          {
+            username: 'anonymous',
+            personalname: 'Anonymous User',
+            email: 'anonymous@email.com',
+            id: 222,
+            roles: ['participant'],
+            is_anonymous: true,
             is_super: false
           }
         ],
@@ -247,9 +278,10 @@ beforeEach(() => {
             personalname: 'Facilitator User',
             email: 'facilitator@email.com',
             id: 555,
-            roles: ['participant', 'facilitator', 'researcher'],
+            roles: ['participant', 'facilitator', 'researcher', 'owner'],
             is_anonymous: false,
-            is_super: false
+            is_super: false,
+            is_owner: true
           },
           444: {
             username: 'researcher',
@@ -267,6 +299,15 @@ beforeEach(() => {
             id: 333,
             roles: ['participant'],
             is_anonymous: false,
+            is_super: false
+          },
+          222: {
+            username: 'anonymous',
+            personalname: 'Anonymous User',
+            email: 'anonymous@email.com',
+            id: 222,
+            roles: ['participant'],
+            is_anonymous: true,
             is_super: false
           }
         }
@@ -313,9 +354,10 @@ beforeEach(() => {
           personalname: 'Facilitator User',
           email: 'facilitator@email.com',
           id: 555,
-          roles: ['participant', 'facilitator', 'researcher'],
+          roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          is_owner: true
         },
         {
           username: 'researcher',
@@ -333,6 +375,15 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
+          is_super: false
+        },
+        {
+          username: 'anonymous',
+          personalname: 'Anonymous User',
+          email: 'anonymous@email.com',
+          id: 222,
+          roles: ['participant'],
+          is_anonymous: true,
           is_super: false
         }
       ],
@@ -352,9 +403,10 @@ beforeEach(() => {
           personalname: 'Facilitator User',
           email: 'facilitator@email.com',
           id: 555,
-          roles: ['participant', 'facilitator', 'researcher'],
+          roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          is_owner: true
         },
         444: {
           username: 'researcher',
@@ -372,6 +424,15 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
+          is_super: false
+        },
+        222: {
+          username: 'anonymous',
+          personalname: 'Anonymous User',
+          email: 'anonymous@email.com',
+          id: 222,
+          roles: ['participant'],
+          is_anonymous: true,
           is_super: false
         }
       }
@@ -582,6 +643,8 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  jest.runOnlyPendingTimers();
+  jest.useRealTimers();
   jest.resetAllMocks();
   unmountComponentAtNode(container);
   container.remove();

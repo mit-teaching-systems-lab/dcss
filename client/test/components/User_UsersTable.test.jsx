@@ -25,24 +25,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Editor from '@components/Editor';
-import Login from '@components/Login';
-import LoginRoutePromptModal from '@components/Login/LoginRoutePromptModal';
-import ScenariosList from '@components/ScenariosList';
-jest.mock('@components/Editor', () => {
-  return props => <div>@components/Editor</div>;
-});
-jest.mock('@components/Login', () => {
-  return props => <div>@components/Login</div>;
-});
-jest.mock('@components/Login/LoginRoutePromptModal', () => {
-  return props => <div>@components/Login/LoginRoutePromptModal</div>;
-});
-jest.mock('@components/ScenariosList', () => {
-  return props => <div>@components/ScenariosList</div>;
-});
-
-import Routes from '../../routes/Routes.jsx';
+import UsersTable from '../../components/User/UsersTable.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -80,25 +63,15 @@ afterEach(() => {
   commonState = null;
 });
 
-test('Routes', () => {
-  expect(Routes).toBeDefined();
+test('UsersTable', () => {
+  expect(UsersTable).toBeDefined();
 });
 
 test('Render 1 1', async done => {
-  const Component = Routes;
+  const Component = UsersTable;
 
   const props = {
-    ...commonProps,
-    isLoggedIn: true,
-    user: {
-      username: 'super',
-      personalname: 'Super User',
-      email: 'super@email.com',
-      id: 999,
-      roles: ['participant', 'super_admin'],
-      is_anonymous: false,
-      is_super: true
-    }
+    ...commonProps
   };
 
   const state = {

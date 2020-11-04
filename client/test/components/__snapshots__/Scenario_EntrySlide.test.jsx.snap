@@ -23,7 +23,7 @@ exports[`Render 1 1 1`] = `
         class="entryslide__description-inner-container"
         tabindex="0"
       >
-        A Multiplayer Scenario
+        This is the description of 'A Multiplayer Scenario'
       </p>
       <div
         class="ui olive large message"
