@@ -51,6 +51,7 @@ async function getCohortUsers(cohort_id) {
       id,
       email,
       username,
+      personalname,
       roles,
       email = '' OR email IS NULL OR hash IS NULL AS is_anonymous,
       '{owner}' && roles AS is_owner
