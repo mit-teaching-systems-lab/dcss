@@ -88,6 +88,7 @@ const RoleCheckbox = props => {
 
   const trigger = (
     <Checkbox
+      aria-label={content}
       disabled={props.disabled}
       defaultChecked={props.checked}
       onClick={onCheckboxClick}

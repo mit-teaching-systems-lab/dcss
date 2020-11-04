@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   // NOTE: The checkbox is temporarily disabled
@@ -17,14 +16,13 @@ import {
 import escapeRegExp from 'lodash.escaperegexp';
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
-import { getCohort, setCohort } from '@actions/cohort';
+import { getCohort } from '@actions/cohort';
 import EditorMenu from '@components/EditorMenu';
-import Username from '@components/User/Username';
-import UsersTable from '@components/Admin/UsersTable';
 import Gate from '@components/Gate';
 import Loading from '@components/Loading';
-import scrollIntoView from '@utils/scrollIntoView';
-import { COHORT_ROLE_GROUPS } from '../Admin/constants';
+import Username from '@components/User/Username';
+import UsersTable from '@components/User/UsersTable';
+import { COHORT_ROLE_GROUPS } from '@components/Admin/constants';
 import './Cohort.css';
 
 const { facilitator, researcher } = COHORT_ROLE_GROUPS;
@@ -36,15 +34,7 @@ export class CohortParticipants extends React.Component {
   constructor(props) {
     super(props);
 
-    let {
-      params: { id }
-    } = this.props.match;
-
-    if (!id && this.props.id) {
-      id = this.props.id;
-    }
-
-    this.sessionKey = `cohort-participants/${id}`;
+    this.sessionKey = `cohort-participants/${this.props.id}`;
     let persisted = Storage.get(this.sessionKey);
 
     if (!persisted) {
@@ -55,22 +45,14 @@ export class CohortParticipants extends React.Component {
     const { refresh } = persisted;
 
     this.state = {
-      isReady: false,
       activePage: 1,
+      isReady: false,
       refresh,
       search: '',
-      cohort: {
-        id,
-        users: []
-      }
+      participants: []
     };
 
     this.refreshInterval = null;
-
-    // This is used as a back up copy of
-    // participants when the list is filtered
-    // by searching.
-    this.participants = [];
     this.tableBody = React.createRef();
     this.sectionRef = React.createRef();
     this.onPageChange = this.onPageChange.bind(this);
@@ -81,17 +63,14 @@ export class CohortParticipants extends React.Component {
   }
 
   async fetchCohort() {
-    const {
-      cohort: { id }
-    } = this.state;
+    await this.props.getCohort(this.props.id);
 
-    const cohort = await this.props.getCohort(Number(id));
-
-    this.participants = cohort.users.slice();
-    this.setState({
-      isReady: true,
-      cohort
-    });
+    if (!this.state.isReady) {
+      this.setState({
+        isReady: true,
+        participants: this.props.participants.slice()
+      });
+    }
   }
 
   participantRefresh() {
@@ -114,22 +93,12 @@ export class CohortParticipants extends React.Component {
     clearInterval(this.refreshInterval);
   }
 
-  scrollIntoView() {
-    scrollIntoView(this.tableBody.current.node.firstElementChild);
-  }
-
   onParticipantSearchChange(event, { value }) {
-    const { participants } = this;
-    const { cohort } = this.props;
-
     if (value === '') {
       this.setState({
         activePage: 1,
         search: value,
-        cohort: {
-          ...cohort,
-          users: participants
-        }
+        participants: this.props.participants.slice()
       });
       return;
     }
@@ -139,8 +108,7 @@ export class CohortParticipants extends React.Component {
     }
 
     const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
-    let users = participants.filter(participant => {
-      // console.log(participant);
+    let participants = this.props.participants.filter(participant => {
       if (escapedRegExp.test(participant.username)) {
         return true;
       }
@@ -156,17 +124,10 @@ export class CohortParticipants extends React.Component {
       return false;
     });
 
-    if (!value) {
-      users = this.participants;
-    }
-
     this.setState({
       activePage: 1,
       search: value,
-      cohort: {
-        ...cohort,
-        users
-      }
+      participants
     });
   }
 
@@ -189,18 +150,22 @@ export class CohortParticipants extends React.Component {
   }
 
   render() {
-    const { authority, onClick, user, usersById } = this.props;
-    const { activePage, cohort, isReady, refresh } = this.state;
+    const { authority, cohort, onClick, user } = this.props;
+    const { activePage, isReady, participants, refresh } = this.state;
     const {
       onPageChange,
       onParticipantRefreshChange,
-      onParticipantSearchChange,
-      scrollIntoView
+      onParticipantSearchChange
     } = this;
+    /**
+    // Previously:
     // Ensure that Facilitator access is applied even if the user just
     // became a facilitator and their session roles haven't updated.
+    // This can h
     const isFacilitator =
       user.roles.includes('facilitator') || authority.isFacilitator;
+    */
+    const { isFacilitator } = authority;
 
     if (!isReady) {
       return <Loading />;
@@ -212,9 +177,9 @@ export class CohortParticipants extends React.Component {
       ? 'This list will refresh automatically'
       : 'This list will refresh when page is reloaded';
 
-    const pages = Math.ceil(cohort.users.length / ROWS_PER_PAGE);
+    const pages = Math.ceil(participants.length / ROWS_PER_PAGE);
     const index = (activePage - 1) * ROWS_PER_PAGE;
-    const users = cohort.users.slice(index, index + ROWS_PER_PAGE);
+    const participantsSlice = participants.slice(index, index + ROWS_PER_PAGE);
     const columns = {
       data: {
         className: 'c__table-cell-first c__hidden-on-mobile',
@@ -242,7 +207,7 @@ export class CohortParticipants extends React.Component {
 
     Object.assign(columns, grantableRoles);
 
-    const rows = users.reduce((accum, cohortUser) => {
+    const rows = participantsSlice.reduce((accum, cohortUser) => {
       // username will never be empty, but email might be.
       const onClickAddTab = (event, data) => {
         onClick(event, {
@@ -252,10 +217,14 @@ export class CohortParticipants extends React.Component {
         });
       };
       const key = Identity.key(cohortUser);
-
+      const username = <Username {...cohortUser} />;
+      const content = `View responses from ${Username.displayableName(
+        cohortUser
+      )}`;
       const trigger = (
         <Table.Cell.Clickable
           className="c__table-cell-first c__hidden-on-mobile"
+          aria-label={content}
           key={`p-${key}`}
           content={<Icon name="file alternate outline" />}
           onClick={onClickAddTab}
@@ -267,17 +236,9 @@ export class CohortParticipants extends React.Component {
           isAuthorized={isFacilitator}
           requiredPermission="view_all_data"
         >
-          <Popup
-            inverted
-            size="tiny"
-            content="View cohort reponses from this participant"
-            trigger={trigger}
-          />
+          <Popup inverted size="tiny" content={content} trigger={trigger} />
         </Gate>
       );
-
-      const { is_super } = (usersById && usersById[cohortUser.id]) || {};
-      const username = <Username {...cohortUser} is_super={is_super} />;
 
       const usernameCell = cohortUser.roles.includes('owner') ? (
         <Table.Cell key={`u-${key}`}>{username} (owner)</Table.Cell>
@@ -310,7 +271,7 @@ export class CohortParticipants extends React.Component {
       <Menu.Item.Tabbable
         key="menu-item-cohort-participants"
         name="Participants in this Cohort"
-        onClick={scrollIntoView}
+        aria-label={`Participants in this Cohort: ${this.props.cohort.users.length}`}
       >
         <Icon.Group className="em__icon-group-margin">
           <Icon name="group" />
@@ -321,6 +282,7 @@ export class CohortParticipants extends React.Component {
         <Menu.Item.Tabbable
           key="menu-item-cohort-participants"
           name="Control participant list refresh"
+          aria-label={refreshLabel}
           onClick={onParticipantRefreshChange}
         >
           <Icon.Group className="em__icon-group-margin">
@@ -371,36 +333,20 @@ CohortParticipants.propTypes = {
     users: PropTypes.array
   }),
   participants: PropTypes.array,
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired
-  }).isRequired,
   id: PropTypes.any,
-  match: PropTypes.shape({
-    path: PropTypes.string,
-    params: PropTypes.shape({
-      id: PropTypes.node
-    }).isRequired
-  }).isRequired,
   onClick: PropTypes.func,
   getCohort: PropTypes.func,
-  setCohort: PropTypes.func,
-  scenarios: PropTypes.array,
-  user: PropTypes.object,
-  usersById: PropTypes.object
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { cohort, user, usersById } = state;
+  const { cohort, user } = state;
   const { users: participants } = cohort;
-  const { scenarios } = state.scenario;
-  return { cohort, participants, scenarios, user, usersById };
+  return { cohort, participants, user };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohort: id => dispatch(getCohort(id)),
-  setCohort: params => dispatch(setCohort(params))
+  getCohort: id => dispatch(getCohort(id))
 });
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CohortParticipants)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CohortParticipants);

@@ -8,10 +8,10 @@ import { Icon, Input, Menu, Table } from '@components/UI';
 
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
-import UsersTable from './UsersTable';
+import UsersTable from '@components/User/UsersTable';
 import { computeItemsRowsPerPage } from '@utils/Layout';
 import { getUsers } from '@actions/users';
-import { SITE_ROLE_GROUPS } from './constants';
+import { SITE_ROLE_GROUPS } from '@components/Admin/constants';
 
 const { super_admin, admin, facilitator, researcher } = SITE_ROLE_GROUPS;
 

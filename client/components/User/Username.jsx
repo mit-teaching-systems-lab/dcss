@@ -12,14 +12,19 @@ const ICON_FACILITATOR = {
 };
 const ICON_RESEARCHER = { className: 'user graduate', title: 'Researcher' };
 
-const cache = {};
+const fragmentCache = {};
+const displayableNameCache = {};
 
 class Username extends Component {
   constructor(props) {
     super(props);
-    const { personalname, username } = this.props;
+    const { id, personalname, username } = this.props;
 
-    this.displayName = personalname || username;
+    if (!displayableNameCache[id]) {
+      displayableNameCache[id] = personalname || username;
+    }
+
+    this.displayableName = displayableNameCache[id];
     this.title = personalname ? `${personalname} (${username})` : username;
 
     const { roles } = this.props;
@@ -44,16 +49,14 @@ class Username extends Component {
     this.iconProps = iconProps;
   }
   toString() {
-    return this.displayName;
+    return this.displayableName;
   }
   render() {
     const { id, roles } = this.props;
-
     const key = Identity.key({ id, roles });
-    const cached = cache[key];
 
-    if (cached) {
-      return cached;
+    if (fragmentCache[key]) {
+      return fragmentCache[key];
     }
 
     const icon = this.iconProps ? (
@@ -69,13 +72,13 @@ class Username extends Component {
       />
     ) : null;
 
-    cache[key] = (
+    fragmentCache[key] = (
       <Fragment>
-        <Text title={this.title}>{this.displayName}</Text> {icon}
+        <Text title={this.title}>{this.displayableName}</Text> {icon}
       </Fragment>
     );
 
-    return cache[key];
+    return fragmentCache[key];
   }
 }
 
@@ -93,12 +96,11 @@ const mapStateToProps = (state, ownProps) => {
   // Get the site-wide user because this component can
   // be called with a Cohort User or Scenario User and
   // those will have different roles.
-  const stateUser =
+  const siteUser =
     ownProps.id === user.id ? user : usersById[ownProps.id] || { roles: [] };
 
-  const mergedUser = Object.assign({}, ownProps, stateUser);
-  const roles = (ownProps.roles || []).concat(stateUser.roles);
-
+  const mergedUser = Object.assign({}, ownProps, siteUser);
+  const roles = (ownProps.roles || []).concat(siteUser.roles);
   return {
     ...mergedUser,
     roles
@@ -109,6 +111,10 @@ const WrappedComponent = connect(mapStateToProps, null)(Username);
 
 WrappedComponent.from = user => {
   return new Username(user);
+};
+
+WrappedComponent.displayableName = user => {
+  return displayableNameCache[user.id];
 };
 
 export default WrappedComponent;

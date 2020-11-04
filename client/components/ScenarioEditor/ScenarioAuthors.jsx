@@ -12,7 +12,7 @@ import {
 import { getUsers, getUsersByPermission } from '@actions/users';
 
 import EditorMenu from '@components/EditorMenu';
-import UsersTable from '@components/Admin/UsersTable';
+import UsersTable from '@components/User/UsersTable';
 import Username from '@components/User/Username';
 import { notify } from '@components/Notification';
 

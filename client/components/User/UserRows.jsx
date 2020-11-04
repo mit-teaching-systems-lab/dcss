@@ -3,21 +3,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
 import { Table } from '@components/UI';
-import RoleCheckbox from './RoleCheckbox';
+import RoleCheckbox from '@components/Admin/RoleCheckbox';
 import {
   COHORT_ROLE_GRANT_WARNINGS,
   SITE_ROLE_GRANT_WARNINGS
-} from './constants';
+} from '@components/Admin/constants';
 
-const USER_ROLES = Object.freeze({
+const USER_ROLES = {
   super_admin: 'Super Admin',
   admin: 'Admin',
   researcher: 'Researcher',
   facilitator: 'Facilitator',
   participant: 'Participant'
-});
+};
 
-const IMMUTABLE_ROLES = Object.freeze(['participant']);
+const IMMUTABLE_ROLES = ['participant'];
 
 const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
   const roleGrantWarnings = cohort
@@ -41,18 +41,18 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
       targetUser.is_super;
 
     let tip = checked
-      ? `Revoke ${USER_ROLES[role]} access.`
-      : `Grant ${USER_ROLES[role]} access. ${roleGrantWarnings[role]}`;
+      ? `Revoke ${USER_ROLES[role]} access from ${targetUser.username}.`
+      : `Grant ${USER_ROLES[role]} access to ${targetUser.username}. ${roleGrantWarnings[role]}`;
 
     let whyRoleCannotBeChanged = isSameUser
-      ? `You cannot change your own roles`
-      : `${USER_ROLES[role]} role cannot be changed`;
+      ? `You cannot change your own roles.`
+      : `${USER_ROLES[role]} role cannot be changed.`;
 
     if (adminUser.is_super) {
       if (targetUser.id === adminUser.id) {
         tip = checked
-          ? `Revoke your ${USER_ROLES[role]} access`
-          : `Grant yourself ${USER_ROLES[role]} access`;
+          ? `Revoke your ${USER_ROLES[role]} access.`
+          : `Grant yourself ${USER_ROLES[role]} access.`;
       }
       disabled = false;
     }
@@ -60,7 +60,7 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
     const tipImmutable = disabled ? whyRoleCannotBeChanged : tip;
 
     const content = targetUser.is_anonymous
-      ? 'This is an anonymous account and cannot be promoted.'
+      ? `${targetUser.username} is an anonymous account and cannot be promoted.`
       : tipImmutable;
 
     if (targetUser.is_anonymous) {
@@ -69,6 +69,7 @@ const RoleCells = ({ cohort, grantableRoles, targetUser, adminUser }) => {
 
     const roleCheckBox = (
       <RoleCheckbox
+        tabIndex={0}
         checked={checked}
         cohort={cohort}
         content={content}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Pagination, Table } from '@components/UI';
-import UserRows from './UserRows';
+import UserRows from '@components/User/UserRows';
 
 // import { getUsers } from '@actions/users';
 const ROWS_PER_PAGE = 10;
