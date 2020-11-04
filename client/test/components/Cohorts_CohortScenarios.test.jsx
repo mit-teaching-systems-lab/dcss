@@ -664,7 +664,7 @@ test('Render 4 1', async done => {
   userEvent.click(await screen.getAllByTestId('view-cohort-responses')[0]);
   expect(asFragment()).toMatchSnapshot();
   expect(props.onClick.mock.calls.length).toBe(1);
-  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot();
+  expect(props.onClick.mock.calls[0][1]).toMatchSnapshot();
 
   done();
 });
