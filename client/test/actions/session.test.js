@@ -21,10 +21,10 @@ jest.mock('crypto-js', () => {
           toString() {
             return 'X';
           }
-        }
+        };
       }
     }
-  }
+  };
 });
 
 const error = new Error('something unexpected happened on the server');
@@ -145,7 +145,9 @@ test('LOG_IN', async () => {
   fetchImplementation(fetch, 200, { error, message });
 
   globalThis.SESSION_SECRET = '';
-  const returnValue = await store.dispatch(actions.logIn({ username, password }));
+  const returnValue = await store.dispatch(
+    actions.logIn({ username, password })
+  );
   assert.deepEqual(fetch.mock.calls[0], [
     '/api/auth/login',
     {
@@ -164,7 +166,9 @@ test('LOG_IN error', async () => {
   fetchImplementation(fetch, 200, { error, message });
 
   globalThis.SESSION_SECRET = '';
-  const returnValue = await store.dispatch(actions.logIn({ username, password }));
+  const returnValue = await store.dispatch(
+    actions.logIn({ username, password })
+  );
   assert.deepEqual(fetch.mock.calls[0], [
     '/api/auth/login',
     {
@@ -182,7 +186,7 @@ test('LOG_IN error, 2', async () => {
   const password = 'foobar';
   const error = new LogInError('Something happened during log in');
 
-  fetchImplementation(fetch, 200, { });
+  fetchImplementation(fetch, 200, {});
 
   Crypto.AES.encrypt = jest.fn();
   Crypto.AES.encrypt.mockImplementation(() => {
@@ -190,7 +194,12 @@ test('LOG_IN error, 2', async () => {
   });
 
   globalThis.SESSION_SECRET = '';
-  const returnValue = await store.dispatch(actions.logIn({ username, password }));
+  const returnValue = await store.dispatch(
+    actions.logIn({ username, password })
+  );
   assert.deepEqual(fetch.mock.calls.length, 0);
-  assert.deepEqual(returnValue, { error, message: 'Something happened during log in' });
+  assert.deepEqual(returnValue, {
+    error,
+    message: 'Something happened during log in'
+  });
 });

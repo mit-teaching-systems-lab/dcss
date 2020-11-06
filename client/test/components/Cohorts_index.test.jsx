@@ -4,7 +4,6 @@ jest.mock('react', () => ({
   useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
-import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
@@ -15,7 +14,6 @@ import {
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
-import { mount, shallow } from 'enzyme';
 import {
   fireEvent,
   prettyDOM,
@@ -128,8 +126,8 @@ beforeEach(() => {
           },
           {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -177,8 +175,8 @@ beforeEach(() => {
           },
           222: {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -254,8 +252,8 @@ beforeEach(() => {
           },
           {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -303,8 +301,8 @@ beforeEach(() => {
           },
           222: {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -379,8 +377,8 @@ beforeEach(() => {
         },
         {
           username: 'anonymous',
-          personalname: 'Anonymous User',
-          email: 'anonymous@email.com',
+          personalname: '',
+          email: '',
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
@@ -428,8 +426,8 @@ beforeEach(() => {
         },
         222: {
           username: 'anonymous',
-          personalname: 'Anonymous User',
-          email: 'anonymous@email.com',
+          personalname: '',
+          email: '',
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
@@ -440,11 +438,13 @@ beforeEach(() => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
-  cohortActions.setCohort = jest.fn();
-  cohortActions.setCohort.mockImplementation(cohort => async dispatch => {
-    dispatch({ type: SET_COHORT_SUCCESS, cohort });
-    return cohort;
-  });
+  cohortActions.setCohortScenarios = jest.fn();
+  cohortActions.setCohortScenarios.mockImplementation(
+    cohort => async dispatch => {
+      dispatch({ type: SET_COHORT_SUCCESS, cohort });
+      return cohort;
+    }
+  );
   cohortActions.createCohort = jest.fn();
   cohortActions.createCohort.mockImplementation(cohort => async dispatch => {
     dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
@@ -723,5 +723,3 @@ test('Render 1 2', async done => {
 
   done();
 });
-
-/*{INJECTION}*/

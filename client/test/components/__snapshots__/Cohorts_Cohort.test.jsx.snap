@@ -3,10 +3,658 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div
+        class="ui borderless icon menu"
+      >
+        <a
+          class="item"
+          tabindex="0"
+        >
+          <i
+            class="icons em__icon-group-margin"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon"
+            />
+          </i>
+          Copy cohort link to clipboard
+        </a>
+      </div>
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/CohortParticipants
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        A New Cohort That Exists Within Inline Props
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div
+        class="ui borderless icon menu"
+      >
+        <a
+          class="item"
+          tabindex="0"
+        >
+          <i
+            class="icons em__icon-group-margin"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon"
+            />
+          </i>
+          Copy cohort link to clipboard
+        </a>
+      </div>
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/CohortParticipants
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 3 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 3 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        A New Cohort That Exists Within Inline Props
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div
+        class="ui borderless icon menu"
+      >
+        <a
+          class="item"
+          tabindex="0"
+        >
+          <i
+            class="icons em__icon-group-margin"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon"
+            />
+          </i>
+          Copy cohort link to clipboard
+        </a>
+      </div>
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/CohortParticipants
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 4 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 4 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/DataTable
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 5 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 5 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/DataTable
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 6 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 6 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/DataTable
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 7 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 7 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/DataTable
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 8 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 8 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/DataTable
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 9 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 9 1 3`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div
+        class="ui borderless icon menu"
+      >
+        <a
+          class="item"
+          tabindex="0"
+        >
+          <i
+            class="icons em__icon-group-margin"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon"
+            />
+          </i>
+          Copy cohort link to clipboard
+        </a>
+      </div>
+      <div>
+        @components/Cohorts/CohortScenarios
+      </div>
+      <div>
+        @components/Cohorts/CohortParticipants
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: user missing, direct to /logout 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: user missing, direct to /logout 3`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: user missing, direct to /logout 4`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div

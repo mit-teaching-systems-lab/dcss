@@ -4,7 +4,6 @@ jest.mock('react', () => ({
   useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
-import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
@@ -15,7 +14,6 @@ import {
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
-import { mount, shallow } from 'enzyme';
 import {
   fireEvent,
   prettyDOM,
@@ -46,6 +44,18 @@ jest.mock('../../actions/user');
 jest.mock('../../actions/users');
 
 import Layout from '@utils/Layout';
+jest.mock('@utils/Layout', () => {
+  return {
+    ...jest.requireActual('@utils/Layout'),
+    isForMobile: jest.fn(() => false)
+  };
+});
+
+import copy from 'copy-text-to-clipboard';
+jest.mock('copy-text-to-clipboard', () => {
+  return jest.fn();
+});
+
 jest.mock('@utils/Layout', () => {
   return {
     ...jest.requireActual('@utils/Layout'),
@@ -340,8 +350,8 @@ beforeEach(() => {
         },
         {
           username: 'anonymous',
-          personalname: 'Anonymous User',
-          email: 'anonymous@email.com',
+          personalname: '',
+          email: '',
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
@@ -389,8 +399,8 @@ beforeEach(() => {
         },
         222: {
           username: 'anonymous',
-          personalname: 'Anonymous User',
-          email: 'anonymous@email.com',
+          personalname: '',
+          email: '',
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
@@ -401,11 +411,13 @@ beforeEach(() => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
-  cohortActions.setCohort = jest.fn();
-  cohortActions.setCohort.mockImplementation(cohort => async dispatch => {
-    dispatch({ type: SET_COHORT_SUCCESS, cohort });
-    return cohort;
-  });
+  cohortActions.setCohortScenarios = jest.fn();
+  cohortActions.setCohortScenarios.mockImplementation(
+    cohort => async dispatch => {
+      dispatch({ type: SET_COHORT_SUCCESS, cohort });
+      return cohort;
+    }
+  );
   usersActions.getUser = jest.fn();
   usersActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
@@ -463,8 +475,8 @@ beforeEach(() => {
       },
       {
         username: 'anonymous',
-        personalname: 'Anonymous User',
-        email: 'anonymous@email.com',
+        personalname: '',
+        email: '',
         id: 222,
         roles: ['participant'],
         is_anonymous: true,
@@ -614,7 +626,7 @@ test('Render 4 1', async done => {
     await screen.findByRole('checkbox', { name: /add scenario/i })
   );
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[0][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[0][0]).toMatchSnapshot();
 
   const checkboxes = await screen.findAllByRole('checkbox', {
     name: /remove scenario/i
@@ -623,29 +635,29 @@ test('Render 4 1', async done => {
   userEvent.click(checkboxes[0]);
   // await screen.findByText(/scenarios (1)/i);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[1][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[1][0]).toMatchSnapshot();
 
   userEvent.click(checkboxes[1]);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[2][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[2][0]).toMatchSnapshot();
 
   userEvent.click(checkboxes[0]);
   // await screen.findByText(/scenarios (1)/i);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[3][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[3][0]).toMatchSnapshot();
 
   userEvent.click(checkboxes[1]);
   // await screen.findByText(/scenarios (2)/i);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[4][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[4][0]).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('move-up')[1]);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[5][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[5][0]).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('move-down')[0]);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[6][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[6][0]).toMatchSnapshot();
 
   delete window.location;
   // eslint-disable-next-line
@@ -659,6 +671,7 @@ test('Render 4 1', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('copy-cohort-scenario-link')[0]);
+  expect(copy.mock.calls.length).toBe(1);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('view-cohort-responses')[0]);
@@ -713,7 +726,7 @@ test('Render 5 1', async done => {
     await screen.findByRole('checkbox', { name: /add scenario/i })
   );
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[0][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[0][0]).toMatchSnapshot();
 
   const checkboxes = await screen.findAllByRole('checkbox', {
     name: /remove scenario/i
@@ -722,31 +735,32 @@ test('Render 5 1', async done => {
   userEvent.click(checkboxes[0]);
   // await screen.findByText(/scenarios (1)/i);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[1][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[1][0]).toMatchSnapshot();
 
   userEvent.click(checkboxes[1]);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[2][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[2][0]).toMatchSnapshot();
 
   userEvent.click(checkboxes[0]);
   // await screen.findByText(/scenarios (1)/i);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[3][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[3][0]).toMatchSnapshot();
 
   userEvent.click(checkboxes[1]);
   // await screen.findByText(/scenarios (2)/i);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[4][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[4][0]).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('move-up')[1]);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[5][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[5][0]).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('move-down')[0]);
   expect(asFragment()).toMatchSnapshot();
-  expect(cohortActions.setCohort.mock.calls[6][0]).toMatchSnapshot();
+  expect(cohortActions.setCohortScenarios.mock.calls[6][0]).toMatchSnapshot();
 
   userEvent.click(await screen.getAllByTestId('copy-cohort-scenario-link')[0]);
+  expect(copy.mock.calls.length).toBe(1);
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -835,5 +849,3 @@ test('Render 7 1', async done => {
 
   done();
 });
-
-/*{INJECTION}*/

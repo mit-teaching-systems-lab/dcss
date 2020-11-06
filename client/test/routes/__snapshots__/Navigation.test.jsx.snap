@@ -48,7 +48,7 @@ exports[`Render 1 1 1`] = `
           <a
             aria-label="See scenarios where I am an owner, author or reviewer"
             class="item"
-            href="/scenarios/author/super"
+            href="/scenarios/author/null"
             role="option"
             tabindex="0"
           >
@@ -113,19 +113,9 @@ exports[`Render 1 1 1`] = `
         tabindex="0"
       >
         <span
-          aria-label="Super User (super)"
           class="ui text"
-          title="Super User (super)"
-        >
-          Super User
-        </span>
-         
-        <i
-          aria-hidden="true"
-          class="small icon chess queen"
-          style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
-          title="Super"
         />
+         
         <i
           aria-hidden="true"
           class="dropdown icon"

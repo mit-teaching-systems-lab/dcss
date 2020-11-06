@@ -898,11 +898,11 @@ module.exports = {
     categories: []
   },
   user: {
-    username: 'super',
-    personalname: 'Super User',
-    email: 'super@email.com',
-    id: 2,
-    roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+    username: null,
+    personalname: null,
+    email: null,
+    id: null,
+    roles: [],
     is_anonymous: false,
     is_super: true
   },

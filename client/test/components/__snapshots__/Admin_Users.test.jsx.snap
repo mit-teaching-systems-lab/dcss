@@ -64,18 +64,6 @@ exports[`Render 1 1 1`] = `
         >
           Email
         </th>
-        <th
-          class="users__col-small roles_icon super"
-        />
-        <th
-          class="users__col-small roles_icon admin"
-        />
-        <th
-          class="users__col-small roles_icon facilitator"
-        />
-        <th
-          class="users__col-small roles_icon researcher"
-        />
       </tr>
     </thead>
     <tbody
@@ -94,75 +82,6 @@ exports[`Render 1 1 1`] = `
         >
           heartfull-cougar@email.com
         </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Super Admin access to heartfull-cougar. This user will have unrestricted access to every feature and all data on the site."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Admin access to heartfull-cougar. This user will have broad access to every feature and all data on the site."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui checked fitted checkbox"
-          >
-            <input
-              aria-label="Revoke Facilitator access from heartfull-cougar."
-              checked=""
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Researcher access to heartfull-cougar. This user will be able have access to all consented participant data, for all scenarios in all cohorts that grant them this role."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
       </tr>
       <tr
         class=""
@@ -175,78 +94,6 @@ exports[`Render 1 1 1`] = `
         <td
           class="dl__hidden-on-mobile"
         />
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui disabled fitted checkbox"
-          >
-            <input
-              aria-label="credible-lyrebird is an anonymous account and cannot be promoted."
-              class="hidden"
-              disabled=""
-              readonly=""
-              tabindex="-1"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui disabled fitted checkbox"
-          >
-            <input
-              aria-label="credible-lyrebird is an anonymous account and cannot be promoted."
-              class="hidden"
-              disabled=""
-              readonly=""
-              tabindex="-1"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui disabled fitted checkbox"
-          >
-            <input
-              aria-label="credible-lyrebird is an anonymous account and cannot be promoted."
-              class="hidden"
-              disabled=""
-              readonly=""
-              tabindex="-1"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui disabled fitted checkbox"
-          >
-            <input
-              aria-label="credible-lyrebird is an anonymous account and cannot be promoted."
-              class="hidden"
-              disabled=""
-              readonly=""
-              tabindex="-1"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
       </tr>
       <tr
         class=""
@@ -261,75 +108,6 @@ exports[`Render 1 1 1`] = `
         >
           perfect-oryx@email.com
         </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Super Admin access to perfect-oryx. This user will have unrestricted access to every feature and all data on the site."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Admin access to perfect-oryx. This user will have broad access to every feature and all data on the site."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui checked fitted checkbox"
-          >
-            <input
-              aria-label="Revoke Facilitator access from perfect-oryx."
-              checked=""
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Researcher access to perfect-oryx. This user will be able have access to all consented participant data, for all scenarios in all cohorts that grant them this role."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
       </tr>
       <tr
         class=""
@@ -343,77 +121,6 @@ exports[`Render 1 1 1`] = `
           class="dl__hidden-on-mobile"
         >
           super@email.com
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui checked fitted checkbox"
-          >
-            <input
-              aria-label="Revoke Super Admin access from super."
-              checked=""
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui fitted checkbox"
-          >
-            <input
-              aria-label="Grant Admin access to super. This user will have broad access to every feature and all data on the site."
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui checked fitted checkbox"
-          >
-            <input
-              aria-label="Revoke Facilitator access from super."
-              checked=""
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
-        </td>
-        <td
-          class="center aligned"
-        >
-          <div
-            class="ui checked fitted checkbox"
-          >
-            <input
-              aria-label="Revoke Researcher access from super."
-              checked=""
-              class="hidden"
-              readonly=""
-              tabindex="0"
-              type="checkbox"
-              value=""
-            />
-            <label />
-          </div>
         </td>
       </tr>
     </tbody>

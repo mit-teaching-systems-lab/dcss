@@ -19,9 +19,6 @@ test('COPY_SCENARIO_SUCCESS', () => {
     `"COPY_SCENARIO_SUCCESS"`
   );
 });
-test('CREATE_COHORT', () => {
-  expect(types.CREATE_COHORT).toMatchInlineSnapshot(`"CREATE_COHORT"`);
-});
 test('CREATE_COHORT_ERROR', () => {
   expect(types.CREATE_COHORT_ERROR).toMatchInlineSnapshot(
     `"CREATE_COHORT_ERROR"`
@@ -30,6 +27,16 @@ test('CREATE_COHORT_ERROR', () => {
 test('CREATE_COHORT_SUCCESS', () => {
   expect(types.CREATE_COHORT_SUCCESS).toMatchInlineSnapshot(
     `"CREATE_COHORT_SUCCESS"`
+  );
+});
+test('DELETE_COHORT_ERROR', () => {
+  expect(types.DELETE_COHORT_ERROR).toMatchInlineSnapshot(
+    `"DELETE_COHORT_ERROR"`
+  );
+});
+test('DELETE_COHORT_SUCCESS', () => {
+  expect(types.DELETE_COHORT_SUCCESS).toMatchInlineSnapshot(
+    `"DELETE_COHORT_SUCCESS"`
   );
 });
 test('DELETE_SCENARIO_ERROR', () => {
@@ -327,7 +334,7 @@ test('SAVE_RUN_EVENT_SUCCESS', () => {
   );
 });
 test('SET_COHORT', () => {
-  expect(types.SET_COHORT).toMatchInlineSnapshot(`"SET_COHORT"`);
+  expect(types.SET_COHORT).toMatchInlineSnapshot(`undefined`);
 });
 test('SET_COHORT_ERROR', () => {
   expect(types.SET_COHORT_ERROR).toMatchInlineSnapshot(`"SET_COHORT_ERROR"`);
@@ -428,9 +435,6 @@ test('SET_USER_ROLE_SUCCESS', () => {
 });
 test('SET_USER_SUCCESS', () => {
   expect(types.SET_USER_SUCCESS).toMatchInlineSnapshot(`"SET_USER_SUCCESS"`);
-});
-test('SET_USERS', () => {
-  expect(types.SET_USERS).toMatchInlineSnapshot(`"SET_USERS"`);
 });
 test('UNLOCK_SCENARIO_ERROR', () => {
   expect(types.UNLOCK_SCENARIO_ERROR).toMatchInlineSnapshot(

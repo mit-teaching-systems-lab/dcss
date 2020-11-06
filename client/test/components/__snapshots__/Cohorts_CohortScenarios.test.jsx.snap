@@ -2686,11 +2686,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -2699,11 +2699,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -3178,11 +3178,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -3191,11 +3191,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -3730,11 +3730,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -3743,11 +3743,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -4222,11 +4222,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -4235,11 +4235,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -4774,11 +4774,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -4787,11 +4787,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -5326,11 +5326,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -5339,11 +5339,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -5878,11 +5878,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -5891,11 +5891,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -8074,11 +8074,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -8087,11 +8087,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -8566,11 +8566,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -8579,11 +8579,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -9118,11 +9118,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -9131,11 +9131,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -9610,11 +9610,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -9623,11 +9623,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -10162,11 +10162,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -10175,11 +10175,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -10714,11 +10714,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -10727,11 +10727,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -11266,11 +11266,11 @@ Object {
       "username": "participant",
     },
     Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],
@@ -11279,11 +11279,11 @@ Object {
   ],
   "usersById": Object {
     "222": Object {
-      "email": "anonymous@email.com",
+      "email": "",
       "id": 222,
       "is_anonymous": true,
       "is_super": false,
-      "personalname": "Anonymous User",
+      "personalname": "",
       "roles": Array [
         "participant",
       ],

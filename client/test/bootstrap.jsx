@@ -31,10 +31,15 @@ export const createMockStore = (state = {}) => {
   return configured(state);
 };
 
-export const reduxer = (Component, props = {}, state = {}) => {
-  const history = createMemoryHistory();
+export const reduxer = (
+  Component,
+  props = {},
+  state = {},
+  memoryHistory = {}
+) => {
+  const history = createMemoryHistory(memoryHistory);
   const store = createPseudoRealStore(state);
-  return function BootstrapWrapper() {
+  function BootstrapWrapper() {
     return (
       <Provider store={store}>
         <Router history={history}>
@@ -42,7 +47,12 @@ export const reduxer = (Component, props = {}, state = {}) => {
         </Router>
       </Provider>
     );
-  };
+  }
+
+  BootstrapWrapper.history = history;
+  BootstrapWrapper.store = store;
+
+  return BootstrapWrapper;
 };
 
 export const snapshotter = wrapper => {

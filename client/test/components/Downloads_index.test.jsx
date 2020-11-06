@@ -4,7 +4,6 @@ jest.mock('react', () => ({
   useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
-import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
@@ -15,7 +14,6 @@ import {
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
-import { mount, shallow } from 'enzyme';
 import {
   fireEvent,
   prettyDOM,
@@ -130,8 +128,8 @@ beforeEach(() => {
           },
           {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -179,8 +177,8 @@ beforeEach(() => {
           },
           222: {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -256,8 +254,8 @@ beforeEach(() => {
           },
           {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -305,8 +303,8 @@ beforeEach(() => {
           },
           222: {
             username: 'anonymous',
-            personalname: 'Anonymous User',
-            email: 'anonymous@email.com',
+            personalname: '',
+            email: '',
             id: 222,
             roles: ['participant'],
             is_anonymous: true,
@@ -645,5 +643,3 @@ test('Render 2 1', async done => {
 
   done();
 });
-
-/*{INJECTION}*/

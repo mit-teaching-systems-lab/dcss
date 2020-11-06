@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CREATE_COHORT_ERROR 1`] = `
+exports[`CREATE_COHORT_ERROR 2`] = `
 Array [
   Object {
     "error": Object {
@@ -11,7 +11,7 @@ Array [
 ]
 `;
 
-exports[`CREATE_COHORT_SUCCESS 1`] = `
+exports[`CREATE_COHORT_SUCCESS 2`] = `
 Array [
   Object {
     "cohort": Object {
@@ -57,7 +57,7 @@ Array [
 ]
 `;
 
-exports[`GET_ALL_COHORTS_SUCCESS 1`] = `
+exports[`GET_ALL_COHORTS_SUCCESS 2`] = `
 Array [
   Object {
     "cohorts": Array [
@@ -211,7 +211,7 @@ Array [
 ]
 `;
 
-exports[`GET_COHORT_ERROR 1`] = `
+exports[`GET_COHORT_ERROR 2`] = `
 Array [
   Object {
     "error": Object {
@@ -224,7 +224,7 @@ Array [
 
 exports[`GET_COHORT_SUCCESS Invalid Cohort ID 1`] = `Array []`;
 
-exports[`GET_COHORT_SUCCESS Valid Cohort ID 1`] = `
+exports[`GET_COHORT_SUCCESS Valid Cohort ID 2`] = `
 Array [
   Object {
     "cohort": Object {
@@ -343,7 +343,7 @@ Array [
 ]
 `;
 
-exports[`SET_COHORT_ERROR 1`] = `
+exports[`SET_COHORT_ERROR 2`] = `
 Array [
   Object {
     "error": Object {
@@ -354,13 +354,384 @@ Array [
 ]
 `;
 
-exports[`SET_COHORT_SUCCESS 1`] = `
+exports[`SET_COHORT_SCENARIOS_ERROR 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "SET_COHORT_SCENARIOS_ERROR",
+  },
+]
+`;
+
+exports[`SET_COHORT_SCENARIOS_SUCCESS 2`] = `
 Array [
   Object {
     "cohort": Object {
       "created_at": "2020-03-24T14:52:28.429Z",
       "id": 1,
       "name": "First Cohort",
+      "runs": Array [
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-28T19:44:03.069Z",
+          "ended_at": "2020-03-31T17:01:43.128Z",
+          "id": 11,
+          "referrer_params": null,
+          "run_id": 11,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:01:43.139Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:01:52.902Z",
+          "ended_at": "2020-03-31T17:02:00.296Z",
+          "id": 28,
+          "referrer_params": null,
+          "run_id": 28,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:02:00.309Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:02:51.357Z",
+          "ended_at": "2020-03-31T17:02:57.043Z",
+          "id": 29,
+          "referrer_params": null,
+          "run_id": 29,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:02:57.054Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:05:34.501Z",
+          "ended_at": "2020-03-31T17:05:39.136Z",
+          "id": 30,
+          "referrer_params": null,
+          "run_id": 30,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:05:39.144Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:07:15.447Z",
+          "ended_at": "2020-03-31T17:07:20.321Z",
+          "id": 31,
+          "referrer_params": null,
+          "run_id": 31,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:07:20.331Z",
+          "user_id": 2,
+        },
+      ],
+      "scenarios": Array [
+        7,
+        1,
+        9,
+        8,
+      ],
+      "users": Array [
+        Object {
+          "cohort_id": 1,
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      ],
+      "usersById": Object {
+        "999": Object {
+          "cohort_id": 1,
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      },
+    },
+    "type": "SET_COHORT_SCENARIOS_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_COHORT_SUCCESS deleted_at 2`] = `
+Array [
+  Object {
+    "cohort": Object {
+      "created_at": "2020-03-24T14:52:28.429Z",
+      "deleted_at": "2020-01-01T00:00:00.000Z",
+      "id": 1,
+      "name": "First Cohort",
+      "runs": Array [
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-28T19:44:03.069Z",
+          "ended_at": "2020-03-31T17:01:43.128Z",
+          "id": 11,
+          "referrer_params": null,
+          "run_id": 11,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:01:43.139Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:01:52.902Z",
+          "ended_at": "2020-03-31T17:02:00.296Z",
+          "id": 28,
+          "referrer_params": null,
+          "run_id": 28,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:02:00.309Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:02:51.357Z",
+          "ended_at": "2020-03-31T17:02:57.043Z",
+          "id": 29,
+          "referrer_params": null,
+          "run_id": 29,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:02:57.054Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:05:34.501Z",
+          "ended_at": "2020-03-31T17:05:39.136Z",
+          "id": 30,
+          "referrer_params": null,
+          "run_id": 30,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:05:39.144Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:07:15.447Z",
+          "ended_at": "2020-03-31T17:07:20.321Z",
+          "id": 31,
+          "referrer_params": null,
+          "run_id": 31,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:07:20.331Z",
+          "user_id": 2,
+        },
+      ],
+      "scenarios": Array [
+        7,
+        1,
+        9,
+        8,
+      ],
+      "users": Array [
+        Object {
+          "cohort_id": 1,
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      ],
+      "usersById": Object {
+        "999": Object {
+          "cohort_id": 1,
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      },
+    },
+    "type": "SET_COHORT_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_COHORT_SUCCESS name 2`] = `
+Array [
+  Object {
+    "cohort": Object {
+      "created_at": "2020-03-24T14:52:28.429Z",
+      "deleted_at": "2020-01-01T00:00:00.000Z",
+      "id": 1,
+      "name": "A New Name!",
+      "runs": Array [
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-28T19:44:03.069Z",
+          "ended_at": "2020-03-31T17:01:43.128Z",
+          "id": 11,
+          "referrer_params": null,
+          "run_id": 11,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:01:43.139Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:01:52.902Z",
+          "ended_at": "2020-03-31T17:02:00.296Z",
+          "id": 28,
+          "referrer_params": null,
+          "run_id": 28,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:02:00.309Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:02:51.357Z",
+          "ended_at": "2020-03-31T17:02:57.043Z",
+          "id": 29,
+          "referrer_params": null,
+          "run_id": 29,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:02:57.054Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:05:34.501Z",
+          "ended_at": "2020-03-31T17:05:39.136Z",
+          "id": 30,
+          "referrer_params": null,
+          "run_id": 30,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:05:39.144Z",
+          "user_id": 2,
+        },
+        Object {
+          "cohort_id": 1,
+          "consent_acknowledged_by_user": true,
+          "consent_granted_by_user": true,
+          "consent_id": 8,
+          "created_at": "2020-03-31T17:07:15.447Z",
+          "ended_at": "2020-03-31T17:07:20.321Z",
+          "id": 31,
+          "referrer_params": null,
+          "run_id": 31,
+          "scenario_id": 7,
+          "updated_at": "2020-03-31T17:07:20.331Z",
+          "user_id": 2,
+        },
+      ],
+      "scenarios": Array [
+        7,
+        1,
+        9,
+        8,
+      ],
+      "users": Array [
+        Object {
+          "cohort_id": 1,
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      ],
+      "usersById": Object {
+        "999": Object {
+          "cohort_id": 1,
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      },
+    },
+    "type": "SET_COHORT_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_COHORT_SUCCESS name, deleted_at 2`] = `
+Array [
+  Object {
+    "cohort": Object {
+      "created_at": "2020-03-24T14:52:28.429Z",
+      "deleted_at": "2020-01-01T00:00:00.000Z",
+      "id": 1,
+      "name": "Some other name",
       "runs": Array [
         Object {
           "cohort_id": 1,

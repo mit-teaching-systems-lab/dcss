@@ -58,6 +58,14 @@ describe('cohort', () => {
     assert.deepEqual(reducer.cohort(undefined, action), cohort);
     assert.deepEqual(reducer.cohort(undefined, action), cohort);
   });
+  test('SET_COHORT_SCENARIOS_SUCCESS', () => {
+    const action = {
+      type: types.SET_COHORT_SCENARIOS_SUCCESS,
+      cohort
+    };
+    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+  });
   test('GET_COHORT_SUCCESS', () => {
     const action = {
       type: types.GET_COHORT_SUCCESS,

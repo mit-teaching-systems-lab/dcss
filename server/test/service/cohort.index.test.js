@@ -229,6 +229,7 @@ describe('/api/cohort/*', () => {
       ...cohort,
       name
     }));
+    db.setCohort.mockImplementation(async () => cohort);
     db.getCohort.mockImplementation(async () => cohort);
     db.linkCohortToRun.mockImplementation(async () => cohort);
     db.setCohortScenarios.mockImplementation(
@@ -311,10 +312,41 @@ describe('/api/cohort/*', () => {
     const path = '/api/cohort/1';
     const method = 'post';
 
-    test('success', async () => {
-      const body = { cohort };
-      const response = await request({ path, method, body });
-      expect(await response.json()).toMatchSnapshot();
+    beforeEach(() => {
+      rolesmw.requireUserRole.mockImplementation(() => [
+        (req, res, next) => {
+          next();
+        }
+      ]);
+    });
+    describe('success', () => {
+      test('has updates', async () => {
+        const body = { name: 'x', deleted_at: 'y' };
+        const response = await request({ path, method, body });
+        expect(await response.json()).toMatchSnapshot();
+        expect(db.getCohort.mock.calls.length).toBe(0);
+        expect(db.setCohort.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            1,
+            Object {
+              "deleted_at": "y",
+              "name": "x",
+            },
+          ]
+        `);
+      });
+
+      test('no updates', async () => {
+        const body = {};
+        const response = await request({ path, method, body });
+        expect(await response.json()).toMatchSnapshot();
+        expect(db.setCohort.mock.calls.length).toBe(0);
+        expect(db.getCohort.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            1,
+          ]
+        `);
+      });
     });
   });
 
@@ -469,7 +501,7 @@ describe('/api/cohort/*', () => {
       expect(db.linkUserToCohort.mock.calls.length).toBe(1);
       expect(db.linkUserToCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
-          "1",
+          1,
           999,
           "participant",
           "join",
@@ -487,7 +519,7 @@ describe('/api/cohort/*', () => {
       expect(db.linkUserToCohort.mock.calls.length).toBe(1);
       expect(db.linkUserToCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
-          "1",
+          1,
           999,
           undefined,
           "quit",
@@ -505,7 +537,7 @@ describe('/api/cohort/*', () => {
       expect(db.linkUserToCohort.mock.calls.length).toBe(1);
       expect(db.linkUserToCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
-          "1",
+          1,
           999,
           undefined,
           "done",

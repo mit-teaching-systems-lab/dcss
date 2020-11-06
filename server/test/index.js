@@ -4,12 +4,13 @@ import { listener } from '../server';
 export const server = supertest(listener);
 
 export const request = async settings => {
-  const {
+  let {
     body = {},
     headers = { 'Content-Type': 'application/json' },
     method = 'get',
     path,
-    status = 200
+    notStatus,
+    status
   } = settings;
 
   let response;
@@ -24,7 +25,12 @@ export const request = async settings => {
       .send(body);
   }
 
-  expect(response.status).toBe(status);
+  if (notStatus) {
+    expect(response.status).not.toBe(notStatus);
+  } else {
+    status = status || 200;
+    expect(response.status).toBe(status);
+  }
 
   response.json = async () => {
     return JSON.parse(response.text || '');

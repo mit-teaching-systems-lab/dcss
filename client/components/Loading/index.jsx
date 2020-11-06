@@ -61,20 +61,35 @@ const Loading = ({ card = {}, group = {}, size = 'medium', children }) => {
 
     return isSingleCard ? (
       <Card
+        role="status"
+        aria-busy="true"
+        aria-live="polite"
         className="loading__single-card"
         style={cardStyle}
         key={`placeholder-${counter++}`}
       >
-        <Card.Content className="loading__content" style={cardContentStyle}>
+        <Card.Content
+          aria-hidden="true"
+          className="loading__content"
+          style={cardContentStyle}
+        >
           <Placeholder>
             <Placeholder.Image square />
           </Placeholder>
         </Card.Content>
       </Card>
     ) : (
-      <Card.Group doubling style={groupStyle} itemsPerRow={card.cols}>
+      <Card.Group
+        doubling
+        role="status"
+        aria-busy="true"
+        aria-live="polite"
+        style={groupStyle}
+        itemsPerRow={card.cols}
+      >
         {Array.from({ length: card.cols * card.rows }, (_, index) => (
           <Card
+            aria-hidden="true"
             className="loading__multi-card"
             key={`placeholder-${index}-${counter++}`}
             style={cardStyle}

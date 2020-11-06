@@ -4,7 +4,6 @@ jest.mock('react', () => ({
   useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
-import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
@@ -15,7 +14,6 @@ import {
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
-import { mount, shallow } from 'enzyme';
 import {
   fireEvent,
   prettyDOM,
@@ -48,6 +46,11 @@ jest.mock('@utils/Layout', () => {
     isForMobile: jest.fn(() => false),
     isNotForMobile: jest.fn(() => true)
   };
+});
+
+import copy from 'copy-text-to-clipboard';
+jest.mock('copy-text-to-clipboard', () => {
+  return jest.fn();
 });
 
 import Storage from '@utils/Storage';
@@ -159,8 +162,8 @@ beforeEach(() => {
         },
         {
           username: 'anonymous',
-          personalname: 'Anonymous User',
-          email: 'anonymous@email.com',
+          personalname: '',
+          email: '',
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
@@ -208,8 +211,8 @@ beforeEach(() => {
         },
         222: {
           username: 'anonymous',
-          personalname: 'Anonymous User',
-          email: 'anonymous@email.com',
+          personalname: '',
+          email: '',
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
@@ -277,8 +280,8 @@ beforeEach(() => {
       },
       {
         username: 'anonymous',
-        personalname: 'Anonymous User',
-        email: 'anonymous@email.com',
+        personalname: '',
+        email: '',
         id: 222,
         roles: ['participant'],
         is_anonymous: true,
@@ -602,5 +605,3 @@ test('Render 8 1', async done => {
 
   done();
 });
-
-/*{INJECTION}*/

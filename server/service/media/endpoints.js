@@ -78,7 +78,6 @@ async function uploadAudioAsync(req, res) {
       // check again to ensure that the response receives the s3Location value.
       await updateResponseIfExists(s3Location, identifiers);
 
-      res.status = 200;
       res.send({
         s3Location,
         transcript
@@ -167,7 +166,6 @@ async function getImageGallery(req, res) {
     };
   });
 
-  res.status = 200;
   res.send({ result });
 }
 

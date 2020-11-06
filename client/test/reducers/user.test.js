@@ -36,34 +36,24 @@ describe('user', () => {
     };
     expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
       Object {
-        "email": "super@email.com",
-        "id": 2,
+        "email": null,
+        "id": null,
         "is_anonymous": false,
         "is_super": true,
-        "personalname": "Super User",
-        "roles": Array [
-          "participant",
-          "super_admin",
-          "facilitator",
-          "researcher",
-        ],
-        "username": "super",
+        "personalname": null,
+        "roles": Array [],
+        "username": null,
       }
     `);
     expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
       Object {
-        "email": "super@email.com",
-        "id": 2,
+        "email": null,
+        "id": null,
         "is_anonymous": false,
         "is_super": true,
-        "personalname": "Super User",
-        "roles": Array [
-          "participant",
-          "super_admin",
-          "facilitator",
-          "researcher",
-        ],
-        "username": "super",
+        "personalname": null,
+        "roles": Array [],
+        "username": null,
       }
     `);
   });
@@ -75,34 +65,24 @@ describe('user', () => {
     };
     expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
       Object {
-        "email": "super@email.com",
-        "id": 2,
+        "email": null,
+        "id": null,
         "is_anonymous": false,
         "is_super": true,
-        "personalname": "Super User",
-        "roles": Array [
-          "participant",
-          "super_admin",
-          "facilitator",
-          "researcher",
-        ],
-        "username": "super",
+        "personalname": null,
+        "roles": Array [],
+        "username": null,
       }
     `);
     expect(reducer.user(undefined, action)).toMatchInlineSnapshot(`
       Object {
-        "email": "super@email.com",
-        "id": 2,
+        "email": null,
+        "id": null,
         "is_anonymous": false,
         "is_super": true,
-        "personalname": "Super User",
-        "roles": Array [
-          "participant",
-          "super_admin",
-          "facilitator",
-          "researcher",
-        ],
-        "username": "super",
+        "personalname": null,
+        "roles": Array [],
+        "username": null,
       }
     `);
   });
@@ -114,34 +94,24 @@ describe('user', () => {
     };
     expect(reducer.user(state, action)).toMatchInlineSnapshot(`
       Object {
-        "email": "super@email.com",
-        "id": 2,
+        "email": null,
+        "id": null,
         "is_anonymous": false,
         "is_super": true,
-        "personalname": "Super User",
-        "roles": Array [
-          "participant",
-          "super_admin",
-          "facilitator",
-          "researcher",
-        ],
-        "username": "super",
+        "personalname": null,
+        "roles": Array [],
+        "username": null,
       }
     `);
     expect(reducer.user(state, action)).toMatchInlineSnapshot(`
       Object {
-        "email": "super@email.com",
-        "id": 2,
+        "email": null,
+        "id": null,
         "is_anonymous": false,
         "is_super": true,
-        "personalname": "Super User",
-        "roles": Array [
-          "participant",
-          "super_admin",
-          "facilitator",
-          "researcher",
-        ],
-        "username": "super",
+        "personalname": null,
+        "roles": Array [],
+        "username": null,
       }
     `);
   });

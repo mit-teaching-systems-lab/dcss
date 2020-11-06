@@ -4,7 +4,6 @@ jest.mock('react', () => ({
   useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
-import assert from 'assert';
 import {
   fetchImplementation,
   mounter,
@@ -15,7 +14,6 @@ import {
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
-import { mount, shallow } from 'enzyme';
 import {
   fireEvent,
   prettyDOM,
@@ -24,6 +22,8 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
+import { mount, shallow } from 'enzyme';
 
 import Display from '../../components/Slide/Components/TextResponse/Display.jsx';
 
@@ -400,5 +400,3 @@ test('Render 3 1', async done => {
 
   done();
 });
-
-/*{INJECTION}*/

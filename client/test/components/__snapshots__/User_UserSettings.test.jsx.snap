@@ -64,7 +64,7 @@ exports[`Render 1 1 2`] = `
                   name=\\"username\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
-                  value=\\"super\\"
+                  value=\\"\\"
                 />
               </div>
             </div>
@@ -89,7 +89,7 @@ exports[`Render 1 1 2`] = `
                   name=\\"personalname\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
-                  value=\\"Super User\\"
+                  value=\\"\\"
                 />
               </div>
             </div>
@@ -115,7 +115,7 @@ exports[`Render 1 1 2`] = `
                   name=\\"email\\"
                   placeholder=\\"jane@example.com\\"
                   type=\\"text\\"
-                  value=\\"super@email.com\\"
+                  value=\\"\\"
                 />
               </div>
             </div>
