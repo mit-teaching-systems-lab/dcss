@@ -1,4 +1,4 @@
-const { sql } = require('../../util/sqlHelpers');
+const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 // const rolesDb = require('../roles/db');
 
@@ -113,7 +113,13 @@ const getAggregatedCohort = async cohort => {
 
 exports.getCohort = async id => {
   const result = await query(sql`
-    SELECT cohort.id, cohort.name, cohort.created_at, cur.roles
+    SELECT
+      cohort.id,
+      cohort.name,
+      cohort.created_at,
+      cohort.updated_at,
+      cohort.deleted_at,
+      cur.roles
     FROM cohort
     INNER JOIN (
       SELECT DISTINCT ON (cohort_id) cohort_id, user_id, ARRAY_AGG(role) AS roles
@@ -128,7 +134,13 @@ exports.getCohort = async id => {
 
 exports.getMyCohorts = async user_id => {
   const result = await query(sql`
-    SELECT cohort.id, cohort.name, cohort.created_at, cur.roles
+    SELECT
+      cohort.id,
+      cohort.name,
+      cohort.created_at,
+      cohort.updated_at,
+      cohort.deleted_at,
+      cur.roles
     FROM cohort
     INNER JOIN (
       SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
@@ -137,6 +149,7 @@ exports.getMyCohorts = async user_id => {
     ) cur
     ON cohort.id = cur.cohort_id
     WHERE cur.user_id = ${user_id}
+    AND cohort.deleted_at IS NOT NULL
     ORDER BY cohort.created_at DESC;
   `);
 
@@ -149,7 +162,9 @@ exports.getMyCohorts = async user_id => {
 
 exports.getAllCohorts = async () => {
   const result = await query(sql`
-    SELECT * FROM cohort ORDER BY created_at DESC
+    SELECT *
+    FROM cohort
+    ORDER BY created_at DESC
   `);
 
   const cohorts = [];
@@ -159,16 +174,23 @@ exports.getAllCohorts = async () => {
   return cohorts;
 };
 
-exports.setCohort = async () => {
-  // console.log('setCohort', params);
+exports.setCohort = async (id, updates) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(updateQuery('cohort', { id }, updates));
+    return result.rows[0];
+  });
+};
 
-  return {};
-  // return await withClient(async client => {
-  //     const result = await client.query(sql`
-  //         SELECT * FROM cohort WHERE id = ${cohort_id}
-  //     `);
-  //     return result.rows[0];
-  // });
+exports.softDeleteCohort = async id => {
+  return await withClientTransaction(async client => {
+    const result = await query(sql`
+      UPDATE cohort
+      SET deleted_at = CURRENT_TIMESTAMP
+      WHERE id = ${id}
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
 };
 
 exports.setCohortScenarios = async (id, scenarioIds) => {

@@ -50,24 +50,38 @@ router.put('/', [
 
 // TODO: determine whether this is in use.
 router.get('/', [requireUser, listUserCohorts]);
+//
+router.get('/my', [requireUser, getMyCohorts]);
+router.get('/all', [requireUser, getAllCohorts]);
 
-router.post('/:id', [
+// These are used for ACCESS CONTROL of other users.
+router.post('/:id/roles/delete', [
   requireUser,
-  requireUserRole(requiredSiteRoles),
+  requireCohortUserRole(requiredCohortRoles),
   validateRequestBody,
-  // requireCohortUserRole(requiredCohortRoles),
-  setCohort
+  deleteCohortUserRole
+]);
+router.post('/:id/roles/add', [
+  requireUser,
+  requireCohortUserRole(requiredCohortRoles),
+  validateRequestBody,
+  addCohortUserRole
 ]);
 router.post('/:id/scenarios', [
   requireUser,
   requireUserRole(requiredSiteRoles),
-  validateRequestBody,
+  // TODO: activate this step
   // requireCohortUserRole(requiredCohortRoles),
+  validateRequestBody,
   setCohortScenarios
 ]);
-router.get('/my', [requireUser, getMyCohorts]);
-router.get('/all', [requireUser, getAllCohorts]);
-router.get('/:id', [requireUser, getCohort]);
+router.post('/:id', [
+  requireUser,
+  requireUserRole(requiredSiteRoles),
+  // TODO: activate this step
+  // requireCohortUserRole(requiredCohortRoles),
+  setCohort
+]);
 router.get('/:id/scenario/:scenario_id/:user_id', [requireUser, getCohortData]);
 router.get('/:id/scenario/:scenario_id', [requireUser, getCohortData]);
 router.get('/:id/participant/:participant_id', [
@@ -85,19 +99,6 @@ router.get('/:id/run/:run_id', [
 router.get('/:id/join/:role', [requireUser, joinCohort]);
 router.get('/:id/quit', [requireUser, quitCohort]);
 router.get('/:id/done', [requireUser, doneCohort]);
-
-// These are used for ACCESS CONTROL of other users.
-router.post('/:id/roles/add', [
-  requireUser,
-  requireCohortUserRole(requiredCohortRoles),
-  validateRequestBody,
-  addCohortUserRole
-]);
-router.post('/:id/roles/delete', [
-  requireUser,
-  requireCohortUserRole(requiredCohortRoles),
-  validateRequestBody,
-  deleteCohortUserRole
-]);
+router.get('/:id', [requireUser, getCohort]);
 
 module.exports = router;

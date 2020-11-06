@@ -13,6 +13,7 @@ import CohortParticipants from '@components/Cohorts/CohortParticipants';
 import CohortScenarios from '@components/Cohorts/CohortScenarios';
 import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
+import Boundary from '@components/Boundary';
 
 import './Cohort.css';
 
@@ -20,13 +21,13 @@ export class Cohort extends React.Component {
   constructor(props) {
     super(props);
 
-    const { cohort, location } = this.props;
+    const { id, location } = this.props;
 
     if (location && location.search) {
       Storage.set('app/referrer_params', location.search);
     }
 
-    this.sessionKey = `cohort/${cohort.id}`;
+    this.sessionKey = `cohort/${id}`;
 
     const { activeTabKey, tabs } = Storage.get(this.sessionKey, {
       activeTabKey: 'cohort',
@@ -50,18 +51,22 @@ export class Cohort extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      if (!this.props.cohort.created_at) {
-        await this.props.getCohort(this.props.cohort.id);
+      if (!this.props.cohort) {
+        await this.props.getCohort(this.props.id);
       }
 
       const { authority, cohort, user } = this.props;
 
-      if (authority.isFacilitator) {
-        await this.props.getUsers();
+      // If this participant is not a super admin user, and the cohort
+      // has been deleted, then send the participant to the
+      // main cohorts view.
+      if (!user.is_super && cohort.deleted_at) {
+        this.props.history.push('/cohorts');
+        return;
       }
 
-      if (cohort.id === null) {
-        this.props.history.push('/cohorts');
+      if (authority.isFacilitator) {
+        await this.props.getUsers();
       }
 
       const notInCohort =
@@ -145,12 +150,7 @@ export class Cohort extends React.Component {
   }
 
   render() {
-    const {
-      authority,
-      cohort,
-      cohort: { id, name },
-      user
-    } = this.props;
+    const { authority, cohort, user } = this.props;
     const { isReady, activeTabKey, tabs } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
 
@@ -166,8 +166,6 @@ export class Cohort extends React.Component {
       });
     };
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
-
-    // console.log(authority);
     const { isFacilitator } = authority;
 
     // Everytime there is a render, save the state.
@@ -190,10 +188,10 @@ export class Cohort extends React.Component {
         <Title content={cohort.name} />
         <Menu attached="top" tabular className="c__tab-menu--overflow">
           <Menu.Item.Tabbable
-            active={activeTabKey === 'cohort'}
-            content={name}
             key="cohort"
             name="cohort"
+            active={activeTabKey === 'cohort'}
+            content={cohort.name}
             onClick={onTabClick}
           />
 
@@ -221,36 +219,37 @@ export class Cohort extends React.Component {
             ) : null}
             <CohortScenarios
               key="cohort-scenarios"
-              id={id}
+              id={cohort.id}
               authority={authority}
               onClick={onClick}
             />
             {isFacilitator ? (
               <CohortParticipants
                 key="cohort-participants"
-                id={id}
+                id={cohort.id}
                 authority={authority}
                 onClick={onClick}
               />
-            ) : null}
-            {!isFacilitator ? (
+            ) : (
               <DataTable
                 source={{
-                  cohortId: id,
+                  cohortId: cohort.id,
                   participantId: user.id
                 }}
                 onClick={onDataTableClick}
               />
-            ) : null}
+            )}
           </Segment>
         ) : (
-          <Segment key={activeTabKey} attached="bottom">
+          <Segment attached="bottom" key={activeTabKey}>
             <DataTable
               source={source && source.data}
               onClick={onDataTableClick}
             />
           </Segment>
         )}
+
+        <Boundary bottom data-testid="cohort-boundary-bottom" />
       </div>
     );
   }
@@ -264,6 +263,8 @@ Cohort.propTypes = {
   cohort: PropTypes.shape({
     id: PropTypes.any,
     created_at: PropTypes.string,
+    deleted_at: PropTypes.string,
+    updated_at: PropTypes.string,
     name: PropTypes.string,
     // roles: PropTypes.array,
     runs: PropTypes.array,
@@ -276,12 +277,9 @@ Cohort.propTypes = {
   }).isRequired,
   id: PropTypes.any,
   location: PropTypes.shape({
-    pathname: PropTypes.string,
-    search: PropTypes.string,
-    state: PropTypes.object
+    search: PropTypes.string
   }),
   match: PropTypes.shape({
-    path: PropTypes.string,
     params: PropTypes.shape({
       id: PropTypes.node
     }).isRequired
@@ -297,17 +295,20 @@ Cohort.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id) || ownProps.id;
   const { cohortsById, user } = state;
-  const cohort = cohortsById[id] || { ...state.cohort, id };
 
-  const cohortUser = cohort.users.find(
-    cohortMember => cohortMember.id === user.id
-  );
-  const cohortRoles = (cohortUser && cohortUser.roles) || [];
+  const cohort = cohortsById[id] || null;
+
+  const participant = cohort
+    ? cohort.users.find(participant => participant.id === user.id)
+    : null;
+
+  const roles = participant ? participant.roles : [];
+
   const authority = {
-    isOwner: cohortRoles.includes('owner') || false,
-    isFacilitator: cohortRoles.includes('facilitator') || false,
-    isResearcher: cohortRoles.includes('researcher') || false,
-    isParticipant: cohortRoles.includes('participant') || false
+    isOwner: roles.includes('owner') || false,
+    isFacilitator: roles.includes('facilitator') || false,
+    isResearcher: roles.includes('researcher') || false,
+    isParticipant: roles.includes('participant') || false
   };
 
   // Super admins have unrestricted access to cohorts
@@ -318,7 +319,7 @@ const mapStateToProps = (state, ownProps) => {
     authority.isParticipant = true;
   }
 
-  return { authority, cohort, user };
+  return { authority, cohort, id, user };
 };
 
 const mapDispatchToProps = dispatch => ({

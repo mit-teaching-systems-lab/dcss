@@ -37,50 +37,53 @@ async function linkCohortToRunAsync(req, res) {
 
 async function joinCohortAsync(req, res) {
   const user_id = req.session.user.id;
-  const { id: cohort_id, role } = req.params;
-  const cohortUsers = await db.linkUserToCohort(
-    cohort_id,
-    user_id,
-    role,
-    'join'
-  );
+  const id = Number(req.params.id);
+  const role = req.params.role;
+  const cohortUsers = await db.linkUserToCohort(id, user_id, role, 'join');
   res.json(cohortUsers);
 }
 
 async function quitCohortAsync(req, res) {
   const user_id = req.session.user.id;
-  const { id: cohort_id, role } = req.params;
-  const cohortUsers = await db.linkUserToCohort(
-    cohort_id,
-    user_id,
-    role,
-    'quit'
-  );
+  const id = Number(req.params.id);
+  const role = req.params.role;
+  const cohortUsers = await db.linkUserToCohort(id, user_id, role, 'quit');
   res.json(cohortUsers);
 }
 
 async function doneCohortAsync(req, res) {
   const user_id = req.session.user.id;
-  const { id: cohort_id, role } = req.params;
-  const cohortUsers = await db.linkUserToCohort(
-    cohort_id,
-    user_id,
-    role,
-    'done'
-  );
+  const id = Number(req.params.id);
+  const role = req.params.role;
+  const cohortUsers = await db.linkUserToCohort(id, user_id, role, 'done');
   res.json(cohortUsers);
 }
 
-async function setCohort(req, res) {
+async function setCohortAsync(req, res) {
   //
+  // NOTE: this endpoint is not guarded by validateRequestBody
   //
-  //
-  // TODO!
-  //
-  //
-  //
-  // const { id } = req.params;
-  const { cohort } = req.body;
+  const id = Number(req.params.id);
+  const { name = null, deleted_at = null } = req.body;
+
+  const updates = {};
+
+  if (name) {
+    updates.name = name;
+  }
+
+  if (deleted_at) {
+    updates.deleted_at = deleted_at;
+  }
+
+  let cohort;
+
+  if (Object.entries(updates).length) {
+    cohort = await db.setCohort(id, updates);
+  } else {
+    cohort = await db.getCohort(id);
+  }
+
   res.json({ cohort });
 }
 
@@ -182,7 +185,7 @@ exports.linkCohortToRun = asyncMiddleware(linkCohortToRunAsync);
 exports.joinCohort = asyncMiddleware(joinCohortAsync);
 exports.quitCohort = asyncMiddleware(quitCohortAsync);
 exports.doneCohort = asyncMiddleware(doneCohortAsync);
-exports.setCohort = asyncMiddleware(setCohort);
+exports.setCohort = asyncMiddleware(setCohortAsync);
 exports.setCohortScenarios = asyncMiddleware(setCohortScenariosAsync);
 exports.getCohortData = asyncMiddleware(getCohortDataAsync);
 exports.getCohortParticipantData = asyncMiddleware(

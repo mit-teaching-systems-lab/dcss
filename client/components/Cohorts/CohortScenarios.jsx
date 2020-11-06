@@ -24,7 +24,7 @@ import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import scrollIntoView from '@utils/scrollIntoView';
 import Sortable from '@components/Sortable';
-import { getCohort, setCohort } from '@actions/cohort';
+import { getCohort, setCohortScenarios } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
@@ -90,7 +90,7 @@ export class CohortScenarios extends React.Component {
     // Force deduping
     const scenarios = [...new Set(cohort.scenarios)];
 
-    this.props.setCohort({
+    this.props.setCohortScenarios({
       ...cohort,
       scenarios
     });
@@ -102,7 +102,7 @@ export class CohortScenarios extends React.Component {
     const moving = scenarios[fromIndex];
     scenarios.splice(fromIndex, 1);
     scenarios.splice(toIndex, 0, moving);
-    this.props.setCohort({
+    this.props.setCohortScenarios({
       ...cohort,
       scenarios
     });
@@ -612,7 +612,7 @@ CohortScenarios.propTypes = {
     users: PropTypes.array
   }),
   getCohort: PropTypes.func,
-  setCohort: PropTypes.func,
+  setCohortScenarios: PropTypes.func,
   onClick: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
@@ -634,7 +634,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
-  setCohort: params => dispatch(setCohort(params)),
+  setCohortScenarios: params => dispatch(setCohortScenarios(params)),
   getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers())

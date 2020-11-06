@@ -2,7 +2,7 @@ import React from 'react';
 // import { Container } from '@components/UI';
 import PropTypes from 'prop-types';
 
-const Boundary = ({ hidden = true, bottom = false }) => {
+const Boundary = ({ hidden = true, bottom = false, ...rest }) => {
   const style = {
     backgroundColor: 'red',
     height: '1px',
@@ -14,6 +14,7 @@ const Boundary = ({ hidden = true, bottom = false }) => {
   const id = `boundary-${which}`;
 
   const boundaryProps = {
+    ...rest,
     hidden,
     id,
     style

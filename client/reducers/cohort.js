@@ -5,6 +5,7 @@ import {
   GET_ALL_COHORTS_SUCCESS,
   GET_USER_COHORTS_SUCCESS,
   SET_COHORT_SUCCESS,
+  SET_COHORT_SCENARIOS_SUCCESS,
   SET_COHORT_USER_ROLE_SUCCESS
 } from '../actions/types';
 
@@ -16,6 +17,7 @@ export const cohort = (state = cohortInitialState, action) => {
   if (
     type === CREATE_COHORT_SUCCESS ||
     type === SET_COHORT_SUCCESS ||
+    type === SET_COHORT_SCENARIOS_SUCCESS ||
     type === GET_COHORT_SUCCESS ||
     type === GET_COHORT_PARTICIPANTS_SUCCESS
   ) {
@@ -43,7 +45,25 @@ export const cohort = (state = cohortInitialState, action) => {
 };
 
 export const cohorts = (state = [], action) => {
-  const { cohorts, type } = action;
+  const { cohort, cohorts, type } = action;
+
+  if (type === SET_COHORT_SUCCESS || type === GET_COHORT_SUCCESS) {
+    if (state.length) {
+      for (let i = 0; i < state.length; i++) {
+        if (state[i].id === cohort.id) {
+          if (state[i]) {
+            state[i] = {
+              ...state[i],
+              ...cohort
+            };
+          }
+        }
+      }
+    } else {
+      state.push(cohort);
+    }
+  }
+
   if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.slice();
   }
@@ -52,7 +72,18 @@ export const cohorts = (state = [], action) => {
 };
 
 export const cohortsById = (state = {}, action) => {
-  const { cohorts, type } = action;
+  const { cohort, cohorts, type } = action;
+
+  if (type === SET_COHORT_SUCCESS || type === GET_COHORT_SUCCESS) {
+    if (state[cohort.id]) {
+      state[cohort.id] = {
+        ...state[cohort.id],
+        ...cohort
+      };
+    } else {
+      state[cohort.id] = cohort;
+    }
+  }
 
   if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
     return cohorts.reduce((accum, cohort) => {

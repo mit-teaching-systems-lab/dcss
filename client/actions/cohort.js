@@ -1,27 +1,23 @@
 import {
-  // CREATE_COHORT,
   CREATE_COHORT_SUCCESS,
   CREATE_COHORT_ERROR,
+  DELETE_COHORT_SUCCESS,
+  DELETE_COHORT_ERROR,
   SET_COHORT_SUCCESS,
   SET_COHORT_ERROR,
-  // GET_COHORT,
+  SET_COHORT_SCENARIOS_SUCCESS,
+  SET_COHORT_SCENARIOS_ERROR,
   GET_COHORT_SUCCESS,
   GET_COHORT_ERROR,
-  // GET_COHORT_PARTICIPANTS,
   GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_PARTICIPANTS_ERROR,
-  // GET_COHORT_RUN_DATA_SUCCESS,
   GET_COHORT_RUN_DATA_ERROR,
-  // GET_ALL_COHORTS,
   GET_ALL_COHORTS_SUCCESS,
   GET_ALL_COHORTS_ERROR,
-  // GET_USER_COHORTS,
   GET_USER_COHORTS_SUCCESS,
   GET_USER_COHORTS_ERROR,
-  // LINK_COHORT_TO_RUN,
   LINK_RUN_TO_COHORT_SUCCESS,
   LINK_RUN_TO_COHORT_ERROR,
-  // SET_COHORT_USER_ROLE,
   SET_COHORT_USER_ROLE_SUCCESS,
   SET_COHORT_USER_ROLE_ERROR
 } from './types';
@@ -52,11 +48,7 @@ export let createCohort = ({ name }) => async dispatch => {
   }
 };
 
-// TODO: the tests need to be updated
-// TODO: this needs to be renamed "setCohortScenarios"
-// TODO: the actions needs to be renamed "SET_COHORT_SCENARIOS_*"
-// TODO: the reducers need to be updated
-export let setCohort = cohort => async dispatch => {
+export let setCohortScenarios = cohort => async dispatch => {
   try {
     const { scenarios } = cohort;
     const body = JSON.stringify({
@@ -76,10 +68,50 @@ export let setCohort = cohort => async dispatch => {
       throw res;
     }
 
-    dispatch({ type: SET_COHORT_SUCCESS, cohort });
+    dispatch({ type: SET_COHORT_SCENARIOS_SUCCESS, cohort });
     return cohort;
   } catch (error) {
-    dispatch({ type: SET_COHORT_ERROR, error });
+    dispatch({ type: SET_COHORT_SCENARIOS_ERROR, error });
+    return null;
+  }
+};
+
+export let setCohort = cohort => async dispatch => {
+  try {
+    const { name, deleted_at } = cohort;
+    const updates = {};
+
+    if (name) {
+      updates.name = name;
+    }
+
+    if (deleted_at) {
+      updates.deleted_at = deleted_at;
+    }
+
+    const body = JSON.stringify(updates);
+    const res = await (
+      await fetch(`/api/cohort/${cohort.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })
+    ).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const type = deleted_at ? DELETE_COHORT_SUCCESS : SET_COHORT_SUCCESS;
+
+    dispatch({ type, cohort });
+    return cohort;
+  } catch (error) {
+    const type = deleted_at ? DELETE_COHORT_ERROR : SET_COHORT_ERROR;
+
+    dispatch({ type, error });
     return null;
   }
 };

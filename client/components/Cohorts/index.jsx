@@ -21,7 +21,6 @@ import {
   getAllCohorts,
   getCohorts,
   getCohort,
-  setCohort,
   createCohort
 } from '@actions/cohort';
 import { getScenariosByStatus } from '@actions/scenario';
@@ -355,7 +354,6 @@ Cohorts.propTypes = {
   getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
   getCohort: PropTypes.func,
-  setCohort: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
   match: PropTypes.shape({
@@ -379,7 +377,6 @@ const mapDispatchToProps = dispatch => ({
   getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
   getCohort: id => dispatch(getCohort(id)),
-  setCohort: params => dispatch(setCohort(params)),
   getScenariosByStatus: updater => dispatch(getScenariosByStatus(updater)),
   createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
