@@ -104,14 +104,10 @@ export let setCohort = cohort => async dispatch => {
       throw res;
     }
 
-    const type = deleted_at ? DELETE_COHORT_SUCCESS : SET_COHORT_SUCCESS;
-
-    dispatch({ type, cohort });
+    dispatch({ type: SET_COHORT_SUCCESS, cohort });
     return cohort;
   } catch (error) {
-    const type = deleted_at ? DELETE_COHORT_ERROR : SET_COHORT_ERROR;
-
-    dispatch({ type, error });
+    dispatch({ type: SET_COHORT_ERROR, error });
     return null;
   }
 };
