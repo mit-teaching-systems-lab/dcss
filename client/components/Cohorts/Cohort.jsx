@@ -84,7 +84,8 @@ export class Cohort extends React.Component {
     }
   }
 
-  onClick(event, { source, type }) {
+  onClick(event, props = {}) {
+    const { source = { id: null }, type = 'scenario' } = props;
     let { activeTabKey } = this.state;
     const { tabs } = this.state;
     const { cohort } = this.props;
