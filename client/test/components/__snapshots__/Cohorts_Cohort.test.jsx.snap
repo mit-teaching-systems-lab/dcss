@@ -60,10 +60,21 @@ exports[`Render 1 1 3`] = `
         </a>
       </div>
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
-        @components/Cohorts/CohortParticipants
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortParticipants
+        </button>
+        ;
       </div>
     </div>
     <div
@@ -136,10 +147,21 @@ exports[`Render 2 1 3`] = `
         </a>
       </div>
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
-        @components/Cohorts/CohortParticipants
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortParticipants
+        </button>
+        ;
       </div>
     </div>
     <div
@@ -212,10 +234,21 @@ exports[`Render 3 1 3`] = `
         </a>
       </div>
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
-        @components/Cohorts/CohortParticipants
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortParticipants
+        </button>
+        ;
       </div>
     </div>
     <div
@@ -270,7 +303,12 @@ exports[`Render 4 1 3`] = `
       class="ui bottom attached segment"
     >
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
         @components/Cohorts/DataTable
@@ -328,7 +366,12 @@ exports[`Render 5 1 3`] = `
       class="ui bottom attached segment"
     >
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
         @components/Cohorts/DataTable
@@ -386,7 +429,12 @@ exports[`Render 6 1 3`] = `
       class="ui bottom attached segment"
     >
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
         @components/Cohorts/DataTable
@@ -444,7 +492,12 @@ exports[`Render 7 1 3`] = `
       class="ui bottom attached segment"
     >
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
         @components/Cohorts/DataTable
@@ -502,7 +555,12 @@ exports[`Render 8 1 3`] = `
       class="ui bottom attached segment"
     >
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
         @components/Cohorts/DataTable
@@ -578,10 +636,149 @@ exports[`Render 9 1 3`] = `
         </a>
       </div>
       <div>
-        @components/Cohorts/CohortScenarios
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
       </div>
       <div>
-        @components/Cohorts/CohortParticipants
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortParticipants
+        </button>
+        ;
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: Mock CohortScenarios 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: Mock CohortScenarios 3`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: Mock CohortScenarios 4`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        <button
+          authority="[object Object]"
+          id="1"
+        >
+          @components/Cohorts/CohortScenarios
+        </button>
+      </div>
+      <div>
+        @components/Cohorts/DataTable
+      </div>
+    </div>
+    <div
+      data-testid="cohort-boundary-bottom"
+      hidden=""
+      id="boundary-bottom"
+      style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render: Mock CohortScenarios 5`] = `
+<DocumentFragment>
+  <div>
+    <div
+      class="ui top attached tabular c__tab-menu--overflow menu"
+    >
+      <a
+        class="item"
+        tabindex="0"
+      >
+        First Cohort
+      </a>
+      <a
+        class="active item"
+        tabindex="0"
+      >
+        <i
+          aria-hidden="true"
+          class="content icon"
+        />
+        Cohort 1 Scenario Null
+      </a>
+    </div>
+    <div
+      class="ui bottom attached segment"
+    >
+      <div>
+        @components/Cohorts/DataTable
       </div>
     </div>
     <div

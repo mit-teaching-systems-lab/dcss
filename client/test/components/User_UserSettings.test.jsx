@@ -152,6 +152,7 @@ test('Render 1 1', async done => {
   expect(userActions.setUser.mock.calls.length).toBe(1);
   expect(userActions.setUser.mock.calls[0]).toMatchSnapshot();
   expect(serialize()).toMatchSnapshot();
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

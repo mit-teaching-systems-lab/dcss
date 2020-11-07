@@ -12,10 +12,14 @@ exports[`Render 1 1 1`] = `
         class="three wide column slides__list-outer-container"
       >
         <div
+          aria-busy="true"
+          aria-live="polite"
           class="ui doubling one cards"
+          role="status"
           style="margin-top: 0.5em; margin-left: 0.1em; margin-right: 0px;"
         >
           <div
+            aria-hidden="true"
             class="ui card loading__multi-card"
             style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
           >
@@ -32,6 +36,7 @@ exports[`Render 1 1 1`] = `
             </div>
           </div>
           <div
+            aria-hidden="true"
             class="ui card loading__multi-card"
             style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
           >
@@ -48,6 +53,7 @@ exports[`Render 1 1 1`] = `
             </div>
           </div>
           <div
+            aria-hidden="true"
             class="ui card loading__multi-card"
             style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
           >
@@ -64,6 +70,7 @@ exports[`Render 1 1 1`] = `
             </div>
           </div>
           <div
+            aria-hidden="true"
             class="ui card loading__multi-card"
             style="height: 11.8em; margin: 0px 0px 0.5em 0px;"
           >
@@ -85,10 +92,14 @@ exports[`Render 1 1 1`] = `
         class="column slides__editor-outer-container"
       >
         <div
+          aria-busy="true"
+          aria-live="polite"
           class="ui card loading__single-card"
+          role="status"
           style="width: 100%; height: calc(100% - 10px); margin-top: 0.5em;"
         >
           <div
+            aria-hidden="true"
             class="content loading__content"
           >
             <div

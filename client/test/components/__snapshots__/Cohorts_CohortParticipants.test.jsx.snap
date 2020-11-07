@@ -3,10 +3,14 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -531,10 +535,14 @@ exports[`Render 1 1 2`] = `
 exports[`Render 2 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -1065,10 +1073,14 @@ Array [
 exports[`Render 3 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -5287,10 +5299,14 @@ exports[`Render 3 1 13`] = `
 exports[`Render 4 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -5815,10 +5831,14 @@ exports[`Render 4 1 2`] = `
 exports[`Render 5 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -7357,10 +7377,14 @@ exports[`Render 5 1 4`] = `
 exports[`Render 6 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -7830,10 +7854,14 @@ exports[`Render 6 1 2`] = `
 exports[`Render 7 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div
@@ -8358,10 +8386,14 @@ exports[`Render 7 1 2`] = `
 exports[`Render 8 1 1`] = `
 <DocumentFragment>
   <div
+    aria-busy="true"
+    aria-live="polite"
     class="ui card loading__single-card"
+    role="status"
     style="width: 100%; height: 90%;"
   >
     <div
+      aria-hidden="true"
       class="content loading__content"
     >
       <div

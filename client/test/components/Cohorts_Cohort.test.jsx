@@ -39,10 +39,35 @@ jest.mock('@components/Cohorts/DataTable', () => {
   return props => <div>@components/Cohorts/DataTable</div>;
 });
 jest.mock('@components/Cohorts/CohortParticipants', () => {
-  return props => <div>@components/Cohorts/CohortParticipants</div>;
+  return props => {
+    const buttonProps = {
+      ...props,
+      onClick: event => {
+        // props.onClick(event, {type: 'participant', source: {id: 999} })
+      }
+    };
+    return (
+      <div>
+        <button {...props}>@components/Cohorts/CohortParticipants</button>;
+      </div>
+    );
+  };
 });
+
 jest.mock('@components/Cohorts/CohortScenarios', () => {
-  return props => <div>@components/Cohorts/CohortScenarios</div>;
+  return props => {
+    const buttonProps = {
+      ...props,
+      onClick: event => {
+        // props.onClick(event, {type: 'scenario', source: {id: 42} })
+      }
+    };
+    return (
+      <div>
+        <button {...props}>@components/Cohorts/CohortScenarios</button>
+      </div>
+    );
+  };
 });
 
 import Storage from '@utils/Storage';
@@ -1473,7 +1498,6 @@ test('Render: user missing, direct to /logout', async done => {
   ConnectedRoutedComponent.history.push = jest.fn();
   ConnectedRoutedComponent.history.push.mockImplementation(() => {});
 
-  // 7
   userActions.getUser = jest.fn();
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {};
@@ -1504,6 +1528,188 @@ test('Render: user missing, direct to /logout', async done => {
       "/logout",
     ]
   `);
+
+  done();
+});
+
+test('Render: Mock CohortScenarios', async done => {
+  const Component = Cohort;
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  cohortActions.getCohort = jest.fn();
+  cohortActions.getCohort.mockImplementation(() => async dispatch => {
+    const cohort = {
+      id: 1,
+      created_at: '2020-06-31T14:01:08.656Z',
+      deleted_at: '2020-07-28T15:42:23.898Z',
+      name: 'A New Cohort That Exists Within Inline Props',
+      runs: [
+        {
+          id: 11,
+          user_id: 333,
+          scenario_id: 99,
+          created_at: '2020-03-28T19:44:03.069Z',
+          updated_at: '2020-03-31T17:01:43.139Z',
+          ended_at: '2020-03-31T17:01:43.128Z',
+          consent_id: 8,
+          consent_acknowledged_by_user: true,
+          consent_granted_by_user: true,
+          referrer_params: null,
+          cohort_id: 1,
+          run_id: 11
+        }
+      ],
+      scenarios: [99],
+      users: [
+        {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true
+        },
+        {
+          username: 'facilitator',
+          personalname: 'Facilitator User',
+          email: 'facilitator@email.com',
+          id: 555,
+          roles: ['participant', 'facilitator', 'researcher', 'owner'],
+          is_anonymous: false,
+          is_super: false,
+          is_owner: true
+        },
+        {
+          username: 'researcher',
+          personalname: 'Researcher User',
+          email: 'researcher@email.com',
+          id: 444,
+          roles: ['participant', 'researcher'],
+          is_anonymous: false,
+          is_super: false
+        },
+        {
+          username: 'participant',
+          personalname: 'Participant User',
+          email: 'participant@email.com',
+          id: 333,
+          roles: ['participant'],
+          is_anonymous: false,
+          is_super: false
+        },
+        {
+          username: 'anonymous',
+          personalname: '',
+          email: '',
+          id: 222,
+          roles: ['participant'],
+          is_anonymous: true,
+          is_super: false
+        }
+      ],
+      roles: ['super', 'facilitator'],
+      usersById: {
+        999: {
+          username: 'super',
+          personalname: 'Super User',
+          email: 'super@email.com',
+          id: 999,
+          roles: ['participant', 'super_admin'],
+          is_anonymous: false,
+          is_super: true
+        },
+        555: {
+          username: 'facilitator',
+          personalname: 'Facilitator User',
+          email: 'facilitator@email.com',
+          id: 555,
+          roles: ['participant', 'facilitator', 'researcher', 'owner'],
+          is_anonymous: false,
+          is_super: false,
+          is_owner: true
+        },
+        444: {
+          username: 'researcher',
+          personalname: 'Researcher User',
+          email: 'researcher@email.com',
+          id: 444,
+          roles: ['participant', 'researcher'],
+          is_anonymous: false,
+          is_super: false
+        },
+        333: {
+          username: 'participant',
+          personalname: 'Participant User',
+          email: 'participant@email.com',
+          id: 333,
+          roles: ['participant'],
+          is_anonymous: false,
+          is_super: false
+        },
+        222: {
+          username: 'anonymous',
+          personalname: '',
+          email: '',
+          id: 222,
+          roles: ['participant'],
+          is_anonymous: true,
+          is_super: false
+        }
+      }
+    };
+    dispatch({ type: GET_COHORT_SUCCESS, cohort });
+    return cohort;
+  });
+  userActions.getUser = jest.fn();
+  userActions.getUser.mockImplementation(() => async dispatch => {
+    const user = {
+      username: 'facilitator',
+      personalname: 'Facilitator User',
+      email: 'facilitator@email.com',
+      id: 555,
+      roles: ['participant', 'facilitator', 'researcher', 'owner'],
+      is_anonymous: false,
+      is_super: false,
+      is_owner: true
+    };
+    dispatch({ type: GET_USER_SUCCESS, user });
+    return user;
+  });
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+  expect(Storage.get.mock.calls.length).toBe(1);
+  expect(Storage.get.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "cohort/1",
+      Object {
+        "activeTabKey": "cohort",
+        "tabs": Array [],
+      },
+    ]
+  `);
+  expect(asFragment()).toMatchSnapshot();
+
+  const button = await screen.findByRole('button', {
+    name: /@components\/Cohorts\/CohortScenarios/i
+  });
+
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(button);
+
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

@@ -76,9 +76,13 @@ exports[`Render 1 1 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ui doubling four cards"
+              role="status"
             >
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -95,6 +99,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -111,6 +116,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -127,6 +133,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -143,6 +150,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -159,6 +167,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -175,6 +184,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -191,6 +201,7 @@ exports[`Render 1 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -303,9 +314,13 @@ exports[`Render 2 1 1`] = `
         >
           <div>
             <div
+              aria-busy="true"
+              aria-live="polite"
               class="ui doubling four cards"
+              role="status"
             >
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -322,6 +337,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -338,6 +354,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -354,6 +371,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -370,6 +388,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -386,6 +405,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -402,6 +422,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
@@ -418,6 +439,7 @@ exports[`Render 2 1 1`] = `
                 </div>
               </div>
               <div
+                aria-hidden="true"
                 class="ui card loading__multi-card"
                 style="height: 18rem;"
               >
