@@ -1,10 +1,10 @@
 const SpeechToTextV1 = require('ibm-watson/speech-to-text/v1');
 const VisualRecognitionV3 = require('ibm-watson/visual-recognition/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
-const authenticator = new IamAuthenticator({ apikey: process.env.WATSON_KEY });
 
 exports.requestTranscriptionAsync = async buffer => {
-  const url = process.env.WATSON_URL;
+  const authenticator = new IamAuthenticator({ apikey: process.env.WATSON_SPEECHTOTEXT_KEY });
+  const url = process.env.WATSON_SPEECHTOTEXT_URL;
   const service = new SpeechToTextV1({ authenticator, url });
   const { result: response, status } = await service.recognize({
     audio: buffer,
@@ -37,10 +37,6 @@ exports.requestTranscriptionAsync = async buffer => {
 
 exports.requestRecognitionAsync = async buffer => {
   if (process.env.WATSON_VISREC_URL && process.env.WATSON_VISREC_KEY) {
-    // eslint-disable-next-line no-console
-    console.log(process.env.WATSON_VISREC_KEY);
-    // eslint-disable-next-line no-console
-    console.log(process.env.WATSON_VISREC_URL);
     const authenticator = new IamAuthenticator({
       apikey: process.env.WATSON_VISREC_KEY
     });

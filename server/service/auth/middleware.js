@@ -5,9 +5,10 @@ const passwordGenerator = require('password-generator');
 const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
 const db = require('./db');
-// const { getUserRoles } = require('../roles/db');
 
-Sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+if (process.env.SENDGRID_API_KEY) {
+  Sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
+}
 
 function decrypt(encryptedString) {
   return Crypto.AES.decrypt(
@@ -264,8 +265,8 @@ Single-use password: <code>${password}</code>
         host: 'smtp.mailtrap.io',
         port: 2525,
         auth: {
-          user: process.env.NODEMAILER_EMAIL,
-          pass: process.env.NODEMAILER_PASS
+          user: process.env.MAILTRAP_USER,
+          pass: process.env.MAILTRAP_PASS
         }
       });
 
