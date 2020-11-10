@@ -5,6 +5,8 @@ import {
 } from 'react-semantic-toasts';
 import './Notification.css';
 
+// TODO: Wrap this in a functional component that
+//       initiates a socket connection to /api/notifications
 export default Notification;
 
 const cache = new Set();
