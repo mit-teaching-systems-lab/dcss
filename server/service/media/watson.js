@@ -3,7 +3,9 @@ const VisualRecognitionV3 = require('ibm-watson/visual-recognition/v3');
 const { IamAuthenticator } = require('ibm-watson/auth');
 
 exports.requestTranscriptionAsync = async buffer => {
-  const authenticator = new IamAuthenticator({ apikey: process.env.WATSON_SPEECHTOTEXT_KEY });
+  const authenticator = new IamAuthenticator({
+    apikey: process.env.WATSON_SPEECHTOTEXT_KEY
+  });
   const url = process.env.WATSON_SPEECHTOTEXT_URL;
   const service = new SpeechToTextV1({ authenticator, url });
   const { result: response, status } = await service.recognize({
