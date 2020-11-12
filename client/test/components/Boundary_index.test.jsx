@@ -69,7 +69,68 @@ test('Render 1 1', async done => {
   const Component = Boundary;
 
   const props = {
+    ...commonProps,
+    bottom: true
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 2 1', async done => {
+  const Component = Boundary;
+
+  const props = {
+    ...commonProps,
+    top: true
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 3 1', async done => {
+  const Component = Boundary;
+
+  const props = {
     ...commonProps
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 4 1', async done => {
+  const Component = Boundary;
+
+  const props = {
+    ...commonProps,
+    bottom: true,
+    top: true
   };
 
   const state = {
