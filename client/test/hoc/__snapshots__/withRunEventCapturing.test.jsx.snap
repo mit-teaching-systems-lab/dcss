@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 2`] = `
+Array [
+  60,
+  1,
+  "name",
+]
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;
+
+exports[`Render 3 1 1`] = `
+<DocumentFragment>
+  <div />
+</DocumentFragment>
+`;

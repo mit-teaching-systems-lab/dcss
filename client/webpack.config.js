@@ -16,6 +16,7 @@ const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
   {}
 );
 
+const PORT = process.env.PORT || 5000;
 const SESSION_SECRET = process.env.SESSION_SECRET || 'mit tsl teacher moments';
 const mode = process.argv.mode || 'development';
 
@@ -94,6 +95,7 @@ module.exports = {
     // Optimize moment locales
     new MomentLocalesPlugin(),
     new DefinePlugin({
+      PORT: `"${PORT}"`,
       SESSION_SECRET: `"${SESSION_SECRET}"`
     }),
     new DefinePlugin(DCSS_BRAND_VARS)
