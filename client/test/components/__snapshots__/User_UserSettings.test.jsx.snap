@@ -1,13 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Non-username error 1`] = `<DocumentFragment />`;
 
-exports[`Render 1 1 2`] = `
+exports[`Non-username error 2`] = `
 "<body
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div />
@@ -231,23 +230,23 @@ exports[`Render 1 1 2`] = `
 </body>"
 `;
 
-exports[`Render 1 1 3`] = `
+exports[`Non-username error 3`] = `
 Array [
   Object {
     "email": "new@email.com",
     "password": "123456789",
     "personalname": "New Name",
+    "username": "new-user-name",
   },
   undefined,
 ]
 `;
 
-exports[`Render 1 1 4`] = `
+exports[`Non-username error 4`] = `
 "<body
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div />
@@ -304,7 +303,7 @@ exports[`Render 1 1 4`] = `
                   name=\\"username\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
-                  value=\\"super\\"
+                  value=\\"new-user-name\\"
                 />
               </div>
             </div>
@@ -471,4 +470,4718 @@ exports[`Render 1 1 4`] = `
 </body>"
 `;
 
+exports[`Non-username error 5`] = `<DocumentFragment />`;
+
+exports[`Render 1 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 1 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    aria-hidden=\\"true\\"
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"super\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"Super User\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"super@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 3`] = `
+Array [
+  Object {
+    "email": "new@email.com",
+    "password": "123456789",
+    "personalname": "New Name",
+    "username": "new-user-name",
+  },
+  undefined,
+]
+`;
+
+exports[`Render 1 1 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    aria-hidden=\\"true\\"
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 5`] = `<DocumentFragment />`;
+
 exports[`Render 2 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 2 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__anonymous-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__anonymous-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 2 1 3`] = `
+Array [
+  Object {
+    "email": "new@email.com",
+    "password": "123456789",
+    "personalname": "New Name",
+    "username": "new-user-name",
+  },
+  undefined,
+]
+`;
+
+exports[`Render 2 1 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 2 1 5`] = `<DocumentFragment />`;
+
+exports[`Render 3 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 3 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 3 1 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+                <span
+                  aria-label=\\"\\"
+                  class=\\"ui error text\\"
+                  title=\\"\\"
+                >
+                  Passwords do not match.
+                </span>
+              </label>
+              <div
+                class=\\"error field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-invalid=\\"true\\"
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 3 1 4`] = `<DocumentFragment />`;
+
+exports[`Render 4 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 4 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 4 1 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+                <span
+                  aria-label=\\"\\"
+                  class=\\"ui error text\\"
+                  title=\\"\\"
+                >
+                  Please confirm your new password.
+                </span>
+              </label>
+              <div
+                class=\\"error field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-invalid=\\"true\\"
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 4 1 4`] = `<DocumentFragment />`;
+
+exports[`Render 5 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 5 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 5 1 3`] = `
+Array [
+  Object {
+    "email": "new@email.com",
+    "password": "123456789",
+    "personalname": "New Name",
+    "username": "new-user-name",
+  },
+  undefined,
+]
+`;
+
+exports[`Render 5 1 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+              <span
+                aria-label=\\"\\"
+                class=\\"ui right error text\\"
+                title=\\"\\"
+              >
+                Username is already in use.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-invalid=\\"true\\"
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 5 1 5`] = `<DocumentFragment />`;
+
+exports[`Render 6 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 6 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 6 1 3`] = `
+Array [
+  Object {
+    "email": "new@email.com",
+    "password": "123456789",
+    "personalname": null,
+    "username": "new-user-name",
+  },
+  undefined,
+]
+`;
+
+exports[`Render 6 1 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 6 1 5`] = `<DocumentFragment />`;
+
+exports[`Render 7 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 7 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 7 1 3`] = `
+Array [
+  Object {
+    "email": "new@email.com",
+    "personalname": "New Name",
+    "username": "new-user-name",
+  },
+  undefined,
+]
+`;
+
+exports[`Render 7 1 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 7 1 5`] = `<DocumentFragment />`;
+
+exports[`Render 7 1 6`] = `<DocumentFragment />`;
+
+exports[`Render 8 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 8 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 8 1 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"new-user-name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+              <span
+                aria-label=\\"\\"
+                class=\\"ui error text\\"
+                title=\\"\\"
+              >
+                Email must not be empty.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-invalid=\\"true\\"
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 8 1 4`] = `<DocumentFragment />`;
+
+exports[`Render 9 1 1`] = `<DocumentFragment />`;
+
+exports[`Render 9 1 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 9 1 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+              <span
+                aria-label=\\"\\"
+                class=\\"ui right error text\\"
+                title=\\"\\"
+              >
+                Username must not be empty.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-invalid=\\"true\\"
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"New Name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"new@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 9 1 4`] = `<DocumentFragment />`;
+
+exports[`Render 10 1 1`] = `<DocumentFragment />`;
+
+exports[`Validation 1`] = `<DocumentFragment />`;
+
+exports[`Validation 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Validation 3`] = `
+Array [
+  Object {},
+  undefined,
+]
+`;
+
+exports[`Validation 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"settings icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Settings
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"username\\"
+            >
+              Username:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Username\\"
+                  autocomplete=\\"off\\"
+                  name=\\"username\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"super\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"personalname\\"
+            >
+              Personal name (full name, or alias):
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Personal name\\"
+                  name=\\"personalname\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"Super User\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"field\\"
+          >
+            <label
+              for=\\"email\\"
+            >
+              Email address:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Email address\\"
+                  autocomplete=\\"email\\"
+                  name=\\"email\\"
+                  placeholder=\\"jane@example.com\\"
+                  type=\\"text\\"
+                  value=\\"super@email.com\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-form\\"
+          >
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"password\\"
+              >
+                New password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"New password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"password\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              class=\\"field\\"
+            >
+              <label
+                for=\\"confirmPassword\\"
+              >
+                Confirm new password:
+                 
+              </label>
+              <div
+                class=\\"field\\"
+              >
+                <div
+                  class=\\"ui input\\"
+                >
+                  <input
+                    aria-label=\\"Confirm new password\\"
+                    autocomplete=\\"new-password\\"
+                    name=\\"confirmPassword\\"
+                    type=\\"password\\"
+                    value=\\"\\"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"us__reified-message\\"
+          >
+            <div
+              class=\\"ui orange message\\"
+            >
+              <div
+                class=\\"content\\"
+              >
+                <p>
+                  You are currently in anonymous mode. Set an email address and password to become a full user.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                  tabindex=\\"0\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Validation 5`] = `<DocumentFragment />`;
+
+exports[`Validation 6`] = `<DocumentFragment />`;

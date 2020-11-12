@@ -4,6 +4,36 @@ exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
     hidden=""
+    id="boundary-bottom"
+    style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+  />
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <div
+    hidden=""
+    id="boundary-top"
+    style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+  />
+</DocumentFragment>
+`;
+
+exports[`Render 3 1 1`] = `
+<DocumentFragment>
+  <div
+    hidden=""
+    id="boundary-unknown"
+    style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+  />
+</DocumentFragment>
+`;
+
+exports[`Render 4 1 1`] = `
+<DocumentFragment>
+  <div
+    hidden=""
     id="boundary-top"
     style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
   />
