@@ -47,6 +47,12 @@ class UserSettings extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  async componentDidMount() {
+    if (this.props.user && this.props.user.username === null && this.props.id) {
+      await this.props.getUser(this.props.id);
+    }
+  }
+
   validateFormInput() {
     const { confirmPassword, email, password, username } = this.state;
     let field = '';
@@ -73,7 +79,6 @@ class UserSettings extends Component {
         }
       }
     }
-
     if (message) {
       notify({ message, color: 'red', time: 3000 });
       this.setState({
@@ -301,6 +306,7 @@ UserSettings.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
+  id: PropTypes.node,
   open: PropTypes.bool,
   onCancel: PropTypes.func,
   setUser: PropTypes.func,
