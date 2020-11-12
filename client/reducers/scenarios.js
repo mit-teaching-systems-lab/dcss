@@ -34,9 +34,9 @@ export const scenarios = (state = [], action) => {
         .sort((a, b) => a.id < b.id);
     }
     case SET_SCENARIO:
+    case GET_SCENARIO_SUCCESS:
     case DELETE_SCENARIO_SUCCESS:
-    case UNLOCK_SCENARIO_SUCCESS:
-    case GET_SCENARIO_SUCCESS: {
+    case UNLOCK_SCENARIO_SUCCESS: {
       if (!scenario || !scenario.id) {
         return [...state];
       }
