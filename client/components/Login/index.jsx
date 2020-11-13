@@ -4,6 +4,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Grid, Header, Message, Modal } from '@components/UI';
 import { logIn, logOut } from '@actions/session';
+import Messages from './messages';
 import './Login.css';
 
 class Login extends Component {
@@ -59,11 +60,19 @@ class Login extends Component {
     const { error, message } = await this.props.logIn(this.state);
 
     if (error) {
-      this.setState({
-        error: {
-          message
-        }
-      });
+      if (Messages[message]) {
+        this.setState({
+          error: {
+            message: Messages[message]
+          }
+        });
+      } else {
+        this.setState({
+          error: {
+            message
+          }
+        });
+      }
     } else {
       const { from } = this.state;
       // Step outside of react to force a real reload

@@ -75,7 +75,7 @@ class LoginRoutePromptModal extends Component {
 
     const actionContinueAnonymously = 'Continue anonymously';
     const explainContinueAnonymously =
-      'If you do not have an account, and do not wish to create one.';
+      'If you do not have an account, and do not wish to create one, but still want to participate in scenarios.';
     const ariaLabelContinueAnonymously = `${actionContinueAnonymously}. ${explainContinueAnonymously}`;
     const buttonContinueAnonymously = (
       <Button
@@ -104,22 +104,22 @@ class LoginRoutePromptModal extends Component {
             <p>Please choose one of the following options:</p>
             <Grid columns={2} divided>
               <Grid.Row>
-                <Grid.Column>{buttonCreateAccount}</Grid.Column>
                 <Grid.Column>
                   <p>{explainCreateAccount}</p>
                 </Grid.Column>
+                <Grid.Column>{buttonCreateAccount}</Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column>{buttonContinueAnonymously}</Grid.Column>
                 <Grid.Column>
                   <p>{explainContinueAnonymously}</p>
                 </Grid.Column>
+                <Grid.Column>{buttonContinueAnonymously}</Grid.Column>
               </Grid.Row>
               <Grid.Row>
-                <Grid.Column>{buttonLogin}</Grid.Column>
                 <Grid.Column>
                   <p>{explainLogin}</p>
                 </Grid.Column>
+                <Grid.Column>{buttonLogin}</Grid.Column>
               </Grid.Row>
             </Grid>
           </Modal.Content>
