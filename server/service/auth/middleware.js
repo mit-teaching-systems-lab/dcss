@@ -188,6 +188,11 @@ async function loginUserAsync(req, res, next) {
   }
 }
 
+//
+//
+// TODO: break this into smaller tasks
+//
+//
 async function resetUserPasswordAsync(req, res) {
   // First, check if this is a raw email address.
   // If it is, don't do the reset. We should only
@@ -213,10 +218,10 @@ async function resetUserPasswordAsync(req, res) {
     let password = passwordGenerator(12, false, /[\w\d?-]/, '');
 
     // 2. Update the user account(s) with new password.
-    //    Why is that plural? Because we've allowed users to create
-    //    multiple accounts with the same email address,
-    //    don't actually require an email address, nor does it
-    //    indicate the identity of any given user.
+    //    Why is that optionally plural? Because we've allowed
+    //    users to create multiple accounts with the same email
+    //    address, don't actually require an email address, nor
+    //    does it indicate the identity of any given user.
     await db.updateUserWhere(
       { email },
       {
@@ -225,25 +230,47 @@ async function resetUserPasswordAsync(req, res) {
       }
     );
 
+    //
+    //
+    //
+    // TODO: Move this into template?
+    //
+    //
+    //
     // 3. Email the temporary password to the user.
     const brandTitle = process.env.DCSS_BRAND_NAME_TITLE || '';
-    const subject = `${process.env.DCSS_BRAND_NAME_TITLE ||
-      ''} Single-use password request`.trim();
+    const subject = `${brandTitle} Single-use password request`.trim();
+
+    // TODO: Consolidate all of this into a single message.
     const text = `
-You are receiving this email because you (or someone else) made a request to reset your ${brandTitle} password.
+You are receiving this email because a request was made to reset your ${brandTitle} password.
 The following password may only be used once. After you've logged in, go to Settings and update your password.
 \n\n
 Single-use password: ${password}\n\n
 
 Manage your account here: ${href}
+
+
+------------------------------------------
+Massachusetts Institute of Technology NE49
+600 Technology Square
+Cambridge, MA 02139
 `;
-    const html = `<p>You are receiving this email because you (or someone else) made a request to reset your ${brandTitle} password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+    const html = `<p>You are receiving this email because a request was made to reset your ${brandTitle} password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
 <p>
 Single-use password: <code>${password}</code>
 </p>
 
 <p>
-<a href="${href}">Manage your account here</a>
+<a href="${href}">Manage your account here: ${href}</a>
+</p>
+
+<p>
+<small>
+Massachusetts Institute of Technology NE49<br>
+600 Technology Square<br>
+Cambridge, MA 02139
+</small>
 </p>
 `;
     const message = {
@@ -271,6 +298,7 @@ Single-use password: <code>${password}</code>
       });
 
       try {
+        console.log(message);
         await transport.sendMail(message);
       } catch (error) {
         reset = false;
