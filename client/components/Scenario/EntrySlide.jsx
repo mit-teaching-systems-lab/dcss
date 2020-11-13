@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Button, Card, Header, Message, Modal } from '@components/UI';
 import Identity from '@utils/Identity';
-import { IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
+import { IS_FIREFOX, IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
 import {
   AUDIO_RECORD_PERMISSION_DENIED,
   AUDIO_RECORD_PERMISSION_GRANTED,
@@ -75,7 +75,7 @@ class EntrySlide extends React.Component {
     if (this.isScenarioRun) {
       let { microphone } = this.state.permissions;
 
-      if (IS_AUDIO_RECORDING_SUPPORTED) {
+      if (IS_AUDIO_RECORDING_SUPPORTED && !IS_FIREFOX) {
         if (microphone) {
           const query = await navigator.permissions.query({
             name: 'microphone'
@@ -138,7 +138,7 @@ class EntrySlide extends React.Component {
       state => state === 'prompt'
     );
     const continueThisScenario =
-      isPermissionRequired && IS_AUDIO_RECORDING_SUPPORTED
+      isPermissionRequired && IS_AUDIO_RECORDING_SUPPORTED && !IS_FIREFOX
         ? () => this.setState({ showPermissionConfirmation: true })
         : () => this.onContinueClick(scenario);
 
