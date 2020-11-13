@@ -9,7 +9,7 @@ CREATE TABLE chat (
 CREATE TABLE chat_message (
   id SERIAL PRIMARY KEY,
   chat_id INT NOT NULL REFERENCES chat(id),
-  user_id INT NOT NULL REFERENCES user(id),
+  user_id INT NOT NULL REFERENCES users(id),
   content TEXT,
   created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMPTZ DEFAULT NULL,
@@ -35,9 +35,9 @@ CREATE TRIGGER updated_at
 ---
 -- Down below
 
-DROP TRIGGER updated_at ON chat;
-DROP TRIGGER updated_at ON chat_message;
+DROP TRIGGER IF EXISTS updated_at ON chat;
+DROP TRIGGER IF EXISTS updated_at ON chat_message;
 
-DROP TABLE chat;
-DROP TABLE chat_message;
-DROP TABLE chat_user;
+DROP TABLE IF EXISTS chat;
+DROP TABLE IF EXISTS chat_message;
+DROP TABLE IF EXISTS chat_user;
