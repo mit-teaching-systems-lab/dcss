@@ -6,7 +6,7 @@ import {
   // Client -> Server
   AGENT_JOINED,
   USER_JOINED,
-  NOTIFICATION_RECEIVED,
+  NOTIFICATION,
   // Server -> Client
   AGENT_ADDED,
   USER_ADDED,

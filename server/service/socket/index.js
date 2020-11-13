@@ -4,7 +4,7 @@ const {
   USER_JOINED,
   AGENT_ADDED,
   USER_ADDED,
-  NOTIFICATION_RECEIVED
+  NOTIFICATION
 } = require('./types');
 
 let numUsers = 0;
