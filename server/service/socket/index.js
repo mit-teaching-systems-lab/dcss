@@ -1,4 +1,5 @@
 const SocketIO = require('socket.io');
+const { notifier } = require('../../util/db');
 const {
   AGENT_JOINED,
   USER_JOINED,
@@ -6,8 +7,6 @@ const {
   USER_ADDED,
   NOTIFICATION
 } = require('./types');
-
-let numUsers = 0;
 
 function socketlog(...args) {
   console.log('');
@@ -19,15 +18,16 @@ function socketlog(...args) {
   console.log('');
   console.log('');
 }
+
 class SocketManager {
   constructor(server) {
     this.io = SocketIO(server);
-
     this.io.on('connection', socket => {
-      let addedUser = false;
-
       socketlog('Connected');
 
+      notifier.on('new_notification', data => {
+        console.log('new_notification', data);
+      });
     });
   }
 }

@@ -1,3 +1,4 @@
+const Emitter = require('events');
 const { getDbConfig } = require('./dbConfig');
 const { Pool, Client } = require('pg');
 
@@ -14,6 +15,21 @@ if (String(process.env.DEBUG).includes('sql') || process.env.SQL_DEBUG) {
 }
 
 const pool = new Pool(getDbConfig());
+
+// Create a single client to handle receiving and
+// broadcasting LISTEN/NOTIFY messages.
+const client = new Client(getDbConfig());
+const notifier = new Emitter();
+
+client.connect();
+client.query('LISTEN new_notification');
+client.query('LISTEN new_chat_message');
+
+client.on('notification', ({ channel, payload }) => {
+  notifier.emit(channel, JSON.parse(payload));
+});
+
+exports.notifier = notifier;
 
 exports.withClient = async method => {
   let client = pool.connect();
