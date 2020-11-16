@@ -221,6 +221,7 @@ class Downloads extends Component {
       }
     ];
 
+    let rowCount = 0;
     const downloads = cohorts.reduce((accum, cohort, index) => {
       if (hasAccessToCohort(cohort)) {
         const onDownloadByCohortClick = () => {
@@ -249,12 +250,17 @@ class Downloads extends Component {
             const clabel = `Download a zip containing csv files containing responses for all scenarios in "${cohort.name}"`;
             const slabel = `Download a csv file containing responses to only "${stitle}", from the cohort "${cohort.name}"`;
 
+            // If this is the first scenario in a cohort, or this is the first scenario
+            // listed on a page of scenarios, then display the download zip icon
+            const showDownloadZipIcon = index === 0 || (rowCount % ROWS_PER_PAGE === 0);
+            rowCount++;
+
             return (
               <Table.Row
                 key={Identity.key({ ...cohort, id })}
                 created_at={Date.now(cohort.created_at)}
               >
-                {index === 0 ? (
+                {showDownloadZipIcon ? (
                   <Table.Cell.Clickable
                     verticalAlign="top"
                     aria-label={clabel}
