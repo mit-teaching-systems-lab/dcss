@@ -76,7 +76,6 @@ export let setUser = params => async dispatch => {
           SESSION_SECRET
         ).toString();
       }
-
       const body = JSON.stringify(params);
       const res = await (
         await fetch('/api/auth/update', {
@@ -96,18 +95,19 @@ export let setUser = params => async dispatch => {
       dispatch({ type: SET_USER_SUCCESS, user });
       return user;
     }
+    return null;
   } catch (error) {
     dispatch({ type: SET_USER_ERROR, error });
     return null;
   }
 };
 
-export let resetPassword = data => async () => {
+export let resetPassword = params => async () => {
   try {
-    if (Object.values(data).length) {
-      data.email = Crypto.AES.encrypt(data.email, SESSION_SECRET).toString();
-      data.href = location.href;
-      const body = JSON.stringify(data);
+    if (Object.values(params).length) {
+      params.email = Crypto.AES.encrypt(params.email, SESSION_SECRET).toString();
+      params.origin = location.origin;
+      const body = JSON.stringify(params);
       const res = await (
         await fetch('/api/auth/reset', {
           method: 'POST',
@@ -124,6 +124,7 @@ export let resetPassword = data => async () => {
       const { reset } = res;
       return reset;
     }
+    return null;
   } catch (error) {
     return null;
   }

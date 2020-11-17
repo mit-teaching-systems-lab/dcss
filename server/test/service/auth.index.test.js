@@ -11,6 +11,11 @@ jest.mock('@sendgrid/mail', () => ({
   send: jest.fn()
 }));
 
+import Nodemailer from 'nodemailer';
+jest.mock('nodemailer', () => ({
+  createTransport: jest.fn()
+}));
+
 const SESSION_SECRET = process.env.SESSION_SECRET || 'mit tsl teacher moments';
 const error = new Error('something unexpected happened');
 
@@ -30,7 +35,8 @@ jest.mock('../../service/auth/db', () => {
     createUser: jest.fn(),
     getUserById: jest.fn(),
     getUserByProps: jest.fn(),
-    updateUser: jest.fn()
+    updateUser: jest.fn(),
+    updateUserWhere: jest.fn()
   };
 });
 
@@ -63,6 +69,8 @@ function mockRespondWithUser(user) {
   );
 }
 
+jest.mock('password-generator', () => () => 'GENERATED PASSWORD');
+
 describe('/api/auth/*', () => {
   let user;
 
@@ -78,10 +86,13 @@ describe('/api/auth/*', () => {
         next();
       })
     );
+    process.env.DCSS_BRAND_NAME_TITLE = 'BRAND X';
   });
 
   afterEach(() => {
     jest.resetAllMocks();
+    delete process.env.DCSS_BRAND_NAME_TITLE;
+    delete process.env.SENDGRID_API_KEY;
   });
 
   describe('/api/auth/me', () => {
@@ -589,41 +600,376 @@ describe('/api/auth/*', () => {
   describe('/api/auth/reset', () => {
     const path = '/api/auth/reset';
 
-    test('success', async () => {
-      mw.resetUserPassword.mockImplementation(async (req, res) => {
-        res.json({ reset: true, reason: 'Success' });
+    describe('success', () => {
+      test('success', async () => {
+        mw.resetUserPassword.mockImplementation(async (req, res) => {
+          res.json({ reset: true, reason: 'Success' });
+        });
+
+        const body = {
+          email: 'super@email.com'
+        };
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "Success",
+            "reset": true,
+          }
+        `);
+      });
+      test('Nodemailer', async () => {
+        mw.resetUserPassword.mockImplementation(amw.resetUserPassword);
+
+        let calls = 0;
+        db.getUserByProps.mockImplementation(() => {
+          if (!calls) {
+            calls++;
+            return false;
+          }
+          return defaultSuperUser;
+        });
+
+        const sendMail = jest.fn();
+
+        Nodemailer.createTransport.mockImplementation(
+          jest.fn(() => {
+            return {
+              sendMail
+            };
+          })
+        );
+
+        const body = {
+          email: 'super@email.com'
+        };
+
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "Success",
+            "reset": true,
+          }
+        `);
+
+        expect(Nodemailer.createTransport.mock.calls[0][0]).toMatchSnapshot({
+          auth: {
+            pass: expect.any(String),
+            user: expect.any(String)
+          }
+        });
+
+        expect(sendMail.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "from": "BRAND X <teachermoments@mit.edu>",
+              "html": "<p>You are receiving this email because a request was made to reset your BRAND X password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+          <p>
+          Single-use password: <code>GENERATED PASSWORD</code>
+          </p>
+
+          <p>
+          <a href=\\"undefined/settings\\">Click here to update your account settings: undefined/settings</a>
+          </p>
+
+          <p>
+          <small>
+          Massachusetts Institute of Technology NE49<br>
+          600 Technology Square<br>
+          Cambridge, MA 02139
+          </small>
+          </p>
+          ",
+              "subject": "BRAND X Single-use password request",
+              "text": "
+          You are receiving this email because a request was made to reset your BRAND X password.
+          The following password may only be used once. After you've logged in, go to Settings and update your password.
+
+
+
+          Single-use password: GENERATED PASSWORD
+
+
+
+          Click here to update your account settings: undefined/settings
+
+
+          ------------------------------------------
+          Massachusetts Institute of Technology NE49
+          600 Technology Square
+          Cambridge, MA 02139
+          ",
+              "to": "",
+            },
+          ]
+        `);
       });
 
-      const body = {
-        email: 'super@email.com'
-      };
-      const response = await request({ path, body, method: 'post' });
-      expect(await response.json()).toMatchInlineSnapshot(`
-        Object {
-          "reason": "Success",
-          "reset": true,
-        }
-      `);
+      test('Sendgrid', async () => {
+        process.env.SENDGRID_API_KEY = 'x';
+        mw.resetUserPassword.mockImplementation(amw.resetUserPassword);
+
+        let calls = 0;
+        db.getUserByProps.mockImplementation(() => {
+          if (!calls) {
+            calls++;
+            return false;
+          }
+          return defaultSuperUser;
+        });
+
+        const body = {
+          email: 'super@email.com'
+        };
+
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "Success",
+            "reset": true,
+          }
+        `);
+
+        expect(Sendgrid.send.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "from": "BRAND X <teachermoments@mit.edu>",
+              "html": "<p>You are receiving this email because a request was made to reset your BRAND X password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+          <p>
+          Single-use password: <code>GENERATED PASSWORD</code>
+          </p>
+
+          <p>
+          <a href=\\"undefined/settings\\">Click here to update your account settings: undefined/settings</a>
+          </p>
+
+          <p>
+          <small>
+          Massachusetts Institute of Technology NE49<br>
+          600 Technology Square<br>
+          Cambridge, MA 02139
+          </small>
+          </p>
+          ",
+              "subject": "BRAND X Single-use password request",
+              "text": "
+          You are receiving this email because a request was made to reset your BRAND X password.
+          The following password may only be used once. After you've logged in, go to Settings and update your password.
+
+
+
+          Single-use password: GENERATED PASSWORD
+
+
+
+          Click here to update your account settings: undefined/settings
+
+
+          ------------------------------------------
+          Massachusetts Institute of Technology NE49
+          600 Technology Square
+          Cambridge, MA 02139
+          ",
+              "to": "",
+            },
+          ]
+        `);
+      });
     });
 
-    test('failure', async () => {
-      mw.resetUserPassword.mockImplementation(async (req, res) => {
-        res.json({
-          reset: false,
-          reason: 'The email provided does not match any existing account.'
+    describe('failure', () => {
+      test('Raw email', async () => {
+        mw.resetUserPassword.mockImplementation(amw.resetUserPassword);
+
+        db.getUserByProps.mockImplementation(() => {
+          return defaultSuperUser;
         });
+
+        const body = {
+          email: 'super@email.com'
+        };
+
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "Cannot use a plain text email address to generate a password reset request",
+            "reset": false,
+          }
+        `);
+
+        expect(db.getUserByProps.mock.calls.length).toBe(1);
       });
 
-      const body = {
-        email: 'super@email.com'
-      };
-      const response = await request({ path, body, method: 'post' });
-      expect(await response.json()).toMatchInlineSnapshot(`
-        Object {
-          "reason": "The email provided does not match any existing account.",
-          "reset": false,
-        }
-      `);
+      test('Nodemailer', async () => {
+        mw.resetUserPassword.mockImplementation(amw.resetUserPassword);
+
+        let calls = 0;
+        db.getUserByProps.mockImplementation(() => {
+          if (!calls) {
+            calls++;
+            return false;
+          }
+          return defaultSuperUser;
+        });
+
+        const sendMail = jest.fn();
+
+        Nodemailer.createTransport.mockImplementation(
+          jest.fn(() => {
+            return {
+              sendMail() {
+                throw error;
+              }
+            };
+          })
+        );
+
+        const body = {
+          email: 'super@email.com'
+        };
+
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "something unexpected happened",
+            "reset": false,
+          }
+        `);
+
+        expect(Nodemailer.createTransport.mock.calls[0][0]).toMatchSnapshot({
+          auth: {
+            pass: expect.any(String),
+            user: expect.any(String)
+          }
+        });
+
+        expect(sendMail.mock.calls.length).toBe(0);
+      });
+
+      test('Sendgrid', async () => {
+        process.env.SENDGRID_API_KEY = 'x';
+        mw.resetUserPassword.mockImplementation(amw.resetUserPassword);
+
+        let calls = 0;
+        db.getUserByProps.mockImplementation(() => {
+          if (!calls) {
+            calls++;
+            return false;
+          }
+          return defaultSuperUser;
+        });
+
+        const body = {
+          email: 'super@email.com'
+        };
+
+        Sendgrid.send.mockImplementation(() => {
+          throw error;
+        });
+
+        const response = await request({
+          path,
+          body,
+          method: 'post',
+          status: 401
+        });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "error": true,
+            "message": "something unexpected happened",
+          }
+        `);
+
+        expect(Sendgrid.send.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "from": "BRAND X <teachermoments@mit.edu>",
+              "html": "<p>You are receiving this email because a request was made to reset your BRAND X password. The following password may only be used once. After you've logged in, go to Settings and update your password.</p>
+          <p>
+          Single-use password: <code>GENERATED PASSWORD</code>
+          </p>
+
+          <p>
+          <a href=\\"undefined/settings\\">Click here to update your account settings: undefined/settings</a>
+          </p>
+
+          <p>
+          <small>
+          Massachusetts Institute of Technology NE49<br>
+          600 Technology Square<br>
+          Cambridge, MA 02139
+          </small>
+          </p>
+          ",
+              "subject": "BRAND X Single-use password request",
+              "text": "
+          You are receiving this email because a request was made to reset your BRAND X password.
+          The following password may only be used once. After you've logged in, go to Settings and update your password.
+
+
+
+          Single-use password: GENERATED PASSWORD
+
+
+
+          Click here to update your account settings: undefined/settings
+
+
+          ------------------------------------------
+          Massachusetts Institute of Technology NE49
+          600 Technology Square
+          Cambridge, MA 02139
+          ",
+              "to": "",
+            },
+          ]
+        `);
+      });
+
+      test('no user', async () => {
+        process.env.SENDGRID_API_KEY = 'x';
+        mw.resetUserPassword.mockImplementation(amw.resetUserPassword);
+
+        let calls = 0;
+        db.getUserByProps.mockImplementation(() => {
+          if (!calls) {
+            calls++;
+            return false;
+          }
+          return null;
+        });
+
+        const body = {
+          email: 'super@email.com'
+        };
+
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "The email provided does not match any existing account.",
+            "reset": false,
+          }
+        `);
+      });
+
+      test('failure', async () => {
+        mw.resetUserPassword.mockImplementation(async (req, res) => {
+          res.json({
+            reset: false,
+            reason: 'The email provided does not match any existing account.'
+          });
+        });
+
+        const body = {
+          email: 'super@email.com'
+        };
+        const response = await request({ path, body, method: 'post' });
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "reason": "The email provided does not match any existing account.",
+            "reset": false,
+          }
+        `);
+      });
     });
   });
 

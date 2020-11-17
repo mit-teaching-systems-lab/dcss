@@ -202,11 +202,15 @@ async function resetUserPasswordAsync(req, res) {
     const { email } = req.body;
     const existing = await db.getUserByProps({ email });
     if (existing) {
-      res.json({ reset: false });
+      res.json({
+        reset: false,
+        reason: "Cannot use a plain text email address to generate a password reset request"
+      });
+      return;
     }
   }
 
-  const href = req.body.href.replace(/\/reset/, '');
+  const origin = `${req.body.origin}/settings`;
   const email = decrypt(req.body.email);
 
   const user = await db.getUserByProps({ email });
@@ -248,7 +252,7 @@ The following password may only be used once. After you've logged in, go to Sett
 \n\n
 Single-use password: ${password}\n\n
 
-Manage your account here: ${href}
+Click here to update your account settings: ${origin}
 
 
 ------------------------------------------
@@ -262,7 +266,7 @@ Single-use password: <code>${password}</code>
 </p>
 
 <p>
-<a href="${href}">Manage your account here: ${href}</a>
+<a href="${origin}">Click here to update your account settings: ${origin}</a>
 </p>
 
 <p>
@@ -280,8 +284,10 @@ Cambridge, MA 02139
       text,
       html
     };
+
     if (process.env.SENDGRID_API_KEY) {
       try {
+        // console.log(message);
         await Sendgrid.send(message);
       } catch (error) {
         error.status = 401;
@@ -298,7 +304,7 @@ Cambridge, MA 02139
       });
 
       try {
-        console.log(message);
+        // console.log(message);
         await transport.sendMail(message);
       } catch (error) {
         reset = false;
