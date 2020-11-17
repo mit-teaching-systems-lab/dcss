@@ -50,7 +50,7 @@ test('CREATE_COHORT_SUCCESS', async () => {
         "headers": Object {
           "Content-Type": "application/json",
         },
-        "method": "PUT",
+        "method": "POST",
       },
     ]
   `);
@@ -82,7 +82,7 @@ test('CREATE_COHORT_ERROR', async () => {
         "headers": Object {
           "Content-Type": "application/json",
         },
-        "method": "PUT",
+        "method": "POST",
       },
     ]
   `);
@@ -124,7 +124,7 @@ describe('SET_COHORT_SUCCESS', () => {
           "headers": Object {
             "Content-Type": "application/json",
           },
-          "method": "POST",
+          "method": "PUT",
         },
       ]
     `);
@@ -159,7 +159,7 @@ describe('SET_COHORT_SUCCESS', () => {
           "headers": Object {
             "Content-Type": "application/json",
           },
-          "method": "POST",
+          "method": "PUT",
         },
       ]
     `);
@@ -193,7 +193,7 @@ describe('SET_COHORT_SUCCESS', () => {
           "headers": Object {
             "Content-Type": "application/json",
           },
-          "method": "POST",
+          "method": "PUT",
         },
       ]
     `);
@@ -223,7 +223,7 @@ test('SET_COHORT_ERROR', async () => {
         "headers": Object {
           "Content-Type": "application/json",
         },
-        "method": "POST",
+        "method": "PUT",
       },
     ]
   `);
@@ -251,7 +251,7 @@ test('SET_COHORT_SCENARIOS_SUCCESS', async () => {
         "headers": Object {
           "Content-Type": "application/json",
         },
-        "method": "POST",
+        "method": "PUT",
       },
     ]
   `);
@@ -280,7 +280,7 @@ test('SET_COHORT_SCENARIOS_ERROR', async () => {
         "headers": Object {
           "Content-Type": "application/json",
         },
-        "method": "POST",
+        "method": "PUT",
       },
     ]
   `);
