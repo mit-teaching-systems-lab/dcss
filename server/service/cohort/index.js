@@ -41,7 +41,7 @@ const {
 const requiredSiteRoles = ['super_admin', 'admin', 'researcher', 'facilitator'];
 const requiredCohortRoles = ['owner', 'facilitator'];
 
-router.put('/', [
+router.post('/', [
   requireUser,
   requireUserRole(requiredSiteRoles),
   validateRequestBody,
@@ -67,7 +67,7 @@ router.post('/:id/roles/add', [
   validateRequestBody,
   addCohortUserRole
 ]);
-router.post('/:id/scenarios', [
+router.put('/:id/scenarios', [
   requireUser,
   requireUserRole(requiredSiteRoles),
   // TODO: activate this step
@@ -75,7 +75,7 @@ router.post('/:id/scenarios', [
   validateRequestBody,
   setCohortScenarios
 ]);
-router.post('/:id', [
+router.put('/:id', [
   requireUser,
   requireUserRole(requiredSiteRoles),
   // TODO: activate this step

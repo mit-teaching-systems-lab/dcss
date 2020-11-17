@@ -273,14 +273,12 @@ describe('/api/cohort/*', () => {
     jest.resetAllMocks();
   });
 
-  describe('/api/cohort/ (put)', () => {
+  describe('/api/cohort/', () => {
     const path = '/api/cohort/';
-    const method = 'put';
-    const body = { name: 'A New Cohort' };
 
-    beforeEach(() => {});
-
-    test('success', async () => {
+    test('post success', async () => {
+      const method = 'post';
+      const body = { name: 'A New Cohort' };
       const response = await request({ path, method, body });
       expect(await response.json()).toMatchSnapshot();
       expect(db.createCohort.mock.calls.length).toBe(1);
@@ -293,10 +291,18 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id (get)', () => {
+  describe('/api/cohort/:id', () => {
     const path = '/api/cohort/1';
 
-    test('success', async () => {
+    beforeEach(() => {
+      rolesmw.requireUserRole.mockImplementation(() => [
+        (req, res, next) => {
+          next();
+        }
+      ]);
+    });
+
+    test('get success', async () => {
       const response = await request({ path });
       expect(await response.json()).toMatchSnapshot();
       expect(db.getCohort.mock.calls.length).toBe(1);
@@ -306,20 +312,10 @@ describe('/api/cohort/*', () => {
         ]
       `);
     });
-  });
 
-  describe('/api/cohort/:id (post)', () => {
-    const path = '/api/cohort/1';
-    const method = 'post';
+    describe('put success', () => {
+      const method = 'put';
 
-    beforeEach(() => {
-      rolesmw.requireUserRole.mockImplementation(() => [
-        (req, res, next) => {
-          next();
-        }
-      ]);
-    });
-    describe('success', () => {
       test('has updates', async () => {
         const body = { name: 'x', deleted_at: 'y' };
         const response = await request({ path, method, body });
@@ -348,27 +344,27 @@ describe('/api/cohort/*', () => {
         `);
       });
     });
-  });
 
-  describe('/api/cohort/:id/scenarios', () => {
-    const path = '/api/cohort/1/scenarios';
-    const method = 'post';
+    describe('/api/cohort/:id/scenarios', () => {
+      const path = '/api/cohort/1/scenarios';
+      const method = 'put';
 
-    test('success', async () => {
-      const body = { scenarios: [10, 20, 30] };
-      const response = await request({ path, method, body });
-      expect(await response.json()).toMatchSnapshot();
-      expect(db.setCohortScenarios.mock.calls.length).toBe(1);
-      expect(db.setCohortScenarios.mock.calls[0]).toMatchInlineSnapshot(`
-        Array [
-          1,
+      test('put success', async () => {
+        const body = { scenarios: [10, 20, 30] };
+        const response = await request({ path, method, body });
+        expect(await response.json()).toMatchSnapshot();
+        expect(db.setCohortScenarios.mock.calls.length).toBe(1);
+        expect(db.setCohortScenarios.mock.calls[0]).toMatchInlineSnapshot(`
           Array [
-            10,
-            20,
-            30,
-          ],
-        ]
-      `);
+            1,
+            Array [
+              10,
+              20,
+              30,
+            ],
+          ]
+        `);
+      });
     });
   });
 

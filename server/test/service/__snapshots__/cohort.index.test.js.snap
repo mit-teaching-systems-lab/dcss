@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/api/cohort/* /api/cohort/ (put) success 1`] = `
+exports[`/api/cohort/* /api/cohort/ post success 1`] = `
 Object {
   "cohort": Object {
     "created_at": "2020-07-24T14:52:28.429Z",
@@ -153,7 +153,17 @@ Object {
 }
 `;
 
-exports[`/api/cohort/* /api/cohort/:id (get) success 1`] = `
+exports[`/api/cohort/* /api/cohort/:id /api/cohort/:id/scenarios put success 1`] = `
+Object {
+  "scenarios": Array [
+    10,
+    20,
+    30,
+  ],
+}
+`;
+
+exports[`/api/cohort/* /api/cohort/:id get success 1`] = `
 Object {
   "cohort": Object {
     "created_at": "2020-07-24T14:52:28.429Z",
@@ -306,7 +316,7 @@ Object {
 }
 `;
 
-exports[`/api/cohort/* /api/cohort/:id (post) success has updates 1`] = `
+exports[`/api/cohort/* /api/cohort/:id put success has updates 1`] = `
 Object {
   "cohort": Object {
     "created_at": "2020-07-24T14:52:28.429Z",
@@ -459,7 +469,7 @@ Object {
 }
 `;
 
-exports[`/api/cohort/* /api/cohort/:id (post) success no updates 1`] = `
+exports[`/api/cohort/* /api/cohort/:id put success no updates 1`] = `
 Object {
   "cohort": Object {
     "created_at": "2020-07-24T14:52:28.429Z",
@@ -1108,16 +1118,6 @@ Object {
       "response_id": 1,
       "scenario_id": 42,
     },
-  ],
-}
-`;
-
-exports[`/api/cohort/* /api/cohort/:id/scenarios success 1`] = `
-Object {
-  "scenarios": Array [
-    10,
-    20,
-    30,
   ],
 }
 `;

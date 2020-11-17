@@ -24,7 +24,7 @@ export let createCohort = ({ name }) => async dispatch => {
   try {
     const res = await (
       await fetch('/api/cohort', {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -54,7 +54,7 @@ export let setCohortScenarios = cohort => async dispatch => {
     });
     const res = await (
       await fetch(`/api/cohort/${cohort.id}/scenarios`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -90,7 +90,7 @@ export let setCohort = cohort => async dispatch => {
     const body = JSON.stringify(updates);
     const res = await (
       await fetch(`/api/cohort/${cohort.id}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
