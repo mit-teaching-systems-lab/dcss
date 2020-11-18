@@ -1,6 +1,3 @@
-DROP TRIGGER IF EXISTS chat_message_insert_trigger ON chat_message;
-DROP FUNCTION IF EXISTS emit_new_chat_message;
-
 CREATE FUNCTION emit_new_chat_message() RETURNS trigger AS $$
 DECLARE
 BEGIN

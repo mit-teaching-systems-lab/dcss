@@ -1,6 +1,3 @@
--- DROP TRIGGER IF EXISTS notification_insert_trigger ON notification;
--- DROP FUNCTION IF EXISTS emit_new_notification;
-
 CREATE FUNCTION emit_new_notification() RETURNS trigger AS $$
 DECLARE
 BEGIN
