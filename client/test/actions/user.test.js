@@ -77,7 +77,7 @@ describe('SET_USER_SUCCESS', () => {
       Array [
         "/api/auth/update",
         Object {
-          "body": "{\\"password\\":\\"U2FsdGVkX1+xxYz0QxNDusd/PGpDCRPl4Ux+iYzJ/Rc=\\"}",
+          "body": "{\\"password\\":\\"U2FsdGVkX18LIw6QFv4MXizw8GV/VvO5SXYJ2BsfTQw=\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -158,7 +158,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"password\\":\\"U2FsdGVkX185FG7HgF4optlORJU17XwbdqivFSGgub4=\\"}",
+          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"U2FsdGVkX18KV8vlCdT7kp52nwQbSNM13EgNbuuwo6g=\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -186,7 +186,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"password\\":\\"U2FsdGVkX19c06Y6uoGHGIlfT4I7ihc6gVXjHbGA6QI=\\"}",
+          "body": "{\\"username\\":\\"username\\",\\"password\\":\\"U2FsdGVkX19K2U6iuck5GdcFddgecwcE7EM97q78iH0=\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -214,7 +214,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"password\\":\\"U2FsdGVkX1/hXmHvVpGGAPfUiqZGlzdRSLbAdnsyVog=\\"}",
+          "body": "{\\"email\\":\\"a@a.com\\",\\"password\\":\\"U2FsdGVkX1/wJvViOJBT6ibJ2CtI/4W/0FkWg5n6qG4=\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -242,7 +242,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{}",
+          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -282,9 +282,20 @@ describe('GET_USER_ERROR', () => {
     };
 
     const returnValue = await store.dispatch(actions.signUp(params));
-    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`undefined`);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/auth/signup",
+        Object {
+          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"U2FsdGVkX18e6z8Hh9QweRZSl0s0DSn7QJLCVEOxRic=\\"}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
     expect(store.getState().errors.user.error).toMatchInlineSnapshot(
-      `undefined`
+      `[Error: something unexpected happened on the server]`
     );
     expect(returnValue).toBe(null);
   });
@@ -303,7 +314,7 @@ describe('Reset Password, no action type', () => {
       Array [
         "/api/auth/reset",
         Object {
-          "body": "{\\"email\\":\\"U2FsdGVkX1+SfKn+6FAIQY8JcIseC1rdkW05ppqGrzU=\\",\\"origin\\":\\"http://localhost\\"}",
+          "body": "{\\"email\\":\\"U2FsdGVkX19/t+DGT2f+KM3rc4476RHgny4WPE4AQpU=\\",\\"origin\\":\\"http://localhost\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -336,7 +347,7 @@ describe('Reset Password, no action type', () => {
       Array [
         "/api/auth/reset",
         Object {
-          "body": "{\\"email\\":\\"U2FsdGVkX18Jg5rrI2GyLX0+Ns7InmJiSE2JWG9pLKg=\\",\\"origin\\":\\"http://localhost\\"}",
+          "body": "{\\"email\\":\\"U2FsdGVkX1/lIfV1OmRIUHNY0IE86rKS3ZqJshxCMHk=\\",\\"origin\\":\\"http://localhost\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
