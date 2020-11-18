@@ -209,18 +209,17 @@ export class Cohorts extends React.Component {
       </Menu.Item.Tabbable>
     );
 
-    const menuItemSearchCohorts =
-      cohorts.length > itemsPerPage ? (
-        <Menu.Menu key="menu-right-search-cohorts" position="right">
-          <Menu.Item.Tabbable name="Search cohorts">
-            <Input
-              icon="search"
-              placeholder="Search..."
-              onChange={onCohortSearchChange}
-            />
-          </Menu.Item.Tabbable>
-        </Menu.Menu>
-      ) : null;
+    const menuItemSearchCohorts = cohorts.length ? (
+      <Menu.Menu key="menu-right-search-cohorts" position="right">
+        <Menu.Item.Tabbable name="Search cohorts">
+          <Input
+            icon="search"
+            placeholder="Search..."
+            onChange={onCohortSearchChange}
+          />
+        </Menu.Item.Tabbable>
+      </Menu.Menu>
+    ) : null;
 
     const left = [
       permissions.includes('create_cohort')
