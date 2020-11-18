@@ -23,11 +23,21 @@ class SocketManager {
   constructor(server) {
     this.io = SocketIO(server);
     this.io.on('connection', socket => {
-      socketlog('Connected');
+      socketlog('Connected', socket.id);
 
+
+      // TODO: Add this to types?
       notifier.on('new_notification', data => {
         console.log('new_notification', data);
+
+        socket.broadcast.emit(NOTIFICATION, data);
       });
+      setTimeout(() => {
+        socket.broadcast.emit(NOTIFICATION, {
+          a: 1,
+          broadcast: true
+        });
+      }, 3000);
     });
   }
 }
