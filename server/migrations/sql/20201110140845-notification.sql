@@ -15,11 +15,20 @@ CREATE TABLE notification (
 
 /*
 
+
+DELETE FROM notification;
+
+INSERT INTO notification (props, rules, type)
+VALUES
+  ('{"header": "Some notification title","content": "A description of the notification. This should be longer and more informative than the title.","className": "","type": "info","color": "pink", "icon": "","size": "large","timeout": null}', '{"session.isLoggedIn": true, "user.id": 2}', 'modal')
+;
+
+
 `props` describe the props that will be passed to the component
 
   {
-    title: String
-    description:
+    header: String
+    content:
       contains the HTML that will be displayed in the
       notification. This is where action items must be placed, eg.:
 
@@ -36,7 +45,7 @@ CREATE TABLE notification (
       red | orange | yellow | olive | green | teal | blue |
       violet | purple | pink | brown | grey | black
     icon: icon name,
-    size: mini | tiny | small | large | big | huge | massive
+    size: mini | tiny | small | large | fullscreen
     timeout: seconds until notification dissappears, defaults to
   }
 
