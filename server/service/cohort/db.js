@@ -149,7 +149,7 @@ exports.getMyCohorts = async user_id => {
     ) cur
     ON cohort.id = cur.cohort_id
     WHERE cur.user_id = ${user_id}
-    AND cohort.deleted_at IS NOT NULL
+    AND cohort.deleted_at IS NULL
     ORDER BY cohort.created_at DESC;
   `);
 
