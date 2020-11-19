@@ -4,8 +4,9 @@ import Socket from 'socket.io-client';
 
 import {
   // Client -> Server
-  AGENT_JOINED,
-  USER_JOINED,
+  AGENT_JOIN,
+  USER_JOIN,
+  USER_PART,
   NOTIFICATION,
   // Server -> Client
   AGENT_ADDED,
@@ -14,20 +15,37 @@ import {
   NEW_MESSAGE
 } from '@server/service/socket/types';
 
+export * from '@server/service/socket/types';
+
 function getDisplayName(WrappedComponent) {
   return WrappedComponent.displayName || WrappedComponent.name || 'Component';
 }
+
+/* PORT is "embedded" by webpack */
+const port = typeof PORT !== 'undefined' ? PORT : 3000;
+const endpoint = location.origin.replace(/:\d.*/, `:${port}`);
+const transports = ['websocket', 'polling'];
+
+let socket = null;
+
+function getSocketOrCreate() {
+  if (socket) {
+    return socket;
+  }
+  // This block provides a TDZ boundary
+  {
+    socket = new Socket(endpoint, { transports });
+    return socket;
+  }
+}
+
 export default function(Component) {
-  /* PORT is "embedded" by webpack */
-  const port = typeof PORT !== 'undefined' ? PORT : 3000;
-  const endpoint = location.origin.replace(/:\d.*/, `:${port}`);
-  const socket = new Socket(endpoint, {
-    transports: ['websocket']
-  });
+  let socket = getSocketOrCreate();
   class withSocket extends React.Component {
     componentWillUnmount() {
       if (socket) {
         socket.disconnect();
+        socket = null;
       }
     }
     render() {
