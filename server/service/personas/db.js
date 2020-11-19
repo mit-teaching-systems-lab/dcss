@@ -17,10 +17,8 @@ exports.linkPersonaToScenario = async (persona_id, scenario_id) => {
   });
 };
 
-exports.createPersona = async (props) => {
-  const {
-    author_id, name, color, description, scenario_id
-  } = props;
+exports.createPersona = async props => {
+  const { author_id, name, color, description, scenario_id } = props;
 
   if (!author_id || !name || !color || !description) {
     throw new Error(
@@ -58,7 +56,7 @@ exports.getPersonaById = async id => {
   return result.rowCount ? result.rows[0] : null;
 };
 
-exports.getPersonasByUserId = async (user_id) => {
+exports.getPersonasByUserId = async user_id => {
   const result = await query(sql`
     SELECT *
     FROM persona
@@ -69,13 +67,8 @@ exports.getPersonasByUserId = async (user_id) => {
   return result.rows;
 };
 
-exports.getPersonasByScenarioId = async (scenario_id) => {
+exports.getPersonasByScenarioId = async scenario_id => {
   const result = await query(sql`
-    SELECT *
-    FROM persona
-    WHERE author_id = ${user_id}
-    ORDER BY created_at DESC
-
     SELECT persona.*
     FROM persona
     INNER JOIN scenario_persona
@@ -92,7 +85,6 @@ exports.getPersonas = async () => {
   const result = await query(sql`
     SELECT *
     FROM persona
-    WHERE author_id = ${user_id}
     ORDER BY created_at DESC
   `);
 

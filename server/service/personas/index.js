@@ -14,13 +14,10 @@ const {
   getPersonaById,
   setPersonaById,
   deletePersonaById,
-  linkPersonaToScenario,
+  linkPersonaToScenario
 } = require('./endpoints');
 
-router.get('/', [
-  requireUser,
-  getPersonas
-]);
+router.get('/', [requireUser, getPersonas]);
 
 router.post('/', [
   requireUser,
@@ -28,25 +25,13 @@ router.post('/', [
   createPersona
 ]);
 
-router.get('/my', [
-  requireUser,
-  getPersonasByUserId
-]);
+router.get('/my', [requireUser, getPersonasByUserId]);
 
-router.get('/user/:id', [
-  requireUser,
-  getPersonasByUserId
-]);
+router.get('/user/:id', [requireUser, getPersonasByUserId]);
 
-router.get('/scenario/:id', [
-  requireUser,
-  getPersonasByScenarioId
-]);
+router.get('/scenario/:id', [requireUser, getPersonasByScenarioId]);
 
-router.get('/:id', [
-  requireUser,
-  getPersonaById
-]);
+router.get('/:id', [requireUser, getPersonaById]);
 
 router.put('/:id', [
   requireUser,

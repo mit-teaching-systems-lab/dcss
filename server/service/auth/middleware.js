@@ -204,7 +204,8 @@ async function resetUserPasswordAsync(req, res) {
     if (existing) {
       res.json({
         reset: false,
-        reason: "Cannot use a plain text email address to generate a password reset request"
+        reason:
+          'Cannot use a plain text email address to generate a password reset request'
       });
       return;
     }

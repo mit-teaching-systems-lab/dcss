@@ -12,6 +12,21 @@ import * as types from '../../actions/types';
 import Storage from '../../util/Storage';
 jest.mock('../../util/Storage');
 
+import Crypto from 'crypto-js';
+jest.mock('crypto-js', () => {
+  return {
+    AES: {
+      encrypt() {
+        return {
+          toString() {
+            return 'X';
+          }
+        };
+      }
+    }
+  };
+});
+
 const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
 let store;
@@ -77,7 +92,7 @@ describe('SET_USER_SUCCESS', () => {
       Array [
         "/api/auth/update",
         Object {
-          "body": "{\\"password\\":\\"U2FsdGVkX18LIw6QFv4MXizw8GV/VvO5SXYJ2BsfTQw=\\"}",
+          "body": "{\\"password\\":\\"X\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -158,7 +173,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"U2FsdGVkX18KV8vlCdT7kp52nwQbSNM13EgNbuuwo6g=\\"}",
+          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"X\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -186,7 +201,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"username\\":\\"username\\",\\"password\\":\\"U2FsdGVkX19K2U6iuck5GdcFddgecwcE7EM97q78iH0=\\"}",
+          "body": "{\\"username\\":\\"username\\",\\"password\\":\\"X\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -214,7 +229,7 @@ describe('GET_USER_SUCCESS', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"email\\":\\"a@a.com\\",\\"password\\":\\"U2FsdGVkX1/wJvViOJBT6ibJ2CtI/4W/0FkWg5n6qG4=\\"}",
+          "body": "{\\"email\\":\\"a@a.com\\",\\"password\\":\\"X\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -286,7 +301,7 @@ describe('GET_USER_ERROR', () => {
       Array [
         "/api/auth/signup",
         Object {
-          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"U2FsdGVkX18e6z8Hh9QweRZSl0s0DSn7QJLCVEOxRic=\\"}",
+          "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"X\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -314,7 +329,7 @@ describe('Reset Password, no action type', () => {
       Array [
         "/api/auth/reset",
         Object {
-          "body": "{\\"email\\":\\"U2FsdGVkX19/t+DGT2f+KM3rc4476RHgny4WPE4AQpU=\\",\\"origin\\":\\"http://localhost\\"}",
+          "body": "{\\"email\\":\\"X\\",\\"origin\\":\\"http://localhost\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -347,7 +362,7 @@ describe('Reset Password, no action type', () => {
       Array [
         "/api/auth/reset",
         Object {
-          "body": "{\\"email\\":\\"U2FsdGVkX1/lIfV1OmRIUHNY0IE86rKS3ZqJshxCMHk=\\",\\"origin\\":\\"http://localhost\\"}",
+          "body": "{\\"email\\":\\"X\\",\\"origin\\":\\"http://localhost\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },

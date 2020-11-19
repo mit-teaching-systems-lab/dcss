@@ -6,7 +6,7 @@ const {
   USER_JOIN,
   USER_PART,
   NEW_MESSAGE,
-  NOTIFICATION,
+  NOTIFICATION
 } = require('./types');
 
 function socketlog(...args) {

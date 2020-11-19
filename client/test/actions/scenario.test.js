@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import assert from 'assert';
 import {
+  createMockStore,
   createPseudoRealStore,
   fetchImplementation,
   makeById,
@@ -13,6 +14,8 @@ jest.mock('../../util/Storage');
 
 const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
+
+let mockStore;
 let store;
 
 beforeAll(() => {
@@ -24,6 +27,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
+  mockStore = createMockStore({});
   store = createPseudoRealStore({});
   fetch.mockImplementation(() => {});
 });
@@ -40,22 +44,110 @@ test('COPY_SCENARIO_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { scenario });
 
   const returnValue = await store.dispatch(actions.copyScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/scenarios/1/copy',
-    { method: 'POST' }
-  ]);
-  assert.deepEqual(returnValue, scenario);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/copy",
+      Object {
+        "method": "POST",
+      },
+    ]
+  `);
+  expect(returnValue).toEqual(scenario);
+
+  await mockStore.dispatch(actions.copyScenario(1));
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "scenario": Object {
+          "author": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "personalname": "Super User",
+            "roles": Array [
+              "participant",
+              "super_admin",
+              "facilitator",
+              "researcher",
+            ],
+            "username": "super",
+          },
+          "categories": Array [],
+          "consent": Object {
+            "id": 57,
+            "prose": "<p>Educators and researchers in the <a href=\\"http://tsl.mit.edu/\\">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href=\\"https://couhes.mit.edu/\\">MIT's IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>",
+          },
+          "created_at": "2020-02-31T17:50:28.029Z",
+          "deleted_at": null,
+          "description": "A scenario about \\"Multiplayer Scenario\\"",
+          "finish": Object {
+            "components": Array [
+              Object {
+                "html": "<h2>Thanks for participating!</h2>",
+                "type": "Text",
+              },
+            ],
+            "id": 1,
+            "is_finish": true,
+            "title": "",
+          },
+          "id": 42,
+          "lock": Object {
+            "created_at": "2020-01-01T23:54:19.934Z",
+            "ended_at": null,
+            "scenario_id": 42,
+            "user_id": 999,
+          },
+          "status": 1,
+          "title": "Multiplayer Scenario",
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_author": true,
+              "is_reviewer": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "super",
+              ],
+              "username": "super",
+            },
+          ],
+        },
+        "type": "COPY_SCENARIO_SUCCESS",
+      },
+    ]
+  `);
 });
 
 test('COPY_SCENARIO_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.copyScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/scenarios/1/copy',
-    { method: 'POST' }
-  ]);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/copy",
+      Object {
+        "method": "POST",
+      },
+    ]
+  `);
+  expect(returnValue).toBe(null);
+
+  await mockStore.dispatch(actions.copyScenario(1));
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "error": Object {
+          "error": [Error: something unexpected happened on the server],
+        },
+        "type": "COPY_SCENARIO_ERROR",
+      },
+    ]
+  `);
 });
 
 test('DELETE_SCENARIO_SUCCESS', async () => {
@@ -66,22 +158,110 @@ test('DELETE_SCENARIO_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { scenario });
 
   const returnValue = await store.dispatch(actions.deleteScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/scenarios/1',
-    { method: 'DELETE' }
-  ]);
-  assert.deepEqual(returnValue, scenario);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1",
+      Object {
+        "method": "DELETE",
+      },
+    ]
+  `);
+  expect(returnValue).toEqual(scenario);
+
+  await mockStore.dispatch(actions.deleteScenario(1));
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "scenario": Object {
+          "author": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "personalname": "Super User",
+            "roles": Array [
+              "participant",
+              "super_admin",
+              "facilitator",
+              "researcher",
+            ],
+            "username": "super",
+          },
+          "categories": Array [],
+          "consent": Object {
+            "id": 57,
+            "prose": "<p>Educators and researchers in the <a href=\\"http://tsl.mit.edu/\\">MIT Teaching Systems Lab</a> would like to include your responses in research about improving this experience and learning how to better prepare teachers for the classroom.<br><br>All data you enter is protected by <a href=\\"https://couhes.mit.edu/\\">MIT's IRB review procedures</a>.</p><p>None of your personal information will be shared.<br><br>More details are available in the consent form itself.</p>",
+          },
+          "created_at": "2020-02-31T17:50:28.029Z",
+          "deleted_at": null,
+          "description": "A scenario about \\"Multiplayer Scenario\\"",
+          "finish": Object {
+            "components": Array [
+              Object {
+                "html": "<h2>Thanks for participating!</h2>",
+                "type": "Text",
+              },
+            ],
+            "id": 1,
+            "is_finish": true,
+            "title": "",
+          },
+          "id": 42,
+          "lock": Object {
+            "created_at": "2020-01-01T23:54:19.934Z",
+            "ended_at": null,
+            "scenario_id": 42,
+            "user_id": 999,
+          },
+          "status": 1,
+          "title": "Multiplayer Scenario",
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_author": true,
+              "is_reviewer": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "super",
+              ],
+              "username": "super",
+            },
+          ],
+        },
+        "type": "DELETE_SCENARIO_SUCCESS",
+      },
+    ]
+  `);
 });
 
 test('DELETE_SCENARIO_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.deleteScenario(1));
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/scenarios/1',
-    { method: 'DELETE' }
-  ]);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1",
+      Object {
+        "method": "DELETE",
+      },
+    ]
+  `);
+  expect(returnValue).toBe(null);
+
+  await mockStore.dispatch(actions.deleteScenario(1));
+  expect(mockStore.getActions()).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "error": Object {
+          "error": [Error: something unexpected happened on the server],
+        },
+        "type": "DELETE_SCENARIO_ERROR",
+      },
+    ]
+  `);
 });
 
 describe('GET_SCENARIO_SUCCESS', () => {
@@ -93,8 +273,15 @@ describe('GET_SCENARIO_SUCCESS', () => {
     fetchImplementation(fetch, 200, { scenario });
 
     const returnValue = await store.dispatch(actions.getScenario(1, {}));
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1']);
-    assert.deepEqual(returnValue, scenario);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1",
+      ]
+    `);
+    expect(returnValue).toEqual(scenario);
+
+    await mockStore.dispatch(actions.getScenario(1, {}));
+    expect(mockStore.getActions()).toMatchSnapshot();
   });
 
   test('getScenario, options.lock', async () => {
@@ -107,8 +294,12 @@ describe('GET_SCENARIO_SUCCESS', () => {
     const returnValue = await store.dispatch(
       actions.getScenario(1, { lock: true })
     );
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/lock']);
-    assert.deepEqual(returnValue, scenario);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1/lock",
+      ]
+    `);
+    expect(returnValue).toEqual(scenario);
   });
 
   test('getScenario, options.unlock', async () => {
@@ -121,8 +312,12 @@ describe('GET_SCENARIO_SUCCESS', () => {
     const returnValue = await store.dispatch(
       actions.getScenario(1, { unlock: true })
     );
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/unlock']);
-    assert.deepEqual(returnValue, scenario);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1/unlock",
+      ]
+    `);
+    expect(returnValue).toEqual(scenario);
   });
 
   test('addScenarioUserRole', async () => {
@@ -140,14 +335,18 @@ describe('GET_SCENARIO_SUCCESS', () => {
     const returnValue = await store.dispatch(
       actions.addScenarioUserRole(1, 2, 3)
     );
-    assert.deepEqual(fetch.mock.calls[0], [
-      '/api/scenarios/1/roles/add',
-      {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: '{"scenario_id":1,"user_id":2,"roles":[3]}'
-      }
-    ]);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1/roles/add",
+        Object {
+          "body": "{\\"scenario_id\\":1,\\"user_id\\":2,\\"roles\\":[3]}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
     assert.deepEqual(returnValue, payload);
   });
 
@@ -166,14 +365,18 @@ describe('GET_SCENARIO_SUCCESS', () => {
     const returnValue = await store.dispatch(
       actions.endScenarioUserRole(1, 2, 3)
     );
-    assert.deepEqual(fetch.mock.calls[0], [
-      '/api/scenarios/1/roles/end',
-      {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: '{"scenario_id":1,"user_id":2,"roles":[3]}'
-      }
-    ]);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1/roles/end",
+        Object {
+          "body": "{\\"scenario_id\\":1,\\"user_id\\":2,\\"roles\\":[3]}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
     assert.deepEqual(returnValue, payload);
   });
 });
@@ -183,8 +386,12 @@ describe('GET_SCENARIO_ERROR', () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.getScenario(1));
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1']);
-    assert.equal(returnValue, null);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1",
+      ]
+    `);
+    expect(returnValue).toBe(null);
   });
 
   test('addScenarioUserRole', async () => {
@@ -193,15 +400,19 @@ describe('GET_SCENARIO_ERROR', () => {
     const returnValue = await store.dispatch(
       actions.addScenarioUserRole(1, 2, 3)
     );
-    assert.deepEqual(fetch.mock.calls[0], [
-      '/api/scenarios/1/roles/add',
-      {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: '{"scenario_id":1,"user_id":2,"roles":[3]}'
-      }
-    ]);
-    assert.equal(returnValue, null);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1/roles/add",
+        Object {
+          "body": "{\\"scenario_id\\":1,\\"user_id\\":2,\\"roles\\":[3]}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
+    expect(returnValue).toBe(null);
   });
 
   test('endScenarioUserRole', async () => {
@@ -210,15 +421,19 @@ describe('GET_SCENARIO_ERROR', () => {
     const returnValue = await store.dispatch(
       actions.endScenarioUserRole(1, 2, 3)
     );
-    assert.deepEqual(fetch.mock.calls[0], [
-      '/api/scenarios/1/roles/end',
-      {
-        headers: { 'Content-Type': 'application/json' },
-        method: 'POST',
-        body: '{"scenario_id":1,"user_id":2,"roles":[3]}'
-      }
-    ]);
-    assert.equal(returnValue, null);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/1/roles/end",
+        Object {
+          "body": "{\\"scenario_id\\":1,\\"user_id\\":2,\\"roles\\":[3]}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
+    expect(returnValue).toBe(null);
   });
 });
 
@@ -230,16 +445,24 @@ test('UNLOCK_SCENARIO_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { scenario });
 
   const returnValue = await store.dispatch(actions.endScenarioLock(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/unlock']);
-  assert.deepEqual(returnValue, scenario);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/unlock",
+    ]
+  `);
+  expect(returnValue).toEqual(scenario);
 });
 
 test('UNLOCK_SCENARIO_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.endScenarioLock(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/unlock']);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/unlock",
+    ]
+  `);
+  expect(returnValue).toBe(null);
 });
 
 describe('GET_SCENARIOS_SUCCESS', () => {
@@ -266,8 +489,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       fetchImplementation(fetch, 200, { scenarios });
 
       const returnValue = await store.dispatch(actions.getScenarios());
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -284,8 +516,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       fetchImplementation(fetch, 200, { scenarios });
 
       const returnValue = await store.dispatch(actions.getScenarios());
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -301,7 +542,12 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
       fetchImplementation(fetch, 200, { count: 90 });
       const returnValue = await store.dispatch(actions.getScenarios());
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+
       assert.deepEqual(fetch.mock.calls.length, 1);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
@@ -316,8 +562,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.getScenariosIncrementally()
       );
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/DESC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -335,7 +590,12 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.getScenariosIncrementally()
       );
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+
       assert.deepEqual(fetch.mock.calls.length, 1);
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
@@ -355,8 +615,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.getScenariosIncrementally()
       );
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/DESC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -375,8 +644,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.getScenariosIncrementally()
       );
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/DESC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -410,8 +688,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       });
 
       const returnValue = await store.dispatch(actions.getScenariosSlice());
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/DESC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -443,8 +730,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       });
 
       const returnValue = await store.dispatch(actions.getScenariosSlice());
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/DESC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -478,8 +774,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.getScenariosSlice('ASC')
       );
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/ASC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/ASC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -513,8 +818,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.getScenariosSlice('ASC')
       );
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/ASC/0/30']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/slice/ASC/0/30",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(expected));
       assert.deepEqual(store.getState().scenarios, expected);
       assert.deepEqual(returnValue, expected);
@@ -530,7 +844,12 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
       fetchImplementation(fetch, 200, { count: 90 });
       const returnValue = await store.dispatch(actions.getScenariosSlice());
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+
       assert.deepEqual(fetch.mock.calls.length, 1);
       assert.deepEqual(returnValue, scenarios);
     });
@@ -560,8 +879,17 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       });
 
       const returnValue = await store.dispatch(actions.getScenariosByStatus(1));
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-      assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/status/1']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/status/1",
+        ]
+      `);
+
       assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
       assert.deepEqual(store.getState().scenarios, scenarios);
       assert.deepEqual(returnValue, scenarios);
@@ -588,7 +916,12 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       fetchImplementation(fetch, 200, { count: 90 });
       const expected = scenarios.filter(scenario => scenario.status === 1);
       const returnValue = await store.dispatch(actions.getScenariosByStatus(1));
-      assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/scenarios/count",
+        ]
+      `);
+
       assert.deepEqual(fetch.mock.calls.length, 1);
       assert.deepEqual(returnValue, expected);
     });
@@ -618,27 +951,51 @@ describe('GET_SCENARIOS_ERROR', () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.getScenarios());
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-    assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios']);
-    assert.equal(returnValue, null);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/count",
+      ]
+    `);
+    expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios",
+      ]
+    `);
+    expect(returnValue).toBe(null);
   });
 
   test('getScenariosByStatus', async () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.getScenariosByStatus(1));
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-    assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/status/1']);
-    assert.equal(returnValue, null);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/count",
+      ]
+    `);
+    expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/status/1",
+      ]
+    `);
+    expect(returnValue).toBe(null);
   });
 
   test('getScenariosSlice', async () => {
     fetchImplementation(fetch, 200, { error });
 
     const returnValue = await store.dispatch(actions.getScenariosSlice());
-    assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-    assert.deepEqual(fetch.mock.calls[1], ['/api/scenarios/slice/DESC/0/30']);
-    assert.equal(returnValue, null);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/count",
+      ]
+    `);
+    expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+      Array [
+        "/api/scenarios/slice/DESC/0/30",
+      ]
+    `);
+    expect(returnValue).toBe(null);
   });
 });
 
@@ -648,7 +1005,12 @@ test('GET_SCENARIOS_COUNT_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { count });
 
   const returnValue = await store.dispatch(actions.getScenariosCount());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/count",
+    ]
+  `);
+
   assert.deepEqual(returnValue, Number(count));
 });
 
@@ -656,8 +1018,13 @@ test('GET_SCENARIOS_COUNT_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getScenariosCount());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/count']);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/count",
+    ]
+  `);
+
+  expect(returnValue).toBe(null);
 });
 
 test('GET_SLIDES_SUCCESS', async () => {
@@ -666,16 +1033,24 @@ test('GET_SLIDES_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { slides });
 
   const returnValue = await store.dispatch(actions.getSlides(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/slides']);
-  assert.deepEqual(returnValue, slides);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/slides",
+    ]
+  `);
+  expect(returnValue).toEqual(slides);
 });
 
 test('GET_SLIDES_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getSlides(1));
-  assert.deepEqual(fetch.mock.calls[0], ['/api/scenarios/1/slides']);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/1/slides",
+    ]
+  `);
+  expect(returnValue).toBe(null);
 });
 
 test('DELETE_SLIDE_SUCCESS', async () => {
@@ -684,22 +1059,30 @@ test('DELETE_SLIDE_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { slides });
 
   const returnValue = await store.dispatch(actions.deleteSlide(42, 1));
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/scenarios/42/slides/1',
-    { method: 'DELETE' }
-  ]);
-  assert.deepEqual(returnValue, slides);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/42/slides/1",
+      Object {
+        "method": "DELETE",
+      },
+    ]
+  `);
+  expect(returnValue).toEqual(slides);
 });
 
 test('DELETE_SLIDE_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.deleteSlide(42, 1));
-  assert.deepEqual(fetch.mock.calls[0], [
-    '/api/scenarios/42/slides/1',
-    { method: 'DELETE' }
-  ]);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/scenarios/42/slides/1",
+      Object {
+        "method": "DELETE",
+      },
+    ]
+  `);
+  expect(returnValue).toBe(null);
 });
 
 // DEPRECATED SYNC ACTIONS THAT ARE STILL USED

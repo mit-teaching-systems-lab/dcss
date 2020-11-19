@@ -105,7 +105,10 @@ export let setUser = params => async dispatch => {
 export let resetPassword = params => async () => {
   try {
     if (Object.values(params).length) {
-      params.email = Crypto.AES.encrypt(params.email, SESSION_SECRET).toString();
+      params.email = Crypto.AES.encrypt(
+        params.email,
+        SESSION_SECRET
+      ).toString();
       params.origin = location.origin;
       const body = JSON.stringify(params);
       const res = await (

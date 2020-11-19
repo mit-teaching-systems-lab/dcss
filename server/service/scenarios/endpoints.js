@@ -238,6 +238,8 @@ async function endScenarioLockAsync(req, res) {
       res.send({ scenario });
     } else {
       const unlock = await db.endScenarioLock(scenario_id, user_id);
+
+      console.log('unlock?', unlock);
       if (unlock) {
         res.send({ scenario });
 

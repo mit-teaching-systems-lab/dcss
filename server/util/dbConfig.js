@@ -12,7 +12,7 @@ exports.getDbConfig = function() {
     return {
       connectionString,
       ssl: {
-        rejectUnauthorized: false,
+        rejectUnauthorized: false
       },
       sslmode: 'require'
     };

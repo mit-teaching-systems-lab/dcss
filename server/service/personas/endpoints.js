@@ -19,12 +19,12 @@ async function getPersonasByScenarioIdAsync(req, res) {
 
 async function createPersonaAsync(req, res) {
   const author_id = req.session.user.id;
-  const {
-    name, color, description, scenario_id
-  } = req.body;
+  const { name, color, description, scenario_id } = req.body;
 
   if (!author_id || !name || !color || !description) {
-    const error = new Error('Creating a persona requires a user id, name, color and description.');
+    const error = new Error(
+      'Creating a persona requires a user id, name, color and description.'
+    );
     error.status = 422;
     throw error;
   }
@@ -52,9 +52,7 @@ async function linkPersonaToScenarioAsync(req, res) {
   const link = await db.linkPersonaToScenario(id, scenario_id);
 
   if (!link) {
-    throw new Error(
-      'Persona could not be linked to scenario.'
-    );
+    throw new Error('Persona could not be linked to scenario.');
   }
 
   const personas = await db.getPersonasByScenarioId(scenario_id);
@@ -74,7 +72,7 @@ async function setPersonaByIdAsync(req, res) {
     color = null,
     deleted_at = null,
     description = null,
-    name = null,
+    name = null
   } = req.body;
 
   const updates = {};
