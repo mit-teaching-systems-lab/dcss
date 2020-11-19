@@ -53,7 +53,7 @@ exports[`Render 1 1 2`] = `
         </i>
         Downloads
          (
-        3
+        6
         )
       </a>
     </div>
@@ -135,7 +135,20 @@ exports[`Render 1 1 2`] = `
                     <span
                       class=\\"text\\"
                     >
-                      A New Cohort That Exists Within Inline Props
+                      A New Cohort That Exists In Bootstrap State For…
+                    </span>
+                  </div>
+                  <div
+                    aria-checked=\\"false\\"
+                    aria-selected=\\"false\\"
+                    class=\\"item\\"
+                    role=\\"option\\"
+                    style=\\"pointer-events: all;\\"
+                  >
+                    <span
+                      class=\\"text\\"
+                    >
+                      First Cohort
                     </span>
                   </div>
                 </div>
@@ -225,7 +238,7 @@ exports[`Render 1 1 2`] = `
             created_at=\\"1577836800000\\"
           >
             <td
-              aria-label=\\"Download a zip containing csv files containing responses for all scenarios in \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+              aria-label=\\"Download a zip containing csv files containing responses for all scenarios in \\\\\\"First Cohort\\\\\\"\\"
               class=\\"top aligned\\"
               role=\\"button\\"
               style=\\"cursor: pointer;\\"
@@ -244,7 +257,7 @@ exports[`Render 1 1 2`] = `
               </i>
             </td>
             <td
-              aria-label=\\"Download a csv file containing responses to only \\\\\\"Some Other Scenario\\\\\\", from the cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+              aria-label=\\"Download a csv file containing responses to only \\\\\\"\\\\\\", from the cohort \\\\\\"First Cohort\\\\\\"\\"
               class=\\"top aligned\\"
               role=\\"button\\"
               style=\\"cursor: pointer;\\"
@@ -265,13 +278,125 @@ exports[`Render 1 1 2`] = `
             <td
               class=\\"top aligned dtr__cell-fluid-half\\"
             >
-              A New Cohort That Exists Within Inline Props
+              First Cohort
             </td>
             <td
               class=\\"top aligned dt__cell-truncated\\"
+            />
+          </tr>
+          <tr
+            class=\\"\\"
+            created_at=\\"1577836800000\\"
+          >
+            <td
+              aria-label=\\"Download a zip containing csv files containing responses for all scenarios in \\\\\\"First Cohort\\\\\\"\\"
+              class=\\"top aligned dl__left_col_empty\\"
+              role=\\"button\\"
+              style=\\"cursor: pointer;\\"
+            />
+            <td
+              aria-label=\\"Download a csv file containing responses to only \\\\\\"\\\\\\", from the cohort \\\\\\"First Cohort\\\\\\"\\"
+              class=\\"top aligned\\"
+              role=\\"button\\"
+              style=\\"cursor: pointer;\\"
             >
-              Some Other Scenario
+              <i
+                class=\\"icons\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"green download top right corner icon\\"
+                />
+              </i>
             </td>
+            <td
+              class=\\"top aligned dtr__cell-fluid-half\\"
+            >
+              First Cohort
+            </td>
+            <td
+              class=\\"top aligned dt__cell-truncated\\"
+            />
+          </tr>
+          <tr
+            class=\\"\\"
+            created_at=\\"1577836800000\\"
+          >
+            <td
+              aria-label=\\"Download a zip containing csv files containing responses for all scenarios in \\\\\\"First Cohort\\\\\\"\\"
+              class=\\"top aligned dl__left_col_empty\\"
+              role=\\"button\\"
+              style=\\"cursor: pointer;\\"
+            />
+            <td
+              aria-label=\\"Download a csv file containing responses to only \\\\\\"\\\\\\", from the cohort \\\\\\"First Cohort\\\\\\"\\"
+              class=\\"top aligned\\"
+              role=\\"button\\"
+              style=\\"cursor: pointer;\\"
+            >
+              <i
+                class=\\"icons\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"green download top right corner icon\\"
+                />
+              </i>
+            </td>
+            <td
+              class=\\"top aligned dtr__cell-fluid-half\\"
+            >
+              First Cohort
+            </td>
+            <td
+              class=\\"top aligned dt__cell-truncated\\"
+            />
+          </tr>
+          <tr
+            class=\\"\\"
+            created_at=\\"1577836800000\\"
+          >
+            <td
+              aria-label=\\"Download a zip containing csv files containing responses for all scenarios in \\\\\\"First Cohort\\\\\\"\\"
+              class=\\"top aligned dl__left_col_empty\\"
+              role=\\"button\\"
+              style=\\"cursor: pointer;\\"
+            />
+            <td
+              aria-label=\\"Download a csv file containing responses to only \\\\\\"\\\\\\", from the cohort \\\\\\"First Cohort\\\\\\"\\"
+              class=\\"top aligned\\"
+              role=\\"button\\"
+              style=\\"cursor: pointer;\\"
+            >
+              <i
+                class=\\"icons\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"green download top right corner icon\\"
+                />
+              </i>
+            </td>
+            <td
+              class=\\"top aligned dtr__cell-fluid-half\\"
+            >
+              First Cohort
+            </td>
+            <td
+              class=\\"top aligned dt__cell-truncated\\"
+            />
           </tr>
           <tr
             class=\\"\\"
@@ -374,6 +499,922 @@ exports[`Render 1 1 2`] = `
     </div>
   </div>
 </body>"
+`;
+
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless icon em__height menu"
+  >
+    <a
+      aria-label="Downloads"
+      class="item"
+      tabindex="0"
+    >
+      <i
+        class="icons em__icon-group-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="file alternate outline icon"
+        />
+        <i
+          aria-hidden="true"
+          class="green download top right corner icon"
+        />
+      </i>
+      Downloads (6)
+    </a>
+  </div>
+  <div
+    class="ui fluid container"
+  >
+    <table
+      class="ui definition unstackable table dl__table"
+      role="grid"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+             
+          </th>
+          <th
+            class=""
+          >
+             
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find cohort
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find cohort
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    A New Cohort That Exists In Bootstrap State For…
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    First Cohort
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find scenario
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find scenario
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Multiplayer Scenario 2
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Some Other Scenario
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="large icons ig__multiple-file"
+            >
+              <i
+                aria-hidden="true"
+                class="file archive outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned dl__left_col_empty"
+            role="button"
+            style="cursor: pointer;"
+          />
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned dl__left_col_empty"
+            role="button"
+            style="cursor: pointer;"
+          />
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned dl__left_col_empty"
+            role="button"
+            style="cursor: pointer;"
+          />
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            class="dl__left_col_empty"
+          >
+             
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Multiplayer Scenario 2\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half dt__cell-data-missing"
+          />
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Multiplayer Scenario 2
+          </td>
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            class="dl__left_col_empty"
+          >
+             
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Some Other Scenario\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half dt__cell-data-missing"
+          />
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Some Other Scenario
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class="full-width"
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+            colspan="4"
+          />
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless icon em__height menu"
+  >
+    <a
+      aria-label="Downloads"
+      class="item"
+      tabindex="0"
+    >
+      <i
+        class="icons em__icon-group-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="file alternate outline icon"
+        />
+        <i
+          aria-hidden="true"
+          class="green download top right corner icon"
+        />
+      </i>
+      Downloads (6)
+    </a>
+  </div>
+  <div
+    class="ui fluid container"
+  >
+    <table
+      class="ui definition unstackable table dl__table"
+      role="grid"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+             
+          </th>
+          <th
+            class=""
+          >
+             
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find cohort
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find cohort
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    A New Cohort That Exists In Bootstrap State For…
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    First Cohort
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+          <th
+            class="dtr__cell-fluid-half-th"
+          >
+            <div
+              aria-expanded="false"
+              class="ui fluid item search selection scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="text"
+                role="alert"
+              >
+                Find scenario
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition"
+                role="listbox"
+              >
+                <div
+                  aria-checked="true"
+                  aria-selected="true"
+                  class="active selected item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Find scenario
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Multiplayer Scenario 2
+                  </span>
+                </div>
+                <div
+                  aria-checked="false"
+                  aria-selected="false"
+                  class="item"
+                  role="option"
+                  style="pointer-events: all;"
+                >
+                  <span
+                    class="text"
+                  >
+                    Some Other Scenario
+                  </span>
+                </div>
+              </div>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="large icons ig__multiple-file"
+            >
+              <i
+                aria-hidden="true"
+                class="file archive outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned dl__left_col_empty"
+            role="button"
+            style="cursor: pointer;"
+          />
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned dl__left_col_empty"
+            role="button"
+            style="cursor: pointer;"
+          />
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            aria-label="Download a zip containing csv files containing responses for all scenarios in \\"First Cohort\\""
+            class="top aligned dl__left_col_empty"
+            role="button"
+            style="cursor: pointer;"
+          />
+          <td
+            aria-label="Download a csv file containing responses to only \\"\\", from the cohort \\"First Cohort\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half"
+          >
+            First Cohort
+          </td>
+          <td
+            class="top aligned dt__cell-truncated"
+          />
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            class="dl__left_col_empty"
+          >
+             
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Multiplayer Scenario 2\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half dt__cell-data-missing"
+          />
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Multiplayer Scenario 2
+          </td>
+        </tr>
+        <tr
+          class=""
+          created_at="1577836800000"
+        >
+          <td
+            class="dl__left_col_empty"
+          >
+             
+          </td>
+          <td
+            aria-label="Download a csv file containing responses to only \\"Some Other Scenario\\""
+            class="top aligned"
+            role="button"
+            style="cursor: pointer;"
+          >
+            <i
+              class="icons"
+            >
+              <i
+                aria-hidden="true"
+                class="file alternate outline icon"
+              />
+              <i
+                aria-hidden="true"
+                class="green download top right corner icon"
+              />
+            </i>
+          </td>
+          <td
+            class="top aligned dtr__cell-fluid-half dt__cell-data-missing"
+          />
+          <td
+            class="top aligned dt__cell-truncated"
+          >
+            Some Other Scenario
+          </td>
+        </tr>
+      </tbody>
+      <tfoot
+        class="full-width"
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+            colspan="4"
+          />
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`Render 2 1 1`] = `

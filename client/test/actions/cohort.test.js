@@ -10,6 +10,8 @@ import {
 import * as actions from '../../actions/cohort';
 import * as types from '../../actions/types';
 
+import { cohortInitialState } from '../../reducers/initial-states';
+
 const error = new Error('something unexpected happened on the server');
 const original = JSON.parse(JSON.stringify(state));
 
@@ -44,7 +46,7 @@ test('CREATE_COHORT_SUCCESS', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort",
+      "/api/cohorts",
       Object {
         "body": "{\\"name\\":\\"Fake Cohort\\"}",
         "headers": Object {
@@ -60,8 +62,13 @@ test('CREATE_COHORT_SUCCESS', async () => {
     role: 'owner'
   };
 
-  assert.deepEqual(store.getState().cohort, cohortWithOwnerRole, 1);
-  assert.deepEqual(returnValue, cohortWithOwnerRole, 2);
+  assert.deepEqual(store.getState().cohort, cohortWithOwnerRole);
+  assert.deepEqual(store.getState().cohorts, [cohortWithOwnerRole]);
+  assert.deepEqual(
+    store.getState().cohortsById,
+    makeById([cohortWithOwnerRole])
+  );
+  assert.deepEqual(returnValue, cohortWithOwnerRole);
 
   await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -76,7 +83,7 @@ test('CREATE_COHORT_ERROR', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort",
+      "/api/cohorts",
       Object {
         "body": "{\\"name\\":\\"Fake Cohort\\"}",
         "headers": Object {
@@ -115,10 +122,12 @@ describe('SET_COHORT_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { cohort });
 
-    const returnValue = await store.dispatch(actions.setCohort(params));
+    const returnValue = await store.dispatch(
+      actions.setCohort(cohort.id, params)
+    );
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1",
+        "/api/cohorts/1",
         Object {
           "body": "{\\"name\\":\\"Some other name\\",\\"deleted_at\\":\\"2020-01-01T00:00:00.000Z\\"}",
           "headers": Object {
@@ -132,15 +141,14 @@ describe('SET_COHORT_SUCCESS', () => {
     assert.equal(store.getState().cohort.id, cohort.id);
     assert.deepEqual(returnValue, cohort);
 
-    await mockStore.dispatch(actions.setCohort(cohort));
+    await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
     expect(mockStore.getActions()).toMatchSnapshot();
   });
 
   test('name', async () => {
     const params = {
       ...state.cohorts[1],
-      name: 'A New Name!',
-      deleted_at: '2020-01-01T00:00:00.000Z'
+      name: 'A New Name!'
     };
 
     const cohort = {
@@ -150,12 +158,14 @@ describe('SET_COHORT_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { cohort });
 
-    const returnValue = await store.dispatch(actions.setCohort(params));
+    const returnValue = await store.dispatch(
+      actions.setCohort(cohort.id, params)
+    );
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1",
+        "/api/cohorts/1",
         Object {
-          "body": "{\\"name\\":\\"A New Name!\\",\\"deleted_at\\":\\"2020-01-01T00:00:00.000Z\\"}",
+          "body": "{\\"name\\":\\"A New Name!\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -167,13 +177,13 @@ describe('SET_COHORT_SUCCESS', () => {
     assert.equal(store.getState().cohort.id, cohort.id);
     assert.deepEqual(returnValue, cohort);
 
-    await mockStore.dispatch(actions.setCohort(cohort));
+    await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
     expect(mockStore.getActions()).toMatchSnapshot();
   });
 
   test('deleted_at', async () => {
     const params = {
-      ...state.cohorts[1],
+      id: state.cohorts[1].id,
       deleted_at: '2020-01-01T00:00:00.000Z'
     };
 
@@ -184,12 +194,14 @@ describe('SET_COHORT_SUCCESS', () => {
 
     fetchImplementation(fetch, 200, { cohort });
 
-    const returnValue = await store.dispatch(actions.setCohort(params));
+    const returnValue = await store.dispatch(
+      actions.setCohort(cohort.id, params)
+    );
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1",
+        "/api/cohorts/1",
         Object {
-          "body": "{\\"name\\":\\"First Cohort\\",\\"deleted_at\\":\\"2020-01-01T00:00:00.000Z\\"}",
+          "body": "{\\"deleted_at\\":\\"2020-01-01T00:00:00.000Z\\"}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -198,10 +210,15 @@ describe('SET_COHORT_SUCCESS', () => {
       ]
     `);
 
-    assert.equal(store.getState().cohort.id, cohort.id);
     assert.deepEqual(returnValue, cohort);
+    assert.deepEqual(store.getState().cohort, cohort);
+    assert.deepEqual(store.getState().cohortsById[cohort.id], returnValue);
+    assert.deepEqual(
+      store.getState().cohorts.find(({ id }) => id === cohort.id),
+      returnValue
+    );
 
-    await mockStore.dispatch(actions.setCohort(cohort));
+    await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
     expect(mockStore.getActions()).toMatchSnapshot();
   });
 });
@@ -214,10 +231,12 @@ test('SET_COHORT_ERROR', async () => {
 
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.setCohort(cohort));
+  const returnValue = await store.dispatch(
+    actions.setCohort(cohort.id, cohort)
+  );
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/1",
+      "/api/cohorts/1",
       Object {
         "body": "{\\"name\\":\\"First Cohort\\",\\"deleted_at\\":\\"2020-01-01T00:00:00.000Z\\"}",
         "headers": Object {
@@ -230,7 +249,7 @@ test('SET_COHORT_ERROR', async () => {
   assert.deepEqual(store.getState().errors.cohort.error, error);
   assert.deepEqual(returnValue, null);
 
-  await mockStore.dispatch(actions.setCohort(cohort));
+  await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
   expect(mockStore.getActions()).toMatchSnapshot();
 });
 
@@ -245,7 +264,7 @@ test('SET_COHORT_SCENARIOS_SUCCESS', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/1/scenarios",
+      "/api/cohorts/1/scenarios",
       Object {
         "body": "{\\"scenarios\\":[7,1,9,8]}",
         "headers": Object {
@@ -274,7 +293,7 @@ test('SET_COHORT_SCENARIOS_ERROR', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/1/scenarios",
+      "/api/cohorts/1/scenarios",
       Object {
         "body": "{\\"scenarios\\":[7,1,9,8]}",
         "headers": Object {
@@ -292,7 +311,48 @@ test('SET_COHORT_SCENARIOS_ERROR', async () => {
 });
 
 describe('GET_COHORT_SUCCESS', () => {
-  test('Invalid Cohort ID', async () => {
+  test('Receives an undefined cohort', async () => {
+    const cohort = undefined;
+    fetchImplementation(fetch, 200, { cohort });
+    const returnValue = await store.dispatch(actions.getCohort(1));
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1",
+      ]
+    `);
+    expect(returnValue).toEqual(cohort);
+
+    await mockStore.dispatch(actions.getCohort(1));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('Receives a cohort missing an id', async () => {
+    const cohort = {};
+    const beforeCohorts = [...store.getState().cohorts];
+    const beforeCohortsById = {
+      ...store.getState().beforeCohortsById
+    };
+
+    fetchImplementation(fetch, 200, { cohort });
+    const returnValue = await store.dispatch(actions.getCohort(1));
+
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1",
+      ]
+    `);
+    assert.deepEqual(store.getState().cohort, cohortInitialState);
+    assert.deepEqual(store.getState().cohorts, beforeCohorts);
+    assert.deepEqual(store.getState().cohortsById, beforeCohortsById);
+    expect(returnValue).toEqual(cohort);
+
+    await mockStore.dispatch(actions.getCohort(1));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('Invalid Cohort id', async () => {
     const returnValue = await store.dispatch(actions.getCohort(NaN));
     assert.equal(fetch.mock.calls.length, 0);
     assert.equal(returnValue, undefined);
@@ -301,7 +361,7 @@ describe('GET_COHORT_SUCCESS', () => {
     expect(mockStore.getActions()).toMatchSnapshot();
   });
 
-  test('Valid Cohort ID', async () => {
+  test('Valid Cohort id', async () => {
     const cohort = {
       ...state.cohorts[1]
     };
@@ -312,7 +372,7 @@ describe('GET_COHORT_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/2",
+        "/api/cohorts/2",
       ]
     `);
 
@@ -334,7 +394,7 @@ test('GET_COHORT_ERROR', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/2",
+      "/api/cohorts/2",
     ]
   `);
   assert.deepEqual(store.getState().errors.cohort.error, error);
@@ -344,37 +404,579 @@ test('GET_COHORT_ERROR', async () => {
   expect(mockStore.getActions()).toMatchSnapshot();
 });
 
-test('GET_ALL_COHORTS_SUCCESS', async () => {
-  const cohorts = state.cohorts.slice();
+test('GET_COHORTS_COUNT_SUCCESS', async () => {
+  const count = '1'; // The action expects to receive a string.
 
-  fetchImplementation(fetch, 200, { cohorts });
+  fetchImplementation(fetch, 200, { count });
 
-  const returnValue = await store.dispatch(actions.getAllCohorts());
-
+  const returnValue = await store.dispatch(actions.getCohortsCount());
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/all",
+      "/api/cohorts/count",
     ]
   `);
-  assert.deepEqual(store.getState().cohorts, cohorts);
-  assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
 
-  await mockStore.dispatch(actions.getAllCohorts());
+  assert.deepEqual(returnValue, Number(count));
+
+  await mockStore.dispatch(actions.getCohortsCount());
   expect(mockStore.getActions()).toMatchSnapshot();
 });
 
-test('GET_ALL_COHORTS_ERROR', async () => {
+test('GET_COHORTS_COUNT_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(actions.getAllCohorts());
-
+  const returnValue = await store.dispatch(actions.getCohortsCount());
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/all",
+      "/api/cohorts/count",
     ]
   `);
-  assert.deepEqual(store.getState().errors.cohorts.error, error);
-  assert.deepEqual(returnValue, null);
+
+  assert.equal(returnValue, null);
+});
+
+describe('GET_COHORTS_SUCCESS', () => {
+  let cohorts = [];
+
+  beforeEach(() => {
+    cohorts = Array.from({ length: 90 }, (_, id) => {
+      return {
+        ...original.cohorts[0],
+        id
+      };
+    });
+
+    store = createPseudoRealStore({
+      cohorts: [],
+      cohortsById: {},
+      session: {
+        isLoggedIn: true
+      }
+    });
+  });
+
+  describe('getCohorts', () => {
+    test('get cohorts', async () => {
+      fetchImplementation(fetch, 200, { cohorts });
+
+      await store.dispatch(actions.getCohorts());
+
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts",
+        ]
+      `);
+      assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
+      assert.deepEqual(store.getState().cohorts, cohorts);
+    });
+
+    test('cohorts received is undefined, does not change empty cohorts state', async () => {
+      const status = 200;
+      const expected = [];
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : {
+                /* cohorts missing here */
+              };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      await store.dispatch(actions.getCohorts());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('cohorts received is undefined, does not change existing cohorts state', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 1),
+        cohortsById: makeById(cohorts.slice(0, 1)),
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 1);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : {
+                /* cohorts missing here */
+              };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      await store.dispatch(actions.getCohorts());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts",
+        ]
+      `);
+
+      const afterRequestCohortsById = {
+        ...store.getState().cohortsById
+      };
+
+      const afterRequestCohorts = [...store.getState().cohorts];
+
+      assert.deepEqual(afterRequestCohortsById, makeById(expected));
+      assert.deepEqual(afterRequestCohorts, expected);
+
+      await store.dispatch(actions.getCohorts());
+
+      assert.deepEqual(store.getState().cohortsById, afterRequestCohortsById);
+      assert.deepEqual(store.getState().cohorts, afterRequestCohorts);
+    });
+
+    test('cohorts received are the same as existing cohorts, no duplicates', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 1),
+        cohortsById: makeById(cohorts.slice(0, 1)),
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 1);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { cohorts: expected };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      await store.dispatch(actions.getCohorts());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts",
+        ]
+      `);
+
+      const afterRequestCohortsById = {
+        ...store.getState().cohortsById
+      };
+
+      const afterRequestCohorts = [...store.getState().cohorts];
+
+      assert.deepEqual(afterRequestCohortsById, makeById(expected));
+      assert.deepEqual(afterRequestCohorts, expected);
+
+      await store.dispatch(actions.getCohorts());
+
+      assert.deepEqual(store.getState().cohortsById, afterRequestCohortsById);
+      assert.deepEqual(store.getState().cohorts, afterRequestCohorts);
+    });
+
+    test('(state.session.isLoggedIn && count === state.cohorts.length) === true', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 90),
+        cohortsById: makeById(cohorts.slice(0, 90)),
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      fetchImplementation(fetch, 200, { count: 90 });
+      const returnValue = await store.dispatch(actions.getCohorts());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+
+      assert.deepEqual(fetch.mock.calls.length, 1);
+    });
+  });
+
+  describe('getCohortsSlice', () => {
+    test('default, store is empty', async () => {
+      store = createPseudoRealStore({
+        cohorts: [],
+        cohortsById: {},
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 30);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { cohorts: expected };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/DESC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('default, cache has entries, not full', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 30),
+        cohortsById: makeById(cohorts.slice(0, 30)),
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 30);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { cohorts: expected };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/DESC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('ASC, cache is empty', async () => {
+      store = createPseudoRealStore({
+        cohorts: [],
+        cohortsById: {},
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 30);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { cohorts: expected };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice('ASC'));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/ASC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('ASC, cache has entries, not full', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 30),
+        cohortsById: makeById(cohorts.slice(0, 30)),
+        session: {
+          isLoggedIn: false
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 30);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { cohorts: expected };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice('ASC'));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/ASC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('cohorts received is undefined, does not change empty cohorts state', async () => {
+      store = createPseudoRealStore({
+        cohorts: [],
+        cohortsById: {},
+        session: {
+          isLoggedIn: false
+        }
+      });
+
+      const status = 200;
+      const expected = [];
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : {
+                /* cohorts missing here */
+              };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice('ASC'));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/ASC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('cohorts received is undefined, does not change existing cohorts state', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 1),
+        cohortsById: makeById(cohorts.slice(0, 1)),
+        session: {
+          isLoggedIn: false
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 1);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1
+            ? { count: 90 }
+            : {
+                /* cohorts missing here */
+              };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice('ASC'));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/ASC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('cohorts received are the same as existing cohorts, no duplicates', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 1),
+        cohortsById: makeById(cohorts.slice(0, 1)),
+        session: {
+          isLoggedIn: false
+        }
+      });
+
+      const status = 200;
+      const expected = cohorts.slice(0, 1);
+
+      fetch.mockImplementation(async () => {
+        const resolveValue =
+          fetch.mock.calls.length === 1 ? { count: 90 } : { cohorts: expected };
+
+        return {
+          status,
+          async json() {
+            return resolveValue;
+          }
+        };
+      });
+
+      const returnValue = await store.dispatch(actions.getCohortsSlice('ASC'));
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+      expect(fetch.mock.calls[1]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/slice/ASC/0/30",
+        ]
+      `);
+
+      assert.deepEqual(store.getState().cohortsById, makeById(expected));
+      assert.deepEqual(store.getState().cohorts, expected);
+    });
+
+    test('(state.session.isLoggedIn && count === state.cohorts.length) === true', async () => {
+      store = createPseudoRealStore({
+        cohorts: cohorts.slice(0, 90),
+        cohortsById: makeById(cohorts.slice(0, 90)),
+        session: {
+          isLoggedIn: true
+        }
+      });
+
+      fetchImplementation(fetch, 200, { count: 90 });
+      const returnValue = await store.dispatch(actions.getCohortsSlice());
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/cohorts/count",
+        ]
+      `);
+
+      assert.deepEqual(fetch.mock.calls.length, 1);
+    });
+  });
+});
+
+describe('GET_COHORTS_ERROR', () => {
+  test('getCohorts', async () => {
+    fetchImplementation(fetch, 200, { error });
+
+    const returnValue = await store.dispatch(actions.getCohorts());
+
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/count",
+      ]
+    `);
+    assert.deepEqual(store.getState().errors.cohorts.error, error);
+    assert.deepEqual(returnValue, null);
+  });
+
+  test('getCohortsSlice', async () => {
+    fetchImplementation(fetch, 200, { error });
+
+    const returnValue = await store.dispatch(actions.getCohortsSlice());
+
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/count",
+      ]
+    `);
+    assert.deepEqual(store.getState().errors.cohorts.error, error);
+    assert.deepEqual(returnValue, null);
+  });
 });
 
 test('GET_COHORT_PARTICIPANTS_SUCCESS', async () => {
@@ -388,7 +990,7 @@ test('GET_COHORT_PARTICIPANTS_SUCCESS', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/1",
+      "/api/cohorts/1",
     ]
   `);
   assert.deepEqual(store.getState().cohort.users, cohort.users);
@@ -402,40 +1004,10 @@ test('GET_COHORT_PARTICIPANTS_ERROR', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/1",
+      "/api/cohorts/1",
     ]
   `);
   assert.deepEqual(store.getState().errors.cohort.error, error);
-  assert.deepEqual(returnValue, null);
-});
-
-test('GET_USER_COHORTS_SUCCESS', async () => {
-  const cohorts = state.cohorts.slice();
-
-  fetchImplementation(fetch, 200, { cohorts });
-
-  const returnValue = await store.dispatch(actions.getCohorts());
-
-  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "/api/cohort/my",
-    ]
-  `);
-  assert.deepEqual(store.getState().cohorts, cohorts);
-  assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
-});
-
-test('GET_USER_COHORTS_ERROR', async () => {
-  fetchImplementation(fetch, 200, { error });
-
-  const returnValue = await store.dispatch(actions.getCohorts());
-
-  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "/api/cohort/my",
-    ]
-  `);
-  assert.deepEqual(store.getState().errors.cohorts.error, error);
   assert.deepEqual(returnValue, null);
 });
 
@@ -450,7 +1022,7 @@ test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/2/run/29",
+      "/api/cohorts/2/run/29",
     ]
   `);
   assert.deepEqual(returnValue, cohort);
@@ -464,7 +1036,7 @@ test('LINK_RUN_TO_COHORT_ERROR', async () => {
 
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/cohort/2/run/29",
+      "/api/cohorts/2/run/29",
     ]
   `);
   assert.deepEqual(store.getState().errors.cohortlink.error, error);
@@ -480,7 +1052,7 @@ describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
     const returnValue = await store.dispatch(actions.getCohortData(1, 2, 3));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1/scenario/3",
+        "/api/cohorts/1/scenario/3",
       ]
     `);
     assert.deepEqual(returnValue, payload);
@@ -492,7 +1064,7 @@ describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
     const returnValue = await store.dispatch(actions.getCohortData(1, 2));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1/participant/2",
+        "/api/cohorts/1/participant/2",
       ]
     `);
     assert.deepEqual(returnValue, payload);
@@ -506,7 +1078,7 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
     const returnValue = await store.dispatch(actions.getCohortData(1, 2, 3));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1/scenario/3",
+        "/api/cohorts/1/scenario/3",
       ]
     `);
     assert.deepEqual(store.getState().errors.cohortdata.error, error);
@@ -519,7 +1091,7 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
     const returnValue = await store.dispatch(actions.getCohortData(1, 2));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1/participant/2",
+        "/api/cohorts/1/participant/2",
       ]
     `);
     assert.deepEqual(store.getState().errors.cohortdata.error, error);
@@ -543,7 +1115,7 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/1/join/boss",
+        "/api/cohorts/1/join/boss",
       ]
     `);
     assert.deepEqual(store.getState().cohort.users, cohortUsers.users);
@@ -575,7 +1147,7 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/\${cohort_id}/roles/add",
+        "/api/cohorts/1/roles/add",
         Object {
           "body": "{\\"cohort_id\\":1,\\"user_id\\":2,\\"roles\\":[\\"boss\\"]}",
           "headers": Object {
@@ -614,7 +1186,7 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/cohort/\${cohort_id}/roles/delete",
+        "/api/cohorts/1/roles/delete",
         Object {
           "body": "{\\"cohort_id\\":1,\\"user_id\\":2,\\"roles\\":[\\"boss\\"]}",
           "headers": Object {
@@ -637,6 +1209,11 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
     const returnValue = await store.dispatch(
       actions.linkUserToCohort(1, 'boss')
     );
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1/join/boss",
+      ]
+    `);
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });
@@ -647,6 +1224,18 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
     const returnValue = await store.dispatch(
       actions.addCohortUserRole(1, 2, 'boss')
     );
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1/roles/add",
+        Object {
+          "body": "{\\"cohort_id\\":1,\\"user_id\\":2,\\"roles\\":[\\"boss\\"]}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });
@@ -657,6 +1246,18 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
     const returnValue = await store.dispatch(
       actions.deleteCohortUserRole(1, 2, 'boss')
     );
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1/roles/delete",
+        Object {
+          "body": "{\\"cohort_id\\":1,\\"user_id\\":2,\\"roles\\":[\\"boss\\"]}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
+        },
+      ]
+    `);
     assert.deepEqual(store.getState().errors.cohortuser.error, error);
     assert.deepEqual(returnValue, null);
   });

@@ -18,8 +18,9 @@ import {
   Title
 } from '@components/UI';
 import {
-  getAllCohorts,
   getCohorts,
+  getCohortsCount,
+  getCohortsSlice,
   getCohort,
   createCohort
 } from '@actions/cohort';
@@ -39,16 +40,20 @@ export class Cohorts extends React.Component {
   constructor(props) {
     super(props);
 
+    const value = decodeURIComponent(window.location.search.replace('?q=', ''));
+    const cohorts = this.props.cohorts;
+
     this.state = {
       activePage: 1,
       isReady: false,
       createIsVisible: false,
-      cohorts: [],
-      scenarios: []
+      cohorts,
+      value
     };
 
     this.cohort = new CohortEmpty();
 
+    this.cohorts = cohorts;
     this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
     this.onOpenCreateCohortClick = this.onOpenCreateCohortClick.bind(this);
     this.onCohortSearchChange = this.onCohortSearchChange.bind(this);
@@ -63,22 +68,42 @@ export class Cohorts extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      if (this.props.user.is_super) {
-        await this.props.getAllCohorts();
+      const { value } = this.state;
+      const count = await this.props.getCohortsCount();
+
+      if (count === this.props.cohorts.length) {
+        this.cohorts = this.props.cohorts;
+
+        await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
+
+        this.setState({
+          isReady: true,
+          cohorts: this.cohorts
+        });
+
+        if (value) {
+          this.onCohortSearchChange({}, { value });
+        }
       } else {
-        await this.props.getCohorts();
+        const limit = 20;
+        let offset = 0;
+        do {
+          this.cohorts.push(
+            ...(await this.props.getCohortsSlice('DESC', offset, limit))
+          );
+
+          this.setState({
+            isReady: true,
+            cohorts: this.cohorts
+          });
+
+          if (value) {
+            this.onCohortSearchChange({}, { value });
+          }
+
+          offset += limit;
+        } while (this.cohorts.length < count);
       }
-
-      const scenarios = await this.props.getScenariosByStatus(
-        SCENARIO_IS_PUBLIC
-      );
-
-      this.setState({
-        activePage: 1,
-        isReady: true,
-        cohorts: this.props.cohorts,
-        scenarios
-      });
     }
   }
 
@@ -114,15 +139,20 @@ export class Cohorts extends React.Component {
         cohorts: sourceCohorts
       });
 
-      return;
-    }
+      this.props.history.push(`${this.props.location.pathname}`);
 
-    if (value.length < 3) {
       return;
     }
 
     const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
-    const lookupCohort = id => scenarios.find(scenario => scenario.id === id);
+    const lookupScenario = id => {
+      return (
+        scenarios.find(scenario => scenario.id === id) || {
+          title: '',
+          description: ''
+        }
+      );
+    };
 
     const results = sourceCohorts.filter(record => {
       const { name, scenarios, users } = record;
@@ -138,8 +168,8 @@ export class Cohorts extends React.Component {
       if (
         scenarios.some(
           id =>
-            escapedRegExp.test(lookupCohort(id).title) ||
-            escapedRegExp.test(lookupCohort(id).description)
+            escapedRegExp.test(lookupScenario(id).title) ||
+            escapedRegExp.test(lookupScenario(id).description)
         )
       ) {
         return true;
@@ -153,8 +183,13 @@ export class Cohorts extends React.Component {
 
     this.setState({
       activePage: 1,
-      cohorts: results
+      cohorts: results,
+      value
     });
+
+    this.props.history.push(
+      `${this.props.location.pathname}?q=${encodeURIComponent(value)}`
+    );
   }
 
   onPageChange(event, { activePage }) {
@@ -164,7 +199,7 @@ export class Cohorts extends React.Component {
   }
 
   render() {
-    const { activePage, isReady, cohorts, createIsVisible } = this.state;
+    const { activePage, isReady, cohorts, createIsVisible, value } = this.state;
     const {
       onCreateCohortCancel,
       onCohortSearchChange,
@@ -215,6 +250,7 @@ export class Cohorts extends React.Component {
           <Input
             icon="search"
             placeholder="Search..."
+            defaultValue={value || ''}
             onChange={onCohortSearchChange}
           />
         </Menu.Item.Tabbable>
@@ -348,12 +384,14 @@ Cohorts.propTypes = {
   }).isRequired,
   cohorts: PropTypes.array,
   cohort: PropTypes.object,
-  ids: PropTypes.arrayOf(PropTypes.number),
   createCohort: PropTypes.func,
-  getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
+  getCohortsCount: PropTypes.func,
+  getCohortsSlice: PropTypes.func,
   getCohort: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
+  ids: PropTypes.arrayOf(PropTypes.number),
+  location: PropTypes.object,
   scenarios: PropTypes.array,
   match: PropTypes.shape({
     path: PropTypes.string,
@@ -373,10 +411,11 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
+  getCohortsCount: () => dispatch(getCohortsCount()),
+  getCohortsSlice: () => dispatch(getCohortsSlice()),
   getCohort: id => dispatch(getCohort(id)),
-  getScenariosByStatus: updater => dispatch(getScenariosByStatus(updater)),
+  getScenariosByStatus: () => dispatch(getScenariosByStatus()),
   createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });

@@ -2,6 +2,8 @@ module.exports = {
   cohort: {
     id: 2,
     created_at: '2020-02-31T14:01:02.656Z',
+    updated_at: null,
+    deleted_at: null,
     name: 'A New Cohort That Exists In Bootstrap State For Testing',
     runs: [],
     scenarios: [],
@@ -32,6 +34,8 @@ module.exports = {
       id: 2,
       name: 'A New Cohort That Exists In Bootstrap State For Testing',
       created_at: '2020-02-31T14:01:02.656Z',
+      updated_at: null,
+      deleted_at: null,
       runs: [],
       scenarios: [],
       users: [
@@ -59,6 +63,8 @@ module.exports = {
       id: 1,
       name: 'First Cohort',
       created_at: '2020-03-24T14:52:28.429Z',
+      updated_at: null,
+      deleted_at: null,
       runs: [
         {
           id: 11,
@@ -161,6 +167,8 @@ module.exports = {
       id: 1,
       name: 'First Cohort',
       created_at: '2020-03-24T14:52:28.429Z',
+      updated_at: null,
+      deleted_at: null,
       runs: [
         {
           id: 28,
@@ -247,6 +255,8 @@ module.exports = {
       id: 2,
       name: 'A New Cohort That Exists In Bootstrap State For Testing',
       created_at: '2020-02-31T14:01:02.656Z',
+      updated_at: null,
+      deleted_at: null,
       runs: [],
       scenarios: [],
       users: [

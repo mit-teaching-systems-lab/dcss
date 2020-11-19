@@ -24,8 +24,7 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import {
-  GET_ALL_COHORTS_SUCCESS,
-  GET_USER_COHORTS_SUCCESS,
+  GET_COHORTS_SUCCESS,
   GET_RUNS_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   GET_USER_SUCCESS,
@@ -188,8 +187,7 @@ beforeEach(() => {
         }
       }
     ];
-    dispatch({ type: GET_USER_COHORTS_SUCCESS, cohorts });
-    dispatch({ type: GET_ALL_COHORTS_SUCCESS, cohorts });
+    dispatch({ type: GET_COHORTS_SUCCESS, cohorts });
     return cohorts;
   });
 

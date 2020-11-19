@@ -15,7 +15,7 @@ import {
   Table,
   Title
 } from '@components/UI';
-import { getAllCohorts, getCohorts } from '@actions/cohort';
+import { getCohorts } from '@actions/cohort';
 import { getHistoryForScenario } from '@actions/history';
 import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
@@ -81,12 +81,6 @@ class Downloads extends Component {
       this.props.history.push('/logout');
     } else {
       await this.props.getScenariosIncrementally();
-
-      if (this.props.user.is_super) {
-        await this.props.getAllCohorts();
-      } else {
-        await this.props.getCohorts();
-      }
 
       this.setState({ isReady: true });
     }
@@ -252,7 +246,8 @@ class Downloads extends Component {
 
             // If this is the first scenario in a cohort, or this is the first scenario
             // listed on a page of scenarios, then display the download zip icon
-            const showDownloadZipIcon = index === 0 || (rowCount % ROWS_PER_PAGE === 0);
+            const showDownloadZipIcon =
+              index === 0 || rowCount % ROWS_PER_PAGE === 0;
             rowCount++;
 
             return (
@@ -625,7 +620,6 @@ Downloads.propTypes = {
   }).isRequired,
   scenarios: PropTypes.array,
   scenariosById: PropTypes.object,
-  getAllCohorts: PropTypes.func,
   getCohorts: PropTypes.func,
   getScenariosIncrementally: PropTypes.func,
   getHistoryForScenario: PropTypes.func,
@@ -658,7 +652,6 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getAllCohorts: () => dispatch(getAllCohorts()),
   getCohorts: () => dispatch(getCohorts()),
   getScenariosIncrementally: updater =>
     dispatch(getScenariosIncrementally(updater)),

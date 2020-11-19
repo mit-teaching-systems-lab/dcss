@@ -2,8 +2,7 @@ import {
   CREATE_COHORT_SUCCESS,
   GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_SUCCESS,
-  GET_ALL_COHORTS_SUCCESS,
-  GET_USER_COHORTS_SUCCESS,
+  GET_COHORTS_SUCCESS,
   SET_COHORT_SUCCESS,
   SET_COHORT_SCENARIOS_SUCCESS,
   SET_COHORT_USER_ROLE_SUCCESS
@@ -47,50 +46,84 @@ export const cohort = (state = cohortInitialState, action) => {
 export const cohorts = (state = [], action) => {
   const { cohort, cohorts, type } = action;
 
-  if (type === SET_COHORT_SUCCESS || type === GET_COHORT_SUCCESS) {
-    if (state.length) {
-      for (let i = 0; i < state.length; i++) {
-        if (state[i].id === cohort.id) {
-          if (state[i]) {
-            state[i] = {
-              ...state[i],
-              ...cohort
-            };
+  switch (type) {
+    case GET_COHORTS_SUCCESS: {
+      const seen = {
+        /*
+        cohort.id: index
+         */
+      };
+      return [...state, ...cohorts]
+        .reduce((accum, cohort) => {
+          // If we've already seen this cohort, then it was already
+          // in "state" and we should replace it with the newer version.
+          const index = seen[cohort.id];
+          if (index !== undefined) {
+            accum[index] = cohort;
+          } else {
+            seen[cohort.id] = accum.length;
+            accum.push(cohort);
           }
-        }
-      }
-    } else {
-      state.push(cohort);
+          return accum;
+        }, [])
+        .sort((a, b) => a.id < b.id);
     }
-  }
+    case CREATE_COHORT_SUCCESS:
+    case SET_COHORT_SUCCESS:
+    case GET_COHORT_SUCCESS: {
+      if (!cohort || !cohort.id) {
+        return [...state];
+      }
 
-  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
-    return cohorts.slice();
-  }
+      const index = state.findIndex(({ id }) => id === cohort.id);
 
-  return state;
+      if (index !== -1) {
+        state[index] = {
+          ...state[index],
+          ...cohort
+        };
+      } else {
+        state.push(cohort);
+      }
+      return [...state].sort((a, b) => a.id < b.id);
+    }
+    default:
+      return state;
+  }
 };
 
 export const cohortsById = (state = {}, action) => {
   const { cohort, cohorts, type } = action;
 
-  if (type === SET_COHORT_SUCCESS || type === GET_COHORT_SUCCESS) {
-    if (state[cohort.id]) {
-      state[cohort.id] = {
-        ...state[cohort.id],
-        ...cohort
+  switch (type) {
+    case GET_COHORTS_SUCCESS: {
+      const cohortsById = cohorts.reduce((accum, cohort) => {
+        accum[cohort.id] = cohort;
+        return accum;
+      }, {});
+
+      return {
+        ...state,
+        ...cohortsById
       };
-    } else {
-      state[cohort.id] = cohort;
     }
+    case CREATE_COHORT_SUCCESS:
+    case SET_COHORT_SUCCESS:
+    case GET_COHORT_SUCCESS: {
+      if (!cohort || !cohort.id) {
+        return {
+          ...state
+        };
+      }
+      return {
+        ...state,
+        [cohort.id]: {
+          ...(state[cohort.id] || {}),
+          ...cohort
+        }
+      };
+    }
+    default:
+      return state;
   }
-
-  if (type === GET_USER_COHORTS_SUCCESS || type === GET_ALL_COHORTS_SUCCESS) {
-    return cohorts.reduce((accum, cohort) => {
-      accum[cohort.id] = cohort;
-      return accum;
-    }, {});
-  }
-
-  return state;
 };

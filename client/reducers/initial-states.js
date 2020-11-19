@@ -1,6 +1,8 @@
 export const cohortInitialState = {
   id: null,
   created_at: '',
+  updated_at: null,
+  deleted_at: null,
   name: '',
   runs: [],
   scenarios: [],

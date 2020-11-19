@@ -76,7 +76,7 @@ async function getCohortUsers(cohort_id) {
   };
 }
 
-exports.createCohort = async (name, user_id) => {
+async function createCohort(name, user_id) {
   if (!(name && user_id)) {
     throw new Error(
       'Creating cohort requires user id and a name to be provided'
@@ -97,9 +97,9 @@ exports.createCohort = async (name, user_id) => {
     `);
     return cohort;
   });
-};
+}
 
-const getAggregatedCohort = async cohort => {
+async function __getAggregatedCohort(cohort) {
   const runs = await getCohortRuns(cohort.id);
   const scenarios = await getCohortScenarios(cohort.id);
   const cohortUsers = await getCohortUsers(cohort.id);
@@ -109,9 +109,9 @@ const getAggregatedCohort = async cohort => {
     runs,
     scenarios
   };
-};
+}
 
-exports.getCohort = async id => {
+async function getCohort(id) {
   const result = await query(sql`
     SELECT
       cohort.id,
@@ -129,59 +129,141 @@ exports.getCohort = async id => {
     ) cur
     ON cohort.id = cur.cohort_id;
   `);
-  return result.rowCount ? getAggregatedCohort(result.rows[0]) : {};
-};
+  return result.rowCount ? __getAggregatedCohort(result.rows[0]) : {};
+}
+//
+//
+//
+// PREVIOUSLY:
+//
+// async function getMyCohorts(user_id) {
+//   const result = await query(sql`
+//     SELECT
+//       cohort.id,
+//       cohort.name,
+//       cohort.created_at,
+//       cohort.updated_at,
+//       cohort.deleted_at,
+//       cur.roles
+//     FROM cohort
+//     INNER JOIN (
+//       SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
+//       FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
+//       GROUP BY cohort_id, user_id
+//     ) cur
+//     ON cohort.id = cur.cohort_id
+//     WHERE cur.user_id = ${user_id}
+//     AND cohort.deleted_at IS NULL
+//     ORDER BY cohort.created_at DESC;
+//   `);
 
-exports.getMyCohorts = async user_id => {
-  const result = await query(sql`
-    SELECT
-      cohort.id,
-      cohort.name,
-      cohort.created_at,
-      cohort.updated_at,
-      cohort.deleted_at,
-      cur.roles
-    FROM cohort
-    INNER JOIN (
-      SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
-      FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
-      GROUP BY cohort_id, user_id
-    ) cur
-    ON cohort.id = cur.cohort_id
-    WHERE cur.user_id = ${user_id}
-    AND cohort.deleted_at IS NULL
-    ORDER BY cohort.created_at DESC;
-  `);
+//   const cohorts = [];
+//   for (const row of result.rows) {
+//     cohorts.push(await __getAggregatedCohort(row));
+//   }
+//   return cohorts;
+// };
+//
+//
+// async function getAllCohorts() {
+//   const result = await query(sql`
+//     SELECT *
+//     FROM cohort
+//     ORDER BY created_at DESC
+//   `);
+//
+//   const cohorts = [];
+//   for (const row of result.rows) {
+//     cohorts.push(await __getAggregatedCohort(row));
+//   }
+//   return cohorts;
+// };
+//
+//
+//
+//
+//
 
+async function __getCohorts(user, direction = 'DESC', offset, limit) {
+  const orderDirection = direction.toUpperCase();
+  let composedQuery;
+
+  // These queries intentionally does not use the sql`` because that
+  // tag will attempt to put quotes around the output of
+  // ${direction.toUpperCase()}
+
+  if (user.is_super) {
+    // Super users will always see all cohorts, even ones
+    // marked as deleted.
+    composedQuery = `
+      SELECT *
+      FROM cohort
+      ORDER BY created_at ${orderDirection}
+    `;
+  } else {
+    // All other users will only see cohorts for which they
+    // have some role in, ie. owner, facilitator, researcher or participant
+    composedQuery = `
+      SELECT
+        cohort.*,
+        cur.roles
+      FROM cohort
+      INNER JOIN (
+        SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
+        FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
+        GROUP BY cohort_id, user_id
+      ) cur
+      ON cohort.id = cur.cohort_id
+      WHERE cur.user_id = ${user.id}
+      AND cohort.deleted_at IS NULL
+      ORDER BY cohort.created_at ${orderDirection}
+    `;
+  }
+
+  if (limit) {
+    composedQuery += `
+      OFFSET ${offset}
+      LIMIT ${limit}
+    `;
+  }
+
+  const result = await query(composedQuery);
+  return result.rows;
+}
+
+async function getCohorts(user) {
+  console.log('IS THIS GETTING CALLED?', user);
+  console.log(__getCohorts);
+  const records = await __getCohorts(user);
   const cohorts = [];
-  for (const row of result.rows) {
-    cohorts.push(await getAggregatedCohort(row));
+  for (const record of records) {
+    cohorts.push(await __getAggregatedCohort(record));
   }
   return cohorts;
-};
+}
 
-exports.getAllCohorts = async () => {
-  const result = await query(sql`
-    SELECT *
-    FROM cohort
-    ORDER BY created_at DESC
-  `);
-
+async function getCohortsSlice(user, direction, offset, limit) {
+  const records = await __getCohorts(user);
   const cohorts = [];
-  for (const row of result.rows) {
-    cohorts.push(await getAggregatedCohort(row));
+  for (const record of records) {
+    cohorts.push(await __getAggregatedCohort(record));
   }
   return cohorts;
-};
+}
 
-exports.setCohort = async (id, updates) => {
+async function getCohortsCount(user) {
+  const records = await __getCohorts(user);
+  return records.length;
+}
+
+async function setCohort(id, updates) {
   return await withClientTransaction(async client => {
     const result = await client.query(updateQuery('cohort', { id }, updates));
     return result.rows[0];
   });
-};
+}
 
-exports.softDeleteCohort = async id => {
+async function softDeleteCohort(id) {
   return await withClientTransaction(async client => {
     const result = await query(sql`
       UPDATE cohort
@@ -191,9 +273,9 @@ exports.softDeleteCohort = async id => {
     `);
     return result.rows[0];
   });
-};
+}
 
-exports.setCohortScenarios = async (id, scenarioIds) => {
+async function setCohortScenarios(id, scenarioIds) {
   return await withClientTransaction(async client => {
     await client.query(sql`
       DELETE FROM cohort_scenario
@@ -216,9 +298,9 @@ exports.setCohortScenarios = async (id, scenarioIds) => {
 
     return scenarioIds;
   });
-};
+}
 
-exports.getCohortRunResponses = async ({ id, participant_id, scenario_id }) => {
+async function getCohortRunResponses({ id, participant_id, scenario_id }) {
   // let responses = [];
 
   let andClause = participant_id
@@ -321,9 +403,9 @@ exports.getCohortRunResponses = async ({ id, participant_id, scenario_id }) => {
   // }
 
   return result.rows;
-};
+}
 
-exports.linkCohortToRun = async (id, run_id) => {
+async function linkCohortToRun(id, run_id) {
   if (!(id && run_id)) {
     throw new Error(
       'Link a cohort to a run requires a cohort id, run id and user id'
@@ -339,9 +421,9 @@ exports.linkCohortToRun = async (id, run_id) => {
 
     return result;
   });
-};
+}
 
-exports.getCohortUserRoles = async (user_id, id) => {
+async function getCohortUserRoles(id, user_id) {
   const result = await query(sql`
     SELECT ARRAY_AGG(role) AS roles
     FROM cohort_user_role
@@ -349,11 +431,11 @@ exports.getCohortUserRoles = async (user_id, id) => {
     AND user_id = ${user_id}
     AND ended_at IS NULL
   `);
-  const roles = result.rows.length ? result.rows[0].roles : [];
+  const roles = result.rowCount ? result.rows[0].roles : [];
   return { roles };
-};
+}
 
-exports.linkUserToCohort = async (cohort_id, user_id, role, action) => {
+async function linkUserToCohort(cohort_id, user_id, role, action) {
   if (!(cohort_id && user_id)) {
     throw new Error(
       'Setting a cohort user role requires a cohort id and a user_id'
@@ -397,9 +479,9 @@ exports.linkUserToCohort = async (cohort_id, user_id, role, action) => {
     // console.log(cohortUsers);
     return cohortUsers;
   });
-};
+}
 
-exports.addCohortUserRole = async (cohort_id, user_id, roles) => {
+async function addCohortUserRole(cohort_id, user_id, roles) {
   return withClientTransaction(async client => {
     const [role] = roles;
     const result = await client.query(sql`
@@ -409,9 +491,9 @@ exports.addCohortUserRole = async (cohort_id, user_id, roles) => {
     `);
     return { addedCount: result.rowCount };
   });
-};
+}
 
-exports.deleteCohortUserRole = async (cohort_id, user_id, roles) => {
+async function deleteCohortUserRole(cohort_id, user_id, roles) {
   return withClientTransaction(async client => {
     const [role] = roles;
     const result = await client.query(sql`
@@ -423,15 +505,21 @@ exports.deleteCohortUserRole = async (cohort_id, user_id, roles) => {
 
     return { deletedCount: result.rowCount };
   });
-};
+}
 
-exports.listUserCohorts = async user_id => {
-  const result = await query(sql`
-    SELECT cohort.id, cohort.name, cohort_user_role.role
-    FROM cohort
-    LEFT JOIN cohort_user_role
-        ON cohort_user_role.cohort_id = cohort.id
-    WHERE cohort_user_role.user_id = ${user_id}
-  `);
-  return result.rows;
-};
+exports.createCohort = createCohort;
+exports.getCohort = getCohort;
+exports.__getAggregatedCohort = __getAggregatedCohort;
+exports.__getCohorts = __getCohorts;
+exports.getCohorts = getCohorts;
+exports.getCohortsCount = getCohortsCount;
+exports.getCohortsSlice = getCohortsSlice;
+exports.setCohort = setCohort;
+exports.softDeleteCohort = softDeleteCohort;
+exports.setCohortScenarios = setCohortScenarios;
+exports.getCohortRunResponses = getCohortRunResponses;
+exports.linkCohortToRun = linkCohortToRun;
+exports.getCohortUserRoles = getCohortUserRoles;
+exports.linkUserToCohort = linkUserToCohort;
+exports.addCohortUserRole = addCohortUserRole;
+exports.deleteCohortUserRole = deleteCohortUserRole;

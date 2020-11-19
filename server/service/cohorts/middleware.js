@@ -12,8 +12,8 @@ exports.requireCohortUserRole = roles => [
     const { roles: siteUserRoles } = await getUserRoles(req.session.user.id);
 
     const { roles: cohortUserRoles } = await getCohortUserRoles(
-      req.session.user.id,
-      req.body.cohort_id
+      req.body.cohort_id,
+      req.session.user.id
     );
 
     if (

@@ -1,8 +1,8 @@
 import { request } from '../';
 import { asyncMiddleware } from '../../util/api';
 
-import * as db from '../../service/cohort/db';
-import * as ep from '../../service/cohort/endpoints';
+import * as db from '../../service/cohorts/db';
+import * as ep from '../../service/cohorts/endpoints';
 
 const error = new Error('something unexpected happened');
 
@@ -155,13 +155,14 @@ jest.mock('../../service/auth/db', () => {
   };
 });
 
-jest.mock('../../service/cohort/db', () => {
+jest.mock('../../service/cohorts/db', () => {
   return {
-    ...jest.requireActual('../../service/cohort/db'),
+    ...jest.requireActual('../../service/cohorts/db'),
     createCohort: jest.fn(),
     getCohort: jest.fn(),
-    getMyCohorts: jest.fn(),
-    getAllCohorts: jest.fn(),
+    __getAggregatedCohort: jest.fn(),
+    __getCohorts: jest.fn(),
+    getCohorts: jest.fn(),
     setCohort: jest.fn(),
     setCohortScenarios: jest.fn(),
     getCohortRunResponses: jest.fn(),
@@ -169,14 +170,13 @@ jest.mock('../../service/cohort/db', () => {
     getCohortUserRoles: jest.fn(),
     linkUserToCohort: jest.fn(),
     addCohortUserRole: jest.fn(),
-    deleteCohortUserRole: jest.fn(),
-    listUserCohorts: jest.fn()
+    deleteCohortUserRole: jest.fn()
   };
 });
 
-import * as cohortmw from '../../service/cohort/middleware';
-jest.mock('../../service/cohort/middleware', () => {
-  const cohortmw = jest.requireActual('../../service/cohort/middleware');
+import * as cohortmw from '../../service/cohorts/middleware';
+jest.mock('../../service/cohorts/middleware', () => {
+  const cohortmw = jest.requireActual('../../service/cohorts/middleware');
   return {
     ...cohortmw,
     requireCohortUserRole: jest.fn(roles => [
@@ -213,7 +213,7 @@ jest.mock('../../service/scenarios/db', () => {
   };
 });
 
-describe('/api/cohort/*', () => {
+describe('/api/cohorts/*', () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
@@ -238,12 +238,14 @@ describe('/api/cohort/*', () => {
     db.deleteCohortUserRole.mockImplementation(async () => ({
       deletedCount: 1
     }));
-    db.getAllCohorts.mockImplementation(async () => [cohort]);
     db.getCohortRunResponses.mockImplementation(async () => [
       { response_id: 1, scenario_id: 42 }
     ]);
-    db.getMyCohorts.mockImplementation(async () => [cohort]);
-    db.listUserCohorts.mockImplementation(async () => [cohort]);
+
+    db.__getAggregatedCohort.mockImplementation(async () => cohort);
+    db.__getCohorts.mockImplementation(async () => [cohort]);
+    db.getCohorts.mockImplementation(async () => [cohort]);
+
     db.linkUserToCohort.mockImplementation(async id => {
       const { users, usersById } = cohort;
       return {
@@ -272,8 +274,8 @@ describe('/api/cohort/*', () => {
     jest.resetAllMocks();
   });
 
-  describe('/api/cohort/:id/roles/add (post)', () => {
-    const path = '/api/cohort/1/roles/add';
+  describe('/api/cohorts/:id/roles/add (post)', () => {
+    const path = '/api/cohorts/1/roles/add';
     const method = 'post';
     const body = {
       cohort_id: 1,
@@ -304,8 +306,8 @@ describe('/api/cohort/*', () => {
   });
 
   // TODO: Investigate timeout
-  // describe('/api/cohort/:id/roles/delete (post)', () => {
-  //   const path = '/api/cohort/1/roles/delete';
+  // describe('/api/cohorts/:id/roles/delete (post)', () => {
+  //   const path = '/api/cohorts/1/roles/delete';
   //   const method = 'post';
   //   const body = {
   //     cohort_id: 1,

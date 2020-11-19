@@ -23,6 +23,28 @@ exports[`Render 1 1 1`] = `
       </i>
       Create a Cohort
     </a>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item"
+        tabindex="0"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
   </div>
   <div
     class="ui fluid container"

@@ -1,19 +1,39 @@
 import { request } from '../';
 import { asyncMiddleware } from '../../util/api';
 
-import * as db from '../../service/cohort/db';
-import * as ep from '../../service/cohort/endpoints';
+import * as db from '../../service/cohorts/db';
+import * as ep from '../../service/cohorts/endpoints';
 
 const error = new Error('something unexpected happened');
 
-const user = {
+const superUser = {
   id: 999,
   email: 'super@email.com',
   roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+  username: 'super',
   is_super: true,
-  username: 'superuser',
   is_anonymous: false,
   personalname: 'Super User'
+};
+
+const facilitatorUser = {
+  id: 888,
+  email: 'facilitator@email.com',
+  roles: ['participant', 'facilitator'],
+  username: 'facilitator',
+  is_super: false,
+  is_anonymous: false,
+  personalname: 'Facilitator User'
+};
+
+const participantUser = {
+  id: 777,
+  email: 'participant@email.com',
+  roles: ['participant'],
+  username: 'participant',
+  is_super: false,
+  is_anonymous: false,
+  personalname: 'Participant User'
 };
 
 const cohort = {
@@ -46,24 +66,14 @@ const cohort = {
       is_anonymous: true,
       is_owner: false
     },
-    {
-      id: 999,
-      email: 'super@email.com',
-      username: 'superuser',
-      roles: ['owner', 'facilitator', 'participant'],
-      is_anonymous: false,
-      is_owner: true
-    }
+    superUser,
+    facilitatorUser,
+    participantUser
   ],
   usersById: {
-    '999': {
-      id: 999,
-      email: 'super@email.com',
-      username: 'superuser',
-      roles: ['owner', 'facilitator', 'participant'],
-      is_anonymous: false,
-      is_owner: true
-    },
+    '999': superUser,
+    '888': facilitatorUser,
+    '777': participantUser,
     '9': {
       id: 9,
       email: null,
@@ -155,13 +165,15 @@ jest.mock('../../service/auth/db', () => {
   };
 });
 
-jest.mock('../../service/cohort/db', () => {
+const cohortsdb = jest.requireActual('../../service/cohorts/db');
+jest.mock('../../service/cohorts/db', () => {
   return {
-    ...jest.requireActual('../../service/cohort/db'),
+    ...jest.requireActual('../../service/cohorts/db'),
     createCohort: jest.fn(),
     getCohort: jest.fn(),
-    getMyCohorts: jest.fn(),
-    getAllCohorts: jest.fn(),
+    __getAggregatedCohort: jest.fn(),
+    __getCohorts: jest.fn(),
+    getCohorts: jest.fn(),
     setCohort: jest.fn(),
     setCohortScenarios: jest.fn(),
     getCohortRunResponses: jest.fn(),
@@ -169,16 +181,15 @@ jest.mock('../../service/cohort/db', () => {
     getCohortUserRoles: jest.fn(),
     linkUserToCohort: jest.fn(),
     addCohortUserRole: jest.fn(),
-    deleteCohortUserRole: jest.fn(),
-    listUserCohorts: jest.fn()
+    deleteCohortUserRole: jest.fn()
   };
 });
 
-import * as cohortmw from '../../service/cohort/middleware';
-jest.mock('../../service/cohort/middleware', () => {
-  const cohortmw = jest.requireActual('../../service/cohort/middleware');
+import * as cohortsmw from '../../service/cohorts/middleware';
+jest.mock('../../service/cohorts/middleware', () => {
+  const cohortsmw = jest.requireActual('../../service/cohorts/middleware');
   return {
-    ...cohortmw,
+    ...cohortsmw,
     requireCohortUserRole: jest.fn(roles => [
       jest.fn((req, res, next) => next()),
       jest.fn((req, res, next) => next())
@@ -213,15 +224,15 @@ jest.mock('../../service/scenarios/db', () => {
   };
 });
 
-describe('/api/cohort/*', () => {
+describe('/api/cohorts/*', () => {
   afterAll(() => {
     jest.restoreAllMocks();
   });
 
   beforeEach(() => {
-    adb.getUserById.mockImplementation(async () => user);
+    adb.getUserById.mockImplementation(async () => superUser);
     amw.requireUser.mockImplementation((req, res, next) => {
-      req.session.user = user;
+      req.session.user = superUser;
       next();
     });
 
@@ -239,12 +250,14 @@ describe('/api/cohort/*', () => {
     db.deleteCohortUserRole.mockImplementation(async () => ({
       deletedCount: 1
     }));
-    db.getAllCohorts.mockImplementation(async () => [cohort]);
     db.getCohortRunResponses.mockImplementation(async () => [
       { response_id: 1, scenario_id: 42 }
     ]);
-    db.getMyCohorts.mockImplementation(async () => [cohort]);
-    db.listUserCohorts.mockImplementation(async () => [cohort]);
+
+    db.__getAggregatedCohort.mockImplementation(async () => cohort);
+    db.__getCohorts.mockImplementation(async () => [cohort]);
+    db.getCohorts.mockImplementation(async () => [cohort]);
+
     db.linkUserToCohort.mockImplementation(async id => {
       const { users, usersById } = cohort;
       return {
@@ -264,7 +277,7 @@ describe('/api/cohort/*', () => {
     runsmw.requireUserForRun.mockImplementation(async (req, res, next) =>
       next()
     );
-    cohortmw.requireCohortUserRole.mockImplementation(() => [
+    cohortsmw.requireCohortUserRole.mockImplementation(() => [
       (req, res, next) => next()
     ]);
   });
@@ -273,8 +286,8 @@ describe('/api/cohort/*', () => {
     jest.resetAllMocks();
   });
 
-  describe('/api/cohort/', () => {
-    const path = '/api/cohort/';
+  describe('/api/cohorts', () => {
+    const path = '/api/cohorts';
 
     test('post success', async () => {
       const method = 'post';
@@ -289,10 +302,94 @@ describe('/api/cohort/*', () => {
         ]
       `);
     });
+
+    describe('get', () => {
+      test('get success, super', async () => {
+        amw.requireUser.mockImplementation((req, res, next) => {
+          req.session.user = superUser;
+          next();
+        });
+
+        const response = await request({ path });
+        expect(await response.json()).toMatchSnapshot();
+        expect(db.getCohorts.mock.calls.length).toBe(1);
+        expect(db.getCohorts.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+          ]
+        `);
+      });
+
+      test('get success, facilitator', async () => {
+        amw.requireUser.mockImplementation((req, res, next) => {
+          req.session.user = facilitatorUser;
+          next();
+        });
+
+        const response = await request({ path });
+        expect(await response.json()).toMatchSnapshot();
+        expect(db.getCohorts.mock.calls.length).toBe(1);
+        expect(db.getCohorts.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+          ]
+        `);
+      });
+
+      test('get success, participant', async () => {
+        amw.requireUser.mockImplementation((req, res, next) => {
+          req.session.user = participantUser;
+          next();
+        });
+
+        const response = await request({ path });
+        expect(await response.json()).toMatchSnapshot();
+        expect(db.getCohorts.mock.calls.length).toBe(1);
+        expect(db.getCohorts.mock.calls[0]).toMatchInlineSnapshot(`
+          Array [
+            Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+          ]
+        `);
+      });
+    });
   });
 
-  describe('/api/cohort/:id', () => {
-    const path = '/api/cohort/1';
+  describe('/api/cohorts/:id', () => {
+    const path = '/api/cohorts/1';
 
     beforeEach(() => {
       rolesmw.requireUserRole.mockImplementation(() => [
@@ -345,8 +442,8 @@ describe('/api/cohort/*', () => {
       });
     });
 
-    describe('/api/cohort/:id/scenarios', () => {
-      const path = '/api/cohort/1/scenarios';
+    describe('/api/cohorts/:id/scenarios', () => {
+      const path = '/api/cohorts/1/scenarios';
       const method = 'put';
 
       test('put success', async () => {
@@ -368,34 +465,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/my (get)', () => {
-    const path = '/api/cohort/my';
-
-    test('success', async () => {
-      const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
-      expect(db.getMyCohorts.mock.calls.length).toBe(1);
-      expect(db.getMyCohorts.mock.calls[0]).toMatchInlineSnapshot(`
-        Array [
-          999,
-        ]
-      `);
-    });
-  });
-
-  describe('/api/cohort/all (get)', () => {
-    const path = '/api/cohort/all';
-
-    test('success', async () => {
-      const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
-      expect(db.getAllCohorts.mock.calls.length).toBe(1);
-      expect(db.getAllCohorts.mock.calls[0]).toMatchSnapshot(`Array []`);
-    });
-  });
-
-  describe('/api/cohort/:id/scenario/:scenario_id/:user_id (get)', () => {
-    const path = '/api/cohort/1/scenario/42/999';
+  describe('/api/cohorts/:id/scenario/:scenario_id/:user_id (get)', () => {
+    const path = '/api/cohorts/1/scenario/42/999';
 
     test('success', async () => {
       const response = await request({ path });
@@ -418,8 +489,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id/scenario/:scenario_id (get)', () => {
-    const path = '/api/cohort/1/scenario/42';
+  describe('/api/cohorts/:id/scenario/:scenario_id (get)', () => {
+    const path = '/api/cohorts/1/scenario/42';
 
     test('success', async () => {
       const response = await request({ path });
@@ -442,8 +513,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id/participant/:participant_id (get)', () => {
-    const path = '/api/cohort/1/participant/99';
+  describe('/api/cohorts/:id/participant/:participant_id (get)', () => {
+    const path = '/api/cohorts/1/participant/99';
 
     test('success', async () => {
       const response = await request({ path });
@@ -466,8 +537,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id/run/:run_id (get)', () => {
-    const path = '/api/cohort/1/run/42';
+  describe('/api/cohorts/:id/run/:run_id (get)', () => {
+    const path = '/api/cohorts/1/run/42';
 
     test('success', async () => {
       const response = await request({ path });
@@ -488,8 +559,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id/join/:role (get)', () => {
-    const path = '/api/cohort/1/join/participant';
+  describe('/api/cohorts/:id/join/:role (get)', () => {
+    const path = '/api/cohorts/1/join/participant';
 
     test('success', async () => {
       const response = await request({ path });
@@ -506,8 +577,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id/quit (get)', () => {
-    const path = '/api/cohort/1/quit';
+  describe('/api/cohorts/:id/quit (get)', () => {
+    const path = '/api/cohorts/1/quit';
 
     test('success', async () => {
       const response = await request({ path });
@@ -524,8 +595,8 @@ describe('/api/cohort/*', () => {
     });
   });
 
-  describe('/api/cohort/:id/done (get)', () => {
-    const path = '/api/cohort/1/done';
+  describe('/api/cohorts/:id/done (get)', () => {
+    const path = '/api/cohorts/1/done';
 
     test('success', async () => {
       const response = await request({ path });

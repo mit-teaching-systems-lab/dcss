@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/api/cohort/* /api/cohort/:id/roles/add (post) success 1`] = `
+exports[`/api/cohorts/* /api/cohorts/:id/roles/add (post) success 1`] = `
 Object {
   "addedCount": 1,
   "cohort": Object {

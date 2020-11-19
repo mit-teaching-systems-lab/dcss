@@ -23,11 +23,11 @@ const router = Router();
 const {
   createCohort,
   getCohort,
-  getAllCohorts,
-  getMyCohorts,
+  getCohorts,
+  getCohortsCount,
+  getCohortsSlice,
   getCohortData,
   getCohortParticipantData,
-  listUserCohorts,
   setCohort,
   setCohortScenarios,
   linkCohortToRun,
@@ -48,11 +48,9 @@ router.post('/', [
   createCohort
 ]);
 
-// TODO: determine whether this is in use.
-router.get('/', [requireUser, listUserCohorts]);
-//
-router.get('/my', [requireUser, getMyCohorts]);
-router.get('/all', [requireUser, getAllCohorts]);
+router.get('/', [requireUser, getCohorts]);
+router.get('/count', [requireUser, getCohortsCount]);
+router.get('/slice/:direction/:offset/:limit', [requireUser, getCohortsSlice]);
 
 // These are used for ACCESS CONTROL of other users.
 router.post('/:id/roles/delete', [

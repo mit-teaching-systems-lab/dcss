@@ -7,7 +7,7 @@ const pgSession = require('connect-pg-simple')(session);
 
 const authRouter = require('./service/auth');
 const componentsRouter = require('./service/components');
-const cohortRouter = require('./service/cohort');
+const cohortsRouter = require('./service/cohorts');
 const historyRouter = require('./service/history');
 const logsRouter = require('./service/logs');
 const mediaRouter = require('./service/media');
@@ -46,7 +46,7 @@ app.use(logRequestAndResponse);
 
 app.use('/auth', authRouter);
 app.use('/components', componentsRouter);
-app.use('/cohort', cohortRouter);
+app.use('/cohorts', cohortsRouter);
 app.use('/history', historyRouter);
 app.use('/logs', logsRouter);
 app.use('/media', mediaRouter);

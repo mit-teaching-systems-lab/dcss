@@ -3,31 +3,64 @@ const db = require('./db');
 const { getUserById } = require('../auth/db');
 const { getScenarioPrompts } = require('../scenarios/db');
 
-async function createCohortAsync(req, res) {
+async function createCohort(req, res) {
   const user_id = req.session.user.id;
   const { name } = req.body;
   const cohort = await db.createCohort(name, user_id);
   res.json({ cohort });
 }
 
-async function getCohortAsync(req, res) {
+async function getCohort(req, res) {
   const id = Number(req.params.id);
   const cohort = await db.getCohort(id);
   res.json({ cohort });
 }
 
-async function getMyCohortsAsync(req, res) {
-  const user_id = req.session.user.id;
-  const cohorts = await db.getMyCohorts(user_id);
+async function getCohorts(req, res) {
+  const user = req.session.user;
+  const cohorts = await db.getCohorts(user);
   res.json({ cohorts });
 }
 
-async function getAllCohortsAsync(req, res) {
-  const cohorts = await db.getAllCohorts();
-  res.json({ cohorts });
+async function getCohortsCount(req, res) {
+  try {
+    const user = req.session.user;
+    const count = await db.getCohortsCount(user);
+    res.send({ count });
+  } catch (apiError) {
+    const error = new Error('Error while getting cohorts count.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
 }
 
-async function linkCohortToRunAsync(req, res) {
+async function getCohortsSlice(req, res) {
+  const user = req.session.user;
+  const { direction, offset, limit } = req.params;
+  try {
+    const cohorts = await db.getCohortsSlice(user, direction, offset, limit);
+    res.send({ cohorts });
+  } catch (apiError) {
+    const error = new Error('Error while getting cohorts in range.');
+    error.status = 500;
+    error.stack = apiError.stack;
+    throw error;
+  }
+}
+
+// async function getMyCohorts(req, res) {
+//   const user_id = req.session.user.id;
+//   const cohorts = await db.getMyCohorts(user_id);
+//   res.json({ cohorts });
+// }
+
+// async function getAllCohorts(req, res) {
+//   const cohorts = await db.getAllCohorts();
+//   res.json({ cohorts });
+// }
+
+async function linkCohortToRun(req, res) {
   const id = Number(req.params.id);
   const run_id = Number(req.params.run_id);
   await db.linkCohortToRun(id, run_id);
@@ -35,7 +68,7 @@ async function linkCohortToRunAsync(req, res) {
   res.json({ cohort });
 }
 
-async function joinCohortAsync(req, res) {
+async function joinCohort(req, res) {
   const user_id = req.session.user.id;
   const id = Number(req.params.id);
   const role = req.params.role;
@@ -43,7 +76,7 @@ async function joinCohortAsync(req, res) {
   res.json(cohortUsers);
 }
 
-async function quitCohortAsync(req, res) {
+async function quitCohort(req, res) {
   const user_id = req.session.user.id;
   const id = Number(req.params.id);
   const role = req.params.role;
@@ -51,7 +84,7 @@ async function quitCohortAsync(req, res) {
   res.json(cohortUsers);
 }
 
-async function doneCohortAsync(req, res) {
+async function doneCohort(req, res) {
   const user_id = req.session.user.id;
   const id = Number(req.params.id);
   const role = req.params.role;
@@ -59,7 +92,7 @@ async function doneCohortAsync(req, res) {
   res.json(cohortUsers);
 }
 
-async function setCohortAsync(req, res) {
+async function setCohort(req, res) {
   //
   // NOTE: this endpoint is not guarded by validateRequestBody
   //
@@ -87,21 +120,21 @@ async function setCohortAsync(req, res) {
   res.json({ cohort });
 }
 
-async function setCohortScenariosAsync(req, res) {
+async function setCohortScenarios(req, res) {
   const id = Number(req.params.id);
   const { scenarios } = req.body;
   await db.setCohortScenarios(id, scenarios);
   res.json({ scenarios });
 }
 
-async function getCohortDataAsync(req, res) {
+async function getCohortData(req, res) {
   const { id, scenario_id } = req.params;
   const prompts = await getScenarioPrompts(scenario_id);
   const responses = await db.getCohortRunResponses({ id, scenario_id });
   res.json({ prompts, responses });
 }
 
-async function getCohortParticipantDataAsync(req, res) {
+async function getCohortParticipantData(req, res) {
   const { id, participant_id } = req.params;
   const responses = await db.getCohortRunResponses({
     id,
@@ -120,12 +153,7 @@ async function getCohortParticipantDataAsync(req, res) {
   res.json({ prompts, responses });
 }
 
-async function listUserCohortsAsync(req, res) {
-  const cohorts = await db.listUserCohorts(req.session.user.id);
-  res.json({ cohorts });
-}
-
-async function addCohortUserRoleAsync(req, res) {
+async function addCohortUserRole(req, res) {
   const { cohort_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
@@ -151,7 +179,7 @@ async function addCohortUserRoleAsync(req, res) {
   }
 }
 
-async function deleteCohortUserRoleAsync(req, res) {
+async function deleteCohortUserRole(req, res) {
   const { cohort_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
@@ -177,20 +205,20 @@ async function deleteCohortUserRoleAsync(req, res) {
   }
 }
 
-exports.createCohort = asyncMiddleware(createCohortAsync);
-exports.getCohort = asyncMiddleware(getCohortAsync);
-exports.getMyCohorts = asyncMiddleware(getMyCohortsAsync);
-exports.getAllCohorts = asyncMiddleware(getAllCohortsAsync);
-exports.linkCohortToRun = asyncMiddleware(linkCohortToRunAsync);
-exports.joinCohort = asyncMiddleware(joinCohortAsync);
-exports.quitCohort = asyncMiddleware(quitCohortAsync);
-exports.doneCohort = asyncMiddleware(doneCohortAsync);
-exports.setCohort = asyncMiddleware(setCohortAsync);
-exports.setCohortScenarios = asyncMiddleware(setCohortScenariosAsync);
-exports.getCohortData = asyncMiddleware(getCohortDataAsync);
-exports.getCohortParticipantData = asyncMiddleware(
-  getCohortParticipantDataAsync
-);
-exports.listUserCohorts = asyncMiddleware(listUserCohortsAsync);
-exports.addCohortUserRole = asyncMiddleware(addCohortUserRoleAsync);
-exports.deleteCohortUserRole = asyncMiddleware(deleteCohortUserRoleAsync);
+exports.createCohort = asyncMiddleware(createCohort);
+exports.getCohort = asyncMiddleware(getCohort);
+exports.getCohorts = asyncMiddleware(getCohorts);
+exports.getCohortsCount = asyncMiddleware(getCohortsCount);
+exports.getCohortsSlice = asyncMiddleware(getCohortsSlice);
+// exports.getMyCohorts = asyncMiddleware(getMyCohorts);
+// exports.getAllCohorts = asyncMiddleware(getAllCohorts);
+exports.linkCohortToRun = asyncMiddleware(linkCohortToRun);
+exports.joinCohort = asyncMiddleware(joinCohort);
+exports.quitCohort = asyncMiddleware(quitCohort);
+exports.doneCohort = asyncMiddleware(doneCohort);
+exports.setCohort = asyncMiddleware(setCohort);
+exports.setCohortScenarios = asyncMiddleware(setCohortScenarios);
+exports.getCohortData = asyncMiddleware(getCohortData);
+exports.getCohortParticipantData = asyncMiddleware(getCohortParticipantData);
+exports.addCohortUserRole = asyncMiddleware(addCohortUserRole);
+exports.deleteCohortUserRole = asyncMiddleware(deleteCohortUserRole);

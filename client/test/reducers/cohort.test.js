@@ -117,21 +117,23 @@ describe('cohorts', () => {
     assert.deepEqual(reducer.cohorts(undefined, {}), []);
   });
 
-  test('GET_USER_COHORTS_SUCCESS', () => {
+  test('GET_COHORTS_SUCCESS', () => {
     const action = {
-      type: types.GET_USER_COHORTS_SUCCESS,
+      type: types.GET_COHORTS_SUCCESS,
       cohorts
     };
     assert.deepEqual(reducer.cohorts(undefined, action), cohorts);
     assert.deepEqual(reducer.cohorts(undefined, action), cohorts);
   });
-  test('GET_ALL_COHORTS_SUCCESS', () => {
+
+  test('GET_COHORTS_SUCCESS dedupe', () => {
+    const state = cohorts;
     const action = {
-      type: types.GET_ALL_COHORTS_SUCCESS,
-      cohorts
+      type: types.GET_COHORTS_SUCCESS,
+      cohorts: [...cohorts, ...cohorts, ...cohorts]
     };
-    assert.deepEqual(reducer.cohorts(undefined, action), cohorts);
-    assert.deepEqual(reducer.cohorts(undefined, action), cohorts);
+    assert.deepEqual(reducer.cohorts(state, action), cohorts);
+    assert.deepEqual(reducer.cohorts(state, action), cohorts);
   });
 });
 
@@ -140,36 +142,23 @@ describe('cohortsById', () => {
     assert.deepEqual(reducer.cohortsById(undefined, {}), {});
   });
 
-  test('GET_USER_COHORTS_SUCCESS', () => {
+  test('GET_COHORTS_SUCCESS', () => {
     const action = {
-      type: types.GET_USER_COHORTS_SUCCESS,
+      type: types.GET_COHORTS_SUCCESS,
       cohorts
     };
     assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
     assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
   });
-  test('GET_USER_COHORTS_SUCCESS dedupe', () => {
+  test('GET_COHORTS_SUCCESS dedupe', () => {
+    const state = {
+      ...cohortsById
+    };
     const action = {
-      type: types.GET_USER_COHORTS_SUCCESS,
+      type: types.GET_COHORTS_SUCCESS,
       cohorts: [...cohorts, ...cohorts, ...cohorts]
     };
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
-  });
-  test('GET_ALL_COHORTS_SUCCESS', () => {
-    const action = {
-      type: types.GET_ALL_COHORTS_SUCCESS,
-      cohorts
-    };
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
-  });
-  test('GET_ALL_COHORTS_SUCCESS dedupe', () => {
-    const action = {
-      type: types.GET_ALL_COHORTS_SUCCESS,
-      cohorts: [...cohorts, ...cohorts, ...cohorts]
-    };
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
+    assert.deepEqual(reducer.cohortsById(state, action), cohortsById);
+    assert.deepEqual(reducer.cohortsById(state, action), cohortsById);
   });
 });
