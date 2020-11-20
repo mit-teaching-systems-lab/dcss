@@ -74,8 +74,6 @@ export class Cohorts extends React.Component {
       if (count === this.props.cohorts.length) {
         this.cohorts = this.props.cohorts;
 
-        await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
-
         this.setState({
           isReady: true,
           cohorts: this.cohorts
@@ -105,6 +103,7 @@ export class Cohorts extends React.Component {
         } while (this.cohorts.length < count);
       }
     }
+    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
   }
 
   async onCreateCohortSubmit() {
@@ -415,7 +414,7 @@ const mapDispatchToProps = dispatch => ({
   getCohortsCount: () => dispatch(getCohortsCount()),
   getCohortsSlice: () => dispatch(getCohortsSlice()),
   getCohort: id => dispatch(getCohort(id)),
-  getScenariosByStatus: () => dispatch(getScenariosByStatus()),
+  getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });
