@@ -44,7 +44,7 @@ export const CohortCard = ({ id, created_at, name, roles, users }) => {
 
   return (
     <Card className="sc sc__margin-height" key={id}>
-      <Card.Content className="sc sc__cursor-pointer">
+      <Card.Content className="sc">
         <Card.Header>
           <NavLink to={`/cohort/${id}`}>{name}</NavLink>
         </Card.Header>
