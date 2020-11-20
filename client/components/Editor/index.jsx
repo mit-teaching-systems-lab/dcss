@@ -353,15 +353,15 @@ class Editor extends Component {
 
     if (isNewScenario) {
       endpoint = '/api/scenarios';
-      method = 'PUT';
+      method = 'POST';
     } else {
       endpoint = `/api/scenarios/${scenarioId}`;
-      method = 'POST';
+      method = 'PUT';
     }
 
     // TODO: Move to own async action
     return scenario => {
-      if (method === 'PUT' && !scenario.description) {
+      if (method === 'POST' && !scenario.description) {
         scenario.description = makeDefaultDescription(scenario);
       }
 

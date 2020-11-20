@@ -44,13 +44,13 @@ router.get('/:scenario_id/unlock', [
   endScenarioLock
 ]);
 
-router.put('/', [
+router.post('/', [
   requireUserRole(requiredRoles),
   validateRequestBody,
   addScenario
 ]);
 
-router.post('/:scenario_id', [
+router.put('/:scenario_id', [
   requireUserRole(requiredRoles),
   requireScenarioUserRole(['owner', 'author', 'reviewer']),
   lookupScenario(),
