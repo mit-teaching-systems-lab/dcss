@@ -57,7 +57,7 @@ export let setRun = (id, data) => async dispatch => {
     const body = JSON.stringify(data);
     const res = await (
       await fetch(`/api/runs/${id}/update`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -115,7 +115,7 @@ export let saveRunEvent = (run_id, name, data) => async dispatch => {
 
     const res = await (
       await fetch(`/api/runs/${run_id}/event/${name}`, {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },

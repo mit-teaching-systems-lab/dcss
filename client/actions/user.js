@@ -79,7 +79,7 @@ export let setUser = params => async dispatch => {
       const body = JSON.stringify(params);
       const res = await (
         await fetch('/api/auth/update', {
-          method: 'POST',
+          method: 'PUT',
           headers: {
             'Content-Type': 'application/json'
           },

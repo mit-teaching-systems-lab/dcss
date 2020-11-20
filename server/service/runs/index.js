@@ -18,21 +18,16 @@ const {
 
 const runs = new Router();
 
+runs.get('/', [requireUser, getRuns]);
+
 runs.put('/new-or-existing/scenario/:scenario_id', [
   requireUser,
   newOrExistingRun
 ]);
-runs.get('/', [requireUser, getRuns]);
-
-runs.put('/:run_id/event/:name', [
-  requireUser,
-  requireUserForRun,
-  saveRunEvent
-]);
 
 runs.put('/:run_id/finish', [requireUser, requireUserForRun, finishRun]);
 
-runs.post('/:run_id/update', [
+runs.put('/:run_id/update', [
   requireUser,
   requireUserForRun,
   validateRequestBody,
@@ -45,6 +40,13 @@ runs.get('/:run_id/consent/revoke', [
   requireUser,
   requireUserForRun,
   revokeConsentForRun
+]);
+
+runs.post('/:run_id/event/:name', [
+  requireUser,
+  requireUserForRun,
+  // validateRequestBody,
+  saveRunEvent
 ]);
 
 runs.post('/:run_id/response/:response_id', [

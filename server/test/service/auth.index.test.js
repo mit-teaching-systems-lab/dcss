@@ -974,7 +974,7 @@ describe('/api/auth/*', () => {
   });
 
   describe('/api/auth/update', () => {
-    const method = 'post';
+    const method = 'put';
     const path = '/api/auth/update';
 
     beforeEach(() => {

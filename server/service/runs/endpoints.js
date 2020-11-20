@@ -3,7 +3,7 @@ const db = require('./db');
 const { runForRequest } = require('./middleware');
 const { getScenarioConsent, getScenarioPrompts } = require('../scenarios/db');
 
-async function newOrExistingRunAsync(req, res) {
+async function newOrExistingRun(req, res) {
   const { scenario_id } = req.params;
   const { id: user_id } = req.session.user;
 
@@ -21,7 +21,7 @@ async function newOrExistingRunAsync(req, res) {
   }
 }
 
-async function upsertResponseAsync(req, res) {
+async function upsertResponse(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
   const { created_at, ended_at, ...response } = req.body;
@@ -42,7 +42,7 @@ async function upsertResponseAsync(req, res) {
   }
 }
 
-async function getResponseAsync(req, res) {
+async function getResponse(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
 
@@ -64,7 +64,7 @@ async function getResponseAsync(req, res) {
   }
 }
 
-async function getTranscriptionOutcomeAsync(req, res) {
+async function getTranscriptionOutcome(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
 
@@ -83,7 +83,7 @@ async function getTranscriptionOutcomeAsync(req, res) {
   }
 }
 
-async function getRunDataAsync(req, res) {
+async function getRunData(req, res) {
   const { run_id } = req.params;
   const responses = await db.getRunResponses(run_id);
   const prompts = {};
@@ -103,7 +103,7 @@ async function getRunDataAsync(req, res) {
   }
 }
 
-async function updateRunAsync(req, res) {
+async function updateRun(req, res) {
   const { id } = await runForRequest(req);
   const body = req.body;
   try {
@@ -114,7 +114,7 @@ async function updateRunAsync(req, res) {
   }
 }
 
-async function revokeConsentForRunAsync(req, res) {
+async function revokeConsentForRun(req, res) {
   const { id } = await runForRequest(req);
   try {
     const run = await db.updateRun(id, { consent_granted_by_user: false });
@@ -124,7 +124,7 @@ async function revokeConsentForRunAsync(req, res) {
   }
 }
 
-async function getReferrerParamsAsync(req, res) {
+async function getReferrerParams(req, res) {
   try {
     const { referrer_params } = await runForRequest(req);
     res.json({ referrer_params });
@@ -133,7 +133,7 @@ async function getReferrerParamsAsync(req, res) {
   }
 }
 
-async function finishRunAsync(req, res) {
+async function finishRun(req, res) {
   try {
     const { id } = await runForRequest(req);
     res.json(await db.finishRun(id));
@@ -142,7 +142,7 @@ async function finishRunAsync(req, res) {
   }
 }
 
-async function saveRunEventAsync(req, res) {
+async function saveRunEvent(req, res) {
   const { id } = await runForRequest(req);
   const { name, context } = req.body;
   try {
@@ -153,7 +153,7 @@ async function saveRunEventAsync(req, res) {
   }
 }
 
-async function getRunsAsync(req, res) {
+async function getRuns(req, res) {
   const { id: user_id } = req.session.user;
   try {
     const runs = await db.getRuns(user_id);
@@ -163,14 +163,14 @@ async function getRunsAsync(req, res) {
   }
 }
 
-exports.finishRun = asyncMiddleware(finishRunAsync);
-exports.getReferrerParams = asyncMiddleware(getReferrerParamsAsync);
-exports.getResponse = asyncMiddleware(getResponseAsync);
-exports.getRunData = asyncMiddleware(getRunDataAsync);
-exports.getTranscriptionOutcome = asyncMiddleware(getTranscriptionOutcomeAsync);
-exports.getRuns = asyncMiddleware(getRunsAsync);
-exports.newOrExistingRun = asyncMiddleware(newOrExistingRunAsync);
-exports.saveRunEvent = asyncMiddleware(saveRunEventAsync);
-exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRunAsync);
-exports.updateRun = asyncMiddleware(updateRunAsync);
-exports.upsertResponse = asyncMiddleware(upsertResponseAsync);
+exports.finishRun = asyncMiddleware(finishRun);
+exports.getReferrerParams = asyncMiddleware(getReferrerParams);
+exports.getResponse = asyncMiddleware(getResponse);
+exports.getRunData = asyncMiddleware(getRunData);
+exports.getTranscriptionOutcome = asyncMiddleware(getTranscriptionOutcome);
+exports.getRuns = asyncMiddleware(getRuns);
+exports.newOrExistingRun = asyncMiddleware(newOrExistingRun);
+exports.saveRunEvent = asyncMiddleware(saveRunEvent);
+exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRun);
+exports.updateRun = asyncMiddleware(updateRun);
+exports.upsertResponse = asyncMiddleware(upsertResponse);

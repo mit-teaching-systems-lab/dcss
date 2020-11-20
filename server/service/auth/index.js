@@ -31,7 +31,7 @@ router.post('/signup', [
 
 router.post('/reset', [validateRequestBody, resetUserPassword]);
 
-router.post('/update', [
+router.put('/update', [
   requireUser,
   validateRequestBody,
   checkForDuplicate,

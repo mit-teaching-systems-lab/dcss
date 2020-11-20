@@ -71,7 +71,7 @@ describe('SET_USER_SUCCESS', () => {
           "headers": Object {
             "Content-Type": "application/json",
           },
-          "method": "POST",
+          "method": "PUT",
         },
       ]
     `);
@@ -96,7 +96,7 @@ describe('SET_USER_SUCCESS', () => {
           "headers": Object {
             "Content-Type": "application/json",
           },
-          "method": "POST",
+          "method": "PUT",
         },
       ]
     `);
@@ -129,7 +129,7 @@ test('SET_USER_ERROR', async () => {
         "headers": Object {
           "Content-Type": "application/json",
         },
-        "method": "POST",
+        "method": "PUT",
       },
     ]
   `);
