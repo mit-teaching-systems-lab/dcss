@@ -241,7 +241,7 @@ async function getCohorts(user) {
 }
 
 async function getCohortsSlice(user, direction, offset, limit) {
-  const records = await __getCohorts(user);
+  const records = await __getCohorts(user, direction, offset, limit);
   const cohorts = [];
   for (const record of records) {
     cohorts.push(await __getAggregatedCohort(record));
