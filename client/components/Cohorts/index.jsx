@@ -76,7 +76,6 @@ export class Cohorts extends React.Component {
 
         this.setState({
           isReady: true,
-          cohorts: this.cohorts
         });
 
         if (value) {
@@ -92,7 +91,6 @@ export class Cohorts extends React.Component {
 
           this.setState({
             isReady: true,
-            cohorts: this.cohorts
           });
 
           if (value) {
@@ -198,7 +196,7 @@ export class Cohorts extends React.Component {
   }
 
   render() {
-    const { activePage, isReady, cohorts, createIsVisible, value } = this.state;
+    const { activePage, isReady, createIsVisible, value } = this.state;
     const {
       onCreateCohortCancel,
       onCohortSearchChange,
@@ -207,6 +205,13 @@ export class Cohorts extends React.Component {
       onOpenCreateCohortClick,
       onPageChange
     } = this;
+
+    // If there's an active search, use the search filtered set
+    // of cohorts from state. Otherwise, use the status filtered
+    // set from this.cohorts (the untouched backup).
+    let cohorts = value
+      ? this.state.cohorts
+      : this.cohorts.slice(0);
 
     const { permissions } = this.props;
 
