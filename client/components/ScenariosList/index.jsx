@@ -131,7 +131,7 @@ class ScenariosList extends Component {
       this.scenarios = this.props.scenarios;
 
       this.setState({
-        isReady: true,
+        isReady: true
       });
 
       if (value) {
@@ -146,8 +146,8 @@ class ScenariosList extends Component {
         );
 
         this.setState({
-          isReady: true,
-          });
+          isReady: true
+        });
 
         if (value) {
           this.onSearchChange({}, { value });

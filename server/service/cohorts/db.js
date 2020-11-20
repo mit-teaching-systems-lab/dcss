@@ -232,8 +232,6 @@ async function __getCohorts(user, direction = 'DESC', offset, limit) {
 }
 
 async function getCohorts(user) {
-  console.log('IS THIS GETTING CALLED?', user);
-  console.log(__getCohorts);
   const records = await __getCohorts(user);
   const cohorts = [];
   for (const record of records) {

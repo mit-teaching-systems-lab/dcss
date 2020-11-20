@@ -175,8 +175,10 @@ export class CohortScenarios extends React.Component {
     // This is the list of scenarios that are available,
     // but NOT in the cohort. The order is by id, descending
     const reducedScenarios = scenarios.reduce((accum, scenario) => {
-      if (!cohort.scenarios.includes(scenario.id) &&
-          scenario.status === SCENARIO_IS_PUBLIC) {
+      if (
+        !cohort.scenarios.includes(scenario.id) &&
+        scenario.status === SCENARIO_IS_PUBLIC
+      ) {
         accum.push(scenario);
       }
       return accum;

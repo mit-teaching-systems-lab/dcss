@@ -158,7 +158,7 @@ describe('/api/notifications/*', () => {
     db.getNotificationById.mockImplementation(async id => {
       return notificationsById[id];
     });
-    db.deleteNotificationById.mockImplementation(async () => {
+    db.deleteNotificationById.mockImplementation(async (id) => {
       return {
         ...notificationsById[id],
         deleted_at: '2020-11-16T14:52:28.429Z'

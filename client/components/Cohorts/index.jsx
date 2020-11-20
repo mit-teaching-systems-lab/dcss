@@ -75,7 +75,7 @@ export class Cohorts extends React.Component {
         this.cohorts = this.props.cohorts;
 
         this.setState({
-          isReady: true,
+          isReady: true
         });
 
         if (value) {
@@ -90,7 +90,7 @@ export class Cohorts extends React.Component {
           );
 
           this.setState({
-            isReady: true,
+            isReady: true
           });
 
           if (value) {
@@ -209,9 +209,7 @@ export class Cohorts extends React.Component {
     // If there's an active search, use the search filtered set
     // of cohorts from state. Otherwise, use the status filtered
     // set from this.cohorts (the untouched backup).
-    let cohorts = value
-      ? this.state.cohorts
-      : this.cohorts.slice(0);
+    let cohorts = value ? this.state.cohorts : this.cohorts.slice(0);
 
     const { permissions } = this.props;
 
