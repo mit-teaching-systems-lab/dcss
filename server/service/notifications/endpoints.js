@@ -7,7 +7,9 @@ async function getNotifications(req, res) {
 }
 
 async function getNotificationsByAuthorId(req, res) {
-  const notifications = await db.getNotificationsByAuthorId(req.session.user.id);
+  const notifications = await db.getNotificationsByAuthorId(
+    req.session.user.id
+  );
   res.json({ notifications });
 }
 
@@ -18,7 +20,14 @@ async function getNotificationsStartedNotExpired(req, res) {
 }
 
 async function createNotification(req, res) {
-  const { author_id, start_at = null, expire_at = null, props, rules, type } = req.body;
+  const {
+    author_id,
+    start_at = null,
+    expire_at = null,
+    props,
+    rules,
+    type
+  } = req.body;
 
   if (!props || !rules || !type) {
     const error = new Error(
@@ -34,7 +43,7 @@ async function createNotification(req, res) {
     expire_at,
     props,
     rules,
-    type,
+    type
   });
 
   if (!notification) {
@@ -50,7 +59,9 @@ async function setNotificationAck(req, res) {
   const id = Number(req.body.id);
 
   if (!id) {
-    const error = new Error('Notification acknowledgement requires a notification id.');
+    const error = new Error(
+      'Notification acknowledgement requires a notification id.'
+    );
     error.status = 422;
     throw error;
   }
@@ -122,8 +133,12 @@ async function setNotificationById(req, res) {
 }
 
 exports.getNotifications = asyncMiddleware(getNotifications);
-exports.getNotificationsByAuthorId = asyncMiddleware(getNotificationsByAuthorId);
-exports.getNotificationsStartedNotExpired = asyncMiddleware(getNotificationsStartedNotExpired);
+exports.getNotificationsByAuthorId = asyncMiddleware(
+  getNotificationsByAuthorId
+);
+exports.getNotificationsStartedNotExpired = asyncMiddleware(
+  getNotificationsStartedNotExpired
+);
 exports.createNotification = asyncMiddleware(createNotification);
 exports.getNotificationById = asyncMiddleware(getNotificationById);
 exports.setNotificationById = asyncMiddleware(setNotificationById);

@@ -284,12 +284,12 @@ class ScenariosList extends Component {
     switch (category) {
       case 'all': {
         scenarios.push(...sourceScenarios);
-        displayHeading = 'All Scenarios';
+        displayHeading = 'Showing all scenarios';
         break;
       }
       case 'author': {
         authorUsername = this.props.match.params.username;
-        displayHeading = `Scenarios by ${authorUsername}`;
+        displayHeading = `Showing scenarios by ${authorUsername}`;
         scenarios.push(
           ...sourceScenarios.filter(({ author: { username } }) => {
             return username === authorUsername;

@@ -461,7 +461,6 @@ describe('/api/notifications/*', () => {
   });
 
   describe('/api/notifications/:start_at/:expire_at', () => {
-
     test('get success', async () => {
       const path = `/api/notifications/author/777`;
       const response = await request({ path });

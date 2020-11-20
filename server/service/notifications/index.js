@@ -14,16 +14,12 @@ const {
   setNotificationAck,
   getNotifications,
   getNotificationsByAuthorId,
-  getNotificationsStartedNotExpired,
+  getNotificationsStartedNotExpired
 } = require('./endpoints');
 
 router.get('/', [requireUser, getNotifications]);
 
-router.post('/', [
-  requireUser,
-  validateRequestBody,
-  createNotification
-]);
+router.post('/', [requireUser, validateRequestBody, createNotification]);
 
 router.get('/author/:id', [requireUser, getNotificationsByAuthorId]);
 
@@ -36,11 +32,11 @@ router.put('/:id', [
   setNotificationById
 ]);
 
-router.post('/ack', [
-  requireUser,
-  setNotificationAck
-]);
+router.post('/ack', [requireUser, setNotificationAck]);
 
-router.get('/:start_at/:expire_at', [requireUser, getNotificationsStartedNotExpired]);
+router.get('/:start_at/:expire_at', [
+  requireUser,
+  getNotificationsStartedNotExpired
+]);
 
 module.exports = router;

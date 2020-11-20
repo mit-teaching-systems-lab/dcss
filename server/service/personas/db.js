@@ -17,15 +17,13 @@ exports.linkPersonaToScenario = async (persona_id, scenario_id) => {
   });
 };
 
-exports.createPersona = async props => {
-  const { author_id, name, color, description, scenario_id } = props;
-
-  if (!author_id || !name || !color || !description) {
-    throw new Error(
-      'Creating a persona requires a user id, name, color and description.'
-    );
-  }
-
+exports.createPersona = async ({
+  author_id,
+  name,
+  color,
+  description,
+  scenario_id
+}) => {
   return await withClientTransaction(async client => {
     const create = await client.query(sql`
       INSERT INTO persona (name, color, description, author_id)

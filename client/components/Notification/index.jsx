@@ -50,7 +50,6 @@ export function notify({
   }
 }
 
-
 function checkNotificationRules(state, rules) {
   console.log(state);
   return Object.entries(rules).every(([key, value]) => {
@@ -59,12 +58,15 @@ function checkNotificationRules(state, rules) {
 }
 
 function createHTML(html) {
-  return {__html: html};
+  return { __html: html };
 }
 
 class Notification extends Component {
   onMessage = notification => {
-    const canShowNotification = checkNotificationRules(this.props.state, notification.rules);
+    const canShowNotification = checkNotificationRules(
+      this.props.state,
+      notification.rules
+    );
 
     if (!canShowNotification) {
       return;
@@ -131,33 +133,23 @@ class Notification extends Component {
     const { notification } = this.state;
     const ariaLabelledby = Identity.key(notification);
 
-    let notificationProps = notification
-      ? notification.props
-      : null;
+    let notificationProps = notification ? notification.props : null;
 
-    const header = notificationProps
-      ? notificationProps.header || ''
-      : null;
+    const header = notificationProps ? notificationProps.header || '' : null;
 
-    const icon = notificationProps
-      ? notificationProps.icon || 'bell'
-      : null;
+    const icon = notificationProps ? notificationProps.icon || 'bell' : null;
 
-    const size = notificationProps
-      ? notificationProps.size || 'large'
-      : null;
+    const size = notificationProps ? notificationProps.size || 'large' : null;
 
-    const content = notificationProps
-      ? notificationProps.content || ''
-      : null;
+    const content = notificationProps ? notificationProps.content || '' : null;
 
-    const html = notificationProps
-      ? notificationProps.html || ''
-      : null;
+    const html = notificationProps ? notificationProps.html || '' : null;
 
-    const modalContent = html
-      ? <div dangerouslySetInnerHTML={createHTML(html)} />
-      : content;
+    const modalContent = html ? (
+      <div dangerouslySetInnerHTML={createHTML(html)} />
+    ) : (
+      content
+    );
 
     return (
       <Fragment>

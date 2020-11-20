@@ -1,7 +1,13 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 
-exports.createNotification = async ({ start_at, expire_at, props, rules, type }) => {
+exports.createNotification = async ({
+  start_at,
+  expire_at,
+  props,
+  rules,
+  type
+}) => {
   return await withClientTransaction(async client => {
     const create = await client.query(sql`
       INSERT INTO notification (start_at, expire_at, props, rules, type)
@@ -55,7 +61,9 @@ exports.getNotifications = async () => {
 
 exports.setNotificationById = async (id, updates) => {
   return await withClientTransaction(async client => {
-    const result = await client.query(updateQuery('notification', { id }, updates));
+    const result = await client.query(
+      updateQuery('notification', { id }, updates)
+    );
     return result.rows[0];
   });
 };
@@ -83,7 +91,6 @@ exports.deleteNotificationById = async id => {
     return result.rows[0];
   });
 };
-
 
 exports.setNotificationAck = async (notification_id, user_id) => {
   return await withClientTransaction(async client => {
