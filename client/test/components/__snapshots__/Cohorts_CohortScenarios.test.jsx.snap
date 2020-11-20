@@ -124,6 +124,7 @@ exports[`Render 1 1 2`] = `
       >
         <tr
           class=""
+          colspan="5"
         >
           <td
             class=""
@@ -313,6 +314,7 @@ exports[`Render 2 1 2`] = `
       >
         <tr
           class=""
+          colspan="5"
         >
           <td
             class=""

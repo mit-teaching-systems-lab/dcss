@@ -546,7 +546,10 @@ export class CohortScenarios extends React.Component {
             </Sortable>
           ) : (
             <Table.Body>
-              <Table.Row key="row-empty-results">
+              <Table.Row
+                key="row-empty-results"
+                colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}
+              >
                 <Table.Cell>No scenarios match your search</Table.Cell>
               </Table.Row>
             </Table.Body>
