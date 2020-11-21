@@ -17,7 +17,9 @@ import EditorMenu from '@components/EditorMenu';
 import { makeDefaultDescription } from '@components/Editor/scenario';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
-import { OwnerDropdown, CategoriesDropdown } from './DropdownOptions';
+import DropdownCategories from './DropdownCategories';
+import DropdownLabels from './DropdownLabels';
+import DropdownOwner from './DropdownOwner';
 import ScenarioAuthors from './ScenarioAuthors';
 import RichTextEditor from '@components/RichTextEditor';
 
@@ -50,6 +52,7 @@ class ScenarioEditor extends Component {
       title: createSectionDef('Title'),
       description: createSectionDef('Description'),
       categories: createSectionDef('Categories'),
+      labels: createSectionDef('Labels'),
       consentprose: createSectionDef('Consent Agreement'),
       finish: createSectionDef('Finish Slide')
     };
@@ -234,7 +237,8 @@ class ScenarioEditor extends Component {
     const {
       scenarioId,
       scenario,
-      scenario: { author, categories, consent, finish, title }
+      scenario: { author, categories, consent, finish, title },
+      user
     } = this.props;
 
     const { isReady } = this.state;
@@ -334,13 +338,16 @@ class ScenarioEditor extends Component {
 
     const showOwnerDropdown =
       this.state.authors && this.state.authors.length && scenarioId === 'new';
+
     const showCategoryDropdown =
       this.state.categories && this.state.categories.length;
+
+    const showLabelsDropdown = scenarioId !== 'new' && user.is_super;
 
     const dropdowns = (
       <Gate requiredPermission="edit_scenario">
         {showOwnerDropdown ? (
-          <OwnerDropdown
+          <DropdownOwner
             author={author}
             options={this.state.authors}
             onChange={onChange}
@@ -348,11 +355,16 @@ class ScenarioEditor extends Component {
         ) : null}
         {showCategoryDropdown ? (
           <Ref innerRef={node => innerRef(node, 'categories')}>
-            <CategoriesDropdown
+            <DropdownCategories
               options={this.state.categories}
               categories={categories}
               onChange={onChange}
             />
+          </Ref>
+        ) : null}
+        {showLabelsDropdown ? (
+          <Ref innerRef={node => innerRef(node, 'labels')}>
+            <DropdownLabels labels={scenario.labels} onChange={onChange} />
           </Ref>
         ) : null}
       </Gate>
@@ -384,8 +396,6 @@ class ScenarioEditor extends Component {
       )
     );
 
-    // const hideEditorMenu = !location.href.includes('localhost');
-    // const editorMenu = hideEditorMenu ? null : (
     const editorMenu =
       scenarioId !== 'new' ? (
         <EditorMenu
@@ -396,8 +406,6 @@ class ScenarioEditor extends Component {
         />
       ) : null;
 
-    // const isTestEnv = location.href.includes('localhost');
-    const isTestEnv = true;
     const styleHeight = {
       height: '500px'
     };
@@ -424,7 +432,7 @@ class ScenarioEditor extends Component {
                     {...popupProps}
                   />
 
-                  {isTestEnv ? dropdowns : null}
+                  {dropdowns}
 
                   {scenarioId !== 'new' ? (
                     <Fragment>
@@ -448,9 +456,7 @@ class ScenarioEditor extends Component {
                 className="se__grid-column-width-constraint"
                 width={8}
               >
-                {!isTestEnv ? dropdowns : null}
-
-                {isTestEnv && scenarioId !== 'new' ? (
+                {scenarioId !== 'new' ? (
                   <ScenarioAuthors scenario={scenario} />
                 ) : null}
               </Grid.Column>
@@ -477,6 +483,7 @@ ScenarioEditor.propTypes = {
     }),
     description: PropTypes.string,
     finish: PropTypes.object,
+    labels: PropTypes.array,
     lock: PropTypes.object,
     status: PropTypes.number,
     title: PropTypes.string,

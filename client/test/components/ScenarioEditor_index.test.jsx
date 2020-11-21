@@ -621,8 +621,29 @@ beforeEach(() => {
     return categories;
   });
 
+  tagsActions.getLabels = jest.fn();
+  tagsActions.getLabels.mockImplementation(() => async dispatch => {
+    const labels = [
+      { id: 1, name: 'a' },
+      { id: 2, name: 'b' }
+    ];
+    return labels;
+  });
+
   jest.mock('@components/EditorMenu/ScenarioStatusMenuItem', () => {
     return props => <div>@components/EditorMenu/ScenarioStatusMenuItem</div>;
+  });
+
+  jest.mock('@components/ScenarioEditor/DropdownCategories', () => {
+    return props => <div>@components/ScenarioEditor/DropdownCategories</div>;
+  });
+
+  jest.mock('@components/ScenarioEditor/DropdownLabels', () => {
+    return props => <div>@components/ScenarioEditor/DropdownLabels</div>;
+  });
+
+  jest.mock('@components/ScenarioEditor/DropdownOwner', () => {
+    return props => <div>@components/ScenarioEditor/DropdownOwner</div>;
   });
 
   commonProps = {};

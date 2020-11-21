@@ -41,6 +41,7 @@ export const scenarioInitialState = {
     is_finish: true,
     title: ''
   },
+  labels: [],
   lock: null,
   slides: [],
   status: 1,

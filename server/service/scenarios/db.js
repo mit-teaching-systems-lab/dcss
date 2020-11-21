@@ -1,58 +1,71 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
+const { createTag, getLabels, TYPE_ID_FOR } = require('../tags/db');
 const { addSlide, getScenarioSlides } = require('./slides/db');
 const { getRunResponses } = require('../runs/db');
 const { getUserById } = require('../auth/db');
 
-async function getScenarioCategories(scenarioId) {
-  const scenarioCategoriesResults = await query(sql`
-        SELECT c.name as name
-        FROM scenario_tag s
-        INNER JOIN categories c
-        ON s.tag_id = c.id
-        where scenario_id = ${scenarioId};
-    `);
+async function getScenarioCategories(id) {
+  const result = await query(sql`
+    SELECT c.name as name
+    FROM scenario_tag s
+    INNER JOIN categories c
+    ON s.tag_id = c.id
+    WHERE scenario_id = ${id};
+  `);
 
-  return scenarioCategoriesResults.rows.map(r => r.name);
+  return result.rows.map(r => r.name);
+}
+
+async function getScenarioLabels(id) {
+  const result = await query(sql`
+    SELECT l.id as id, l.name as name
+    FROM scenario_tag s
+    INNER JOIN labels l
+    ON s.tag_id = l.id
+    WHERE scenario_id = ${id};
+  `);
+
+  return result.rows.map(r => r.name);
 }
 
 async function addScenarioConsent(consent) {
   const result = await query(sql`
-        INSERT INTO consent (prose)
-        VALUES (${consent.prose})
-        RETURNING *;
-    `);
+    INSERT INTO consent (prose)
+    VALUES (${consent.prose})
+    RETURNING *;
+  `);
 
   return result.rowCount && result.rows[0];
 }
 
-async function setScenarioConsent(scenarioId, consent) {
+async function setScenarioConsent(id, consent) {
   const result = await query(sql`
-        INSERT INTO scenario_consent (scenario_id, consent_id)
-        VALUES (${scenarioId}, ${consent.id})
-        RETURNING *;
-    `);
+    INSERT INTO scenario_consent (scenario_id, consent_id)
+    VALUES (${id}, ${consent.id})
+    RETURNING *;
+  `);
 
   return result.rowCount && result.rows[0];
 }
 
-async function getScenarioConsent(scenarioId) {
+async function getScenarioConsent(id) {
   let results = await query(sql`
-        SELECT c.id as id, c.prose as prose
-        FROM scenario_consent s
-        INNER JOIN consent c
-        ON s.consent_id = c.id
-        WHERE s.scenario_id = ${scenarioId}
-        ORDER BY s.created_at DESC
-        LIMIT 1;
-    `);
+    SELECT c.id as id, c.prose as prose
+    FROM scenario_consent s
+    INNER JOIN consent c
+    ON s.consent_id = c.id
+    WHERE s.scenario_id = ${id}
+    ORDER BY s.created_at DESC
+    LIMIT 1;
+  `);
 
   if (!results.rowCount) {
     results = await query(sql`
-            INSERT INTO scenario_consent (scenario_id, consent_id)
-            SELECT ${scenarioId}, id FROM consent WHERE is_default LIMIT 1
-            RETURNING *;
-        `);
+      INSERT INTO scenario_consent (scenario_id, consent_id)
+      SELECT ${id}, id FROM consent WHERE is_default LIMIT 1
+      RETURNING *;
+    `);
   }
 
   return results.rows[0] || { id: null, prose: '' };
@@ -198,6 +211,7 @@ async function getScenario(scenario_id) {
     (await getScenarioSlides(scenario_id)).find(slide => slide.is_finish) ||
     (await addFinishSlide(scenario_id));
 
+  const labels = await getScenarioLabels(scenario_id);
   const lock = await getScenarioLock(scenario_id);
 
   const scenario = results.rows[0];
@@ -209,13 +223,14 @@ async function getScenario(scenario_id) {
     categories,
     consent,
     finish,
+    labels,
     lock
   };
 }
 
 async function getScenarios() {
   const results = await query(sql`
-    SELECT *
+    SELECT id
     FROM scenario
     ORDER BY id DESC;
   `);
@@ -401,6 +416,41 @@ async function setScenarioCategories(scenarioId, categories) {
   return Promise.all(promises);
 }
 
+async function setScenarioLabels(id, labels) {
+  const storedLabels = (await getLabels()).map(l => l.name);
+
+  return withClientTransaction(async client => {
+    const ids = [];
+
+    for (let label of labels) {
+      if (!storedLabels.includes(label)) {
+        const index = labels.indexOf(label);
+        const tag = await createTag(label, TYPE_ID_FOR.LABEL);
+        labels[index] = tag.name;
+        ids.push(label.id);
+      }
+    }
+
+    await client.query(`
+      DELETE FROM scenario_tag
+      WHERE tag_id in (
+        SELECT id FROM labels
+      )
+      AND scenario_id = ${id};
+    `);
+
+    const result = await client.query(sql`
+      INSERT INTO scenario_tag (scenario_id, tag_id)
+      SELECT ${id} as scenario_id, labels.id FROM
+      jsonb_array_elements_text(${labels}) as x
+      JOIN labels ON labels.name = x
+      ON CONFLICT DO NOTHING;
+    `);
+
+    return labels;
+  });
+}
+
 async function deleteScenario(id) {
   let result = await query(sql`
     DELETE FROM scenario_snapshot WHERE scenario_id >= ${id};
@@ -545,3 +595,6 @@ exports.getScenarioConsent = getScenarioConsent;
 
 // Scenario Categories
 exports.setScenarioCategories = setScenarioCategories;
+
+// Scenario Categories
+exports.setScenarioLabels = setScenarioLabels;

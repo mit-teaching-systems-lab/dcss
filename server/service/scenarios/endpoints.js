@@ -115,6 +115,7 @@ async function setScenarioAsync(req, res) {
     categories,
     consent,
     finish,
+    labels,
     status,
     title
   } = req.body;
@@ -143,6 +144,7 @@ async function setScenarioAsync(req, res) {
     });
 
     await db.setScenarioCategories(scenario_id, categories);
+    await db.setScenarioLabels(scenario_id, labels);
 
     // If the client set the id to null, that indicates that
     // this is a new consent agreement and the new prose
@@ -178,7 +180,8 @@ async function setScenarioAsync(req, res) {
     Object.assign(scenario, {
       categories,
       consent,
-      finish
+      finish,
+      labels
     });
 
     res.status(200).send({ scenario });
@@ -293,9 +296,12 @@ async function copyScenarioAsync(req, res) {
   }
 
   try {
-    const userId = req.session.user.id;
-    const { title, description, categories } = reqScenario(req);
-    const scenario = await db.addScenario(userId, `${title} COPY`, description);
+    const { title, description, categories, labels } = reqScenario(req);
+    const scenario = await db.addScenario(
+      req.session.user.id,
+      `${title} COPY`,
+      description
+    );
     const sourceSlides = await getScenarioSlides(scenarioId);
 
     await deleteSlide(scenario.id, scenario.finish.id);
@@ -390,6 +396,8 @@ async function copyScenarioAsync(req, res) {
     await setSlideOrder(scenario.id, ids);
 
     await db.setScenarioCategories(scenario.id, categories);
+    await db.setScenarioLabels(scenario.id, labels);
+
     const consent = await db.getScenarioConsent(scenarioId);
     const { id, prose } = await db.addScenarioConsent(consent);
 
@@ -403,7 +411,8 @@ async function copyScenarioAsync(req, res) {
     Object.assign(scenario, {
       consent,
       categories,
-      finish
+      finish,
+      labels
     });
     res.send({ scenario, status: 201 });
   } catch (apiError) {

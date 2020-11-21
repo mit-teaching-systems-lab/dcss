@@ -23,10 +23,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import {
-  OwnerDropdown,
-  CategoriesDropdown
-} from '../../components/ScenarioEditor/DropdownOptions.jsx';
+import DropdownCategories from '../../components/ScenarioEditor/DropdownCategories.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -64,39 +61,12 @@ afterEach(() => {
   commonState = null;
 });
 
-test('OwnerDropdown', () => {
-  expect(OwnerDropdown).toBeDefined();
+test('DropdownCategories', () => {
+  expect(DropdownCategories).toBeDefined();
 });
 
 test('Render 1 1', async done => {
-  const Component = OwnerDropdown;
-
-  const props = {
-    ...commonProps,
-    options: [],
-    categories: [],
-    author: { id: null },
-    onChange() {}
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
-
-  done();
-});
-
-test('CategoriesDropdown', () => {
-  expect(CategoriesDropdown).toBeDefined();
-});
-
-test('Render 1 1', async done => {
-  const Component = CategoriesDropdown;
+  const Component = DropdownCategories;
 
   const props = {
     ...commonProps,

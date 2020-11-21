@@ -8,12 +8,12 @@ exports[`Render 1 1 1`] = `
     class="ui card sc sc__margin-height"
   >
     <div
-      class="content sc sc__cursor-pointer"
-      tabindex="0"
+      class="content"
     >
       <div
-        class="header"
+        class="header sc sc__cursor-pointer"
         id="1"
+        tabindex="0"
       >
          Multiplayer Scenario 2
       </div>
@@ -21,11 +21,13 @@ exports[`Render 1 1 1`] = `
         class="description"
         id="2"
       >
+        <p />
         This is the description of 'A Multiplayer Scenario'
       </div>
     </div>
     <div
       class="extra content"
+      tabindex="0"
     >
       <div
         class="ui fluid buttons"

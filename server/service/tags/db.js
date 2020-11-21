@@ -1,21 +1,73 @@
-const { query } = require('../../util/db');
+const { sql, updateQuery } = require('../../util/sqlHelpers');
+const { query, withClientTransaction } = require('../../util/db');
 
-const TAG_TYPES = {
+const TYPES = {
   CATEGORY: 'categories',
-  TOPIC: 'topics'
+  TOPIC: 'topics',
+  LABEL: 'labels'
 };
 
-const getTagByType = async function(tagType) {
-  const result = await query(`SELECT t.id, t.name
-        FROM tag t
-        INNER JOIN ${tagType} tt ON t.tag_type_id = tt.id;`);
+const TYPE_ID_FOR = {
+  CATEGORY: 1,
+  TOPIC: 2,
+  LABEL: 3
+};
+
+async function getTags() {
+  const result = await query(sql`
+    SELECT * FROM tag
+  `);
   return result.rows || [];
-};
+}
 
-exports.getCategories = async function() {
-  return getTagByType(TAG_TYPES.CATEGORY);
-};
+async function getTagByType(tagType) {
+  // DO NOT USE THE sql`` helper here
+  const result = await query(`
+    SELECT t.id, t.name
+    FROM tag t
+    INNER JOIN ${tagType} tt ON t.tag_type_id = tt.id
+    ORDER BY id ASC;
+  `);
+  return result.rows || [];
+}
 
-exports.getTopics = async function() {
-  return getTagByType(TAG_TYPES.TOPIC);
-};
+async function getCategories() {
+  return getTagByType(TYPES.CATEGORY);
+}
+
+async function getTopics() {
+  return getTagByType(TYPES.TOPIC);
+}
+
+async function getLabels() {
+  return getTagByType(TYPES.LABEL);
+}
+
+async function createTag(name, tag_type_id) {
+  return await withClientTransaction(async client => {
+    const exists = await client.query(sql`
+      SELECT *
+      FROM tag
+      WHERE name = ${name}
+    `);
+
+    if (exists.rowCount) {
+      return exists.rows[0];
+    }
+
+    const result = await client.query(sql`
+      INSERT INTO tag (name, tag_type_id)
+      VALUES (${name}, ${tag_type_id})
+      RETURNING *;
+    `);
+
+    return result.rowCount ? result.rows[0] : null;
+  });
+}
+
+exports.TYPE_ID_FOR = TYPE_ID_FOR;
+exports.createTag = createTag;
+exports.getCategories = getCategories;
+exports.getTopics = getTopics;
+exports.getLabels = getLabels;
+exports.getTags = getTags;

@@ -24,6 +24,7 @@ import {
 import userEvent from '@testing-library/user-event';
 
 import {
+  GET_COHORTS_COUNT_SUCCESS,
   GET_COHORTS_SUCCESS,
   GET_COHORT_SUCCESS,
   SET_COHORT_SUCCESS,
@@ -61,8 +62,14 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  cohortActions.getCohorts = jest.fn();
-  cohortActions.getCohorts.mockImplementation(() => async dispatch => {
+  cohortActions.getCohortsCount = jest.fn();
+  cohortActions.getCohortsCount.mockImplementation(() => async dispatch => {
+    const count = 1;
+    dispatch({ type: GET_COHORTS_COUNT_SUCCESS, count });
+    return count;
+  });
+  cohortActions.getCohortsSlice = jest.fn();
+  cohortActions.getCohortsSlice.mockImplementation(() => async dispatch => {
     const cohorts = [
       {
         id: 1,
@@ -489,7 +496,8 @@ beforeEach(() => {
           id: 99,
           created_at: '2020-07-31T17:50:28.089Z',
           updated_at: null,
-          deleted_at: null
+          deleted_at: null,
+          labels: []
         }
       ];
       dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });

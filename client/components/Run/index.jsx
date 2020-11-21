@@ -16,6 +16,16 @@ import withRunEventCapturing, {
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
 
+import withSocket, {
+  // Client -> Server
+  USER_JOIN,
+  USER_PART,
+
+  // Server -> Client
+  AGENT_ADDED,
+  USER_ADDED
+} from '@hoc/withSocket';
+
 class Run extends Component {
   constructor(props) {
     super(props);
@@ -94,6 +104,8 @@ class Run extends Component {
       this.props.saveRunEvent(SCENARIO_ARRIVAL, {
         scenario: this.props.scenario
       });
+
+      this.props.socket.emit();
     }
 
     window.addEventListener('beforeunload', this.submitIfPendingResponses);
@@ -211,6 +223,7 @@ Run.propTypes = {
   scenarioId: PropTypes.node,
   setResponses: PropTypes.func,
   setRun: PropTypes.func,
+  socket: PropTypes.object,
   user: PropTypes.object
 };
 
@@ -245,6 +258,8 @@ const mapDispatchToProps = dispatch => ({
   getUser: params => dispatch(getUser(params))
 });
 
-export default withRunEventCapturing(
-  withRouter(connect(mapStateToProps, mapDispatchToProps)(Run))
+export default withSocket(
+  withRunEventCapturing(
+    withRouter(connect(mapStateToProps, mapDispatchToProps)(Run))
+  )
 );

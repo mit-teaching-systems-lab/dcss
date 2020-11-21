@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
@@ -95,14 +96,36 @@ const filter = (scenarios, user) => {
   return [...notDeleted, ...deleted];
 };
 
+const qsOpts = {
+  arrayFormat: 'bracket'
+};
+
+function makeQueryString(search) {
+  const qs = {};
+  const {
+    labels
+  } = QueryString.parse(window.location.search, qsOpts);
+
+  if (search) {
+    qs.search = search;
+  }
+
+  if (labels && labels.length) {
+    qs.labels = labels;
+  }
+
+  return `?${QueryString.stringify(qs, qsOpts)}`;
+}
+
 class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
     const { category } = this.props;
-    const value = decodeURIComponent(window.location.search.replace('?q=', ''));
     const scenarios = this.props.scenarios;
-
+    const {
+      search = ''
+    } = QueryString.parse(window.location.search);
     this.state = {
       activePage: 1,
       category,
@@ -110,8 +133,8 @@ class ScenariosList extends Component {
       isReady: false,
       open: false,
       scenarios,
+      search,
       selected: null,
-      value,
       viewHeading: ''
     };
 
@@ -124,7 +147,7 @@ class ScenariosList extends Component {
   }
 
   async componentDidMount() {
-    const { value } = this.state;
+    const { search } = this.state;
     const count = await this.props.getScenariosCount();
 
     if (count === this.props.scenarios.length) {
@@ -134,8 +157,8 @@ class ScenariosList extends Component {
         isReady: true
       });
 
-      if (value) {
-        this.onSearchChange({}, { value });
+      if (search) {
+        this.onSearchChange({}, { value: search });
       }
     } else {
       const limit = 20;
@@ -149,8 +172,8 @@ class ScenariosList extends Component {
           isReady: true
         });
 
-        if (value) {
-          this.onSearchChange({}, { value });
+        if (search) {
+          this.onSearchChange({}, { value: search });
         }
 
         offset += limit;
@@ -180,7 +203,6 @@ class ScenariosList extends Component {
 
   onSearchChange(event, props) {
     const scenarios = this.scenarios.slice(0);
-
     const { viewHeading } = this.state;
     const { value } = props;
     let replacementHeading = '';
@@ -189,10 +211,12 @@ class ScenariosList extends Component {
       this.setState({
         activePage: 1,
         heading: viewHeading,
-        scenarios
+        scenarios,
       });
 
-      this.props.history.push(`${this.props.location.pathname}`);
+      this.props.history.push(
+        `${this.props.location.pathname}${makeQueryString('')}`
+      );
 
       return;
     }
@@ -235,15 +259,17 @@ class ScenariosList extends Component {
       replacementHeading = `'${value}'`;
     }
 
+    const search = value;
+
     this.setState({
       activePage: 1,
       heading: replacementHeading,
       scenarios: results,
-      value
+      search
     });
 
     this.props.history.push(
-      `${this.props.location.pathname}?q=${encodeURIComponent(value)}`
+      `${this.props.location.pathname}${makeQueryString(search)}`
     );
   }
 
@@ -256,7 +282,7 @@ class ScenariosList extends Component {
       heading,
       open,
       selected,
-      value
+      search
     } = this.state;
     const {
       onPageChange,
@@ -264,6 +290,9 @@ class ScenariosList extends Component {
       onScenarioModalClose,
       onSearchChange
     } = this;
+    const {
+      labels = []
+    } = QueryString.parse(window.location.search, qsOpts);
 
     const { origin, pathname } = window.location;
 
@@ -271,7 +300,7 @@ class ScenariosList extends Component {
       // If there's an active search, use the search filtered set
       // of scenarios from state. Otherwise, use the status filtered
       // set from this.scenarios (the untouched backup).
-      value ? this.state.scenarios : this.scenarios.slice(0),
+      search ? this.state.scenarios : this.scenarios.slice(0),
       this.props.user
     );
 
@@ -310,14 +339,16 @@ class ScenariosList extends Component {
       }
     }
 
-    displayHeading = `${displayHeading} ${heading}`;
-
-    let url = `${origin}${pathname}`;
-
-    if (value) {
-      url += `?q=${encodeURIComponent(value)}`;
+    // If there are any active label filters, apply them
+    if (labels.length) {
+      scenarios = scenarios.filter(scenario =>
+        scenario.labels.some(label => labels.includes(label))
+      );
     }
 
+    displayHeading = `${displayHeading} ${heading}`;
+
+    const url = `${origin}${pathname}${makeQueryString(search)}`;
     const defaultRowCount = 2;
     const {
       itemsPerRow,
@@ -402,7 +433,7 @@ class ScenariosList extends Component {
         <Input
           icon="search"
           placeholder="Search..."
-          defaultValue={value || ''}
+          defaultValue={search || ''}
           onChange={onSearchChange}
         />
       </Menu.Item.Tabbable>

@@ -227,6 +227,7 @@ class Editor extends Component {
       consent,
       description,
       finish,
+      labels,
       status,
       title
     } = this.props.scenario;
@@ -237,6 +238,7 @@ class Editor extends Component {
       consent,
       description,
       finish,
+      labels,
       status,
       title
     };

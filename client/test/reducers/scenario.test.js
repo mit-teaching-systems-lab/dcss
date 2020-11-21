@@ -74,6 +74,7 @@ describe('scenario', () => {
           "title": "",
         },
         "id": 42,
+        "labels": Array [],
         "lock": Object {
           "created_at": "2020-01-01T23:54:19.934Z",
           "ended_at": null,
@@ -136,6 +137,7 @@ describe('scenario', () => {
           "title": "",
         },
         "id": 42,
+        "labels": Array [],
         "lock": Object {
           "created_at": "2020-01-01T23:54:19.934Z",
           "ended_at": null,
@@ -205,6 +207,7 @@ describe('scenario', () => {
           "title": "",
         },
         "id": 42,
+        "labels": Array [],
         "lock": Object {
           "created_at": "2020-01-01T23:54:19.934Z",
           "ended_at": null,
@@ -267,6 +270,7 @@ describe('scenario', () => {
           "title": "",
         },
         "id": 42,
+        "labels": Array [],
         "lock": Object {
           "created_at": "2020-01-01T23:54:19.934Z",
           "ended_at": null,
