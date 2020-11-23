@@ -136,7 +136,7 @@ exports[`Render 1 1 1`] = `
         >
           <div
             aria-label="Pagination Navigation"
-            class="ui borderless pagination menu"
+            class="ui mini borderless pagination menu"
             name="users"
             role="navigation"
           >

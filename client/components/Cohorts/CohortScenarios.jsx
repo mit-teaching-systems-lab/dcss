@@ -566,6 +566,7 @@ export class CohortScenarios extends React.Component {
                   <Pagination
                     borderless
                     name="scenarios"
+                    size="mini"
                     activePage={activePage}
                     siblingRange={1}
                     boundaryRange={0}
@@ -592,6 +593,7 @@ export class CohortScenarios extends React.Component {
                 <Pagination
                   borderless
                   name="scenarios"
+                  size="mini"
                   activePage={activePage}
                   siblingRange={1}
                   boundaryRange={0}

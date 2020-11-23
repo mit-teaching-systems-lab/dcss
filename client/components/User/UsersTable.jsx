@@ -51,6 +51,7 @@ class UsersTable extends Component {
               <Pagination
                 borderless
                 name="users"
+                size="mini"
                 activePage={activePage}
                 siblingRange={1}
                 boundaryRange={0}
