@@ -1,7 +1,7 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 const { createTag, getLabels, TYPE_ID_FOR } = require('../tags/db');
-const { addSlide, getScenarioSlides } = require('./slides/db');
+const { createSlide, getScenarioSlides } = require('./slides/db');
 const {
   createPersona,
   getPersonas,
@@ -91,7 +91,7 @@ async function getScenarioConsent(id) {
 }
 
 async function createFinishSlide(scenario_id, title = '') {
-  return await addSlide({
+  return await createSlide({
     scenario_id,
     title,
     is_finish: true,

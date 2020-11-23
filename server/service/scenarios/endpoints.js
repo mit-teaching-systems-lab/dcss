@@ -76,15 +76,15 @@ async function getScenariosSlice(req, res) {
 
 async function createScenario(req, res) {
   const { author, title, description, categories } = req.body;
-  let authorId = req.session.user.id;
+  const author_id = author && author.id || req.session.user.id;
   let message = '';
-
-  if (!authorId) {
-    message = 'Permission denied for this user.';
-  }
 
   if (!message && !title) {
     message = 'A title must be provided to create a new scenario.';
+  }
+
+  if (!author_id) {
+    message = 'Permission denied.';
   }
 
   if (message) {
@@ -93,12 +93,8 @@ async function createScenario(req, res) {
     throw error;
   }
 
-  if (author && author.id) {
-    authorId = author.id;
-  }
-
   try {
-    const scenario = await db.createScenario(authorId, title, description);
+    const scenario = await db.createScenario(author_id, title, description);
     await db.setScenarioCategories(scenario.id, categories);
     res.status(201).json({ scenario });
   } catch (apiError) {

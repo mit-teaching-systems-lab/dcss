@@ -39,7 +39,7 @@ async function addSlideAsync(req, res) {
   const { id: scenario_id } = requestScenario(req);
   const { title, order, components, is_finish = false } = req.body;
   res.json({
-    slide: await db.addSlide({
+    slide: await db.createSlide({
       scenario_id,
       title,
       order,
