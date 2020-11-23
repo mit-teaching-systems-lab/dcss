@@ -3,11 +3,102 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <a
+    aria-label="Delete this disabled-false"
     class="item"
     tabindex="0"
   >
     <i
-      aria-label="Delete this undefined"
+      aria-hidden="true"
+      class="trash alternate outline icon"
+    />
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 2`] = `
+<DocumentFragment>
+  <a
+    aria-label="Delete this disabled-false"
+    class="item"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
+      class="trash alternate outline icon"
+    />
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 3`] = `
+<DocumentFragment>
+  <a
+    aria-label="Delete this disabled-false"
+    class="item"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
+      class="trash alternate outline icon"
+    />
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 5`] = `
+<DocumentFragment>
+  <a
+    aria-label="Delete this disabled-false"
+    class="item"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
+      class="trash alternate outline icon"
+    />
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 6`] = `
+<DocumentFragment>
+  <a
+    aria-label="Delete this disabled-false"
+    class="item"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
+      class="trash alternate outline icon"
+    />
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <a
+    aria-label="Delete this disabled-true"
+    class="disabled item"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
+      class="trash alternate outline icon"
+    />
+  </a>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 2`] = `
+<DocumentFragment>
+  <a
+    aria-label="Delete this disabled-true"
+    class="disabled item"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
       class="trash alternate outline icon"
     />
   </a>

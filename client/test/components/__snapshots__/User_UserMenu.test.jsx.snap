@@ -9,7 +9,7 @@ exports[`Render 1 1 1`] = `
     tabindex="0"
   >
     <span
-      class="ui text"
+      class="ui medium text"
     />
      
     <i

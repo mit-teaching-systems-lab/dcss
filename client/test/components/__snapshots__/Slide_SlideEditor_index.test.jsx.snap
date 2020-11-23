@@ -47,11 +47,12 @@ exports[`Render 1 1 1`] = `
             />
           </a>
           <a
+            aria-label="Delete this slide"
             class="item"
             tabindex="0"
           >
             <i
-              aria-label="Delete this slide"
+              aria-hidden="true"
               class="trash alternate outline icon"
             />
           </a>

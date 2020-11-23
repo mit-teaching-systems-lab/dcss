@@ -16,11 +16,12 @@ exports[`Render 1 1 1`] = `
       />
     </a>
     <a
+      aria-label="Delete this undefined"
       class="item"
       tabindex="0"
     >
       <i
-        aria-label="Delete this undefined"
+        aria-hidden="true"
         class="trash alternate outline icon"
       />
     </a>

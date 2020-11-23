@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Text.css';
 
-export function Text({ children = null, style = {}, title = '', ...rest }) {
+export function Text({
+  children = null,
+  label = '',
+  size = 'medium',
+  style = {},
+  title = '',
+  ...rest
+}) {
   const classNames = ['ui'];
   const props = {};
   Object.entries(rest).forEach(([key, value]) => {
@@ -13,18 +20,25 @@ export function Text({ children = null, style = {}, title = '', ...rest }) {
     }
   });
 
-  classNames.push('text');
+  classNames.push(size, 'text');
 
   const className = classNames.join(' ');
 
+  if (title) {
+    props.title = title;
+    props['aria-label'] = title;
+  }
+
+  if (label) {
+    props['aria-label'] = label;
+  }
+
+  if (style) {
+    props.style = style;
+  }
+
   return (
-    <span
-      aria-label={title}
-      className={className}
-      title={title}
-      style={style}
-      {...props}
-    >
+    <span className={className} {...props}>
       {children}
     </span>
   );
@@ -35,6 +49,8 @@ Text.propTypes = {
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
   ]),
+  label: PropTypes.string,
+  size: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string
 };

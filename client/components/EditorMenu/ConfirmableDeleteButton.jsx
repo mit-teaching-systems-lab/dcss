@@ -1,6 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Header, Icon, Menu, Modal, Popup, Ref } from '@components/UI';
+import {
+  Button,
+  Header,
+  Icon,
+  Menu,
+  Modal,
+  Popup,
+  Ref
+} from '@components/UI';
 
 class ConfirmableDeleteButton extends Component {
   constructor(props) {
@@ -43,12 +51,16 @@ class ConfirmableDeleteButton extends Component {
     };
 
     const confirmButton = (
-      <ConfirmButton onClick={onConfirmClick} content="Yes" />
+      <ConfirmButton content="Yes" onClick={onConfirmClick} />
     );
 
     const trigger = (
-      <Menu.Item.Tabbable disabled={disabled} onClick={onClick}>
-        <Icon name="trash alternate outline" aria-label={ariaLabel} />
+      <Menu.Item.Tabbable
+        aria-label={ariaLabel}
+        disabled={disabled}
+        onClick={onClick}
+      >
+        <Icon name="trash alternate outline" />
       </Menu.Item.Tabbable>
     );
     return (
@@ -57,16 +69,14 @@ class ConfirmableDeleteButton extends Component {
         <Modal role="dialog" aria-modal="true" size="small" open={open}>
           <Header
             icon="trash alternate outline"
-            content="Delete confirmation"
+            aria-label={content}
+            content={content}
           />
-          <Modal.Content>{content}</Modal.Content>
-          <Modal.Actions>
-            <Button.Group fluid>
+          <Modal.Actions style={{ borderTop: '0px' }}>
+            <Button.Group size="large" fluid>
               {confirmButton}
               <Button.Or />
-              <Button onClick={onCancel} size="large">
-                No
-              </Button>
+              <Button onClick={onCancel}>No</Button>
             </Button.Group>
           </Modal.Actions>
         </Modal>

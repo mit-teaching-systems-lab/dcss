@@ -68,7 +68,7 @@ exports[`Render 1 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -106,7 +106,7 @@ exports[`Render 1 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -268,7 +268,7 @@ exports[`Render 2 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -306,7 +306,7 @@ exports[`Render 2 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -472,7 +472,7 @@ exports[`Render 2 1 2`] = `
                 >
                   <span
                     aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
+                    class=\\"ui medium text\\"
                     title=\\"Super User (super)\\"
                   >
                     Super User
@@ -511,7 +511,7 @@ exports[`Render 2 1 2`] = `
                 >
                   <span
                     aria-label=\\"Super User (super)\\"
-                    class=\\"ui text\\"
+                    class=\\"ui medium text\\"
                     title=\\"Super User (super)\\"
                   >
                     Super User
@@ -1004,7 +1004,7 @@ exports[`Render 3 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -1042,7 +1042,7 @@ exports[`Render 3 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -1204,7 +1204,7 @@ exports[`Render 4 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
@@ -1242,7 +1242,7 @@ exports[`Render 4 1 1`] = `
               >
                 <span
                   aria-label="Super User (super)"
-                  class="ui text"
+                  class="ui medium text"
                   title="Super User (super)"
                 >
                   Super User
