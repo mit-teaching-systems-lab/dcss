@@ -76,7 +76,7 @@ async function getScenariosSlice(req, res) {
 
 async function createScenario(req, res) {
   const { author, title, description, categories } = req.body;
-  const author_id = author && author.id || req.session.user.id;
+  const author_id = (author && author.id) || req.session.user.id;
   let message = '';
 
   if (!message && !title) {
@@ -298,7 +298,9 @@ async function copyScenario(req, res) {
       `${title} COPY`,
       description
     );
-    const sourceSlides = await slidesdb.getScenarioSlides(req.params.scenario_id);
+    const sourceSlides = await slidesdb.getScenarioSlides(
+      req.params.scenario_id
+    );
     const consent = await db.getScenarioConsent(req.params.scenario_id);
 
     await slidesdb.deleteSlide(scenario.id, scenario.finish.id);
@@ -316,7 +318,7 @@ async function copyScenario(req, res) {
     //    while saving a mapping of "old response id" => "new response id"
     //    to be used in remapping the recallIds.
     for (let sourceSlide of sourceSlides) {
-      const slide = await createSlide({
+      const slide = await slidesdb.createSlide({
         scenario_id: scenario.id,
         title: sourceSlide.title,
         components: sourceSlide.components,
