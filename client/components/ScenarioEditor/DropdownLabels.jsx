@@ -48,11 +48,7 @@ class DropdownLabels extends Component {
   }
 
   render() {
-    const { labels, options } = this.state;
-
-    if (!options) {
-      return null;
-    }
+    const { labels, options = [] } = this.state;
 
     return (
       <Form.Field>
