@@ -169,7 +169,7 @@ export class CohortScenarios extends React.Component {
     // This is the list of scenarios that are IN the
     // cohort. The order MUST be preserved.
     const cohortScenarios = cohort.scenarios.map(id =>
-      scenarios.find(scenario => scenario.id === id)
+      this.props.scenarios.find(scenario => scenario.id === id)
     );
 
     // This is the list of scenarios that are available,
@@ -252,7 +252,7 @@ export class CohortScenarios extends React.Component {
       </Ref>
     );
 
-    const defaultRowCount = 5;
+    const defaultRowCount = 15;
     // known total height of all ui that is not a table row
     const totalUnavailableHeight = 600;
     const itemsRowHeight = 44;

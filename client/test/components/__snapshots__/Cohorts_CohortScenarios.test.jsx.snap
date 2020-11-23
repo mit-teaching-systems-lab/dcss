@@ -1785,6 +1785,127 @@ exports[`Render 4 1 5`] = `
             class="c__table-cell-first"
           >
             <div
+              class="ui checked fitted checkbox"
+            >
+              <input
+                aria-label="Remove scenario"
+                checked=""
+                class="hidden"
+                readonly=""
+                tabindex="0"
+                type="checkbox"
+                value="99"
+              />
+              <label />
+            </div>
+          </td>
+          <td
+            class="c__table-cell-options"
+          >
+            <div
+              class="ui small basic buttons c__button-group--transparent"
+              hidden=""
+            >
+              <button
+                aria-label="Copy cohort scenario link to clipboard"
+                class="ui icon button"
+                data-testid="copy-cohort-scenario-link"
+              >
+                <i
+                  aria-hidden="true"
+                  class="clipboard outline icon"
+                />
+              </button>
+              <button
+                aria-label="Run this cohort scenario as a participant"
+                class="ui icon button"
+                data-testid="run-cohort-as-participant"
+              >
+                <i
+                  aria-hidden="true"
+                  class="play icon"
+                />
+              </button>
+              <button
+                aria-label="View cohort reponses to prompts in this scenario"
+                class="ui icon button"
+                data-testid="view-cohort-responses"
+                name="Some Other Scenario"
+              >
+                <i
+                  aria-hidden="true"
+                  class="file alternate outline icon"
+                />
+              </button>
+              <button
+                aria-label="Move scenario up"
+                class="ui icon disabled button"
+                data-testid="move-up"
+                disabled=""
+                tabindex="0"
+              >
+                <i
+                  aria-hidden="true"
+                  class="caret up icon"
+                />
+              </button>
+              <button
+                aria-label="Move scenario down"
+                class="ui icon disabled button"
+                data-testid="move-down"
+                disabled=""
+                tabindex="0"
+              >
+                <i
+                  aria-hidden="true"
+                  class="caret down icon"
+                />
+              </button>
+            </div>
+          </td>
+          <td
+            class=""
+            role="button"
+            style="cursor: pointer;"
+          >
+            <a
+              href="/cohort/1/run/99/slide/0"
+            >
+              Some Other Scenario
+            </a>
+          </td>
+          <td
+            class="c__table-cell-content"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </td>
+          <td
+            class="c__table-cell-content"
+          >
+            This is the description of 'Some Other Scenario'
+          </td>
+        </tr>
+        <tr
+          class=""
+          style="cursor: pointer;"
+        >
+          <td
+            class="c__table-cell-first"
+          >
+            <div
               class="ui fitted checkbox"
             >
               <input
