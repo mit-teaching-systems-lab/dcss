@@ -5,7 +5,7 @@ const { getScenario, getScenarioUserRoles } = require('./db');
 
 const scenarioMap = new WeakMap();
 
-exports.reqScenario = req => {
+exports.requestScenario = req => {
   if (!scenarioMap.has(req)) {
     throw new Error('Request has not passed through lookupScenario middleware');
   }

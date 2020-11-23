@@ -2,6 +2,11 @@ const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 const { createTag, getLabels, TYPE_ID_FOR } = require('../tags/db');
 const { addSlide, getScenarioSlides } = require('./slides/db');
+const {
+  createPersona,
+  getPersonas,
+  linkPersonaToScenario
+} = require('../personas/db');
 const { getRunResponses } = require('../runs/db');
 const { getUserById } = require('../auth/db');
 
@@ -29,7 +34,21 @@ async function getScenarioLabels(id) {
   return result.rows.map(r => r.name);
 }
 
-async function addScenarioConsent(consent) {
+async function getScenarioPersonas(id) {
+  const result = await query(sql`
+    SELECT persona.*
+    FROM persona
+    INNER JOIN scenario_persona
+       ON persona.id = scenario_persona.persona_id
+    WHERE scenario_persona.scenario_id = ${id}
+      AND persona.deleted_at IS NULL
+    ORDER BY persona.name;
+  `);
+
+  return result.rows.map(r => r.name);
+}
+
+async function createScenarioConsent(consent) {
   const result = await query(sql`
     INSERT INTO consent (prose)
     VALUES (${consent.prose})
@@ -71,7 +90,7 @@ async function getScenarioConsent(id) {
   return results.rows[0] || { id: null, prose: '' };
 }
 
-async function addFinishSlide(scenario_id, title = '') {
+async function createFinishSlide(scenario_id, title = '') {
   return await addSlide({
     scenario_id,
     title,
@@ -117,7 +136,7 @@ async function endScenarioUserRole(scenario_id, user_id) {
   });
 }
 
-async function addScenarioUserRole(scenario_id, user_id, roles) {
+async function setScenarioUserRole(scenario_id, user_id, roles) {
   await endScenarioUserRole(scenario_id, user_id);
 
   return withClientTransaction(async client => {
@@ -151,12 +170,12 @@ async function getScenarioUserRoles(scenario_id, user_id) {
 // async function setScenarioUsers(scenario_id, userRoles) {
 //   const users = [];
 //   for (let { user_id, role } of userRoles) {
-//     users.push(await addScenarioUserRole(scenario_id, user_id, [role]));
+//     users.push(await setScenarioUserRole(scenario_id, user_id, [role]));
 //   }
 //   return users;
 // }
 
-async function addScenarioLock(scenario_id, user_id) {
+async function createScenarioLock(scenario_id, user_id) {
   return withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO scenario_lock (scenario_id, user_id)
@@ -209,8 +228,9 @@ async function getScenario(scenario_id) {
   const consent = await getScenarioConsent(scenario_id);
   const finish =
     (await getScenarioSlides(scenario_id)).find(slide => slide.is_finish) ||
-    (await addFinishSlide(scenario_id));
+    (await createFinishSlide(scenario_id));
 
+  const personas = await getScenarioPersonas(scenario_id);
   const labels = await getScenarioLabels(scenario_id);
   const lock = await getScenarioLock(scenario_id);
 
@@ -247,7 +267,7 @@ async function getScenarios() {
     const consent = await getScenarioConsent(row.id);
     const finish =
       (await getScenarioSlides(row.id)).find(slide => slide.is_finish) ||
-      (await addFinishSlide(row.id));
+      (await createFinishSlide(row.id));
     const lock = await getScenarioLock(row.id);
 
     scenarios.push({
@@ -316,7 +336,7 @@ async function getScenariosCount() {
   return count;
 }
 
-async function addScenario(user_id, title, description) {
+async function createScenario(user_id, title, description) {
   const scenarioInsert = await query(sql`
     INSERT INTO scenario (author_id, title, description)
     VALUES (${user_id}, ${title}, ${description})
@@ -334,11 +354,11 @@ async function addScenario(user_id, title, description) {
   //   scenario.id,
   //   roles.map(role => ({ user_id, role }))
   // );
-  await addScenarioUserRole(scenario.id, user_id, ['owner']);
+  await setScenarioUserRole(scenario.id, user_id, ['owner']);
 
   const consent = await setScenarioConsent(scenario.id, consentDefault);
-  const finish = await addFinishSlide(scenario.id);
-  const lock = await addScenarioLock(scenario.id, user_id);
+  const finish = await createFinishSlide(scenario.id);
+  const lock = await createScenarioLock(scenario.id, user_id);
 
   return {
     ...scenario,
@@ -368,25 +388,25 @@ async function addScenarioCategory(scenarioId, category) {
 
 async function deleteScenarioCategory(scenarioId, category) {
   const deletedRow = await query(sql`
-        DELETE
-        FROM scenario_tag s
-        USING categories c
-        WHERE
-            s.tag_id = c.id AND
-            s.scenario_id=${scenarioId} AND
-            c.name=${category};
-    `);
+    DELETE
+    FROM scenario_tag s
+    USING categories c
+    WHERE
+      s.tag_id = c.id AND
+      s.scenario_id=${scenarioId} AND
+      c.name=${category};
+  `);
 
   return deletedRow;
 }
 
 async function setScenarioCategories(scenarioId, categories) {
   const currentCategoriesResults = await query(sql`
-        SELECT s.scenario_id, c.name as category
-        FROM scenario_tag s
-        INNER JOIN categories c on s.tag_id = c.id
-        WHERE scenario_id=${scenarioId};
-    `);
+    SELECT s.scenario_id, c.name as category
+    FROM scenario_tag s
+    INNER JOIN categories c on s.tag_id = c.id
+    WHERE scenario_id=${scenarioId};
+  `);
 
   // This is the list of categories that already exist in current categories
   const currentCategories = currentCategoriesResults.rows.map(r => r.category);
@@ -420,14 +440,11 @@ async function setScenarioLabels(id, labels) {
   const storedLabels = (await getLabels()).map(l => l.name);
 
   return withClientTransaction(async client => {
-    const ids = [];
-
     for (let label of labels) {
       if (!storedLabels.includes(label)) {
         const index = labels.indexOf(label);
         const tag = await createTag(label, TYPE_ID_FOR.LABEL);
         labels[index] = tag.name;
-        ids.push(label.id);
       }
     }
 
@@ -451,9 +468,40 @@ async function setScenarioLabels(id, labels) {
   });
 }
 
+async function setScenarioPersonas(id, personas) {
+  const storedPersonas = await getPersonas();
+
+  return withClientTransaction(async client => {
+    const ids = [];
+
+    for (let persona of personas) {
+      if (persona.id === null) {
+        persona = await createPersona(persona, { link: false });
+      }
+      ids.push(persona.id);
+    }
+
+    await client.query(`
+      DELETE FROM scenario_persona
+      WHERE scenario_id = ${id};
+    `);
+
+    const result = await client.query(sql`
+      INSERT INTO scenario_persona (scenario_id, persona_id)
+      SELECT ${id} as scenario_id, * FROM jsonb_array_elements(${ids})
+      ON CONFLICT DO NOTHING
+      RETURNING *;
+    `);
+
+    return result.rows;
+  });
+}
+
 async function deleteScenario(id) {
   let result = await query(sql`
     DELETE FROM scenario_snapshot WHERE scenario_id >= ${id};
+    DELETE FROM scenario_persona WHERE scenario_id >= ${id};
+    DELETE FROM scenario_tag WHERE scenario_id >= ${id};
     DELETE FROM scenario_lock WHERE scenario_id >= ${id};
     DELETE FROM scenario_consent WHERE scenario_id >= ${id};
     DELETE FROM scenario_user_role WHERE scenario_id >= ${id};
@@ -547,7 +595,7 @@ async function getHistoryForScenario(params) {
   return { prompts, responses };
 }
 
-async function addScenarioSnapshot(scenario_id, user_id, snapshot) {
+async function createScenarioSnapshot(scenario_id, user_id, snapshot) {
   return withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO scenario_snapshot (scenario_id, user_id, snapshot)
@@ -560,7 +608,7 @@ async function addScenarioSnapshot(scenario_id, user_id, snapshot) {
 }
 
 // Scenario
-exports.addScenario = addScenario;
+exports.createScenario = createScenario;
 exports.setScenario = setScenario;
 exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
@@ -576,25 +624,28 @@ exports.getScenariosCount = getScenariosCount;
 exports.getScenariosSlice = getScenariosSlice;
 
 // Scenario Snapshot/History
-exports.addScenarioSnapshot = addScenarioSnapshot;
+exports.createScenarioSnapshot = createScenarioSnapshot;
 
 // Scenario Lock
-exports.addScenarioLock = addScenarioLock;
+exports.createScenarioLock = createScenarioLock;
 exports.getScenarioLock = getScenarioLock;
 exports.endScenarioLock = endScenarioLock;
 
 // Scenario Roles
 exports.getScenarioUserRoles = getScenarioUserRoles;
-exports.addScenarioUserRole = addScenarioUserRole;
+exports.setScenarioUserRole = setScenarioUserRole;
 exports.endScenarioUserRole = endScenarioUserRole;
 
 // Scenario Consent
-exports.addScenarioConsent = addScenarioConsent;
+exports.createScenarioConsent = createScenarioConsent;
 exports.setScenarioConsent = setScenarioConsent;
 exports.getScenarioConsent = getScenarioConsent;
 
 // Scenario Categories
 exports.setScenarioCategories = setScenarioCategories;
 
-// Scenario Categories
+// Scenario Labels
 exports.setScenarioLabels = setScenarioLabels;
+
+// Scenario Personas
+exports.setScenarioPersonas = setScenarioPersonas;

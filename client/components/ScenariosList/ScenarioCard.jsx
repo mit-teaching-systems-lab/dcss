@@ -50,13 +50,7 @@ class ScenarioCard extends React.Component {
     const { onRestoreClick } = this;
     const { onClick, user } = this.props;
     const { scenario } = this.state;
-    const {
-      categories = [],
-      id,
-      description,
-      deleted_at,
-      title
-    } = scenario;
+    const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
       <Icon name="check" aria-label="Official" />
     ) : null;

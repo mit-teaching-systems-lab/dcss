@@ -65,7 +65,7 @@ class ScenarioLabels extends React.Component {
             as: 'button',
             size: 'small',
             tabIndex: 0,
-            value,
+            value
           };
 
           if (labelsInUse.includes(value)) {

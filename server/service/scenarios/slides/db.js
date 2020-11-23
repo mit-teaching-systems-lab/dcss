@@ -29,7 +29,7 @@ exports.getScenarioSlides = async scenarioId => {
 //   return results.rows;
 // };
 
-exports.addSlide = async ({
+exports.createSlide = async ({
   scenario_id,
   title,
   components,

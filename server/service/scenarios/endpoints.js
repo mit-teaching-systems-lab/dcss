@@ -1,27 +1,30 @@
 const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
-const { reqScenario } = require('./middleware');
+const { requestScenario } = require('./middleware');
 const { getUserById } = require('../auth/db');
-const {
-  addSlide,
-  deleteSlide,
-  getScenarioSlides,
-  setSlide,
-  setSlideOrder
-} = require('./slides/db');
+const { getPersonasByScenarioId } = require('../personas/db');
+// const {
+//   createSlide,
+//   deleteSlide,
+//   getScenarioSlides,
+//   setSlide,
+//   setSlideOrder
+// } = require('./slides/db');
+
+const slidesdb = require('./slides/db');
 const db = require('./db');
 
-async function getScenarioAsync(req, res) {
-  res.send({ scenario: reqScenario(req) });
+async function getScenario(req, res) {
+  res.send({ scenario: requestScenario(req) });
 }
 
-async function getScenarioLockAsync(req, res) {
+async function getScenarioLock(req, res) {
   const scenario = db.getScenarioLock(req.params.scenario_id, req.params.lock);
 
   res.send({ scenario });
 }
 
-async function getScenariosAsync(req, res) {
+async function getScenarios(req, res) {
   try {
     const scenarios = await db.getScenarios();
     res.send({ scenarios });
@@ -33,7 +36,7 @@ async function getScenariosAsync(req, res) {
   }
 }
 
-async function getScenariosCountAsync(req, res) {
+async function getScenariosCount(req, res) {
   try {
     const count = await db.getScenariosCount();
     res.send({ count });
@@ -45,7 +48,7 @@ async function getScenariosCountAsync(req, res) {
   }
 }
 
-async function getScenariosByStatusAsync(req, res) {
+async function getScenariosByStatus(req, res) {
   const { status } = req.params;
   try {
     const scenarios = await db.getScenariosByStatus(Number(status));
@@ -58,7 +61,7 @@ async function getScenariosByStatusAsync(req, res) {
   }
 }
 
-async function getScenariosSliceAsync(req, res) {
+async function getScenariosSlice(req, res) {
   const { direction, offset, limit } = req.params;
   try {
     const scenarios = await db.getScenariosSlice(direction, offset, limit);
@@ -71,7 +74,7 @@ async function getScenariosSliceAsync(req, res) {
   }
 }
 
-async function addScenarioAsync(req, res) {
+async function createScenario(req, res) {
   const { author, title, description, categories } = req.body;
   let authorId = req.session.user.id;
   let message = '';
@@ -86,7 +89,7 @@ async function addScenarioAsync(req, res) {
 
   if (message) {
     const error = new Error(message);
-    error.status = 409;
+    error.status = 422;
     throw error;
   }
 
@@ -95,7 +98,7 @@ async function addScenarioAsync(req, res) {
   }
 
   try {
-    const scenario = await db.addScenario(authorId, title, description);
+    const scenario = await db.createScenario(authorId, title, description);
     await db.setScenarioCategories(scenario.id, categories);
     res.status(201).json({ scenario });
   } catch (apiError) {
@@ -106,33 +109,26 @@ async function addScenarioAsync(req, res) {
   }
 }
 
-async function setScenarioAsync(req, res) {
+async function setScenario(req, res) {
+  let user = req.session.user;
   const {
     author,
-    author_id: user_id,
     deleted_at,
     description,
     categories,
     consent,
     finish,
     labels,
+    personas,
     status,
     title
   } = req.body;
   const scenario_id = Number(req.params.scenario_id);
-  let author_id = user_id;
+  let author_id = user.id;
 
   if (author && author.id) {
-    author_id = author.id || user_id;
+    author_id = author.id;
   }
-
-  // if (!author_id && !title) {
-  //   const error = new Error(
-  //     'Must provide author, author_id, title, or description to update.'
-  //   );
-  //   error.status = 409;
-  //   throw error;
-  // }
 
   try {
     const scenario = await db.setScenario(scenario_id, {
@@ -145,12 +141,13 @@ async function setScenarioAsync(req, res) {
 
     await db.setScenarioCategories(scenario_id, categories);
     await db.setScenarioLabels(scenario_id, labels);
+    await db.setScenarioPersonas(scenario_id, personas);
 
     // If the client set the id to null, that indicates that
     // this is a new consent agreement and the new prose
     // must be stored, then linked to the scenario.
     if (!consent.id) {
-      const { id, prose } = await db.addScenarioConsent(consent);
+      const { id, prose } = await db.createScenarioConsent(consent);
 
       await db.setScenarioConsent(
         scenario_id,
@@ -159,7 +156,7 @@ async function setScenarioAsync(req, res) {
     }
 
     if (!finish.id) {
-      const { components, id, is_finish } = await addSlide({
+      const { components, id, is_finish } = await slidesdb.createSlide({
         scenario_id,
         components:
           finish.components ||
@@ -174,14 +171,15 @@ async function setScenarioAsync(req, res) {
         is_finish
       });
     } else {
-      await setSlide(finish.id, finish);
+      await slidesdb.setSlide(finish.id, finish);
     }
 
     Object.assign(scenario, {
       categories,
       consent,
       finish,
-      labels
+      labels,
+      personas
     });
 
     res.status(200).send({ scenario });
@@ -193,7 +191,7 @@ async function setScenarioAsync(req, res) {
   }
 }
 
-async function deleteScenarioAsync(req, res) {
+async function deleteScenario(req, res) {
   const scenario_id = Number(req.params.scenario_id);
 
   if (!scenario_id) {
@@ -213,13 +211,13 @@ async function deleteScenarioAsync(req, res) {
   }
 }
 
-async function addScenarioLockAsync(req, res) {
+async function createScenarioLock(req, res) {
   const scenario_id = Number(req.params.scenario_id);
   const user_id = Number(req.session.user.id);
   try {
     let lock = await db.getScenarioLock(scenario_id);
     if (!lock) {
-      await db.addScenarioLock(scenario_id, user_id);
+      await db.createScenarioLock(scenario_id, user_id);
     }
     const scenario = await db.getScenario(scenario_id);
     res.send({ scenario });
@@ -231,7 +229,7 @@ async function addScenarioLockAsync(req, res) {
   }
 }
 
-async function endScenarioLockAsync(req, res) {
+async function endScenarioLock(req, res) {
   const scenario_id = Number(req.params.scenario_id);
   const user_id = Number(req.session.user.id);
   try {
@@ -246,8 +244,8 @@ async function endScenarioLockAsync(req, res) {
       if (unlock) {
         res.send({ scenario });
 
-        const slides = await getScenarioSlides(scenario_id);
-        await db.addScenarioSnapshot(scenario_id, user_id, {
+        const slides = await slidesdb.getScenarioSlides(scenario_id);
+        await db.createScenarioSnapshot(scenario_id, user_id, {
           ...scenario,
           slides
         });
@@ -263,17 +261,15 @@ async function endScenarioLockAsync(req, res) {
   }
 }
 
-async function softDeleteScenarioAsync(req, res) {
-  const scenarioId = req.params.scenario_id;
-
-  if (!scenarioId) {
+async function softDeleteScenario(req, res) {
+  if (!req.params.scenario_id) {
     const error = new Error('Scenario id required for scenario deletion');
     error.status = 409;
     throw error;
   }
 
   try {
-    const scenario = await db.softDeleteScenario(scenarioId);
+    const scenario = await db.softDeleteScenario(req.params.scenario_id);
 
     res.send({ scenario });
   } catch (apiError) {
@@ -284,10 +280,8 @@ async function softDeleteScenarioAsync(req, res) {
   }
 }
 
-async function copyScenarioAsync(req, res) {
-  const scenarioId = req.params.scenario_id;
-
-  if (!scenarioId) {
+async function copyScenario(req, res) {
+  if (!req.params.scenario_id) {
     const error = new Error(
       'Original scenario id required for creating a copy'
     );
@@ -296,15 +290,22 @@ async function copyScenarioAsync(req, res) {
   }
 
   try {
-    const { title, description, categories, labels } = reqScenario(req);
-    const scenario = await db.addScenario(
+    const {
+      title,
+      description,
+      categories,
+      labels,
+      personas
+    } = requestScenario(req);
+    const scenario = await db.createScenario(
       req.session.user.id,
       `${title} COPY`,
       description
     );
-    const sourceSlides = await getScenarioSlides(scenarioId);
+    const sourceSlides = await slidesdb.getScenarioSlides(req.params.scenario_id);
+    const consent = await db.getScenarioConsent(req.params.scenario_id);
 
-    await deleteSlide(scenario.id, scenario.finish.id);
+    await slidesdb.deleteSlide(scenario.id, scenario.finish.id);
 
     // When copying a scenario, not only do new responseIds need to be set,
     // but any recallIds that refer to old responseIds must be mapped to
@@ -319,7 +320,7 @@ async function copyScenarioAsync(req, res) {
     //    while saving a mapping of "old response id" => "new response id"
     //    to be used in remapping the recallIds.
     for (let sourceSlide of sourceSlides) {
-      const slide = await addSlide({
+      const slide = await createSlide({
         scenario_id: scenario.id,
         title: sourceSlide.title,
         components: sourceSlide.components,
@@ -389,22 +390,21 @@ async function copyScenarioAsync(req, res) {
     const ids = [];
 
     for (let { id, components } of slides) {
-      await setSlide(id, { components });
+      await slidesdb.setSlide(id, { components });
       ids.push(id);
     }
 
-    await setSlideOrder(scenario.id, ids);
+    await slidesdb.setSlideOrder(scenario.id, ids);
 
     await db.setScenarioCategories(scenario.id, categories);
     await db.setScenarioLabels(scenario.id, labels);
+    await db.setScenarioPersonas(scenario.id, personas);
 
-    const consent = await db.getScenarioConsent(scenarioId);
-    const { id, prose } = await db.addScenarioConsent(consent);
-
-    await db.setScenarioConsent(
-      scenario.id,
-      Object.assign(consent, { id, prose })
-    );
+    {
+      const { id, prose } = await db.createScenarioConsent(consent);
+      Object.assign(consent, { id, prose });
+      await db.setScenarioConsent(scenario.id, consent);
+    }
 
     const finish = slides.find(({ is_finish }) => is_finish);
 
@@ -412,7 +412,8 @@ async function copyScenarioAsync(req, res) {
       consent,
       categories,
       finish,
-      labels
+      labels,
+      personas
     });
     res.send({ scenario, status: 201 });
   } catch (apiError) {
@@ -423,13 +424,13 @@ async function copyScenarioAsync(req, res) {
   }
 }
 
-async function getScenarioByRunAsync(req, res) {
+async function getScenarioByRun(req, res) {
   const userId = req.session.user.id;
   const scenarios = await db.getScenarioByRun(userId);
   res.send({ scenarios });
 }
 
-async function addScenarioUserRoleAsync(req, res) {
+async function setScenarioUserRole(req, res) {
   const { scenario_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
@@ -439,7 +440,7 @@ async function addScenarioUserRoleAsync(req, res) {
   }
 
   try {
-    const result = await db.addScenarioUserRole(scenario_id, user_id, roles);
+    const result = await db.setScenarioUserRole(scenario_id, user_id, roles);
     const scenario = await db.getScenario(scenario_id);
     res.json({
       scenario,
@@ -453,7 +454,7 @@ async function addScenarioUserRoleAsync(req, res) {
   }
 }
 
-async function endScenarioUserRoleAsync(req, res) {
+async function endScenarioUserRole(req, res) {
   const { scenario_id, user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
@@ -477,19 +478,19 @@ async function endScenarioUserRoleAsync(req, res) {
   }
 }
 
-exports.getScenario = asyncMiddleware(getScenarioAsync);
-exports.getScenarioLock = asyncMiddleware(getScenarioLockAsync);
-exports.addScenarioLock = asyncMiddleware(addScenarioLockAsync);
-exports.endScenarioLock = asyncMiddleware(endScenarioLockAsync);
-exports.getScenarios = asyncMiddleware(getScenariosAsync);
-exports.getScenariosByStatus = asyncMiddleware(getScenariosByStatusAsync);
-exports.getScenariosCount = asyncMiddleware(getScenariosCountAsync);
-exports.getScenariosSlice = asyncMiddleware(getScenariosSliceAsync);
-exports.addScenario = asyncMiddleware(addScenarioAsync);
-exports.setScenario = asyncMiddleware(setScenarioAsync);
-exports.deleteScenario = asyncMiddleware(deleteScenarioAsync);
-exports.softDeleteScenario = asyncMiddleware(softDeleteScenarioAsync);
-exports.copyScenario = asyncMiddleware(copyScenarioAsync);
-exports.getScenarioByRun = asyncMiddleware(getScenarioByRunAsync);
-exports.addScenarioUserRole = asyncMiddleware(addScenarioUserRoleAsync);
-exports.endScenarioUserRole = asyncMiddleware(endScenarioUserRoleAsync);
+exports.getScenario = asyncMiddleware(getScenario);
+exports.getScenarioLock = asyncMiddleware(getScenarioLock);
+exports.createScenarioLock = asyncMiddleware(createScenarioLock);
+exports.endScenarioLock = asyncMiddleware(endScenarioLock);
+exports.getScenarios = asyncMiddleware(getScenarios);
+exports.getScenariosByStatus = asyncMiddleware(getScenariosByStatus);
+exports.getScenariosCount = asyncMiddleware(getScenariosCount);
+exports.getScenariosSlice = asyncMiddleware(getScenariosSlice);
+exports.createScenario = asyncMiddleware(createScenario);
+exports.setScenario = asyncMiddleware(setScenario);
+exports.deleteScenario = asyncMiddleware(deleteScenario);
+exports.softDeleteScenario = asyncMiddleware(softDeleteScenario);
+exports.copyScenario = asyncMiddleware(copyScenario);
+exports.getScenarioByRun = asyncMiddleware(getScenarioByRun);
+exports.setScenarioUserRole = asyncMiddleware(setScenarioUserRole);
+exports.endScenarioUserRole = asyncMiddleware(endScenarioUserRole);

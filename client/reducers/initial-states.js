@@ -15,9 +15,15 @@ export const historyInitialState = {
   responses: []
 };
 
-export const sessionInitialState = {
-  isLoggedIn: false,
-  permissions: []
+export const personaInitialState = {
+  id: null,
+  author_id: null,
+  created_at: null,
+  updated_at: null,
+  deleted_at: null,
+  name: '',
+  description: '',
+  color: ''
 };
 
 export const responseInitialState = {};
@@ -43,10 +49,16 @@ export const scenarioInitialState = {
   },
   labels: [],
   lock: null,
+  personas: [],
   slides: [],
   status: 1,
   title: '',
   users: []
+};
+
+export const sessionInitialState = {
+  isLoggedIn: false,
+  permissions: []
 };
 
 export const userInitialState = {

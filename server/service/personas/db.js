@@ -17,13 +17,10 @@ exports.linkPersonaToScenario = async (persona_id, scenario_id) => {
   });
 };
 
-exports.createPersona = async ({
-  author_id,
-  name,
-  color,
-  description,
-  scenario_id
-}) => {
+exports.createPersona = async (
+  { author_id, name, color, description, scenario_id },
+  options = { link: true }
+) => {
   return await withClientTransaction(async client => {
     const create = await client.query(sql`
       INSERT INTO persona (name, color, description, author_id)
@@ -37,7 +34,7 @@ exports.createPersona = async ({
 
     const persona = create.result[0];
 
-    if (scenario_id) {
+    if (options.link && scenario_id) {
       await exports.linkPersonaToScenario(persona.id, scenario_id);
     }
 

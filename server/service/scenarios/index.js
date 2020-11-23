@@ -7,10 +7,10 @@ const requiredRoles = ['super_admin', 'admin', 'facilitator'];
 const router = Router();
 
 const {
-  addScenario,
+  createScenario,
   copyScenario,
   deleteScenario,
-  addScenarioLock,
+  createScenarioLock,
   endScenarioLock,
   getScenarios,
   getScenariosByStatus,
@@ -20,7 +20,7 @@ const {
   getScenarioByRun,
   setScenario,
   softDeleteScenario,
-  addScenarioUserRole,
+  setScenarioUserRole,
   endScenarioUserRole
 } = require('./endpoints.js');
 
@@ -35,7 +35,7 @@ router.get('/:scenario_id', [lookupScenario(), getScenario]);
 router.get('/:scenario_id/lock', [
   requireUserRole(requiredRoles),
   requireScenarioUserRole(['owner', 'author', 'reviewer']),
-  addScenarioLock
+  createScenarioLock
 ]);
 
 router.get('/:scenario_id/unlock', [
@@ -47,7 +47,7 @@ router.get('/:scenario_id/unlock', [
 router.post('/', [
   requireUserRole(requiredRoles),
   validateRequestBody,
-  addScenario
+  createScenario
 ]);
 
 router.put('/:scenario_id', [
@@ -83,7 +83,7 @@ router.use('/:scenario_id/slides', [lookupScenario(), require('./slides')]);
 router.post('/:scenario_id/roles/add', [
   requireScenarioUserRole(['owner']),
   validateRequestBody,
-  addScenarioUserRole
+  setScenarioUserRole
 ]);
 
 router.post('/:scenario_id/roles/end', [
