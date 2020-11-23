@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <p>
+    <button
+      aria-label="Click for scenarios labelled a"
+      class="ui small label"
+      tabindex="0"
+      value="a"
+    >
+      a
+    </button>
+    <button
+      aria-label="Click for scenarios labelled b"
+      class="ui small label"
+      tabindex="0"
+      value="b"
+    >
+      b
+    </button>
+  </p>
+</DocumentFragment>
+`;

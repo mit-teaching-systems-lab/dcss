@@ -7206,7 +7206,9 @@ Object {
       "title": "",
     },
     "id": 99,
-    "labels": Array [],
+    "labels": Array [
+      "a",
+    ],
     "lock": Object {
       "created_at": "2020-02-31T23:54:19.934Z",
       "ended_at": null,

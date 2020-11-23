@@ -340,7 +340,8 @@ beforeEach(() => {
           id: 42,
           created_at: '2020-08-31T17:50:28.089Z',
           updated_at: null,
-          deleted_at: null
+          deleted_at: null,
+          labels: ['a', 'b']
         },
         {
           author: {
@@ -421,7 +422,7 @@ beforeEach(() => {
           created_at: '2020-07-31T17:50:28.089Z',
           updated_at: null,
           deleted_at: null,
-          labels: []
+          labels: ['a']
         }
       ];
       dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });

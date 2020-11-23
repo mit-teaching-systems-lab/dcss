@@ -23,7 +23,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import Editor from '../../components/Slide/Components/Text/Editor.jsx';
+import ScenarioLabels from '../../components/ScenariosList/ScenarioLabels.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -61,17 +61,15 @@ afterEach(() => {
   commonState = null;
 });
 
-test('Editor', () => {
-  expect(Editor).toBeDefined();
+test('ScenarioLabels', () => {
+  expect(ScenarioLabels).toBeDefined();
 });
 
 test('Render 1 1', async done => {
-  const Component = Editor;
+  const Component = ScenarioLabels;
 
   const props = {
     ...commonProps,
-    type: 'Text',
-    value: { html: '' },
     scenario: {
       author: {
         id: 999,
@@ -156,8 +154,7 @@ test('Render 1 1', async done => {
       updated_at: null,
       deleted_at: null,
       labels: ['a', 'b']
-    },
-    onChange() {}
+    }
   };
 
   const state = {

@@ -21,7 +21,24 @@ exports[`Render 1 1 1`] = `
         class="description"
         id="2"
       >
-        <p />
+        <p>
+          <button
+            aria-label="Click for scenarios labelled a"
+            class="ui small label"
+            tabindex="0"
+            value="a"
+          >
+            a
+          </button>
+          <button
+            aria-label="Click for scenarios labelled b"
+            class="ui small label"
+            tabindex="0"
+            value="b"
+          >
+            b
+          </button>
+        </p>
         This is the description of 'A Multiplayer Scenario'
       </div>
     </div>

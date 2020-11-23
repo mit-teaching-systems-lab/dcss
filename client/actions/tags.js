@@ -3,8 +3,11 @@ import {
   GET_CATEGORIES_SUCCESS,
   GET_LABELS_ERROR,
   GET_LABELS_SUCCESS,
-  CREATE_TAG_ERROR,
-  CREATE_TAG_SUCCESS
+  // NOT YET IN USE
+  // CREATE_TAG_ERROR,
+  // CREATE_TAG_SUCCESS,
+  SET_LABELS_IN_USE_ERROR,
+  SET_LABELS_IN_USE_SUCCESS
 } from './types';
 
 export let getCategories = () => async dispatch => {
@@ -39,6 +42,17 @@ export let getLabels = () => async dispatch => {
     return labels;
   } catch (error) {
     dispatch({ type: GET_LABELS_ERROR, error });
+    return null;
+  }
+};
+
+// This is intentionally NOT ASYNC
+export let setLabelsInUse = labelsInUse => dispatch => {
+  try {
+    dispatch({ type: SET_LABELS_IN_USE_SUCCESS, labelsInUse });
+    return labelsInUse;
+  } catch (error) {
+    dispatch({ type: SET_LABELS_IN_USE_ERROR, error });
     return null;
   }
 };

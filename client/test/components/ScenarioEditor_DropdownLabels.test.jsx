@@ -161,7 +161,7 @@ test('Render 1 1', async done => {
       created_at: '2020-07-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: []
+      labels: ['a']
     },
     onChange() {}
   };

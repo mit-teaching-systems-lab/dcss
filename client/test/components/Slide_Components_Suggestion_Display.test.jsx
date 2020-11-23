@@ -157,7 +157,8 @@ test('Render 1 1', async done => {
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null
+      deleted_at: null,
+      labels: ['a', 'b']
     }
   };
 
@@ -265,7 +266,8 @@ test('Render 2 1', async done => {
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null
+      deleted_at: null,
+      labels: ['a', 'b']
     }
   };
 
@@ -373,7 +375,8 @@ test('Render 3 1', async done => {
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
-      deleted_at: null
+      deleted_at: null,
+      labels: ['a', 'b']
     }
   };
 

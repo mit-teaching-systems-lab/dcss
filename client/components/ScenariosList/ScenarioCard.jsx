@@ -1,38 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, Icon, Label } from '@components/UI';
+import { Card, Icon } from '@components/UI';
 import { getScenario } from '@actions/scenario';
 import Gate from '@client/components/Gate';
 import DeletedCard from './DeletedCard';
 import Events from '@utils/Events';
 import Identity from '@utils/Identity';
 import ScenarioCardActions from './ScenarioCardActions';
+import ScenarioLabels from './ScenarioLabels';
 import './ScenariosList.css';
-
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function makeQueryString(labels) {
-  const qs = {};
-  const {
-    search
-  } = QueryString.parse(window.location.search, qsOpts);
-
-  if (search) {
-    qs.search = search;
-  }
-
-  if (labels && labels.length) {
-    qs.labels = labels;
-  }
-
-  return `?${QueryString.stringify(qs, qsOpts)}`;
-}
-
 
 class ScenarioCard extends React.Component {
   constructor(props) {
@@ -41,11 +19,9 @@ class ScenarioCard extends React.Component {
     const { scenario } = this.props;
 
     this.state = {
-      labelsInUse: [],
-      scenario,
+      scenario
     };
 
-    this.onLabelClick = this.onLabelClick.bind(this);
     this.onRestoreClick = this.onRestoreClick.bind(this);
   }
 
@@ -70,35 +46,17 @@ class ScenarioCard extends React.Component {
     }
   }
 
-  onLabelClick(event, {value}) {
-    let {
-      labels
-    } = QueryString.parse(window.location.search, qsOpts);
-
-    if (!labels) {
-      labels = [value];
-    } else {
-      if (labels.includes(value)) {
-        labels.splice(labels.indexOf(value), 1);
-      } else {
-        labels.push(value);
-      }
-    }
-
-    this.setState({
-      labelsInUse: labels
-    });
-
-    this.props.history.push(
-      `${this.props.location.pathname}${makeQueryString(labels)}`
-    );
-  }
-
   render() {
-    const { onLabelClick, onRestoreClick } = this;
+    const { onRestoreClick } = this;
     const { onClick, user } = this.props;
-    const { labelsInUse, scenario } = this.state;
-    const { categories = [], labels = [], id, description, deleted_at, title } = scenario;
+    const { scenario } = this.state;
+    const {
+      categories = [],
+      id,
+      description,
+      deleted_at,
+      title
+    } = scenario;
     const officialCheckmark = categories.includes('official') ? (
       <Icon name="check" aria-label="Official" />
     ) : null;
@@ -111,7 +69,9 @@ class ScenarioCard extends React.Component {
 
     const clickables = {
       onClick,
-      onKeyUp(...args) { Events.onKeyUp(...args, onClick); }
+      onKeyUp(...args) {
+        Events.onKeyUp(...args, onClick);
+      }
     };
 
     return deleted_at ? (
@@ -142,33 +102,7 @@ class ScenarioCard extends React.Component {
             {officialCheckmark} {title}
           </Card.Header>
           <Card.Description id={ariaDescribedby}>
-            <p>
-            {labels.map(value => {
-              const key = Identity.key({value, scenario});
-              const active = labelsInUse.includes(value);
-              const labelProps = {
-                key,
-                value
-              };
-
-              if (labelsInUse.includes(value)) {
-                labelProps.color = 'green';
-              }
-
-              return (
-                <Label
-                  {...labelProps}
-                  tabIndex="0"
-                  as="button"
-                  size="small"
-                  onClick={onLabelClick}
-                  aria-label={`Click for ${value} scenarios`}
-                >
-                  {value}
-                </Label>
-              );
-            })}
-            </p>
+            <ScenarioLabels scenario={scenario} />
             {description}
           </Card.Description>
         </Card.Content>
@@ -200,4 +134,6 @@ const mapDispatchToProps = dispatch => ({
   getScenario: id => dispatch(getScenario(id))
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScenarioCard));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioCard)
+);

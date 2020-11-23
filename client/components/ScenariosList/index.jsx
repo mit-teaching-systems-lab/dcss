@@ -7,11 +7,9 @@ import {
   Card,
   Container,
   Grid,
-  Header,
   Icon,
   Input,
   Menu,
-  Modal,
   Pagination,
   Popup,
   Responsive,
@@ -20,22 +18,20 @@ import {
 import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
-import Moment from '@utils/Moment';
 import Layout from '@utils/Layout';
 import {
   deleteScenario,
   getScenariosCount,
   getScenariosSlice
 } from '@actions/scenario';
+import { setLabelsInUse } from '@actions/tags';
 import Boundary from '@components/Boundary';
 import Gate from '@components/Gate';
-import Username from '@components/User/Username';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
-import ScenarioCardActions from './ScenarioCardActions';
-import Identity from '@utils/Identity';
+import ScenarioDetailModal from './ScenarioDetailModal';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -102,9 +98,7 @@ const qsOpts = {
 
 function makeQueryString(search) {
   const qs = {};
-  const {
-    labels
-  } = QueryString.parse(window.location.search, qsOpts);
+  const { labels } = QueryString.parse(window.location.search, qsOpts);
 
   if (search) {
     qs.search = search;
@@ -121,11 +115,11 @@ class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
-    const { category } = this.props;
-    const scenarios = this.props.scenarios;
-    const {
-      search = ''
-    } = QueryString.parse(window.location.search);
+    const { category, scenarios } = this.props;
+    const { search = '', labels = [] } = QueryString.parse(
+      window.location.search,
+      qsOpts
+    );
     this.state = {
       activePage: 1,
       category,
@@ -137,6 +131,8 @@ class ScenariosList extends Component {
       selected: null,
       viewHeading: ''
     };
+
+    this.props.setLabelsInUse(labels);
 
     this.timeout = null;
     this.scenarios = scenarios;
@@ -211,7 +207,7 @@ class ScenariosList extends Component {
       this.setState({
         activePage: 1,
         heading: viewHeading,
-        scenarios,
+        scenarios
       });
 
       this.props.history.push(
@@ -290,9 +286,7 @@ class ScenariosList extends Component {
       onScenarioModalClose,
       onSearchChange
     } = this;
-    const {
-      labels = []
-    } = QueryString.parse(window.location.search, qsOpts);
+    const { labels = [] } = QueryString.parse(window.location.search, qsOpts);
 
     const { origin, pathname } = window.location;
 
@@ -526,51 +520,6 @@ class ScenariosList extends Component {
   }
 }
 
-const ScenarioDetailModal = ({ onClose, open, scenario }) => {
-  const createdAt = Moment(scenario.created_at).fromNow();
-  const createdAtAlt = Moment(scenario.created_at).calendar();
-  const username = <Username {...scenario.author} />;
-  const subheader = (
-    <span title={createdAtAlt}>
-      Created by {username} ({createdAt})
-    </span>
-  );
-
-  const ariaLabelledby = Identity.id();
-  const ariaDescribedby = Identity.id();
-  return (
-    <Modal.Accessible open={open}>
-      <Modal
-        closeIcon
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={ariaLabelledby}
-        aria-describedby={ariaDescribedby}
-        centered={false}
-        open={open}
-        onClose={onClose}
-      >
-        <Header id={ariaLabelledby}>{scenario.title}</Header>
-        <Modal.Content>{subheader}</Modal.Content>
-        <Modal.Content id={ariaDescribedby}>
-          <Modal.Description className="sc__modal-description">
-            {scenario.description}
-          </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions>
-          <ScenarioCardActions scenario={scenario} />
-        </Modal.Actions>
-      </Modal>
-    </Modal.Accessible>
-  );
-};
-
-ScenarioDetailModal.propTypes = {
-  onClose: PropTypes.func,
-  open: PropTypes.bool,
-  scenario: PropTypes.object
-};
-
 ScenariosList.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
@@ -586,6 +535,7 @@ ScenariosList.propTypes = {
     })
   }),
   scenarios: PropTypes.array,
+  setLabelsInUse: PropTypes.func,
   user: PropTypes.object
 };
 
@@ -602,7 +552,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
   getScenariosCount: () => dispatch(getScenariosCount()),
-  getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params))
+  getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
+  setLabelsInUse: params => dispatch(setLabelsInUse(params))
 });
 
 export default withRouter(
