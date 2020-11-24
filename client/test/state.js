@@ -905,7 +905,12 @@ module.exports = {
     }
   },
   tags: {
-    categories: []
+    categories: [],
+    labels: [
+      { id: 3, name: 'fun' },
+      { id: 5, name: 'Easy' }
+    ],
+    labelsInUse: ['Easy']
   },
   user: {
     username: null,

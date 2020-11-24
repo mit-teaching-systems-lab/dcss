@@ -24,6 +24,7 @@ import {
   getScenariosCount,
   getScenariosSlice
 } from '@actions/scenario';
+import { getLabels } from '@actions/tags';
 import { setLabelsInUse } from '@actions/tags';
 import Boundary from '@components/Boundary';
 import Gate from '@components/Gate';
@@ -32,6 +33,7 @@ import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
+import ScenarioLabelsFilter from './ScenarioLabelsFilter';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -145,6 +147,10 @@ class ScenariosList extends Component {
   async componentDidMount() {
     const { search } = this.state;
     const count = await this.props.getScenariosCount();
+
+    if (!this.props.tags.labels.length) {
+      await this.props.getLabels();
+    }
 
     if (count === this.props.scenarios.length) {
       this.scenarios = this.props.scenarios;
@@ -286,7 +292,7 @@ class ScenariosList extends Component {
       onScenarioModalClose,
       onSearchChange
     } = this;
-    const { labels = [] } = QueryString.parse(window.location.search, qsOpts);
+    // const { labels = [] } = QueryString.parse(window.location.search, qsOpts);
 
     const { origin, pathname } = window.location;
 
@@ -334,9 +340,11 @@ class ScenariosList extends Component {
     }
 
     // If there are any active label filters, apply them
-    if (labels.length) {
+    if (this.props.tags.labelsInUse.length) {
       scenarios = scenarios.filter(scenario =>
-        scenario.labels.some(label => labels.includes(label))
+        scenario.labels.some(label =>
+          this.props.tags.labelsInUse.includes(label)
+        )
       );
     }
 
@@ -432,6 +440,13 @@ class ScenariosList extends Component {
         />
       </Menu.Item.Tabbable>
     );
+
+    const menuItemScenarioLabels = (
+      <Menu.Item.Tabbable>
+        <ScenarioLabelsFilter />
+      </Menu.Item.Tabbable>
+    );
+
     const right = [
       <Menu.Menu key="menu-item-scenario-search" position="right">
         <Popup
@@ -445,6 +460,12 @@ class ScenariosList extends Component {
           size="tiny"
           content="Search scenarios"
           trigger={menuItemScenarioSearch}
+        />
+        <Popup
+          inverted
+          size="tiny"
+          content="Filter scenarios"
+          trigger={menuItemScenarioLabels}
         />
       </Menu.Menu>
     ];
@@ -525,6 +546,7 @@ ScenariosList.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   category: PropTypes.string,
+  getLabels: PropTypes.func,
   getScenariosCount: PropTypes.func,
   getScenariosSlice: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
@@ -536,23 +558,26 @@ ScenariosList.propTypes = {
   }),
   scenarios: PropTypes.array,
   setLabelsInUse: PropTypes.func,
+  tags: PropTypes.object,
   user: PropTypes.object
 };
 
 const mapStateToProps = state => {
   const {
-    session: { isLoggedIn },
     scenarios,
+    session: { isLoggedIn },
+    tags,
     user
   } = state;
 
-  return { isLoggedIn, user, scenarios };
+  return { isLoggedIn, scenarios, tags, user };
 };
 
 const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
   getScenariosCount: () => dispatch(getScenariosCount()),
   getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
+  getLabels: () => dispatch(getLabels()),
   setLabelsInUse: params => dispatch(setLabelsInUse(params))
 });
 

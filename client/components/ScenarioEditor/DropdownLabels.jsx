@@ -22,8 +22,6 @@ class DropdownLabels extends Component {
 
   onChange = (e, { value }) => {
     this.setState({ labels: value });
-
-    console.log('onChange');
     this.props.onChange(e, {
       name: 'labels',
       value

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Label } from '@components/UI';
+import { Dropdown } from '@components/UI';
 import { setLabelsInUse } from '@actions/tags';
 import Identity from '@utils/Identity';
 
@@ -26,17 +26,19 @@ function makeQueryString(labels) {
   return `?${QueryString.stringify(qs, qsOpts)}`;
 }
 
-class ScenarioLabels extends React.Component {
+class ScenarioLabelsFilter extends React.Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
 
   onClick(event, { value }) {
-    const labelsInUse = this.props.labelsInUse.slice(0);
+    event.stopPropagation();
+
+    const labelsInUse = this.props.tags.labelsInUse.slice(0);
 
     if (labelsInUse.includes(value)) {
-      labelsInUse.splice(labels.indexOf(value), 1);
+      labelsInUse.splice(labelsInUse.indexOf(value), 1);
     } else {
       labelsInUse.push(value);
     }
@@ -49,55 +51,44 @@ class ScenarioLabels extends React.Component {
 
   render() {
     const { onClick } = this;
-    const { labelsInUse, scenario } = this.props;
-    const { deleted_at, labels } = scenario;
-
-    return !deleted_at ? (
-      <p>
-        {labels.map(value => {
-          const key = Identity.key({ value, scenario });
-          const labelProps = {
-            as: 'button',
-            size: 'small',
-            tabIndex: 0,
-            value
-          };
-
-          if (labelsInUse.includes(value)) {
-            labelProps.color = 'green';
-          }
-
-          return (
-            <Label
-              {...labelProps}
-              key={key}
-              onClick={onClick}
-              aria-label={`Click for scenarios labelled ${value}`}
-            >
-              {value}
-            </Label>
-          );
-        })}
-      </p>
-    ) : null;
+    return (
+      <Dropdown item text="Filter by labels" closeOnChange={false}>
+        <Dropdown.Menu>
+          {this.props.tags.labels.map(label => {
+            const key = Identity.key(label);
+            const active = this.props.tags.labelsInUse.includes(label.value);
+            const itemProps = {
+              ...label,
+              active,
+              'aria-label': label.text
+            };
+            return (
+              <Dropdown.Item {...itemProps} key={key} onClick={onClick}>
+                {label.text}
+              </Dropdown.Item>
+            );
+          })}
+        </Dropdown.Menu>
+      </Dropdown>
+    );
   }
 }
 
-ScenarioLabels.propTypes = {
+ScenarioLabelsFilter.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  labelsInUse: PropTypes.array,
+  tags: PropTypes.shape({
+    labels: PropTypes.array,
+    labelsInUse: PropTypes.array
+  }),
   location: PropTypes.object,
-  scenario: PropTypes.object,
   setLabelsInUse: PropTypes.func
 };
 
 const mapStateToProps = state => {
-  const {
-    tags: { labelsInUse }
-  } = state;
-  return { labelsInUse };
+  const { tags } = state;
+  return { tags };
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -105,5 +96,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabels)
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabelsFilter)
 );

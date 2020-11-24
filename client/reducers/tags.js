@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 
 import {
   GET_CATEGORIES_SUCCESS,
+  GET_LABELS_SUCCESS,
+  // SET_LABELS_SUCCESS,
   SET_LABELS_IN_USE_SUCCESS
 } from '@actions/types';
 
@@ -15,11 +17,25 @@ export const categories = (state = [], action) => {
   }
 };
 
+export const labels = (state = [], action) => {
+  const { labels, type } = action;
+  switch (type) {
+    case GET_LABELS_SUCCESS: {
+      return labels.map(({ id: key, name: value }) => ({
+        key,
+        text: value,
+        value
+      }));
+    }
+    default:
+      return state;
+  }
+};
+
 export const labelsInUse = (state = [], action) => {
   const { labelsInUse, type } = action;
   switch (type) {
     case SET_LABELS_IN_USE_SUCCESS: {
-      // return [...(new Set([...state, ...labelsInUse]))];
       return [...labelsInUse];
     }
     default:
@@ -29,5 +45,6 @@ export const labelsInUse = (state = [], action) => {
 
 export default combineReducers({
   categories,
+  labels,
   labelsInUse
 });

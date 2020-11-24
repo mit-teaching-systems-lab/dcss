@@ -55,6 +55,48 @@ exports[`Render 1 1 1`] = `
           />
         </div>
       </a>
+      <a
+        class="item"
+        tabindex="0"
+      >
+        <div
+          aria-expanded="false"
+          class="ui item dropdown"
+          role="listbox"
+          tabindex="0"
+        >
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="text"
+            role="alert"
+          >
+            Filter by labels
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+          >
+            <div
+              aria-checked="false"
+              class="item"
+              id="3"
+              name="fun"
+              role="option"
+            />
+            <div
+              aria-checked="false"
+              class="item"
+              id="5"
+              name="Easy"
+              role="option"
+            />
+          </div>
+        </div>
+      </a>
     </div>
   </div>
   <div
@@ -291,6 +333,48 @@ exports[`Render 2 1 1`] = `
             aria-hidden="true"
             class="search icon"
           />
+        </div>
+      </a>
+      <a
+        class="item"
+        tabindex="0"
+      >
+        <div
+          aria-expanded="false"
+          class="ui item dropdown"
+          role="listbox"
+          tabindex="0"
+        >
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="text"
+            role="alert"
+          >
+            Filter by labels
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+          >
+            <div
+              aria-checked="false"
+              class="item"
+              id="3"
+              name="fun"
+              role="option"
+            />
+            <div
+              aria-checked="false"
+              class="item"
+              id="5"
+              name="Easy"
+              role="option"
+            />
+          </div>
         </div>
       </a>
     </div>
