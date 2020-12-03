@@ -528,10 +528,7 @@ describe('GET_PERSONAS_ERROR', () => {
 describe('SET_PERSONAS_SUCCESS', () => {
   describe('getPersonas', () => {
     let personas = [...state.personas];
-
-    // TODO: determine with this is producing the following error:
-    //  "Actions may not have an undefined "type" property. Have you misspelled a constant?"
-    test.skip('Sets personas', async () => {
+    test('Sets personas', async () => {
       const returnValue = await store.dispatch(actions.setPersonas(personas));
       expect(fetch.mock.calls.length).toBe(0);
       await mockStore.dispatch(actions.setPersonas(personas));

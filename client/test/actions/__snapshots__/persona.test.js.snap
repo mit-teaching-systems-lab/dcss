@@ -1,0 +1,302 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET_PERSONA_ERROR createPersona Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_PERSONA_ERROR",
+  },
+]
+`;
+
+exports[`GET_PERSONA_ERROR getPersona Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_PERSONA_ERROR",
+  },
+]
+`;
+
+exports[`GET_PERSONA_SUCCESS createPersona Empty params 1`] = `Array []`;
+
+exports[`GET_PERSONA_SUCCESS createPersona Receives a persona 2`] = `
+Array [
+  Object {
+    "persona": Object {
+      "author_id": 3,
+      "color": "#FFFFFF",
+      "created_at": "2020-12-01T15:49:04.962Z",
+      "deleted_at": null,
+      "description": "The default user participating in a single person scenario.",
+      "id": 1,
+      "is_read_only": true,
+      "is_shared": true,
+      "name": "Fake Persona",
+      "updated_at": null,
+    },
+    "type": "GET_PERSONA_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_PERSONA_SUCCESS getPersona Receives a persona 2`] = `
+Array [
+  Object {
+    "persona": Object {
+      "author_id": 3,
+      "color": "#FFFFFF",
+      "created_at": "2020-12-01T15:49:04.962Z",
+      "deleted_at": null,
+      "description": "The default user participating in a single person scenario.",
+      "id": 1,
+      "is_read_only": true,
+      "is_shared": true,
+      "name": "Fake Persona",
+      "updated_at": null,
+    },
+    "type": "GET_PERSONA_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_PERSONAS_ERROR getPersonas Receives error 1`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_PERSONAS_ERROR",
+  },
+]
+`;
+
+exports[`GET_PERSONAS_SUCCESS getPersonas Receives personas 2`] = `
+Array [
+  Object {
+    "personas": Array [
+      Object {
+        "author_id": 3,
+        "color": "#FFFFFF",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "The default user participating in a single person scenario.",
+        "id": 1,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Participant",
+        "updated_at": null,
+      },
+      Object {
+        "author_id": 3,
+        "color": "#3f59a9",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "A non-specific teacher, participating in a multi person scenario.",
+        "id": 2,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Teacher",
+        "updated_at": null,
+      },
+      Object {
+        "author_id": 3,
+        "color": "#e59235",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "A non-specific student, participating in a multi person scenario.",
+        "id": 3,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Student",
+        "updated_at": null,
+      },
+      Object {
+        "author_id": 3,
+        "color": "#73b580",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "A non-specific facilitator, leading participation in a multi person scenario.",
+        "id": 4,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Facilitator",
+        "updated_at": null,
+      },
+    ],
+    "type": "GET_PERSONAS_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_PERSONAS_SUCCESS getPersonas Receives undefined 3`] = `
+Array [
+  Object {
+    "personas": Array [],
+    "type": "GET_PERSONAS_SUCCESS",
+  },
+]
+`;
+
+exports[`LINK_PERSONA_TO_SCENARIO_ERROR linkPersonaToScenario Receives error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "LINK_PERSONA_TO_SCENARIO_ERROR",
+  },
+]
+`;
+
+exports[`SET_PERSONA_ERROR setPersona Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "SET_PERSONA_ERROR",
+  },
+]
+`;
+
+exports[`SET_PERSONA_SUCCESS setPersona Empty params 1`] = `Array []`;
+
+exports[`SET_PERSONA_SUCCESS setPersona Receives a persona 2`] = `
+Array [
+  Object {
+    "persona": Object {
+      "author_id": 3,
+      "color": "#FFFFFF",
+      "created_at": "2020-12-01T15:49:04.962Z",
+      "deleted_at": null,
+      "description": "The default user participating in a single person scenario.",
+      "id": 1,
+      "is_read_only": true,
+      "is_shared": true,
+      "name": "Fake Persona",
+      "updated_at": null,
+    },
+    "type": "SET_PERSONA_SUCCESS",
+  },
+  Object {
+    "error": [TypeError: Cannot read property 'personas' of undefined],
+    "type": "SET_PERSONA_ERROR",
+  },
+]
+`;
+
+exports[`SET_PERSONA_SUCCESS setPersona Receives a persona, updates scenario 2`] = `
+Array [
+  Object {
+    "persona": Object {
+      "author_id": 3,
+      "color": "#FFFFFF",
+      "created_at": "2020-12-01T15:49:04.962Z",
+      "deleted_at": null,
+      "description": "The default user participating in a single person scenario.",
+      "id": 1,
+      "is_read_only": true,
+      "is_shared": true,
+      "name": "Fake Persona",
+      "updated_at": null,
+    },
+    "type": "SET_PERSONA_SUCCESS",
+  },
+  Object {
+    "error": [TypeError: Cannot read property 'personas' of undefined],
+    "type": "SET_PERSONA_ERROR",
+  },
+]
+`;
+
+exports[`SET_PERSONAS_SUCCESS getPersonas Sets personas 1`] = `
+Array [
+  Object {
+    "personas": Array [
+      Object {
+        "author_id": 3,
+        "color": "#FFFFFF",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "The default user participating in a single person scenario.",
+        "id": 1,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Participant",
+        "updated_at": null,
+      },
+      Object {
+        "author_id": 3,
+        "color": "#3f59a9",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "A non-specific teacher, participating in a multi person scenario.",
+        "id": 2,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Teacher",
+        "updated_at": null,
+      },
+      Object {
+        "author_id": 3,
+        "color": "#e59235",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "A non-specific student, participating in a multi person scenario.",
+        "id": 3,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Student",
+        "updated_at": null,
+      },
+      Object {
+        "author_id": 3,
+        "color": "#73b580",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "A non-specific facilitator, leading participation in a multi person scenario.",
+        "id": 4,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Facilitator",
+        "updated_at": null,
+      },
+    ],
+    "type": "SET_PERSONAS_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_SCENARIO linkPersonaToScenario Receives personas for scenario 3`] = `
+Array [
+  Object {
+    "error": [TypeError: Cannot convert undefined or null to object],
+    "type": "LINK_PERSONA_TO_SCENARIO_ERROR",
+  },
+]
+`;
+
+exports[`SET_SCENARIO unlinkPersonaFromScenario Receives personas for scenario 3`] = `
+Array [
+  Object {
+    "error": [TypeError: Cannot convert undefined or null to object],
+    "type": "UNLINK_PERSONA_FROM_SCENARIO_ERROR",
+  },
+]
+`;
+
+exports[`UNLINK_PERSONA_FROM_SCENARIO_ERROR unlinkPersonaFromScenario Receives error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "UNLINK_PERSONA_FROM_SCENARIO_ERROR",
+  },
+]
+`;
