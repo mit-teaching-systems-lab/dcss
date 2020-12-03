@@ -18,7 +18,7 @@ exports[`Render 1 1 1`] = `
     <div
       aria-atomic="true"
       aria-live="polite"
-      class="text"
+      class="divider text"
       role="alert"
     >
       Red
@@ -231,7 +231,7 @@ exports[`Render 2 1 1`] = `
     <div
       aria-atomic="true"
       aria-live="polite"
-      class="text"
+      class="divider text"
       role="alert"
     >
       Red

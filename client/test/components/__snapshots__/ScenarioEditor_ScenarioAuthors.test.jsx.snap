@@ -103,7 +103,7 @@ exports[`No users loaded 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -190,7 +190,7 @@ exports[`No users loaded 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -277,9 +277,11 @@ exports[`No users loaded 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -375,9 +377,11 @@ exports[`No users loaded 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -599,7 +603,7 @@ exports[`Non-super author owner 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -686,7 +690,7 @@ exports[`Non-super author owner 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -773,9 +777,11 @@ exports[`Non-super author owner 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -871,9 +877,11 @@ exports[`Non-super author owner 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -1095,7 +1103,7 @@ exports[`Non-super non-owner author 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -1182,7 +1190,7 @@ exports[`Non-super non-owner author 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -1269,9 +1277,11 @@ exports[`Non-super non-owner author 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -1367,9 +1377,11 @@ exports[`Non-super non-owner author 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -1595,7 +1607,7 @@ exports[`Roles 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -1682,7 +1694,7 @@ exports[`Roles 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -1809,9 +1821,11 @@ exports[`Roles 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -2031,7 +2045,7 @@ exports[`Roles 3`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               None
@@ -2118,7 +2132,7 @@ exports[`Roles 3`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -2245,9 +2259,11 @@ exports[`Roles 3`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -2467,7 +2483,7 @@ exports[`Roles 4`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
             >
               Reviewer
@@ -2554,7 +2570,7 @@ exports[`Roles 4`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -2681,9 +2697,11 @@ exports[`Roles 4`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -2903,7 +2921,7 @@ exports[`Roles 6`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
             >
               Reviewer
@@ -2990,7 +3008,7 @@ exports[`Roles 6`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -3117,9 +3135,11 @@ exports[`Roles 6`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -3339,7 +3359,7 @@ exports[`Roles 7`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -3426,7 +3446,7 @@ exports[`Roles 7`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="default text"
+              class="divider default text"
               role="alert"
             >
               ______________
@@ -3553,9 +3573,11 @@ exports[`Roles 7`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -3783,9 +3805,11 @@ exports[`Search 2`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -4044,9 +4068,11 @@ exports[`Search 3`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -4305,9 +4331,11 @@ exports[`Search 4`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -4566,9 +4594,11 @@ exports[`Search 5`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"
@@ -4827,9 +4857,11 @@ exports[`Search 6`] = `
             <div
               aria-atomic="true"
               aria-live="polite"
-              class="text"
+              class="divider text"
               role="alert"
-            />
+            >
+              ______________
+            </div>
             <i
               aria-hidden="true"
               class="dropdown icon"

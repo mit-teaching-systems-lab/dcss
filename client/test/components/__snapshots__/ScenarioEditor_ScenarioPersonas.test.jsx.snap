@@ -33,7 +33,7 @@ exports[`Add an existing 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -47,15 +47,17 @@ exports[`Add an existing 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -220,12 +222,6 @@ exports[`Add an existing 1`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -287,9 +283,11 @@ exports[`Add an existing 2`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
-          />
+          >
+            None
+          </div>
           <i
             aria-hidden="true"
             class="dropdown icon"
@@ -299,15 +297,17 @@ exports[`Add an existing 2`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -472,12 +472,6 @@ exports[`Add an existing 2`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -539,7 +533,7 @@ exports[`Add an existing 3`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -553,15 +547,17 @@ exports[`Add an existing 3`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
-              aria-selected="false"
-              class="active item"
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -604,8 +600,8 @@ exports[`Add an existing 3`] = `
             </div>
             <div
               aria-checked="false"
-              aria-selected="true"
-              class="selected item"
+              aria-selected="false"
+              class="item"
               role="option"
               style="pointer-events: all;"
             >
@@ -726,12 +722,6 @@ exports[`Add an existing 3`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -793,7 +783,7 @@ exports[`Add an existing 4`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -807,15 +797,17 @@ exports[`Add an existing 4`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
-              aria-selected="false"
-              class="active item"
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -858,8 +850,8 @@ exports[`Add an existing 4`] = `
             </div>
             <div
               aria-checked="false"
-              aria-selected="true"
-              class="selected item"
+              aria-selected="false"
+              class="item"
               role="option"
               style="pointer-events: all;"
             >
@@ -980,12 +972,6 @@ exports[`Add an existing 4`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -1047,10 +1033,10 @@ exports[`Add an existing 5`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
-            Student
+            None
           </div>
           <i
             aria-hidden="true"
@@ -1061,15 +1047,17 @@ exports[`Add an existing 5`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
-              aria-selected="false"
-              class="active item"
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -1112,8 +1100,8 @@ exports[`Add an existing 5`] = `
             </div>
             <div
               aria-checked="false"
-              aria-selected="true"
-              class="selected item"
+              aria-selected="false"
+              class="item"
               role="option"
               style="pointer-events: all;"
             >
@@ -1234,12 +1222,6 @@ exports[`Add an existing 5`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -1301,7 +1283,7 @@ exports[`Add an existing 6`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -1315,15 +1297,17 @@ exports[`Add an existing 6`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
-              aria-selected="false"
-              class="active item"
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -1366,8 +1350,8 @@ exports[`Add an existing 6`] = `
             </div>
             <div
               aria-checked="false"
-              aria-selected="true"
-              class="selected item"
+              aria-selected="false"
+              class="item"
               role="option"
               style="pointer-events: all;"
             >
@@ -1488,12 +1472,6 @@ exports[`Add an existing 6`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -1555,7 +1533,7 @@ exports[`Add an existing 7`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -1569,15 +1547,17 @@ exports[`Add an existing 7`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
-              aria-selected="false"
-              class="active item"
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -1620,8 +1600,8 @@ exports[`Add an existing 7`] = `
             </div>
             <div
               aria-checked="false"
-              aria-selected="true"
-              class="selected item"
+              aria-selected="false"
+              class="item"
               role="option"
               style="pointer-events: all;"
             >
@@ -1742,12 +1722,6 @@ exports[`Add an existing 7`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -1809,7 +1783,7 @@ exports[`Add an existing 8`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -1823,15 +1797,17 @@ exports[`Add an existing 8`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
           </div>
         </div>
@@ -1918,12 +1894,6 @@ exports[`Add an existing 8`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -1984,12 +1954,6 @@ exports[`Add an existing 8`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2050,12 +2014,6 @@ exports[`Add an existing 8`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2116,12 +2074,6 @@ exports[`Add an existing 8`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2190,7 +2142,7 @@ exports[`Add an existing 9`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -2204,15 +2156,17 @@ exports[`Add an existing 9`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
           </div>
         </div>
@@ -2299,12 +2253,6 @@ exports[`Add an existing 9`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2365,12 +2313,6 @@ exports[`Add an existing 9`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2431,12 +2373,6 @@ exports[`Add an existing 9`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2497,12 +2433,6 @@ exports[`Add an existing 9`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2571,7 +2501,7 @@ exports[`Add an existing 10`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -2585,15 +2515,17 @@ exports[`Add an existing 10`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
           </div>
         </div>
@@ -2680,12 +2612,6 @@ exports[`Add an existing 10`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2746,12 +2672,6 @@ exports[`Add an existing 10`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2812,12 +2732,6 @@ exports[`Add an existing 10`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2878,12 +2792,6 @@ exports[`Add an existing 10`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -2952,7 +2860,7 @@ exports[`Add an existing 11`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -2966,15 +2874,17 @@ exports[`Add an existing 11`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
           </div>
         </div>
@@ -3061,12 +2971,6 @@ exports[`Add an existing 11`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3127,12 +3031,6 @@ exports[`Add an existing 11`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3193,12 +3091,6 @@ exports[`Add an existing 11`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3259,12 +3151,6 @@ exports[`Add an existing 11`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3333,7 +3219,7 @@ exports[`Add an existing 12`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -3347,15 +3233,17 @@ exports[`Add an existing 12`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
           </div>
         </div>
@@ -3442,12 +3330,6 @@ exports[`Add an existing 12`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3508,12 +3390,6 @@ exports[`Add an existing 12`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3574,12 +3450,6 @@ exports[`Add an existing 12`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3640,12 +3510,6 @@ exports[`Add an existing 12`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3714,7 +3578,7 @@ exports[`Create a persona 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -3728,15 +3592,17 @@ exports[`Create a persona 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -3901,12 +3767,6 @@ exports[`Create a persona 1`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -3968,7 +3828,7 @@ exports[`Create a persona 2`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -3982,15 +3842,17 @@ exports[`Create a persona 2`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -4155,12 +4017,6 @@ exports[`Create a persona 2`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -4222,7 +4078,7 @@ exports[`Create a persona 3`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -4236,15 +4092,17 @@ exports[`Create a persona 3`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -4409,12 +4267,6 @@ exports[`Create a persona 3`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -4476,7 +4328,7 @@ exports[`Create a persona 4`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -4490,15 +4342,17 @@ exports[`Create a persona 4`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -4663,12 +4517,6 @@ exports[`Create a persona 4`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -4730,7 +4578,7 @@ exports[`Create a persona 5`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -4744,15 +4592,17 @@ exports[`Create a persona 5`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -4917,12 +4767,6 @@ exports[`Create a persona 5`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -4984,7 +4828,7 @@ exports[`Create a persona 6`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -4998,15 +4842,17 @@ exports[`Create a persona 6`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -5171,12 +5017,6 @@ exports[`Create a persona 6`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -5238,7 +5078,7 @@ exports[`Create a persona 7`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -5252,15 +5092,17 @@ exports[`Create a persona 7`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -5425,12 +5267,6 @@ exports[`Create a persona 7`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -5492,7 +5328,7 @@ exports[`Create a persona 8`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -5506,15 +5342,17 @@ exports[`Create a persona 8`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -5679,12 +5517,6 @@ exports[`Create a persona 8`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -5746,7 +5578,7 @@ exports[`No personas loaded 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -5760,15 +5592,17 @@ exports[`No personas loaded 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -5933,12 +5767,6 @@ exports[`No personas loaded 1`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -6000,7 +5828,7 @@ exports[`Personas loaded 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -6014,15 +5842,17 @@ exports[`Personas loaded 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -6187,12 +6017,6 @@ exports[`Personas loaded 1`] = `
             style="text-align: right;"
             tabindex="0"
           >
-            <div
-              aria-atomic="true"
-              aria-live="polite"
-              class="text"
-              role="alert"
-            />
             <i
               aria-hidden="true"
               class="ellipsis horizontal icon"
@@ -6254,7 +6078,7 @@ exports[`Render 1 1 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -6268,15 +6092,17 @@ exports[`Render 1 1 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"
@@ -6526,7 +6352,7 @@ exports[`Render 2 1 1`] = `
           <div
             aria-atomic="true"
             aria-live="polite"
-            class="default text"
+            class="divider default text"
             role="alert"
           >
             Search and select a persona to add
@@ -6540,15 +6366,17 @@ exports[`Render 2 1 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="true"
+              aria-checked="false"
               aria-selected="true"
-              class="active selected item"
+              class="selected item"
               role="option"
               style="pointer-events: all;"
             >
               <span
                 class="text"
-              />
+              >
+                None
+              </span>
             </div>
             <div
               aria-checked="false"

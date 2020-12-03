@@ -99,7 +99,7 @@ exports[`Render 1 1 2`] = `
                 <div
                   aria-atomic=\\"true\\"
                   aria-live=\\"polite\\"
-                  class=\\"text\\"
+                  class=\\"divider text\\"
                   role=\\"alert\\"
                 >
                   Find cohort
@@ -173,7 +173,7 @@ exports[`Render 1 1 2`] = `
                 <div
                   aria-atomic=\\"true\\"
                   aria-live=\\"polite\\"
-                  class=\\"text\\"
+                  class=\\"divider text\\"
                   role=\\"alert\\"
                 >
                   Find scenario
@@ -568,7 +568,7 @@ exports[`Render 1 1 3`] = `
               <div
                 aria-atomic="true"
                 aria-live="polite"
-                class="text"
+                class="divider text"
                 role="alert"
               >
                 Find cohort
@@ -642,7 +642,7 @@ exports[`Render 1 1 3`] = `
               <div
                 aria-atomic="true"
                 aria-live="polite"
-                class="text"
+                class="divider text"
                 role="alert"
               >
                 Find scenario
@@ -1026,7 +1026,7 @@ exports[`Render 1 1 4`] = `
               <div
                 aria-atomic="true"
                 aria-live="polite"
-                class="text"
+                class="divider text"
                 role="alert"
               >
                 Find cohort
@@ -1100,7 +1100,7 @@ exports[`Render 1 1 4`] = `
               <div
                 aria-atomic="true"
                 aria-live="polite"
-                class="text"
+                class="divider text"
                 role="alert"
               >
                 Find scenario

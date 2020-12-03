@@ -20,7 +20,7 @@ exports[`Render 1 1 1`] = `
       <div
         aria-atomic="true"
         aria-live="polite"
-        class="default text"
+        class="divider default text"
         role="alert"
       >
         Select...
