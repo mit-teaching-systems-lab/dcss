@@ -1891,9 +1891,7 @@ exports[`Edit a persona 2`] = `
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
-              >
-                The default user participating in a single person scenario.
-              </textarea>
+              />
             </div>
           </div>
         </form>
@@ -2010,20 +2008,14 @@ exports[`Edit a persona 3`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
@@ -2042,19 +2034,23 @@ exports[`Edit a persona 3`] = `
             >
               Description:
                
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
             </label>
             <div
-              class=\\"field\\"
+              class=\\"error field\\"
             >
               <textarea
+                aria-invalid=\\"true\\"
                 aria-label=\\"Persona description\\"
                 autocomplete=\\"description\\"
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
-              >
-                The default user participating in a single person scenario.
-              </textarea>
+              />
             </div>
           </div>
         </form>
@@ -2171,20 +2167,14 @@ exports[`Edit a persona 4`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
@@ -2203,18 +2193,24 @@ exports[`Edit a persona 4`] = `
             >
               Description:
                
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
             </label>
             <div
-              class=\\"field\\"
+              class=\\"error field\\"
             >
               <textarea
+                aria-invalid=\\"true\\"
                 aria-label=\\"Persona description\\"
                 autocomplete=\\"description\\"
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
               >
-                The default user participating in a single person scenario.Some description
+                Some description
               </textarea>
             </div>
           </div>
@@ -2332,20 +2328,14 @@ exports[`Edit a persona 5`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
@@ -2364,18 +2354,24 @@ exports[`Edit a persona 5`] = `
             >
               Description:
                
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
             </label>
             <div
-              class=\\"field\\"
+              class=\\"error field\\"
             >
               <textarea
+                aria-invalid=\\"true\\"
                 aria-label=\\"Persona description\\"
                 autocomplete=\\"description\\"
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
               >
-                The default user participating in a single person scenario.Some description
+                Some description
               </textarea>
             </div>
           </div>
@@ -2603,20 +2599,14 @@ exports[`Edit a persona 6`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
@@ -2635,18 +2625,24 @@ exports[`Edit a persona 6`] = `
             >
               Description:
                
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
             </label>
             <div
-              class=\\"field\\"
+              class=\\"error field\\"
             >
               <textarea
+                aria-invalid=\\"true\\"
                 aria-label=\\"Persona description\\"
                 autocomplete=\\"description\\"
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
               >
-                The default user participating in a single person scenario.Some description
+                Some description
               </textarea>
             </div>
           </div>
@@ -2764,20 +2760,14 @@ exports[`Edit a persona 7`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
@@ -2796,18 +2786,24 @@ exports[`Edit a persona 7`] = `
             >
               Description:
                
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
             </label>
             <div
-              class=\\"field\\"
+              class=\\"error field\\"
             >
               <textarea
+                aria-invalid=\\"true\\"
                 aria-label=\\"Persona description\\"
                 autocomplete=\\"description\\"
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
               >
-                The default user participating in a single person scenario.Some description
+                Some description
               </textarea>
             </div>
           </div>
@@ -3035,20 +3031,14 @@ exports[`Edit a persona 8`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
@@ -3067,18 +3057,24 @@ exports[`Edit a persona 8`] = `
             >
               Description:
                
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
             </label>
             <div
-              class=\\"field\\"
+              class=\\"error field\\"
             >
               <textarea
+                aria-invalid=\\"true\\"
                 aria-label=\\"Persona description\\"
                 autocomplete=\\"description\\"
                 name=\\"description\\"
                 placeholder=\\"...\\"
                 rows=\\"3\\"
               >
-                The default user participating in a single person scenario.Some description
+                Some description
               </textarea>
             </div>
           </div>
@@ -3196,26 +3192,181 @@ exports[`Edit a persona 9`] = `
             >
               Name:
                
-              <span
-                class=\\"ui right error medium text\\"
-              >
-                A name is required.
-              </span>
             </label>
             <div
-              class=\\"error field\\"
+              class=\\"field\\"
             >
               <div
                 class=\\"ui input\\"
               >
                 <input
-                  aria-invalid=\\"true\\"
                   aria-label=\\"Persona name\\"
                   autocomplete=\\"off\\"
                   name=\\"name\\"
                   placeholder=\\"...\\"
                   type=\\"text\\"
                   value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(120, 28, 129);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the Participant persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"Participant\\"
                 />
               </div>
             </div>
@@ -3239,7 +3390,1511 @@ exports[`Edit a persona 9`] = `
                 placeholder=\\"...\\"
                 rows=\\"3\\"
               >
-                The default user participating in a single person scenario.Some description
+                The default user participating in a single person scenario.
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the  persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A name is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-invalid=\\"true\\"
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <textarea
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              />
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              />
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 5`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+            <div
+              class=\\"cpa__swatch-select-popup\\"
+            >
+              <div
+                class=\\"cpa__swatch-select-popup-background\\"
+              />
+              <div
+                style=\\"background: rgb(255, 255, 255); border: 0px solid rgba(0, 0, 0, 0.25); box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px; border-radius: 4px; padding: 1em 0.5em 0.5em 1em; width: 315px;\\"
+              >
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(120, 28, 129); border: 2px solid black;\\"
+                  tabindex=\\"0\\"
+                  title=\\"#781c81\\"
+                  value=\\"#781c81\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(70, 41, 135);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#462987\\"
+                  value=\\"#462987\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(63, 89, 169);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#3f59a9\\"
+                  value=\\"#3f59a9\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(70, 134, 194);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#4686c2\\"
+                  value=\\"#4686c2\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(88, 164, 172);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#58a4ac\\"
+                  value=\\"#58a4ac\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(115, 181, 128);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#73b580\\"
+                  value=\\"#73b580\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(149, 189, 94);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#95bd5e\\"
+                  value=\\"#95bd5e\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(185, 189, 74);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#b9bd4a\\"
+                  value=\\"#b9bd4a\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(214, 177, 62);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#d6b13e\\"
+                  value=\\"#d6b13e\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(229, 146, 53);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#e59235\\"
+                  value=\\"#e59235\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(229, 94, 43);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#e55e2b\\"
+                  value=\\"#e55e2b\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(217, 33, 32);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#d92120\\"
+                  value=\\"#d92120\\"
+                />
+                <div
+                  style=\\"clear: both;\\"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 6`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 7`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(255, 255, 255);\\"
+              tabindex=\\"0\\"
+            />
+            <div
+              class=\\"cpa__swatch-select-popup\\"
+            >
+              <div
+                class=\\"cpa__swatch-select-popup-background\\"
+              />
+              <div
+                style=\\"background: rgb(255, 255, 255); border: 0px solid rgba(0, 0, 0, 0.25); box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px; border-radius: 4px; padding: 1em 0.5em 0.5em 1em; width: 315px;\\"
+              >
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(120, 28, 129); border: 2px solid black;\\"
+                  tabindex=\\"0\\"
+                  title=\\"#781c81\\"
+                  value=\\"#781c81\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(70, 41, 135);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#462987\\"
+                  value=\\"#462987\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(63, 89, 169);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#3f59a9\\"
+                  value=\\"#3f59a9\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(70, 134, 194);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#4686c2\\"
+                  value=\\"#4686c2\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(88, 164, 172);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#58a4ac\\"
+                  value=\\"#58a4ac\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(115, 181, 128);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#73b580\\"
+                  value=\\"#73b580\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(149, 189, 94);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#95bd5e\\"
+                  value=\\"#95bd5e\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(185, 189, 74);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#b9bd4a\\"
+                  value=\\"#b9bd4a\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(214, 177, 62);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#d6b13e\\"
+                  value=\\"#d6b13e\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(229, 146, 53);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#e59235\\"
+                  value=\\"#e59235\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(229, 94, 43);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#e55e2b\\"
+                  value=\\"#e55e2b\\"
+                />
+                <button
+                  class=\\"ui button cpa__swatch-select-button\\"
+                  name=\\"color\\"
+                  style=\\"background: rgb(217, 33, 32);\\"
+                  tabindex=\\"0\\"
+                  title=\\"#d92120\\"
+                  value=\\"#d92120\\"
+                />
+                <div
+                  style=\\"clear: both;\\"
+                />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 8`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
+              </textarea>
+            </div>
+          </div>
+        </form>
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+            style=\\"margin-top: 1em;\\"
+          >
+            <label
+              for=\\"color\\"
+            >
+              Color:
+               
+            </label>
+            <button
+              aria-label=\\"Click to select a color\\"
+              class=\\"cpa__swatch-button\\"
+              id=\\"color\\"
+              role=\\"button\\"
+              style=\\"background: rgb(120, 28, 129);\\"
+              tabindex=\\"0\\"
+            />
+          </div>
+        </form>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"ui grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui fluid buttons\\"
+              >
+                <button
+                  class=\\"ui large primary button\\"
+                  type=\\"submit\\"
+                >
+                  Save
+                </button>
+                <div
+                  class=\\"or\\"
+                />
+                <button
+                  class=\\"ui large button\\"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Edit a readonly persona (results in create) 9`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-labelledby=\\"persona-editor\\"
+      aria-modal=\\"true\\"
+      class=\\"ui small modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        id=\\"persona-editor\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"user outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Edit the A new persona name persona
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+      >
+        <form
+          class=\\"ui form\\"
+        >
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"name\\"
+            >
+              Name:
+               
+            </label>
+            <div
+              class=\\"field\\"
+            >
+              <div
+                class=\\"ui input\\"
+              >
+                <input
+                  aria-label=\\"Persona name\\"
+                  autocomplete=\\"off\\"
+                  name=\\"name\\"
+                  placeholder=\\"...\\"
+                  type=\\"text\\"
+                  value=\\"A new persona name\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"required field\\"
+          >
+            <label
+              for=\\"description\\"
+            >
+              Description:
+               
+              <span
+                class=\\"ui right error medium text\\"
+              >
+                A description is required.
+              </span>
+            </label>
+            <div
+              class=\\"error field\\"
+            >
+              <textarea
+                aria-invalid=\\"true\\"
+                aria-label=\\"Persona description\\"
+                autocomplete=\\"description\\"
+                name=\\"description\\"
+                placeholder=\\"...\\"
+                rows=\\"3\\"
+              >
+                Some description
               </textarea>
             </div>
           </div>
@@ -5423,316 +7078,6 @@ exports[`Render 1 1 2`] = `
 >
   <div
     aria-hidden=\\"true\\"
-    id=\\"root\\"
-  />
-  <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-labelledby=\\"persona-editor\\"
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        id=\\"persona-editor\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"user outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Edit the A new persona name persona
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-      >
-        <form
-          class=\\"ui form\\"
-        >
-          <div
-            class=\\"required field\\"
-          >
-            <label
-              for=\\"name\\"
-            >
-              Name:
-               
-            </label>
-            <div
-              class=\\"field\\"
-            >
-              <div
-                class=\\"ui input\\"
-              >
-                <input
-                  aria-label=\\"Persona name\\"
-                  autocomplete=\\"off\\"
-                  name=\\"name\\"
-                  placeholder=\\"...\\"
-                  type=\\"text\\"
-                  value=\\"A new persona name\\"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class=\\"required field\\"
-          >
-            <label
-              for=\\"description\\"
-            >
-              Description:
-               
-            </label>
-            <div
-              class=\\"field\\"
-            >
-              <textarea
-                aria-label=\\"Persona description\\"
-                autocomplete=\\"description\\"
-                name=\\"description\\"
-                placeholder=\\"...\\"
-                rows=\\"3\\"
-              >
-                Some description
-              </textarea>
-            </div>
-          </div>
-        </form>
-        <form
-          class=\\"ui form\\"
-        >
-          <div
-            class=\\"required field\\"
-            style=\\"margin-top: 1em;\\"
-          >
-            <label
-              for=\\"color\\"
-            >
-              Color:
-               
-            </label>
-            <button
-              aria-label=\\"Click to select a color\\"
-              class=\\"cpa__swatch-button\\"
-              id=\\"color\\"
-              role=\\"button\\"
-              style=\\"background: rgb(255, 255, 255);\\"
-              tabindex=\\"0\\"
-            />
-          </div>
-        </form>
-      </div>
-      <div
-        class=\\"actions\\"
-      >
-        <div
-          class=\\"ui grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui fluid buttons\\"
-              >
-                <button
-                  class=\\"ui large primary button\\"
-                  type=\\"submit\\"
-                >
-                  Save
-                </button>
-                <div
-                  class=\\"or\\"
-                />
-                <button
-                  class=\\"ui large button\\"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Render 2 1 1`] = `
-"<body
-  class=\\"dimmable dimmed\\"
->
-  <div
-    id=\\"root\\"
-  />
-  <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-labelledby=\\"persona-editor\\"
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active\\"
-      role=\\"dialog\\"
-    >
-      <i
-        aria-hidden=\\"true\\"
-        class=\\"close icon\\"
-      />
-      <div
-        class=\\"ui header\\"
-        id=\\"persona-editor\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"user outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          Edit the Participant persona
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-      >
-        <form
-          class=\\"ui form\\"
-        >
-          <div
-            class=\\"required field\\"
-          >
-            <label
-              for=\\"name\\"
-            >
-              Name:
-               
-            </label>
-            <div
-              class=\\"field\\"
-            >
-              <div
-                class=\\"ui input\\"
-              >
-                <input
-                  aria-label=\\"Persona name\\"
-                  autocomplete=\\"off\\"
-                  name=\\"name\\"
-                  placeholder=\\"...\\"
-                  type=\\"text\\"
-                  value=\\"Participant\\"
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class=\\"required field\\"
-          >
-            <label
-              for=\\"description\\"
-            >
-              Description:
-               
-            </label>
-            <div
-              class=\\"field\\"
-            >
-              <textarea
-                aria-label=\\"Persona description\\"
-                autocomplete=\\"description\\"
-                name=\\"description\\"
-                placeholder=\\"...\\"
-                rows=\\"3\\"
-              >
-                The default user participating in a single person scenario.
-              </textarea>
-            </div>
-          </div>
-        </form>
-        <form
-          class=\\"ui form\\"
-        >
-          <div
-            class=\\"required field\\"
-            style=\\"margin-top: 1em;\\"
-          >
-            <label
-              for=\\"color\\"
-            >
-              Color:
-               
-            </label>
-            <button
-              aria-label=\\"Click to select a color\\"
-              class=\\"cpa__swatch-button\\"
-              id=\\"color\\"
-              role=\\"button\\"
-              style=\\"background: rgb(255, 255, 255);\\"
-              tabindex=\\"0\\"
-            />
-          </div>
-        </form>
-      </div>
-      <div
-        class=\\"actions\\"
-      >
-        <div
-          class=\\"ui grid\\"
-        >
-          <div
-            class=\\"row\\"
-          >
-            <div
-              class=\\"column\\"
-            >
-              <div
-                class=\\"ui fluid buttons\\"
-              >
-                <button
-                  class=\\"ui large primary button\\"
-                  type=\\"submit\\"
-                >
-                  Save
-                </button>
-                <div
-                  class=\\"or\\"
-                />
-                <button
-                  class=\\"ui large button\\"
-                >
-                  Close
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Render 2 1 2`] = `
-"<body
-  class=\\"dimmable dimmed\\"
->
-  <div
     id=\\"root\\"
   />
   <div />

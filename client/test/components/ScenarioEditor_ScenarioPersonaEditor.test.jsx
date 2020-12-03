@@ -337,6 +337,15 @@ beforeEach(() => {
       return scenario;
     }
   );
+  personaActions.unlinkPersonaFromScenario = jest.fn();
+  personaActions.unlinkPersonaFromScenario.mockImplementation(
+    (persona_id, scenario_id) => async (dispatch, getState) => {
+      const { scenario } = getState();
+      Object.assign(scenario, { personas });
+      dispatch({ type: SET_SCENARIO, scenario });
+      return scenario;
+    }
+  );
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -358,69 +367,6 @@ test('ScenarioPersonaEditor', () => {
 });
 
 test('Render 1 1', async done => {
-  const Component = ScenarioPersonaEditor;
-
-  const props = {
-    ...commonProps,
-    persona: {
-      id: 1,
-      name: 'Participant',
-      description:
-        'The default user participating in a single person scenario.',
-      color: '#FFFFFF',
-      created_at: '2020-12-01T15:49:04.962Z',
-      updated_at: null,
-      deleted_at: null,
-      author_id: 3,
-      is_read_only: true,
-      is_shared: true
-    },
-    onCancel: jest.fn()
-  };
-
-  const state = {
-    ...commonState
-  };
-
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  const name = await screen.findByLabelText('Persona name');
-  const description = await screen.findByLabelText('Persona description');
-
-  userEvent.clear(name);
-  userEvent.clear(description);
-
-  userEvent.type(name, 'A new persona name');
-  userEvent.type(description, 'Some description');
-
-  userEvent.click(await screen.findByRole('button', { name: /Save/ }));
-  expect(serialize()).toMatchSnapshot();
-
-  expect(personaActions.setPersona.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      1,
-      Object {
-        "author_id": 3,
-        "color": "#FFFFFF",
-        "created_at": "2020-12-01T15:49:04.962Z",
-        "deleted_at": null,
-        "description": "Some description",
-        "id": 1,
-        "is_read_only": true,
-        "is_shared": true,
-        "name": "A new persona name",
-        "updated_at": null,
-      },
-    ]
-  `);
-
-  done();
-});
-
-test('Render 2 1', async done => {
   const Component = ScenarioPersonaEditor;
 
   const props = {
@@ -643,7 +589,7 @@ test('Create a persona', async done => {
   done();
 });
 
-test('Edit a persona', async done => {
+test('Edit a readonly persona (results in create)', async done => {
   const Component = ScenarioPersonaEditor;
 
   const props = {
@@ -664,8 +610,10 @@ test('Edit a persona', async done => {
   const name = await screen.findByLabelText('Persona name');
   const description = await screen.findByLabelText('Persona description');
 
-  // Try with no name
   userEvent.clear(name);
+  userEvent.clear(description);
+
+  // Try with no name
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
   expect(serialize()).toMatchSnapshot();
 
@@ -678,6 +626,16 @@ test('Edit a persona', async done => {
   userEvent.type(description, 'Some description');
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
   expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(personaActions.createPersona).toHaveBeenCalledTimes(1)
+  );
+  await waitFor(() =>
+    expect(personaActions.unlinkPersonaFromScenario).toHaveBeenCalledTimes(1)
+  );
+  await waitFor(() =>
+    expect(personaActions.linkPersonaToScenario).toHaveBeenCalledTimes(1)
+  );
 
   await act(async () => {
     // Open color picker
@@ -715,6 +673,96 @@ test('Edit a persona', async done => {
 
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
   expect(serialize()).toMatchSnapshot();
+
+  // await waitFor(() => expect(personaActions.createPersona).toHaveBeenCalledTimes(2));
+
+  done();
+});
+
+test('Edit a persona', async done => {
+  const Component = ScenarioPersonaEditor;
+
+  persona.is_read_only = false;
+
+  const props = {
+    ...commonProps,
+    persona,
+    onCancel: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  const name = await screen.findByLabelText('Persona name');
+  const description = await screen.findByLabelText('Persona description');
+
+  userEvent.clear(name);
+  userEvent.clear(description);
+
+  // Try with no name
+  userEvent.click(await screen.findByRole('button', { name: /Save/ }));
+  expect(serialize()).toMatchSnapshot();
+
+  // Then add a name
+  userEvent.type(name, 'A new persona name');
+  userEvent.click(await screen.findByRole('button', { name: /Save/ }));
+  expect(serialize()).toMatchSnapshot();
+
+  // Then add a description
+  userEvent.type(description, 'Some description');
+  userEvent.click(await screen.findByRole('button', { name: /Save/ }));
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(personaActions.setPersona).toHaveBeenCalledTimes(1)
+  );
+
+  await act(async () => {
+    // Open color picker
+    userEvent.click(
+      await screen.findByRole('button', { name: /Click to select a color/i })
+    );
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  await act(async () => {
+    // Close color picker
+    userEvent.click(
+      await screen.findByRole('button', { name: /Click to select a color/i })
+    );
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  await act(async () => {
+    // Re-open color picker
+    userEvent.click(
+      await screen.findByRole('button', { name: /Click to select a color/i })
+    );
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  await act(async () => {
+    // Click on a color
+    userEvent.click(await screen.findByTitle('#781c81'));
+  });
+
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(await screen.findByRole('button', { name: /Save/ }));
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(personaActions.setPersona).toHaveBeenCalledTimes(2)
+  );
 
   done();
 });

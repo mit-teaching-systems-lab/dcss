@@ -72,7 +72,12 @@ export let setPersona = (id, params) => async (dispatch, getState) => {
 export let createPersona = params => async dispatch => {
   try {
     if (Object.values(params).length) {
-      const body = JSON.stringify(params);
+      const { name, description, color } = params;
+      const body = JSON.stringify({
+        name,
+        description,
+        color
+      });
       const res = await (await fetch(`/api/personas`, {
         method: 'POST',
         headers: {

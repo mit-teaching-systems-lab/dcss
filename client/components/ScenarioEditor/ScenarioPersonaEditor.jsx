@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { notify } from '@components/Notification';
 import {
   Button,
   ColorPicker,
@@ -10,11 +11,11 @@ import {
   Modal,
   Text
 } from '@components/UI';
-
 import {
   createPersona,
   linkPersonaToScenario,
-  setPersona
+  setPersona,
+  unlinkPersonaFromScenario
 } from '@actions/persona';
 import { personaInitialState } from '@reducers/initial-states';
 
@@ -70,12 +71,31 @@ class ScenarioPersonaEditor extends Component {
         error
       });
     } else {
-      if (!persona.id) {
+      let message = '';
+
+      if (!persona.id || persona.is_read_only) {
         const created = await this.props.createPersona(persona);
-        await this.props.linkPersonaToScenario(created.id, scenario.id);
-        this.props.onCancel();
+        // If we're actually making a "copy" of an existing persona,
+        // then we need to unlink the original persona to avoid having
+        // both appear.
+        if (persona.id && persona.is_read_only) {
+          await this.props.unlinkPersonaFromScenario(persona.id, scenario.id);
+          await this.props.linkPersonaToScenario(created.id, scenario.id);
+          message = 'Persona saved!';
+        } else {
+          await this.props.linkPersonaToScenario(created.id, scenario.id);
+          message = 'Persona created!';
+        }
+        this.setState({
+          persona: created
+        });
       } else {
         await this.props.setPersona(persona.id, persona);
+        message = 'Persona updated!';
+      }
+
+      if (message) {
+        await notify({ message, color: 'green' });
       }
     }
   }
@@ -229,7 +249,8 @@ ScenarioPersonaEditor.propTypes = {
   onCancel: PropTypes.func,
   persona: PropTypes.object,
   scenario: PropTypes.object,
-  setPersona: PropTypes.func.isRequired
+  setPersona: PropTypes.func,
+  unlinkPersonaFromScenario: PropTypes.func
 };
 
 const mapStateToProps = state => {
@@ -244,7 +265,9 @@ const mapDispatchToProps = dispatch => ({
   createPersona: params => dispatch(createPersona(params)),
   linkPersonaToScenario: (...params) =>
     dispatch(linkPersonaToScenario(...params)),
-  setPersona: (id, params) => dispatch(setPersona(id, params))
+  setPersona: (id, params) => dispatch(setPersona(id, params)),
+  unlinkPersonaFromScenario: (...params) =>
+    dispatch(unlinkPersonaFromScenario(...params))
 });
 
 export default connect(

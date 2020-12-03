@@ -129,7 +129,10 @@ class ScenarioPersonas extends Component {
     const rows = scenario.personas.map(persona => {
       const key = Identity.key(persona);
       const textAlignProps = {
-        textAlign: 'right'
+        textAlign: 'right',
+        style: {
+          overflow: 'visible'
+        }
       };
 
       return (
@@ -300,7 +303,7 @@ class ScenarioPersonas extends Component {
     return (
       <Fragment>
         {editorMenu}
-        <Table striped unstackable>
+        <Table fixed striped unstackable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell className="sp__td-15">Name</Table.HeaderCell>
