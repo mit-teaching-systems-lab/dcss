@@ -10,6 +10,7 @@ const { getUserById } = require('../auth/db');
 //   setSlideOrder
 // } = require('./slides/db');
 
+const personasdb = require('../personas/db');
 const slidesdb = require('./slides/db');
 const db = require('./db');
 
@@ -395,6 +396,27 @@ async function copyScenario(req, res) {
 
     await db.setScenarioCategories(scenario.id, categories);
     await db.setScenarioLabels(scenario.id, labels);
+
+    // Personas must be duplicated as well.
+    for (const persona of personas) {
+      const index = personas.indexOf(persona);
+      const {
+        name,
+        description,
+        color
+      } = persona;
+      const author_id = req.session.user.id;
+
+      const created = await personasdb.createPersona({
+        author_id,
+        name,
+        description,
+        color,
+      });
+
+      personas[index] = created;
+    }
+
     await db.setScenarioPersonas(scenario.id, personas);
 
     {
