@@ -95,6 +95,7 @@ test('Render 1', async () => {
     Object {
       "html": "",
       "id": "",
+      "persona": null,
       "type": "Text",
     }
   `);

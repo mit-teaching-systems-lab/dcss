@@ -96,6 +96,7 @@ test('Render 1', async () => {
       "color": "grey",
       "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
       "id": "",
+      "persona": null,
       "type": "Suggestion",
     }
   `);
@@ -109,6 +110,7 @@ test('Render 2', async () => {
       "color": "grey",
       "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
       "id": "",
+      "persona": null,
       "type": "Suggestion",
     }
   `);
@@ -122,6 +124,7 @@ test('Render 3', async () => {
       "color": "grey",
       "html": "<Message color=\\"grey\\"><p>Type your suggestion here</p></Message>",
       "id": "",
+      "persona": null,
       "type": "Suggestion",
     }
   `);

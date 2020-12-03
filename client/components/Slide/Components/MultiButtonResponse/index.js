@@ -12,6 +12,7 @@ export const defaultValue = ({ responseId }) => ({
       value: ''
     }
   ],
+  persona: null,
   recallId: '',
   required: true,
   responseId,

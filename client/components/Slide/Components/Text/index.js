@@ -6,5 +6,6 @@ export { default as Card } from './Card';
 export const defaultValue = () => ({
   html: '',
   id: '',
+  persona: null,
   type
 });

@@ -6,6 +6,7 @@ export { default as Card } from './Card';
 export const defaultValue = ({ responseId }) => ({
   header: '',
   id: '',
+  persona: null,
   prompt: '',
   recallId: '',
   required: true,

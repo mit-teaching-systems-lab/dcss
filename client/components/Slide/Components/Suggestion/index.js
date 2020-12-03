@@ -7,5 +7,6 @@ export const defaultValue = () => ({
   color: 'grey',
   html: '<Message color="grey"><p>Type your suggestion here</p></Message>',
   id: '',
+  persona: null,
   type
 });

@@ -28,10 +28,11 @@ const configuration = {
 };
 
 export const defaultValue = ({ responseId }) => ({
+  configuration: Object.assign({}, configuration),
   header: '',
   id: '',
+  persona: null,
   prompt: '',
-  configuration: Object.assign({}, configuration),
   recallId: '',
   required: true,
   responseId,

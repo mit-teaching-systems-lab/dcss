@@ -95,6 +95,7 @@ test('Render 1', async () => {
     Object {
       "header": "",
       "id": "",
+      "persona": null,
       "prompt": "",
       "recallId": "",
       "required": true,
@@ -112,6 +113,7 @@ test('Render 2', async () => {
     Object {
       "header": "",
       "id": "",
+      "persona": null,
       "prompt": "",
       "recallId": "",
       "required": true,
@@ -129,6 +131,7 @@ test('Render 3', async () => {
     Object {
       "header": "",
       "id": "",
+      "persona": null,
       "prompt": "",
       "recallId": "",
       "required": true,

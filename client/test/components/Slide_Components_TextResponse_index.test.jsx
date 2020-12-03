@@ -94,6 +94,7 @@ test('Render 1', async () => {
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
       "id": "",
+      "persona": null,
       "placeholder": "Your response",
       "prompt": "",
       "recallId": "",
@@ -111,6 +112,7 @@ test('Render 2', async () => {
   expect(component.defaultValue(params)).toMatchInlineSnapshot(`
     Object {
       "id": "",
+      "persona": null,
       "placeholder": "Your response",
       "prompt": "",
       "recallId": "",
