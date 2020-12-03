@@ -72,8 +72,7 @@ class ScenarioPersonaSelect extends Component {
     personas.unshift({
       id: '',
       value: null,
-      name: 'None',
-      description: 'Don\'t limit this content to a specific persona. Every participant will see content when they run this scenario.'
+      name: 'No persona restriction'
     });
 
     const options = personas.reduce((accum, persona) => {
@@ -90,10 +89,12 @@ class ScenarioPersonaSelect extends Component {
     }, []);
 
     const closeOnBlur = true;
+    const closeOnChange = true;
     const fluid = true;
 
     const dropdownProps = {
       closeOnBlur,
+      closeOnChange,
       defaultValue,
       fluid,
       onChange,
