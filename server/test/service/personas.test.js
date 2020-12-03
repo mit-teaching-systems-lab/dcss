@@ -122,7 +122,17 @@ jest.mock('../../service/personas/db', () => {
     getPersonasByScenarioId: jest.fn(),
     getPersonasByUserId: jest.fn(),
     linkPersonaToScenario: jest.fn(),
+    unlinkPersonaFromScenario: jest.fn(),
     setPersonaById: jest.fn()
+  };
+});
+
+import * as authmw from '../../service/auth/middleware';
+jest.mock('../../service/auth/middleware', () => {
+  const authmw = jest.requireActual('../../service/auth/middleware');
+  return {
+    ...authmw,
+    requireUser: jest.fn()
   };
 });
 
@@ -135,12 +145,12 @@ jest.mock('../../service/roles/middleware', () => {
   };
 });
 
-import * as amw from '../../service/auth/middleware';
-jest.mock('../../service/auth/middleware', () => {
-  const amw = jest.requireActual('../../service/auth/middleware');
+import * as scenariosmw from '../../service/scenarios/middleware';
+jest.mock('../../service/scenarios/middleware', () => {
+  const scenariosmw = jest.requireActual('../../service/scenarios/middleware');
   return {
-    ...amw,
-    requireUser: jest.fn()
+    ...scenariosmw,
+    requireScenarioUserRole: jest.fn(() => [])
   };
 });
 
@@ -152,7 +162,7 @@ describe('/api/personas/*', () => {
   });
 
   beforeEach(() => {
-    amw.requireUser.mockImplementation((req, res, next) => {
+    authmw.requireUser.mockImplementation((req, res, next) => {
       req.session.user = user;
       next();
     });
@@ -166,14 +176,20 @@ describe('/api/personas/*', () => {
       ...persona,
       deleted_at: '2020-11-16T14:52:28.429Z'
     }));
-    db.linkPersonaToScenario.mockImplementation(async () => [teacher, student]);
+    db.linkPersonaToScenario.mockImplementation(async () => 1);
+    db.unlinkPersonaFromScenario.mockImplementation(async () => 1);
     db.getPersonas.mockImplementation(async () => [teacher, student]);
-    db.getPersonasByScenarioId.mockImplementation(
-      async () => scenario.personas
-    );
+    db.getPersonasByScenarioId.mockImplementation(async () => [
+      teacher,
+      student
+    ]);
     db.getPersonasByUserId.mockImplementation(async () => [teacher, student]);
 
     rolesmw.requireUserRole.mockImplementation(() => [
+      (req, res, next) => next()
+    ]);
+
+    scenariosmw.requireScenarioUserRole.mockImplementation(() => [
       (req, res, next) => next()
     ]);
   });
@@ -396,6 +412,16 @@ describe('/api/personas/*', () => {
               "name": "Teacher",
               "updated_at": null,
             },
+            Object {
+              "author_id": 999,
+              "color": "#ff0000",
+              "created_at": "2020-11-13T14:55:28.429Z",
+              "deleted_at": null,
+              "description": "This is a student.",
+              "id": 2,
+              "name": "Student",
+              "updated_at": null,
+            },
           ],
         }
       `);
@@ -577,12 +603,11 @@ describe('/api/personas/*', () => {
     });
   });
 
-  describe('/api/personas/:id/scenario/:scenario_id', () => {
-    const path = '/api/personas/2/scenario/42';
-    const method = 'put';
+  describe('/api/personas/link/:id/scenario/:scenario_id', () => {
+    const path = '/api/personas/link/2/scenario/42';
 
-    test('put success', async () => {
-      const response = await request({ path, method });
+    test('get success', async () => {
+      const response = await request({ path });
 
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
@@ -597,29 +622,136 @@ describe('/api/personas/*', () => {
               "name": "Teacher",
               "updated_at": null,
             },
+            Object {
+              "author_id": 999,
+              "color": "#ff0000",
+              "created_at": "2020-11-13T14:55:28.429Z",
+              "deleted_at": null,
+              "description": "This is a student.",
+              "id": 2,
+              "name": "Student",
+              "updated_at": null,
+            },
           ],
         }
       `);
-      expect(db.getPersonasByScenarioId.mock.calls.length).toBe(1);
-      expect(db.getPersonasByScenarioId.mock.calls[0]).toMatchInlineSnapshot(`
+      expect(db.linkPersonaToScenario.mock.calls.length).toBe(1);
+      expect(db.linkPersonaToScenario.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
+          2,
           42,
         ]
       `);
     });
 
-    test('put failure', async () => {
-      db.linkPersonaToScenario.mockImplementation(async () => null);
+    test('get failure: linkPersonaToScenario', async () => {
+      db.linkPersonaToScenario.mockImplementation(async () => {
+        throw error;
+      });
 
-      const response = await request({ path, method, status: 500 });
+      const response = await request({ path, status: 500 });
 
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Persona could not be linked to scenario.",
+          "message": "something unexpected happened",
         }
       `);
+      expect(db.linkPersonaToScenario.mock.calls.length).toBe(1);
       expect(db.getPersonasByScenarioId.mock.calls.length).toBe(0);
+    });
+
+    test('get failure: getPersonasByScenarioId', async () => {
+      db.getPersonasByScenarioId.mockImplementation(async () => {
+        throw error;
+      });
+
+      const response = await request({ path, status: 500 });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "error": true,
+          "message": "something unexpected happened",
+        }
+      `);
+      expect(db.linkPersonaToScenario.mock.calls.length).toBe(1);
+      expect(db.getPersonasByScenarioId.mock.calls.length).toBe(1);
+    });
+  });
+
+  describe('/api/personas/unlink/:id/scenario/:scenario_id', () => {
+    const path = '/api/personas/unlink/2/scenario/42';
+
+    test('get success', async () => {
+      const response = await request({ path });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "personas": Array [
+            Object {
+              "author_id": 999,
+              "color": "#ff0000",
+              "created_at": "2020-11-13T14:52:28.429Z",
+              "deleted_at": null,
+              "description": "This is a teacher.",
+              "id": 1,
+              "name": "Teacher",
+              "updated_at": null,
+            },
+            Object {
+              "author_id": 999,
+              "color": "#ff0000",
+              "created_at": "2020-11-13T14:55:28.429Z",
+              "deleted_at": null,
+              "description": "This is a student.",
+              "id": 2,
+              "name": "Student",
+              "updated_at": null,
+            },
+          ],
+        }
+      `);
+      expect(db.unlinkPersonaFromScenario.mock.calls.length).toBe(1);
+      expect(db.unlinkPersonaFromScenario.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          2,
+          42,
+        ]
+      `);
+    });
+
+    test('get failure: unlinkPersonaFromScenario', async () => {
+      db.unlinkPersonaFromScenario.mockImplementation(async () => {
+        throw error;
+      });
+
+      const response = await request({ path, status: 500 });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "error": true,
+          "message": "something unexpected happened",
+        }
+      `);
+      expect(db.unlinkPersonaFromScenario.mock.calls.length).toBe(1);
+      expect(db.getPersonasByScenarioId.mock.calls.length).toBe(0);
+    });
+
+    test('get failure: getPersonasByScenarioId', async () => {
+      db.getPersonasByScenarioId.mockImplementation(async () => {
+        throw error;
+      });
+
+      const response = await request({ path, status: 500 });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "error": true,
+          "message": "something unexpected happened",
+        }
+      `);
+      expect(db.unlinkPersonaFromScenario.mock.calls.length).toBe(1);
+      expect(db.getPersonasByScenarioId.mock.calls.length).toBe(1);
     });
   });
 });
