@@ -32,6 +32,9 @@ import {
   setScenario,
   endScenarioLock
 } from '@actions/scenario';
+import {
+  getPersonas
+} from '@actions/persona';
 import { getUsers } from '@actions/users';
 import './editor.css';
 
@@ -129,6 +132,10 @@ class Editor extends Component {
     }
 
     await this.props.getUsers();
+
+    if (!this.props.personas.length) {
+      await this.props.getPersonas();
+    }
 
     this.setState(state => {
       const { scenarioUser } = this.props;
@@ -631,6 +638,8 @@ Editor.propTypes = {
   endScenarioLock: PropTypes.func.isRequired,
   copyScenario: PropTypes.func.isRequired,
   deleteScenario: PropTypes.func.isRequired,
+  getPersonas: PropTypes.func.isRequired,
+  personas: PropTypes.array,
   getScenario: PropTypes.func.isRequired,
   setScenario: PropTypes.func.isRequired,
   scenario: PropTypes.object,
@@ -642,9 +651,10 @@ Editor.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const scenarioId = Number(ownProps.scenarioId);
-  const { scenario, user, usersById } = state;
+  const { personas, scenario, user, usersById } = state;
   const scenarioUser = scenario.users.find(u => u.id === user.id);
   return {
+    personas,
     scenario,
     scenarioId,
     scenarioUser,
@@ -657,6 +667,7 @@ const mapDispatchToProps = dispatch => ({
   endScenarioLock: id => dispatch(endScenarioLock(id)),
   copyScenario: id => dispatch(copyScenario(id)),
   deleteScenario: id => dispatch(deleteScenario(id)),
+  getPersonas: () => dispatch(getPersonas()),
   getScenario: (id, options = {}) => dispatch(getScenario(id, options)),
   setScenario: params => dispatch(setScenario(params)),
   getUsers: () => dispatch(getUsers())

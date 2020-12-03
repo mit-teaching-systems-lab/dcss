@@ -20,41 +20,9 @@ import {
 import EditorMenu from '@components/EditorMenu';
 import ScenarioPersonaConfirmation from '@components/ScenarioEditor/ScenarioPersonaConfirmation';
 import ScenarioPersonaEditor from '@components/ScenarioEditor/ScenarioPersonaEditor';
-import * as Color from '@utils/Color';
+import ScenarioPersonaSelect from '@components/ScenarioEditor/ScenarioPersonaSelect';
 
 import './ScenarioPersonas.css';
-
-const PersonaSelectorFormatted = ({
-  name,
-  description,
-  color: backgroundColor
-}) => {
-  const color = Color.foregroundColor(backgroundColor);
-  return (
-    <Table celled striped>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell style={{ color, backgroundColor }}>
-            {name}
-          </Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {description ? (
-          <Table.Row>
-            <Table.Cell>{description}</Table.Cell>
-          </Table.Row>
-        ) : null}
-      </Table.Body>
-    </Table>
-  );
-};
-
-PersonaSelectorFormatted.propTypes = {
-  color: PropTypes.string,
-  description: PropTypes.string,
-  name: PropTypes.string
-};
 
 const isPersonaInScenario = (personaOrId, scenario) => {
   let id = typeof personaOrId === 'string' ? personaOrId : personaOrId.id;
@@ -197,32 +165,37 @@ class ScenarioPersonas extends Component {
       </Menu.Item.Tabbable>
     ];
 
-    const personaOptions = this.props.personas.reduce((accum, persona) => {
+    const personas = this.props.personas.reduce((accum, persona) => {
+      // Cannot select from personas that are not shared.
       if (!persona.is_shared) {
         return accum;
       }
 
+      // Ignore personas that are shared and already in this scenario
       if (isPersonaInScenario(persona, scenario)) {
         return accum;
       }
 
-      return accum.concat([
-        {
-          key: persona.id,
-          value: persona.id,
-          text: persona.name,
-          content: <PersonaSelectorFormatted {...persona} />
-        }
-      ]);
+      accum.push(persona);
+      return accum;
     }, []);
 
-    personaOptions.unshift({
-      key: -1,
-      value: null,
-      text: ''
-    });
+    const personaSelectProps = {
+      onSelect: (persona) => {
+        if (persona) {
+          this.setState({
+            openPersonaConfirmation: true,
+            persona,
+          });
+        }
+      },
+      personas,
+      placeholder: 'Search and select a persona to add',
+      search: true,
+      selection: true,
+      value: null
+    };
 
-    const placeholder = 'Search and select a persona to add';
     const right = [
       <Menu.Menu key="menu-menu-search-personas" position="right">
         <Menu.Item
@@ -230,24 +203,7 @@ class ScenarioPersonas extends Component {
           name="Search shared personas"
           className="sp__dropdown"
         >
-          <Dropdown
-            fluid
-            search
-            selection
-            placeholder={placeholder}
-            options={personaOptions}
-            value={null}
-            onChange={(e, { value }) => {
-              // If this persona is not presently in the list of personas
-              // for this scenario, then ask if the user wants to add it.
-              if (value && !isPersonaInScenario(value, scenario)) {
-                this.setState({
-                  persona: personasById[value],
-                  openPersonaConfirmation: true
-                });
-              }
-            }}
-          />
+          <ScenarioPersonaSelect {...personaSelectProps} />
         </Menu.Item>
         <Menu.Item
           key="menu-item-new-persona"

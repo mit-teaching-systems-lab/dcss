@@ -15,6 +15,7 @@ import {
 import EditorMenu from '@components/EditorMenu';
 // import { notify } from '@components/Notification';
 // import Loading from '@components/Loading';
+import ScenarioPersonaSelect from '@components/ScenarioEditor/ScenarioPersonaSelect';
 import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
 import scrollIntoView from '@utils/scrollIntoView';
@@ -392,6 +393,9 @@ export default class SlideEditor extends Component {
                           const isActiveComponent =
                             activeComponentIndex === index;
                           const description = `${index + 1}, `;
+
+                          // "Duplicate Component" appears on every component,
+                          // so is the next left most item after "Delete Component"
                           const menuItemComponentDuplicate = (
                             <Menu.Item.Tabbable
                               name="Duplicate this component"
@@ -403,39 +407,55 @@ export default class SlideEditor extends Component {
                               <Icon name="copy outline" />
                             </Menu.Item.Tabbable>
                           );
-                          const menuItemComponentMovers = (
-                            <Menu.Menu
-                              className="movers"
-                              name="Move component"
-                              position="right"
-                            >
-                              <Menu.Item.Tabbable
-                                icon="move"
-                                aria-label="Move component"
-                                disabled={components.length <= 1}
-                              />
-                              <Menu.Item.Tabbable
-                                icon="caret up"
-                                aria-label={`Move component ${description} up`}
-                                disabled={index === 0}
-                                onClick={() => {
-                                  onComponentOrderChange(index, index - 1);
-                                }}
-                              />
-                              <Menu.Item.Tabbable
-                                icon="caret down"
-                                aria-label={`Move component ${description} down`}
-                                disabled={index === components.length - 1}
-                                onClick={() => {
-                                  onComponentOrderChange(index, index + 1);
-                                }}
-                              />
-                            </Menu.Menu>
-                          );
-                          const right = isActiveComponent
-                            ? [menuItemComponentMovers]
-                            : [];
 
+                          const right = [menuItemComponentDuplicate];
+
+                          // "Persona Select" either always appears on every component,
+                          // or not at all, so it is the next left most item after
+                          // "Duplicate Component"
+                          const persona = {};
+
+                          if (scenario.personas.length > 1) {
+                            const personaSelectProps = {
+                              onSelect: (personaOrNull) => {
+                                const persona = personaOrNull
+                                  ? { id: personaOrNull.id }
+                                  : null;
+
+                                onComponentChange(index, {
+                                  ...value,
+                                  persona
+                                });
+                              },
+                              personas: scenario.personas,
+                              placeholder: 'Select persona',
+                              defaultValue: value.persona && value.persona.id || null
+                            };
+
+                            if (value.persona) {
+                              Object.assign(
+                                persona,
+                                scenario.personas.find(
+                                  ({id}) => value.persona.id === id
+                                )
+                              );
+                            }
+
+                            const ariaLabel = 'Select which persona sees this content. Leave unselected if this content is for all scenario participants.';
+
+                            right.push(
+                              <Menu.Item.Tabbable
+                                name={ariaLabel}
+                                aria-label={ariaLabel}
+                                className="sp__dropdown"
+                              >
+                                <ScenarioPersonaSelect {...personaSelectProps} />
+                              </Menu.Item.Tabbable>
+                            );
+                          }
+
+                          // "Require Component" is only present when the component is
+                          // a prompt.
                           if (value.responseId) {
                             const props = {
                               name: 'required',
@@ -455,7 +475,7 @@ export default class SlideEditor extends Component {
                                 'This prompt component cannot be made optional';
                             }
 
-                            const menuItemRequiredCheckbox = (
+                            right.push(
                               <Menu.Item.Tabbable
                                 key={Identity.key(props)}
                                 name={menuItemTip}
@@ -471,13 +491,7 @@ export default class SlideEditor extends Component {
                                 />
                               </Menu.Item.Tabbable>
                             );
-
-                            right.unshift(menuItemRequiredCheckbox);
                           }
-
-                          // Always put the duplicate button just to the
-                          // right of the delete button.
-                          right.unshift(menuItemComponentDuplicate);
 
                           const onComponentClick = () => {
                             if (activeComponentIndex !== index) {
@@ -487,6 +501,38 @@ export default class SlideEditor extends Component {
 
                           if (!value.id) {
                             value.id = uuid();
+                          }
+
+                          if (isActiveComponent) {
+                            right.push(
+                              <Menu.Menu
+                                className="movers"
+                                name="Move component"
+                                position="right"
+                              >
+                                <Menu.Item.Tabbable
+                                  icon="move"
+                                  aria-label="Move component"
+                                  disabled={components.length <= 1}
+                                />
+                                <Menu.Item.Tabbable
+                                  icon="caret up"
+                                  aria-label={`Move component ${description} up`}
+                                  disabled={index === 0}
+                                  onClick={() => {
+                                    onComponentOrderChange(index, index - 1);
+                                  }}
+                                />
+                                <Menu.Item.Tabbable
+                                  icon="caret down"
+                                  aria-label={`Move component ${description} down`}
+                                  disabled={index === components.length - 1}
+                                  onClick={() => {
+                                    onComponentOrderChange(index, index + 1);
+                                  }}
+                                />
+                              </Menu.Menu>
+                            );
                           }
 
                           const componentEditorMenuItems = {

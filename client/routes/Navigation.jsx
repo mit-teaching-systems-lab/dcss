@@ -223,18 +223,21 @@ class Navigation extends Component {
                   />
                   */}
                   <Popup
+                    inverted
                     position="right center"
                     size="large"
                     content={explainMyScenarios}
                     trigger={menuItemMyScenarios}
                   />
                   <Popup
+                    inverted
                     position="right center"
                     size="large"
                     content={explainOfficialScenarios}
                     trigger={menuItemOfficialScenarios}
                   />
                   <Popup
+                    inverted
                     position="right center"
                     size="large"
                     content={explainCommunityScenarios}
