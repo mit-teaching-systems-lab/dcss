@@ -31,9 +31,9 @@ class CreateAnonymousAccount extends Component {
   async generateUnusedAnonymousUsername() {
     const username = anonymousUsername();
     // TODO: Move to own async action
-    const { status } = await (
-      await fetch(`/api/auth/signup/usernames/${username}/exists`)
-    ).json();
+    const { status } = await (await fetch(
+      `/api/auth/signup/usernames/${username}/exists`
+    )).json();
 
     if (status === 409) {
       return await this.generateUnusedAnonymousUsername();
@@ -156,5 +156,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CreateAnonymousAccount)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateAnonymousAccount)
 );

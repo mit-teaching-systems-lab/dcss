@@ -648,4 +648,7 @@ const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CohortScenarios);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CohortScenarios);

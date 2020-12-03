@@ -448,7 +448,11 @@ class ScenariosList extends Component {
     );
 
     const right = [
-      <Menu.Menu key="menu-item-scenario-search" position="right">
+      <Menu.Menu
+        className="sl__menu"
+        key="menu-item-scenario-search"
+        position="right"
+      >
         <Popup
           inverted
           size="tiny"
@@ -582,5 +586,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenariosList)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenariosList)
 );

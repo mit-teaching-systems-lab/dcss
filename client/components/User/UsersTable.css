@@ -1,0 +1,43 @@
+
+.users__col-xxlarge {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+.users__col-xlarge {
+  width: 40%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+.users__col-large {
+  /*width: 30%;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+.users__col-medium {
+  width: 20%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+.users__col-medium-overflow-visible {
+  width: 20%;
+}
+
+.users__col-small {
+  width: 10%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+}
+
+.ut__tbody {
+  min-height: 231px;
+}

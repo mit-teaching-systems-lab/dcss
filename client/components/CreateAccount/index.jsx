@@ -276,5 +276,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(CreateAccount)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CreateAccount)
 );

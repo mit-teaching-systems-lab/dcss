@@ -95,7 +95,7 @@ const UserRows = props => {
     adminUser,
     grantableRoles = {},
     rows = {},
-    // rowsPerPage = 10,
+    rowsPerPage = 10,
     usersById = {}
   } = props;
 
@@ -106,17 +106,26 @@ const UserRows = props => {
     return null;
   }
 
-  // const diff = rowsPerPage - rowCount;
-  // if (diff) {
-  //   const style = {padding:'0.785714em',height:'45px'};
-  //   entries.push(
-  //     ...Array(diff).fill(
-  //       <Table.Row>
-  //         <Table.Cell colSpan={100} style={style}>{' '}</Table.Cell>
-  //       </Table.Row>
-  //     )
-  //   );
-  // }
+  const length = rowsPerPage - rowCount;
+  if (length) {
+    const style = {
+      padding: '0.785714em',
+      height: '42px',
+      color: 'transparent'
+    };
+    entries.push(
+      ...Array.from({ length }, (_, index) => {
+        const key = Identity.key({ index, style });
+        return (
+          <Table.Row key={key}>
+            <Table.Cell colSpan={100} style={style}>
+              &nbsp;
+            </Table.Cell>
+          </Table.Row>
+        );
+      })
+    );
+  }
 
   return entries.map(entry => {
     if (React.isValidElement(entry)) {
@@ -172,4 +181,7 @@ const mapStateToProps = state => {
   return { adminUser: user, usersById };
 };
 
-export default connect(mapStateToProps, null)(UserRows);
+export default connect(
+  mapStateToProps,
+  null
+)(UserRows);

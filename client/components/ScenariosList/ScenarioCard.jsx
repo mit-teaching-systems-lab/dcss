@@ -31,15 +31,13 @@ class ScenarioCard extends React.Component {
       originalScenario.deleted_at = null;
 
       // TODO: move to async action
-      await (
-        await fetch(`/api/scenarios/${originalScenario.id}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(originalScenario)
-        })
-      ).json();
+      await (await fetch(`/api/scenarios/${originalScenario.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(originalScenario)
+      })).json();
 
       // Revive scenario by requesting restored record from server
       await this.props.getScenario(originalScenario.id);
@@ -129,5 +127,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenarioCard)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenarioCard)
 );

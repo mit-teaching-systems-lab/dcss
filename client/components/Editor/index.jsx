@@ -228,6 +228,7 @@ class Editor extends Component {
       description,
       finish,
       labels,
+      personas,
       status,
       title
     } = this.props.scenario;
@@ -239,6 +240,7 @@ class Editor extends Component {
       description,
       finish,
       labels,
+      personas,
       status,
       title
     };
@@ -660,4 +662,9 @@ const mapDispatchToProps = dispatch => ({
   getUsers: () => dispatch(getUsers())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Editor));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Editor)
+);

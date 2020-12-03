@@ -57,4 +57,7 @@ Gate.propTypes = {
   requiredPermission: PropTypes.string
 };
 
-export default connect(mapStateToProps, null)(Gate);
+export default connect(
+  mapStateToProps,
+  null
+)(Gate);

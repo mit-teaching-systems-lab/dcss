@@ -155,5 +155,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ResetRoutePromptModal)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ResetRoutePromptModal)
 );

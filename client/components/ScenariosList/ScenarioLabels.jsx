@@ -36,7 +36,7 @@ class ScenarioLabels extends React.Component {
     const labelsInUse = this.props.labelsInUse.slice(0);
 
     if (labelsInUse.includes(value)) {
-      labelsInUse.splice(labels.indexOf(value), 1);
+      labelsInUse.splice(labelsInUse.indexOf(value), 1);
     } else {
       labelsInUse.push(value);
     }
@@ -105,5 +105,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabels)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenarioLabels)
 );

@@ -62,11 +62,7 @@ class ScenarioLabelsFilter extends React.Component {
               active,
               'aria-label': label.text
             };
-            return (
-              <Dropdown.Item {...itemProps} key={key} onClick={onClick}>
-                {label.text}
-              </Dropdown.Item>
-            );
+            return <Dropdown.Item {...itemProps} key={key} onClick={onClick} />;
           })}
         </Dropdown.Menu>
       </Dropdown>
@@ -96,5 +92,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabelsFilter)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenarioLabelsFilter)
 );

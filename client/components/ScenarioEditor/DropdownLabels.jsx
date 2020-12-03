@@ -84,4 +84,7 @@ const mapDispatchToProps = dispatch => ({
   getLabels: () => dispatch(getLabels())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(DropdownLabels);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DropdownLabels);

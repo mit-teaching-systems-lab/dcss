@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 let brandTitle = null;
 
-export const Title = ({ content, override }) => {
+export function Title({ content, override }) {
   if (!brandTitle) {
     brandTitle = document.title;
   }
@@ -16,7 +16,7 @@ export const Title = ({ content, override }) => {
       <title>{title}</title>
     </Helmet>
   );
-};
+}
 
 Title.defaultProps = {
   override: false

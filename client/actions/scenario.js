@@ -319,11 +319,9 @@ export let setSlides = slides => ({
 
 export let copyScenario = scenario_id => async dispatch => {
   try {
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}/copy`, {
-        method: 'POST'
-      })
-    ).json();
+    const res = await (await fetch(`/api/scenarios/${scenario_id}/copy`, {
+      method: 'POST'
+    })).json();
 
     if (res.error) {
       throw res;
@@ -341,11 +339,9 @@ export let copyScenario = scenario_id => async dispatch => {
 
 export let deleteScenario = scenario_id => async dispatch => {
   try {
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}`, {
-        method: 'DELETE'
-      })
-    ).json();
+    const res = await (await fetch(`/api/scenarios/${scenario_id}`, {
+      method: 'DELETE'
+    })).json();
 
     if (res.error) {
       throw res;
@@ -363,9 +359,9 @@ export let deleteScenario = scenario_id => async dispatch => {
 
 export let endScenarioLock = scenario_id => async dispatch => {
   try {
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}/unlock`)
-    ).json();
+    const res = await (await fetch(
+      `/api/scenarios/${scenario_id}/unlock`
+    )).json();
 
     if (res.error) {
       throw res;
@@ -383,11 +379,12 @@ export let endScenarioLock = scenario_id => async dispatch => {
 
 export let deleteSlide = (scenario_id, id) => async dispatch => {
   try {
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}/slides/${id}`, {
+    const res = await (await fetch(
+      `/api/scenarios/${scenario_id}/slides/${id}`,
+      {
         method: 'DELETE'
-      })
-    ).json();
+      }
+    )).json();
 
     if (res.error) {
       throw res;
@@ -415,15 +412,13 @@ export let addScenarioUserRole = (
       roles: [role]
     });
 
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}/roles/add`, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body
-      })
-    ).json();
+    const res = await (await fetch(`/api/scenarios/${scenario_id}/roles/add`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
 
     if (res.error) {
       throw res;
@@ -450,15 +445,13 @@ export let endScenarioUserRole = (
       user_id,
       roles: [role]
     });
-    const res = await (
-      await fetch(`/api/scenarios/${scenario_id}/roles/end`, {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method: 'POST',
-        body
-      })
-    ).json();
+    const res = await (await fetch(`/api/scenarios/${scenario_id}/roles/end`, {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body
+    })).json();
 
     if (res.error) {
       throw res;

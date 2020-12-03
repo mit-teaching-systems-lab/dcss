@@ -9,7 +9,7 @@ export default function DropdownCategories({ options, categories, onChange }) {
       <Dropdown
         label="Categories"
         name="categories"
-        placeholder="Select..."
+        placeholder="Select categories"
         fluid
         multiple
         selection

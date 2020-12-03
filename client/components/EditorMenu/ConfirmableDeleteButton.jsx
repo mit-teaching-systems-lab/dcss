@@ -1,14 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Header,
-  Icon,
-  Menu,
-  Modal,
-  Popup,
-  Ref
-} from '@components/UI';
+import { Button, Header, Icon, Menu, Modal, Popup, Ref } from '@components/UI';
 
 class ConfirmableDeleteButton extends Component {
   constructor(props) {

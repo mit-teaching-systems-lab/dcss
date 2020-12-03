@@ -2,7 +2,6 @@ const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
 const { requestScenario } = require('./middleware');
 const { getUserById } = require('../auth/db');
-const { getPersonasByScenarioId } = require('../personas/db');
 // const {
 //   createSlide,
 //   deleteSlide,
@@ -236,7 +235,7 @@ async function endScenarioLock(req, res) {
     } else {
       const unlock = await db.endScenarioLock(scenario_id, user_id);
 
-      console.log('unlock?', unlock);
+      console.log('unlock', unlock);
       if (unlock) {
         res.send({ scenario });
 

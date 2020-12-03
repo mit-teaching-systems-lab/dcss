@@ -193,4 +193,9 @@ const mapStateToProps = state => {
 
 // const mapDispatchToProps = dispatch => ({});
 
-export default withSocket(connect(mapStateToProps, null)(Notification));
+export default withSocket(
+  connect(
+    mapStateToProps,
+    null
+  )(Notification)
+);

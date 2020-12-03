@@ -108,4 +108,9 @@ const mapDispatchToProps = dispatch => ({
   getUser: () => dispatch(getUser())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Admin));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Admin)
+);

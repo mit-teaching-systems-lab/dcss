@@ -36,15 +36,13 @@ export const logIn = params => async dispatch => {
       password
     });
 
-    const { error = '', message = '' } = await (
-      await fetch('/api/auth/login', {
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        method,
-        body
-      })
-    ).json();
+    const { error = '', message = '' } = await (await fetch('/api/auth/login', {
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      method,
+      body
+    })).json();
 
     dispatch({ type: LOG_IN });
 

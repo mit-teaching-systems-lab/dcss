@@ -47,9 +47,9 @@ class ResponseRecallEditor extends React.Component {
   async componentDidMount() {
     const { scenario } = this.props;
     // TODO: move to async action
-    const { components } = await (
-      await fetch(`/api/scenarios/${scenario.id}/slides/prompt-components`)
-    ).json();
+    const { components } = await (await fetch(
+      `/api/scenarios/${scenario.id}/slides/prompt-components`
+    )).json();
 
     this.setState({ components });
   }

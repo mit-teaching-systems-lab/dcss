@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Pagination, Table } from '@components/UI';
 import UserRows from '@components/User/UserRows';
 
+import './UsersTable.css';
+
 // import { getUsers } from '@actions/users';
 const ROWS_PER_PAGE = 10;
 const USER_ROLES = {
@@ -34,7 +36,7 @@ class UsersTable extends Component {
     const userRowsProps = { cohort, grantableRoles, rows, rowsPerPage };
     const tableRows = <UserRows {...userRowsProps} />;
     return (
-      <Table striped selectable unstackable>
+      <Table data-testid="users-table" striped selectable unstackable>
         <Table.Header>
           <Table.Row>
             {Object.entries(columns).map(([key, { className, content }]) => (
@@ -99,4 +101,7 @@ const mapStateToProps = (state, ownProps) => {
 //   // getUsers: () => dispatch(getUsers())
 // });
 
-export default connect(mapStateToProps, null)(UsersTable);
+export default connect(
+  mapStateToProps,
+  null
+)(UsersTable);

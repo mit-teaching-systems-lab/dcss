@@ -349,4 +349,7 @@ const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CohortParticipants);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CohortParticipants);

@@ -26,15 +26,13 @@ export const signUp = params => async dispatch => {
 
     const body = JSON.stringify(data);
 
-    const res = await (
-      await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body
-      })
-    ).json();
+    const res = await (await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
 
     if (res.error) {
       throw res;
@@ -77,15 +75,13 @@ export let setUser = params => async dispatch => {
         ).toString();
       }
       const body = JSON.stringify(params);
-      const res = await (
-        await fetch('/api/auth/update', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body
-        })
-      ).json();
+      const res = await (await fetch('/api/auth/update', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })).json();
 
       if (res.error) {
         throw res;
@@ -111,15 +107,13 @@ export let resetPassword = params => async () => {
       ).toString();
       params.origin = location.origin;
       const body = JSON.stringify(params);
-      const res = await (
-        await fetch('/api/auth/reset', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body
-        })
-      ).json();
+      const res = await (await fetch('/api/auth/reset', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })).json();
 
       if (res.error) {
         throw res;
