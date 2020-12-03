@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
-import { Card, Container, Grid, Responsive } from '@components/UI';
+import { Card, Container, Grid } from '@components/UI';
 // import Loading from '@components/Loading';
 import SlideComponents from '@components/SlideComponents';
 import { getSlides, getScenario } from '@actions/scenario';
@@ -42,37 +42,30 @@ class Review extends Component {
         <Grid>
           <Grid.Row>
             <Grid.Column stretched>
-              <Responsive
-                onUpdate={() => {
-                  // eslint-disable-next-line no-console
-                  // console.log('resize');
-                }}
-              >
-                <Card.Group doubling stackable itemsPerRow={4}>
-                  {slides.map(slide => {
-                    return (
-                      <Card key={Identity.key(slide)}>
-                        <Card.Content>
-                          <Card.Header>
-                            Slide #{slide.index}{' '}
-                            {slide.title ? `, ${slide.title}` : ''}
-                          </Card.Header>
-                        </Card.Content>
-                        <Card.Content>
-                          <SlideComponents
-                            components={slide.components}
-                            onResponseChange={() => {
-                              alert(
-                                'Prompts are not functional in review mode'
-                              );
-                            }}
-                          />
-                        </Card.Content>
-                      </Card>
-                    );
-                  })}
-                </Card.Group>
-              </Responsive>
+              <Card.Group doubling stackable itemsPerRow={4}>
+                {slides.map(slide => {
+                  return (
+                    <Card key={Identity.key(slide)}>
+                      <Card.Content>
+                        <Card.Header>
+                          Slide #{slide.index}{' '}
+                          {slide.title ? `, ${slide.title}` : ''}
+                        </Card.Header>
+                      </Card.Content>
+                      <Card.Content>
+                        <SlideComponents
+                          components={slide.components}
+                          onResponseChange={() => {
+                            alert(
+                              'Prompts are not functional in review mode'
+                            );
+                          }}
+                        />
+                      </Card.Content>
+                    </Card>
+                  );
+                })}
+              </Card.Group>
             </Grid.Column>
           </Grid.Row>
 
