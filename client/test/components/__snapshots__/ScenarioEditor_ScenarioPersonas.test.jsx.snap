@@ -1,3 +1,6478 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Add an existing 1`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="true"
+          class="ui active visible fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          />
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="visible menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="false"
+              class="active item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="false"
+              class="active item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 5`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="true"
+          class="ui active visible fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Student
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="visible menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="false"
+              class="active item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 6`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="false"
+              class="active item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 7`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="false"
+              class="active item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="true"
+              class="selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 8`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (4)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="true"
+            class="ui active visible item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left visible"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Teacher
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific teacher, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #3f59a9"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(63, 89, 169);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 9`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (4)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Teacher
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific teacher, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #3f59a9"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(63, 89, 169);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 10`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (4)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Teacher
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific teacher, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #3f59a9"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(63, 89, 169);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 11`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (4)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="true"
+            class="ui active visible item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left visible"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Teacher
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific teacher, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #3f59a9"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(63, 89, 169);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add an existing 12`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (4)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Teacher
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific teacher, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #3f59a9"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(63, 89, 169);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Student
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          A non-specific student, participating in a multi person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #e59235"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(229, 146, 53);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Remove
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 1`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 5`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 6`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 7`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Create a persona 8`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No personas loaded 1`] = `<DocumentFragment />`;
+
+exports[`Personas loaded 1`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="sp__td-10 sp__td-truncated"
+        >
+          Participant
+        </td>
+        <td
+          class="sp__td-250px sp__td-truncated"
+        >
+          The default user participating in a single person scenario.
+        </td>
+        <td
+          class="sp__td-5"
+        >
+          <button
+            aria-label="Select color is #FFFFFF"
+            class="cpa__swatch-button"
+            role="button"
+            style="background: rgb(255, 255, 255);"
+            tabindex="0"
+          />
+        </td>
+        <td
+          class="right aligned sp__td-5"
+        >
+          <div
+            aria-expanded="false"
+            class="ui item dropdown"
+            role="listbox"
+            style="text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="ellipsis horizontal icon"
+            />
+            <div
+              class="menu transition left"
+            >
+              <a
+                class="item"
+                role="option"
+                tabindex="0"
+              >
+                Edit
+              </a>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (0)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"
+                    >
+                      Participant
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      The default user participating in a single person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(115, 181, 128);"
+                    >
+                      Facilitator
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific facilitator, leading participation in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    />
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Personas (0)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item sp__dropdown"
+      >
+        <div
+          aria-expanded="false"
+          class="ui fluid search selection dropdown"
+          role="combobox"
+        >
+          <input
+            aria-autocomplete="list"
+            autocomplete="off"
+            class="search"
+            tabindex="0"
+            type="text"
+            value=""
+          />
+          <div
+            aria-atomic="true"
+            aria-live="polite"
+            class="default text"
+            role="alert"
+          >
+            Search and select a persona to add
+          </div>
+          <i
+            aria-hidden="true"
+            class="dropdown icon"
+          />
+          <div
+            class="menu transition"
+            role="listbox"
+          >
+            <div
+              aria-checked="true"
+              aria-selected="true"
+              class="active selected item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <span
+                class="text"
+              />
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"
+                    >
+                      Participant
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      The default user participating in a single person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
+                    >
+                      Teacher
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific teacher, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
+                    >
+                      Student
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific student, participating in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              aria-checked="false"
+              aria-selected="false"
+              class="item"
+              role="option"
+              style="pointer-events: all;"
+            >
+              <table
+                class="ui celled striped table"
+              >
+                <thead
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <th
+                      class=""
+                      style="color: rgb(0, 0, 0); background-color: rgb(115, 181, 128);"
+                    >
+                      Facilitator
+                    </th>
+                  </tr>
+                </thead>
+                <tbody
+                  class=""
+                >
+                  <tr
+                    class=""
+                  >
+                    <td
+                      class=""
+                    >
+                      A non-specific facilitator, leading participation in a multi person scenario.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="item em__search-input-box-right"
+      >
+        <button
+          class="ui medium basic button sp__button"
+        >
+          <i
+            aria-hidden="true"
+            class="user plus icon"
+          />
+          Create a Persona
+        </button>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui striped unstackable table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="sp__td-15"
+        >
+          Name
+        </th>
+        <th
+          class="sp__td-250px"
+        >
+          Description
+        </th>
+        <th
+          class="sp__td-5"
+        >
+          Color
+        </th>
+        <th
+          class="sp__td-5"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    />
+  </table>
+  <div
+    class="ui container"
+  >
+    Personas define the roles that participants will play in a scenario.
+  </div>
+</DocumentFragment>
+`;

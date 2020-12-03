@@ -15,6 +15,7 @@ import {
 import { unmountComponentAtNode } from 'react-dom';
 
 import {
+  act,
   fireEvent,
   prettyDOM,
   render,
@@ -147,7 +148,22 @@ beforeEach(() => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     };
     dispatch({ type: COPY_SCENARIO_SUCCESS, scenario });
     return scenario;
@@ -237,7 +253,22 @@ beforeEach(() => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     };
     dispatch({ type: DELETE_SCENARIO_SUCCESS, scenario });
     return scenario;
@@ -327,7 +358,22 @@ beforeEach(() => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     };
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return scenario;
@@ -417,7 +463,22 @@ beforeEach(() => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     };
     dispatch({ type: SET_SCENARIO, scenario });
     return scenario;
@@ -507,7 +568,22 @@ beforeEach(() => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     };
     dispatch({ type: UNLOCK_SCENARIO_SUCCESS, scenario });
     return scenario;
@@ -628,10 +704,7 @@ beforeEach(() => {
 
   tagsActions.getLabels = jest.fn();
   tagsActions.getLabels.mockImplementation(() => async dispatch => {
-    const labels = [
-      { id: 1, name: 'a' },
-      { id: 2, name: 'b' }
-    ];
+    const labels = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }];
     return labels;
   });
 
@@ -760,7 +833,22 @@ test('Render 1 1', async done => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     }
   };
 

@@ -1,5 +1,4982 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`No users loaded 1`] = `<DocumentFragment />`;
+
+exports[`No users loaded 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Non-super author owner 1`] = `<DocumentFragment />`;
+
+exports[`Non-super author owner 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Non-super non-owner author 1`] = `<DocumentFragment />`;
+
+exports[`Non-super non-owner author 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="true"
+            aria-expanded="false"
+            class="ui disabled dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="-1"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
 exports[`Render 1 1 1`] = `<DocumentFragment />`;
 
 exports[`Render 2 1 1`] = `<DocumentFragment />`;
+
+exports[`Roles 1`] = `<DocumentFragment />`;
+
+exports[`Roles 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <span
+            class="ui grey medium text"
+          >
+            Owner
+          </span>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Roles 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="true"
+            class="ui active visible dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              None
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left visible menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <span
+            class="ui grey medium text"
+          >
+            Owner
+          </span>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Roles 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            >
+              Reviewer
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <span
+            class="ui grey medium text"
+          >
+            Owner
+          </span>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Roles 6`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="true"
+            class="ui active visible dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            >
+              Reviewer
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left visible menu transition"
+            >
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <span
+            class="ui grey medium text"
+          >
+            Owner
+          </span>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Roles 7`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (1)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Participant User (participant)"
+            class="ui medium text"
+            title="Participant User (participant)"
+          >
+            Participant User
+          </span>
+           
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:participant@email.com"
+          >
+            participant@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Researcher User (researcher)"
+            class="ui medium text"
+            title="Researcher User (researcher)"
+          >
+            Researcher User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon user graduate"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Researcher"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:researcher@email.com"
+          >
+            researcher@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="default text"
+              role="alert"
+            >
+              ______________
+            </div>
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="true"
+                aria-selected="true"
+                class="active selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Facilitator User (facilitator)"
+            class="ui medium text"
+            title="Facilitator User (facilitator)"
+          >
+            Facilitator User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chalkboard teacher"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Facilitator"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:facilitator@email.com"
+          >
+            facilitator@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <span
+            class="ui grey medium text"
+          >
+            Owner
+          </span>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Search 1`] = `<DocumentFragment />`;
+
+exports[`Search 2`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Search 3`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Search 4`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Search 5`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;
+
+exports[`Search 6`] = `
+<DocumentFragment>
+  <div
+    class="ui borderless text icon em__height menu"
+  >
+    <div
+      class="item"
+      tabindex="0"
+    >
+      Collaborators (2)
+    </div>
+    <div
+      class="right menu"
+    >
+      <div
+        class="item em__search-input-box-right"
+      >
+        <div
+          class="ui icon input"
+        >
+          <input
+            placeholder="Search..."
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <table
+    class="ui selectable striped unstackable table"
+    data-testid="users-table"
+  >
+    <thead
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class="users__col-large"
+        >
+          User
+        </th>
+        <th
+          class="users__col-large"
+        >
+          Email
+        </th>
+        <th
+          class="users__col-medium"
+        >
+          Role
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="ut__tbody"
+    >
+      <tr
+        class=""
+      >
+        <td
+          class="users__col-large"
+        >
+          <span
+            aria-label="Super User (super)"
+            class="ui medium text"
+            title="Super User (super)"
+          >
+            Super User
+          </span>
+           
+          <i
+            aria-hidden="true"
+            class="small icon chess queen"
+            style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+            title="Super"
+          />
+        </td>
+        <td
+          class="users__col-large"
+        >
+          <a
+            href="mailto:super@email.com"
+          >
+            super@email.com
+          </a>
+        </td>
+        <td
+          class="right aligned users__col-medium-overflow-visible"
+        >
+          <div
+            aria-disabled="false"
+            aria-expanded="false"
+            class="ui dropdown"
+            name="role"
+            role="listbox"
+            style="width: 100%; text-align: right;"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="text"
+              role="alert"
+            />
+            <i
+              aria-hidden="true"
+              class="dropdown icon"
+            />
+            <div
+              class="left menu transition"
+            >
+              <div
+                aria-checked="false"
+                aria-selected="true"
+                class="selected item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Author
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  Reviewer
+                </span>
+              </div>
+              <div
+                aria-checked="false"
+                aria-selected="false"
+                class="item"
+                role="option"
+                style="pointer-events: all;"
+              >
+                <span
+                  class="text"
+                >
+                  None
+                </span>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+    </tbody>
+    <tfoot
+      class=""
+    >
+      <tr
+        class=""
+      >
+        <th
+          class=""
+          colspan="7"
+        >
+          <div
+            aria-label="Pagination Navigation"
+            class="ui mini borderless pagination menu"
+            name="users"
+            role="navigation"
+          >
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Previous item"
+              class="item"
+              tabindex="0"
+              type="prevItem"
+              value="1"
+            >
+              ⟨
+            </a>
+            <a
+              aria-current="true"
+              aria-disabled="false"
+              class="active item"
+              tabindex="0"
+              type="pageItem"
+              value="1"
+            >
+              1
+            </a>
+            <a
+              aria-current="false"
+              aria-disabled="false"
+              aria-label="Next item"
+              class="item"
+              tabindex="0"
+              type="nextItem"
+              value="1"
+            >
+              ⟩
+            </a>
+          </div>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</DocumentFragment>
+`;

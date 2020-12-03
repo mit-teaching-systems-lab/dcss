@@ -7336,6 +7336,20 @@ Object {
       "scenario_id": 42,
       "user_id": 999,
     },
+    "personas": Array [
+      Object {
+        "author_id": 3,
+        "color": "#FFFFFF",
+        "created_at": "2020-12-01T15:49:04.962Z",
+        "deleted_at": null,
+        "description": "The default user participating in a single person scenario.",
+        "id": 1,
+        "is_read_only": true,
+        "is_shared": true,
+        "name": "Participant",
+        "updated_at": null,
+      },
+    ],
     "slides": Array [
       Object {
         "components": Array [

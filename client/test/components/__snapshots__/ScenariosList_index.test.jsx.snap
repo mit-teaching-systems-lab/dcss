@@ -25,7 +25,7 @@ exports[`Render 1 1 1`] = `
       Create a Scenario
     </a>
     <div
-      class="right menu"
+      class="right menu sl__menu"
     >
       <a
         class="item sc__hidden-on-mobile"
@@ -305,7 +305,7 @@ exports[`Render 2 1 1`] = `
       Create a Scenario
     </a>
     <div
-      class="right menu"
+      class="right menu sl__menu"
     >
       <a
         class="item sc__hidden-on-mobile"

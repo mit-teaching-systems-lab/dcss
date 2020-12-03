@@ -15,6 +15,7 @@ import {
 import { unmountComponentAtNode } from 'react-dom';
 
 import {
+  act,
   fireEvent,
   prettyDOM,
   render,
@@ -161,7 +162,22 @@ test('Render 1 1', async done => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     },
     paths: []
   };
@@ -272,7 +288,22 @@ test('Render 2 1', async done => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     },
     paths: []
   };
@@ -384,7 +415,22 @@ test('Render 3 1', async done => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     },
     paths: []
   };
@@ -496,7 +542,22 @@ test('Render 4 1', async done => {
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
     },
     paths: []
   };

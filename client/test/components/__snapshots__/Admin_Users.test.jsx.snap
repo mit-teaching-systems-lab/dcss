@@ -47,6 +47,7 @@ exports[`Render 1 1 1`] = `
   </div>
   <table
     class="ui selectable striped unstackable table"
+    data-testid="users-table"
   >
     <thead
       class=""
@@ -121,6 +122,72 @@ exports[`Render 1 1 1`] = `
           class="dl__hidden-on-mobile"
         >
           super@email.com
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
+        </td>
+      </tr>
+      <tr
+        class=""
+      >
+        <td
+          class=""
+          colspan="100"
+          style="padding: 0.785714em; height: 42px; color: transparent;"
+        >
+           
         </td>
       </tr>
     </tbody>

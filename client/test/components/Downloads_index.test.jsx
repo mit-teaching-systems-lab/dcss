@@ -15,6 +15,7 @@ import {
 import { unmountComponentAtNode } from 'react-dom';
 
 import {
+  act,
   fireEvent,
   prettyDOM,
   render,
@@ -341,7 +342,22 @@ beforeEach(() => {
           created_at: '2020-08-31T17:50:28.089Z',
           updated_at: null,
           deleted_at: null,
-          labels: ['a', 'b']
+          labels: ['a', 'b'],
+          personas: [
+            {
+              id: 1,
+              name: 'Participant',
+              description:
+                'The default user participating in a single person scenario.',
+              color: '#FFFFFF',
+              created_at: '2020-12-01T15:49:04.962Z',
+              updated_at: null,
+              deleted_at: null,
+              author_id: 3,
+              is_read_only: true,
+              is_shared: true
+            }
+          ]
         },
         {
           author: {
@@ -422,7 +438,22 @@ beforeEach(() => {
           created_at: '2020-07-31T17:50:28.089Z',
           updated_at: null,
           deleted_at: null,
-          labels: ['a']
+          labels: ['a'],
+          personas: [
+            {
+              id: 1,
+              name: 'Participant',
+              description:
+                'The default user participating in a single person scenario.',
+              color: '#FFFFFF',
+              created_at: '2020-12-01T15:49:04.962Z',
+              updated_at: null,
+              deleted_at: null,
+              author_id: 3,
+              is_read_only: true,
+              is_shared: true
+            }
+          ]
         }
       ];
       dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
@@ -476,11 +507,9 @@ test('Render 1 1', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   expect(
-    (
-      await screen.findAllByRole('button', {
-        name: /download a csv file containing responses to only "some other scenario"/i
-      })
-    ).length
+    (await screen.findAllByRole('button', {
+      name: /download a csv file containing responses to only "some other scenario"/i
+    })).length
   ).toBe(1);
 
   expect(asFragment()).toMatchSnapshot();

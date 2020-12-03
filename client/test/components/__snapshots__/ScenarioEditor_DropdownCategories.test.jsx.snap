@@ -23,7 +23,7 @@ exports[`Render 1 1 1`] = `
         class="default text"
         role="alert"
       >
-        Select...
+        Select categories
       </div>
       <i
         aria-hidden="true"

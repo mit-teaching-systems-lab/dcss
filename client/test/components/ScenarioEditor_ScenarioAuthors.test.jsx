@@ -15,6 +15,7 @@ import {
 import { unmountComponentAtNode } from 'react-dom';
 
 import {
+  act,
   fireEvent,
   prettyDOM,
   render,
@@ -23,9 +24,215 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { GET_USERS_SUCCESS } from '../../actions/types';
+import * as tlr from '@testing-library/react';
+import { GET_SCENARIO_SUCCESS, GET_USERS_SUCCESS } from '../../actions/types';
+import * as scenarioActions from '../../actions/scenario';
 import * as usersActions from '../../actions/users';
 jest.mock('../../actions/users');
+
+const scenario = {
+  author: {
+    id: 999,
+    username: 'super',
+    personalname: 'Super User',
+    email: 'super@email.com',
+    is_anonymous: false,
+    roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+    is_super: true
+  },
+  categories: [],
+  consent: { id: 57, prose: '' },
+  description: "This is the description of 'A Multiplayer Scenario'",
+  finish: {
+    id: 1,
+    title: '',
+    components: [{ html: '<h2>Thanks for participating!</h2>', type: 'Text' }],
+    is_finish: true
+  },
+  lock: {
+    scenario_id: 42,
+    user_id: 999,
+    created_at: '2020-02-31T23:54:19.934Z',
+    ended_at: null
+  },
+  slides: [
+    {
+      id: 1,
+      title: '',
+      components: [
+        { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+      ],
+      is_finish: true
+    },
+    {
+      id: 2,
+      title: '',
+      components: [
+        {
+          id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+          html: '<p>paragraph</p>',
+          type: 'Text'
+        },
+        {
+          id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+          type: 'TextResponse',
+          header: 'TextResponse-1',
+          prompt: '',
+          timeout: 0,
+          recallId: '',
+          required: true,
+          responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+          placeholder: 'Your response'
+        },
+        {
+          id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+          html: '<p>?</p>',
+          type: 'Text'
+        }
+      ],
+      is_finish: false
+    }
+  ],
+  status: 1,
+  title: 'Multiplayer Scenario 2',
+  users: [
+    {
+      id: 999,
+      email: 'super@email.com',
+      username: 'super',
+      personalname: 'Super User',
+      roles: ['super'],
+      is_super: true,
+      is_author: true,
+      is_reviewer: false
+    }
+  ],
+  id: 42,
+  created_at: '2020-08-31T17:50:28.089Z',
+  updated_at: null,
+  deleted_at: null,
+  labels: ['a', 'b'],
+  personas: [
+    {
+      id: 1,
+      name: 'Participant',
+      description:
+        'The default user participating in a single person scenario.',
+      color: '#FFFFFF',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    }
+  ]
+};
+const usersById = {
+  999: {
+    username: 'super',
+    personalname: 'Super User',
+    email: 'super@email.com',
+    id: 999,
+    roles: ['participant', 'super_admin'],
+    is_anonymous: false,
+    is_super: true
+  },
+  555: {
+    username: 'facilitator',
+    personalname: 'Facilitator User',
+    email: 'facilitator@email.com',
+    id: 555,
+    roles: ['participant', 'facilitator', 'researcher', 'owner'],
+    is_anonymous: false,
+    is_super: false,
+    is_owner: true
+  },
+  444: {
+    username: 'researcher',
+    personalname: 'Researcher User',
+    email: 'researcher@email.com',
+    id: 444,
+    roles: ['participant', 'researcher'],
+    is_anonymous: false,
+    is_super: false
+  },
+  333: {
+    username: 'participant',
+    personalname: 'Participant User',
+    email: 'participant@email.com',
+    id: 333,
+    roles: ['participant'],
+    is_anonymous: false,
+    is_super: false
+  },
+  222: {
+    username: 'anonymous',
+    personalname: '',
+    email: '',
+    id: 222,
+    roles: ['participant'],
+    is_anonymous: true,
+    is_super: false
+  },
+  111: {
+    username: 'invited',
+    personalname: '',
+    email: '',
+    id: 111,
+    roles: [],
+    is_anonymous: true,
+    is_super: false
+  }
+};
+const users = [
+  {
+    username: 'super',
+    personalname: 'Super User',
+    email: 'super@email.com',
+    id: 999,
+    roles: ['participant', 'super_admin'],
+    is_anonymous: false,
+    is_super: true
+  },
+  {
+    username: 'facilitator',
+    personalname: 'Facilitator User',
+    email: 'facilitator@email.com',
+    id: 555,
+    roles: ['participant', 'facilitator', 'researcher', 'owner'],
+    is_anonymous: false,
+    is_super: false,
+    is_owner: true
+  },
+  {
+    username: 'researcher',
+    personalname: 'Researcher User',
+    email: 'researcher@email.com',
+    id: 444,
+    roles: ['participant', 'researcher'],
+    is_anonymous: false,
+    is_super: false
+  },
+  {
+    username: 'participant',
+    personalname: 'Participant User',
+    email: 'participant@email.com',
+    id: 333,
+    roles: ['participant'],
+    is_anonymous: false,
+    is_super: false
+  },
+  {
+    username: 'anonymous',
+    personalname: '',
+    email: '',
+    id: 222,
+    roles: ['participant'],
+    is_anonymous: true,
+    is_super: false
+  }
+];
 
 import ScenarioAuthors from '../../components/ScenarioEditor/ScenarioAuthors.jsx';
 
@@ -50,110 +257,31 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  scenarioActions.addScenarioUserRole = jest.fn();
+  scenarioActions.addScenarioUserRole.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
+      return { addedCount: 1 };
+    }
+  );
+
+  scenarioActions.endScenarioUserRole = jest.fn();
+  scenarioActions.endScenarioUserRole.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
+      return { endedCount: 1 };
+    }
+  );
+
   usersActions.getUsers = jest.fn();
   usersActions.getUsers.mockImplementation(() => async dispatch => {
-    const users = [
-      {
-        username: 'super',
-        personalname: 'Super User',
-        email: 'super@email.com',
-        id: 999,
-        roles: ['participant', 'super_admin'],
-        is_anonymous: false,
-        is_super: true
-      },
-      {
-        username: 'facilitator',
-        personalname: 'Facilitator User',
-        email: 'facilitator@email.com',
-        id: 555,
-        roles: ['participant', 'facilitator', 'researcher', 'owner'],
-        is_anonymous: false,
-        is_super: false,
-        is_owner: true
-      },
-      {
-        username: 'researcher',
-        personalname: 'Researcher User',
-        email: 'researcher@email.com',
-        id: 444,
-        roles: ['participant', 'researcher'],
-        is_anonymous: false,
-        is_super: false
-      },
-      {
-        username: 'participant',
-        personalname: 'Participant User',
-        email: 'participant@email.com',
-        id: 333,
-        roles: ['participant'],
-        is_anonymous: false,
-        is_super: false
-      },
-      {
-        username: 'anonymous',
-        personalname: '',
-        email: '',
-        id: 222,
-        roles: ['participant'],
-        is_anonymous: true,
-        is_super: false
-      }
-    ];
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   });
 
   usersActions.getUsersByPermission = jest.fn();
   usersActions.getUsersByPermission.mockImplementation(() => async dispatch => {
-    return [
-      {
-        username: 'super',
-        personalname: 'Super User',
-        email: 'super@email.com',
-        id: 999,
-        roles: ['participant', 'super_admin'],
-        is_anonymous: false,
-        is_super: true
-      },
-      {
-        username: 'facilitator',
-        personalname: 'Facilitator User',
-        email: 'facilitator@email.com',
-        id: 555,
-        roles: ['participant', 'facilitator', 'researcher', 'owner'],
-        is_anonymous: false,
-        is_super: false,
-        is_owner: true
-      },
-      {
-        username: 'researcher',
-        personalname: 'Researcher User',
-        email: 'researcher@email.com',
-        id: 444,
-        roles: ['participant', 'researcher'],
-        is_anonymous: false,
-        is_super: false
-      },
-      {
-        username: 'participant',
-        personalname: 'Participant User',
-        email: 'participant@email.com',
-        id: 333,
-        roles: ['participant'],
-        is_anonymous: false,
-        is_super: false
-      },
-      {
-        username: 'anonymous',
-        personalname: '',
-        email: '',
-        id: 222,
-        roles: ['participant'],
-        is_anonymous: true,
-        is_super: false
-      }
-    ];
+    return users;
   });
 
   commonProps = {};
@@ -180,139 +308,7 @@ test('Render 1 1', async done => {
 
   const props = {
     ...commonProps,
-    scenario: {
-      author: {
-        id: 999,
-        username: 'super',
-        personalname: 'Super User',
-        email: 'super@email.com',
-        is_anonymous: false,
-        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-        is_super: true
-      },
-      categories: [],
-      consent: { id: 57, prose: '' },
-      description: "This is the description of 'A Multiplayer Scenario'",
-      finish: {
-        id: 1,
-        title: '',
-        components: [
-          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
-        ],
-        is_finish: true
-      },
-      lock: {
-        scenario_id: 42,
-        user_id: 999,
-        created_at: '2020-02-31T23:54:19.934Z',
-        ended_at: null
-      },
-      slides: [
-        {
-          id: 1,
-          title: '',
-          components: [
-            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
-          ],
-          is_finish: true
-        },
-        {
-          id: 2,
-          title: '',
-          components: [
-            {
-              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
-              html: '<p>paragraph</p>',
-              type: 'Text'
-            },
-            {
-              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
-              type: 'TextResponse',
-              header: 'TextResponse-1',
-              prompt: '',
-              timeout: 0,
-              recallId: '',
-              required: true,
-              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
-            },
-            {
-              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-              html: '<p>?</p>',
-              type: 'Text'
-            }
-          ],
-          is_finish: false
-        }
-      ],
-      status: 1,
-      title: 'Multiplayer Scenario 2',
-      users: [
-        {
-          id: 999,
-          email: 'super@email.com',
-          username: 'super',
-          personalname: 'Super User',
-          roles: ['super'],
-          is_super: true,
-          is_author: true,
-          is_reviewer: false
-        }
-      ],
-      id: 42,
-      created_at: '2020-08-31T17:50:28.089Z',
-      updated_at: null,
-      deleted_at: null,
-      labels: ['a', 'b']
-    },
-    users: [
-      {
-        username: 'super',
-        personalname: 'Super User',
-        email: 'super@email.com',
-        id: 999,
-        roles: ['participant', 'super_admin'],
-        is_anonymous: false,
-        is_super: true
-      },
-      {
-        username: 'facilitator',
-        personalname: 'Facilitator User',
-        email: 'facilitator@email.com',
-        id: 555,
-        roles: ['participant', 'facilitator', 'researcher', 'owner'],
-        is_anonymous: false,
-        is_super: false,
-        is_owner: true
-      },
-      {
-        username: 'researcher',
-        personalname: 'Researcher User',
-        email: 'researcher@email.com',
-        id: 444,
-        roles: ['participant', 'researcher'],
-        is_anonymous: false,
-        is_super: false
-      },
-      {
-        username: 'participant',
-        personalname: 'Participant User',
-        email: 'participant@email.com',
-        id: 333,
-        roles: ['participant'],
-        is_anonymous: false,
-        is_super: false
-      },
-      {
-        username: 'anonymous',
-        personalname: '',
-        email: '',
-        id: 222,
-        roles: ['participant'],
-        is_anonymous: true,
-        is_super: false
-      }
-    ]
+    scenario
   };
 
   const state = {
@@ -332,6 +328,32 @@ test('Render 2 1', async done => {
 
   const props = {
     ...commonProps,
+    scenario
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+/* INJECTION STARTS HERE */
+
+test('Non-super author owner', async done => {
+  const Component = ScenarioAuthors;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
     scenario: {
       author: {
         id: 999,
@@ -409,25 +431,682 @@ test('Render 2 1', async done => {
           is_super: true,
           is_author: true,
           is_reviewer: false
+        },
+        {
+          username: 'facilitator',
+          personalname: 'Facilitator User',
+          email: 'facilitator@email.com',
+          id: 555,
+          roles: ['participant', 'facilitator', 'researcher'],
+          is_anonymous: false,
+          is_super: false,
+          is_owner: false
         }
       ],
       id: 42,
       created_at: '2020-08-31T17:50:28.089Z',
       updated_at: null,
       deleted_at: null,
-      labels: ['a', 'b']
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    },
+    user: {
+      username: 'facilitator',
+      personalname: 'Facilitator User',
+      email: 'facilitator@email.com',
+      id: 555,
+      roles: ['participant', 'facilitator', 'researcher', 'author'],
+      is_anonymous: false,
+      is_super: false,
+      is_owner: true
     },
     users: []
-  };
-
-  const state = {
-    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByTestId('users-table');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(usersActions.getUsers.mock.calls.length).toBe(1);
+  expect(usersActions.getUsersByPermission.mock.calls.length).toBe(1);
+
+  done();
+});
+
+test('Non-super non-owner author', async done => {
+  const Component = ScenarioAuthors;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: "This is the description of 'A Multiplayer Scenario'",
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
+        is_finish: true
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+          ],
+          is_finish: true
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text'
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response'
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text'
+            }
+          ],
+          is_finish: false
+        }
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario 2',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false
+        },
+        {
+          username: 'facilitator',
+          personalname: 'Facilitator User',
+          email: 'facilitator@email.com',
+          id: 555,
+          roles: ['participant', 'facilitator', 'researcher'],
+          is_anonymous: false,
+          is_super: false,
+          is_owner: false
+        }
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    },
+    user: {
+      username: 'facilitator',
+      personalname: 'Facilitator User',
+      email: 'facilitator@email.com',
+      id: 555,
+      roles: ['participant', 'facilitator', 'researcher'],
+      is_anonymous: false,
+      is_super: false,
+      is_owner: false
+    },
+    users: []
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByTestId('users-table');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(usersActions.getUsers.mock.calls.length).toBe(1);
+  expect(usersActions.getUsersByPermission.mock.calls.length).toBe(1);
+
+  done();
+});
+
+test('No users loaded', async done => {
+  const Component = ScenarioAuthors;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: "This is the description of 'A Multiplayer Scenario'",
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
+        is_finish: true
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+          ],
+          is_finish: true
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text'
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response'
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text'
+            }
+          ],
+          is_finish: false
+        }
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario 2',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false
+        },
+        {
+          username: 'facilitator',
+          personalname: 'Facilitator User',
+          email: 'facilitator@email.com',
+          id: 555,
+          roles: ['participant', 'facilitator', 'researcher'],
+          is_anonymous: false,
+          is_super: false,
+          is_owner: false
+        }
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    },
+    users: []
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByTestId('users-table');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(usersActions.getUsers.mock.calls.length).toBe(1);
+  expect(usersActions.getUsersByPermission.mock.calls.length).toBe(1);
+
+  done();
+});
+
+test('Search', async done => {
+  const Component = ScenarioAuthors;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: "This is the description of 'A Multiplayer Scenario'",
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
+        is_finish: true
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+          ],
+          is_finish: true
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text'
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response'
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text'
+            }
+          ],
+          is_finish: false
+        }
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario 2',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['owner'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false
+        },
+        {
+          username: 'facilitator',
+          personalname: 'Facilitator User',
+          email: 'facilitator@email.com',
+          id: 555,
+          roles: ['author'],
+          is_anonymous: false,
+          is_super: false,
+          is_owner: false
+        }
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    }
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByTestId('users-table');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(usersActions.getUsers.mock.calls.length).toBe(0);
+  expect(usersActions.getUsersByPermission.mock.calls.length).toBe(1);
+
+  const search = await screen.findByPlaceholderText('Search...');
+
+  userEvent.clear(search);
+  userEvent.type(search, 'super');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.clear(search);
+  userEvent.type(search, 'super@');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.clear(search);
+  userEvent.type(search, 'Super User');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.clear(search);
+  userEvent.type(search, 'owner');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Roles', async done => {
+  const Component = ScenarioAuthors;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    scenario: {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: "This is the description of 'A Multiplayer Scenario'",
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
+        is_finish: true
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+          ],
+          is_finish: true
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text'
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response'
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text'
+            }
+          ],
+          is_finish: false
+        }
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario 2',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['owner'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false
+        }
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    },
+    user: {
+      id: 999,
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
+      is_anonymous: false,
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_super: true
+    },
+    users,
+    usersById
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByTestId('users-table');
+
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(usersActions.getUsers.mock.calls.length).toBe(0);
+  expect(usersActions.getUsersByPermission.mock.calls.length).toBe(1);
+
+  const dropdowns = await screen.getAllByRole('listbox');
+  expect(dropdowns.length).toBe(3);
+
+  const dropdown = dropdowns[0];
+  const options = await tlr.findAllByRole(dropdowns[0], 'option');
+
+  // Set role to "reviewer"
+  userEvent.click(dropdown);
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(options[0]);
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(scenarioActions.addScenarioUserRole.mock.calls.length).toBe(1);
+  expect(scenarioActions.addScenarioUserRole.mock.calls[0])
+    .toMatchInlineSnapshot(`
+    Array [
+      42,
+      333,
+      "reviewer",
+    ]
+  `);
+
+  // Set role to "none"
+  userEvent.click(dropdown);
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(options[1]);
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(scenarioActions.endScenarioUserRole.mock.calls.length).toBe(1);
+  expect(scenarioActions.endScenarioUserRole.mock.calls[0])
+    .toMatchInlineSnapshot(`
+    Array [
+      42,
+      333,
+      null,
+    ]
+  `);
 
   done();
 });

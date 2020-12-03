@@ -15,6 +15,7 @@ import {
 import { unmountComponentAtNode } from 'react-dom';
 
 import {
+  act,
   fireEvent,
   prettyDOM,
   render,
@@ -23,6 +24,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+import { SET_LABELS_IN_USE_SUCCESS } from '../../actions/types';
 import * as tagsActions from '../../actions/tags';
 jest.mock('../../actions/tags');
 
