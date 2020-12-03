@@ -4,6 +4,7 @@ exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <table
     class="ui selectable striped unstackable table"
+    data-testid="users-table"
   >
     <thead
       class=""

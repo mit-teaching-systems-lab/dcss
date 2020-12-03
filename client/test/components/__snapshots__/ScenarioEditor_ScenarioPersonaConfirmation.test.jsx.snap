@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`No 1`] = `<DocumentFragment />`;
+
+exports[`No 2`] = `<DocumentFragment />`;
+
+exports[`Render 1 1 1`] = `<DocumentFragment />`;
+
+exports[`Yes 1`] = `<DocumentFragment />`;
+
+exports[`Yes 2`] = `<DocumentFragment />`;

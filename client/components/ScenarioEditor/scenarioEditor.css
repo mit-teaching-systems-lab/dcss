@@ -19,3 +19,11 @@
   background: white !important;
   z-index: 10;
 }
+
+.sp__dropdown > .dropdown > .text {
+  width: 15em;
+}
+
+.sp__button {
+  height: 38px;
+}

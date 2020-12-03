@@ -4,11 +4,7 @@ import escapeRegExp from 'lodash.escaperegexp';
 import Identity from '@utils/Identity';
 import PropTypes from 'prop-types';
 import { Dropdown, Input, Menu, Table, Text } from '@components/UI';
-import {
-  setScenario,
-  addScenarioUserRole,
-  endScenarioUserRole
-} from '@actions/scenario';
+import { addScenarioUserRole, endScenarioUserRole } from '@actions/scenario';
 import { getUsers, getUsersByPermission } from '@actions/users';
 
 import EditorMenu from '@components/EditorMenu';
@@ -29,12 +25,10 @@ class ScenarioAuthors extends Component {
     this.state = {
       activePage: 1,
       candidates: [],
+      editors: [],
       isReady: false,
       search: ''
     };
-
-    this.authors = [];
-    this.reviewers = [];
 
     this.onChange = this.onChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
@@ -42,44 +36,17 @@ class ScenarioAuthors extends Component {
   }
 
   async componentDidMount() {
-    const { getUsers, getUsersByPermission, scenario } = this.props;
+    const { getUsers, getUsersByPermission } = this.props;
 
     if (!this.props.users.length) {
       await getUsers();
     }
 
     const editors = await getUsersByPermission('edit_scenario');
-    const candidates = [
-      ...scenario.users,
-      ...this.props.users.reduce((accum, user) => {
-        // If this user is already in the scenario, don't add
-        // them to this list.
-        if (scenario.users.find(u => u.id === user.id)) {
-          return accum;
-        }
-        // If the user is anonymous, don't add them to this list.
-        if (user.is_anonymous) {
-          return accum;
-        }
-
-        // If the user does not have a role that allows them to edit
-        if (!editors.find(({ id }) => id === user.id)) {
-          return accum;
-        }
-
-        // Q: Should this be moved to server?
-        // user.isEditor = !!editors.find(({ id }) => id === user.id);
-        accum.push(Object.assign({}, user, { roles: [] }));
-        return accum;
-      }, [])
-    ];
-
-    // Backups used to restore after search filtering
-    this.candidates = candidates.slice();
 
     this.setState({
       isReady: true,
-      candidates
+      editors
     });
   }
 
@@ -89,7 +56,6 @@ class ScenarioAuthors extends Component {
 
     // eslint-disable-next-line no-console
     // console.log('onChange', scenario, user, role, defaultValue);
-
     if (role) {
       // notify
       // If a role is present (not null), add the role to
@@ -120,13 +86,11 @@ class ScenarioAuthors extends Component {
   }
 
   onUsersSearchChange(event, { value }) {
-    const candidates = this.candidates.slice();
-
     if (value === '') {
       this.setState({
         activePage: 1,
-        search: value,
-        candidates
+        search: '',
+        candidates: []
       });
       return;
     }
@@ -136,8 +100,7 @@ class ScenarioAuthors extends Component {
     }
 
     const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
-    let results = candidates.filter(candidate => {
-      // console.log(candidate);
+    let candidates = this.state.editors.filter(candidate => {
       if (escapedRegExp.test(candidate.username)) {
         return true;
       }
@@ -150,21 +113,17 @@ class ScenarioAuthors extends Component {
         return true;
       }
 
-      if (escapedRegExp.test(candidate.roles.join(','))) {
+      if (candidate.roles && escapedRegExp.test(candidate.roles.join(','))) {
         return true;
       }
 
       return false;
     });
 
-    if (!value) {
-      results = candidates;
-    }
-
     this.setState({
       activePage: 1,
       search: value,
-      candidates: results
+      candidates
     });
   }
 
@@ -176,16 +135,44 @@ class ScenarioAuthors extends Component {
 
   render() {
     const { scenario, scenarioUser, user, usersById } = this.props;
-    const { activePage, isReady, candidates } = this.state;
+    const { activePage, isReady, candidates, editors } = this.state;
     const { onChange, onPageChange, onUsersSearchChange } = this;
 
     if (!isReady) {
       return null;
     }
 
-    const pages = Math.ceil(candidates.length / ROWS_PER_PAGE);
+    const grantableRoles = {};
+    const reducibleListOfUsers = candidates.length ? candidates : editors;
+
+    const candidatesReduced = [
+      ...scenario.users,
+      ...reducibleListOfUsers.reduce((accum, user) => {
+        // If this user is already in the scenario, don't add
+        // them to this list.
+        if (scenario.users.find(u => u.id === user.id)) {
+          return accum;
+        }
+        // If the user is anonymous, don't add them to this list.
+        if (user.is_anonymous) {
+          return accum;
+        }
+
+        // Q: Should this be moved to server?
+        // user.isEditor = !!editors.find(({ id }) => id === user.id);
+        accum.push(Object.assign({}, user, { roles: [] }));
+        return accum;
+      }, [])
+    ];
+
+    const rowsPerPage = ROWS_PER_PAGE;
+    const pages = Math.ceil(candidatesReduced.length / ROWS_PER_PAGE);
     const index = (activePage - 1) * ROWS_PER_PAGE;
-    const candidatesSlice = candidates.slice(index, index + ROWS_PER_PAGE);
+    const candidatesSlice = candidatesReduced.slice(
+      index,
+      index + ROWS_PER_PAGE
+    );
+
     const columns = {
       username: {
         className: 'users__col-large',
@@ -201,7 +188,6 @@ class ScenarioAuthors extends Component {
       }
     };
 
-    const grantableRoles = {};
     const rows = candidatesSlice.reduce((accum, candidateUser) => {
       if (!usersById[candidateUser.id]) {
         return accum;
@@ -292,6 +278,7 @@ class ScenarioAuthors extends Component {
       grantableRoles,
       onPageChange,
       pages,
+      rowsPerPage,
       rows
     };
 
@@ -303,9 +290,11 @@ class ScenarioAuthors extends Component {
 
     const right = [
       <Menu.Menu key="menu-menu-search-collaborators" position="right">
+        {/*
         <Menu.Item.Tabbable key="menu-item-available-collaborators">
-          Available users ({candidates.length})
+          Available users ({candidatesReduced.length})
         </Menu.Item.Tabbable>
+      */}
         <Menu.Item
           key="menu-item-search-collaborators"
           name="Search authors & reviewers"
@@ -337,7 +326,6 @@ ScenarioAuthors.propTypes = {
   endScenarioUserRole: PropTypes.func,
   scenario: PropTypes.object,
   scenarioUser: PropTypes.object,
-  setScenario: PropTypes.func.isRequired,
   user: PropTypes.object,
   users: PropTypes.array,
   usersById: PropTypes.object,
@@ -350,6 +338,7 @@ const mapStateToProps = state => {
   // TODO: Migrate this entire component to `usersById`
   const scenarioUser = scenario.users.find(u => u.id === user.id);
   return {
+    scenario,
     scenarioUser,
     user,
     users,
@@ -360,9 +349,11 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   addScenarioUserRole: (...params) => dispatch(addScenarioUserRole(...params)),
   endScenarioUserRole: (...params) => dispatch(endScenarioUserRole(...params)),
-  setScenario: params => dispatch(setScenario(params)),
   getUsers: () => dispatch(getUsers()),
   getUsersByPermission: permission => dispatch(getUsersByPermission(permission))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScenarioAuthors);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ScenarioAuthors);

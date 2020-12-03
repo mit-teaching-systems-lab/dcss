@@ -1,0 +1,30 @@
+.sp__td-truncated {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.sp__td-60 {
+  width: 60%;
+  max-width: 60%;
+  min-width: 60%;
+}
+
+.sp__td-250px {
+  width: 250px;
+  max-width: 250px;
+  min-width: 250px;
+}
+
+.sp__td-15 {
+  width: 15%;
+  max-width: 15%;
+  min-width: 15%;
+}
+
+.sp__td-5 {
+  width: 5%;
+  max-width: 5%;
+  min-width: 5%;
+}
+

@@ -1,0 +1,47 @@
+.cpa__swatch-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.6);
+  border-style: none;
+  display: inline-block;
+  cursor: pointer;
+  background: #fff;
+  border-radius: .28571429rem;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+}
+
+.cpa__swatch-select-popup {
+  top: 1.6em;
+  position: absolute;
+  z-index: 9999999;
+}
+
+.cpa__swatch-select-popup-background {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}
+
+.cpa__swatch-select-button {
+  padding: 1em !important;
+  margin: 0 0.5em 0.5em 0 !important;
+  height: 3em !important;
+  width: 3em !important;
+  position: relative;
+  /*cursor: pointer;*/
+  /*outline: none;*/
+  float: left;
+  border-radius: 4px;
+  margin: 0px 6px 6px 0px;
+  transition: box-shadow .3s linear;
+}
+
+/*.cpa__swatch-select-button:focus,
+.cpa__swatch-select-button:hover {
+  box-shadow: 0px 0px 15px #fff;
+}
+*/

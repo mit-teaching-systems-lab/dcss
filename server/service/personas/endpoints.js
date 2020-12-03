@@ -1,23 +1,23 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
 
-async function getPersonasAsync(req, res) {
+async function getPersonas(req, res) {
   const personas = await db.getPersonas();
   res.json({ personas });
 }
 
-async function getPersonasByUserIdAsync(req, res) {
+async function getPersonasByUserId(req, res) {
   const personas = await db.getPersonasByUserId(req.session.user.id);
   res.json({ personas });
 }
 
-async function getPersonasByScenarioIdAsync(req, res) {
+async function getPersonasByScenarioId(req, res) {
   const id = Number(req.params.id);
   const personas = await db.getPersonasByScenarioId(id);
   res.json({ personas });
 }
 
-async function createPersonaAsync(req, res) {
+async function createPersona(req, res) {
   const author_id = req.session.user.id;
   const { name, color, description, scenario_id } = req.body;
 
@@ -46,27 +46,33 @@ async function createPersonaAsync(req, res) {
   res.json({ persona });
 }
 
-async function linkPersonaToScenarioAsync(req, res) {
+async function linkPersonaToScenario(req, res) {
   const id = Number(req.params.id);
   const scenario_id = Number(req.params.scenario_id);
-  const link = await db.linkPersonaToScenario(id, scenario_id);
 
-  if (!link) {
-    throw new Error('Persona could not be linked to scenario.');
-  }
-
+  await db.linkPersonaToScenario(id, scenario_id);
   const personas = await db.getPersonasByScenarioId(scenario_id);
 
   res.json({ personas });
 }
 
-async function getPersonaByIdAsync(req, res) {
+async function unlinkPersonaFromScenario(req, res) {
+  const id = Number(req.params.id);
+  const scenario_id = Number(req.params.scenario_id);
+
+  await db.unlinkPersonaFromScenario(id, scenario_id);
+  const personas = await db.getPersonasByScenarioId(scenario_id);
+
+  res.json({ personas });
+}
+
+async function getPersonaById(req, res) {
   const id = Number(req.params.id);
   const persona = await db.getPersonaById(id);
   res.json({ persona });
 }
 
-async function setPersonaByIdAsync(req, res) {
+async function setPersonaById(req, res) {
   const id = Number(req.params.id);
   const {
     color = null,
@@ -104,10 +110,11 @@ async function setPersonaByIdAsync(req, res) {
   res.json({ persona });
 }
 
-exports.getPersonas = asyncMiddleware(getPersonasAsync);
-exports.getPersonasByUserId = asyncMiddleware(getPersonasByUserIdAsync);
-exports.getPersonasByScenarioId = asyncMiddleware(getPersonasByScenarioIdAsync);
-exports.createPersona = asyncMiddleware(createPersonaAsync);
-exports.getPersonaById = asyncMiddleware(getPersonaByIdAsync);
-exports.setPersonaById = asyncMiddleware(setPersonaByIdAsync);
-exports.linkPersonaToScenario = asyncMiddleware(linkPersonaToScenarioAsync);
+exports.getPersonas = asyncMiddleware(getPersonas);
+exports.getPersonasByUserId = asyncMiddleware(getPersonasByUserId);
+exports.getPersonasByScenarioId = asyncMiddleware(getPersonasByScenarioId);
+exports.createPersona = asyncMiddleware(createPersona);
+exports.getPersonaById = asyncMiddleware(getPersonaById);
+exports.setPersonaById = asyncMiddleware(setPersonaById);
+exports.linkPersonaToScenario = asyncMiddleware(linkPersonaToScenario);
+exports.unlinkPersonaFromScenario = asyncMiddleware(unlinkPersonaFromScenario);

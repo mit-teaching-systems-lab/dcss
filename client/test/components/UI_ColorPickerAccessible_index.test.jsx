@@ -24,9 +24,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { Icon, Message } from '@components/UI';
-
-import AddSlideMessage from '../../components/AddSlideMessage/index.jsx';
+import { ColorPicker } from '../../components/UI/ColorPickerAccessible/index.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -64,16 +62,17 @@ afterEach(() => {
   commonState = null;
 });
 
-test('AddSlideMessage', () => {
-  expect(AddSlideMessage).toBeDefined();
+test('ColorPicker.Accessible', () => {
+  expect(ColorPicker.Accessible).toBeDefined();
 });
 
 test('Render 1 1', async done => {
-  const Component = AddSlideMessage;
+  const Component = ColorPicker.Accessible;
 
   const props = {
     ...commonProps,
-    onClick: jest.fn(() => {})
+    color: '#000000',
+    disabled: true
   };
 
   const state = {
@@ -85,11 +84,68 @@ test('Render 1 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  userEvent.click(screen.getByLabelText('Add a slide'));
+  done();
+});
 
-  expect(serialize()).toMatchSnapshot();
+test('Render 2 1', async done => {
+  const Component = ColorPicker.Accessible;
 
-  expect(props.onClick.mock.calls.length).toBe(1);
+  const props = {
+    ...commonProps,
+    color: '#000000',
+    disabled: false
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 3 1', async done => {
+  const Component = ColorPicker.Accessible;
+
+  const props = {
+    ...commonProps,
+    color: '#FFFFFF',
+    disabled: true
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Render 4 1', async done => {
+  const Component = ColorPicker.Accessible;
+
+  const props = {
+    ...commonProps,
+    color: '#FFFFFF',
+    disabled: false
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
 
   done();
 });

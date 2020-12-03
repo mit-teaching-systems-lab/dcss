@@ -6,6 +6,7 @@ const {
 } = require('../auth/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
 const { requireUserRole } = require('../roles/middleware');
+const { requireScenarioUserRole } = require('../scenarios/middleware');
 const {
   getPersonas,
   getPersonasByUserId,
@@ -14,7 +15,8 @@ const {
   getPersonaById,
   setPersonaById,
   deletePersonaById,
-  linkPersonaToScenario
+  linkPersonaToScenario,
+  unlinkPersonaFromScenario
 } = require('./endpoints');
 
 router.get('/', [requireUser, getPersonas]);
@@ -46,10 +48,16 @@ router.put('/:id', [
 //   deletePersonaById
 // ]);
 
-router.put('/:id/scenario/:scenario_id', [
+router.get('/link/:id/scenario/:scenario_id', [
   requireUser,
-  requireUserRole(['admin', 'super_admin', 'facilitator']),
+  requireScenarioUserRole(['owner', 'author']),
   linkPersonaToScenario
+]);
+
+router.get('/unlink/:id/scenario/:scenario_id', [
+  requireUser,
+  requireScenarioUserRole(['owner', 'author']),
+  unlinkPersonaFromScenario
 ]);
 
 module.exports = router;

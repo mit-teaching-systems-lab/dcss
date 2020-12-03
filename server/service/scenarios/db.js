@@ -5,6 +5,7 @@ const { createSlide, getScenarioSlides } = require('./slides/db');
 const {
   createPersona,
   getPersonas,
+  getPersonasDefault,
   linkPersonaToScenario
 } = require('../personas/db');
 const { getRunResponses } = require('../runs/db');
@@ -36,7 +37,7 @@ async function getScenarioLabels(id) {
 
 async function getScenarioPersonas(id) {
   const result = await query(sql`
-    SELECT persona.*
+    SELECT persona.*, scenario_persona.is_default
     FROM persona
     INNER JOIN scenario_persona
        ON persona.id = scenario_persona.persona_id
@@ -45,7 +46,17 @@ async function getScenarioPersonas(id) {
     ORDER BY persona.name;
   `);
 
-  return result.rows.map(r => r.name);
+  if (result.rowCount) {
+    return result.rows;
+  }
+
+  let personas = await getPersonasDefault();
+
+  for (let persona of personas) {
+    await linkPersonaToScenario(persona.id, id);
+  }
+
+  return personas;
 }
 
 async function createScenarioConsent(consent) {
@@ -220,22 +231,21 @@ async function getScenario(scenario_id) {
     WHERE id = ${scenario_id};
   `);
 
-  const { author_id } = results.rows[0];
-  const users = await getScenarioUsers(scenario_id);
-  // TODO: phase out "author"
-  const author = await getUserById(author_id);
-  const categories = await getScenarioCategories(scenario_id);
-  const consent = await getScenarioConsent(scenario_id);
-  const finish =
-    (await getScenarioSlides(scenario_id)).find(slide => slide.is_finish) ||
-    (await createFinishSlide(scenario_id));
-
-  const personas = await getScenarioPersonas(scenario_id);
-  const labels = await getScenarioLabels(scenario_id);
-  const lock = await getScenarioLock(scenario_id);
-
   const scenario = results.rows[0];
+  const users = await getScenarioUsers(scenario.id);
+  // TODO: phase out "author"
+  const author = await getUserById(scenario.author_id);
   delete scenario.author_id;
+
+  const categories = await getScenarioCategories(scenario.id);
+  const consent = await getScenarioConsent(scenario.id);
+  const finish =
+    (await getScenarioSlides(scenario.id)).find(slide => slide.is_finish) ||
+    (await createFinishSlide(scenario.id));
+
+  const personas = await getScenarioPersonas(scenario.id);
+  const labels = await getScenarioLabels(scenario.id);
+  const lock = await getScenarioLock(scenario.id);
   return {
     ...scenario,
     users,
@@ -244,7 +254,8 @@ async function getScenario(scenario_id) {
     consent,
     finish,
     labels,
-    lock
+    lock,
+    personas
   };
 }
 
@@ -468,32 +479,48 @@ async function setScenarioLabels(id, labels) {
   });
 }
 
+function personasMatch(a, b) {
+  return (
+    a.name === b.name && a.description === b.description && a.color === b.color
+  );
+}
+
 async function setScenarioPersonas(id, personas) {
-  const storedPersonas = await getPersonas();
-
   return withClientTransaction(async client => {
-    const ids = [];
+    const result = await client.query(`
+      SELECT persona_id
+      FROM scenario_persona
+      WHERE scenario_id = ${id}
+    `);
+    let ids = personas.map(({ id }) => id);
 
-    for (let persona of personas) {
-      if (persona.id === null) {
-        persona = await createPersona(persona, { link: false });
-      }
-      ids.push(persona.id);
+    if (result.rowCount) {
+      result.rows.forEach(row => {
+        const index = ids.indexOf(row.persona_id);
+        if (index !== -1) {
+          ids.splice(index, 1);
+        }
+      });
     }
 
-    await client.query(`
-      DELETE FROM scenario_persona
-      WHERE scenario_id = ${id};
-    `);
+    // await client.query(`
+    //   DELETE FROM scenario_persona
+    //   WHERE scenario_id = ${id};
+    // `);
 
-    const result = await client.query(sql`
-      INSERT INTO scenario_persona (scenario_id, persona_id)
-      SELECT ${id} as scenario_id, * FROM jsonb_array_elements(${ids})
-      ON CONFLICT DO NOTHING
-      RETURNING *;
-    `);
+    if (ids.length) {
+      // DO NOT USE sql`` HERE!
+      const result = await client.query(`
+        INSERT INTO scenario_persona (scenario_id, persona_id)
+        SELECT ${id} as scenario_id, value::int FROM jsonb_array_elements('[${ids}]')
+        ON CONFLICT DO NOTHING
+        RETURNING *;
+      `);
 
-    return result.rows;
+      return result.rows;
+    }
+
+    return [];
   });
 }
 

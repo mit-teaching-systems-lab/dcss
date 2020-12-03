@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Select color is undefined"
+    class="cpa__swatch-button"
+    role="button"
+    tabindex="0"
+  />
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Click to select a color"
+    class="cpa__swatch-button"
+    role="button"
+    tabindex="0"
+  />
+</DocumentFragment>
+`;
+
+exports[`Render 3 1 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Select color is undefined"
+    class="cpa__swatch-button"
+    role="button"
+    tabindex="0"
+  />
+</DocumentFragment>
+`;
+
+exports[`Render 4 1 1`] = `
+<DocumentFragment>
+  <button
+    aria-label="Click to select a color"
+    class="cpa__swatch-button"
+    role="button"
+    tabindex="0"
+  />
+</DocumentFragment>
+`;

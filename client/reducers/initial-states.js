@@ -23,7 +23,9 @@ export const personaInitialState = {
   deleted_at: null,
   name: '',
   description: '',
-  color: ''
+  color: '',
+  is_shared: false,
+  is_read_only: false
 };
 
 export const responseInitialState = {};

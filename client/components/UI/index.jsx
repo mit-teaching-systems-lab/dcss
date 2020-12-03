@@ -33,4 +33,5 @@ export * from './Text';
 /**
  * Custom Elements
  */
+export * from './ColorPickerAccessible';
 export * from './Title';

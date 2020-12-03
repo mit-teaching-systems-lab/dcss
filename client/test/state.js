@@ -562,6 +562,126 @@ module.exports = {
       }
     }
   },
+  persona: {
+    author_id: null,
+    color: '',
+    created_at: null,
+    deleted_at: null,
+    description: '',
+    id: null,
+    is_read_only: false,
+    is_shared: false,
+    name: '',
+    updated_at: null
+  },
+  personas: [
+    {
+      id: 1,
+      name: 'Participant',
+      description:
+        'The default user participating in a single person scenario.',
+      color: '#FFFFFF',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    {
+      id: 2,
+      name: 'Teacher',
+      description:
+        'A non-specific teacher, participating in a multi person scenario.',
+      color: '#3f59a9',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    {
+      id: 3,
+      name: 'Student',
+      description:
+        'A non-specific student, participating in a multi person scenario.',
+      color: '#e59235',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    {
+      id: 4,
+      name: 'Facilitator',
+      description:
+        'A non-specific facilitator, leading participation in a multi person scenario.',
+      color: '#73b580',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    }
+  ],
+  personasById: {
+    '1': {
+      id: 1,
+      name: 'Participant',
+      description:
+        'The default user participating in a single person scenario.',
+      color: '#FFFFFF',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    '2': {
+      id: 2,
+      name: 'Teacher',
+      description:
+        'A non-specific teacher, participating in a multi person scenario.',
+      color: '#3f59a9',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    '3': {
+      id: 3,
+      name: 'Student',
+      description:
+        'A non-specific student, participating in a multi person scenario.',
+      color: '#e59235',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    },
+    '4': {
+      id: 4,
+      name: 'Facilitator',
+      description:
+        'A non-specific facilitator, leading participation in a multi person scenario.',
+      color: '#73b580',
+      created_at: '2020-12-01T15:49:04.962Z',
+      updated_at: null,
+      deleted_at: null,
+      author_id: 3,
+      is_read_only: true,
+      is_shared: true
+    }
+  },
   response: {},
   responses: [],
   responsesById: {},
@@ -906,10 +1026,7 @@ module.exports = {
   },
   tags: {
     categories: [],
-    labels: [
-      { id: 3, name: 'fun' },
-      { id: 5, name: 'Easy' }
-    ],
+    labels: [{ id: 3, name: 'fun' }, { id: 5, name: 'Easy' }],
     labelsInUse: ['Easy']
   },
   user: {

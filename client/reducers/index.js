@@ -5,6 +5,7 @@ import errors from './errors';
 import { history } from './history';
 import { session } from './session';
 import { logs, logsById } from './logs';
+import { persona, personas, personasById } from './persona';
 import { response, responses, responsesById } from './response';
 import { run, runs, runsById } from './run';
 import { scenario } from './scenario';
@@ -21,6 +22,9 @@ export default combineReducers({
   history,
   logs,
   logsById,
+  persona,
+  personas,
+  personasById,
   response,
   responses,
   responsesById,

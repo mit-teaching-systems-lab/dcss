@@ -21,6 +21,7 @@ import DropdownCategories from './DropdownCategories';
 import DropdownLabels from './DropdownLabels';
 import DropdownOwner from './DropdownOwner';
 import ScenarioAuthors from './ScenarioAuthors';
+import ScenarioPersonas from './ScenarioPersonas';
 import RichTextEditor from '@components/RichTextEditor';
 
 import { getScenario, setScenario } from '@actions/scenario';
@@ -242,6 +243,7 @@ class ScenarioEditor extends Component {
     } = this.props;
 
     const { isReady } = this.state;
+    const isNewScenario = scenarioId !== 'new';
 
     if (!isReady || !finish.components[0]) {
       return <Loading />;
@@ -257,11 +259,10 @@ class ScenarioEditor extends Component {
 
     const formInputTitle = (
       <Ref innerRef={node => innerRef(node, 'title')}>
-        <Form.Field>
+        <Form.Field required>
           <label htmlFor="title">Title</label>
           <Form.Input
             focus
-            required
             autoComplete="off"
             id="title"
             name="title"
@@ -294,47 +295,45 @@ class ScenarioEditor extends Component {
       </Ref>
     );
 
-    const rteConsent =
-      scenarioId !== 'new' ? (
-        <Ref innerRef={node => innerRef(node, 'consentprose')}>
-          <Form.Field required>
-            <label htmlFor="consentprose">Consent Agreement</label>
-            {consentAgreementValue ? (
-              <RichTextEditor
-                id="consentprose"
-                name="consentprose"
-                defaultValue={consent.prose}
-                onChange={onConsentChange}
-                options={{
-                  buttons: 'suggestion',
-                  minHeight: '150px'
-                }}
-              />
-            ) : null}
-          </Form.Field>
-        </Ref>
-      ) : null;
-
-    const rteFinish =
-      scenarioId !== 'new' ? (
-        <Ref innerRef={node => innerRef(node, 'finish')}>
-          <Form.Field>
-            <label htmlFor="finish">
-              After a scenario has been completed, the participant will be shown
-              this:
-            </label>
+    const rteConsent = isNewScenario ? (
+      <Ref innerRef={node => innerRef(node, 'consentprose')}>
+        <Form.Field required>
+          <label htmlFor="consentprose">Consent Agreement</label>
+          {consentAgreementValue ? (
             <RichTextEditor
-              id="finish"
-              defaultValue={finish.components[0].html}
-              onChange={onFinishSlideChange}
+              id="consentprose"
+              name="consentprose"
+              defaultValue={consent.prose}
+              onChange={onConsentChange}
               options={{
                 buttons: 'suggestion',
-                minHeight: '200px'
+                minHeight: '150px'
               }}
             />
-          </Form.Field>
-        </Ref>
-      ) : null;
+          ) : null}
+        </Form.Field>
+      </Ref>
+    ) : null;
+
+    const rteFinish = isNewScenario ? (
+      <Ref innerRef={node => innerRef(node, 'finish')}>
+        <Form.Field>
+          <label htmlFor="finish">
+            After a scenario has been completed, the participant will be shown
+            this:
+          </label>
+          <RichTextEditor
+            id="finish"
+            defaultValue={finish.components[0].html}
+            onChange={onFinishSlideChange}
+            options={{
+              buttons: 'suggestion',
+              minHeight: '200px'
+            }}
+          />
+        </Form.Field>
+      </Ref>
+    ) : null;
 
     const showOwnerDropdown =
       this.state.authors && this.state.authors.length && scenarioId === 'new';
@@ -342,7 +341,7 @@ class ScenarioEditor extends Component {
     const showCategoryDropdown =
       this.state.categories && this.state.categories.length;
 
-    const showLabelsDropdown = scenarioId !== 'new' && user.is_super;
+    const showLabelsDropdown = isNewScenario && user.is_super;
 
     const dropdowns = (
       <Gate requiredPermission="edit_scenario">
@@ -379,10 +378,9 @@ class ScenarioEditor extends Component {
         ? { size: 'large', position: 'right center', hideOnScroll: true }
         : { disabled: true };
 
-    const leftColumnClassName =
-      scenarioId !== 'new'
-        ? 'se__grid-column-height-constraint se__grid-column-width-constraint'
-        : '';
+    const leftColumnClassName = isNewScenario
+      ? 'se__grid-column-height-constraint se__grid-column-width-constraint'
+      : '';
 
     const left = Object.entries(this.leftcol).map(
       ([name, { label }], index) => (
@@ -396,20 +394,19 @@ class ScenarioEditor extends Component {
       )
     );
 
-    const editorMenu =
-      scenarioId !== 'new' ? (
-        <EditorMenu
-          text
-          className="em__sticky se_em__sticky-special"
-          type="scenario authors"
-          items={{ left }}
-        />
-      ) : null;
+    const editorMenu = isNewScenario ? (
+      <EditorMenu
+        text
+        className="em__sticky se_em__sticky-special"
+        type="scenario authors"
+        items={{ left }}
+      />
+    ) : null;
 
     const styleHeight = {
       height: '500px'
     };
-    const leftColBottomStyle = scenarioId !== 'new' ? styleHeight : {};
+    const leftColBottomStyle = isNewScenario ? styleHeight : {};
 
     return (
       <Form>
@@ -434,7 +431,7 @@ class ScenarioEditor extends Component {
 
                   {dropdowns}
 
-                  {scenarioId !== 'new' ? (
+                  {isNewScenario ? (
                     <Fragment>
                       {rteConsent}
                       {rteFinish}
@@ -456,8 +453,11 @@ class ScenarioEditor extends Component {
                 className="se__grid-column-width-constraint"
                 width={8}
               >
-                {scenarioId !== 'new' ? (
-                  <ScenarioAuthors scenario={scenario} />
+                {isNewScenario ? (
+                  <Fragment>
+                    <ScenarioAuthors />
+                    <ScenarioPersonas />
+                  </Fragment>
                 ) : null}
               </Grid.Column>
             </Grid.Row>
@@ -526,4 +526,7 @@ const mapDispatchToProps = dispatch => ({
   getUsersByPermission: permission => dispatch(getUsersByPermission(permission))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScenarioEditor);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ScenarioEditor);
