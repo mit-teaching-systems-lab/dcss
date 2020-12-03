@@ -384,8 +384,8 @@ test('Render 1 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const name = await screen.findByLabelText('Persona name');
   const description = await screen.findByLabelText('Persona description');
@@ -397,7 +397,7 @@ test('Render 1 1', async done => {
   userEvent.type(description, 'Some description');
 
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(personaActions.setPersona.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -447,10 +447,10 @@ test('Render 2 1', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
   userEvent.click(await screen.findByRole('button', { name: /Close/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -472,8 +472,8 @@ test('Errors', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const name = await screen.findByLabelText('Persona name');
   const description = await screen.findByLabelText('Persona description');
@@ -481,17 +481,17 @@ test('Errors', async done => {
   // Try with no name
   userEvent.clear(name);
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // Then add a name
   userEvent.type(name, 'A new persona name');
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // Then add a description
   userEvent.type(description, 'Some description');
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Open color picker
@@ -500,7 +500,7 @@ test('Errors', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Close color picker
@@ -509,7 +509,7 @@ test('Errors', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Re-open color picker
@@ -518,17 +518,17 @@ test('Errors', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Click on a color
     userEvent.click(await screen.findByTitle('#781c81'));
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(personaActions.createPersona.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -565,8 +565,8 @@ test('Create a persona', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const name = await screen.findByLabelText('Persona name');
   const description = await screen.findByLabelText('Persona description');
@@ -574,17 +574,17 @@ test('Create a persona', async done => {
   // Try with no name
   userEvent.clear(name);
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // Then add a name
   userEvent.type(name, 'A new persona name');
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // Then add a description
   userEvent.type(description, 'Some description');
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Open color picker
@@ -593,7 +593,7 @@ test('Create a persona', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Close color picker
@@ -602,7 +602,7 @@ test('Create a persona', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Re-open color picker
@@ -611,17 +611,17 @@ test('Create a persona', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Click on a color
     userEvent.click(await screen.findByTitle('#781c81'));
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Create/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   expect(personaActions.createPersona.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
@@ -658,8 +658,8 @@ test('Edit a persona', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   const name = await screen.findByLabelText('Persona name');
   const description = await screen.findByLabelText('Persona description');
@@ -667,17 +667,17 @@ test('Edit a persona', async done => {
   // Try with no name
   userEvent.clear(name);
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // Then add a name
   userEvent.type(name, 'A new persona name');
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // Then add a description
   userEvent.type(description, 'Some description');
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Open color picker
@@ -686,7 +686,7 @@ test('Edit a persona', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Close color picker
@@ -695,7 +695,7 @@ test('Edit a persona', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Re-open color picker
@@ -704,21 +704,45 @@ test('Edit a persona', async done => {
     );
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   await act(async () => {
     // Click on a color
     userEvent.click(await screen.findByTitle('#781c81'));
   });
 
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByRole('button', { name: /Save/ }));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
-  expect(personaActions.createPersona.mock.calls[0]).toMatchInlineSnapshot(
-    `undefined`
-  );
+  done();
+});
+
+test('Persona name is too long', async done => {
+  const Component = ScenarioPersonaEditor;
+
+  persona.name =
+    'Something that is longer than 40 characters and will be truncated';
+  const props = {
+    ...commonProps,
+    persona,
+    onCancel: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  const name = await screen.findByLabelText('Persona name');
+  const description = await screen.findByLabelText('Persona description');
+
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });

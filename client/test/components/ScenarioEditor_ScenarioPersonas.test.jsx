@@ -588,7 +588,7 @@ test('No personas loaded', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  const { asFragment } = await render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   expect(personaActions.getPersonas.mock.calls.length).toBe(1);
@@ -732,7 +732,7 @@ test('Personas loaded', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  const { asFragment } = await render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   expect(personaActions.getPersonas.mock.calls.length).toBe(0);
@@ -876,7 +876,7 @@ test('Create a persona', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  const { asFragment } = await render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   expect(personaActions.getPersonas.mock.calls.length).toBe(0);
@@ -1058,7 +1058,7 @@ test('Add an existing', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  const { asFragment } = await render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   expect(personaActions.getPersonas.mock.calls.length).toBe(0);

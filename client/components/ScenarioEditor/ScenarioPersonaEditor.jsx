@@ -102,9 +102,14 @@ class ScenarioPersonaEditor extends Component {
     const { onChange, onCancel, onSubmit } = this;
     const isNewPersona = !persona.id;
 
+    const personaName =
+      persona.name && persona.name.length > 40
+        ? `${persona.name.slice(0, 40)}...`
+        : persona.name;
+
     const header = isNewPersona
       ? `Create a new persona`
-      : `Edit the ${persona.name} persona`;
+      : `Edit the ${personaName} persona`;
 
     const createOrSave = isNewPersona ? 'Create' : 'Save';
 
