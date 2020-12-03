@@ -417,6 +417,7 @@ export default class SlideEditor extends Component {
 
                           if (scenario.personas.length > 1) {
                             const personaSelectProps = {
+                              defaultValue: value.persona && value.persona.id || null,
                               onSelect: (personaOrNull) => {
                                 const persona = personaOrNull
                                   ? { id: personaOrNull.id }
@@ -429,7 +430,6 @@ export default class SlideEditor extends Component {
                               },
                               personas: scenario.personas,
                               placeholder: 'Select persona',
-                              defaultValue: value.persona && value.persona.id || null
                             };
 
                             if (value.persona) {

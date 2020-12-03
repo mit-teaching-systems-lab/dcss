@@ -88,13 +88,9 @@ class ScenarioPersonaSelect extends Component {
       return accum.concat([option]);
     }, []);
 
-    const closeOnBlur = true;
-    const closeOnChange = true;
     const fluid = true;
 
     const dropdownProps = {
-      closeOnBlur,
-      closeOnChange,
       defaultValue,
       fluid,
       onChange,
