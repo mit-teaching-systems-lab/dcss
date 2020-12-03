@@ -3,15 +3,18 @@ import {
   GET_PERSONA_SUCCESS,
   // GET_PERSONAS_COUNT_ERROR,
   // GET_PERSONAS_COUNT_SUCCESS,
-  // GET_PERSONAS_ERROR,
+  GET_PERSONAS_ERROR,
   GET_PERSONAS_SUCCESS,
   SET_PERSONA_ERROR,
   SET_PERSONA_SUCCESS,
+  SET_PERSONAS_SUCCESS,
   // GET_SCENARIO_PERSONAS_ERROR,
   // GET_SCENARIO_PERSONAS_SUCCESS,
-  SET_SCENARIO
+  SET_SCENARIO,
   // SET_SCENARIO_PERSONAS_ERROR,
   // SET_SCENARIO_PERSONAS_SUCCESS
+  LINK_PERSONA_TO_SCENARIO_ERROR,
+  UNLINK_PERSONA_FROM_SCENARIO_ERROR
 } from './types';
 
 export let getPersona = id => async dispatch => {
@@ -105,6 +108,7 @@ export let setPersonas = personas => async dispatch => {
     type: SET_PERSONAS_SUCCESS,
     personas
   });
+  return personas;
 };
 
 export let getPersonas = () => async dispatch => {
@@ -146,7 +150,7 @@ export let linkPersonaToScenario = (persona_id, scenario_id) => async (
 
     return scenario;
   } catch (error) {
-    dispatch({ type: SET_SCENARIO, error });
+    dispatch({ type: LINK_PERSONA_TO_SCENARIO_ERROR, error });
     return null;
   }
 };
@@ -173,24 +177,7 @@ export let unlinkPersonaFromScenario = (persona_id, scenario_id) => async (
 
     return scenario;
   } catch (error) {
-    dispatch({ type: SET_SCENARIO, error });
+    dispatch({ type: UNLINK_PERSONA_FROM_SCENARIO_ERROR, error });
     return null;
   }
 };
-
-// export let getPersonasByScenarioId = id => async dispatch => {
-//   try {
-//     const res = await (await fetch(`/api/personas/scenario/${id}`)).json();
-//     if (res.error) {
-//       throw res;
-//     }
-//     const { personas } = res;
-
-//     dispatch({ type: SET_SCENARIO_PERSONAS_SUCCESS, personas });
-
-//     return personas;
-//   } catch (error) {
-//     dispatch({ type: SET_SCENARIO_PERSONAS_ERROR, error });
-//     return null;
-//   }
-// };
