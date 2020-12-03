@@ -32,6 +32,14 @@ import {
 import * as personaActions from '../../actions/persona';
 jest.mock('../../actions/persona');
 
+import { notify } from '@components/Notification';
+jest.mock('@components/Notification', () => {
+  return {
+    ...jest.requireActual('@components/Notification'),
+    notify: jest.fn()
+  };
+});
+
 const persona = {
   id: 1,
   name: 'Participant',
@@ -763,6 +771,23 @@ test('Edit a persona', async done => {
   await waitFor(() =>
     expect(personaActions.setPersona).toHaveBeenCalledTimes(2)
   );
+
+  expect(notify.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        Object {
+          "color": "green",
+          "message": "Persona updated!",
+        },
+      ],
+      Array [
+        Object {
+          "color": "green",
+          "message": "Persona updated!",
+        },
+      ],
+    ]
+  `);
 
   done();
 });
