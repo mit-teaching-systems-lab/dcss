@@ -7,6 +7,6 @@ ALTER TABLE persona
 -- Down below
 
 ALTER TABLE persona
-  DROP COLUMN is_read_only
+  DROP COLUMN is_read_only,
   DROP COLUMN is_shared;
 
