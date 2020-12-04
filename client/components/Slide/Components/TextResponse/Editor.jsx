@@ -95,6 +95,9 @@ class TextResponseEditor extends React.Component {
     const { header, prompt, placeholder, recallId } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
+    const promptAriaLabel = 'Text to be displayed before the input:';
+    const placeholderAriaLabel = 'Placeholder text displayed inside the input:';
+
     return (
       <Form>
         <Container fluid>
@@ -106,15 +109,17 @@ class TextResponseEditor extends React.Component {
             onChange={onRecallChange}
           />
           <Form.TextArea
-            label="Text to be displayed before the input:"
             name="prompt"
+            label={promptAriaLabel}
+            aria-label={promptAriaLabel}
             value={prompt}
             onChange={onChange}
             onBlur={updateState}
           />
           <Form.Input
-            label="Placeholder text displayed inside the input:"
             name="placeholder"
+            label={placeholderAriaLabel}
+            aria-label={placeholderAriaLabel}
             value={placeholder}
             onChange={onChange}
             onBlur={updateState}

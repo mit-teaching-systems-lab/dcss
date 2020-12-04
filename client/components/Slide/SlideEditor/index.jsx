@@ -13,8 +13,6 @@ import {
   Segment
 } from '@components/UI';
 import EditorMenu from '@components/EditorMenu';
-// import { notify } from '@components/Notification';
-// import Loading from '@components/Loading';
 import ScenarioPersonaSelect from '@components/ScenarioEditor/ScenarioPersonaSelect';
 import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
@@ -33,20 +31,23 @@ const getDraggableStyle = (isDragging, draggableStyle) => {
 
 const MenuItemModeToggler = props => {
   const { disabled, mode, onToggle, type } = props;
+  const isPreviewMode = mode === 'preview';
 
-  const iconProps =
-    mode === 'preview' ? { name: 'edit outline' } : { name: 'eye' };
+  const iconProps = isPreviewMode ? { name: 'edit outline' } : { name: 'eye' };
+
+  const ariaLabel = isPreviewMode ? 'Edit slide' : 'Preview slide';
 
   const onClick = () => {
     onToggle({
-      mode: mode === 'preview' ? 'edit' : 'preview'
+      mode: isPreviewMode ? 'edit' : 'preview'
     });
   };
+
   return (
     <Menu.Item.Tabbable
       key="menu-item-slide-mode-toggle"
-      aria-label={`Edit ${type}`}
-      name={`edit-${type}`}
+      aria-label={ariaLabel}
+      name={ariaLabel}
       disabled={disabled}
       onClick={onClick}
     >
@@ -125,6 +126,7 @@ export default class SlideEditor extends Component {
   activateComponent(value, callback = () => {}) {
     let updatedState = value;
 
+    /* istanbul ignore if */
     if (Array.isArray(value)) {
       updatedState = {
         components: value
@@ -136,6 +138,7 @@ export default class SlideEditor extends Component {
       };
     }
 
+    /* istanbul ignore else */
     if (updatedState.activeComponentIndex !== -1) {
       this.setState(updatedState, () => {
         const { activeComponentIndex } = this.state;
@@ -151,6 +154,7 @@ export default class SlideEditor extends Component {
 
   onComponentChange(index, value) {
     const { components } = this.state;
+    /* istanbul ignore else */
     if (components[index]) {
       Object.assign(components[index], value);
       this.setState({ components }, () => {
@@ -310,6 +314,7 @@ export default class SlideEditor extends Component {
         <Menu.Item.Tabbable
           key="menu-item-slide-duplicate"
           name="Duplicate slide"
+          aria-label="Duplicate slide"
           onClick={() => this.props.onDuplicate(this.props.index)}
         >
           <Icon name="copy outline" />
@@ -417,8 +422,12 @@ export default class SlideEditor extends Component {
 
                           if (scenario.personas.length > 1) {
                             const personaSelectProps = {
-                              defaultValue: value.persona && value.persona.id || null,
-                              onSelect: (personaOrNull) => {
+                              defaultValue:
+                                (value.persona && value.persona.id) || null,
+                              emptyText: 'No persona restriction',
+                              fluid: false,
+                              item: true,
+                              onSelect: personaOrNull => {
                                 const persona = personaOrNull
                                   ? { id: personaOrNull.id }
                                   : null;
@@ -429,35 +438,38 @@ export default class SlideEditor extends Component {
                                 });
                               },
                               personas: scenario.personas,
-                              placeholder: 'Select persona',
+                              placeholder: 'Select a persona'
                             };
 
                             if (value.persona) {
                               Object.assign(
                                 persona,
                                 scenario.personas.find(
-                                  ({id}) => value.persona.id === id
+                                  ({ id }) => value.persona.id === id
                                 )
                               );
                             }
 
-                            const ariaLabel = 'Select which persona sees this content. Leave unselected if this content is for all scenario participants.';
+                            const ariaLabel =
+                              'Select which persona sees this content. Leave unselected if this content is for all scenario participants.';
 
                             right.push(
-                              <Menu.Item.Tabbable
-                                name={ariaLabel}
-                                aria-label={ariaLabel}
-                                className="sp__dropdown"
-                              >
-                                <ScenarioPersonaSelect {...personaSelectProps} />
-                              </Menu.Item.Tabbable>
+                              <ScenarioPersonaSelect
+                                key={Identity.key({
+                                  personaSelectProps,
+                                  index
+                                })}
+                                {...personaSelectProps}
+                              />
                             );
                           }
 
                           // "Require Component" is only present when the component is
                           // a prompt.
                           if (value.responseId) {
+                            const id = Identity.key({ index });
                             const props = {
+                              'aria-labelledby': id,
                               name: 'required',
                               label: value.disableRequireCheckbox
                                 ? 'Required'
@@ -477,6 +489,7 @@ export default class SlideEditor extends Component {
 
                             right.push(
                               <Menu.Item.Tabbable
+                                id={id}
                                 key={Identity.key(props)}
                                 name={menuItemTip}
                               >
@@ -499,6 +512,7 @@ export default class SlideEditor extends Component {
                             }
                           };
 
+                          /* istanbul ignore if */
                           if (!value.id) {
                             value.id = uuid();
                           }
@@ -581,6 +595,7 @@ export default class SlideEditor extends Component {
                                       }
                                     >
                                       <Segment
+                                        data-testid="on-component-click"
                                         key={`component-edit-${index}`}
                                         className={
                                           index === activeComponentIndex

@@ -23,6 +23,7 @@ const ComponentItems = ({ onComponentItemClick }) => {
 
     const trigger = (
       <Menu.Item.Tabbable
+        role="button"
         style={style}
         onClick={() => onComponentItemClick(item)}
       >
