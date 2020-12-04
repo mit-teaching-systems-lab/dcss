@@ -32,9 +32,7 @@ import {
   setScenario,
   endScenarioLock
 } from '@actions/scenario';
-import {
-  getPersonas
-} from '@actions/persona';
+import { getPersonas } from '@actions/persona';
 import { getUsers } from '@actions/users';
 import './editor.css';
 

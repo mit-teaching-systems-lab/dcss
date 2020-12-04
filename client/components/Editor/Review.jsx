@@ -56,9 +56,7 @@ class Review extends Component {
                         <SlideComponents
                           components={slide.components}
                           onResponseChange={() => {
-                            alert(
-                              'Prompts are not functional in review mode'
-                            );
+                            alert('Prompts are not functional in review mode');
                           }}
                         />
                       </Card.Content>

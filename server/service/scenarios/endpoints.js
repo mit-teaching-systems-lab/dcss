@@ -400,18 +400,14 @@ async function copyScenario(req, res) {
     // Personas must be duplicated as well.
     for (const persona of personas) {
       const index = personas.indexOf(persona);
-      const {
-        name,
-        description,
-        color
-      } = persona;
+      const { name, description, color } = persona;
       const author_id = req.session.user.id;
 
       const created = await personasdb.createPersona({
         author_id,
         name,
         description,
-        color,
+        color
       });
 
       personas[index] = created;
