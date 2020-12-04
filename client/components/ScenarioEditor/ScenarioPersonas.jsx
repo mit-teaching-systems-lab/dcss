@@ -181,16 +181,17 @@ class ScenarioPersonas extends Component {
     }, []);
 
     const personaSelectProps = {
-      onSelect: (persona) => {
+      fluid: true,
+      onSelect: persona => {
         if (persona) {
           this.setState({
             openPersonaConfirmation: true,
-            persona,
+            persona
           });
         }
       },
       personas,
-      placeholder: 'Search and select a persona to add',
+      placeholder: 'Select a persona to add',
       search: true,
       selection: true,
       value: null
@@ -201,7 +202,6 @@ class ScenarioPersonas extends Component {
         <Menu.Item
           key="menu-item-search-personas"
           name="Search shared personas"
-          className="sp__dropdown"
         >
           <ScenarioPersonaSelect {...personaSelectProps} />
         </Menu.Item>

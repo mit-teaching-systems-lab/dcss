@@ -28,3 +28,7 @@
   min-width: 5%;
 }
 
+.dropdown.sp__dropdown > .text {
+  width: 11em;
+  text-align: left !important;
+}

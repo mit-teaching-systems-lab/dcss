@@ -49,16 +49,16 @@ class ScenarioPersonaSelect extends Component {
   }
 
   onChange(e, { value }) {
-    this.props.onSelect(
-      (value && this.personasById[value]) || null
-    );
+    this.props.onSelect((value && this.personasById[value]) || null);
   }
 
   render() {
     const { onChange } = this;
     const {
-      clearable,
       defaultValue,
+      emptyText = 'No selection',
+      fluid,
+      item,
       personas,
       placeholder,
       scenario,
@@ -72,14 +72,14 @@ class ScenarioPersonaSelect extends Component {
     personas.unshift({
       id: '',
       value: null,
-      name: 'No persona restriction'
+      name: emptyText
     });
 
     const options = personas.reduce((accum, persona) => {
       const option = {
         key: persona.id,
         value: persona.id,
-        text: persona.name,
+        text: persona.name
       };
 
       if (persona.id && persona.name) {
@@ -88,28 +88,27 @@ class ScenarioPersonaSelect extends Component {
       return accum.concat([option]);
     }, []);
 
-    const fluid = true;
-
     const dropdownProps = {
+      'aria-label': placeholder,
       defaultValue,
       fluid,
+      item,
       onChange,
       options,
       placeholder,
       search,
       selection,
-      value,
+      value
     };
 
-    return (
-      <Dropdown {...dropdownProps} />
-    );
+    return <Dropdown className="sp__dropdown" {...dropdownProps} />;
   }
 }
 
 ScenarioPersonaSelect.propTypes = {
-  clearable: PropTypes.bool,
   defaultValue: PropTypes.node,
+  emptyText: PropTypes.string,
+  fluid: PropTypes.bool,
   onSelect: PropTypes.func,
   personas: PropTypes.array,
   placeholder: PropTypes.node,
@@ -117,7 +116,7 @@ ScenarioPersonaSelect.propTypes = {
   search: PropTypes.bool,
   selection: PropTypes.bool,
   style: PropTypes.object,
-  value: PropTypes.node,
+  value: PropTypes.node
 };
 
 const mapStateToProps = (state, ownProps) => {

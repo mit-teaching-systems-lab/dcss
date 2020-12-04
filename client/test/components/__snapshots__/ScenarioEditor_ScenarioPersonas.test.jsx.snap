@@ -15,11 +15,12 @@ exports[`Add an existing 1`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -36,7 +37,7 @@ exports[`Add an existing 1`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -56,7 +57,7 @@ exports[`Add an existing 1`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -265,11 +266,12 @@ exports[`Add an existing 2`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="true"
-          class="ui active visible fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui active visible fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -286,7 +288,7 @@ exports[`Add an existing 2`] = `
             class="divider default text"
             role="alert"
           >
-            None
+            No selection
           </div>
           <i
             aria-hidden="true"
@@ -306,7 +308,7 @@ exports[`Add an existing 2`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -515,11 +517,12 @@ exports[`Add an existing 3`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -536,7 +539,7 @@ exports[`Add an existing 3`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -556,7 +559,7 @@ exports[`Add an existing 3`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -765,11 +768,12 @@ exports[`Add an existing 4`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -786,7 +790,7 @@ exports[`Add an existing 4`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -806,7 +810,7 @@ exports[`Add an existing 4`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -1015,11 +1019,12 @@ exports[`Add an existing 5`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="true"
-          class="ui active visible fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui active visible fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -1036,7 +1041,7 @@ exports[`Add an existing 5`] = `
             class="divider default text"
             role="alert"
           >
-            None
+            No selection
           </div>
           <i
             aria-hidden="true"
@@ -1056,7 +1061,7 @@ exports[`Add an existing 5`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -1265,11 +1270,12 @@ exports[`Add an existing 6`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -1286,7 +1292,7 @@ exports[`Add an existing 6`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -1306,7 +1312,7 @@ exports[`Add an existing 6`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -1515,11 +1521,12 @@ exports[`Add an existing 7`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -1536,7 +1543,7 @@ exports[`Add an existing 7`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -1556,7 +1563,7 @@ exports[`Add an existing 7`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -1765,11 +1772,12 @@ exports[`Add an existing 8`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -1786,7 +1794,7 @@ exports[`Add an existing 8`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -1806,7 +1814,7 @@ exports[`Add an existing 8`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
           </div>
@@ -2124,11 +2132,12 @@ exports[`Add an existing 9`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -2145,7 +2154,7 @@ exports[`Add an existing 9`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -2165,7 +2174,7 @@ exports[`Add an existing 9`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
           </div>
@@ -2483,11 +2492,12 @@ exports[`Add an existing 10`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -2504,7 +2514,7 @@ exports[`Add an existing 10`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -2524,7 +2534,7 @@ exports[`Add an existing 10`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
           </div>
@@ -2842,11 +2852,12 @@ exports[`Add an existing 11`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -2863,7 +2874,7 @@ exports[`Add an existing 11`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -2883,7 +2894,7 @@ exports[`Add an existing 11`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
           </div>
@@ -3201,11 +3212,12 @@ exports[`Add an existing 12`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -3222,7 +3234,7 @@ exports[`Add an existing 12`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -3242,7 +3254,7 @@ exports[`Add an existing 12`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
           </div>
@@ -3560,11 +3572,12 @@ exports[`Create a persona 1`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -3581,7 +3594,7 @@ exports[`Create a persona 1`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -3601,7 +3614,7 @@ exports[`Create a persona 1`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -3810,11 +3823,12 @@ exports[`Create a persona 2`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -3831,7 +3845,7 @@ exports[`Create a persona 2`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -3851,7 +3865,7 @@ exports[`Create a persona 2`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -4060,11 +4074,12 @@ exports[`Create a persona 3`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -4081,7 +4096,7 @@ exports[`Create a persona 3`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -4101,7 +4116,7 @@ exports[`Create a persona 3`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -4310,11 +4325,12 @@ exports[`Create a persona 4`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -4331,7 +4347,7 @@ exports[`Create a persona 4`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -4351,7 +4367,7 @@ exports[`Create a persona 4`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -4560,11 +4576,12 @@ exports[`Create a persona 5`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -4581,7 +4598,7 @@ exports[`Create a persona 5`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -4601,7 +4618,7 @@ exports[`Create a persona 5`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -4810,11 +4827,12 @@ exports[`Create a persona 6`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -4831,7 +4849,7 @@ exports[`Create a persona 6`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -4851,7 +4869,7 @@ exports[`Create a persona 6`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -5060,11 +5078,12 @@ exports[`Create a persona 7`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -5081,7 +5100,7 @@ exports[`Create a persona 7`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -5101,7 +5120,7 @@ exports[`Create a persona 7`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -5310,11 +5329,12 @@ exports[`Create a persona 8`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -5331,7 +5351,7 @@ exports[`Create a persona 8`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -5351,7 +5371,7 @@ exports[`Create a persona 8`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -5560,11 +5580,12 @@ exports[`No personas loaded 1`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -5581,7 +5602,7 @@ exports[`No personas loaded 1`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -5601,7 +5622,7 @@ exports[`No personas loaded 1`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -5810,11 +5831,12 @@ exports[`Personas loaded 1`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -5831,7 +5853,7 @@ exports[`Personas loaded 1`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -5851,7 +5873,7 @@ exports[`Personas loaded 1`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -6060,11 +6082,12 @@ exports[`Render 1 1 1`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -6081,7 +6104,7 @@ exports[`Render 1 1 1`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -6101,7 +6124,7 @@ exports[`Render 1 1 1`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
@@ -6334,11 +6357,12 @@ exports[`Render 2 1 1`] = `
       class="right menu"
     >
       <div
-        class="item sp__dropdown"
+        class="item"
       >
         <div
           aria-expanded="false"
-          class="ui fluid search selection dropdown"
+          aria-label="Select a persona to add"
+          class="ui fluid search selection dropdown sp__dropdown"
           role="combobox"
         >
           <input
@@ -6355,7 +6379,7 @@ exports[`Render 2 1 1`] = `
             class="divider default text"
             role="alert"
           >
-            Search and select a persona to add
+            Select a persona to add
           </div>
           <i
             aria-hidden="true"
@@ -6375,7 +6399,7 @@ exports[`Render 2 1 1`] = `
               <span
                 class="text"
               >
-                None
+                No selection
               </span>
             </div>
             <div
