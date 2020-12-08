@@ -24,9 +24,24 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import { SET_LABELS_IN_USE_SUCCESS } from '../../actions/types';
+import * as tlr from '@testing-library/react';
+
+import {
+  GET_LABELS_SUCCESS,
+  SET_LABELS_IN_USE_SUCCESS
+} from '../../actions/types';
 import * as tagsActions from '../../actions/tags';
 jest.mock('../../actions/tags');
+
+import * as QueryString from 'query-string';
+jest.mock('query-string');
+
+const labelA = { key: 1, text: 'a', value: 'a', count: 10 };
+const labelB = { key: 2, text: 'b', value: 'b', count: 20 };
+const labelC = { key: 3, text: 'c', value: 'c', count: 30 };
+
+let labels;
+let labelsByOccurrence;
 
 import ScenarioLabelsFilter from '../../components/ScenariosList/ScenarioLabelsFilter.jsx';
 
@@ -51,13 +66,39 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  labels = [labelA, labelB, labelC];
+
+  labelsByOccurrence = [labelC, labelB, labelA];
+
+  tagsActions.getLabels = jest.fn();
+  tagsActions.getLabels.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_LABELS_SUCCESS, labels });
+    return labels;
+  });
+  tagsActions.getLabelsByOccurrence = jest.fn();
+  tagsActions.getLabelsByOccurrence.mockImplementation(() => async dispatch => {
+    const labels = labelsByOccurrence;
+    dispatch({ type: GET_LABELS_SUCCESS, labels });
+    return labels;
+  });
   tagsActions.setLabelsInUse = jest.fn();
-  tagsActions.setLabelsInUse.mockImplementation(
-    labelsInUse => async dispatch => {
-      dispatch({ type: SET_LABELS_IN_USE_SUCCESS, labelsInUse });
-      return labelsInUse;
-    }
-  );
+  tagsActions.setLabelsInUse.mockImplementation(labels => async dispatch => {
+    dispatch({ type: SET_LABELS_IN_USE_SUCCESS, labels });
+    return labels;
+  });
+
+  delete window.location;
+  // eslint-disable-next-line
+  window.location = {
+    search: ''
+  };
+
+  QueryString.parse.mockImplementation(() => {
+    return {
+      l: ['a'],
+      search: 'x'
+    };
+  });
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -94,11 +135,127 @@ test('Render 1 1', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  userEvent.click(await screen.findByRole('listbox'));
+  done();
+});
+
+/* INJECTION STARTS HERE */
+
+test('Selected labelsInUse', async done => {
+  const Component = ScenarioLabelsFilter;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const tags = {
+    categories: [],
+    labels: labelsByOccurrence,
+    labelsInUse: ['a']
+  };
+
+  const state = {
+    ...commonState,
+    tags
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  userEvent.click(await screen.findByRole('listbox'));
+  done();
+});
+
+test('No selected labelsInUse', async done => {
+  const Component = ScenarioLabelsFilter;
+
+  QueryString.parse.mockImplementation(() => {
+    return {
+      l: [],
+      search: 'x'
+    };
+  });
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const tags = {
+    categories: [],
+    labels: labelsByOccurrence,
+    labelsInUse: []
+  };
+
+  const state = {
+    ...commonState,
+    tags
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Add and remove a label', async done => {
+  const Component = ScenarioLabelsFilter;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const tags = {
+    categories: [],
+    labels: labelsByOccurrence,
+    labelsInUse: ['a']
+  };
+
+  const state = {
+    ...commonState,
+    tags
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  const dropdown = await screen.getByRole('combobox');
+  expect(asFragment()).toMatchSnapshot();
+
+  const input = await tlr.findAllByDisplayValue(dropdown, '');
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(dropdown);
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(input[0]);
+  userEvent.type(input[0], 'a{enter}');
+  expect(asFragment()).toMatchSnapshot();
+
+  let options = await tlr.findAllByRole(dropdown, 'option');
+
+  userEvent.click(options[0]);
+  expect(asFragment()).toMatchSnapshot();
+  expect(tagsActions.setLabelsInUse).toHaveBeenCalledTimes(1);
+
+  userEvent.clear(input[0]);
+
+  // The options are now re-ordered, so query again...
+  options = await tlr.findAllByRole(dropdown, 'option');
+
+  userEvent.click(options[1]);
+  expect(asFragment()).toMatchSnapshot();
+  expect(tagsActions.setLabelsInUse).toHaveBeenCalledTimes(2);
+
+  // The options are now re-ordered, so query again...
+  options = await tlr.findAllByRole(dropdown, 'option');
+
+  userEvent.click(options[0]);
+  expect(asFragment()).toMatchSnapshot();
+  expect(tagsActions.setLabelsInUse).toHaveBeenCalledTimes(3);
 
   done();
 });

@@ -702,9 +702,12 @@ beforeEach(() => {
     return categories;
   });
 
-  tagsActions.getLabels = jest.fn();
-  tagsActions.getLabels.mockImplementation(() => async dispatch => {
-    const labels = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }];
+  tagsActions.getLabelsByOccurrence = jest.fn();
+  tagsActions.getLabelsByOccurrence.mockImplementation(() => async dispatch => {
+    const labels = [
+      { id: 2, name: 'b', count: 20 },
+      { id: 1, name: 'a', count: 10 }
+    ];
     return labels;
   });
 

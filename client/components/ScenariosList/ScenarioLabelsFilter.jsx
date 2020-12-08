@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
+import escapeRegExp from 'lodash.escaperegexp';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Dropdown } from '@components/UI';
+import { Dropdown, Text } from '@components/UI';
 import { setLabelsInUse } from '@actions/tags';
 import Identity from '@utils/Identity';
 
@@ -20,7 +21,7 @@ function makeQueryString(labels) {
   }
 
   if (labels && labels.length) {
-    qs.labels = labels;
+    qs.l = labels;
   }
 
   return `?${QueryString.stringify(qs, qsOpts)}`;
@@ -29,6 +30,11 @@ function makeQueryString(labels) {
 class ScenarioLabelsFilter extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      search: ''
+    };
+
     this.onClick = this.onClick.bind(this);
   }
 
@@ -50,20 +56,90 @@ class ScenarioLabelsFilter extends React.Component {
   }
 
   render() {
+    const { search } = this.state;
     const { onClick } = this;
+    const labels = [];
+
+    // Move selected labels to the top of the list
+    if (this.props.tags.labelsInUse.length) {
+      const labelsSlice = this.props.tags.labels.slice();
+      const head = [];
+      const tail = [];
+
+      while (labelsSlice.length) {
+        const label = labelsSlice.shift();
+        if (this.props.tags.labelsInUse.includes(label.value)) {
+          head.push(label);
+        } else {
+          tail.push(label);
+        }
+      }
+      labels.push(...head, ...tail);
+    } else {
+      labels.push(...(this.props.tags.labels || []));
+    }
+
+    let escapedRegExp;
+
+    if (search) {
+      escapedRegExp = new RegExp(escapeRegExp(search), 'i');
+    }
+
     return (
-      <Dropdown item text="Filter by labels" closeOnChange={false}>
+      <Dropdown
+        item
+        search
+        scrolling
+        text="Filter by labels"
+        closeOnChange={false}
+        onSearchChange={(e, props) => {
+          this.setState({
+            search: props.searchQuery
+          });
+        }}
+      >
         <Dropdown.Menu>
-          {this.props.tags.labels.map(label => {
+          {labels.reduce((accum, label) => {
             const key = Identity.key(label);
             const active = this.props.tags.labelsInUse.includes(label.value);
+            const content = (
+              <Text>
+                {label.text}{' '}
+                <Text size="small" grey>
+                  ({label.count})
+                </Text>
+              </Text>
+            );
             const itemProps = {
+              'aria-label': `${label.count} scenarios labelled "${label.text}"`,
               ...label,
               active,
-              'aria-label': label.text
+              content
             };
-            return <Dropdown.Item {...itemProps} key={key} onClick={onClick} />;
-          })}
+
+            if (active) {
+              accum.push(
+                <Dropdown.Item {...itemProps} key={key} onClick={onClick} />
+              );
+            } else {
+              let shouldIncludeInDisplay = true;
+
+              if (
+                search &&
+                (!escapedRegExp.test(label.text) &&
+                  !escapedRegExp.test(label.value))
+              ) {
+                shouldIncludeInDisplay = false;
+              }
+
+              if (shouldIncludeInDisplay) {
+                accum.push(
+                  <Dropdown.Item {...itemProps} key={key} onClick={onClick} />
+                );
+              }
+            }
+            return accum;
+          }, [])}
         </Dropdown.Menu>
       </Dropdown>
     );

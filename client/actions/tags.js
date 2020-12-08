@@ -46,6 +46,26 @@ export let getLabels = () => async dispatch => {
   }
 };
 
+export let getLabelsByOccurrence = (direction = 'desc') => async dispatch => {
+  try {
+    const res = await (await fetch(
+      `/api/tags/labels/occurrence/${direction}`
+    )).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { labels } = res;
+
+    dispatch({ type: GET_LABELS_SUCCESS, labels });
+    return labels;
+  } catch (error) {
+    dispatch({ type: GET_LABELS_ERROR, error });
+    return null;
+  }
+};
+
 // This is intentionally NOT ASYNC
 export let setLabelsInUse = labelsInUse => dispatch => {
   try {

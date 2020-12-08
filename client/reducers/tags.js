@@ -21,10 +21,11 @@ export const labels = (state = [], action) => {
   const { labels, type } = action;
   switch (type) {
     case GET_LABELS_SUCCESS: {
-      return labels.map(({ id: key, name: value }) => ({
+      return labels.map(({ id: key, name: value, count = null }) => ({
         key,
         text: value,
-        value
+        value,
+        count
       }));
     }
     default:
@@ -34,6 +35,11 @@ export const labels = (state = [], action) => {
 
 export const labelsInUse = (state = [], action) => {
   const { labelsInUse, type } = action;
+
+  if (!labelsInUse) {
+    return state;
+  }
+
   switch (type) {
     case SET_LABELS_IN_USE_SUCCESS: {
       return [...labelsInUse];

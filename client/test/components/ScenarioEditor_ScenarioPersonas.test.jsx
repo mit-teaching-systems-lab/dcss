@@ -28,6 +28,8 @@ import * as tlr from '@testing-library/react';
 import {
   GET_PERSONA_SUCCESS,
   GET_PERSONAS_SUCCESS,
+  GET_SCENARIO_SUCCESS,
+  GET_USERS_SUCCESS,
   SET_PERSONA_SUCCESS,
   SET_SCENARIO
 } from '../../actions/types';

@@ -1026,7 +1026,10 @@ module.exports = {
   },
   tags: {
     categories: [],
-    labels: [{ id: 3, name: 'fun' }, { id: 5, name: 'Easy' }],
+    labels: [
+      { key: 3, text: 'fun', value: 'fun' },
+      { key: 5, text: 'Easy', value: 'Easy' }
+    ],
     labelsInUse: ['Easy']
   },
   user: {

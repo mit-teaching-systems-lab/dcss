@@ -24,7 +24,7 @@ import {
   getScenariosCount,
   getScenariosSlice
 } from '@actions/scenario';
-import { getLabels } from '@actions/tags';
+import { getLabelsByOccurrence } from '@actions/tags';
 import { setLabelsInUse } from '@actions/tags';
 import Boundary from '@components/Boundary';
 import Gate from '@components/Gate';
@@ -100,14 +100,14 @@ const qsOpts = {
 
 function makeQueryString(search) {
   const qs = {};
-  const { labels } = QueryString.parse(window.location.search, qsOpts);
+  const { l } = QueryString.parse(window.location.search, qsOpts);
 
   if (search) {
     qs.search = search;
   }
 
-  if (labels && labels.length) {
-    qs.labels = labels;
+  if (l && l.length) {
+    qs.l = l;
   }
 
   return `?${QueryString.stringify(qs, qsOpts)}`;
@@ -118,7 +118,7 @@ class ScenariosList extends Component {
     super(props);
 
     const { category, scenarios } = this.props;
-    const { search = '', labels = [] } = QueryString.parse(
+    const { search = '', l: labels = [] } = QueryString.parse(
       window.location.search,
       qsOpts
     );
@@ -148,9 +148,7 @@ class ScenariosList extends Component {
     const { search } = this.state;
     const count = await this.props.getScenariosCount();
 
-    if (!this.props.tags.labels.length) {
-      await this.props.getLabels();
-    }
+    await this.props.getLabelsByOccurrence();
 
     if (count === this.props.scenarios.length) {
       this.scenarios = this.props.scenarios;
@@ -292,8 +290,6 @@ class ScenariosList extends Component {
       onScenarioModalClose,
       onSearchChange
     } = this;
-    // const { labels = [] } = QueryString.parse(window.location.search, qsOpts);
-
     const { origin, pathname } = window.location;
 
     let sourceScenarios = filter(
@@ -468,7 +464,7 @@ class ScenariosList extends Component {
         <Popup
           inverted
           size="tiny"
-          content="Filter scenarios"
+          content="Filter scenarios by label"
           trigger={menuItemScenarioLabels}
         />
       </Menu.Menu>
@@ -550,7 +546,7 @@ ScenariosList.propTypes = {
     push: PropTypes.func.isRequired
   }).isRequired,
   category: PropTypes.string,
-  getLabels: PropTypes.func,
+  getLabelsByOccurrence: PropTypes.func,
   getScenariosCount: PropTypes.func,
   getScenariosSlice: PropTypes.func,
   isLoggedIn: PropTypes.bool.isRequired,
@@ -581,7 +577,7 @@ const mapDispatchToProps = dispatch => ({
   deleteScenario: id => dispatch(deleteScenario(id)),
   getScenariosCount: () => dispatch(getScenariosCount()),
   getScenariosSlice: (...params) => dispatch(getScenariosSlice(...params)),
-  getLabels: () => dispatch(getLabels()),
+  getLabelsByOccurrence: () => dispatch(getLabelsByOccurrence()),
   setLabelsInUse: params => dispatch(setLabelsInUse(params))
 });
 

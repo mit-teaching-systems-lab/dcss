@@ -43,6 +43,21 @@ async function getLabels() {
   return getTagByType(TYPES.LABEL);
 }
 
+async function getLabelsByOccurrence(direction = 'DESC') {
+  const result = await query(`
+    SELECT tag.id, tag.name, n.count
+    FROM tag
+    INNER JOIN labels ON tag.tag_type_id = labels.id
+    INNER JOIN (
+      SELECT tag_id, COUNT (tag_id) as count
+      FROM scenario_tag
+      GROUP BY tag_id
+    ) n ON tag.id = n.tag_id
+    ORDER BY n.count ${direction}
+  `);
+  return result.rows || [];
+}
+
 async function createTag(name, tag_type_id) {
   return await withClientTransaction(async client => {
     const exists = await client.query(sql`
@@ -70,4 +85,5 @@ exports.createTag = createTag;
 exports.getCategories = getCategories;
 exports.getTopics = getTopics;
 exports.getLabels = getLabels;
+exports.getLabelsByOccurrence = getLabelsByOccurrence;
 exports.getTags = getTags;

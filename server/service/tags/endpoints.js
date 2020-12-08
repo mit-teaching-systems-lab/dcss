@@ -16,6 +16,11 @@ async function getLabels(req, res) {
   res.json({ labels });
 }
 
+async function getLabelsByOccurrence(req, res) {
+  const labels = await db.getLabelsByOccurrence(req.params.direction);
+  res.json({ labels });
+}
+
 async function getTags(req, res) {
   const tags = await db.getTags();
   res.json({ tags });
@@ -32,4 +37,5 @@ exports.getCategories = asyncMiddleware(getCategories);
 exports.getTags = asyncMiddleware(getTags);
 exports.getTopics = asyncMiddleware(getTopics);
 exports.getLabels = asyncMiddleware(getLabels);
+exports.getLabelsByOccurrence = asyncMiddleware(getLabelsByOccurrence);
 exports.createTag = asyncMiddleware(createTag);
