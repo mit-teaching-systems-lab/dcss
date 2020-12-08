@@ -11,8 +11,15 @@ before_install:
 # before_script:
 #   - yarn db-init-local
 
-script:
-  # - yarn db-migrate-down -c 999999
-  # - yarn db-migrate-up
-  - yarn test
-  - yarn build
+jobs:
+  include:
+    - stage: Build
+      script:
+        - yarn build
+    - stage: Client test
+      script:
+        - yarn workspace client run test
+    - stage: Server test
+      script:
+        - yarn workspace server run ci:test
+        - yarn workspace test run test
