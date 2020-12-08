@@ -33,7 +33,10 @@ exports.getRuns = async function(user_id) {
   return result.rows;
 };
 
-exports.getRunByIdentifiers = async function(user_id, {scenario_id, cohort_id}) {
+exports.getRunByIdentifiers = async function(
+  user_id,
+  { scenario_id, cohort_id }
+) {
   let lookup = `
     SELECT * FROM run_view
     WHERE ended_at IS NULL
