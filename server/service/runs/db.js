@@ -33,22 +33,31 @@ exports.getRuns = async function(user_id) {
   return result.rows;
 };
 
-exports.getRunByScenarioAndUserId = async function(scenario_id, user_id) {
-  const result = await query(sql`
-        SELECT * FROM run
-        WHERE scenario_id=${scenario_id}
-        AND user_id=${user_id}
-        AND ended_at IS NULL;
-    `);
+exports.getRunByIdentifiers = async function(user_id, {scenario_id, cohort_id}) {
+  let lookup = `
+    SELECT * FROM run_view
+    WHERE ended_at IS NULL
+    AND user_id = ${user_id}
+    AND scenario_id = ${scenario_id}
+  `;
+
+  if (cohort_id) {
+    lookup += `AND cohort_id = ${cohort_id}`;
+  } else {
+    lookup += `AND cohort_id IS NULL`;
+  }
+
+  const result = await query(lookup);
+
   return result.rows[0];
 };
 
-exports.createRun = async function(scenario_id, user_id, consent_id) {
+exports.createRun = async function(user_id, scenario_id, consent_id) {
   const result = await query(sql`
-        INSERT INTO run (scenario_id, user_id, consent_id)
-        VALUES (${scenario_id}, ${user_id}, ${consent_id})
-        RETURNING *;
-    `);
+    INSERT INTO run (scenario_id, user_id, consent_id)
+    VALUES (${scenario_id}, ${user_id}, ${consent_id})
+    RETURNING *;
+  `);
   return result.rows[0];
 };
 
@@ -212,7 +221,7 @@ exports.finishRun = async function(id) {
   const result = await query(sql`
     UPDATE run
     SET ended_at = CURRENT_TIMESTAMP
-    WHERE id=${id}
+    WHERE id = ${id}
     RETURNING *;
   `);
   return result.rows[0];

@@ -1,19 +1,24 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
 const { runForRequest } = require('./middleware');
-const { getScenarioConsent, getScenarioPrompts } = require('../scenarios/db');
+const scenariosdb = require('../scenarios/db');
 
 async function newOrExistingRun(req, res) {
-  const { scenario_id } = req.params;
-  const { id: user_id } = req.session.user;
+  const scenario_id = Number(req.params.scenario_id);
+  const identifiers = {
+    scenario_id
+  };
 
-  // TODO: investigate using ON CONFLICT RETURN *
-  let run = await db.getRunByScenarioAndUserId(scenario_id, user_id);
+  if (req.params.cohort_id) {
+    identifiers.cohort_id = Number(req.params.cohort_id);
+  }
 
   try {
+    let run = await db.getRunByIdentifiers(req.session.user.id, identifiers);
+
     if (!run) {
-      const { id: consent_id } = await getScenarioConsent(scenario_id);
-      run = await db.createRun(scenario_id, user_id, consent_id);
+      const consent = await scenariosdb.getScenarioConsent(scenario_id);
+      run = await db.createRun(req.session.user.id, scenario_id, consent.id);
     }
     res.json({ run });
   } catch (error) {
@@ -92,7 +97,7 @@ async function getRunData(req, res) {
     for (const response of responses) {
       if (!prompts[response.scenario_id]) {
         prompts[response.scenario_id] = [
-          await getScenarioPrompts(response.scenario_id)
+          await scenariosdb.getScenarioPrompts(response.scenario_id)
         ];
       }
     }

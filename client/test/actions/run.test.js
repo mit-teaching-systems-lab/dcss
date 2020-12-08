@@ -41,26 +41,48 @@ afterEach(() => {
   Storage.delete.mockReset();
 });
 
-test('GET_RUN_SUCCESS', async () => {
+describe('GET_RUN_SUCCESS', () => {
   const run = { ...state.run };
 
-  fetchImplementation(fetch, 200, { run });
+  test('by scenario id', async () => {
+    fetchImplementation(fetch, 200, { run });
 
-  const returnValue = await store.dispatch(actions.getRun(1));
-  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "/api/runs/new-or-existing/scenario/1",
-      Object {
-        "headers": Object {
-          "Content-Type": "application/json",
+    const returnValue = await store.dispatch(actions.getRun(1));
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/runs/new-or-existing/scenario/1",
+        Object {
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "PUT",
         },
-        "method": "PUT",
-      },
-    ]
-  `);
-  assert.deepEqual(store.getState().runsById, makeById([run]));
-  assert.deepEqual(store.getState().run, run);
-  assert.deepEqual(returnValue, run);
+      ]
+    `);
+    assert.deepEqual(store.getState().runsById, makeById([run]));
+    assert.deepEqual(store.getState().run, run);
+    assert.deepEqual(returnValue, run);
+  });
+
+  test('by scenario id, by cohort id', async () => {
+    fetchImplementation(fetch, 200, { run });
+
+    const returnValue = await store.dispatch(actions.getRun(1, 2));
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/runs/new-or-existing/scenario/1/cohort/2",
+        Object {
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "PUT",
+        },
+      ]
+    `);
+    assert.deepEqual(store.getState().runsById, makeById([run]));
+    assert.deepEqual(store.getState().run, run);
+    assert.deepEqual(returnValue, run);
+  });
 });
 
 test('GET_RUN_ERROR', async () => {

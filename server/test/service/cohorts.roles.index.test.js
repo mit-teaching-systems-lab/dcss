@@ -138,19 +138,19 @@ const cohort = {
 
 const cohorts = [cohort];
 
-import * as amw from '../../service/auth/middleware';
+import * as authmw from '../../service/auth/middleware';
 jest.mock('../../service/auth/middleware', () => {
-  const amw = jest.requireActual('../../service/auth/middleware');
+  const authmw = jest.requireActual('../../service/auth/middleware');
   return {
-    ...amw,
+    ...authmw,
     requireUser: jest.fn()
   };
 });
-import * as adb from '../../service/auth/db';
+import * as authdb from '../../service/auth/db';
 jest.mock('../../service/auth/db', () => {
-  const adb = jest.requireActual('../../service/auth/db');
+  const authdb = jest.requireActual('../../service/auth/db');
   return {
-    ...adb,
+    ...authdb,
     getUserById: jest.fn()
   };
 });
@@ -204,11 +204,11 @@ jest.mock('../../service/runs/middleware', () => {
   };
 });
 
-import * as sdb from '../../service/scenarios/db';
+import * as scenariosdb from '../../service/scenarios/db';
 jest.mock('../../service/scenarios/db', () => {
-  const sdb = jest.requireActual('../../service/scenarios/db');
+  const scenariosdb = jest.requireActual('../../service/scenarios/db');
   return {
-    ...sdb,
+    ...scenariosdb,
     getScenarioPrompts: jest.fn()
   };
 });
@@ -219,8 +219,8 @@ describe('/api/cohorts/*', () => {
   });
 
   beforeEach(() => {
-    adb.getUserById.mockImplementation(async () => user);
-    amw.requireUser.mockImplementation((req, res, next) => {
+    authdb.getUserById.mockImplementation(async () => user);
+    authmw.requireUser.mockImplementation((req, res, next) => {
       req.session.user = user;
       next();
     });
@@ -254,7 +254,7 @@ describe('/api/cohorts/*', () => {
       };
     });
 
-    sdb.getScenarioPrompts.mockImplementation(async (name, user_id) => [
+    scenariosdb.getScenarioPrompts.mockImplementation(async (name, user_id) => [
       { id: 'x' },
       { id: 'y' },
       { id: 'z' }

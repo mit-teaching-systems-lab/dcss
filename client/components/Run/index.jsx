@@ -74,7 +74,7 @@ class Run extends Component {
       return;
     }
 
-    const run = await this.props.getRun(this.props.scenario.id);
+    const run = await this.props.getRun(this.props.scenario.id, cohortId);
 
     if (run) {
       if (cohortId) {
@@ -104,8 +104,6 @@ class Run extends Component {
       this.props.saveRunEvent(SCENARIO_ARRIVAL, {
         scenario: this.props.scenario
       });
-
-      this.props.socket.emit();
     }
 
     window.addEventListener('beforeunload', this.submitIfPendingResponses);
@@ -250,7 +248,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getResponse: params => dispatch(getResponse(params)),
   setResponses: (...params) => dispatch(setResponses(...params)),
-  getRun: params => dispatch(getRun(params)),
+  getRun: (...params) => dispatch(getRun(...params)),
   setRun: (...params) => dispatch(setRun(...params)),
   linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),
   linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),

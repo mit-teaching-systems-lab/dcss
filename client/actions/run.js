@@ -12,17 +12,13 @@ import {
   SET_RUN_ERROR
 } from './types';
 
-export let getRun = scenario_id => async dispatch => {
+export let getRun = (scenario_id, cohort_id) => async dispatch => {
   try {
-    const res = await (await fetch(
-      `/api/runs/new-or-existing/scenario/${scenario_id}`,
-      {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    )).json();
+    const url = cohort_id
+      ? `/api/runs/new-or-existing/scenario/${scenario_id}/cohort/${cohort_id}`
+      : `/api/runs/new-or-existing/scenario/${scenario_id}`;
+
+    const res = await (await fetch(url)).json();
 
     if (res.error) {
       throw res;
