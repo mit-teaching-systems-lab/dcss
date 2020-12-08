@@ -594,6 +594,84 @@ test('Multiple personas, assign a persona to a component', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
+        "title": "Slide 2",
+      },
+    ]
+  `);
+
+  done();
+});
+
+test('Multiple personas, toggle chat', async done => {
+  const Component = SlideEditor;
+
+  const props = {
+    ...commonProps,
+    scenario: {
+      ...scenario,
+      personas
+    },
+    slides,
+    index: 1,
+    promptToAddSlide: '',
+    noSlide: false,
+    onChange: jest.fn(),
+    onDelete: jest.fn(),
+    onDuplicate: jest.fn(),
+    ...slides[1]
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  const toggleChat = await screen.findByLabelText(
+    'Enable realtime chat on this slide'
+  );
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(toggleChat);
+  expect(asFragment()).toMatchSnapshot();
+
+  jest.advanceTimersByTime(1000);
+
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(props.onChange).toHaveBeenCalledTimes(1);
+  expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      1,
+      Object {
+        "components": Array [
+          Object {
+            "html": "<h1>Welcome to Slide 2</h1>",
+            "id": "33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
+            "type": "Text",
+          },
+          Object {
+            "header": "TextResponse-1",
+            "id": "33-aede9380-c7a3-4ef7-add7-838fd5ec854f",
+            "placeholder": "Your response",
+            "prompt": "",
+            "recallId": "",
+            "required": true,
+            "responseId": "33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
+            "timeout": 0,
+            "type": "TextResponse",
+          },
+          Object {
+            "html": "<p>?</p>",
+            "id": "33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
+            "type": "Text",
+          },
+        ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -721,6 +799,7 @@ test('Change title', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "A new slide title",
       },
     ]
@@ -787,6 +866,7 @@ test('Save', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -1783,6 +1863,7 @@ test('Move a component up', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -1851,6 +1932,7 @@ test('Move a component down', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -1918,6 +2000,7 @@ test('Delete a component from the beginning', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -1979,6 +2062,7 @@ test('Delete a component from the middle', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -2046,6 +2130,7 @@ test('Delete a component from the end', async done => {
             "type": "TextResponse",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -2110,6 +2195,7 @@ test('Toggle required on a prompt-response component', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]
@@ -2146,6 +2232,7 @@ test('Toggle required on a prompt-response component', async done => {
             "type": "Text",
           },
         ],
+        "has_chat_enabled": undefined,
         "title": "Slide 2",
       },
     ]

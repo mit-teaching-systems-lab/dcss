@@ -76,12 +76,7 @@ class ScenarioPersonas extends Component {
   }
 
   render() {
-    const {
-      createPersona,
-      linkPersonaToScenario,
-      personasById,
-      scenario
-    } = this.props;
+    const { createPersona, linkPersonaToScenario, scenario } = this.props;
     const {
       isReady,
       openPersonaConfirmation,
@@ -112,7 +107,11 @@ class ScenarioPersonas extends Component {
             {persona.description}
           </Table.Cell>
           <Table.Cell className="sp__td-5">
-            <ColorPicker.Accessible value={persona.color} disabled={true} />
+            <ColorPicker.Accessible
+              position="fixed"
+              value={persona.color}
+              disabled={true}
+            />
           </Table.Cell>
           <Table.Cell className="sp__td-5" {...textAlignProps}>
             <Dropdown

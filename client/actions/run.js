@@ -124,10 +124,6 @@ export let saveRunEvent = (run_id, name, data) => async dispatch => {
       throw res;
     }
 
-    // This nested block provides a new scope contour
-    // for the "event" binding creating on the next line.
-    // Without this, it would interfere with the parameter
-    // named "event"
     const { event } = res;
     dispatch({ type: SAVE_RUN_EVENT_SUCCESS, name, event });
     return event;

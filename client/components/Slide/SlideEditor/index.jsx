@@ -30,13 +30,10 @@ const getDraggableStyle = (isDragging, draggableStyle) => {
 };
 
 const MenuItemModeToggler = props => {
-  const { disabled, mode, onToggle, type } = props;
+  const { disabled, mode, onToggle } = props;
   const isPreviewMode = mode === 'preview';
-
   const iconProps = isPreviewMode ? { name: 'edit outline' } : { name: 'eye' };
-
   const ariaLabel = isPreviewMode ? 'Edit slide' : 'Preview slide';
-
   const onClick = () => {
     onToggle({
       mode: isPreviewMode ? 'edit' : 'preview'
@@ -63,10 +60,53 @@ MenuItemModeToggler.propTypes = {
   type: PropTypes.string
 };
 
+const MenuItemChatToggler = props => {
+  const {
+    disabled,
+    onToggle,
+    slide,
+    slide: { has_chat_enabled: isChatEnabled }
+  } = props;
+  const color = isChatEnabled ? 'black' : 'green';
+  const iconProps = {
+    name: 'chat',
+    color
+  };
+
+  const ariaLabel = `${
+    isChatEnabled ? 'Disable' : 'Enable'
+  } realtime chat on this slide`;
+  const onClick = () => {
+    onToggle({
+      slide: {
+        ...slide,
+        has_chat_enabled: !isChatEnabled
+      }
+    });
+  };
+
+  return !disabled ? (
+    <Menu.Item.Tabbable
+      key="menu-item-slide-mode-toggle"
+      aria-label={ariaLabel}
+      popup={ariaLabel}
+      onClick={onClick}
+    >
+      <Icon {...iconProps} />
+    </Menu.Item.Tabbable>
+  ) : null;
+};
+
+MenuItemChatToggler.propTypes = {
+  disabled: PropTypes.bool,
+  onToggle: PropTypes.func,
+  slide: PropTypes.object
+};
+
 export default class SlideEditor extends Component {
   constructor(props) {
     super(props);
-    const { title = '', components = [] } = props;
+    const { title = '', components = [], has_chat_enabled } = props;
 
     this.sessionKey = `slideeditor/${props.id}`;
 
@@ -83,9 +123,12 @@ export default class SlideEditor extends Component {
 
     this.state = {
       activeComponentIndex,
-      components,
       mode,
-      title
+      slide: {
+        components,
+        has_chat_enabled,
+        title
+      }
     };
 
     this.activateComponent = this.activateComponent.bind(this);
@@ -100,7 +143,7 @@ export default class SlideEditor extends Component {
     this.onComponentOrderChange = this.onComponentOrderChange.bind(this);
     this.onComponentSelectClick = this.onComponentSelectClick.bind(this);
 
-    this.onTitleChange = this.onTitleChange.bind(this);
+    this.onSlideChange = this.onSlideChange.bind(this);
   }
 
   async componentDidMount() {
@@ -115,10 +158,9 @@ export default class SlideEditor extends Component {
 
   updateSlide() {
     if (this.props.onChange) {
-      const { components, title } = this.state;
+      const { slide } = this.state;
       this.props.onChange(this.props.index, {
-        components,
-        title
+        ...slide
       });
     }
   }
@@ -128,10 +170,15 @@ export default class SlideEditor extends Component {
 
     /* istanbul ignore if */
     if (Array.isArray(value)) {
+      // eslint-disable-next-line no-console
+      console.log('TODO: determine when this path actually occurs.');
       updatedState = {
-        components: value
+        slide: {
+          components: value
+        }
       };
     }
+
     if (typeof value === 'number') {
       updatedState = {
         activeComponentIndex: value
@@ -153,23 +200,29 @@ export default class SlideEditor extends Component {
   }
 
   onComponentChange(index, value) {
-    const { components } = this.state;
+    const {
+      slide,
+      slide: { components }
+    } = this.state;
     /* istanbul ignore else */
     if (components[index]) {
       Object.assign(components[index], value);
-      this.setState({ components }, () => {
+      const update = {
+        slide: {
+          ...slide,
+          components
+        }
+      };
+      this.setState(update, () => {
         this.updateSlide();
-        // clearTimeout(this.debouncers[index]);
-        // this.debouncers[index] = setTimeout(() => {
-        //     this.updateSlide();
-        // }, 5000);
       });
     }
   }
 
   async onComponentDuplicate(index) {
-    const { components: sourceComponents } = this.state;
+    const { slide } = this.state;
     const id = uuid();
+    const sourceComponents = slide.components;
     const sourceComponent = sourceComponents[index];
     const copy = Object.assign({}, sourceComponent, { id });
 
@@ -186,24 +239,45 @@ export default class SlideEditor extends Component {
       }
     }
     const activeComponentIndex = index + 1;
+    const update = {
+      activeComponentIndex,
+      slide: {
+        ...slide,
+        components
+      }
+    };
 
-    this.activateComponent({ components, activeComponentIndex }, () => {
+    this.activateComponent(update, () => {
       this.updateSlide();
     });
   }
 
   onComponentOrderChange(fromIndex, activeComponentIndex) {
-    const { components } = this.state;
+    const {
+      slide,
+      slide: { components }
+    } = this.state;
     const moving = components[fromIndex];
     components.splice(fromIndex, 1);
     components.splice(activeComponentIndex, 0, moving);
-    this.activateComponent({ components, activeComponentIndex }, () => {
+    const update = {
+      activeComponentIndex,
+      slide: {
+        ...slide,
+        components
+      }
+    };
+
+    this.activateComponent(update, () => {
       this.updateSlide();
     });
   }
 
   onComponentDelete(index) {
-    const { components } = this.state;
+    const {
+      slide,
+      slide: { components }
+    } = this.state;
 
     components.splice(index, 1);
 
@@ -221,7 +295,16 @@ export default class SlideEditor extends Component {
       // The components was somewhere in between...
       activeComponentIndex = index - 1;
     }
-    this.activateComponent({ components, activeComponentIndex }, () => {
+
+    const update = {
+      activeComponentIndex,
+      slide: {
+        ...slide,
+        components
+      }
+    };
+
+    this.activateComponent(update, () => {
       this.updateSlide();
     });
   }
@@ -229,8 +312,8 @@ export default class SlideEditor extends Component {
   onComponentSelectClick(type) {
     const {
       activeComponentIndex: currentActiveComponentIndex,
-      components,
-      title
+      slide,
+      slide: { components, title }
     } = this.state;
 
     const activeComponentIndex = currentActiveComponentIndex + 1;
@@ -250,13 +333,28 @@ export default class SlideEditor extends Component {
     } else {
       components.splice(activeComponentIndex, 0, component);
     }
-    this.activateComponent({ components, activeComponentIndex }, () => {
+
+    const update = {
+      activeComponentIndex,
+      slide: {
+        ...slide,
+        components
+      }
+    };
+
+    this.activateComponent(update, () => {
       this.updateSlide();
     });
   }
 
-  onTitleChange(event, { name, value, id }) {
-    this.setState({ [name]: value });
+  onSlideChange(event, { name, value, id = Identity.id() }) {
+    const { slide } = this.state;
+    this.setState({
+      slide: {
+        ...slide,
+        [name]: value
+      }
+    });
     clearTimeout(this.debouncers[id]);
     this.debouncers[id] = setTimeout(() => {
       this.updateSlide();
@@ -272,12 +370,12 @@ export default class SlideEditor extends Component {
       onComponentOrderChange,
       onComponentDuplicate,
       onComponentSelectClick,
-      onTitleChange
+      onSlideChange
     } = this;
 
     const { noSlide, promptToAddSlide, scenario, slides } = this.props;
-    const { activeComponentIndex, components, mode, title } = this.state;
-    const noSlideComponents = components.length === 0;
+    const { activeComponentIndex, mode, slide } = this.state;
+    const noSlideComponents = slide.components.length === 0;
     const disabled = !!noSlide;
     const editorMenuItems = {
       left: [
@@ -295,8 +393,8 @@ export default class SlideEditor extends Component {
             disabled={disabled}
             name="title"
             placeholder="Slide title"
-            defaultValue={title}
-            onChange={onTitleChange}
+            defaultValue={slide.title}
+            onChange={onSlideChange}
           />
         </Menu.Item>
       ],
@@ -326,6 +424,17 @@ export default class SlideEditor extends Component {
           disabled={disabled || noSlideComponents}
           mode={mode}
           onToggle={state => this.setState(state)}
+        />,
+
+        <MenuItemChatToggler
+          key="menu-item-chat-toggler"
+          name="has_chat_enabled"
+          disabled={scenario.personas.length === 1}
+          slide={slide}
+          onToggle={state => {
+            this.setState(state);
+            this.updateSlide();
+          }}
         />
       ]
     };
@@ -384,7 +493,7 @@ export default class SlideEditor extends Component {
                         onChange={onComponentOrderChange}
                         type="component"
                       >
-                        {components.map((value, index) => {
+                        {slide.components.map((value, index) => {
                           const { type } = value;
                           if (!Components[type]) return;
 
@@ -450,6 +559,7 @@ export default class SlideEditor extends Component {
                               );
                             }
 
+                            // eslint-disable-next-line no-unused-vars
                             const ariaLabel =
                               'Select which persona sees this content. Leave unselected if this content is for all scenario participants.';
 
@@ -527,7 +637,7 @@ export default class SlideEditor extends Component {
                                 <Menu.Item.Tabbable
                                   icon="move"
                                   aria-label="Move component"
-                                  disabled={components.length <= 1}
+                                  disabled={slide.components.length <= 1}
                                 />
                                 <Menu.Item.Tabbable
                                   icon="caret up"
@@ -540,7 +650,9 @@ export default class SlideEditor extends Component {
                                 <Menu.Item.Tabbable
                                   icon="caret down"
                                   aria-label={`Move component ${description} down`}
-                                  disabled={index === components.length - 1}
+                                  disabled={
+                                    index === slide.components.length - 1
+                                  }
                                   onClick={() => {
                                     onComponentOrderChange(index, index + 1);
                                   }}
@@ -659,15 +771,17 @@ export default class SlideEditor extends Component {
 }
 
 SlideEditor.propTypes = {
-  scenario: PropTypes.object,
-  slides: PropTypes.array,
-  index: PropTypes.number,
-  id: PropTypes.number,
-  title: PropTypes.string,
   components: PropTypes.arrayOf(PropTypes.object),
+  has_chat_enabled: PropTypes.bool,
+  id: PropTypes.number,
+  index: PropTypes.number,
   noSlide: PropTypes.bool,
-  promptToAddSlide: PropTypes.node,
   onChange: PropTypes.func,
   onDelete: PropTypes.func,
-  onDuplicate: PropTypes.func
+  onDuplicate: PropTypes.func,
+  promptToAddSlide: PropTypes.node,
+  scenario: PropTypes.object,
+  slides: PropTypes.array,
+  title: PropTypes.string,
+  user: PropTypes.object
 };

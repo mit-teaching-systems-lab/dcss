@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Dropdown, Table } from '@components/UI';
@@ -61,7 +61,6 @@ class ScenarioPersonaSelect extends Component {
       item,
       personas,
       placeholder,
-      scenario,
       search,
       selection,
       value
@@ -109,6 +108,7 @@ ScenarioPersonaSelect.propTypes = {
   defaultValue: PropTypes.node,
   emptyText: PropTypes.string,
   fluid: PropTypes.bool,
+  item: PropTypes.any,
   onSelect: PropTypes.func,
   personas: PropTypes.array,
   placeholder: PropTypes.node,
