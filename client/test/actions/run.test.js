@@ -51,12 +51,6 @@ describe('GET_RUN_SUCCESS', () => {
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         "/api/runs/new-or-existing/scenario/1",
-        Object {
-          "headers": Object {
-            "Content-Type": "application/json",
-          },
-          "method": "PUT",
-        },
       ]
     `);
     assert.deepEqual(store.getState().runsById, makeById([run]));
@@ -71,12 +65,6 @@ describe('GET_RUN_SUCCESS', () => {
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         "/api/runs/new-or-existing/scenario/1/cohort/2",
-        Object {
-          "headers": Object {
-            "Content-Type": "application/json",
-          },
-          "method": "PUT",
-        },
       ]
     `);
     assert.deepEqual(store.getState().runsById, makeById([run]));
@@ -92,12 +80,6 @@ test('GET_RUN_ERROR', async () => {
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
       "/api/runs/new-or-existing/scenario/1",
-      Object {
-        "headers": Object {
-          "Content-Type": "application/json",
-        },
-        "method": "PUT",
-      },
     ]
   `);
   assert.deepEqual(store.getState().errors.run.error, error);
