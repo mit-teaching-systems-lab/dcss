@@ -28,6 +28,7 @@
     "lint": "eslint --ext js .",
     "prettier": "prettier --write '**/*.js'",
     "seed:super-admin": "node seed/super-admin.js",
+    "ci:test": "jest --bail=1 --coverage",
     "test": "yarn test:endpoints:setup; jest --bail=1 --coverage",
     "watch": "yarn test:endpoints:setup; jest --watchAll --bail=1 --coverage",
     "test:endpoints:setup": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test"
