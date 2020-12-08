@@ -6,8 +6,9 @@ const { Pool } = require('pg');
 const pgSession = require('connect-pg-simple')(session);
 
 const authRouter = require('./service/auth');
-const componentsRouter = require('./service/components');
+const chatsRouter = require('./service/chats');
 const cohortsRouter = require('./service/cohorts');
+const componentsRouter = require('./service/components');
 const historyRouter = require('./service/history');
 const logsRouter = require('./service/logs');
 const mediaRouter = require('./service/media');
@@ -46,8 +47,9 @@ app.use(
 app.use(logRequestAndResponse);
 
 app.use('/auth', authRouter);
-app.use('/components', componentsRouter);
+app.use('/chats', chatsRouter);
 app.use('/cohorts', cohortsRouter);
+app.use('/components', componentsRouter);
 app.use('/history', historyRouter);
 app.use('/logs', logsRouter);
 app.use('/media', mediaRouter);

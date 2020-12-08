@@ -1,4 +1,35 @@
 module.exports = {
+  chat: {
+    id: 1,
+    lobby_id: 1,
+    host_id: 2,
+    created_at: '2020-12-08T21:51:33.659Z',
+    updated_at: null,
+    deleted_at: null,
+    ended_at: null
+  },
+  chats: [
+    {
+      id: 1,
+      lobby_id: 1,
+      host_id: 2,
+      created_at: '2020-12-08T21:51:33.659Z',
+      updated_at: null,
+      deleted_at: null,
+      ended_at: null
+    }
+  ],
+  chatsById: {
+    '1': {
+      id: 1,
+      lobby_id: 1,
+      host_id: 2,
+      created_at: '2020-12-08T21:51:33.659Z',
+      updated_at: null,
+      deleted_at: null,
+      ended_at: null
+    }
+  },
   cohort: {
     id: 2,
     created_at: '2020-02-31T14:01:02.656Z',
