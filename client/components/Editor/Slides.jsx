@@ -310,7 +310,7 @@ class Slides extends React.Component {
       onSlideMinMaxChange,
       onSlideOrderChange
     } = this;
-    const { scenario } = this.props;
+    const { scenario, user } = this.props;
     const { activeSlideIndex, graphOpen, isReady, minimized } = this.state;
     const slides = this.state.slides.filter(slide => !slide.is_finish);
     const minMaxIcon = `window ${minimized ? 'maximize' : 'minimize'} outline`;
@@ -529,6 +529,8 @@ class Slides extends React.Component {
                 onDuplicate={onSlideDuplicate}
                 scenario={scenario}
                 slides={slides}
+                user={user}
+                /* TODO: migrate to slide={slide} */
                 {...slides[activeSlideIndex]}
               />
             ) : (
@@ -562,13 +564,15 @@ Slides.propTypes = {
   }),
   scenario: PropTypes.object,
   scenarioId: PropTypes.node,
-  setActiveSlide: PropTypes.func
+  setActiveSlide: PropTypes.func,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { scenario } = state;
+  const { scenario, user } = state;
   return {
-    scenario
+    scenario,
+    user
   };
 };
 

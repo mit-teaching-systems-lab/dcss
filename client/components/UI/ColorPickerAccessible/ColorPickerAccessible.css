@@ -13,9 +13,16 @@
 }
 
 .cpa__swatch-select-popup {
-  top: 1.6em;
-  position: absolute;
+  /*top: 1.6em;*/
+  /*position: relative;*/
+  margin-top: -2.4em;
   z-index: 9999999;
+}
+
+.cpa__swatch-select-popup-left {}
+
+.cpa__swatch-select-popup-right {
+  right: 23.5em;
 }
 
 .cpa__swatch-select-popup-background {
@@ -40,8 +47,11 @@
   transition: box-shadow .3s linear;
 }
 
-/*.cpa__swatch-select-button:focus,
-.cpa__swatch-select-button:hover {
-  box-shadow: 0px 0px 15px #fff;
+.cpa__swatch-select-panel {
+  background: #ffffff;
+  border: 0px solid rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+  padding: 1em 0.5em 0.5em 1em;
+  width: 315px;
 }
-*/

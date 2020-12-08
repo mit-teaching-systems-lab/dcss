@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
-import { Container, Form, Icon, Input, Menu, Table } from '@components/UI';
+import {
+  Container,
+  ColorPicker,
+  Form,
+  Icon,
+  Input,
+  Menu,
+  Table
+} from '@components/UI';
 import { type } from './meta';
 import EditorMenu from '@components/EditorMenu';
 import DataHeader from '@components/Slide/Components/DataHeader';
@@ -16,6 +24,7 @@ class MultiButtonResponseEditor extends React.Component {
     const {
       /*
       {
+          color: "#HHHHHH" | "colorname"
           display: "Text on button",
           value: "Value button represents"
       }
@@ -198,6 +207,7 @@ class MultiButtonResponseEditor extends React.Component {
                 <Table.HeaderCell className="mbr__thead-background" />
                 <Table.HeaderCell>Button display</Table.HeaderCell>
                 <Table.HeaderCell>Button value</Table.HeaderCell>
+                <Table.HeaderCell collapsing>Button color</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
@@ -210,9 +220,18 @@ class MultiButtonResponseEditor extends React.Component {
                 animation: 150
               }}
             >
-              {buttons.map(({ display, value }, index) => {
-                const onBlurOrFocus = preventEmptyButtonField.bind(this, index);
+              {buttons.map(({ color, display, value }, index) => {
                 const key = Identity.key({ id, index });
+                const onBlurOrFocus = preventEmptyButtonField.bind(this, index);
+                const colorPickerProps = {
+                  direction: 'right',
+                  index,
+                  name: 'color',
+                  value: color,
+                  onChange: onButtonDetailChange,
+                  position: 'fixed'
+                };
+
                 return (
                   <Table.Row className="mbr__cursor-grab" key={`row-${key}`}>
                     <Table.Cell collapsing>
@@ -232,6 +251,7 @@ class MultiButtonResponseEditor extends React.Component {
                       <Input
                         fluid
                         name="display"
+                        aria-label={`Enter the display for button ${index + 1}`}
                         index={index}
                         key={`button-diplay-${key}`}
                         value={display}
@@ -244,6 +264,7 @@ class MultiButtonResponseEditor extends React.Component {
                       <Input
                         fluid
                         name="value"
+                        aria-label={`Enter the value of button ${index + 1}`}
                         index={index}
                         key={`button-value-${key}`}
                         value={value}
@@ -251,6 +272,9 @@ class MultiButtonResponseEditor extends React.Component {
                         onBlur={onBlurOrFocus}
                         onChange={onButtonDetailChange}
                       />
+                    </Table.Cell>
+                    <Table.Cell collapsing>
+                      <ColorPicker.Accessible {...colorPickerProps} />
                     </Table.Cell>
                   </Table.Row>
                 );
@@ -271,10 +295,11 @@ class MultiButtonResponseEditor extends React.Component {
             <Table.Footer fullWidth>
               <Table.Row>
                 <Table.HeaderCell />
-                <Table.HeaderCell colSpan="2">
+                <Table.HeaderCell colSpan="3">
                   <Menu floated="right" borderless>
                     <Menu.Item.Tabbable
                       icon
+                      aria-label="Add a button"
                       floated="right"
                       onClick={onButtonAddClick}
                     >

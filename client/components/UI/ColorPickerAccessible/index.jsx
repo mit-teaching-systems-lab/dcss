@@ -1,7 +1,7 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import Identity from '@utils/Identity';
-import { Button, Modal, Segment } from '@components/UI';
+import { Button, Modal, Ref } from '@components/UI';
 import './ColorPickerAccessible.css';
 
 const accessibleColorPalette = [
@@ -26,13 +26,14 @@ function isMouseClick(e) {
 }
 
 function ColorPicker(props) {
-  const { disabled, name: id, name, onChange } = props;
+  const { direction, disabled, index = -1, name, onChange, position } = props;
   const [open, setOpen] = useState(false);
   const [color, setColor] = useState(props.value);
   const [focusIndex, setFocusIndex] = useState(0);
+  const [buttonRef, setButtonRef] = useState(null);
   const [shouldTrackMouse, setShouldTrackMouse] = useState(false);
 
-  const onOpenOrCloseClick = e => {
+  const onTriggerClick = e => {
     if (!disabled) {
       e.persist();
       // Picker opened via mouse click.
@@ -60,62 +61,64 @@ function ColorPicker(props) {
     clearTimeout(timeout);
   };
 
-  const onFocus = index => {
-    setFocusIndex(index);
-  };
-
-  const onClick = (e, { value }) => {
+  const onSwatchClick = (e, { value }) => {
     setColor(value);
     onChange(
       {},
       {
+        index,
         name,
         value
       }
     );
-    onOpenOrCloseClick(e);
+    onTriggerClick(e);
   };
 
   const ariaLabel = disabled
-    ? `Select color is ${color}`
+    ? `Selected color is ${color}`
     : `Click to select a color`;
 
   const buttonProps = {
     'aria-label': ariaLabel,
-    id,
-    onClick: onOpenOrCloseClick,
+    onClick: onTriggerClick,
     style: {
       background: color
     },
     tabIndex: 0
   };
 
-  // TODO: move this into css
-  const pickerPanelStyle = {
-    background: '#ffffff',
-    border: '0px solid rgba(0, 0, 0, 0.25)',
-    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 1px 4px',
-    borderRadius: '4px',
-    padding: '1em 0.5em 0.5em 1em',
-    width: '315px'
+  let swatchSelectPopupClassName = 'cpa__swatch-select-popup';
+
+  if (direction) {
+    swatchSelectPopupClassName += ` cpa__swatch-select-popup-${direction}`;
+  }
+
+  const swatchSelectPopupStyle = {
+    position
   };
+
+  if (position === 'fixed' && buttonRef) {
+    const boundingRect = buttonRef.getBoundingClientRect();
+    swatchSelectPopupStyle.top = `${boundingRect.top + boundingRect.height}px`;
+  }
 
   return (
     <Fragment>
-      <button
-        className="cpa__swatch-button"
-        role="button"
-        {...buttonProps}
-      ></button>
+      <Ref innerRef={setButtonRef}>
+        <button className="cpa__swatch-button" role="button" {...buttonProps} />
+      </Ref>
       {open ? (
-        <div className="cpa__swatch-select-popup">
+        <div
+          className={swatchSelectPopupClassName}
+          style={swatchSelectPopupStyle}
+        >
           <div
             className="cpa__swatch-select-popup-background"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
           />
           <Modal.Accessible open={open}>
-            <div style={pickerPanelStyle}>
+            <div className="cpa__swatch-select-panel">
               {accessibleColorPalette.map((background, index) => {
                 const key = Identity.key({ background });
                 let style = {
@@ -129,18 +132,19 @@ function ColorPicker(props) {
                   };
                 }
 
-                const onButtonFocus = () => onFocus(index);
+                const onSwatchFocus = () => setFocusIndex(index);
                 return (
                   <Button
                     name="color"
+                    className="cpa__swatch-select-button"
                     tabIndex={0}
+                    index={index}
                     key={key}
                     value={background}
                     title={background}
-                    className="cpa__swatch-select-button"
                     style={style}
-                    onFocus={onButtonFocus}
-                    onClick={onClick}
+                    onFocus={onSwatchFocus}
+                    onClick={onSwatchClick}
                   />
                 );
               })}
@@ -154,9 +158,12 @@ function ColorPicker(props) {
 }
 
 ColorPicker.propTypes = {
+  direction: PropTypes.string,
   disabled: PropTypes.bool,
+  index: PropTypes.number,
   name: PropTypes.string,
   onChange: PropTypes.func,
+  position: PropTypes.string.isRequired,
   value: PropTypes.string
 };
 

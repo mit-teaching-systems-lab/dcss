@@ -72,7 +72,8 @@ test('Render 1 1', async done => {
   const props = {
     ...commonProps,
     color: '#000000',
-    disabled: true
+    disabled: true,
+    position: 'absolute'
   };
 
   const state = {
@@ -93,7 +94,8 @@ test('Render 2 1', async done => {
   const props = {
     ...commonProps,
     color: '#000000',
-    disabled: false
+    disabled: false,
+    position: 'absolute'
   };
 
   const state = {
@@ -114,7 +116,8 @@ test('Render 3 1', async done => {
   const props = {
     ...commonProps,
     color: '#FFFFFF',
-    disabled: true
+    disabled: true,
+    position: 'fixed'
   };
 
   const state = {
@@ -135,7 +138,8 @@ test('Render 4 1', async done => {
   const props = {
     ...commonProps,
     color: '#FFFFFF',
-    disabled: false
+    disabled: false,
+    position: 'fixed'
   };
 
   const state = {

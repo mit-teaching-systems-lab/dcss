@@ -138,7 +138,8 @@ class ScenarioPersonaEditor extends Component {
     const colorPickerProps = {
       name: 'color',
       value: persona.color,
-      onChange
+      onChange,
+      position: 'absolute'
     };
 
     return (

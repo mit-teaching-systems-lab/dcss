@@ -18,6 +18,9 @@ export const relativeLuminance = (r, g, b) => {
 };
 
 export const foregroundColor = (color, fallback = WHITE) => {
+  if (!color) {
+    return fallback;
+  }
   const hex = color.replace(/#/, '');
   const r = parseInt(hex.substr(0, 2), 16);
   const g = parseInt(hex.substr(2, 2), 16);

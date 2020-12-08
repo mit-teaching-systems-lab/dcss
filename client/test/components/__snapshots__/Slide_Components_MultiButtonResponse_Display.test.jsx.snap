@@ -1,9 +1,602 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `""`;
+exports[`Buttons empty 1`] = `<DocumentFragment />`;
 
-exports[`Render 2 1 1`] = `""`;
+exports[`Buttons undefined 1`] = `<DocumentFragment />`;
 
-exports[`Render 3 1 1`] = `""`;
+exports[`Click a button 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
 
-exports[`Render 4 1 1`] = `""`;
+exports[`Click a button 2`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This required prompt has been fulfilled."
+        class="ui green floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="check icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          <i
+            aria-hidden="true"
+            class="checkmark icon"
+          />
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Click a button, not in run 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui floating message"
+      style="white-space: pre-wrap; overflow-wrap: break-word;"
+    >
+      <div
+        class="content"
+      >
+        <p>
+          Participant response will appear here during scenario run.
+        </p>
+      </div>
+    </div>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Click a button, not in run 2`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui floating message"
+      style="white-space: pre-wrap; overflow-wrap: break-word;"
+    >
+      <div
+        class="content"
+      >
+        <p>
+          Participant response will appear here during scenario run.
+        </p>
+      </div>
+    </div>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No color 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No value stored 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Previous response value is checked 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This required prompt has been fulfilled."
+        class="ui green floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="check icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          <i
+            aria-hidden="true"
+            class="checkmark icon"
+          />
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Previously selected value is checked 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This required prompt has been fulfilled."
+        class="ui green floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="check icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          <i
+            aria-hidden="true"
+            class="checkmark icon"
+          />
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui floating message"
+      style="white-space: pre-wrap; overflow-wrap: break-word;"
+    >
+      <div
+        class="content"
+      >
+        <p>
+          Participant response will appear here during scenario run.
+        </p>
+      </div>
+    </div>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 2 1 1`] = `
+<DocumentFragment>
+  <div
+    class="ui segment"
+  >
+    <h3
+      class="ui header"
+      tabindex="0"
+    >
+      xyz-prompt 
+      <div
+        aria-label="This prompt requires a response."
+        class="ui red floating label prl__label-margin"
+      >
+        <i
+          aria-hidden="true"
+          class="asterisk icon prl__icon-margin"
+        />
+      </div>
+    </h3>
+    <div
+      class="ui list"
+      role="list"
+    >
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 255); color: rgb(0, 0, 0);"
+          value="Yes"
+        >
+          Yes
+        </button>
+      </div>
+      <div
+        class="item"
+        role="listitem"
+      >
+        <button
+          class="ui fluid button"
+          name="xyz-responseId"
+          style="background: rgb(255, 0, 0); color: rgb(0, 0, 0);"
+          value="No"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -205,7 +205,7 @@ exports[`Add an existing 1`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -456,7 +456,7 @@ exports[`Add an existing 2`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -707,7 +707,7 @@ exports[`Add an existing 3`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -958,7 +958,7 @@ exports[`Add an existing 4`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -1209,7 +1209,7 @@ exports[`Add an existing 5`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -1460,7 +1460,7 @@ exports[`Add an existing 6`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -1711,7 +1711,7 @@ exports[`Add an existing 7`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -1884,7 +1884,7 @@ exports[`Add an existing 8`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -1944,7 +1944,7 @@ exports[`Add an existing 8`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #3f59a9"
+            aria-label="Selected color is #3f59a9"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(63, 89, 169);"
@@ -2004,7 +2004,7 @@ exports[`Add an existing 8`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -2064,7 +2064,7 @@ exports[`Add an existing 8`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -2244,7 +2244,7 @@ exports[`Add an existing 9`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -2304,7 +2304,7 @@ exports[`Add an existing 9`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #3f59a9"
+            aria-label="Selected color is #3f59a9"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(63, 89, 169);"
@@ -2364,7 +2364,7 @@ exports[`Add an existing 9`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -2424,7 +2424,7 @@ exports[`Add an existing 9`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -2604,7 +2604,7 @@ exports[`Add an existing 10`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -2664,7 +2664,7 @@ exports[`Add an existing 10`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #3f59a9"
+            aria-label="Selected color is #3f59a9"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(63, 89, 169);"
@@ -2724,7 +2724,7 @@ exports[`Add an existing 10`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -2784,7 +2784,7 @@ exports[`Add an existing 10`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -2964,7 +2964,7 @@ exports[`Add an existing 11`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -3024,7 +3024,7 @@ exports[`Add an existing 11`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #3f59a9"
+            aria-label="Selected color is #3f59a9"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(63, 89, 169);"
@@ -3084,7 +3084,7 @@ exports[`Add an existing 11`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -3144,7 +3144,7 @@ exports[`Add an existing 11`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -3324,7 +3324,7 @@ exports[`Add an existing 12`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -3384,7 +3384,7 @@ exports[`Add an existing 12`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #3f59a9"
+            aria-label="Selected color is #3f59a9"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(63, 89, 169);"
@@ -3444,7 +3444,7 @@ exports[`Add an existing 12`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -3504,7 +3504,7 @@ exports[`Add an existing 12`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #e59235"
+            aria-label="Selected color is #e59235"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(229, 146, 53);"
@@ -3762,7 +3762,7 @@ exports[`Create a persona 1`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -4013,7 +4013,7 @@ exports[`Create a persona 2`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -4264,7 +4264,7 @@ exports[`Create a persona 3`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -4515,7 +4515,7 @@ exports[`Create a persona 4`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -4766,7 +4766,7 @@ exports[`Create a persona 5`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -5017,7 +5017,7 @@ exports[`Create a persona 6`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -5268,7 +5268,7 @@ exports[`Create a persona 7`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -5519,7 +5519,7 @@ exports[`Create a persona 8`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -5770,7 +5770,7 @@ exports[`No personas loaded 1`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"
@@ -6021,7 +6021,7 @@ exports[`Personas loaded 1`] = `
           class="sp__td-5"
         >
           <button
-            aria-label="Select color is #FFFFFF"
+            aria-label="Selected color is #FFFFFF"
             class="cpa__swatch-button"
             role="button"
             style="background: rgb(255, 255, 255);"

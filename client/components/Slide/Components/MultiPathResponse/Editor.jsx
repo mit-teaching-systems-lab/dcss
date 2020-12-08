@@ -4,6 +4,7 @@ import escapeRegExp from 'lodash.escaperegexp';
 import Identity from '@utils/Identity';
 import {
   Container,
+  ColorPicker,
   Dropdown,
   Form,
   Icon,
@@ -30,6 +31,7 @@ class MultiPathResponseEditor extends React.Component {
       header = '',
       /*
       {
+          color: "#HHHHHH" | "colorname" | #73b580 (default)
           display: "Text on button",
           id: Slide id,
       }
@@ -338,6 +340,7 @@ class MultiPathResponseEditor extends React.Component {
 
           <Form.TextArea
             label="Enter text content to display before the navigation buttons:"
+            aria-label="Enter text content to display before the navigation buttons:"
             name="prompt"
             value={prompt}
             onChange={onChange}
@@ -352,6 +355,7 @@ class MultiPathResponseEditor extends React.Component {
                 <Table.HeaderCell className="mpr__goto-slide-constraint">
                   Destination slide
                 </Table.HeaderCell>
+                <Table.HeaderCell collapsing>Button color</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
 
@@ -365,12 +369,26 @@ class MultiPathResponseEditor extends React.Component {
               }}
             >
               {paths.map((path, index) => {
-                const { display, value: defaultValue } = path;
+                const {
+                  color = '#73b580',
+                  display,
+                  value: defaultValue
+                } = path;
                 const onBlurOrFocus = preventEmptyButtonField.bind(
                   this,
                   index,
                   options
                 );
+
+                const colorPickerProps = {
+                  direction: 'right',
+                  index,
+                  name: 'color',
+                  value: color,
+                  onChange: onPathDetailChange,
+                  position: 'fixed'
+                };
+
                 const baseKey = Identity.key({ id, index });
                 const pathKey = Identity.key({ baseKey, path });
                 return (
@@ -380,7 +398,7 @@ class MultiPathResponseEditor extends React.Component {
                   >
                     <Table.Cell collapsing>
                       <EditorMenu
-                        type="path"
+                        type="choice"
                         items={{
                           save: {
                             onClick: () => updateState()
@@ -396,6 +414,7 @@ class MultiPathResponseEditor extends React.Component {
                         fluid
                         name="display"
                         autoComplete="off"
+                        aria-label={`Enter the display for choice ${index + 1}`}
                         index={index}
                         value={display}
                         onBlur={onBlurOrFocus}
@@ -411,6 +430,8 @@ class MultiPathResponseEditor extends React.Component {
                         fluid
                         selection
                         name="value"
+                        aria-label={`Select the destination slide for choice ${index +
+                          1}`}
                         index={index}
                         defaultValue={defaultValue}
                         onBlur={onBlurOrFocus}
@@ -420,6 +441,9 @@ class MultiPathResponseEditor extends React.Component {
                         options={options}
                         key={`path-node-${pathKey}`}
                       />
+                    </Table.Cell>
+                    <Table.Cell collapsing>
+                      <ColorPicker.Accessible {...colorPickerProps} />
                     </Table.Cell>
                   </Table.Row>
                 );
@@ -440,9 +464,13 @@ class MultiPathResponseEditor extends React.Component {
             <Table.Footer fullWidth>
               <Table.Row>
                 <Table.HeaderCell />
-                <Table.HeaderCell colSpan="2">
+                <Table.HeaderCell colSpan="3">
                   <Menu floated="right" borderless>
-                    <Menu.Item.Tabbable icon onClick={onViewGraphClick}>
+                    <Menu.Item.Tabbable
+                      icon
+                      aria-label="View slides sequence graph"
+                      onClick={onViewGraphClick}
+                    >
                       <Icon.Group
                         size="large"
                         className="em__icon-group-margin"
@@ -454,7 +482,11 @@ class MultiPathResponseEditor extends React.Component {
                       </Icon.Group>
                       View slides sequence graph
                     </Menu.Item.Tabbable>
-                    <Menu.Item.Tabbable icon onClick={onPathAddClick}>
+                    <Menu.Item.Tabbable
+                      icon
+                      aria-label="Add another slide choice"
+                      onClick={onPathAddClick}
+                    >
                       <Icon.Group
                         size="large"
                         className="em__icon-group-margin"

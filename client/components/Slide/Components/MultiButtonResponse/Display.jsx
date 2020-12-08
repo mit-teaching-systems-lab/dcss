@@ -7,6 +7,8 @@ import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display'
 import { connect } from 'react-redux';
 import { getResponse } from '@actions/response';
 import { BUTTON_PRESS } from '@hoc/withRunEventCapturing';
+import * as Color from '@utils/Color';
+import Identity from '@utils/Identity';
 
 class Display extends React.Component {
   constructor(props) {
@@ -31,18 +33,12 @@ class Display extends React.Component {
       return;
     }
 
-    let {
-      getResponse,
-      onResponseChange,
-      persisted = {},
-      responseId,
-      run
-    } = this.props;
+    let { persisted = {}, responseId, run } = this.props;
 
     let { name = responseId, value = '' } = persisted;
 
     if (!value && run.id) {
-      const previous = await getResponse({
+      const previous = await this.props.getResponse({
         id: run.id,
         responseId
       });
@@ -53,7 +49,7 @@ class Display extends React.Component {
     }
 
     if (value) {
-      onResponseChange({}, { name, value, isFulfilled: true });
+      this.props.onResponseChange({}, { name, value, isFulfilled: true });
       this.setState({ value });
     }
   }
@@ -61,10 +57,11 @@ class Display extends React.Component {
   onClick(event, { name, value, content }) {
     if (!this.isScenarioRun) {
       event.stopPropagation();
+      return false;
     }
 
     const { created_at } = this;
-    const { onResponseChange, recallId } = this.props;
+    const { recallId } = this.props;
 
     this.props.saveRunEvent(BUTTON_PRESS, {
       prompt: this.props.prompt,
@@ -73,7 +70,7 @@ class Display extends React.Component {
       value
     });
 
-    onResponseChange(event, {
+    this.props.onResponseChange(event, {
       content,
       created_at,
       ended_at: new Date().toISOString(),
@@ -104,21 +101,31 @@ class Display extends React.Component {
         </Header>
         {recallId && <ResponseRecall run={run} recallId={recallId} />}
         <List>
-          {buttons.map(({ display, value }, index) => {
+          {buttons.map(({ color, display, value }, index) => {
             const selectedIcon =
               previousValue === value ? { icon: 'checkmark' } : {};
 
+            const key = Identity.key({ color, display, value, index });
+
+            const buttonStyle = {
+              background: `${color}`,
+              color: `${Color.foregroundColor(color, '#000000')}`
+            };
+
+            const buttonProps = {
+              content: display,
+              fluid: true,
+              key,
+              name: responseId,
+              onClick,
+              style: color ? buttonStyle : null,
+              value,
+              ...selectedIcon
+            };
+
             return (
               <List.Item key={`list.item-${index}`}>
-                <Button
-                  fluid
-                  key={`button-${index}`}
-                  content={display}
-                  name={responseId}
-                  value={value}
-                  onClick={onClick}
-                  {...selectedIcon}
-                />
+                <Button {...buttonProps} />
               </List.Item>
             );
           })}

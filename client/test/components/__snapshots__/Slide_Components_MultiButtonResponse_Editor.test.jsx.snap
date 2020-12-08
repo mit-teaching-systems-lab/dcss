@@ -1,6 +1,2420 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `
+exports[`Add a button empty fields 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="negative"
+          >
+            <td
+              class=""
+              colspan="3"
+            >
+              This prompt is empty! Please create at least one button, otherwise this prompt will not appear in the slide.
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Add a button empty fields 2`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="negative"
+          >
+            <td
+              class=""
+              colspan="3"
+            >
+              This prompt is empty! Please create at least one button, otherwise this prompt will not appear in the slide.
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Add a button empty fields 3`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Add a button empty fields 5`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Add a button empty fields 7`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Add a button empty fields 10`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Buttons empty 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="negative"
+          >
+            <td
+              class=""
+              colspan="3"
+            >
+              This prompt is empty! Please create at least one button, otherwise this prompt will not appear in the slide.
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Delete single button 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Delete single button 2`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Delete single button 3`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Delete single button 4`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Delete single button 5`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Missing props 1`] = `
 <DocumentFragment>
   <form
     class="ui form"
@@ -41,6 +2455,11 @@ exports[`Render 1 1 1`] = `
             >
               Button value
             </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
           </tr>
         </thead>
         <tbody
@@ -68,12 +2487,13 @@ exports[`Render 1 1 1`] = `
             />
             <th
               class=""
-              colspan="2"
+              colspan="3"
             >
               <div
                 class="ui borderless right floated menu"
               >
                 <a
+                  aria-label="Add a button"
                   class="icon item"
                   floated="right"
                   tabindex="0"
@@ -117,6 +2537,2158 @@ exports[`Render 1 1 1`] = `
                 required=""
                 type="text"
                 value=""
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Prevent empty fields 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="negative"
+          >
+            <td
+              class=""
+              colspan="3"
+            >
+              This prompt is empty! Please create at least one button, otherwise this prompt will not appear in the slide.
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Prevent empty fields 2`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="negative"
+          >
+            <td
+              class=""
+              colspan="3"
+            >
+              This prompt is empty! Please create at least one button, otherwise this prompt will not appear in the slide.
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Prevent empty fields 3`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Prevent empty fields 5`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value=""
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Prevent empty fields 7`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Prevent empty fields 10`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Save single button 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Save single button 2`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`Save single button 3`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="field"
+      >
+        <label>
+          Text to be displayed before buttons:
+        </label>
+        <textarea
+          name="prompt"
+          rows="3"
+        >
+          xyz-prompt
+        </textarea>
+      </div>
+      <table
+        class="ui definition striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class="mbr__thead-background"
+            />
+            <th
+              class=""
+            >
+              Button display
+            </th>
+            <th
+              class=""
+            >
+              Button value
+            </th>
+            <th
+              class="collapsing"
+            >
+              Button color
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the display for button 1"
+                  name="display"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="0"
+              >
+                <input
+                  aria-label="Enter the value of button 1"
+                  name="value"
+                  type="text"
+                  value="Yes"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 255);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+          <tr
+            class="mbr__cursor-grab"
+          >
+            <td
+              class="collapsing"
+            >
+              <div
+                class="ui borderless icon em__height menu"
+              >
+                <a
+                  aria-label="Save button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="save outline icon"
+                  />
+                </a>
+                <a
+                  aria-label="Delete this button"
+                  class="item"
+                  tabindex="0"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="trash alternate outline icon"
+                  />
+                </a>
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the display for button 2"
+                  name="display"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class=""
+            >
+              <div
+                class="ui fluid input"
+                index="1"
+              >
+                <input
+                  aria-label="Enter the value of button 2"
+                  name="value"
+                  type="text"
+                  value="No"
+                />
+              </div>
+            </td>
+            <td
+              class="collapsing"
+            >
+              <button
+                aria-label="Click to select a color"
+                class="cpa__swatch-button"
+                role="button"
+                style="background: rgb(255, 0, 0);"
+                tabindex="0"
+              />
+            </td>
+          </tr>
+        </tbody>
+        <tfoot
+          class="full-width"
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            />
+            <th
+              class=""
+              colspan="3"
+            >
+              <div
+                class="ui borderless right floated menu"
+              >
+                <a
+                  aria-label="Add a button"
+                  class="icon item"
+                  floated="right"
+                  tabindex="0"
+                >
+                  <i
+                    class="large icons em__icon-group-margin"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="hand pointer outline icon"
+                    />
+                    <i
+                      aria-hidden="true"
+                      class="green add top right corner icon"
+                    />
+                  </i>
+                  Add a button
+                </a>
+              </div>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
               />
             </div>
           </div>

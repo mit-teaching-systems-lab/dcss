@@ -7,6 +7,7 @@ import { Button, Header, List, Segment } from '@components/UI';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { getResponse } from '@actions/response';
 import { BUTTON_PRESS } from '@hoc/withRunEventCapturing';
+import * as Color from '@utils/Color';
 
 class Display extends Component {
   constructor(props) {
@@ -95,20 +96,31 @@ class Display extends Component {
 
         <List>
           {paths.map((path, index) => {
-            const { display, value } = path;
+            const { color = '#73b580', display, value } = path;
             // const selectedIcon =
             // previousValue === value ? { icon: 'checkmark' } : {};
             const key = Identity.key({ path, index });
+            const buttonStyle = {
+              background: `${color}`,
+              color: `${Color.foregroundColor(color, '#000000')}`
+            };
+
+            const buttonProps = {
+              content: display,
+              fluid: true,
+              name: responseId,
+              onClick,
+              style: color ? buttonStyle : null,
+              value
+            };
+
+            if (!value) {
+              return null;
+            }
+
             return (
               <List.Item key={`list-item-${key}`}>
-                <Button
-                  fluid
-                  color="green"
-                  content={display}
-                  name={responseId}
-                  value={value}
-                  onClick={onClick}
-                />
+                <Button {...buttonProps} />
               </List.Item>
             );
           })}
