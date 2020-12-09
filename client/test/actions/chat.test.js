@@ -168,7 +168,7 @@ describe('SET_CHAT_SUCCESS', () => {
         Array [
           "/api/chats/1",
           Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null,\\"name\\":\\"Fake Chat\\"}",
+            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -196,7 +196,7 @@ describe('SET_CHAT_ERROR', () => {
         Array [
           "/api/chats/1",
           Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null,\\"name\\":\\"Fake Chat\\"}",
+            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
             "headers": Object {
               "Content-Type": "application/json",
             },

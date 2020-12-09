@@ -34,7 +34,6 @@ Array [
       "host_id": 2,
       "id": 1,
       "lobby_id": 1,
-      "name": "Fake Chat",
       "updated_at": null,
     },
     "type": "GET_CHAT_SUCCESS",
@@ -52,7 +51,6 @@ Array [
       "host_id": 2,
       "id": 1,
       "lobby_id": 1,
-      "name": "Fake Chat",
       "updated_at": null,
     },
     "type": "GET_CHAT_SUCCESS",
@@ -142,25 +140,6 @@ Array [
       "host_id": 2,
       "id": 1,
       "lobby_id": 1,
-      "name": "Fake Chat",
-      "updated_at": null,
-    },
-    "type": "SET_CHAT_SUCCESS",
-  },
-]
-`;
-
-exports[`SET_CHAT_SUCCESS setChat Receives a chat, updates scenario 2`] = `
-Array [
-  Object {
-    "chat": Object {
-      "created_at": "2020-12-08T21:51:33.659Z",
-      "deleted_at": null,
-      "ended_at": null,
-      "host_id": 2,
-      "id": 1,
-      "lobby_id": 1,
-      "name": "Fake Chat",
       "updated_at": null,
     },
     "type": "SET_CHAT_SUCCESS",
