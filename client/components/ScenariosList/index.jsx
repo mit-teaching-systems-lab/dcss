@@ -4,11 +4,13 @@ import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import {
+  Button,
   Card,
   Container,
   Grid,
   Icon,
   Input,
+  List,
   Menu,
   Pagination,
   Popup,
@@ -34,6 +36,7 @@ import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
 import ScenarioLabelsFilter from './ScenarioLabelsFilter';
+import { Link } from 'react-router-dom';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -399,17 +402,19 @@ class ScenariosList extends Component {
         key="menu-item-scenario-create"
         requiredPermission="create_scenario"
       >
-        <Menu.Item.Tabbable
+        <Button
+          primary
+          as={Link}
+          to="/editor/new"
+          icon
+          labelPosition="left"
           name="Create a scenario"
           href="/editor/new"
           className="sc__hidden-on-mobile"
         >
-          <Icon.Group className="em__icon-group-margin">
-            <Icon name="newspaper outline" />
-            <Icon corner="top right" name="add" color="green" />
-          </Icon.Group>
+          <Icon name="add" />
           Create a Scenario
-        </Menu.Item.Tabbable>
+        </Button>
       </Gate>,
 
       menuItemScenarioLinkCopyLeft
@@ -507,10 +512,30 @@ class ScenariosList extends Component {
               Scenarios are authored collections of slides which guide a
               participant through a simulation.
             </p>
+            <Button primary as={Link} to="#" icon fluid labelPosition="left">
+              <Icon name="plus" />
+              Create a scenario
+            </Button>
+            <List>
+              <List.Item>
+                <List.Header as="a">My scenarios</List.Header>
+                <List.Description>Scenarios I’ve created</List.Description>
+              </List.Item>
+              <List.Item>
+                <List.Header as="a">Official</List.Header>
+                <List.Description>
+                  Scenarios made by the Teaching Systems Lab
+                </List.Description>
+              </List.Item>
+              <List.Item>
+                <List.Header as="a">Community</List.Header>
+                <List.Description>Scenarios made by others</List.Description>
+              </List.Item>
+            </List>
           </Grid.Column>
           <Grid.Column width={12}>
             <Title content={scenariosHeading} />
-            <EditorMenu type="scenarios" items={{ left, right }} />
+            <EditorMenu type="scenarios" items={{ right }} />
             <Container fluid>
               <Grid>
                 <Boundary top />

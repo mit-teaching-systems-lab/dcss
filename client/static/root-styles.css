@@ -2,6 +2,7 @@
   /*margin: 0.5em 0.5em 0 0.5em;*/
   margin: 0 0.5em 0 0.5em;
   height: 100vh;
+  --primary-color: #853d61;
 }
 
 .ui.form input:not([type]),
