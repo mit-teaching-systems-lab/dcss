@@ -43,7 +43,7 @@
     "lint:packages": "yarn workspaces run lint",
     "prettier": "prettier --write '**/*.{js,jsx,json,css}'",
     "postinstall": "node ./scripts/postinstall.js",
-    "test": "yarn workspace client run test; yarn workspace server run ci:test; yarn workspace test run test"
+    "test": "yarn workspace client run test; yarn workspace server run test; yarn workspace test run test"
   },
   "devDependencies": {
     "eslint": "^7.3.0",
