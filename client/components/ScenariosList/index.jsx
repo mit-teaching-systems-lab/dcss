@@ -355,7 +355,7 @@ class ScenariosList extends Component {
     } = Layout.computeItemsRowsPerPage({
       itemsColWidth: Layout.isForMobile() ? 320 : 320,
       itemsRowHeight: Layout.isForMobile() ? 200 : 243,
-      itemsPerRow: 4,
+      itemsPerRow: 3,
       defaultRowCount
     });
 
@@ -500,35 +500,49 @@ class ScenariosList extends Component {
     this.timeout = null;
     return (
       <Fragment>
-        <Title content={scenariosHeading} />
-        <EditorMenu type="scenarios" items={{ left, right }} />
-        <Container fluid>
-          <Grid>
-            <Boundary top />
-            <Grid.Row>
-              <Grid.Column stretched>
-                <Responsive
-                  onUpdate={() => {
-                    if (this.timeout) {
-                      clearTimeout(this.timeout);
-                    }
-                    this.timeout = setTimeout(() => this.forceUpdate(), 100);
-                  }}
-                >
-                  {!isReady ? <Loading {...loadingProps} /> : cardGroup}
-                </Responsive>
-              </Grid.Column>
-            </Grid.Row>
-            <Boundary bottom />
-            <Grid.Row>
-              <Grid.Column stretched>
-                {scenariosPages > 1 ? (
-                  <Pagination {...paginationProps} />
-                ) : null}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+        <Grid stackable columns={2}>
+          <Grid.Column width={4}>
+            <h1>Scenarios</h1>
+            <p>
+              Scenarios are authored collections of slides which guide a
+              participant through a simulation.
+            </p>
+          </Grid.Column>
+          <Grid.Column width={12}>
+            <Title content={scenariosHeading} />
+            <EditorMenu type="scenarios" items={{ left, right }} />
+            <Container fluid>
+              <Grid>
+                <Boundary top />
+                <Grid.Row>
+                  <Grid.Column stretched>
+                    <Responsive
+                      onUpdate={() => {
+                        if (this.timeout) {
+                          clearTimeout(this.timeout);
+                        }
+                        this.timeout = setTimeout(
+                          () => this.forceUpdate(),
+                          100
+                        );
+                      }}
+                    >
+                      {!isReady ? <Loading {...loadingProps} /> : cardGroup}
+                    </Responsive>
+                  </Grid.Column>
+                </Grid.Row>
+                <Boundary bottom />
+                <Grid.Row>
+                  <Grid.Column stretched>
+                    {scenariosPages > 1 ? (
+                      <Pagination {...paginationProps} />
+                    ) : null}
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            </Container>
+          </Grid.Column>
+        </Grid>
         {selected ? (
           <ScenarioDetailModal
             open={open}
