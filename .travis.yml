@@ -3,7 +3,13 @@ node_js:
   - 12
 
 env:
-  - DB_CONFIG=test
+  global:
+    - DB_CONFIG=test
+    - SENDGRID_API_KEY=xyz
+    - SESSION_SECRET=any
+    - SENDGRID_SENDER='teachermoments@mit.edu'
+    - MAILTRAP_USER=foo
+    - MAILTRAP_PASS=bar
 
 before_install:
   - export TZ=America/New_York
