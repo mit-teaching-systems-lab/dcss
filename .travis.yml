@@ -5,8 +5,8 @@ node_js:
 before_install:
 - export TZ=America/New_York
 
-# services:
-#   - postgresql
+services:
+  - postgresql
 
 # before_script:
 #   - yarn db-init-local
@@ -21,5 +21,5 @@ jobs:
         - yarn workspace client run test
     - stage: Server test
       script:
-        - yarn workspace server run ci:test
+        - yarn workspace server run test
         - yarn workspace test run test
