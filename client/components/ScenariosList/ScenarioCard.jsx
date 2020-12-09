@@ -8,6 +8,7 @@ import Gate from '@client/components/Gate';
 import DeletedCard from './DeletedCard';
 import Events from '@utils/Events';
 import Identity from '@utils/Identity';
+import TextTruncate from 'react-text-truncate';
 import ScenarioCardActions from './ScenarioCardActions';
 import ScenarioLabels from './ScenarioLabels';
 import './ScenariosList.css';
@@ -31,13 +32,15 @@ class ScenarioCard extends React.Component {
       originalScenario.deleted_at = null;
 
       // TODO: move to async action
-      await (await fetch(`/api/scenarios/${originalScenario.id}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(originalScenario)
-      })).json();
+      await (
+        await fetch(`/api/scenarios/${originalScenario.id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(originalScenario)
+        })
+      ).json();
 
       // Revive scenario by requesting restored record from server
       await this.props.getScenario(originalScenario.id);
@@ -95,7 +98,12 @@ class ScenarioCard extends React.Component {
           </Card.Header>
           <Card.Description id={ariaDescribedby}>
             <ScenarioLabels scenario={scenario} />
-            {description}
+            <TextTruncate
+              line={4}
+              element="p"
+              truncateText="…"
+              text={description}
+            />
           </Card.Description>
         </Card.Content>
         <Card.Content extra tabIndex="0">
@@ -127,8 +135,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ScenarioCard)
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioCard)
 );

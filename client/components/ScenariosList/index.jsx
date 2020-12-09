@@ -512,7 +512,15 @@ class ScenariosList extends Component {
               Scenarios are authored collections of slides which guide a
               participant through a simulation.
             </p>
-            <Button primary as={Link} to="#" icon fluid labelPosition="left">
+            <Button
+              className="sc__hidden-on-mobile"
+              primary
+              as={Link}
+              to="#"
+              icon
+              fluid
+              labelPosition="left"
+            >
               <Icon name="plus" />
               Create a scenario
             </Button>
