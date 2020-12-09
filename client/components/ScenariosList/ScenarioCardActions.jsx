@@ -41,8 +41,10 @@ class ScenarioCardActions extends Component {
     const className = 'sc__card-action-labels';
 
     return (
-      <Button.Group fluid>
+      <Fragment>
         <Button
+          basic
+          color="blue"
           tabIndex="0"
           aria-label="Run scenario"
           className="sc__button"
@@ -51,13 +53,15 @@ class ScenarioCardActions extends Component {
           as={Link}
           to={`/run/${scenario.id}/slide/${run.activeRunSlideIndex}`}
         >
-          <Icon name="play" />
+          <Icon name="play" color="blue" />
           <span className={className}>Run</span>
         </Button>
         {isLoggedIn && (
           <Fragment>
             <Gate isAuthorized={isAuthorizedToEdit}>
               <Button
+                basic
+                color="blue"
                 tabIndex="0"
                 size="tiny"
                 icon
@@ -66,12 +70,14 @@ class ScenarioCardActions extends Component {
                 aria-label="Edit scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon name="edit outline" />
+                <Icon name="edit outline" color="blue" />
                 <span className={className}>Edit</span>
               </Button>
             </Gate>
             <Gate isAuthorized={isAuthorizedToReview}>
               <Button
+                basic
+                color="blue"
                 tabIndex="0"
                 size="tiny"
                 icon
@@ -80,7 +86,7 @@ class ScenarioCardActions extends Component {
                 aria-label="Edit scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon className="book reader icon" />
+                <Icon className="book reader icon" color="blue" />
                 <span className={className}>Review</span>
               </Button>
             </Gate>
@@ -109,6 +115,8 @@ class ScenarioCardActions extends Component {
             */}
             <Gate requiredPermission="create_scenario">
               <Button
+                basic
+                color="blue"
                 tabIndex="0"
                 size="tiny"
                 icon
@@ -117,13 +125,13 @@ class ScenarioCardActions extends Component {
                 aria-label="Copy scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon name="copy outline" />
+                <Icon name="copy outline" color="blue" />
                 <span className={className}>Copy</span>
               </Button>
             </Gate>
           </Fragment>
         )}
-      </Button.Group>
+      </Fragment>
     );
   }
 }
@@ -149,8 +157,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ScenarioCardActions)
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioCardActions)
 );

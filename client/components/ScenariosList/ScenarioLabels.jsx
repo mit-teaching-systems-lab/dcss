@@ -53,7 +53,7 @@ class ScenarioLabels extends React.Component {
     const { deleted_at, labels } = scenario;
 
     return !deleted_at ? (
-      <p>
+      <div>
         {labels.map(value => {
           const key = Identity.key({ value, scenario });
           const labelProps = {
@@ -64,7 +64,7 @@ class ScenarioLabels extends React.Component {
           };
 
           if (labelsInUse.includes(value)) {
-            labelProps.color = 'green';
+            labelProps.color = 'blue';
           }
 
           return (
@@ -78,7 +78,7 @@ class ScenarioLabels extends React.Component {
             </Label>
           );
         })}
-      </p>
+      </div>
     ) : null;
   }
 }
@@ -105,8 +105,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ScenarioLabels)
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabels)
 );

@@ -194,3 +194,15 @@ td .ui.fluid.selection.dropdown > .text {
 button {
   cursor: pointer;
 }
+
+.ui.basic.button, .ui.basic.buttons .button {
+  border: 1px solid currentColor;
+}
+
+.ui.basic.button span, .ui.basic.buttons .button span {
+  color: #000;
+}
+
+.grid__main {
+  margin-top: 3rem !important;
+}

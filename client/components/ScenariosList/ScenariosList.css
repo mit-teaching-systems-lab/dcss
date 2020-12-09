@@ -59,6 +59,11 @@
   margin-top: auto;
 }
 
+.ui.card.sc .extra.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .ui.card>.content:after, .ui.cards>.card>.content:after {
   display: none !important;
 }

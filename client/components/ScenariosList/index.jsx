@@ -506,7 +506,7 @@ class ScenariosList extends Component {
     this.timeout = null;
     return (
       <Fragment>
-        <Grid stackable columns={2}>
+        <Grid className="grid__main" stackable columns={2}>
           <Grid.Column width={4}>
             <Header as="h1" size="medium">
               Scenarios
@@ -520,6 +520,7 @@ class ScenariosList extends Component {
               primary
               as={Link}
               to="#"
+              size="large"
               icon
               fluid
               labelPosition="left"
