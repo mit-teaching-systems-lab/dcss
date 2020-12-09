@@ -481,12 +481,12 @@ exports[`Add and remove a label 7`] = `
       class="search"
       tabindex="0"
       type="text"
-      value=""
+      value="a"
     />
     <div
       aria-atomic="true"
       aria-live="polite"
-      class="divider text"
+      class="divider text filtered"
       role="alert"
     >
       Filter by labels
@@ -514,42 +514,6 @@ exports[`Add and remove a label 7`] = `
             class="ui grey small text"
           >
             (10)
-          </span>
-        </span>
-      </div>
-      <div
-        aria-checked="false"
-        aria-label="30 scenarios labelled \\"c\\""
-        class="item"
-        count="30"
-        role="option"
-      >
-        <span
-          class="text"
-        >
-          c 
-          <span
-            class="ui grey small text"
-          >
-            (30)
-          </span>
-        </span>
-      </div>
-      <div
-        aria-checked="false"
-        aria-label="20 scenarios labelled \\"b\\""
-        class="item"
-        count="20"
-        role="option"
-      >
-        <span
-          class="text"
-        >
-          b 
-          <span
-            class="ui grey small text"
-          >
-            (20)
           </span>
         </span>
       </div>
@@ -571,12 +535,12 @@ exports[`Add and remove a label 8`] = `
       class="search"
       tabindex="0"
       type="text"
-      value=""
+      value="a"
     />
     <div
       aria-atomic="true"
       aria-live="polite"
-      class="divider text"
+      class="divider text filtered"
       role="alert"
     >
       Filter by labels
@@ -604,42 +568,6 @@ exports[`Add and remove a label 8`] = `
             class="ui grey small text"
           >
             (10)
-          </span>
-        </span>
-      </div>
-      <div
-        aria-checked="false"
-        aria-label="30 scenarios labelled \\"c\\""
-        class="item"
-        count="30"
-        role="option"
-      >
-        <span
-          class="text"
-        >
-          c 
-          <span
-            class="ui grey small text"
-          >
-            (30)
-          </span>
-        </span>
-      </div>
-      <div
-        aria-checked="false"
-        aria-label="20 scenarios labelled \\"b\\""
-        class="item"
-        count="20"
-        role="option"
-      >
-        <span
-          class="text"
-        >
-          b 
-          <span
-            class="ui grey small text"
-          >
-            (20)
           </span>
         </span>
       </div>

@@ -87,42 +87,7 @@ exports[`Render 1 1 1`] = `
           <div
             class="menu transition"
             role="listbox"
-          >
-            <div
-              aria-checked="true"
-              aria-label="undefined scenarios labelled \\"Easy\\""
-              class="active item"
-              role="option"
-            >
-              <span
-                class="text"
-              >
-                Easy 
-                <span
-                  class="ui grey small text"
-                >
-                  ()
-                </span>
-              </span>
-            </div>
-            <div
-              aria-checked="false"
-              aria-label="undefined scenarios labelled \\"fun\\""
-              class="item"
-              role="option"
-            >
-              <span
-                class="text"
-              >
-                fun 
-                <span
-                  class="ui grey small text"
-                >
-                  ()
-                </span>
-              </span>
-            </div>
-          </div>
+          />
         </div>
       </a>
     </div>
@@ -395,42 +360,7 @@ exports[`Render 2 1 1`] = `
           <div
             class="menu transition"
             role="listbox"
-          >
-            <div
-              aria-checked="true"
-              aria-label="undefined scenarios labelled \\"Easy\\""
-              class="active item"
-              role="option"
-            >
-              <span
-                class="text"
-              >
-                Easy 
-                <span
-                  class="ui grey small text"
-                >
-                  ()
-                </span>
-              </span>
-            </div>
-            <div
-              aria-checked="false"
-              aria-label="undefined scenarios labelled \\"fun\\""
-              class="item"
-              role="option"
-            >
-              <span
-                class="text"
-              >
-                fun 
-                <span
-                  class="ui grey small text"
-                >
-                  ()
-                </span>
-              </span>
-            </div>
-          </div>
+          />
         </div>
       </a>
     </div>

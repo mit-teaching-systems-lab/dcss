@@ -46,7 +46,7 @@ afterEach(() => {
 
 describe('GET_CHAT_SUCCESS', () => {
   describe('getChat', () => {
-    let chat = { ...state.chats[0], name: 'Fake Chat' };
+    let chat = { ...state.chats[0] };
 
     test('Receives a chat', async () => {
       fetchImplementation(fetch, 200, { chat });
@@ -65,7 +65,7 @@ describe('GET_CHAT_SUCCESS', () => {
   });
 
   describe('createChat', () => {
-    let chat = { ...state.chats[0], name: 'Fake Chat' };
+    let chat = { ...state.chats[0] };
 
     test('Receives a chat', async () => {
       fetchImplementation(fetch, 200, { chat });
@@ -102,7 +102,7 @@ describe('GET_CHAT_SUCCESS', () => {
 });
 
 describe('GET_CHAT_ERROR', () => {
-  let chat = { ...state.chats[0], name: 'Fake Chat' };
+  let chat = { ...state.chats[0] };
 
   describe('getChat', () => {
     test('Receives an error', async () => {
@@ -147,7 +147,7 @@ describe('GET_CHAT_ERROR', () => {
 });
 
 describe('SET_CHAT_SUCCESS', () => {
-  let chat = { ...state.chats[0], name: 'Fake Chat' };
+  let chat = { ...state.chats[0] };
 
   describe('setChat', () => {
     test('Empty params', async () => {
@@ -181,41 +181,11 @@ describe('SET_CHAT_SUCCESS', () => {
       await mockStore.dispatch(actions.setChat(1, chat));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
-
-    test('Receives a chat, updates scenario', async () => {
-      store = createPseudoRealStore({
-        ...original,
-        scenario: {
-          ...original.scenario,
-          chats: [...original.chats]
-        }
-      });
-
-      fetchImplementation(fetch, 200, { chat });
-      const returnValue = await store.dispatch(actions.setChat(1, chat));
-      expect(fetch.mock.calls.length).toBe(1);
-      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-        Array [
-          "/api/chats/1",
-          Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null,\\"name\\":\\"Fake Chat\\"}",
-            "headers": Object {
-              "Content-Type": "application/json",
-            },
-            "method": "PUT",
-          },
-        ]
-      `);
-      expect(returnValue).toEqual(chat);
-
-      await mockStore.dispatch(actions.setChat(1, chat));
-      expect(mockStore.getActions()).toMatchSnapshot();
-    });
   });
 });
 
 describe('SET_CHAT_ERROR', () => {
-  let chat = { ...state.chats[0], name: 'Fake Chat' };
+  let chat = { ...state.chats[0] };
 
   describe('setChat', () => {
     test('Receives an error', async () => {
@@ -304,7 +274,7 @@ describe('LINK_CHAT_TO_RUN_SUCCESS', () => {
           "/api/chats/link/1/run/2",
         ]
       `);
-      expect(returnValue).toMatchInlineSnapshot(`null`);
+      expect(returnValue).toMatchInlineSnapshot(`undefined`);
 
       await mockStore.dispatch(actions.linkChatToRun(1, 2));
       expect(mockStore.getActions()).toMatchSnapshot();

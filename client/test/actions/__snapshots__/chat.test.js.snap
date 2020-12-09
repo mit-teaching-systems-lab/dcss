@@ -116,10 +116,6 @@ Array [
     "chat": undefined,
     "type": "LINK_CHAT_TO_RUN_SUCCESS",
   },
-  Object {
-    "error": [ReferenceError: scenario is not defined],
-    "type": "LINK_CHAT_TO_RUN_ERROR",
-  },
 ]
 `;
 

@@ -26,6 +26,7 @@ import userEvent from '@testing-library/user-event';
 
 import {
   GET_COHORT_SUCCESS,
+  GET_LABELS_SUCCESS,
   GET_SCENARIOS_COUNT_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   GET_USER_SUCCESS,
