@@ -1,3 +1,13 @@
+export const chatInitialState = {
+  id: null,
+  lobby_id: null,
+  host_id: null,
+  created_at: null,
+  updated_at: null,
+  deleted_at: null,
+  ended_at: null
+};
+
 export const cohortInitialState = {
   id: null,
   created_at: '',

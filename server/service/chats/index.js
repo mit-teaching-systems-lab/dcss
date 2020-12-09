@@ -17,10 +17,7 @@ const {
 
 router.get('/', [requireUser, getChats]);
 
-router.post('/', [
-  requireUser,
-  createChat
-]);
+router.post('/', [requireUser, createChat]);
 
 router.get('/my', [requireUser, getChatsByUserId]);
 
@@ -30,15 +27,8 @@ router.get('/:id/messages', [requireUser, getChatMessagesByChatId]);
 
 router.get('/:id', [requireUser, getChatById]);
 
-router.put('/:id', [
-  requireUser,
-  validateRequestBody,
-  setChatById
-]);
+router.put('/:id', [requireUser, validateRequestBody, setChatById]);
 
-router.get('/link/:id/run/:run_id', [
-  requireUser,
-  linkChatToRun
-]);
+router.get('/link/:id/run/:run_id', [requireUser, linkChatToRun]);
 
 module.exports = router;

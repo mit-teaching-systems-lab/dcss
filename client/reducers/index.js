@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import { chat, chats, chatsById } from './chat';
 import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
 import { history } from './history';
@@ -15,6 +16,9 @@ import { user } from './user';
 import { users, usersById } from './users';
 
 export default combineReducers({
+  chat,
+  chats,
+  chatsById,
   cohort,
   cohorts,
   cohortsById,

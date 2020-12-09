@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GET_CHAT_ERROR createChat Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_CHAT_ERROR",
+  },
+]
+`;
+
+exports[`GET_CHAT_ERROR getChat Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_CHAT_ERROR",
+  },
+]
+`;
+
+exports[`GET_CHAT_SUCCESS createChat Empty params 1`] = `Array []`;
+
+exports[`GET_CHAT_SUCCESS createChat Receives a chat 2`] = `
+Array [
+  Object {
+    "chat": Object {
+      "created_at": "2020-12-08T21:51:33.659Z",
+      "deleted_at": null,
+      "ended_at": null,
+      "host_id": 2,
+      "id": 1,
+      "lobby_id": 1,
+      "name": "Fake Chat",
+      "updated_at": null,
+    },
+    "type": "GET_CHAT_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_CHAT_SUCCESS getChat Receives a chat 2`] = `
+Array [
+  Object {
+    "chat": Object {
+      "created_at": "2020-12-08T21:51:33.659Z",
+      "deleted_at": null,
+      "ended_at": null,
+      "host_id": 2,
+      "id": 1,
+      "lobby_id": 1,
+      "name": "Fake Chat",
+      "updated_at": null,
+    },
+    "type": "GET_CHAT_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_CHATS_ERROR getChats Receives error 1`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_CHATS_ERROR",
+  },
+]
+`;
+
+exports[`GET_CHATS_SUCCESS getChats Receives chats 2`] = `
+Array [
+  Object {
+    "chats": Array [
+      Object {
+        "created_at": "2020-12-08T21:51:33.659Z",
+        "deleted_at": null,
+        "ended_at": null,
+        "host_id": 2,
+        "id": 1,
+        "lobby_id": 1,
+        "updated_at": null,
+      },
+    ],
+    "type": "GET_CHATS_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_CHATS_SUCCESS getChats Receives undefined 3`] = `
+Array [
+  Object {
+    "chats": Array [],
+    "type": "GET_CHATS_SUCCESS",
+  },
+]
+`;
+
+exports[`LINK_CHAT_TO_RUN_ERROR linkChatToRun Receives error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "LINK_CHAT_TO_RUN_ERROR",
+  },
+]
+`;
+
+exports[`LINK_CHAT_TO_RUN_SUCCESS linkChatToRun Receives chats for scenario 3`] = `
+Array [
+  Object {
+    "chat": undefined,
+    "type": "LINK_CHAT_TO_RUN_SUCCESS",
+  },
+  Object {
+    "error": [ReferenceError: scenario is not defined],
+    "type": "LINK_CHAT_TO_RUN_ERROR",
+  },
+]
+`;
+
+exports[`SET_CHAT_ERROR setChat Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "SET_CHAT_ERROR",
+  },
+]
+`;
+
+exports[`SET_CHAT_SUCCESS setChat Empty params 1`] = `Array []`;
+
+exports[`SET_CHAT_SUCCESS setChat Receives a chat 2`] = `
+Array [
+  Object {
+    "chat": Object {
+      "created_at": "2020-12-08T21:51:33.659Z",
+      "deleted_at": null,
+      "ended_at": null,
+      "host_id": 2,
+      "id": 1,
+      "lobby_id": 1,
+      "name": "Fake Chat",
+      "updated_at": null,
+    },
+    "type": "SET_CHAT_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_CHAT_SUCCESS setChat Receives a chat, updates scenario 2`] = `
+Array [
+  Object {
+    "chat": Object {
+      "created_at": "2020-12-08T21:51:33.659Z",
+      "deleted_at": null,
+      "ended_at": null,
+      "host_id": 2,
+      "id": 1,
+      "lobby_id": 1,
+      "name": "Fake Chat",
+      "updated_at": null,
+    },
+    "type": "SET_CHAT_SUCCESS",
+  },
+]
+`;

@@ -16,17 +16,12 @@ async function createChat(req, res) {
   const { lobby_id } = req.body;
 
   if (!host_id || !lobby_id) {
-    const error = new Error(
-      'Creating a chat requires a host and lobby.'
-    );
+    const error = new Error('Creating a chat requires a host and lobby.');
     error.status = 422;
     throw error;
   }
 
-  const chat = await db.createChat(
-    host_id,
-    lobby_id
-  );
+  const chat = await db.createChat(host_id, lobby_id);
 
   if (!chat) {
     const error = new Error('Chat could not be created.');
@@ -66,9 +61,7 @@ async function getChatMessagesByChatId(req, res) {
 
 async function setChatById(req, res) {
   const id = Number(req.params.id);
-  const {
-    deleted_at = null,
-  } = req.body;
+  const { deleted_at = null } = req.body;
 
   const updates = {};
 
