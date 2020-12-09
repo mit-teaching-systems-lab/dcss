@@ -36,12 +36,31 @@
   /*white-space: nowrap !important;*/
   overflow-wrap: anywhere !important;
 }
+
+.ui.card.sc .content {
+  display: flex;
+  flex-direction: column;
+
+  > * + * {
+    margin-top: 1rem;
+  }
+}
+
+.ui.card.sc .header {
+  font-size: 1.5rem !important;
+}
+
 .ui.card.sc .description {
-  /*4rem !important;*/
-  /*max-height: 10rem !important;*/
-  height: 8rem !important;
-  max-height: 8rem !important;
+  font-size: 1.1rem;
   overflow-y: auto !important;
+}
+
+.ui.card.sc .meta {
+  margin-top: auto;
+}
+
+.ui.card>.content:after, .ui.cards>.card>.content:after {
+  display: none !important;
 }
 
 .ui.card.sc a {

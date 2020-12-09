@@ -8,6 +8,7 @@ import {
   Card,
   Container,
   Grid,
+  Header,
   Icon,
   Input,
   List,
@@ -507,7 +508,9 @@ class ScenariosList extends Component {
       <Fragment>
         <Grid stackable columns={2}>
           <Grid.Column width={4}>
-            <h1>Scenarios</h1>
+            <Header as="h1" size="medium">
+              Scenarios
+            </Header>
             <p>
               Scenarios are authored collections of slides which guide a
               participant through a simulation.
@@ -629,8 +632,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ScenariosList)
+  connect(mapStateToProps, mapDispatchToProps)(ScenariosList)
 );

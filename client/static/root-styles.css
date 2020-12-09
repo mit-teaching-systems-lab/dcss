@@ -190,3 +190,7 @@ td .ui.fluid.selection.dropdown > .text {
     margin-top: 0rem !important;
   }
 }
+
+button {
+  cursor: pointer;
+}

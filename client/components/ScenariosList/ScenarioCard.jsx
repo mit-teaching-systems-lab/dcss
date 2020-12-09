@@ -89,6 +89,7 @@ class ScenarioCard extends React.Component {
       >
         <Card.Content>
           <Card.Header
+            as="p"
             tabIndex="0"
             className="sc sc__cursor-pointer"
             id={ariaLabelledby}
@@ -97,14 +98,17 @@ class ScenarioCard extends React.Component {
             {officialCheckmark} {title}
           </Card.Header>
           <Card.Description id={ariaDescribedby}>
-            <ScenarioLabels scenario={scenario} />
             <TextTruncate
-              line={4}
+              line={3}
               element="p"
               truncateText="…"
               text={description}
             />
           </Card.Description>
+          <Card.Meta>
+            <p>Last edited on Nov. 9, 2020</p>
+            <ScenarioLabels scenario={scenario} />
+          </Card.Meta>
         </Card.Content>
         <Card.Content extra tabIndex="0">
           <ScenarioCardActions scenario={scenario} />
