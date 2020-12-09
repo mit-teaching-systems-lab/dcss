@@ -31,8 +31,8 @@ afterEach(() => {
 
 describe('run', () => {
   test('initial state', () => {
-    assert.deepEqual(reducer.run(undefined, {}), runInitialState);
-    assert.deepEqual(reducer.run(undefined, {}), runInitialState);
+    expect(reducer.run(undefined, {})).toEqual(runInitialState);
+    expect(reducer.run(undefined, {})).toEqual(runInitialState);
   });
 
   test('SET_RUN_SUCCESS', () => {
@@ -40,22 +40,22 @@ describe('run', () => {
       type: types.SET_RUN_SUCCESS,
       run
     };
-    assert.deepEqual(reducer.run(undefined, action), run);
-    assert.deepEqual(reducer.run(undefined, action), run);
+    expect(reducer.run(undefined, action)).toEqual(run);
+    expect(reducer.run(undefined, action)).toEqual(run);
   });
   test('GET_RUN_SUCCESS', () => {
     const action = {
       type: types.GET_RUN_SUCCESS,
       run
     };
-    assert.deepEqual(reducer.run(undefined, action), run);
-    assert.deepEqual(reducer.run(undefined, action), run);
+    expect(reducer.run(undefined, action)).toEqual(run);
+    expect(reducer.run(undefined, action)).toEqual(run);
   });
 });
 
 describe('runs', () => {
   test('initial state', () => {
-    assert.deepEqual(reducer.runs(undefined, {}), []);
+    expect(reducer.runs(undefined, {})).toEqual([]);
   });
 
   test('GET_RUNS_SUCCESS', () => {
@@ -63,8 +63,8 @@ describe('runs', () => {
       type: types.GET_RUNS_SUCCESS,
       runs
     };
-    assert.deepEqual(reducer.runs(undefined, action), runs);
-    assert.deepEqual(reducer.runs(undefined, action), runs);
+    expect(reducer.runs(undefined, action)).toEqual(runs);
+    expect(reducer.runs(undefined, action)).toEqual(runs);
   });
 
   test('GET_RUNS_SUCCESS dedupe', () => {
@@ -72,14 +72,14 @@ describe('runs', () => {
       type: types.GET_RUNS_SUCCESS,
       runs: [...runs, ...runs, ...runs]
     };
-    assert.deepEqual(reducer.runs(undefined, action), runs);
-    assert.deepEqual(reducer.runs(undefined, action), runs);
+    expect(reducer.runs(undefined, action)).toEqual(runs);
+    expect(reducer.runs(undefined, action)).toEqual(runs);
   });
 });
 
 describe('runsById', () => {
   test('initial state', () => {
-    assert.deepEqual(reducer.runsById(undefined, {}), {});
+    expect(reducer.runsById(undefined, {})).toEqual({});
   });
 
   test('GET_RUNS_SUCCESS', () => {
@@ -87,15 +87,15 @@ describe('runsById', () => {
       type: types.GET_RUNS_SUCCESS,
       runs
     };
-    assert.deepEqual(reducer.runsById(undefined, action), runsById);
-    assert.deepEqual(reducer.runsById(undefined, action), runsById);
+    expect(reducer.runsById(undefined, action)).toEqual(runsById);
+    expect(reducer.runsById(undefined, action)).toEqual(runsById);
   });
   test('GET_RUNS_SUCCESS dedupe', () => {
     const action = {
       type: types.GET_RUNS_SUCCESS,
       runs: [...runs, ...runs, ...runs]
     };
-    assert.deepEqual(reducer.runsById(undefined, action), runsById);
-    assert.deepEqual(reducer.runsById(undefined, action), runsById);
+    expect(reducer.runsById(undefined, action)).toEqual(runsById);
+    expect(reducer.runsById(undefined, action)).toEqual(runsById);
   });
 });

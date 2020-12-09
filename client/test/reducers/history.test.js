@@ -23,8 +23,8 @@ describe('history', () => {
   });
 
   test('initial state', () => {
-    assert.deepEqual(reducer.history(undefined, {}), historyInitialState);
-    assert.deepEqual(reducer.history(undefined, {}), historyInitialState);
+    expect(reducer.history(undefined, {})).toEqual(historyInitialState);
+    expect(reducer.history(undefined, {})).toEqual(historyInitialState);
   });
 
   test('GET_RUN_HISTORY_SUCCESS', () => {
@@ -32,8 +32,8 @@ describe('history', () => {
       type: types.GET_RUN_HISTORY_SUCCESS,
       history
     };
-    assert.deepEqual(reducer.history(undefined, action), history);
-    assert.deepEqual(reducer.history(undefined, action), history);
+    expect(reducer.history(undefined, action)).toEqual(history);
+    expect(reducer.history(undefined, action)).toEqual(history);
   });
 
   test('GET_RUN_HISTORY_SUCCESS', () => {
@@ -41,7 +41,7 @@ describe('history', () => {
       type: types.GET_RUN_HISTORY_SUCCESS,
       history
     };
-    assert.deepEqual(reducer.history(state, action), history);
-    assert.deepEqual(reducer.history(state, action), history);
+    expect(reducer.history(state, action)).toEqual(history);
+    expect(reducer.history(state, action)).toEqual(history);
   });
 });

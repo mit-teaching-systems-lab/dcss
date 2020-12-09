@@ -57,7 +57,7 @@ test('SET_SESSION_SUCCESS', async () => {
   };
 
   await store.dispatch(actions.setSession(session));
-  assert.deepEqual(store.getState().session, {
+  expect(store.getState().session).toEqual({
     isLoggedIn: true,
     ...session
   });
@@ -69,18 +69,18 @@ test('LOG_OUT', async () => {
   };
 
   await store.dispatch(actions.setSession(session));
-  assert.deepEqual(store.getState().session, {
+  expect(store.getState().session).toEqual({
     isLoggedIn: true,
     ...session
   });
   await store.dispatch(actions.logOut());
-  assert.equal(Storage.clear.mock.calls.length, 1);
-  assert.equal(fetch.mock.calls.length, 1);
-  assert.deepEqual(store.getState().session, {
+  expect(Storage.clear.mock.calls.length).toBe(1);
+  expect(fetch.mock.calls.length).toBe(1);
+  expect(store.getState().session).toEqual({
     isLoggedIn: false,
     permissions: []
   });
-  assert.deepEqual(store.getState().user, {
+  expect(store.getState().user).toEqual({
     username: null,
     personalname: null,
     email: null,
@@ -105,17 +105,17 @@ test('GET_SESSION_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { user });
 
   const returnValue = await store.dispatch(actions.getSession());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/session']);
-  assert.deepEqual(returnValue, user);
+  expect(fetch.mock.calls[0]).toEqual(['/api/auth/session']);
+  expect(returnValue).toEqual(user);
 });
 
 test('GET_SESSION_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getSession());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/auth/session']);
-  assert.deepEqual(store.getState().errors.session.error, error);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toEqual(['/api/auth/session']);
+  expect(store.getState().errors.session.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('GET_PERMISSIONS_SUCCESS', async () => {
@@ -124,17 +124,17 @@ test('GET_PERMISSIONS_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { permissions });
 
   const returnValue = await store.dispatch(actions.getPermissions());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/permission']);
-  assert.deepEqual(returnValue, permissions);
+  expect(fetch.mock.calls[0]).toEqual(['/api/roles/permission']);
+  expect(returnValue).toEqual(permissions);
 });
 
 test('GET_PERMISSIONS_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getPermissions());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/permission']);
-  assert.deepEqual(store.getState().errors.permission.error, error);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toEqual(['/api/roles/permission']);
+  expect(store.getState().errors.permission.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('LOG_IN', async () => {
@@ -148,7 +148,7 @@ test('LOG_IN', async () => {
   const returnValue = await store.dispatch(
     actions.logIn({ username, password })
   );
-  assert.deepEqual(fetch.mock.calls[0], [
+  expect(fetch.mock.calls[0]).toEqual([
     '/api/auth/login',
     {
       headers: { 'Content-Type': 'application/json' },
@@ -156,7 +156,7 @@ test('LOG_IN', async () => {
       body: '{"username":"foobar","password":"X"}'
     }
   ]);
-  assert.deepEqual(returnValue, { error, message });
+  expect(returnValue).toEqual({ error, message });
 });
 
 test('LOG_IN error', async () => {
@@ -169,7 +169,7 @@ test('LOG_IN error', async () => {
   const returnValue = await store.dispatch(
     actions.logIn({ username, password })
   );
-  assert.deepEqual(fetch.mock.calls[0], [
+  expect(fetch.mock.calls[0]).toEqual([
     '/api/auth/login',
     {
       headers: { 'Content-Type': 'application/json' },
@@ -177,7 +177,7 @@ test('LOG_IN error', async () => {
       body: '{"username":"foobar","password":"X"}'
     }
   ]);
-  assert.deepEqual(returnValue, { error, message });
+  expect(returnValue).toEqual({ error, message });
 });
 
 test('LOG_IN error, 2', async () => {
@@ -197,8 +197,8 @@ test('LOG_IN error, 2', async () => {
   const returnValue = await store.dispatch(
     actions.logIn({ username, password })
   );
-  assert.deepEqual(fetch.mock.calls.length, 0);
-  assert.deepEqual(returnValue, {
+  expect(fetch.mock.calls.length).toEqual(0);
+  expect(returnValue).toEqual({
     error,
     message: 'Something happened during log in'
   });

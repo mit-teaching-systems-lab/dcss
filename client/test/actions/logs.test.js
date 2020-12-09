@@ -45,10 +45,10 @@ describe('GET_LOGS_SUCCESS', () => {
       const returnValue = await store.dispatch(actions.getLogs({}));
       const defaultRequestPath = `/api/logs/range/date/${min}/${max}/DESC`;
 
-      assert.deepEqual(fetch.mock.calls[0], [defaultRequestPath]);
-      assert.deepEqual(store.getState().logsById, makeById(logs));
-      assert.deepEqual(store.getState().logs, logs);
-      assert.deepEqual(returnValue, logs);
+      expect(fetch.mock.calls[0]).toEqual([defaultRequestPath]);
+      expect(store.getState().logsById).toEqual(makeById(logs));
+      expect(store.getState().logs).toEqual(logs);
+      expect(returnValue).toEqual(logs);
     });
   });
 
@@ -73,12 +73,12 @@ describe('GET_LOGS_SUCCESS', () => {
         })
       );
 
-      assert.deepEqual(fetch.mock.calls[0], [
+      expect(fetch.mock.calls[0]).toEqual([
         '/api/logs/range/date/2019-12-27/2020-01-01/DESC'
       ]);
-      assert.deepEqual(store.getState().logsById, makeById(logs));
-      assert.deepEqual(store.getState().logs, logs);
-      assert.deepEqual(returnValue, logs);
+      expect(store.getState().logsById).toEqual(makeById(logs));
+      expect(store.getState().logs).toEqual(logs);
+      expect(returnValue).toEqual(logs);
     });
 
     test('{direction: "ASC", queryBy: "date", min, max}', async () => {
@@ -94,12 +94,12 @@ describe('GET_LOGS_SUCCESS', () => {
         })
       );
 
-      assert.deepEqual(fetch.mock.calls[0], [
+      expect(fetch.mock.calls[0]).toEqual([
         '/api/logs/range/date/2019-12-27/2020-01-01/ASC'
       ]);
-      assert.deepEqual(store.getState().logsById, makeById(logs));
-      assert.deepEqual(store.getState().logs, logs);
-      assert.deepEqual(returnValue, logs);
+      expect(store.getState().logsById).toEqual(makeById(logs));
+      expect(store.getState().logs).toEqual(logs);
+      expect(returnValue).toEqual(logs);
     });
   });
 
@@ -122,12 +122,10 @@ describe('GET_LOGS_SUCCESS', () => {
         })
       );
 
-      assert.deepEqual(fetch.mock.calls[0], [
-        '/api/logs/range/count/1/10/DESC'
-      ]);
-      assert.deepEqual(store.getState().logsById, makeById(logs));
-      assert.deepEqual(store.getState().logs, logs);
-      assert.deepEqual(returnValue, logs);
+      expect(fetch.mock.calls[0]).toEqual(['/api/logs/range/count/1/10/DESC']);
+      expect(store.getState().logsById).toEqual(makeById(logs));
+      expect(store.getState().logs).toEqual(logs);
+      expect(returnValue).toEqual(logs);
     });
 
     test('{direction: "ASC", queryBy: "count", min, max}', async () => {
@@ -143,10 +141,10 @@ describe('GET_LOGS_SUCCESS', () => {
         })
       );
 
-      assert.deepEqual(fetch.mock.calls[0], ['/api/logs/range/count/1/10/ASC']);
-      assert.deepEqual(store.getState().logsById, makeById(logs));
-      assert.deepEqual(store.getState().logs, logs);
-      assert.deepEqual(returnValue, logs);
+      expect(fetch.mock.calls[0]).toEqual(['/api/logs/range/count/1/10/ASC']);
+      expect(store.getState().logsById).toEqual(makeById(logs));
+      expect(store.getState().logs).toEqual(logs);
+      expect(returnValue).toEqual(logs);
     });
   });
 });
@@ -168,7 +166,7 @@ test('GET_LOGS_ERROR', async () => {
     })
   );
 
-  assert.deepEqual(fetch.mock.calls[0], ['/api/logs/range/count/1/10/DESC']);
-  assert.deepEqual(store.getState().errors.logs.error, error);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toEqual(['/api/logs/range/count/1/10/DESC']);
+  expect(store.getState().errors.logs.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });

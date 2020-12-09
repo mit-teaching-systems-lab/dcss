@@ -38,8 +38,32 @@ afterEach(() => {
 
 describe('cohort', () => {
   test('initial state', () => {
-    assert.deepEqual(reducer.cohort(undefined, {}), cohortInitialState);
-    assert.deepEqual(reducer.cohort(undefined, {}), cohortInitialState);
+    expect(reducer.cohort(undefined, {})).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "",
+        "deleted_at": null,
+        "id": null,
+        "name": "",
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
+      }
+    `);
+    expect(reducer.cohort(undefined, {})).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "",
+        "deleted_at": null,
+        "id": null,
+        "name": "",
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
+      }
+    `);
   });
 
   test('CREATE_COHORT_SUCCESS', () => {
@@ -47,40 +71,440 @@ describe('cohort', () => {
       type: types.CREATE_COHORT_SUCCESS,
       cohort
     };
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
   });
   test('SET_COHORT_SUCCESS', () => {
     const action = {
       type: types.SET_COHORT_SUCCESS,
       cohort
     };
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
   });
   test('SET_COHORT_SCENARIOS_SUCCESS', () => {
     const action = {
       type: types.SET_COHORT_SCENARIOS_SUCCESS,
       cohort
     };
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
   });
   test('GET_COHORT_SUCCESS', () => {
     const action = {
       type: types.GET_COHORT_SUCCESS,
       cohort
     };
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
   });
   test('GET_COHORT_PARTICIPANTS_SUCCESS', () => {
     const action = {
       type: types.GET_COHORT_PARTICIPANTS_SUCCESS,
       cohort
     };
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
-    assert.deepEqual(reducer.cohort(undefined, action), cohort);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
+    expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      }
+    `);
   });
 
   describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
@@ -90,31 +514,119 @@ describe('cohort', () => {
         users,
         usersById
       };
-      const expect = {
-        ...cohortInitialState,
-        users,
-        usersById
-      };
-      assert.deepEqual(reducer.cohort(undefined, action), expect);
-      assert.deepEqual(reducer.cohort(undefined, action), expect);
+      expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+        Object {
+          "created_at": "",
+          "deleted_at": null,
+          "id": null,
+          "name": "",
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        }
+      `);
+      expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+        Object {
+          "created_at": "",
+          "deleted_at": null,
+          "id": null,
+          "name": "",
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        }
+      `);
     });
 
     test('without users', () => {
       const action = {
         type: types.SET_COHORT_USER_ROLE_SUCCESS
       };
-      const expect = {
-        ...cohortInitialState
-      };
-      assert.deepEqual(reducer.cohort(undefined, action), expect);
-      assert.deepEqual(reducer.cohort(undefined, action), expect);
+      expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+        Object {
+          "created_at": "",
+          "deleted_at": null,
+          "id": null,
+          "name": "",
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [],
+          "usersById": Object {},
+        }
+      `);
+      expect(reducer.cohort(undefined, action)).toMatchInlineSnapshot(`
+        Object {
+          "created_at": "",
+          "deleted_at": null,
+          "id": null,
+          "name": "",
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [],
+          "usersById": Object {},
+        }
+      `);
     });
   });
 });
 
 describe('cohorts', () => {
   test('initial state', () => {
-    assert.deepEqual(reducer.cohorts(undefined, {}), []);
+    expect(reducer.cohorts(undefined, {})).toMatchInlineSnapshot(`Array []`);
   });
 
   test('GET_COHORTS_SUCCESS', () => {
@@ -122,8 +634,92 @@ describe('cohorts', () => {
       type: types.GET_COHORTS_SUCCESS,
       cohorts
     };
-    assert.deepEqual(reducer.cohorts(undefined, action), cohorts);
-    assert.deepEqual(reducer.cohorts(undefined, action), cohorts);
+    expect(reducer.cohorts(undefined, action)).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      ]
+    `);
+    expect(reducer.cohorts(undefined, action)).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      ]
+    `);
   });
 
   test('GET_COHORTS_SUCCESS dedupe', () => {
@@ -132,14 +728,100 @@ describe('cohorts', () => {
       type: types.GET_COHORTS_SUCCESS,
       cohorts: [...cohorts, ...cohorts, ...cohorts]
     };
-    assert.deepEqual(reducer.cohorts(state, action), cohorts);
-    assert.deepEqual(reducer.cohorts(state, action), cohorts);
+    expect(reducer.cohorts(state, action)).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      ]
+    `);
+    expect(reducer.cohorts(state, action)).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      ]
+    `);
   });
 });
 
 describe('cohortsById', () => {
   test('initial state', () => {
-    assert.deepEqual(reducer.cohortsById(undefined, {}), {});
+    expect(reducer.cohortsById(undefined, {})).toMatchInlineSnapshot(
+      `Object {}`
+    );
   });
 
   test('GET_COHORTS_SUCCESS', () => {
@@ -147,8 +829,92 @@ describe('cohortsById', () => {
       type: types.GET_COHORTS_SUCCESS,
       cohorts
     };
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
-    assert.deepEqual(reducer.cohortsById(undefined, action), cohortsById);
+    expect(reducer.cohortsById(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "2": Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      }
+    `);
+    expect(reducer.cohortsById(undefined, action)).toMatchInlineSnapshot(`
+      Object {
+        "2": Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      }
+    `);
   });
   test('GET_COHORTS_SUCCESS dedupe', () => {
     const state = {
@@ -158,7 +924,91 @@ describe('cohortsById', () => {
       type: types.GET_COHORTS_SUCCESS,
       cohorts: [...cohorts, ...cohorts, ...cohorts]
     };
-    assert.deepEqual(reducer.cohortsById(state, action), cohortsById);
-    assert.deepEqual(reducer.cohortsById(state, action), cohortsById);
+    expect(reducer.cohortsById(state, action)).toMatchInlineSnapshot(`
+      Object {
+        "2": Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      }
+    `);
+    expect(reducer.cohortsById(state, action)).toMatchInlineSnapshot(`
+      Object {
+        "2": Object {
+          "created_at": "2020-02-31T14:01:02.656Z",
+          "deleted_at": null,
+          "id": 2,
+          "name": "A New Cohort That Exists In Bootstrap State For Testing",
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "runs": Array [],
+          "scenarios": Array [],
+          "updated_at": null,
+          "users": Array [
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          ],
+          "usersById": Object {
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "roles": Array [
+                "super",
+                "facilitator",
+              ],
+              "username": "super",
+            },
+          },
+        },
+      }
+    `);
   });
 });

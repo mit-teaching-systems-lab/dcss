@@ -46,8 +46,8 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, { users });
 
     await store.dispatch(actions.setUsers(users));
-    assert.deepEqual(store.getState().usersById, makeById(users));
-    assert.deepEqual(store.getState().users, users);
+    expect(store.getState().usersById).toEqual(makeById(users));
+    expect(store.getState().users).toEqual(users);
   });
   test('getUsers', async () => {
     const users = state.users.slice();
@@ -55,10 +55,10 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, { users });
 
     const returnValue = await store.dispatch(actions.getUsers());
-    assert.deepEqual(fetch.mock.calls[0], ['/api/roles/all']);
-    assert.deepEqual(store.getState().usersById, makeById(users));
-    assert.deepEqual(store.getState().users, users);
-    assert.deepEqual(returnValue, users);
+    expect(fetch.mock.calls[0]).toEqual(['/api/roles/all']);
+    expect(store.getState().usersById).toEqual(makeById(users));
+    expect(store.getState().users).toEqual(users);
+    expect(returnValue).toEqual(users);
   });
   test('getUsers, empty response', async () => {
     const users = state.users.slice();
@@ -66,10 +66,10 @@ describe('GET_USERS_SUCCESS', () => {
     fetchImplementation(fetch, 200, {});
 
     const returnValue = await store.dispatch(actions.getUsers());
-    assert.deepEqual(fetch.mock.calls[0], ['/api/roles/all']);
-    assert.deepEqual(store.getState().usersById, {});
-    assert.deepEqual(store.getState().users, []);
-    assert.deepEqual(returnValue, []);
+    expect(fetch.mock.calls[0]).toEqual(['/api/roles/all']);
+    expect(store.getState().usersById).toEqual({});
+    expect(store.getState().users).toEqual([]);
+    expect(returnValue).toEqual([]);
   });
 });
 
@@ -77,9 +77,9 @@ test('GET_USERS_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getUsers());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/all']);
-  assert.deepEqual(store.getState().errors.users.error, error);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toEqual(['/api/roles/all']);
+  expect(store.getState().errors.users.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('GET_USERS_BY_PERMISSION_SUCCESS', async () => {
@@ -90,8 +90,8 @@ test('GET_USERS_BY_PERMISSION_SUCCESS', async () => {
   const returnValue = await store.dispatch(
     actions.getUsersByPermission('boss')
   );
-  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/user/permission/boss']);
-  assert.deepEqual(returnValue, users);
+  expect(fetch.mock.calls[0]).toEqual(['/api/roles/user/permission/boss']);
+  expect(returnValue).toEqual(users);
 });
 
 test('GET_USERS_BY_PERMISSION_ERROR', async () => {
@@ -100,7 +100,7 @@ test('GET_USERS_BY_PERMISSION_ERROR', async () => {
   const returnValue = await store.dispatch(
     actions.getUsersByPermission('boss')
   );
-  assert.deepEqual(fetch.mock.calls[0], ['/api/roles/user/permission/boss']);
-  assert.deepEqual(store.getState().errors.users.error, error);
-  assert.equal(returnValue, null);
+  expect(fetch.mock.calls[0]).toEqual(['/api/roles/user/permission/boss']);
+  expect(store.getState().errors.users.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });

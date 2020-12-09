@@ -23,10 +23,10 @@ describe('logs', () => {
   });
 
   test('initial state', () => {
-    assert.deepEqual(reducer.logs(undefined, {}), initialState);
-    assert.deepEqual(reducer.logs(undefined, {}), initialState);
-    assert.deepEqual(reducer.logsById(undefined, {}), initialStateById);
-    assert.deepEqual(reducer.logsById(undefined, {}), initialStateById);
+    expect(reducer.logs(undefined, {})).toEqual(initialState);
+    expect(reducer.logs(undefined, {})).toEqual(initialState);
+    expect(reducer.logsById(undefined, {})).toEqual(initialStateById);
+    expect(reducer.logsById(undefined, {})).toEqual(initialStateById);
   });
 
   test('GET_LOGS_SUCCESS', () => {
@@ -34,10 +34,10 @@ describe('logs', () => {
       type: types.GET_LOGS_SUCCESS,
       logs
     };
-    assert.deepEqual(reducer.logs(undefined, action), logs);
-    assert.deepEqual(reducer.logs(undefined, action), logs);
-    assert.deepEqual(reducer.logsById(undefined, action), logsById);
-    assert.deepEqual(reducer.logsById(undefined, action), logsById);
+    expect(reducer.logs(undefined, action)).toEqual(logs);
+    expect(reducer.logs(undefined, action)).toEqual(logs);
+    expect(reducer.logsById(undefined, action)).toEqual(logsById);
+    expect(reducer.logsById(undefined, action)).toEqual(logsById);
   });
 
   test('GET_LOGS_SUCCESS', () => {
@@ -45,8 +45,8 @@ describe('logs', () => {
       type: types.GET_LOGS_SUCCESS,
       logs
     };
-    assert.deepEqual(reducer.logs(state, action), logs);
-    assert.deepEqual(reducer.logs(state, action), logs);
+    expect(reducer.logs(state, action)).toEqual(logs);
+    expect(reducer.logs(state, action)).toEqual(logs);
   });
 
   test('GET_LOGS_SUCCESS', () => {
@@ -57,7 +57,7 @@ describe('logs', () => {
     state = {
       ...original.logsById
     };
-    assert.deepEqual(reducer.logsById(state, action), logsById);
-    assert.deepEqual(reducer.logsById(state, action), logsById);
+    expect(reducer.logsById(state, action)).toEqual(logsById);
+    expect(reducer.logsById(state, action)).toEqual(logsById);
   });
 });

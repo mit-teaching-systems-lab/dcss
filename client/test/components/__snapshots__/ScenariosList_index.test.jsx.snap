@@ -89,15 +89,15 @@ exports[`Render 1 1 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="false"
-              aria-label="undefined scenarios labelled \\"fun\\""
-              class="item"
+              aria-checked="true"
+              aria-label="undefined scenarios labelled \\"Easy\\""
+              class="active item"
               role="option"
             >
               <span
                 class="text"
               >
-                fun 
+                Easy 
                 <span
                   class="ui grey small text"
                 >
@@ -107,14 +107,14 @@ exports[`Render 1 1 1`] = `
             </div>
             <div
               aria-checked="false"
-              aria-label="undefined scenarios labelled \\"Easy\\""
+              aria-label="undefined scenarios labelled \\"fun\\""
               class="item"
               role="option"
             >
               <span
                 class="text"
               >
-                Easy 
+                fun 
                 <span
                   class="ui grey small text"
                 >
@@ -397,15 +397,15 @@ exports[`Render 2 1 1`] = `
             role="listbox"
           >
             <div
-              aria-checked="false"
-              aria-label="undefined scenarios labelled \\"fun\\""
-              class="item"
+              aria-checked="true"
+              aria-label="undefined scenarios labelled \\"Easy\\""
+              class="active item"
               role="option"
             >
               <span
                 class="text"
               >
-                fun 
+                Easy 
                 <span
                   class="ui grey small text"
                 >
@@ -415,14 +415,14 @@ exports[`Render 2 1 1`] = `
             </div>
             <div
               aria-checked="false"
-              aria-label="undefined scenarios labelled \\"Easy\\""
+              aria-label="undefined scenarios labelled \\"fun\\""
               class="item"
               role="option"
             >
               <span
                 class="text"
               >
-                Easy 
+                fun 
                 <span
                   class="ui grey small text"
                 >

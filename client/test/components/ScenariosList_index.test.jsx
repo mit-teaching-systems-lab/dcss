@@ -35,10 +35,18 @@ import * as cohortActions from '../../actions/cohort';
 import * as scenarioActions from '../../actions/scenario';
 import * as userActions from '../../actions/user';
 import * as usersActions from '../../actions/users';
+import * as tagsActions from '../../actions/tags';
 jest.mock('../../actions/cohort');
 jest.mock('../../actions/scenario');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
+jest.mock('../../actions/tags');
+
+const labelA = { key: 1, text: 'a', value: 'a', count: 10 };
+const labelB = { key: 2, text: 'b', value: 'b', count: 20 };
+const labelC = { key: 3, text: 'c', value: 'c', count: 30 };
+
+let labelsByOccurrence;
 
 import ScenariosList from '../../components/ScenariosList/index.jsx';
 
@@ -367,6 +375,21 @@ beforeEach(() => {
     ];
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
+  });
+
+  labelsByOccurrence = [labelC, labelB, labelA];
+
+  tagsActions.getLabelsByOccurrence = jest.fn();
+  tagsActions.getLabelsByOccurrence.mockImplementation(() => async dispatch => {
+    const labels = labelsByOccurrence;
+    dispatch({ type: GET_LABELS_SUCCESS, labels });
+    return labels;
+  });
+
+  tagsActions.setLabelsInUse = jest.fn();
+  tagsActions.setLabelsInUse.mockImplementation(labels => async dispatch => {
+    dispatch({ type: GET_LABELS_SUCCESS, labels });
+    return labels;
   });
 
   commonProps = {};

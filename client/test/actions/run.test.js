@@ -53,9 +53,9 @@ describe('GET_RUN_SUCCESS', () => {
         "/api/runs/new-or-existing/scenario/1",
       ]
     `);
-    assert.deepEqual(store.getState().runsById, makeById([run]));
-    assert.deepEqual(store.getState().run, run);
-    assert.deepEqual(returnValue, run);
+    expect(store.getState().runsById).toEqual(makeById([run]));
+    expect(store.getState().run).toEqual(run);
+    expect(returnValue).toEqual(run);
   });
 
   test('by scenario id, by cohort id', async () => {
@@ -67,9 +67,9 @@ describe('GET_RUN_SUCCESS', () => {
         "/api/runs/new-or-existing/scenario/1/cohort/2",
       ]
     `);
-    assert.deepEqual(store.getState().runsById, makeById([run]));
-    assert.deepEqual(store.getState().run, run);
-    assert.deepEqual(returnValue, run);
+    expect(store.getState().runsById).toEqual(makeById([run]));
+    expect(store.getState().run).toEqual(run);
+    expect(returnValue).toEqual(run);
   });
 });
 
@@ -82,8 +82,8 @@ test('GET_RUN_ERROR', async () => {
       "/api/runs/new-or-existing/scenario/1",
     ]
   `);
-  assert.deepEqual(store.getState().errors.run.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.run.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('SET_RUN_SUCCESS', async () => {
@@ -105,9 +105,9 @@ test('SET_RUN_SUCCESS', async () => {
       },
     ]
   `);
-  assert.deepEqual(store.getState().runsById, makeById([run]));
-  assert.deepEqual(store.getState().run, run);
-  assert.deepEqual(returnValue, run);
+  expect(store.getState().runsById).toEqual(makeById([run]));
+  expect(store.getState().run).toEqual(run);
+  expect(returnValue).toEqual(run);
 });
 
 test('SET_RUN_ERROR', async () => {
@@ -126,8 +126,8 @@ test('SET_RUN_ERROR', async () => {
       },
     ]
   `);
-  assert.deepEqual(store.getState().errors.run.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.run.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('GET_RUNS_SUCCESS', async () => {
@@ -141,8 +141,8 @@ test('GET_RUNS_SUCCESS', async () => {
       "/api/runs",
     ]
   `);
-  assert.deepEqual(store.getState().runsById, makeById(runs));
-  assert.deepEqual(returnValue, runs);
+  expect(store.getState().runsById).toEqual(makeById(runs));
+  expect(returnValue).toEqual(runs);
 });
 
 test('GET_RUNS_ERROR', async () => {
@@ -154,8 +154,8 @@ test('GET_RUNS_ERROR', async () => {
       "/api/runs",
     ]
   `);
-  assert.deepEqual(store.getState().errors.runs.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.runs.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('SAVE_RUN_EVENT_SUCCESS', async () => {
@@ -168,7 +168,7 @@ test('SAVE_RUN_EVENT_SUCCESS', async () => {
       "/api/runs/1",
     ]
   `);
-  assert.deepEqual(returnValue, rundata);
+  expect(returnValue).toEqual(rundata);
 });
 
 test('GET_RUN_DATA_ERROR', async () => {
@@ -180,8 +180,8 @@ test('GET_RUN_DATA_ERROR', async () => {
       "/api/runs/1",
     ]
   `);
-  assert.deepEqual(store.getState().errors.rundata.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.rundata.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 test('SAVE_RUN_EVENT_SUCCESS', async () => {
@@ -202,7 +202,7 @@ test('SAVE_RUN_EVENT_SUCCESS', async () => {
       },
     ]
   `);
-  assert.deepEqual(returnValue, event);
+  expect(returnValue).toEqual(event);
 });
 
 test('SAVE_RUN_EVENT_ERROR', async () => {
@@ -222,6 +222,6 @@ test('SAVE_RUN_EVENT_ERROR', async () => {
       },
     ]
   `);
-  assert.deepEqual(store.getState().errors.event.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.event.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });

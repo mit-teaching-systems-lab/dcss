@@ -241,8 +241,6 @@ test('Add and remove a label', async done => {
   expect(asFragment()).toMatchSnapshot();
   expect(tagsActions.setLabelsInUse).toHaveBeenCalledTimes(1);
 
-  userEvent.clear(input[0]);
-
   // The options are now re-ordered, so query again...
   options = await tlr.findAllByRole(dropdown, 'option');
 

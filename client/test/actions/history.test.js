@@ -38,9 +38,9 @@ test('GET_RUN_HISTORY_SUCCESS', async () => {
 
   {
     const returnValue = await store.dispatch(actions.getHistoryForScenario(42));
-    assert.deepEqual(fetch.mock.calls[0], ['/api/history/42']);
-    assert.deepEqual(store.getState().history, history);
-    assert.deepEqual(returnValue, history);
+    expect(fetch.mock.calls[0]).toEqual(['/api/history/42']);
+    expect(store.getState().history).toEqual(history);
+    expect(returnValue).toEqual(history);
   }
 
   {
@@ -48,9 +48,9 @@ test('GET_RUN_HISTORY_SUCCESS', async () => {
     const returnValue = await store.dispatch(
       actions.getHistoryForScenario(42, 1)
     );
-    assert.deepEqual(fetch.mock.calls[1], ['/api/history/42/cohort/1']);
-    assert.deepEqual(store.getState().history, history);
-    assert.deepEqual(returnValue, history);
+    expect(fetch.mock.calls[1]).toEqual(['/api/history/42/cohort/1']);
+    expect(store.getState().history).toEqual(history);
+    expect(returnValue).toEqual(history);
   }
 });
 
@@ -59,7 +59,7 @@ test('GET_RUN_HISTORY_ERROR', async () => {
 
   const returnValue = await store.dispatch(actions.getHistoryForScenario(42));
 
-  assert.deepEqual(fetch.mock.calls[0], ['/api/history/42']);
-  assert.deepEqual(store.getState().errors.history.error, error);
-  assert.deepEqual(returnValue, null);
+  expect(fetch.mock.calls[0]).toEqual(['/api/history/42']);
+  expect(store.getState().errors.history.error).toEqual(error);
+  expect(returnValue).toEqual(null);
 });

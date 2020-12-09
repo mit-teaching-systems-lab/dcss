@@ -62,13 +62,10 @@ test('CREATE_COHORT_SUCCESS', async () => {
     role: 'owner'
   };
 
-  assert.deepEqual(store.getState().cohort, cohortWithOwnerRole);
-  assert.deepEqual(store.getState().cohorts, [cohortWithOwnerRole]);
-  assert.deepEqual(
-    store.getState().cohortsById,
-    makeById([cohortWithOwnerRole])
-  );
-  assert.deepEqual(returnValue, cohortWithOwnerRole);
+  expect(store.getState().cohort).toEqual(cohortWithOwnerRole);
+  expect(store.getState().cohorts).toEqual([cohortWithOwnerRole]);
+  expect(store.getState().cohortsById).toEqual(makeById([cohortWithOwnerRole]));
+  expect(returnValue).toEqual(cohortWithOwnerRole);
 
   await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -100,8 +97,8 @@ test('CREATE_COHORT_ERROR', async () => {
 
   // The current value of the errors.cohort property will
   // be whatever error info the server returned.
-  assert.deepEqual(error, cohort.error);
-  assert.equal(returnValue, null);
+  expect(error).toEqual(cohort.error);
+  expect(returnValue).toBe(null);
 
   await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -138,8 +135,8 @@ describe('SET_COHORT_SUCCESS', () => {
       ]
     `);
 
-    assert.equal(store.getState().cohort.id, cohort.id);
-    assert.deepEqual(returnValue, cohort);
+    expect(store.getState().cohort.id).toBe(cohort.id);
+    expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
     expect(mockStore.getActions()).toMatchSnapshot();
@@ -174,8 +171,8 @@ describe('SET_COHORT_SUCCESS', () => {
       ]
     `);
 
-    assert.equal(store.getState().cohort.id, cohort.id);
-    assert.deepEqual(returnValue, cohort);
+    expect(store.getState().cohort.id).toBe(cohort.id);
+    expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
     expect(mockStore.getActions()).toMatchSnapshot();
@@ -210,11 +207,10 @@ describe('SET_COHORT_SUCCESS', () => {
       ]
     `);
 
-    assert.deepEqual(returnValue, cohort);
-    assert.deepEqual(store.getState().cohort, cohort);
-    assert.deepEqual(store.getState().cohortsById[cohort.id], returnValue);
-    assert.deepEqual(
-      store.getState().cohorts.find(({ id }) => id === cohort.id),
+    expect(returnValue).toEqual(cohort);
+    expect(store.getState().cohort).toEqual(cohort);
+    expect(store.getState().cohortsById[cohort.id]).toEqual(returnValue);
+    expect(store.getState().cohorts.find(({ id }) => id === cohort.id)).toEqual(
       returnValue
     );
 
@@ -246,8 +242,8 @@ test('SET_COHORT_ERROR', async () => {
       },
     ]
   `);
-  assert.deepEqual(store.getState().errors.cohort.error, error);
-  assert.deepEqual(returnValue, null);
+  expect(store.getState().errors.cohort.error).toEqual(error);
+  expect(returnValue).toEqual(null);
 
   await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -275,8 +271,8 @@ test('SET_COHORT_SCENARIOS_SUCCESS', async () => {
     ]
   `);
 
-  assert.equal(store.getState().cohort.id, cohort.id);
-  assert.deepEqual(returnValue, cohort);
+  expect(store.getState().cohort.id).toBe(cohort.id);
+  expect(returnValue).toEqual(cohort);
 
   await mockStore.dispatch(actions.setCohortScenarios(cohort));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -303,8 +299,8 @@ test('SET_COHORT_SCENARIOS_ERROR', async () => {
       },
     ]
   `);
-  assert.deepEqual(store.getState().errors.cohort.error, error);
-  assert.deepEqual(returnValue, null);
+  expect(store.getState().errors.cohort.error).toEqual(error);
+  expect(returnValue).toEqual(null);
 
   await mockStore.dispatch(actions.setCohortScenarios(cohort));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -343,9 +339,9 @@ describe('GET_COHORT_SUCCESS', () => {
         "/api/cohorts/1",
       ]
     `);
-    assert.deepEqual(store.getState().cohort, cohortInitialState);
-    assert.deepEqual(store.getState().cohorts, beforeCohorts);
-    assert.deepEqual(store.getState().cohortsById, beforeCohortsById);
+    expect(store.getState().cohort).toEqual(cohortInitialState);
+    expect(store.getState().cohorts).toEqual(beforeCohorts);
+    expect(store.getState().cohortsById).toEqual(beforeCohortsById);
     expect(returnValue).toEqual(cohort);
 
     await mockStore.dispatch(actions.getCohort(1));
@@ -354,8 +350,8 @@ describe('GET_COHORT_SUCCESS', () => {
 
   test('Invalid Cohort id', async () => {
     const returnValue = await store.dispatch(actions.getCohort(NaN));
-    assert.equal(fetch.mock.calls.length, 0);
-    assert.equal(returnValue, undefined);
+    expect(fetch.mock.calls.length).toBe(0);
+    expect(returnValue).toBe(undefined);
 
     await mockStore.dispatch(actions.getCohort(NaN));
     expect(mockStore.getActions()).toMatchSnapshot();
@@ -376,7 +372,7 @@ describe('GET_COHORT_SUCCESS', () => {
       ]
     `);
 
-    assert.deepEqual(store.getState().cohort.id, cohort.id);
+    expect(store.getState().cohort.id).toEqual(cohort.id);
 
     await mockStore.dispatch(actions.getCohort(2));
     expect(mockStore.getActions()).toMatchSnapshot();
@@ -397,8 +393,8 @@ test('GET_COHORT_ERROR', async () => {
       "/api/cohorts/2",
     ]
   `);
-  assert.deepEqual(store.getState().errors.cohort.error, error);
-  assert.deepEqual(returnValue, null);
+  expect(store.getState().errors.cohort.error).toEqual(error);
+  expect(returnValue).toEqual(null);
 
   await mockStore.dispatch(actions.getCohort(2));
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -416,7 +412,7 @@ test('GET_COHORTS_COUNT_SUCCESS', async () => {
     ]
   `);
 
-  assert.deepEqual(returnValue, Number(count));
+  expect(returnValue).toEqual(Number(count));
 
   await mockStore.dispatch(actions.getCohortsCount());
   expect(mockStore.getActions()).toMatchSnapshot();
@@ -432,7 +428,7 @@ test('GET_COHORTS_COUNT_ERROR', async () => {
     ]
   `);
 
-  assert.equal(returnValue, null);
+  expect(returnValue).toBe(null);
 });
 
 describe('GET_COHORTS_SUCCESS', () => {
@@ -471,8 +467,8 @@ describe('GET_COHORTS_SUCCESS', () => {
           "/api/cohorts",
         ]
       `);
-      assert.deepEqual(store.getState().cohortsById, makeById(cohorts));
-      assert.deepEqual(store.getState().cohorts, cohorts);
+      expect(store.getState().cohortsById).toEqual(makeById(cohorts));
+      expect(store.getState().cohorts).toEqual(cohorts);
     });
 
     test('cohorts received is undefined, does not change empty cohorts state', async () => {
@@ -507,8 +503,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('cohorts received is undefined, does not change existing cohorts state', async () => {
@@ -557,13 +553,13 @@ describe('GET_COHORTS_SUCCESS', () => {
 
       const afterRequestCohorts = [...store.getState().cohorts];
 
-      assert.deepEqual(afterRequestCohortsById, makeById(expected));
-      assert.deepEqual(afterRequestCohorts, expected);
+      expect(afterRequestCohortsById).toEqual(makeById(expected));
+      expect(afterRequestCohorts).toEqual(expected);
 
       await store.dispatch(actions.getCohorts());
 
-      assert.deepEqual(store.getState().cohortsById, afterRequestCohortsById);
-      assert.deepEqual(store.getState().cohorts, afterRequestCohorts);
+      expect(store.getState().cohortsById).toEqual(afterRequestCohortsById);
+      expect(store.getState().cohorts).toEqual(afterRequestCohorts);
     });
 
     test('cohorts received are the same as existing cohorts, no duplicates', async () => {
@@ -608,13 +604,13 @@ describe('GET_COHORTS_SUCCESS', () => {
 
       const afterRequestCohorts = [...store.getState().cohorts];
 
-      assert.deepEqual(afterRequestCohortsById, makeById(expected));
-      assert.deepEqual(afterRequestCohorts, expected);
+      expect(afterRequestCohortsById).toEqual(makeById(expected));
+      expect(afterRequestCohorts).toEqual(expected);
 
       await store.dispatch(actions.getCohorts());
 
-      assert.deepEqual(store.getState().cohortsById, afterRequestCohortsById);
-      assert.deepEqual(store.getState().cohorts, afterRequestCohorts);
+      expect(store.getState().cohortsById).toEqual(afterRequestCohortsById);
+      expect(store.getState().cohorts).toEqual(afterRequestCohorts);
     });
 
     test('(state.session.isLoggedIn && count === state.cohorts.length) === true', async () => {
@@ -634,7 +630,7 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(fetch.mock.calls.length, 1);
+      expect(fetch.mock.calls.length).toEqual(1);
     });
   });
 
@@ -675,8 +671,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('default, cache has entries, not full', async () => {
@@ -715,8 +711,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('ASC, cache is empty', async () => {
@@ -755,8 +751,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('ASC, cache has entries, not full', async () => {
@@ -795,8 +791,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('cohorts received is undefined, does not change empty cohorts state', async () => {
@@ -839,8 +835,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('cohorts received is undefined, does not change existing cohorts state', async () => {
@@ -883,8 +879,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('cohorts received are the same as existing cohorts, no duplicates', async () => {
@@ -923,8 +919,8 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().cohortsById, makeById(expected));
-      assert.deepEqual(store.getState().cohorts, expected);
+      expect(store.getState().cohortsById).toEqual(makeById(expected));
+      expect(store.getState().cohorts).toEqual(expected);
     });
 
     test('(state.session.isLoggedIn && count === state.cohorts.length) === true', async () => {
@@ -944,7 +940,7 @@ describe('GET_COHORTS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(fetch.mock.calls.length, 1);
+      expect(fetch.mock.calls.length).toEqual(1);
     });
   });
 });
@@ -960,8 +956,8 @@ describe('GET_COHORTS_ERROR', () => {
         "/api/cohorts/count",
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohorts.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohorts.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 
   test('getCohortsSlice', async () => {
@@ -974,8 +970,8 @@ describe('GET_COHORTS_ERROR', () => {
         "/api/cohorts/count",
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohorts.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohorts.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 });
 
@@ -993,8 +989,8 @@ test('GET_COHORT_PARTICIPANTS_SUCCESS', async () => {
       "/api/cohorts/1",
     ]
   `);
-  assert.deepEqual(store.getState().cohort.users, cohort.users);
-  assert.deepEqual(returnValue, cohort.users);
+  expect(store.getState().cohort.users).toEqual(cohort.users);
+  expect(returnValue).toEqual(cohort.users);
 });
 
 test('GET_COHORT_PARTICIPANTS_ERROR', async () => {
@@ -1007,8 +1003,8 @@ test('GET_COHORT_PARTICIPANTS_ERROR', async () => {
       "/api/cohorts/1",
     ]
   `);
-  assert.deepEqual(store.getState().errors.cohort.error, error);
-  assert.deepEqual(returnValue, null);
+  expect(store.getState().errors.cohort.error).toEqual(error);
+  expect(returnValue).toEqual(null);
 });
 
 test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
@@ -1025,8 +1021,8 @@ test('LINK_RUN_TO_COHORT_SUCCESS', async () => {
       "/api/cohorts/2/run/29",
     ]
   `);
-  assert.deepEqual(returnValue, cohort);
-  assert.deepEqual(store.getState().cohort, cohort);
+  expect(returnValue).toEqual(cohort);
+  expect(store.getState().cohort).toEqual(cohort);
 });
 
 test('LINK_RUN_TO_COHORT_ERROR', async () => {
@@ -1039,8 +1035,8 @@ test('LINK_RUN_TO_COHORT_ERROR', async () => {
       "/api/cohorts/2/run/29",
     ]
   `);
-  assert.deepEqual(store.getState().errors.cohortlink.error, error);
-  assert.deepEqual(returnValue, null);
+  expect(store.getState().errors.cohortlink.error).toEqual(error);
+  expect(returnValue).toEqual(null);
 });
 
 describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
@@ -1055,7 +1051,7 @@ describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
         "/api/cohorts/1/scenario/3",
       ]
     `);
-    assert.deepEqual(returnValue, payload);
+    expect(returnValue).toEqual(payload);
   });
 
   test('Participant', async () => {
@@ -1067,7 +1063,7 @@ describe('GET_COHORT_RUN_DATA_SUCCESS', () => {
         "/api/cohorts/1/participant/2",
       ]
     `);
-    assert.deepEqual(returnValue, payload);
+    expect(returnValue).toEqual(payload);
   });
 });
 
@@ -1081,8 +1077,8 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
         "/api/cohorts/1/scenario/3",
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohortdata.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohortdata.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 
   test('Participant', async () => {
@@ -1094,8 +1090,8 @@ describe('GET_COHORT_RUN_DATA_ERROR', () => {
         "/api/cohorts/1/participant/2",
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohortdata.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohortdata.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 });
 
@@ -1118,9 +1114,9 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
         "/api/cohorts/1/join/boss",
       ]
     `);
-    assert.deepEqual(store.getState().cohort.users, cohortUsers.users);
-    assert.deepEqual(store.getState().cohort.usersById, cohortUsers.usersById);
-    assert.deepEqual(returnValue, cohortUsers);
+    expect(store.getState().cohort.users).toEqual(cohortUsers.users);
+    expect(store.getState().cohort.usersById).toEqual(cohortUsers.usersById);
+    expect(returnValue).toEqual(cohortUsers);
   });
 
   test('addCohortUserRole', async () => {
@@ -1158,8 +1154,8 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
       ]
     `);
 
-    assert.deepEqual(store.getState().cohort.users, cohort.users);
-    assert.equal(returnValue.addedCount, 1);
+    expect(store.getState().cohort.users).toEqual(cohort.users);
+    expect(returnValue.addedCount).toBe(1);
   });
 
   test('deleteCohortUserRole', async () => {
@@ -1197,8 +1193,8 @@ describe('SET_COHORT_USER_ROLE_SUCCESS', () => {
       ]
     `);
 
-    assert.deepEqual(store.getState().cohort.users, cohort.users);
-    assert.equal(returnValue.deletedCount, 1);
+    expect(store.getState().cohort.users).toEqual(cohort.users);
+    expect(returnValue.deletedCount).toBe(1);
   });
 });
 
@@ -1214,8 +1210,8 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
         "/api/cohorts/1/join/boss",
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohortuser.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohortuser.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 
   test('addCohortUserRole', async () => {
@@ -1236,8 +1232,8 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
         },
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohortuser.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohortuser.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 
   test('deleteCohortUserRole', async () => {
@@ -1258,7 +1254,7 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
         },
       ]
     `);
-    assert.deepEqual(store.getState().errors.cohortuser.error, error);
-    assert.deepEqual(returnValue, null);
+    expect(store.getState().errors.cohortuser.error).toEqual(error);
+    expect(returnValue).toEqual(null);
   });
 });

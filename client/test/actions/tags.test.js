@@ -37,15 +37,15 @@ test('GET_CATEGORIES_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { categories });
 
   await store.dispatch(actions.getCategories());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/tags/categories']);
-  assert.deepEqual(store.getState().tags.categories, categories);
+  expect(fetch.mock.calls[0]).toEqual(['/api/tags/categories']);
+  expect(store.getState().tags.categories).toEqual(categories);
 });
 
 test('GET_CATEGORIES_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getCategories());
-  assert.deepEqual(fetch.mock.calls[0], ['/api/tags/categories']);
+  expect(fetch.mock.calls[0]).toEqual(['/api/tags/categories']);
   // assert.deepEqual(store.getState().errors.tags.error, error);
-  assert.equal(returnValue, null);
+  expect(returnValue).toBe(null);
 });

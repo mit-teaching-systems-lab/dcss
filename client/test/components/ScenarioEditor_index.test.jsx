@@ -27,11 +27,12 @@ import userEvent from '@testing-library/user-event';
 import {
   COPY_SCENARIO_SUCCESS,
   DELETE_SCENARIO_SUCCESS,
+  GET_CATEGORIES_SUCCESS,
+  GET_LABELS_SUCCESS,
   GET_SCENARIO_SUCCESS,
-  SET_SCENARIO,
-  UNLOCK_SCENARIO_SUCCESS,
   GET_USERS_SUCCESS,
-  GET_CATEGORIES_SUCCESS
+  SET_SCENARIO,
+  UNLOCK_SCENARIO_SUCCESS
 } from '../../actions/types';
 import * as usersActions from '../../actions/users';
 import * as scenarioActions from '../../actions/scenario';

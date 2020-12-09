@@ -347,7 +347,7 @@ describe('GET_SCENARIO_SUCCESS', () => {
         },
       ]
     `);
-    assert.deepEqual(returnValue, payload);
+    expect(returnValue).toEqual(payload);
   });
 
   test('endScenarioUserRole', async () => {
@@ -377,7 +377,7 @@ describe('GET_SCENARIO_SUCCESS', () => {
         },
       ]
     `);
-    assert.deepEqual(returnValue, payload);
+    expect(returnValue).toEqual(payload);
   });
 });
 
@@ -500,9 +500,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === false', async () => {
@@ -527,9 +527,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
@@ -548,10 +548,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(fetch.mock.calls.length, 1);
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(fetch.mock.calls.length).toEqual(1);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
   });
 
@@ -573,9 +573,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
@@ -596,10 +596,10 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(fetch.mock.calls.length, 1);
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(fetch.mock.calls.length).toEqual(1);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
 
     test('(state.session.isLoggedIn) === false', async () => {
@@ -626,9 +626,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
 
     test('getScenariosIncrementallyFirst', async () => {
@@ -655,9 +655,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
   });
 
@@ -699,9 +699,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(expected));
-      assert.deepEqual(store.getState().scenarios, expected);
-      assert.deepEqual(returnValue, expected);
+      expect(store.getState().scenariosById).toEqual(makeById(expected));
+      expect(store.getState().scenarios).toEqual(expected);
+      expect(returnValue).toEqual(expected);
     });
 
     test('default, cache has entries, not full', async () => {
@@ -741,9 +741,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(expected));
-      assert.deepEqual(store.getState().scenarios, expected);
-      assert.deepEqual(returnValue, expected);
+      expect(store.getState().scenariosById).toEqual(makeById(expected));
+      expect(store.getState().scenarios).toEqual(expected);
+      expect(returnValue).toEqual(expected);
     });
 
     test('ASC, cache is empty', async () => {
@@ -785,9 +785,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(expected));
-      assert.deepEqual(store.getState().scenarios, expected);
-      assert.deepEqual(returnValue, expected);
+      expect(store.getState().scenariosById).toEqual(makeById(expected));
+      expect(store.getState().scenarios).toEqual(expected);
+      expect(returnValue).toEqual(expected);
     });
 
     test('ASC, cache has entries, not full', async () => {
@@ -829,9 +829,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(expected));
-      assert.deepEqual(store.getState().scenarios, expected);
-      assert.deepEqual(returnValue, expected);
+      expect(store.getState().scenariosById).toEqual(makeById(expected));
+      expect(store.getState().scenarios).toEqual(expected);
+      expect(returnValue).toEqual(expected);
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
@@ -850,8 +850,8 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(fetch.mock.calls.length, 1);
-      assert.deepEqual(returnValue, scenarios);
+      expect(fetch.mock.calls.length).toEqual(1);
+      expect(returnValue).toEqual(scenarios);
     });
   });
 
@@ -890,9 +890,9 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(store.getState().scenariosById, makeById(scenarios));
-      assert.deepEqual(store.getState().scenarios, scenarios);
-      assert.deepEqual(returnValue, scenarios);
+      expect(store.getState().scenariosById).toEqual(makeById(scenarios));
+      expect(store.getState().scenarios).toEqual(scenarios);
+      expect(returnValue).toEqual(scenarios);
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
@@ -922,8 +922,8 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         ]
       `);
 
-      assert.deepEqual(fetch.mock.calls.length, 1);
-      assert.deepEqual(returnValue, expected);
+      expect(fetch.mock.calls.length).toEqual(1);
+      expect(returnValue).toEqual(expected);
     });
   });
 });
@@ -1011,7 +1011,7 @@ test('GET_SCENARIOS_COUNT_SUCCESS', async () => {
     ]
   `);
 
-  assert.deepEqual(returnValue, Number(count));
+  expect(returnValue).toEqual(Number(count));
 });
 
 test('GET_SCENARIOS_COUNT_ERROR', async () => {
@@ -1094,8 +1094,8 @@ test('SET_SCENARIO', async () => {
   const action2 = await actions.setScenario(action1.scenario);
   const action3 = await actions.setScenario(action2.scenario);
 
-  assert.deepEqual(action1, action2);
-  assert.deepEqual(action2, action3);
+  expect(action1).toEqual(action2);
+  expect(action2).toEqual(action3);
 });
 
 test('SET_SCENARIOS', async () => {
@@ -1106,8 +1106,8 @@ test('SET_SCENARIOS', async () => {
   const action2 = await actions.setScenarios(action1.scenarios);
   const action3 = await actions.setScenarios(action2.scenarios);
 
-  assert.deepEqual(action1, action2);
-  assert.deepEqual(action2, action3);
+  expect(action1).toEqual(action2);
+  expect(action2).toEqual(action3);
 });
 
 test('SET_SLIDES', async () => {
@@ -1118,6 +1118,6 @@ test('SET_SLIDES', async () => {
   const action2 = await actions.setSlides(action1.slides);
   const action3 = await actions.setSlides(action2.slides);
 
-  assert.deepEqual(action1, action2);
-  assert.deepEqual(action2, action3);
+  expect(action1).toEqual(action2);
+  expect(action2).toEqual(action3);
 });

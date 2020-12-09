@@ -37,12 +37,12 @@ describe('responses', () => {
   });
 
   test('initial state', () => {
-    assert.deepEqual(reducer.response(undefined, {}), responseInitialState);
-    assert.deepEqual(reducer.response(undefined, {}), responseInitialState);
-    assert.deepEqual(reducer.responses(undefined, {}), initialState);
-    assert.deepEqual(reducer.responses(undefined, {}), initialState);
-    assert.deepEqual(reducer.responsesById(undefined, {}), initialStateById);
-    assert.deepEqual(reducer.responsesById(undefined, {}), initialStateById);
+    expect(reducer.response(undefined, {})).toEqual(responseInitialState);
+    expect(reducer.response(undefined, {})).toEqual(responseInitialState);
+    expect(reducer.responses(undefined, {})).toEqual(initialState);
+    expect(reducer.responses(undefined, {})).toEqual(initialState);
+    expect(reducer.responsesById(undefined, {})).toEqual(initialStateById);
+    expect(reducer.responsesById(undefined, {})).toEqual(initialStateById);
   });
 
   test('GET_RESPONSE_SUCCESS 1', () => {
@@ -50,8 +50,8 @@ describe('responses', () => {
       type: types.GET_RESPONSE_SUCCESS,
       response
     };
-    assert.deepEqual(reducer.response(undefined, action), response);
-    assert.deepEqual(reducer.response(undefined, action), response);
+    expect(reducer.response(undefined, action)).toEqual(response);
+    expect(reducer.response(undefined, action)).toEqual(response);
   });
 
   test('GET_RESPONSE_SUCCESS 2', () => {

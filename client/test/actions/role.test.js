@@ -46,7 +46,7 @@ describe('SET_USER_ROLE_SUCCESS', () => {
     fetchImplementation(fetch, 200, { addedCount: 1 });
 
     const returnValue = await store.dispatch(actions.addUserRole(1, 'boss'));
-    assert.deepEqual(fetch.mock.calls[0], [
+    expect(fetch.mock.calls[0]).toEqual([
       '/api/roles/add',
       {
         headers: { 'Content-Type': 'application/json' },
@@ -54,14 +54,14 @@ describe('SET_USER_ROLE_SUCCESS', () => {
         body: '{"user_id":1,"roles":["boss"]}'
       }
     ]);
-    assert.deepEqual(returnValue, { addedCount: 1 });
+    expect(returnValue).toEqual({ addedCount: 1 });
   });
 
   test('deletedCount', async () => {
     fetchImplementation(fetch, 200, { deletedCount: 1 });
 
     const returnValue = await store.dispatch(actions.deleteUserRole(1, 'boss'));
-    assert.deepEqual(fetch.mock.calls[0], [
+    expect(fetch.mock.calls[0]).toEqual([
       '/api/roles/delete',
       {
         headers: { 'Content-Type': 'application/json' },
@@ -69,7 +69,7 @@ describe('SET_USER_ROLE_SUCCESS', () => {
         body: '{"user_id":1,"roles":["boss"]}'
       }
     ]);
-    assert.deepEqual(returnValue, { deletedCount: 1 });
+    expect(returnValue).toEqual({ deletedCount: 1 });
   });
 });
 
@@ -79,7 +79,7 @@ describe('SET_USER_ROLE_ERROR', () => {
 
     const returnValue = await store.dispatch(actions.addUserRole(1, 'boss'));
 
-    assert.deepEqual(fetch.mock.calls[0], [
+    expect(fetch.mock.calls[0]).toEqual([
       '/api/roles/add',
       {
         headers: { 'Content-Type': 'application/json' },
@@ -87,8 +87,8 @@ describe('SET_USER_ROLE_ERROR', () => {
         body: '{"user_id":1,"roles":["boss"]}'
       }
     ]);
-    assert.deepEqual(store.getState().errors.role.error, error);
-    assert.equal(returnValue, null);
+    expect(store.getState().errors.role.error).toEqual(error);
+    expect(returnValue).toBe(null);
   });
 
   test('deleteUserRole', async () => {
@@ -96,7 +96,7 @@ describe('SET_USER_ROLE_ERROR', () => {
 
     const returnValue = await store.dispatch(actions.deleteUserRole(1, 'boss'));
 
-    assert.deepEqual(fetch.mock.calls[0], [
+    expect(fetch.mock.calls[0]).toEqual([
       '/api/roles/delete',
       {
         headers: { 'Content-Type': 'application/json' },
@@ -104,7 +104,7 @@ describe('SET_USER_ROLE_ERROR', () => {
         body: '{"user_id":1,"roles":["boss"]}'
       }
     ]);
-    assert.deepEqual(store.getState().errors.role.error, error);
-    assert.equal(returnValue, null);
+    expect(store.getState().errors.role.error).toEqual(error);
+    expect(returnValue).toBe(null);
   });
 });

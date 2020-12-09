@@ -103,7 +103,7 @@ describe('GET_RESPONSE_SUCCESS', () => {
         },
       }
     `);
-    assert.deepEqual(store.getState().responsesById, {
+    expect(store.getState().responsesById).toEqual({
       [audioresponse.response_id]: originalAudioresponse
     });
     expect(store.getState().responses).toEqual([audioresponse]);
@@ -136,10 +136,10 @@ test('GET_RESPONSE_ERROR', async () => {
       "/api/runs/1/response/19c70c32-7f4b-4ba1-b2b2-96f33592ccf0",
     ]
   `);
-  assert.deepEqual(fetch.mock.calls[0], [`/api/runs/1/response/${responseId}`]);
+  expect(fetch.mock.calls[0]).toEqual([`/api/runs/1/response/${responseId}`]);
 
-  assert.deepEqual(store.getState().errors.response.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.response.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 describe('GET_TRANSCRIPTION_OUTCOME_SUCCESS', () => {
@@ -162,7 +162,7 @@ describe('GET_TRANSCRIPTION_OUTCOME_SUCCESS', () => {
         "/api/runs/1/response/19c70c32-7f4b-4ba1-b2b2-96f33592ccf0/transcript",
       ]
     `);
-    assert.deepEqual(returnValue, {
+    expect(returnValue).toEqual({
       ...response,
       ...outcome
     });
@@ -186,7 +186,7 @@ describe('GET_TRANSCRIPTION_OUTCOME_SUCCESS', () => {
         "/api/runs/1/response/19c70c32-7f4b-4ba1-b2b2-96f33592ccf0/transcript",
       ]
     `);
-    assert.deepEqual(returnValue, {
+    expect(returnValue).toEqual({
       ...response
     });
   });
@@ -207,11 +207,11 @@ test('GET_TRANSCRIPTION_OUTCOME_ERROR', async () => {
       "/api/runs/1/response/19c70c32-7f4b-4ba1-b2b2-96f33592ccf0/transcript",
     ]
   `);
-  assert.deepEqual(fetch.mock.calls[0], [
+  expect(fetch.mock.calls[0]).toEqual([
     `/api/runs/1/response/${responseId}/transcript`
   ]);
-  assert.deepEqual(store.getState().errors.transcript.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.transcript.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });
 
 describe('SET_RESPONSE_SUCCESS', () => {
@@ -282,7 +282,7 @@ describe('SET_RESPONSE_SUCCESS', () => {
       ]
     `);
 
-    assert.deepEqual(store.getState().responsesById, {
+    expect(store.getState().responsesById).toEqual({
       'abcb3c08-6487-46fb-af72-c86679128f3f': map.get(
         'abcb3c08-6487-46fb-af72-c86679128f3f'
       ),
@@ -291,18 +291,18 @@ describe('SET_RESPONSE_SUCCESS', () => {
       )
     });
 
-    assert.deepEqual(store.getState().responses, [
+    expect(store.getState().responses).toEqual([
       map.get('abcb3c08-6487-46fb-af72-c86679128f3f'),
       map.get('46425c73-5fd1-4106-b112-938d9dd3e52b')
     ]);
 
-    assert.deepEqual(returnValue, [
+    expect(returnValue).toEqual([
       map.get('abcb3c08-6487-46fb-af72-c86679128f3f'),
       map.get('46425c73-5fd1-4106-b112-938d9dd3e52b')
     ]);
 
-    assert.equal(Storage.has.mock.calls.length, 2);
-    assert.equal(Storage.delete.mock.calls.length, 2);
+    expect(Storage.has.mock.calls.length).toBe(2);
+    expect(Storage.delete.mock.calls.length).toBe(2);
   });
 
   test('no stored response to delete', async () => {
@@ -374,7 +374,7 @@ describe('SET_RESPONSE_SUCCESS', () => {
       ]
     `);
 
-    assert.deepEqual(store.getState().responsesById, {
+    expect(store.getState().responsesById).toEqual({
       'abcb3c08-6487-46fb-af72-c86679128f3f': map.get(
         'abcb3c08-6487-46fb-af72-c86679128f3f'
       ),
@@ -383,18 +383,18 @@ describe('SET_RESPONSE_SUCCESS', () => {
       )
     });
 
-    assert.deepEqual(store.getState().responses, [
+    expect(store.getState().responses).toEqual([
       map.get('abcb3c08-6487-46fb-af72-c86679128f3f'),
       map.get('46425c73-5fd1-4106-b112-938d9dd3e52b')
     ]);
 
-    assert.deepEqual(returnValue, [
+    expect(returnValue).toEqual([
       map.get('abcb3c08-6487-46fb-af72-c86679128f3f'),
       map.get('46425c73-5fd1-4106-b112-938d9dd3e52b')
     ]);
 
-    assert.equal(Storage.has.mock.calls.length, 2);
-    assert.equal(Storage.delete.mock.calls.length, 0);
+    expect(Storage.has.mock.calls.length).toBe(2);
+    expect(Storage.delete.mock.calls.length).toBe(0);
   });
 });
 
@@ -428,6 +428,6 @@ test('SET_RESPONSE_ERROR', async () => {
 
   const returnValue = await store.dispatch(actions.setResponses(11, [...map]));
 
-  assert.deepEqual(store.getState().errors.responses.error, error);
-  assert.equal(returnValue, null);
+  expect(store.getState().errors.responses.error).toEqual(error);
+  expect(returnValue).toBe(null);
 });

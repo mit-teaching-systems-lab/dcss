@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
 import Admin from '@components/Admin';
+import Chat from '@components/Chat';
 import Cohort from '@components/Cohorts/Cohort';
 import Cohorts from '@components/Cohorts';
 import Gate from '@components/Gate';
@@ -41,6 +42,7 @@ const Routes = ({ isLoggedIn, user }) => {
   const routeRenderAdmin = (props = {}) => (
     <Admin {...props} isLoggedIn={isLoggedIn} />
   );
+  const routeRenderChat = (props = {}) => <Chat {...props} />;
   const routeRenderCohorts = (props = {}) => (
     <Cohorts {...props} activeTab="cohorts" />
   );
@@ -59,6 +61,11 @@ const Routes = ({ isLoggedIn, user }) => {
   return (
     <Switch>
       <Route exact path="/" component={ScenariosListAll} />
+
+      <InterceptAnonymizableRoute path="/chat" isLoggedIn={isLoggedIn}>
+        <Route render={routeRenderChat} />
+      </InterceptAnonymizableRoute>
+
       <Route exact path="/scenarios/" component={ScenariosListAll} />
       <Route
         exact
