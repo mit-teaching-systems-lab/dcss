@@ -1,6 +1,12 @@
 import {
   GET_CHAT_ERROR,
   GET_CHAT_SUCCESS,
+  GET_CHAT_MESSAGES_ERROR,
+  GET_CHAT_MESSAGES_SUCCESS,
+  GET_CHAT_MESSAGES_COUNT_ERROR,
+  GET_CHAT_MESSAGES_COUNT_SUCCESS,
+  GET_CHAT_USERS_SUCCESS,
+  GET_CHAT_USERS_ERROR,
   GET_CHATS_ERROR,
   GET_CHATS_SUCCESS,
   SET_CHAT_ERROR,
@@ -21,6 +27,56 @@ export let getChat = id => async dispatch => {
     return chat;
   } catch (error) {
     dispatch({ type: GET_CHAT_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatUsersByChatId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/${id}/users`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { users } = res;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_USERS_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatMessagesByChatId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/${id}/messages`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { messages } = res;
+    // NOTE: There is currently no reducer for this action.
+    dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+    return messages;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_MESSAGES_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatMessagesCountByChatId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/${id}/messages/count`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { count } = res;
+    // NOTE: There is currently no reducer for this action.
+    dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+    return count;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_MESSAGES_COUNT_ERROR, error });
     return null;
   }
 };

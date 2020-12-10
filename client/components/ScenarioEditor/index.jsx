@@ -307,7 +307,8 @@ class ScenarioEditor extends Component {
               onChange={onConsentChange}
               options={{
                 buttons: 'suggestion',
-                minHeight: '150px'
+                minHeight: '150px',
+                tabDisable: true
               }}
             />
           ) : null}
@@ -328,7 +329,8 @@ class ScenarioEditor extends Component {
             onChange={onFinishSlideChange}
             options={{
               buttons: 'suggestion',
-              minHeight: '200px'
+              minHeight: '200px',
+              tabDisable: true
             }}
           />
         </Form.Field>

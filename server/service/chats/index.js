@@ -6,10 +6,12 @@ const {
 } = require('../auth/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
 const {
+  createChat,
   getChats,
   getChatsByUserId,
   getChatMessagesByChatId,
-  createChat,
+  getChatMessagesCountByChatId,
+  getChatUsersByChatId,
   getChatById,
   setChatById,
   linkChatToRun
@@ -23,8 +25,9 @@ router.get('/my', [requireUser, getChatsByUserId]);
 
 router.get('/user/:id', [requireUser, getChatsByUserId]);
 
+router.get('/:id/messages/count', [requireUser, getChatMessagesCountByChatId]);
 router.get('/:id/messages', [requireUser, getChatMessagesByChatId]);
-
+router.get('/:id/users', [requireUser, getChatUsersByChatId]);
 router.get('/:id', [requireUser, getChatById]);
 
 router.put('/:id', [requireUser, validateRequestBody, setChatById]);

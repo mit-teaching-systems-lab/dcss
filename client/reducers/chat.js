@@ -1,5 +1,6 @@
 import {
   GET_CHAT_SUCCESS,
+  GET_CHAT_USERS_SUCCESS,
   GET_CHATS_SUCCESS,
   LINK_CHAT_TO_RUN_SUCCESS
 } from '@actions/types';
@@ -7,14 +8,25 @@ import {
 import { chatInitialState } from './initial-states';
 
 export const chat = (state = chatInitialState, action) => {
-  const { chat, type } = action;
+  const { chat, users, type } = action;
 
   switch (type) {
+    case GET_CHAT_USERS_SUCCESS: {
+      const usersById = users.reduce((accum, user) => {
+        accum[user.id] = user;
+        return accum;
+      }, {});
+      return {
+        ...state,
+        users,
+        usersById
+      };
+    }
     case GET_CHAT_SUCCESS:
     case LINK_CHAT_TO_RUN_SUCCESS: {
       return {
         ...state,
-        chat
+        ...chat
       };
     }
     default:

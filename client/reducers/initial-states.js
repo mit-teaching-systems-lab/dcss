@@ -5,7 +5,9 @@ export const chatInitialState = {
   created_at: null,
   updated_at: null,
   deleted_at: null,
-  ended_at: null
+  ended_at: null,
+  users: [],
+  usersById: {}
 };
 
 export const cohortInitialState = {

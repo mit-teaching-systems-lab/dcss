@@ -300,3 +300,79 @@ describe('LINK_CHAT_TO_RUN_ERROR', () => {
     });
   });
 });
+
+describe('GET_CHAT_MESSAGES_SUCCESS', () => {
+  describe('getChatMessagesByChatId', () => {
+    let messages = [];
+
+    test('Receives messages', async () => {
+      fetchImplementation(fetch, 200, { messages });
+      const returnValue = await store.dispatch(
+        actions.getChatMessagesByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/messages",
+        ]
+      `);
+      expect(returnValue).toEqual(messages);
+
+      await mockStore.dispatch(actions.getChatMessagesByChatId(1));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});
+
+describe('GET_CHAT_MESSAGES_ERROR', () => {
+  describe('getChatMessagesByChatId', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatMessagesByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getChatMessagesByChatId(1));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});
+
+describe('GET_CHAT_MESSAGES_COUNT_SUCCESS', () => {
+  describe('getChatMessagesCountByChatId', () => {
+    let count = 10;
+
+    test('Receives count', async () => {
+      fetchImplementation(fetch, 200, { count });
+      const returnValue = await store.dispatch(
+        actions.getChatMessagesCountByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/messages/count",
+        ]
+      `);
+      expect(returnValue).toEqual(count);
+
+      await mockStore.dispatch(actions.getChatMessagesCountByChatId(1));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});
+
+describe('GET_CHAT_MESSAGES_COUNT_ERROR', () => {
+  describe('getChatMessagesCountByChatId', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(
+        actions.getChatMessagesCountByChatId(1)
+      );
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getChatMessagesCountByChatId(1));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});

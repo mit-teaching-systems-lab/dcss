@@ -1,8 +1,8 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 
-// import katex from 'katex';
-// import 'katex/dist/katex.min.css';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
 
 import CodeMirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
@@ -86,10 +86,14 @@ class RichTextEditor extends Component {
         value = ''
       } = this.props;
 
-      const buttonList =
+      let buttonList =
         typeof options.buttons === 'string'
           ? buttons[options.buttons]
           : options.buttons;
+
+      if (!buttonList) {
+        buttonList = buttons.small.slice();
+      }
 
       delete options.buttons;
 
@@ -101,13 +105,13 @@ class RichTextEditor extends Component {
       options.imageUploadUrl = '/api/media/image';
       options.imageGalleryUrl = '/api/media/gallery/images';
 
-      // Enable this when it's time to add math to the editor.
-      // if (options.buttonList.flat().includes('math')) {
-      //   options.katex = katex;
-      // }
+      if (options.buttonList.flat().includes('math')) {
+        options.katex = katex;
+      }
 
       const onContentChange = content => {
         if (name) {
+          console.log("??????????????/");
           this.ref.current.value = content;
         }
         onChange(content);
@@ -132,7 +136,7 @@ class RichTextEditor extends Component {
       MiscEventNames.forEach(eventName => {
         if (this.props[eventName]) {
           this[SymbolEditor][eventName] = (...args) => {
-            this.props[eventName](this[SymbolEditor].getContents(), ...args);
+            this.props[eventName](...args, this[SymbolEditor].getContents());
           };
         }
       });
@@ -186,11 +190,18 @@ class RichTextEditor extends Component {
         this[SymbolEditor].core.focusEdge();
       }
     }
+
+    if (this.props.onMount) {
+      this.props.onMount(this[SymbolEditor]);
+    }
   }
 
   componentDidUpdate(prevProps) {
+    console.log("componentDidUpdate");
     if (prevProps.defaultValue !== this.props.defaultValue) {
+      console.log('prevProps.defaultValue !== this.props.defaultValue');
       if (!this[SymbolEditor].core.hasFocus) {
+        console.log('!this[SymbolEditor].core.hasFocus');
         this[SymbolEditor].setContents(this.props.defaultValue);
       }
     }
@@ -198,13 +209,16 @@ class RichTextEditor extends Component {
 
   componentWillUnmount() {
     if (this[SymbolEditor]) {
+      if (this.props.onUnmount) {
+        this.props.onUnmount(this[SymbolEditor]);
+      }
       this[SymbolEditor].destroy();
     }
   }
 
   render() {
     const { ref } = this;
-    const { defaultValue: __html, mode = 'editor' } = this.props;
+    const { defaultValue: __html, mode = 'editor', style } = this.props;
 
     let className = 'sun-editor-editable rt__container';
 
@@ -213,7 +227,7 @@ class RichTextEditor extends Component {
     }
 
     return mode === 'editor' ? (
-      <textarea ref={ref} />
+      <textarea ref={ref} style={style} />
     ) : (
       <div className={className} dangerouslySetInnerHTML={{ __html }} />
     );
@@ -247,14 +261,18 @@ RichTextEditor.propTypes = {
   onKeyDown: PropTypes.func,
   onKeyUp: PropTypes.func,
   onLoad: PropTypes.func,
+  onMount: PropTypes.func,
+  onUnmount: PropTypes.func,
   onMouseDown: PropTypes.func,
   onPaste: PropTypes.func,
+  onResize: PropTypes.func,
   onScroll: PropTypes.func,
   onVideoUpload: PropTypes.func,
   onVideoUploadBefore: PropTypes.func,
   onVideoUploadError: PropTypes.func,
   options: PropTypes.object,
   show: PropTypes.bool,
+  style: PropTypes.object,
   toolbar: PropTypes.shape({
     enable: PropTypes.bool,
     show: PropTypes.bool

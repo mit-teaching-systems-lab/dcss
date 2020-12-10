@@ -3,8 +3,12 @@ const defaultOptions = {
   block: 'nearest',
   inline: 'nearest'
 };
-export default function(element, options = defaultOptions) {
+export default function(element, optionsOrBooleanFlag = defaultOptions) {
   if (element) {
-    element.scrollIntoView(Object.assign({}, defaultOptions, options));
+    if (typeof optionsOrBooleanFlag === 'boolean') {
+      element.scrollIntoView(optionsOrBooleanFlag);
+    } else {
+      element.scrollIntoView(Object.assign({}, defaultOptions, optionsOrBooleanFlag));
+    }
   }
 }

@@ -12,6 +12,7 @@ exports.USER_NOT_TYPING = 'user-not-typing';
 exports.NOTIFICATION = 'notification';
 
 // Server -> Client
+exports.JOIN_OR_PART = 'join-or-part';
 // exports.AGENT_ADDED = 'agent-added';
 // exports.USER_ADDED = 'user-added';
 // exports.USER_REMOVED = 'user-removed';

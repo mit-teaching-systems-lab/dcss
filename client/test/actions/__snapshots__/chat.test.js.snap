@@ -22,6 +22,46 @@ Array [
 ]
 `;
 
+exports[`GET_CHAT_MESSAGES_COUNT_ERROR getChatMessagesCountByChatId Receives error 1`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_CHAT_MESSAGES_COUNT_ERROR",
+  },
+]
+`;
+
+exports[`GET_CHAT_MESSAGES_COUNT_SUCCESS getChatMessagesCountByChatId Receives count 2`] = `
+Array [
+  Object {
+    "count": 10,
+    "type": "GET_CHAT_MESSAGES_COUNT_SUCCESS",
+  },
+]
+`;
+
+exports[`GET_CHAT_MESSAGES_ERROR getChatMessagesByChatId Receives error 1`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_CHAT_MESSAGES_ERROR",
+  },
+]
+`;
+
+exports[`GET_CHAT_MESSAGES_SUCCESS getChatMessagesByChatId Receives messages 2`] = `
+Array [
+  Object {
+    "messages": Array [],
+    "type": "GET_CHAT_MESSAGES_SUCCESS",
+  },
+]
+`;
+
 exports[`GET_CHAT_SUCCESS createChat Empty params 1`] = `Array []`;
 
 exports[`GET_CHAT_SUCCESS createChat Receives a chat 2`] = `

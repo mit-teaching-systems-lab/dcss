@@ -59,6 +59,18 @@ async function getChatMessagesByChatId(req, res) {
   res.json({ messages });
 }
 
+async function getChatUsersByChatId(req, res) {
+  const id = Number(req.params.id);
+  const users = await db.getChatUsersByChatId(id);
+  res.json({ users });
+}
+
+async function getChatMessagesCountByChatId(req, res) {
+  const id = Number(req.params.id);
+  const count = await db.getChatMessagesCountByChatId(id);
+  res.json({ count });
+}
+
 async function setChatById(req, res) {
   const id = Number(req.params.id);
   const { deleted_at = null } = req.body;
@@ -83,6 +95,10 @@ async function setChatById(req, res) {
 exports.getChats = asyncMiddleware(getChats);
 exports.getChatsByUserId = asyncMiddleware(getChatsByUserId);
 exports.getChatMessagesByChatId = asyncMiddleware(getChatMessagesByChatId);
+exports.getChatMessagesCountByChatId = asyncMiddleware(
+  getChatMessagesCountByChatId
+);
+exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
 exports.createChat = asyncMiddleware(createChat);
 exports.getChatById = asyncMiddleware(getChatById);
 exports.setChatById = asyncMiddleware(setChatById);

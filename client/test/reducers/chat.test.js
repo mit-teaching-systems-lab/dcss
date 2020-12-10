@@ -40,6 +40,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
     expect(reducer.chat(undefined, {})).toMatchInlineSnapshot(`
@@ -51,6 +53,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
   });
@@ -69,6 +73,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
@@ -80,6 +86,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
   });
@@ -97,6 +105,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
@@ -108,6 +118,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
   });
@@ -125,6 +137,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
@@ -136,6 +150,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
   });
@@ -153,6 +169,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
@@ -164,6 +182,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
   });
@@ -181,6 +201,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
@@ -192,6 +214,8 @@ describe('chat', () => {
         "id": null,
         "lobby_id": null,
         "updated_at": null,
+        "users": Array [],
+        "usersById": Object {},
       }
     `);
   });

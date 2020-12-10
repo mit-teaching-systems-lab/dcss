@@ -6,4 +6,4 @@ ALTER TABLE notification
 -- Down below
 
 ALTER TABLE notification
-  RENAME COLUMN expire_at TO expires_at TO;
+  RENAME COLUMN expire_at TO expires_at;

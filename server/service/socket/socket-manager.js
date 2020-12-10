@@ -3,11 +3,13 @@ const { notifier } = require('../../util/db');
 const {
   AGENT_JOIN,
   DISCONNECT,
-  USER_JOIN,
-  USER_PART,
+  JOIN_OR_PART,
   NEW_MESSAGE,
-  NOTIFICATION
+  NOTIFICATION,
+  USER_JOIN,
+  USER_PART
 } = require('./types');
+const chatdb = require('../chats/db');
 
 function socketlog(...args) {
   console.log('');
@@ -32,43 +34,64 @@ class SocketManager {
       socketlog('Connected', socket.id);
 
       // Notifications
-      notifier.on('new_notification', data => {
-        console.log('new_notification', data);
+      //
+      if (!notifier.listenerCount('new_notification')) {
+        notifier.on('new_notification', data => {
+          // console.log('new_notification', data);
+          if (!cache.notifications.includes(data.id)) {
+            cache.notifications.push(data.id);
+            socket.broadcast.emit(NOTIFICATION, data);
+          }
+        });
+        console.log('new_notification listener is registered');
+      }
 
-        if (!cache.notifications.includes(data.id)) {
-          cache.notifications.push(data.id);
-          socket.broadcast.emit(NOTIFICATION, data);
-        }
-      });
+      if (!notifier.listenerCount('new_chat_message')) {
+        notifier.on('new_chat_message', data => {
+          // console.log('new_chat_message', data);
+          socket.broadcast.emit(NEW_MESSAGE, data);
+        });
+        console.log('new_chat_message listener is registered');
+      }
 
-      notifier.on('new_chat_message', data => {
-        console.log('new_chat_message', data);
+      if (!notifier.listenerCount('join_or_part_chat')) {
+        notifier.on('join_or_part_chat', data => {
+          console.log('join_or_part_chat', data);
+          const message = data.is_present
+            ? 'has joined the chat.'
+            : 'has left the chat.';
+          const content = `
+            <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
+          `.trim();
 
-        socket.broadcast.emit(NEW_MESSAGE, data);
-      });
+          chatdb.createNewChatMessage(data.chat_id, data.user_id, content);
+          socket.broadcast.emit(JOIN_OR_PART, data);
+        });
+
+        console.log('join_or_part_chat listener is registered');
+      }
 
       // Chat
-      // socket.on(USER_JOIN, ({ user }) => {
-      //   socketlog(USER_JOIN, user);
-      //   socket.user = user;
-      //   socket.broadcast.emit(USER_JOIN, {
-      //     user: socket.user
-      //   });
-      // });
+      socket.on(USER_JOIN, ({ chat, user }) => {
+        socketlog(USER_JOIN, user);
+        chatdb.joinChat(chat.id, user.id);
+        // socket.user = user;
+        // socket.broadcast.emit(USER_JOIN, {
+        //   user: socket.user
+        // });
+      });
+
+      socket.on(USER_PART, ({ chat, user }) => {
+        socketlog(USER_PART, user);
+        chatdb.partChat(chat.id, user.id);
+        // socket.broadcast.emit(USER_PART, {
+        //   user: socket.user
+        // });
+      });
       //
-      // socket.on(USER_PART, ({ user }) => {
-      //   socketlog(USER_PART, user);
-      //   socket.broadcast.emit(USER_PART, {
-      //     user: socket.user
-      //   });
-      // });
-      //
-      // socket.on(NEW_MESSAGE, ({ message }) => {
-      //   socketlog(NEW_MESSAGE, message);
-      //   socket.broadcast.emit(NEW_MESSAGE, {
-      //     message
-      //   });
-      // });
+      socket.on(NEW_MESSAGE, ({ chat, user, content }) => {
+        chatdb.createNewChatMessage(chat.id, user.id, content);
+      });
       //
       // socket.on(DISCONNECT, () => {
       //   socketlog(USER_PART, socket.user);

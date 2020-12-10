@@ -1,0 +1,54 @@
+/*.c__container-modal {
+  max-height: 100vh;
+  margin-bottom: 1rem;
+  padding-top: 0 !important;
+}*/
+.c__container-modal {
+
+    /*bottom: 0 !important;*/
+    /*calc(100% - 1em) !important;*/
+    max-height: calc(100% - 100px) !important;
+
+  /*max-height: 100vh;*/
+
+/*  margin-bottom: 1rem;
+  padding-top: 0 !important;
+*/}
+
+/* cc = chat composer */
+.cc__container-outer {
+  /*position: absolute;*/
+  max-height: calc(100vh / 2) !important;
+  /*bottom: 0;*/
+}
+
+.cc__container-inner {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+/* cm = chat messages */
+.cm__container-outer {
+  height: 500px;
+  margin-bottom: 1rem;
+  padding-top: 0 !important;
+}
+
+.cm__container-inner {
+  height: 500px;
+  overflow-y: scroll;
+}
+
+/* cmm = chat messages message */
+.cmm__content img {
+  width: 100% !important;
+}
+
+.cmm__content .actions {
+  visibility: hidden;
+}
+
+
+.cmm__content:hover .actions {
+  visibility: visible;
+}

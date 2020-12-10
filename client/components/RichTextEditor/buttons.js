@@ -76,4 +76,21 @@ export const suggestion = [
   ]
 ];
 
-export default { small, medium, large, component, suggestion };
+export const chat = [
+  [
+    'undo',
+    'redo',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'list',
+    'link',
+    'blockquote',
+    'math',
+    'image',
+    'imageGallery'
+  ]
+];
+
+export default { small, medium, large, component, suggestion, chat };

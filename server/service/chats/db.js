@@ -36,6 +36,47 @@ exports.getChatById = async id => {
   return result.rowCount ? result.rows[0] : null;
 };
 
+exports.createNewChatMessage = async (chat_id, user_id, content) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      INSERT INTO chat_message
+        (chat_id, user_id, content)
+      VALUES
+        (${chat_id}, ${user_id}, ${content})
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
+exports.joinChat = async (chat_id, user_id) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      INSERT INTO chat_user
+        (chat_id, user_id, is_present)
+      VALUES
+        (${chat_id}, ${user_id}, TRUE)
+      ON CONFLICT ON CONSTRAINT chat_user_pkey
+      DO UPDATE SET is_present = TRUE
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
+exports.partChat = async (chat_id, user_id) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      UPDATE chat_user
+      SET is_present = FALSE
+      WHERE chat_id = ${chat_id}
+      AND user_id = ${user_id}
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
 exports.getChatMessagesByChatId = async id => {
   const result = await query(sql`
     SELECT *
@@ -44,6 +85,29 @@ exports.getChatMessagesByChatId = async id => {
     ORDER BY id ASC
   `);
   return result.rows;
+};
+
+exports.getChatUsersByChatId = async id => {
+  const result = await query(sql`
+    SELECT
+      user_role_detail.*,
+      chat_user.updated_at,
+      chat_user.is_muted,
+      chat_user.is_present
+    FROM chat_user
+    JOIN user_role_detail ON user_role_detail.id = chat_user.user_id
+    WHERE chat_user.chat_id = ${id};
+  `);
+  return result.rows;
+};
+
+exports.getChatMessagesCountByChatId = async id => {
+  const result = await query(sql`
+    SELECT COUNT(id) as count
+    FROM chat_message
+    WHERE chat_id = ${id}
+  `);
+  return result.rows[0].count;
 };
 
 exports.getChatsByUserId = async user_id => {

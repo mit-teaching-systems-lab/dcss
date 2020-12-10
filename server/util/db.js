@@ -24,6 +24,7 @@ const notifier = new Emitter();
 client.connect();
 client.query('LISTEN new_notification');
 client.query('LISTEN new_chat_message');
+client.query('LISTEN join_or_part_chat');
 
 client.on('notification', ({ channel, payload }) => {
   notifier.emit(channel, JSON.parse(payload));
