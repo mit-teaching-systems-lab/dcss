@@ -11,10 +11,8 @@ import {
   Header,
   Icon,
   Input,
-  List,
   Menu,
   Pagination,
-  Popup,
   Responsive,
   Title
 } from '@components/UI';
@@ -31,7 +29,6 @@ import { getLabelsByOccurrence } from '@actions/tags';
 import { setLabelsInUse } from '@actions/tags';
 import Boundary from '@components/Boundary';
 import Gate from '@components/Gate';
-import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
@@ -311,7 +308,7 @@ class ScenariosList extends Component {
     switch (category) {
       case 'all': {
         scenarios.push(...sourceScenarios);
-        displayHeading = 'Showing all scenarios';
+        displayHeading = `Showing ${scenarios.length} scenarios`;
         break;
       }
       case 'author': {
@@ -387,17 +384,6 @@ class ScenariosList extends Component {
       });
     };
 
-    const menuItemScenarioLinkCopyLeft = Layout.isForMobile() ? (
-      <Menu.Item.Tabbable
-        key="menu-item-scenario-link-copy-left"
-        style={{ width: '45%' }}
-        className="em__overflow-truncated"
-        onClick={onCopyClick}
-      >
-        {displayHeading} ({scenarios.length})
-      </Menu.Item.Tabbable>
-    ) : null;
-
     const createScenarioButton = (
       <Gate
         key="menu-item-scenario-create"
@@ -405,6 +391,8 @@ class ScenariosList extends Component {
       >
         <Button
           primary
+          size="big"
+          fluid
           as={Link}
           to="/editor/new"
           icon
@@ -419,45 +407,27 @@ class ScenariosList extends Component {
       </Gate>
     );
 
-    const left = [
-      <Gate
-        key="menu-item-scenario-create"
-        requiredPermission="create_scenario"
-      >
-        <Button
-          primary
-          as={Link}
-          to="/editor/new"
-          icon
-          labelPosition="left"
-          name="Create a scenario"
-          href="/editor/new"
-          className="sc__hidden-on-mobile"
-        >
-          <Icon name="add" />
-          Create a Scenario
-        </Button>
-      </Gate>,
-
-      menuItemScenarioLinkCopyLeft
-    ];
-
-    const scenariosHeading = `${displayHeading} (${scenarios.length})`;
-    const menuItemScenarioLinkCopyRight = Layout.isNotForMobile() ? (
-      <Menu.Item.Tabbable
+    const scenariosHeading = `${displayHeading}`;
+    const menuItemScenarioLinkCopy = Layout.isNotForMobile() ? (
+      <Button
         className="sc__hidden-on-mobile"
         onClick={onCopyClick}
+        size="small"
+        icon
+        labelPosition="left"
       >
-        {scenariosHeading}
-        <Icon name="clipboard outline" />
-      </Menu.Item.Tabbable>
+        <Icon name="clipboard outline" color="blue" />
+        Copy the url to these scenarios
+      </Button>
     ) : null;
 
     const menuItemScenarioSearch = (
       <Menu.Item.Tabbable>
         <Input
+          label="Search scenarios"
+          className="sl__menu-search"
           icon="search"
-          placeholder="Search..."
+          size="big"
           defaultValue={search || ''}
           onChange={onSearchChange}
         />
@@ -470,30 +440,20 @@ class ScenariosList extends Component {
       </Menu.Item.Tabbable>
     );
 
-    const right = [
+    const scenarioSearchTools = [
       <Menu.Menu
         className="sl__menu"
         key="menu-item-scenario-search"
         position="right"
       >
-        <Popup
-          inverted
-          size="tiny"
-          content="Copy the url to these scenarios"
-          trigger={menuItemScenarioLinkCopyRight}
-        />
-        <Popup
-          inverted
-          size="tiny"
-          content="Search scenarios"
-          trigger={menuItemScenarioSearch}
-        />
-        <Popup
-          inverted
-          size="tiny"
-          content="Filter scenarios by label"
-          trigger={menuItemScenarioLabels}
-        />
+        {menuItemScenarioSearch}
+        <div className="sl__menu-tools">
+          <div>
+            <p>{displayHeading}</p>
+            {menuItemScenarioLinkCopy}
+          </div>
+          {menuItemScenarioLabels}
+        </div>
       </Menu.Menu>
     ];
 
@@ -527,8 +487,8 @@ class ScenariosList extends Component {
     this.timeout = null;
     return (
       <Fragment>
-        <Grid className="grid__main" stackable columns={2}>
-          <Grid.Column width={4}>
+        <Grid className="grid__container" stackable columns={2}>
+          <Grid.Column className="grid__sidebar" width={4}>
             <Header as="h1" size="medium">
               Scenarios
             </Header>
@@ -537,26 +497,10 @@ class ScenariosList extends Component {
               participant through a simulation.
             </p>
             {createScenarioButton}
-            <List>
-              <List.Item>
-                <List.Header as="a">My scenarios</List.Header>
-                <List.Description>Scenarios I’ve created</List.Description>
-              </List.Item>
-              <List.Item>
-                <List.Header as="a">Official</List.Header>
-                <List.Description>
-                  Scenarios made by the Teaching Systems Lab
-                </List.Description>
-              </List.Item>
-              <List.Item>
-                <List.Header as="a">Community</List.Header>
-                <List.Description>Scenarios made by others</List.Description>
-              </List.Item>
-            </List>
           </Grid.Column>
-          <Grid.Column width={12}>
+          <Grid.Column className="grid__main" width={12}>
             <Title content={scenariosHeading} />
-            <EditorMenu type="scenarios" items={{ left, right }} />
+            {scenarioSearchTools}
             <Container fluid>
               <Grid>
                 <Boundary top />

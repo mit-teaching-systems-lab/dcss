@@ -132,7 +132,22 @@
   }
 }
 
-.ui.borderless.icon.em__height.menu > .right.sl__menu > .item {
+.sl__menu {
+  margin-bottom: 2rem;
+}
+
+.sl__menu-search {
+  width: 100%;
+}
+
+.sl__menu-tools {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+/*.ui.borderless.icon.em__height.menu > .right.sl__menu > .item {
   padding-right: 0.5em !important;
   padding-left: 0.5em !important;
 }
@@ -149,4 +164,4 @@
 
 .ui.borderless.icon.em__height.menu > .right.sl__menu > .item:last-child > .dropdown:hover {
   background-color: transparent !important;
-}
+}*/

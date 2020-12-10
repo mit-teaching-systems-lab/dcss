@@ -87,6 +87,7 @@ class ScenarioLabelsFilter extends React.Component {
 
     return (
       <Dropdown
+        button
         item
         search
         scrolling
@@ -103,12 +104,12 @@ class ScenarioLabelsFilter extends React.Component {
             const key = Identity.key(label);
             const active = this.props.tags.labelsInUse.includes(label.value);
             const content = (
-              <Text>
-                {label.text}{' '}
+              <div>
+                <p>{label.text} </p>
                 <Text size="small" grey>
-                  ({label.count})
+                  {label.count} {label.count > 1 ? 'scenarios' : 'scenario'}
                 </Text>
-              </Text>
+              </div>
             );
             const itemProps = {
               'aria-label': `${label.count} scenarios labelled "${label.text}"`,
@@ -126,8 +127,8 @@ class ScenarioLabelsFilter extends React.Component {
 
               if (
                 search &&
-                (!escapedRegExp.test(label.text) &&
-                  !escapedRegExp.test(label.value))
+                !escapedRegExp.test(label.text) &&
+                !escapedRegExp.test(label.value)
               ) {
                 shouldIncludeInDisplay = false;
               }
@@ -168,8 +169,5 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ScenarioLabelsFilter)
+  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabelsFilter)
 );

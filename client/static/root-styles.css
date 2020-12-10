@@ -2,7 +2,7 @@
   /*margin: 0.5em 0.5em 0 0.5em;*/
   margin: 0 0.5em 0 0.5em;
   height: 100vh;
-  --primary-color: #853d61;
+  --color-gray: #f2f2f2;
 }
 
 .ui.form input:not([type]),
@@ -203,6 +203,10 @@ button {
   color: #000;
 }
 
-.grid__main {
+.grid__container {
   margin-top: 3rem !important;
+}
+
+.grid__main {
+  background-color: var(--color-gray);
 }

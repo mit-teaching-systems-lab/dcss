@@ -68,9 +68,7 @@ class ScenarioCard extends React.Component {
     const createdAtTime = scenario.created_at;
     const createdAgo = Moment(createdAtTime).fromNow();
 
-    console.log(scenario);
-
-    const hello = updatedAtTime ? (
+    const scenarioUpdatedOrCreatedTime = updatedAtTime ? (
       <p>
         Last edited{' '}
         <time className="sc__time" dateTime={updatedAtTime}>
@@ -142,7 +140,7 @@ class ScenarioCard extends React.Component {
             />
           </Card.Description>
           <Card.Meta className="sc__footer">
-            {hello}
+            {scenarioUpdatedOrCreatedTime}
             <ScenarioLabels scenario={scenario} />
           </Card.Meta>
         </Card.Content>
