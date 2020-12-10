@@ -54,7 +54,7 @@ class ScenarioCard extends React.Component {
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
-      <Icon name="check" aria-label="Official" />
+      <Icon name="check" aria-label="Official" color="blue" />
     ) : null;
 
     const isAuthorized =
@@ -63,8 +63,28 @@ class ScenarioCard extends React.Component {
     const ariaLabelledby = Identity.id();
     const ariaDescribedby = Identity.id();
 
-    const updatedAtRaw = scenario.updated_at;
-    const updatedAgo = Moment(updatedAtRaw).fromNow();
+    const updatedAtTime = scenario.updated_at;
+    const updatedAgo = Moment(updatedAtTime).fromNow();
+    const createdAtTime = scenario.created_at;
+    const createdAgo = Moment(createdAtTime).fromNow();
+
+    console.log(scenario);
+
+    const hello = updatedAtTime ? (
+      <p>
+        Last edited{' '}
+        <time className="sc__time" dateTime={updatedAtTime}>
+          {updatedAgo}
+        </time>
+      </p>
+    ) : (
+      <p>
+        Created{' '}
+        <time className="sc__time" dateTime={createdAtTime}>
+          {createdAgo}
+        </time>
+      </p>
+    );
 
     const status = scenario.status;
     const statusUI = {
@@ -121,10 +141,8 @@ class ScenarioCard extends React.Component {
               text={description}
             />
           </Card.Description>
-          <Card.Meta>
-            <p>
-              Last edited <time datetime={updatedAtRaw}>{updatedAgo}</time>
-            </p>
+          <Card.Meta className="sc__footer">
+            {hello}
             <ScenarioLabels scenario={scenario} />
           </Card.Meta>
         </Card.Content>

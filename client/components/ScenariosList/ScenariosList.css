@@ -46,11 +46,16 @@
   color: #000 !important;
   font-size: 0.9rem !important;
   font-weight: bold;
+  margin-bottom: 1rem !important;
   text-align: right;
 }
 
 .ui.card .sc__status i {
   margin-right: 0.5rem !important;
+}
+
+.ui.card .sc__time {
+  font-weight: bold;
 }
 
 .ui.card.sc .header {
@@ -59,10 +64,11 @@
 
 .ui.card.sc .description {
   font-size: 1.1rem;
+  margin-bottom: 1rem;
   overflow-y: auto !important;
 }
 
-.ui.card.sc .meta {
+.ui.card.sc .sc__footer {
   margin-top: auto;
 }
 
