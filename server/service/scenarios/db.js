@@ -381,6 +381,7 @@ async function createScenario(user_id, title, description) {
 }
 
 async function setScenario(scenarioId, scenario) {
+  scenario.updated_at = new Date().toISOString();
   const result = await query(
     updateQuery('scenario', { id: scenarioId }, scenario)
   );
