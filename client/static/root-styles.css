@@ -3,6 +3,7 @@
   margin: 0 0.5em 0 0.5em;
   height: 100vh;
   --color-gray: #f2f2f2;
+  --color-primary: #2185d0;
 }
 
 .ui.form input:not([type]),

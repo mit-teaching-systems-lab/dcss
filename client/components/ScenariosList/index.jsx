@@ -308,7 +308,7 @@ class ScenariosList extends Component {
     switch (category) {
       case 'all': {
         scenarios.push(...sourceScenarios);
-        displayHeading = `Showing ${scenarios.length} scenarios`;
+        displayHeading = `Showing all scenarios`;
         break;
       }
       case 'author': {
@@ -449,7 +449,10 @@ class ScenariosList extends Component {
         {menuItemScenarioSearch}
         <div className="sl__menu-tools">
           <div>
-            <p>{displayHeading}</p>
+            <p>
+              {scenariosHeading}{' '}
+              <span className="sl__menu--search-no">({scenarios.length})</span>
+            </p>
             {menuItemScenarioLinkCopy}
           </div>
           {menuItemScenarioLabels}

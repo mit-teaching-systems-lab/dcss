@@ -102,6 +102,10 @@
   cursor: pointer;
 }
 
+.sc__labels > * {
+  margin-bottom: 0.3rem !important;
+}
+
 /*.sc__card-action-labels {
   display: none;
 }
@@ -145,6 +149,23 @@
   grid-auto-flow: column;
   justify-content: space-between;
   margin-top: 0.5rem;
+}
+
+.sl__menu--search-no {
+  font-weight: bold;
+}
+
+.labels__item p {
+  margin-bottom: 0;
+}
+
+.labels .active.item {
+  background-color: var(--color-primary) !important;
+  color: #fff !important;
+}
+
+.labels .active.item span {
+  color: #fff !important;
 }
 
 /*.ui.borderless.icon.em__height.menu > .right.sl__menu > .item {

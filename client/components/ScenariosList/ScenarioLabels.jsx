@@ -53,7 +53,7 @@ class ScenarioLabels extends React.Component {
     const { deleted_at, labels } = scenario;
 
     return !deleted_at ? (
-      <div>
+      <div className="sc__labels">
         {labels.map(value => {
           const key = Identity.key({ value, scenario });
           const labelProps = {

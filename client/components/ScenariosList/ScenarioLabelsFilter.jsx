@@ -99,12 +99,12 @@ class ScenarioLabelsFilter extends React.Component {
           });
         }}
       >
-        <Dropdown.Menu>
+        <Dropdown.Menu className="labels">
           {labels.reduce((accum, label) => {
             const key = Identity.key(label);
             const active = this.props.tags.labelsInUse.includes(label.value);
             const content = (
-              <div>
+              <div className="labels__item">
                 <p>{label.text} </p>
                 <Text size="small" grey>
                   {label.count} {label.count > 1 ? 'scenarios' : 'scenario'}

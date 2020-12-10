@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -85,12 +85,18 @@ class ScenarioCard extends React.Component {
     );
 
     const status = scenario.status;
-    const statusUI = {
+    const statusItems = {
       1: { type: 'Draft', icon: 'edit' },
       2: { type: 'Public', icon: 'eye' },
       3: { type: 'Private', icon: 'eye slash' }
     };
-    const showStatus = statusUI[status];
+    const showStatus = statusItems[status];
+    const statusUI = (
+      <Fragment>
+        <Icon name={showStatus.icon} color="blue" />
+        {showStatus.type}
+      </Fragment>
+    );
 
     const clickables = {
       onClick,
@@ -119,8 +125,7 @@ class ScenarioCard extends React.Component {
       >
         <Card.Content>
           <Card.Meta as="p" className="sc__status">
-            <Icon name={showStatus.icon} color="blue" />
-            {showStatus.type}
+            {statusUI}
           </Card.Meta>
           <Card.Header
             as="p"
