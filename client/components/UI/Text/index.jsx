@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import TextTruncate from 'react-text-truncate';
 import './Text.css';
 
 export function Text({
@@ -53,4 +54,54 @@ Text.propTypes = {
   size: PropTypes.string,
   style: PropTypes.object,
   title: PropTypes.string
+};
+
+export function Truncate(props) {
+  const {
+    children,
+    element = 'p',
+    id = '',
+    lines = 1,
+    textTruncateChild = null,
+    truncateText = '…',
+  } = props;
+
+  let text = props.text && !children
+    ? props.text
+    : children;
+
+  if (!text) {
+    text = '';
+  }
+
+  const truncateProps = {
+    line: lines,
+    element,
+    id,
+    text,
+    textTruncateChild,
+    truncateText
+  };
+
+  return (
+    <TextTruncate {...truncateProps} />
+  );
+}
+
+Truncate.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  element: PropTypes.string,
+  lines: PropTypes.number,
+  truncateText: PropTypes.string,
+  text: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]),
+  textTruncateChild: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ])
 };

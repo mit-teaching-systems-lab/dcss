@@ -29,6 +29,9 @@ Table.Cell.Clickable = TableCellClickable;
  * (Fomantic)
  */
 export * from './Text';
+import { Text, Truncate } from './Text';
+Text.Truncate = Truncate;
+
 
 /**
  * Custom Elements

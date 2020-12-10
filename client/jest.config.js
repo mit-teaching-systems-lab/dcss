@@ -29,6 +29,7 @@ module.exports = {
     'focus-trap': '<rootDir>/test/__mocks__/modules/return-children.js',
     'detect-browser': '<rootDir>/test/__mocks__/modules/detect-browser.js',
     'react-sortablejs': '<rootDir>/test/__mocks__/modules/react-sortablejs.js',
+    'react-text-truncate': '<rootDir>/test/__mocks__/modules/react-text-truncate.js',
     'socket.io-client': '<rootDir>/test/__mocks__/modules/socket.io-client.js',
     suneditor: '<rootDir>/test/__mocks__/modules/suneditor.js',
 
