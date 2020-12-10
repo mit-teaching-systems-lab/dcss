@@ -90,6 +90,7 @@ Truncate.propTypes = {
     PropTypes.node
   ]),
   element: PropTypes.string,
+  id: PropTypes.node,
   lines: PropTypes.number,
   truncateText: PropTypes.string,
   text: PropTypes.oneOfType([

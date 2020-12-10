@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 import {
   Button,
   Card,
-  Container,
   Grid,
   Header,
   Icon,

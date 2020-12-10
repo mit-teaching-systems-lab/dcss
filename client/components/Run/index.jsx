@@ -16,15 +16,7 @@ import withRunEventCapturing, {
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
 
-import withSocket, {
-  // Client -> Server
-  USER_JOIN,
-  USER_PART,
-
-  // Server -> Client
-  AGENT_ADDED,
-  USER_ADDED
-} from '@hoc/withSocket';
+import withSocket from '@hoc/withSocket';
 
 class Run extends Component {
   constructor(props) {
