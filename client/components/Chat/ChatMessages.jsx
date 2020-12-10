@@ -2,32 +2,25 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import md5 from 'md5';
 import { connect } from 'react-redux';
-import withSocket, {
-  JOIN_OR_PART,
-  NEW_MESSAGE,
-  NOTIFICATION
-} from '@hoc/withSocket';
-import withRunEventCapturing, {
-  CHAT_JOIN,
-  CHAT_PART,
-  CHAT_MESSAGE
-} from '@hoc/withRunEventCapturing';
+import withSocket, { NEW_MESSAGE, NOTIFICATION } from '@hoc/withSocket';
+// import withRunEventCapturing, {
+//   CHAT_JOIN,
+//   CHAT_PART,
+//   CHAT_MESSAGE
+// } from '@hoc/withRunEventCapturing';
 import {
   getChat,
   getChatMessagesByChatId,
   getChatMessagesCountByChatId
 } from '@actions/chat';
-import { getUser } from '@actions/user';
 
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 import scrollIntoView from '@utils/scrollIntoView';
-import Storage from '@utils/Storage';
 
 // import { ResizableBox } from 'react-resizable';
 import { Comment, Ref } from '@components/UI';
 import Loading from '@components/Loading';
-import RichTextEditor from '@components/RichTextEditor';
 import Username from '@components/User/Username';
 
 import './Chat.css';
@@ -149,7 +142,7 @@ Chat.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const { chat, cohort, run, scenario, user } = state;
   return {
     chat,

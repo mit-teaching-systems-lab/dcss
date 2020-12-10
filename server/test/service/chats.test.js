@@ -16,6 +16,35 @@ const user = {
   personalname: 'Super User'
 };
 
+const users = [
+  {
+    id: 2,
+    username: 'rwaldron',
+    personalname: 'Rick Waldron',
+    email: 'rick@bocoup.com',
+    is_anonymous: false,
+    single_use_password: false,
+    roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+    is_super: true,
+    updated_at: '2020-12-10T22:29:11.638Z',
+    is_muted: false,
+    is_present: true
+  },
+  {
+    id: 8,
+    username: 'free-trout',
+    personalname: 'Free Trout',
+    email: 'rick+free-trout@bocoup.com',
+    is_anonymous: false,
+    single_use_password: false,
+    roles: ['participant', 'facilitator'],
+    is_super: false,
+    updated_at: '2020-12-10T17:50:19.074Z',
+    is_muted: false,
+    is_present: true
+  }
+];
+
 const chat = {
   id: 1,
   lobby_id: 1,
@@ -50,7 +79,9 @@ jest.mock('../../service/chats/db', () => {
     createChat: jest.fn(),
     linkChatToRun: jest.fn(),
     getChatById: jest.fn(),
+    getChatUsersByChatId: jest.fn(),
     getChatMessagesByChatId: jest.fn(),
+    getChatMessagesCountByChatId: jest.fn(),
     getChatsByUserId: jest.fn(),
     getChats: jest.fn(),
     setChatById: jest.fn(),
@@ -90,6 +121,8 @@ describe('/api/chats/*', () => {
     db.getChats.mockImplementation(async () => chats);
     db.getChatsByUserId.mockImplementation(async () => chats);
     db.getChatMessagesByChatId.mockImplementation(async () => messages);
+    db.getChatMessagesCountByChatId.mockImplementation(async () => 1);
+    db.getChatUsersByChatId.mockImplementation(async () => [...users]);
   });
 
   afterEach(() => {
@@ -460,6 +493,81 @@ describe('/api/chats/*', () => {
       `);
       expect(db.getChatMessagesByChatId.mock.calls.length).toBe(1);
       expect(db.getChatMessagesByChatId.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          1,
+        ]
+      `);
+    });
+  });
+
+  describe('/api/chats/:id/messages/count', () => {
+    const path = '/api/chats/1/messages/count';
+
+    test('get success', async () => {
+      const response = await request({ path });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "count": 1,
+        }
+      `);
+      expect(db.getChatMessagesByChatId.mock.calls.length).toBe(1);
+      expect(db.getChatMessagesByChatId.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          1,
+        ]
+      `);
+    });
+  });
+
+  describe('/api/chats/:id/users', () => {
+    const path = '/api/chats/1/users';
+
+    test('get success', async () => {
+      const response = await request({ path });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "users": Array [
+            Object {
+              "email": "rick@bocoup.com",
+              "id": 2,
+              "is_anonymous": false,
+              "is_muted": false,
+              "is_present": true,
+              "is_super": true,
+              "personalname": "Rick Waldron",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "single_use_password": false,
+              "updated_at": "2020-12-10T22:29:11.638Z",
+              "username": "rwaldron",
+            },
+            Object {
+              "email": "rick+free-trout@bocoup.com",
+              "id": 8,
+              "is_anonymous": false,
+              "is_muted": false,
+              "is_present": true,
+              "is_super": false,
+              "personalname": "Free Trout",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "single_use_password": false,
+              "updated_at": "2020-12-10T17:50:19.074Z",
+              "username": "free-trout",
+            },
+          ],
+        }
+      `);
+      expect(db.getChatUsersByChatId.mock.calls.length).toBe(1);
+      expect(db.getChatUsersByChatId.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           1,
         ]

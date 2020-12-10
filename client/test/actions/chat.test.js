@@ -376,3 +376,64 @@ describe('GET_CHAT_MESSAGES_COUNT_ERROR', () => {
     });
   });
 });
+
+describe('GET_CHAT_USERS_SUCCESS', () => {
+  describe('getChatUsersByChatId', () => {
+    let users = [
+      {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      {
+        id: 4,
+        username: 'credible-lyrebird',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant', 'facilitator'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ];
+
+    test('Receives users', async () => {
+      fetchImplementation(fetch, 200, { users });
+      const returnValue = await store.dispatch(actions.getChatUsersByChatId(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/1/users",
+        ]
+      `);
+      expect(returnValue).toEqual(users);
+
+      await mockStore.dispatch(actions.getChatUsersByChatId(1));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});
+
+describe('GET_CHAT_USERS_ERROR', () => {
+  describe('getChatUsersByChatId', () => {
+    test('Receives error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.getChatUsersByChatId(1));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(returnValue).toEqual(null);
+      await mockStore.dispatch(actions.getChatUsersByChatId(1));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});

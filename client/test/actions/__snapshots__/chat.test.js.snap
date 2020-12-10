@@ -98,6 +98,61 @@ Array [
 ]
 `;
 
+exports[`GET_CHAT_USERS_ERROR getChatUsersByChatId Receives error 1`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "GET_CHAT_USERS_ERROR",
+  },
+]
+`;
+
+exports[`GET_CHAT_USERS_SUCCESS getChatUsersByChatId Receives users 2`] = `
+Array [
+  Object {
+    "type": "GET_CHAT_USERS_SUCCESS",
+    "users": Array [
+      Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_muted": false,
+        "is_present": true,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "single_use_password": false,
+        "updated_at": "2020-12-10T22:29:11.638Z",
+        "username": "super",
+      },
+      Object {
+        "email": null,
+        "id": 4,
+        "is_anonymous": true,
+        "is_muted": false,
+        "is_present": true,
+        "is_super": false,
+        "personalname": null,
+        "roles": Array [
+          "participant",
+          "facilitator",
+        ],
+        "single_use_password": false,
+        "updated_at": "2020-12-10T17:50:19.074Z",
+        "username": "credible-lyrebird",
+      },
+    ],
+  },
+]
+`;
+
 exports[`GET_CHATS_ERROR getChats Receives error 1`] = `
 Array [
   Object {

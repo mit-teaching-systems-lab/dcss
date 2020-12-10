@@ -27,11 +27,7 @@ import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
 
 // import { ResizableBox } from 'react-resizable';
-import {
-  Button,
-  Header,
-  Modal
-} from '@components/UI';
+import { Button, Header, Modal } from '@components/UI';
 import ChatMessages from '@components/Chat/ChatMessages';
 import Loading from '@components/Loading';
 import RichTextEditor from '@components/RichTextEditor';
@@ -76,7 +72,7 @@ class Chat extends Component {
   constructor(props) {
     super(props);
 
-    const { chat, run, user } = this.props;
+    const { chat } = this.props;
 
     this.storageKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
 
@@ -149,6 +145,7 @@ class Chat extends Component {
   }
 
   onReply() {
+    // eslint-disable-next-line no-console
     console.log('ON REPLY');
   }
 
@@ -290,7 +287,7 @@ Chat.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const { chat, cohort, run, scenario, user } = state;
   return {
     chat,

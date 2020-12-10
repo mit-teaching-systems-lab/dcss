@@ -6,7 +6,35 @@ module.exports = {
     created_at: '2020-12-08T21:51:33.659Z',
     updated_at: null,
     deleted_at: null,
-    ended_at: null
+    ended_at: null,
+    users: [
+      {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      {
+        id: 4,
+        username: 'credible-lyrebird',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant', 'facilitator'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ]
   },
   chats: [
     {
