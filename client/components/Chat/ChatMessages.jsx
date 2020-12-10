@@ -63,14 +63,12 @@ class Chat extends Component {
     this.props.socket.off(NEW_MESSAGE, this.onNewMessage);
   }
 
-  onNewMessage(data) {
-    if (messageIdCache[data.id]) {
-      return;
-    }
-
-    messageIdCache[data.id] = true;
-
+  async onNewMessage(data) {
     const { messages } = this.state;
+
+    if (!this.props.chat.usersById[data.user_id]) {
+      await this.props.getChatUsersByChatId(this.props.chat.id);
+    }
 
     messages.push(data);
 
@@ -87,11 +85,15 @@ class Chat extends Component {
       <div className="cm__container-inner">
         <Ref innerRef={node => scrollIntoView(node, false)}>
           <Comment.Group>
-            {messages.map(message => {
-              const key = Identity.key(message);
+            {messages.reduce((accum, message) => {
               const user = chat.usersById[message.user_id];
-              const __html = message.content;
 
+              if (!user) {
+                return accum;
+              }
+
+              const key = Identity.key(message);
+              const __html = message.content;
               const avatarKey = user.email
                 ? md5(user.email.trim().toLowerCase())
                 : user.username;
@@ -102,7 +104,7 @@ class Chat extends Component {
 
               // console.log(user);
               // console.log(message);
-              return (
+              accum.push(
                 <Comment key={key}>
                   <Comment.Avatar src={avatarUrl} />
                   <Comment.Content className="cmm__content">
@@ -123,7 +125,9 @@ class Chat extends Component {
                   </Comment.Content>
                 </Comment>
               );
-            })}
+
+              return accum;
+            }, [])}
           </Comment.Group>
         </Ref>
       </div>
