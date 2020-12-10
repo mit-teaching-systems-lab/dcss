@@ -12,8 +12,8 @@
 }
 
 .ui.card.sc__margin-height {
-  height: 18rem !important;
-  margin-bottom: 0 !important;
+  /* this height will fit 2 rows on a MBP */
+  min-height: 22em !important;
 }
 
 .ui.four.cards {
@@ -72,6 +72,7 @@
   margin-top: auto;
 }
 
+/*
 .ui.card.sc .extra.content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -80,6 +81,7 @@
 .ui.card>.content:after, .ui.cards>.card>.content:after {
   display: none !important;
 }
+*/
 
 .ui.card.sc a {
   color: rgba(0, 0, 0, 0.87);
@@ -102,14 +104,13 @@
   cursor: pointer;
 }
 
-.sc__labels > * {
-  margin-bottom: 0.3rem !important;
+.ui.card.sc .labels {
+  /* This will fit two rows of labels before it starts scrolling */
+  max-height: 4em;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-/*.sc__card-action-labels {
-  display: none;
-}
-*/
 .modal .actions .sc__card-action-labels {
   margin-left: 0.5rem !important;
   display: inline-block;

@@ -3,270 +3,258 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui stackable two column grid grid__container"
   >
-    <a
-      class="item sc__hidden-on-mobile"
-      href="/editor/new"
-      tabindex="0"
-    >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="newspaper outline icon"
-        />
-        <i
-          aria-hidden="true"
-          class="green add top right corner icon"
-        />
-      </i>
-      Create a Scenario
-    </a>
     <div
-      class="right menu sl__menu"
+      class="four wide column grid__sidebar"
     >
-      <a
-        class="item sc__hidden-on-mobile"
-        tabindex="0"
+      <h1
+        class="ui medium header"
       >
-          (0)
+        Scenarios
+      </h1>
+      <p>
+        Scenarios are authored collections of slides which guide a participant through a simulation.
+      </p>
+      <a
+        class="ui big fluid icon primary left labeled button sc__hidden-on-mobile"
+        href="/editor/new"
+        name="Create a scenario"
+        role="button"
+      >
         <i
           aria-hidden="true"
-          class="clipboard outline icon"
+          class="add icon"
         />
-      </a>
-      <a
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
-        >
-          <input
-            placeholder="Search..."
-            type="text"
-            value=""
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
-        </div>
-      </a>
-      <a
-        class="item"
-        tabindex="0"
-      >
-        <div
-          aria-expanded="false"
-          class="ui item search scrolling dropdown"
-          role="combobox"
-        >
-          <input
-            aria-autocomplete="list"
-            autocomplete="off"
-            class="search"
-            tabindex="0"
-            type="text"
-            value=""
-          />
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="divider text"
-            role="alert"
-          >
-            Filter by labels
-          </div>
-          <i
-            aria-hidden="true"
-            class="dropdown icon"
-          />
-          <div
-            class="menu transition"
-            role="listbox"
-          />
-        </div>
+        Create a Scenario
       </a>
     </div>
-  </div>
-  <div
-    class="ui fluid container"
-  >
     <div
-      class="ui grid"
+      class="twelve wide column grid__main"
     >
       <div
-        hidden=""
-        id="boundary-top"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
+        class="right menu sl__menu"
       >
         <div
-          class="stretched column"
+          class="item"
+          tabindex="0"
+        >
+          <div
+            class="ui big icon labeled input sl__menu-search"
+          >
+            <div
+              class="ui label label"
+            >
+              Search scenarios
+            </div>
+            <input
+              type="text"
+              value=""
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
+          </div>
+        </div>
+        <div
+          class="sl__menu-tools"
         >
           <div>
-            <div
-              aria-busy="true"
-              aria-live="polite"
-              class="ui doubling four cards"
-              role="status"
+            <p>
+                
+              <span
+                class="sl__menu--search-no"
+              >
+                (0)
+              </span>
+            </p>
+            <button
+              class="ui small icon left labeled button sc__hidden-on-mobile"
             >
-              <div
+              <i
                 aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
+                class="blue clipboard outline icon"
+              />
+              Copy the url to these scenarios
+            </button>
+          </div>
+          <div
+            class="item"
+            tabindex="0"
+          >
+            <div
+              aria-expanded="false"
+              class="ui button item search scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Filter by labels
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition labels"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui grid"
+      >
+        <div
+          hidden=""
+          id="boundary-top"
+          style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+        />
+        <div
+          class="row"
+        >
+          <div
+            class="stretched column"
+          >
+            <div>
+              <div
+                aria-busy="true"
+                aria-live="polite"
+                class="ui doubling three cards"
+                role="status"
               >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        hidden=""
-        id="boundary-bottom"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
-      >
         <div
-          class="stretched column"
+          hidden=""
+          id="boundary-bottom"
+          style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
         />
+        <div
+          class="row"
+        >
+          <div
+            class="stretched column"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -276,270 +264,258 @@ exports[`Render 1 1 1`] = `
 exports[`Render 2 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui stackable two column grid grid__container"
   >
-    <a
-      class="item sc__hidden-on-mobile"
-      href="/editor/new"
-      tabindex="0"
-    >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="newspaper outline icon"
-        />
-        <i
-          aria-hidden="true"
-          class="green add top right corner icon"
-        />
-      </i>
-      Create a Scenario
-    </a>
     <div
-      class="right menu sl__menu"
+      class="four wide column grid__sidebar"
     >
-      <a
-        class="item sc__hidden-on-mobile"
-        tabindex="0"
+      <h1
+        class="ui medium header"
       >
-          (0)
+        Scenarios
+      </h1>
+      <p>
+        Scenarios are authored collections of slides which guide a participant through a simulation.
+      </p>
+      <a
+        class="ui big fluid icon primary left labeled button sc__hidden-on-mobile"
+        href="/editor/new"
+        name="Create a scenario"
+        role="button"
+      >
         <i
           aria-hidden="true"
-          class="clipboard outline icon"
+          class="add icon"
         />
-      </a>
-      <a
-        class="item"
-        tabindex="0"
-      >
-        <div
-          class="ui icon input"
-        >
-          <input
-            placeholder="Search..."
-            type="text"
-            value=""
-          />
-          <i
-            aria-hidden="true"
-            class="search icon"
-          />
-        </div>
-      </a>
-      <a
-        class="item"
-        tabindex="0"
-      >
-        <div
-          aria-expanded="false"
-          class="ui item search scrolling dropdown"
-          role="combobox"
-        >
-          <input
-            aria-autocomplete="list"
-            autocomplete="off"
-            class="search"
-            tabindex="0"
-            type="text"
-            value=""
-          />
-          <div
-            aria-atomic="true"
-            aria-live="polite"
-            class="divider text"
-            role="alert"
-          >
-            Filter by labels
-          </div>
-          <i
-            aria-hidden="true"
-            class="dropdown icon"
-          />
-          <div
-            class="menu transition"
-            role="listbox"
-          />
-        </div>
+        Create a Scenario
       </a>
     </div>
-  </div>
-  <div
-    class="ui fluid container"
-  >
     <div
-      class="ui grid"
+      class="twelve wide column grid__main"
     >
       <div
-        hidden=""
-        id="boundary-top"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
+        class="right menu sl__menu"
       >
         <div
-          class="stretched column"
+          class="item"
+          tabindex="0"
+        >
+          <div
+            class="ui big icon labeled input sl__menu-search"
+          >
+            <div
+              class="ui label label"
+            >
+              Search scenarios
+            </div>
+            <input
+              type="text"
+              value=""
+            />
+            <i
+              aria-hidden="true"
+              class="search icon"
+            />
+          </div>
+        </div>
+        <div
+          class="sl__menu-tools"
         >
           <div>
-            <div
-              aria-busy="true"
-              aria-live="polite"
-              class="ui doubling four cards"
-              role="status"
+            <p>
+                
+              <span
+                class="sl__menu--search-no"
+              >
+                (0)
+              </span>
+            </p>
+            <button
+              class="ui small icon left labeled button sc__hidden-on-mobile"
             >
-              <div
+              <i
                 aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
+                class="blue clipboard outline icon"
+              />
+              Copy the url to these scenarios
+            </button>
+          </div>
+          <div
+            class="item"
+            tabindex="0"
+          >
+            <div
+              aria-expanded="false"
+              class="ui button item search scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Filter by labels
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition labels"
+                role="listbox"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui grid"
+      >
+        <div
+          hidden=""
+          id="boundary-top"
+          style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
+        />
+        <div
+          class="row"
+        >
+          <div
+            class="stretched column"
+          >
+            <div>
+              <div
+                aria-busy="true"
+                aria-live="polite"
+                class="ui doubling three cards"
+                role="status"
               >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
                 <div
-                  class="content loading__content"
+                  aria-hidden="true"
+                  class="ui card loading__multi-card"
+                  style="height: 22em;"
                 >
                   <div
-                    class="ui placeholder fluid"
+                    class="content loading__content"
                   >
                     <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 18rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
+                      class="ui placeholder fluid"
+                    >
+                      <div
+                        class="square image"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        hidden=""
-        id="boundary-bottom"
-        style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
-      />
-      <div
-        class="row"
-      >
         <div
-          class="stretched column"
+          hidden=""
+          id="boundary-bottom"
+          style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
         />
+        <div
+          class="row"
+        >
+          <div
+            class="stretched column"
+          />
+        </div>
       </div>
     </div>
   </div>

@@ -209,5 +209,7 @@ button {
 }
 
 .grid__main {
+  min-height: calc(100vh - 82px) !important;
+  height: 100%;
   background-color: var(--color-gray);
 }

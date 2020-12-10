@@ -41,10 +41,8 @@ class ScenarioCardActions extends Component {
     const className = 'sc__card-action-labels';
 
     return (
-      <Fragment>
+      <Button.Group fluid>
         <Button
-          basic
-          color="blue"
           tabIndex="0"
           aria-label="Run scenario"
           className="sc__button"
@@ -60,8 +58,6 @@ class ScenarioCardActions extends Component {
           <Fragment>
             <Gate isAuthorized={isAuthorizedToEdit}>
               <Button
-                basic
-                color="blue"
                 tabIndex="0"
                 size="tiny"
                 icon
@@ -76,8 +72,6 @@ class ScenarioCardActions extends Component {
             </Gate>
             <Gate isAuthorized={isAuthorizedToReview}>
               <Button
-                basic
-                color="blue"
                 tabIndex="0"
                 size="tiny"
                 icon
@@ -115,8 +109,6 @@ class ScenarioCardActions extends Component {
             */}
             <Gate requiredPermission="create_scenario">
               <Button
-                basic
-                color="blue"
                 tabIndex="0"
                 size="tiny"
                 icon
@@ -131,7 +123,7 @@ class ScenarioCardActions extends Component {
             </Gate>
           </Fragment>
         )}
-      </Fragment>
+      </Button.Group>
     );
   }
 }

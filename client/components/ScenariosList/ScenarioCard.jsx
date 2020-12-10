@@ -2,13 +2,12 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, Icon } from '@components/UI';
+import { Card, Icon, Text } from '@components/UI';
 import { getScenario } from '@actions/scenario';
 import Gate from '@client/components/Gate';
 import DeletedCard from './DeletedCard';
 import Events from '@utils/Events';
 import Identity from '@utils/Identity';
-import TextTruncate from 'react-text-truncate';
 import Moment from '@utils/Moment';
 import ScenarioCardActions from './ScenarioCardActions';
 import ScenarioLabels from './ScenarioLabels';
@@ -33,15 +32,13 @@ class ScenarioCard extends React.Component {
       originalScenario.deleted_at = null;
 
       // TODO: move to async action
-      await (
-        await fetch(`/api/scenarios/${originalScenario.id}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(originalScenario)
-        })
-      ).json();
+      await (await fetch(`/api/scenarios/${originalScenario.id}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(originalScenario)
+      })).json();
 
       // Revive scenario by requesting restored record from server
       await this.props.getScenario(originalScenario.id);
@@ -63,22 +60,20 @@ class ScenarioCard extends React.Component {
     const ariaLabelledby = Identity.id();
     const ariaDescribedby = Identity.id();
 
-    const updatedAtTime = scenario.updated_at;
-    const updatedAgo = Moment(updatedAtTime).fromNow();
-    const createdAtTime = scenario.created_at;
-    const createdAgo = Moment(createdAtTime).fromNow();
+    const updatedAgo = Moment(scenario.updated_at).fromNow();
+    const createdAgo = Moment(scenario.created_at).fromNow();
 
-    const scenarioUpdatedOrCreatedTime = updatedAtTime ? (
+    const scenarioUpdatedOrCreatedTime = scenario.updated_at ? (
       <p>
         Last edited{' '}
-        <time className="sc__time" dateTime={updatedAtTime}>
+        <time className="sc__time" dateTime={scenario.updated_at}>
           {updatedAgo}
         </time>
       </p>
     ) : (
       <p>
         Created{' '}
-        <time className="sc__time" dateTime={createdAtTime}>
+        <time className="sc__time" dateTime={scenario.created_at}>
           {createdAgo}
         </time>
       </p>
@@ -91,12 +86,6 @@ class ScenarioCard extends React.Component {
       3: { type: 'Private', icon: 'eye slash' }
     };
     const showStatus = statusItems[status];
-    const statusUI = (
-      <Fragment>
-        <Icon name={showStatus.icon} color="blue" />
-        {showStatus.type}
-      </Fragment>
-    );
 
     const clickables = {
       onClick,
@@ -118,17 +107,18 @@ class ScenarioCard extends React.Component {
       </Gate>
     ) : (
       <Card
-        className="sc"
+        className="sc sc__margin-height"
         key={id}
         aria-labelledby={ariaLabelledby}
         aria-describedby={ariaDescribedby}
       >
         <Card.Content>
-          <Card.Meta as="p" className="sc__status">
-            {statusUI}
+          <Card.Meta className="sc__status">
+            <Icon color="blue" name={showStatus.icon} />
+            {' '}
+            {showStatus.type}
           </Card.Meta>
           <Card.Header
-            as="p"
             tabIndex="0"
             className="sc sc__cursor-pointer"
             id={ariaLabelledby}
@@ -136,13 +126,10 @@ class ScenarioCard extends React.Component {
           >
             {officialCheckmark} {title}
           </Card.Header>
-          <Card.Description id={ariaDescribedby}>
-            <TextTruncate
-              line={3}
-              element="p"
-              truncateText="…"
-              text={description}
-            />
+          <Card.Description>
+            <Text.Truncate lines={3} id={ariaDescribedby}>
+              {description}
+            </Text.Truncate>
           </Card.Description>
           <Card.Meta className="sc__footer">
             {scenarioUpdatedOrCreatedTime}
@@ -178,5 +165,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenarioCard)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenarioCard)
 );

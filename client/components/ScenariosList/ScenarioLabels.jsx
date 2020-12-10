@@ -20,7 +20,7 @@ function makeQueryString(labels) {
   }
 
   if (labels && labels.length) {
-    qs.labels = labels;
+    qs.l = labels;
   }
 
   return `?${QueryString.stringify(qs, qsOpts)}`;
@@ -53,7 +53,7 @@ class ScenarioLabels extends React.Component {
     const { deleted_at, labels } = scenario;
 
     return !deleted_at ? (
-      <div className="sc__labels">
+      <Label.Group>
         {labels.map(value => {
           const key = Identity.key({ value, scenario });
           const labelProps = {
@@ -78,7 +78,7 @@ class ScenarioLabels extends React.Component {
             </Label>
           );
         })}
-      </div>
+      </Label.Group>
     ) : null;
   }
 }
@@ -105,5 +105,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenarioLabels)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenarioLabels)
 );

@@ -11,6 +11,15 @@ exports[`Render 1 1 1`] = `
       class="content"
     >
       <div
+        class="meta sc__status"
+      >
+        <i
+          aria-hidden="true"
+          class="blue edit icon"
+        />
+         Draft
+      </div>
+      <div
         class="header sc sc__cursor-pointer"
         id="1"
         tabindex="0"
@@ -19,9 +28,26 @@ exports[`Render 1 1 1`] = `
       </div>
       <div
         class="description"
-        id="2"
       >
         <p>
+          This is the description of 'A Multiplayer Scenario'…
+        </p>
+      </div>
+      <div
+        class="meta sc__footer"
+      >
+        <p>
+          Created 
+          <time
+            class="sc__time"
+            datetime="2020-08-31T17:50:28.089Z"
+          >
+            3 months ago
+          </time>
+        </p>
+        <div
+          class="ui labels"
+        >
           <button
             aria-label="Click for scenarios labelled a"
             class="ui small label"
@@ -38,8 +64,7 @@ exports[`Render 1 1 1`] = `
           >
             b
           </button>
-        </p>
-        This is the description of 'A Multiplayer Scenario'
+        </div>
       </div>
     </div>
     <div
@@ -58,7 +83,7 @@ exports[`Render 1 1 1`] = `
         >
           <i
             aria-hidden="true"
-            class="play icon"
+            class="blue play icon"
           />
           <span
             class="sc__card-action-labels"
@@ -75,7 +100,7 @@ exports[`Render 1 1 1`] = `
         >
           <i
             aria-hidden="true"
-            class="edit outline icon"
+            class="blue edit outline icon"
           />
           <span
             class="sc__card-action-labels"
@@ -92,7 +117,7 @@ exports[`Render 1 1 1`] = `
         >
           <i
             aria-hidden="true"
-            class="copy outline icon"
+            class="blue copy outline icon"
           />
           <span
             class="sc__card-action-labels"

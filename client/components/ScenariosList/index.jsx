@@ -355,7 +355,7 @@ class ScenariosList extends Component {
       rowsPerPage
     } = Layout.computeItemsRowsPerPage({
       itemsColWidth: Layout.isForMobile() ? 320 : 320,
-      itemsRowHeight: Layout.isForMobile() ? 200 : 243,
+      itemsRowHeight: Layout.isForMobile() ? 200 : 300,
       itemsPerRow: 2,
       defaultRowCount
     });
@@ -390,16 +390,16 @@ class ScenariosList extends Component {
         requiredPermission="create_scenario"
       >
         <Button
-          primary
-          size="big"
           fluid
-          as={Link}
-          to="/editor/new"
           icon
+          primary
+          className="sc__hidden-on-mobile"
+          href="/editor/new"
           labelPosition="left"
           name="Create a scenario"
-          href="/editor/new"
-          className="sc__hidden-on-mobile"
+          size="big"
+          to="/editor/new"
+          as={Link}
         >
           <Icon name="add" />
           Create a Scenario
@@ -410,11 +410,11 @@ class ScenariosList extends Component {
     const scenariosHeading = `${displayHeading}`;
     const menuItemScenarioLinkCopy = Layout.isNotForMobile() ? (
       <Button
-        className="sc__hidden-on-mobile"
-        onClick={onCopyClick}
-        size="small"
         icon
+        className="sc__hidden-on-mobile"
         labelPosition="left"
+        size="small"
+        onClick={onCopyClick}
       >
         <Icon name="clipboard outline" color="blue" />
         Copy the url to these scenarios
@@ -461,7 +461,7 @@ class ScenariosList extends Component {
     ];
 
     const loadingProps = {
-      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '18rem' } }
+      card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '22em' } }
     };
 
     const totalPages = scenariosPages;
@@ -490,6 +490,7 @@ class ScenariosList extends Component {
     this.timeout = null;
     return (
       <Fragment>
+        <Title content={scenariosHeading} />
         <Grid className="grid__container" stackable columns={2}>
           <Grid.Column className="grid__sidebar" width={4}>
             <Header as="h1" size="medium">
@@ -502,38 +503,35 @@ class ScenariosList extends Component {
             {createScenarioButton}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
-            <Title content={scenariosHeading} />
             {scenarioSearchTools}
-            <Container fluid>
-              <Grid>
-                <Boundary top />
-                <Grid.Row>
-                  <Grid.Column stretched>
-                    <Responsive
-                      onUpdate={() => {
-                        if (this.timeout) {
-                          clearTimeout(this.timeout);
-                        }
-                        this.timeout = setTimeout(
-                          () => this.forceUpdate(),
-                          100
-                        );
-                      }}
-                    >
-                      {!isReady ? <Loading {...loadingProps} /> : cardGroup}
-                    </Responsive>
-                  </Grid.Column>
-                </Grid.Row>
-                <Boundary bottom />
-                <Grid.Row>
-                  <Grid.Column stretched>
-                    {scenariosPages > 1 ? (
-                      <Pagination {...paginationProps} />
-                    ) : null}
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </Container>
+            <Grid>
+              <Boundary top />
+              <Grid.Row>
+                <Grid.Column stretched>
+                  <Responsive
+                    onUpdate={() => {
+                      if (this.timeout) {
+                        clearTimeout(this.timeout);
+                      }
+                      this.timeout = setTimeout(
+                        () => this.forceUpdate(),
+                        100
+                      );
+                    }}
+                  >
+                    {!isReady ? <Loading {...loadingProps} /> : cardGroup}
+                  </Responsive>
+                </Grid.Column>
+              </Grid.Row>
+              <Boundary bottom />
+              <Grid.Row>
+                <Grid.Column stretched>
+                  {scenariosPages > 1 ? (
+                    <Pagination {...paginationProps} />
+                  ) : null}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Grid.Column>
         </Grid>
         {selected ? (
@@ -589,5 +587,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ScenariosList)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(ScenariosList)
 );

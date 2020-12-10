@@ -4,7 +4,7 @@ exports[`Add and remove a label 1`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui item search scrolling dropdown"
+    class="ui button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -28,7 +28,7 @@ exports[`Add and remove a label 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition"
+      class="menu transition labels"
       role="listbox"
     >
       <div
@@ -38,16 +38,18 @@ exports[`Add and remove a label 1`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -56,16 +58,18 @@ exports[`Add and remove a label 1`] = `
         count="30"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          c 
+          <p>
+            c 
+          </p>
           <span
             class="ui grey small text"
           >
-            (30)
+            30 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -74,16 +78,18 @@ exports[`Add and remove a label 1`] = `
         count="20"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          b 
+          <p>
+            b 
+          </p>
           <span
             class="ui grey small text"
           >
-            (20)
+            20 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -94,7 +100,7 @@ exports[`Add and remove a label 2`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui item search scrolling dropdown"
+    class="ui button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -118,7 +124,7 @@ exports[`Add and remove a label 2`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition"
+      class="menu transition labels"
       role="listbox"
     >
       <div
@@ -128,16 +134,18 @@ exports[`Add and remove a label 2`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -146,16 +154,18 @@ exports[`Add and remove a label 2`] = `
         count="30"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          c 
+          <p>
+            c 
+          </p>
           <span
             class="ui grey small text"
           >
-            (30)
+            30 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -164,16 +174,18 @@ exports[`Add and remove a label 2`] = `
         count="20"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          b 
+          <p>
+            b 
+          </p>
           <span
             class="ui grey small text"
           >
-            (20)
+            20 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -184,7 +196,7 @@ exports[`Add and remove a label 3`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui item search scrolling dropdown"
+    class="ui button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -208,7 +220,7 @@ exports[`Add and remove a label 3`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition"
+      class="menu transition labels"
       role="listbox"
     >
       <div
@@ -218,16 +230,18 @@ exports[`Add and remove a label 3`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -236,16 +250,18 @@ exports[`Add and remove a label 3`] = `
         count="30"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          c 
+          <p>
+            c 
+          </p>
           <span
             class="ui grey small text"
           >
-            (30)
+            30 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -254,16 +270,18 @@ exports[`Add and remove a label 3`] = `
         count="20"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          b 
+          <p>
+            b 
+          </p>
           <span
             class="ui grey small text"
           >
-            (20)
+            20 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -274,7 +292,7 @@ exports[`Add and remove a label 4`] = `
 <DocumentFragment>
   <div
     aria-expanded="true"
-    class="ui active visible item search scrolling dropdown"
+    class="ui active visible button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -298,7 +316,7 @@ exports[`Add and remove a label 4`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition visible"
+      class="menu transition visible labels"
       role="listbox"
     >
       <div
@@ -308,16 +326,18 @@ exports[`Add and remove a label 4`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -326,16 +346,18 @@ exports[`Add and remove a label 4`] = `
         count="30"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          c 
+          <p>
+            c 
+          </p>
           <span
             class="ui grey small text"
           >
-            (30)
+            30 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -344,16 +366,18 @@ exports[`Add and remove a label 4`] = `
         count="20"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          b 
+          <p>
+            b 
+          </p>
           <span
             class="ui grey small text"
           >
-            (20)
+            20 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -364,7 +388,7 @@ exports[`Add and remove a label 5`] = `
 <DocumentFragment>
   <div
     aria-expanded="true"
-    class="ui active visible item search scrolling dropdown"
+    class="ui active visible button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -388,7 +412,7 @@ exports[`Add and remove a label 5`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition visible"
+      class="menu transition visible labels"
       role="listbox"
     >
       <div
@@ -398,16 +422,18 @@ exports[`Add and remove a label 5`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -418,7 +444,7 @@ exports[`Add and remove a label 6`] = `
 <DocumentFragment>
   <div
     aria-expanded="true"
-    class="ui active visible item search scrolling dropdown"
+    class="ui active visible button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -442,7 +468,7 @@ exports[`Add and remove a label 6`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition visible"
+      class="menu transition visible labels"
       role="listbox"
     >
       <div
@@ -452,16 +478,18 @@ exports[`Add and remove a label 6`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -472,7 +500,7 @@ exports[`Add and remove a label 7`] = `
 <DocumentFragment>
   <div
     aria-expanded="true"
-    class="ui active visible item search scrolling dropdown"
+    class="ui active visible button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -496,7 +524,7 @@ exports[`Add and remove a label 7`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition visible"
+      class="menu transition visible labels"
       role="listbox"
     >
       <div
@@ -506,16 +534,18 @@ exports[`Add and remove a label 7`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -526,7 +556,7 @@ exports[`Add and remove a label 8`] = `
 <DocumentFragment>
   <div
     aria-expanded="true"
-    class="ui active visible item search scrolling dropdown"
+    class="ui active visible button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -550,7 +580,7 @@ exports[`Add and remove a label 8`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition visible"
+      class="menu transition visible labels"
       role="listbox"
     >
       <div
@@ -560,16 +590,18 @@ exports[`Add and remove a label 8`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -580,7 +612,7 @@ exports[`No selected labelsInUse 1`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui item search scrolling dropdown"
+    class="ui button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -604,7 +636,7 @@ exports[`No selected labelsInUse 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition"
+      class="menu transition labels"
       role="listbox"
     >
       <div
@@ -614,16 +646,18 @@ exports[`No selected labelsInUse 1`] = `
         count="30"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          c 
+          <p>
+            c 
+          </p>
           <span
             class="ui grey small text"
           >
-            (30)
+            30 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -632,16 +666,18 @@ exports[`No selected labelsInUse 1`] = `
         count="20"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          b 
+          <p>
+            b 
+          </p>
           <span
             class="ui grey small text"
           >
-            (20)
+            20 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -650,16 +686,18 @@ exports[`No selected labelsInUse 1`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -670,7 +708,7 @@ exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui item search scrolling dropdown"
+    class="ui button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -694,7 +732,7 @@ exports[`Render 1 1 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition"
+      class="menu transition labels"
       role="listbox"
     >
       <div
@@ -703,16 +741,18 @@ exports[`Render 1 1 1`] = `
         class="active item"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          Easy 
+          <p>
+            Easy 
+          </p>
           <span
             class="ui grey small text"
           >
-            ()
+             scenario
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -720,16 +760,18 @@ exports[`Render 1 1 1`] = `
         class="item"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          fun 
+          <p>
+            fun 
+          </p>
           <span
             class="ui grey small text"
           >
-            ()
+             scenario
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>
@@ -740,7 +782,7 @@ exports[`Selected labelsInUse 1`] = `
 <DocumentFragment>
   <div
     aria-expanded="false"
-    class="ui item search scrolling dropdown"
+    class="ui button item search scrolling dropdown"
     role="combobox"
   >
     <input
@@ -764,7 +806,7 @@ exports[`Selected labelsInUse 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition"
+      class="menu transition labels"
       role="listbox"
     >
       <div
@@ -774,16 +816,18 @@ exports[`Selected labelsInUse 1`] = `
         count="10"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          a 
+          <p>
+            a 
+          </p>
           <span
             class="ui grey small text"
           >
-            (10)
+            10 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -792,16 +836,18 @@ exports[`Selected labelsInUse 1`] = `
         count="30"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          c 
+          <p>
+            c 
+          </p>
           <span
             class="ui grey small text"
           >
-            (30)
+            30 scenarios
           </span>
-        </span>
+        </div>
       </div>
       <div
         aria-checked="false"
@@ -810,16 +856,18 @@ exports[`Selected labelsInUse 1`] = `
         count="20"
         role="option"
       >
-        <span
-          class="text"
+        <div
+          class="text labels__item"
         >
-          b 
+          <p>
+            b 
+          </p>
           <span
             class="ui grey small text"
           >
-            (20)
+            20 scenarios
           </span>
-        </span>
+        </div>
       </div>
     </div>
   </div>

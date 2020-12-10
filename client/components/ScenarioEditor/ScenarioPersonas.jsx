@@ -210,7 +210,6 @@ class ScenarioPersonas extends Component {
           className="em__search-input-box-right"
         >
           <Button
-            basic
             icon="user plus"
             className="sp__button"
             content="Create a Persona"
