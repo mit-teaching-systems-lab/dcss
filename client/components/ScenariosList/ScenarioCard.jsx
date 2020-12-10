@@ -114,9 +114,7 @@ class ScenarioCard extends React.Component {
       >
         <Card.Content>
           <Card.Meta className="sc__status">
-            <Icon color="blue" name={showStatus.icon} />
-            {' '}
-            {showStatus.type}
+            <Icon color="blue" name={showStatus.icon} /> {showStatus.type}
           </Card.Meta>
           <Card.Header
             tabIndex="0"

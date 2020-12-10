@@ -513,10 +513,7 @@ class ScenariosList extends Component {
                       if (this.timeout) {
                         clearTimeout(this.timeout);
                       }
-                      this.timeout = setTimeout(
-                        () => this.forceUpdate(),
-                        100
-                      );
+                      this.timeout = setTimeout(() => this.forceUpdate(), 100);
                     }}
                   >
                     {!isReady ? <Loading {...loadingProps} /> : cardGroup}

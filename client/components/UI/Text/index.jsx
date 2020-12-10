@@ -63,12 +63,10 @@ export function Truncate(props) {
     id = '',
     lines = 1,
     textTruncateChild = null,
-    truncateText = '…',
+    truncateText = '…'
   } = props;
 
-  let text = props.text && !children
-    ? props.text
-    : children;
+  let text = props.text && !children ? props.text : children;
 
   if (!text) {
     text = '';
@@ -83,9 +81,7 @@ export function Truncate(props) {
     truncateText
   };
 
-  return (
-    <TextTruncate {...truncateProps} />
-  );
+  return <TextTruncate {...truncateProps} />;
 }
 
 Truncate.propTypes = {
