@@ -17,7 +17,6 @@ import withRunEventCapturing, {
 } from '@hoc/withRunEventCapturing';
 import {
   getChat,
-  setChat,
   getChatMessagesByChatId,
   getChatMessagesCountByChatId,
   getChatUsersByChatId
@@ -30,13 +29,8 @@ import Storage from '@utils/Storage';
 // import { ResizableBox } from 'react-resizable';
 import {
   Button,
-  Form,
-  Grid,
   Header,
-  Icon,
-  Modal,
-  Ref,
-  Segment
+  Modal
 } from '@components/UI';
 import ChatMessages from '@components/Chat/ChatMessages';
 import Loading from '@components/Loading';
@@ -48,20 +42,20 @@ const TEMPORARY_CHAT_ID = 1;
 const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
 
 function isValidMessage(message) {
+  if (!message) {
+    return false;
+  }
+
   const trimmed = message.trim();
-  console.log('trimmed?', trimmed);
 
   if (!trimmed) {
-    console.log('trimmed message is empty');
     return false;
   }
 
   if (trimmed === NEW_MESSAGE_CONTENT_HTML) {
-    console.log('trimmed message equals NEW_MESSAGE_CONTENT_HTML');
     return false;
   }
 
-  console.log('trimmed message does not match any invalid message states');
   return true;
 }
 
@@ -91,19 +85,23 @@ class Chat extends Component {
     });
 
     this.state = {
-      isReady: false,
+      id: Identity.id(),
+      isReady: false
     };
 
+    this.hasPendingSend = false;
     this.content = content;
+    this.buffer = '';
     this.rte = null;
 
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onInput = this.onInput.bind(this);
     this.onJoinOrPart = this.onJoinOrPart.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onMount = this.onMount.bind(this);
     this.onReply = this.onReply.bind(this);
-    this.onNewMessage = this.onNewMessage.bind(this);
+    this.onSendNewMessage = this.onSendNewMessage.bind(this);
   }
 
   async componentDidMount() {
@@ -150,98 +148,77 @@ class Chat extends Component {
     await this.props.getChatUsersByChatId(this.props.chat.id);
   }
 
-  onReply(details) {
-    console.log("ON REPLY");
-    // this.setState(
-    //   {
-    //     content
-    //   },
-    //   () => {
-    //     Storage.merge(this.storageKey, { content });
-    //   }
-    // );
+  onReply() {
+    console.log('ON REPLY');
   }
 
   onChange(content) {
-    console.log("onChange", content);
     this.content = content;
-    Storage.merge(this.storageKey, { content })
-    // this.setState(
-    //   {
-    //     content
-    //   },
-    //   () => {
-    //     Storage.merge(this.storageKey, { content });
-    //   }
-    // );
+    Storage.merge(this.storageKey, { content });
+
+    if (this.hasPendingSend) {
+      this.onSendNewMessage();
+    }
   }
 
   clear() {
     const content = NEW_MESSAGE_CONTENT_HTML;
 
-    Storage.merge(this.storageKey, { content })
+    Storage.merge(this.storageKey, { content });
 
     if (this.rte) {
       this.rte.setContents(content);
     }
 
     this.content = content;
+    this.hasPendingSend = false;
   }
 
-  onKeyDown(event, content) {
+  onKeyDown(event) {
+    const { content } = this;
     if (event.keyCode === 13 && !event.shiftKey) {
       event.preventDefault();
-      this.onNewMessage();
+      if (isValidMessage(content)) {
+        this.hasPendingSend = true;
+        this.onSendNewMessage();
+      }
       return false;
     }
     // TODO: possibly send "typing" message?
+  }
+
+  onInput(event, rte, content) {
+    this.onChange(content);
   }
 
   onMount(rte) {
     this.rte = rte;
   }
 
-  onNewMessage() {
-    console.log('onNewMessage');
-
-    // const { content } = this.state;
+  onSendNewMessage() {
     const { content } = this;
 
-    console.log('isValidMessage?', isValidMessage(content));
-    console.log('content:', content);
-
     if (isValidMessage(content)) {
-      console.log('sending new message', content);
       this.props.socket.emit(
         NEW_MESSAGE,
         makeSocketPayload(this.props, {
           content
         })
       );
-
-      this.onChange(NEW_MESSAGE_CONTENT_HTML);
-      // console.log('next: ', NEW_MESSAGE_CONTENT_HTML);
-
-      // this.content = NEW_MESSAGE_CONTENT_HTML;
-
-      // Storage.merge(this.storageKey, { content: NEW_MESSAGE_CONTENT_HTML });
-
-      // console.log('reseting state');
-      // console.log('current: ', this.state.content);
-      // this.setState(
-      //   {
-      //     content: NEW_MESSAGE_CONTENT_HTML
-      //   },
-      //   (...args) => {
-      //     console.log(...args);
-      //     Storage.merge(this.storageKey, { content: '' });
-      //   }
-      // );
+      this.clear();
     }
   }
 
   render() {
-    const { content, onChange, onKeyDown, onMount, onReply, onNewMessage } = this;
+    const {
+      content,
+      onChange,
+      onInput,
+      onKeyDown,
+      onMount,
+      onReply,
+      onSendNewMessage
+    } = this;
     const { chat, user } = this.props;
     const { id, isReady } = this.state;
     const defaultValue = content || '';
@@ -276,6 +253,7 @@ class Chat extends Component {
                 disable={disable}
                 defaultValue={defaultValue}
                 onChange={onChange}
+                onInput={onInput}
                 onKeyDown={onKeyDown}
                 onMount={onMount}
                 options={{
@@ -288,7 +266,7 @@ class Chat extends Component {
                 }}
               />
             </div>
-            <Button icon="send" onClick={onNewMessage} />
+            <Button icon="send" onClick={onSendNewMessage} />
           </Modal.Content>
         </Modal>
       </Modal.Accessible>
@@ -302,6 +280,7 @@ Chat.propTypes = {
   getChat: PropTypes.func,
   getChatMessagesByChatId: PropTypes.func,
   getChatMessagesCountByChatId: PropTypes.func,
+  getChatUsersByChatId: PropTypes.func,
   getUser: PropTypes.func,
   linkChatToRun: PropTypes.func,
   run: PropTypes.object,

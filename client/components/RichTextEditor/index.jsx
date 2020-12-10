@@ -111,7 +111,6 @@ class RichTextEditor extends Component {
 
       const onContentChange = content => {
         if (name) {
-          console.log("??????????????/");
           this.ref.current.value = content;
         }
         onChange(content);
@@ -197,11 +196,8 @@ class RichTextEditor extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("componentDidUpdate");
     if (prevProps.defaultValue !== this.props.defaultValue) {
-      console.log('prevProps.defaultValue !== this.props.defaultValue');
       if (!this[SymbolEditor].core.hasFocus) {
-        console.log('!this[SymbolEditor].core.hasFocus');
         this[SymbolEditor].setContents(this.props.defaultValue);
       }
     }
