@@ -359,7 +359,7 @@ class ScenariosList extends Component {
     } = Layout.computeItemsRowsPerPage({
       itemsColWidth: Layout.isForMobile() ? 320 : 320,
       itemsRowHeight: Layout.isForMobile() ? 200 : 243,
-      itemsPerRow: 3,
+      itemsPerRow: 2,
       defaultRowCount
     });
 
@@ -397,6 +397,27 @@ class ScenariosList extends Component {
         {displayHeading} ({scenarios.length})
       </Menu.Item.Tabbable>
     ) : null;
+
+    const createScenarioButton = (
+      <Gate
+        key="menu-item-scenario-create"
+        requiredPermission="create_scenario"
+      >
+        <Button
+          primary
+          as={Link}
+          to="/editor/new"
+          icon
+          labelPosition="left"
+          name="Create a scenario"
+          href="/editor/new"
+          className="sc__hidden-on-mobile"
+        >
+          <Icon name="add" />
+          Create a Scenario
+        </Button>
+      </Gate>
+    );
 
     const left = [
       <Gate
@@ -515,19 +536,7 @@ class ScenariosList extends Component {
               Scenarios are authored collections of slides which guide a
               participant through a simulation.
             </p>
-            <Button
-              className="sc__hidden-on-mobile"
-              primary
-              as={Link}
-              to="#"
-              size="large"
-              icon
-              fluid
-              labelPosition="left"
-            >
-              <Icon name="plus" />
-              Create a scenario
-            </Button>
+            {createScenarioButton}
             <List>
               <List.Item>
                 <List.Header as="a">My scenarios</List.Header>
@@ -547,7 +556,7 @@ class ScenariosList extends Component {
           </Grid.Column>
           <Grid.Column width={12}>
             <Title content={scenariosHeading} />
-            <EditorMenu type="scenarios" items={{ right }} />
+            <EditorMenu type="scenarios" items={{ left, right }} />
             <Container fluid>
               <Grid>
                 <Boundary top />

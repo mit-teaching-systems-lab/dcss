@@ -14,12 +14,6 @@ import ScenarioCardActions from './ScenarioCardActions';
 import ScenarioLabels from './ScenarioLabels';
 import './ScenariosList.css';
 
-/* eslint-disable */
-const SCENARIO_STATUS_DRAFT = 1;
-const SCENARIO_STATUS_PUBLIC = 2;
-const SCENARIO_STATUS_PRIVATE = 3;
-/* eslint-enable */
-
 class ScenarioCard extends React.Component {
   constructor(props) {
     super(props);
@@ -68,8 +62,17 @@ class ScenarioCard extends React.Component {
 
     const ariaLabelledby = Identity.id();
     const ariaDescribedby = Identity.id();
+
+    const updatedAtRaw = scenario.updated_at;
+    const updatedAgo = Moment(updatedAtRaw).fromNow();
+
     const status = scenario.status;
-    const updated = Moment(scenario.updated_at).fromNow();
+    const statusUI = {
+      1: { type: 'Draft', icon: 'edit' },
+      2: { type: 'Public', icon: 'eye' },
+      3: { type: 'Private', icon: 'eye slash' }
+    };
+    const showStatus = statusUI[status];
 
     const clickables = {
       onClick,
@@ -97,7 +100,10 @@ class ScenarioCard extends React.Component {
         aria-describedby={ariaDescribedby}
       >
         <Card.Content>
-          <Card.Meta as="p">{status}</Card.Meta>
+          <Card.Meta as="p" className="sc__status">
+            <Icon name={showStatus.icon} color="blue" />
+            {showStatus.type}
+          </Card.Meta>
           <Card.Header
             as="p"
             tabIndex="0"
@@ -116,7 +122,9 @@ class ScenarioCard extends React.Component {
             />
           </Card.Description>
           <Card.Meta>
-            <p>Last edited {updated}</p>
+            <p>
+              Last edited <time datetime={updatedAtRaw}>{updatedAgo}</time>
+            </p>
             <ScenarioLabels scenario={scenario} />
           </Card.Meta>
         </Card.Content>
