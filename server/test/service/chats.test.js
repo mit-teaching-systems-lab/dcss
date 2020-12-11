@@ -511,8 +511,8 @@ describe('/api/chats/*', () => {
           "count": 1,
         }
       `);
-      expect(db.getChatMessagesByChatId.mock.calls.length).toBe(1);
-      expect(db.getChatMessagesByChatId.mock.calls[0]).toMatchInlineSnapshot(`
+      expect(db.getChatMessagesCountByChatId.mock.calls.length).toBe(1);
+      expect(db.getChatMessagesCountByChatId.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           1,
         ]
