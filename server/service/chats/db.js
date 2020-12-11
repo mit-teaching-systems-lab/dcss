@@ -49,6 +49,19 @@ exports.createNewChatMessage = async (chat_id, user_id, content) => {
   });
 };
 
+exports.createNewUnquotableMessage = async (chat_id, user_id, content) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      INSERT INTO chat_message
+        (chat_id, user_id, content, is_unquotable)
+      VALUES
+        (${chat_id}, ${user_id}, ${content}, TRUE)
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
 exports.joinChat = async (chat_id, user_id) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`

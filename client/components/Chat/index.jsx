@@ -96,7 +96,7 @@ class Chat extends Component {
     this.onJoinOrPart = this.onJoinOrPart.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onMount = this.onMount.bind(this);
-    this.onReply = this.onReply.bind(this);
+    this.onQuote = this.onQuote.bind(this);
     this.onSendNewMessage = this.onSendNewMessage.bind(this);
   }
 
@@ -144,9 +144,19 @@ class Chat extends Component {
     await this.props.getChatUsersByChatId(this.props.chat.id);
   }
 
-  onReply() {
+  onQuote({ message, user }) {
     // eslint-disable-next-line no-console
     console.log('ON REPLY');
+    console.log(message);
+    console.log(user);
+
+    const content = `<blockquote>${message.content}</blockquote>`;
+
+    if (this.rte) {
+      this.hasPendingSend = false;
+      this.rte.setContents(content);
+      this.onChange(content);
+    }
   }
 
   onChange(content) {
@@ -213,7 +223,7 @@ class Chat extends Component {
       onInput,
       onKeyDown,
       onMount,
-      onReply,
+      onQuote,
       onSendNewMessage
     } = this;
     const { chat, user } = this.props;
@@ -238,7 +248,7 @@ class Chat extends Component {
           <Modal.Content tabIndex="0">
             <div className="cm__container-outer">
               {isReady ? (
-                <ChatMessages chat={chat} onReply={onReply} />
+                <ChatMessages chat={chat} onQuote={onQuote} />
               ) : (
                 <Loading />
               )}
@@ -258,6 +268,7 @@ class Chat extends Component {
                   height: 'auto',
                   minHeight: '50px',
                   maxHeight: '250px',
+                  resizingBar: false,
                   showPathLabel: false,
                   defaultStyle: 'font-size: 1.2em; line-height: 1em;'
                 }}

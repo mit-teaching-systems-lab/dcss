@@ -45,6 +45,8 @@
 }
 
 .cmm__content .actions {
+  float: right;
+  position: relative;
   visibility: hidden;
 }
 

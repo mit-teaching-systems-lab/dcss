@@ -57,6 +57,9 @@ class SocketManager {
       if (!notifier.listenerCount('join_or_part_chat')) {
         notifier.on('join_or_part_chat', data => {
           console.log('join_or_part_chat', data);
+          // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
+          socket.broadcast.emit(JOIN_OR_PART, data);
+
           const message = data.is_present
             ? 'has joined the chat.'
             : 'has left the chat.';
@@ -64,10 +67,7 @@ class SocketManager {
             <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
           `.trim();
 
-          // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
-          socket.broadcast.emit(JOIN_OR_PART, data);
-
-          chatdb.createNewChatMessage(data.chat_id, data.user_id, content);
+          chatdb.createNewUnquotableMessage(data.chat_id, data.user_id, content);
         });
 
         console.log('join_or_part_chat listener is registered');

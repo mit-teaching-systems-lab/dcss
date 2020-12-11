@@ -19,8 +19,9 @@ import Moment from '@utils/Moment';
 import scrollIntoView from '@utils/scrollIntoView';
 
 // import { ResizableBox } from 'react-resizable';
-import { Comment, Ref } from '@components/UI';
+import { Button, Comment, Ref } from '@components/UI';
 import Loading from '@components/Loading';
+import RichTextEditor from '@components/RichTextEditor';
 import Username from '@components/User/Username';
 
 import './Chat.css';
@@ -93,7 +94,7 @@ class Chat extends Component {
               }
 
               const key = Identity.key(message);
-              const __html = message.content;
+              const defaultValue = message.content;
               const avatarKey = user.email
                 ? md5(user.email.trim().toLowerCase())
                 : user.username;
@@ -104,6 +105,12 @@ class Chat extends Component {
 
               // console.log(user);
               // console.log(message);
+
+              const rteProps = {
+                defaultValue,
+                mode: 'display'
+              };
+
               accum.push(
                 <Comment key={key}>
                   <Comment.Avatar src={avatarUrl} />
@@ -116,12 +123,25 @@ class Chat extends Component {
                         {Moment(message.created_at).fromNow()}
                       </span>
                     </Comment.Metadata>
-                    <Comment.Text>
-                      <div tabIndex="0" dangerouslySetInnerHTML={{ __html }} />
-                    </Comment.Text>
                     <Comment.Actions>
-                      <Comment.Action tabIndex="0">Reply</Comment.Action>
+                      <Button.Group>
+                        {message.is_unquotable ? null : (
+                          <Button
+                            size="mini"
+                            icon="quote left"
+                            onClick={() => {
+                              this.props.onQuote({
+                                message,
+                                user
+                              });
+                            }}
+                          />
+                        )}
+                      </Button.Group>
                     </Comment.Actions>
+                    <Comment.Text>
+                      <RichTextEditor {...rteProps} />
+                    </Comment.Text>
                   </Comment.Content>
                 </Comment>
               );
@@ -141,7 +161,7 @@ Chat.propTypes = {
   getChatMessagesCountByChatId: PropTypes.func,
   getUser: PropTypes.func,
   messages: PropTypes.array,
-  onReply: PropTypes.func,
+  onQuote: PropTypes.func,
   socket: PropTypes.object,
   user: PropTypes.object
 };
