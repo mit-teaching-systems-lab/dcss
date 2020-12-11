@@ -16,6 +16,7 @@ if (String(process.env.DEBUG).includes('sql') || process.env.SQL_DEBUG) {
 
 const pool = new Pool(getDbConfig());
 
+/*
 // Create a single client to handle receiving and
 // broadcasting LISTEN/NOTIFY messages.
 const client = new Client(getDbConfig());
@@ -29,6 +30,23 @@ client.query('LISTEN join_or_part_chat');
 client.on('notification', ({ channel, payload }) => {
   notifier.emit(channel, JSON.parse(payload));
 });
+*/
+
+// Create a single client to handle receiving and
+// broadcasting LISTEN/NOTIFY messages.
+const notifier = new Emitter();
+
+(async () => {
+  const client = await pool.connect();
+
+  client.query('LISTEN new_notification');
+  client.query('LISTEN new_chat_message');
+  client.query('LISTEN join_or_part_chat');
+
+  client.on('notification', ({ channel, payload }) => {
+    notifier.emit(channel, JSON.parse(payload));
+  });
+})();
 
 exports.notifier = notifier;
 
