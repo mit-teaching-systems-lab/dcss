@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {
   createMockStore,
-  createPseudoRealStore,
+  createMockConnectedStore,
   fetchImplementation,
   makeById,
   state
@@ -28,7 +28,7 @@ afterAll(() => {
 
 beforeEach(() => {
   mockStore = createMockStore({});
-  store = createPseudoRealStore({});
+  store = createMockConnectedStore({});
 });
 
 afterEach(() => {
@@ -442,7 +442,7 @@ describe('GET_COHORTS_SUCCESS', () => {
       };
     });
 
-    store = createPseudoRealStore({
+    store = createMockConnectedStore({
       cohorts: [],
       cohortsById: {},
       session: {
@@ -508,7 +508,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('cohorts received is undefined, does not change existing cohorts state', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 1),
         cohortsById: makeById(cohorts.slice(0, 1)),
         session: {
@@ -563,7 +563,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('cohorts received are the same as existing cohorts, no duplicates', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 1),
         cohortsById: makeById(cohorts.slice(0, 1)),
         session: {
@@ -614,7 +614,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn && count === state.cohorts.length) === true', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 90),
         cohortsById: makeById(cohorts.slice(0, 90)),
         session: {
@@ -636,7 +636,7 @@ describe('GET_COHORTS_SUCCESS', () => {
 
   describe('getCohortsSlice', () => {
     test('default, store is empty', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: [],
         cohortsById: {},
         session: {
@@ -676,7 +676,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('default, cache has entries, not full', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 30),
         cohortsById: makeById(cohorts.slice(0, 30)),
         session: {
@@ -716,7 +716,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('ASC, cache is empty', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: [],
         cohortsById: {},
         session: {
@@ -756,7 +756,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('ASC, cache has entries, not full', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 30),
         cohortsById: makeById(cohorts.slice(0, 30)),
         session: {
@@ -796,7 +796,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('cohorts received is undefined, does not change empty cohorts state', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: [],
         cohortsById: {},
         session: {
@@ -840,7 +840,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('cohorts received is undefined, does not change existing cohorts state', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 1),
         cohortsById: makeById(cohorts.slice(0, 1)),
         session: {
@@ -884,7 +884,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('cohorts received are the same as existing cohorts, no duplicates', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 1),
         cohortsById: makeById(cohorts.slice(0, 1)),
         session: {
@@ -924,7 +924,7 @@ describe('GET_COHORTS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn && count === state.cohorts.length) === true', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         cohorts: cohorts.slice(0, 90),
         cohortsById: makeById(cohorts.slice(0, 90)),
         session: {

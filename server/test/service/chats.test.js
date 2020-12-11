@@ -84,8 +84,10 @@ jest.mock('../../service/chats/db', () => {
     getChatMessagesCountByChatId: jest.fn(),
     getChatsByUserId: jest.fn(),
     getChats: jest.fn(),
+    deleteChatById: jest.fn(),
     setChatById: jest.fn(),
-    deleteChatById: jest.fn()
+    getMessageById: jest.fn(),
+    setMessageById: jest.fn()
   };
 });
 
@@ -99,8 +101,6 @@ jest.mock('../../service/auth/middleware', () => {
 });
 
 describe('/api/chats/*', () => {
-  let persona = null;
-
   afterAll(() => {
     jest.restoreAllMocks();
   });
@@ -112,7 +112,22 @@ describe('/api/chats/*', () => {
     });
 
     db.createChat.mockImplementation(async props => props);
-    db.setChatById.mockImplementation(async () => persona);
+    db.setChatById.mockImplementation(async () => chat);
+    db.getMessageById.mockImplementation(async id => {
+      return {
+        message: {
+          ...messages[0]
+        }
+      };
+    });
+    db.setMessageById.mockImplementation(async (id, updates) => {
+      return {
+        message: {
+          ...messages[0],
+          ...updates
+        }
+      };
+    });
     db.getChatById.mockImplementation(async id => {
       return chatsById[id];
     });
@@ -365,7 +380,15 @@ describe('/api/chats/*', () => {
 
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
-          "chat": null,
+          "chat": Object {
+            "created_at": "2020-12-08T21:51:33.659Z",
+            "deleted_at": null,
+            "ended_at": null,
+            "host_id": 999,
+            "id": 1,
+            "lobby_id": 1,
+            "updated_at": null,
+          },
         }
       `);
       expect(db.setChatById.mock.calls.length).toBe(1);
@@ -445,7 +468,7 @@ describe('/api/chats/*', () => {
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Chat could not be linked.",
+          "message": "Chat could not be linked. something unexpected happened",
         }
       `);
       expect(db.linkChatToRun.mock.calls.length).toBe(1);
@@ -462,7 +485,7 @@ describe('/api/chats/*', () => {
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Chat could not be linked.",
+          "message": "Chat could not be linked. something unexpected happened",
         }
       `);
       expect(db.linkChatToRun.mock.calls.length).toBe(1);
@@ -512,7 +535,8 @@ describe('/api/chats/*', () => {
         }
       `);
       expect(db.getChatMessagesCountByChatId.mock.calls.length).toBe(1);
-      expect(db.getChatMessagesCountByChatId.mock.calls[0]).toMatchInlineSnapshot(`
+      expect(db.getChatMessagesCountByChatId.mock.calls[0])
+        .toMatchInlineSnapshot(`
         Array [
           1,
         ]
@@ -575,3 +599,34 @@ describe('/api/chats/*', () => {
     });
   });
 });
+
+// TODO: determine what is causing this error:
+//
+//    Timeout - Async callback was not invoked within the 5000 ms timeout
+//    specified by jest.setTimeout.Timeout - Async callback was not invoked
+//    within the 5000 ms timeout specified by jest.setTimeout.Error:
+//
+//
+// describe('/api/chats/messages/:id', () => {
+//   const path = '/api/chats/messages/1';
+//   const method = 'put';
+
+//   test('put success', async () => {
+//     const body = {
+//       deleted_at: 'any'
+//     };
+
+//     const response = await request({ path, method, body });
+
+//     expect(await response.json()).toMatchInlineSnapshot();
+//     expect(db.setMessageById.mock.calls.length).toBe(1);
+//     expect(db.setMessageById.mock.calls[0]).toMatchInlineSnapshot();
+//   });
+
+//   test('get success: getMessageById', async () => {
+//     const response = await request({ path });
+
+//     expect(await response.json()).toMatchInlineSnapshot();
+//     expect(db.getMessageById.mock.calls.length).toBe(1);
+//   });
+// });

@@ -40,8 +40,8 @@ async function linkChatToRun(req, res) {
     await db.linkChatToRun(id, run_id);
     const chat = await db.getChatById(id);
     res.json({ chat });
-  } catch ({}) {
-    const error = new Error('Chat could not be linked.');
+  } catch (e) {
+    const error = new Error(`Chat could not be linked. ${e.message}`);
     error.status = 409;
     throw error;
   }
@@ -92,6 +92,38 @@ async function setChatById(req, res) {
   res.json({ chat });
 }
 
+async function getMessageById(req, res) {
+  const id = Number(req.params.id);
+  const message = await db.getMessageById(id);
+  res.json({ message });
+}
+
+async function setMessageById(req, res) {
+  const id = Number(req.params.id);
+  const {
+    // NOTE: for now there is only a delete option.
+    // Editing messages should create "backup" messages
+    // containing the original contents.
+    deleted_at = null
+  } = req.body;
+
+  const updates = {};
+
+  if (deleted_at) {
+    updates.deleted_at = deleted_at;
+  }
+
+  let message;
+
+  if (Object.entries(updates).length) {
+    message = await db.setMessageById(id, updates);
+  } else {
+    message = await db.setMessageById(id);
+  }
+
+  res.json({ message });
+}
+
 exports.getChats = asyncMiddleware(getChats);
 exports.getChatsByUserId = asyncMiddleware(getChatsByUserId);
 exports.getChatMessagesByChatId = asyncMiddleware(getChatMessagesByChatId);
@@ -101,5 +133,7 @@ exports.getChatMessagesCountByChatId = asyncMiddleware(
 exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
 exports.createChat = asyncMiddleware(createChat);
 exports.getChatById = asyncMiddleware(getChatById);
-exports.setChatById = asyncMiddleware(setChatById);
 exports.linkChatToRun = asyncMiddleware(linkChatToRun);
+exports.setChatById = asyncMiddleware(setChatById);
+exports.getMessageById = asyncMiddleware(getMessageById);
+exports.setMessageById = asyncMiddleware(setMessageById);

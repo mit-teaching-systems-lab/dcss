@@ -53,9 +53,9 @@ exports.createNewUnquotableMessage = async (chat_id, user_id, content) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO chat_message
-        (chat_id, user_id, content, is_unquotable)
+        (chat_id, user_id, content, is_quotable)
       VALUES
-        (${chat_id}, ${user_id}, ${content}, TRUE)
+        (${chat_id}, ${user_id}, ${content}, FALSE)
       RETURNING *;
     `);
     return result.rows[0];
@@ -96,6 +96,21 @@ exports.getChatMessagesByChatId = async id => {
     FROM chat_message
     WHERE chat_id = ${id}
     ORDER BY id ASC
+  `);
+  return result.rows;
+};
+
+exports.getChatUserByChatId = async (id, user_id) => {
+  const result = await query(sql`
+    SELECT
+      user_role_detail.*,
+      chat_user.updated_at,
+      chat_user.is_muted,
+      chat_user.is_present
+    FROM chat_user
+    JOIN user_role_detail ON user_role_detail.id = chat_user.user_id
+    WHERE chat_user.chat_id = ${id}
+      AND chat_user.user_id  = ${user_id};
   `);
   return result.rows;
 };
@@ -152,6 +167,24 @@ exports.setChatById = async (id, updates) => {
     const result = await client.query(updateQuery('chat', { id }, updates));
     return result.rows[0];
   });
+};
+
+exports.setMessageById = async (id, updates) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(
+      updateQuery('chat_message', { id }, updates)
+    );
+    return result.rows[0];
+  });
+};
+
+exports.getMessageById = async id => {
+  const result = await query(sql`
+    SELECT *
+    FROM chat_message
+    WHERE id = ${id}
+  `);
+  return result.rowCount ? result.rows[0] : null;
 };
 
 exports.deleteChatById = async id => {

@@ -5,12 +5,15 @@ import {
   GET_CHAT_MESSAGES_SUCCESS,
   GET_CHAT_MESSAGES_COUNT_ERROR,
   GET_CHAT_MESSAGES_COUNT_SUCCESS,
-  GET_CHAT_USERS_SUCCESS,
   GET_CHAT_USERS_ERROR,
+  GET_CHAT_USERS_SUCCESS,
   GET_CHATS_ERROR,
   GET_CHATS_SUCCESS,
   SET_CHAT_ERROR,
   SET_CHAT_SUCCESS,
+  SET_CHAT_MESSAGE_ERROR,
+  SET_CHAT_MESSAGE_SUCCESS,
+  SET_CHAT_USERS_SUCCESS,
   LINK_CHAT_TO_RUN_ERROR,
   LINK_CHAT_TO_RUN_SUCCESS
 } from './types';
@@ -45,6 +48,31 @@ export let getChatUsersByChatId = id => async dispatch => {
     dispatch({ type: GET_CHAT_USERS_ERROR, error });
     return null;
   }
+};
+
+export let setChatUsersByChatId = (id, unfilteredUsers) => async dispatch => {
+  const seen = {
+    /*
+    user.id: index
+     */
+  };
+  const users = unfilteredUsers.reduce((accum, user) => {
+    // Newer user records are pushed to the end, so if we
+    // encounter a user record that we've already seen, that
+    // means we have a record that needs to be updated.
+    const index = seen[user.id];
+    if (index !== undefined) {
+      accum[index] = user;
+    } else {
+      seen[user.id] = accum.length;
+      accum.push(user);
+    }
+    return accum;
+  }, []);
+
+  dispatch({ type: SET_CHAT_USERS_SUCCESS, users });
+
+  return users;
 };
 
 export let getChatMessagesByChatId = id => async dispatch => {
@@ -168,6 +196,33 @@ export let linkChatToRun = (chat_id, run_id) => async dispatch => {
     return chat;
   } catch (error) {
     dispatch({ type: LINK_CHAT_TO_RUN_ERROR, error });
+    return null;
+  }
+};
+
+export let setMessageById = (id, params) => async dispatch => {
+  try {
+    if (Object.values(params).length) {
+      const body = JSON.stringify(params);
+      const res = await (await fetch(`/api/chats/messages/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body
+      })).json();
+
+      if (res.error) {
+        throw res;
+      }
+
+      const { message } = res;
+      dispatch({ type: SET_CHAT_MESSAGE_SUCCESS, message });
+      return message;
+    }
+    return null;
+  } catch (error) {
+    dispatch({ type: SET_CHAT_MESSAGE_ERROR, error });
     return null;
   }
 };

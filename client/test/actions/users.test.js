@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 import assert from 'assert';
 import {
-  createPseudoRealStore,
+  createMockConnectedStore,
   fetchImplementation,
   makeById,
   state
@@ -29,7 +29,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createPseudoRealStore({});
+  store = createMockConnectedStore({});
   fetch.mockImplementation(() => {});
   Storage.has.mockImplementation(() => true);
   Storage.delete.mockImplementation(() => {});

@@ -19,7 +19,7 @@ export const serialize = container => {
   });
 };
 
-export const createPseudoRealStore = (state = {}) => {
+export const createMockConnectedStore = (state = {}) => {
   return createStoreWithMiddleWare(
     rootReducer,
     mergeDeepRight(rootReducer({}, {}), state)
@@ -38,7 +38,7 @@ export const reduxer = (
   memoryHistory = {}
 ) => {
   const history = createMemoryHistory(memoryHistory);
-  const store = createPseudoRealStore(state);
+  const store = createMockConnectedStore(state);
   function BootstrapWrapper() {
     return (
       <Provider store={store}>

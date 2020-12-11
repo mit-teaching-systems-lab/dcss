@@ -2,6 +2,7 @@ import {
   GET_CHAT_SUCCESS,
   GET_CHAT_USERS_SUCCESS,
   GET_CHATS_SUCCESS,
+  SET_CHAT_USERS_SUCCESS,
   LINK_CHAT_TO_RUN_SUCCESS
 } from '@actions/types';
 
@@ -11,6 +12,7 @@ export const chat = (state = chatInitialState, action) => {
   const { chat, users, type } = action;
 
   switch (type) {
+    case SET_CHAT_USERS_SUCCESS:
     case GET_CHAT_USERS_SUCCESS: {
       const usersById = users.reduce((accum, user) => {
         accum[user.id] = user;

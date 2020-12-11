@@ -29,6 +29,10 @@ const cache = {
 
 class SocketManager {
   constructor(server) {
+    if (process.env.DB_CONFIG && process.env.DB_CONFIG === 'test') {
+      return;
+    }
+
     this.io = SocketIO(server);
     this.io.on('connection', socket => {
       socketlog('Connected', socket.id);
@@ -55,10 +59,19 @@ class SocketManager {
       }
 
       if (!notifier.listenerCount('join_or_part_chat')) {
-        notifier.on('join_or_part_chat', data => {
+        notifier.on('join_or_part_chat', async data => {
           console.log('join_or_part_chat', data);
+          const user = await chatdb.getChatUserByChatId(
+            data.chat_id,
+            data.user_id
+          );
           // Send JOIN_OR_PART signal BEFORE creating the chat message announcement
-          socket.broadcast.emit(JOIN_OR_PART, data);
+          socket.broadcast.emit(JOIN_OR_PART, {
+            chat: {
+              id: data.chat_id
+            },
+            user
+          });
 
           const message = data.is_present
             ? 'has joined the chat.'
@@ -67,7 +80,11 @@ class SocketManager {
             <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
           `.trim();
 
-          chatdb.createNewUnquotableMessage(data.chat_id, data.user_id, content);
+          chatdb.createNewUnquotableMessage(
+            data.chat_id,
+            data.user_id,
+            content
+          );
         });
 
         console.log('join_or_part_chat listener is registered');
@@ -75,20 +92,13 @@ class SocketManager {
 
       // Chat
       socket.on(USER_JOIN, ({ chat, user }) => {
-        socketlog(USER_JOIN, user);
+        // socketlog(USER_JOIN, user);
         chatdb.joinChat(chat.id, user.id);
-        // socket.user = user;
-        // socket.broadcast.emit(USER_JOIN, {
-        //   user: socket.user
-        // });
       });
 
       socket.on(USER_PART, ({ chat, user }) => {
-        socketlog(USER_PART, user);
+        // socketlog(USER_PART, user);
         chatdb.partChat(chat.id, user.id);
-        // socket.broadcast.emit(USER_PART, {
-        //   user: socket.user
-        // });
       });
       //
       socket.on(NEW_MESSAGE, ({ chat, user, content }) => {

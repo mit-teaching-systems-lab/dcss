@@ -1,6 +1,6 @@
 import assert from 'assert';
 import {
-  createPseudoRealStore,
+  createMockConnectedStore,
   fetchImplementation,
   state
 } from '../bootstrap';
@@ -21,7 +21,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-  store = createPseudoRealStore({});
+  store = createMockConnectedStore({});
 });
 
 afterEach(() => {
@@ -44,7 +44,7 @@ test('GET_RUN_HISTORY_SUCCESS', async () => {
   }
 
   {
-    const store = createPseudoRealStore({});
+    const store = createMockConnectedStore({});
     const returnValue = await store.dispatch(
       actions.getHistoryForScenario(42, 1)
     );

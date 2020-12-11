@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import assert from 'assert';
 import {
   createMockStore,
-  createPseudoRealStore,
+  createMockConnectedStore,
   fetchImplementation,
   makeById,
   state
@@ -32,7 +32,7 @@ afterAll(() => {
 
 beforeEach(() => {
   mockStore = createMockStore({});
-  store = createPseudoRealStore({});
+  store = createMockConnectedStore({});
   fetch.mockImplementation(() => {});
   Storage.has.mockImplementation(() => true);
   Storage.delete.mockImplementation(() => {});
@@ -183,7 +183,7 @@ describe('SET_PERSONA_SUCCESS', () => {
     });
 
     test('Receives a persona, updates scenario', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         ...original,
         scenario: {
           ...original.scenario,

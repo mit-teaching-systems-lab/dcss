@@ -4,29 +4,24 @@ import { connect } from 'react-redux';
 import withSocket, {
   JOIN_OR_PART,
   NEW_MESSAGE,
-  NOTIFICATION,
   USER_JOIN,
-  USER_PART,
-  USER_IS_TYPING,
-  USER_NOT_TYPING
+  USER_PART
+  // USER_IS_TYPING,
+  // USER_NOT_TYPING
 } from '@hoc/withSocket';
-import withRunEventCapturing, {
-  CHAT_JOIN,
-  CHAT_PART,
-  CHAT_MESSAGE
-} from '@hoc/withRunEventCapturing';
+// This will be used when run event traces are added.
+// import withRunEventCapturing, {
+//   CHAT_JOIN,
+//   CHAT_PART,
+//   CHAT_MESSAGE
+// } from '@hoc/withRunEventCapturing';
 import {
   getChat,
-  getChatMessagesByChatId,
-  getChatMessagesCountByChatId,
-  getChatUsersByChatId
+  getChatUsersByChatId,
+  setChatUsersByChatId
 } from '@actions/chat';
-import { getUser } from '@actions/user';
-
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
-
-// import { ResizableBox } from 'react-resizable';
 import { Button, Header, Modal } from '@components/UI';
 import ChatMessages from '@components/Chat/ChatMessages';
 import Loading from '@components/Loading';
@@ -85,6 +80,8 @@ class Chat extends Component {
       isReady: false
     };
 
+    this.hasUnmounted = false;
+    this.hasUnloaded = false;
     this.hasPendingSend = false;
     this.content = content;
     this.buffer = '';
@@ -121,37 +118,52 @@ class Chat extends Component {
       isReady: true
     });
 
-    // Register Socket events
-    this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
-
     // Register Window events
     window.addEventListener('beforeunload', this.onBeforeUnload);
+
+    // Register Socket events
+    this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
   }
 
   componentWillUnmount() {
     // Unregister Socket events
     this.props.socket.off(JOIN_OR_PART, this.onJoinOrPart);
 
-    // Unregister Window events
-    window.removeEventListener('beforeunload', this.onBeforeUnload);
+    this.hasUnmounted = true;
+
+    if (this.hasUnloaded) {
+      // Unregister Window events
+      window.removeEventListener('beforeunload', this.onBeforeUnload);
+    } else {
+      this.onBeforeUnload();
+    }
   }
 
   onBeforeUnload() {
     this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
+
+    this.hasUnloaded = true;
+
+    if (this.hasUnmounted) {
+      window.removeEventListener('beforeunload', this.onBeforeUnload);
+    }
   }
 
-  async onJoinOrPart() {
-    await this.props.getChatUsersByChatId(this.props.chat.id);
+  onJoinOrPart({ chat, user }) {
+    const { users } = this.props.chat;
+
+    /* istanbul ignore else */
+    if (chat.id === this.props.chat.id) {
+      this.props.setChatUsersByChatId(this.props.chat.id, [...users, user]);
+    }
   }
 
-  onQuote({ message, user }) {
-    // eslint-disable-next-line no-console
-    console.log('ON REPLY');
-    console.log(message);
-    console.log(user);
+  onQuote(message) {
+    const user = this.props.chat.usersById[message.user_id];
+    const content = `<p>${user.personalname ||
+      user.username} wrote:<blockquote>${message.content}</blockquote></p>`;
 
-    const content = `<blockquote>${message.content}</blockquote>`;
-
+    /* istanbul ignore else */
     if (this.rte) {
       this.hasPendingSend = false;
       this.rte.setContents(content);
@@ -163,6 +175,19 @@ class Chat extends Component {
     this.content = content;
     Storage.merge(this.storageKey, { content });
 
+    // This is impossible to reproduce programmatically. The
+    // behavior being corrected is timing sensitive:
+    //
+    // User types a bunch of text really quickly and hits enter. Because
+    // suneditor throttles "onChange" to provide meaningful
+    // updates and not a call on every character, it may be too slow.
+    // If {enter} is pressed before the onChange event is fired, and
+    // handled by onKeyDown, then this.contents may be empty when
+    // that occurs. In that case, onKeyDown will set this.hasPendingSend
+    // to true, so that when onChange is called, it will know that
+    // the message it receives should be immediately sent.
+    //
+    /* istanbul ignore if */
     if (this.hasPendingSend) {
       this.onSendNewMessage();
     }
@@ -173,6 +198,7 @@ class Chat extends Component {
 
     Storage.merge(this.storageKey, { content });
 
+    /* istanbul ignore else */
     if (this.rte) {
       this.rte.setContents(content);
     }
@@ -226,7 +252,7 @@ class Chat extends Component {
       onQuote,
       onSendNewMessage
     } = this;
-    const { chat, user } = this.props;
+    const { chat } = this.props;
     const { id, isReady } = this.state;
     const defaultValue = content || '';
     const disable = !!isReady;
@@ -270,11 +296,17 @@ class Chat extends Component {
                   maxHeight: '250px',
                   resizingBar: false,
                   showPathLabel: false,
-                  defaultStyle: 'font-size: 1.2em; line-height: 1em;'
+                  // This is used to match suneditor to the site's fonts
+                  defaultStyle:
+                    'font-family:Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:1em; line-height:1em;'
                 }}
               />
             </div>
-            <Button icon="send" onClick={onSendNewMessage} />
+            <Button
+              aria-label="Send message"
+              icon="send"
+              onClick={onSendNewMessage}
+            />
           </Modal.Content>
         </Modal>
       </Modal.Accessible>
@@ -286,10 +318,8 @@ Chat.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
   getChat: PropTypes.func,
-  getChatMessagesByChatId: PropTypes.func,
-  getChatMessagesCountByChatId: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
-  getUser: PropTypes.func,
+  setChatUsersByChatId: PropTypes.func,
   linkChatToRun: PropTypes.func,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
@@ -310,12 +340,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChat: params => dispatch(getChat(params)),
-  getChatMessagesByChatId: params => dispatch(getChatMessagesByChatId(params)),
-  getChatMessagesCountByChatId: params =>
-    dispatch(getChatMessagesCountByChatId(params)),
-  getChatUsersByChatId: params => dispatch(getChatUsersByChatId(params)),
-  getUser: params => dispatch(getUser(params))
+  getChat: id => dispatch(getChat(id)),
+  getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
+  setChatUsersByChatId: (id, users) => dispatch(setChatUsersByChatId(id, users))
 });
 
 export default withSocket(

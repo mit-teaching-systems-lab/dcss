@@ -1,7 +1,7 @@
 import assert from 'assert';
 import {
   createMockStore,
-  createPseudoRealStore,
+  createMockConnectedStore,
   fetchImplementation,
   makeById,
   state

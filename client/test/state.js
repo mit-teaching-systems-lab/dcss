@@ -34,7 +34,35 @@ module.exports = {
         is_muted: false,
         is_present: true
       }
-    ]
+    ],
+    usersById: {
+      '999': {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      '4': {
+        id: 4,
+        username: 'credible-lyrebird',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant', 'facilitator'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    }
   },
   chats: [
     {

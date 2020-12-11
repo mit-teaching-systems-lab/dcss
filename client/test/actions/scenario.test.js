@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 import assert from 'assert';
 import {
   createMockStore,
-  createPseudoRealStore,
+  createMockConnectedStore,
   fetchImplementation,
   makeById,
   state
@@ -28,7 +28,7 @@ afterAll(() => {
 
 beforeEach(() => {
   mockStore = createMockStore({});
-  store = createPseudoRealStore({});
+  store = createMockConnectedStore({});
   fetch.mockImplementation(() => {});
 });
 
@@ -476,7 +476,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
       };
     });
 
-    store = createPseudoRealStore({
+    store = createMockConnectedStore({
       scenarios: [],
       session: {
         isLoggedIn: false
@@ -506,7 +506,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === false', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: false
@@ -533,7 +533,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: true
@@ -579,7 +579,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: true
@@ -603,7 +603,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn) === false', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: false
@@ -632,7 +632,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('getScenariosIncrementallyFirst', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: false
@@ -663,7 +663,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosSlice', () => {
     test('default, cache is empty', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios: [],
         session: {
           isLoggedIn: false
@@ -705,7 +705,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('default, cache has entries, not full', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios: scenarios.slice(0, 30),
         session: {
           isLoggedIn: false
@@ -747,7 +747,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('ASC, cache is empty', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios: [],
         session: {
           isLoggedIn: false
@@ -791,7 +791,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('ASC, cache has entries, not full', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios: scenarios.slice(0, 30),
         session: {
           isLoggedIn: false
@@ -835,7 +835,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
     });
 
     test('(state.session.isLoggedIn && count === state.scenarios.length) === true', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: true
@@ -857,7 +857,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
 
   describe('getScenariosByStatus', () => {
     test('default', async () => {
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: false
@@ -906,7 +906,7 @@ describe('GET_SCENARIOS_SUCCESS', () => {
         };
       });
 
-      store = createPseudoRealStore({
+      store = createMockConnectedStore({
         scenarios,
         session: {
           isLoggedIn: true
@@ -939,7 +939,7 @@ describe('GET_SCENARIOS_ERROR', () => {
       };
     });
 
-    store = createPseudoRealStore({
+    store = createMockConnectedStore({
       scenarios: [],
       session: {
         isLoggedIn: false
