@@ -13,6 +13,19 @@
   margin-bottom: 1rem;
 }
 
+.c__cohort-url {
+  margin-bottom: 1rem;
+}
+
+.c__cohort-url .ui.button {
+  display: block;
+  margin-top: 1rem;
+}
+
+.c__cohort-url .ui.input input[type="text"] {
+  width: 100%;
+}
+
 @media only screen and (max-width: 767px) {
   .ui.container.c__table-container {
     width: auto !important;

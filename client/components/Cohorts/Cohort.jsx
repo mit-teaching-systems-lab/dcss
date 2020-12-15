@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Menu, Segment, Title } from '@components/UI';
+import { Button, Icon, Input, Menu, Segment, Title } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
 import { getCohort, linkUserToCohort } from '@actions/cohort';
@@ -172,16 +172,20 @@ export class Cohort extends React.Component {
     // Everytime there is a render, save the state.
     Storage.set(this.sessionKey, { activeTabKey, tabs });
 
-    const menuItemCopyUrl = (
-      <Menu.Item.Tabbable
-        key="menu-item-account-administration"
+    const menuItemShowCohortUrl = (
+      <Input label="Cohort url" size="big" type="text" defaultValue={url} />
+    );
+
+    const menuItemCopyCohortUrl = (
+      <Button
+        icon
+        labelPosition="left"
+        size="small"
         onClick={onCohortUrlCopyClick}
       >
-        <Icon.Group className="em__icon-group-margin">
-          <Icon name="clipboard outline" />
-        </Icon.Group>
+        <Icon name="clipboard outline" color="blue" />
         Copy cohort link to clipboard
-      </Menu.Item.Tabbable>
+      </Button>
     );
 
     return (
@@ -214,9 +218,9 @@ export class Cohort extends React.Component {
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
             {isFacilitator ? (
-              <Menu icon borderless>
-                {menuItemCopyUrl}
-              </Menu>
+              <div className="c__cohort-url">
+                {menuItemShowCohortUrl} {menuItemCopyCohortUrl}
+              </div>
             ) : null}
             <CohortScenarios
               key="cohort-scenarios"
