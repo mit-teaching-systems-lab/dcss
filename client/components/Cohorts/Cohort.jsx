@@ -2,7 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Button, Icon, Input, Menu, Segment, Title } from '@components/UI';
+import {
+  Button,
+  Header,
+  Icon,
+  Input,
+  Menu,
+  Segment,
+  Title
+} from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
 import { getCohort, linkUserToCohort } from '@actions/cohort';
@@ -218,16 +226,24 @@ export class Cohort extends React.Component {
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
             {isFacilitator ? (
-              <div className="c__cohort-url">
+              <section className="c__section c__cohort-url">
                 {menuItemShowCohortUrl} {menuItemCopyCohortUrl}
-              </div>
+              </section>
             ) : null}
-            <CohortScenarios
-              key="cohort-scenarios"
-              id={cohort.id}
-              authority={authority}
-              onClick={onClick}
-            />
+            <section className="c__section">
+              <Header className="c__header" as="h2">
+                Cohort scenarios
+              </Header>
+              <p className="c__subheader">
+                Manage your assigned scenarios and see your cohort responses.
+              </p>
+              <CohortScenarios
+                key="cohort-scenarios"
+                id={cohort.id}
+                authority={authority}
+                onClick={onClick}
+              />
+            </section>
             {isFacilitator ? (
               <CohortParticipants
                 key="cohort-participants"

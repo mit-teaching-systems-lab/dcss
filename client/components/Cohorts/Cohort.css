@@ -13,13 +13,21 @@
   margin-bottom: 1rem;
 }
 
-.c__cohort-url {
-  margin-bottom: 1rem;
+.c__section {
+  margin-bottom: 3rem;
+}
+
+.c__header {
+  margin-bottom: 0 !important;
+}
+
+.c__subheader {
+  font-size: 1.2rem;
 }
 
 .c__cohort-url .ui.button {
   display: block;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .c__cohort-url .ui.input input[type="text"] {
