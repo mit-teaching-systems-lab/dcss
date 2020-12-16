@@ -14,15 +14,12 @@
 }
 
 .c__section {
-  margin-bottom: 3rem;
+  margin: 0 auto 3rem auto;
+  max-width: 70rem;
 }
 
-.c__header {
-  margin-bottom: 0 !important;
-}
-
-.c__subheader {
-  font-size: 1.2rem;
+.c__scenario-header-num span {
+  font-weight: bold;
 }
 
 .c__cohort-url .ui.button {
@@ -34,11 +31,48 @@
   width: 100%;
 }
 
+.c__scenario-card {
+  align-items: center;
+  display: grid !important;
+  grid-column-gap: 1rem;
+  grid-template-columns: 2fr 1fr;
+  width: 100% !important;
+}
+
+.c__scenario-card .meta:not(:empty) {
+  margin-top: 1rem;
+}
+
+.c__scenario-card.ui.card .meta * {
+  margin-bottom: 0.5rem;
+}
+
+.c__scenario-extra {
+  padding: 1rem;
+}
+
+.c__scenario-extra button {
+  width: 100%;
+}
+
+.c__scenario-list {
+  padding: 0;
+}
+
+.c__scenario-container {
+  background-color: var(--color-gray);
+  padding: 1rem;
+}
+
 @media only screen and (max-width: 767px) {
   .ui.container.c__table-container {
     width: auto !important;
     margin-left: 0em !important;
     margin-right: 0em !important;
+  }
+
+  .c__scenario-card {
+    display: block !important;
   }
 }
 

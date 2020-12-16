@@ -234,9 +234,6 @@ export class Cohort extends React.Component {
               <Header className="c__header" as="h2">
                 Cohort scenarios
               </Header>
-              <p className="c__subheader">
-                Manage your assigned scenarios and see your cohort responses.
-              </p>
               <CohortScenarios
                 key="cohort-scenarios"
                 id={cohort.id}

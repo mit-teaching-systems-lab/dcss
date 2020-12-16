@@ -1,23 +1,22 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
   Button,
+  Card,
   Checkbox,
   Container,
   Icon,
   Input,
   Menu,
   Pagination,
-  Popup,
   Ref,
-  Table
+  Text
 } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import escapeRegExp from 'lodash.escaperegexp';
 import { computeItemsRowsPerPage } from '@utils/Layout';
 import Moment from '@utils/Moment';
-import Username from '@components/User/Username';
 import Gate from '@components/Gate';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
@@ -46,7 +45,7 @@ export class CohortScenarios extends React.Component {
     // scenarios when the list is filtered
     // by searching.
     this.scenarios = [];
-    this.tableBody = React.createRef();
+    this.orderedList = React.createRef();
     this.sectionRef = React.createRef();
     this.onCheckboxClick = this.onCheckboxClick.bind(this);
     this.onOrderChange = this.onOrderChange.bind(this);
@@ -74,7 +73,7 @@ export class CohortScenarios extends React.Component {
   }
 
   scrollIntoView() {
-    scrollIntoView(this.tableBody.current?.node?.firstElementChild);
+    scrollIntoView(this.orderedList.current?.node?.firstElementChild);
   }
 
   onCheckboxClick(event, { checked, value }) {
@@ -156,11 +155,9 @@ export class CohortScenarios extends React.Component {
       onPageChange,
       onSearchChange
     } = this;
-    const { authority, cohort, onClick, runs, user, usersById } = this.props;
+    const { authority, cohort, onClick, runs, user } = this.props;
     const { isReady, activePage, scenarios } = this.state;
     const { isFacilitator, isParticipant } = authority;
-
-    const isOnlyParticipant = isParticipant && !isFacilitator;
 
     if (!isReady) {
       return <Loading />;
@@ -210,34 +207,16 @@ export class CohortScenarios extends React.Component {
 
     const scenariosLength = cohortScenarios.length;
 
-    const cohortScenariosCountWithIcon = (
-      <Fragment>
-        <Icon.Group className="em__icon-group-margin">
-          <Icon name="newspaper outline" />
-        </Icon.Group>
-        Scenarios ({scenariosLength})
-      </Fragment>
-    );
-
-    const cohortScenariosCountDescription = `${cohort.name} has ${scenariosLength} scenarios.`;
-
-    const menuItemCohortScenariosCountWithIcon = isFacilitator ? (
-      <Menu.Item.Tabbable
-        key="menu-item-cohort-scenarios"
-        name={cohortScenariosCountDescription}
-        aria-label={cohortScenariosCountDescription}
-        onClick={this.scrollIntoView}
-      >
-        {cohortScenariosCountWithIcon}
-      </Menu.Item.Tabbable>
+    const scenariosInCohortHeader = isFacilitator ? (
+      <p className="c__scenario-header-num">
+        <span>{scenariosLength}</span>{' '}
+        {scenariosLength === 1 ? 'scenario' : 'scenarios'} selected
+      </p>
     ) : (
-      <Menu.Item.Tabbable
-        key="menu-item-cohort-scenarios"
-        name={cohortScenariosCountDescription}
-        aria-label={cohortScenariosCountDescription}
-      >
-        {cohortScenariosCountWithIcon}
-      </Menu.Item.Tabbable>
+      <p className="c__scenario-header-num">
+        <span>{cohort.name}</span> includes <span>{scenariosLength}</span>{' '}
+        {scenariosLength === 1 ? 'scenario' : 'scenarios'}
+      </p>
     );
 
     const editorMenu = (
@@ -245,17 +224,17 @@ export class CohortScenarios extends React.Component {
         <EditorMenu
           type="cohort scenarios"
           items={{
-            left: [menuItemCohortScenariosCountWithIcon],
+            left: [scenariosInCohortHeader],
             right: user.is_super || isFacilitator ? right : []
           }}
         />
       </Ref>
     );
 
-    const defaultRowCount = 15;
+    const defaultRowCount = 5;
     // known total height of all ui that is not a table row
     const totalUnavailableHeight = 600;
-    const itemsRowHeight = 44;
+    const itemsRowHeight = 180;
     const itemsPerRow = 1;
 
     const { rowsPerPage } = computeItemsRowsPerPage({
@@ -275,312 +254,219 @@ export class CohortScenarios extends React.Component {
     );
 
     return (
-      <Container fluid className="c__table-container">
-        {editorMenu}
-        <Table
-          fixed
-          striped
-          selectable
-          role="grid"
-          aria-labelledby="header"
-          className="c__table--constraints"
-          unstackable
-        >
-          <Table.Header>
-            <Table.Row>
-              <Gate
-                requiredPermission="edit_scenarios_in_cohort"
-                isAuthorized={isFacilitator}
-              >
-                <Table.HeaderCell className="c__table-cell-first">
-                  <Icon.Group className="em__icon-group-margin">
-                    <Icon name="newspaper outline" />
-                    <Icon corner="top right" name="add" color="green" />
-                  </Icon.Group>
-                </Table.HeaderCell>
-                <Table.HeaderCell className="c__table-cell-options">
-                  Tools
-                </Table.HeaderCell>
-              </Gate>
-              <Table.HeaderCell>Title</Table.HeaderCell>
-              <Table.HeaderCell className="c__table-cell-content">
-                {isFacilitator ? 'Author' : 'Started'}
-              </Table.HeaderCell>
-              <Table.HeaderCell className="c__table-cell-content">
-                {isFacilitator ? 'Description' : 'Completed'}
-              </Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
+      <Container
+        fluid
+        className="c__scenario-container"
+        aria-labelledby="header"
+      >
+        {scenariosInCohortHeader}
 
-          {scenarios.length ? (
-            <Sortable
-              tag="tbody"
-              disabled={Layout.isForMobile()}
-              isAuthorized={isFacilitator}
-              onChange={onOrderChange}
-              tableRef={this.tableBody}
-              options={{
-                direction: 'vertical',
-                swapThreshold: 0.5,
-                animation: 150
-              }}
-            >
-              {scenariosSlice.map((scenario, index) => {
-                if (!scenario) {
-                  return null;
-                }
-                const checked = cohort.scenarios.includes(scenario.id);
-                const disabled = true;
-                const props = !checked ? { disabled } : {};
+        {scenarios.length ? (
+          <Sortable
+            className="c__scenario-list"
+            tag="ol"
+            disabled={Layout.isForMobile()}
+            isAuthorized={isFacilitator}
+            onChange={onOrderChange}
+            tableRef={this.orderedList}
+            options={{
+              direction: 'vertical',
+              swapThreshold: 0.5,
+              animation: 150
+            }}
+          >
+            {scenariosSlice.map((scenario, index) => {
+              if (!scenario) {
+                return null;
+              }
+              const checked = cohort.scenarios.includes(scenario.id);
+              const disabled = true;
+              const props = !checked ? { disabled } : {};
 
-                // TODO: check localstorage for more appropriate slide number to begin at
-                const pathname = `/cohort/${cohort.id}/run/${scenario.id}/slide/0`;
-                const url = `${location.origin}${pathname}`;
+              // TODO: check localstorage for more appropriate slide number to begin at
+              const pathname = `/cohort/${cohort.id}/run/${scenario.id}/slide/0`;
+              const url = `${location.origin}${pathname}`;
 
-                const requiredPermission = checked
-                  ? 'view_scenarios_in_cohort'
-                  : 'edit_scenarios_in_cohort';
+              const requiredPermission = checked
+                ? 'view_scenarios_in_cohort'
+                : 'edit_scenarios_in_cohort';
 
-                const onAddTabClick = event => {
-                  onClick(event, {
-                    type: 'scenario',
-                    source: scenario
-                  });
-                };
+              const onAddTabClick = event => {
+                onClick(event, {
+                  type: 'scenario',
+                  source: scenario
+                });
+              };
 
-                const run =
-                  runs.find(run => run.scenario_id === scenario.id) || {};
+              const run =
+                runs.find(run => run.scenario_id === scenario.id) || {};
 
-                const { run_created_at = null, run_ended_at = null } = run;
+              const { run_created_at = null, run_ended_at = null } = run;
 
-                const createdStatus = run_created_at
-                  ? { warning: true }
-                  : { negative: true };
+              const createdStatus = run_created_at
+                ? { warning: true }
+                : { negative: true };
 
-                const completeOrIncomplete = isParticipant
-                  ? run_ended_at
-                    ? { positive: true }
-                    : createdStatus
-                  : {};
+              const completeOrIncomplete = isParticipant
+                ? run_ended_at
+                  ? { positive: true }
+                  : createdStatus
+                : {};
 
-                const createdAt = run_created_at
-                  ? Moment(run_created_at).fromNow()
-                  : '';
+              const createdAt = run_created_at
+                ? Moment(run_created_at).fromNow()
+                : '';
 
-                const createdAtAlt = run_created_at
-                  ? Moment(run_created_at).calendar()
-                  : '';
+              const createdAtAlt = run_created_at
+                ? Moment(run_created_at).calendar()
+                : '';
 
-                const endedAt = run_ended_at
-                  ? Moment(run_ended_at).fromNow()
-                  : '';
+              const endedAt = run_ended_at
+                ? Moment(run_ended_at).fromNow()
+                : '';
 
-                const endedAtAlt = run_ended_at
-                  ? Moment(run_ended_at).calendar()
-                  : 'This scenario is not complete';
+              const endedAtAlt = run_ended_at
+                ? Moment(run_ended_at).calendar()
+                : 'This scenario is not complete';
 
-                const startedAtDisplay = run_created_at
-                  ? `${createdAt} (${createdAtAlt})`.trim()
-                  : 'This scenario has not been started';
+              const startedAtDisplay = run_created_at
+                ? `${createdAt} (${createdAtAlt})`.trim()
+                : 'This scenario has not been started';
 
-                const endedAtCreatedAtAlt = run_created_at ? endedAtAlt : '';
-                const endedAtDisplay = run_ended_at
-                  ? `${endedAt} (${endedAtAlt})`.trim()
-                  : endedAtCreatedAtAlt;
+              const endedAtCreatedAtAlt = run_created_at ? endedAtAlt : '';
+              const endedAtDisplay = run_ended_at
+                ? `${endedAt} (${endedAtAlt})`.trim()
+                : endedAtCreatedAtAlt;
 
-                const completionStatus = !isFacilitator
-                  ? completeOrIncomplete
-                  : {};
+              const completionStatus = !isFacilitator
+                ? completeOrIncomplete
+                : {};
 
-                return (
-                  <Gate
-                    key={`confirm-${index}`}
-                    requiredPermission={requiredPermission}
-                  >
-                    <Table.Row
-                      key={`row-${index}`}
-                      style={{ cursor: 'pointer' }}
-                      {...completionStatus}
-                    >
-                      <Gate
-                        requiredPermission="edit_own_cohorts"
-                        isAuthorized={isFacilitator}
-                      >
-                        <Table.Cell
-                          className="c__table-cell-first"
-                          key={`cell-checkbox-${index}`}
-                        >
-                          <Checkbox
-                            aria-label={
-                              checked ? `Remove scenario` : `Add scenario`
-                            }
-                            key={`checkbox-${index}`}
-                            value={scenario.id}
-                            checked={checked}
-                            onClick={onCheckboxClick}
-                          />
-                        </Table.Cell>
-                      </Gate>
-                      <Gate
-                        requiredPermission="edit_scenarios_in_cohort"
-                        isAuthorized={isFacilitator}
-                      >
-                        <Table.Cell className="c__table-cell-options">
-                          {checked ? (
-                            <Button.Group
-                              hidden
-                              basic
-                              size="small"
-                              className="c__button-group--transparent"
-                            >
-                              {Layout.isForMobile() ? null : (
-                                <Fragment>
-                                  <Popup
-                                    inverted
-                                    size="tiny"
-                                    content="Copy cohort scenario link to clipboard"
-                                    trigger={
-                                      <Button
-                                        aria-label="Copy cohort scenario link to clipboard"
-                                        data-testid="copy-cohort-scenario-link"
-                                        icon="clipboard outline"
-                                        onClick={() => copy(url)}
-                                        {...props}
-                                      />
-                                    }
-                                  />
-                                  <Popup
-                                    inverted
-                                    size="tiny"
-                                    content="Run this cohort scenario as a participant"
-                                    trigger={
-                                      <Button
-                                        aria-label="Run this cohort scenario as a participant"
-                                        data-testid="run-cohort-as-participant"
-                                        icon="play"
-                                        onClick={() => {
-                                          location.href = url;
-                                        }}
-                                        {...props}
-                                      />
-                                    }
-                                  />
+              const scenarioCursor = isFacilitator
+                ? { cursor: 'move' }
+                : { cursor: 'auto' };
 
-                                  <Gate
-                                    requiredPermission="view_all_data"
-                                    isAuthorized={isFacilitator}
-                                  >
-                                    <Popup
-                                      inverted
-                                      content="View cohort reponses to prompts in this scenario"
-                                      trigger={
-                                        <Button
-                                          aria-label="View cohort reponses to prompts in this scenario"
-                                          data-testid="view-cohort-responses"
-                                          icon="file alternate outline"
-                                          name={scenario.title}
-                                          onClick={onAddTabClick}
-                                          {...props}
-                                        />
-                                      }
-                                    />
-                                  </Gate>
-                                </Fragment>
-                              )}
-                              <Popup
-                                inverted
-                                size="tiny"
-                                content="Move scenario up"
-                                trigger={
-                                  <Button
-                                    aria-label="Move scenario up"
-                                    data-testid="move-up"
-                                    icon="caret up"
-                                    tabIndex={0}
-                                    disabled={index === 0}
-                                    onClick={() => {
-                                      onOrderChange(index, index - 1);
-                                    }}
-                                  />
-                                }
-                              />
-                              <Popup
-                                inverted
-                                size="tiny"
-                                content="Move scenario down"
-                                trigger={
-                                  <Button
-                                    aria-label="Move scenario down"
-                                    data-testid="move-down"
-                                    icon="caret down"
-                                    tabIndex={0}
-                                    disabled={
-                                      index === cohortScenarios.length - 1
-                                    }
-                                    onClick={() => {
-                                      onOrderChange(index, index + 1);
-                                    }}
-                                  />
-                                }
-                              />
-                            </Button.Group>
-                          ) : null}
-                        </Table.Cell>
-                      </Gate>
-                      <Table.Cell.Clickable
-                        href={pathname}
-                        content={scenario.title}
-                      />
-                      <Table.Cell className="c__table-cell-content">
-                        {isFacilitator ? (
-                          <Username {...usersById[scenario.author.id]} />
-                        ) : (
-                          startedAtDisplay
-                        )}
-                      </Table.Cell>
-                      <Table.Cell className="c__table-cell-content">
-                        {isFacilitator ? scenario.description : endedAtDisplay}
-                      </Table.Cell>
-                    </Table.Row>
-                  </Gate>
-                );
-              })}
-            </Sortable>
-          ) : (
-            <Table.Body>
-              <Table.Row
-                key="row-empty-results"
-                colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}
-              >
-                <Table.Cell>No scenarios match your search</Table.Cell>
-              </Table.Row>
-            </Table.Body>
-          )}
-
-          <Gate isAuthorized={isFacilitator}>
-            <Table.Footer>
-              <Table.Row>
-                <Table.HeaderCell
-                  colSpan={Layout.isForMobile() || isOnlyParticipant ? 3 : 5}
+              return (
+                <Gate
+                  key={`confirm-${index}`}
+                  requiredPermission={requiredPermission}
                 >
-                  <Pagination
-                    borderless
-                    name="scenarios"
-                    size="mini"
-                    activePage={activePage}
-                    siblingRange={1}
-                    boundaryRange={0}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    onPageChange={onPageChange}
-                    totalPages={scenariosPages}
-                  />
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Footer>
-          </Gate>
-        </Table>
+                  <Card
+                    className="c__scenario-card"
+                    as="li"
+                    key={`row-${index}`}
+                    style={scenarioCursor}
+                  >
+                    <Gate
+                      requiredPermission="edit_own_cohorts"
+                      isAuthorized={isFacilitator}
+                    >
+                      <div
+                        className="c__table-cell-first"
+                        key={`cell-checkbox-${index}`}
+                      >
+                        <Checkbox
+                          aria-label={
+                            checked ? `Remove scenario` : `Add scenario`
+                          }
+                          key={`checkbox-${index}`}
+                          value={scenario.id}
+                          checked={checked}
+                          onClick={onCheckboxClick}
+                        />
+                      </div>
+                    </Gate>
+                    <Card.Content>
+                      <Card.Header as="a" href={pathname}>
+                        {scenario.title}
+                      </Card.Header>
+                      <Card.Description>
+                        <Text.Truncate lines={2}>
+                          {isFacilitator
+                            ? scenario.description
+                            : endedAtDisplay}
+                        </Text.Truncate>
+                      </Card.Description>
+                      <Card.Meta>
+                        {isFacilitator ? null : startedAtDisplay}
+                        {checked ? (
+                          <Gate
+                            requiredPermission="view_all_data"
+                            isAuthorized={isFacilitator}
+                          >
+                            <Button
+                              basic
+                              size="tiny"
+                              color="blue"
+                              icon
+                              labelPosition="left"
+                              data-testid="run-cohort-as-participant"
+                              onClick={() => {
+                                location.href = url;
+                              }}
+                              {...props}
+                            >
+                              <Icon name="play" />
+                              Run scenario as a participant
+                            </Button>
+                            <Button
+                              basic
+                              size="tiny"
+                              color="blue"
+                              data-testid="copy-cohort-scenario-link"
+                              onClick={() => copy(url)}
+                              {...props}
+                            >
+                              <Icon name="clipboard outline" />
+                              Copy scenario link to clipboard
+                            </Button>
+                          </Gate>
+                        ) : null}
+                      </Card.Meta>
+                    </Card.Content>
+                    <div className="c__scenario-extra">
+                      {checked ? (
+                        <Gate
+                          requiredPermission="view_all_data"
+                          isAuthorized={isFacilitator}
+                        >
+                          <Button
+                            primary
+                            size="large"
+                            data-testid="view-cohort-responses"
+                            name={scenario.title}
+                            onClick={onAddTabClick}
+                            {...props}
+                          >
+                            View cohort reponses
+                          </Button>
+                        </Gate>
+                      ) : null}
+                    </div>
+                  </Card>
+                </Gate>
+              );
+            })}
+          </Sortable>
+        ) : (
+          <p key="row-empty-results">No scenarios match your search</p>
+        )}
+
+        <Gate isAuthorized={isFacilitator}>
+          <Pagination
+            borderless
+            name="scenarios"
+            size="mini"
+            activePage={activePage}
+            siblingRange={1}
+            boundaryRange={0}
+            ellipsisItem={null}
+            firstItem={null}
+            lastItem={null}
+            onPageChange={onPageChange}
+            totalPages={scenariosPages}
+          />
+        </Gate>
       </Container>
     );
   }
