@@ -15,6 +15,7 @@ import {
   Menu,
   Modal,
   Pagination,
+  Segment,
   Title
 } from '@components/UI';
 import {
@@ -218,50 +219,54 @@ export class Cohorts extends React.Component {
       defaultRowCount
     });
 
-    const menuItemCreateCohorts = (
+    const createCohortButton = (
       <Gate
         key="menu-item-create-cohort-auth"
         requiredPermission="create_cohort"
       >
-        <Menu.Item.Tabbable
-          key="menu-item-create-cohort"
+        <Button
+          fluid
+          icon
+          primary
+          className="sc__hidden-on-mobile"
+          labelPosition="left"
           name="Create a cohort"
+          size="big"
           onClick={onOpenCreateCohortClick}
         >
-          <Icon.Group className="em__icon-group-margin">
-            <Icon name="group" />
-            <Icon corner="top right" name="add" color="green" />
-          </Icon.Group>
+          <Icon name="add" />
           Create a Cohort
-        </Menu.Item.Tabbable>
+        </Button>
       </Gate>
     );
 
     const menuItemCountCohorts = (
-      <Menu.Item.Tabbable key="menu-item-count-cohort" name="Cohorts">
-        <Icon.Group className="em__icon-group-margin">
-          <Icon name="group" />
-        </Icon.Group>
-        Cohorts {cohorts.length ? `(${cohorts.length})` : null}
-      </Menu.Item.Tabbable>
+      <p>
+        You are a part of <span className="c__list-num">{cohorts.length}</span>{' '}
+        {cohorts.length === 1 ? 'cohort' : 'cohorts'}.
+      </p>
     );
 
     const menuItemSearchCohorts = cohorts.length ? (
-      <Menu.Menu key="menu-right-search-cohorts" position="right">
-        <Menu.Item.Tabbable name="Search cohorts">
-          <Input
-            icon="search"
-            placeholder="Search..."
-            defaultValue={value || ''}
-            onChange={onCohortSearchChange}
-          />
-        </Menu.Item.Tabbable>
+      <Menu.Menu
+        className="grid__menu"
+        key="menu-item-cohort-search"
+        position="right"
+      >
+        <Input
+          className="grid__menu-search"
+          label="Search cohorts"
+          icon="search"
+          size="big"
+          defaultValue={value || ''}
+          onChange={onCohortSearchChange}
+        />
       </Menu.Menu>
     ) : null;
 
-    const left = [
+    const cohortPermissionActions = [
       permissions.includes('create_cohort')
-        ? menuItemCreateCohorts
+        ? createCohortButton
         : menuItemCountCohorts
     ];
 
@@ -298,41 +303,48 @@ export class Cohorts extends React.Component {
     return (
       <React.Fragment>
         <Title content={pageTitle} />
-
-        <EditorMenu
-          type="cohorts"
-          items={{
-            left,
-            right
-          }}
-        />
-        <Container fluid>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column stretched>
-                {!isReady ? <Loading {...loadingProps} /> : cardGroup}
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column stretched>
-                {cohortsPages > 1 ? (
-                  <Pagination
-                    borderless
-                    name="cohorts"
-                    siblingRange={1}
-                    boundaryRange={0}
-                    ellipsisItem={null}
-                    firstItem={null}
-                    lastItem={null}
-                    activePage={activePage}
-                    onPageChange={onPageChange}
-                    totalPages={cohortsPages}
-                  />
-                ) : null}
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Container>
+        <Grid className="grid__container" stackable columns={2}>
+          <Grid.Column className="grid__sidebar" width={4}>
+            <div className="grid__header">
+              <Header as="h1" attached="top">
+                Cohorts
+              </Header>
+              <Segment attached size="large">
+                Cohorts are specific groups of participants (or your class)
+                assigned to a scenario or set of scenarios.
+              </Segment>
+            </div>
+            {cohortPermissionActions}
+          </Grid.Column>
+          <Grid.Column className="grid__main" width={12}>
+            {menuItemSearchCohorts}
+            <Grid>
+              <Grid.Row>
+                <Grid.Column stretched>
+                  {!isReady ? <Loading {...loadingProps} /> : cardGroup}
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column stretched>
+                  {cohortsPages > 1 ? (
+                    <Pagination
+                      borderless
+                      name="cohorts"
+                      siblingRange={1}
+                      boundaryRange={0}
+                      ellipsisItem={null}
+                      firstItem={null}
+                      lastItem={null}
+                      activePage={activePage}
+                      onPageChange={onPageChange}
+                      totalPages={cohortsPages}
+                    />
+                  ) : null}
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Grid.Column>
+        </Grid>
 
         {createIsVisible ? (
           <Modal.Accessible open={createIsVisible}>

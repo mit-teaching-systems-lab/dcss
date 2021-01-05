@@ -5,6 +5,10 @@
   overflow: auto;
 }
 
+.c__list-num {
+  font-weight: bold;
+}
+
 .c__table-container {
   margin-bottom: 1rem;
 }

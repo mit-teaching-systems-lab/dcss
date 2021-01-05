@@ -137,14 +137,6 @@
   }
 }
 
-.sl__menu {
-  margin-bottom: 2rem;
-}
-
-.sl__menu-search {
-  width: 100%;
-}
-
 .sl__menu-tools {
   display: grid;
   grid-auto-flow: column;

@@ -3,38 +3,51 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
+    class="ui stackable two column grid grid__container"
   >
-    <a
-      class="item"
-      tabindex="0"
-    >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="group icon"
-        />
-        <i
-          aria-hidden="true"
-          class="green add top right corner icon"
-        />
-      </i>
-      Create a Cohort
-    </a>
     <div
-      class="right menu"
+      class="four wide column grid__sidebar"
     >
       <div
-        class="item"
-        tabindex="0"
+        class="grid__header"
+      >
+        <h1
+          class="ui top attached header"
+        >
+          Cohorts
+        </h1>
+        <div
+          class="ui large attached segment"
+        >
+          Cohorts are specific groups of participants (or your class) assigned to a scenario or set of scenarios.
+        </div>
+      </div>
+      <button
+        class="ui big fluid icon primary left labeled button sc__hidden-on-mobile"
+        name="Create a cohort"
+      >
+        <i
+          aria-hidden="true"
+          class="add icon"
+        />
+        Create a Cohort
+      </button>
+    </div>
+    <div
+      class="twelve wide column grid__main"
+    >
+      <div
+        class="right menu grid__menu"
       >
         <div
-          class="ui icon input"
+          class="ui big icon labeled input grid__menu-search"
         >
+          <div
+            class="ui label label"
+          >
+            Search cohorts
+          </div>
           <input
-            placeholder="Search..."
             type="text"
             value=""
           />
@@ -44,171 +57,167 @@ exports[`Render 1 1 1`] = `
           />
         </div>
       </div>
-    </div>
-  </div>
-  <div
-    class="ui fluid container"
-  >
-    <div
-      class="ui grid"
-    >
       <div
-        class="row"
+        class="ui grid"
       >
         <div
-          class="stretched column"
+          class="row"
         >
           <div
-            aria-busy="true"
-            aria-live="polite"
-            class="ui doubling four cards"
-            role="status"
+            class="stretched column"
           >
             <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
+              aria-busy="true"
+              aria-live="polite"
+              class="ui doubling four cards"
+              role="status"
             >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="row"
-      >
         <div
-          class="stretched column"
-        />
+          class="row"
+        >
+          <div
+            class="stretched column"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -218,190 +227,200 @@ exports[`Render 1 1 1`] = `
 exports[`Render 1 2 1`] = `
 <DocumentFragment>
   <div
-    class="ui borderless icon em__height menu"
-  >
-    <a
-      class="item"
-      tabindex="0"
-    >
-      <i
-        class="icons em__icon-group-margin"
-      >
-        <i
-          aria-hidden="true"
-          class="group icon"
-        />
-        <i
-          aria-hidden="true"
-          class="green add top right corner icon"
-        />
-      </i>
-      Create a Cohort
-    </a>
-  </div>
-  <div
-    class="ui fluid container"
+    class="ui stackable two column grid grid__container"
   >
     <div
-      class="ui grid"
+      class="four wide column grid__sidebar"
     >
       <div
-        class="row"
+        class="grid__header"
+      >
+        <h1
+          class="ui top attached header"
+        >
+          Cohorts
+        </h1>
+        <div
+          class="ui large attached segment"
+        >
+          Cohorts are specific groups of participants (or your class) assigned to a scenario or set of scenarios.
+        </div>
+      </div>
+      <button
+        class="ui big fluid icon primary left labeled button sc__hidden-on-mobile"
+        name="Create a cohort"
+      >
+        <i
+          aria-hidden="true"
+          class="add icon"
+        />
+        Create a Cohort
+      </button>
+    </div>
+    <div
+      class="twelve wide column grid__main"
+    >
+      <div
+        class="ui grid"
       >
         <div
-          class="stretched column"
+          class="row"
         >
           <div
-            aria-busy="true"
-            aria-live="polite"
-            class="ui doubling four cards"
-            role="status"
+            class="stretched column"
           >
             <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
+              aria-busy="true"
+              aria-live="polite"
+              class="ui doubling four cards"
+              role="status"
             >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div
-              aria-hidden="true"
-              class="ui card loading__multi-card"
-              style="height: 20rem;"
-            >
               <div
-                class="content loading__content"
+                aria-hidden="true"
+                class="ui card loading__multi-card"
+                style="height: 20rem;"
               >
                 <div
-                  class="ui placeholder fluid"
+                  class="content loading__content"
                 >
                   <div
-                    class="square image"
-                  />
+                    class="ui placeholder fluid"
+                  >
+                    <div
+                      class="square image"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="row"
-      >
         <div
-          class="stretched column"
-        />
+          class="row"
+        >
+          <div
+            class="stretched column"
+          />
+        </div>
       </div>
     </div>
   </div>

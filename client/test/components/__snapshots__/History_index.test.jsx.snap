@@ -125,7 +125,7 @@ exports[`Render 1 1 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  8 months ago
+                  9 months ago
                 </span>
               </td>
               <td
@@ -133,60 +133,7 @@ exports[`Render 1 1 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  8 months ago
-                </span>
-              </td>
-            </tr>
-            <tr
-              class=\\"positive\\"
-            >
-              <td
-                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
-                class=\\"h__table-cell-first\\"
-                role=\\"button\\"
-                style=\\"cursor: pointer;\\"
-              >
-                <i
-                  aria-hidden=\\"true\\"
-                  class=\\"file alternate outline icon\\"
-                />
-              </td>
-              <td
-                class=\\"h__col-medium\\"
-                role=\\"button\\"
-                style=\\"cursor: pointer;\\"
-              >
-                <a
-                  href=\\"/cohort/1\\"
-                >
-                  A New Cohort That Exists Within Inline Props
-                </a>
-              </td>
-              <td
-                class=\\"h__col-medium\\"
-                role=\\"button\\"
-                style=\\"cursor: pointer;\\"
-              >
-                <a
-                  href=\\"/cohort/1/run/7/slide/0\\"
-                >
-                  Multi Button Prompt
-                </a>
-              </td>
-              <td
-                alt=\\"03/31/2020\\"
-                class=\\"h__col-small\\"
-              >
-                <span>
-                  8 months ago
-                </span>
-              </td>
-              <td
-                alt=\\"03/31/2020\\"
-                class=\\"h__col-small\\"
-              >
-                <span>
-                  8 months ago
+                  9 months ago
                 </span>
               </td>
             </tr>
@@ -231,7 +178,7 @@ exports[`Render 1 1 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  8 months ago
+                  9 months ago
                 </span>
               </td>
               <td
@@ -239,7 +186,7 @@ exports[`Render 1 1 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  8 months ago
+                  9 months ago
                 </span>
               </td>
             </tr>
@@ -284,7 +231,7 @@ exports[`Render 1 1 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  8 months ago
+                  9 months ago
                 </span>
               </td>
               <td
@@ -292,7 +239,60 @@ exports[`Render 1 1 2`] = `
                 class=\\"h__col-small\\"
               >
                 <span>
-                  8 months ago
+                  9 months ago
+                </span>
+              </td>
+            </tr>
+            <tr
+              class=\\"positive\\"
+            >
+              <td
+                aria-label=\\"View your data for this scenario run, from cohort \\\\\\"A New Cohort That Exists Within Inline Props\\\\\\"\\"
+                class=\\"h__table-cell-first\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"file alternate outline icon\\"
+                />
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1\\"
+                >
+                  A New Cohort That Exists Within Inline Props
+                </a>
+              </td>
+              <td
+                class=\\"h__col-medium\\"
+                role=\\"button\\"
+                style=\\"cursor: pointer;\\"
+              >
+                <a
+                  href=\\"/cohort/1/run/7/slide/0\\"
+                >
+                  Multi Button Prompt
+                </a>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  9 months ago
+                </span>
+              </td>
+              <td
+                alt=\\"03/31/2020\\"
+                class=\\"h__col-small\\"
+              >
+                <span>
+                  9 months ago
                 </span>
               </td>
             </tr>

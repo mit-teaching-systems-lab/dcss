@@ -8,14 +8,20 @@ exports[`Render 1 1 1`] = `
     <div
       class="four wide column grid__sidebar"
     >
-      <h1
-        class="ui medium header"
+      <div
+        class="grid__header"
       >
-        Scenarios
-      </h1>
-      <p>
-        Scenarios are authored collections of slides which guide a participant through a simulation.
-      </p>
+        <h1
+          class="ui top attached header"
+        >
+          Scenarios
+        </h1>
+        <div
+          class="ui large attached segment"
+        >
+          Scenarios are authored collections of slides which guide a participant through a simulation.
+        </div>
+      </div>
       <a
         class="ui big fluid icon primary left labeled button sc__hidden-on-mobile"
         href="/editor/new"
@@ -33,29 +39,24 @@ exports[`Render 1 1 1`] = `
       class="twelve wide column grid__main"
     >
       <div
-        class="right menu sl__menu"
+        class="right menu grid__menu"
       >
         <div
-          class="item"
-          tabindex="0"
+          class="ui big icon labeled input grid__menu-search"
         >
           <div
-            class="ui big icon labeled input sl__menu-search"
+            class="ui label label"
           >
-            <div
-              class="ui label label"
-            >
-              Search scenarios
-            </div>
-            <input
-              type="text"
-              value=""
-            />
-            <i
-              aria-hidden="true"
-              class="search icon"
-            />
+            Search scenarios
           </div>
+          <input
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
         <div
           class="sl__menu-tools"
@@ -269,14 +270,20 @@ exports[`Render 2 1 1`] = `
     <div
       class="four wide column grid__sidebar"
     >
-      <h1
-        class="ui medium header"
+      <div
+        class="grid__header"
       >
-        Scenarios
-      </h1>
-      <p>
-        Scenarios are authored collections of slides which guide a participant through a simulation.
-      </p>
+        <h1
+          class="ui top attached header"
+        >
+          Scenarios
+        </h1>
+        <div
+          class="ui large attached segment"
+        >
+          Scenarios are authored collections of slides which guide a participant through a simulation.
+        </div>
+      </div>
       <a
         class="ui big fluid icon primary left labeled button sc__hidden-on-mobile"
         href="/editor/new"
@@ -294,29 +301,24 @@ exports[`Render 2 1 1`] = `
       class="twelve wide column grid__main"
     >
       <div
-        class="right menu sl__menu"
+        class="right menu grid__menu"
       >
         <div
-          class="item"
-          tabindex="0"
+          class="ui big icon labeled input grid__menu-search"
         >
           <div
-            class="ui big icon labeled input sl__menu-search"
+            class="ui label label"
           >
-            <div
-              class="ui label label"
-            >
-              Search scenarios
-            </div>
-            <input
-              type="text"
-              value=""
-            />
-            <i
-              aria-hidden="true"
-              class="search icon"
-            />
+            Search scenarios
           </div>
+          <input
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
         </div>
         <div
           class="sl__menu-tools"

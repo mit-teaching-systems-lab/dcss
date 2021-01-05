@@ -13,6 +13,7 @@ import {
   Menu,
   Pagination,
   Responsive,
+  Segment,
   Title
 } from '@components/UI';
 import escapeRegExp from 'lodash.escaperegexp';
@@ -421,16 +422,14 @@ class ScenariosList extends Component {
     ) : null;
 
     const menuItemScenarioSearch = (
-      <Menu.Item.Tabbable>
-        <Input
-          label="Search scenarios"
-          className="sl__menu-search"
-          icon="search"
-          size="big"
-          defaultValue={search || ''}
-          onChange={onSearchChange}
-        />
-      </Menu.Item.Tabbable>
+      <Input
+        label="Search scenarios"
+        className="grid__menu-search"
+        icon="search"
+        size="big"
+        defaultValue={search || ''}
+        onChange={onSearchChange}
+      />
     );
 
     const menuItemScenarioLabels = (
@@ -441,7 +440,7 @@ class ScenariosList extends Component {
 
     const scenarioSearchTools = [
       <Menu.Menu
-        className="sl__menu"
+        className="grid__menu"
         key="menu-item-scenario-search"
         position="right"
       >
@@ -492,13 +491,15 @@ class ScenariosList extends Component {
         <Title content={scenariosHeading} />
         <Grid className="grid__container" stackable columns={2}>
           <Grid.Column className="grid__sidebar" width={4}>
-            <Header as="h1" size="medium">
-              Scenarios
-            </Header>
-            <p>
-              Scenarios are authored collections of slides which guide a
-              participant through a simulation.
-            </p>
+            <div className="grid__header">
+              <Header as="h1" attached="top">
+                Scenarios
+              </Header>
+              <Segment attached size="large">
+                Scenarios are authored collections of slides which guide a
+                participant through a simulation.
+              </Segment>
+            </div>
             {createScenarioButton}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
