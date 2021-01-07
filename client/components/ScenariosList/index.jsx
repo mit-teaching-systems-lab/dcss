@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import {
   Button,
   Card,
@@ -10,6 +10,7 @@ import {
   Header,
   Icon,
   Input,
+  List,
   Menu,
   Pagination,
   Responsive,
@@ -118,7 +119,7 @@ class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
-    const { category, scenarios } = this.props;
+    const { category, scenarios, user } = this.props;
     const { search = '', l: labels = [] } = QueryString.parse(
       window.location.search,
       qsOpts
@@ -132,7 +133,8 @@ class ScenariosList extends Component {
       scenarios,
       search,
       selected: null,
-      viewHeading: ''
+      viewHeading: '',
+      user
     };
 
     this.props.setLabelsInUse(labels);
@@ -283,7 +285,8 @@ class ScenariosList extends Component {
       heading,
       open,
       selected,
-      search
+      search,
+      user
     } = this.state;
     const {
       onPageChange,
@@ -458,6 +461,42 @@ class ScenariosList extends Component {
       </Menu.Menu>
     ];
 
+    const DCSS_BRAND_LABEL =
+      process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
+
+    const myScenarioNavItem = isLoggedIn ? (
+      <List.Item>
+        <List.Header as={NavLink} to={`/scenarios/author/${user.username}`}>
+          My scenarios
+        </List.Header>
+        <List.Description>
+          Scenarios I where I am an owner, author, or reviewer.
+        </List.Description>
+      </List.Item>
+    ) : null;
+
+    const scenarioNavList = Layout.isNotForMobile() ? (
+      <List relaxed size="big">
+        {myScenarioNavItem}
+        <List.Item>
+          <List.Header as={NavLink} to="/scenarios/official">
+            Official
+          </List.Header>
+          <List.Description>
+            Scenarios made by {DCSS_BRAND_LABEL}.
+          </List.Description>
+        </List.Item>
+        <List.Item>
+          <List.Header as={NavLink} to="/scenarios/community">
+            Community
+          </List.Header>
+          <List.Description>
+            Scenarios made by others in the community.
+          </List.Description>
+        </List.Item>
+      </List>
+    ) : null;
+
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '22em' } }
     };
@@ -501,6 +540,7 @@ class ScenariosList extends Component {
               </Segment>
             </div>
             {createScenarioButton}
+            {scenarioNavList}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
             {scenarioSearchTools}
