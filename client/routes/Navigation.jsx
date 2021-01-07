@@ -171,7 +171,6 @@ class Navigation extends Component {
     //     <Icon name="bug" />
     //   </Menu.Item.Tabbable>
     // );
-
     const menuItemGoTo = (
       <Menu.Item.Tabbable role="option" aria-label="Go to...">
         Go to...
@@ -254,18 +253,19 @@ class Navigation extends Component {
         )}
       </Menu>
     );
-
     return topLevelNavigation;
   }
 }
 
-Navigation.propTypes = {
+const navPropTypes = {
   endScenarioLock: PropTypes.func,
   history: PropTypes.object,
   isLoggedIn: PropTypes.bool,
   scenario: PropTypes.object,
   user: PropTypes.object
 };
+
+Navigation.propTypes = navPropTypes;
 
 const mapStateToProps = state => {
   const { isLoggedIn } = state.session;
