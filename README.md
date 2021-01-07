@@ -9,4 +9,4 @@ For more information come chat with [@mit_tsl](https://twitter.com/mit_tsl) or v
 
 ## Software Development
 
-To learn more about how this software works, please take a look at [our project wiki](https://github.com/bocoup/dcss/wiki). For getting started setting up your local environment, [checkout this page](https://github.com/bocoup/dcss/wiki/Local-Development).
+To learn more about how this software works, please take a look at [our project wiki](https://github.com/mit-teaching-systems-lab/dcss/wiki). For getting started setting up your local environment, [checkout this page](https://github.com/mit-teaching-systems-lab/dcss/wiki/Local-Development).
