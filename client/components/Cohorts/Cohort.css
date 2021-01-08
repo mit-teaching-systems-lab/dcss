@@ -15,7 +15,7 @@
 
 .c__section {
   margin: 0 auto 3rem auto;
-  max-width: 70rem;
+  /*max-width: 70rem;*/
 }
 
 .c__scenario-header-num span {
@@ -35,7 +35,7 @@
   align-items: center;
   display: grid !important;
   grid-column-gap: 1rem;
-  grid-template-columns: min-content 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
   width: 100% !important;
 }
 
@@ -57,6 +57,31 @@
 
 .c__scenario-list {
   padding: 0;
+  height: 390px;
+  overflow-y: scroll;
+}
+
+.c__scenario-list > div {
+  margin-bottom: 0.5em !important;
+}
+
+.c__scenario-cards {
+  padding: 0;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.c__scenario-cards > div {
+  margin-bottom: 0.5em !important;
+}
+
+.c__scenario-cards-selected {
+  text-align: left !important;
+  padding-bottom: 1rem;
+}
+
+.c__scenario-selector-content {
+  padding: 1rem !important;
 }
 
 .c__scenario-container {

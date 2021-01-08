@@ -4,37 +4,10 @@ import { Card } from '@components/UI';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Moment from '@utils/Moment';
-
-const rolesToHumanReadableString = roles => {
-  if (!roles || (roles && !roles.length)) {
-    return `You are not in this cohort.`;
-  }
-  const rolesSlice = roles.slice();
-  const ownerIndex = rolesSlice.indexOf('owner');
-  const isOwner = ownerIndex !== -1;
-  let returnValue = '';
-
-  if (isOwner) {
-    returnValue = 'the owner';
-  } else {
-    // The user is not the owner...
-    //
-    if (rolesSlice.length === 1) {
-      // The user is just a "participant"
-      returnValue = `a ${rolesSlice[0]}`;
-    } else {
-      // This user is more than just a "participant", so
-      // "participant" is implied, but not necessary to display.
-      rolesSlice.splice(rolesSlice.indexOf('participant'), 1);
-      returnValue = `a ${rolesSlice[0]} and ${rolesSlice[1]}`;
-    }
-  }
-
-  return `You are ${returnValue}.`;
-};
+import { rolesToHumanReadableString } from '@utils/Roles';
 
 export const CohortCard = ({ id, created_at, name, roles, users }) => {
-  const yourRoles = rolesToHumanReadableString(roles);
+  const yourRoles = rolesToHumanReadableString('cohort', roles);
   const fromNow = Moment(created_at).fromNow();
   const calendar = Moment(created_at).calendar();
   const owner = users.find(user => user.roles.includes('owner'));
