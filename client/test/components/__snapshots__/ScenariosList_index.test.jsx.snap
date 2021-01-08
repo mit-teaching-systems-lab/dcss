@@ -34,6 +34,59 @@ exports[`Render 1 1 1`] = `
         />
         Create a Scenario
       </a>
+      <div
+        class="ui big relaxed list"
+        role="list"
+      >
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header"
+            href="/scenarios/author/null"
+          >
+            My scenarios
+          </a>
+          <div
+            class="description"
+          >
+            Scenarios I where I am an owner, author, or reviewer.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header"
+            href="/scenarios/official"
+          >
+            Official
+          </a>
+          <div
+            class="description"
+          >
+            Scenarios made by Teaching Systems Lab.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header"
+            href="/scenarios/community"
+          >
+            Community
+          </a>
+          <div
+            class="description"
+          >
+            Scenarios made by others in the community.
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="twelve wide column grid__main"
@@ -296,6 +349,59 @@ exports[`Render 2 1 1`] = `
         />
         Create a Scenario
       </a>
+      <div
+        class="ui big relaxed list"
+        role="list"
+      >
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header"
+            href="/scenarios/author/null"
+          >
+            My scenarios
+          </a>
+          <div
+            class="description"
+          >
+            Scenarios I where I am an owner, author, or reviewer.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header"
+            href="/scenarios/official"
+          >
+            Official
+          </a>
+          <div
+            class="description"
+          >
+            Scenarios made by Teaching Systems Lab.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header"
+            href="/scenarios/community"
+          >
+            Community
+          </a>
+          <div
+            class="description"
+          >
+            Scenarios made by others in the community.
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="twelve wide column grid__main"
