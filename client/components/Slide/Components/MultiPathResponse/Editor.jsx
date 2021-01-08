@@ -389,7 +389,7 @@ class MultiPathResponseEditor extends React.Component {
                   position: 'fixed'
                 };
 
-                const baseKey = Identity.key({ id, index });
+                const baseKey = Identity.key({ color, id, index });
                 const pathKey = Identity.key({ baseKey, path });
                 return (
                   <Table.Row

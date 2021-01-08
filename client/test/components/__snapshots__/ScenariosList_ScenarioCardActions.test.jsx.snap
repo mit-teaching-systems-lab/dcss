@@ -14,7 +14,7 @@ exports[`Render 1 1 1`] = `
     >
       <i
         aria-hidden="true"
-        class="blue play icon"
+        class="play icon primary"
       />
       <span
         class="sc__card-action-labels"
@@ -31,7 +31,7 @@ exports[`Render 1 1 1`] = `
     >
       <i
         aria-hidden="true"
-        class="blue edit outline icon"
+        class="edit outline icon primary"
       />
       <span
         class="sc__card-action-labels"
@@ -48,7 +48,7 @@ exports[`Render 1 1 1`] = `
     >
       <i
         aria-hidden="true"
-        class="blue copy outline icon"
+        class="copy outline icon primary"
       />
       <span
         class="sc__card-action-labels"

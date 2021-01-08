@@ -27,10 +27,13 @@ class Sortable extends Component {
   constructor(props) {
     super(props);
     this.onChange = this.onChange.bind(this);
+    this.onScroll = this.onScroll.bind(this);
   }
+
   shouldComponentUpdate(nextProps) {
     return shallowCompare(this, nextProps);
   }
+
   onChange(result) {
     if (!result.destination || !this.props.onChange) {
       return;
@@ -40,8 +43,13 @@ class Sortable extends Component {
     }
     this.props.onChange(result.source.index, result.destination.index);
   }
+  onScroll(event) {
+    if (this.props.onScroll) {
+      this.props.onScroll(event);
+    }
+  }
   render() {
-    const { onChange } = this;
+    const { onChange, onScroll } = this;
     const {
       children,
       disabled = false,
@@ -56,6 +64,12 @@ class Sortable extends Component {
     }
 
     if (tag) {
+      if (this.props.onScroll) {
+        throw new Error(
+          'Sortable with specified tag does not support onScroll'
+        );
+      }
+
       if (!isAuthorized) {
         if (tag === 'tbody') {
           return <Table.Body>{children}</Table.Body>;
@@ -96,12 +110,15 @@ class Sortable extends Component {
       );
     }
 
+    const { className = 'sortable__draggable-outer-container' } = rest;
+
     return (
       <DragDropContext onDragEnd={onChange}>
         <Droppable droppableId="droppable">
           {(droppableProvided, droppableSnapshot) => (
             <div
-              className="sortable__draggable-outer-container"
+              className={className}
+              onScroll={onScroll}
               ref={droppableProvided.innerRef}
               style={getDroppableStyle(
                 droppableSnapshot.isDraggingOver,
@@ -158,6 +175,7 @@ Sortable.propTypes = {
   disabled: PropTypes.bool,
   hasOwnDraggables: PropTypes.bool,
   onChange: PropTypes.func,
+  onScroll: PropTypes.func,
   overflow: PropTypes.any,
   tag: PropTypes.string
 };

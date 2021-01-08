@@ -47,11 +47,11 @@ class ScenarioCard extends React.Component {
 
   render() {
     const { onRestoreClick } = this;
-    const { onClick, user } = this.props;
+    const { onClick, showActions = true, showStatus = true, user } = this.props;
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
-      <Icon name="check" aria-label="Official" color="blue" />
+      <Icon name="check" aria-label="Official" className="primary" />
     ) : null;
 
     const isAuthorized =
@@ -79,13 +79,12 @@ class ScenarioCard extends React.Component {
       </p>
     );
 
-    const status = scenario.status;
     const statusItems = {
       1: { type: 'Draft', icon: 'edit' },
       2: { type: 'Public', icon: 'eye' },
       3: { type: 'Private', icon: 'eye slash' }
     };
-    const showStatus = statusItems[status];
+    const status = statusItems[scenario.status];
 
     const clickables = {
       onClick,
@@ -113,9 +112,11 @@ class ScenarioCard extends React.Component {
         aria-describedby={ariaDescribedby}
       >
         <Card.Content>
-          <Card.Meta className="sc__status">
-            <Icon color="blue" name={showStatus.icon} /> {showStatus.type}
-          </Card.Meta>
+          {showStatus ? (
+            <Card.Meta className="sc__status">
+              <Icon className="primary" name={status.icon} /> {status.type}
+            </Card.Meta>
+          ) : null}
           <Card.Header
             tabIndex="0"
             className="sc sc__cursor-pointer"
@@ -124,19 +125,21 @@ class ScenarioCard extends React.Component {
           >
             {officialCheckmark} {title}
           </Card.Header>
+          <Card.Meta>{scenarioUpdatedOrCreatedTime}</Card.Meta>
           <Card.Description>
             <Text.Truncate lines={3} id={ariaDescribedby}>
               {description}
             </Text.Truncate>
           </Card.Description>
           <Card.Meta className="sc__footer">
-            {scenarioUpdatedOrCreatedTime}
             <ScenarioLabels scenario={scenario} />
           </Card.Meta>
         </Card.Content>
-        <Card.Content extra tabIndex="0">
-          <ScenarioCardActions scenario={scenario} />
-        </Card.Content>
+        {showActions ? (
+          <Card.Content extra tabIndex="0">
+            <ScenarioCardActions scenario={scenario} />
+          </Card.Content>
+        ) : null}
       </Card>
     );
   }
@@ -150,6 +153,8 @@ ScenarioCard.propTypes = {
   location: PropTypes.object,
   onClick: PropTypes.func,
   scenario: PropTypes.object,
+  showActions: PropTypes.bool,
+  showStatus: PropTypes.bool,
   user: PropTypes.object
 };
 

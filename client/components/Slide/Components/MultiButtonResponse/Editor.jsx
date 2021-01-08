@@ -221,7 +221,7 @@ class MultiButtonResponseEditor extends React.Component {
               }}
             >
               {buttons.map(({ color, display, value }, index) => {
-                const key = Identity.key({ id, index });
+                const key = Identity.key({ color, id, index });
                 const onBlurOrFocus = preventEmptyButtonField.bind(this, index);
                 const colorPickerProps = {
                   direction: 'right',
@@ -274,7 +274,11 @@ class MultiButtonResponseEditor extends React.Component {
                       />
                     </Table.Cell>
                     <Table.Cell collapsing>
-                      <ColorPicker.Accessible {...colorPickerProps} />
+                      <ColorPicker.Accessible
+                        index={index}
+                        key={`color-${key}`}
+                        {...colorPickerProps}
+                      />
                     </Table.Cell>
                   </Table.Row>
                 );

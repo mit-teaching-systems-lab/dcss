@@ -191,7 +191,7 @@ export class Cohort extends React.Component {
         size="small"
         onClick={onCohortUrlCopyClick}
       >
-        <Icon name="clipboard outline" color="blue" />
+        <Icon name="clipboard outline" className="primary" />
         Copy cohort link to clipboard
       </Button>
     );

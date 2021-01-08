@@ -6697,7 +6697,7 @@ exports[`Delete choice 4`] = `
                 aria-label="Click to select a color"
                 class="cpa__swatch-button"
                 role="button"
-                style="background: rgb(255, 0, 255);"
+                style="background: rgb(255, 0, 0);"
                 tabindex="0"
               />
             </td>
@@ -7209,7 +7209,7 @@ exports[`Delete choice 5`] = `
                 aria-label="Click to select a color"
                 class="cpa__swatch-button"
                 role="button"
-                style="background: rgb(255, 0, 255);"
+                style="background: rgb(255, 0, 0);"
                 tabindex="0"
               />
             </td>

@@ -52,8 +52,9 @@
   /*padding-right: 0em !important;*/
 }
 
-.ui.menu .active.item {
+.ui.menu:not(.tabular) .active.item {
   background-color: transparent !important;
   color: var(--color-primary) !important;
-  font-weight: bold !important;
+  /* This is disabled because it causes the menu buttons to shift horizontally */
+  /*font-weight: bold !important;*/
 }

@@ -416,7 +416,7 @@ class ScenariosList extends Component {
         size="small"
         onClick={onCopyClick}
       >
-        <Icon name="clipboard outline" color="blue" />
+        <Icon name="clipboard outline" className="primary" />
         Copy the url to these scenarios
       </Button>
     ) : null;

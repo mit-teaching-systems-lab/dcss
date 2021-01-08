@@ -6,7 +6,6 @@ import escapeRegExp from 'lodash.escaperegexp';
 import {
   Button,
   Card,
-  Container,
   Form,
   Grid,
   Header,
@@ -28,7 +27,6 @@ import {
 import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Gate from '@components/Gate';
-import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
@@ -270,8 +268,6 @@ export class Cohorts extends React.Component {
         : menuItemCountCohorts
     ];
 
-    const right = [menuItemSearchCohorts];
-
     const cohortsPages = Math.ceil(cohorts.length / itemsPerPage);
     const cohortsIndex = (activePage - 1) * itemsPerPage;
     const cohortsSlice = cohorts.slice(
@@ -375,7 +371,7 @@ export class Cohorts extends React.Component {
               </Modal.Content>
               <Modal.Actions>
                 <Button.Group fluid>
-                  <Button color="green" onClick={onCreateCohortSubmit}>
+                  <Button primary onClick={onCreateCohortSubmit}>
                     Create
                   </Button>
                   <Button.Or />

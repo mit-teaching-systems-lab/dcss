@@ -149,7 +149,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -220,7 +220,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -288,7 +288,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -359,7 +359,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -565,7 +565,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -636,7 +636,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -704,7 +704,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -775,7 +775,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1066,7 +1066,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1137,7 +1137,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1205,7 +1205,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1276,7 +1276,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1569,7 +1569,7 @@ exports[`Types, clicks Send Message 4`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1640,7 +1640,7 @@ exports[`Types, clicks Send Message 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1708,7 +1708,7 @@ exports[`Types, clicks Send Message 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1779,7 +1779,7 @@ exports[`Types, clicks Send Message 4`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -1985,7 +1985,7 @@ exports[`Types, followed by {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2056,7 +2056,7 @@ exports[`Types, followed by {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2124,7 +2124,7 @@ exports[`Types, followed by {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2195,7 +2195,7 @@ exports[`Types, followed by {enter} 4`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2401,7 +2401,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2472,7 +2472,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2540,7 +2540,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2611,7 +2611,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2817,7 +2817,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2888,7 +2888,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -2956,7 +2956,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3027,7 +3027,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3231,7 +3231,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3302,7 +3302,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3370,7 +3370,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3441,7 +3441,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3643,7 +3643,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3714,7 +3714,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3782,7 +3782,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -3853,7 +3853,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4057,7 +4057,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4128,7 +4128,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4196,7 +4196,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4267,7 +4267,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4494,7 +4494,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4565,7 +4565,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4633,7 +4633,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -4704,7 +4704,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5101,7 +5101,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5172,7 +5172,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5240,7 +5240,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5311,7 +5311,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5634,7 +5634,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5705,7 +5705,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5773,7 +5773,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -5844,7 +5844,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6061,7 +6061,7 @@ exports[`onQuote 3`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6132,7 +6132,7 @@ exports[`onQuote 3`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6200,7 +6200,7 @@ exports[`onQuote 3`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6271,7 +6271,7 @@ exports[`onQuote 3`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6423,7 +6423,7 @@ exports[`onQuote 5`] = `
                       aria-label=\\"2020-12-09T16:39:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6494,7 +6494,7 @@ exports[`onQuote 5`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6562,7 +6562,7 @@ exports[`onQuote 5`] = `
                       aria-label=\\"2020-12-09T16:40:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div
@@ -6633,7 +6633,7 @@ exports[`onQuote 5`] = `
                       aria-label=\\"2020-12-09T16:41:10.359Z\\"
                       tabindex=\\"0\\"
                     >
-                      6 days ago
+                      a month ago
                     </span>
                   </div>
                   <div

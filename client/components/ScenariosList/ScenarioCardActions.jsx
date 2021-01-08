@@ -51,7 +51,7 @@ class ScenarioCardActions extends Component {
           as={Link}
           to={`/run/${scenario.id}/slide/${run.activeRunSlideIndex}`}
         >
-          <Icon name="play" color="blue" />
+          <Icon name="play" className="primary" />
           <span className={className}>Run</span>
         </Button>
         {isLoggedIn && (
@@ -66,7 +66,7 @@ class ScenarioCardActions extends Component {
                 aria-label="Edit scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon name="edit outline" color="blue" />
+                <Icon name="edit outline" className="primary" />
                 <span className={className}>Edit</span>
               </Button>
             </Gate>
@@ -80,7 +80,7 @@ class ScenarioCardActions extends Component {
                 aria-label="Edit scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon className="book reader icon" color="blue" />
+                <Icon className="book reader icon primary" />
                 <span className={className}>Review</span>
               </Button>
             </Gate>
@@ -117,7 +117,7 @@ class ScenarioCardActions extends Component {
                 aria-label="Copy scenario"
                 className="sc__button sc__hidden-on-mobile"
               >
-                <Icon name="copy outline" color="blue" />
+                <Icon name="copy outline" className="primary" />
                 <span className={className}>Copy</span>
               </Button>
             </Gate>

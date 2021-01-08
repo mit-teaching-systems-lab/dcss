@@ -116,6 +116,11 @@
   display: inline-block;
 }
 
+.sc__card-action-labels {
+  margin-left: 0.5rem !important;
+  display: inline-block;
+}
+
 @media not all and (max-width: 1100px) {
   .sc__card-action-labels {
     margin-left: 0.5rem !important;

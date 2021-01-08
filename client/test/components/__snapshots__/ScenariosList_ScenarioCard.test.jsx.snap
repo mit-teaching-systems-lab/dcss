@@ -15,7 +15,7 @@ exports[`Render 1 1 1`] = `
       >
         <i
           aria-hidden="true"
-          class="blue edit icon"
+          class="edit icon primary"
         />
          Draft
       </div>
@@ -27,14 +27,7 @@ exports[`Render 1 1 1`] = `
          Multiplayer Scenario 2
       </div>
       <div
-        class="description"
-      >
-        <p>
-          This is the description of 'A Multiplayer Scenario'…
-        </p>
-      </div>
-      <div
-        class="meta sc__footer"
+        class="meta"
       >
         <p>
           Created 
@@ -45,6 +38,17 @@ exports[`Render 1 1 1`] = `
             4 months ago
           </time>
         </p>
+      </div>
+      <div
+        class="description"
+      >
+        <p>
+          This is the description of 'A Multiplayer Scenario'…
+        </p>
+      </div>
+      <div
+        class="meta sc__footer"
+      >
         <div
           class="ui labels"
         >
@@ -83,7 +87,7 @@ exports[`Render 1 1 1`] = `
         >
           <i
             aria-hidden="true"
-            class="blue play icon"
+            class="play icon primary"
           />
           <span
             class="sc__card-action-labels"
@@ -100,7 +104,7 @@ exports[`Render 1 1 1`] = `
         >
           <i
             aria-hidden="true"
-            class="blue edit outline icon"
+            class="edit outline icon primary"
           />
           <span
             class="sc__card-action-labels"
@@ -117,7 +121,7 @@ exports[`Render 1 1 1`] = `
         >
           <i
             aria-hidden="true"
-            class="blue copy outline icon"
+            class="copy outline icon primary"
           />
           <span
             class="sc__card-action-labels"
