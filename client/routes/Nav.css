@@ -58,3 +58,11 @@
   /* This is disabled because it causes the menu buttons to shift horizontally */
   /*font-weight: bold !important;*/
 }
+
+#nav .item {
+  font-weight: bold !important;
+}
+
+.ui.menu .ui.dropdown .menu>a.active.item {
+  color: var(--color-primary) !important;
+}
