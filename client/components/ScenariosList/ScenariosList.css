@@ -11,6 +11,10 @@
   background-color: rgba(0, 0, 0, 0.03) !important;
 }
 
+.ui.stackable.cards>.ui.card {
+  display: flex !important; 
+}
+
 .ui.card.sc__margin-height {
   /* this height will fit 2 rows on a MBP */
   min-height: 22em !important;
