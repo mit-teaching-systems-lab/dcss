@@ -69,43 +69,9 @@ exports[`Render 1 1 1`] = `
             <div
               aria-busy="true"
               aria-live="polite"
-              class="ui doubling four cards"
+              class="ui doubling three cards"
               role="status"
             >
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 20rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 20rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
               <div
                 aria-hidden="true"
                 class="ui card loading__multi-card"
@@ -272,43 +238,9 @@ exports[`Render 1 2 1`] = `
             <div
               aria-busy="true"
               aria-live="polite"
-              class="ui doubling four cards"
+              class="ui doubling three cards"
               role="status"
             >
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 20rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-hidden="true"
-                class="ui card loading__multi-card"
-                style="height: 20rem;"
-              >
-                <div
-                  class="content loading__content"
-                >
-                  <div
-                    class="ui placeholder fluid"
-                  >
-                    <div
-                      class="square image"
-                    />
-                  </div>
-                </div>
-              </div>
               <div
                 aria-hidden="true"
                 class="ui card loading__multi-card"

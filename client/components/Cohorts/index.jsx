@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -6,13 +6,11 @@ import escapeRegExp from 'lodash.escaperegexp';
 import {
   Button,
   Card,
-  Form,
   Grid,
   Header,
   Icon,
   Input,
   Menu,
-  Modal,
   Pagination,
   Segment,
   Title
@@ -28,10 +26,11 @@ import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Gate from '@components/Gate';
 import Loading from '@components/Loading';
+import Layout from '@utils/Layout';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
+import CohortCreateWizard from './CohortCreateWizard';
 import CohortEmpty from './CohortEmpty';
-import { computeItemsRowsPerPage } from '@utils/Layout';
 import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
 
@@ -54,10 +53,8 @@ export class Cohorts extends React.Component {
 
     this.cohorts = cohorts;
     this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
-    this.onOpenCreateCohortClick = this.onOpenCreateCohortClick.bind(this);
+    this.onCreateCohortOpenClick = this.onCreateCohortOpenClick.bind(this);
     this.onCohortSearchChange = this.onCohortSearchChange.bind(this);
-    this.onCreateCohortSubmit = this.onCreateCohortSubmit.bind(this);
-    this.onCreateCohortChange = this.onCreateCohortChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
   }
 
@@ -103,25 +100,11 @@ export class Cohorts extends React.Component {
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
   }
 
-  async onCreateCohortSubmit() {
-    const { name } = this.cohort;
-
-    const { id } = await this.props.createCohort({
-      name
-    });
-
-    location.href = `/cohort/${id}`;
-  }
-
   onCreateCohortCancel() {
     this.setState({ createIsVisible: false });
   }
 
-  onCreateCohortChange(event, { name, value }) {
-    this.cohort[name] = value;
-  }
-
-  onOpenCreateCohortClick() {
+  onCreateCohortOpenClick() {
     this.setState({ createIsVisible: true });
   }
 
@@ -199,9 +182,7 @@ export class Cohorts extends React.Component {
     const {
       onCreateCohortCancel,
       onCohortSearchChange,
-      onCreateCohortChange,
-      onCreateCohortSubmit,
-      onOpenCreateCohortClick,
+      onCreateCohortOpenClick,
       onPageChange
     } = this;
 
@@ -211,11 +192,6 @@ export class Cohorts extends React.Component {
     let cohorts = value ? this.state.cohorts : this.cohorts.slice(0);
 
     const { permissions } = this.props;
-
-    const defaultRowCount = 2;
-    const { itemsPerPage, rowsPerPage } = computeItemsRowsPerPage({
-      defaultRowCount
-    });
 
     const createCohortButton = (
       <Gate
@@ -230,7 +206,7 @@ export class Cohorts extends React.Component {
           labelPosition="left"
           name="Create a cohort"
           size="big"
-          onClick={onOpenCreateCohortClick}
+          onClick={onCreateCohortOpenClick}
         >
           <Icon name="add" />
           Create a Cohort
@@ -268,6 +244,18 @@ export class Cohorts extends React.Component {
         : menuItemCountCohorts
     ];
 
+    const defaultRowCount = 2;
+    const {
+      itemsPerRow,
+      itemsPerPage,
+      rowsPerPage
+    } = Layout.computeItemsRowsPerPage({
+      itemsColWidth: Layout.isForMobile() ? 320 : 320,
+      itemsRowHeight: Layout.isForMobile() ? 200 : 300,
+      itemsPerRow: 2,
+      defaultRowCount
+    });
+
     const cohortsPages = Math.ceil(cohorts.length / itemsPerPage);
     const cohortsIndex = (activePage - 1) * itemsPerPage;
     const cohortsSlice = cohorts.slice(
@@ -277,10 +265,6 @@ export class Cohorts extends React.Component {
     const cards = cohortsSlice.map(cohort => {
       return <CohortCard key={Identity.key(cohort)} id={cohort.id} />;
     });
-
-    const itemsPerRow = 4;
-    const ariaLabelledby = Identity.id();
-    const ariaDescribedby = Identity.id();
 
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
@@ -297,7 +281,7 @@ export class Cohorts extends React.Component {
 
     const pageTitle = `Cohorts (${cohorts.length})`;
     return (
-      <React.Fragment>
+      <Fragment>
         <Title content={pageTitle} />
         <Grid className="grid__container" stackable columns={2}>
           <Grid.Column className="grid__sidebar" width={4}>
@@ -343,47 +327,9 @@ export class Cohorts extends React.Component {
         </Grid>
 
         {createIsVisible ? (
-          <Modal.Accessible open={createIsVisible}>
-            <Modal
-              size="small"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby={ariaLabelledby}
-              aria-describedby={ariaDescribedby}
-              open={createIsVisible}
-            >
-              <Header
-                icon="group"
-                content="Create a cohort"
-                id={ariaLabelledby}
-              />
-              <Modal.Content id={ariaDescribedby}>
-                <Form onSubmit={onCreateCohortSubmit}>
-                  <Input
-                    fluid
-                    focus
-                    placeholder="Enter a name for your cohort"
-                    name="name"
-                    onSubmit={onCreateCohortSubmit}
-                    onChange={onCreateCohortChange}
-                  />
-                </Form>
-              </Modal.Content>
-              <Modal.Actions>
-                <Button.Group fluid>
-                  <Button primary onClick={onCreateCohortSubmit}>
-                    Create
-                  </Button>
-                  <Button.Or />
-                  <Button color="grey" onClick={onCreateCohortCancel}>
-                    Cancel
-                  </Button>
-                </Button.Group>
-              </Modal.Actions>
-            </Modal>
-          </Modal.Accessible>
+          <CohortCreateWizard onCancel={onCreateCohortCancel} />
         ) : null}
-      </React.Fragment>
+      </Fragment>
     );
   }
 }

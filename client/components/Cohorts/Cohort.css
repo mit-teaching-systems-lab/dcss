@@ -148,6 +148,10 @@
   text-overflow: ellipsis;
 }
 
+.ui.card.c__margin-height {
+  min-height: 18em !important;
+}
+
 @media only screen and (max-width: 767px) {
   .c__table-cell-options {
     width: 7rem !important;
@@ -158,6 +162,10 @@
   }
   .c__hidden-on-mobile {
     display: none !important;
+  }
+
+  .ui.stackable.cards > .card.sc.c__margin-height {
+    width: calc(100% - 1em) !important;
   }
 }
 

@@ -16,6 +16,12 @@ async function getCohort(req, res) {
   res.json({ cohort });
 }
 
+async function getCohortScenarios(req, res) {
+  const id = Number(req.params.id);
+  const scenarios = await db.getCohortScenarios(id);
+  res.json({ scenarios });
+}
+
 async function getCohorts(req, res) {
   const user = req.session.user;
   const cohorts = await db.getCohorts(user);
@@ -207,6 +213,7 @@ async function deleteCohortUserRole(req, res) {
 
 exports.createCohort = asyncMiddleware(createCohort);
 exports.getCohort = asyncMiddleware(getCohort);
+exports.getCohortScenarios = asyncMiddleware(getCohortScenarios);
 exports.getCohorts = asyncMiddleware(getCohorts);
 exports.getCohortsCount = asyncMiddleware(getCohortsCount);
 exports.getCohortsSlice = asyncMiddleware(getCohortsSlice);

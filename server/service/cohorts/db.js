@@ -1,27 +1,37 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 // const rolesDb = require('../roles/db');
+const scenarioDb = require('../scenarios/db');
 
-async function getCohortScenarios(cohort_id) {
+async function getCohortScenariosIdList(id) {
   const result = await query(sql`
     SELECT scenario_id as id
     FROM cohort_scenario
     INNER JOIN scenario
        ON cohort_scenario.scenario_id = scenario.id
-    WHERE cohort_scenario.cohort_id = ${cohort_id}
+    WHERE cohort_scenario.cohort_id = ${id}
       AND scenario.deleted_at IS NULL
     ORDER BY cohort_scenario.id;
   `);
   return result.rows.map(row => row.id);
 }
 
-async function getCohortRuns(cohort_id) {
+async function getCohortScenarios(id) {
+  const scenarioIds = await getCohortScenariosIdList(id);
+  const scenarios = [];
+  for (let scenarioId of scenarioIds) {
+    scenarios.push(await scenarioDb.getScenario(scenarioId));
+  }
+  return scenarios;
+}
+
+async function getCohortRuns(id) {
   const result = await query(sql`
     SELECT *
     FROM run
     INNER JOIN cohort_run
        ON run.id = cohort_run.run_id
-    WHERE cohort_run.cohort_id = ${cohort_id};
+    WHERE cohort_run.cohort_id = ${id};
   `);
 
   return result.rows;
@@ -101,7 +111,7 @@ async function createCohort(name, user_id) {
 
 async function __getAggregatedCohort(cohort) {
   const runs = await getCohortRuns(cohort.id);
-  const scenarios = await getCohortScenarios(cohort.id);
+  const scenarios = await getCohortScenariosIdList(cohort.id);
   const cohortUsers = await getCohortUsers(cohort.id);
   return {
     ...cohort,
@@ -507,6 +517,7 @@ async function deleteCohortUserRole(cohort_id, user_id, roles) {
 
 exports.createCohort = createCohort;
 exports.getCohort = getCohort;
+exports.getCohortScenarios = getCohortScenarios;
 exports.__getAggregatedCohort = __getAggregatedCohort;
 exports.__getCohorts = __getCohorts;
 exports.getCohorts = getCohorts;

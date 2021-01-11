@@ -9,10 +9,12 @@ import Moment from '@utils/Moment';
 import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
 import Gate from '@components/Gate';
 import Loading from '@components/Loading';
-import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import Sortable from '@components/Sortable';
-import { getCohort, setCohortScenarios } from '@actions/cohort';
-import { getScenariosByStatus } from '@actions/scenario';
+import {
+  getCohort,
+  getCohortScenarios,
+  setCohortScenarios
+} from '@actions/cohort';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
 
@@ -36,7 +38,7 @@ export class CohortScenarios extends React.Component {
 
   async componentDidMount() {
     await this.props.getCohort(this.props.id);
-    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
+    await this.props.getCohortScenarios(this.props.id);
     await this.props.getRuns();
 
     if (this.props.authority.isFacilitator) {
@@ -118,11 +120,7 @@ export class CohortScenarios extends React.Component {
     );
 
     return (
-      <Container
-        fluid
-        className="c__scenario-container"
-        aria-labelledby="header"
-      >
+      <Container fluid className="c__scenario-container">
         {scenariosInCohortHeader}
 
         {cohortScenarios.length ? (
@@ -299,6 +297,8 @@ export class CohortScenarios extends React.Component {
             }}
           />
         ) : null}
+
+        <div data-testid="cohort-scenarios" />
       </Container>
     );
   }
@@ -316,9 +316,9 @@ CohortScenarios.propTypes = {
     users: PropTypes.array
   }),
   getCohort: PropTypes.func,
+  getCohortScenarios: PropTypes.func,
   setCohortScenarios: PropTypes.func,
   onClick: PropTypes.func,
-  getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
   getRuns: PropTypes.func,
   runs: PropTypes.array,
@@ -338,8 +338,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
+  getCohortScenarios: id => dispatch(getCohortScenarios(id)),
   setCohortScenarios: params => dispatch(setCohortScenarios(params)),
-  getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getRuns: () => dispatch(getRuns()),
   getUsers: () => dispatch(getUsers())
 });

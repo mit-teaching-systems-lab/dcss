@@ -1,6 +1,7 @@
 import {
   DELETE_SCENARIO_SUCCESS,
   UNLOCK_SCENARIO_SUCCESS,
+  GET_COHORT_SCENARIOS_SUCCESS,
   GET_SCENARIO_SUCCESS,
   GET_SCENARIOS_SUCCESS,
   SET_SCENARIO,
@@ -11,8 +12,9 @@ export const scenarios = (state = [], action) => {
   const { scenario, scenarios, type } = action;
 
   switch (type) {
-    case SET_SCENARIOS:
-    case GET_SCENARIOS_SUCCESS: {
+    case GET_COHORT_SCENARIOS_SUCCESS:
+    case GET_SCENARIOS_SUCCESS:
+    case SET_SCENARIOS: {
       const seen = {
         /*
         scenario.id: index
@@ -62,8 +64,9 @@ export const scenariosById = (state = {}, action) => {
   const { scenario, scenarios, type } = action;
 
   switch (type) {
-    case SET_SCENARIOS:
-    case GET_SCENARIOS_SUCCESS: {
+    case GET_COHORT_SCENARIOS_SUCCESS:
+    case GET_SCENARIOS_SUCCESS:
+    case SET_SCENARIOS: {
       const scenariosById = scenarios.reduce((accum, scenario) => {
         accum[scenario.id] = scenario;
         return accum;

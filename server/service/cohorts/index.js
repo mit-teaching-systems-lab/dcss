@@ -23,6 +23,7 @@ const router = Router();
 const {
   createCohort,
   getCohort,
+  getCohortScenarios,
   getCohorts,
   getCohortsCount,
   getCohortsSlice,
@@ -65,6 +66,7 @@ router.post('/:id/roles/add', [
   validateRequestBody,
   addCohortUserRole
 ]);
+router.get('/:id/scenarios', [requireUser, getCohortScenarios]);
 router.put('/:id/scenarios', [
   requireUser,
   requireUserRole(requiredSiteRoles),

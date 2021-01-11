@@ -1,23 +1,25 @@
 import {
-  CREATE_COHORT_SUCCESS,
   CREATE_COHORT_ERROR,
-  SET_COHORT_SUCCESS,
-  SET_COHORT_ERROR,
-  SET_COHORT_SCENARIOS_SUCCESS,
-  SET_COHORT_SCENARIOS_ERROR,
-  GET_COHORT_SUCCESS,
+  CREATE_COHORT_SUCCESS,
   GET_COHORT_ERROR,
-  GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_PARTICIPANTS_ERROR,
+  GET_COHORT_PARTICIPANTS_SUCCESS,
   GET_COHORT_RUN_DATA_ERROR,
-  GET_COHORTS_COUNT_SUCCESS,
+  GET_COHORT_SCENARIOS_ERROR,
+  GET_COHORT_SCENARIOS_SUCCESS,
+  GET_COHORT_SUCCESS,
   GET_COHORTS_COUNT_ERROR,
-  GET_COHORTS_SUCCESS,
+  GET_COHORTS_COUNT_SUCCESS,
   GET_COHORTS_ERROR,
-  LINK_RUN_TO_COHORT_SUCCESS,
+  GET_COHORTS_SUCCESS,
   LINK_RUN_TO_COHORT_ERROR,
-  SET_COHORT_USER_ROLE_SUCCESS,
-  SET_COHORT_USER_ROLE_ERROR
+  LINK_RUN_TO_COHORT_SUCCESS,
+  SET_COHORT_ERROR,
+  SET_COHORT_SCENARIOS_ERROR,
+  SET_COHORT_SCENARIOS_SUCCESS,
+  SET_COHORT_SUCCESS,
+  SET_COHORT_USER_ROLE_ERROR,
+  SET_COHORT_USER_ROLE_SUCCESS
 } from './types';
 import store from '@client/store';
 
@@ -41,6 +43,24 @@ export let createCohort = ({ name }) => async dispatch => {
     return cohort;
   } catch (error) {
     dispatch({ type: CREATE_COHORT_ERROR, error });
+    return null;
+  }
+};
+
+export let getCohortScenarios = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/cohorts/${id}/scenarios`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { scenarios } = res;
+
+    dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
+    return scenarios;
+  } catch (error) {
+    dispatch({ type: GET_COHORT_SCENARIOS_ERROR, error });
     return null;
   }
 };

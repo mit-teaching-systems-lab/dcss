@@ -453,3 +453,7 @@ button {
   box-shadow: inset 0 -0.2em 0 #cf0067;
   color: #753656;
 }
+
+.ui.steps .step.active .title {
+  color: #853D61 !important;
+}

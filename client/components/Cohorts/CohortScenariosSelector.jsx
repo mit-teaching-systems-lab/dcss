@@ -6,6 +6,7 @@ import {
   Card,
   Grid,
   Header,
+  Icon,
   Input,
   Modal,
   Ref,
@@ -38,9 +39,9 @@ export class CohortScenariosEditor extends React.Component {
     this.selectedRef = null;
     this.onDeselectClick = this.onDeselectClick.bind(this);
     this.onSelectClick = this.onSelectClick.bind(this);
-    this.onSaveClick = this.onSaveClick.bind(this);
     this.onCloseClick = this.onCloseClick.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
+    this.saveCohortScenarios = this.saveCohortScenarios.bind(this);
     this.scrollIntoView = this.scrollIntoView.bind(this);
   }
 
@@ -67,25 +68,8 @@ export class CohortScenariosEditor extends React.Component {
     });
   }
 
-  async moveScenario(fromIndex, toIndex) {
-    // UDPATE TO USE this.state.scenarios
-    // const { cohort } = this.props;
-    // const scenarios = cohort.scenarios.slice();
-    // const moving = scenarios[fromIndex];
-    // scenarios.splice(fromIndex, 1);
-    // scenarios.splice(toIndex, 0, moving);
-    // this.props.setCohortScenarios({
-    //   ...cohort,
-    //   scenarios
-    // });
-  }
-
   scrollIntoView() {
     scrollIntoView(this.selectedRef?.lastElementChild);
-  }
-
-  onOrderChange(fromIndex, toIndex) {
-    this.moveScenario(fromIndex, toIndex);
   }
 
   onDeselectClick(event, { scenario }) {
@@ -108,19 +92,14 @@ export class CohortScenariosEditor extends React.Component {
     });
   }
 
-  onSaveClick() {
+  async saveCohortScenarios() {
     const { cohort } = this.props;
-
     const scenarios = this.state.scenarios.map(({ id }) => id);
 
-    this.props.setCohortScenarios({
+    await this.props.setCohortScenarios({
       ...cohort,
       scenarios
     });
-
-    if (this.props.onSave) {
-      this.props.onSave(this.state.scenarios);
-    }
   }
 
   onCloseClick() {
@@ -172,7 +151,7 @@ export class CohortScenariosEditor extends React.Component {
       onDeselectClick,
       /* onOrderChange, */
       onSelectClick,
-      onSaveClick,
+      saveCohortScenarios,
       onSearchChange
     } = this;
 
@@ -256,6 +235,35 @@ export class CohortScenariosEditor extends React.Component {
       { selected: [], unselected: [] }
     );
 
+    const primary = {
+      ...this.props?.buttons?.primary
+    };
+
+    const secondary = {
+      ...this.props?.buttons?.secondary
+    };
+
+    const primaryButtonProps = {
+      content: primary?.content || 'Save',
+      primary: true,
+      onClick: async () => {
+        await saveCohortScenarios();
+        if (primary?.onClick) {
+          primary?.onClick(this.props.cohort);
+        }
+      }
+    };
+
+    const secondaryButtonProps = {
+      content: secondary?.content || 'Close',
+      onClick: () => {
+        onCloseClick();
+        if (secondary?.onClick) {
+          secondary?.onClick();
+        }
+      }
+    };
+
     return (
       <Modal.Accessible open>
         <Modal
@@ -266,14 +274,24 @@ export class CohortScenariosEditor extends React.Component {
           role="dialog"
           size="fullscreen"
           centered={false}
-          onClose={onCloseClick}
+          onClose={secondaryButtonProps.onClick}
         >
           <Header
             icon="newspaper outline"
-            content="Find scenarios"
-            tabIndex="0"
+            content={this.props.header || 'Choose scenarios'}
           />
           <Modal.Content tabIndex="0" className="c__scenario-selector-content">
+            {this.props.stepGroup ? this.props.stepGroup : null}
+
+            <Header as="h2">
+              Choose a single scenario or multiple scenarios for your cohort.
+            </Header>
+            <p>
+              <Icon name="star" className="primary" />
+              Remember to make your scenarios public so they appear in this
+              list.
+            </p>
+
             <Grid padded>
               <Grid.Row>
                 <Grid.Column>
@@ -300,7 +318,10 @@ export class CohortScenariosEditor extends React.Component {
               <Grid padded>
                 <Grid.Row>
                   <Grid.Column>
-                    <Header>Selected scenarios</Header>
+                    <Header>
+                      Selected scenarios for &quot;{this.props.cohort.name}
+                      &quot;
+                    </Header>
                     <Ref
                       innerRef={node => {
                         this.selectedRef = node;
@@ -315,23 +336,24 @@ export class CohortScenariosEditor extends React.Component {
                 </Grid.Row>
               </Grid>
             </div>
+          </Modal.Actions>
+          <Modal.Actions>
             <Button.Group fluid>
-              <Button primary onClick={onSaveClick}>
-                Save
-              </Button>
+              <Button {...primaryButtonProps} />
               <Button.Or />
-              <Button color="grey" onClick={onCloseClick}>
-                Close
-              </Button>
+              <Button {...secondaryButtonProps} />
             </Button.Group>
           </Modal.Actions>
         </Modal>
+        <div data-testid="cohort-scenarios-selector" />
       </Modal.Accessible>
     );
   }
 }
 
 CohortScenariosEditor.propTypes = {
+  buttons: PropTypes.object,
+  header: PropTypes.any,
   id: PropTypes.any,
   cohort: PropTypes.shape({
     id: PropTypes.any,
@@ -348,6 +370,7 @@ CohortScenariosEditor.propTypes = {
   getScenariosByStatus: PropTypes.func,
   scenarios: PropTypes.array,
   scenariosById: PropTypes.object,
+  stepGroup: PropTypes.object,
   user: PropTypes.object
 };
 
