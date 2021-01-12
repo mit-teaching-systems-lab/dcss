@@ -6,6 +6,7 @@ import {
   Card,
   Grid,
   Header,
+  Icon,
   Input,
   Modal,
   Ref,
@@ -238,9 +239,6 @@ export class CohortScenariosEditor extends React.Component {
               <Card.Description>
                 <Text.Truncate lines={2}>{scenario.description}</Text.Truncate>
               </Card.Description>
-              {yourRoles ? (
-                <Card.Content extra>{yourRoles}</Card.Content>
-              ) : null}
             </Card.Content>
           </Card>
         );
@@ -268,11 +266,16 @@ export class CohortScenariosEditor extends React.Component {
           centered={false}
           onClose={onCloseClick}
         >
-          <Header
-            icon="newspaper outline"
-            content="Find scenarios"
-            tabIndex="0"
-          />
+          <header className="c-modal__header" tabIndex="0">
+            <Modal.Header as="h2">Choose scenarios</Modal.Header>
+            <div>
+              <Icon name="star" className="primary" />
+              <Text size="medium">
+                Remember to make your scenarios public so they appear in this
+                list.
+              </Text>
+            </div>
+          </header>
           <Modal.Content tabIndex="0" className="c__scenario-selector-content">
             <Grid padded>
               <Grid.Row>
@@ -300,14 +303,14 @@ export class CohortScenariosEditor extends React.Component {
               <Grid padded>
                 <Grid.Row>
                   <Grid.Column>
-                    <Header>Selected scenarios</Header>
+                    <Header>{selected.length} scenarios selected</Header>
                     <Ref
                       innerRef={node => {
                         this.selectedRef = node;
                         this.scrollIntoView();
                       }}
                     >
-                      <Card.Group className="c__scenario-cards">
+                      <Card.Group className="c__scenario-cards c__scenario-cards--selected">
                         {selected}
                       </Card.Group>
                     </Ref>

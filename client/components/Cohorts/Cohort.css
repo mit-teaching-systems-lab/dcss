@@ -187,3 +187,12 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
+
+.c-modal__header {
+  padding: 1rem;
+  text-align: center;
+}
+
+.c__scenario-cards--selected .ui.card {
+  border: 2px solid #753656 !important;
+}
