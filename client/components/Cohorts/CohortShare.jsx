@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Header, Icon, Input, Modal } from '@components/UI';
-import { getCohort, setCohort, createCohort } from '@actions/cohort';
+import { getCohort } from '@actions/cohort';
 import copy from 'copy-text-to-clipboard';
 import { notify } from '@components/Notification';
 import { getUser } from '@actions/user';
-import CohortEmpty from './CohortEmpty';
-import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
 
 export class CohortCreateNewForm extends React.Component {
@@ -16,7 +14,8 @@ export class CohortCreateNewForm extends React.Component {
     super(props);
 
     this.state = {
-      recipients: []
+      // TODO: allow for inviting from a list
+      // recipients: []
     };
 
     this.onChange = this.onChange.bind(this);
@@ -77,11 +76,6 @@ export class CohortCreateNewForm extends React.Component {
       content: primary?.content || 'Share',
       primary: true,
       onClick: async () => {
-        if (inProgress) {
-          return;
-        }
-        inProgress = true;
-        const cohort = await createCohort();
         if (primary?.onClick) {
           primary?.onClick(cohort);
         }
@@ -141,7 +135,6 @@ export class CohortCreateNewForm extends React.Component {
 CohortCreateNewForm.propTypes = {
   buttons: PropTypes.object,
   cohort: PropTypes.object,
-  getCohort: PropTypes.func,
   getUser: PropTypes.func,
   header: PropTypes.any,
   history: PropTypes.shape({
@@ -158,8 +151,6 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohort: id => dispatch(getCohort(id)),
-  createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });
 
