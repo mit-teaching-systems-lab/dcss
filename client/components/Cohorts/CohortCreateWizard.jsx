@@ -71,7 +71,6 @@ export class CohortCreate extends React.Component {
   render() {
     const { id, step } = this.state;
     const { onCancel, onContinue } = this;
-
     const stepsProps = [{}, {}, {}];
 
     stepsProps[step].active = true;

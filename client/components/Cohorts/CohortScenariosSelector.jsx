@@ -23,7 +23,7 @@ import { getScenariosByStatus } from '@actions/scenario';
 
 import './Cohort.css';
 
-export class CohortScenariosEditor extends React.Component {
+export class CohortScenariosSelector extends React.Component {
   constructor(props) {
     super(props);
 
@@ -344,14 +344,14 @@ export class CohortScenariosEditor extends React.Component {
               <Button {...secondaryButtonProps} />
             </Button.Group>
           </Modal.Actions>
+          <div data-testid="cohort-scenarios-selector" />
         </Modal>
-        <div data-testid="cohort-scenarios-selector" />
       </Modal.Accessible>
     );
   }
 }
 
-CohortScenariosEditor.propTypes = {
+CohortScenariosSelector.propTypes = {
   buttons: PropTypes.object,
   header: PropTypes.any,
   id: PropTypes.any,
@@ -391,4 +391,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CohortScenariosEditor);
+)(CohortScenariosSelector);

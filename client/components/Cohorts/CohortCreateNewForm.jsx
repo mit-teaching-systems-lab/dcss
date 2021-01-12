@@ -44,8 +44,13 @@ export class CohortCreateNewForm extends React.Component {
       ...this.props?.buttons?.secondary
     };
 
+    const disabled = this.state.name
+      ? false
+      : true;
+
     const primaryButtonProps = {
       content: primary?.content || 'Create',
+      disabled,
       primary: true,
       onClick: async () => {
         if (inProgress) {
@@ -105,6 +110,7 @@ export class CohortCreateNewForm extends React.Component {
               <Button {...secondaryButtonProps} />
             </Button.Group>
           </Modal.Actions>
+          <div data-testid="cohort-create-new-form" />
         </Modal>
       </Modal.Accessible>
     );

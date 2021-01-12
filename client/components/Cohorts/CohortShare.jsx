@@ -117,13 +117,13 @@ export class CohortCreateNewForm extends React.Component {
             {this.props.stepGroup ? this.props.stepGroup : null}
 
             <Header as="h2">Share with participants</Header>
-            <p>
+            <div>
               <Icon name="star" className="primary" />
               Send participants this link to allow them to join your cohort and
               interact with your selected scenarios.
-            </p>
-            <p>{inputShowCohortUrl}</p>
-            <p>{buttonCopyCohortUrl}</p>
+            </div>
+            <div>{inputShowCohortUrl}</div>
+            <div>{buttonCopyCohortUrl}</div>
           </Modal.Content>
           <Modal.Actions>
             <Button.Group fluid>
@@ -132,6 +132,7 @@ export class CohortCreateNewForm extends React.Component {
               <Button {...secondaryButtonProps} />
             </Button.Group>
           </Modal.Actions>
+          <div data-testid="cohort-share" />
         </Modal>
       </Modal.Accessible>
     );
