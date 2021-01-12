@@ -320,8 +320,8 @@ export class CohortScenariosSelector extends React.Component {
                 <Grid.Row>
                   <Grid.Column>
                     <Header>
-                      {selected.length} scenarios selected for
-                      &quot;{this.props.cohort.name}&quot;
+                      {selected.length} scenarios selected for &quot;
+                      {this.props.cohort.name}&quot;
                     </Header>
                     <Ref
                       innerRef={node => {

@@ -44,9 +44,7 @@ export class CohortCreateNewForm extends React.Component {
       ...this.props?.buttons?.secondary
     };
 
-    const disabled = this.state.name
-      ? false
-      : true;
+    const disabled = this.state.name ? false : true;
 
     const primaryButtonProps = {
       content: primary?.content || 'Create',
