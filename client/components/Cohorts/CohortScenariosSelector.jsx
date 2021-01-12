@@ -217,6 +217,9 @@ export class CohortScenariosSelector extends React.Component {
               <Card.Description>
                 <Text.Truncate lines={2}>{scenario.description}</Text.Truncate>
               </Card.Description>
+              {yourRoles ? (
+                <Card.Content extra>{yourRoles}</Card.Content>
+              ) : null}
             </Card.Content>
           </Card>
         );
@@ -267,14 +270,21 @@ export class CohortScenariosSelector extends React.Component {
           closeIcon
           open
           aria-modal="true"
-          className="c__container-modal"
           role="dialog"
           size="fullscreen"
           centered={false}
           onClose={secondaryButtonProps.onClick}
         >
-          <header className="c-modal__header" tabIndex="0">
-            <Modal.Header as="h2">{this.props.header || 'Choose scenarios'}</Modal.Header>
+          <Header
+            icon="newspaper outline"
+            content={this.props.header || 'Choose scenarios'}
+          />
+          <Modal.Content tabIndex="0" className="c__scenario-selector-content">
+            {this.props.stepGroup ? this.props.stepGroup : null}
+
+            <Header as="h2">
+              Choose a single scenario or multiple scenarios for your cohort.
+            </Header>
             <div>
               <Icon name="star" className="primary" />
               <Text size="medium">
@@ -282,13 +292,6 @@ export class CohortScenariosSelector extends React.Component {
                 list.
               </Text>
             </div>
-          </header>
-          <Modal.Content tabIndex="0" className="c__scenario-selector-content">
-            {this.props.stepGroup ? this.props.stepGroup : null}
-
-            <Header as="h2">
-              Choose a single scenario or multiple scenarios for your cohort.
-            </Header>
 
             <Grid padded>
               <Grid.Row>
@@ -316,8 +319,10 @@ export class CohortScenariosSelector extends React.Component {
               <Grid padded>
                 <Grid.Row>
                   <Grid.Column>
-                    <Header>{selected.length} scenarios selected for &quot;{this.props.cohort.name}
-                      &quot;</Header>
+                    <Header>
+                      {selected.length} scenarios selected for
+                      &quot;{this.props.cohort.name}&quot;
+                    </Header>
                     <Ref
                       innerRef={node => {
                         this.selectedRef = node;
