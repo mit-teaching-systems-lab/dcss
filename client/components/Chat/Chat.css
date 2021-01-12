@@ -4,16 +4,8 @@
   padding-top: 0 !important;
 }*/
 .c__container-modal {
-
-    /*bottom: 0 !important;*/
-    /*calc(100% - 1em) !important;*/
-    max-height: calc(100% - 100px) !important;
-
-  /*max-height: 100vh;*/
-
-/*  margin-bottom: 1rem;
-  padding-top: 0 !important;
-*/}
+  max-height: calc(100% - 100px) !important;
+}
 
 /* cc = chat composer */
 .cc__container-outer {
