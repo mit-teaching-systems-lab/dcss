@@ -68,7 +68,10 @@ i.primary.icon.icon.icon.icon {
 }
 
 .ui.modal > .actions {
+  /* TODO: determine if this is still necessary
   min-height: 75px !important;
+  */
+ border-radius: .28571429rem;
 }
 
 .ui.modal > .actions .message {
