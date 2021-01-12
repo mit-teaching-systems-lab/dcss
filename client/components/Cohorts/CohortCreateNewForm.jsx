@@ -79,7 +79,6 @@ export class CohortCreateNewForm extends React.Component {
           closeIcon
           open
           aria-modal="true"
-          className="c__container-modal"
           role="dialog"
           size="fullscreen"
           centered={false}

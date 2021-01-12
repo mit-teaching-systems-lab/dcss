@@ -67,7 +67,7 @@
 
 .c__scenario-cards {
   padding: 0;
-  height: 300px;
+  height: calc(100vh / 3.75);
   overflow-y: scroll;
 }
 
