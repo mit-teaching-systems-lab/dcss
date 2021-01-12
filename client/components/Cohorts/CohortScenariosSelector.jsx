@@ -217,9 +217,6 @@ export class CohortScenariosSelector extends React.Component {
               <Card.Description>
                 <Text.Truncate lines={2}>{scenario.description}</Text.Truncate>
               </Card.Description>
-              {yourRoles ? (
-                <Card.Content extra>{yourRoles}</Card.Content>
-              ) : null}
             </Card.Content>
           </Card>
         );
@@ -276,21 +273,22 @@ export class CohortScenariosSelector extends React.Component {
           centered={false}
           onClose={secondaryButtonProps.onClick}
         >
-          <Header
-            icon="newspaper outline"
-            content={this.props.header || 'Choose scenarios'}
-          />
+          <header className="c-modal__header" tabIndex="0">
+            <Modal.Header as="h2">{this.props.header || 'Choose scenarios'}</Modal.Header>
+            <div>
+              <Icon name="star" className="primary" />
+              <Text size="medium">
+                Remember to make your scenarios public so they appear in this
+                list.
+              </Text>
+            </div>
+          </header>
           <Modal.Content tabIndex="0" className="c__scenario-selector-content">
             {this.props.stepGroup ? this.props.stepGroup : null}
 
             <Header as="h2">
               Choose a single scenario or multiple scenarios for your cohort.
             </Header>
-            <p>
-              <Icon name="star" className="primary" />
-              Remember to make your scenarios public so they appear in this
-              list.
-            </p>
 
             <Grid padded>
               <Grid.Row>
@@ -318,17 +316,15 @@ export class CohortScenariosSelector extends React.Component {
               <Grid padded>
                 <Grid.Row>
                   <Grid.Column>
-                    <Header>
-                      Selected scenarios for &quot;{this.props.cohort.name}
-                      &quot;
-                    </Header>
+                    <Header>{selected.length} scenarios selected for &quot;{this.props.cohort.name}
+                      &quot;</Header>
                     <Ref
                       innerRef={node => {
                         this.selectedRef = node;
                         this.scrollIntoView();
                       }}
                     >
-                      <Card.Group className="c__scenario-cards">
+                      <Card.Group className="c__scenario-cards c__scenario-cards--selected">
                         {selected}
                       </Card.Group>
                     </Ref>
