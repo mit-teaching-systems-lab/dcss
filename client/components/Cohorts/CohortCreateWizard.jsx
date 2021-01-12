@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Icon, Modal, Step } from '@components/UI';
-import { getCohort, setCohort, createCohort } from '@actions/cohort';
+import { Icon, Step } from '@components/UI';
+import { setCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
-import CohortEmpty from './CohortEmpty';
 import CohortCreateNewForm from './CohortCreateNewForm';
 import CohortScenariosSelector from './CohortScenariosSelector';
 import CohortShare from './CohortShare';
@@ -20,7 +19,6 @@ export class CohortCreate extends React.Component {
       step: 0
     };
 
-    this.cohort = new CohortEmpty();
     this.onCancel = this.onCancel.bind(this);
     this.onContinue = this.onContinue.bind(this);
   }
@@ -45,10 +43,11 @@ export class CohortCreate extends React.Component {
     }
   }
 
-  onContinue(cohort) {
+  async onContinue(cohort) {
     const { id } = cohort;
-
     const { step } = this.state;
+
+    await this.props.setCohort(id, cohort);
 
     // Step & Operation
     //
@@ -135,9 +134,6 @@ export class CohortCreate extends React.Component {
 }
 
 CohortCreate.propTypes = {
-  cohort: PropTypes.object,
-  createCohort: PropTypes.func,
-  getCohort: PropTypes.func,
   setCohort: PropTypes.func,
   getUser: PropTypes.func,
   history: PropTypes.shape({
@@ -149,14 +145,12 @@ CohortCreate.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { cohort, user } = state;
-  return { cohort, user };
+  const { user } = state;
+  return { user };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohort: id => dispatch(getCohort(id)),
   setCohort: (id, params) => dispatch(setCohort(id, params)),
-  createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });
 

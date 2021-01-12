@@ -59,7 +59,7 @@ export class Cohort extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      if (!this.props.cohort) {
+      if (!this.props.cohort || !this.props.cohort.id) {
         await this.props.getCohort(this.props.id);
       }
 
@@ -312,10 +312,7 @@ Cohort.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const id = Number(ownProps.match.params.id) || ownProps.id;
-  const { cohortsById, user } = state;
-
-  const cohort = cohortsById[id] || null;
-
+  const { cohort, user } = state;
   const participant = cohort
     ? cohort.users.find(participant => participant.id === user.id)
     : null;

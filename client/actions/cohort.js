@@ -22,6 +22,7 @@ import {
   SET_COHORT_USER_ROLE_SUCCESS
 } from './types';
 import store from '@client/store';
+import { cohortInitialState } from '@reducers/initial-states';
 
 export let createCohort = ({ name }) => async dispatch => {
   try {
@@ -36,8 +37,13 @@ export let createCohort = ({ name }) => async dispatch => {
     if (res.error) {
       throw res;
     }
-    const { cohort } = res;
-    cohort.role = 'owner';
+
+    const cohort = {
+      ...cohortInitialState,
+      ...res.cohort,
+      role: 'owner'
+    };
+
     dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
     // return the cohort to the promise action for redirection purposes
     return cohort;

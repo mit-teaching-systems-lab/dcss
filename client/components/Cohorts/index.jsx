@@ -30,7 +30,6 @@ import Layout from '@utils/Layout';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
 import CohortCreateWizard from './CohortCreateWizard';
-import CohortEmpty from './CohortEmpty';
 import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
 
@@ -49,8 +48,6 @@ export class Cohorts extends React.Component {
       value
     };
 
-    this.cohort = new CohortEmpty();
-
     this.cohorts = cohorts;
     this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
     this.onCreateCohortOpenClick = this.onCreateCohortOpenClick.bind(this);
@@ -67,7 +64,7 @@ export class Cohorts extends React.Component {
       const { value } = this.state;
       const count = await this.props.getCohortsCount();
 
-      if (count === this.props.cohorts.length) {
+      if (count <= this.props.cohorts.length) {
         this.cohorts = this.props.cohorts;
 
         this.setState({
@@ -80,11 +77,11 @@ export class Cohorts extends React.Component {
       } else {
         const limit = 20;
         let offset = 0;
+        let sliceLength = 0;
         do {
-          this.cohorts.push(
-            ...(await this.props.getCohortsSlice('DESC', offset, limit))
-          );
+          await this.props.getCohortsSlice('DESC', offset, limit);
 
+          this.cohorts = this.props.cohorts;
           this.setState({
             isReady: true
           });
@@ -94,7 +91,7 @@ export class Cohorts extends React.Component {
           }
 
           offset += limit;
-        } while (this.cohorts.length < count);
+        } while (offset < count);
       }
     }
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);

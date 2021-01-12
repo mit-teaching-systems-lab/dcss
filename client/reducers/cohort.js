@@ -66,7 +66,7 @@ export const cohorts = (state = [], action) => {
           }
           return accum;
         }, [])
-        .sort((a, b) => a.id < b.id);
+        .sort((a, b) => (new Date(b.created_at) - new Date(a.created_at)));
     }
     case CREATE_COHORT_SUCCESS:
     case SET_COHORT_SUCCESS:
@@ -85,7 +85,7 @@ export const cohorts = (state = [], action) => {
       } else {
         state.push(cohort);
       }
-      return [...state].sort((a, b) => a.id < b.id);
+      return [...state].sort((a, b) => (new Date(b.created_at) - new Date(a.created_at)));
     }
     default:
       return state;

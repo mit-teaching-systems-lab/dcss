@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Form, Header, Icon, Input, Modal } from '@components/UI';
-import { getCohort, createCohort } from '@actions/cohort';
+import { createCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import CohortEmpty from './CohortEmpty';
 import '../ScenariosList/ScenariosList.css';
@@ -16,7 +16,6 @@ export class CohortCreateNewForm extends React.Component {
       name: ''
     };
 
-    this.cohort = new CohortEmpty();
     this.onChange = this.onChange.bind(this);
     this.createCohort = this.createCohort.bind(this);
   }
@@ -24,6 +23,7 @@ export class CohortCreateNewForm extends React.Component {
   async createCohort() {
     const cohort = await this.props.createCohort(this.state);
 
+    console.log(cohort);
     return cohort;
   }
 
@@ -116,9 +116,7 @@ export class CohortCreateNewForm extends React.Component {
 
 CohortCreateNewForm.propTypes = {
   buttons: PropTypes.object,
-  cohort: PropTypes.object,
   createCohort: PropTypes.func,
-  getCohort: PropTypes.func,
   getUser: PropTypes.func,
   header: PropTypes.any,
   history: PropTypes.shape({
@@ -130,12 +128,11 @@ CohortCreateNewForm.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { cohort, user } = state;
-  return { cohort, user };
+  const { user } = state;
+  return { user };
 };
 
 const mapDispatchToProps = dispatch => ({
-  getCohort: id => dispatch(getCohort(id)),
   createCohort: params => dispatch(createCohort(params)),
   getUser: () => dispatch(getUser())
 });

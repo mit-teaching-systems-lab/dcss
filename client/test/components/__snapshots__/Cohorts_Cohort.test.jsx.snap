@@ -35,7 +35,7 @@ exports[`Render 1 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -54,7 +54,7 @@ exports[`Render 1 1 3`] = `
           </div>
           <input
             type="text"
-            value="http://localhost/cohort/1"
+            value="http://localhost/cohort/2"
           />
         </div>
          
@@ -79,7 +79,7 @@ exports[`Render 1 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -88,7 +88,7 @@ exports[`Render 1 1 3`] = `
       <div>
         <button
           authority="[object Object]"
-          id="1"
+          id="2"
         >
           @components/Cohorts/CohortParticipants
         </button>
@@ -140,7 +140,7 @@ exports[`Render 2 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        A New Cohort That Exists Within Inline Props
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -159,7 +159,7 @@ exports[`Render 2 1 3`] = `
           </div>
           <input
             type="text"
-            value="http://localhost/cohort/1"
+            value="http://localhost/cohort/2"
           />
         </div>
          
@@ -184,7 +184,7 @@ exports[`Render 2 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -193,7 +193,7 @@ exports[`Render 2 1 3`] = `
       <div>
         <button
           authority="[object Object]"
-          id="1"
+          id="2"
         >
           @components/Cohorts/CohortParticipants
         </button>
@@ -350,7 +350,7 @@ exports[`Render 4 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -367,7 +367,7 @@ exports[`Render 4 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -422,7 +422,7 @@ exports[`Render 5 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -439,7 +439,7 @@ exports[`Render 5 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -494,7 +494,7 @@ exports[`Render 6 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -511,7 +511,7 @@ exports[`Render 6 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -566,7 +566,7 @@ exports[`Render 7 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -583,7 +583,7 @@ exports[`Render 7 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -638,7 +638,7 @@ exports[`Render 8 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -655,7 +655,7 @@ exports[`Render 8 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -710,7 +710,7 @@ exports[`Render 9 1 3`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -729,7 +729,7 @@ exports[`Render 9 1 3`] = `
           </div>
           <input
             type="text"
-            value="http://localhost/cohort/1"
+            value="http://localhost/cohort/2"
           />
         </div>
          
@@ -754,7 +754,7 @@ exports[`Render 9 1 3`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -763,7 +763,7 @@ exports[`Render 9 1 3`] = `
       <div>
         <button
           authority="[object Object]"
-          id="1"
+          id="2"
         >
           @components/Cohorts/CohortParticipants
         </button>
@@ -840,7 +840,7 @@ exports[`Render: Mock CohortScenarios 4`] = `
         class="active item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
     </div>
     <div
@@ -857,7 +857,7 @@ exports[`Render: Mock CohortScenarios 4`] = `
         <div>
           <button
             authority="[object Object]"
-            id="1"
+            id="2"
           >
             @components/Cohorts/CohortScenarios
           </button>
@@ -887,7 +887,7 @@ exports[`Render: Mock CohortScenarios 5`] = `
         class="item"
         tabindex="0"
       >
-        First Cohort
+        A New Cohort That Exists In Bootstrap State For Testing
       </a>
       <a
         class="active item"
@@ -897,7 +897,7 @@ exports[`Render: Mock CohortScenarios 5`] = `
           aria-hidden="true"
           class="content icon"
         />
-        Cohort 1 Scenario Null
+        Cohort 2 Scenario Null
       </a>
     </div>
     <div
