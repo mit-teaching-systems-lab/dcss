@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Button, Header, Icon, Input, Modal } from '@components/UI';
+// eslint-disable-next-line no-unused-vars
 import { getCohort } from '@actions/cohort';
 import copy from 'copy-text-to-clipboard';
 import { notify } from '@components/Notification';
@@ -21,6 +22,7 @@ export class CohortCreateNewForm extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  // eslint-disable-next-line no-unused-vars
   onChange(event, { name, value }) {
     //
     //

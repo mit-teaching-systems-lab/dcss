@@ -77,7 +77,6 @@ export class Cohorts extends React.Component {
       } else {
         const limit = 20;
         let offset = 0;
-        let sliceLength = 0;
         do {
           await this.props.getCohortsSlice('DESC', offset, limit);
 

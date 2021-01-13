@@ -240,8 +240,6 @@ export class CohortScenarios extends React.Component {
                           <Button
                             primary
                             size="tiny"
-                            icon
-                            labelPosition="left"
                             data-testid="run-cohort-as-participant"
                             onClick={() => {
                               location.href = url;
@@ -274,7 +272,7 @@ export class CohortScenarios extends React.Component {
                           name={scenario.title}
                           onClick={onAddTabClick}
                         >
-                          View cohort reponses
+                          View reponses
                         </Button>
                       </Gate>
                     </div>

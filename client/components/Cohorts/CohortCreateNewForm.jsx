@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { Button, Form, Header, Icon, Input, Modal } from '@components/UI';
 import { createCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
-import CohortEmpty from './CohortEmpty';
 import '../ScenariosList/ScenariosList.css';
 
 export class CohortCreateNewForm extends React.Component {
@@ -22,8 +21,6 @@ export class CohortCreateNewForm extends React.Component {
 
   async createCohort() {
     const cohort = await this.props.createCohort(this.state);
-
-    console.log(cohort);
     return cohort;
   }
 
