@@ -1,0 +1,5070 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Manage participants 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Manage participants 2`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Manage participants 3`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Manage participants 4`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Manage participants 5`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 2`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 3`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 4`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        2
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/2
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 5`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        2
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/2
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 6`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 7`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        1
+      </span>
+       participant
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/1
+      </span>
+       participant have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 8`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        1
+      </span>
+       participant
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/1
+      </span>
+       participant have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 9`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        1
+      </span>
+       participant
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/1
+      </span>
+       participant have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 10`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        1
+      </span>
+       participant
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/1
+      </span>
+       participant have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 11`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 12`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search participants 13`] = `
+<DocumentFragment>
+  <div
+    class="ui fluid container c__scenario-container"
+  >
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        5
+      </span>
+       participants
+    </p>
+    <p
+      class="c__scenario-header-num"
+    >
+      <span>
+        0/5
+      </span>
+       participants have completed all scenarios
+    </p>
+    <div
+      class="ui big icon labeled input grid__menu-search"
+    >
+      <div
+        class="ui label label"
+      >
+        Search participants
+      </div>
+      <input
+        aria-label="Search participants"
+        type="text"
+      />
+      <i
+        aria-hidden="true"
+        class="search icon"
+      />
+    </div>
+    <button
+      aria-label="Manage participants"
+      class="ui primary button"
+    >
+      Manage participants
+    </button>
+    <div
+      class="c__participant-list"
+    >
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Facilitator User (facilitator)"
+              class="ui medium text"
+              title="Facilitator User (facilitator)"
+            >
+              Facilitator User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Researcher User (researcher)"
+              class="ui medium text"
+              title="Researcher User (researcher)"
+            >
+              Researcher User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon user graduate"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Researcher"
+            />
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="Participant User (participant)"
+              class="ui medium text"
+              title="Participant User (participant)"
+            >
+              Participant User
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+      <div
+        class="ui card c__participant-card"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="header"
+          >
+            <span
+              aria-label="anonymous"
+              class="ui medium text"
+              title="anonymous"
+            >
+              anonymous
+            </span>
+             
+          </div>
+          <span
+            class="ui medium text"
+          >
+            Last accessed
+            <br />
+            <time
+              datetime="2020-10-11T22:11:46.144Z"
+            >
+              3 months ago
+            </time>
+          </span>
+        </div>
+        <div
+          class="content"
+        >
+          <div
+            class="description"
+          >
+            <div>
+              <i
+                aria-hidden="true"
+                class="circle icon primary"
+              />
+              <span
+                class="ui large text"
+              >
+                In progress
+              </span>
+            </div>
+            <div>
+              <span
+                class="ui small text"
+              >
+                0/1 scenario completed
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="content"
+        >
+          <button
+            class="ui large primary button"
+            data-testid="view-participant-responses"
+          >
+            View responses
+          </button>
+        </div>
+      </div>
+    </div>
+    <div
+      data-testid="cohort-progress"
+    />
+  </div>
+</DocumentFragment>
+`;

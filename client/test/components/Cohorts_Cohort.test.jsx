@@ -41,12 +41,6 @@ jest.mock('@components/Cohorts/DataTable', () => {
 });
 jest.mock('@components/Cohorts/CohortParticipants', () => {
   return props => {
-    const buttonProps = {
-      ...props,
-      onClick: event => {
-        // props.onClick(event, {type: 'participant', source: {id: 999} })
-      }
-    };
     return (
       <div>
         <button {...props}>@components/Cohorts/CohortParticipants</button>;
@@ -57,12 +51,6 @@ jest.mock('@components/Cohorts/CohortParticipants', () => {
 
 jest.mock('@components/Cohorts/CohortScenarios', () => {
   return props => {
-    const buttonProps = {
-      ...props,
-      onClick: event => {
-        // props.onClick(event, {type: 'scenario', source: {id: 42} })
-      }
-    };
     return (
       <div>
         <button {...props}>@components/Cohorts/CohortScenarios</button>
@@ -147,7 +135,19 @@ beforeEach(() => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -157,7 +157,19 @@ beforeEach(() => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -166,7 +178,19 @@ beforeEach(() => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -175,7 +199,19 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -184,7 +220,19 @@ beforeEach(() => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -196,7 +244,19 @@ beforeEach(() => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -206,7 +266,19 @@ beforeEach(() => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -215,7 +287,19 @@ beforeEach(() => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -224,7 +308,19 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -233,7 +329,19 @@ beforeEach(() => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -271,7 +379,19 @@ beforeEach(() => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -281,7 +401,19 @@ beforeEach(() => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -290,7 +422,19 @@ beforeEach(() => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -299,7 +443,19 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -308,7 +464,19 @@ beforeEach(() => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -320,7 +488,19 @@ beforeEach(() => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -330,7 +510,19 @@ beforeEach(() => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -339,7 +531,19 @@ beforeEach(() => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -348,7 +552,19 @@ beforeEach(() => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -357,7 +573,19 @@ beforeEach(() => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -373,7 +601,19 @@ beforeEach(() => {
       id: 999,
       roles: ['participant', 'super_admin'],
       is_anonymous: false,
-      is_super: true
+      is_super: true,
+      progress: {
+        completed: [1],
+        latestByScenarioId: {
+          1: {
+            is_complete: true,
+            event_id: 1909,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -388,7 +628,19 @@ beforeEach(() => {
         id: 999,
         roles: ['participant', 'super_admin'],
         is_anonymous: false,
-        is_super: true
+        is_super: true,
+        progress: {
+          completed: [1],
+          latestByScenarioId: {
+            1: {
+              is_complete: true,
+              event_id: 1909,
+              created_at: 1602454306144,
+              name: 'slide-arrival',
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'facilitator',
@@ -398,7 +650,19 @@ beforeEach(() => {
         roles: ['participant', 'facilitator', 'researcher', 'owner'],
         is_anonymous: false,
         is_super: false,
-        is_owner: true
+        is_owner: true,
+        progress: {
+          completed: [],
+          latestByScenarioId: {
+            1: {
+              is_complete: false,
+              event_id: 1905,
+              created_at: 1602454306144,
+              name: 'slide-arrival',
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'researcher',
@@ -407,7 +671,19 @@ beforeEach(() => {
         id: 444,
         roles: ['participant', 'researcher'],
         is_anonymous: false,
-        is_super: false
+        is_super: false,
+        progress: {
+          completed: [],
+          latestByScenarioId: {
+            1: {
+              is_complete: false,
+              event_id: 1904,
+              created_at: 1602454306144,
+              name: 'slide-arrival',
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'participant',
@@ -416,7 +692,19 @@ beforeEach(() => {
         id: 333,
         roles: ['participant'],
         is_anonymous: false,
-        is_super: false
+        is_super: false,
+        progress: {
+          completed: [],
+          latestByScenarioId: {
+            1: {
+              is_complete: false,
+              event_id: 1903,
+              created_at: 1602454306144,
+              name: 'slide-arrival',
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       },
       {
         username: 'anonymous',
@@ -425,7 +713,19 @@ beforeEach(() => {
         id: 222,
         roles: ['participant'],
         is_anonymous: true,
-        is_super: false
+        is_super: false,
+        progress: {
+          completed: [],
+          latestByScenarioId: {
+            1: {
+              is_complete: false,
+              event_id: 1902,
+              created_at: 1602454306144,
+              name: 'slide-arrival',
+              url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+            }
+          }
+        }
       }
     ];
     dispatch({ type: GET_USERS_SUCCESS, users });
@@ -539,7 +839,19 @@ test('Render 2 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -549,7 +861,19 @@ test('Render 2 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -558,7 +882,19 @@ test('Render 2 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -567,7 +903,19 @@ test('Render 2 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -576,7 +924,19 @@ test('Render 2 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -588,7 +948,19 @@ test('Render 2 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -598,7 +970,19 @@ test('Render 2 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -607,7 +991,19 @@ test('Render 2 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -616,7 +1012,19 @@ test('Render 2 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -625,7 +1033,19 @@ test('Render 2 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -700,7 +1120,19 @@ test('Render 3 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -710,7 +1142,19 @@ test('Render 3 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -719,7 +1163,19 @@ test('Render 3 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -728,7 +1184,19 @@ test('Render 3 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -737,7 +1205,19 @@ test('Render 3 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -749,7 +1229,19 @@ test('Render 3 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -759,7 +1251,19 @@ test('Render 3 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -768,7 +1272,19 @@ test('Render 3 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -777,7 +1293,19 @@ test('Render 3 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -786,7 +1314,19 @@ test('Render 3 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -836,7 +1376,19 @@ test('Render 4 1', async done => {
       id: 111,
       roles: [],
       is_anonymous: true,
-      is_super: false
+      is_super: false,
+      progress: {
+        completed: [],
+        latestByScenarioId: {
+          1: {
+            is_complete: false,
+            event_id: 1901,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -883,7 +1435,19 @@ test('Render 5 1', async done => {
       id: 111,
       roles: [],
       is_anonymous: true,
-      is_super: false
+      is_super: false,
+      progress: {
+        completed: [],
+        latestByScenarioId: {
+          1: {
+            is_complete: false,
+            event_id: 1901,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -920,7 +1484,19 @@ test('Render 5 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -930,7 +1506,19 @@ test('Render 5 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -939,7 +1527,19 @@ test('Render 5 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -948,7 +1548,19 @@ test('Render 5 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -957,7 +1569,19 @@ test('Render 5 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -969,7 +1593,19 @@ test('Render 5 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -979,7 +1615,19 @@ test('Render 5 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -988,7 +1636,19 @@ test('Render 5 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -997,7 +1657,19 @@ test('Render 5 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -1006,7 +1678,19 @@ test('Render 5 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -1058,7 +1742,19 @@ test('Render 6 1', async done => {
       id: 111,
       roles: [],
       is_anonymous: true,
-      is_super: false
+      is_super: false,
+      progress: {
+        completed: [],
+        latestByScenarioId: {
+          1: {
+            is_complete: false,
+            event_id: 1901,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -1109,7 +1805,19 @@ test('Render 7 1', async done => {
       roles: ['participant', 'facilitator', 'researcher', 'owner'],
       is_anonymous: false,
       is_super: false,
-      is_owner: true
+      is_owner: true,
+      progress: {
+        completed: [],
+        latestByScenarioId: {
+          1: {
+            is_complete: false,
+            event_id: 1905,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -1181,7 +1889,19 @@ test('Render 8 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -1191,7 +1911,19 @@ test('Render 8 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -1200,7 +1932,19 @@ test('Render 8 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -1209,7 +1953,19 @@ test('Render 8 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -1218,7 +1974,19 @@ test('Render 8 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -1230,7 +1998,19 @@ test('Render 8 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -1240,7 +2020,19 @@ test('Render 8 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -1249,7 +2041,19 @@ test('Render 8 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -1258,7 +2062,19 @@ test('Render 8 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -1267,7 +2083,19 @@ test('Render 8 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -1284,7 +2112,19 @@ test('Render 8 1', async done => {
       roles: ['participant', 'facilitator', 'researcher', 'owner'],
       is_anonymous: false,
       is_super: false,
-      is_owner: true
+      is_owner: true,
+      progress: {
+        completed: [],
+        latestByScenarioId: {
+          1: {
+            is_complete: false,
+            event_id: 1905,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
@@ -1356,7 +2196,19 @@ test('Render 9 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'facilitator',
@@ -1366,7 +2218,19 @@ test('Render 9 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'researcher',
@@ -1375,7 +2239,19 @@ test('Render 9 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'participant',
@@ -1384,7 +2260,19 @@ test('Render 9 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         {
           username: 'anonymous',
@@ -1393,7 +2281,19 @@ test('Render 9 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       ],
       roles: ['super', 'facilitator'],
@@ -1405,7 +2305,19 @@ test('Render 9 1', async done => {
           id: 999,
           roles: ['participant', 'super_admin'],
           is_anonymous: false,
-          is_super: true
+          is_super: true,
+          progress: {
+            completed: [1],
+            latestByScenarioId: {
+              1: {
+                is_complete: true,
+                event_id: 1909,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         555: {
           username: 'facilitator',
@@ -1415,7 +2327,19 @@ test('Render 9 1', async done => {
           roles: ['participant', 'facilitator', 'researcher', 'owner'],
           is_anonymous: false,
           is_super: false,
-          is_owner: true
+          is_owner: true,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1905,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         444: {
           username: 'researcher',
@@ -1424,7 +2348,19 @@ test('Render 9 1', async done => {
           id: 444,
           roles: ['participant', 'researcher'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1904,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         333: {
           username: 'participant',
@@ -1433,7 +2369,19 @@ test('Render 9 1', async done => {
           id: 333,
           roles: ['participant'],
           is_anonymous: false,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1903,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         },
         222: {
           username: 'anonymous',
@@ -1442,7 +2390,19 @@ test('Render 9 1', async done => {
           id: 222,
           roles: ['participant'],
           is_anonymous: true,
-          is_super: false
+          is_super: false,
+          progress: {
+            completed: [],
+            latestByScenarioId: {
+              1: {
+                is_complete: false,
+                event_id: 1902,
+                created_at: 1602454306144,
+                name: 'slide-arrival',
+                url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+              }
+            }
+          }
         }
       }
     };
@@ -1458,7 +2418,19 @@ test('Render 9 1', async done => {
       id: 999,
       roles: ['participant', 'super_admin'],
       is_anonymous: false,
-      is_super: true
+      is_super: true,
+      progress: {
+        completed: [1],
+        latestByScenarioId: {
+          1: {
+            is_complete: true,
+            event_id: 1909,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;

@@ -37,13 +37,13 @@ async function getCohortRuns(id) {
   return result.rows;
 }
 
-async function getCohortUsers(cohort_id) {
+async function getCohortUsers(id) {
   // const result = await client.query(sql`
   //   SELECT *
   //   FROM users
   //   INNER JOIN cohort_user_role
   //       ON users.id = cohort_user_role.user_id
-  //   WHERE cohort_user_role.cohort_id = ${cohort_id};
+  //   WHERE cohort_user_role.cohort_id = ${id};
   // `);
   // const result = await client.query(sql`
   //   SELECT users.id, users.username, users.email, roles
@@ -56,6 +56,8 @@ async function getCohortUsers(cohort_id) {
   //   ) lat
   //   WHERE array_length(lat.roles, 1) > 0;
   // `);
+
+  const progress = await getCohortProgress(id);
   const result = await query(sql`
     SELECT
       id,
@@ -69,13 +71,17 @@ async function getCohortUsers(cohort_id) {
     INNER JOIN (
       SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
       FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
-      WHERE cohort_id = ${cohort_id} AND ended_at IS NULL
+      WHERE cohort_id = ${id} AND ended_at IS NULL
       GROUP BY cohort_id, user_id
     ) cur
     ON users.id = cur.user_id;
   `);
   const users = result.rows;
   const usersById = users.reduce((accum, user) => {
+    user.progress = progress[user.id] || {
+      completed: [],
+      latestByScenarioId: {}
+    };
     accum[user.id] = user;
     return accum;
   }, {});
@@ -107,6 +113,95 @@ async function createCohort(name, user_id) {
     `);
     return cohort;
   });
+}
+
+async function getCohortScenariosCompleted(id) {
+  let select = `
+    SELECT
+      user_id,
+      ARRAY_AGG(DISTINCT scenario_id) as completed
+    FROM cohort_run
+    JOIN run ON cohort_run.run_id = run.id
+    WHERE cohort_id = 1
+    AND ended_at IS NOT NULL
+    GROUP BY user_id
+  `;
+
+  let result = await query(select);
+  return result.rows;
+}
+
+async function getCohortScenariosRunEvents(id) {
+  let select = `
+    SELECT
+      r.event_id,
+      r.run_id,
+      scenario_id,
+      user_id,
+      name,
+      context::jsonb->>'url' as url,
+      context::jsonb->>'timestamp' as created_at,
+      CASE WHEN r.ended_at IS NULL
+        THEN FALSE
+        ELSE TRUE
+      END as is_complete
+    FROM cohort_run
+    JOIN (
+      SELECT run_event.id as event_id, *
+      FROM run
+      JOIN run_event
+      ON run.id = run_event.run_id
+    ) AS r
+      ON cohort_run.run_id = r.run_id
+    WHERE cohort_id = ${id}
+    AND name = 'slide-arrival'
+    ORDER BY event_id ASC
+  `;
+
+  let result = await query(select);
+  return result.rows;
+}
+
+async function getCohortProgress(id) {
+  const scenariosCompleted = await getCohortScenariosCompleted(id);
+  const scenariosRunEvents = await getCohortScenariosRunEvents(id);
+  const progress = {};
+
+  for (const { user_id, completed } of scenariosCompleted) {
+    const latestByScenarioId = scenariosRunEvents.reduce((accum, event) => {
+      const {
+        event_id,
+        scenario_id,
+        name,
+        url,
+        created_at,
+        is_complete
+      } = event;
+
+      if (event.user_id === user_id) {
+        return {
+          ...accum,
+          [scenario_id]: {
+            scenario_id,
+            event_id,
+            is_complete,
+            created_at,
+            name,
+            url
+          }
+        };
+      } else {
+        return accum;
+      }
+    }, {});
+
+    progress[user_id] = {
+      completed,
+      latestByScenarioId
+    };
+  }
+
+  return progress;
 }
 
 async function __getAggregatedCohort(cohort) {
@@ -525,6 +620,7 @@ exports.getCohortsCount = getCohortsCount;
 exports.getCohortsSlice = getCohortsSlice;
 exports.setCohort = setCohort;
 exports.softDeleteCohort = softDeleteCohort;
+exports.getCohortProgress = getCohortProgress;
 exports.setCohortScenarios = setCohortScenarios;
 exports.getCohortRunResponses = getCohortRunResponses;
 exports.linkCohortToRun = linkCohortToRun;

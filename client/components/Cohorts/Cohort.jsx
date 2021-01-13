@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ import { getCohort, linkUserToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
 import DataTable from '@components/Cohorts/DataTable';
-import CohortParticipants from '@components/Cohorts/CohortParticipants';
+import CohortProgress from '@components/Cohorts/CohortProgress';
 import CohortScenarios from '@components/Cohorts/CohortScenarios';
 import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
@@ -231,9 +231,7 @@ export class Cohort extends React.Component {
               </section>
             ) : null}
             <section className="c__section">
-              <Header className="c__header" as="h2">
-                Cohort scenarios
-              </Header>
+              <Header as="h2">Cohort scenarios</Header>
               <CohortScenarios
                 key="cohort-scenarios"
                 id={cohort.id}
@@ -242,12 +240,21 @@ export class Cohort extends React.Component {
               />
             </section>
             {isFacilitator ? (
-              <CohortParticipants
-                key="cohort-participants"
-                id={cohort.id}
-                authority={authority}
-                onClick={onClick}
-              />
+              <Fragment>
+                <section className="c__section">
+                  <Header as="h2">Cohort progress</Header>
+                  <Header as="h3">
+                    Track participant progress and responses to selected
+                    scenarios
+                  </Header>
+                  <CohortProgress
+                    key="cohort-progress"
+                    id={cohort.id}
+                    authority={authority}
+                    onClick={onClick}
+                  />
+                </section>
+              </Fragment>
             ) : (
               <DataTable
                 source={{
