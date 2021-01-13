@@ -201,6 +201,7 @@ class Chat extends Component {
     /* istanbul ignore else */
     if (this.rte) {
       this.rte.setContents(content);
+      this.rte.core.focus();
     }
 
     this.content = content;
@@ -290,6 +291,7 @@ class Chat extends Component {
                 onKeyDown={onKeyDown}
                 onMount={onMount}
                 options={{
+                  autoFocus: true,
                   buttons: 'chat',
                   height: 'auto',
                   minHeight: '50px',
