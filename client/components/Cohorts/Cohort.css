@@ -228,3 +228,9 @@
 .c__wizard-share-link > .ui.input {
   margin-bottom: 1rem;
 }
+
+.c-action-btns__scenario-selector {
+  bottom: -1rem;
+  position: sticky;
+  z-index: 100;
+}

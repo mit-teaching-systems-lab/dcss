@@ -338,7 +338,7 @@ export class CohortScenariosSelector extends React.Component {
               </Grid>
             </div>
           </Modal.Actions>
-          <Modal.Actions>
+          <Modal.Actions className="c-action-btns__scenario-selector">
             <Button.Group fluid>
               <Button {...primaryButtonProps} />
               <Button.Or />
