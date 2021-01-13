@@ -122,7 +122,7 @@ async function getCohortScenariosCompleted(id) {
       ARRAY_AGG(DISTINCT scenario_id) as completed
     FROM cohort_run
     JOIN run ON cohort_run.run_id = run.id
-    WHERE cohort_id = 1
+    WHERE cohort_id = ${id}
     AND ended_at IS NOT NULL
     GROUP BY user_id
   `;
