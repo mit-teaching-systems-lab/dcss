@@ -77,7 +77,19 @@ beforeEach(() => {
       id: 999,
       roles: ['participant', 'super_admin'],
       is_anonymous: false,
-      is_super: true
+      is_super: true,
+      progress: {
+        completed: [1],
+        latestByScenarioId: {
+          1: {
+            is_complete: true,
+            event_id: 1909,
+            created_at: 1602454306144,
+            name: 'slide-arrival',
+            url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+          }
+        }
+      }
     };
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
