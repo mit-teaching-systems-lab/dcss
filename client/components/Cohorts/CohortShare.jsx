@@ -115,8 +115,10 @@ export class CohortCreateNewForm extends React.Component {
               Send participants this link to allow them to join your cohort and
               interact with your selected scenarios.
             </div>
-            <div>{inputShowCohortUrl}</div>
-            <div>{buttonCopyCohortUrl}</div>
+            <div className="c__wizard-share-link">
+              {inputShowCohortUrl}
+              {buttonCopyCohortUrl}
+            </div>
           </Modal.Content>
           <Modal.Actions>
             <Button.Group fluid>
