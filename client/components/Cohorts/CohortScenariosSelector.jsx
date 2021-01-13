@@ -204,7 +204,7 @@ export class CohortScenariosSelector extends React.Component {
 
         const card = (
           <Card as="a" key={key} scenario={scenario} onClick={onClick}>
-            <Card.Content>
+            <Card.Content className="c__wizard-scenario-card">
               <Card.Header>{scenario.title}</Card.Header>
               <Card.Meta>
                 <p>
@@ -218,7 +218,9 @@ export class CohortScenariosSelector extends React.Component {
                 <Text.Truncate lines={2}>{scenario.description}</Text.Truncate>
               </Card.Description>
               {yourRoles ? (
-                <Card.Content extra>{yourRoles}</Card.Content>
+                <Card.Meta extra className="c__wizard-scenario-card__meta">
+                  {yourRoles}
+                </Card.Meta>
               ) : null}
             </Card.Content>
           </Card>

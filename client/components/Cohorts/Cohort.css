@@ -234,3 +234,12 @@
   position: sticky;
   z-index: 100;
 }
+
+.c__wizard-scenario-card {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.c__wizard-scenario-card__meta {
+  margin-top: auto;
+}
