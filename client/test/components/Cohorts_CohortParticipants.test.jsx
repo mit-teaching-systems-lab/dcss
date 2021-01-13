@@ -548,58 +548,57 @@ test('Search participants', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const c = <ConnectedRoutedComponent {...props} />;
-  const { asFragment } = render(c);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
   await screen.findByRole('navigation', { name: /pagination navigation/i });
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1);
-  expect(setTimeout).toHaveBeenCalledTimes(2);
-  expect(asFragment()).toMatchSnapshot();
+  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(serialize()).toMatchSnapshot();
 
   const searchInput = await screen.findByLabelText('Search participants');
 
   // "researcher"
   userEvent.type(searchInput, 'resea{enter}');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1);
-  expect(setTimeout).toHaveBeenCalledTimes(3);
-  expect(asFragment()).toMatchSnapshot();
+  expect(setTimeout).toHaveBeenCalledTimes(2);
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.type(searchInput, '{selectall}{backspace}');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   // "owner"
   userEvent.type(searchInput, 'owner{enter}');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1);
-  expect(setTimeout).toHaveBeenCalledTimes(4);
-  expect(asFragment()).toMatchSnapshot();
+  expect(setTimeout).toHaveBeenCalledTimes(3);
+  expect(serialize()).toMatchSnapshot();
 
   // "researcher@email.com"
   userEvent.type(searchInput, '{selectall}{backspace}');
   userEvent.type(searchInput, 'researcher@email.com{enter}');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1);
-  expect(setTimeout).toHaveBeenCalledTimes(5);
-  expect(asFragment()).toMatchSnapshot();
+  expect(setTimeout).toHaveBeenCalledTimes(4);
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.type(
     searchInput,
     '{selectall}{backspace}nothing will match this{enter}'
   );
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.type(searchInput, '{selectall}{backspace}');
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   jest.advanceTimersByTime(1);
-  expect(setTimeout).toHaveBeenCalledTimes(6);
-  expect(asFragment()).toMatchSnapshot();
+  expect(setTimeout).toHaveBeenCalledTimes(5);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -620,22 +619,21 @@ test('Pagination', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const c = <ConnectedRoutedComponent {...props} />;
-  const { asFragment } = render(c);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
   const pagination = await screen.findByRole('navigation', {
     name: /pagination navigation/i
   });
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.getByText('2'));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.getByText('3'));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.getByText('1'));
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -658,11 +656,10 @@ test('Modal close', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const c = <ConnectedRoutedComponent {...props} />;
-  const { asFragment } = render(c);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
   await screen.findByRole('navigation', { name: /pagination navigation/i });
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Close'));
 
@@ -700,11 +697,10 @@ test('Super admin', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const c = <ConnectedRoutedComponent {...props} />;
-  const { asFragment } = render(c);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
   await screen.findByRole('navigation', { name: /pagination navigation/i });
-  expect(asFragment()).toMatchSnapshot();
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -733,8 +729,8 @@ test('Participant only', async done => {
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
@@ -762,8 +758,8 @@ test('Researcher only', async done => {
   };
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
-  expect(asFragment()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
 
   done();
 });
