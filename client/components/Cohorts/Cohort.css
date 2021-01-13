@@ -220,3 +220,11 @@
 .c__scenario-cards--selected .ui.card {
   border: 2px solid #753656 !important;
 }
+
+.c__wizard-share-link {
+  margin: 2rem 0;
+}
+
+.c__wizard-share-link > .ui.input {
+  margin-bottom: 1rem;
+}
