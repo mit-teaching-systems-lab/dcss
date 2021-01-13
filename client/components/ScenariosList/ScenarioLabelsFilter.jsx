@@ -42,11 +42,16 @@ class ScenarioLabelsFilter extends React.Component {
     event.stopPropagation();
 
     const labelsInUse = this.props.tags.labelsInUse.slice(0);
+    const labelsInUseBefore = labelsInUse.slice(0);
 
     if (labelsInUse.includes(value)) {
       labelsInUse.splice(labelsInUse.indexOf(value), 1);
     } else {
       labelsInUse.push(value);
+    }
+
+    if (this.props.onChange) {
+      this.props.onChange(labelsInUseBefore, labelsInUse);
     }
 
     this.props.setLabelsInUse(labelsInUse);
@@ -156,7 +161,8 @@ ScenarioLabelsFilter.propTypes = {
     labelsInUse: PropTypes.array
   }),
   location: PropTypes.object,
-  setLabelsInUse: PropTypes.func
+  setLabelsInUse: PropTypes.func,
+  onChange: PropTypes.func
 };
 
 const mapStateToProps = state => {

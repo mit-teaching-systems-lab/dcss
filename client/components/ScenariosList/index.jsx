@@ -141,6 +141,7 @@ class ScenariosList extends Component {
 
     this.timeout = null;
     this.scenarios = scenarios;
+    this.onLabelsFilterChange = this.onLabelsFilterChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
     this.onScenarioModalClose = this.onScenarioModalClose.bind(this);
@@ -195,6 +196,12 @@ class ScenariosList extends Component {
     this.setState({
       open: false,
       selected: null
+    });
+  }
+
+  onLabelsFilterChange() {
+    this.setState({
+      activePage: 1
     });
   }
 
@@ -289,6 +296,7 @@ class ScenariosList extends Component {
       user
     } = this.state;
     const {
+      onLabelsFilterChange,
       onPageChange,
       onScenarioCardClick,
       onScenarioModalClose,
@@ -437,7 +445,7 @@ class ScenariosList extends Component {
 
     const menuItemScenarioLabels = (
       <Menu.Item.Tabbable>
-        <ScenarioLabelsFilter />
+        <ScenarioLabelsFilter onChange={onLabelsFilterChange} />
       </Menu.Item.Tabbable>
     );
 

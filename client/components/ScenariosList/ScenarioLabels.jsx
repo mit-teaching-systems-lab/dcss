@@ -64,7 +64,7 @@ class ScenarioLabels extends React.Component {
           };
 
           if (labelsInUse.includes(value)) {
-            labelProps.color = 'blue';
+            labelProps.className = 'primary';
           }
 
           return (

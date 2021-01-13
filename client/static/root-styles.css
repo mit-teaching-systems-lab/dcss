@@ -460,3 +460,10 @@ button {
 .ui.steps .step.active .title {
   color: #853D61 !important;
 }
+
+.ui.primary.labels .label,
+.ui.ui.ui.primary.label {
+  background-color: #853D61 !important;
+  border-color: #853D61 !important;
+  color: rgba(255,255,255,.9);
+}
