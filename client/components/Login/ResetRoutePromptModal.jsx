@@ -14,7 +14,7 @@ class ResetRoutePromptModal extends Component {
     this.state = {
       isReady: false,
       isSending: false,
-      email: '',
+      email: ''
     };
 
     this.onChange = this.onChange.bind(this);
@@ -81,7 +81,8 @@ class ResetRoutePromptModal extends Component {
           {isSending ? (
             <Modal.Content tabIndex="0">
               <p>
-                Your reset request has been accepted and you will be redirected momentarily.
+                Your reset request has been accepted and you will be redirected
+                momentarily.
               </p>
             </Modal.Content>
           ) : (

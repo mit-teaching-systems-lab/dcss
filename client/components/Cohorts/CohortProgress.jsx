@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import copy from 'copy-text-to-clipboard';
 import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
 import {
@@ -15,10 +14,8 @@ import {
 } from '@components/UI';
 import { getCohort } from '@actions/cohort';
 import CohortParticipants from '@components/Cohorts/CohortParticipants';
-import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
-import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
 

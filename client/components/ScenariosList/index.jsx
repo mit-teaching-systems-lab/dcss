@@ -476,7 +476,11 @@ class ScenariosList extends Component {
       <List relaxed size="big">
         {isLoggedIn ? (
           <List.Item>
-            <List.Header className="primary" to={`/scenarios/author/${user.username}`} as={NavLink}>
+            <List.Header
+              className="primary"
+              to={`/scenarios/author/${user.username}`}
+              as={NavLink}
+            >
               My scenarios
             </List.Header>
             <List.Description>
@@ -485,7 +489,11 @@ class ScenariosList extends Component {
           </List.Item>
         ) : null}
         <List.Item>
-          <List.Header className="primary" to="/scenarios/official" as={NavLink}>
+          <List.Header
+            className="primary"
+            to="/scenarios/official"
+            as={NavLink}
+          >
             Official
           </List.Header>
           <List.Description>
@@ -493,7 +501,11 @@ class ScenariosList extends Component {
           </List.Description>
         </List.Item>
         <List.Item>
-          <List.Header className="primary" to="/scenarios/community" as={NavLink}>
+          <List.Header
+            className="primary"
+            to="/scenarios/community"
+            as={NavLink}
+          >
             Community
           </List.Header>
           <List.Description>

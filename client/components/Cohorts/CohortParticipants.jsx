@@ -82,19 +82,10 @@ export class CohortParticipants extends React.Component {
   }
 
   render() {
-    const { authority, cohort, onClose, rowsPerPage, user } = this.props;
+    const { cohort, onClose, rowsPerPage, user } = this.props;
     const { activePage, isReady } = this.state;
     const { onPageChange, onParticipantSearchChange } = this;
-    /**
-    // Previously:
-    // Ensure that Facilitator access is applied even if the user just
-    // became a facilitator and their session roles haven't updated.
-    // This can h
-    const isFacilitator =
-      user.roles.includes('facilitator') || authority.isFacilitator;
-    const { isFacilitator } = authority;
 
-    */
     if (!isReady) {
       return null;
     }
@@ -195,7 +186,6 @@ export class CohortParticipants extends React.Component {
 }
 
 CohortParticipants.propTypes = {
-  authority: PropTypes.object,
   cohort: PropTypes.object,
   id: PropTypes.any,
   onClose: PropTypes.func,
