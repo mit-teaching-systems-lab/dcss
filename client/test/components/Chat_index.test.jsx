@@ -51,8 +51,14 @@ jest.mock('@hoc/withSocket', () => {
 });
 
 import RichTextEditor from '@components/RichTextEditor';
-globalThis.setContents = jest.fn();
 globalThis.onChange = jest.fn();
+globalThis.rte = {
+  setContents: jest.fn(),
+  core: {
+    focus: jest.fn()
+  }
+};
+
 jest.mock('@components/RichTextEditor', () => {
   return function(props) {
     const mode = props.mode || 'editor';
@@ -60,7 +66,9 @@ jest.mock('@components/RichTextEditor', () => {
     const className = props.className;
 
     if (mode === 'editor') {
-      const rte = { setContents: globalThis.setContents };
+      const rte = {
+        ...globalThis.rte
+      };
       const {
         name = 'content',
         id,
@@ -877,7 +885,7 @@ test('Types, then attempts to send string containing only a space character', as
   userEvent.click(await screen.findByLabelText('Send message'));
 
   expect(globalThis.onChange).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents).toHaveBeenCalledTimes(0);
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(0);
   expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(0);
   expect(serialize()).toMatchSnapshot();
 
@@ -918,8 +926,8 @@ test('Types, followed by {enter}', async done => {
   userEvent.click(await screen.findByLabelText('Send message'));
 
   expect(globalThis.onChange).toHaveBeenCalled();
-  expect(globalThis.setContents).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p><br></p>",
@@ -982,8 +990,8 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   userEvent.click(await screen.findByLabelText('Send message'));
 
   expect(globalThis.onChange).toHaveBeenCalled();
-  expect(globalThis.setContents).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p><br></p>",
@@ -1099,8 +1107,8 @@ test('Calls onInput when RTE receives new content', async done => {
   userEvent.click(await screen.findByLabelText('Send message'));
 
   expect(globalThis.onChange).toHaveBeenCalled();
-  expect(globalThis.setContents).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p><br></p>",
@@ -1162,8 +1170,8 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
   userEvent.type(textbox, '{enter}');
 
   expect(globalThis.onChange).toHaveBeenCalled();
-  expect(globalThis.setContents).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p><br></p>",
@@ -1225,8 +1233,8 @@ test('Types, clicks Send Message', async done => {
   userEvent.click(await screen.findByLabelText('Send message'));
 
   expect(globalThis.onChange).toHaveBeenCalled();
-  expect(globalThis.setContents).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p><br></p>",
@@ -1285,8 +1293,8 @@ test('onQuote', async done => {
   const quoteButtons = await screen.findAllByLabelText('Quote this message');
 
   userEvent.click(quoteButtons[0]);
-  expect(globalThis.setContents).toHaveBeenCalledTimes(1);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(1);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p>Super User wrote:<blockquote><p>Hello</p></blockquote></p>",
@@ -1296,8 +1304,8 @@ test('onQuote', async done => {
   expect(serialize()).toMatchSnapshot();
 
   userEvent.click(quoteButtons[1]);
-  expect(globalThis.setContents).toHaveBeenCalledTimes(2);
-  expect(globalThis.setContents.mock.calls).toMatchInlineSnapshot(`
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(2);
+  expect(globalThis.rte.setContents.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
         "<p>Super User wrote:<blockquote><p>Hello</p></blockquote></p>",
