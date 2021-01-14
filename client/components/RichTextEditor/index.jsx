@@ -70,6 +70,7 @@ class RichTextEditor extends Component {
     if (this.ref.current) {
       let {
         autoFocus = false,
+        customPlugins = [],
         defaultValue = '',
         focusEdge = false,
         disable = false,
@@ -99,6 +100,16 @@ class RichTextEditor extends Component {
 
       options = Object.assign({}, defaultOptions, options, { buttonList });
       options.plugins = plugins(buttonList || []);
+
+      if (customPlugins.length) {
+        options.plugins.push(...customPlugins);
+
+        options.buttonList[options.buttonList.length - 1].push(
+          ...customPlugins.map(customPlugin => customPlugin.name)
+        );
+
+        console.log(options.buttonList);
+      }
 
       // Enables image upload and storage
       options.imageMultipleFile = false;
@@ -233,6 +244,7 @@ class RichTextEditor extends Component {
 RichTextEditor.propTypes = {
   autoFocus: PropTypes.bool,
   className: PropTypes.string,
+  customPlugins: PropTypes.array,
   defaultValue: PropTypes.string,
   disable: PropTypes.bool,
   enable: PropTypes.bool,

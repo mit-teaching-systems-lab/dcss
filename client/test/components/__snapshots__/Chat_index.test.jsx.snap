@@ -41,23 +41,21 @@ exports[`Calls onChange when RTE is cleared 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"10\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"10\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -393,23 +391,21 @@ exports[`Calls onChange when RTE is cleared 2`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"10\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"10\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -457,23 +453,21 @@ exports[`Calls onInput when RTE receives new content 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"16\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"16\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -809,23 +803,21 @@ exports[`Calls onInput when RTE receives new content 4`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"16\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"16\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -834,86 +826,12 @@ exports[`Calls onInput when RTE receives new content 4`] = `
 
 exports[`Calls onJoinOrPart when receives JOIN_OR_PART event 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"9\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -958,23 +876,21 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"17\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"17\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -1310,23 +1226,21 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"17\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"17\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -1335,86 +1249,12 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
 
 exports[`No chat id, defaults to 1. This test should fail when the feature is completed 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"2\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -1461,23 +1301,21 @@ exports[`Types, clicks Send Message 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"18\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"18\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -1813,23 +1651,21 @@ exports[`Types, clicks Send Message 4`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"18\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"18\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -1877,23 +1713,21 @@ exports[`Types, followed by {enter} 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"13\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-             
-          </textarea>
+          <div>
+            <textarea
+              id=\\"13\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+               
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -2229,23 +2063,21 @@ exports[`Types, followed by {enter} 4`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"13\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-             
-          </textarea>
+          <div>
+            <textarea
+              id=\\"13\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+               
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -2293,23 +2125,21 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"14\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"14\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -2645,23 +2475,21 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"14\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"14\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -2709,23 +2537,21 @@ exports[`Types, followed by {shift}{enter}, does not submit 5`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"15\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"15\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -3061,23 +2887,21 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"15\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"15\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -3125,21 +2949,19 @@ exports[`Types, then attempts to send empty string 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"11\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          />
+          <div>
+            <textarea
+              id=\\"11\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            />
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -3475,21 +3297,19 @@ exports[`Types, then attempts to send empty string 2`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"11\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          />
+          <div>
+            <textarea
+              id=\\"11\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            />
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -3537,21 +3357,19 @@ exports[`Types, then attempts to send string containing only a space character 1
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"12\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          />
+          <div>
+            <textarea
+              id=\\"12\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            />
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -3887,21 +3705,19 @@ exports[`Types, then attempts to send string containing only a space character 2
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"12\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          />
+          <div>
+            <textarea
+              id=\\"12\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            />
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -3949,23 +3765,21 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"3\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"3\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -4301,23 +4115,21 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"3\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"3\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -4326,86 +4138,12 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
 
 exports[`componentDidMount Adds onbeforeunload handler 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"4\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -4738,23 +4476,21 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"4\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"4\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -4763,256 +4499,34 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
 
 exports[`componentDidMount Emits USER_JOIN on socket 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"5\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
 exports[`componentDidMount Emits USER_JOIN on socket 3`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"5\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
 exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occurs 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"7\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -5345,23 +4859,21 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"7\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"7\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -5370,86 +4882,12 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
 
 exports[`componentWillUnmount Calls onbeforeunload handler when unmount occurs 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"8\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -5466,86 +4904,12 @@ exports[`componentWillUnmount Calls onbeforeunload handler when unmount occurs 4
 
 exports[`componentWillUnmount Removes onbeforeunload handler 1`] = `
 "<body
-  class=\\"dimmable dimmed\\"
+  class=\\"\\"
 >
   <div
     id=\\"root\\"
   />
   <div />
-  <div
-    class=\\"ui page modals dimmer transition visible active\\"
-    style=\\"display: flex;\\"
-  >
-    <div
-      aria-modal=\\"true\\"
-      class=\\"ui small modal transition visible active c__container-modal\\"
-      role=\\"dialog\\"
-    >
-      <div
-        class=\\"ui header\\"
-        tabindex=\\"0\\"
-      >
-        <i
-          aria-hidden=\\"true\\"
-          class=\\"comments outline icon\\"
-        />
-        <div
-          class=\\"content\\"
-        >
-          {scenario.title}, {slide.title} Discussion
-        </div>
-      </div>
-      <div
-        class=\\"content\\"
-        tabindex=\\"0\\"
-      >
-        <div
-          class=\\"cm__container-outer\\"
-        >
-          <div
-            aria-busy=\\"true\\"
-            aria-live=\\"polite\\"
-            class=\\"ui card loading__single-card\\"
-            role=\\"status\\"
-            style=\\"width: 100%; height: 90%;\\"
-          >
-            <div
-              aria-hidden=\\"true\\"
-              class=\\"content loading__content\\"
-            >
-              <div
-                class=\\"ui placeholder\\"
-              >
-                <div
-                  class=\\"square image\\"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          class=\\"cc__container-outer\\"
-        >
-          <textarea
-            id=\\"6\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
-        </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
-      </div>
-    </div>
-  </div>
 </body>"
 `;
 
@@ -5878,23 +5242,21 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"6\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"6\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -5953,23 +5315,21 @@ exports[`onQuote 1`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"19\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"19\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -6305,23 +5665,21 @@ exports[`onQuote 3`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"19\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"19\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>
@@ -6667,23 +6025,21 @@ exports[`onQuote 5`] = `
         <div
           class=\\"cc__container-outer\\"
         >
-          <textarea
-            id=\\"19\\"
-            name=\\"content\\"
-            options=\\"[object Object]\\"
-          >
-            &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-          </textarea>
+          <div>
+            <textarea
+              id=\\"19\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
         </div>
-        <button
-          aria-label=\\"Send message\\"
-          class=\\"ui icon button\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"send icon\\"
-          />
-        </button>
       </div>
     </div>
   </div>

@@ -22,9 +22,8 @@ import {
 } from '@actions/chat';
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
-import { Button, Header, Modal } from '@components/UI';
+import { Header, Modal } from '@components/UI';
 import ChatMessages from '@components/Chat/ChatMessages';
-import Loading from '@components/Loading';
 import RichTextEditor from '@components/RichTextEditor';
 
 import './Chat.css';
@@ -60,6 +59,43 @@ function makeSocketPayload(props, data = {}) {
       id: user.id
     },
     ...data
+  };
+}
+
+function makeSendButtonPlugin(onSendNewMessage) {
+  return {
+    name: 'sendButtonPlugin',
+    display: 'command',
+    title: 'Send',
+    buttonClass: '',
+    innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 20 500 500"><g><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></g></svg>`,
+    add(core, targetElement) {
+      const context = core.context;
+      context.sendButtonPlugin = {
+        targetButton: targetElement
+      };
+    },
+    active(element) {
+      if (!element) {
+        this.util.removeClass(
+          this.context.sendButtonPlugin.targetButton,
+          'active'
+        );
+      } else if (
+        /^mark$/i.test(element.nodeName) &&
+        element.style.backgroundColor.length > 0
+      ) {
+        this.util.addClass(
+          this.context.sendButtonPlugin.targetButton,
+          'active'
+        );
+        return true;
+      }
+      return false;
+    },
+    action() {
+      onSendNewMessage();
+    }
   };
 }
 
@@ -256,7 +292,12 @@ class Chat extends Component {
     const { chat } = this.props;
     const { id, isReady } = this.state;
     const defaultValue = content || '';
-    const disable = !!isReady;
+
+    if (!isReady) {
+      return null;
+    }
+
+    const customPlugins = [makeSendButtonPlugin(onSendNewMessage)];
 
     return (
       <Modal.Accessible open>
@@ -274,17 +315,13 @@ class Chat extends Component {
           />
           <Modal.Content tabIndex="0">
             <div className="cm__container-outer">
-              {isReady ? (
-                <ChatMessages chat={chat} onQuote={onQuote} />
-              ) : (
-                <Loading />
-              )}
+              <ChatMessages chat={chat} onQuote={onQuote} />
             </div>
             <div className="cc__container-outer">
               <RichTextEditor
                 name="content"
                 id={id}
-                disable={disable}
+                customPlugins={customPlugins}
                 defaultValue={defaultValue}
                 onChange={onChange}
                 onInput={onInput}
@@ -304,11 +341,6 @@ class Chat extends Component {
                 }}
               />
             </div>
-            <Button
-              aria-label="Send message"
-              icon="send"
-              onClick={onSendNewMessage}
-            />
           </Modal.Content>
         </Modal>
       </Modal.Accessible>

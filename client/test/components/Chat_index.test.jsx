@@ -102,7 +102,17 @@ jest.mock('@components/RichTextEditor', () => {
         style
       };
 
-      return <textarea {...mockProps} />;
+      return (
+        <div>
+          <textarea {...mockProps} />
+          <button
+            aria-label="Send message"
+            onClick={() => props.customPlugins[0].action()}
+          >
+            THIS BUTTON IS PROVIDED BY THE MOCK
+          </button>
+        </div>
+      );
     } else {
       return <div className={className} dangerouslySetInnerHTML={{ __html }} />;
     }
