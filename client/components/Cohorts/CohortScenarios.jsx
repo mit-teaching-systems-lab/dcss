@@ -238,23 +238,24 @@ export class CohortScenarios extends React.Component {
                           isAuthorized={isFacilitator}
                         >
                           <Button
-                            primary
                             size="tiny"
                             data-testid="run-cohort-as-participant"
                             onClick={() => {
                               location.href = url;
                             }}
                           >
-                            <Icon name="play" />
+                            <Icon className="primary" name="play" />
                             Run scenario as a participant
                           </Button>
                           <Button
-                            primary
                             size="tiny"
                             data-testid="copy-cohort-scenario-link"
                             onClick={onCohortScenarioUrlCopyClick}
                           >
-                            <Icon name="clipboard outline" />
+                            <Icon
+                              className="primary"
+                              name="clipboard outline"
+                            />
                             Copy scenario link to clipboard
                           </Button>
                         </Gate>
