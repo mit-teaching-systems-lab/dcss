@@ -2,11 +2,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Dropdown, Menu, Popup } from '@components/UI';
+import { Dropdown, Menu } from '@components/UI';
 import { endScenarioLock } from '@actions/scenario';
 import Gate from '@components/Gate';
 import UserMenu from '@components/User/UserMenu';
-import Events from '@utils/Events';
 import Layout from '@utils/Layout';
 
 const DCSS_BRAND_LABEL = process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
@@ -102,56 +101,6 @@ class Navigation extends Component {
       </Menu.Item.Tabbable>
     );
 
-    // This is used WITHIN the dropdown menu
-    // const menuItemAllScenarios = (
-    //   <Menu.Item.Tabbable
-    //     role="option"
-    //     to="/scenarios/"
-    //     aria-label={explainAllScenarios}
-    //     as={NavLink}
-    //   >
-    //     All
-    //   </Menu.Item.Tabbable>
-    // );
-
-    // to={`/scenarios/author/${user.username}`}
-    const explainMyScenarios =
-      'See scenarios where I am an owner, author or reviewer';
-    const menuItemMyScenarios = isLoggedIn ? (
-      <Menu.Item.Tabbable
-        role="option"
-        to={`/scenarios/author/${user.username}`}
-        aria-label={explainMyScenarios}
-        as={NavLink}
-      >
-        Mine
-      </Menu.Item.Tabbable>
-    ) : null;
-
-    const explainOfficialScenarios = `See scenarios made by ${DCSS_BRAND_LABEL}`;
-    const menuItemOfficialScenarios = (
-      <Menu.Item.Tabbable
-        role="option"
-        to="/scenarios/official"
-        aria-label={explainOfficialScenarios}
-        as={NavLink}
-      >
-        Official
-      </Menu.Item.Tabbable>
-    );
-
-    const explainCommunityScenarios = 'See scenarios made by the community';
-    const menuItemCommunityScenarios = (
-      <Menu.Item.Tabbable
-        role="option"
-        to="/scenarios/community"
-        aria-label={explainCommunityScenarios}
-        as={NavLink}
-      >
-        Community
-      </Menu.Item.Tabbable>
-    );
-
     const menuItemBrandLogo = (
       <Menu.Item.Tabbable className="navigation__menu-item-logo">
         <NavLink to="/">{process.env.DCSS_BRAND_NAME_TITLE || 'Home'}</NavLink>
@@ -199,13 +148,8 @@ class Navigation extends Component {
         ) : (
           <Fragment>
             {menuItemBrandLogo}
-
-            <Menu.Item.Tabbable to="/scenarios" as={NavLink}>
-              Scenarios
-            </Menu.Item.Tabbable>
-
+            {menuItemScenarios}
             {menuItemAuthorized}
-
             <Menu.Menu position="right">{menuItemUserMenu}</Menu.Menu>
           </Fragment>
         )}
