@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -13,7 +13,8 @@ class ResetRoutePromptModal extends Component {
 
     this.state = {
       isReady: false,
-      email: ''
+      isSending: false,
+      email: '',
     };
 
     this.onChange = this.onChange.bind(this);
@@ -54,10 +55,14 @@ class ResetRoutePromptModal extends Component {
         this.props.history.push('/login');
       }
     })();
+
+    this.setState({
+      isSending: true
+    });
   }
 
   render() {
-    const { isReady } = this.state;
+    const { isReady, isSending } = this.state;
 
     if (!isReady) {
       return null;
@@ -73,59 +78,69 @@ class ResetRoutePromptModal extends Component {
             content="Reset your password"
             tabIndex="0"
           />
-          <Modal.Content tabIndex="0">
-            <p>
-              Enter the email that you used to create your account and hit
-              &quot;Reset&quot;. If there is an account associated with that
-              email, a single-use password will be sent to the email address
-              provided.
-            </p>
-            <p>
-              <b>Be sure to check your spam folder!</b>
-            </p>
-            <Form onSubmit={onSubmit}>
-              <Form.Field>
-                <label htmlFor="email">Email</label>
-                <Form.Input
-                  autoComplete="email"
-                  id="email"
-                  name="email"
-                  type="email"
-                  onBlur={onBlurOrFocus}
-                  onFocus={onBlurOrFocus}
-                  onChange={onChange}
-                />
-              </Form.Field>
-            </Form>
-          </Modal.Content>
-          <Modal.Actions>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column>
-                  <Button.Group fluid>
-                    <Button
-                      primary
-                      aria-label="Click to reset your password and recieve a single-use password by email."
-                      size="large"
-                      type="submit"
-                      onClick={onSubmit}
-                    >
-                      Reset
-                    </Button>
-                    <Button.Or />
-                    <Button
-                      aria-label="Click to go back to log in."
-                      to="/login"
-                      size="large"
-                      as={NavLink}
-                    >
-                      Cancel
-                    </Button>
-                  </Button.Group>
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Modal.Actions>
+          {isSending ? (
+            <Modal.Content tabIndex="0">
+              <p>
+                Your reset request has been accepted and you will be redirected momentarily.
+              </p>
+            </Modal.Content>
+          ) : (
+            <Fragment>
+              <Modal.Content tabIndex="0">
+                <p>
+                  Enter the email that you used to create your account and hit
+                  &quot;Reset&quot;. If there is an account associated with that
+                  email, a single-use password will be sent to the email address
+                  provided.
+                </p>
+                <p>
+                  <b>Be sure to check your spam folder!</b>
+                </p>
+                <Form onSubmit={onSubmit}>
+                  <Form.Field>
+                    <label htmlFor="email">Email</label>
+                    <Form.Input
+                      autoComplete="email"
+                      id="email"
+                      name="email"
+                      type="email"
+                      onBlur={onBlurOrFocus}
+                      onFocus={onBlurOrFocus}
+                      onChange={onChange}
+                    />
+                  </Form.Field>
+                </Form>
+              </Modal.Content>
+              <Modal.Actions>
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Button.Group fluid>
+                        <Button
+                          primary
+                          aria-label="Click to reset your password and recieve a single-use password by email."
+                          size="large"
+                          type="submit"
+                          onClick={onSubmit}
+                        >
+                          Reset
+                        </Button>
+                        <Button.Or />
+                        <Button
+                          aria-label="Click to go back to log in."
+                          to="/login"
+                          size="large"
+                          as={NavLink}
+                        >
+                          Cancel
+                        </Button>
+                      </Button.Group>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Modal.Actions>
+            </Fragment>
+          )}
         </Modal>
       </Modal.Accessible>
     );
