@@ -119,6 +119,15 @@
   .c__participant-card {
     display: block !important;
   }
+
+  .c__cohort-header {
+    display: block !important;
+  }
+
+  .c__cohort-user-actions {
+    margin-top: 1.5rem;
+    text-align: left !important;
+  }
 }
 
 .c__table-thead-tbody-tr {
@@ -277,4 +286,27 @@
 
 .c__participant-completion__scenarios-completed span {
   font-weight: bold;
+}
+
+.c__cohort-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 1rem;
+  justify-content: space-between;
+}
+
+.c__cohort-user-actions {
+  text-align: right;
+}
+
+.c__activation-state__display span {
+  font-weight: bold;
+}
+
+.c__cohort-user-actions > *:not(:last-child) {
+  margin-bottom: 0.5rem !important;
+}
+
+.c__cohort-user-actions > *:first-child {
+  margin-bottom: 1.5rem !important;
 }
