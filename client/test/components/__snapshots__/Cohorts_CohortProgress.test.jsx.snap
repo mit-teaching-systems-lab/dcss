@@ -30,45 +30,49 @@ exports[`Manage participants 2`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -96,49 +100,55 @@ exports[`Manage participants 2`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -169,49 +179,55 @@ exports[`Manage participants 2`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -242,49 +258,55 @@ exports[`Manage participants 2`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -309,49 +331,55 @@ exports[`Manage participants 2`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -376,49 +404,55 @@ exports[`Manage participants 2`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -438,45 +472,49 @@ exports[`Manage participants 3`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -504,49 +542,55 @@ exports[`Manage participants 3`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -577,49 +621,55 @@ exports[`Manage participants 3`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -650,49 +700,55 @@ exports[`Manage participants 3`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -717,49 +773,55 @@ exports[`Manage participants 3`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -784,49 +846,55 @@ exports[`Manage participants 3`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -846,45 +914,49 @@ exports[`Manage participants 4`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -912,49 +984,55 @@ exports[`Manage participants 4`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -985,49 +1063,55 @@ exports[`Manage participants 4`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1058,49 +1142,55 @@ exports[`Manage participants 4`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1125,49 +1215,55 @@ exports[`Manage participants 4`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1192,49 +1288,55 @@ exports[`Manage participants 4`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1254,45 +1356,49 @@ exports[`Manage participants 5`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -1320,49 +1426,55 @@ exports[`Manage participants 5`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1393,49 +1505,55 @@ exports[`Manage participants 5`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1466,49 +1584,55 @@ exports[`Manage participants 5`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1533,49 +1657,55 @@ exports[`Manage participants 5`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1600,49 +1730,55 @@ exports[`Manage participants 5`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1712,45 +1848,49 @@ exports[`Search participants 2`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -1778,49 +1918,55 @@ exports[`Search participants 2`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1851,49 +1997,55 @@ exports[`Search participants 2`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1924,49 +2076,55 @@ exports[`Search participants 2`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -1991,49 +2149,55 @@ exports[`Search participants 2`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2058,49 +2222,55 @@ exports[`Search participants 2`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2120,45 +2290,49 @@ exports[`Search participants 3`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -2186,49 +2360,55 @@ exports[`Search participants 3`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2259,49 +2439,55 @@ exports[`Search participants 3`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2332,49 +2518,55 @@ exports[`Search participants 3`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2399,49 +2591,55 @@ exports[`Search participants 3`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2466,49 +2664,55 @@ exports[`Search participants 3`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2528,45 +2732,49 @@ exports[`Search participants 4`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        2
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/2
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/2
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -2594,49 +2802,55 @@ exports[`Search participants 4`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2667,49 +2881,55 @@ exports[`Search participants 4`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2729,45 +2949,49 @@ exports[`Search participants 5`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        2
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/2
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/2
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -2795,49 +3019,55 @@ exports[`Search participants 5`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2868,49 +3098,55 @@ exports[`Search participants 5`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -2930,45 +3166,49 @@ exports[`Search participants 6`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -2996,49 +3236,55 @@ exports[`Search participants 6`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3069,49 +3315,55 @@ exports[`Search participants 6`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3142,49 +3394,55 @@ exports[`Search participants 6`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3209,49 +3467,55 @@ exports[`Search participants 6`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3276,49 +3540,55 @@ exports[`Search participants 6`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3338,45 +3608,49 @@ exports[`Search participants 7`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        1
-      </span>
-       participant
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/1
-      </span>
-       participant have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/1
+          </span>
+           participant have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -3404,49 +3678,55 @@ exports[`Search participants 7`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3466,45 +3746,49 @@ exports[`Search participants 8`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        1
-      </span>
-       participant
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/1
-      </span>
-       participant have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/1
+          </span>
+           participant have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -3532,49 +3816,55 @@ exports[`Search participants 8`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3594,45 +3884,49 @@ exports[`Search participants 9`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        1
-      </span>
-       participant
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/1
-      </span>
-       participant have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/1
+          </span>
+           participant have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -3660,49 +3954,55 @@ exports[`Search participants 9`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3722,45 +4022,49 @@ exports[`Search participants 10`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        1
-      </span>
-       participant
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/1
-      </span>
-       participant have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/1
+          </span>
+           participant have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -3788,49 +4092,55 @@ exports[`Search participants 10`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3850,45 +4160,49 @@ exports[`Search participants 11`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -3916,49 +4230,55 @@ exports[`Search participants 11`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -3989,49 +4309,55 @@ exports[`Search participants 11`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4062,49 +4388,55 @@ exports[`Search participants 11`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4129,49 +4461,55 @@ exports[`Search participants 11`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4196,49 +4534,55 @@ exports[`Search participants 11`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4258,45 +4602,49 @@ exports[`Search participants 12`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -4324,49 +4672,55 @@ exports[`Search participants 12`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4397,49 +4751,55 @@ exports[`Search participants 12`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4470,49 +4830,55 @@ exports[`Search participants 12`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4537,49 +4903,55 @@ exports[`Search participants 12`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4604,49 +4976,55 @@ exports[`Search participants 12`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4666,45 +5044,49 @@ exports[`Search participants 13`] = `
   <div
     class="ui fluid container c__scenario-container"
   >
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        5
-      </span>
-       participants
-    </p>
-    <p
-      class="c__scenario-header-num"
-    >
-      <span>
-        0/5
-      </span>
-       participants have completed all scenarios
-    </p>
     <div
-      class="ui big icon labeled input grid__menu-search"
+      class="ui stackable two column grid c__scenario-participant-header"
     >
       <div
-        class="ui label label"
+        class="six wide column"
       >
-        Search participants
+        <p
+          class="c__scenario-header-num"
+        >
+          <span>
+            0/5
+          </span>
+           participants have completed all scenarios
+        </p>
       </div>
-      <input
-        aria-label="Search participants"
-        type="text"
-      />
-      <i
-        aria-hidden="true"
-        class="search icon"
-      />
+      <div
+        class="ten wide column c__scenario-search-participants"
+      >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search participants
+          </div>
+          <input
+            aria-label="Search participants"
+            type="text"
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
+        <button
+          aria-label="Manage participants"
+          class="ui primary button"
+        >
+          Manage participants
+        </button>
+      </div>
     </div>
-    <button
-      aria-label="Manage participants"
-      class="ui primary button"
-    >
-      Manage participants
-    </button>
     <div
       class="c__participant-list"
     >
@@ -4732,49 +5114,55 @@ exports[`Search participants 13`] = `
               title="Super"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4805,49 +5193,55 @@ exports[`Search participants 13`] = `
               title="Facilitator"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4878,49 +5272,55 @@ exports[`Search participants 13`] = `
               title="Researcher"
             />
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -4945,49 +5345,55 @@ exports[`Search participants 13`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses
@@ -5012,49 +5418,55 @@ exports[`Search participants 13`] = `
             </span>
              
           </div>
-          <span
-            class="ui medium text"
+          <p
+            class="c__participant-completion__group"
           >
-            Last accessed
-            <br />
+            <span
+              class="c__participant-completion__subhed"
+            >
+              Last accessed
+            </span>
             <time
               datetime="2020-10-11T22:11:46.144Z"
             >
               3 months ago
             </time>
-          </span>
+          </p>
         </div>
         <div
           class="content"
         >
           <div
-            class="description"
+            class="description c__participant-completion"
           >
-            <div>
+            <div
+              class="c__participant-status"
+            >
               <i
                 aria-hidden="true"
                 class="circle icon primary"
               />
               <span
-                class="ui large text"
+                class="ui medium text"
               >
                 In progress
               </span>
             </div>
-            <div>
-              <span
-                class="ui small text"
-              >
-                0/1 scenario completed
+            <p
+              class="c__participant-completion__scenarios-completed"
+            >
+              <span>
+                0/1 
               </span>
-            </div>
+              scenario completed
+            </p>
           </div>
         </div>
         <div
           class="content"
         >
           <button
-            class="ui large primary button"
+            class="ui large primary button c__participant-card__responses"
             data-testid="view-participant-responses"
           >
             View responses

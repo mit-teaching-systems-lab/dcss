@@ -43,7 +43,7 @@ exports[`Render 1 1 1`] = `
           role="listitem"
         >
           <a
-            class="header"
+            class="header primary"
             href="/scenarios/author/null"
           >
             My scenarios
@@ -59,7 +59,7 @@ exports[`Render 1 1 1`] = `
           role="listitem"
         >
           <a
-            class="header"
+            class="header primary"
             href="/scenarios/official"
           >
             Official
@@ -75,7 +75,7 @@ exports[`Render 1 1 1`] = `
           role="listitem"
         >
           <a
-            class="header"
+            class="header primary"
             href="/scenarios/community"
           >
             Community
@@ -358,7 +358,7 @@ exports[`Render 2 1 1`] = `
           role="listitem"
         >
           <a
-            class="header"
+            class="header primary"
             href="/scenarios/author/null"
           >
             My scenarios
@@ -374,7 +374,7 @@ exports[`Render 2 1 1`] = `
           role="listitem"
         >
           <a
-            class="header"
+            class="header primary"
             href="/scenarios/official"
           >
             Official
@@ -390,7 +390,7 @@ exports[`Render 2 1 1`] = `
           role="listitem"
         >
           <a
-            class="header"
+            class="header primary"
             href="/scenarios/community"
           >
             Community

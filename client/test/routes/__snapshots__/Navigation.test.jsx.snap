@@ -19,62 +19,13 @@ exports[`Render 1 1 1`] = `
         Home
       </a>
     </div>
-    <div
-      class="menu"
+    <a
+      class="item"
+      href="/scenarios"
+      tabindex="0"
     >
-      <div
-        aria-expanded="false"
-        aria-label="See all scenarios"
-        class="ui item simple dropdown navigation__dropdown"
-        role="listbox"
-        tabindex="0"
-      >
-        <a
-          aria-label="See all scenarios"
-          class="item"
-          href="/scenarios/"
-          role="option"
-          tabindex="0"
-        >
-          Scenarios
-        </a>
-        <i
-          aria-hidden="true"
-          class="dropdown icon"
-        />
-        <div
-          class="menu transition"
-        >
-          <a
-            aria-label="See scenarios where I am an owner, author or reviewer"
-            class="item"
-            href="/scenarios/author/null"
-            role="option"
-            tabindex="0"
-          >
-            Mine
-          </a>
-          <a
-            aria-label="See scenarios made by Teaching Systems Lab"
-            class="item"
-            href="/scenarios/official"
-            role="option"
-            tabindex="0"
-          >
-            Official
-          </a>
-          <a
-            aria-label="See scenarios made by the community"
-            class="item"
-            href="/scenarios/community"
-            role="option"
-            tabindex="0"
-          >
-            Community
-          </a>
-        </div>
-      </div>
-    </div>
+      Scenarios
+    </a>
     <a
       class="item"
       href="/cohorts"
