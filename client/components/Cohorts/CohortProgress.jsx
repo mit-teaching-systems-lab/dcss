@@ -177,35 +177,37 @@ export class CohortProgress extends React.Component {
     const manageButtonAriaLabel = 'Manage participants';
 
     const searchParticipantsInCohort = (
-      <Fragment>
-        <Input
-          aria-label={searchInputAriaLabel}
-          label={searchInputAriaLabel}
-          className="grid__menu-search"
-          icon="search"
-          size="big"
-          onChange={onParticipantSearchChange}
-        />
+      <Input
+        aria-label={searchInputAriaLabel}
+        label={searchInputAriaLabel}
+        className="grid__menu-search"
+        icon="search"
+        size="big"
+        onChange={onParticipantSearchChange}
+      />
+    );
 
-        <Button
-          primary
-          aria-label={manageButtonAriaLabel}
-          onClick={() => {
-            this.setState({
-              manageIsOpen: true
-            });
-          }}
-        >
-          {manageButtonAriaLabel}
-        </Button>
-      </Fragment>
+    const manageParticipantsButton = (
+      <Button
+        size="tiny"
+        aria-label={manageButtonAriaLabel}
+        onClick={() => {
+          this.setState({
+            manageIsOpen: true
+          });
+        }}
+      >
+        {manageButtonAriaLabel}
+      </Button>
     );
 
     return (
       <Container fluid className="c__scenario-container">
         <Grid stackable columns={2} className="c__scenario-participant-header">
-          <Grid.Column width={6}>{usersInCohortHeader}</Grid.Column>
-
+          <Grid.Column width={6}>
+            {usersInCohortHeader}
+            {manageParticipantsButton}
+          </Grid.Column>
           <Grid.Column width={10} className="c__scenario-search-participants">
             {searchParticipantsInCohort}
           </Grid.Column>
