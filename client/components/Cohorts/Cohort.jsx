@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
+  Grid,
   Header,
   Icon,
   Input,
@@ -196,6 +197,40 @@ export class Cohort extends React.Component {
       </Button>
     );
 
+    const cohortActivationState = (
+      <div className="c__activation-state">
+        <p className="c__activation-state__display">
+          Cohort is <span>Active</span>
+        </p>
+        <Button icon labelPosition="left" size="small">
+          <Icon name="archive" className="primary" />
+          Archive cohort
+        </Button>
+      </div>
+    );
+
+    const renameCohortButton = (
+      <Button icon labelPosition="left" size="small">
+        <Icon name="edit" className="primary" />
+        Rename cohort
+      </Button>
+    );
+
+    const deleteCohortButton = (
+      <Button icon labelPosition="left" size="small">
+        <Icon name="trash alternate outline" className="primary" />
+        Delete cohort
+      </Button>
+    );
+
+    const cohortUserActions = (
+      <Fragment>
+        {cohortActivationState}
+        {renameCohortButton}
+        {deleteCohortButton}
+      </Fragment>
+    );
+
     return (
       <div>
         <Title content={cohort.name} />
@@ -226,8 +261,13 @@ export class Cohort extends React.Component {
         {activeTabKey === 'cohort' ? (
           <Segment attached="bottom">
             {isFacilitator ? (
-              <section className="c__section c__cohort-url">
-                {menuItemShowCohortUrl} {menuItemCopyCohortUrl}
+              <section className="c__section c__cohort-header">
+                <div className="c__cohort-url">
+                  {menuItemShowCohortUrl} {menuItemCopyCohortUrl}
+                </div>
+                <div className="c__cohort-user-actions">
+                  {cohortUserActions}
+                </div>
               </section>
             ) : null}
             <section className="c__section">
