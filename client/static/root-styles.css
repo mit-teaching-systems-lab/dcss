@@ -467,3 +467,14 @@ button {
   border-color: #853D61 !important;
   color: rgba(255,255,255,.9);
 }
+
+.ui.list .list>.item a.header.primary,
+.ui.list>.item a.header.primary {
+    cursor: pointer;
+    color: #853D61!important;
+}
+
+.ui.list .list>.item>a.header.primary:hover,
+.ui.list>.item>a.header.primary:hover {
+    color: #753656!important;
+}

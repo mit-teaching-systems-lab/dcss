@@ -472,22 +472,20 @@ class ScenariosList extends Component {
     const DCSS_BRAND_LABEL =
       process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
 
-    const myScenarioNavItem = isLoggedIn ? (
-      <List.Item>
-        <List.Header as={NavLink} to={`/scenarios/author/${user.username}`}>
-          My scenarios
-        </List.Header>
-        <List.Description>
-          Scenarios I where I am an owner, author, or reviewer.
-        </List.Description>
-      </List.Item>
-    ) : null;
-
     const scenarioNavList = Layout.isNotForMobile() ? (
       <List relaxed size="big">
-        {myScenarioNavItem}
+        {isLoggedIn ? (
+          <List.Item>
+            <List.Header className="primary" to={`/scenarios/author/${user.username}`} as={NavLink}>
+              My scenarios
+            </List.Header>
+            <List.Description>
+              Scenarios I where I am an owner, author, or reviewer.
+            </List.Description>
+          </List.Item>
+        ) : null}
         <List.Item>
-          <List.Header as={NavLink} to="/scenarios/official">
+          <List.Header className="primary" to="/scenarios/official" as={NavLink}>
             Official
           </List.Header>
           <List.Description>
@@ -495,7 +493,7 @@ class ScenariosList extends Component {
           </List.Description>
         </List.Item>
         <List.Item>
-          <List.Header as={NavLink} to="/scenarios/community">
+          <List.Header className="primary" to="/scenarios/community" as={NavLink}>
             Community
           </List.Header>
           <List.Description>

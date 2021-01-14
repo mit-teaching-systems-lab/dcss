@@ -167,7 +167,7 @@ class Navigation extends Component {
     );
 
     // const menuItemBugReport = (
-    //   <Menu.Item.Tabbable to="https://form.asana.com?hash=7d5e154fd719cf063ef8f8bccaa40556c49b0f4c89157730ef86b701d374f265&id=1189279338202577" as={NavLink}>
+    //   <Menu.Item.Tabbable to="https://form.asana.com?k=1usHUVJzjZAbjxDSZ1Wp6A&d=74607040975" as={NavLink}>
     //     <Icon name="bug" />
     //   </Menu.Item.Tabbable>
     // );
@@ -200,52 +200,9 @@ class Navigation extends Component {
           <Fragment>
             {menuItemBrandLogo}
 
-            <Menu.Menu>
-              <Dropdown
-                simple
-                item
-                className="navigation__dropdown"
-                aria-label={explainAllScenarios}
-                trigger={menuItemScenarios}
-                onKeyUp={event => {
-                  if (event.target.getAttribute('role') === 'option') {
-                    Events.onKeyUp(event, {}, () => event.target.click());
-                  }
-                }}
-              >
-                <Dropdown.Menu>
-                  {/*
-                  <Popup
-                    position="right center"
-                    size="large"
-                    content={explainAllScenarios}
-                    trigger={menuItemAllScenarios}
-                  />
-                  */}
-                  <Popup
-                    inverted
-                    position="right center"
-                    size="large"
-                    content={explainMyScenarios}
-                    trigger={menuItemMyScenarios}
-                  />
-                  <Popup
-                    inverted
-                    position="right center"
-                    size="large"
-                    content={explainOfficialScenarios}
-                    trigger={menuItemOfficialScenarios}
-                  />
-                  <Popup
-                    inverted
-                    position="right center"
-                    size="large"
-                    content={explainCommunityScenarios}
-                    trigger={menuItemCommunityScenarios}
-                  />
-                </Dropdown.Menu>
-              </Dropdown>
-            </Menu.Menu>
+            <Menu.Item.Tabbable to="/scenarios" as={NavLink}>
+              Scenarios
+            </Menu.Item.Tabbable>
 
             {menuItemAuthorized}
 
