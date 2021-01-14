@@ -4,7 +4,15 @@ import PropTypes from 'prop-types';
 import copy from 'copy-text-to-clipboard';
 import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
-import { Button, Card, Container, Icon, Input, Text } from '@components/UI';
+import {
+  Button,
+  Card,
+  Container,
+  Grid,
+  Icon,
+  Input,
+  Text
+} from '@components/UI';
 import { getCohort } from '@actions/cohort';
 import CohortParticipants from '@components/Cohorts/CohortParticipants';
 import { notify } from '@components/Notification';
@@ -156,28 +164,20 @@ export class CohortProgress extends React.Component {
       : this.props.cohort.users;
 
     const usersInCohortHeader = (
-      <Fragment>
-        <p className="c__scenario-header-num">
-          <span>{sourceParticipants.length}</span>{' '}
-          {pluralize('participant', sourceParticipants.length)}
-        </p>
-        <p className="c__scenario-header-num">
-          <span>
-            {completedCount}/{sourceParticipants.length}
-          </span>{' '}
-          {pluralize('participant', sourceParticipants.length)} have completed
-          all scenarios
-        </p>
-      </Fragment>
+      <p className="c__scenario-header-num">
+        <span>
+          {completedCount}/{sourceParticipants.length}
+        </span>{' '}
+        {pluralize('participant', sourceParticipants.length)} have completed all
+        scenarios
+      </p>
     );
 
     const searchInputAriaLabel = 'Search participants';
     const manageButtonAriaLabel = 'Manage participants';
 
-    return (
-      <Container fluid className="c__scenario-container">
-        {usersInCohortHeader}
-
+    const searchParticipantsInCohort = (
+      <Fragment>
         <Input
           aria-label={searchInputAriaLabel}
           label={searchInputAriaLabel}
@@ -198,6 +198,18 @@ export class CohortProgress extends React.Component {
         >
           {manageButtonAriaLabel}
         </Button>
+      </Fragment>
+    );
+
+    return (
+      <Container fluid className="c__scenario-container">
+        <Grid stackable columns={2} className="c__scenario-participant-header">
+          <Grid.Column width={6}>{usersInCohortHeader}</Grid.Column>
+
+          <Grid.Column width={10} className="c__scenario-search-participants">
+            {searchParticipantsInCohort}
+          </Grid.Column>
+        </Grid>
 
         <div className="c__participant-list">
           {sourceParticipants.map((participant, index) => {

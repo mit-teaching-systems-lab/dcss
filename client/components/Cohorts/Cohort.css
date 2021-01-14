@@ -243,3 +243,17 @@
 .c__wizard-scenario-card__meta {
   margin-top: auto;
 }
+
+.c__scenario-participant-header {
+  margin-bottom: 1rem !important;
+}
+
+.c__scenario-search-participants {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.c__scenario-search-participants button {
+  align-self: flex-end;
+  margin-top: 0.5rem !important;
+}
