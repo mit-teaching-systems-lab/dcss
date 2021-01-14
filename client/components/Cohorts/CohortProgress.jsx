@@ -259,11 +259,12 @@ export class CohortProgress extends React.Component {
             }
 
             const lastAccessedDisplay = lastAccessedAt ? (
-              <Text>
-                Last accessed
-                <br />
+              <p className="c__participant-completion__group">
+                <span className="c__participant-completion__subhed">
+                  Last accessed
+                </span>
                 <time dateTime={lastAccessedAt}>{lastAccessedAgo}</time>
-              </Text>
+              </p>
             ) : null;
 
             const onAddTabClick = (event, data) => {
@@ -283,32 +284,38 @@ export class CohortProgress extends React.Component {
                   {lastAccessedDisplay}
                 </Card.Content>
                 <Card.Content>
-                  <Card.Description>
-                    <div>
+                  <Card.Description className="c__participant-completion">
+                    <div className="c__participant-status">
                       <Icon className="primary" name={statusIcon} />
-                      <Text size="large">{statusText}</Text>
+                      <Text size="medium">{statusText}</Text>
                     </div>
                     {!isComplete && lastScenarioViewed ? (
                       <Fragment>
-                        <div>
-                          <Text>{lastScenarioViewed.title}</Text>
-                        </div>
-                        <div>
-                          <Text>Slide {lastSlideViewed}</Text>
-                        </div>
+                        <p className="c__participant-completion__group">
+                          <span className="c__participant-completion__subhed">
+                            Current scenario
+                          </span>
+                          {lastScenarioViewed.title}
+                        </p>
+                        <p className="c__participant-completion__group">
+                          <span className="c__participant-completion__subhed">
+                            Current slide
+                          </span>
+                          {lastSlideViewed}
+                        </p>
                       </Fragment>
                     ) : null}
-                    <div>
-                      <Text size="small">
+                    <p className="c__participant-completion__scenarios-completed">
+                      <span>
                         {completedCount}/{cohortScenarios.length}{' '}
-                        {pluralize('scenario', cohortScenarios.length)}{' '}
-                        completed
-                      </Text>
-                    </div>
+                      </span>
+                      {pluralize('scenario', cohortScenarios.length)} completed
+                    </p>
                   </Card.Description>
                 </Card.Content>
                 <Card.Content>
                   <Button
+                    className="c__participant-card__responses"
                     primary
                     size="large"
                     data-testid="view-participant-responses"

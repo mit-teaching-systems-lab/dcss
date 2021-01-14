@@ -115,6 +115,10 @@
   .c__scenario-card {
     display: block !important;
   }
+
+  .c__participant-card {
+    display: block !important;
+  }
 }
 
 .c__table-thead-tbody-tr {
@@ -256,4 +260,31 @@
 .c__scenario-search-participants button {
   align-self: flex-end;
   margin-top: 0.5rem !important;
+}
+
+.c__participant-card__responses {
+  width: 100% !important;
+}
+
+.c__participant-list > .ui.card.c__participant-card {
+  margin: 0.5rem 0 !important;
+}
+
+.c__participant-status span {
+  font-weight: bold;
+}
+
+.c__participant-completion__group {
+  margin: 1rem 0 !important;
+}
+
+.c__participant-completion__subhed {
+  display: block;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.c__participant-completion__scenarios-completed span {
+  font-weight: bold;
 }
