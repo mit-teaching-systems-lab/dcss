@@ -44,6 +44,12 @@ exports[`Manage participants 2`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -65,12 +71,6 @@ exports[`Manage participants 2`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -486,6 +486,12 @@ exports[`Manage participants 3`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -507,12 +513,6 @@ exports[`Manage participants 3`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -928,6 +928,12 @@ exports[`Manage participants 4`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -949,12 +955,6 @@ exports[`Manage participants 4`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -1370,6 +1370,12 @@ exports[`Manage participants 5`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -1391,12 +1397,6 @@ exports[`Manage participants 5`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -1862,6 +1862,12 @@ exports[`Search participants 2`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -1883,12 +1889,6 @@ exports[`Search participants 2`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -2304,6 +2304,12 @@ exports[`Search participants 3`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -2325,12 +2331,6 @@ exports[`Search participants 3`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -2746,6 +2746,12 @@ exports[`Search participants 4`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -2767,12 +2773,6 @@ exports[`Search participants 4`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -2963,6 +2963,12 @@ exports[`Search participants 5`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -2984,12 +2990,6 @@ exports[`Search participants 5`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -3180,6 +3180,12 @@ exports[`Search participants 6`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -3201,12 +3207,6 @@ exports[`Search participants 6`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -3622,6 +3622,12 @@ exports[`Search participants 7`] = `
           </span>
            participant have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -3643,12 +3649,6 @@ exports[`Search participants 7`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -3760,6 +3760,12 @@ exports[`Search participants 8`] = `
           </span>
            participant have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -3781,12 +3787,6 @@ exports[`Search participants 8`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -3898,6 +3898,12 @@ exports[`Search participants 9`] = `
           </span>
            participant have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -3919,12 +3925,6 @@ exports[`Search participants 9`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -4036,6 +4036,12 @@ exports[`Search participants 10`] = `
           </span>
            participant have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -4057,12 +4063,6 @@ exports[`Search participants 10`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -4174,6 +4174,12 @@ exports[`Search participants 11`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -4195,12 +4201,6 @@ exports[`Search participants 11`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -4616,6 +4616,12 @@ exports[`Search participants 12`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -4637,12 +4643,6 @@ exports[`Search participants 12`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
@@ -5058,6 +5058,12 @@ exports[`Search participants 13`] = `
           </span>
            participants have completed all scenarios
         </p>
+        <button
+          aria-label="Manage participants"
+          class="ui tiny button"
+        >
+          Manage participants
+        </button>
       </div>
       <div
         class="ten wide column c__scenario-search-participants"
@@ -5079,12 +5085,6 @@ exports[`Search participants 13`] = `
             class="search icon"
           />
         </div>
-        <button
-          aria-label="Manage participants"
-          class="ui primary button"
-        >
-          Manage participants
-        </button>
       </div>
     </div>
     <div
