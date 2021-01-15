@@ -1,5 +1,6 @@
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
+import { camelCase } from 'change-case';
 
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
@@ -89,7 +90,7 @@ class RichTextEditor extends Component {
 
       let buttonList =
         typeof options.buttons === 'string'
-          ? buttons[options.buttons]
+          ? buttons[camelCase(options.buttons)]
           : options.buttons;
 
       if (!buttonList) {
@@ -107,8 +108,6 @@ class RichTextEditor extends Component {
         options.buttonList[options.buttonList.length - 1].push(
           ...customPlugins.map(customPlugin => customPlugin.name)
         );
-
-        console.log(options.buttonList);
       }
 
       // Enables image upload and storage

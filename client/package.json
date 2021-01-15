@@ -101,6 +101,7 @@
     "react-aria-live": "^2.0.5",
     "react-beautiful-dnd": "^13.0.0",
     "react-dom": "^16.9.0",
+    "react-draggable": "^4.4.3",
     "react-graph-vis": "^1.0.5",
     "react-helmet": "^6.1.0",
     "react-hot-loader": "^4.12.11",

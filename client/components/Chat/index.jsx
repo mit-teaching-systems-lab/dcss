@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Draggable from 'react-draggable';
 import withSocket, {
   JOIN_OR_PART,
   NEW_MESSAGE,
@@ -22,9 +23,9 @@ import {
 } from '@actions/chat';
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
-import { Header, Modal } from '@components/UI';
 import ChatMessages from '@components/Chat/ChatMessages';
 import RichTextEditor from '@components/RichTextEditor';
+import Layout from '@utils/Layout';
 
 import './Chat.css';
 
@@ -68,7 +69,7 @@ function makeSendButtonPlugin(onSendNewMessage) {
     display: 'command',
     title: 'Send',
     buttonClass: '',
-    innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 20 500 500"><g><path d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></g></svg>`,
+    innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 20 500 500"><g><path id="c__send-icon" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></g></svg>`,
     add(core, targetElement) {
       const context = core.context;
       context.sendButtonPlugin = {
@@ -299,23 +300,65 @@ class Chat extends Component {
 
     const customPlugins = [makeSendButtonPlugin(onSendNewMessage)];
 
+    // Options properties
+    const autoFocus = true;
+    const buttons = Layout.isForMobile() ? 'chat-mobile' : 'chat-desktop';
+    const defaultStyle = 'font-family:Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:1em;line-height:1em;';
+    const height = 'auto';
+    const maxHeight = Layout.isForMobile() ? '150px' : '250px';
+    const minHeight = '50px';
+    const resizingBar = false;
+    const slice = Layout.isForMobile() ? -10 : -20;
+    const showPathLabel = false;
+
+    const options = {
+      autoFocus,
+      buttons,
+      // This is used to match suneditor to the site's fonts
+      defaultStyle,
+      height,
+      minHeight,
+      maxHeight,
+      resizingBar,
+      showPathLabel,
+    };
+
+    // Layout.isForMobile()?
+    const { position } = Storage.get(this.storageKey, {
+      position: {
+        x: 0,
+        y: 100
+      }
+    });
+
+    const onStop = (event, { x, y }) => {
+      Storage.merge(this.storageKey, {
+        position: { x, y }
+      });
+    };
+
     return (
-      <Modal.Accessible open>
-        <Modal
-          open
+      <Draggable
+        handle=".handle"
+        defaultPosition={position}
+        position={null}
+        scale={1}
+        onStop={onStop}
+      >
+        <div
           role="dialog"
-          aria-modal="true"
-          size="small"
-          className="c__container-modal"
+          className="ui modal transition visible active c__container-modal"
+          data-testid="chat-draggable"
         >
-          <Header
-            icon="comments outline"
-            content="{scenario.title}, {slide.title} Discussion"
-            tabIndex="0"
-          />
-          <Modal.Content tabIndex="0">
+          <div tabIndex="0" className="ui header handle">
+            <i aria-hidden="true" className="comments outline icon"></i>
+            <div className="content">
+              scenario.title, slide.title Discussion
+            </div>
+          </div>
+          <div tabIndex="0" className="content">
             <div className="cm__container-outer">
-              <ChatMessages chat={chat} onQuote={onQuote} />
+              <ChatMessages chat={chat} onQuote={onQuote} slice={slice} />
             </div>
             <div className="cc__container-outer">
               <RichTextEditor
@@ -327,23 +370,13 @@ class Chat extends Component {
                 onInput={onInput}
                 onKeyDown={onKeyDown}
                 onMount={onMount}
-                options={{
-                  autoFocus: true,
-                  buttons: 'chat',
-                  height: 'auto',
-                  minHeight: '50px',
-                  maxHeight: '250px',
-                  resizingBar: false,
-                  showPathLabel: false,
-                  // This is used to match suneditor to the site's fonts
-                  defaultStyle:
-                    'font-family:Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:1em; line-height:1em;'
-                }}
+                options={options}
               />
             </div>
-          </Modal.Content>
-        </Modal>
-      </Modal.Accessible>
+          </div>
+          <div data-testid="chat-main" />
+        </div>
+      </Draggable>
     );
   }
 }

@@ -56,7 +56,7 @@ class Chat extends Component {
       isViewingNewest: true,
       hasNewMessages: true,
       messages: [],
-      slice: -20
+      slice: this.props.slice || -20
     };
 
     this.isComponentMounted = false;
@@ -263,7 +263,7 @@ class Chat extends Component {
                       </Comment.Author>
                       <Comment.Metadata>
                         <span tabIndex="0" aria-label={message.created_at}>
-                          {Moment(message.created_at).fromNow()}
+                          {Moment(message.created_at).format('LT')}
                         </span>
                       </Comment.Metadata>
                       <Comment.Actions>
@@ -328,6 +328,7 @@ Chat.propTypes = {
   messages: PropTypes.array,
   onQuote: PropTypes.func,
   setMessageById: PropTypes.func,
+  slice: PropTypes.number,
   socket: PropTypes.object,
   user: PropTypes.object
 };

@@ -55,8 +55,8 @@ jest.mock('@utils/Moment', () => {
     __esModule: true,
     default: function(time) {
       return {
-        fromNow() {
-          return 'a minute ago';
+        format() {
+          return 'HH:mm A';
         }
       };
     }

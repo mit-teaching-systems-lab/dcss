@@ -26,6 +26,14 @@ import userEvent from '@testing-library/user-event';
 
 import Emitter from 'events';
 
+import Storage from '@utils/Storage';
+jest.mock('@utils/Storage', () => {
+  return {
+    __esModule: true,
+    ...jest.requireActual('@utils/Storage')
+  };
+});
+
 import withSocket, * as SOCKET_EVENT_TYPES from '@hoc/withSocket';
 jest.mock('@hoc/withSocket', () => {
   const socket = {
@@ -72,6 +80,7 @@ jest.mock('@components/RichTextEditor', () => {
       const {
         name = 'content',
         id,
+        customPlugins,
         disable = true,
         defaultValue = '<p><br></p>',
         onChange = () => {},
@@ -102,6 +111,65 @@ jest.mock('@components/RichTextEditor', () => {
         style
       };
 
+      expect(customPlugins.length).toBe(1);
+
+      const util = {
+        addClass() {},
+        removeClass() {}
+      };
+      const context = {};
+      const core = {
+        context
+      };
+      const element = {};
+
+      const [sendButtonPlugin] = customPlugins;
+
+      expect(core).toMatchObject({
+        context: {}
+      });
+
+      sendButtonPlugin.add(core, element);
+
+      expect(core).toMatchObject({
+        context: {
+          sendButtonPlugin: {
+            targetButton: {}
+          }
+        }
+      });
+
+      sendButtonPlugin.active.call(
+        {
+          ...core,
+          util
+        },
+        {
+          nodeName: 'mark',
+          style: {
+            backgroundColor: ''
+          }
+        }
+      );
+
+      sendButtonPlugin.active.call(
+        {
+          ...core,
+          util
+        },
+        {
+          nodeName: 'mark',
+          style: {
+            backgroundColor: 'X'
+          }
+        }
+      );
+
+      sendButtonPlugin.active.call({
+        ...core,
+        util
+      });
+
       return (
         <div>
           <textarea {...mockProps} />
@@ -116,6 +184,24 @@ jest.mock('@components/RichTextEditor', () => {
     } else {
       return <div className={className} dangerouslySetInnerHTML={{ __html }} />;
     }
+  };
+});
+
+import Layout from '@utils/Layout';
+jest.mock('@utils/Layout', () => {
+  return {
+    ...jest.requireActual('@utils/Layout'),
+    isForMobile: jest.fn(() => false)
+  };
+});
+
+globalThis.onStop = null;
+jest.mock('react-draggable', () => {
+  return function(props) {
+    const { children, onStop } = props;
+
+    globalThis.onStop = onStop;
+    return children;
   };
 });
 
@@ -393,6 +479,66 @@ test('No chat id, defaults to 1. This test should fail when the feature is compl
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Layout on mobile', async done => {
+  const Component = Chat;
+
+  Layout.isForMobile.mockImplementation(() => {
+    return true;
+  });
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState,
+    chat: {
+      id: null
+    }
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Layout on desktop', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState,
+    chat: {
+      id: null
+    }
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+  );
   expect(serialize()).toMatchSnapshot();
 
   done();
@@ -706,7 +852,8 @@ test('Calls onJoinOrPart when receives JOIN_OR_PART event', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -791,7 +938,8 @@ test('Calls onChange when RTE is cleared', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -825,7 +973,8 @@ test('Types, then attempts to send empty string', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -865,7 +1014,8 @@ test('Types, then attempts to send string containing only a space character', as
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -906,7 +1056,8 @@ test('Types, followed by {enter}', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -970,7 +1121,8 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -1035,7 +1187,8 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -1091,7 +1244,8 @@ test('Calls onInput when RTE receives new content', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -1151,7 +1305,8 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -1213,7 +1368,8 @@ test('Types, clicks Send Message', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -1277,7 +1433,8 @@ test('onQuote', async done => {
   const Component = Chat;
 
   const props = {
-    ...commonProps
+    ...commonProps,
+    id: 1
   };
 
   const state = {
@@ -1326,6 +1483,50 @@ test('onQuote', async done => {
     ]
   `);
   expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Draggable: onStop', async done => {
+  const Component = Chat;
+
+  Storage.merge = jest.fn();
+  Storage.merge.mockImplementation(() => {});
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.onStop({}, { x: 10, y: 10 });
+
+  await waitFor(() => expect(Storage.merge).toHaveBeenCalledTimes(1));
+
+  expect(Storage.merge.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "chat/1",
+      Object {
+        "position": Object {
+          "x": 10,
+          "y": 10,
+        },
+      },
+    ]
+  `);
 
   done();
 });

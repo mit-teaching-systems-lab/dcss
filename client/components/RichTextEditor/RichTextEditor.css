@@ -2,6 +2,11 @@
   padding: 0.5em !important;
 }
 
+.sun-editor .se-btn:enabled.active {
+  color: #000000 !important;
+  background: #e1e1e1 !important;
+}
+
 /*.se-toolbar {
   z-index: 7 !important;
 }

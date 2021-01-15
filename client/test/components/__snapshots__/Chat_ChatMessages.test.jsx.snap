@@ -51,7 +51,7 @@ exports[`Calls onQuote 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -124,7 +124,7 @@ exports[`Calls onQuote 3`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -194,7 +194,7 @@ exports[`Calls onQuote 3`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -267,7 +267,7 @@ exports[`Calls onQuote 3`] = `
               aria-label="2020-12-09T16:41:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -353,7 +353,7 @@ exports[`Message can be deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -435,7 +435,7 @@ exports[`Message can be deleted 3`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -519,7 +519,7 @@ exports[`Message can be deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -601,7 +601,7 @@ exports[`Message can be deleted 4`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -685,7 +685,7 @@ exports[`Message can be deleted 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -767,7 +767,7 @@ exports[`Message can be deleted 5`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -851,7 +851,7 @@ exports[`Message can be deleted 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -933,7 +933,7 @@ exports[`Message can be deleted 6`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1017,7 +1017,7 @@ exports[`Message can be deleted 7`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1099,7 +1099,7 @@ exports[`Message can be deleted 7`] = `
               aria-label="2020-12-09T16:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1187,7 +1187,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1269,7 +1269,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1351,7 +1351,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1433,7 +1433,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1515,7 +1515,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1597,7 +1597,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1679,7 +1679,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1761,7 +1761,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1843,7 +1843,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -1925,7 +1925,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2007,7 +2007,7 @@ exports[`Receives message that was deleted 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2103,7 +2103,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2185,7 +2185,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2267,7 +2267,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2349,7 +2349,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2431,7 +2431,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2513,7 +2513,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2595,7 +2595,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2677,7 +2677,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2759,7 +2759,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2841,7 +2841,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -2923,7 +2923,7 @@ exports[`Receives message that was deleted 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3021,7 +3021,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3094,7 +3094,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3167,7 +3167,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3240,7 +3240,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3313,7 +3313,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3386,7 +3386,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3459,7 +3459,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3532,7 +3532,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3605,7 +3605,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3678,7 +3678,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3751,7 +3751,7 @@ exports[`Receives new message after scrolling 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3838,7 +3838,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3911,7 +3911,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -3984,7 +3984,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4057,7 +4057,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4130,7 +4130,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4203,7 +4203,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4276,7 +4276,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4349,7 +4349,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4422,7 +4422,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4495,7 +4495,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4568,7 +4568,7 @@ exports[`Receives new message after scrolling 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4655,7 +4655,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4728,7 +4728,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4801,7 +4801,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4874,7 +4874,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -4947,7 +4947,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5020,7 +5020,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5093,7 +5093,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5166,7 +5166,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5239,7 +5239,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5312,7 +5312,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5385,7 +5385,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5458,7 +5458,7 @@ exports[`Receives new message after scrolling 5`] = `
               aria-label="2020-12-15T09:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5555,7 +5555,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5628,7 +5628,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5701,7 +5701,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5774,7 +5774,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5847,7 +5847,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5920,7 +5920,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -5993,7 +5993,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6066,7 +6066,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6139,7 +6139,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6212,7 +6212,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6285,7 +6285,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6358,7 +6358,7 @@ exports[`Receives new message after scrolling 6`] = `
               aria-label="2020-12-15T09:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6473,7 +6473,7 @@ exports[`Receives new message after scrolling without existing messages 5`] = `
               aria-label="2020-12-15T09:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6570,7 +6570,7 @@ exports[`Receives new message after scrolling without existing messages 6`] = `
               aria-label="2020-12-15T09:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6659,7 +6659,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6732,7 +6732,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6805,7 +6805,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6878,7 +6878,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -6951,7 +6951,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7024,7 +7024,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7097,7 +7097,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7170,7 +7170,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7243,7 +7243,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7316,7 +7316,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7389,7 +7389,7 @@ exports[`Receives new message at end of messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7476,7 +7476,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7549,7 +7549,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7622,7 +7622,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7695,7 +7695,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7768,7 +7768,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7841,7 +7841,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7914,7 +7914,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -7987,7 +7987,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8060,7 +8060,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8133,7 +8133,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8206,7 +8206,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8279,7 +8279,7 @@ exports[`Receives new message at end of messages 4`] = `
               aria-label="2020-12-15T09:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8368,7 +8368,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8441,7 +8441,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8514,7 +8514,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8587,7 +8587,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8660,7 +8660,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8733,7 +8733,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8806,7 +8806,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8879,7 +8879,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -8952,7 +8952,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9025,7 +9025,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9098,7 +9098,7 @@ exports[`Receives new message for different chat 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9185,7 +9185,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9258,7 +9258,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9331,7 +9331,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9404,7 +9404,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9477,7 +9477,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9550,7 +9550,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9623,7 +9623,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9696,7 +9696,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9769,7 +9769,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9842,7 +9842,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -9915,7 +9915,7 @@ exports[`Receives new message for different chat 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10004,7 +10004,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10077,7 +10077,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10150,7 +10150,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10223,7 +10223,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10296,7 +10296,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10369,7 +10369,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10442,7 +10442,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10515,7 +10515,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10588,7 +10588,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10661,7 +10661,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10734,7 +10734,7 @@ exports[`Receives new message just before unmount 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10825,7 +10825,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10898,7 +10898,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -10971,7 +10971,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11044,7 +11044,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11117,7 +11117,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11190,7 +11190,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11263,7 +11263,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11336,7 +11336,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11409,7 +11409,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11482,7 +11482,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11555,7 +11555,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11642,7 +11642,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11715,7 +11715,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11788,7 +11788,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11861,7 +11861,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -11934,7 +11934,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12007,7 +12007,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12080,7 +12080,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12153,7 +12153,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12226,7 +12226,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12299,7 +12299,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12372,7 +12372,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12445,7 +12445,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
               aria-label="2020-12-15T09:40:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12546,7 +12546,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12619,7 +12619,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12692,7 +12692,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12765,7 +12765,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12838,7 +12838,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12911,7 +12911,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -12984,7 +12984,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13057,7 +13057,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13130,7 +13130,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13203,7 +13203,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13276,7 +13276,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13349,7 +13349,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13422,7 +13422,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13495,7 +13495,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13568,7 +13568,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13641,7 +13641,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13714,7 +13714,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13787,7 +13787,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13860,7 +13860,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -13933,7 +13933,7 @@ exports[`Show hidden messages 3`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div
@@ -14020,7 +14020,7 @@ exports[`User is missing from chat.usersById 1`] = `
               aria-label="2020-12-09T16:39:10.359Z"
               tabindex="0"
             >
-              a minute ago
+              HH:mm A
             </span>
           </div>
           <div

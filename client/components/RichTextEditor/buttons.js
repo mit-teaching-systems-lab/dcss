@@ -76,10 +76,8 @@ export const suggestion = [
   ]
 ];
 
-export const chat = [
+export const chatDesktop = [
   [
-    'undo',
-    'redo',
     'bold',
     'italic',
     'underline',
@@ -88,9 +86,20 @@ export const chat = [
     'link',
     'blockquote',
     'math',
-    'image',
-    'imageGallery'
+    'image'
   ]
 ];
 
-export default { small, medium, large, component, suggestion, chat };
+export const chatMobile = [
+  ['bold', 'italic', 'underline', 'strike', 'list', 'link', 'image']
+];
+
+export default {
+  small,
+  medium,
+  large,
+  component,
+  suggestion,
+  chatDesktop,
+  chatMobile
+};
