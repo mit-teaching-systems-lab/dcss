@@ -37,61 +37,6 @@ async function getCohortRuns(id) {
   return result.rows;
 }
 
-async function getCohortUsers(id) {
-  // const result = await client.query(sql`
-  //   SELECT *
-  //   FROM users
-  //   INNER JOIN cohort_user_role
-  //       ON users.id = cohort_user_role.user_id
-  //   WHERE cohort_user_role.cohort_id = ${id};
-  // `);
-  // const result = await client.query(sql`
-  //   SELECT users.id, users.username, users.email, roles
-  //   FROM users, LATERAL (  -- this is an implicit CROSS JOIN
-  //     SELECT ARRAY (
-  //       SELECT role
-  //       FROM cohort_user_role cur
-  //       WHERE cur.cohort_id = 10 AND cur.user_id = users.id
-  //      ) AS roles
-  //   ) lat
-  //   WHERE array_length(lat.roles, 1) > 0;
-  // `);
-
-  const progress = await getCohortProgress(id);
-  const result = await query(sql`
-    SELECT
-      id,
-      email,
-      username,
-      personalname,
-      roles,
-      email = '' OR email IS NULL OR hash IS NULL AS is_anonymous,
-      '{owner}' && roles AS is_owner
-    FROM users
-    INNER JOIN (
-      SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
-      FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
-      WHERE cohort_id = ${id} AND ended_at IS NULL
-      GROUP BY cohort_id, user_id
-    ) cur
-    ON users.id = cur.user_id;
-  `);
-  const users = result.rows;
-  const usersById = users.reduce((accum, user) => {
-    user.progress = progress[user.id] || {
-      completed: [],
-      latestByScenarioId: {}
-    };
-    accum[user.id] = user;
-    return accum;
-  }, {});
-
-  return {
-    users,
-    usersById
-  };
-}
-
 async function createCohort(name, user_id) {
   if (!(name && user_id)) {
     throw new Error(
@@ -202,6 +147,61 @@ async function getCohortProgress(id) {
   }
 
   return progress;
+}
+
+async function getCohortUsers(id) {
+  // const result = await client.query(sql`
+  //   SELECT *
+  //   FROM users
+  //   INNER JOIN cohort_user_role
+  //       ON users.id = cohort_user_role.user_id
+  //   WHERE cohort_user_role.cohort_id = ${id};
+  // `);
+  // const result = await client.query(sql`
+  //   SELECT users.id, users.username, users.email, roles
+  //   FROM users, LATERAL (  -- this is an implicit CROSS JOIN
+  //     SELECT ARRAY (
+  //       SELECT role
+  //       FROM cohort_user_role cur
+  //       WHERE cur.cohort_id = 10 AND cur.user_id = users.id
+  //      ) AS roles
+  //   ) lat
+  //   WHERE array_length(lat.roles, 1) > 0;
+  // `);
+
+  const progress = await getCohortProgress(id);
+  const result = await query(sql`
+    SELECT
+      id,
+      email,
+      username,
+      personalname,
+      roles,
+      email = '' OR email IS NULL OR hash IS NULL AS is_anonymous,
+      '{owner}' && roles AS is_owner
+    FROM users
+    INNER JOIN (
+      SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
+      FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
+      WHERE cohort_id = ${id} AND ended_at IS NULL
+      GROUP BY cohort_id, user_id
+    ) cur
+    ON users.id = cur.user_id;
+  `);
+  const users = result.rows;
+  const usersById = users.reduce((accum, user) => {
+    user.progress = progress[user.id] || {
+      completed: [],
+      latestByScenarioId: {}
+    };
+    accum[user.id] = user;
+    return accum;
+  }, {});
+
+  return {
+    users,
+    usersById
+  };
 }
 
 async function __getAggregatedCohort(cohort) {

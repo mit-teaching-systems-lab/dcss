@@ -135,7 +135,6 @@ export class CohortProgress extends React.Component {
     const { onParticipantSearchChange } = this;
     const { authority, cohort, onClick } = this.props;
     const { isReady } = this.state;
-    const { isFacilitator /*, isParticipant */ } = authority;
 
     if (!isReady) {
       return <Loading />;
@@ -163,7 +162,7 @@ export class CohortProgress extends React.Component {
     const usersInCohortHeader = (
       <p className="c__scenario-header-num">
         <span>
-          {completedCount}/{sourceParticipants.length}
+          {completedCount}&#47;{sourceParticipants.length}
         </span>{' '}
         {pluralize('participant', sourceParticipants.length)} have completed all
         scenarios
@@ -200,12 +199,12 @@ export class CohortProgress extends React.Component {
 
     return (
       <Container fluid className="c__scenario-container">
-        <Grid stackable columns={2} className="c__scenario-participant-header">
+        <Grid stackable className="c__scenario-participant-header" columns={2}>
           <Grid.Column width={6}>
             {usersInCohortHeader}
             {manageParticipantsButton}
           </Grid.Column>
-          <Grid.Column width={10} className="c__scenario-search-participants">
+          <Grid.Column className="c__scenario-search-participants" width={10}>
             {searchParticipantsInCohort}
           </Grid.Column>
         </Grid>
@@ -306,7 +305,7 @@ export class CohortProgress extends React.Component {
                     ) : null}
                     <p className="c__participant-completion__scenarios-completed">
                       <span>
-                        {completedCount}/{cohortScenarios.length}{' '}
+                        {completedCount}&#47;{cohortScenarios.length}{' '}
                       </span>
                       {pluralize('scenario', cohortScenarios.length)} completed
                     </p>
@@ -357,7 +356,7 @@ CohortProgress.propTypes = {
   usersById: PropTypes.object
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const { cohort, cohorts, scenariosById, user, usersById } = state;
   return { cohort, cohorts, scenariosById, user, usersById };
 };

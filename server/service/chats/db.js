@@ -63,6 +63,9 @@ exports.createNewUnquotableMessage = async (chat_id, user_id, content) => {
 };
 
 exports.joinChat = async (chat_id, user_id) => {
+  if (!chat_id || !user_id) {
+    return;
+  }
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO chat_user
