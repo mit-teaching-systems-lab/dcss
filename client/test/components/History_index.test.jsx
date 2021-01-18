@@ -72,6 +72,7 @@ beforeEach(() => {
         id: 1,
         created_at: '2020-08-31T14:01:08.656Z',
         name: 'A New Cohort That Exists Within Inline Props',
+        is_archived: false,
         runs: [
           {
             id: 11,
@@ -125,6 +126,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1905,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -146,6 +148,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1904,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -167,6 +170,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1903,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -188,6 +192,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1902,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -234,6 +239,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1905,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -255,6 +261,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1904,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -276,6 +283,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1903,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -297,6 +305,7 @@ beforeEach(() => {
               latestByScenarioId: {
                 1: {
                   is_complete: false,
+                  scenario_id: 99,
                   event_id: 1902,
                   created_at: 1602454306144,
                   name: 'slide-arrival',
@@ -547,6 +556,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -568,6 +578,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -589,6 +600,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -610,6 +622,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',

@@ -4,21 +4,23 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
-  Grid,
   Header,
   Icon,
   Input,
   Menu,
+  Modal,
   Segment,
+  Text,
   Title
 } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
-import { getCohort, linkUserToCohort } from '@actions/cohort';
+import { getCohort, linkUserToCohort, setCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
 import DataTable from '@components/Cohorts/DataTable';
 import CohortProgress from '@components/Cohorts/CohortProgress';
+import CohortRename from '@components/Cohorts/CohortRename';
 import CohortScenarios from '@components/Cohorts/CohortScenarios';
 import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
@@ -45,6 +47,9 @@ export class Cohort extends React.Component {
 
     this.state = {
       isReady: false,
+      renameIsOpen: false,
+      deleteIsOpen: false,
+      archiveIsOpen: false,
       activeTabKey,
       tabs
     };
@@ -104,20 +109,6 @@ export class Cohort extends React.Component {
     const tab = tabs.find(tab => tab.menuItem.key === key);
     const content = source[isScenario ? 'title' : 'username'];
 
-    // const display = source[isScenario ? 'title' : 'username'];
-    // const content = (
-    //   <>
-    //     {display}
-    //     <Button
-    //       circular
-    //       icon="close"
-    //       floated="right"
-    //       size="mini"
-    //       style={{ fontSize: '0.75em', marginLeft: '1rem' }}
-    //     />
-    //   </>
-    // );
-
     if (!tab) {
       tabs.push({
         menuItem: {
@@ -161,7 +152,14 @@ export class Cohort extends React.Component {
 
   render() {
     const { authority, cohort, user } = this.props;
-    const { isReady, activeTabKey, tabs } = this.state;
+    const {
+      isReady,
+      activeTabKey,
+      tabs,
+      renameIsOpen,
+      deleteIsOpen,
+      archiveIsOpen
+    } = this.state;
     const { onClick, onTabClick, onDataTableClick } = this;
 
     if (!isReady) {
@@ -186,12 +184,7 @@ export class Cohort extends React.Component {
     );
 
     const menuItemCopyCohortUrl = (
-      <Button
-        icon
-        labelPosition="left"
-        size="small"
-        onClick={onCohortUrlCopyClick}
-      >
+      <Button size="small" onClick={onCohortUrlCopyClick}>
         <Icon name="clipboard outline" className="primary" />
         Copy cohort link to clipboard
       </Button>
@@ -200,24 +193,35 @@ export class Cohort extends React.Component {
     const cohortActivationState = (
       <div className="c__activation-state">
         <p className="c__activation-state__display">
-          Cohort is <span>Active</span>
+          Cohort is <span>{cohort.is_archived ? 'Archived' : 'Active'}</span>
         </p>
-        <Button icon labelPosition="left" size="small">
-          <Icon name="archive" className="primary" />
-          Archive cohort
-        </Button>
+        {!cohort.is_archived ? (
+          <Button
+            size="small"
+            onClick={() => this.setState({ archiveIsOpen: true })}
+          >
+            <Icon name="archive" className="primary" />
+            Archive cohort
+          </Button>
+        ) : null}
       </div>
     );
 
     const renameCohortButton = (
-      <Button icon labelPosition="left" size="small">
+      <Button
+        size="small"
+        onClick={() => this.setState({ renameIsOpen: true })}
+      >
         <Icon name="edit" className="primary" />
         Rename cohort
       </Button>
     );
 
     const deleteCohortButton = (
-      <Button icon labelPosition="left" size="small">
+      <Button
+        size="small"
+        onClick={() => this.setState({ deleteIsOpen: true })}
+      >
         <Icon name="trash alternate outline" className="primary" />
         Delete cohort
       </Button>
@@ -230,6 +234,35 @@ export class Cohort extends React.Component {
         {deleteCohortButton}
       </Fragment>
     );
+
+    const deleteOrArchiveIsOpen = deleteIsOpen || archiveIsOpen;
+    const deleteOrArchiveModalHeader = deleteIsOpen
+      ? `Delete "${cohort.name}"`
+      : `Archive "${cohort.name}"`;
+    const deleteOrArchiveAction = deleteIsOpen ? `delete` : `archive`;
+
+    const onDeleteOrArchiveClose = () => {
+      this.setState({
+        [`${deleteOrArchiveAction}IsOpen`]: false
+      });
+    };
+
+    const onDeleteOrArchiveConfirm = async () => {
+      const isArchive = deleteOrArchiveAction === 'archive';
+      const prop = isArchive ? 'is_archived' : 'deleted_at';
+      const value = isArchive ? true : new Date().toISOString();
+
+      await this.props.setCohort(this.props.cohort.id, {
+        [prop]: value
+      });
+
+      if (!isArchive) {
+        // Hard location change to force state purge
+        location.href = '/cohorts';
+      } else {
+        onDeleteOrArchiveClose();
+      }
+    };
 
     return (
       <div>
@@ -314,6 +347,49 @@ export class Cohort extends React.Component {
           </Segment>
         )}
 
+        {renameIsOpen ? (
+          <CohortRename
+            onClose={() => this.setState({ renameIsOpen: false })}
+          />
+        ) : null}
+
+        {deleteOrArchiveIsOpen ? (
+          <Modal.Accessible open>
+            <Modal
+              closeIcon
+              open
+              aria-modal="true"
+              role="dialog"
+              size="small"
+              onClose={onDeleteOrArchiveClose}
+            >
+              <Header icon="group" content={deleteOrArchiveModalHeader} />
+              <Modal.Content>
+                <Text>
+                  Are you sure you want to {deleteOrArchiveAction} &quot;
+                  {cohort.name}&quot;?
+                </Text>
+              </Modal.Content>
+              <Modal.Actions>
+                <Button.Group fluid>
+                  <Button
+                    primary
+                    aria-label="Yes"
+                    onClick={onDeleteOrArchiveConfirm}
+                  >
+                    Yes
+                  </Button>
+                  <Button.Or />
+                  <Button aria-label="No" onClick={onDeleteOrArchiveClose}>
+                    No
+                  </Button>
+                </Button.Group>
+              </Modal.Actions>
+              <div data-testid="cohort-rename" />
+            </Modal>
+          </Modal.Accessible>
+        ) : null}
+
         <Boundary bottom data-testid="cohort-boundary-bottom" />
       </div>
     );
@@ -330,6 +406,7 @@ Cohort.propTypes = {
     created_at: PropTypes.string,
     deleted_at: PropTypes.string,
     updated_at: PropTypes.string,
+    is_archived: PropTypes.bool,
     name: PropTypes.string,
     // roles: PropTypes.array,
     runs: PropTypes.array,
@@ -350,6 +427,7 @@ Cohort.propTypes = {
     }).isRequired
   }).isRequired,
   onChange: PropTypes.func,
+  setCohort: PropTypes.func,
   getCohort: PropTypes.func,
   linkUserToCohort: PropTypes.func,
   getUser: PropTypes.func,
@@ -386,6 +464,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getCohort: id => dispatch(getCohort(id)),
+  setCohort: (id, params) => dispatch(setCohort(id, params)),
   getUser: () => dispatch(getUser()),
   getUsers: () => dispatch(getUsers()),
   linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params))

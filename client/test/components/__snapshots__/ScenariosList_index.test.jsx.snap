@@ -303,7 +303,7 @@ exports[`Render 1 1 1`] = `
           style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
         />
         <div
-          class="row"
+          class="row grid__bottom-row"
         >
           <div
             class="stretched column"
@@ -618,7 +618,7 @@ exports[`Render 2 1 1`] = `
           style="background-color: red; height: 1px; width: 100vw; z-index: 9007199254740991;"
         />
         <div
-          class="row"
+          class="row grid__bottom-row"
         >
           <div
             class="stretched column"

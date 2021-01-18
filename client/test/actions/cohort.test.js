@@ -162,7 +162,7 @@ describe('SET_COHORT_SUCCESS', () => {
       Array [
         "/api/cohorts/1",
         Object {
-          "body": "{\\"name\\":\\"A New Name!\\"}",
+          "body": "{\\"name\\":\\"A New Name!\\",\\"deleted_at\\":null}",
           "headers": Object {
             "Content-Type": "application/json",
           },

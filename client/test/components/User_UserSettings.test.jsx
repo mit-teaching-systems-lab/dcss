@@ -247,6 +247,7 @@ test('Render 2 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1902,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -665,6 +666,7 @@ test('Render 9 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1902,
             created_at: 1602454306144,
             name: 'slide-arrival',

@@ -56,6 +56,29 @@ exports[`Render 1 1 1`] = `
             class="search icon"
           />
         </div>
+        <div
+          class="sl__menu-tools"
+        >
+          <div>
+            <p>
+              Showing all cohorts 
+              <span
+                class="sl__menu--search-no"
+              >
+                (2)
+              </span>
+            </p>
+            <button
+              class="ui small icon left labeled button sc__hidden-on-mobile"
+            >
+              <i
+                aria-hidden="true"
+                class="clipboard outline icon primary"
+              />
+              Copy the url to these cohorts
+            </button>
+          </div>
+        </div>
       </div>
       <div
         class="ui grid"
@@ -178,7 +201,7 @@ exports[`Render 1 1 1`] = `
           </div>
         </div>
         <div
-          class="row"
+          class="row grid__bottom-row"
         >
           <div
             class="stretched column"
@@ -227,6 +250,33 @@ exports[`Render 1 2 1`] = `
       class="twelve wide column grid__main"
     >
       <div
+        class="right menu grid__menu"
+      >
+        <div
+          class="sl__menu-tools"
+        >
+          <div>
+            <p>
+              Showing all cohorts 
+              <span
+                class="sl__menu--search-no"
+              >
+                (0)
+              </span>
+            </p>
+            <button
+              class="ui small icon left labeled button sc__hidden-on-mobile"
+            >
+              <i
+                aria-hidden="true"
+                class="clipboard outline icon primary"
+              />
+              Copy the url to these cohorts
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
         class="ui grid"
       >
         <div
@@ -347,7 +397,7 @@ exports[`Render 1 2 1`] = `
           </div>
         </div>
         <div
-          class="row"
+          class="row grid__bottom-row"
         >
           <div
             class="stretched column"

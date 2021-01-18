@@ -50,6 +50,7 @@ export class CohortScenarios extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   async moveScenario(fromIndex, toIndex) {
     const { cohort } = this.props;
     const scenarios = cohort.scenarios.slice();
@@ -62,10 +63,12 @@ export class CohortScenarios extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   onSortableChange(fromIndex, toIndex) {
     this.moveScenario(fromIndex, toIndex);
   }
 
+  /* istanbul ignore next */
   onSortableScroll() {
     if (this.state.visibleCount < this.props.cohort.scenarios.length) {
       this.setState({

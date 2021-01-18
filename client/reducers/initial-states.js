@@ -15,6 +15,7 @@ export const cohortInitialState = {
   created_at: '',
   updated_at: null,
   deleted_at: null,
+  is_archived: false,
   name: '',
   runs: [],
   scenarios: [],

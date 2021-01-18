@@ -88,10 +88,17 @@ const filter = (scenarios, user) => {
     return accum;
   }, []);
 
-  const notDeleted = reduced.filter(({ deleted_at }) => !deleted_at);
-  const deleted = user.is_super
-    ? reduced.filter(({ deleted_at }) => deleted_at)
-    : [];
+  const { notDeleted, deleted } = reduced.reduce(
+    (accum, scenario) => {
+      if (scenario.deleted_at && user.is_super) {
+        accum.deleted.push(scenario);
+      } else {
+        accum.notDeleted.push(scenario);
+      }
+      return accum;
+    },
+    { notDeleted: [], deleted: [] }
+  );
 
   return [...notDeleted, ...deleted];
 };
@@ -579,7 +586,7 @@ class ScenariosList extends Component {
                 </Grid.Column>
               </Grid.Row>
               <Boundary bottom />
-              <Grid.Row>
+              <Grid.Row className="grid__bottom-row">
                 <Grid.Column stretched>
                   {scenariosPages > 1 ? (
                     <Pagination {...paginationProps} />

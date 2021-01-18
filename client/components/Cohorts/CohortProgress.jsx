@@ -211,6 +211,7 @@ export class CohortProgress extends React.Component {
 
         <div className="c__participant-list">
           {sourceParticipants.map((participant, index) => {
+            /* istanbul ignore if */
             if (!participant) {
               return null;
             }

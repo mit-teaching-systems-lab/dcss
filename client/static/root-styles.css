@@ -243,6 +243,12 @@ button {
   width: 100%;
 }
 
+.grid__bottom-row {
+  top: unset;
+  bottom: 0 !important;
+  position: absolute;
+}
+
 
 
 .ui.primary.buttons .button,

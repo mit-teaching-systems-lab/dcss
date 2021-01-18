@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cannot save empty name when type and hit {enter}, or click Save 1`] = `<DocumentFragment />`;
+
+exports[`Cannot save empty name when type and hit {enter}, or click Save 2`] = `<DocumentFragment />`;
+
+exports[`Cannot save empty name when type and hit {enter}, or click Save 3`] = `<DocumentFragment />`;
+
+exports[`Render 1 1 1`] = `<DocumentFragment />`;
+
+exports[`Save name when type and hit {enter}, or click Save 1`] = `<DocumentFragment />`;
+
+exports[`Save name when type and hit {enter}, or click Save 2`] = `<DocumentFragment />`;
+
+exports[`Save name when type and hit {enter}, or click Save 3`] = `<DocumentFragment />`;
+
+exports[`Will not save if confirm is "no" 1`] = `<DocumentFragment />`;
+
+exports[`Will not save if confirm is "no" 2`] = `<DocumentFragment />`;
+
+exports[`Will not save if confirm is "no" 3`] = `<DocumentFragment />`;

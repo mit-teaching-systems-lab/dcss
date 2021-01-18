@@ -103,6 +103,7 @@ export class CohortScenariosSelector extends React.Component {
   }
 
   onCloseClick() {
+    /* istanbul ignore else */
     if (this.props.onClose) {
       this.props.onClose();
     }

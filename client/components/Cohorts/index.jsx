@@ -2,7 +2,10 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import copy from 'copy-text-to-clipboard';
 import escapeRegExp from 'lodash.escaperegexp';
+import pluralize from 'pluralize';
+import * as QueryString from 'query-string';
 import {
   Button,
   Card,
@@ -27,25 +30,44 @@ import { getUser } from '@actions/user';
 import Gate from '@components/Gate';
 import Loading from '@components/Loading';
 import Layout from '@utils/Layout';
+import { notify } from '@components/Notification';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
 import CohortCreateWizard from './CohortCreateWizard';
 import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
 
+const qsOpts = {
+  arrayFormat: 'bracket'
+};
+
+function parseQueryString(input) {
+  return QueryString.parse(input || window.location.search, qsOpts);
+}
+
+function makeQueryString(keyVals) {
+  return `?${QueryString.stringify(keyVals, qsOpts)}`;
+}
+
+function makeHistoryUrl(location, keyVals) {
+  const searchString = makeQueryString(keyVals);
+  return `${location.pathname}${searchString}`;
+}
+
 export class Cohorts extends React.Component {
   constructor(props) {
     super(props);
 
-    const value = decodeURIComponent(window.location.search.replace('?q=', ''));
+    const { page = 1, search = '' } = parseQueryString(window.location.search);
+
     const cohorts = this.props.cohorts;
 
     this.state = {
-      activePage: 1,
       isReady: false,
       createIsVisible: false,
       cohorts,
-      value
+      page,
+      search
     };
 
     this.cohorts = cohorts;
@@ -61,7 +83,7 @@ export class Cohorts extends React.Component {
     if (!this.props.user.id) {
       this.props.history.push('/logout');
     } else {
-      const { value } = this.state;
+      const { search } = this.state;
       const count = await this.props.getCohortsCount();
 
       if (count <= this.props.cohorts.length) {
@@ -71,8 +93,8 @@ export class Cohorts extends React.Component {
           isReady: true
         });
 
-        if (value) {
-          this.onCohortSearchChange({}, { value });
+        if (search) {
+          this.onCohortSearchChange({}, { value: search });
         }
       } else {
         const limit = 20;
@@ -85,8 +107,8 @@ export class Cohorts extends React.Component {
             isReady: true
           });
 
-          if (value) {
-            this.onCohortSearchChange({}, { value });
+          if (search) {
+            this.onCohortSearchChange({}, { value: search });
           }
 
           offset += limit;
@@ -106,20 +128,21 @@ export class Cohorts extends React.Component {
 
   onCohortSearchChange(event, props) {
     const { cohorts: sourceCohorts, scenarios } = this.props;
-    const { value } = props;
+    const { value: search } = props;
+    const page = 1;
 
-    if (value === '') {
+    if (search === '') {
       this.setState({
-        activePage: 1,
-        cohorts: sourceCohorts
+        cohorts: sourceCohorts,
+        page,
+        search
       });
 
-      this.props.history.push(`${this.props.location.pathname}`);
-
+      this.props.history.push(makeHistoryUrl(this.props.location, { page }));
       return;
     }
 
-    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(search), 'i');
     const lookupScenario = id => {
       return (
         scenarios.find(scenario => scenario.id === id) || {
@@ -127,6 +150,24 @@ export class Cohorts extends React.Component {
           description: ''
         }
       );
+    };
+
+    const searchScenario = id => {
+      const scenario = lookupScenario(id);
+
+      // categories [String]
+      // labels [String]
+      // personas [Object]
+      // users [Object]
+
+      if (
+        escapedRegExp.test(scenario.title) ||
+        escapedRegExp.test(scenario.description)
+      ) {
+        return true;
+      }
+
+      return false;
     };
 
     const results = sourceCohorts.filter(record => {
@@ -140,13 +181,7 @@ export class Cohorts extends React.Component {
         return true;
       }
 
-      if (
-        scenarios.some(
-          id =>
-            escapedRegExp.test(lookupScenario(id).title) ||
-            escapedRegExp.test(lookupScenario(id).description)
-        )
-      ) {
+      if (scenarios.some(id => searchScenario(id))) {
         return true;
       }
       return false;
@@ -157,24 +192,35 @@ export class Cohorts extends React.Component {
     }
 
     this.setState({
-      activePage: 1,
       cohorts: results,
-      value
+      page,
+      search
     });
 
     this.props.history.push(
-      `${this.props.location.pathname}?q=${encodeURIComponent(value)}`
+      makeHistoryUrl(this.props.location, { page, search })
     );
   }
 
-  onPageChange(event, { activePage }) {
+  onPageChange(event, { activePage: page }) {
+    const { search } = this.state;
+
+    const searchParams = { page };
+
+    if (search) {
+      searchParams.search = search;
+    }
+
+    this.props.history.push(makeHistoryUrl(this.props.location, searchParams));
+
     this.setState({
-      activePage
+      page
     });
   }
 
   render() {
-    const { activePage, isReady, createIsVisible, value } = this.state;
+    const { user } = this.props;
+    const { page, isReady, createIsVisible, search } = this.state;
     const {
       onCreateCohortCancel,
       onCohortSearchChange,
@@ -185,7 +231,26 @@ export class Cohorts extends React.Component {
     // If there's an active search, use the search filtered set
     // of cohorts from state. Otherwise, use the status filtered
     // set from this.cohorts (the untouched backup).
-    let cohorts = value ? this.state.cohorts : this.cohorts.slice(0);
+    const sourceCohorts = search ? this.state.cohorts : this.cohorts.slice(0);
+    const { notDeleted, deleted } = sourceCohorts.reduce(
+      (accum, cohort) => {
+        if (cohort.deleted_at && user.is_super) {
+          accum.deleted.push(cohort);
+        } else {
+          accum.notDeleted.push(cohort);
+        }
+        return accum;
+      },
+      { notDeleted: [], deleted: [] }
+    );
+
+    const cohorts = [...notDeleted, ...deleted];
+
+    let displayHeading = 'Showing all cohorts';
+
+    if (search) {
+      displayHeading = `${displayHeading}, matching '${search}'`;
+    }
 
     const { permissions } = this.props;
 
@@ -213,25 +278,19 @@ export class Cohorts extends React.Component {
     const menuItemCountCohorts = (
       <p>
         You are a part of <span className="c__list-num">{cohorts.length}</span>{' '}
-        {cohorts.length === 1 ? 'cohort' : 'cohorts'}.
+        {pluralize('cohort', cohorts.length)}.
       </p>
     );
 
-    const menuItemSearchCohorts = cohorts.length ? (
-      <Menu.Menu
-        className="grid__menu"
-        key="menu-item-cohort-search"
-        position="right"
-      >
-        <Input
-          className="grid__menu-search"
-          label="Search cohorts"
-          icon="search"
-          size="big"
-          defaultValue={value || ''}
-          onChange={onCohortSearchChange}
-        />
-      </Menu.Menu>
+    const menuItemCohortsSearch = cohorts.length ? (
+      <Input
+        className="grid__menu-search"
+        label="Search cohorts"
+        icon="search"
+        size="big"
+        defaultValue={search || ''}
+        onChange={onCohortSearchChange}
+      />
     ) : null;
 
     const cohortPermissionActions = [
@@ -253,7 +312,7 @@ export class Cohorts extends React.Component {
     });
 
     const cohortsPages = Math.ceil(cohorts.length / itemsPerPage);
-    const cohortsIndex = (activePage - 1) * itemsPerPage;
+    const cohortsIndex = (page - 1) * itemsPerPage;
     const cohortsSlice = cohorts.slice(
       cohortsIndex,
       cohortsIndex + itemsPerPage
@@ -275,10 +334,48 @@ export class Cohorts extends React.Component {
       </Card.Group.Stackable>
     );
 
-    const pageTitle = `Cohorts (${cohorts.length})`;
+    const onCopyClick = () => {
+      const url = location.href;
+      copy(url);
+      notify({
+        message: `Copied: ${url}`
+      });
+    };
+
+    const cohortsLinkCopy = Layout.isNotForMobile() ? (
+      <Button
+        icon
+        className="sc__hidden-on-mobile"
+        labelPosition="left"
+        size="small"
+        onClick={onCopyClick}
+      >
+        <Icon name="clipboard outline" className="primary" />
+        Copy the url to these cohorts
+      </Button>
+    ) : null;
+
+    const cohortSearchTools = [
+      <Menu.Menu
+        className="grid__menu"
+        key="menu-item-cohort-search"
+        position="right"
+      >
+        {menuItemCohortsSearch}
+        <div className="sl__menu-tools">
+          <div>
+            <p>
+              {displayHeading}{' '}
+              <span className="sl__menu--search-no">({cohorts.length})</span>
+            </p>
+            {cohortsLinkCopy}
+          </div>
+        </div>
+      </Menu.Menu>
+    ];
     return (
       <Fragment>
-        <Title content={pageTitle} />
+        <Title content={displayHeading} />
         <Grid className="grid__container" stackable columns={2}>
           <Grid.Column className="grid__sidebar" width={4}>
             <div className="grid__header">
@@ -293,14 +390,14 @@ export class Cohorts extends React.Component {
             {cohortPermissionActions}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
-            {menuItemSearchCohorts}
+            {cohortSearchTools}
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
                   {!isReady ? <Loading {...loadingProps} /> : cardGroup}
                 </Grid.Column>
               </Grid.Row>
-              <Grid.Row>
+              <Grid.Row className="grid__bottom-row">
                 <Grid.Column stretched>
                   {cohortsPages > 1 ? (
                     <Pagination
@@ -311,7 +408,7 @@ export class Cohorts extends React.Component {
                       ellipsisItem={null}
                       firstItem={null}
                       lastItem={null}
-                      activePage={activePage}
+                      activePage={page}
                       onPageChange={onPageChange}
                       totalPages={cohortsPages}
                     />

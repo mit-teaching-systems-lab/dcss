@@ -43,6 +43,7 @@ describe('cohort', () => {
         "created_at": "",
         "deleted_at": null,
         "id": null,
+        "is_archived": false,
         "name": "",
         "runs": Array [],
         "scenarios": Array [],
@@ -56,6 +57,7 @@ describe('cohort', () => {
         "created_at": "",
         "deleted_at": null,
         "id": null,
+        "is_archived": false,
         "name": "",
         "runs": Array [],
         "scenarios": Array [],
@@ -76,6 +78,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -117,6 +120,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -164,6 +168,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -205,6 +210,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -252,6 +258,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -293,6 +300,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -340,6 +348,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -381,6 +390,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -428,6 +438,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -469,6 +480,7 @@ describe('cohort', () => {
         "created_at": "2020-02-31T14:01:02.656Z",
         "deleted_at": null,
         "id": 2,
+        "is_archived": false,
         "name": "A New Cohort That Exists In Bootstrap State For Testing",
         "roles": Array [
           "super",
@@ -519,6 +531,7 @@ describe('cohort', () => {
           "created_at": "",
           "deleted_at": null,
           "id": null,
+          "is_archived": false,
           "name": "",
           "runs": Array [],
           "scenarios": Array [],
@@ -556,6 +569,7 @@ describe('cohort', () => {
           "created_at": "",
           "deleted_at": null,
           "id": null,
+          "is_archived": false,
           "name": "",
           "runs": Array [],
           "scenarios": Array [],
@@ -599,6 +613,7 @@ describe('cohort', () => {
           "created_at": "",
           "deleted_at": null,
           "id": null,
+          "is_archived": false,
           "name": "",
           "runs": Array [],
           "scenarios": Array [],
@@ -612,6 +627,7 @@ describe('cohort', () => {
           "created_at": "",
           "deleted_at": null,
           "id": null,
+          "is_archived": false,
           "name": "",
           "runs": Array [],
           "scenarios": Array [],
@@ -640,6 +656,7 @@ describe('cohorts', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -683,6 +700,7 @@ describe('cohorts', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -734,6 +752,7 @@ describe('cohorts', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -777,6 +796,7 @@ describe('cohorts', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -835,6 +855,7 @@ describe('cohortsById', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -878,6 +899,7 @@ describe('cohortsById', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -930,6 +952,7 @@ describe('cohortsById', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",
@@ -973,6 +996,7 @@ describe('cohortsById', () => {
           "created_at": "2020-02-31T14:01:02.656Z",
           "deleted_at": null,
           "id": 2,
+          "is_archived": false,
           "name": "A New Cohort That Exists In Bootstrap State For Testing",
           "roles": Array [
             "super",

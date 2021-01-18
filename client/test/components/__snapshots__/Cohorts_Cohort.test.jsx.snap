@@ -42,31 +42,78 @@ exports[`Render 1 1 3`] = `
       class="ui bottom attached segment"
     >
       <section
-        class="c__section c__cohort-url"
+        class="c__section c__cohort-header"
       >
         <div
-          class="ui big labeled input"
+          class="c__cohort-url"
         >
           <div
-            class="ui label label"
+            class="ui big labeled input"
           >
-            Cohort url
+            <div
+              class="ui label label"
+            >
+              Cohort url
+            </div>
+            <input
+              type="text"
+              value="http://localhost/cohort/1"
+            />
           </div>
-          <input
-            type="text"
-            value="http://localhost/cohort/1"
-          />
+           
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon primary"
+            />
+            Copy cohort link to clipboard
+          </button>
         </div>
-         
-        <button
-          class="ui small icon left labeled button"
+        <div
+          class="c__cohort-user-actions"
         >
-          <i
-            aria-hidden="true"
-            class="clipboard outline icon primary"
-          />
-          Copy cohort link to clipboard
-        </button>
+          <div
+            class="c__activation-state"
+          >
+            <p
+              class="c__activation-state__display"
+            >
+              Cohort is 
+              <span>
+                Active
+              </span>
+            </p>
+            <button
+              class="ui small button"
+            >
+              <i
+                aria-hidden="true"
+                class="archive icon primary"
+              />
+              Archive cohort
+            </button>
+          </div>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="edit icon primary"
+            />
+            Rename cohort
+          </button>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="trash alternate outline icon primary"
+            />
+            Delete cohort
+          </button>
+        </div>
       </section>
       <section
         class="c__section"
@@ -589,31 +636,78 @@ exports[`Render 2 1 3`] = `
       class="ui bottom attached segment"
     >
       <section
-        class="c__section c__cohort-url"
+        class="c__section c__cohort-header"
       >
         <div
-          class="ui big labeled input"
+          class="c__cohort-url"
         >
           <div
-            class="ui label label"
+            class="ui big labeled input"
           >
-            Cohort url
+            <div
+              class="ui label label"
+            >
+              Cohort url
+            </div>
+            <input
+              type="text"
+              value="http://localhost/cohort/1"
+            />
           </div>
-          <input
-            type="text"
-            value="http://localhost/cohort/1"
-          />
+           
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon primary"
+            />
+            Copy cohort link to clipboard
+          </button>
         </div>
-         
-        <button
-          class="ui small icon left labeled button"
+        <div
+          class="c__cohort-user-actions"
         >
-          <i
-            aria-hidden="true"
-            class="clipboard outline icon primary"
-          />
-          Copy cohort link to clipboard
-        </button>
+          <div
+            class="c__activation-state"
+          >
+            <p
+              class="c__activation-state__display"
+            >
+              Cohort is 
+              <span>
+                Active
+              </span>
+            </p>
+            <button
+              class="ui small button"
+            >
+              <i
+                aria-hidden="true"
+                class="archive icon primary"
+              />
+              Archive cohort
+            </button>
+          </div>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="edit icon primary"
+            />
+            Rename cohort
+          </button>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="trash alternate outline icon primary"
+            />
+            Delete cohort
+          </button>
+        </div>
       </section>
       <section
         class="c__section"
@@ -1136,31 +1230,78 @@ exports[`Render 3 1 3`] = `
       class="ui bottom attached segment"
     >
       <section
-        class="c__section c__cohort-url"
+        class="c__section c__cohort-header"
       >
         <div
-          class="ui big labeled input"
+          class="c__cohort-url"
         >
           <div
-            class="ui label label"
+            class="ui big labeled input"
           >
-            Cohort url
+            <div
+              class="ui label label"
+            >
+              Cohort url
+            </div>
+            <input
+              type="text"
+              value="http://localhost/cohort/1"
+            />
           </div>
-          <input
-            type="text"
-            value="http://localhost/cohort/1"
-          />
+           
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon primary"
+            />
+            Copy cohort link to clipboard
+          </button>
         </div>
-         
-        <button
-          class="ui small icon left labeled button"
+        <div
+          class="c__cohort-user-actions"
         >
-          <i
-            aria-hidden="true"
-            class="clipboard outline icon primary"
-          />
-          Copy cohort link to clipboard
-        </button>
+          <div
+            class="c__activation-state"
+          >
+            <p
+              class="c__activation-state__display"
+            >
+              Cohort is 
+              <span>
+                Active
+              </span>
+            </p>
+            <button
+              class="ui small button"
+            >
+              <i
+                aria-hidden="true"
+                class="archive icon primary"
+              />
+              Archive cohort
+            </button>
+          </div>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="edit icon primary"
+            />
+            Rename cohort
+          </button>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="trash alternate outline icon primary"
+            />
+            Delete cohort
+          </button>
+        </div>
       </section>
       <section
         class="c__section"
@@ -2043,31 +2184,78 @@ exports[`Render 9 1 3`] = `
       class="ui bottom attached segment"
     >
       <section
-        class="c__section c__cohort-url"
+        class="c__section c__cohort-header"
       >
         <div
-          class="ui big labeled input"
+          class="c__cohort-url"
         >
           <div
-            class="ui label label"
+            class="ui big labeled input"
           >
-            Cohort url
+            <div
+              class="ui label label"
+            >
+              Cohort url
+            </div>
+            <input
+              type="text"
+              value="http://localhost/cohort/1"
+            />
           </div>
-          <input
-            type="text"
-            value="http://localhost/cohort/1"
-          />
+           
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="clipboard outline icon primary"
+            />
+            Copy cohort link to clipboard
+          </button>
         </div>
-         
-        <button
-          class="ui small icon left labeled button"
+        <div
+          class="c__cohort-user-actions"
         >
-          <i
-            aria-hidden="true"
-            class="clipboard outline icon primary"
-          />
-          Copy cohort link to clipboard
-        </button>
+          <div
+            class="c__activation-state"
+          >
+            <p
+              class="c__activation-state__display"
+            >
+              Cohort is 
+              <span>
+                Active
+              </span>
+            </p>
+            <button
+              class="ui small button"
+            >
+              <i
+                aria-hidden="true"
+                class="archive icon primary"
+              />
+              Archive cohort
+            </button>
+          </div>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="edit icon primary"
+            />
+            Rename cohort
+          </button>
+          <button
+            class="ui small button"
+          >
+            <i
+              aria-hidden="true"
+              class="trash alternate outline icon primary"
+            />
+            Delete cohort
+          </button>
+        </div>
       </section>
       <section
         class="c__section"

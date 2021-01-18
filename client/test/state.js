@@ -91,6 +91,7 @@ module.exports = {
     created_at: '2020-02-31T14:01:02.656Z',
     updated_at: null,
     deleted_at: null,
+    is_archived: false,
     name: 'A New Cohort That Exists In Bootstrap State For Testing',
     runs: [],
     scenarios: [],
@@ -123,6 +124,7 @@ module.exports = {
       created_at: '2020-02-31T14:01:02.656Z',
       updated_at: null,
       deleted_at: null,
+      is_archived: false,
       runs: [],
       scenarios: [],
       users: [
@@ -152,6 +154,7 @@ module.exports = {
       created_at: '2020-03-24T14:52:28.429Z',
       updated_at: null,
       deleted_at: null,
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -256,6 +259,7 @@ module.exports = {
       created_at: '2020-03-24T14:52:28.429Z',
       updated_at: null,
       deleted_at: null,
+      is_archived: false,
       runs: [
         {
           id: 28,
@@ -344,6 +348,7 @@ module.exports = {
       created_at: '2020-02-31T14:01:02.656Z',
       updated_at: null,
       deleted_at: null,
+      is_archived: false,
       runs: [],
       scenarios: [],
       users: [

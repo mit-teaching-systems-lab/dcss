@@ -224,6 +224,7 @@ async function getCohort(id) {
       cohort.created_at,
       cohort.updated_at,
       cohort.deleted_at,
+      cohort.is_archived,
       cur.roles
     FROM cohort
     INNER JOIN (

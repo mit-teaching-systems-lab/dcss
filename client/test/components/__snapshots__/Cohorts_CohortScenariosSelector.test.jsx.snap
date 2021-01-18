@@ -1,5 +1,4506 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Close 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Deselect scenario 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Deselect scenario 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  2
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                >
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Multiplayer Scenario 2
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'A Multiplayer Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Some Other Scenario
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'Some Other Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Deselect scenario 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Has scenarios in state 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Has stepGroup 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <div>
+          STEP GROUP PLACEHOLDER
+        </div>
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  1
+                   scenarios selected for \\"
+                  A New Cohort That Exists Within Inline Props
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                >
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Some Other Scenario
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'Some Other Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`No cohort in props 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  1
+                   scenarios selected for \\"
+                  A New Cohort That Exists Within Inline Props
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                >
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Some Other Scenario
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'Some Other Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`No scenarios in state 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
 exports[`Render 1 1 1`] = `<DocumentFragment />`;
 
 exports[`Render 1 1 2`] = `<DocumentFragment />`;
+
+exports[`Save and Close Buttons 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Save and Close Buttons 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  2
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                >
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Multiplayer Scenario 2
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'A Multiplayer Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Some Other Scenario
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'Some Other Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Save selected scenarios 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Save selected scenarios 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  2
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                >
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Multiplayer Scenario 2
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'A Multiplayer Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Some Other Scenario
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'Some Other Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Search for scenarios 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Search for scenarios 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Search for scenarios 3`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Search for scenarios 4`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Search for scenarios 5`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Select scenario 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Select scenario 2`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  1
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                >
+                  <a
+                    class=\\"ui card\\"
+                    data-testid=\\"selected-scenario-card\\"
+                    scenario=\\"[object Object]\\"
+                  >
+                    <div
+                      class=\\"content c__wizard-scenario-card\\"
+                    >
+                      <div
+                        class=\\"header\\"
+                      >
+                        Multiplayer Scenario 2
+                      </div>
+                      <div
+                        class=\\"meta\\"
+                      >
+                        <p>
+                          Last edited
+                           
+                          <time
+                            class=\\"sc__time\\"
+                          >
+                            Invalid date
+                          </time>
+                        </p>
+                      </div>
+                      <div
+                        class=\\"description\\"
+                      >
+                        <p>
+                          This is the description of 'A Multiplayer Scenario'…
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`User in scenario 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui fullscreen modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"newspaper outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Choose scenarios
+        </div>
+      </div>
+      <div
+        class=\\"c__scenario-selector-content content\\"
+        tabindex=\\"0\\"
+      >
+        <h2
+          class=\\"ui header\\"
+        >
+          Choose a single scenario or multiple scenarios for your cohort.
+        </h2>
+        <div>
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"star icon primary\\"
+          />
+          <span
+            class=\\"ui medium text\\"
+          >
+            Remember to make your scenarios public so they appear in this list.
+          </span>
+        </div>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui big icon labeled input grid__menu-search\\"
+              >
+                <div
+                  class=\\"ui label label\\"
+                >
+                  Search scenarios
+                </div>
+                <input
+                  aria-label=\\"Search scenarios\\"
+                  type=\\"text\\"
+                />
+                <i
+                  aria-hidden=\\"true\\"
+                  class=\\"search icon\\"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column\\"
+            >
+              <div
+                class=\\"ui cards c__scenario-cards\\"
+              >
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Multiplayer Scenario 2
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'A Multiplayer Scenario'…
+                      </p>
+                    </div>
+                    <div
+                      class=\\"meta c__wizard-scenario-card__meta\\"
+                    >
+                      You are a super.
+                    </div>
+                  </div>
+                </a>
+                <a
+                  class=\\"ui card\\"
+                  data-testid=\\"unselected-scenario-card\\"
+                  scenario=\\"[object Object]\\"
+                >
+                  <div
+                    class=\\"content c__wizard-scenario-card\\"
+                  >
+                    <div
+                      class=\\"header\\"
+                    >
+                      Some Other Scenario
+                    </div>
+                    <div
+                      class=\\"meta\\"
+                    >
+                      <p>
+                        Last edited
+                         
+                        <time
+                          class=\\"sc__time\\"
+                        >
+                          Invalid date
+                        </time>
+                      </p>
+                    </div>
+                    <div
+                      class=\\"description\\"
+                    >
+                      <p>
+                        This is the description of 'Some Other Scenario'…
+                      </p>
+                    </div>
+                    <div
+                      class=\\"meta c__wizard-scenario-card__meta\\"
+                    >
+                      You are a super.
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions\\"
+      >
+        <div
+          class=\\"c__scenario-cards-selected\\"
+        >
+          <div
+            class=\\"ui padded grid\\"
+          >
+            <div
+              class=\\"row\\"
+            >
+              <div
+                class=\\"column\\"
+              >
+                <div
+                  class=\\"ui header\\"
+                >
+                  0
+                   scenarios selected for \\"
+                  A New Cohort That Exists In Bootstrap State For Testing
+                  \\"
+                </div>
+                <div
+                  class=\\"ui cards c__scenario-cards c__scenario-cards--selected\\"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c-action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui primary button\\"
+          >
+            Save
+          </button>
+          <div
+            class=\\"or\\"
+          />
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-scenarios-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;

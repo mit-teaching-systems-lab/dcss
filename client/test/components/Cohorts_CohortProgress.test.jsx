@@ -69,6 +69,8 @@ Storage.get.mockImplementation(key => {
 });
 
 let cohort;
+let scenarios;
+let scenariosById;
 
 import CohortProgress from '../../components/Cohorts/CohortProgress.jsx';
 
@@ -103,6 +105,7 @@ beforeEach(() => {
     id: 1,
     created_at: '2020-08-31T14:01:08.656Z',
     name: 'A New Cohort That Exists Within Inline Props',
+    is_archived: false,
     runs: [
       {
         id: 11,
@@ -156,6 +159,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -177,6 +181,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -198,6 +203,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -219,6 +225,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -265,6 +272,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -286,6 +294,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -307,6 +316,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -328,6 +338,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -338,6 +349,208 @@ beforeEach(() => {
       }
     }
   };
+  scenarios = [
+    {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true
+      },
+      categories: [],
+      consent: { id: 57, prose: '' },
+      description: "This is the description of 'A Multiplayer Scenario'",
+      finish: {
+        id: 1,
+        title: '',
+        components: [
+          { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+        ],
+        is_finish: true
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null
+      },
+      slides: [
+        {
+          id: 1,
+          title: '',
+          components: [
+            { html: '<h2>Thanks for participating!</h2>', type: 'Text' }
+          ],
+          is_finish: true
+        },
+        {
+          id: 2,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-eb6677358c9e',
+              html: '<p>paragraph</p>',
+              type: 'Text'
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-838fd5ec854f',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response'
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text'
+            }
+          ],
+          is_finish: false
+        }
+      ],
+      status: 1,
+      title: 'Multiplayer Scenario 2',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false
+        }
+      ],
+      id: 42,
+      created_at: '2020-08-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+      labels: ['a', 'b'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    },
+    {
+      author: {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true
+      },
+      categories: [],
+      consent: { id: 69, prose: '' },
+      description: "This is the description of 'Some Other Scenario'",
+      finish: {
+        id: 11,
+        title: '',
+        components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
+        is_finish: true
+      },
+      lock: {
+        scenario_id: 42,
+        user_id: 999,
+        created_at: '2020-02-31T23:54:19.934Z',
+        ended_at: null
+      },
+      slides: [
+        {
+          id: 11,
+          title: '',
+          components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
+          is_finish: true
+        },
+        {
+          id: 22,
+          title: '',
+          components: [
+            {
+              id: 'b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
+              html: '<p>HTML!</p>',
+              type: 'Text'
+            },
+            {
+              id: 'aede9380-c7a3-4ef7-add7-eb6677358c9e',
+              type: 'TextResponse',
+              header: 'TextResponse-1',
+              prompt: '',
+              timeout: 0,
+              recallId: '',
+              required: true,
+              responseId: 'be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+              placeholder: 'Your response'
+            },
+            {
+              id: 'f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+              html: '<p>?</p>',
+              type: 'Text'
+            }
+          ],
+          is_finish: false
+        }
+      ],
+      status: 1,
+      title: 'Some Other Scenario',
+      users: [
+        {
+          id: 999,
+          email: 'super@email.com',
+          username: 'super',
+          personalname: 'Super User',
+          roles: ['super'],
+          is_super: true,
+          is_author: true,
+          is_reviewer: false
+        }
+      ],
+      id: 99,
+      created_at: '2020-07-31T17:50:28.089Z',
+      updated_at: null,
+      deleted_at: null,
+      labels: ['a'],
+      personas: [
+        {
+          id: 1,
+          name: 'Participant',
+          description:
+            'The default user participating in a single person scenario.',
+          color: '#FFFFFF',
+          created_at: '2020-12-01T15:49:04.962Z',
+          updated_at: null,
+          deleted_at: null,
+          author_id: 3,
+          is_read_only: true,
+          is_shared: true
+        }
+      ]
+    }
+  ];
+  scenariosById = scenarios.reduce((accum, record) => {
+    accum[record.id] = record;
+    return accum;
+  }, {});
 
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
@@ -404,11 +617,12 @@ test('Search participants', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
+  expect(setTimeout).toHaveBeenCalledTimes(1);
   await screen.findByTestId('cohort-progress');
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenCalledTimes(2);
   expect(asFragment()).toMatchSnapshot();
 
   const searchInput = await screen.findByLabelText('Search participants');
@@ -418,7 +632,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(2);
+  expect(setTimeout).toHaveBeenCalledTimes(3);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.type(searchInput, '{selectall}{backspace}');
@@ -429,7 +643,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(3);
+  expect(setTimeout).toHaveBeenCalledTimes(4);
   expect(asFragment()).toMatchSnapshot();
 
   // "researcher@email.com"
@@ -438,7 +652,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(4);
+  expect(setTimeout).toHaveBeenCalledTimes(5);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.type(
@@ -451,13 +665,13 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(5);
+  expect(setTimeout).toHaveBeenCalledTimes(6);
   expect(asFragment()).toMatchSnapshot();
 
   done();
 });
 
-test('Manage participants', async done => {
+test('Open Manage participants', async done => {
   const Component = CohortProgress;
 
   const props = {
@@ -475,11 +689,12 @@ test('Manage participants', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
+  expect(setTimeout).toHaveBeenCalledTimes(1);
   await screen.findByTestId('cohort-progress');
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenCalledTimes(2);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Manage participants'));
@@ -488,6 +703,314 @@ test('Manage participants', async done => {
 
   userEvent.click(await screen.findByLabelText('Close'));
   expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('All users complete', async done => {
+  const Component = CohortProgress;
+
+  cohort.users.forEach(user => {
+    user.progress.completed.push(99);
+  });
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: { isFacilitator: true, isParticipant: true }
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+  done();
+});
+
+test('All users have not completed', async done => {
+  const Component = CohortProgress;
+
+  cohort.users.forEach(user => {
+    user.progress.completed = [];
+  });
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: { isFacilitator: true, isParticipant: true }
+  };
+
+  const state = {
+    ...commonState,
+    scenarios,
+    scenariosById
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+  done();
+});
+
+test('All users have not started', async done => {
+  const Component = CohortProgress;
+
+  cohort.users.forEach(user => {
+    user.progress.completed = [];
+    user.progress.latestByScenarioId = {};
+  });
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: { isFacilitator: true, isParticipant: true }
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+  done();
+});
+
+test('Click to see all response', async done => {
+  const Component = CohortProgress;
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: { isFacilitator: true, isParticipant: true },
+    onClick: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  const viewResponsesButtons = await screen.findAllByTestId(
+    'view-participant-responses'
+  );
+
+  userEvent.click(viewResponsesButtons[0]);
+  expect(props.onClick).toHaveBeenCalledTimes(1);
+  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_super": true,
+        "personalname": "Super User",
+        "progress": Object {
+          "completed": Array [
+            1,
+          ],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1909,
+              "is_complete": true,
+              "name": "slide-arrival",
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+          "super_admin",
+        ],
+        "username": "super",
+      },
+      "type": "participant",
+    }
+  `);
+
+  userEvent.click(viewResponsesButtons[1]);
+  expect(props.onClick).toHaveBeenCalledTimes(2);
+  expect(props.onClick.mock.calls[1][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "facilitator@email.com",
+        "id": 555,
+        "is_anonymous": false,
+        "is_owner": true,
+        "is_super": false,
+        "personalname": "Facilitator User",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1905,
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+          "facilitator",
+          "researcher",
+          "owner",
+        ],
+        "username": "facilitator",
+      },
+      "type": "participant",
+    }
+  `);
+
+  userEvent.click(viewResponsesButtons[2]);
+  expect(props.onClick).toHaveBeenCalledTimes(3);
+  expect(props.onClick.mock.calls[2][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "researcher@email.com",
+        "id": 444,
+        "is_anonymous": false,
+        "is_super": false,
+        "personalname": "Researcher User",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1904,
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+          "researcher",
+        ],
+        "username": "researcher",
+      },
+      "type": "participant",
+    }
+  `);
+
+  userEvent.click(viewResponsesButtons[3]);
+  expect(props.onClick).toHaveBeenCalledTimes(4);
+  expect(props.onClick.mock.calls[3][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "participant@email.com",
+        "id": 333,
+        "is_anonymous": false,
+        "is_super": false,
+        "personalname": "Participant User",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1903,
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+        ],
+        "username": "participant",
+      },
+      "type": "participant",
+    }
+  `);
+
+  userEvent.click(viewResponsesButtons[4]);
+  expect(props.onClick).toHaveBeenCalledTimes(5);
+  expect(props.onClick.mock.calls[4][1]).toMatchInlineSnapshot(`
+    Object {
+      "as": "button",
+      "children": "View responses",
+      "className": "c__participant-card__responses",
+      "data-testid": "view-participant-responses",
+      "onClick": [Function],
+      "primary": true,
+      "size": "large",
+      "source": Object {
+        "email": "",
+        "id": 222,
+        "is_anonymous": true,
+        "is_super": false,
+        "personalname": "",
+        "progress": Object {
+          "completed": Array [],
+          "latestByScenarioId": Object {
+            "1": Object {
+              "created_at": 1602454306144,
+              "event_id": 1902,
+              "is_complete": false,
+              "name": "slide-arrival",
+              "scenario_id": 99,
+              "url": "http://localhost:3000/cohort/1/run/99/slide/1",
+            },
+          },
+          "status": "incomplete",
+        },
+        "roles": Array [
+          "participant",
+        ],
+        "username": "anonymous",
+      },
+      "type": "participant",
+    }
+  `);
 
   done();
 });

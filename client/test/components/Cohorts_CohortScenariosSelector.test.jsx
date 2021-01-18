@@ -28,6 +28,7 @@ import {
   GET_COHORT_SUCCESS,
   GET_COHORT_SCENARIOS_SUCCESS,
   SET_COHORT_SUCCESS,
+  GET_SCENARIOS_SUCCESS,
   GET_USER_SUCCESS,
   GET_USERS_SUCCESS
 } from '../../actions/types';
@@ -59,6 +60,50 @@ jest.mock('@utils/Layout', () => {
   };
 });
 
+const facilitatorUser = {
+  username: 'facilitator',
+  personalname: 'Facilitator User',
+  email: 'facilitator@email.com',
+  id: 555,
+  roles: ['participant', 'facilitator', 'researcher', 'owner'],
+  is_anonymous: false,
+  is_super: false,
+  is_owner: true,
+  progress: {
+    completed: [],
+    latestByScenarioId: {
+      1: {
+        is_complete: false,
+        scenario_id: 99,
+        event_id: 1905,
+        created_at: 1602454306144,
+        name: 'slide-arrival',
+        url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+      }
+    }
+  }
+};
+const superUser = {
+  username: 'super',
+  personalname: 'Super User',
+  email: 'super@email.com',
+  id: 999,
+  roles: ['participant', 'super_admin'],
+  is_anonymous: false,
+  is_super: true,
+  progress: {
+    completed: [1],
+    latestByScenarioId: {
+      1: {
+        is_complete: true,
+        event_id: 1909,
+        created_at: 1602454306144,
+        name: 'slide-arrival',
+        url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+      }
+    }
+  }
+};
 const scenario = {
   author: {
     id: 999,
@@ -253,6 +298,8 @@ const scenario2 = {
     }
   ]
 };
+let scenarios;
+let scenariosById;
 
 import CohortScenariosSelector from '../../components/Cohorts/CohortScenariosSelector.jsx';
 
@@ -280,6 +327,22 @@ beforeEach(() => {
   Layout.isForMobile = jest.fn();
   Layout.isForMobile.mockImplementation(() => false);
 
+  scenario.status = 2;
+  scenario2.status = 2;
+
+  scenarios = [scenario, scenario2];
+  scenariosById = scenarios.reduce((accum, record) => {
+    accum[record.id] = record;
+    return accum;
+  }, {});
+
+  scenarioActions.getScenariosByStatus = jest.fn();
+  scenarioActions.getScenariosByStatus.mockImplementation(
+    cohort => async dispatch => {
+      dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
+      return cohort;
+    }
+  );
   cohortActions.getCohortScenarios = jest.fn();
   cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
     const scenarios = [scenario, scenario2];
@@ -292,6 +355,7 @@ beforeEach(() => {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -345,6 +409,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -366,6 +431,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -387,6 +453,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -408,6 +475,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -454,6 +522,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -475,6 +544,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -496,6 +566,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -517,6 +588,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -553,6 +625,7 @@ beforeEach(() => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1905,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -602,6 +675,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -623,6 +697,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -644,6 +719,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -665,6 +741,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -722,43 +799,410 @@ test('Render 1 1', async done => {
 
 /* INJECTION STARTS HERE */
 
-test('Delete, No, then Yes', async done => {
-  // const Component = ChatMessageDeleteButton;
+test('Has stepGroup', async done => {
+  const Component = CohortScenariosSelector;
 
-  // const props = {
-  //   ...commonProps,
-  //   'aria-label': 'Delete this thing',
-  //   onCancel: jest.fn(),
-  //   onConfirm: jest.fn()
-  // };
+  const props = {
+    ...commonProps,
+    cohort: null,
+    id: 1,
+    stepGroup: <div>STEP GROUP PLACEHOLDER</div>
+  };
 
-  // const state = {
-  //   ...commonState
-  // };
+  const state = {
+    ...commonState,
+    cohort: null
+  };
 
-  // const ConnectedRoutedComponent = reduxer(Component, props, state);
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  // await render(<ConnectedRoutedComponent {...props} />);
-  // expect(serialize()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(cohortActions.getCohort).toHaveBeenCalledTimes(1);
+  done();
+});
 
-  // const deletables = screen.queryAllByLabelText('Delete this thing');
+test('No cohort in props', async done => {
+  const Component = CohortScenariosSelector;
 
-  // expect(deletables.length).toBe(1);
-  // const deletable = deletables[0];
+  const props = {
+    ...commonProps,
+    cohort: null,
+    id: 1
+  };
 
-  // userEvent.click(deletable);
-  // expect(serialize()).toMatchSnapshot();
+  const state = {
+    ...commonState,
+    cohort: null
+  };
 
-  // userEvent.click(await screen.findByRole('button', { name: /No/i }));
-  // await waitFor(() => expect(props.onCancel).toHaveBeenCalled());
-  // expect(serialize()).toMatchSnapshot();
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  // userEvent.click(deletable);
-  // expect(serialize()).toMatchSnapshot();
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(cohortActions.getCohort).toHaveBeenCalledTimes(1);
+  done();
+});
 
-  // userEvent.click(await screen.findByRole('button', { name: /Yes/i }));
-  // await waitFor(() => expect(props.onConfirm).toHaveBeenCalled());
-  // expect(serialize()).toMatchSnapshot();
+test('No scenarios in state', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById: {},
+    scenarios: []
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(scenarioActions.getScenariosByStatus).toHaveBeenCalledTimes(1);
+  done();
+});
+
+test('Has scenarios in state', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('User in scenario', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios,
+    user: superUser
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  done();
+});
+
+test('Close', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+
+  const closeButton = screen.getByText(/close/i);
+
+  userEvent.click(closeButton);
+  expect(props.onClose).toHaveBeenCalledTimes(1);
+
+  done();
+});
+
+test('Search for scenarios', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+
+  const searchInput = screen.getByLabelText('Search scenarios');
+
+  userEvent.type(searchInput, 'Multiplayer');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(1);
+
+  userEvent.clear(searchInput);
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  userEvent.type(searchInput, 'm{backspace}');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  userEvent.type(searchInput, 'This is the description');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  done();
+});
+
+test('Select scenario', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  const unselectedScenarioCards = screen.getAllByTestId(
+    'unselected-scenario-card'
+  );
+
+  userEvent.click(unselectedScenarioCards[0]);
+
+  expect(screen.getAllByTestId('selected-scenario-card').length).toBe(1);
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(1);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Deselect scenario', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  const unselectedScenarioCards = screen.getAllByTestId(
+    'unselected-scenario-card'
+  );
+
+  userEvent.click(unselectedScenarioCards[0]);
+  userEvent.click(unselectedScenarioCards[1]);
+
+  const selectedScenarioCards = screen.getAllByTestId('selected-scenario-card');
+
+  expect(selectedScenarioCards.length).toBe(2);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(selectedScenarioCards[0]);
+  userEvent.click(selectedScenarioCards[1]);
+
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Save selected scenarios', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn()
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  const unselectedScenarioCards = screen.getAllByTestId(
+    'unselected-scenario-card'
+  );
+
+  userEvent.click(unselectedScenarioCards[0]);
+  userEvent.click(unselectedScenarioCards[1]);
+
+  const selectedScenarioCards = screen.getAllByTestId('selected-scenario-card');
+
+  expect(selectedScenarioCards.length).toBe(2);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(screen.getByText('Save'));
+
+  expect(cohortActions.setCohortScenarios).toHaveBeenCalledTimes(1);
+  expect(cohortActions.setCohortScenarios.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      Object {
+        "created_at": "2020-02-31T14:01:02.656Z",
+        "deleted_at": null,
+        "id": 2,
+        "is_archived": false,
+        "name": "A New Cohort That Exists In Bootstrap State For Testing",
+        "roles": Array [
+          "super",
+          "facilitator",
+        ],
+        "runs": Array [],
+        "scenarios": Array [
+          42,
+          99,
+        ],
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        ],
+        "usersById": Object {
+          "999": Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_super": true,
+            "roles": Array [
+              "super",
+              "facilitator",
+            ],
+            "username": "super",
+          },
+        },
+      },
+    ]
+  `);
+
+  done();
+});
+
+test('Save and Close Buttons', async done => {
+  const Component = CohortScenariosSelector;
+
+  const props = {
+    ...commonProps,
+    onSave: jest.fn(),
+    onClose: jest.fn(),
+    buttons: {
+      primary: {
+        onClick: jest.fn()
+      },
+      secondary: {
+        onClick: jest.fn()
+      }
+    }
+  };
+
+  const state = {
+    ...commonState,
+    scenariosById,
+    scenarios
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(serialize()).toMatchSnapshot();
+  expect(screen.getAllByTestId('unselected-scenario-card').length).toBe(2);
+
+  const unselectedScenarioCards = screen.getAllByTestId(
+    'unselected-scenario-card'
+  );
+
+  userEvent.click(unselectedScenarioCards[0]);
+  userEvent.click(unselectedScenarioCards[1]);
+
+  const selectedScenarioCards = screen.getAllByTestId('selected-scenario-card');
+
+  expect(selectedScenarioCards.length).toBe(2);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(screen.getByText('Save'));
+  userEvent.click(screen.getByText('Close'));
+
+  await waitFor(() => {
+    expect(props.buttons.primary.onClick).toHaveBeenCalledTimes(1);
+    expect(props.buttons.secondary.onClick).toHaveBeenCalledTimes(1);
+  });
 
   done();
 });

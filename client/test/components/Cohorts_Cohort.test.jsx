@@ -110,6 +110,7 @@ beforeEach(() => {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -163,6 +164,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -184,6 +186,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -205,6 +208,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -226,6 +230,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -272,6 +277,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -293,6 +299,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -314,6 +321,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -335,6 +343,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -354,6 +363,7 @@ beforeEach(() => {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -407,6 +417,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -428,6 +439,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -449,6 +461,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -470,6 +483,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -516,6 +530,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -537,6 +552,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -558,6 +574,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -579,6 +596,7 @@ beforeEach(() => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -656,6 +674,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -677,6 +696,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -698,6 +718,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -719,6 +740,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -814,6 +836,7 @@ test('Render 2 1', async done => {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -867,6 +890,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -888,6 +912,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -909,6 +934,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -930,6 +956,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -976,6 +1003,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -997,6 +1025,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1018,6 +1047,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1039,6 +1069,7 @@ test('Render 2 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1095,6 +1126,7 @@ test('Render 3 1', async done => {
       id: 1,
       created_at: '2020-08-31T14:01:08.656Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -1148,6 +1180,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1169,6 +1202,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1190,6 +1224,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1211,6 +1246,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1257,6 +1293,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1278,6 +1315,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1299,6 +1337,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1320,6 +1359,7 @@ test('Render 3 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1382,6 +1422,7 @@ test('Render 4 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1901,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -1441,6 +1482,7 @@ test('Render 5 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1901,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -1459,6 +1501,7 @@ test('Render 5 1', async done => {
       created_at: '2020-06-31T14:01:08.656Z',
       deleted_at: '2020-07-28T15:42:23.898Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -1512,6 +1555,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1533,6 +1577,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1554,6 +1599,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1575,6 +1621,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1621,6 +1668,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1642,6 +1690,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1663,6 +1712,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1684,6 +1734,7 @@ test('Render 5 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1748,6 +1799,7 @@ test('Render 6 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1901,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -1811,6 +1863,7 @@ test('Render 7 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1905,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -1864,6 +1917,7 @@ test('Render 8 1', async done => {
       created_at: '2020-06-31T14:01:08.656Z',
       deleted_at: '2020-07-28T15:42:23.898Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -1917,6 +1971,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1938,6 +1993,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1959,6 +2015,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -1980,6 +2037,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2026,6 +2084,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2047,6 +2106,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2068,6 +2128,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2089,6 +2150,7 @@ test('Render 8 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2118,6 +2180,7 @@ test('Render 8 1', async done => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1905,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -2171,6 +2234,7 @@ test('Render 9 1', async done => {
       created_at: '2020-06-31T14:01:08.656Z',
       deleted_at: '2020-07-28T15:42:23.898Z',
       name: 'A New Cohort That Exists Within Inline Props',
+      is_archived: false,
       runs: [
         {
           id: 11,
@@ -2224,6 +2288,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2245,6 +2310,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2266,6 +2332,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2287,6 +2354,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2333,6 +2401,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1905,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2354,6 +2423,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1904,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2375,6 +2445,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1903,
                 created_at: 1602454306144,
                 name: 'slide-arrival',
@@ -2396,6 +2467,7 @@ test('Render 9 1', async done => {
             latestByScenarioId: {
               1: {
                 is_complete: false,
+                scenario_id: 99,
                 event_id: 1902,
                 created_at: 1602454306144,
                 name: 'slide-arrival',

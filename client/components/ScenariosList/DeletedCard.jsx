@@ -7,8 +7,8 @@ const DeletedCard = ({ id, title, description, onClick }) => {
   return (
     <Card className="sc sc__margin-height deleted" key={id}>
       <Card.Content>
-        <Card.Header className="strike">{title}</Card.Header>
-        <Card.Description className="strike">{description}</Card.Description>
+        <Card.Header>{title}</Card.Header>
+        <Card.Description>{description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
         <Button.Group className="sc__edit-buttons">

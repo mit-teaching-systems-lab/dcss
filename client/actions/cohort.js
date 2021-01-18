@@ -99,15 +99,20 @@ export let setCohortScenarios = cohort => async dispatch => {
 
 export let setCohort = (id, params) => async dispatch => {
   try {
-    const { name, deleted_at } = params;
+    const { name, deleted_at = null, is_archived } = params;
     const updates = {};
 
     if (name) {
       updates.name = name;
     }
 
-    if (deleted_at) {
+    // When restoring a cohort, deleted_at will be set to null.
+    if (deleted_at !== undefined) {
       updates.deleted_at = deleted_at;
+    }
+
+    if (is_archived) {
+      updates.is_archived = is_archived;
     }
 
     const body = JSON.stringify(updates);

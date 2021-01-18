@@ -9,10 +9,10 @@ exports[`Render 1 1 1`] = `
       class="content"
     >
       <div
-        class="header strike"
+        class="header"
       />
       <div
-        class="description strike"
+        class="description"
       />
     </div>
     <div

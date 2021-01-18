@@ -628,6 +628,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -649,6 +650,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -670,6 +672,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -691,6 +694,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -742,6 +746,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -763,6 +768,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -784,6 +790,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -805,6 +812,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',

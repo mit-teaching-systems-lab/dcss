@@ -66,10 +66,6 @@ jest.mock('@utils/Layout', () => {
   };
 });
 
-jest.mock('@components/Cohorts/CohortScenariosSelector', () => {
-  return props => <div>@components/Cohorts/CohortScenariosSelector</div>;
-});
-
 jest.mock('@components/Gate', () => {
   return function({ children }) {
     return children;
@@ -302,6 +298,7 @@ beforeEach(() => {
     id: 1,
     created_at: '2020-08-31T14:01:08.656Z',
     name: 'A New Cohort That Exists Within Inline Props',
+    is_archived: false,
     runs: [
       {
         id: 11,
@@ -355,6 +352,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -376,6 +374,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -397,6 +396,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -418,6 +418,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -464,6 +465,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -485,6 +487,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -506,6 +509,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -527,6 +531,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -802,6 +807,7 @@ beforeEach(() => {
         latestByScenarioId: {
           1: {
             is_complete: false,
+            scenario_id: 99,
             event_id: 1905,
             created_at: 1602454306144,
             name: 'slide-arrival',
@@ -851,6 +857,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -872,6 +879,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -893,6 +901,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -914,6 +923,7 @@ beforeEach(() => {
           latestByScenarioId: {
             1: {
               is_complete: false,
+              scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
               name: 'slide-arrival',
@@ -1232,6 +1242,198 @@ test('Run as participant', async done => {
 
   userEvent.click(await screen.getAllByTestId('run-cohort-as-participant')[0]);
   expect(window.location.href).toBe('http://localhost/cohort/1/run/99/slide/0');
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Click to see all response', async done => {
+  const Component = CohortScenarios;
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: {
+      isFacilitator: true,
+      isParticipant: true
+    },
+    onClick: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  const viewResponsesButtons = await screen.findAllByTestId(
+    'view-cohort-responses'
+  );
+
+  userEvent.click(viewResponsesButtons[0]);
+  expect(props.onClick).toHaveBeenCalledTimes(1);
+  expect(props.onClick.mock.calls[0][1]).toMatchInlineSnapshot(`
+    Object {
+      "source": Object {
+        "author": Object {
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "personalname": "Super User",
+          "roles": Array [
+            "participant",
+            "super_admin",
+            "facilitator",
+            "researcher",
+          ],
+          "username": "super",
+        },
+        "categories": Array [],
+        "consent": Object {
+          "id": 69,
+          "prose": "",
+        },
+        "created_at": "2020-07-31T17:50:28.089Z",
+        "deleted_at": null,
+        "description": "This is the description of 'Some Other Scenario'",
+        "finish": Object {
+          "components": Array [
+            Object {
+              "html": "<h2>Bye!</h2>",
+              "type": "Text",
+            },
+          ],
+          "id": 11,
+          "is_finish": true,
+          "title": "",
+        },
+        "id": 99,
+        "labels": Array [
+          "a",
+        ],
+        "lock": Object {
+          "created_at": "2020-02-31T23:54:19.934Z",
+          "ended_at": null,
+          "scenario_id": 42,
+          "user_id": 999,
+        },
+        "personas": Array [
+          Object {
+            "author_id": 3,
+            "color": "#FFFFFF",
+            "created_at": "2020-12-01T15:49:04.962Z",
+            "deleted_at": null,
+            "description": "The default user participating in a single person scenario.",
+            "id": 1,
+            "is_read_only": true,
+            "is_shared": true,
+            "name": "Participant",
+            "updated_at": null,
+          },
+        ],
+        "slides": Array [
+          Object {
+            "components": Array [
+              Object {
+                "html": "<h2>Bye!</h2>",
+                "type": "Text",
+              },
+            ],
+            "id": 11,
+            "is_finish": true,
+            "title": "",
+          },
+          Object {
+            "components": Array [
+              Object {
+                "html": "<p>HTML!</p>",
+                "id": "b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
+                "type": "Text",
+              },
+              Object {
+                "header": "TextResponse-1",
+                "id": "aede9380-c7a3-4ef7-add7-eb6677358c9e",
+                "placeholder": "Your response",
+                "prompt": "",
+                "recallId": "",
+                "required": true,
+                "responseId": "be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
+                "timeout": 0,
+                "type": "TextResponse",
+              },
+              Object {
+                "html": "<p>?</p>",
+                "id": "f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
+                "type": "Text",
+              },
+            ],
+            "id": 22,
+            "is_finish": false,
+            "title": "",
+          },
+        ],
+        "status": 2,
+        "title": "Some Other Scenario",
+        "updated_at": null,
+        "users": Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_author": true,
+            "is_reviewer": false,
+            "is_super": true,
+            "personalname": "Super User",
+            "roles": Array [
+              "super",
+            ],
+            "username": "super",
+          },
+        ],
+      },
+      "type": "scenario",
+    }
+  `);
+
+  done();
+});
+
+test('Open Edit scenarios', async done => {
+  const Component = CohortScenarios;
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: {
+      isFacilitator: true,
+      isParticipant: true
+    },
+    onClick: jest.fn()
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await screen.findByTestId('cohort-scenarios');
+  expect(asFragment()).toMatchSnapshot();
+
+  const editScenariosButton = screen.getByText(/Edit selected scenarios/i);
+
+  userEvent.click(editScenariosButton);
+  await screen.findByTestId('cohort-scenarios-selector');
+  expect(asFragment()).toMatchSnapshot();
+
+  const closeButton = screen.getByText(/Close/i);
+  userEvent.click(closeButton);
   expect(asFragment()).toMatchSnapshot();
 
   done();

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Manage participants 1`] = `
+exports[`All users complete 1`] = `
 <DocumentFragment>
   <div
     aria-busy="true"
@@ -25,7 +25,107 @@ exports[`Manage participants 1`] = `
 </DocumentFragment>
 `;
 
-exports[`Manage participants 2`] = `
+exports[`All users have not completed 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`All users have not started 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Click to see all response 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Open Manage participants 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-live="polite"
+    class="ui card loading__single-card"
+    role="status"
+    style="width: 100%; height: 90%;"
+  >
+    <div
+      aria-hidden="true"
+      class="content loading__content"
+    >
+      <div
+        class="ui placeholder"
+      >
+        <div
+          class="square image"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Open Manage participants 2`] = `
 <DocumentFragment>
   <div
     class="ui fluid container c__scenario-container"
@@ -467,7 +567,7 @@ exports[`Manage participants 2`] = `
 </DocumentFragment>
 `;
 
-exports[`Manage participants 3`] = `
+exports[`Open Manage participants 3`] = `
 <DocumentFragment>
   <div
     class="ui fluid container c__scenario-container"
@@ -909,7 +1009,7 @@ exports[`Manage participants 3`] = `
 </DocumentFragment>
 `;
 
-exports[`Manage participants 4`] = `
+exports[`Open Manage participants 4`] = `
 <DocumentFragment>
   <div
     class="ui fluid container c__scenario-container"
@@ -1351,7 +1451,7 @@ exports[`Manage participants 4`] = `
 </DocumentFragment>
 `;
 
-exports[`Manage participants 5`] = `
+exports[`Open Manage participants 5`] = `
 <DocumentFragment>
   <div
     class="ui fluid container c__scenario-container"

@@ -103,16 +103,23 @@ async function setCohort(req, res) {
   // NOTE: this endpoint is not guarded by validateRequestBody
   //
   const id = Number(req.params.id);
-  const { name = null, deleted_at = null } = req.body;
+  const { name = null, deleted_at = null, is_archived = null } = req.body;
 
-  const updates = {};
+  const updates = {
+    updated_at: new Date().toISOString()
+  };
 
   if (name) {
     updates.name = name;
   }
 
-  if (deleted_at) {
+  // When restoring a cohort, deleted_at will be set to null.
+  if (deleted_at !== undefined) {
     updates.deleted_at = deleted_at;
+  }
+
+  if (is_archived !== null) {
+    updates.is_archived = is_archived;
   }
 
   let cohort;
