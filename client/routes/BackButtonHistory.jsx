@@ -16,8 +16,10 @@ class BackButtonHistory extends React.Component {
     window.removeEventListener('popstate', this.onPopState);
   }
 
-  onPopState() {
-    window.location.href = this.props.location.pathname;
+  onPopState(event) {
+    this.props.history.go(-1);
+    // Previously:
+    // window.location.href = this.props.location.pathname;
   }
 
   render() {
@@ -27,6 +29,7 @@ class BackButtonHistory extends React.Component {
 
 BackButtonHistory.propTypes = {
   children: PropTypes.array,
+  history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 };
 
