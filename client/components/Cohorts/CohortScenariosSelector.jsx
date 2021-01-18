@@ -50,7 +50,10 @@ export class CohortScenariosSelector extends React.Component {
       await this.props.getCohort(this.props.id);
     }
 
-    if (!this.props.scenarios.length) {
+    if (
+      !this.props.scenarios.length ||
+      this.props.scenarios.length === this.props.cohort.scenarios.length
+    ) {
       await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     }
 
@@ -202,9 +205,18 @@ export class CohortScenariosSelector extends React.Component {
           : null;
 
         const onClick = inCohort ? onDeselectClick : onSelectClick;
+        const testId = inCohort
+          ? 'selected-scenario-card'
+          : 'unselected-scenario-card';
 
         const card = (
-          <Card as="a" key={key} scenario={scenario} onClick={onClick}>
+          <Card
+            as="a"
+            data-testid={testId}
+            key={key}
+            scenario={scenario}
+            onClick={onClick}
+          >
             <Card.Content className="c__wizard-scenario-card">
               <Card.Header>{scenario.title}</Card.Header>
               <Card.Meta>
@@ -219,7 +231,7 @@ export class CohortScenariosSelector extends React.Component {
                 <Text.Truncate lines={2}>{scenario.description}</Text.Truncate>
               </Card.Description>
               {yourRoles ? (
-                <Card.Meta extra className="c__wizard-scenario-card__meta">
+                <Card.Meta className="c__wizard-scenario-card__meta">
                   {yourRoles}
                 </Card.Meta>
               ) : null}
@@ -300,6 +312,7 @@ export class CohortScenariosSelector extends React.Component {
               <Grid.Row>
                 <Grid.Column>
                   <Input
+                    aria-label="Search scenarios"
                     className="grid__menu-search"
                     label="Search scenarios"
                     icon="search"
@@ -380,9 +393,16 @@ CohortScenariosSelector.propTypes = {
 
 const mapStateToProps = state => {
   const { cohort, scenariosById, user } = state;
-  const scenarios = state.scenarios.filter(
-    ({ deleted_at, status }) => deleted_at === null && status !== 1
-  );
+  let scenarios = [];
+
+  if (state.scenarios) {
+    scenarios.push(
+      ...state.scenarios.filter(
+        ({ deleted_at, status }) => deleted_at === null && status !== 1
+      )
+    );
+  }
+
   return { cohort, scenarios, scenariosById, user };
 };
 
