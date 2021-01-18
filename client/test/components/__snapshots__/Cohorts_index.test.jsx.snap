@@ -61,11 +61,11 @@ exports[`Render 1 1 1`] = `
         >
           <div>
             <p>
-              Showing all cohorts 
+              Showing all cohorts
               <span
                 class="sl__menu--search-no"
               >
-                (2)
+                 (2)
               </span>
             </p>
             <button
@@ -257,11 +257,11 @@ exports[`Render 1 2 1`] = `
         >
           <div>
             <p>
-              Showing all cohorts 
+              Showing all cohorts
               <span
                 class="sl__menu--search-no"
               >
-                (0)
+                 (0)
               </span>
             </p>
             <button

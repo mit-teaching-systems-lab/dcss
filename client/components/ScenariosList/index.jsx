@@ -107,36 +107,59 @@ const qsOpts = {
   arrayFormat: 'bracket'
 };
 
-function makeQueryString(search) {
-  const qs = {};
-  const { l } = QueryString.parse(window.location.search, qsOpts);
+function parseQueryString(input) {
+  return QueryString.parse(input || window.location.search, qsOpts);
+}
 
-  if (search) {
-    qs.search = search;
-  }
+function makeQueryString(keyVals) {
+  const { page, search, l } = QueryString.parse(window.location.search, qsOpts);
+  const qs = {};
 
   if (l && l.length) {
     qs.l = l;
   }
 
-  return `?${QueryString.stringify(qs, qsOpts)}`;
+  if (page) {
+    qs.page = page;
+  }
+
+  if (search) {
+    qs.search = search;
+  }
+
+  const params = {
+    ...qs,
+    ...keyVals
+  };
+
+  for (const [key, value] of Object.entries(keyVals)) {
+    if (value === null) {
+      delete params[key];
+    }
+  }
+
+  return `?${QueryString.stringify(params, qsOpts)}`;
 }
+
+function makeHistoryUrl(location, keyVals = {}) {
+  const searchString = makeQueryString(keyVals);
+  return `${location.pathname}${searchString}`;
+}
+
 
 class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
     const { category, scenarios, user } = this.props;
-    const { search = '', l: labels = [] } = QueryString.parse(
-      window.location.search,
-      qsOpts
-    );
+    const { page = 1, search = '', l: labels = [] } = parseQueryString(window.location.search);
+
     this.state = {
-      activePage: 1,
       category,
       heading: '',
       isReady: false,
       open: false,
+      page,
       scenarios,
       search,
       selected: null,
@@ -208,37 +231,32 @@ class ScenariosList extends Component {
 
   onLabelsFilterChange() {
     this.setState({
-      activePage: 1
-    });
-  }
-
-  onPageChange(event, { activePage }) {
-    this.setState({
-      activePage
+      page: 1
     });
   }
 
   onSearchChange(event, props) {
     const scenarios = this.scenarios.slice(0);
     const { viewHeading } = this.state;
-    const { value } = props;
+    const { value: search } = props;
+    const page = 1;
     let replacementHeading = '';
 
-    if (value === '') {
+    if (search === '') {
       this.setState({
-        activePage: 1,
         heading: viewHeading,
-        scenarios
+        search,
+        page,
       });
 
       this.props.history.push(
-        `${this.props.location.pathname}${makeQueryString('')}`
+        makeHistoryUrl(this.props.location, { page, search: null })
       );
 
       return;
     }
 
-    const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
+    const escapedRegExp = new RegExp(escapeRegExp(search), 'i');
     const results = scenarios.filter(record => {
       const {
         author: { username },
@@ -265,35 +283,51 @@ class ScenariosList extends Component {
       return false;
     });
 
-    replacementHeading = `${viewHeading}, matching '${value}'`;
+    replacementHeading = `${viewHeading}, matching '${search}'`;
 
     if (results.length === 0) {
       results.push(...scenarios);
-      replacementHeading = `${viewHeading}, nothing matches '${value}'`;
+      replacementHeading = `${viewHeading}, nothing matches '${search}'`;
     }
 
     if (Layout.isForMobile()) {
-      replacementHeading = `'${value}'`;
+      replacementHeading = `'${search}'`;
     }
 
-    const search = value;
-
     this.setState({
-      activePage: 1,
       heading: replacementHeading,
       scenarios: results,
+      page,
       search
     });
 
     this.props.history.push(
-      `${this.props.location.pathname}${makeQueryString(search)}`
+      makeHistoryUrl(this.props.location, { page, search })
     );
+  }
+
+  onPageChange(event, { activePage: page }) {
+    const { search } = this.state;
+
+    const searchParams = { page };
+
+    if (search) {
+      searchParams.search = search;
+    }
+
+    this.props.history.push(
+      makeHistoryUrl(this.props.location, searchParams)
+    );
+
+    this.setState({
+      page
+    });
   }
 
   render() {
     const { isLoggedIn } = this.props;
     const {
-      activePage,
+      page,
       category,
       isReady,
       heading,
@@ -363,9 +397,9 @@ class ScenariosList extends Component {
       );
     }
 
-    displayHeading = `${displayHeading} ${heading}`;
+    displayHeading = `${displayHeading}${heading}`;
 
-    const url = `${origin}${pathname}${makeQueryString(search)}`;
+    const url = `${origin}${pathname}${makeHistoryUrl(this.props.location)}`;
     const defaultRowCount = 2;
     const {
       itemsPerRow,
@@ -379,7 +413,7 @@ class ScenariosList extends Component {
     });
 
     const scenariosPages = Math.ceil(scenarios.length / itemsPerPage);
-    const scenariosIndex = (activePage - 1) * itemsPerPage;
+    const scenariosIndex = (page - 1) * itemsPerPage;
     const scenariosSlice = scenarios.slice(
       scenariosIndex,
       scenariosIndex + itemsPerPage
@@ -466,8 +500,8 @@ class ScenariosList extends Component {
         <div className="sl__menu-tools">
           <div>
             <p>
-              {scenariosHeading}{' '}
-              <span className="sl__menu--search-no">({scenarios.length})</span>
+              {scenariosHeading}
+              <span className="sl__menu--search-no">{' '}({scenarios.length})</span>
             </p>
             {menuItemScenarioLinkCopy}
           </div>
@@ -535,7 +569,7 @@ class ScenariosList extends Component {
       ellipsisItem: null,
       firstItem: null,
       lastItem: null,
-      activePage,
+      activePage: page,
       onPageChange,
       totalPages
     };

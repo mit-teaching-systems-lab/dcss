@@ -116,11 +116,10 @@ exports[`Render 1 1 1`] = `
         >
           <div>
             <p>
-                
               <span
                 class="sl__menu--search-no"
               >
-                (0)
+                 (0)
               </span>
             </p>
             <button
@@ -431,11 +430,10 @@ exports[`Render 2 1 1`] = `
         >
           <div>
             <p>
-                
               <span
                 class="sl__menu--search-no"
               >
-                (0)
+                 (0)
               </span>
             </p>
             <button

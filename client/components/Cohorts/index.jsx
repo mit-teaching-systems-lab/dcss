@@ -365,8 +365,8 @@ export class Cohorts extends React.Component {
         <div className="sl__menu-tools">
           <div>
             <p>
-              {displayHeading}{' '}
-              <span className="sl__menu--search-no">({cohorts.length})</span>
+              {displayHeading}
+              <span className="sl__menu--search-no">{' '}({cohorts.length})</span>
             </p>
             {cohortsLinkCopy}
           </div>

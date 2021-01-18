@@ -12,20 +12,28 @@ const qsOpts = {
   arrayFormat: 'bracket'
 };
 
-function makeQueryString(labels) {
-  const qs = {};
-  const { search } = QueryString.parse(window.location.search, qsOpts);
+function makeQueryString(keyVals) {
+  const { page, search } = QueryString.parse(window.location.search, qsOpts);
+  const qs = {
+    ...keyVals,
+  };
+
+  if (page) {
+    qs.page = page;
+  }
 
   if (search) {
     qs.search = search;
   }
 
-  if (labels && labels.length) {
-    qs.l = labels;
-  }
-
   return `?${QueryString.stringify(qs, qsOpts)}`;
 }
+
+function makeHistoryUrl(location, keyVals) {
+  const searchString = makeQueryString(keyVals);
+  return `${location.pathname}${searchString}`;
+}
+
 
 class ScenarioLabelsFilter extends React.Component {
   constructor(props) {
@@ -56,7 +64,7 @@ class ScenarioLabelsFilter extends React.Component {
 
     this.props.setLabelsInUse(labelsInUse);
     this.props.history.push(
-      `${this.props.location.pathname}${makeQueryString(labelsInUse)}`
+      makeHistoryUrl(this.props.location, { l: labelsInUse })
     );
   }
 
