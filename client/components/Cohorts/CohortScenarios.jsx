@@ -159,16 +159,6 @@ export class CohortScenarios extends React.Component {
 
               const { run_created_at = null, run_ended_at = null } = run;
 
-              // const createdStatus = run_created_at
-              //   ? { warning: true }
-              //   : { negative: true };
-
-              // const completeOrIncomplete = isParticipant
-              //   ? run_ended_at
-              //     ? { positive: true }
-              //     : createdStatus
-              //   : {};
-
               const createdAt = run_created_at
                 ? Moment(run_created_at).fromNow()
                 : '';

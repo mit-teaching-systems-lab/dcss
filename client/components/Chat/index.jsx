@@ -303,7 +303,8 @@ class Chat extends Component {
     // Options properties
     const autoFocus = true;
     const buttons = Layout.isForMobile() ? 'chat-mobile' : 'chat-desktop';
-    const defaultStyle = 'font-family:Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:1em;line-height:1em;';
+    const defaultStyle =
+      'font-family:Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:1em;line-height:1em;';
     const height = 'auto';
     const maxHeight = Layout.isForMobile() ? '150px' : '250px';
     const minHeight = '50px';
@@ -320,7 +321,7 @@ class Chat extends Component {
       minHeight,
       maxHeight,
       resizingBar,
-      showPathLabel,
+      showPathLabel
     };
 
     // Layout.isForMobile()?

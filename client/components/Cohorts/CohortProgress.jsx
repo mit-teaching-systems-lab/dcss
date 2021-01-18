@@ -234,9 +234,7 @@ export class CohortProgress extends React.Component {
             let lastScenarioViewed = null;
             let lastUrlVisited = null;
             let lastSlideViewed = null;
-
             let statusText = isComplete ? 'Complete' : 'In progress';
-
             let statusIcon = isComplete ? 'check' : 'circle';
 
             if (!eventsCount) {
