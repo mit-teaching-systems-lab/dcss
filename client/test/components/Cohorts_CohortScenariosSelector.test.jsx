@@ -1120,7 +1120,7 @@ test('Save selected scenarios', async done => {
           42,
           99,
         ],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",

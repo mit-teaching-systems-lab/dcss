@@ -10,17 +10,14 @@ import { rolesToHumanReadableString } from '@utils/Roles';
 
 export const CohortCard = props => {
   const {
-    cohort: { id, created_at, deleted_at, name, users },
+    cohort: { id, created_at, deleted_at, updated_at, name, users },
     roles,
     user
   } = props;
   const yourRoles = rolesToHumanReadableString('cohort', roles);
-  const fromNow = Moment(created_at).fromNow();
-  const calendar = Moment(created_at).calendar();
+  const updatedfromNow = Moment(updated_at || created_at).fromNow();
+  const updatedCalendar = Moment(updated_at || created_at).calendar();
   const owner = users.find(user => user.roles.includes('owner'));
-  const createdBy = !yourRoles.includes('owner')
-    ? (owner && owner.username) || null
-    : null;
 
   let cardClassName = 'sc sc__margin-height';
 
@@ -50,8 +47,8 @@ export const CohortCard = props => {
         <Card.Header>
           <NavLink to={`/cohort/${id}`}>{name}</NavLink>
         </Card.Header>
-        <Card.Meta title={`Created ${calendar}`}>
-          Created {createdBy ? `by ${createdBy}` : ''} {fromNow}
+        <Card.Meta title={`Created ${updatedCalendar}`}>
+          Updated {updatedfromNow}
         </Card.Meta>
         <Card.Description>{''}</Card.Description>
       </Card.Content>

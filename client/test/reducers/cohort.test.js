@@ -86,7 +86,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -128,7 +128,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -176,7 +176,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -218,7 +218,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -266,7 +266,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -308,7 +308,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -356,7 +356,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -398,7 +398,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -446,7 +446,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -488,7 +488,7 @@ describe('cohort', () => {
         ],
         "runs": Array [],
         "scenarios": Array [],
-        "updated_at": null,
+        "updated_at": "2021-01-15T14:01:02.656Z",
         "users": Array [
           Object {
             "email": "super@email.com",
@@ -664,7 +664,7 @@ describe('cohorts', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -708,7 +708,7 @@ describe('cohorts', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -760,7 +760,7 @@ describe('cohorts', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -804,7 +804,7 @@ describe('cohorts', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -863,7 +863,7 @@ describe('cohortsById', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -907,7 +907,7 @@ describe('cohortsById', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -960,7 +960,7 @@ describe('cohortsById', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",
@@ -1004,7 +1004,7 @@ describe('cohortsById', () => {
           ],
           "runs": Array [],
           "scenarios": Array [],
-          "updated_at": null,
+          "updated_at": "2021-01-15T14:01:02.656Z",
           "users": Array [
             Object {
               "email": "super@email.com",

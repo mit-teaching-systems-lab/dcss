@@ -27,7 +27,7 @@ Array [
       ],
       "runs": Array [],
       "scenarios": Array [],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "email": "super@email.com",
@@ -258,7 +258,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -411,7 +411,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -533,7 +533,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -655,7 +655,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -777,7 +777,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -899,7 +899,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -1021,7 +1021,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
@@ -1143,7 +1143,7 @@ Array [
         9,
         8,
       ],
-      "updated_at": null,
+      "updated_at": "2021-01-15T14:01:02.656Z",
       "users": Array [
         Object {
           "cohort_id": 1,
