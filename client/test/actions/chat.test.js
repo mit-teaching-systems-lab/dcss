@@ -437,3 +437,166 @@ describe('GET_CHAT_USERS_ERROR', () => {
     });
   });
 });
+
+describe('SET_CHAT_USERS_SUCCESS', () => {
+  describe('setChatUsersByChatId', () => {
+    let users = [
+      {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      {
+        id: 4,
+        username: 'credible-lyrebird',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant', 'facilitator'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ];
+
+    test('Receives users', async () => {
+      const returnValue = await store.dispatch(
+        actions.setChatUsersByChatId(1, users)
+      );
+      expect(returnValue).toEqual(users);
+
+      await mockStore.dispatch(actions.setChatUsersByChatId(1, users));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+
+  describe('setChatUsersByChatId with a duplicate', () => {
+    let users = [
+      {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      {
+        id: 999,
+        username: 'super',
+        personalname: 'Super User',
+        email: 'super@email.com',
+        is_anonymous: false,
+        single_use_password: false,
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        updated_at: '2020-12-10T22:29:11.638Z',
+        is_muted: false,
+        is_present: true
+      },
+      {
+        id: 4,
+        username: 'credible-lyrebird',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant', 'facilitator'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ];
+
+    test('Receives users', async () => {
+      const returnValue = await store.dispatch(
+        actions.setChatUsersByChatId(1, users)
+      );
+      expect(returnValue).toEqual(users);
+
+      await mockStore.dispatch(actions.setChatUsersByChatId(1, users));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});
+
+describe('SET_CHAT_MESSAGE_SUCCESS', () => {
+  let chat = { ...state.chats[0] };
+
+  describe('setMessageById', () => {
+    test('Empty params', async () => {
+      fetchImplementation(fetch, 200, { chat });
+      const returnValue = await store.dispatch(actions.setMessageById(1, {}));
+      expect(fetch.mock.calls.length).toBe(0);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.setMessageById(1, {}));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+
+    test('Receives a chat', async () => {
+      fetchImplementation(fetch, 200, { chat });
+      const returnValue = await store.dispatch(actions.setMessageById(1, chat));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/messages/1",
+          Object {
+            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "PUT",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(chat);
+
+      await mockStore.dispatch(actions.setMessageById(1, chat));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});
+
+describe('SET_CHAT_MESSAGE_ERROR', () => {
+  let chat = { ...state.chats[0] };
+
+  describe('setMessageById', () => {
+    test('Receives an error', async () => {
+      fetchImplementation(fetch, 200, { error });
+      const returnValue = await store.dispatch(actions.setMessageById(1, chat));
+      expect(fetch.mock.calls.length).toBe(1);
+      expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+        Array [
+          "/api/chats/messages/1",
+          Object {
+            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
+            "headers": Object {
+              "Content-Type": "application/json",
+            },
+            "method": "PUT",
+          },
+        ]
+      `);
+      expect(returnValue).toEqual(null);
+
+      await mockStore.dispatch(actions.setMessageById(1, chat));
+      expect(mockStore.getActions()).toMatchSnapshot();
+    });
+  });
+});

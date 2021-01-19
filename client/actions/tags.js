@@ -6,7 +6,7 @@ import {
   // NOT YET IN USE
   // CREATE_TAG_ERROR,
   // CREATE_TAG_SUCCESS,
-  SET_LABELS_IN_USE_ERROR,
+  // SET_LABELS_IN_USE_ERROR,
   SET_LABELS_IN_USE_SUCCESS
 } from './types';
 
@@ -68,13 +68,7 @@ export let getLabelsByOccurrence = (direction = 'desc') => async dispatch => {
 
 // This is intentionally NOT ASYNC
 export let setLabelsInUse = labelsInUse => dispatch => {
-  try {
-    dispatch({ type: SET_LABELS_IN_USE_SUCCESS, labelsInUse });
-    return labelsInUse;
-  } catch (error) {
-    dispatch({ type: SET_LABELS_IN_USE_ERROR, error });
-    return null;
-  }
+  dispatch({ type: SET_LABELS_IN_USE_SUCCESS, labelsInUse });
 };
 
 /*

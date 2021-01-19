@@ -223,6 +223,19 @@ Array [
 ]
 `;
 
+exports[`SET_CHAT_MESSAGE_ERROR setMessageById Receives an error 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "SET_CHAT_MESSAGE_ERROR",
+  },
+]
+`;
+
+exports[`SET_CHAT_MESSAGE_SUCCESS setMessageById Empty params 1`] = `Array []`;
+
 exports[`SET_CHAT_SUCCESS setChat Empty params 1`] = `Array []`;
 
 exports[`SET_CHAT_SUCCESS setChat Receives a chat 2`] = `
@@ -238,6 +251,50 @@ Array [
       "updated_at": null,
     },
     "type": "SET_CHAT_SUCCESS",
+  },
+]
+`;
+
+exports[`SET_CHAT_USERS_SUCCESS setChatUsersByChatId Receives users 1`] = `
+Array [
+  Object {
+    "type": "SET_CHAT_USERS_SUCCESS",
+    "users": Array [
+      Object {
+        "email": "super@email.com",
+        "id": 999,
+        "is_anonymous": false,
+        "is_muted": false,
+        "is_present": true,
+        "is_super": true,
+        "personalname": "Super User",
+        "roles": Array [
+          "participant",
+          "super_admin",
+          "facilitator",
+          "researcher",
+        ],
+        "single_use_password": false,
+        "updated_at": "2020-12-10T22:29:11.638Z",
+        "username": "super",
+      },
+      Object {
+        "email": null,
+        "id": 4,
+        "is_anonymous": true,
+        "is_muted": false,
+        "is_present": true,
+        "is_super": false,
+        "personalname": null,
+        "roles": Array [
+          "participant",
+          "facilitator",
+        ],
+        "single_use_password": false,
+        "updated_at": "2020-12-10T17:50:19.074Z",
+        "username": "credible-lyrebird",
+      },
+    ],
   },
 ]
 `;

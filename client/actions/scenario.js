@@ -127,7 +127,7 @@ export let getScenariosByStatus = status => async (dispatch, getState) => {
   }
 };
 
-const getScenariosIncrementallyRequest = async (
+export const getScenariosIncrementallyRequest = async (
   direction,
   offset,
   limit,
@@ -149,7 +149,7 @@ const getScenariosIncrementallyRequest = async (
   return scenarios;
 };
 
-const getScenariosIncrementallyNext = async (
+export const getScenariosIncrementallyNext = async (
   direction,
   offset,
   limit,
@@ -173,6 +173,8 @@ const getScenariosIncrementallyNext = async (
   if (updater) {
     updater(scenarios);
   }
+
+  return scenarios;
 };
 
 export const getScenariosIncrementallyFirst = async (

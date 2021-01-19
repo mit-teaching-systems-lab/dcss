@@ -180,7 +180,6 @@ describe('SET_COHORT_SUCCESS', () => {
 
   test('deleted_at', async () => {
     const params = {
-      id: state.cohorts[1].id,
       deleted_at: '2020-01-01T00:00:00.000Z'
     };
 
@@ -199,6 +198,124 @@ describe('SET_COHORT_SUCCESS', () => {
         "/api/cohorts/1",
         Object {
           "body": "{\\"deleted_at\\":\\"2020-01-01T00:00:00.000Z\\"}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "PUT",
+        },
+      ]
+    `);
+
+    expect(returnValue).toEqual(cohort);
+    expect(store.getState().cohort).toEqual(cohort);
+    expect(store.getState().cohortsById[cohort.id]).toEqual(returnValue);
+    expect(store.getState().cohorts.find(({ id }) => id === cohort.id)).toEqual(
+      returnValue
+    );
+
+    await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('deleted_at is null (restores cohort)', async () => {
+    const params = {
+      deleted_at: null
+    };
+
+    const cohort = {
+      ...state.cohorts[1],
+      ...params
+    };
+
+    fetchImplementation(fetch, 200, { cohort });
+
+    const returnValue = await store.dispatch(
+      actions.setCohort(cohort.id, params)
+    );
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1",
+        Object {
+          "body": "{\\"deleted_at\\":null}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "PUT",
+        },
+      ]
+    `);
+
+    expect(returnValue).toEqual(cohort);
+    expect(store.getState().cohort).toEqual(cohort);
+    expect(store.getState().cohortsById[cohort.id]).toEqual(returnValue);
+    expect(store.getState().cohorts.find(({ id }) => id === cohort.id)).toEqual(
+      returnValue
+    );
+
+    await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('deleted_at is undefined no-op', async () => {
+    const params = {
+      deleted_at: undefined
+    };
+
+    const cohort = {
+      ...state.cohorts[1],
+      ...params
+    };
+
+    fetchImplementation(fetch, 200, { cohort });
+
+    const returnValue = await store.dispatch(
+      actions.setCohort(cohort.id, params)
+    );
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1",
+        Object {
+          "body": "{\\"deleted_at\\":null}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "PUT",
+        },
+      ]
+    `);
+
+    expect(returnValue).toEqual(cohort);
+    expect(store.getState().cohort).toEqual(cohort);
+    expect(store.getState().cohortsById[cohort.id]).toEqual(returnValue);
+    expect(store.getState().cohorts.find(({ id }) => id === cohort.id)).toEqual(
+      returnValue
+    );
+
+    await mockStore.dispatch(actions.setCohort(cohort.id, cohort));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('is_archived', async () => {
+    const params = {
+      id: state.cohorts[1].id,
+      is_archived: true
+    };
+
+    const cohort = {
+      ...state.cohorts[1],
+      ...params
+    };
+
+    fetchImplementation(fetch, 200, { cohort });
+
+    const returnValue = await store.dispatch(
+      actions.setCohort(cohort.id, params)
+    );
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1",
+        Object {
+          "body": "{\\"deleted_at\\":null,\\"is_archived\\":true}",
           "headers": Object {
             "Content-Type": "application/json",
           },
@@ -1257,4 +1374,38 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
     expect(store.getState().errors.cohortuser.error).toEqual(error);
     expect(returnValue).toEqual(null);
   });
+});
+
+describe('GET_COHORT_SCENARIOS_SUCCESS', () => {
+  test('Receives scenarios', async () => {
+    const scenarios = [
+      state.scenarios[0]
+    ];
+
+    fetchImplementation(fetch, 200, { scenarios });
+
+    const returnValue = await store.dispatch(actions.getCohortScenarios(1));
+    expect(fetch.mock.calls.length).toBe(1);
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1/scenarios",
+      ]
+    `);
+    expect(returnValue).toEqual(scenarios);
+
+    await mockStore.dispatch(actions.getCohortScenarios(1));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+});
+
+test('GET_COHORT_SCENARIOS_ERROR', async () => {
+  fetchImplementation(fetch, 200, { error });
+  const returnValue = await store.dispatch(actions.getCohortScenarios(2));
+  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+    Array [
+      "/api/cohorts/2/scenarios",
+    ]
+  `);
+  await mockStore.dispatch(actions.getCohortScenarios(2));
+  expect(mockStore.getActions()).toMatchSnapshot();
 });
