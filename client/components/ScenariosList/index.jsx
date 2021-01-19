@@ -446,12 +446,11 @@ class ScenariosList extends Component {
           icon
           primary
           className="sc__hidden-on-mobile"
-          href="/editor/new"
           labelPosition="left"
           name="Create a scenario"
           size="big"
-          to="/editor/new"
-          as={Link}
+          href="/editor/new"
+          as="a"
         >
           <Icon name="add" />
           Create a Scenario
