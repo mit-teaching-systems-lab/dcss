@@ -15,7 +15,7 @@ const qsOpts = {
 function makeQueryString(keyVals) {
   const { page, search } = QueryString.parse(window.location.search, qsOpts);
   const qs = {
-    ...keyVals,
+    ...keyVals
   };
 
   if (page) {
@@ -33,7 +33,6 @@ function makeHistoryUrl(location, keyVals) {
   const searchString = makeQueryString(keyVals);
   return `${location.pathname}${searchString}`;
 }
-
 
 class ScenarioLabelsFilter extends React.Component {
   constructor(props) {

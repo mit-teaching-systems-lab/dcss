@@ -617,12 +617,12 @@ test('Search participants', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenCalledTimes(0);
   await screen.findByTestId('cohort-progress');
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(2);
+  expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(asFragment()).toMatchSnapshot();
 
   const searchInput = await screen.findByLabelText('Search participants');
@@ -632,7 +632,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(3);
+  expect(setTimeout).toHaveBeenCalledTimes(2);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.type(searchInput, '{selectall}{backspace}');
@@ -643,7 +643,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(4);
+  expect(setTimeout).toHaveBeenCalledTimes(3);
   expect(asFragment()).toMatchSnapshot();
 
   // "researcher@email.com"
@@ -652,7 +652,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(5);
+  expect(setTimeout).toHaveBeenCalledTimes(4);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.type(
@@ -665,7 +665,7 @@ test('Search participants', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(6);
+  expect(setTimeout).toHaveBeenCalledTimes(5);
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -689,12 +689,12 @@ test('Open Manage participants', async done => {
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
-  expect(setTimeout).toHaveBeenCalledTimes(1);
+  expect(setTimeout).toHaveBeenCalledTimes(0);
   await screen.findByTestId('cohort-progress');
   expect(asFragment()).toMatchSnapshot();
 
   jest.advanceTimersByTime(10);
-  expect(setTimeout).toHaveBeenCalledTimes(2);
+  expect(setTimeout).toHaveBeenCalledTimes(1);
   expect(asFragment()).toMatchSnapshot();
 
   userEvent.click(await screen.findByLabelText('Manage participants'));

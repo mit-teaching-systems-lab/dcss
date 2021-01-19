@@ -35,7 +35,6 @@ import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
 import ScenarioLabelsFilter from './ScenarioLabelsFilter';
-import { Link } from 'react-router-dom';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -146,13 +145,14 @@ function makeHistoryUrl(location, keyVals = {}) {
   return `${location.pathname}${searchString}`;
 }
 
-
 class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
     const { category, scenarios, user } = this.props;
-    const { page = 1, search = '', l: labels = [] } = parseQueryString(window.location.search);
+    const { page = 1, search = '', l: labels = [] } = parseQueryString(
+      window.location.search
+    );
 
     this.state = {
       category,
@@ -245,7 +245,7 @@ class ScenariosList extends Component {
       this.setState({
         heading: viewHeading,
         search,
-        page,
+        page
       });
 
       this.props.history.push(
@@ -314,9 +314,7 @@ class ScenariosList extends Component {
       searchParams.search = search;
     }
 
-    this.props.history.push(
-      makeHistoryUrl(this.props.location, searchParams)
-    );
+    this.props.history.push(makeHistoryUrl(this.props.location, searchParams));
 
     this.setState({
       page
@@ -499,7 +497,7 @@ class ScenariosList extends Component {
           <div>
             <p>
               {scenariosHeading}
-              <span className="sl__menu--search-no">{' '}({scenarios.length})</span>
+              <span className="sl__menu--search-no"> ({scenarios.length})</span>
             </p>
             {menuItemScenarioLinkCopy}
           </div>

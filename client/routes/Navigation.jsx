@@ -8,8 +8,6 @@ import Gate from '@components/Gate';
 import UserMenu from '@components/User/UserMenu';
 import Layout from '@utils/Layout';
 
-const DCSS_BRAND_LABEL = process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
-
 const restrictedNav = [
   {
     text: 'Cohorts',
@@ -88,13 +86,12 @@ class Navigation extends Component {
 
     const menuItemAuthorized = isLoggedIn ? menuItemsRequireLogin : null;
 
-    const explainAllScenarios = 'See all scenarios';
     // This is used as the dropdown trigger, in the top menu
     const menuItemScenarios = (
       <Menu.Item.Tabbable
+        aria-label="See all scenarios"
         role="option"
         to="/scenarios/"
-        aria-label={explainAllScenarios}
         as={NavLink}
       >
         Scenarios
