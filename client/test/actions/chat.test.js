@@ -527,7 +527,44 @@ describe('SET_CHAT_USERS_SUCCESS', () => {
       const returnValue = await store.dispatch(
         actions.setChatUsersByChatId(1, users)
       );
-      expect(returnValue).toEqual(users);
+      expect(returnValue).toMatchInlineSnapshot(`
+        Array [
+          Object {
+            "email": "super@email.com",
+            "id": 999,
+            "is_anonymous": false,
+            "is_muted": false,
+            "is_present": true,
+            "is_super": true,
+            "personalname": "Super User",
+            "roles": Array [
+              "participant",
+              "super_admin",
+              "facilitator",
+              "researcher",
+            ],
+            "single_use_password": false,
+            "updated_at": "2020-12-10T22:29:11.638Z",
+            "username": "super",
+          },
+          Object {
+            "email": null,
+            "id": 4,
+            "is_anonymous": true,
+            "is_muted": false,
+            "is_present": true,
+            "is_super": false,
+            "personalname": null,
+            "roles": Array [
+              "participant",
+              "facilitator",
+            ],
+            "single_use_password": false,
+            "updated_at": "2020-12-10T17:50:19.074Z",
+            "username": "credible-lyrebird",
+          },
+        ]
+      `);
 
       await mockStore.dispatch(actions.setChatUsersByChatId(1, users));
       expect(mockStore.getActions()).toMatchSnapshot();
@@ -536,11 +573,14 @@ describe('SET_CHAT_USERS_SUCCESS', () => {
 });
 
 describe('SET_CHAT_MESSAGE_SUCCESS', () => {
-  let chat = { ...state.chats[0] };
+  let params = {
+    deleted_at: '2021-01-19T18:45:01.366Z'
+  };
+  const message = params;
 
   describe('setMessageById', () => {
     test('Empty params', async () => {
-      fetchImplementation(fetch, 200, { chat });
+      fetchImplementation(fetch, 200, { message });
       const returnValue = await store.dispatch(actions.setMessageById(1, {}));
       expect(fetch.mock.calls.length).toBe(0);
       expect(returnValue).toEqual(null);
@@ -549,15 +589,17 @@ describe('SET_CHAT_MESSAGE_SUCCESS', () => {
       expect(mockStore.getActions()).toMatchSnapshot();
     });
 
-    test('Receives a chat', async () => {
-      fetchImplementation(fetch, 200, { chat });
-      const returnValue = await store.dispatch(actions.setMessageById(1, chat));
+    test('deleted_at', async () => {
+      fetchImplementation(fetch, 200, { message });
+      const returnValue = await store.dispatch(
+        actions.setMessageById(1, params)
+      );
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           "/api/chats/messages/1",
           Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
+            "body": "{\\"deleted_at\\":\\"2021-01-19T18:45:01.366Z\\"}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -565,27 +607,31 @@ describe('SET_CHAT_MESSAGE_SUCCESS', () => {
           },
         ]
       `);
-      expect(returnValue).toEqual(chat);
+      expect(returnValue).toEqual(message);
 
-      await mockStore.dispatch(actions.setMessageById(1, chat));
+      await mockStore.dispatch(actions.setMessageById(1, params));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
 });
 
 describe('SET_CHAT_MESSAGE_ERROR', () => {
-  let chat = { ...state.chats[0] };
+  let params = {
+    deleted_at: '2021-01-19T18:45:01.366Z'
+  };
 
   describe('setMessageById', () => {
     test('Receives an error', async () => {
       fetchImplementation(fetch, 200, { error });
-      const returnValue = await store.dispatch(actions.setMessageById(1, chat));
+      const returnValue = await store.dispatch(
+        actions.setMessageById(1, params)
+      );
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           "/api/chats/messages/1",
           Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
+            "body": "{\\"deleted_at\\":\\"2021-01-19T18:45:01.366Z\\"}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -595,7 +641,7 @@ describe('SET_CHAT_MESSAGE_ERROR', () => {
       `);
       expect(returnValue).toEqual(null);
 
-      await mockStore.dispatch(actions.setMessageById(1, chat));
+      await mockStore.dispatch(actions.setMessageById(1, params));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
