@@ -73,7 +73,7 @@ export class Cohorts extends React.Component {
     this.cohorts = cohorts;
     this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
     this.onCreateCohortOpenClick = this.onCreateCohortOpenClick.bind(this);
-    this.onCohortSearchChange = this.onCohortSearchChange.bind(this);
+    this.onSearchChange = this.onSearchChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
   }
 
@@ -94,7 +94,7 @@ export class Cohorts extends React.Component {
         });
 
         if (search) {
-          this.onCohortSearchChange({}, { value: search });
+          this.onSearchChange({}, { value: search });
         }
       } else {
         const limit = 20;
@@ -108,7 +108,7 @@ export class Cohorts extends React.Component {
           });
 
           if (search) {
-            this.onCohortSearchChange({}, { value: search });
+            this.onSearchChange({}, { value: search });
           }
 
           offset += limit;
@@ -126,7 +126,7 @@ export class Cohorts extends React.Component {
     this.setState({ createIsVisible: true });
   }
 
-  onCohortSearchChange(event, props) {
+  onSearchChange(event, props) {
     const { cohorts: sourceCohorts, scenarios } = this.props;
     const { value: search } = props;
     const page = 1;
@@ -223,7 +223,7 @@ export class Cohorts extends React.Component {
     const { page, isReady, createIsVisible, search } = this.state;
     const {
       onCreateCohortCancel,
-      onCohortSearchChange,
+      onSearchChange,
       onCreateCohortOpenClick,
       onPageChange
     } = this;
@@ -289,7 +289,7 @@ export class Cohorts extends React.Component {
         icon="search"
         size="big"
         defaultValue={search || ''}
-        onChange={onCohortSearchChange}
+        onChange={onSearchChange}
       />
     ) : null;
 
