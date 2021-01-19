@@ -184,7 +184,7 @@ class ScenariosList extends Component {
 
     await this.props.getLabelsByOccurrence();
 
-    if (count === this.props.scenarios.length) {
+    if (count <= this.props.scenarios.length) {
       this.scenarios = this.props.scenarios;
 
       this.setState({
@@ -198,10 +198,9 @@ class ScenariosList extends Component {
       const limit = 20;
       let offset = 0;
       do {
-        this.scenarios.push(
-          ...(await this.props.getScenariosSlice('DESC', offset, limit))
-        );
+        await this.props.getScenariosSlice('DESC', offset, limit);
 
+        this.scenarios = this.props.scenarios;
         this.setState({
           isReady: true
         });
@@ -211,7 +210,7 @@ class ScenariosList extends Component {
         }
 
         offset += limit;
-      } while (this.scenarios.length < count);
+      } while (offset < count);
     }
   }
 
