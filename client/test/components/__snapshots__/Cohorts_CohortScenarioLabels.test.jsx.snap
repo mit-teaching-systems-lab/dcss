@@ -1,0 +1,735 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add and remove a filter 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 2`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 3`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 4`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 5`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 6`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 7`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 8`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 2`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 3`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 4`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 5`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 6`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 7`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 8`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No scenarios in state 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No selected scenariosInUse, no search term 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No selected scenariosInUse, with unmatched search term 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <div
+      class="ui small label"
+    >
+      This cohort contains no scenarios.
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Selected scenariosInUse 1`] = `
+<DocumentFragment>
+  <div
+    class="ui labels"
+  >
+    <button
+      aria-label="Click for cohorts that include Foo"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="1"
+    >
+      Foo
+    </button>
+    <button
+      aria-label="Click for cohorts that include Bar"
+      class="ui small label primary"
+      scenario="[object Object]"
+      tabindex="0"
+      value="2"
+    >
+      Bar
+    </button>
+    <button
+      aria-label="Click for cohorts that include Baz"
+      class="ui small label"
+      scenario="[object Object]"
+      tabindex="0"
+      value="3"
+    >
+      Baz
+    </button>
+  </div>
+</DocumentFragment>
+`;

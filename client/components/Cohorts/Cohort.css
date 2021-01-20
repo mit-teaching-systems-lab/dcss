@@ -290,7 +290,7 @@
 
 .c__cohort-header {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-gap: 1rem;
   justify-content: space-between;
 }

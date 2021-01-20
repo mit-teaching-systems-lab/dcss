@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import { chat, chats, chatsById } from './chat';
 import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
+import filters from './filters';
 import { history } from './history';
 import { session } from './session';
 import { logs, logsById } from './logs';
@@ -23,6 +24,7 @@ export default combineReducers({
   cohorts,
   cohortsById,
   errors,
+  filters,
   history,
   logs,
   logsById,

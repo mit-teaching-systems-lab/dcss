@@ -1,0 +1,2121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add and remove a filter 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 2`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 3`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 4`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 5`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 6`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 8`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter 10`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 2`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 3`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 4`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 5`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 6`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 8`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Add and remove a filter, at a page, with a search term 10`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No scenarios in state 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No selected scenariosInUse, no search term 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`No selected scenariosInUse, with unmatched search term 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    />
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 2`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 3`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 4`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 5`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value="F"
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text filtered"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 6`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value="F"
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text filtered"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 7`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value="F"
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text filtered"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Search filters 8`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="true"
+    class="ui active visible button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value="F"
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text filtered"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left visible scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Selected scenariosInUse 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui button item search scrolling dropdown"
+    role="combobox"
+  >
+    <input
+      aria-autocomplete="list"
+      autocomplete="off"
+      class="search"
+      tabindex="0"
+      type="text"
+      value=""
+    />
+    <div
+      aria-atomic="true"
+      aria-live="polite"
+      class="divider text"
+      role="alert"
+    >
+      Filter by scenarios
+    </div>
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition left scenarios"
+      role="listbox"
+    >
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Foo
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="true"
+        class="active item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Bar
+          </p>
+        </div>
+      </div>
+      <div
+        aria-checked="false"
+        class="item"
+        role="option"
+        scenario="[object Object]"
+      >
+        <div
+          class="text scenarios__item"
+        >
+          <p>
+            Baz
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

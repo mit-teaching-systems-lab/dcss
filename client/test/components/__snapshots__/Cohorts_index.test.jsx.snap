@@ -78,6 +78,41 @@ exports[`Render 1 1 1`] = `
               Copy the url to these cohorts
             </button>
           </div>
+          <div
+            class="item"
+            tabindex="0"
+          >
+            <div
+              aria-expanded="false"
+              class="ui button item search scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Filter by scenarios
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition left scenarios"
+                role="listbox"
+              />
+            </div>
+          </div>
         </div>
       </div>
       <div
@@ -273,6 +308,41 @@ exports[`Render 1 2 1`] = `
               />
               Copy the url to these cohorts
             </button>
+          </div>
+          <div
+            class="item"
+            tabindex="0"
+          >
+            <div
+              aria-expanded="false"
+              class="ui button item search scrolling dropdown"
+              role="combobox"
+            >
+              <input
+                aria-autocomplete="list"
+                autocomplete="off"
+                class="search"
+                tabindex="0"
+                type="text"
+                value=""
+              />
+              <div
+                aria-atomic="true"
+                aria-live="polite"
+                class="divider text"
+                role="alert"
+              >
+                Filter by scenarios
+              </div>
+              <i
+                aria-hidden="true"
+                class="dropdown icon"
+              />
+              <div
+                class="menu transition left scenarios"
+                role="listbox"
+              />
+            </div>
           </div>
         </div>
       </div>

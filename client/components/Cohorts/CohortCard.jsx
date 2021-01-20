@@ -7,17 +7,14 @@ import Moment from '@utils/Moment';
 import { Button, Card } from '@components/UI';
 import { setCohort } from '@actions/cohort';
 import { rolesToHumanReadableString } from '@utils/Roles';
+import CohortScenarioLabels from '@components/Cohorts/CohortScenarioLabels';
 
 export const CohortCard = props => {
-  const {
-    cohort: { id, created_at, deleted_at, updated_at, name, users },
-    roles,
-    user
-  } = props;
+  const { cohort, roles, scenariosById, user } = props;
+  const { id, created_at, deleted_at, updated_at, name, users } = cohort;
   const yourRoles = rolesToHumanReadableString('cohort', roles);
   const updatedfromNow = Moment(updated_at || created_at).fromNow();
   const updatedCalendar = Moment(updated_at || created_at).calendar();
-  const owner = users.find(user => user.roles.includes('owner'));
 
   let cardClassName = 'sc sc__margin-height';
 
@@ -50,7 +47,9 @@ export const CohortCard = props => {
         <Card.Meta title={`Created ${updatedCalendar}`}>
           Updated {updatedfromNow}
         </Card.Meta>
-        <Card.Description>{''}</Card.Description>
+        <Card.Description>
+          <CohortScenarioLabels cohort={cohort} />
+        </Card.Description>
       </Card.Content>
       {roles ? <Card.Content extra>{yourRoles}</Card.Content> : null}
       {restoreCohort}
@@ -62,13 +61,14 @@ CohortCard.propTypes = {
   id: PropTypes.number,
   cohort: PropTypes.object,
   history: PropTypes.object,
-  setCohort: PropTypes.func,
   roles: PropTypes.array,
+  scenariosById: PropTypes.object,
+  setCohort: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { cohorts, cohortsById, user } = state;
+  const { cohorts, cohortsById, filters, scenariosById, user } = state;
   const cohort =
     cohortsById[ownProps.id] || cohorts.find(({ id }) => id === ownProps.id);
 
@@ -81,7 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-  return { cohort, roles, user };
+  return { cohort, filters, roles, scenariosById, user };
 };
 
 const mapDispatchToProps = dispatch => ({

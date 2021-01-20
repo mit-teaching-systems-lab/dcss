@@ -388,6 +388,9 @@ module.exports = {
     user: null,
     users: null
   },
+  filters: {
+    scenariosInUse: []
+  },
   history: {
     prompts: [],
     responses: []

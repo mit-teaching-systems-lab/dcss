@@ -25,6 +25,7 @@ import {
   getCohort,
   createCohort
 } from '@actions/cohort';
+import { setFilterScenariosInUse } from '@actions/filters';
 import { getScenariosByStatus } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Gate from '@components/Gate';
@@ -33,6 +34,7 @@ import Layout from '@utils/Layout';
 import { notify } from '@components/Notification';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import CohortCard from './CohortCard';
+import CohortScenarioLabelsFilter from './CohortScenarioLabelsFilter';
 import CohortCreateWizard from './CohortCreateWizard';
 import Identity from '@utils/Identity';
 import '../ScenariosList/ScenariosList.css';
@@ -58,7 +60,9 @@ export class Cohorts extends React.Component {
   constructor(props) {
     super(props);
 
-    const { page = 1, search = '' } = parseQueryString(window.location.search);
+    const { page = 1, search = '', s: scenariosInUse = [] } = parseQueryString(
+      window.location.search
+    );
 
     const cohorts = this.props.cohorts;
 
@@ -70,15 +74,21 @@ export class Cohorts extends React.Component {
       search
     };
 
+    this.props.setFilterScenariosInUse(scenariosInUse);
+
     this.cohorts = cohorts;
     this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
     this.onCreateCohortOpenClick = this.onCreateCohortOpenClick.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
+    this.onScenarioLabelsFilterChange = this.onScenarioLabelsFilterChange.bind(
+      this
+    );
   }
 
   async componentDidMount() {
     await this.props.getUser();
+    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
 
     if (!this.props.user.id) {
       this.props.history.push('/logout');
@@ -115,7 +125,6 @@ export class Cohorts extends React.Component {
         } while (offset < count);
       }
     }
-    await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
   }
 
   onCreateCohortCancel() {
@@ -218,14 +227,21 @@ export class Cohorts extends React.Component {
     });
   }
 
+  onScenarioLabelsFilterChange() {
+    this.setState({
+      page: 1
+    });
+  }
+
   render() {
     const { user } = this.props;
     const { page, isReady, createIsVisible, search } = this.state;
     const {
       onCreateCohortCancel,
-      onSearchChange,
       onCreateCohortOpenClick,
-      onPageChange
+      onPageChange,
+      onScenarioLabelsFilterChange,
+      onSearchChange
     } = this;
 
     // If there's an active search, use the search filtered set
@@ -244,7 +260,16 @@ export class Cohorts extends React.Component {
       { notDeleted: [], deleted: [] }
     );
 
-    const cohorts = [...notDeleted, ...deleted];
+    let cohorts = [...notDeleted, ...deleted];
+
+    // If there are any active label filters, apply them
+    if (this.props.filters.scenariosInUse.length) {
+      cohorts = cohorts.filter(cohort =>
+        cohort.scenarios.some(id =>
+          this.props.filters.scenariosInUse.includes(id)
+        )
+      );
+    }
 
     let displayHeading = 'Showing all cohorts';
 
@@ -317,19 +342,21 @@ export class Cohorts extends React.Component {
       cohortsIndex,
       cohortsIndex + itemsPerPage
     );
-    const cards = cohortsSlice.map(cohort => {
-      return <CohortCard key={Identity.key(cohort)} id={cohort.id} />;
-    });
+
+    let isSliceAvailable = cohortsSlice.length > 0;
+
+    const cards = isSliceAvailable
+      ? cohortsSlice.map(cohort => {
+          return <CohortCard key={Identity.key(cohort)} id={cohort.id} />;
+        })
+      : null;
 
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
 
     const cardGroup = (
-      <Card.Group.Stackable
-        fallback="No cohorts yet!"
-        itemsPerRow={itemsPerRow}
-      >
+      <Card.Group.Stackable itemsPerRow={itemsPerRow}>
         {cards}
       </Card.Group.Stackable>
     );
@@ -355,6 +382,12 @@ export class Cohorts extends React.Component {
       </Button>
     ) : null;
 
+    const menuItemCohortScenarioLabels = (
+      <Menu.Item.Tabbable>
+        <CohortScenarioLabelsFilter onChange={onScenarioLabelsFilterChange} />
+      </Menu.Item.Tabbable>
+    );
+
     const cohortSearchTools = [
       <Menu.Menu
         className="grid__menu"
@@ -370,6 +403,7 @@ export class Cohorts extends React.Component {
             </p>
             {cohortsLinkCopy}
           </div>
+          {menuItemCohortScenarioLabels}
         </div>
       </Menu.Menu>
     ];
@@ -394,7 +428,11 @@ export class Cohorts extends React.Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  {!isReady ? <Loading {...loadingProps} /> : cardGroup}
+                  {!isReady || !isSliceAvailable ? (
+                    <Loading {...loadingProps} />
+                  ) : (
+                    cardGroup
+                  )}
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row className="grid__bottom-row">
@@ -439,6 +477,7 @@ Cohorts.propTypes = {
   getCohortsSlice: PropTypes.func,
   getCohort: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
+  filters: PropTypes.object,
   ids: PropTypes.arrayOf(PropTypes.number),
   location: PropTypes.object,
   scenarios: PropTypes.array,
@@ -450,23 +489,25 @@ Cohorts.propTypes = {
   }).isRequired,
   getUser: PropTypes.func,
   user: PropTypes.object,
-  permissions: PropTypes.array
+  permissions: PropTypes.array,
+  setFilterScenariosInUse: PropTypes.func
 };
 
 const mapStateToProps = state => {
   const { permissions } = state.session;
-  const { cohort, cohorts, scenarios, user } = state;
-  return { cohort, cohorts, permissions, scenarios, user };
+  const { cohort, cohorts, filters, scenarios, user } = state;
+  return { cohort, cohorts, filters, permissions, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
+  createCohort: params => dispatch(createCohort(params)),
   getCohorts: () => dispatch(getCohorts()),
   getCohortsCount: () => dispatch(getCohortsCount()),
   getCohortsSlice: (...params) => dispatch(getCohortsSlice(...params)),
   getCohort: id => dispatch(getCohort(id)),
   getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
-  createCohort: params => dispatch(createCohort(params)),
-  getUser: () => dispatch(getUser())
+  getUser: () => dispatch(getUser()),
+  setFilterScenariosInUse: params => dispatch(setFilterScenariosInUse(params))
 });
 
 export default withRouter(
