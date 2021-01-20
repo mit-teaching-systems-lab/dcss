@@ -970,77 +970,133 @@ describe('GET_SCENARIOS_SUCCESS', () => {
   describe('getScenariosIncrementallyRequest', () => {
     test('scenarios', async () => {
       fetchImplementation(fetch, 200, { scenarios });
-      await expect(actions.getScenariosIncrementallyRequest('DESC', 0, 10, store.dispatch)).resolves.toMatchObject(scenarios);
+      await expect(
+        actions.getScenariosIncrementallyRequest('DESC', 0, 10, store.dispatch)
+      ).resolves.toMatchObject(scenarios);
     });
 
     test('scenarios is empty', async () => {
       fetchImplementation(fetch, 200, { scenarios: [] });
-      await expect(actions.getScenariosIncrementallyRequest('DESC', 0, 10, store.dispatch)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyRequest('DESC', 0, 10, store.dispatch)
+      ).resolves.toMatchObject([]);
     });
 
     test('scenarios is undefined', async () => {
       fetchImplementation(fetch, 200, { scenarios: undefined });
-      await expect(actions.getScenariosIncrementallyRequest('DESC', 0, 10, store.dispatch)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyRequest('DESC', 0, 10, store.dispatch)
+      ).resolves.toMatchObject([]);
     });
   });
 
   describe('getScenariosIncrementallyNext', () => {
-
     let updater = jest.fn();
 
     test('scenarios', async () => {
       fetchImplementation(fetch, 200, { scenarios });
-      await expect(actions.getScenariosIncrementallyNext('DESC', 0, 10, store.dispatch, updater)).resolves.toMatchObject(scenarios);
+      await expect(
+        actions.getScenariosIncrementallyNext(
+          'DESC',
+          0,
+          10,
+          store.dispatch,
+          updater
+        )
+      ).resolves.toMatchObject(scenarios);
 
       expect(updater).toHaveBeenCalledTimes(1);
     });
 
     test('scenarios is empty', async () => {
       fetchImplementation(fetch, 200, { scenarios: [] });
-      await expect(actions.getScenariosIncrementallyNext('DESC', 0, 10, store.dispatch, updater)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyNext(
+          'DESC',
+          0,
+          10,
+          store.dispatch,
+          updater
+        )
+      ).resolves.toMatchObject([]);
       expect(updater).toHaveBeenCalledTimes(1);
     });
 
     test('scenarios is undefined', async () => {
       fetchImplementation(fetch, 200, { scenarios: undefined });
-      await expect(actions.getScenariosIncrementallyNext('DESC', 0, 10, store.dispatch, updater)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyNext(
+          'DESC',
+          0,
+          10,
+          store.dispatch,
+          updater
+        )
+      ).resolves.toMatchObject([]);
       expect(updater).toHaveBeenCalledTimes(1);
     });
 
     test('no updater', async () => {
       fetchImplementation(fetch, 200, { scenarios: undefined });
-      await expect(actions.getScenariosIncrementallyNext('DESC', 0, 10, store.dispatch)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyNext('DESC', 0, 10, store.dispatch)
+      ).resolves.toMatchObject([]);
       expect(updater).toHaveBeenCalledTimes(0);
     });
   });
 
   describe('getScenariosIncrementallyFirst', () => {
-
     let updater = jest.fn();
 
     test('scenarios', async () => {
       let trimmed = scenarios.slice(0, 10);
       fetchImplementation(fetch, 200, { scenarios: trimmed });
-      await expect(actions.getScenariosIncrementallyFirst('DESC', 0, 10, store.dispatch, updater)).resolves.toMatchObject(trimmed);
+      await expect(
+        actions.getScenariosIncrementallyFirst(
+          'DESC',
+          0,
+          10,
+          store.dispatch,
+          updater
+        )
+      ).resolves.toMatchObject(trimmed);
 
       expect(updater).toHaveBeenCalledTimes(0);
     });
 
     test('scenarios is empty', async () => {
       fetchImplementation(fetch, 200, { scenarios: [] });
-      await expect(actions.getScenariosIncrementallyFirst('DESC', 0, 10, store.dispatch, updater)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyFirst(
+          'DESC',
+          0,
+          10,
+          store.dispatch,
+          updater
+        )
+      ).resolves.toMatchObject([]);
       expect(updater).toHaveBeenCalledTimes(0);
     });
 
     test('scenarios is undefined', async () => {
       fetchImplementation(fetch, 200, { scenarios: undefined });
-      await expect(actions.getScenariosIncrementallyFirst('DESC', 0, 10, store.dispatch, updater)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyFirst(
+          'DESC',
+          0,
+          10,
+          store.dispatch,
+          updater
+        )
+      ).resolves.toMatchObject([]);
       expect(updater).toHaveBeenCalledTimes(0);
     });
 
     test('no updater', async () => {
       fetchImplementation(fetch, 200, { scenarios: undefined });
-      await expect(actions.getScenariosIncrementallyFirst('DESC', 0, 10, store.dispatch)).resolves.toMatchObject([]);
+      await expect(
+        actions.getScenariosIncrementallyFirst('DESC', 0, 10, store.dispatch)
+      ).resolves.toMatchObject([]);
       expect(updater).toHaveBeenCalledTimes(0);
     });
   });
@@ -1118,7 +1174,9 @@ describe('GET_SCENARIOS_ERROR', () => {
 
   test('getScenariosIncrementallyRequest', async () => {
     fetchImplementation(fetch, 200, { error });
-    await expect(actions.getScenariosIncrementallyRequest()).rejects.toMatchObject({ error });
+    await expect(
+      actions.getScenariosIncrementallyRequest()
+    ).rejects.toMatchObject({ error });
   });
 });
 
@@ -1244,4 +1302,3 @@ test('SET_SLIDES', async () => {
   expect(action1).toEqual(action2);
   expect(action2).toEqual(action3);
 });
-

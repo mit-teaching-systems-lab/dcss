@@ -1378,9 +1378,7 @@ describe('SET_COHORT_USER_ROLE_ERROR', () => {
 
 describe('GET_COHORT_SCENARIOS_SUCCESS', () => {
   test('Receives scenarios', async () => {
-    const scenarios = [
-      state.scenarios[0]
-    ];
+    const scenarios = [state.scenarios[0]];
 
     fetchImplementation(fetch, 200, { scenarios });
 
