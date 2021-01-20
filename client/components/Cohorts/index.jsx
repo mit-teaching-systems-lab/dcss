@@ -355,11 +355,11 @@ export class Cohorts extends React.Component {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
 
-    const cardGroup = (
+    const cardGroup = isSliceAvailable ? (
       <Card.Group.Stackable itemsPerRow={itemsPerRow}>
         {cards}
       </Card.Group.Stackable>
-    );
+    ) : null;
 
     const onCopyClick = () => {
       const url = location.href;
