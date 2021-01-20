@@ -122,6 +122,23 @@ export class CohortScenarios extends React.Component {
       </p>
     );
 
+    const onCohortScenariosSelectorClose = () => {
+      this.setState({ editIsOpen: false });
+    };
+
+    const cohortScenariosSelectorProps = {
+      id: cohort.id,
+      buttons: {
+        primary: {
+          onClick: () => {
+            notify({ type: 'success', message: 'Cohort scenarios saved.' });
+            onCohortScenariosSelectorClose();
+          }
+        }
+      },
+      onClose: onCohortScenariosSelectorClose
+    };
+
     return (
       <Container fluid className="c__scenario-container">
         {scenariosInCohortHeader}
@@ -282,12 +299,7 @@ export class CohortScenarios extends React.Component {
         )}
 
         {this.state.editIsOpen ? (
-          <CohortScenariosSelector
-            id={cohort.id}
-            onClose={() => {
-              this.setState({ editIsOpen: false });
-            }}
-          />
+          <CohortScenariosSelector {...cohortScenariosSelectorProps} />
         ) : null}
 
         <div data-testid="cohort-scenarios" />
