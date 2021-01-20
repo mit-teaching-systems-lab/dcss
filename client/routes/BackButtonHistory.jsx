@@ -17,9 +17,9 @@ class BackButtonHistory extends React.Component {
   }
 
   onPopState(event) {
-    this.props.history.go(-1);
+    // this.props.history.goBack();
     // Previously:
-    // window.location.href = this.props.location.pathname;
+    window.location.href = this.props.location.pathname;
   }
 
   render() {

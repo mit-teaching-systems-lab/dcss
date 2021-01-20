@@ -9,6 +9,11 @@ import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Routes from './Routes';
 
+// TODO: switch to this Router import when ready to migrate
+// import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
+
 import './Nav.css';
 // import 'semantic-ui-css/semantic.min.css';
 import 'fomantic-ui-css/semantic.min.css';
@@ -46,7 +51,7 @@ class App extends Component {
     }
 
     return (
-      <Router>
+      <Router history={history}>
         <BackButtonHistory>
           <Navigation />
           <Routes isLoggedIn={this.props.isLoggedIn} />
