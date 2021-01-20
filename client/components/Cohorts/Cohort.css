@@ -299,14 +299,10 @@
   text-align: right;
 }
 
-.c__activation-state__display span {
+.c__activation-state span {
   font-weight: bold;
 }
 
-.c__cohort-user-actions > *:not(:last-child) {
-  margin-bottom: 0.5rem !important;
-}
-
-.c__cohort-user-actions > *:first-child {
-  margin-bottom: 1.5rem !important;
+.icon-primary > i {
+  color: #853D61;
 }
