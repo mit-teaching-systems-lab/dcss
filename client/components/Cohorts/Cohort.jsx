@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Button,
+  Dropdown,
   Header,
   Icon,
   Input,
@@ -196,48 +197,47 @@ export class Cohort extends React.Component {
     );
 
     const cohortActivationState = (
-      <div className="c__activation-state">
-        <p className="c__activation-state__display">
-          Cohort is <span>{cohort.is_archived ? 'Archived' : 'Active'}</span>
-        </p>
-        {!cohort.is_archived ? (
-          <Button
-            size="small"
-            onClick={() => this.setState({ archiveIsOpen: true })}
-          >
-            <Icon name="archive" className="primary" />
-            Archive cohort
-          </Button>
-        ) : null}
-      </div>
-    );
-
-    const renameCohortButton = (
-      <Button
-        size="small"
-        onClick={() => this.setState({ renameIsOpen: true })}
-      >
-        <Icon name="edit" className="primary" />
-        Rename cohort
-      </Button>
-    );
-
-    const deleteCohortButton = (
-      <Button
-        size="small"
-        onClick={() => this.setState({ deleteIsOpen: true })}
-      >
-        <Icon name="trash alternate outline" className="primary" />
-        Delete cohort
-      </Button>
+      <p className="c__activation-state">
+        Cohort is <span>{cohort.is_archived ? 'Archived' : 'Active'}</span>
+      </p>
     );
 
     const cohortUserActions = (
-      <Fragment>
-        {cohortActivationState}
-        {renameCohortButton}
-        {deleteCohortButton}
-      </Fragment>
+      <Dropdown
+        text="Cohort tools"
+        icon="setting"
+        labeled
+        button
+        className="icon icon-primary"
+      >
+        <Dropdown.Menu direction="left">
+          {!cohort.is_archived ? (
+            <Dropdown.Item
+              text="Archive cohort"
+              icon="archive"
+              className="icon-primary"
+              onClick={() => this.setState({ archiveIsOpen: true })}
+            />
+          ) : null}
+          <Dropdown.Item
+            text="Rename cohort"
+            icon="edit"
+            className="icon-primary"
+            onClick={() => this.setState({ renameIsOpen: true })}
+          />
+          <Dropdown.Item
+            text="Copy cohort"
+            icon="copy"
+            className="icon-primary"
+          />
+          <Dropdown.Item
+            text="Delete cohort"
+            icon="trash alternate outline"
+            className="icon-primary"
+            onClick={() => this.setState({ deleteIsOpen: true })}
+          />
+        </Dropdown.Menu>
+      </Dropdown>
     );
 
     const deleteOrArchiveIsOpen = deleteIsOpen || archiveIsOpen;
@@ -304,6 +304,7 @@ export class Cohort extends React.Component {
                   {menuItemShowCohortUrl} {menuItemCopyCohortUrl}
                 </div>
                 <div className="c__cohort-user-actions">
+                  {cohortActivationState}
                   {cohortUserActions}
                 </div>
               </section>
