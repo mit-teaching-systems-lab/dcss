@@ -306,6 +306,7 @@ class ScenarioEditor extends Component {
               defaultValue={consent.prose}
               onChange={onConsentChange}
               options={{
+                autoFocus: false,
                 buttons: 'suggestion',
                 minHeight: '150px',
                 tabDisable: true
@@ -328,6 +329,7 @@ class ScenarioEditor extends Component {
             defaultValue={finish.components[0].html}
             onChange={onFinishSlideChange}
             options={{
+              autoFocus: false,
               buttons: 'suggestion',
               minHeight: '200px',
               tabDisable: true
