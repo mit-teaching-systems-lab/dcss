@@ -130,7 +130,7 @@ class UserSettings extends Component {
         });
       }
     } else {
-      notify({ message: 'Settings updated!', color: 'green' });
+      notify({ message: 'Settings saved', color: 'green' });
     }
   }
 

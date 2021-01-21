@@ -81,7 +81,7 @@ class ScenarioPersonaEditor extends Component {
         if (persona.id && persona.is_read_only) {
           await this.props.unlinkPersonaFromScenario(persona.id, scenario.id);
           await this.props.linkPersonaToScenario(created.id, scenario.id);
-          message = 'Persona saved!';
+          message = 'Persona saved';
         } else {
           await this.props.linkPersonaToScenario(created.id, scenario.id);
           message = 'Persona created!';

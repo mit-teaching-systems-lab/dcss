@@ -131,7 +131,7 @@ export class CohortScenarios extends React.Component {
       buttons: {
         primary: {
           onClick: () => {
-            notify({ type: 'success', message: 'Cohort scenarios saved.' });
+            notify({ type: 'success', message: 'Cohort scenarios saved' });
             onCohortScenariosSelectorClose();
           }
         }
