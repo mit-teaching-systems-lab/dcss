@@ -22,6 +22,7 @@ const router = Router();
 
 const {
   createCohort,
+  copyCohort,
   getCohort,
   getCohortScenarios,
   getCohorts,
@@ -99,6 +100,11 @@ router.get('/:id/run/:run_id', [
 router.get('/:id/join/:role', [requireUser, joinCohort]);
 router.get('/:id/quit', [requireUser, quitCohort]);
 router.get('/:id/done', [requireUser, doneCohort]);
+router.get('/:id/copy', [
+  requireUser,
+  requireCohortUserRole(requiredCohortRoles),
+  copyCohort
+]);
 router.get('/:id', [requireUser, getCohort]);
 
 module.exports = router;

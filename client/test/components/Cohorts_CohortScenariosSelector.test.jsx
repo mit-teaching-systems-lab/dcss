@@ -53,6 +53,14 @@ jest.mock('copy-text-to-clipboard', () => {
   return jest.fn();
 });
 
+import { notify } from '@components/Notification';
+jest.mock('@components/Notification', () => {
+  return {
+    ...jest.requireActual('@components/Notification'),
+    notify: jest.fn()
+  };
+});
+
 jest.mock('@utils/Layout', () => {
   return {
     ...jest.requireActual('@utils/Layout'),

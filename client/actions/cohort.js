@@ -157,6 +157,27 @@ export let getCohort = id => async dispatch => {
   }
 };
 
+export let copyCohort = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/cohorts/${id}/copy`)).json();
+    if (res.error) {
+      throw res;
+    }
+
+    const cohort = {
+      ...cohortInitialState,
+      ...res.cohort,
+      role: 'owner'
+    };
+
+    dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
+    return cohort;
+  } catch (error) {
+    dispatch({ type: CREATE_COHORT_ERROR, error });
+    return null;
+  }
+};
+
 export let getCohortsCount = () => async dispatch => {
   try {
     const res = await (await fetch('/api/cohorts/count')).json();

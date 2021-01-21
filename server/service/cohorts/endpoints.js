@@ -218,7 +218,24 @@ async function deleteCohortUserRole(req, res) {
   }
 }
 
+async function copyCohort(req, res) {
+  const user_id = req.session.user.id;
+  const { name, scenarios } = await db.getCohort(Number(req.params.id));
+
+  const cohort = await db.createCohort(`${name} COPY`, user_id);
+
+  await db.setCohortScenarios(cohort.id, scenarios);
+
+  res.json({
+    cohort: {
+      ...cohort,
+      scenarios
+    }
+  });
+}
+
 exports.createCohort = asyncMiddleware(createCohort);
+exports.copyCohort = asyncMiddleware(copyCohort);
 exports.getCohort = asyncMiddleware(getCohort);
 exports.getCohortScenarios = asyncMiddleware(getCohortScenarios);
 exports.getCohorts = asyncMiddleware(getCohorts);

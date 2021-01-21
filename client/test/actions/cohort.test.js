@@ -35,73 +35,132 @@ afterEach(() => {
   jest.resetAllMocks();
 });
 
-test('CREATE_COHORT_SUCCESS', async () => {
-  let cohort = { ...state.cohort, name: 'Fake Cohort' };
+describe('CREATE_COHORT_SUCCESS', () => {
+  test('createCohort', async () => {
+    let cohort = { ...state.cohort, name: 'Fake Cohort' };
 
-  fetchImplementation(fetch, 200, { cohort });
+    fetchImplementation(fetch, 200, { cohort });
 
-  const returnValue = await store.dispatch(
-    actions.createCohort({ name: 'Fake Cohort' })
-  );
+    const returnValue = await store.dispatch(
+      actions.createCohort({ name: 'Fake Cohort' })
+    );
 
-  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "/api/cohorts",
-      Object {
-        "body": "{\\"name\\":\\"Fake Cohort\\"}",
-        "headers": Object {
-          "Content-Type": "application/json",
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts",
+        Object {
+          "body": "{\\"name\\":\\"Fake Cohort\\"}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
         },
-        "method": "POST",
-      },
-    ]
-  `);
+      ]
+    `);
 
-  const cohortWithOwnerRole = {
-    ...cohort,
-    role: 'owner'
-  };
+    const cohortWithOwnerRole = {
+      ...cohort,
+      role: 'owner'
+    };
 
-  expect(store.getState().cohort).toEqual(cohortWithOwnerRole);
-  expect(store.getState().cohorts).toEqual([cohortWithOwnerRole]);
-  expect(store.getState().cohortsById).toEqual(makeById([cohortWithOwnerRole]));
-  expect(returnValue).toEqual(cohortWithOwnerRole);
+    expect(store.getState().cohort).toEqual(cohortWithOwnerRole);
+    expect(store.getState().cohorts).toEqual([cohortWithOwnerRole]);
+    expect(store.getState().cohortsById).toEqual(
+      makeById([cohortWithOwnerRole])
+    );
+    expect(returnValue).toEqual(cohortWithOwnerRole);
 
-  await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
-  expect(mockStore.getActions()).toMatchSnapshot();
+    await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('copyCohort', async () => {
+    let cohort = { ...state.cohort, id: 9001, name: 'Fake Cohort COPY' };
+
+    fetchImplementation(fetch, 200, { cohort });
+
+    const returnValue = await store.dispatch(actions.copyCohort(1));
+
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1/copy",
+      ]
+    `);
+
+    const cohortWithOwnerRole = {
+      ...cohort,
+      role: 'owner'
+    };
+
+    expect(store.getState().cohort).toEqual(cohortWithOwnerRole);
+    expect(store.getState().cohorts).toEqual([cohortWithOwnerRole]);
+    expect(store.getState().cohortsById).toEqual(
+      makeById([cohortWithOwnerRole])
+    );
+    expect(returnValue).toEqual(cohortWithOwnerRole);
+
+    await mockStore.dispatch(actions.createCohort(1));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
 });
 
-test('CREATE_COHORT_ERROR', async () => {
-  fetchImplementation(fetch, 200, { error });
+describe('CREATE_COHORT_ERROR', () => {
+  test('createCohort', async () => {
+    fetchImplementation(fetch, 200, { error });
 
-  const returnValue = await store.dispatch(
-    actions.createCohort({ name: 'Fake Cohort' })
-  );
+    const returnValue = await store.dispatch(
+      actions.createCohort({ name: 'Fake Cohort' })
+    );
 
-  expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      "/api/cohorts",
-      Object {
-        "body": "{\\"name\\":\\"Fake Cohort\\"}",
-        "headers": Object {
-          "Content-Type": "application/json",
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts",
+        Object {
+          "body": "{\\"name\\":\\"Fake Cohort\\"}",
+          "headers": Object {
+            "Content-Type": "application/json",
+          },
+          "method": "POST",
         },
-        "method": "POST",
-      },
-    ]
-  `);
+      ]
+    `);
 
-  const {
-    errors: { cohort }
-  } = store.getState();
+    const {
+      errors: { cohort }
+    } = store.getState();
 
-  // The current value of the errors.cohort property will
-  // be whatever error info the server returned.
-  expect(error).toEqual(cohort.error);
-  expect(returnValue).toBe(null);
+    // The current value of the errors.cohort property will
+    // be whatever error info the server returned.
+    expect(error).toEqual(cohort.error);
+    expect(returnValue).toBe(null);
 
-  await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
-  expect(mockStore.getActions()).toMatchSnapshot();
+    await mockStore.dispatch(actions.createCohort({ name: 'Fake Cohort' }));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
+
+  test('copyCohort', async () => {
+    fetchImplementation(fetch, 200, { error });
+
+    const returnValue = await store.dispatch(actions.copyCohort(1));
+
+    expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
+      Array [
+        "/api/cohorts/1/copy",
+      ]
+    `);
+
+    const {
+      errors: { cohort }
+    } = store.getState();
+
+    // The current value of the errors.cohort property will
+    // be whatever error info the server returned.
+    expect(error).toEqual(cohort.error);
+    expect(returnValue).toBe(null);
+
+    await mockStore.dispatch(actions.copyCohort(1));
+    expect(mockStore.getActions()).toMatchSnapshot();
+  });
 });
 
 describe('SET_COHORT_SUCCESS', () => {

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CREATE_COHORT_ERROR 2`] = `
+exports[`CREATE_COHORT_ERROR copyCohort 2`] = `
 Array [
   Object {
     "error": Object {
@@ -11,7 +11,67 @@ Array [
 ]
 `;
 
-exports[`CREATE_COHORT_SUCCESS 2`] = `
+exports[`CREATE_COHORT_ERROR createCohort 2`] = `
+Array [
+  Object {
+    "error": Object {
+      "error": [Error: something unexpected happened on the server],
+    },
+    "type": "CREATE_COHORT_ERROR",
+  },
+]
+`;
+
+exports[`CREATE_COHORT_SUCCESS copyCohort 2`] = `
+Array [
+  Object {
+    "cohort": Object {
+      "created_at": "2020-02-31T14:01:02.656Z",
+      "deleted_at": null,
+      "id": 9001,
+      "is_archived": false,
+      "name": "Fake Cohort COPY",
+      "role": "owner",
+      "roles": Array [
+        "super",
+        "facilitator",
+      ],
+      "runs": Array [],
+      "scenarios": Array [],
+      "updated_at": "2021-01-15T14:01:02.656Z",
+      "users": Array [
+        Object {
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      ],
+      "usersById": Object {
+        "999": Object {
+          "email": "super@email.com",
+          "id": 999,
+          "is_anonymous": false,
+          "is_super": true,
+          "roles": Array [
+            "super",
+            "facilitator",
+          ],
+          "username": "super",
+        },
+      },
+    },
+    "type": "CREATE_COHORT_SUCCESS",
+  },
+]
+`;
+
+exports[`CREATE_COHORT_SUCCESS createCohort 2`] = `
 Array [
   Object {
     "cohort": Object {

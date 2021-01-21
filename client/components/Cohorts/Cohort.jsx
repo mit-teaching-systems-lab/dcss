@@ -16,7 +16,12 @@ import {
 } from '@components/UI';
 import copy from 'copy-text-to-clipboard';
 import Storage from '@utils/Storage';
-import { getCohort, linkUserToCohort, setCohort } from '@actions/cohort';
+import {
+  copyCohort,
+  getCohort,
+  linkUserToCohort,
+  setCohort
+} from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getUsers } from '@actions/users';
 import DataTable from '@components/Cohorts/DataTable';
@@ -48,9 +53,10 @@ export class Cohort extends React.Component {
 
     this.state = {
       isReady: false,
-      renameIsOpen: false,
-      deleteIsOpen: false,
       archiveIsOpen: false,
+      copyIsOpen: false,
+      deleteIsOpen: false,
+      renameIsOpen: false,
       activeTabKey,
       tabs
     };
@@ -157,6 +163,7 @@ export class Cohort extends React.Component {
       isReady,
       activeTabKey,
       tabs,
+      copyIsOpen,
       renameIsOpen,
       deleteIsOpen,
       archiveIsOpen
@@ -229,6 +236,7 @@ export class Cohort extends React.Component {
             text="Copy cohort"
             icon="copy"
             className="icon-primary"
+            onClick={() => this.setState({ copyIsOpen: true })}
           />
           <Dropdown.Item
             text="Delete cohort"
@@ -240,32 +248,43 @@ export class Cohort extends React.Component {
       </Dropdown>
     );
 
-    const deleteOrArchiveIsOpen = deleteIsOpen || archiveIsOpen;
-    const deleteOrArchiveModalHeader = deleteIsOpen
-      ? `Delete "${cohort.name}"`
-      : `Archive "${cohort.name}"`;
-    const deleteOrArchiveAction = deleteIsOpen ? `delete` : `archive`;
-
-    const onDeleteOrArchiveClose = () => {
+    const copyDeleteOrArchiveIsOpen =
+      copyIsOpen || deleteIsOpen || archiveIsOpen;
+    const cohortActionKind = copyIsOpen
+      ? 'Copy'
+      : deleteIsOpen
+      ? 'Delete'
+      : 'Archive';
+    const copyDeleteOrArchiveModalHeader = `${cohortActionKind} "${cohort.name}"`;
+    const copyDeleteOrArchiveAction = cohortActionKind.toLowerCase();
+    const onCopyDeleteOrArchiveClose = () => {
       this.setState({
-        [`${deleteOrArchiveAction}IsOpen`]: false
+        [`${copyDeleteOrArchiveAction}IsOpen`]: false
       });
     };
 
     const onDeleteOrArchiveConfirm = async () => {
-      const isArchive = deleteOrArchiveAction === 'archive';
+      const isArchive = copyDeleteOrArchiveAction === 'archive';
+      const isCopy = copyDeleteOrArchiveAction === 'copy';
+      const isDelete = copyDeleteOrArchiveAction === 'delete';
       const prop = isArchive ? 'is_archived' : 'deleted_at';
       const value = isArchive ? true : new Date().toISOString();
 
-      await this.props.setCohort(this.props.cohort.id, {
-        [prop]: value
-      });
+      if (isArchive || isDelete) {
+        await this.props.setCohort(this.props.cohort.id, {
+          [prop]: value
+        });
 
-      if (!isArchive) {
-        // Hard location change to force state purge
-        location.href = '/cohorts';
+        if (!isArchive) {
+          // Hard location change to force state purge
+          location.href = '/cohorts';
+        } else {
+          onCopyDeleteOrArchiveClose();
+        }
       } else {
-        onDeleteOrArchiveClose();
+        const { id } = await this.props.copyCohort(this.props.cohort.id);
+
+        location.href = `/cohort/${id}`;
       }
     };
 
@@ -359,7 +378,7 @@ export class Cohort extends React.Component {
           />
         ) : null}
 
-        {deleteOrArchiveIsOpen ? (
+        {copyDeleteOrArchiveIsOpen ? (
           <Modal.Accessible open>
             <Modal
               closeIcon
@@ -367,12 +386,12 @@ export class Cohort extends React.Component {
               aria-modal="true"
               role="dialog"
               size="small"
-              onClose={onDeleteOrArchiveClose}
+              onClose={onCopyDeleteOrArchiveClose}
             >
-              <Header icon="group" content={deleteOrArchiveModalHeader} />
+              <Header icon="group" content={copyDeleteOrArchiveModalHeader} />
               <Modal.Content>
                 <Text>
-                  Are you sure you want to {deleteOrArchiveAction} &quot;
+                  Are you sure you want to {copyDeleteOrArchiveAction} &quot;
                   {cohort.name}&quot;?
                 </Text>
               </Modal.Content>
@@ -386,7 +405,7 @@ export class Cohort extends React.Component {
                     Yes
                   </Button>
                   <Button.Or />
-                  <Button aria-label="No" onClick={onDeleteOrArchiveClose}>
+                  <Button aria-label="No" onClick={onCopyDeleteOrArchiveClose}>
                     No
                   </Button>
                 </Button.Group>
@@ -469,6 +488,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  copyCohort: id => dispatch(copyCohort(id)),
   getCohort: id => dispatch(getCohort(id)),
   setCohort: (id, params) => dispatch(setCohort(id, params)),
   getUser: () => dispatch(getUser()),
