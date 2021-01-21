@@ -24,6 +24,7 @@ import {
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
 import ChatMessages from '@components/Chat/ChatMessages';
+import ChatMinMax from '@components/Chat/ChatMinMax';
 import RichTextEditor from '@components/RichTextEditor';
 import Layout from '@utils/Layout';
 
@@ -31,6 +32,8 @@ import './Chat.css';
 
 const TEMPORARY_CHAT_ID = 1;
 const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
+const minClassName = 'content hidden';
+const maxClassName = 'content visible';
 
 function isValidMessage(message) {
   if (!message) {
@@ -114,6 +117,7 @@ class Chat extends Component {
 
     this.state = {
       id: Identity.id(),
+      isMinimized: false,
       isReady: false
     };
 
@@ -129,6 +133,7 @@ class Chat extends Component {
     this.onInput = this.onInput.bind(this);
     this.onJoinOrPart = this.onJoinOrPart.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onMinMaxClick = this.onMinMaxClick.bind(this);
     this.onMount = this.onMount.bind(this);
     this.onQuote = this.onQuote.bind(this);
     this.onSendNewMessage = this.onSendNewMessage.bind(this);
@@ -245,6 +250,10 @@ class Chat extends Component {
     this.hasPendingSend = false;
   }
 
+  onInput(event, rte, content) {
+    this.onChange(content);
+  }
+
   onKeyDown(event) {
     const { content } = this;
     if (event.keyCode === 13 && !event.shiftKey) {
@@ -258,8 +267,10 @@ class Chat extends Component {
     // TODO: possibly send "typing" message?
   }
 
-  onInput(event, rte, content) {
-    this.onChange(content);
+  onMinMaxClick() {
+    this.setState({
+      isMinimized: !this.state.isMinimized
+    });
   }
 
   onMount(rte) {
@@ -286,12 +297,13 @@ class Chat extends Component {
       onChange,
       onInput,
       onKeyDown,
+      onMinMaxClick,
       onMount,
       onQuote,
       onSendNewMessage
     } = this;
     const { chat } = this.props;
-    const { id, isReady } = this.state;
+    const { id, isMinimized, isReady } = this.state;
     const defaultValue = content || '';
 
     if (!isReady) {
@@ -338,6 +350,8 @@ class Chat extends Component {
       });
     };
 
+    const minMaxClassName = isMinimized ? maxClassName : minClassName;
+
     return (
       <Draggable
         handle=".handle"
@@ -351,13 +365,12 @@ class Chat extends Component {
           className="ui modal transition visible active c__container-modal"
           data-testid="chat-draggable"
         >
+          <ChatMinMax onChange={onMinMaxClick} />
           <div tabIndex="0" className="ui header handle">
             <i aria-hidden="true" className="comments outline icon"></i>
-            <div className="content">
-              scenario.title, slide.title Discussion
-            </div>
+            <div className="content">scenario.title, slide.title</div>
           </div>
-          <div tabIndex="0" className="content">
+          <div tabIndex="0" className={minMaxClassName}>
             <div className="cm__container-outer">
               <ChatMessages chat={chat} onQuote={onQuote} slice={slice} />
             </div>

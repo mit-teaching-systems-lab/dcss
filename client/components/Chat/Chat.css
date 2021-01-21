@@ -62,6 +62,36 @@
   visibility: visible;
 }
 
+.c__container-modal > .ui.header>i.icon+.content {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+  min-width: 316px !important;
+  width: unset !important;
+  max-width: calc((100vw / 2.99) - 100px) !important;
+}
+
+.c__container-modal-minmax {
+  background: unset!important;
+}
+
+.c__container-modal > .hidden {
+  left: -100vw !important;
+  position: absolute;
+  visibility: hidden;
+}
+
+.c__container-modal > .visible {
+  visibility: visible;
+  left: unset !important;
+  position: unset !important;
+}
+
+.c__container-modal > div.ui.header.handle > i.icon {
+  font-size: 1em !important;
+}
+
+/* Mobile */
 @media only screen and (max-width: 767.98px) {
   .cm__container-inner {
     height: 150px;
@@ -72,14 +102,30 @@
   .c__container-modal {
     bottom: 0;
     top: unset !important;
-    margin-bottom: 1em !important;
+    margin-bottom: unset !important;
+    min-width: unset !important;
+    border: none !important;
+    width: 100% !important;
+    left: 0 !important;
+  }
+
+  .c__container-modal.ui.modal>.close {
+    top: 0rem!important;
+    opacity: 1;
   }
 }
 
+/* Non-mobile */
 @media only screen and (min-width: 768px)  {
   .c__container-modal {
-    /*min-width: 460px !important;*/
-    width: calc(100vw / 4) !important;
+    /* minimum width before the toolbar wraps */
+    min-width: 410px !important;
+    width: calc(100vw / 2.99) !important;
+  }
+
+  .c__container-modal.ui.modal>.close {
+    top: 0.5rem!important;
+    opacity: 1;
   }
 }
 

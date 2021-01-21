@@ -1530,3 +1530,31 @@ test('Draggable: onStop', async done => {
 
   done();
 });
+
+test('Click to Minimize and Maximize', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  const button = await screen.findByLabelText(/minimize/i);
+
+  userEvent.click(button);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(button);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});

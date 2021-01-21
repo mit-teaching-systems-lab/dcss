@@ -11,6 +11,15 @@ exports[`Calls onChange when RTE is cleared 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -22,11 +31,11 @@ exports[`Calls onChange when RTE is cleared 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -70,6 +79,15 @@ exports[`Calls onChange when RTE is cleared 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -81,11 +99,11 @@ exports[`Calls onChange when RTE is cleared 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -417,6 +435,15 @@ exports[`Calls onInput when RTE receives new content 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -428,11 +455,11 @@ exports[`Calls onInput when RTE receives new content 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -476,6 +503,15 @@ exports[`Calls onInput when RTE receives new content 4`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -487,11 +523,11 @@ exports[`Calls onInput when RTE receives new content 4`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -832,6 +868,15 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -843,11 +888,11 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -891,6 +936,15 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -902,11 +956,11 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -1227,7 +1281,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
 </body>"
 `;
 
-exports[`Draggable: onStop 1`] = `
+exports[`Click to Minimize and Maximize 1`] = `
 "<body>
   <div
     id=\\"root\\"
@@ -1238,6 +1292,15 @@ exports[`Draggable: onStop 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -1249,11 +1312,791 @@ exports[`Draggable: onStop 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
+        tabindex=\\"0\\"
+      >
+        <div
+          class=\\"cm__container-outer\\"
+        />
+        <div
+          class=\\"cc__container-outer\\"
+        >
+          <div>
+            <textarea
+              id=\\"23\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"chat-main\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Click to Minimize and Maximize 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal\\"
+      data-testid=\\"chat-draggable\\"
+      role=\\"dialog\\"
+    >
+      <button
+        aria-label=\\"Click to maximize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window maximize icon\\"
+        />
+      </button>
+      <div
+        class=\\"ui header handle\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"comments outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          scenario.title, slide.title
+        </div>
+      </div>
+      <div
+        class=\\"content visible\\"
+        tabindex=\\"0\\"
+      >
+        <div
+          class=\\"cm__container-outer\\"
+        >
+          <div
+            class=\\"cm__container-inner\\"
+            data-testid=\\"scrolling-container-outer\\"
+          >
+            <div
+              class=\\"ui comments\\"
+            >
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:39 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    >
+                      <button
+                        aria-label=\\"Quote this message\\"
+                        class=\\"ui mini icon button\\"
+                      >
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"quote left icon\\"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        Hello
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"credible-lyrebird\\"
+                      class=\\"ui medium text\\"
+                      title=\\"credible-lyrebird\\"
+                    >
+                      credible-lyrebird
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:40 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        <span
+                          style=\\"color: rgb(140, 140, 140);\\"
+                        >
+                          <em>
+                            has joined the chat.
+                          </em>
+                        </span>
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"credible-lyrebird\\"
+                      class=\\"ui medium text\\"
+                      title=\\"credible-lyrebird\\"
+                    >
+                      credible-lyrebird
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:40 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    >
+                      <button
+                        aria-label=\\"Quote this message\\"
+                        class=\\"ui mini icon button\\"
+                      >
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"quote left icon\\"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        Hi!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"credible-lyrebird\\"
+                      class=\\"ui medium text\\"
+                      title=\\"credible-lyrebird\\"
+                    >
+                      credible-lyrebird
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:41:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:41 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        <span
+                          style=\\"color: rgb(140, 140, 140);\\"
+                        >
+                          <em>
+                            has left the chat.
+                          </em>
+                        </span>
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=\\"cc__container-outer\\"
+        >
+          <div>
+            <textarea
+              id=\\"23\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"chat-main\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Click to Minimize and Maximize 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal\\"
+      data-testid=\\"chat-draggable\\"
+      role=\\"dialog\\"
+    >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
+      <div
+        class=\\"ui header handle\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"comments outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          scenario.title, slide.title
+        </div>
+      </div>
+      <div
+        class=\\"content hidden\\"
+        tabindex=\\"0\\"
+      >
+        <div
+          class=\\"cm__container-outer\\"
+        >
+          <div
+            class=\\"cm__container-inner\\"
+            data-testid=\\"scrolling-container-outer\\"
+          >
+            <div
+              class=\\"ui comments\\"
+            >
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:39 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    >
+                      <button
+                        aria-label=\\"Quote this message\\"
+                        class=\\"ui mini icon button\\"
+                      >
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"quote left icon\\"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        Hello
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"credible-lyrebird\\"
+                      class=\\"ui medium text\\"
+                      title=\\"credible-lyrebird\\"
+                    >
+                      credible-lyrebird
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:40 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        <span
+                          style=\\"color: rgb(140, 140, 140);\\"
+                        >
+                          <em>
+                            has joined the chat.
+                          </em>
+                        </span>
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"credible-lyrebird\\"
+                      class=\\"ui medium text\\"
+                      title=\\"credible-lyrebird\\"
+                    >
+                      credible-lyrebird
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:40 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    >
+                      <button
+                        aria-label=\\"Quote this message\\"
+                        class=\\"ui mini icon button\\"
+                      >
+                        <i
+                          aria-hidden=\\"true\\"
+                          class=\\"quote left icon\\"
+                        />
+                      </button>
+                    </div>
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        Hi!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class=\\"comment\\"
+                data-testid=\\"comment\\"
+              >
+                <div
+                  class=\\"avatar\\"
+                >
+                  <img
+                    src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                  />
+                </div>
+                <div
+                  class=\\"cmm__content content\\"
+                >
+                  <span
+                    class=\\"author\\"
+                    tabindex=\\"0\\"
+                  >
+                    <span
+                      aria-label=\\"credible-lyrebird\\"
+                      class=\\"ui medium text\\"
+                      title=\\"credible-lyrebird\\"
+                    >
+                      credible-lyrebird
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                  </span>
+                  <div
+                    class=\\"metadata\\"
+                  >
+                    <span
+                      aria-label=\\"2020-12-09T16:41:10.359Z\\"
+                      tabindex=\\"0\\"
+                    >
+                      11:41 AM
+                    </span>
+                  </div>
+                  <div
+                    class=\\"actions\\"
+                  >
+                    <div
+                      class=\\"ui buttons\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"text\\"
+                  >
+                    <div>
+                      <p>
+                        <span
+                          style=\\"color: rgb(140, 140, 140);\\"
+                        >
+                          <em>
+                            has left the chat.
+                          </em>
+                        </span>
+                        <br />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class=\\"cc__container-outer\\"
+        >
+          <div>
+            <textarea
+              id=\\"23\\"
+              name=\\"content\\"
+              options=\\"[object Object]\\"
+            >
+              &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
+            </textarea>
+            <button
+              aria-label=\\"Send message\\"
+            >
+              THIS BUTTON IS PROVIDED BY THE MOCK
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        data-testid=\\"chat-main\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Draggable: onStop 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal\\"
+      data-testid=\\"chat-draggable\\"
+      role=\\"dialog\\"
+    >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
+      <div
+        class=\\"ui header handle\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"comments outline icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          scenario.title, slide.title
+        </div>
+      </div>
+      <div
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -1297,6 +2140,15 @@ exports[`Draggable: onStop 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -1308,11 +2160,11 @@ exports[`Draggable: onStop 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -1653,6 +2505,15 @@ exports[`Layout on desktop 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -1664,11 +2525,11 @@ exports[`Layout on desktop 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2009,6 +2870,15 @@ exports[`Layout on mobile 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -2020,11 +2890,11 @@ exports[`Layout on mobile 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2367,6 +3237,15 @@ exports[`Types, clicks Send Message 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -2378,11 +3257,11 @@ exports[`Types, clicks Send Message 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2426,6 +3305,15 @@ exports[`Types, clicks Send Message 4`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -2437,11 +3325,11 @@ exports[`Types, clicks Send Message 4`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2773,6 +3661,15 @@ exports[`Types, followed by {enter} 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -2784,11 +3681,11 @@ exports[`Types, followed by {enter} 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2832,6 +3729,15 @@ exports[`Types, followed by {enter} 4`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -2843,11 +3749,11 @@ exports[`Types, followed by {enter} 4`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3179,6 +4085,15 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -3190,11 +4105,11 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3238,6 +4153,15 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -3249,11 +4173,11 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3585,6 +4509,15 @@ exports[`Types, followed by {shift}{enter}, does not submit 5`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -3596,11 +4529,11 @@ exports[`Types, followed by {shift}{enter}, does not submit 5`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3644,6 +4577,15 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -3655,11 +4597,11 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3991,6 +4933,15 @@ exports[`Types, then attempts to send empty string 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -4002,11 +4953,11 @@ exports[`Types, then attempts to send empty string 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4048,6 +4999,15 @@ exports[`Types, then attempts to send empty string 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -4059,11 +5019,11 @@ exports[`Types, then attempts to send empty string 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4393,6 +5353,15 @@ exports[`Types, then attempts to send string containing only a space character 1
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -4404,11 +5373,11 @@ exports[`Types, then attempts to send string containing only a space character 1
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4450,6 +5419,15 @@ exports[`Types, then attempts to send string containing only a space character 2
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -4461,11 +5439,11 @@ exports[`Types, then attempts to send string containing only a space character 2
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4795,6 +5773,15 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -4806,11 +5793,11 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4854,6 +5841,15 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -4865,11 +5861,11 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5210,6 +6206,15 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -5221,11 +6226,11 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5584,6 +6589,15 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -5595,11 +6609,11 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5958,6 +6972,15 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -5969,11 +6992,11 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -6314,6 +7337,15 @@ exports[`onQuote 1`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -6325,11 +7357,11 @@ exports[`onQuote 1`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -6373,6 +7405,15 @@ exports[`onQuote 3`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -6384,11 +7425,11 @@ exports[`onQuote 3`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -6730,6 +7771,15 @@ exports[`onQuote 5`] = `
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >
+      <button
+        aria-label=\\"Click to minimize the chat window\\"
+        class=\\"ui icon button close c__container-modal-minmax\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"window minimize icon\\"
+        />
+      </button>
       <div
         class=\\"ui header handle\\"
         tabindex=\\"0\\"
@@ -6741,11 +7791,11 @@ exports[`onQuote 5`] = `
         <div
           class=\\"content\\"
         >
-          scenario.title, slide.title Discussion
+          scenario.title, slide.title
         </div>
       </div>
       <div
-        class=\\"content\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div

@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Click to Minimize and Maximize 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Click to minimize the chat window\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"window minimize icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`Click to Minimize and Maximize 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"window maximize icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`Click to Minimize and Maximize 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Click to minimize the chat window\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"window minimize icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`No props.onChange 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Click to minimize the chat window\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"window minimize icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`No props.onChange 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Click to maximize the chat window\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"window maximize icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`No props.onChange 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Click to minimize the chat window\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"window minimize icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
