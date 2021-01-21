@@ -35,7 +35,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -103,7 +103,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -459,7 +459,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -527,7 +527,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -892,7 +892,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -960,7 +960,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -1316,7 +1316,7 @@ exports[`Click to Minimize and Maximize 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -1384,7 +1384,7 @@ exports[`Click to Minimize and Maximize 2`] = `
         </div>
       </div>
       <div
-        class=\\"content visible\\"
+        class=\\"content hidden\\"
         tabindex=\\"0\\"
       >
         <div
@@ -1740,7 +1740,7 @@ exports[`Click to Minimize and Maximize 3`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2096,7 +2096,7 @@ exports[`Draggable: onStop 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2164,7 +2164,7 @@ exports[`Draggable: onStop 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2529,7 +2529,7 @@ exports[`Layout on desktop 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -2894,7 +2894,7 @@ exports[`Layout on mobile 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3261,7 +3261,7 @@ exports[`Types, clicks Send Message 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3329,7 +3329,7 @@ exports[`Types, clicks Send Message 4`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3685,7 +3685,7 @@ exports[`Types, followed by {enter} 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -3753,7 +3753,7 @@ exports[`Types, followed by {enter} 4`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4109,7 +4109,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4177,7 +4177,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4533,7 +4533,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 5`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4601,7 +4601,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -4957,7 +4957,7 @@ exports[`Types, then attempts to send empty string 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5023,7 +5023,7 @@ exports[`Types, then attempts to send empty string 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5377,7 +5377,7 @@ exports[`Types, then attempts to send string containing only a space character 1
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5443,7 +5443,7 @@ exports[`Types, then attempts to send string containing only a space character 2
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5797,7 +5797,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -5865,7 +5865,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -6230,7 +6230,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -6613,7 +6613,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -6996,7 +6996,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -7361,7 +7361,7 @@ exports[`onQuote 1`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -7429,7 +7429,7 @@ exports[`onQuote 3`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div
@@ -7795,7 +7795,7 @@ exports[`onQuote 5`] = `
         </div>
       </div>
       <div
-        class=\\"content hidden\\"
+        class=\\"content visible\\"
         tabindex=\\"0\\"
       >
         <div

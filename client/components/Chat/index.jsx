@@ -350,7 +350,7 @@ class Chat extends Component {
       });
     };
 
-    const minMaxClassName = isMinimized ? maxClassName : minClassName;
+    const minMaxClassName = isMinimized ? minClassName : maxClassName;
 
     return (
       <Draggable
