@@ -74,45 +74,93 @@ exports[`Render 1 1 3`] = `
         <div
           class="c__cohort-user-actions"
         >
-          <div
+          <p
             class="c__activation-state"
           >
-            <p
-              class="c__activation-state__display"
+            Cohort is 
+            <span>
+              Active
+            </span>
+          </p>
+          <div
+            aria-expanded="false"
+            class="ui button labeled dropdown icon icon-primary"
+            role="listbox"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="divider text"
+              role="alert"
             >
-              Cohort is 
-              <span>
-                Active
-              </span>
-            </p>
-            <button
-              class="ui small button"
+              Cohort tools
+            </div>
+            <i
+              aria-hidden="true"
+              class="setting icon"
+            />
+            <div
+              class="left menu transition"
             >
-              <i
-                aria-hidden="true"
-                class="archive icon primary"
-              />
-              Archive cohort
-            </button>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="archive icon"
+                />
+                <span
+                  class="text"
+                >
+                  Archive cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="edit icon"
+                />
+                <span
+                  class="text"
+                >
+                  Rename cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="copy icon"
+                />
+                <span
+                  class="text"
+                >
+                  Copy cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="trash alternate outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Delete cohort
+                </span>
+              </div>
+            </div>
           </div>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="edit icon primary"
-            />
-            Rename cohort
-          </button>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="trash alternate outline icon primary"
-            />
-            Delete cohort
-          </button>
         </div>
       </section>
       <section
@@ -668,45 +716,93 @@ exports[`Render 2 1 3`] = `
         <div
           class="c__cohort-user-actions"
         >
-          <div
+          <p
             class="c__activation-state"
           >
-            <p
-              class="c__activation-state__display"
+            Cohort is 
+            <span>
+              Active
+            </span>
+          </p>
+          <div
+            aria-expanded="false"
+            class="ui button labeled dropdown icon icon-primary"
+            role="listbox"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="divider text"
+              role="alert"
             >
-              Cohort is 
-              <span>
-                Active
-              </span>
-            </p>
-            <button
-              class="ui small button"
+              Cohort tools
+            </div>
+            <i
+              aria-hidden="true"
+              class="setting icon"
+            />
+            <div
+              class="left menu transition"
             >
-              <i
-                aria-hidden="true"
-                class="archive icon primary"
-              />
-              Archive cohort
-            </button>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="archive icon"
+                />
+                <span
+                  class="text"
+                >
+                  Archive cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="edit icon"
+                />
+                <span
+                  class="text"
+                >
+                  Rename cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="copy icon"
+                />
+                <span
+                  class="text"
+                >
+                  Copy cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="trash alternate outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Delete cohort
+                </span>
+              </div>
+            </div>
           </div>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="edit icon primary"
-            />
-            Rename cohort
-          </button>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="trash alternate outline icon primary"
-            />
-            Delete cohort
-          </button>
         </div>
       </section>
       <section
@@ -1262,45 +1358,93 @@ exports[`Render 3 1 3`] = `
         <div
           class="c__cohort-user-actions"
         >
-          <div
+          <p
             class="c__activation-state"
           >
-            <p
-              class="c__activation-state__display"
+            Cohort is 
+            <span>
+              Active
+            </span>
+          </p>
+          <div
+            aria-expanded="false"
+            class="ui button labeled dropdown icon icon-primary"
+            role="listbox"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="divider text"
+              role="alert"
             >
-              Cohort is 
-              <span>
-                Active
-              </span>
-            </p>
-            <button
-              class="ui small button"
+              Cohort tools
+            </div>
+            <i
+              aria-hidden="true"
+              class="setting icon"
+            />
+            <div
+              class="left menu transition"
             >
-              <i
-                aria-hidden="true"
-                class="archive icon primary"
-              />
-              Archive cohort
-            </button>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="archive icon"
+                />
+                <span
+                  class="text"
+                >
+                  Archive cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="edit icon"
+                />
+                <span
+                  class="text"
+                >
+                  Rename cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="copy icon"
+                />
+                <span
+                  class="text"
+                >
+                  Copy cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="trash alternate outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Delete cohort
+                </span>
+              </div>
+            </div>
           </div>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="edit icon primary"
-            />
-            Rename cohort
-          </button>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="trash alternate outline icon primary"
-            />
-            Delete cohort
-          </button>
         </div>
       </section>
       <section
@@ -2216,45 +2360,93 @@ exports[`Render 9 1 3`] = `
         <div
           class="c__cohort-user-actions"
         >
-          <div
+          <p
             class="c__activation-state"
           >
-            <p
-              class="c__activation-state__display"
+            Cohort is 
+            <span>
+              Active
+            </span>
+          </p>
+          <div
+            aria-expanded="false"
+            class="ui button labeled dropdown icon icon-primary"
+            role="listbox"
+            tabindex="0"
+          >
+            <div
+              aria-atomic="true"
+              aria-live="polite"
+              class="divider text"
+              role="alert"
             >
-              Cohort is 
-              <span>
-                Active
-              </span>
-            </p>
-            <button
-              class="ui small button"
+              Cohort tools
+            </div>
+            <i
+              aria-hidden="true"
+              class="setting icon"
+            />
+            <div
+              class="left menu transition"
             >
-              <i
-                aria-hidden="true"
-                class="archive icon primary"
-              />
-              Archive cohort
-            </button>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="archive icon"
+                />
+                <span
+                  class="text"
+                >
+                  Archive cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="edit icon"
+                />
+                <span
+                  class="text"
+                >
+                  Rename cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="copy icon"
+                />
+                <span
+                  class="text"
+                >
+                  Copy cohort
+                </span>
+              </div>
+              <div
+                class="item icon-primary"
+                role="option"
+              >
+                <i
+                  aria-hidden="true"
+                  class="trash alternate outline icon"
+                />
+                <span
+                  class="text"
+                >
+                  Delete cohort
+                </span>
+              </div>
+            </div>
           </div>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="edit icon primary"
-            />
-            Rename cohort
-          </button>
-          <button
-            class="ui small button"
-          >
-            <i
-              aria-hidden="true"
-              class="trash alternate outline icon primary"
-            />
-            Delete cohort
-          </button>
         </div>
       </section>
       <section

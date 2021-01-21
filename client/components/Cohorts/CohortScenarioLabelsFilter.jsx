@@ -4,7 +4,7 @@ import * as QueryString from 'query-string';
 import escapeRegExp from 'lodash.escaperegexp';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Dropdown, Text } from '@components/UI';
+import { Dropdown } from '@components/UI';
 import { setFilterScenariosInUse } from '@actions/filters';
 import Identity from '@utils/Identity';
 

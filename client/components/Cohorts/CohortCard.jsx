@@ -10,8 +10,8 @@ import { rolesToHumanReadableString } from '@utils/Roles';
 import CohortScenarioLabels from '@components/Cohorts/CohortScenarioLabels';
 
 export const CohortCard = props => {
-  const { cohort, roles, scenariosById, user } = props;
-  const { id, created_at, deleted_at, updated_at, name, users } = cohort;
+  const { cohort, roles, user } = props;
+  const { id, created_at, deleted_at, updated_at, name } = cohort;
   const yourRoles = rolesToHumanReadableString('cohort', roles);
   const updatedfromNow = Moment(updated_at || created_at).fromNow();
   const updatedCalendar = Moment(updated_at || created_at).calendar();
@@ -62,13 +62,12 @@ CohortCard.propTypes = {
   cohort: PropTypes.object,
   history: PropTypes.object,
   roles: PropTypes.array,
-  scenariosById: PropTypes.object,
   setCohort: PropTypes.func,
   user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { cohorts, cohortsById, filters, scenariosById, user } = state;
+  const { cohorts, cohortsById, filters, user } = state;
   const cohort =
     cohortsById[ownProps.id] || cohorts.find(({ id }) => id === ownProps.id);
 
@@ -81,7 +80,7 @@ const mapStateToProps = (state, ownProps) => {
     }
   }
 
-  return { cohort, filters, roles, scenariosById, user };
+  return { cohort, filters, roles, user };
 };
 
 const mapDispatchToProps = dispatch => ({
