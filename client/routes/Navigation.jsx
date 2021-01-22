@@ -91,7 +91,7 @@ class Navigation extends Component {
       <Menu.Item.Tabbable
         aria-label="See all scenarios"
         role="option"
-        to="/scenarios/"
+        to="/scenarios"
         as={NavLink}
       >
         Scenarios

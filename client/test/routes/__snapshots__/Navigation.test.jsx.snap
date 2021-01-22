@@ -22,7 +22,7 @@ exports[`Render 1 1 1`] = `
     <a
       aria-label="See all scenarios"
       class="item"
-      href="/scenarios/"
+      href="/scenarios"
       role="option"
       tabindex="0"
     >
