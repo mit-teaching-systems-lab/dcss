@@ -26,6 +26,8 @@
   width: 5%;
   max-width: 5%;
   min-width: 5%;
+  overflow: unset !important;
+  text-overflow: unset !important;
 }
 
 .dropdown.sp__dropdown > .text {

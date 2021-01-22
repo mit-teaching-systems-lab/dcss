@@ -264,7 +264,7 @@ class ScenarioPersonas extends Component {
               <Table.HeaderCell className="sp__td-250px">
                 Description
               </Table.HeaderCell>
-              <Table.HeaderCell className="sp__td-5">Color</Table.HeaderCell>
+              <Table.HeaderCell className="sp__td-5">{''}</Table.HeaderCell>
               <Table.HeaderCell className="sp__td-5">{''}</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
