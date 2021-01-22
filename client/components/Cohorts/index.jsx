@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import copy from 'copy-text-to-clipboard';
 import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
-import * as QueryString from 'query-string';
 import {
   Button,
   Card,
@@ -38,53 +37,40 @@ import CohortCard from './CohortCard';
 import CohortScenarioLabelsFilter from './CohortScenarioLabelsFilter';
 import CohortCreateWizard from './CohortCreateWizard';
 import Identity from '@utils/Identity';
+import QueryString from '@utils/QueryString';
 import '../ScenariosList/ScenariosList.css';
 
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function parseQueryString(input) {
-  return QueryString.parse(input || window.location.search, qsOpts);
-}
-
-function makeQueryString(keyVals) {
-  return `?${QueryString.stringify(keyVals, qsOpts)}`;
-}
-
-function makeHistoryUrl(location, keyVals) {
-  const searchString = makeQueryString(keyVals);
-  return `${location.pathname}${searchString}`;
+function makeHistoryEntry(location, keyVals) {
+  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
 }
 
 export class Cohorts extends React.Component {
   constructor(props) {
     super(props);
 
-    const { page = 1, search = '', s: scenariosInUse = [] } = parseQueryString(
+    const { page = 1, search = '', s: scenariosInUse = [] } = QueryString.parse(
       window.location.search
     );
 
-    const cohorts = this.props.cohorts;
-
     this.state = {
+      // Indicates when at least the first page of cohorts can be shown
       isReady: false,
-      createIsVisible: false,
-      cohorts,
+      // Indicates when all cohorts have been loaded from the server
+      isComplete: false,
+      createIsOpen: false,
+      results: [],
       page,
       search
     };
 
     this.props.setFilterScenariosInUse(scenariosInUse);
 
-    this.cohorts = cohorts;
+    this.cohorts = this.props.cohorts;
     this.onCreateCohortCancel = this.onCreateCohortCancel.bind(this);
     this.onCreateCohortOpenClick = this.onCreateCohortOpenClick.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
-    this.onScenarioLabelsFilterChange = this.onScenarioLabelsFilterChange.bind(
-      this
-    );
+    this.onFilterChange = this.onFilterChange.bind(this);
   }
 
   async componentDidMount() {
@@ -101,7 +87,8 @@ export class Cohorts extends React.Component {
         this.cohorts = this.props.cohorts;
 
         this.setState({
-          isReady: true
+          isReady: true,
+          isComplete: true
         });
 
         if (search) {
@@ -114,6 +101,7 @@ export class Cohorts extends React.Component {
           await this.props.getCohortsSlice('DESC', offset, limit);
 
           this.cohorts = this.props.cohorts;
+
           this.setState({
             isReady: true
           });
@@ -124,31 +112,41 @@ export class Cohorts extends React.Component {
 
           offset += limit;
         } while (offset < count);
+
+        this.setState({
+          isComplete: true
+        });
       }
     }
   }
 
   onCreateCohortCancel() {
-    this.setState({ createIsVisible: false });
+    this.setState({ createIsOpen: false });
   }
 
   onCreateCohortOpenClick() {
-    this.setState({ createIsVisible: true });
+    this.setState({ createIsOpen: true });
   }
 
   onSearchChange(event, props) {
     const { cohorts: sourceCohorts, scenarios } = this.props;
     const { value: search } = props;
+    const results = [];
     const page = 1;
 
     if (search === '') {
+      this.props.history.push(
+        makeHistoryEntry(this.props.location, {
+          page,
+          search
+        })
+      );
+
       this.setState({
-        cohorts: sourceCohorts,
+        results,
         page,
         search
       });
-
-      this.props.history.push(makeHistoryUrl(this.props.location, { page }));
       return;
     }
 
@@ -180,55 +178,57 @@ export class Cohorts extends React.Component {
       return false;
     };
 
-    const results = sourceCohorts.filter(record => {
-      const { name, scenarios, users } = record;
+    results.push(
+      ...sourceCohorts.filter(record => {
+        const { name, scenarios, users } = record;
 
-      if (escapedRegExp.test(name)) {
-        return true;
-      }
+        if (escapedRegExp.test(name)) {
+          return true;
+        }
 
-      if (users.some(({ username }) => escapedRegExp.test(username))) {
-        return true;
-      }
+        if (users.some(({ username }) => escapedRegExp.test(username))) {
+          return true;
+        }
 
-      if (scenarios.some(id => searchScenario(id))) {
-        return true;
-      }
-      return false;
-    });
-
-    if (results.length === 0) {
-      results.push(...sourceCohorts);
-    }
+        if (scenarios.some(id => searchScenario(id))) {
+          return true;
+        }
+        return false;
+      })
+    );
 
     this.setState({
-      cohorts: results,
+      results,
       page,
       search
     });
 
-    this.props.history.push(
-      makeHistoryUrl(this.props.location, { page, search })
-    );
+    const historyEntry = makeHistoryEntry(this.props.location, {
+      page,
+      search
+    });
+
+    if (!window.location.href.endsWith(historyEntry)) {
+      this.props.history.push(historyEntry);
+    }
   }
 
   onPageChange(event, { activePage: page }) {
     const { search } = this.state;
 
-    const searchParams = { page };
-
-    if (search) {
-      searchParams.search = search;
-    }
-
-    this.props.history.push(makeHistoryUrl(this.props.location, searchParams));
+    this.props.history.push(
+      makeHistoryEntry(this.props.location, {
+        page,
+        search
+      })
+    );
 
     this.setState({
       page
     });
   }
 
-  onScenarioLabelsFilterChange() {
+  onFilterChange() {
     this.setState({
       page: 1
     });
@@ -236,21 +236,25 @@ export class Cohorts extends React.Component {
 
   render() {
     const { user } = this.props;
-    const { page, isReady, createIsVisible, search } = this.state;
+    const { page, isComplete, isReady, createIsOpen, search } = this.state;
     const {
       onCreateCohortCancel,
       onCreateCohortOpenClick,
       onPageChange,
-      onScenarioLabelsFilterChange,
+      onFilterChange,
       onSearchChange
     } = this;
 
     // If there's an active search, use the search filtered set
     // of cohorts from state. Otherwise, use the status filtered
     // set from this.cohorts (the untouched backup).
-    const sourceCohorts = search ? this.state.cohorts : this.cohorts.slice(0);
+    const sourceCohorts = search ? this.state.results : this.cohorts.slice(0);
     const { notDeleted, deleted } = sourceCohorts.reduce(
       (accum, cohort) => {
+        if (this.props.archived !== cohort.is_archived) {
+          return accum;
+        }
+
         if (cohort.deleted_at && user.is_super) {
           accum.deleted.push(cohort);
         } else {
@@ -278,13 +282,26 @@ export class Cohorts extends React.Component {
       displayHeading = `${displayHeading}, matching '${search}'`;
     }
 
-    const { permissions } = this.props;
+    const cohortListCount = (
+      <p>
+        You are a part of <span className="c__list-num">{cohorts.length}</span>{' '}
+        {pluralize('cohort', cohorts.length)}.
+      </p>
+    );
+
+    const cohortListSearch = (
+      <Input
+        className="grid__menu-search"
+        label="Search cohorts"
+        icon="search"
+        size="big"
+        defaultValue={search || ''}
+        onChange={onSearchChange}
+      />
+    );
 
     const createCohortButton = (
-      <Gate
-        key="menu-item-create-cohort-auth"
-        requiredPermission="create_cohort"
-      >
+      <Gate key="cohorts-create-cohort" requiredPermission="create_cohort">
         <Button
           fluid
           icon
@@ -301,55 +318,30 @@ export class Cohorts extends React.Component {
       </Gate>
     );
 
-    const menuItemCountCohorts = (
-      <p>
-        You are a part of <span className="c__list-num">{cohorts.length}</span>{' '}
-        {pluralize('cohort', cohorts.length)}.
-      </p>
-    );
-
-    const menuItemCohortsSearch = cohorts.length ? (
-      <Input
-        className="grid__menu-search"
-        label="Search cohorts"
-        icon="search"
-        size="big"
-        defaultValue={search || ''}
-        onChange={onSearchChange}
-      />
+    const cohortSidebarNav = Layout.isNotForMobile() ? (
+      <Gate key="cohorts-sidebar-nav" requiredPermission="create_cohort">
+        <List relaxed size="big">
+          <List.Item key="/cohorts/active">
+            <List.Header className="primary" to="/cohorts/active" as={NavLink}>
+              Active
+            </List.Header>
+            <List.Description>
+              Cohorts that are currently running.
+            </List.Description>
+          </List.Item>
+          <List.Item key="/cohorts/archived">
+            <List.Header
+              className="primary"
+              to="/cohorts/archived"
+              as={NavLink}
+            >
+              Archived
+            </List.Header>
+            <List.Description>Cohorts no longer running.</List.Description>
+          </List.Item>
+        </List>
+      </Gate>
     ) : null;
-
-    const cohortSideNav = (
-      <List relaxed size="big">
-        <List.Item>
-          <List.Header className="c__primary-sidenav" as="button">
-            Active
-          </List.Header>
-          <List.Description>
-            Cohorts that are currently running.
-          </List.Description>
-        </List.Item>
-        <List.Item>
-          <List.Header className="c__primary-sidenav" as="button">
-            Archived
-          </List.Header>
-          <List.Description>Cohorts no longer running.</List.Description>
-        </List.Item>
-      </List>
-    );
-
-    const cohortAuthorActions = (
-      <Fragment>
-        {createCohortButton}
-        {cohortSideNav}
-      </Fragment>
-    );
-
-    const cohortPermissionActions = [
-      permissions.includes('create_cohort')
-        ? cohortAuthorActions
-        : menuItemCountCohorts
-    ];
 
     const defaultRowCount = 2;
     const {
@@ -370,23 +362,14 @@ export class Cohorts extends React.Component {
       cohortsIndex + itemsPerPage
     );
 
-    let isSliceAvailable = cohortsSlice.length > 0;
-
+    const isSliceAvailable = cohortsSlice.length > 0;
     const cards = isSliceAvailable
-      ? cohortsSlice.map(cohort => {
-          return <CohortCard key={Identity.key(cohort)} id={cohort.id} />;
-        })
+      ? cohortsSlice.map(({id}) => <CohortCard key={Identity.key({id})} id={id} />)
       : null;
 
     const loadingProps = {
       card: { cols: itemsPerRow, rows: rowsPerPage, style: { height: '20rem' } }
     };
-
-    const cardGroup = isSliceAvailable ? (
-      <Card.Group.Stackable itemsPerRow={itemsPerRow}>
-        {cards}
-      </Card.Group.Stackable>
-    ) : null;
 
     const onCopyClick = () => {
       const url = location.href;
@@ -409,9 +392,9 @@ export class Cohorts extends React.Component {
       </Button>
     ) : null;
 
-    const menuItemCohortScenarioLabels = (
+    const cohortListFilterByScenarioName = (
       <Menu.Item.Tabbable>
-        <CohortScenarioLabelsFilter onChange={onScenarioLabelsFilterChange} />
+        <CohortScenarioLabelsFilter onChange={onFilterChange} />
       </Menu.Item.Tabbable>
     );
 
@@ -421,7 +404,7 @@ export class Cohorts extends React.Component {
         key="menu-item-cohort-search"
         position="right"
       >
-        {menuItemCohortsSearch}
+        {cohortListSearch}
         <div className="sl__menu-tools">
           <div>
             <p>
@@ -430,10 +413,26 @@ export class Cohorts extends React.Component {
             </p>
             {cohortsLinkCopy}
           </div>
-          {menuItemCohortScenarioLabels}
+          {cohortListFilterByScenarioName}
         </div>
       </Menu.Menu>
     ];
+
+    const isLoading = !isReady || !isSliceAvailable;
+    const fallback = isLoading && !isComplete
+      ? 'Looking for cohorts.'
+      : 'Sorry, there are no cohorts here.';
+
+
+    const cardGroup = (
+      <Card.Group.Stackable
+        fallback={fallback}
+        itemsPerRow={itemsPerRow}
+      >
+        {cards}
+      </Card.Group.Stackable>
+    );
+
     return (
       <Fragment>
         <Title content={displayHeading} />
@@ -448,14 +447,15 @@ export class Cohorts extends React.Component {
                 assigned to a scenario or set of scenarios.
               </Segment>
             </div>
-            {cohortPermissionActions}
+            {createCohortButton}
+            {cohortSidebarNav}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
             {cohortSearchTools}
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  {!isReady || !isSliceAvailable ? (
+                  {!isReady ? (
                     <Loading {...loadingProps} />
                   ) : (
                     cardGroup
@@ -484,7 +484,7 @@ export class Cohorts extends React.Component {
           </Grid.Column>
         </Grid>
 
-        {createIsVisible ? (
+        {createIsOpen ? (
           <CohortCreateWizard onCancel={onCreateCohortCancel} />
         ) : null}
       </Fragment>
@@ -493,6 +493,7 @@ export class Cohorts extends React.Component {
 }
 
 Cohorts.propTypes = {
+  archived: PropTypes.bool,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -516,14 +517,13 @@ Cohorts.propTypes = {
   }).isRequired,
   getUser: PropTypes.func,
   user: PropTypes.object,
-  permissions: PropTypes.array,
   setFilterScenariosInUse: PropTypes.func
 };
 
-const mapStateToProps = state => {
-  const { permissions } = state.session;
+const mapStateToProps = (state, ownProps) => {
+  const archived = ownProps?.match?.params?.filter === 'archived';
   const { cohort, cohorts, filters, scenarios, user } = state;
-  return { cohort, cohorts, filters, permissions, scenarios, user };
+  return { archived, cohort, cohorts, filters, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
