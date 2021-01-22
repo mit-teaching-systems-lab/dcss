@@ -9,7 +9,8 @@ module.exports = {
     '<rootDir>/components/**/*.{js,jsx}',
     '<rootDir>/hoc/**/*.{js,jsx}',
     '<rootDir>/reducers/**/*.{js,jsx}',
-    '<rootDir>/routes/**/*.{js,jsx}'
+    '<rootDir>/routes/**/*.{js,jsx}',
+    '<rootDir>/util/**/*.{js,jsx}'
   ],
 
   // // The directory where Jest should output its coverage files
