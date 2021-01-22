@@ -91,6 +91,7 @@
   font-size: 1em !important;
 }
 
+
 /* Mobile */
 @media only screen and (max-width: 767.98px) {
   .cm__container-inner {
@@ -126,6 +127,11 @@
   .c__container-modal.ui.modal>.close {
     top: 0.5rem!important;
     opacity: 1;
+  }
+
+  .c__container-modal > .header,
+  .c__container-modal > .content {
+    background: transparent !important;
   }
 }
 
