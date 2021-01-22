@@ -11,7 +11,7 @@ import CohortScenarioLabels from '@components/Cohorts/CohortScenarioLabels';
 
 export const CohortCard = props => {
   const { cohort, roles, user } = props;
-  const { id, created_at, deleted_at, updated_at, name } = cohort;
+  const { id, created_at, deleted_at, updated_at, name, is_archived } = cohort;
   const yourRoles = rolesToHumanReadableString('cohort', roles);
   const updatedfromNow = Moment(updated_at || created_at).fromNow();
   const updatedCalendar = Moment(updated_at || created_at).calendar();
@@ -29,6 +29,8 @@ export const CohortCard = props => {
     props.history.push(`/cohort/${id}`);
   };
 
+  const cohortStatus = is_archived ? 'Archived' : 'Active';
+
   const restoreCohort =
     deleted_at && user.is_super ? (
       <Card.Content extra>
@@ -41,6 +43,7 @@ export const CohortCard = props => {
   return (
     <Card className={cardClassName} key={id}>
       <Card.Content className="sc">
+        <Card.Meta className="c-card__status">{cohortStatus}</Card.Meta>
         <Card.Header>
           <NavLink to={`/cohort/${id}`}>{name}</NavLink>
         </Card.Header>
