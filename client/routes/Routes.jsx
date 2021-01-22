@@ -139,6 +139,10 @@ const Routes = ({ isLoggedIn, user }) => {
         </Gate>
       </RedirectRouteForInactiveSession>
 
+      <Gate path="/cohorts/:filter" requiredPermission="view_own_cohorts">
+        <Route render={routeRenderCohorts} />
+      </Gate>
+
       <Gate path="/cohorts" requiredPermission="view_own_cohorts">
         <Route render={routeRenderCohorts} />
       </Gate>
