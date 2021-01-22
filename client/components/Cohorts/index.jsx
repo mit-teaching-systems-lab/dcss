@@ -235,7 +235,7 @@ export class Cohorts extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { authority, user } = this.props;
     const { page, isComplete, isReady, createIsOpen, search } = this.state;
     const {
       onCreateCohortCancel,
@@ -281,13 +281,6 @@ export class Cohorts extends React.Component {
     if (search) {
       displayHeading = `${displayHeading}, matching '${search}'`;
     }
-
-    const cohortListCount = (
-      <p>
-        You are a part of <span className="c__list-num">{cohorts.length}</span>{' '}
-        {pluralize('cohort', cohorts.length)}.
-      </p>
-    );
 
     const cohortListSearch = (
       <Input
@@ -398,7 +391,7 @@ export class Cohorts extends React.Component {
       </Menu.Item.Tabbable>
     );
 
-    const cohortSearchTools = [
+    const cohortSearchTools = (
       <Menu.Menu
         className="grid__menu"
         key="menu-item-cohort-search"
@@ -416,13 +409,25 @@ export class Cohorts extends React.Component {
           {cohortListFilterByScenarioName}
         </div>
       </Menu.Menu>
-    ];
+    );
+
+    const cohortListCount = (
+      <p>
+        You are a part of <span className="c__list-num">{cohorts.length}</span>{' '}
+        {pluralize('cohort', cohorts.length)}.
+      </p>
+    );
 
     const isLoading = !isReady || !isSliceAvailable;
-    const fallback = isLoading && !isComplete
+    let fallback = isLoading && !isComplete
       ? 'Looking for cohorts.'
       : 'Sorry, there are no cohorts here.';
 
+    if (authority.isParticipant && !authority.isFacilitator && !cohorts.length) {
+      fallback = 'You are not in any cohorts';
+    }
+
+    const isParticipantList = authority.isParticipant && !authority.isFacilitator && cohorts.length;
 
     const cardGroup = (
       <Card.Group.Stackable
@@ -451,7 +456,8 @@ export class Cohorts extends React.Component {
             {cohortSidebarNav}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
-            {cohortSearchTools}
+            {authority.isFacilitator ? cohortSearchTools : null}
+            {isParticipantList ? cohortListCount : null}
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
@@ -494,6 +500,7 @@ export class Cohorts extends React.Component {
 
 Cohorts.propTypes = {
   archived: PropTypes.bool,
+  authority: PropTypes.object,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -523,7 +530,22 @@ Cohorts.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const archived = ownProps?.match?.params?.filter === 'archived';
   const { cohort, cohorts, filters, scenarios, user } = state;
-  return { archived, cohort, cohorts, filters, scenarios, user };
+
+  const authority = {
+    isFacilitator: user.roles.includes('facilitator') || false,
+    isResearcher: user.roles.includes('researcher') || false,
+    isParticipant: user.roles.includes('participant') || false
+  };
+
+  // Super admins have unrestricted access to cohorts
+  if (user.is_super) {
+    authority.isOwner = true;
+    authority.isFacilitator = true;
+    authority.isResearcher = true;
+    authority.isParticipant = true;
+  }
+
+  return { authority, archived, cohort, cohorts, filters, scenarios, user };
 };
 
 const mapDispatchToProps = dispatch => ({
