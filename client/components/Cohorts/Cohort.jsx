@@ -281,7 +281,9 @@ export class Cohort extends React.Component {
         } else {
           onCopyDeleteOrArchiveClose();
         }
-      } else {
+      }
+
+      if (isCopy) {
         const { id } = await this.props.copyCohort(this.props.cohort.id);
 
         location.href = `/cohort/${id}`;
@@ -424,8 +426,7 @@ export class Cohort extends React.Component {
 Cohort.propTypes = {
   activeTabKey: PropTypes.string,
   authority: PropTypes.object,
-  runs: PropTypes.array,
-  users: PropTypes.array,
+  copyCohort: PropTypes.func,
   cohort: PropTypes.shape({
     id: PropTypes.any,
     created_at: PropTypes.string,
@@ -439,10 +440,14 @@ Cohort.propTypes = {
     users: PropTypes.array,
     usersById: PropTypes.object
   }),
+  getCohort: PropTypes.func,
+  getUser: PropTypes.func,
+  getUsers: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   id: PropTypes.any,
+  linkUserToCohort: PropTypes.func,
   location: PropTypes.shape({
     search: PropTypes.string
   }),
@@ -453,11 +458,9 @@ Cohort.propTypes = {
   }).isRequired,
   onChange: PropTypes.func,
   setCohort: PropTypes.func,
-  getCohort: PropTypes.func,
-  linkUserToCohort: PropTypes.func,
-  getUser: PropTypes.func,
+  runs: PropTypes.array,
+  users: PropTypes.array,
   user: PropTypes.object,
-  getUsers: PropTypes.func
 };
 
 const mapStateToProps = (state, ownProps) => {
