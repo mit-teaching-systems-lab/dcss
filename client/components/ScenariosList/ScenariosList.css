@@ -12,7 +12,7 @@
 }
 
 .ui.stackable.cards>.ui.card {
-  display: flex !important; 
+  display: flex !important;
 }
 
 .ui.card.sc__margin-height {
@@ -46,7 +46,7 @@
   flex-direction: column;
 }
 
-.ui.card .sc__status {
+.ui.card .sc__meta-top {
   color: #000 !important;
   font-size: 0.9rem !important;
   font-weight: bold;
@@ -54,7 +54,16 @@
   text-align: right;
 }
 
-.ui.card .sc__status i {
+.ui.card .sc__meta-top i:not(:first-child) {
+  margin-right: 0.5rem !important;
+  margin-left: 0.5rem !important;
+}
+
+.ui.card .sc__meta-top .scmt__float-left {
+  float: left !important;
+}
+
+.ui.card .sc__meta-top i:first-child {
   margin-right: 0.5rem !important;
 }
 

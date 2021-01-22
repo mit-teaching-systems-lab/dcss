@@ -1,29 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Label } from '@components/UI';
 import { setFilterScenariosInUse } from '@actions/filters';
 import Identity from '@utils/Identity';
+import QueryString from '@utils/QueryString';
 
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function makeQueryString(scenarios) {
-  const qs = {};
-  const { search } = QueryString.parse(window.location.search, qsOpts);
-
-  if (search) {
-    qs.search = search;
-  }
-
-  if (scenarios && scenarios.length) {
-    qs.s = scenarios;
-  }
-
-  return `?${QueryString.stringify(qs, qsOpts)}`;
+function makeHistoryEntry(location, keyVals) {
+  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
 }
 
 class CohortScenarioLabels extends React.Component {
@@ -43,7 +28,7 @@ class CohortScenarioLabels extends React.Component {
 
     this.props.setFilterScenariosInUse(scenariosInUse);
     this.props.history.push(
-      `${this.props.location.pathname}${makeQueryString(scenariosInUse)}`
+      makeHistoryEntry(this.props.location, { s: scenariosInUse })
     );
   }
 

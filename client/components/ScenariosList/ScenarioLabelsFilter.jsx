@@ -1,37 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
 import escapeRegExp from 'lodash.escaperegexp';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dropdown, Text } from '@components/UI';
 import { setLabelsInUse } from '@actions/tags';
 import Identity from '@utils/Identity';
+import QueryString from '@utils/QueryString';
 
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function makeQueryString(keyVals) {
-  const { page, search } = QueryString.parse(window.location.search, qsOpts);
-  const qs = {
-    ...keyVals
-  };
-
-  if (page) {
-    qs.page = page;
-  }
-
-  if (search) {
-    qs.search = search;
-  }
-
-  return `?${QueryString.stringify(qs, qsOpts)}`;
-}
-
-function makeHistoryUrl(location, keyVals) {
-  const searchString = makeQueryString(keyVals);
-  return `${location.pathname}${searchString}`;
+function makeHistoryEntry(location, keyVals) {
+  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
 }
 
 class ScenarioLabelsFilter extends React.Component {
@@ -63,7 +41,7 @@ class ScenarioLabelsFilter extends React.Component {
 
     this.props.setLabelsInUse(labelsInUse);
     this.props.history.push(
-      makeHistoryUrl(this.props.location, { l: labelsInUse })
+      makeHistoryEntry(this.props.location, { l: labelsInUse })
     );
   }
 
@@ -123,17 +101,20 @@ class ScenarioLabelsFilter extends React.Component {
                 </Text>
               </div>
             );
+            const { text, value } = label;
+
             const itemProps = {
               'aria-label': `${label.count} scenarios labelled "${label.text}"`,
-              ...label,
               active,
-              content
+              content,
+              key,
+              onClick,
+              text,
+              value
             };
 
             if (active) {
-              accum.push(
-                <Dropdown.Item {...itemProps} key={key} onClick={onClick} />
-              );
+              accum.push(<Dropdown.Item {...itemProps} />);
             } else {
               let shouldIncludeInDisplay = true;
 
@@ -146,9 +127,7 @@ class ScenarioLabelsFilter extends React.Component {
               }
 
               if (shouldIncludeInDisplay) {
-                accum.push(
-                  <Dropdown.Item {...itemProps} key={key} onClick={onClick} />
-                );
+                accum.push(<Dropdown.Item {...itemProps} />);
               }
             }
             return accum;

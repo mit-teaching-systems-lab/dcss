@@ -35,7 +35,6 @@ exports[`Add and remove a label 1`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -55,7 +54,6 @@ exports[`Add and remove a label 1`] = `
         aria-checked="false"
         aria-label="30 scenarios labelled \\"c\\""
         class="item"
-        count="30"
         role="option"
       >
         <div
@@ -75,7 +73,6 @@ exports[`Add and remove a label 1`] = `
         aria-checked="false"
         aria-label="20 scenarios labelled \\"b\\""
         class="item"
-        count="20"
         role="option"
       >
         <div
@@ -131,7 +128,6 @@ exports[`Add and remove a label 2`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -151,7 +147,6 @@ exports[`Add and remove a label 2`] = `
         aria-checked="false"
         aria-label="30 scenarios labelled \\"c\\""
         class="item"
-        count="30"
         role="option"
       >
         <div
@@ -171,7 +166,6 @@ exports[`Add and remove a label 2`] = `
         aria-checked="false"
         aria-label="20 scenarios labelled \\"b\\""
         class="item"
-        count="20"
         role="option"
       >
         <div
@@ -227,7 +221,6 @@ exports[`Add and remove a label 3`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -247,7 +240,6 @@ exports[`Add and remove a label 3`] = `
         aria-checked="false"
         aria-label="30 scenarios labelled \\"c\\""
         class="item"
-        count="30"
         role="option"
       >
         <div
@@ -267,7 +259,6 @@ exports[`Add and remove a label 3`] = `
         aria-checked="false"
         aria-label="20 scenarios labelled \\"b\\""
         class="item"
-        count="20"
         role="option"
       >
         <div
@@ -323,7 +314,6 @@ exports[`Add and remove a label 4`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -343,7 +333,6 @@ exports[`Add and remove a label 4`] = `
         aria-checked="false"
         aria-label="30 scenarios labelled \\"c\\""
         class="item"
-        count="30"
         role="option"
       >
         <div
@@ -363,7 +352,6 @@ exports[`Add and remove a label 4`] = `
         aria-checked="false"
         aria-label="20 scenarios labelled \\"b\\""
         class="item"
-        count="20"
         role="option"
       >
         <div
@@ -419,7 +407,6 @@ exports[`Add and remove a label 5`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -475,7 +462,6 @@ exports[`Add and remove a label 6`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -531,7 +517,6 @@ exports[`Add and remove a label 7`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -587,7 +572,6 @@ exports[`Add and remove a label 8`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -643,7 +627,6 @@ exports[`No selected labelsInUse 1`] = `
         aria-checked="false"
         aria-label="30 scenarios labelled \\"c\\""
         class="item"
-        count="30"
         role="option"
       >
         <div
@@ -663,7 +646,6 @@ exports[`No selected labelsInUse 1`] = `
         aria-checked="false"
         aria-label="20 scenarios labelled \\"b\\""
         class="item"
-        count="20"
         role="option"
       >
         <div
@@ -683,7 +665,6 @@ exports[`No selected labelsInUse 1`] = `
         aria-checked="false"
         aria-label="10 scenarios labelled \\"a\\""
         class="item"
-        count="10"
         role="option"
       >
         <div
@@ -813,7 +794,6 @@ exports[`Selected labelsInUse 1`] = `
         aria-checked="true"
         aria-label="10 scenarios labelled \\"a\\""
         class="active item"
-        count="10"
         role="option"
       >
         <div
@@ -833,7 +813,6 @@ exports[`Selected labelsInUse 1`] = `
         aria-checked="false"
         aria-label="30 scenarios labelled \\"c\\""
         class="item"
-        count="30"
         role="option"
       >
         <div
@@ -853,7 +832,6 @@ exports[`Selected labelsInUse 1`] = `
         aria-checked="false"
         aria-label="20 scenarios labelled \\"b\\""
         class="item"
-        count="20"
         role="option"
       >
         <div

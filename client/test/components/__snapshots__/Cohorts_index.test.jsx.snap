@@ -32,6 +32,43 @@ exports[`Render 1 1 1`] = `
         />
         Create a Cohort
       </button>
+      <div
+        class="ui big relaxed list"
+        role="list"
+      >
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header primary"
+            href="/cohorts/active"
+          >
+            Active
+          </a>
+          <div
+            class="description"
+          >
+            Cohorts that are currently running.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header primary"
+            href="/cohorts/archived"
+          >
+            Archived
+          </a>
+          <div
+            class="description"
+          >
+            Cohorts no longer running.
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="twelve wide column grid__main"
@@ -108,7 +145,7 @@ exports[`Render 1 1 1`] = `
                 class="dropdown icon"
               />
               <div
-                class="menu transition left scenarios"
+                class="menu transition left labels"
                 role="listbox"
               />
             </div>
@@ -280,6 +317,43 @@ exports[`Render 1 2 1`] = `
         />
         Create a Cohort
       </button>
+      <div
+        class="ui big relaxed list"
+        role="list"
+      >
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header primary"
+            href="/cohorts/active"
+          >
+            Active
+          </a>
+          <div
+            class="description"
+          >
+            Cohorts that are currently running.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header primary"
+            href="/cohorts/archived"
+          >
+            Archived
+          </a>
+          <div
+            class="description"
+          >
+            Cohorts no longer running.
+          </div>
+        </div>
+      </div>
     </div>
     <div
       class="twelve wide column grid__main"
@@ -287,6 +361,23 @@ exports[`Render 1 2 1`] = `
       <div
         class="right menu grid__menu"
       >
+        <div
+          class="ui big icon labeled input grid__menu-search"
+        >
+          <div
+            class="ui label label"
+          >
+            Search cohorts
+          </div>
+          <input
+            type="text"
+            value=""
+          />
+          <i
+            aria-hidden="true"
+            class="search icon"
+          />
+        </div>
         <div
           class="sl__menu-tools"
         >
@@ -339,7 +430,7 @@ exports[`Render 1 2 1`] = `
                 class="dropdown icon"
               />
               <div
-                class="menu transition left scenarios"
+                class="menu transition left labels"
                 role="listbox"
               />
             </div>

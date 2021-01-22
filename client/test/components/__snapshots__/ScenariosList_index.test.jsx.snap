@@ -44,7 +44,23 @@ exports[`Render 1 1 1`] = `
         >
           <a
             class="header primary"
-            href="/scenarios/author/null"
+            href="/scenarios/"
+          >
+            All scenarios
+          </a>
+          <div
+            class="description"
+          >
+            See all available scenarios.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header primary"
+            href="/scenarios/author/null/"
           >
             My scenarios
           </a>
@@ -60,7 +76,7 @@ exports[`Render 1 1 1`] = `
         >
           <a
             class="header primary"
-            href="/scenarios/official"
+            href="/scenarios/official/"
           >
             Official
           </a>
@@ -76,7 +92,7 @@ exports[`Render 1 1 1`] = `
         >
           <a
             class="header primary"
-            href="/scenarios/community"
+            href="/scenarios/community/"
           >
             Community
           </a>
@@ -358,7 +374,23 @@ exports[`Render 2 1 1`] = `
         >
           <a
             class="header primary"
-            href="/scenarios/author/null"
+            href="/scenarios/"
+          >
+            All scenarios
+          </a>
+          <div
+            class="description"
+          >
+            See all available scenarios.
+          </div>
+        </div>
+        <div
+          class="item"
+          role="listitem"
+        >
+          <a
+            class="header primary"
+            href="/scenarios/author/null/"
           >
             My scenarios
           </a>
@@ -374,7 +406,7 @@ exports[`Render 2 1 1`] = `
         >
           <a
             class="header primary"
-            href="/scenarios/official"
+            href="/scenarios/official/"
           >
             Official
           </a>
@@ -390,7 +422,7 @@ exports[`Render 2 1 1`] = `
         >
           <a
             class="header primary"
-            href="/scenarios/community"
+            href="/scenarios/community/"
           >
             Community
           </a>

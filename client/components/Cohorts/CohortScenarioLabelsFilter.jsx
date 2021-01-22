@@ -1,37 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
 import escapeRegExp from 'lodash.escaperegexp';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Dropdown } from '@components/UI';
 import { setFilterScenariosInUse } from '@actions/filters';
 import Identity from '@utils/Identity';
+import QueryString from '@utils/QueryString';
 
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function makeQueryString(keyVals) {
-  const { page, search } = QueryString.parse(window.location.search, qsOpts);
-  const qs = {
-    ...keyVals
-  };
-
-  if (page) {
-    qs.page = page;
-  }
-
-  if (search) {
-    qs.search = search;
-  }
-
-  return `?${QueryString.stringify(qs, qsOpts)}`;
-}
-
-function makeHistoryUrl(location, keyVals) {
-  const searchString = makeQueryString(keyVals);
-  return `${location.pathname}${searchString}`;
+function makeHistoryEntry(location, keyVals) {
+  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
 }
 
 class CohortScenarioLabelsFilter extends React.Component {
@@ -45,16 +23,16 @@ class CohortScenarioLabelsFilter extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  onClick(event, { scenario }) {
+  onClick(event, { value }) {
     event.stopPropagation();
 
     const scenariosInUse = this.props.filters.scenariosInUse.slice(0);
     const scenariosInUseBefore = scenariosInUse.slice(0);
 
-    if (scenariosInUse.includes(scenario.id)) {
-      scenariosInUse.splice(scenariosInUse.indexOf(scenario.id), 1);
+    if (scenariosInUse.includes(value)) {
+      scenariosInUse.splice(scenariosInUse.indexOf(value), 1);
     } else {
-      scenariosInUse.push(scenario.id);
+      scenariosInUse.push(value);
     }
 
     if (this.props.onChange) {
@@ -63,7 +41,7 @@ class CohortScenarioLabelsFilter extends React.Component {
 
     this.props.setFilterScenariosInUse(scenariosInUse);
     this.props.history.push(
-      makeHistoryUrl(this.props.location, { s: scenariosInUse })
+      makeHistoryEntry(this.props.location, { s: scenariosInUse })
     );
   }
 
@@ -94,27 +72,34 @@ class CohortScenarioLabelsFilter extends React.Component {
           });
         }}
       >
-        <Dropdown.Menu className="scenarios">
+        <Dropdown.Menu className="labels">
           {this.props.scenarios.reduce((accum, scenario) => {
             const key = Identity.key(scenario);
             const active = this.props.filters.scenariosInUse.includes(
               scenario.id
             );
             const content = (
-              <div className="scenarios__item">
+              <div className="labels__item">
                 <p>{scenario.title}</p>
               </div>
             );
+
+            const text = scenario.title;
+            const value = scenario.id;
+
             const itemProps = {
-              scenario,
+              'aria-label': `Show cohorts containing the "${text}" scenario`,
               active,
-              content
+              content,
+              key,
+              onClick,
+              text,
+              scenario,
+              value
             };
 
             if (active) {
-              accum.push(
-                <Dropdown.Item {...itemProps} key={key} onClick={onClick} />
-              );
+              accum.push(<Dropdown.Item {...itemProps} />);
             } else {
               let shouldIncludeInDisplay = true;
 
@@ -123,9 +108,7 @@ class CohortScenarioLabelsFilter extends React.Component {
               }
 
               if (shouldIncludeInDisplay) {
-                accum.push(
-                  <Dropdown.Item {...itemProps} key={key} onClick={onClick} />
-                );
+                accum.push(<Dropdown.Item {...itemProps} />);
               }
             }
             return accum;

@@ -11,13 +11,13 @@ exports[`Render 1 1 1`] = `
       class="content"
     >
       <div
-        class="meta sc__status"
+        class="meta sc__meta-top"
       >
         <i
           aria-hidden="true"
           class="edit icon primary"
         />
-         Draft
+        Draft
       </div>
       <div
         class="header sc sc__cursor-pointer"

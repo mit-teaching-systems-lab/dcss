@@ -28,17 +28,18 @@ exports[`Add and remove a filter 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -47,12 +48,13 @@ exports[`Add and remove a filter 1`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -61,12 +63,13 @@ exports[`Add and remove a filter 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -106,17 +109,18 @@ exports[`Add and remove a filter 2`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -125,12 +129,13 @@ exports[`Add and remove a filter 2`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -139,12 +144,13 @@ exports[`Add and remove a filter 2`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -184,17 +190,18 @@ exports[`Add and remove a filter 3`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -203,12 +210,13 @@ exports[`Add and remove a filter 3`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -217,12 +225,13 @@ exports[`Add and remove a filter 3`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -262,17 +271,18 @@ exports[`Add and remove a filter 4`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -281,12 +291,13 @@ exports[`Add and remove a filter 4`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -295,12 +306,13 @@ exports[`Add and remove a filter 4`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -340,17 +352,18 @@ exports[`Add and remove a filter 5`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -359,12 +372,13 @@ exports[`Add and remove a filter 5`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -373,12 +387,13 @@ exports[`Add and remove a filter 5`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -418,17 +433,18 @@ exports[`Add and remove a filter 6`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -437,12 +453,13 @@ exports[`Add and remove a filter 6`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -451,12 +468,13 @@ exports[`Add and remove a filter 6`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -496,17 +514,18 @@ exports[`Add and remove a filter 8`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -515,12 +534,13 @@ exports[`Add and remove a filter 8`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -529,12 +549,13 @@ exports[`Add and remove a filter 8`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -574,17 +595,18 @@ exports[`Add and remove a filter 10`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -593,12 +615,13 @@ exports[`Add and remove a filter 10`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -607,12 +630,13 @@ exports[`Add and remove a filter 10`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -652,17 +676,18 @@ exports[`Add and remove a filter, at a page, with a search term 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -671,12 +696,13 @@ exports[`Add and remove a filter, at a page, with a search term 1`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -685,12 +711,13 @@ exports[`Add and remove a filter, at a page, with a search term 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -730,17 +757,18 @@ exports[`Add and remove a filter, at a page, with a search term 2`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -749,12 +777,13 @@ exports[`Add and remove a filter, at a page, with a search term 2`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -763,12 +792,13 @@ exports[`Add and remove a filter, at a page, with a search term 2`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -808,17 +838,18 @@ exports[`Add and remove a filter, at a page, with a search term 3`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -827,12 +858,13 @@ exports[`Add and remove a filter, at a page, with a search term 3`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -841,12 +873,13 @@ exports[`Add and remove a filter, at a page, with a search term 3`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -886,17 +919,18 @@ exports[`Add and remove a filter, at a page, with a search term 4`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -905,12 +939,13 @@ exports[`Add and remove a filter, at a page, with a search term 4`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -919,12 +954,13 @@ exports[`Add and remove a filter, at a page, with a search term 4`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -964,17 +1000,18 @@ exports[`Add and remove a filter, at a page, with a search term 5`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -983,12 +1020,13 @@ exports[`Add and remove a filter, at a page, with a search term 5`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -997,12 +1035,13 @@ exports[`Add and remove a filter, at a page, with a search term 5`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1042,17 +1081,18 @@ exports[`Add and remove a filter, at a page, with a search term 6`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1061,12 +1101,13 @@ exports[`Add and remove a filter, at a page, with a search term 6`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1075,12 +1116,13 @@ exports[`Add and remove a filter, at a page, with a search term 6`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1120,17 +1162,18 @@ exports[`Add and remove a filter, at a page, with a search term 8`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1139,12 +1182,13 @@ exports[`Add and remove a filter, at a page, with a search term 8`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1153,12 +1197,13 @@ exports[`Add and remove a filter, at a page, with a search term 8`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1198,17 +1243,18 @@ exports[`Add and remove a filter, at a page, with a search term 10`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1217,12 +1263,13 @@ exports[`Add and remove a filter, at a page, with a search term 10`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1231,12 +1278,13 @@ exports[`Add and remove a filter, at a page, with a search term 10`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1276,7 +1324,7 @@ exports[`No scenarios in state 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     />
   </div>
@@ -1311,17 +1359,18 @@ exports[`No selected scenariosInUse, no search term 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1330,12 +1379,13 @@ exports[`No selected scenariosInUse, no search term 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1344,12 +1394,13 @@ exports[`No selected scenariosInUse, no search term 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1389,17 +1440,18 @@ exports[`No selected scenariosInUse, with unmatched search term 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1408,12 +1460,13 @@ exports[`No selected scenariosInUse, with unmatched search term 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1422,12 +1475,13 @@ exports[`No selected scenariosInUse, with unmatched search term 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1467,7 +1521,7 @@ exports[`Render 1 1 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     />
   </div>
@@ -1502,17 +1556,18 @@ exports[`Search filters 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1521,12 +1576,13 @@ exports[`Search filters 1`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1535,12 +1591,13 @@ exports[`Search filters 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1580,17 +1637,18 @@ exports[`Search filters 2`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1599,12 +1657,13 @@ exports[`Search filters 2`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1613,12 +1672,13 @@ exports[`Search filters 2`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1658,17 +1718,18 @@ exports[`Search filters 3`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1677,12 +1738,13 @@ exports[`Search filters 3`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1691,12 +1753,13 @@ exports[`Search filters 3`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1736,17 +1799,18 @@ exports[`Search filters 4`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -1755,12 +1819,13 @@ exports[`Search filters 4`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1769,12 +1834,13 @@ exports[`Search filters 4`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1814,17 +1880,18 @@ exports[`Search filters 5`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1833,12 +1900,13 @@ exports[`Search filters 5`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1878,17 +1946,18 @@ exports[`Search filters 6`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1897,12 +1966,13 @@ exports[`Search filters 6`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -1942,17 +2012,18 @@ exports[`Search filters 7`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -1961,12 +2032,13 @@ exports[`Search filters 7`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -2006,17 +2078,18 @@ exports[`Search filters 8`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left visible scenarios"
+      class="menu transition left visible labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -2025,12 +2098,13 @@ exports[`Search filters 8`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz
@@ -2070,17 +2144,18 @@ exports[`Selected scenariosInUse 1`] = `
       class="dropdown icon"
     />
     <div
-      class="menu transition left scenarios"
+      class="menu transition left labels"
       role="listbox"
     >
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Foo\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Foo
@@ -2089,12 +2164,13 @@ exports[`Selected scenariosInUse 1`] = `
       </div>
       <div
         aria-checked="true"
+        aria-label="Show cohorts containing the \\"Bar\\" scenario"
         class="active item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Bar
@@ -2103,12 +2179,13 @@ exports[`Selected scenariosInUse 1`] = `
       </div>
       <div
         aria-checked="false"
+        aria-label="Show cohorts containing the \\"Baz\\" scenario"
         class="item"
         role="option"
         scenario="[object Object]"
       >
         <div
-          class="text scenarios__item"
+          class="text labels__item"
         >
           <p>
             Baz

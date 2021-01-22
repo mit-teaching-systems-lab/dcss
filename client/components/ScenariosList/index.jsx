@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import {
@@ -20,7 +19,6 @@ import {
 import escapeRegExp from 'lodash.escaperegexp';
 import copy from 'copy-text-to-clipboard';
 import changeCase from 'change-case';
-import Layout from '@utils/Layout';
 import {
   deleteScenario,
   getScenariosCount,
@@ -35,6 +33,8 @@ import { notify } from '@components/Notification';
 import ScenarioCard from './ScenarioCard';
 import ScenarioDetailModal from './ScenarioDetailModal';
 import ScenarioLabelsFilter from './ScenarioLabelsFilter';
+import Layout from '@utils/Layout';
+import QueryString from '@utils/QueryString';
 import './ScenariosList.css';
 
 /* eslint-disable */
@@ -102,76 +102,34 @@ const filter = (scenarios, user) => {
   return [...notDeleted, ...deleted];
 };
 
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function parseQueryString(input) {
-  return QueryString.parse(input || window.location.search, qsOpts);
-}
-
-function makeQueryString(keyVals) {
-  const { page, search, l } = QueryString.parse(window.location.search, qsOpts);
-  const qs = {};
-
-  if (l && l.length) {
-    qs.l = l;
-  }
-
-  if (page) {
-    qs.page = page;
-  }
-
-  if (search) {
-    qs.search = search;
-  }
-
-  const params = {
-    ...qs,
-    ...keyVals
-  };
-
-  for (const [key, value] of Object.entries(keyVals)) {
-    if (value === null) {
-      delete params[key];
-    }
-  }
-
-  return `?${QueryString.stringify(params, qsOpts)}`;
-}
-
-function makeHistoryUrl(location, keyVals = {}) {
-  const searchString = makeQueryString(keyVals);
-  return `${location.pathname}${searchString}`;
+function makeHistoryEntry(location, keyVals) {
+  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
 }
 
 class ScenariosList extends Component {
   constructor(props) {
     super(props);
 
-    const { category, scenarios, user } = this.props;
-    const { page = 1, search = '', l: labels = [] } = parseQueryString(
+    const { page = 1, search = '', l: labelsInUse = [] } = QueryString.parse(
       window.location.search
     );
 
     this.state = {
-      category,
       heading: '',
       isReady: false,
       open: false,
       page,
-      scenarios,
+      results: [],
       search,
       selected: null,
-      viewHeading: '',
-      user
+      viewHeading: ''
     };
 
-    this.props.setLabelsInUse(labels);
+    this.props.setLabelsInUse(labelsInUse);
 
     this.timeout = null;
-    this.scenarios = scenarios;
-    this.onLabelsFilterChange = this.onLabelsFilterChange.bind(this);
+    this.scenarios = this.props.scenarios;
+    this.onFilterChange = this.onFilterChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.onScenarioCardClick = this.onScenarioCardClick.bind(this);
     this.onScenarioModalClose = this.onScenarioModalClose.bind(this);
@@ -228,7 +186,7 @@ class ScenariosList extends Component {
     });
   }
 
-  onLabelsFilterChange() {
+  onFilterChange() {
     this.setState({
       page: 1
     });
@@ -239,6 +197,7 @@ class ScenariosList extends Component {
     const { viewHeading } = this.state;
     const { value: search } = props;
     const page = 1;
+    const results = [];
     let replacementHeading = '';
 
     if (search === '') {
@@ -249,43 +208,46 @@ class ScenariosList extends Component {
       });
 
       this.props.history.push(
-        makeHistoryUrl(this.props.location, { page, search: null })
+        makeHistoryEntry(this.props.location, {
+          page,
+          search
+        })
       );
-
       return;
     }
 
     const escapedRegExp = new RegExp(escapeRegExp(search), 'i');
-    const results = scenarios.filter(record => {
-      const {
-        author: { username },
-        categories,
-        description,
-        title
-      } = record;
-      if (escapedRegExp.test(title)) {
-        return true;
-      }
+    results.push(
+      ...scenarios.filter(record => {
+        const {
+          author: { username },
+          categories,
+          description,
+          title
+        } = record;
+        if (escapedRegExp.test(title)) {
+          return true;
+        }
 
-      if (escapedRegExp.test(description)) {
-        return true;
-      }
+        if (escapedRegExp.test(description)) {
+          return true;
+        }
 
-      if (escapedRegExp.test(username)) {
-        return true;
-      }
+        if (escapedRegExp.test(username)) {
+          return true;
+        }
 
-      if (categories.some(category => escapedRegExp.test(category))) {
-        return true;
-      }
+        if (categories.some(category => escapedRegExp.test(category))) {
+          return true;
+        }
 
-      return false;
-    });
+        return false;
+      })
+    );
 
     replacementHeading = `${viewHeading}, matching '${search}'`;
 
     if (results.length === 0) {
-      results.push(...scenarios);
       replacementHeading = `${viewHeading}, nothing matches '${search}'`;
     }
 
@@ -295,59 +257,54 @@ class ScenariosList extends Component {
 
     this.setState({
       heading: replacementHeading,
-      scenarios: results,
+      results,
       page,
       search
     });
 
-    this.props.history.push(
-      makeHistoryUrl(this.props.location, { page, search })
-    );
+    const historyEntry = makeHistoryEntry(this.props.location, {
+      page,
+      search
+    });
+
+    if (!window.location.href.endsWith(historyEntry)) {
+      this.props.history.push(historyEntry);
+    }
   }
 
   onPageChange(event, { activePage: page }) {
     const { search } = this.state;
 
-    const searchParams = { page };
-
-    if (search) {
-      searchParams.search = search;
-    }
-
-    this.props.history.push(makeHistoryUrl(this.props.location, searchParams));
-
     this.setState({
-      page
+      page,
+      search
     });
+
+    this.props.history.push(
+      makeHistoryEntry(this.props.location, {
+        page,
+        search
+      })
+    );
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { category, isLoggedIn, user } = this.props;
+    const { page, isReady, heading, open, selected, search } = this.state;
     const {
-      page,
-      category,
-      isReady,
-      heading,
-      open,
-      selected,
-      search,
-      user
-    } = this.state;
-    const {
-      onLabelsFilterChange,
+      onFilterChange,
       onPageChange,
       onScenarioCardClick,
       onScenarioModalClose,
       onSearchChange
     } = this;
-    const { origin, pathname } = window.location;
 
     let sourceScenarios = filter(
       // If there's an active search, use the search filtered set
       // of scenarios from state. Otherwise, use the status filtered
       // set from this.scenarios (the untouched backup).
-      search ? this.state.scenarios : this.scenarios.slice(0),
-      this.props.user
+      search ? this.state.results : this.scenarios.slice(0),
+      user
     );
 
     let scenarios = [];
@@ -364,9 +321,9 @@ class ScenariosList extends Component {
         authorUsername = this.props.match.params.username;
         displayHeading = `Showing scenarios by ${authorUsername}`;
         scenarios.push(
-          ...sourceScenarios.filter(({ author: { username } }) => {
-            return username === authorUsername;
-          })
+          ...sourceScenarios.filter(
+            ({ author: { username } }) => username === authorUsername
+          )
         );
 
         if (scenarios.length === 0) {
@@ -377,9 +334,11 @@ class ScenariosList extends Component {
       }
       case 'official':
       case 'community': {
-        scenarios = sourceScenarios.filter(({ categories }) => {
-          return !category || categories.includes(category);
-        });
+        scenarios.push(
+          ...sourceScenarios.filter(({ categories }) =>
+            categories.includes(changeCase.titleCase(category))
+          )
+        );
         displayHeading = `${changeCase.titleCase(category)} Scenarios`;
         break;
       }
@@ -396,7 +355,6 @@ class ScenariosList extends Component {
 
     displayHeading = `${displayHeading}${heading}`;
 
-    const url = `${origin}${pathname}${makeHistoryUrl(this.props.location)}`;
     const defaultRowCount = 2;
     const {
       itemsPerRow,
@@ -427,33 +385,12 @@ class ScenariosList extends Component {
     });
 
     const onCopyClick = () => {
+      const url = location.href;
       copy(url);
       notify({
         message: `Copied: ${url}`
       });
     };
-
-    const createScenarioButton = (
-      <Gate
-        key="menu-item-scenario-create"
-        requiredPermission="create_scenario"
-      >
-        <Button
-          fluid
-          icon
-          primary
-          className="sc__hidden-on-mobile"
-          labelPosition="left"
-          name="Create a scenario"
-          size="big"
-          href="/editor/new"
-          as="a"
-        >
-          <Icon name="add" />
-          Create a Scenario
-        </Button>
-      </Gate>
-    );
 
     const scenariosHeading = `${displayHeading}`;
     const menuItemScenarioLinkCopy = Layout.isNotForMobile() ? (
@@ -482,7 +419,7 @@ class ScenariosList extends Component {
 
     const menuItemScenarioLabels = (
       <Menu.Item.Tabbable>
-        <ScenarioLabelsFilter onChange={onLabelsFilterChange} />
+        <ScenarioLabelsFilter onChange={onFilterChange} />
       </Menu.Item.Tabbable>
     );
 
@@ -509,13 +446,41 @@ class ScenariosList extends Component {
     const DCSS_BRAND_LABEL =
       process.env.DCSS_BRAND_LABEL || 'Teaching Systems Lab';
 
-    const scenarioNavList = Layout.isNotForMobile() ? (
+    const createScenarioButton = (
+      <Gate
+        key="menu-item-scenario-create"
+        requiredPermission="create_scenario"
+      >
+        <Button
+          fluid
+          icon
+          primary
+          className="sc__hidden-on-mobile"
+          labelPosition="left"
+          name="Create a scenario"
+          size="big"
+          href="/editor/new"
+          as="a"
+        >
+          <Icon name="add" />
+          Create a Scenario
+        </Button>
+      </Gate>
+    );
+
+    const scenarioSidebarList = Layout.isNotForMobile() ? (
       <List relaxed size="big">
+        <List.Item>
+          <List.Header className="primary" to="/scenarios/" as={NavLink}>
+            All scenarios
+          </List.Header>
+          <List.Description>See all available scenarios.</List.Description>
+        </List.Item>
         {isLoggedIn ? (
           <List.Item>
             <List.Header
               className="primary"
-              to={`/scenarios/author/${user.username}`}
+              to={`/scenarios/author/${user.username}/`}
               as={NavLink}
             >
               My scenarios
@@ -528,7 +493,7 @@ class ScenariosList extends Component {
         <List.Item>
           <List.Header
             className="primary"
-            to="/scenarios/official"
+            to="/scenarios/official/"
             as={NavLink}
           >
             Official
@@ -540,7 +505,7 @@ class ScenariosList extends Component {
         <List.Item>
           <List.Header
             className="primary"
-            to="/scenarios/community"
+            to="/scenarios/community/"
             as={NavLink}
           >
             Community
@@ -595,7 +560,7 @@ class ScenariosList extends Component {
               </Segment>
             </div>
             {createScenarioButton}
-            {scenarioNavList}
+            {scenarioSidebarList}
           </Grid.Column>
           <Grid.Column className="grid__main" width={12}>
             {scenarioSearchTools}

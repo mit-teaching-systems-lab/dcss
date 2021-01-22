@@ -177,9 +177,7 @@ exports[`Add an existing 1`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -428,9 +426,7 @@ exports[`Add an existing 2`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -679,9 +675,7 @@ exports[`Add an existing 3`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -930,9 +924,7 @@ exports[`Add an existing 4`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -1181,9 +1173,7 @@ exports[`Add an existing 5`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -1432,9 +1422,7 @@ exports[`Add an existing 6`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -1683,9 +1671,7 @@ exports[`Add an existing 7`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -1856,9 +1842,7 @@ exports[`Add an existing 8`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -2216,9 +2200,7 @@ exports[`Add an existing 9`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -2576,9 +2558,7 @@ exports[`Add an existing 10`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -2936,9 +2916,7 @@ exports[`Add an existing 11`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -3296,9 +3274,7 @@ exports[`Add an existing 12`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -3734,9 +3710,7 @@ exports[`Create a persona 1`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -3985,9 +3959,7 @@ exports[`Create a persona 2`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -4236,9 +4208,7 @@ exports[`Create a persona 3`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -4487,9 +4457,7 @@ exports[`Create a persona 4`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -4738,9 +4706,7 @@ exports[`Create a persona 5`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -4989,9 +4955,7 @@ exports[`Create a persona 6`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -5240,9 +5204,7 @@ exports[`Create a persona 7`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -5491,9 +5453,7 @@ exports[`Create a persona 8`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -5742,9 +5702,7 @@ exports[`No personas loaded 1`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -5993,9 +5951,7 @@ exports[`Personas loaded 1`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -6322,9 +6278,7 @@ exports[`Render 1 1 1`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />
@@ -6597,9 +6551,7 @@ exports[`Render 2 1 1`] = `
         </th>
         <th
           class="sp__td-5"
-        >
-          Color
-        </th>
+        />
         <th
           class="sp__td-5"
         />

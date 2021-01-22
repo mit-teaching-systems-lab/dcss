@@ -2,8 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
-import Storage from '@utils/Storage';
 import Scenario from '@components/Scenario';
 import { Title } from '@components/UI';
 import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
@@ -15,6 +13,8 @@ import withRunEventCapturing, {
   PROMPT_RESPONSE_SUBMITTED,
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
+import QueryString from '@utils/QueryString';
+import Storage from '@utils/Storage';
 
 import withSocket from '@hoc/withSocket';
 

@@ -47,7 +47,7 @@ class ScenarioCard extends React.Component {
 
   render() {
     const { onRestoreClick } = this;
-    const { onClick, showActions = true, showStatus = true, user } = this.props;
+    const { onClick, showActions = true, user } = this.props;
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
     const officialCheckmark = categories.includes('official') ? (
@@ -112,11 +112,16 @@ class ScenarioCard extends React.Component {
         aria-describedby={ariaDescribedby}
       >
         <Card.Content>
-          {showStatus ? (
-            <Card.Meta className="sc__status">
-              <Icon className="primary" name={status.icon} /> {status.type}
-            </Card.Meta>
-          ) : null}
+          <Card.Meta className="sc__meta-top">
+            {categories.includes('Official') ? (
+              <span className="scmt__float-left">
+                <Icon className="primary" name="check" />
+                Official
+              </span>
+            ) : null}
+            <Icon className="primary" name={status.icon} />
+            {status.type}
+          </Card.Meta>
           <Card.Header
             tabIndex="0"
             className="sc sc__cursor-pointer"
@@ -154,7 +159,6 @@ ScenarioCard.propTypes = {
   onClick: PropTypes.func,
   scenario: PropTypes.object,
   showActions: PropTypes.bool,
-  showStatus: PropTypes.bool,
   user: PropTypes.object
 };
 

@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as QueryString from 'query-string';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Label } from '@components/UI';
 import { setLabelsInUse } from '@actions/tags';
 import Identity from '@utils/Identity';
+import QueryString from '@utils/QueryString';
 
-const qsOpts = {
-  arrayFormat: 'bracket'
-};
-
-function makeQueryString(labels) {
+function makeQueryString(keyVals) {
   const qs = {};
-  const { search } = QueryString.parse(window.location.search, qsOpts);
+  const { search } = QueryString.parse(window.location.search);
 
   if (search) {
     qs.search = search;
@@ -43,7 +39,7 @@ class ScenarioLabels extends React.Component {
 
     this.props.setLabelsInUse(labelsInUse);
     this.props.history.push(
-      `${this.props.location.pathname}${makeQueryString(labelsInUse)}`
+      `${this.props.location.pathname}${makeQueryString({ l: labelsInUse })}`
     );
   }
 
