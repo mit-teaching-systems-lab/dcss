@@ -314,3 +314,10 @@
   margin-bottom: 1rem !important;
   text-align: right;
 }
+
+.c__primary-sidenav {
+  background: transparent !important;
+  border: 0 !important;
+  color: #853D61 !important;
+  padding: 0 !important;
+}

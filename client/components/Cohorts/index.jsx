@@ -13,6 +13,7 @@ import {
   Header,
   Icon,
   Input,
+  List,
   Menu,
   Pagination,
   Segment,
@@ -318,9 +319,35 @@ export class Cohorts extends React.Component {
       />
     ) : null;
 
+    const cohortSideNav = (
+      <List relaxed size="big">
+        <List.Item>
+          <List.Header className="c__primary-sidenav" as="button">
+            Active
+          </List.Header>
+          <List.Description>
+            Cohorts that are currently running.
+          </List.Description>
+        </List.Item>
+        <List.Item>
+          <List.Header className="c__primary-sidenav" as="button">
+            Archived
+          </List.Header>
+          <List.Description>Cohorts no longer running.</List.Description>
+        </List.Item>
+      </List>
+    );
+
+    const cohortAuthorActions = (
+      <Fragment>
+        {createCohortButton}
+        {cohortSideNav}
+      </Fragment>
+    );
+
     const cohortPermissionActions = [
       permissions.includes('create_cohort')
-        ? createCohortButton
+        ? cohortAuthorActions
         : menuItemCountCohorts
     ];
 
