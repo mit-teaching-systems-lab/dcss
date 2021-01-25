@@ -19,7 +19,7 @@ let idToHashMap = {};
 let k = 0;
 let i = 1;
 
-const updateMaps = (n) => {
+const updateMaps = n => {
   /* SESSION_SECRET is "embedded" by webpack */
   let h = objectHash({ n, SESSION_SECRET });
   hashToIdMap[h] = n;
@@ -87,7 +87,6 @@ const Identity = {
     }
   }
 };
-
 
 // test/util/Identity.test.js
 

@@ -556,28 +556,48 @@ describe('Identity.fromHash/toHash()', () => {
 
 describe('Identity.isHash(...)', () => {
   test('input is a hash', () => {
-    expect(Identity.isHash('6b8018084bfdad95e30bf5aab95c5e50200018f8')).toBe(true);
-    expect(Identity.isHash('a47833cd1b22887a8e23a3c3ac01540238d9a1c8')).toBe(true);
-    expect(Identity.isHash('877e186e66662fdddfb7c8871646a841bb0554c9')).toBe(true);
-    expect(Identity.isHash('2d6c49f415d20916f13d2d59876b4f74d55723f9')).toBe(true);
+    expect(Identity.isHash('6b8018084bfdad95e30bf5aab95c5e50200018f8')).toBe(
+      true
+    );
+    expect(Identity.isHash('a47833cd1b22887a8e23a3c3ac01540238d9a1c8')).toBe(
+      true
+    );
+    expect(Identity.isHash('877e186e66662fdddfb7c8871646a841bb0554c9')).toBe(
+      true
+    );
+    expect(Identity.isHash('2d6c49f415d20916f13d2d59876b4f74d55723f9')).toBe(
+      true
+    );
   });
   test('input is not a hash', () => {
     expect(Identity.isHash('1')).toBe(false);
     expect(Identity.isHash(1)).toBe(false);
-    expect(Identity.isHash('6z8018084zfdad95e30zf5aaz95c5e50200018f8')).toBe(false);
+    expect(Identity.isHash('6z8018084zfdad95e30zf5aaz95c5e50200018f8')).toBe(
+      false
+    );
   });
 });
 
 describe('Identity.fromHashOrId(...)', () => {
   test('input is a hash', () => {
-    expect(Identity.fromHashOrId('6b8018084bfdad95e30bf5aab95c5e50200018f8')).toBe(99);
-    expect(Identity.fromHashOrId('a47833cd1b22887a8e23a3c3ac01540238d9a1c8')).toBe(91);
-    expect(Identity.fromHashOrId('877e186e66662fdddfb7c8871646a841bb0554c9')).toBe(8);
-    expect(Identity.fromHashOrId('2d6c49f415d20916f13d2d59876b4f74d55723f9')).toBe(9);
+    expect(
+      Identity.fromHashOrId('6b8018084bfdad95e30bf5aab95c5e50200018f8')
+    ).toBe(99);
+    expect(
+      Identity.fromHashOrId('a47833cd1b22887a8e23a3c3ac01540238d9a1c8')
+    ).toBe(91);
+    expect(
+      Identity.fromHashOrId('877e186e66662fdddfb7c8871646a841bb0554c9')
+    ).toBe(8);
+    expect(
+      Identity.fromHashOrId('2d6c49f415d20916f13d2d59876b4f74d55723f9')
+    ).toBe(9);
   });
   test('input is not a hash', () => {
     expect(Identity.fromHashOrId('1')).toBe(1);
     expect(Identity.fromHashOrId(1)).toBe(1);
-    expect(Identity.fromHashOrId('6z8018084zfdad95e30zf5aaz95c5e50200018f8')).toBe(null);
+    expect(
+      Identity.fromHashOrId('6z8018084zfdad95e30zf5aaz95c5e50200018f8')
+    ).toBe(null);
   });
 });
