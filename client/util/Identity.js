@@ -7,66 +7,88 @@ const rando = () => {
       .toString(36)
       .slice(2))
   ) {
+    /* istanbul ignore else */
     if (!/^\d/.test(returnValue)) {
-      return returnValue;
+      return returnValue.slice(0, 10);
     }
   }
 };
 
+let hashToIdMap = {};
+let idToHashMap = {};
+let k = 0;
 let i = 1;
 
-export function id() {
-  return `${rando()}${i++}`;
-}
-
-export function key(...props) {
-  return objectHash(...props);
-}
-
-let zeroHash = objectHash(0);
-let hashToIdMap = {
-  [zeroHash]: 0
-};
-let idToHashMap = {
-  0: zeroHash
-};
-let k = 1;
-
-function updateMaps(n) {
-  let h = objectHash(n);
+const updateMaps = (n) => {
+  /* SESSION_SECRET is "embedded" by webpack */
+  let h = objectHash({ n, SESSION_SECRET });
   hashToIdMap[h] = n;
   idToHashMap[n] = h;
-}
-
-export function fromHash(hash) {
-  if (hashToIdMap[hash]) {
-    return hashToIdMap[hash];
-  }
-
-  while (!hashToIdMap[hash]) {
-    updateMaps(k);
-    k++;
-  }
-
-  return hashToIdMap[hash];
-}
-
-export function toHash(id) {
-  if (idToHashMap[id]) {
-    return idToHashMap[id];
-  }
-
-  while (!idToHashMap[id]) {
-    updateMaps(k);
-    k++;
-  }
-
-  return idToHashMap[id];
-}
-
-export default {
-  id,
-  key,
-  fromHash,
-  toHash
 };
+
+const rishash = /^[0-9a-f]{40}$/i;
+
+const Identity = {
+  id() {
+    return `${rando()}${i++}`;
+  },
+  key(...props) {
+    return objectHash(props);
+  },
+  isHash(input) {
+    return rishash.test(input);
+  },
+  fromHash(hash) {
+    // intentional ==
+    if (hash == null) {
+      return null;
+    }
+
+    if (hashToIdMap[hash] || hashToIdMap[hash] === 0) {
+      return hashToIdMap[hash];
+    }
+
+    while (!hashToIdMap[hash]) {
+      updateMaps(k++);
+    }
+
+    return hashToIdMap[hash];
+  },
+  fromHashOrId(input) {
+    if (!Identity.isHash(input)) {
+      const id = Number(input);
+      return Number.isNaN(id) ? null : id;
+    }
+    return Identity.fromHash(input);
+  },
+  toHash(id) {
+    // intentional ==
+    if (id == null) {
+      return null;
+    }
+
+    if (idToHashMap[id]) {
+      return idToHashMap[id];
+    }
+
+    while (!idToHashMap[id]) {
+      updateMaps(k++);
+    }
+
+    return idToHashMap[id];
+  },
+  getMaps() {
+    /* istanbul ignore else */
+    if (process.env.JEST_WORKER_ID) {
+      return {
+        hashToIdMap,
+        idToHashMap
+      };
+    }
+  }
+};
+
+
+// test/util/Identity.test.js
+
+export default Identity;

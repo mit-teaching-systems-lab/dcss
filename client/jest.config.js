@@ -1,4 +1,8 @@
 module.exports = {
+  globals: {
+    PORT: true,
+    SESSION_SECRET: true
+  },
   // Automatically clear mock calls and instances between every test
   clearMocks: true,
 
