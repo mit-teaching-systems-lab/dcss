@@ -38,7 +38,7 @@ exports[`Archive cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -686,7 +686,7 @@ exports[`Archive cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -1334,7 +1334,7 @@ exports[`Archive cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -2049,7 +2049,7 @@ exports[`Archive cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -2697,7 +2697,7 @@ exports[`Archive cohort 5`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -3412,7 +3412,7 @@ exports[`Archive cohort 6`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -4111,7 +4111,7 @@ exports[`Cohort is archived 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -4929,7 +4929,7 @@ exports[`Copy cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -5577,7 +5577,7 @@ exports[`Copy cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -6225,7 +6225,7 @@ exports[`Copy cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -6940,7 +6940,7 @@ exports[`Copy cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -7588,7 +7588,7 @@ exports[`Copy cohort 5`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -8303,7 +8303,7 @@ exports[`Copy cohort 6`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/2\\"
+                value=\\"undefined/cohort/6c4adee67adb9fe1835cdf941d55a72aa8e70434\\"
               />
             </div>
              
@@ -9016,7 +9016,7 @@ exports[`Copy cohort url 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -9742,7 +9742,7 @@ exports[`Copy cohort url 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -10468,7 +10468,7 @@ exports[`Copy cohort url 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -11196,7 +11196,7 @@ exports[`Delete cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -11844,7 +11844,7 @@ exports[`Delete cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -12492,7 +12492,7 @@ exports[`Delete cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -13207,7 +13207,7 @@ exports[`Delete cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -13855,7 +13855,7 @@ exports[`Delete cohort 5`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -14570,7 +14570,7 @@ exports[`Delete cohort 6`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/1\\"
+                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -15440,7 +15440,7 @@ exports[`Rename cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -16166,7 +16166,7 @@ exports[`Rename cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -16895,7 +16895,7 @@ exports[`Rename cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -17696,7 +17696,7 @@ exports[`Rename cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/1\\"
+                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
               />
             </div>
              
@@ -18515,7 +18515,7 @@ exports[`Render 1 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/1"
+              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
             />
           </div>
            
@@ -19157,7 +19157,7 @@ exports[`Render 2 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/1"
+              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
             />
           </div>
            
@@ -19799,7 +19799,7 @@ exports[`Render 3 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/1"
+              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
             />
           </div>
            
@@ -20801,7 +20801,7 @@ exports[`Render 9 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/1"
+              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
             />
           </div>
            

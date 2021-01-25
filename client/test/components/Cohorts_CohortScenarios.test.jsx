@@ -1241,7 +1241,9 @@ test('Run as participant', async done => {
   };
 
   userEvent.click(await screen.getAllByTestId('run-cohort-as-participant')[0]);
-  expect(window.location.href).toBe('http://localhost/cohort/1/run/99/slide/0');
+  expect(window.location.href).toMatchInlineSnapshot(
+    `"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131/run/99/slide/0"`
+  );
   expect(asFragment()).toMatchSnapshot();
 
   done();

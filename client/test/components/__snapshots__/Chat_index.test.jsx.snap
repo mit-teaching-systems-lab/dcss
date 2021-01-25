@@ -46,7 +46,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
         >
           <div>
             <textarea
-              id=\\"12\\"
+              id=\\"x12\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -402,7 +402,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
         >
           <div>
             <textarea
-              id=\\"12\\"
+              id=\\"x12\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -470,7 +470,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
         >
           <div>
             <textarea
-              id=\\"18\\"
+              id=\\"x18\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -826,7 +826,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
         >
           <div>
             <textarea
-              id=\\"18\\"
+              id=\\"x18\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -903,7 +903,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
         >
           <div>
             <textarea
-              id=\\"19\\"
+              id=\\"x19\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -1259,7 +1259,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
         >
           <div>
             <textarea
-              id=\\"19\\"
+              id=\\"x19\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -1327,7 +1327,7 @@ exports[`Click to Minimize and Maximize 1`] = `
         >
           <div>
             <textarea
-              id=\\"23\\"
+              id=\\"x23\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -1683,7 +1683,7 @@ exports[`Click to Minimize and Maximize 2`] = `
         >
           <div>
             <textarea
-              id=\\"23\\"
+              id=\\"x23\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -2039,7 +2039,7 @@ exports[`Click to Minimize and Maximize 3`] = `
         >
           <div>
             <textarea
-              id=\\"23\\"
+              id=\\"x23\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -2107,7 +2107,7 @@ exports[`Draggable: onStop 1`] = `
         >
           <div>
             <textarea
-              id=\\"22\\"
+              id=\\"x22\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -2463,7 +2463,7 @@ exports[`Draggable: onStop 2`] = `
         >
           <div>
             <textarea
-              id=\\"22\\"
+              id=\\"x22\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -2828,7 +2828,7 @@ exports[`Layout on desktop 2`] = `
         >
           <div>
             <textarea
-              id=\\"4\\"
+              id=\\"x4\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -3193,7 +3193,7 @@ exports[`Layout on mobile 2`] = `
         >
           <div>
             <textarea
-              id=\\"3\\"
+              id=\\"x3\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -3272,7 +3272,7 @@ exports[`Types, clicks Send Message 1`] = `
         >
           <div>
             <textarea
-              id=\\"20\\"
+              id=\\"x20\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -3628,7 +3628,7 @@ exports[`Types, clicks Send Message 4`] = `
         >
           <div>
             <textarea
-              id=\\"20\\"
+              id=\\"x20\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -3696,7 +3696,7 @@ exports[`Types, followed by {enter} 1`] = `
         >
           <div>
             <textarea
-              id=\\"15\\"
+              id=\\"x15\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -4052,7 +4052,7 @@ exports[`Types, followed by {enter} 4`] = `
         >
           <div>
             <textarea
-              id=\\"15\\"
+              id=\\"x15\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -4120,7 +4120,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
         >
           <div>
             <textarea
-              id=\\"16\\"
+              id=\\"x16\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -4476,7 +4476,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
         >
           <div>
             <textarea
-              id=\\"16\\"
+              id=\\"x16\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -4544,7 +4544,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 5`] = `
         >
           <div>
             <textarea
-              id=\\"17\\"
+              id=\\"x17\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -4900,7 +4900,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
         >
           <div>
             <textarea
-              id=\\"17\\"
+              id=\\"x17\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -4968,7 +4968,7 @@ exports[`Types, then attempts to send empty string 1`] = `
         >
           <div>
             <textarea
-              id=\\"13\\"
+              id=\\"x13\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             />
@@ -5322,7 +5322,7 @@ exports[`Types, then attempts to send empty string 2`] = `
         >
           <div>
             <textarea
-              id=\\"13\\"
+              id=\\"x13\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             />
@@ -5388,7 +5388,7 @@ exports[`Types, then attempts to send string containing only a space character 1
         >
           <div>
             <textarea
-              id=\\"14\\"
+              id=\\"x14\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             />
@@ -5742,7 +5742,7 @@ exports[`Types, then attempts to send string containing only a space character 2
         >
           <div>
             <textarea
-              id=\\"14\\"
+              id=\\"x14\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             />
@@ -5808,7 +5808,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
         >
           <div>
             <textarea
-              id=\\"5\\"
+              id=\\"x5\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -6164,7 +6164,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
         >
           <div>
             <textarea
-              id=\\"5\\"
+              id=\\"x5\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -6529,7 +6529,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
         >
           <div>
             <textarea
-              id=\\"6\\"
+              id=\\"x6\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -6912,7 +6912,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
         >
           <div>
             <textarea
-              id=\\"9\\"
+              id=\\"x9\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -7295,7 +7295,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
         >
           <div>
             <textarea
-              id=\\"8\\"
+              id=\\"x8\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -7372,7 +7372,7 @@ exports[`onQuote 1`] = `
         >
           <div>
             <textarea
-              id=\\"21\\"
+              id=\\"x21\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -7728,7 +7728,7 @@ exports[`onQuote 3`] = `
         >
           <div>
             <textarea
-              id=\\"21\\"
+              id=\\"x21\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >
@@ -8094,7 +8094,7 @@ exports[`onQuote 5`] = `
         >
           <div>
             <textarea
-              id=\\"21\\"
+              id=\\"x21\\"
               name=\\"content\\"
               options=\\"[object Object]\\"
             >

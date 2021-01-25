@@ -6,8 +6,9 @@ import { NavLink } from 'react-router-dom';
 import Moment from '@utils/Moment';
 import { Button, Card } from '@components/UI';
 import { setCohort } from '@actions/cohort';
-import { rolesToHumanReadableString } from '@utils/Roles';
 import CohortScenarioLabels from '@components/Cohorts/CohortScenarioLabels';
+import Identity from '@utils/Identity';
+import { rolesToHumanReadableString } from '@utils/Roles';
 
 export const CohortCard = props => {
   const { cohort, roles, user } = props;
@@ -22,11 +23,13 @@ export const CohortCard = props => {
     cardClassName += ' deleted';
   }
 
+  const pathToCohort = `/cohort/${Identity.toHash(id)}`;
+
   const onClick = async () => {
     await props.setCohort(id, {
       deleted_at: null
     });
-    props.history.push(`/cohort/${id}`);
+    props.history.push(pathToCohort);
   };
 
   const cohortStatus = is_archived ? 'Archived' : 'Active';
@@ -45,7 +48,7 @@ export const CohortCard = props => {
       <Card.Content className="sc">
         <Card.Meta className="c-card__status">{cohortStatus}</Card.Meta>
         <Card.Header>
-          <NavLink to={`/cohort/${id}`}>{name}</NavLink>
+          <NavLink to={pathToCohort}>{name}</NavLink>
         </Card.Header>
         <Card.Meta title={`Created ${updatedCalendar}`}>
           Updated {updatedfromNow}

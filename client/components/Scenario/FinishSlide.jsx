@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Button, Card, Header, Icon, Modal } from '@components/UI';
 import { SCENARIO_COMPLETE } from '@hoc/withRunEventCapturing';
+import Identity from '@utils/Identity';
 import './Scenario.css';
 
 class FinishSlide extends React.Component {
@@ -66,8 +67,14 @@ class FinishSlide extends React.Component {
       ? 'scenario__slide-card-content'
       : 'scenario__slide-card-content-preview';
 
+    const baseReturnToXUrl = this.isCohortScenarioRun
+      ? `/cohort/${Identity.toHash(cohortId)}`
+      : '';
+
+    const rerunUrl = `/run/${scenarioId}/slide/0`;
+
     const returnToX = this.isCohortScenarioRun ? (
-      <Button primary to={`/cohort/${cohortId}`} as={NavLink}>
+      <Button primary to={baseReturnToXUrl} as={NavLink}>
         Return to cohort
       </Button>
     ) : (
@@ -77,8 +84,8 @@ class FinishSlide extends React.Component {
     );
 
     const rerunThisUrl = this.isCohortScenarioRun
-      ? `/cohort/${cohortId}/run/${scenarioId}/slide/0`
-      : `/run/${scenarioId}/slide/0`;
+      ? `${baseReturnToXUrl}${rerunUrl}`
+      : rerunUrl;
 
     const rerunThisX = (
       <Button onClick={() => (location.href = rerunThisUrl)}>

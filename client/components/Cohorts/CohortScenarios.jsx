@@ -1,15 +1,8 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Card, Container, Icon, Text } from '@components/UI';
-import { notify } from '@components/Notification';
 import copy from 'copy-text-to-clipboard';
 import pluralize from 'pluralize';
-import Moment from '@utils/Moment';
-import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
-import Gate from '@components/Gate';
-import Loading from '@components/Loading';
-import Sortable from '@components/Sortable';
 import {
   getCohort,
   getCohortScenarios,
@@ -17,10 +10,17 @@ import {
 } from '@actions/cohort';
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
+import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
+import Gate from '@components/Gate';
+import Loading from '@components/Loading';
+import { notify } from '@components/Notification';
+import Sortable from '@components/Sortable';
+import { Button, Card, Container, Icon, Text } from '@components/UI';
+import Identity from '@utils/Identity';
+import Layout from '@utils/Layout';
+import Moment from '@utils/Moment';
 
 import './Cohort.css';
-
-import Layout from '@utils/Layout';
 
 export class CohortScenarios extends React.Component {
   constructor(props) {
@@ -161,7 +161,9 @@ export class CohortScenarios extends React.Component {
               }
 
               // TODO: check localstorage for more appropriate slide number to begin at
-              const pathname = `/cohort/${cohort.id}/run/${scenario.id}/slide/0`;
+              const pathname = `/cohort/${Identity.toHash(cohort.id)}/run/${
+                scenario.id
+              }/slide/0`;
               const url = `${location.origin}${pathname}`;
 
               const onAddTabClick = event => {

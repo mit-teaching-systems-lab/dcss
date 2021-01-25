@@ -1,16 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Icon, Message, Pagination, Popup, Tab, Table } from '@components/UI';
-import Moment from '@utils/Moment';
 import { getRuns } from '@actions/run';
 import { getCohorts } from '@actions/cohort';
 import { getScenariosIncrementally } from '@actions/scenario';
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
 import DataTable from '@components/Cohorts/DataTable';
+import Identity from '@utils/Identity';
+import Moment from '@utils/Moment';
 
 import './History.css';
 
@@ -291,7 +291,9 @@ class History extends Component {
                   : `/run/${scenario_id}/slide/0`;
 
                 const cohort = cohortsById[cohort_id];
-                const cohortPathname = cohort ? `/cohort/${cohort_id}` : null;
+                const cohortPathname = cohort
+                  ? `/cohort/${Identity.toHash(cohort_id)}`
+                  : null;
                 const cohortDisplay = cohort ? cohort.name : null;
 
                 const onViewRunDataClick = (event, props) => {

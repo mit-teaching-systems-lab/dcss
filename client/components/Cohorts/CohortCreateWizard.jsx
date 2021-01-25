@@ -9,6 +9,7 @@ import CohortCreateNewForm from './CohortCreateNewForm';
 import CohortScenariosSelector from './CohortScenariosSelector';
 import CohortShare from './CohortShare';
 import '../ScenariosList/ScenariosList.css';
+import Identity from '@utils/Identity';
 
 export class CohortCreate extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ export class CohortCreate extends React.Component {
 
     // Continuing from step 2 means moving on to the cohort itself.
     if (step === 2) {
-      this.props.history.push(`/cohort/${id}`);
+      this.props.history.push(`/cohort/${Identity.toHash(id)}`);
     } else {
       this.setState({
         id,

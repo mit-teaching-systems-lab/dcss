@@ -46,9 +46,12 @@ jest.mock('react-beautiful-dnd', () => ({
 jest.mock('@utils/Identity', () => {
   let count = 0;
   return {
-    ...jest.requireActual('@utils/Identity'),
-    id() {
-      return ++count;
+    __esModule: true,
+    default: {
+      ...jest.requireActual('@utils/Identity').default,
+      id() {
+        return `x${++count}`;
+      }
     }
   };
 });

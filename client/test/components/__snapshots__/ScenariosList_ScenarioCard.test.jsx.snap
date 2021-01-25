@@ -3,8 +3,8 @@
 exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <div
-    aria-describedby="2"
-    aria-labelledby="1"
+    aria-describedby="x2"
+    aria-labelledby="x1"
     class="ui card sc sc__margin-height"
   >
     <div
@@ -21,7 +21,7 @@ exports[`Render 1 1 1`] = `
       </div>
       <div
         class="header sc sc__cursor-pointer"
-        id="1"
+        id="x1"
         tabindex="0"
       >
          Multiplayer Scenario 2

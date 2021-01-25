@@ -31,6 +31,7 @@ import CohortScenarios from '@components/Cohorts/CohortScenarios';
 import { notify } from '@components/Notification';
 import Loading from '@components/Loading';
 import Boundary from '@components/Boundary';
+import Identity from '@utils/Identity';
 
 import './Cohort.css';
 
@@ -174,7 +175,7 @@ export class Cohort extends React.Component {
       return <Loading />;
     }
 
-    const url = `${location.origin}/cohort/${cohort.id}`;
+    const url = `${location.origin}/cohort/${Identity.toHash(cohort.id)}`;
     const onCohortUrlCopyClick = () => {
       copy(url);
       notify({
@@ -286,7 +287,7 @@ export class Cohort extends React.Component {
       if (isCopy) {
         const { id } = await this.props.copyCohort(this.props.cohort.id);
 
-        location.href = `/cohort/${id}`;
+        location.href = `/cohort/${Identity.toHash(id)}`;
       }
     };
 
@@ -428,7 +429,7 @@ Cohort.propTypes = {
   authority: PropTypes.object,
   copyCohort: PropTypes.func,
   cohort: PropTypes.shape({
-    id: PropTypes.any,
+    id: PropTypes.node,
     created_at: PropTypes.string,
     deleted_at: PropTypes.string,
     updated_at: PropTypes.string,
@@ -446,7 +447,7 @@ Cohort.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  id: PropTypes.any,
+  id: PropTypes.node,
   linkUserToCohort: PropTypes.func,
   location: PropTypes.shape({
     search: PropTypes.string
@@ -460,11 +461,13 @@ Cohort.propTypes = {
   setCohort: PropTypes.func,
   runs: PropTypes.array,
   users: PropTypes.array,
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
+const isHash = id => /[a-f0-9]/.test(id);
+
 const mapStateToProps = (state, ownProps) => {
-  const id = Number(ownProps.match.params.id) || ownProps.id;
+  const id = Identity.fromHashOrId(ownProps.match.params.id || ownProps.id);
   const { cohort, user } = state;
   const participant = cohort
     ? cohort.users.find(participant => participant.id === user.id)

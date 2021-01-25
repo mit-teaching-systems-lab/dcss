@@ -8,6 +8,8 @@ import { getCohort } from '@actions/cohort';
 import copy from 'copy-text-to-clipboard';
 import { notify } from '@components/Notification';
 import { getUser } from '@actions/user';
+import Identity from '@utils/Identity';
+
 import '../ScenariosList/ScenariosList.css';
 
 export class CohortCreateNewForm extends React.Component {
@@ -36,7 +38,7 @@ export class CohortCreateNewForm extends React.Component {
   render() {
     const { cohort } = this.props;
 
-    const url = `${location.origin}/cohort/${cohort.id}`;
+    const url = `${location.origin}/cohort/${Identity.toHash(cohort.id)}`;
     const onCohortUrlCopyClick = () => {
       copy(url);
       notify({

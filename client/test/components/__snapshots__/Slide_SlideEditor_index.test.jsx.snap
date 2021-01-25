@@ -204,14 +204,14 @@ exports[`Add a non-response-prompt component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -700,14 +700,14 @@ exports[`Add a non-response-prompt component 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -1196,14 +1196,14 @@ exports[`Add a non-response-prompt component 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -1692,14 +1692,14 @@ exports[`Add a non-response-prompt component at the end 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -2153,14 +2153,14 @@ exports[`Add a non-response-prompt component at the end 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -2614,14 +2614,14 @@ exports[`Add a non-response-prompt component at the end 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -3110,14 +3110,14 @@ exports[`Add a non-response-prompt component at the end 4`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -3606,14 +3606,14 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -3801,14 +3801,14 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                         </a>
                         <a
                           class="item"
-                          id="828c875dcb4eebeb0c688b1aa70e1ee3469aac7f"
+                          id="3d13d733bea451c2967f4aa95483db5013373c01"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="828c875dcb4eebeb0c688b1aa70e1ee3469aac7f"
+                              aria-labelledby="3d13d733bea451c2967f4aa95483db5013373c01"
                               checked=""
                               class="hidden"
                               name="required"
@@ -4242,14 +4242,14 @@ exports[`Add a response-prompt component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -4703,14 +4703,14 @@ exports[`Add a response-prompt component that has disableRequireCheckbox 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -5234,14 +5234,14 @@ exports[`Add a response-prompt component to a slide without a title 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -5695,14 +5695,14 @@ exports[`Change title 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -6156,14 +6156,14 @@ exports[`Change title 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -6617,14 +6617,14 @@ exports[`Change title 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -7078,14 +7078,14 @@ exports[`Click to activate component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -7539,14 +7539,14 @@ exports[`Click to activate component 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -8035,14 +8035,14 @@ exports[`Click to activate component 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -8600,14 +8600,14 @@ exports[`Component is missing an id 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -9165,14 +9165,14 @@ exports[`Delete a component from the beginning 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -9661,14 +9661,14 @@ exports[`Delete a component from the beginning 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -10192,14 +10192,14 @@ exports[`Delete a component from the beginning 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -10598,14 +10598,14 @@ exports[`Delete a component from the beginning 4`] = `
                         </a>
                         <a
                           class="item"
-                          id="c15a52f904ae9de1b4739e8ef1c737224c14d498"
+                          id="551536122beb9d13e80040482ec628ce1473ef8a"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="c15a52f904ae9de1b4739e8ef1c737224c14d498"
+                              aria-labelledby="551536122beb9d13e80040482ec628ce1473ef8a"
                               checked=""
                               class="hidden"
                               name="required"
@@ -11129,14 +11129,14 @@ exports[`Delete a component from the end 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -11625,14 +11625,14 @@ exports[`Delete a component from the end 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -12086,14 +12086,14 @@ exports[`Delete a component from the end 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -12582,14 +12582,14 @@ exports[`Delete a component from the end 4`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -13058,14 +13058,14 @@ exports[`Delete a component from the middle 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -13554,14 +13554,14 @@ exports[`Delete a component from the middle 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -14015,14 +14015,14 @@ exports[`Delete a component from the middle 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -14867,14 +14867,14 @@ exports[`Delete, no 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -15328,14 +15328,14 @@ exports[`Delete, no 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -15789,14 +15789,14 @@ exports[`Delete, no 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -16250,14 +16250,14 @@ exports[`Delete, yes 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -16711,14 +16711,14 @@ exports[`Delete, yes 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -17172,14 +17172,14 @@ exports[`Delete, yes 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -17633,14 +17633,14 @@ exports[`Duplicate 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -18094,14 +18094,14 @@ exports[`Duplicate 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -18555,14 +18555,14 @@ exports[`Duplicate a non-response-prompt component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -19141,14 +19141,14 @@ exports[`Duplicate a non-response-prompt component 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="37c9d13c831c8ed678802b51703002496a0289db"
+                          id="64297ed8c61c3fa95db14217a1145690b973da3f"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="37c9d13c831c8ed678802b51703002496a0289db"
+                              aria-labelledby="64297ed8c61c3fa95db14217a1145690b973da3f"
                               checked=""
                               class="hidden"
                               name="required"
@@ -19637,14 +19637,14 @@ exports[`Duplicate a response-prompt component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -20098,14 +20098,14 @@ exports[`Duplicate a response-prompt component 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -20273,14 +20273,14 @@ exports[`Duplicate a response-prompt component 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="37c9d13c831c8ed678802b51703002496a0289db"
+                          id="64297ed8c61c3fa95db14217a1145690b973da3f"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="37c9d13c831c8ed678802b51703002496a0289db"
+                              aria-labelledby="64297ed8c61c3fa95db14217a1145690b973da3f"
                               checked=""
                               class="hidden"
                               name="required"
@@ -20734,14 +20734,14 @@ exports[`Edit a component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -21475,14 +21475,14 @@ exports[`Move a component down 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -21971,14 +21971,14 @@ exports[`Move a component down 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -22377,14 +22377,14 @@ exports[`Move a component down 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="c15a52f904ae9de1b4739e8ef1c737224c14d498"
+                          id="551536122beb9d13e80040482ec628ce1473ef8a"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="c15a52f904ae9de1b4739e8ef1c737224c14d498"
+                              aria-labelledby="551536122beb9d13e80040482ec628ce1473ef8a"
                               checked=""
                               class="hidden"
                               name="required"
@@ -22928,14 +22928,14 @@ exports[`Move a component up 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -23424,14 +23424,14 @@ exports[`Move a component up 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -23865,14 +23865,14 @@ exports[`Move a component up 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="c15a52f904ae9de1b4739e8ef1c737224c14d498"
+                          id="551536122beb9d13e80040482ec628ce1473ef8a"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="c15a52f904ae9de1b4739e8ef1c737224c14d498"
+                              aria-labelledby="551536122beb9d13e80040482ec628ce1473ef8a"
                               checked=""
                               class="hidden"
                               name="required"
@@ -24734,14 +24734,14 @@ exports[`Multiple personas 1`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -25667,14 +25667,14 @@ exports[`Multiple personas 2`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -26600,14 +26600,14 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -27533,14 +27533,14 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -28466,14 +28466,14 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -29399,14 +29399,14 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -30332,14 +30332,14 @@ exports[`Multiple personas, toggle chat 1`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -31265,14 +31265,14 @@ exports[`Multiple personas, toggle chat 2`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -32198,14 +32198,14 @@ exports[`Multiple personas, toggle chat 3`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -33131,14 +33131,14 @@ exports[`Multiple personas, toggle chat 4`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -34064,14 +34064,14 @@ exports[`Multiple personas, with an assigned component 1`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -34997,14 +34997,14 @@ exports[`Multiple personas, with an assigned component 2`] = `
                         </div>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -35847,14 +35847,14 @@ exports[`Preview 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -36565,14 +36565,14 @@ exports[`Preview 3`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -37026,14 +37026,14 @@ exports[`Render 1 1 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -37487,14 +37487,14 @@ exports[`Save 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -37948,14 +37948,14 @@ exports[`Save 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -38409,14 +38409,14 @@ exports[`Save, onChange is missing 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -38870,14 +38870,14 @@ exports[`Save, onChange is missing 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -39331,14 +39331,14 @@ exports[`Single persona 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -39792,14 +39792,14 @@ exports[`Toggle required on a prompt-response component 1`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"
@@ -40288,14 +40288,14 @@ exports[`Toggle required on a prompt-response component 2`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               class="hidden"
                               name="required"
                               readonly=""
@@ -40783,14 +40783,14 @@ exports[`Toggle required on a prompt-response component 4`] = `
                         </a>
                         <a
                           class="item"
-                          id="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                           tabindex="0"
                         >
                           <div
                             class="ui checked checkbox"
                           >
                             <input
-                              aria-labelledby="1a1b40d56c8ed14daaca04a7501cb36cad406179"
+                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
                               checked=""
                               class="hidden"
                               name="required"

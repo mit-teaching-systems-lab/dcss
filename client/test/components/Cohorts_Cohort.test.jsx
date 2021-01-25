@@ -2867,7 +2867,7 @@ test('Copy cohort url', async done => {
   expect(copy.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "http://localhost/cohort/1",
+        "http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131",
       ],
     ]
   `);
@@ -2876,7 +2876,7 @@ test('Copy cohort url', async done => {
     Array [
       Array [
         Object {
-          "message": "Copied: http://localhost/cohort/1",
+          "message": "Copied: http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131",
         },
       ],
     ]
@@ -3108,6 +3108,8 @@ test('Copy cohort', async done => {
     expect(cohortActions.copyCohort).toHaveBeenCalledTimes(1);
   });
 
-  expect(window.location.href).toMatchInlineSnapshot(`"/cohort/2"`);
+  expect(window.location.href).toMatchInlineSnapshot(
+    `"/cohort/6c4adee67adb9fe1835cdf941d55a72aa8e70434"`
+  );
   done();
 });

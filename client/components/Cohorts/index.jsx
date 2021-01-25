@@ -357,7 +357,9 @@ export class Cohorts extends React.Component {
 
     const isSliceAvailable = cohortsSlice.length > 0;
     const cards = isSliceAvailable
-      ? cohortsSlice.map(({id}) => <CohortCard key={Identity.key({id})} id={id} />)
+      ? cohortsSlice.map(({ id }) => (
+          <CohortCard key={Identity.key({ id })} id={id} />
+        ))
       : null;
 
     const loadingProps = {
@@ -419,21 +421,24 @@ export class Cohorts extends React.Component {
     );
 
     const isLoading = !isReady || !isSliceAvailable;
-    let fallback = isLoading && !isComplete
-      ? 'Looking for cohorts.'
-      : 'Sorry, there are no cohorts here.';
+    let fallback =
+      isLoading && !isComplete
+        ? 'Looking for cohorts.'
+        : 'Sorry, there are no cohorts here.';
 
-    if (authority.isParticipant && !authority.isFacilitator && !cohorts.length) {
+    if (
+      authority.isParticipant &&
+      !authority.isFacilitator &&
+      !cohorts.length
+    ) {
       fallback = 'You are not in any cohorts';
     }
 
-    const isParticipantList = authority.isParticipant && !authority.isFacilitator && cohorts.length;
+    const isParticipantList =
+      authority.isParticipant && !authority.isFacilitator && cohorts.length;
 
     const cardGroup = (
-      <Card.Group.Stackable
-        fallback={fallback}
-        itemsPerRow={itemsPerRow}
-      >
+      <Card.Group.Stackable fallback={fallback} itemsPerRow={itemsPerRow}>
         {cards}
       </Card.Group.Stackable>
     );
@@ -461,11 +466,7 @@ export class Cohorts extends React.Component {
             <Grid>
               <Grid.Row>
                 <Grid.Column stretched>
-                  {!isReady ? (
-                    <Loading {...loadingProps} />
-                  ) : (
-                    cardGroup
-                  )}
+                  {!isReady ? <Loading {...loadingProps} /> : cardGroup}
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row className="grid__bottom-row">

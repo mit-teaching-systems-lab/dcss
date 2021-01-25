@@ -2,21 +2,21 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Scenario from '@components/Scenario';
-import { Title } from '@components/UI';
 import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
 import { getUser } from '@actions/user';
 import { getResponse, setResponses } from '@actions/response';
 import { getRun, setRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
+import Scenario from '@components/Scenario';
+import { Title } from '@components/UI';
 import withRunEventCapturing, {
   PROMPT_RESPONSE_SUBMITTED,
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
+import withSocket from '@hoc/withSocket';
 import QueryString from '@utils/QueryString';
 import Storage from '@utils/Storage';
-
-import withSocket from '@hoc/withSocket';
+import Identity from '@utils/Identity';
 
 class Run extends Component {
   constructor(props) {
@@ -221,14 +221,16 @@ const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
   const { cohort, responses, run, user } = state;
 
+  const cohortId = Identity.fromHashOrId(ownProps.cohortId || params.cohortId);
+  // TODO: convert to hash?
   const scenarioId = Number(ownProps.scenarioId || params.scenarioId);
   const scenario = state.scenariosById[scenarioId];
   return {
     activeRunSlideIndex: Number(
       ownProps.activeRunSlideIndex || params.activeRunSlideIndex
     ),
-    cohortId: Number(ownProps.cohortId || params.cohortId),
-    scenarioId: Number(ownProps.scenarioId || params.scenarioId),
+    cohortId,
+    scenarioId,
     scenario,
     cohort,
     responses,
