@@ -1,14 +1,10 @@
-const Sendgrid = require('@sendgrid/mail');
-const Nodemailer = require('nodemailer');
 const Crypto = require('crypto-js');
 const passwordGenerator = require('password-generator');
 const { asyncMiddleware } = require('../../util/api');
 const { validateHashPassword } = require('../../util/pwHash');
+const { sendMailMessage } = require('../mail/endpoints');
 const db = require('./db');
 
-if (process.env.SENDGRID_API_KEY) {
-  Sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
-}
 
 function decrypt(encryptedString) {
   return Crypto.AES.decrypt(
@@ -286,32 +282,10 @@ Cambridge, MA 02139
       html
     };
 
-    if (process.env.SENDGRID_API_KEY) {
-      try {
-        // console.log(message);
-        await Sendgrid.send(message);
-      } catch (error) {
-        error.status = 401;
-        throw error;
-      }
-    } else {
-      const transport = Nodemailer.createTransport({
-        host: 'smtp.mailtrap.io',
-        port: 2525,
-        auth: {
-          user: process.env.MAILTRAP_USER,
-          pass: process.env.MAILTRAP_PASS
-        }
-      });
+    const result = await sendMailMessage(message);
+    reset = result.sent;
+    reason = result.reason;
 
-      try {
-        // console.log(message);
-        await transport.sendMail(message);
-      } catch (error) {
-        reset = false;
-        reason = error.message;
-      }
-    }
   } else {
     reset = false;
     reason = 'The email provided does not match any existing account.';
