@@ -126,6 +126,10 @@ class Chat extends Component {
         hasNewMessages: true,
         messages
       });
+
+      if (this.props.onMessageReceive) {
+        this.props.onMessageReceive(data);
+      }
     }
   }
 
@@ -301,7 +305,7 @@ class Chat extends Component {
           </Ref>
         </div>
         {!this.state.isViewingNewest && hasNewMessages ? (
-          <div className="cm__centered">
+          <div className="cm__new-message">
             <Button
               aria-label="See new message"
               onClick={() => {
@@ -326,6 +330,7 @@ Chat.propTypes = {
   getChatUsersByChatId: PropTypes.func,
   getUser: PropTypes.func,
   messages: PropTypes.array,
+  onMessageReceive: PropTypes.func,
   onQuote: PropTypes.func,
   setMessageById: PropTypes.func,
   slice: PropTypes.number,

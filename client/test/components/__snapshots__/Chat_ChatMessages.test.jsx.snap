@@ -5494,7 +5494,7 @@ exports[`Receives new message after scrolling 5`] = `
     </div>
   </div>
   <div
-    class="cm__centered"
+    class="cm__new-message"
   >
     <button
       aria-label="See new message"
@@ -6509,7 +6509,7 @@ exports[`Receives new message after scrolling without existing messages 5`] = `
     </div>
   </div>
   <div
-    class="cm__centered"
+    class="cm__new-message"
   >
     <button
       aria-label="See new message"

@@ -1356,7 +1356,7 @@ exports[`Click to Minimize and Maximize 2`] = `
   />
   <div>
     <div
-      class=\\"ui modal transition visible active c__container-modal\\"
+      class=\\"ui modal transition visible active c__container-modal c__minimized\\"
       data-testid=\\"chat-draggable\\"
       role=\\"dialog\\"
     >

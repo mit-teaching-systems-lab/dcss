@@ -32,8 +32,12 @@ import './Chat.css';
 
 const TEMPORARY_CHAT_ID = 1;
 const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
-const minClassName = 'content hidden';
-const maxClassName = 'content visible';
+
+const innerMinClassName = 'content hidden';
+const innerMaxClassName = 'content visible';
+
+const outerMinClassName = 'ui modal transition visible active c__container-modal c__minimized';
+const outerMaxClassName = 'ui modal transition visible active c__container-modal';
 
 function isValidMessage(message) {
   if (!message) {
@@ -118,6 +122,7 @@ class Chat extends Component {
     this.state = {
       id: Identity.id(),
       isMinimized: false,
+      isPulsing: false,
       isReady: false
     };
 
@@ -133,6 +138,7 @@ class Chat extends Component {
     this.onInput = this.onInput.bind(this);
     this.onJoinOrPart = this.onJoinOrPart.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onMessageReceive = this.onMessageReceive.bind(this);
     this.onMinMaxClick = this.onMinMaxClick.bind(this);
     this.onMount = this.onMount.bind(this);
     this.onQuote = this.onQuote.bind(this);
@@ -267,9 +273,22 @@ class Chat extends Component {
     // TODO: possibly send "typing" message?
   }
 
+  onMessageReceive() {
+    if (this.state.isMinimized) {
+      this.setState({
+        isPulsing: true
+      });
+
+      if (Layout.isForMobile()) {
+        document.body.scrollIntoView(true);
+      }
+    }
+  }
+
   onMinMaxClick() {
     this.setState({
-      isMinimized: !this.state.isMinimized
+      isMinimized: !this.state.isMinimized,
+      isPulsing: false
     });
   }
 
@@ -297,6 +316,7 @@ class Chat extends Component {
       onChange,
       onInput,
       onKeyDown,
+      onMessageReceive,
       onMinMaxClick,
       onMount,
       onQuote,
@@ -350,29 +370,45 @@ class Chat extends Component {
       });
     };
 
-    const minMaxClassName = isMinimized ? minClassName : maxClassName;
+    const innerMinMaxClassName = isMinimized ? innerMinClassName : innerMaxClassName;
+    const outerMinMaxClassName = isMinimized ? outerMinClassName : outerMaxClassName;
+
+    const draggableProps = {
+      handle: '.handle',
+      position: null,
+      scale: 1,
+      onStop
+    };
+
+
+    if (!Layout.isForMobile()) {
+      draggableProps.defaultPosition = position;
+    }
 
     return (
-      <Draggable
-        handle=".handle"
-        defaultPosition={position}
-        position={null}
-        scale={1}
-        onStop={onStop}
-      >
+      <Draggable {...draggableProps}>
         <div
           role="dialog"
-          className="ui modal transition visible active c__container-modal"
           data-testid="chat-draggable"
+          className={outerMinMaxClassName}
         >
           <ChatMinMax onChange={onMinMaxClick} />
           <div tabIndex="0" className="ui header handle">
-            <i aria-hidden="true" className="comments outline icon"></i>
+            {this.state.isPulsing ? (
+              <i aria-hidden="true" className="icon c__pulse"></i>
+            ) : (
+              <i aria-hidden="true" className="comments outline icon"></i>
+            )}
             <div className="content">scenario.title, slide.title</div>
           </div>
-          <div tabIndex="0" className={minMaxClassName}>
+          <div tabIndex="0" className={innerMinMaxClassName}>
             <div className="cm__container-outer">
-              <ChatMessages chat={chat} onQuote={onQuote} slice={slice} />
+              <ChatMessages
+                chat={chat}
+                onQuote={onQuote}
+                onMessageReceive={onMessageReceive}
+                slice={slice}
+              />
             </div>
             <div className="cc__container-outer">
               <RichTextEditor
