@@ -36,4 +36,5 @@ Text.Truncate = Truncate;
  * Custom Elements
  */
 export * from './ColorPickerAccessible';
+export * from './ResizeDetector';
 export * from './Title';
