@@ -287,4 +287,13 @@ RichTextEditor.propTypes = {
   value: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
+
+export function RichTextRenderer(props) {
+  const modeProps = {
+    ...props,
+    mode: 'display'
+  };
+  return <RichTextEditor {...modeProps} />;
+}
+
 export default RichTextEditor;
