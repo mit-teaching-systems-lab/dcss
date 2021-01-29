@@ -8,8 +8,9 @@
 
 /* cc = chat composer */
 .cc__container-outer {
-  /*position: absolute;*/
-  max-height: calc(100vh / 2) !important;
+  grid-area: chat-composer;
+  display: flex;
+  position: relative;
   /*bottom: 0;*/
 }
 
@@ -24,14 +25,14 @@
 
 /* cm = chat messages */
 .cm__container-outer {
-  height: 200px;
-  height: auto;
-  margin-bottom: 1rem;
+  grid-area: chat-messages;
+  position: relative;
   padding-top: 0 !important;
 }
 
 .cm__container-inner {
-  height: 200px;
+  height: 100% !important;
+  height: inherit;
   overflow-y: scroll;
   position: relative;
 }
@@ -40,12 +41,14 @@
   position: absolute;
   left: 50%;
   margin-left: -70px;
-  /*top: 80%;*/
-  /*margin-top: -50px;*/
   margin-top: -36px;
 }
 
 /* cmm = chat messages message */
+.cmm__content, .cmm__content * {
+  font-size: 1.14285714rem !important;
+}
+
 .cmm__content img {
   width: 100% !important;
 }
@@ -55,7 +58,6 @@
   position: relative;
   visibility: hidden;
 }
-
 
 .cmm__content:hover .actions {
   visibility: visible;
@@ -86,10 +88,56 @@
   position: unset !important;
 }
 
-.c__container-modal > div.ui.header.handle > i.icon {
+.c__size-handle div:hover:nth-child(-n+4) {
+  background: rgba(133, 61, 97, 0.4);
+  box-shadow: 1px 0px 5px 5px rgba(133, 61, 97, 0.4);
+}
+
+.c__size-handle div:hover:nth-child(n+5) {
+  background: rgba(133, 61, 97, 0.4);
+  box-shadow: -1px 1px 5px 5px rgb(133 61 97 / 40%);
+}
+
+.react-draggable-dragging .c__size-handle div:not(:nth-child(n+5)) {
+  background: rgba(133, 61, 97, 0.4);
+  box-shadow: 1px 0px 5px 5px rgba(133, 61, 97, 0.4);
+}
+
+.c__container-modal > div.ui.header.c__drag-handle {
+  cursor: move;
+}
+
+.c__container-modal > div.ui.header.c__drag-handle > i.icon {
   font-size: 1em !important;
 }
 
+/*.moving {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+*/
+
+.resizable {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.x_inner {
+  height: calc(100% - 44px) !important;
+}
+
+.inner {
+  height: calc(100% - 4.5em) !important;
+  display: grid !important;
+  grid-template-columns: 1fr;
+  grid-template-rows: 65.5% 32.5%;
+  grid-gap: 14px;
+  grid-template-areas:
+    "chat-messages"
+    "chat-composer";
+}
 
 /* Mobile */
 @media only screen and (max-width: 767.98px) {
@@ -124,7 +172,7 @@
   .c__container-modal {
     /* minimum width before the toolbar wraps */
     min-width: 410px !important;
-    width: calc(100vw / 2.99) !important;
+    /*width: calc(100vw / 2.99) !important;*/
   }
 
   .c__container-modal.ui.modal>.close {
@@ -174,3 +222,16 @@
     box-shadow: 0 0 0 0 rgba(133, 61, 97, 0);
   }
 }
+
+/* Send button */
+.c__container-modal .cc__container-outer .se-btn-tray ul > li:last-child {
+  position: absolute;
+  right: 0px;
+}
+
+.c__container-modal .cm__container-outer .ui.large.comments {
+  max-width: unset !important;
+}
+
+
+

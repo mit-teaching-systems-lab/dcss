@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Draggable from 'react-draggable';
+import { paramCase } from 'change-case';
 import withSocket, {
   JOIN_OR_PART,
   NEW_MESSAGE,
@@ -23,9 +23,11 @@ import {
 } from '@actions/chat';
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
+import ChatComposer from '@components/Chat/ChatComposer';
+import ChatDraggableResizableDialog from '@components/Chat/ChatDraggableResizableDialog';
 import ChatMessages from '@components/Chat/ChatMessages';
 import ChatMinMax from '@components/Chat/ChatMinMax';
-import RichTextEditor from '@components/RichTextEditor';
+import { Ref } from '@components/UI';
 import Layout from '@utils/Layout';
 
 import './Chat.css';
@@ -34,10 +36,11 @@ const TEMPORARY_CHAT_ID = 1;
 const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
 
 const innerMinClassName = 'content hidden';
-const innerMaxClassName = 'content visible';
+const innerMaxClassName = 'content inner visible';
 
-const outerMinClassName = 'ui modal transition visible active c__container-modal c__minimized';
-const outerMaxClassName = 'ui modal transition visible active c__container-modal';
+// const outerBaseClassNames = 'ui modal transition visible active c__container-modal';
+// const outerMinClassName = `${outerBaseClassNames} c__minimized`;
+// const outerMaxClassName = outerBaseClassNames;
 
 function isValidMessage(message) {
   if (!message) {
@@ -70,40 +73,22 @@ function makeSocketPayload(props, data = {}) {
   };
 }
 
-function makeSendButtonPlugin(onSendNewMessage) {
+function getAvailableHeightForComposer(totalHeight) {
+  // top + gap + button tray + bottom
+  const totalPaddingSpace = 82 + 14 + 47 + 26;
+  const displayableHeight = totalHeight - totalPaddingSpace;
+  const availableHeight = displayableHeight * 0.325 - 27;
+  return availableHeight;
+}
+
+function makeDimensionsForComposer({ width: w, height: h } = {}) {
+  const width = parseInt(w, 10);
+  const height = getAvailableHeightForComposer(parseInt(h, 10));
   return {
-    name: 'sendButtonPlugin',
-    display: 'command',
-    title: 'Send',
-    buttonClass: '',
-    innerHTML: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 20 500 500"><g><path id="c__send-icon" d="M476 3.2L12.5 270.6c-18.1 10.4-15.8 35.6 2.2 43.2L121 358.4l287.3-253.2c5.5-4.9 13.3 2.6 8.6 8.3L176 407v80.5c0 23.6 28.5 32.9 42.5 15.8L282 426l124.6 52.2c14.2 6 30.4-2.9 33-18.2l72-432C515 7.8 493.3-6.8 476 3.2z"></path></g></svg>`,
-    add(core, targetElement) {
-      const context = core.context;
-      context.sendButtonPlugin = {
-        targetButton: targetElement
-      };
-    },
-    active(element) {
-      if (!element) {
-        this.util.removeClass(
-          this.context.sendButtonPlugin.targetButton,
-          'active'
-        );
-      } else if (
-        /^mark$/i.test(element.nodeName) &&
-        element.style.backgroundColor.length > 0
-      ) {
-        this.util.addClass(
-          this.context.sendButtonPlugin.targetButton,
-          'active'
-        );
-        return true;
-      }
-      return false;
-    },
-    action() {
-      onSendNewMessage();
-    }
+    width: `${width}px`,
+    height: `${height}px`,
+    minHeight: `${height}px`,
+    maxHeight: `${height}px`
   };
 }
 
@@ -123,7 +108,8 @@ class Chat extends Component {
       id: Identity.id(),
       isMinimized: false,
       isPulsing: false,
-      isReady: false
+      isReady: false,
+      tick: false
     };
 
     this.hasUnmounted = false;
@@ -132,6 +118,7 @@ class Chat extends Component {
     this.content = content;
     this.buffer = '';
     this.rte = null;
+    this.cRef = null;
 
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -142,7 +129,10 @@ class Chat extends Component {
     this.onMinMaxClick = this.onMinMaxClick.bind(this);
     this.onMount = this.onMount.bind(this);
     this.onQuote = this.onQuote.bind(this);
-    this.onSendNewMessage = this.onSendNewMessage.bind(this);
+    this.sendNewMessage = this.sendNewMessage.bind(this);
+    this.forceComposerHeightWithoutRerender = this.forceComposerHeightWithoutRerender.bind(
+      this
+    );
   }
 
   async componentDidMount() {
@@ -237,7 +227,7 @@ class Chat extends Component {
     //
     /* istanbul ignore if */
     if (this.hasPendingSend) {
-      this.onSendNewMessage();
+      this.sendNewMessage();
     }
   }
 
@@ -266,7 +256,7 @@ class Chat extends Component {
       event.preventDefault();
       if (isValidMessage(content)) {
         this.hasPendingSend = true;
-        this.onSendNewMessage();
+        this.sendNewMessage();
       }
       return false;
     }
@@ -296,7 +286,7 @@ class Chat extends Component {
     this.rte = rte;
   }
 
-  onSendNewMessage() {
+  sendNewMessage() {
     const { content } = this;
 
     if (isValidMessage(content)) {
@@ -310,6 +300,26 @@ class Chat extends Component {
     }
   }
 
+  forceComposerHeightWithoutRerender(props) {
+    /* istanbul ignore else */
+    if (this.cRef) {
+      // This ridiculous hack allows us to resize the composer box without fully
+      // rerendering it via React. If there is a page reload, the box will be
+      // rendered from either persisted dimensions, or with the defaults. The
+      // persisted dimensions will match whatever the last dimensions this
+      // function assigned.
+      const sewrapper = this.cRef.querySelector('.se-wrapper');
+      const dimensions = Object.entries(makeDimensionsForComposer(props));
+      Array.from(sewrapper.children).forEach(child => {
+        for (let [key, value] of dimensions) {
+          if (key.toLowerCase().includes('height')) {
+            child.style.setProperty(paramCase(key), value);
+          }
+        }
+      });
+    }
+  }
+
   render() {
     const {
       content,
@@ -320,7 +330,7 @@ class Chat extends Component {
       onMinMaxClick,
       onMount,
       onQuote,
-      onSendNewMessage
+      sendNewMessage
     } = this;
     const { chat } = this.props;
     const { id, isMinimized, isReady } = this.state;
@@ -330,103 +340,109 @@ class Chat extends Component {
       return null;
     }
 
-    const customPlugins = [makeSendButtonPlugin(onSendNewMessage)];
-
-    // Options properties
-    const autoFocus = true;
-    const buttons = Layout.isForMobile() ? 'chat-mobile' : 'chat-desktop';
-    const defaultStyle =
-      'font-family:Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:1em;line-height:1em;';
-    const height = 'auto';
-    const maxHeight = Layout.isForMobile() ? '150px' : '250px';
-    const minHeight = '50px';
-    const resizingBar = false;
-    const slice = Layout.isForMobile() ? -10 : -20;
-    const showPathLabel = false;
-
-    const options = {
-      autoFocus,
-      buttons,
-      // This is used to match suneditor to the site's fonts
-      defaultStyle,
-      height,
-      minHeight,
-      maxHeight,
-      resizingBar,
-      showPathLabel
-    };
-
     // Layout.isForMobile()?
-    const { position } = Storage.get(this.storageKey, {
+    const { dimensions, position } = Storage.get(this.storageKey, {
+      dimensions: {
+        width: 430,
+        height: 410
+      },
       position: {
         x: 0,
         y: 100
       }
     });
 
-    const onStop = (event, { x, y }) => {
+    const onDragResizeStop = ({ width, height, x, y }) => {
+      if (!width || !height) {
+        return;
+      }
+
       Storage.merge(this.storageKey, {
+        dimensions: { width, height },
         position: { x, y }
       });
+
+      this.forceComposerHeightWithoutRerender({ width, height, x, y });
+
+      // scrollIntoView
     };
 
-    const innerMinMaxClassName = isMinimized ? innerMinClassName : innerMaxClassName;
-    const outerMinMaxClassName = isMinimized ? outerMinClassName : outerMaxClassName;
-
-    const draggableProps = {
-      handle: '.handle',
-      position: null,
-      scale: 1,
-      onStop
+    const onDragResize = ({ width, height, x, y }) => {
+      // This is used only to adjust the composer height during a resize.
+      // The changes will be persisted in onDragResizeStop
+      if (!width || !height) {
+        return;
+      }
+      this.forceComposerHeightWithoutRerender({ width, height, x, y });
     };
 
+    const innerMinMaxClassName = isMinimized
+      ? innerMinClassName
+      : innerMaxClassName;
+    const disableDragging = isMinimized;
+    const draggableResizableProps = {
+      isMinimized,
+      dimensions,
+      disableDragging,
+      onDragResize,
+      onDragResizeStop,
+      position
+    };
 
-    if (!Layout.isForMobile()) {
-      draggableProps.defaultPosition = position;
-    }
+    // ChatMessage props
+    const slice = Layout.isForMobile() ? -10 : -20;
+    const cmProps = {
+      chat,
+      onQuote,
+      onMessageReceive,
+      slice
+    };
+
+    const options = {
+      ...makeDimensionsForComposer(dimensions)
+    };
+
+    // ChatComposer props
+    const name = 'content';
+    const ccProps = {
+      name,
+      id,
+      defaultValue,
+      onChange,
+      onInput,
+      onKeyDown,
+      onMount,
+      options,
+      sendNewMessage
+    };
+
+    const style = {
+      width: 'calc(${dimensions.width}px)'
+    };
 
     return (
-      <Draggable {...draggableProps}>
-        <div
-          role="dialog"
-          data-testid="chat-draggable"
-          className={outerMinMaxClassName}
-        >
-          <ChatMinMax onChange={onMinMaxClick} />
-          <div tabIndex="0" className="ui header handle">
-            {this.state.isPulsing ? (
-              <i aria-hidden="true" className="icon c__pulse"></i>
-            ) : (
-              <i aria-hidden="true" className="comments outline icon"></i>
-            )}
-            <div className="content">scenario.title, slide.title</div>
-          </div>
-          <div tabIndex="0" className={innerMinMaxClassName}>
-            <div className="cm__container-outer">
-              <ChatMessages
-                chat={chat}
-                onQuote={onQuote}
-                onMessageReceive={onMessageReceive}
-                slice={slice}
-              />
-            </div>
-            <div className="cc__container-outer">
-              <RichTextEditor
-                name="content"
-                id={id}
-                customPlugins={customPlugins}
-                defaultValue={defaultValue}
-                onChange={onChange}
-                onInput={onInput}
-                onKeyDown={onKeyDown}
-                onMount={onMount}
-                options={options}
-              />
-            </div>
-          </div>
-          <div data-testid="chat-main" />
+      <ChatDraggableResizableDialog {...draggableResizableProps}>
+        <ChatMinMax onChange={onMinMaxClick} />
+        <div tabIndex="0" className="ui header c__drag-handle">
+          {this.state.isPulsing ? (
+            <i aria-hidden="true" className="icon c__pulse"></i>
+          ) : (
+            <i aria-hidden="true" className="comments outline icon"></i>
+          )}
+          <div className="content">scenario.title, slide.title</div>
         </div>
-      </Draggable>
+        <Ref innerRef={node => (this.cRef = node)}>
+          <div tabIndex="0" className={innerMinMaxClassName}>
+            <div className="cm__container-outer" style={style}>
+              <ChatMessages {...cmProps} />
+            </div>
+            <div className="cc__container-outer" style={style}>
+              <ChatComposer {...ccProps} />
+            </div>
+          </div>
+        </Ref>
+        <div data-testid="chat-main" />
+      </ChatDraggableResizableDialog>
     );
   }
 }

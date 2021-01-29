@@ -107,6 +107,8 @@
     "react-hot-loader": "^4.12.11",
     "react-player": "^2.5.0",
     "react-redux": "^7.1.1",
+    "react-resize-aware": "^3.1.0",
+    "react-rnd": "^10.2.4",
     "react-router-dom": "^5.0.1",
     "react-semantic-toasts": "^0.6.5",
     "react-semantic-ui-range": "^0.7.0",

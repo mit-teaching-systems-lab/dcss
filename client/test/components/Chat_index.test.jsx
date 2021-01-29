@@ -68,7 +68,7 @@ globalThis.rte = {
 };
 
 jest.mock('@components/RichTextEditor', () => {
-  return function(props) {
+  function RichTextEditor(props) {
     const mode = props.mode || 'editor';
     const __html = props.defaultValue;
     const className = props.className;
@@ -179,11 +179,30 @@ jest.mock('@components/RichTextEditor', () => {
           >
             THIS BUTTON IS PROVIDED BY THE MOCK
           </button>
+          <div className="se-wrapper">
+            <div>a</div>
+            <div>b</div>
+            <div>c</div>
+          </div>
         </div>
       );
     } else {
       return <div className={className} dangerouslySetInnerHTML={{ __html }} />;
     }
+  }
+
+  function RichTextRenderer(props) {
+    const modeProps = {
+      ...props,
+      mode: 'display'
+    };
+    return <RichTextEditor {...modeProps} />;
+  }
+
+  return {
+    __esModule: true,
+    default: RichTextEditor,
+    RichTextRenderer
   };
 });
 
@@ -195,13 +214,19 @@ jest.mock('@utils/Layout', () => {
   };
 });
 
-globalThis.onStop = null;
-jest.mock('react-draggable', () => {
-  return function(props) {
-    const { children, onStop } = props;
+globalThis.rndProps = {};
+jest.mock('react-rnd', () => {
+  function Rnd(props) {
+    globalThis.rndProps = {
+      ...props
+    };
 
-    globalThis.onStop = onStop;
-    return children;
+    return <div>{props.children}</div>;
+  }
+
+  return {
+    __esModule: true,
+    Rnd
   };
 });
 
@@ -266,6 +291,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  globalThis.rndProps = null;
 
   jest.spyOn(window, 'addEventListener');
   jest.spyOn(window, 'removeEventListener');
@@ -1487,7 +1514,7 @@ test('onQuote', async done => {
   done();
 });
 
-test('Draggable: onStop', async done => {
+test('Rnd: onDragStop/onResizeStop', async done => {
   const Component = Chat;
 
   Storage.merge = jest.fn();
@@ -1512,7 +1539,250 @@ test('Draggable: onStop', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  globalThis.onStop({}, { x: 10, y: 10 });
+  expect(globalThis.rndProps).toMatchInlineSnapshot(`
+    Object {
+      "children": <Ref
+        innerRef={[Function]}
+      >
+        <div
+          className="ui modal transition visible active c__container-modal resizable"
+          role="dialog"
+        >
+          <ChatMinMax
+            onChange={[Function]}
+          />
+          <div
+            className="ui header c__drag-handle"
+            tabIndex="0"
+          >
+            <i
+              aria-hidden="true"
+              className="comments outline icon"
+            />
+            <div
+              className="content"
+            >
+              scenario.title, slide.title
+            </div>
+          </div>
+          <Ref
+            innerRef={[Function]}
+          >
+            <div
+              className="content inner visible"
+              tabIndex="0"
+            >
+              <div
+                className="cm__container-outer"
+                style={
+                  Object {
+                    "width": "calc(\${dimensions.width}px)",
+                  }
+                }
+              >
+                <Memo(Connect(ChatMessages))
+                  chat={
+                    Object {
+                      "created_at": "2020-12-08T21:51:33.659Z",
+                      "deleted_at": null,
+                      "ended_at": null,
+                      "host_id": 2,
+                      "id": 1,
+                      "lobby_id": 1,
+                      "updated_at": null,
+                      "users": Array [
+                        Object {
+                          "email": "super@email.com",
+                          "id": 999,
+                          "is_anonymous": false,
+                          "is_super": true,
+                          "personalname": "Super User",
+                          "roles": Array [
+                            "participant",
+                            "super_admin",
+                          ],
+                          "username": "super",
+                        },
+                        Object {
+                          "email": null,
+                          "id": 4,
+                          "is_anonymous": true,
+                          "is_muted": false,
+                          "is_present": true,
+                          "is_super": false,
+                          "personalname": null,
+                          "roles": Array [
+                            "participant",
+                            "facilitator",
+                          ],
+                          "single_use_password": false,
+                          "updated_at": "2020-12-10T17:50:19.074Z",
+                          "username": "credible-lyrebird",
+                        },
+                      ],
+                      "usersById": Object {
+                        "4": Object {
+                          "email": null,
+                          "id": 4,
+                          "is_anonymous": true,
+                          "is_muted": false,
+                          "is_present": true,
+                          "is_super": false,
+                          "personalname": null,
+                          "roles": Array [
+                            "participant",
+                            "facilitator",
+                          ],
+                          "single_use_password": false,
+                          "updated_at": "2020-12-10T17:50:19.074Z",
+                          "username": "credible-lyrebird",
+                        },
+                        "999": Object {
+                          "email": "super@email.com",
+                          "id": 999,
+                          "is_anonymous": false,
+                          "is_super": true,
+                          "personalname": "Super User",
+                          "roles": Array [
+                            "participant",
+                            "super_admin",
+                          ],
+                          "username": "super",
+                        },
+                      },
+                    }
+                  }
+                  onMessageReceive={[Function]}
+                  onQuote={[Function]}
+                  slice={-20}
+                  socket={
+                    Object {
+                      "_events": Object {
+                        "join-or-part": [Function],
+                        "new-message": [Function],
+                      },
+                      "_eventsCount": 2,
+                      "disconnect": [MockFunction],
+                      "emit": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "user-join",
+                            Object {
+                              "chat": Object {
+                                "id": 1,
+                              },
+                              "user": Object {
+                                "id": null,
+                              },
+                            },
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "off": [MockFunction],
+                      "on": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "join-or-part",
+                            [Function],
+                          ],
+                          Array [
+                            "new-message",
+                            [Function],
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="cc__container-outer"
+                style={
+                  Object {
+                    "width": "calc(\${dimensions.width}px)",
+                  }
+                }
+              >
+                <ChatComposer
+                  defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
+                  id="x22"
+                  name="content"
+                  onChange={[Function]}
+                  onInput={[Function]}
+                  onKeyDown={[Function]}
+                  onMount={[Function]}
+                  options={
+                    Object {
+                      "height": "NaNpx",
+                      "maxHeight": "NaNpx",
+                      "minHeight": "NaNpx",
+                      "width": "NaNpx",
+                    }
+                  }
+                  sendNewMessage={[Function]}
+                />
+              </div>
+            </div>
+          </Ref>
+          <div
+            data-testid="chat-main"
+          />
+        </div>
+      </Ref>,
+      "dragHandleClassName": "c__drag-handle",
+      "minHeight": 590,
+      "minWidth": 430,
+      "onDrag": [Function],
+      "onDragStart": [Function],
+      "onDragStop": [Function],
+      "onResize": [Function],
+      "onResizeStart": [Function],
+      "onResizeStop": [Function],
+      "position": Object {
+        "x": 0,
+        "y": 100,
+      },
+      "resizeHandleWrapperClass": "c__size-handle",
+      "size": Object {
+        "height": 590,
+        "width": 430,
+      },
+      "style": Object {
+        "alignItems": "center",
+        "background": "#f0f0f0",
+        "border": "solid 1px #ddd",
+        "display": "flex",
+        "justifyContent": "center",
+      },
+    }
+  `);
+
+  const event = {};
+  const direction = 'top';
+  const resizer = document.createElement('div');
+  const delta = { width: 400, height: 400 };
+  const position = { x: 393, y: 174 };
+  // e, { x, y }
+  globalThis.rndProps.onDragStop(event, { ...delta, ...position });
+
+  // e, direction, resizer, delta, position
+  globalThis.rndProps.onResizeStop(event, direction, resizer, delta, position);
 
   await waitFor(() => expect(Storage.merge).toHaveBeenCalledTimes(1));
 
@@ -1520,13 +1790,294 @@ test('Draggable: onStop', async done => {
     Array [
       "chat/1",
       Object {
+        "dimensions": Object {
+          "height": 590,
+          "width": 430,
+        },
         "position": Object {
-          "x": 10,
-          "y": 10,
+          "x": 393,
+          "y": 174,
         },
       },
     ]
   `);
+
+  done();
+});
+
+test('Rnd: onDrag/onResize', async done => {
+  const Component = Chat;
+
+  Storage.merge = jest.fn();
+  Storage.merge.mockImplementation(() => {});
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  expect(globalThis.rndProps).toMatchInlineSnapshot(`
+    Object {
+      "children": <Ref
+        innerRef={[Function]}
+      >
+        <div
+          className="ui modal transition visible active c__container-modal resizable"
+          role="dialog"
+        >
+          <ChatMinMax
+            onChange={[Function]}
+          />
+          <div
+            className="ui header c__drag-handle"
+            tabIndex="0"
+          >
+            <i
+              aria-hidden="true"
+              className="comments outline icon"
+            />
+            <div
+              className="content"
+            >
+              scenario.title, slide.title
+            </div>
+          </div>
+          <Ref
+            innerRef={[Function]}
+          >
+            <div
+              className="content inner visible"
+              tabIndex="0"
+            >
+              <div
+                className="cm__container-outer"
+                style={
+                  Object {
+                    "width": "calc(\${dimensions.width}px)",
+                  }
+                }
+              >
+                <Memo(Connect(ChatMessages))
+                  chat={
+                    Object {
+                      "created_at": "2020-12-08T21:51:33.659Z",
+                      "deleted_at": null,
+                      "ended_at": null,
+                      "host_id": 2,
+                      "id": 1,
+                      "lobby_id": 1,
+                      "updated_at": null,
+                      "users": Array [
+                        Object {
+                          "email": "super@email.com",
+                          "id": 999,
+                          "is_anonymous": false,
+                          "is_super": true,
+                          "personalname": "Super User",
+                          "roles": Array [
+                            "participant",
+                            "super_admin",
+                          ],
+                          "username": "super",
+                        },
+                        Object {
+                          "email": null,
+                          "id": 4,
+                          "is_anonymous": true,
+                          "is_muted": false,
+                          "is_present": true,
+                          "is_super": false,
+                          "personalname": null,
+                          "roles": Array [
+                            "participant",
+                            "facilitator",
+                          ],
+                          "single_use_password": false,
+                          "updated_at": "2020-12-10T17:50:19.074Z",
+                          "username": "credible-lyrebird",
+                        },
+                      ],
+                      "usersById": Object {
+                        "4": Object {
+                          "email": null,
+                          "id": 4,
+                          "is_anonymous": true,
+                          "is_muted": false,
+                          "is_present": true,
+                          "is_super": false,
+                          "personalname": null,
+                          "roles": Array [
+                            "participant",
+                            "facilitator",
+                          ],
+                          "single_use_password": false,
+                          "updated_at": "2020-12-10T17:50:19.074Z",
+                          "username": "credible-lyrebird",
+                        },
+                        "999": Object {
+                          "email": "super@email.com",
+                          "id": 999,
+                          "is_anonymous": false,
+                          "is_super": true,
+                          "personalname": "Super User",
+                          "roles": Array [
+                            "participant",
+                            "super_admin",
+                          ],
+                          "username": "super",
+                        },
+                      },
+                    }
+                  }
+                  onMessageReceive={[Function]}
+                  onQuote={[Function]}
+                  slice={-20}
+                  socket={
+                    Object {
+                      "_events": Object {
+                        "join-or-part": [Function],
+                        "new-message": [Function],
+                      },
+                      "_eventsCount": 2,
+                      "disconnect": [MockFunction],
+                      "emit": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "user-join",
+                            Object {
+                              "chat": Object {
+                                "id": 1,
+                              },
+                              "user": Object {
+                                "id": null,
+                              },
+                            },
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                      "off": [MockFunction],
+                      "on": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "join-or-part",
+                            [Function],
+                          ],
+                          Array [
+                            "new-message",
+                            [Function],
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
+                    }
+                  }
+                />
+              </div>
+              <div
+                className="cc__container-outer"
+                style={
+                  Object {
+                    "width": "calc(\${dimensions.width}px)",
+                  }
+                }
+              >
+                <ChatComposer
+                  defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
+                  id="x23"
+                  name="content"
+                  onChange={[Function]}
+                  onInput={[Function]}
+                  onKeyDown={[Function]}
+                  onMount={[Function]}
+                  options={
+                    Object {
+                      "height": "NaNpx",
+                      "maxHeight": "NaNpx",
+                      "minHeight": "NaNpx",
+                      "width": "NaNpx",
+                    }
+                  }
+                  sendNewMessage={[Function]}
+                />
+              </div>
+            </div>
+          </Ref>
+          <div
+            data-testid="chat-main"
+          />
+        </div>
+      </Ref>,
+      "dragHandleClassName": "c__drag-handle",
+      "minHeight": 590,
+      "minWidth": 430,
+      "onDrag": [Function],
+      "onDragStart": [Function],
+      "onDragStop": [Function],
+      "onResize": [Function],
+      "onResizeStart": [Function],
+      "onResizeStop": [Function],
+      "position": Object {
+        "x": 0,
+        "y": 100,
+      },
+      "resizeHandleWrapperClass": "c__size-handle",
+      "size": Object {
+        "height": 590,
+        "width": 430,
+      },
+      "style": Object {
+        "alignItems": "center",
+        "background": "#f0f0f0",
+        "border": "solid 1px #ddd",
+        "display": "flex",
+        "justifyContent": "center",
+      },
+    }
+  `);
+
+  const event = {};
+  const direction = 'top';
+  const resizer = document.createElement('div');
+  const delta = { width: 400, height: 400 };
+  const position = { x: 393, y: 174 };
+  // e, { x, y }
+  globalThis.rndProps.onDrag(event, { ...delta, ...position });
+
+  // e, direction, resizer, delta, position
+  globalThis.rndProps.onResize(event, direction, resizer, delta, position);
+
+  await waitFor(() => expect(Storage.merge).not.toHaveBeenCalled());
+
+  expect(Storage.merge.mock.calls[0]).toMatchInlineSnapshot(`undefined`);
 
   done();
 });
@@ -1555,6 +2106,297 @@ test('Click to Minimize and Maximize', async done => {
 
   userEvent.click(button);
   expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Receives new message, not minimized', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: `<p>Hello</p>`,
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(11)
+  );
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "join-or-part",
+        [Function],
+      ],
+      Array [
+        "new-message",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('new-message', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(12)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives new message, minimized, not mobile', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: `<p>Hello</p>`,
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(11)
+  );
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "join-or-part",
+        [Function],
+      ],
+      Array [
+        "new-message",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(
+    await screen.findByRole('button', {
+      name: /Click to minimize the chat window/i
+    })
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('new-message', {
+    chat_id: 1,
+    content: `<p>A new message</p>`,
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(12)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives new message, minimized, mobile', async done => {
+  const Component = Chat;
+
+  Layout.isForMobile.mockImplementation(() => {
+    return true;
+  });
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: `<p>Hello</p>`,
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(10)
+  );
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "join-or-part",
+        [Function],
+      ],
+      Array [
+        "new-message",
+        [Function],
+      ],
+    ]
+  `);
+  expect(serialize()).toMatchSnapshot();
+
+  userEvent.click(
+    await screen.findByRole('button', {
+      name: /Click to minimize the chat window/i
+    })
+  );
+  expect(serialize()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('new-message', {
+    chat_id: 1,
+    content: `<p>A new message</p>`,
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 4
+  });
+
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(serialize()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
 
   done();
 });

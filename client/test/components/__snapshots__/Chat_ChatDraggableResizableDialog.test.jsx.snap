@@ -1,0 +1,247 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Default height and width when 0 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal resizable\\"
+      role=\\"dialog\\"
+    >
+      <div>
+        a
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Default height and width when undefined 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal resizable\\"
+      role=\\"dialog\\"
+    >
+      <div>
+        a
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`No Rnd on mobile 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal resizable\\"
+      role=\\"dialog\\"
+    >
+      <div>
+        a
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui modal transition visible active c__container-modal resizable\\"
+      role=\\"dialog\\"
+    />
+  </div>
+</body>"
+`;
+
+exports[`Rnd 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDrag/onResize 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDrag/onResize without props.onDragResize 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDrag/onResize without props.onDragResize 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Rnd: onDragStart/onResizeStart 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDragStart/onResizeStart without props.onDragResizeStart 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDragStart/onResizeStart without props.onDragResizeStart 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDragStop/onResizeStop 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDragStop/onResizeStop without props.onDragResizeStop 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <div>
+          a
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Rnd: onDragStop/onResizeStop without props.onDragResizeStop 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;

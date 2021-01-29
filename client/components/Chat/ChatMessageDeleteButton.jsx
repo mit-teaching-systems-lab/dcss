@@ -35,16 +35,14 @@ class ChatMessageDeleteButton extends Component {
   render() {
     const { onCancel, onClick, onConfirm } = this;
     const { open } = this.state;
-
     const ariaLabel = this.props['aria-label'].trim();
     const content = 'Are you sure you want to delete this message?';
-
     const confirmButton = <ConfirmButton content="Yes" onClick={onConfirm} />;
-
     const deleteButton = (
       <Button
         size="mini"
         icon="trash alternate outline"
+        className="icon-primary"
         aria-label={ariaLabel}
         onClick={onClick}
       />

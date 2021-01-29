@@ -9,7 +9,7 @@ exports[`Calls onQuote 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -62,7 +62,7 @@ exports[`Calls onQuote 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -205,7 +205,7 @@ exports[`Calls onQuote 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -302,6 +302,8 @@ exports[`Calls onQuote 3`] = `
 </DocumentFragment>
 `;
 
+exports[`Does a corrective scroll when view is resized 1`] = `<DocumentFragment />`;
+
 exports[`Message can be deleted 1`] = `<DocumentFragment />`;
 
 exports[`Message can be deleted 3`] = `
@@ -311,7 +313,7 @@ exports[`Message can be deleted 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -364,7 +366,7 @@ exports[`Message can be deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -373,7 +375,7 @@ exports[`Message can be deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -477,7 +479,7 @@ exports[`Message can be deleted 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -530,7 +532,7 @@ exports[`Message can be deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -539,7 +541,7 @@ exports[`Message can be deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -643,7 +645,7 @@ exports[`Message can be deleted 5`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -696,7 +698,7 @@ exports[`Message can be deleted 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -705,7 +707,7 @@ exports[`Message can be deleted 5`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -809,7 +811,7 @@ exports[`Message can be deleted 6`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -862,7 +864,7 @@ exports[`Message can be deleted 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -871,7 +873,7 @@ exports[`Message can be deleted 6`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -975,7 +977,7 @@ exports[`Message can be deleted 7`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -1028,7 +1030,7 @@ exports[`Message can be deleted 7`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1037,7 +1039,7 @@ exports[`Message can be deleted 7`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1145,7 +1147,7 @@ exports[`Receives message that was deleted 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -1198,7 +1200,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1207,7 +1209,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1280,7 +1282,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1289,7 +1291,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1362,7 +1364,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1371,7 +1373,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1444,7 +1446,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1453,7 +1455,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1526,7 +1528,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1535,7 +1537,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1608,7 +1610,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1617,7 +1619,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1690,7 +1692,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1699,7 +1701,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1772,7 +1774,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1781,7 +1783,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1854,7 +1856,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1863,7 +1865,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1936,7 +1938,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -1945,7 +1947,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2018,7 +2020,7 @@ exports[`Receives message that was deleted 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2027,7 +2029,7 @@ exports[`Receives message that was deleted 3`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2061,7 +2063,7 @@ exports[`Receives message that was deleted 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -2114,7 +2116,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2123,7 +2125,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2196,7 +2198,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2205,7 +2207,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2278,7 +2280,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2287,7 +2289,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2360,7 +2362,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2369,7 +2371,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2442,7 +2444,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2451,7 +2453,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2524,7 +2526,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2533,7 +2535,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2606,7 +2608,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2615,7 +2617,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2688,7 +2690,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2697,7 +2699,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2770,7 +2772,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2779,7 +2781,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2852,7 +2854,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2861,7 +2863,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2934,7 +2936,7 @@ exports[`Receives message that was deleted 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2943,7 +2945,7 @@ exports[`Receives message that was deleted 4`] = `
               </button>
               <button
                 aria-label="Delete this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -2979,7 +2981,7 @@ exports[`Receives new message after scrolling 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -3032,7 +3034,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3105,7 +3107,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3178,7 +3180,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3251,7 +3253,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3324,7 +3326,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3397,7 +3399,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3470,7 +3472,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3543,7 +3545,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3616,7 +3618,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3689,7 +3691,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3762,7 +3764,7 @@ exports[`Receives new message after scrolling 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3796,7 +3798,7 @@ exports[`Receives new message after scrolling 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -3849,7 +3851,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3922,7 +3924,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -3995,7 +3997,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4068,7 +4070,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4141,7 +4143,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4214,7 +4216,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4287,7 +4289,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4360,7 +4362,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4433,7 +4435,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4506,7 +4508,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4579,7 +4581,7 @@ exports[`Receives new message after scrolling 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4613,7 +4615,7 @@ exports[`Receives new message after scrolling 5`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -4666,7 +4668,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4739,7 +4741,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4812,7 +4814,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4885,7 +4887,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -4958,7 +4960,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5031,7 +5033,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5104,7 +5106,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5177,7 +5179,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5250,7 +5252,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5323,7 +5325,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5396,7 +5398,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5469,7 +5471,7 @@ exports[`Receives new message after scrolling 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5513,7 +5515,7 @@ exports[`Receives new message after scrolling 6`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -5566,7 +5568,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5639,7 +5641,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5712,7 +5714,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5785,7 +5787,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5858,7 +5860,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -5931,7 +5933,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6004,7 +6006,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6077,7 +6079,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6150,7 +6152,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6223,7 +6225,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6296,7 +6298,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6369,7 +6371,7 @@ exports[`Receives new message after scrolling 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6405,7 +6407,7 @@ exports[`Receives new message after scrolling without existing messages 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     />
   </div>
 </DocumentFragment>
@@ -6418,7 +6420,7 @@ exports[`Receives new message after scrolling without existing messages 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     />
   </div>
 </DocumentFragment>
@@ -6431,7 +6433,7 @@ exports[`Receives new message after scrolling without existing messages 5`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -6484,7 +6486,7 @@ exports[`Receives new message after scrolling without existing messages 5`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6528,7 +6530,7 @@ exports[`Receives new message after scrolling without existing messages 6`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -6581,7 +6583,7 @@ exports[`Receives new message after scrolling without existing messages 6`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6617,7 +6619,7 @@ exports[`Receives new message at end of messages 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -6670,7 +6672,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6743,7 +6745,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6816,7 +6818,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6889,7 +6891,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -6962,7 +6964,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7035,7 +7037,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7108,7 +7110,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7181,7 +7183,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7254,7 +7256,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7327,7 +7329,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7400,7 +7402,7 @@ exports[`Receives new message at end of messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7434,7 +7436,7 @@ exports[`Receives new message at end of messages 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -7487,7 +7489,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7560,7 +7562,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7633,7 +7635,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7706,7 +7708,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7779,7 +7781,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7852,7 +7854,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7925,7 +7927,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -7998,7 +8000,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8071,7 +8073,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8144,7 +8146,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8217,7 +8219,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8290,7 +8292,7 @@ exports[`Receives new message at end of messages 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8326,7 +8328,7 @@ exports[`Receives new message for different chat 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -8379,7 +8381,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8452,7 +8454,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8525,7 +8527,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8598,7 +8600,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8671,7 +8673,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8744,7 +8746,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8817,7 +8819,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8890,7 +8892,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -8963,7 +8965,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9036,7 +9038,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9109,7 +9111,7 @@ exports[`Receives new message for different chat 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9143,7 +9145,7 @@ exports[`Receives new message for different chat 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -9196,7 +9198,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9269,7 +9271,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9342,7 +9344,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9415,7 +9417,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9488,7 +9490,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9561,7 +9563,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9634,7 +9636,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9707,7 +9709,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9780,7 +9782,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9853,7 +9855,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9926,7 +9928,7 @@ exports[`Receives new message for different chat 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -9962,7 +9964,7 @@ exports[`Receives new message just before unmount 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -10015,7 +10017,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10088,7 +10090,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10161,7 +10163,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10234,7 +10236,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10307,7 +10309,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10380,7 +10382,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10453,7 +10455,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10526,7 +10528,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10599,7 +10601,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10672,7 +10674,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10745,7 +10747,7 @@ exports[`Receives new message just before unmount 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10783,7 +10785,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -10836,7 +10838,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10909,7 +10911,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -10982,7 +10984,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11055,7 +11057,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11128,7 +11130,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11201,7 +11203,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11274,7 +11276,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11347,7 +11349,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11420,7 +11422,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11493,7 +11495,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11566,7 +11568,7 @@ exports[`Receives new message, user does not exist yet. 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11600,7 +11602,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -11653,7 +11655,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11726,7 +11728,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11799,7 +11801,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11872,7 +11874,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -11945,7 +11947,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12018,7 +12020,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12091,7 +12093,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12164,7 +12166,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12237,7 +12239,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12310,7 +12312,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12383,7 +12385,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12456,7 +12458,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12504,7 +12506,7 @@ exports[`Show hidden messages 3`] = `
       </button>
     </div>
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -12557,7 +12559,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12630,7 +12632,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12703,7 +12705,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12776,7 +12778,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12849,7 +12851,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12922,7 +12924,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -12995,7 +12997,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13068,7 +13070,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13141,7 +13143,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13214,7 +13216,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13287,7 +13289,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13360,7 +13362,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13433,7 +13435,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13506,7 +13508,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13579,7 +13581,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13652,7 +13654,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13725,7 +13727,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13798,7 +13800,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13871,7 +13873,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13944,7 +13946,7 @@ exports[`Show hidden messages 3`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"
@@ -13978,7 +13980,7 @@ exports[`User is missing from chat.usersById 1`] = `
     data-testid="scrolling-container-outer"
   >
     <div
-      class="ui comments"
+      class="ui large comments"
     >
       <div
         class="comment"
@@ -14031,7 +14033,7 @@ exports[`User is missing from chat.usersById 1`] = `
             >
               <button
                 aria-label="Quote this message"
-                class="ui mini icon button"
+                class="ui mini icon button icon-primary"
               >
                 <i
                   aria-hidden="true"

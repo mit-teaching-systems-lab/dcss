@@ -8,7 +8,7 @@ exports[`Delete, No, then Yes 1`] = `
   <div>
     <button
       aria-label=\\"Delete this thing\\"
-      class=\\"ui mini icon button\\"
+      class=\\"ui mini icon button icon-primary\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -30,7 +30,7 @@ exports[`Delete, No, then Yes 2`] = `
   <div>
     <button
       aria-label=\\"Delete this thing\\"
-      class=\\"ui mini icon button\\"
+      class=\\"ui mini icon button icon-primary\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -99,7 +99,7 @@ exports[`Delete, No, then Yes 3`] = `
   <div>
     <button
       aria-label=\\"Delete this thing\\"
-      class=\\"ui mini icon button\\"
+      class=\\"ui mini icon button icon-primary\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -121,7 +121,7 @@ exports[`Delete, No, then Yes 4`] = `
   <div>
     <button
       aria-label=\\"Delete this thing\\"
-      class=\\"ui mini icon button\\"
+      class=\\"ui mini icon button icon-primary\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -190,7 +190,7 @@ exports[`Delete, No, then Yes 5`] = `
   <div>
     <button
       aria-label=\\"Delete this thing\\"
-      class=\\"ui mini icon button\\"
+      class=\\"ui mini icon button icon-primary\\"
     >
       <i
         aria-hidden=\\"true\\"
@@ -205,7 +205,7 @@ exports[`Render 1 1 1`] = `
 <DocumentFragment>
   <button
     aria-label="Delete this thing"
-    class="ui mini icon button"
+    class="ui mini icon button icon-primary"
   >
     <i
       aria-hidden="true"
