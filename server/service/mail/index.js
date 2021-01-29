@@ -3,12 +3,8 @@ const {
   // Use for restricting access to only authed users.
   requireUser
 } = require('../auth/middleware');
-const {
-  validateRequestBody
-} = require('../../util/requestValidation');
-const {
-  sendMailMessageAndRespond
-} = require('./endpoints');
+const { validateRequestBody } = require('../../util/requestValidation');
+const { sendMailMessageAndRespond } = require('./endpoints');
 
 const router = Router();
 

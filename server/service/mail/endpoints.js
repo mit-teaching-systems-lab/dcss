@@ -9,7 +9,7 @@ if (process.env.SENDGRID_API_KEY) {
 
 const brandTitle = process.env.DCSS_BRAND_NAME_TITLE || '';
 
-exports.sendMailMessage = async (message) => {
+exports.sendMailMessage = async message => {
   /*
     message
 
@@ -55,14 +55,11 @@ exports.sendMailMessage = async (message) => {
     sent,
     reason
   };
-}
+};
 
 async function sendMailMessageAndRespond(req, res) {
   const { message } = req.body;
-  const {
-    sent,
-    reason
-  } = await exports.sendMailMessage(message);
+  const { sent, reason } = await exports.sendMailMessage(message);
 
   return res.json({
     sent,

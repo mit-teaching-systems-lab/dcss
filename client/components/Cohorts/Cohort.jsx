@@ -464,8 +464,6 @@ Cohort.propTypes = {
   user: PropTypes.object
 };
 
-const isHash = id => /[a-f0-9]/.test(id);
-
 const mapStateToProps = (state, ownProps) => {
   const id = Identity.fromHashOrId(ownProps.match.params.id || ownProps.id);
   const { cohort, user } = state;

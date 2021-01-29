@@ -5,7 +5,6 @@ const { validateHashPassword } = require('../../util/pwHash');
 const { sendMailMessage } = require('../mail/endpoints');
 const db = require('./db');
 
-
 function decrypt(encryptedString) {
   return Crypto.AES.decrypt(
     encryptedString,
@@ -285,7 +284,6 @@ Cambridge, MA 02139
     const result = await sendMailMessage(message);
     reset = result.sent;
     reason = result.reason;
-
   } else {
     reset = false;
     reason = 'The email provided does not match any existing account.';
