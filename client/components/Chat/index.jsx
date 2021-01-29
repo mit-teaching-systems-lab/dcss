@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as HTMLParser from 'node-html-parser';
 import { connect } from 'react-redux';
 import { paramCase } from 'change-case';
 import withSocket, {
@@ -38,15 +39,11 @@ const NEW_MESSAGE_CONTENT_HTML = `<p><br></p>`;
 const innerMinClassName = 'content hidden';
 const innerMaxClassName = 'content inner visible';
 
-// const outerBaseClassNames = 'ui modal transition visible active c__container-modal';
-// const outerMinClassName = `${outerBaseClassNames} c__minimized`;
-// const outerMaxClassName = outerBaseClassNames;
-
 function isValidMessage(message) {
+
   if (!message) {
     return false;
   }
-
   const trimmed = message.trim();
 
   if (!trimmed) {
@@ -54,6 +51,13 @@ function isValidMessage(message) {
   }
 
   if (trimmed === NEW_MESSAGE_CONTENT_HTML) {
+    return false;
+  }
+
+  const parsed = HTMLParser.parse(message);
+  const hasValidNonTextContent = /img|math/.test(message);
+
+  if (!hasValidNonTextContent && !parsed.rawText) {
     return false;
   }
 
@@ -288,7 +292,6 @@ class Chat extends Component {
 
   sendNewMessage() {
     const { content } = this;
-
     if (isValidMessage(content)) {
       this.props.socket.emit(
         NEW_MESSAGE,

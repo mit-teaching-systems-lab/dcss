@@ -1210,7 +1210,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   done();
 });
 
-test('Types, followed by {shift}{enter}, does not submit', async done => {
+test('Empty, many {shift}{enter}, attempts to send, does not submit', async done => {
   const Component = Chat;
 
   const props = {
@@ -1240,7 +1240,51 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   const textbox = await screen.findByRole('textbox');
 
   userEvent.clear(textbox);
-  userEvent.type(textbox, 'typing shift+enter');
+  userEvent.type(
+    textbox,
+    '{shift}{enter}{shift}{enter}{shift}{enter}{shift}{enter}{shift}{enter}'
+  );
+  userEvent.click(await screen.findByLabelText('Send message'));
+
+  expect(globalThis.onChange).toHaveBeenCalled();
+  expect(globalThis.rte.setContents).toHaveBeenCalledTimes(0);
+  expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(0);
+  expect(serialize()).toMatchSnapshot();
+
+  done();
+});
+
+test('Types, followed by {shift}{enter}, attempts to send, does submit', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...commonProps,
+    id: 1
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() =>
+    expect(globalThis.mockSocket.on).toHaveBeenCalledWith(
+      'join-or-part',
+      expect.any(Function)
+    )
+  );
+
+  globalThis.mockSocket.emit(SOCKET_EVENT_TYPES.JOIN_OR_PART, { user });
+  globalThis.mockSocket.emit.mockReset();
+
+  const textbox = await screen.findByRole('textbox');
+
+  userEvent.clear(textbox);
+  userEvent.type(textbox, 'typing enter');
   userEvent.type(textbox, '{enter}');
   userEvent.click(await screen.findByLabelText('Send message'));
 
@@ -1254,7 +1298,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           "chat": Object {
             "id": 1,
           },
-          "content": "typing shift+enter",
+          "content": "typing enter",
           "user": Object {
             "id": null,
           },
@@ -1721,7 +1765,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x22"
+                  id="x23"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
@@ -2012,7 +2056,7 @@ test('Rnd: onDrag/onResize', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x23"
+                  id="x24"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}

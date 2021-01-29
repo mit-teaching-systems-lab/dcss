@@ -187,7 +187,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -258,7 +258,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -326,7 +326,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -397,7 +397,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -511,7 +511,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
           >
             <div>
               <textarea
-                id=\\"x18\\"
+                id=\\"x19\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -650,7 +650,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -721,7 +721,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -789,7 +789,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -860,7 +860,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -890,7 +890,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
           >
             <div>
               <textarea
-                id=\\"x18\\"
+                id=\\"x19\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -983,7 +983,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
           >
             <div>
               <textarea
-                id=\\"x19\\"
+                id=\\"x20\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1122,7 +1122,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -1193,7 +1193,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -1261,7 +1261,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -1332,7 +1332,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -1362,7 +1362,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
           >
             <div>
               <textarea
-                id=\\"x19\\"
+                id=\\"x20\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1446,7 +1446,7 @@ exports[`Click to Minimize and Maximize 1`] = `
           >
             <div>
               <textarea
-                id=\\"x24\\"
+                id=\\"x25\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1585,7 +1585,7 @@ exports[`Click to Minimize and Maximize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -1656,7 +1656,7 @@ exports[`Click to Minimize and Maximize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -1724,7 +1724,7 @@ exports[`Click to Minimize and Maximize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -1795,7 +1795,7 @@ exports[`Click to Minimize and Maximize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -1825,7 +1825,7 @@ exports[`Click to Minimize and Maximize 2`] = `
           >
             <div>
               <textarea
-                id=\\"x24\\"
+                id=\\"x25\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -1964,7 +1964,7 @@ exports[`Click to Minimize and Maximize 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -2035,7 +2035,7 @@ exports[`Click to Minimize and Maximize 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -2103,7 +2103,7 @@ exports[`Click to Minimize and Maximize 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -2174,7 +2174,7 @@ exports[`Click to Minimize and Maximize 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -2204,11 +2204,474 @@ exports[`Click to Minimize and Maximize 3`] = `
           >
             <div>
               <textarea
-                id=\\"x24\\"
+                id=\\"x25\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
                 &lt;p&gt;credible-lyrebird wrote:&lt;blockquote&gt;&lt;p&gt;Hi!&lt;/p&gt;&lt;/blockquote&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Empty, many {shift}{enter}, attempts to send, does not submit 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"comments outline icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            scenario.title, slide.title
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          />
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x17\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Empty, many {shift}{enter}, attempts to send, does not submit 2`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"comments outline icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            scenario.title, slide.title
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:41:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:41 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x17\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
               </textarea>
               <button
                 aria-label=\\"Send message\\"
@@ -2352,7 +2815,7 @@ exports[`Layout on desktop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -2423,7 +2886,7 @@ exports[`Layout on desktop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -2491,7 +2954,7 @@ exports[`Layout on desktop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -2562,7 +3025,7 @@ exports[`Layout on desktop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -2740,7 +3203,7 @@ exports[`Layout on mobile 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -2811,7 +3274,7 @@ exports[`Layout on mobile 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -2879,7 +3342,7 @@ exports[`Layout on mobile 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -2950,7 +3413,7 @@ exports[`Layout on mobile 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -3073,7 +3536,7 @@ exports[`Receives new message, minimized, mobile 1`] = `
           >
             <div>
               <textarea
-                id=\\"x27\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -3222,7 +3685,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3293,7 +3756,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3364,7 +3827,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3435,7 +3898,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3506,7 +3969,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3577,7 +4040,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3648,7 +4111,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3719,7 +4182,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3790,7 +4253,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3861,7 +4324,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -3894,7 +4357,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
           >
             <div>
               <textarea
-                id=\\"x27\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -4043,7 +4506,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4114,7 +4577,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4185,7 +4648,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4256,7 +4719,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4327,7 +4790,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4398,7 +4861,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4469,7 +4932,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4540,7 +5003,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4611,7 +5074,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4682,7 +5145,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4715,7 +5178,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
           >
             <div>
               <textarea
-                id=\\"x27\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -4864,7 +5327,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -4935,7 +5398,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5006,7 +5469,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5077,7 +5540,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5148,7 +5611,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5219,7 +5682,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5290,7 +5753,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5361,7 +5824,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5432,7 +5895,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5503,7 +5966,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5536,7 +5999,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
           >
             <div>
               <textarea
-                id=\\"x27\\"
+                id=\\"x28\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -5620,7 +6083,7 @@ exports[`Receives new message, minimized, not mobile 1`] = `
           >
             <div>
               <textarea
-                id=\\"x26\\"
+                id=\\"x27\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -5759,7 +6222,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5830,7 +6293,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5901,7 +6364,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -5972,7 +6435,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6043,7 +6506,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6114,7 +6577,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6185,7 +6648,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6256,7 +6719,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6327,7 +6790,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6398,7 +6861,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6469,7 +6932,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6502,7 +6965,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
           >
             <div>
               <textarea
-                id=\\"x26\\"
+                id=\\"x27\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -6641,7 +7104,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6712,7 +7175,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6783,7 +7246,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6854,7 +7317,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6925,7 +7388,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -6996,7 +7459,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7067,7 +7530,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7138,7 +7601,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7209,7 +7672,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7280,7 +7743,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7351,7 +7814,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7384,7 +7847,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
           >
             <div>
               <textarea
-                id=\\"x26\\"
+                id=\\"x27\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -7523,7 +7986,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7594,7 +8057,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7665,7 +8128,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7736,7 +8199,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7807,7 +8270,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7878,7 +8341,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -7949,7 +8412,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8020,7 +8483,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8091,7 +8554,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8162,7 +8625,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8233,7 +8696,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8304,7 +8767,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8337,7 +8800,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
           >
             <div>
               <textarea
-                id=\\"x26\\"
+                id=\\"x27\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -8421,7 +8884,7 @@ exports[`Receives new message, not minimized 1`] = `
           >
             <div>
               <textarea
-                id=\\"x25\\"
+                id=\\"x26\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -8560,7 +9023,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8631,7 +9094,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8702,7 +9165,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8773,7 +9236,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8844,7 +9307,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8915,7 +9378,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -8986,7 +9449,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9057,7 +9520,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9128,7 +9591,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9199,7 +9662,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9270,7 +9733,7 @@ exports[`Receives new message, not minimized 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9303,7 +9766,7 @@ exports[`Receives new message, not minimized 3`] = `
           >
             <div>
               <textarea
-                id=\\"x25\\"
+                id=\\"x26\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -9442,7 +9905,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9513,7 +9976,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9584,7 +10047,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9655,7 +10118,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9726,7 +10189,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9797,7 +10260,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9868,7 +10331,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -9939,7 +10402,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10010,7 +10473,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10081,7 +10544,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10152,7 +10615,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10223,7 +10686,7 @@ exports[`Receives new message, not minimized 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10256,7 +10719,7 @@ exports[`Receives new message, not minimized 4`] = `
           >
             <div>
               <textarea
-                id=\\"x25\\"
+                id=\\"x26\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -10342,7 +10805,7 @@ exports[`Rnd: onDrag/onResize 1`] = `
           >
             <div>
               <textarea
-                id=\\"x23\\"
+                id=\\"x24\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -10481,7 +10944,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10552,7 +11015,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -10620,7 +11083,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -10691,7 +11154,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -10721,7 +11184,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
           >
             <div>
               <textarea
-                id=\\"x23\\"
+                id=\\"x24\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -10805,7 +11268,7 @@ exports[`Rnd: onDragStop/onResizeStop 1`] = `
           >
             <div>
               <textarea
-                id=\\"x22\\"
+                id=\\"x23\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -10944,7 +11407,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -11015,7 +11478,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -11083,7 +11546,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -11154,7 +11617,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -11184,7 +11647,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
           >
             <div>
               <textarea
-                id=\\"x22\\"
+                id=\\"x23\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11268,7 +11731,7 @@ exports[`Types, clicks Send Message 1`] = `
           >
             <div>
               <textarea
-                id=\\"x20\\"
+                id=\\"x21\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11407,7 +11870,7 @@ exports[`Types, clicks Send Message 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -11478,7 +11941,7 @@ exports[`Types, clicks Send Message 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -11546,7 +12009,7 @@ exports[`Types, clicks Send Message 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -11617,7 +12080,7 @@ exports[`Types, clicks Send Message 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -11647,7 +12110,7 @@ exports[`Types, clicks Send Message 4`] = `
           >
             <div>
               <textarea
-                id=\\"x20\\"
+                id=\\"x21\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -11870,7 +12333,7 @@ exports[`Types, followed by {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -11941,7 +12404,7 @@ exports[`Types, followed by {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -12009,7 +12472,7 @@ exports[`Types, followed by {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -12080,7 +12543,7 @@ exports[`Types, followed by {enter} 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -12115,6 +12578,479 @@ exports[`Types, followed by {enter} 4`] = `
                 options=\\"[object Object]\\"
               >
                  
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Types, followed by {shift}{enter}, attempts to send, does submit 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"comments outline icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            scenario.title, slide.title
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          />
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x18\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                
+
+
+
+
+
+              </textarea>
+              <button
+                aria-label=\\"Send message\\"
+              >
+                THIS BUTTON IS PROVIDED BY THE MOCK
+              </button>
+              <div
+                class=\\"se-wrapper\\"
+              >
+                <div>
+                  a
+                </div>
+                <div>
+                  b
+                </div>
+                <div>
+                  c
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          data-testid=\\"chat-main\\"
+        />
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Types, followed by {shift}{enter}, attempts to send, does submit 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div>
+      <div
+        class=\\"ui modal transition visible active c__container-modal resizable\\"
+        role=\\"dialog\\"
+      >
+        <button
+          aria-label=\\"Click to minimize the chat window\\"
+          class=\\"ui icon button close c__container-modal-minmax\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"window minimize icon\\"
+          />
+        </button>
+        <div
+          class=\\"ui header c__drag-handle\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            aria-hidden=\\"true\\"
+            class=\\"comments outline icon\\"
+          />
+          <div
+            class=\\"content\\"
+          >
+            scenario.title, slide.title
+          </div>
+        </div>
+        <div
+          class=\\"content inner visible\\"
+          tabindex=\\"0\\"
+        >
+          <div
+            class=\\"cm__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <iframe
+              aria-hidden=\\"true\\"
+              frameborder=\\"0\\"
+              src=\\"about:blank\\"
+              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
+              tabindex=\\"-1\\"
+            />
+            <div
+              class=\\"cm__container-inner\\"
+              data-testid=\\"scrolling-container-outer\\"
+            >
+              <div
+                class=\\"ui large comments\\"
+              >
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"Super User (super)\\"
+                        class=\\"ui medium text\\"
+                        title=\\"Super User (super)\\"
+                      >
+                        Super User
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chess queen\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Super\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:39 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hello
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has joined the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:40 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      >
+                        <button
+                          aria-label=\\"Quote this message\\"
+                          class=\\"ui mini icon button icon-primary\\"
+                        >
+                          <i
+                            aria-hidden=\\"true\\"
+                            class=\\"quote left icon\\"
+                          />
+                        </button>
+                      </div>
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          Hi!
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class=\\"comment\\"
+                  data-testid=\\"comment\\"
+                >
+                  <div
+                    class=\\"avatar\\"
+                  >
+                    <img
+                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
+                    />
+                  </div>
+                  <div
+                    class=\\"cmm__content content\\"
+                  >
+                    <span
+                      class=\\"author\\"
+                      tabindex=\\"0\\"
+                    >
+                      <span
+                        aria-label=\\"credible-lyrebird\\"
+                        class=\\"ui medium text\\"
+                        title=\\"credible-lyrebird\\"
+                      >
+                        credible-lyrebird
+                      </span>
+                       
+                      <i
+                        aria-hidden=\\"true\\"
+                        class=\\"small icon chalkboard teacher\\"
+                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                        title=\\"Facilitator\\"
+                      />
+                    </span>
+                    <div
+                      class=\\"metadata\\"
+                    >
+                      <span
+                        aria-label=\\"2020-12-09T16:41:10.359Z\\"
+                        tabindex=\\"0\\"
+                      >
+                        11:41 AM
+                      </span>
+                    </div>
+                    <div
+                      class=\\"actions\\"
+                    >
+                      <div
+                        class=\\"ui mini buttons\\"
+                      />
+                    </div>
+                    <div
+                      class=\\"text\\"
+                    >
+                      <div>
+                        <p>
+                          <span
+                            style=\\"color: rgb(140, 140, 140);\\"
+                          >
+                            <em>
+                              has left the chat.
+                            </em>
+                          </span>
+                          <br />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class=\\"cc__container-outer\\"
+            style=\\"width: calc(\${dimensions.width}px);\\"
+          >
+            <div>
+              <textarea
+                id=\\"x18\\"
+                name=\\"content\\"
+                options=\\"[object Object]\\"
+              >
+                
+
+
+
+
+
               </textarea>
               <button
                 aria-label=\\"Send message\\"
@@ -12333,7 +13269,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -12404,7 +13340,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -12472,7 +13408,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -12543,7 +13479,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -12574,469 +13510,6 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
             <div>
               <textarea
                 id=\\"x16\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Types, followed by {shift}{enter}, does not submit 5`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            scenario.title, slide.title
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          />
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x17\\"
-                name=\\"content\\"
-                options=\\"[object Object]\\"
-              >
-                &lt;p&gt;&lt;br&gt;&lt;/p&gt;
-              </textarea>
-              <button
-                aria-label=\\"Send message\\"
-              >
-                THIS BUTTON IS PROVIDED BY THE MOCK
-              </button>
-              <div
-                class=\\"se-wrapper\\"
-              >
-                <div>
-                  a
-                </div>
-                <div>
-                  b
-                </div>
-                <div>
-                  c
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-testid=\\"chat-main\\"
-        />
-      </div>
-    </div>
-  </div>
-</body>"
-`;
-
-exports[`Types, followed by {shift}{enter}, does not submit 7`] = `
-"<body>
-  <div
-    id=\\"root\\"
-  />
-  <div>
-    <div>
-      <div
-        class=\\"ui modal transition visible active c__container-modal resizable\\"
-        role=\\"dialog\\"
-      >
-        <button
-          aria-label=\\"Click to minimize the chat window\\"
-          class=\\"ui icon button close c__container-modal-minmax\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"window minimize icon\\"
-          />
-        </button>
-        <div
-          class=\\"ui header c__drag-handle\\"
-          tabindex=\\"0\\"
-        >
-          <i
-            aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
-          />
-          <div
-            class=\\"content\\"
-          >
-            scenario.title, slide.title
-          </div>
-        </div>
-        <div
-          class=\\"content inner visible\\"
-          tabindex=\\"0\\"
-        >
-          <div
-            class=\\"cm__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <iframe
-              aria-hidden=\\"true\\"
-              frameborder=\\"0\\"
-              src=\\"about:blank\\"
-              style=\\"display: block; opacity: 0; position: absolute; top: 0px; left: 0px; height: 100%; width: 100%; overflow: hidden; pointer-events: none; z-index: -1;\\"
-              tabindex=\\"-1\\"
-            />
-            <div
-              class=\\"cm__container-inner\\"
-              data-testid=\\"scrolling-container-outer\\"
-            >
-              <div
-                class=\\"ui large comments\\"
-              >
-                <div
-                  class=\\"comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"Super User (super)\\"
-                        class=\\"ui medium text\\"
-                        title=\\"Super User (super)\\"
-                      >
-                        Super User
-                      </span>
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chess queen\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Super\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      <span
-                        aria-label=\\"2020-12-09T16:39:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:39 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui buttons\\"
-                      >
-                        <button
-                          aria-label=\\"Quote this message\\"
-                          class=\\"ui mini icon button icon-primary\\"
-                        >
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"quote left icon\\"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          Hello
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"credible-lyrebird\\"
-                        class=\\"ui medium text\\"
-                        title=\\"credible-lyrebird\\"
-                      >
-                        credible-lyrebird
-                      </span>
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chalkboard teacher\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Facilitator\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      <span
-                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:40 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui buttons\\"
-                      />
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          <span
-                            style=\\"color: rgb(140, 140, 140);\\"
-                          >
-                            <em>
-                              has joined the chat.
-                            </em>
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"credible-lyrebird\\"
-                        class=\\"ui medium text\\"
-                        title=\\"credible-lyrebird\\"
-                      >
-                        credible-lyrebird
-                      </span>
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chalkboard teacher\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Facilitator\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      <span
-                        aria-label=\\"2020-12-09T16:40:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:40 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui buttons\\"
-                      >
-                        <button
-                          aria-label=\\"Quote this message\\"
-                          class=\\"ui mini icon button icon-primary\\"
-                        >
-                          <i
-                            aria-hidden=\\"true\\"
-                            class=\\"quote left icon\\"
-                          />
-                        </button>
-                      </div>
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          Hi!
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class=\\"comment\\"
-                  data-testid=\\"comment\\"
-                >
-                  <div
-                    class=\\"avatar\\"
-                  >
-                    <img
-                      src=\\"https://loremflickr.com/50/50/credible-lyrebird\\"
-                    />
-                  </div>
-                  <div
-                    class=\\"cmm__content content\\"
-                  >
-                    <span
-                      class=\\"author\\"
-                      tabindex=\\"0\\"
-                    >
-                      <span
-                        aria-label=\\"credible-lyrebird\\"
-                        class=\\"ui medium text\\"
-                        title=\\"credible-lyrebird\\"
-                      >
-                        credible-lyrebird
-                      </span>
-                       
-                      <i
-                        aria-hidden=\\"true\\"
-                        class=\\"small icon chalkboard teacher\\"
-                        style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                        title=\\"Facilitator\\"
-                      />
-                    </span>
-                    <div
-                      class=\\"metadata\\"
-                    >
-                      <span
-                        aria-label=\\"2020-12-09T16:41:10.359Z\\"
-                        tabindex=\\"0\\"
-                      >
-                        11:41 AM
-                      </span>
-                    </div>
-                    <div
-                      class=\\"actions\\"
-                    >
-                      <div
-                        class=\\"ui buttons\\"
-                      />
-                    </div>
-                    <div
-                      class=\\"text\\"
-                    >
-                      <div>
-                        <p>
-                          <span
-                            style=\\"color: rgb(140, 140, 140);\\"
-                          >
-                            <em>
-                              has left the chat.
-                            </em>
-                          </span>
-                          <br />
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            class=\\"cc__container-outer\\"
-            style=\\"width: calc(\${dimensions.width}px);\\"
-          >
-            <div>
-              <textarea
-                id=\\"x17\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -13257,7 +13730,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -13328,7 +13801,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -13396,7 +13869,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -13467,7 +13940,7 @@ exports[`Types, then attempts to send empty string 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -13716,7 +14189,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -13787,7 +14260,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -13855,7 +14328,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -13926,7 +14399,7 @@ exports[`Types, then attempts to send string containing only a space character 2
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -14177,7 +14650,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -14248,7 +14721,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -14316,7 +14789,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -14387,7 +14860,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -14565,7 +15038,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -14636,7 +15109,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -14704,7 +15177,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -14775,7 +15248,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -14971,7 +15444,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -15042,7 +15515,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -15110,7 +15583,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -15181,7 +15654,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -15377,7 +15850,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -15448,7 +15921,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -15516,7 +15989,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -15587,7 +16060,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -15710,7 +16183,7 @@ exports[`onQuote 1`] = `
           >
             <div>
               <textarea
-                id=\\"x21\\"
+                id=\\"x22\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -15849,7 +16322,7 @@ exports[`onQuote 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -15920,7 +16393,7 @@ exports[`onQuote 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -15988,7 +16461,7 @@ exports[`onQuote 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -16059,7 +16532,7 @@ exports[`onQuote 3`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -16089,7 +16562,7 @@ exports[`onQuote 3`] = `
           >
             <div>
               <textarea
-                id=\\"x21\\"
+                id=\\"x22\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >
@@ -16238,7 +16711,7 @@ exports[`onQuote 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -16309,7 +16782,7 @@ exports[`onQuote 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -16377,7 +16850,7 @@ exports[`onQuote 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       >
                         <button
                           aria-label=\\"Quote this message\\"
@@ -16448,7 +16921,7 @@ exports[`onQuote 5`] = `
                       class=\\"actions\\"
                     >
                       <div
-                        class=\\"ui buttons\\"
+                        class=\\"ui mini buttons\\"
                       />
                     </div>
                     <div
@@ -16478,7 +16951,7 @@ exports[`onQuote 5`] = `
           >
             <div>
               <textarea
-                id=\\"x21\\"
+                id=\\"x22\\"
                 name=\\"content\\"
                 options=\\"[object Object]\\"
               >

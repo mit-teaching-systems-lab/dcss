@@ -1,7 +1,7 @@
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
+  useLayoutEffect: jest.requireActual('react').useEffect
 }));
 
 import {
@@ -10,7 +10,7 @@ import {
   reduxer,
   serialize,
   snapshotter,
-  state,
+  state
 } from '../bootstrap';
 import { unmountComponentAtNode } from 'react-dom';
 
@@ -20,7 +20,7 @@ import {
   prettyDOM,
   render,
   screen,
-  waitFor,
+  waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
@@ -35,7 +35,7 @@ jest.mock('@components/UI', () => {
   return {
     __esModule: true,
     ...jest.requireActual('@components/UI'),
-    ResizeDetector,
+    ResizeDetector
   };
 });
 
@@ -43,7 +43,7 @@ import scrollIntoView from '@utils/scrollIntoView';
 jest.mock('@utils/scrollIntoView', () => {
   return {
     __esModule: true,
-    default: jest.fn(() => {}),
+    default: jest.fn(() => {})
   };
 });
 
@@ -53,7 +53,7 @@ jest.mock('@hoc/withSocket', () => {
     disconnect: jest.fn(),
     emit: jest.fn(),
     on: jest.fn(),
-    off: jest.fn(),
+    off: jest.fn()
   };
 
   globalThis.mockSocket = socket;
@@ -61,26 +61,26 @@ jest.mock('@hoc/withSocket', () => {
   return {
     __esModule: true,
     ...jest.requireActual('@hoc/withSocket'),
-    default: function (Component) {
+    default: function(Component) {
       Component.defaultProps = {
         ...Component.defaultProps,
-        socket,
+        socket
       };
       return Component;
-    },
+    }
   };
 });
 
 jest.mock('@utils/Moment', () => {
   return {
     __esModule: true,
-    default: function (time) {
+    default: function(time) {
       return {
         format() {
           return 'HH:mm A';
-        },
+        }
       };
-    },
+    }
   };
 });
 
@@ -101,7 +101,7 @@ import {
   SET_CHAT_MESSAGE_SUCCESS,
   SET_CHAT_USERS_SUCCESS,
   LINK_CHAT_TO_RUN_ERROR,
-  LINK_CHAT_TO_RUN_SUCCESS,
+  LINK_CHAT_TO_RUN_SUCCESS
 } from '../../actions/types';
 import * as chatActions from '../../actions/chat';
 import * as userActions from '../../actions/user';
@@ -153,7 +153,7 @@ beforeEach(() => {
     id: 999,
     roles: ['participant', 'super_admin'],
     is_anonymous: false,
-    is_super: true,
+    is_super: true
   };
 
   chatUsers = [
@@ -169,8 +169,8 @@ beforeEach(() => {
       is_super: false,
       updated_at: '2020-12-10T17:50:19.074Z',
       is_muted: false,
-      is_present: true,
-    },
+      is_present: true
+    }
   ];
 
   chat = {
@@ -181,7 +181,7 @@ beforeEach(() => {
     updated_at: null,
     deleted_at: null,
     ended_at: null,
-    users: chatUsers,
+    users: chatUsers
   };
 
   chats = [chats];
@@ -199,7 +199,7 @@ beforeEach(() => {
     id: 6,
     is_quotable: true,
     updated_at: null,
-    user_id: 999,
+    user_id: 999
   };
 
   message2 = {
@@ -211,7 +211,7 @@ beforeEach(() => {
     id: 7,
     is_quotable: false,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   };
 
   message3 = {
@@ -222,7 +222,7 @@ beforeEach(() => {
     id: 8,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   };
 
   message4 = {
@@ -234,7 +234,7 @@ beforeEach(() => {
     id: 9,
     is_quotable: false,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   };
 
   message5 = {
@@ -245,41 +245,39 @@ beforeEach(() => {
     id: 10,
     is_quotable: false,
     updated_at: null,
-    user_id: 999,
+    user_id: 999
   };
 
   messages = [message1, message2, message3, message4, message5];
 
-  chatActions.getChat.mockImplementation(() => async (dispatch) => {
+  chatActions.getChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
     }
   );
-  chatActions.getChatUsersByChatId.mockImplementation(
-    () => async (dispatch) => {
-      const users = chatUsers;
-      dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-      return users;
-    }
-  );
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = chatUsers;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
   chatActions.setMessageById.mockImplementation(
-    (id, params) => async (dispatch) => {
-      const messageIndex = messages.findIndex((message) => message.id === id);
+    (id, params) => async dispatch => {
+      const messageIndex = messages.findIndex(message => message.id === id);
       const message = {
         ...messages[messageIndex],
-        ...params,
+        ...params
       };
       dispatch({ type: SET_CHAT_MESSAGE_SUCCESS, message });
       return message;
@@ -305,16 +303,16 @@ test('ChatMessages', () => {
   expect(ChatMessages).toBeDefined();
 });
 
-test('Render 1 1', async (done) => {
+test('Render 1 1', async done => {
   const Component = ChatMessages;
 
   const props = {
     ...commonProps,
-    chat,
+    chat
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -327,19 +325,19 @@ test('Render 1 1', async (done) => {
 
 /* INJECTION STARTS HERE */
 
-test('Message count is 0', async (done) => {
+test('Message count is 0', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = 0;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -354,11 +352,11 @@ test('Message count is 0', async (done) => {
   done();
 });
 
-test('User is missing from chat.usersById', async (done) => {
+test('User is missing from chat.usersById', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
@@ -366,9 +364,9 @@ test('User is missing from chat.usersById', async (done) => {
     chat: {
       ...chat,
       usersById: {
-        999: chatUsers[0],
-      },
-    },
+        999: chatUsers[0]
+      }
+    }
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -383,16 +381,16 @@ test('User is missing from chat.usersById', async (done) => {
   done();
 });
 
-test('Receives message that was deleted', async (done) => {
+test('Receives message that was deleted', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
     ...commonState,
-    user: superUser,
+    user: superUser
   };
 
   const emitter = new Emitter();
@@ -410,19 +408,19 @@ test('Receives message that was deleted', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -453,7 +451,7 @@ test('Receives message that was deleted', async (done) => {
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   });
 
   await waitFor(() =>
@@ -468,15 +466,15 @@ test('Receives message that was deleted', async (done) => {
   done();
 });
 
-test('Receives new message at end of messages', async (done) => {
+test('Receives new message at end of messages', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const emitter = new Emitter();
@@ -494,19 +492,19 @@ test('Receives new message at end of messages', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -537,7 +535,7 @@ test('Receives new message at end of messages', async (done) => {
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   });
 
   await waitFor(() =>
@@ -552,15 +550,15 @@ test('Receives new message at end of messages', async (done) => {
   done();
 });
 
-test('Receives new message, user does not exist yet.', async (done) => {
+test('Receives new message, user does not exist yet.', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const emitter = new Emitter();
@@ -578,47 +576,45 @@ test('Receives new message, user does not exist yet.', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
     }
   );
 
-  chatActions.getChatUsersByChatId.mockImplementation(
-    () => async (dispatch) => {
-      const users = [
-        ...chatUsers,
-        {
-          id: 5,
-          username: 'another-user',
-          personalname: null,
-          email: null,
-          is_anonymous: true,
-          single_use_password: false,
-          roles: ['participant'],
-          is_super: false,
-          updated_at: '2020-12-10T17:50:19.074Z',
-          is_muted: false,
-          is_present: true,
-        },
-      ];
-      dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
-      return users;
-    }
-  );
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    const users = [
+      ...chatUsers,
+      {
+        id: 5,
+        username: 'another-user',
+        personalname: null,
+        email: null,
+        is_anonymous: true,
+        single_use_password: false,
+        roles: ['participant'],
+        is_super: false,
+        updated_at: '2020-12-10T17:50:19.074Z',
+        is_muted: false,
+        is_present: true
+      }
+    ];
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
@@ -644,7 +640,7 @@ test('Receives new message, user does not exist yet.', async (done) => {
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 5,
+    user_id: 5
   });
 
   await waitFor(() =>
@@ -660,15 +656,15 @@ test('Receives new message, user does not exist yet.', async (done) => {
   done();
 });
 
-test('Receives new message after scrolling', async (done) => {
+test('Receives new message after scrolling', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const emitter = new Emitter();
@@ -686,19 +682,19 @@ test('Receives new message after scrolling', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -736,7 +732,7 @@ test('Receives new message after scrolling', async (done) => {
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   });
 
   await waitFor(() =>
@@ -754,15 +750,15 @@ test('Receives new message after scrolling', async (done) => {
   done();
 });
 
-test('Show hidden messages', async (done) => {
+test('Show hidden messages', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const messages = Array.from({ length: 100 }, (v, i) => {
@@ -774,19 +770,19 @@ test('Show hidden messages', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -855,15 +851,15 @@ test('Show hidden messages', async (done) => {
   done();
 });
 
-test('Receives new message after scrolling without existing messages', async (done) => {
+test('Receives new message after scrolling without existing messages', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const emitter = new Emitter();
@@ -875,14 +871,14 @@ test('Receives new message after scrolling without existing messages', async (do
   const messages = [];
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -920,7 +916,7 @@ test('Receives new message after scrolling without existing messages', async (do
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   });
 
   await waitFor(() =>
@@ -938,15 +934,15 @@ test('Receives new message after scrolling without existing messages', async (do
   done();
 });
 
-test('Receives new message for different chat', async (done) => {
+test('Receives new message for different chat', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const emitter = new Emitter();
@@ -964,19 +960,19 @@ test('Receives new message for different chat', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -1008,7 +1004,7 @@ test('Receives new message for different chat', async (done) => {
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   });
 
   await waitFor(() =>
@@ -1020,15 +1016,15 @@ test('Receives new message for different chat', async (done) => {
   done();
 });
 
-test('Receives new message just before unmount', async (done) => {
+test('Receives new message just before unmount', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const emitter = new Emitter();
@@ -1046,19 +1042,19 @@ test('Receives new message just before unmount', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -1092,7 +1088,7 @@ test('Receives new message just before unmount', async (done) => {
     id: messages.length,
     is_quotable: true,
     updated_at: null,
-    user_id: 4,
+    user_id: 4
   });
 
   unmount();
@@ -1105,16 +1101,16 @@ test('Receives new message just before unmount', async (done) => {
   done();
 });
 
-test('Calls onQuote', async (done) => {
+test('Calls onQuote', async done => {
   const Component = ChatMessages;
 
   const props = {
     ...(commonProps || {}),
-    onQuote: jest.fn(),
+    onQuote: jest.fn()
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
@@ -1136,7 +1132,7 @@ test('Calls onQuote', async (done) => {
 
   const quotables = await screen.findAllByLabelText('Quote this message');
 
-  quotables.forEach((quotable) => userEvent.click(quotable));
+  quotables.forEach(quotable => userEvent.click(quotable));
 
   expect(props.onQuote).toHaveBeenCalledTimes(2);
   expect(props.onQuote.mock.calls).toMatchInlineSnapshot(`
@@ -1171,17 +1167,17 @@ test('Calls onQuote', async (done) => {
   done();
 });
 
-test('Message can be deleted', async (done) => {
+test('Message can be deleted', async done => {
   const Component = ChatMessages;
 
   const props = {
     ...(commonProps || {}),
-    onDelete: jest.fn(),
+    onDelete: jest.fn()
   };
 
   const state = {
     ...commonState,
-    user: superUser,
+    user: superUser
   };
 
   const messages = [
@@ -1193,7 +1189,7 @@ test('Message can be deleted', async (done) => {
       id: 6,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     },
     {
       chat_id: 1,
@@ -1204,19 +1200,19 @@ test('Message can be deleted', async (done) => {
       id: 7,
       is_quotable: false,
       updated_at: null,
-      user_id: 4,
-    },
+      user_id: 4
+    }
   ];
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -1259,7 +1255,7 @@ test('Message can be deleted', async (done) => {
   await waitFor(() => expect(chatActions.setMessageById).toHaveBeenCalled());
   expect(chatActions.setMessageById.mock.calls[0][0]).toBe(6);
   expect(chatActions.setMessageById.mock.calls[0][1]).toMatchObject({
-    deleted_at: expectDateString,
+    deleted_at: expectDateString
   });
 
   expect(screen.queryAllByTestId('comment').length).toBe(1);
@@ -1267,15 +1263,15 @@ test('Message can be deleted', async (done) => {
   done();
 });
 
-test('Does a corrective scroll when view is resized', async (done) => {
+test('Does a corrective scroll when view is resized', async done => {
   const Component = ChatMessages;
 
   const props = {
-    ...(commonProps || {}),
+    ...(commonProps || {})
   };
 
   const state = {
-    ...commonState,
+    ...commonState
   };
 
   const messages = Array.from({ length: 11 }, (v, i) => {
@@ -1287,19 +1283,19 @@ test('Does a corrective scroll when view is resized', async (done) => {
       id: i,
       is_quotable: true,
       updated_at: null,
-      user_id: 999,
+      user_id: 999
     };
   });
 
   chatActions.getChatMessagesByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
 
   chatActions.getChatMessagesCountByChatId.mockImplementation(
-    () => async (dispatch) => {
+    () => async dispatch => {
       const count = messages.length;
       dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
       return count;
@@ -1317,4 +1313,3 @@ test('Does a corrective scroll when view is resized', async (done) => {
 
   done();
 });
-

@@ -226,7 +226,7 @@ class ChatMessages extends Component {
               </Divider>
             ) : null}
             <Ref innerRef={scrollIntoViewIfViewingNewest}>
-              <Comment.Group size="large">
+              <Comment.Group size="large" style={{marginTop: '1.4em !important'}}>
                 {messagesSlice.reduce((accum, message) => {
                   const user = chat.usersById[message.user_id];
 
@@ -302,7 +302,7 @@ class ChatMessages extends Component {
                           </span>
                         </Comment.Metadata>
                         <Comment.Actions>
-                          <Button.Group>
+                          <Button.Group size="mini">
                             {isQuotable ? (
                               <Popup
                                 inverted
