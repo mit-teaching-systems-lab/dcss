@@ -10,9 +10,6 @@ import {
   setMessageById
 } from '@actions/chat';
 
-import Identity from '@utils/Identity';
-import Moment from '@utils/Moment';
-import scrollIntoView from '@utils/scrollIntoView';
 import {
   Button,
   Comment,
@@ -24,6 +21,11 @@ import {
 import ChatMessageDeleteButton from '@components/Chat/ChatMessageDeleteButton';
 import { RichTextRenderer } from '@components/RichTextEditor';
 import Username from '@components/User/Username';
+
+import Identity from '@utils/Identity';
+import Layout from '@utils/Layout';
+import Moment from '@utils/Moment';
+import scrollIntoView from '@utils/scrollIntoView';
 
 import './Chat.css';
 
@@ -65,9 +67,16 @@ class ChatMessages extends Component {
       slice: this.props.slice || -20
     };
 
+    this.wasPreviouslyMinimized = false;
     this.isComponentMounted = false;
     this.onMessageDelete = this.onMessageDelete.bind(this);
     this.onMessageReceive = this.onMessageReceive.bind(this);
+  }
+
+  shouldComponentUpdate(newProps) {
+    this.wasPreviouslyMinimized =
+      this.props.isMinimized && !newProps.isMinimized;
+    return true;
   }
 
   async componentDidMount() {
@@ -148,7 +157,7 @@ class ChatMessages extends Component {
   }
 
   render() {
-    const { chat } = this.props;
+    const { chat, isMinimized } = this.props;
     const { hasNewMessages, isReady, messages, slice } = this.state;
     const messagesSlice = messages.slice(slice);
     const isHidingMessages = messages.length > messagesSlice.length;
@@ -158,10 +167,15 @@ class ChatMessages extends Component {
       if (!scrollingContainer && node) {
         scrollingContainer = node;
       }
+
       // This is NOT an "else" to the previous condition.
       /* istanbul ignore else */
       if (scrollingContainer) {
-        if (this.state.isViewingNewest && this.state.hasNewMessages) {
+        if (
+          (this.state.isViewingNewest && this.state.hasNewMessages) ||
+          this.wasPreviouslyMinimized
+        ) {
+          this.wasPreviouslyMinimized = false;
           scrollIntoView(scrollingContainer, false);
           this.setState({
             hasNewMessages: false
@@ -176,7 +190,7 @@ class ChatMessages extends Component {
         scrollingContainer = node;
       }
       // This is NOT an "else" to the previous condition.
-      if (scrollingContainer) {
+      if (scrollingContainer && Layout.isNotForMobile()) {
         scrollIntoView(scrollingContainer, false);
       }
     };
@@ -226,112 +240,120 @@ class ChatMessages extends Component {
               </Divider>
             ) : null}
             <Ref innerRef={scrollIntoViewIfViewingNewest}>
-              <Comment.Group size="large" style={{marginTop: '1.4em !important'}}>
-                {messagesSlice.reduce((accum, message) => {
-                  const user = chat.usersById[message.user_id];
+              <Comment.Group
+                size="large"
+                style={{ marginTop: '1.4em !important' }}
+              >
+                {!isMinimized
+                  ? messagesSlice.reduce((accum, message) => {
+                      const user = chat.usersById[message.user_id];
 
-                  if (!user) {
-                    return accum;
-                  }
+                      if (!user) {
+                        return accum;
+                      }
 
-                  if (message.deleted_at) {
-                    return accum;
-                  }
+                      if (message.deleted_at) {
+                        return accum;
+                      }
 
-                  const key = Identity.key(message);
-                  const defaultValue = message.content;
-                  const avatarKey = user.email
-                    ? md5(user.email.trim().toLowerCase())
-                    : user.username;
+                      const key = Identity.key(message);
+                      const defaultValue = message.content;
+                      const avatarKey = user.email
+                        ? md5(user.email.trim().toLowerCase())
+                        : user.username;
 
-                  const avatarUrl = user.email
-                    ? `https://www.gravatar.com/avatar/${avatarKey}?d=robohash`
-                    : `https://loremflickr.com/50/50/${avatarKey}`;
+                      const avatarUrl = user.email
+                        ? `https://www.gravatar.com/avatar/${avatarKey}?d=robohash`
+                        : `https://loremflickr.com/50/50/${avatarKey}`;
 
-                  const rteProps = {
-                    defaultValue,
-                    options: {
-                      width: '100%'
-                    }
-                  };
+                      const rteProps = {
+                        defaultValue,
+                        options: {
+                          width: '100%'
+                        }
+                      };
 
-                  //
-                  // NOTE: in this scope, "user" is the result of
-                  //       "chat.usersById[message.user_id]"
-                  //
-                  const isDeletable =
-                    message.is_quotable && user.id === this.props.user.id;
-                  const deleteTrigger = (
-                    <ChatMessageDeleteButton
-                      aria-label={deleteAriaLabel}
-                      onConfirm={() => {
-                        this.onMessageDelete(message);
-                      }}
-                    />
-                  );
+                      //
+                      // NOTE: in this scope, "user" is the result of
+                      //       "chat.usersById[message.user_id]"
+                      //
+                      const isDeletable =
+                        message.is_quotable && user.id === this.props.user.id;
+                      const deleteTrigger = (
+                        <ChatMessageDeleteButton
+                          aria-label={deleteAriaLabel}
+                          onConfirm={() => {
+                            this.onMessageDelete(message);
+                          }}
+                        />
+                      );
 
-                  const isQuotable = message.is_quotable;
-                  const quoteTrigger = (
-                    <Button
-                      size="mini"
-                      icon="quote left"
-                      className="icon-primary"
-                      aria-label={quoteAriaLabel}
-                      onClick={() => {
-                        this.props.onQuote(message);
-                      }}
-                    />
-                  );
+                      const isQuotable = message.is_quotable;
+                      const quoteTrigger = (
+                        <Button
+                          size="mini"
+                          icon="quote left"
+                          className="icon-primary"
+                          aria-label={quoteAriaLabel}
+                          onClick={() => {
+                            this.props.onQuote(message);
+                          }}
+                        />
+                      );
 
-                  //
-                  // NOTE: data-testid="comment" is used when testing
-                  // for the number of messages rendered before
-                  // and after pressing "See more" or receiving new
-                  // messages
-                  //
-                  accum.push(
-                    <Comment data-testid="comment" key={key}>
-                      <Comment.Avatar src={avatarUrl} />
-                      <Comment.Content className="cmm__content">
-                        <Comment.Author as="span" tabIndex="0">
-                          <Username {...user} />
-                        </Comment.Author>
-                        <Comment.Metadata>
-                          <span tabIndex="0" aria-label={message.created_at}>
-                            {Moment(message.created_at).format('LT')}
-                          </span>
-                        </Comment.Metadata>
-                        <Comment.Actions>
-                          <Button.Group size="mini">
-                            {isQuotable ? (
-                              <Popup
-                                inverted
-                                position="top right"
-                                size="tiny"
-                                content={quoteAriaLabel}
-                                trigger={quoteTrigger}
-                              />
-                            ) : null}
-                            {isDeletable ? (
-                              <Popup
-                                inverted
-                                position="top right"
-                                size="tiny"
-                                content={deleteAriaLabel}
-                                trigger={deleteTrigger}
-                              />
-                            ) : null}
-                          </Button.Group>
-                        </Comment.Actions>
-                        <Comment.Text>
-                          <RichTextRenderer {...rteProps} />
-                        </Comment.Text>
-                      </Comment.Content>
-                    </Comment>
-                  );
+                      //
+                      // NOTE: data-testid="comment" is used when testing
+                      // for the number of messages rendered before
+                      // and after pressing "See more" or receiving new
+                      // messages
+                      //
+                      accum.push(
+                        <Comment data-testid="comment" key={key}>
+                          <Comment.Avatar src={avatarUrl} />
+                          <Comment.Content className="cmm__content">
+                            <Comment.Author as="span" tabIndex="0">
+                              <Username {...user} />
+                            </Comment.Author>
+                            <Comment.Metadata>
+                              <span
+                                tabIndex="0"
+                                aria-label={message.created_at}
+                              >
+                                {Moment(message.created_at).format('LT')}
+                              </span>
+                            </Comment.Metadata>
+                            <Comment.Actions>
+                              <Button.Group size="mini">
+                                {isQuotable ? (
+                                  <Popup
+                                    inverted
+                                    position="top right"
+                                    size="tiny"
+                                    content={quoteAriaLabel}
+                                    trigger={quoteTrigger}
+                                  />
+                                ) : null}
+                                {isDeletable ? (
+                                  <Popup
+                                    inverted
+                                    position="top right"
+                                    size="tiny"
+                                    content={deleteAriaLabel}
+                                    trigger={deleteTrigger}
+                                  />
+                                ) : null}
+                              </Button.Group>
+                            </Comment.Actions>
+                            <Comment.Text>
+                              <RichTextRenderer {...rteProps} />
+                            </Comment.Text>
+                          </Comment.Content>
+                        </Comment>
+                      );
 
-                  return accum;
-                }, [])}
+                      return accum;
+                    }, [])
+                  : null}
               </Comment.Group>
             </Ref>
           </div>
@@ -361,6 +383,7 @@ ChatMessages.propTypes = {
   getChatMessagesCountByChatId: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   getUser: PropTypes.func,
+  isMinimized: PropTypes.bool,
   messages: PropTypes.array,
   onMessageReceive: PropTypes.func,
   onQuote: PropTypes.func,

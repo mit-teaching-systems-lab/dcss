@@ -217,6 +217,7 @@ test('Rnd', async done => {
           </div>
         </div>
       </Ref>,
+      "disableDragging": undefined,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -318,6 +319,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
           </div>
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -413,6 +415,7 @@ test('Rnd: onDragStop/onResizeStop without props.onDragResizeStop', async done =
           </div>
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -498,6 +501,7 @@ test('Rnd: onDrag/onResize', async done => {
           </div>
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -594,6 +598,7 @@ test('Rnd: onDrag/onResize without props.onDragResize', async done => {
           </div>
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -679,6 +684,7 @@ test('Rnd: onDragStart/onResizeStart', async done => {
           </div>
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -767,6 +773,7 @@ test('Rnd: onDragStart/onResizeStart without props.onDragResizeStart', async don
           </div>
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,

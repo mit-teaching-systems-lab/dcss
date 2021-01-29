@@ -1696,6 +1696,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                       },
                     }
                   }
+                  isMinimized={false}
                   onMessageReceive={[Function]}
                   onQuote={[Function]}
                   slice={-20}
@@ -1789,6 +1790,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
           />
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -1987,6 +1989,7 @@ test('Rnd: onDrag/onResize', async done => {
                       },
                     }
                   }
+                  isMinimized={false}
                   onMessageReceive={[Function]}
                   onQuote={[Function]}
                   slice={-20}
@@ -2080,6 +2083,7 @@ test('Rnd: onDrag/onResize', async done => {
           />
         </div>
       </Ref>,
+      "disableDragging": false,
       "dragHandleClassName": "c__drag-handle",
       "minHeight": 590,
       "minWidth": 430,
@@ -2334,7 +2338,7 @@ test('Receives new message, minimized, not mobile', async done => {
   });
 
   await waitFor(() =>
-    expect(screen.queryAllByTestId('comment').length).toBe(12)
+    expect(screen.queryAllByTestId('comment').length).toBe(0)
   );
   expect(screen.queryByLabelText('See new message')).toBe(null);
   expect(serialize()).toMatchSnapshot();

@@ -70,7 +70,6 @@ class ChatDraggableResizableDialog extends Component {
 
   render() {
     const { children, isMinimized } = this.props;
-
     const { height, width, x, y } = this.state;
 
     if (!width || !height) {
@@ -186,26 +185,56 @@ class ChatDraggableResizableDialog extends Component {
       </Ref>
     );
 
-    return Layout.isNotForMobile() ? (
-      <Rnd
-        resizeHandleWrapperClass="c__size-handle"
-        dragHandleClassName="c__drag-handle"
-        minHeight={BASE_HEIGHT}
-        minWidth={BASE_WIDTH}
-        position={{ x, y }}
-        size={{ width, height }}
-        style={rndStyle}
-        onDragStart={onDragResizeStart}
-        onDragStop={onDragStop}
-        onResizeStart={onDragResizeStart}
-        onDrag={onDrag}
-        onResize={onResize}
-        onResizeStop={onResizeStop}
-      >
-        {dialogBox}
-      </Rnd>
-    ) : (
-      dialogBox
+    const size = {
+      width,
+      height
+    };
+
+    const position = {
+      x,
+      y
+    };
+
+    if (isMinimized) {
+      size.height = 0;
+      position.x = 0;
+      position.y = 0;
+    }
+
+    const adjustPositionIfMinimized = node => {
+      if (node && isMinimized && Layout.isNotForMobile()) {
+        node.style.setProperty(
+          'transform',
+          'translate(0px, calc(100vh - 62px))'
+        );
+      }
+    };
+
+    return (
+      <Ref innerRef={adjustPositionIfMinimized}>
+        {Layout.isNotForMobile() ? (
+          <Rnd
+            resizeHandleWrapperClass="c__size-handle"
+            dragHandleClassName="c__drag-handle"
+            disableDragging={isMinimized}
+            minHeight={isMinimized ? 0 : BASE_HEIGHT}
+            minWidth={BASE_WIDTH}
+            onDragStart={onDragResizeStart}
+            onDragStop={onDragStop}
+            onResizeStart={onDragResizeStart}
+            onDrag={onDrag}
+            onResize={onResize}
+            onResizeStop={onResizeStop}
+            position={position}
+            size={size}
+            style={rndStyle}
+          >
+            {dialogBox}
+          </Rnd>
+        ) : (
+          dialogBox
+        )}
+      </Ref>
     );
   }
 }

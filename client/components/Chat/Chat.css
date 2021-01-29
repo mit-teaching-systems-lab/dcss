@@ -46,20 +46,23 @@
 
 /* cmm = chat messages message */
 .cmm__content > .author,
-.cmm__content > .metadata,
 .cmm__content > .text * {
   font-size: 1.14285714rem !important;
 }
 
-.cmm__content img {
-  width: 100% !important;
+.cmm__content > .actions,
+.cmm__content > .metadata {
+  font-size: .875em !important;
 }
 
 .cmm__content .actions {
-  font-size: .875em !important;
   float: right;
   position: relative;
   visibility: hidden;
+}
+
+.cmm__content img {
+  width: 100% !important;
 }
 
 .cmm__content:hover .actions {
@@ -110,6 +113,10 @@
   cursor: move;
 }
 
+.c__container-modal.c__minimized > div.ui.header.c__drag-handle {
+  cursor: hand;
+}
+
 .c__container-modal > div.ui.header.c__drag-handle > i.icon {
   font-size: 1em !important;
 }
@@ -158,14 +165,18 @@
   }
 
   .c__container-modal {
-    border: none !important;
+    /*border: none !important;*/
     bottom: 0;
     box-shadow: unset !important;
     left: 0 !important;
     margin-bottom: unset !important;
     min-width: unset !important;
     top: unset !important;
-    width: 99% ​!important;
+    width: 100vw !important;
+  }
+
+  #root > div.ui.modal.transition.visible.active.c__container-modal.c__minimized {
+    width: 100vw !important;
   }
 
   .c__container-modal.ui.modal>.close {
@@ -176,6 +187,14 @@
   .c__minimized {
     width: inherit !important;
     /*top: calc(100vh - 45px) !important;*/
+  }
+
+  .c__container-modal.resizable > div.content.inner.visible {
+    padding: unset !important;
+  }
+
+  .cm__container-outer {
+    padding-left: 0.5rem !important;
   }
 }
 

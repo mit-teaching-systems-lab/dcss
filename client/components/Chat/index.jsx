@@ -40,7 +40,6 @@ const innerMinClassName = 'content hidden';
 const innerMaxClassName = 'content inner visible';
 
 function isValidMessage(message) {
-
   if (!message) {
     return false;
   }
@@ -87,7 +86,10 @@ function getAvailableHeightForComposer(totalHeight) {
 
 function makeDimensionsForComposer({ width: w, height: h } = {}) {
   const width = parseInt(w, 10);
-  const height = getAvailableHeightForComposer(parseInt(h, 10));
+  const height = Layout.isNotForMobile()
+    ? getAvailableHeightForComposer(parseInt(h, 10))
+    : 80;
+
   return {
     width: `${width}px`,
     height: `${height}px`,
@@ -396,6 +398,7 @@ class Chat extends Component {
     const slice = Layout.isForMobile() ? -10 : -20;
     const cmProps = {
       chat,
+      isMinimized,
       onQuote,
       onMessageReceive,
       slice
@@ -423,10 +426,14 @@ class Chat extends Component {
       width: 'calc(${dimensions.width}px)'
     };
 
+    const draggableClassName = isMinimized
+      ? 'ui header'
+      : 'ui header c__drag-handle';
+
     return (
       <ChatDraggableResizableDialog {...draggableResizableProps}>
         <ChatMinMax onChange={onMinMaxClick} />
-        <div tabIndex="0" className="ui header c__drag-handle">
+        <div tabIndex="0" className={draggableClassName}>
           {this.state.isPulsing ? (
             <i aria-hidden="true" className="icon c__pulse"></i>
           ) : (
