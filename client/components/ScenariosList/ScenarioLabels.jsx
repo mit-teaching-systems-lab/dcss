@@ -7,19 +7,8 @@ import { setLabelsInUse } from '@actions/tags';
 import Identity from '@utils/Identity';
 import QueryString from '@utils/QueryString';
 
-function makeQueryString(keyVals) {
-  const qs = {};
-  const { search } = QueryString.parse(window.location.search);
-
-  if (search) {
-    qs.search = search;
-  }
-
-  if (labels && labels.length) {
-    qs.l = labels;
-  }
-
-  return `?${QueryString.stringify(qs, qsOpts)}`;
+function makeHistoryEntry(location, keyVals) {
+  return `${location.pathname}?${QueryString.mergedStringify(keyVals)}`;
 }
 
 class ScenarioLabels extends React.Component {
@@ -39,7 +28,7 @@ class ScenarioLabels extends React.Component {
 
     this.props.setLabelsInUse(labelsInUse);
     this.props.history.push(
-      `${this.props.location.pathname}${makeQueryString({ l: labelsInUse })}`
+      makeHistoryEntry(this.props.location, { l: labelsInUse })
     );
   }
 
