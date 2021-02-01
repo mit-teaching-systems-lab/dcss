@@ -143,7 +143,12 @@ export class CohortProgress extends React.Component {
     }
 
     const cohortScenarios = this.props.cohort.scenarios;
-    const completedCount = cohort.users.reduce((accum, user) => {
+
+    const sourceParticipants = this.state.participants.length
+      ? this.state.participants
+      : this.props.cohort.users;
+
+    const completedCount = sourceParticipants.reduce((accum, user) => {
       const {
         progress: { completed }
       } = user;
@@ -157,9 +162,6 @@ export class CohortProgress extends React.Component {
       return accum;
     }, 0);
 
-    const sourceParticipants = this.state.participants.length
-      ? this.state.participants
-      : this.props.cohort.users;
 
     const usersInCohortHeader = (
       <p className="c__scenario-header-num">
