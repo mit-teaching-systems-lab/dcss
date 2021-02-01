@@ -2,6 +2,7 @@ const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
 // const rolesDb = require('../roles/db');
 const scenarioDb = require('../scenarios/db');
+const runDb = require('../runs/db');
 
 async function getCohortScenariosIdList(id) {
   const result = await query(sql`
@@ -60,6 +61,29 @@ async function createCohort(name, user_id) {
   });
 }
 
+async function __getCohortUsers(id) {
+  const result = await query(sql`
+    SELECT
+      id,
+      email,
+      username,
+      personalname,
+      roles,
+      email = '' OR email IS NULL OR hash IS NULL AS is_anonymous,
+      '{owner}' && roles AS is_owner
+    FROM users
+    INNER JOIN (
+      SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
+      FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
+      WHERE cohort_id = ${id} AND ended_at IS NULL
+      GROUP BY cohort_id, user_id
+    ) cur
+    ON users.id = cur.user_id;
+  `);
+
+  return result.rows;
+}
+
 async function getCohortScenariosCompleted(id) {
   let select = `
     SELECT
@@ -99,7 +123,6 @@ async function getCohortScenariosRunEvents(id) {
     ) AS r
       ON cohort_run.run_id = r.run_id
     WHERE cohort_id = ${id}
-    AND name = 'slide-arrival'
     ORDER BY event_id ASC
   `;
 
@@ -108,45 +131,51 @@ async function getCohortScenariosRunEvents(id) {
 }
 
 async function getCohortProgress(id) {
+  const eventTypesByName = await runDb.getRunEventTypesByName();
   const scenariosCompleted = await getCohortScenariosCompleted(id);
   const scenariosRunEvents = await getCohortScenariosRunEvents(id);
-  const progress = {};
 
-  for (const { user_id, completed } of scenariosCompleted) {
-    const latestByScenarioId = scenariosRunEvents.reduce((accum, event) => {
-      const {
-        event_id,
-        scenario_id,
-        name,
-        url,
-        created_at,
-        is_complete
-      } = event;
+  const completedByUserId = scenariosCompleted.reduce(
+    (accum, { user_id, completed }) => {
+      accum[user_id] = completed;
+      return accum;
+    },
+    {}
+  );
 
-      if (event.user_id === user_id) {
-        return {
-          ...accum,
-          [scenario_id]: {
-            scenario_id,
-            event_id,
-            is_complete,
-            created_at,
-            name,
-            url
-          }
-        };
-      } else {
-        return accum;
-      }
-    }, {});
+  const eventsByUserId = scenariosRunEvents.reduce((accum, event) => {
+    const {
+      event_id,
+      scenario_id,
+      name,
+      url,
+      created_at,
+      is_complete,
+      user_id
+    } = event;
 
-    progress[user_id] = {
-      completed,
-      latestByScenarioId
+    if (!accum[user_id]) {
+      accum[user_id] = {};
+    }
+
+    const description = eventTypesByName[name].generic;
+    accum[user_id][scenario_id] = {
+      scenario_id,
+      event_id,
+      is_complete,
+      created_at,
+      name,
+      description,
+      url
     };
-  }
 
-  return progress;
+    return accum;
+  }, {});
+
+  return {
+    completedByUserId,
+    eventsByUserId
+  };
 }
 
 async function getCohortUsers(id) {
@@ -169,7 +198,7 @@ async function getCohortUsers(id) {
   //   WHERE array_length(lat.roles, 1) > 0;
   // `);
 
-  const progress = await getCohortProgress(id);
+  const { completedByUserId, eventsByUserId } = await getCohortProgress(id);
   const result = await query(sql`
     SELECT
       id,
@@ -188,16 +217,19 @@ async function getCohortUsers(id) {
     ) cur
     ON users.id = cur.user_id;
   `);
-  const users = result.rows;
-  const usersById = users.reduce((accum, user) => {
-    user.progress = progress[user.id] || {
-      completed: [],
-      latestByScenarioId: {}
+  const usersById = result.rows.reduce((accum, user) => {
+    const completed = completedByUserId[user.id] || [];
+    const latestByScenarioId = eventsByUserId[user.id] || {};
+    accum[user.id] = {
+      ...user,
+      progress: {
+        completed,
+        latestByScenarioId
+      }
     };
-    accum[user.id] = user;
     return accum;
   }, {});
-
+  const users = Object.values(usersById);
   return {
     users,
     usersById
@@ -208,6 +240,7 @@ async function __getAggregatedCohort(cohort) {
   const runs = await getCohortRuns(cohort.id);
   const scenarios = await getCohortScenariosIdList(cohort.id);
   const cohortUsers = await getCohortUsers(cohort.id);
+  console.log(cohortUsers);
   return {
     ...cohort,
     ...cohortUsers,

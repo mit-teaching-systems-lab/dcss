@@ -271,6 +271,49 @@ const scenario2 = {
 scenario.status = 2;
 scenario2.status = 2;
 
+const personas = [
+  {
+    id: 1,
+    name: 'Participant',
+    description: 'The default user participating in a single person scenario.',
+    color: '#FFFFFF',
+    created_at: '2020-12-01T15:49:04.962Z',
+    updated_at: null,
+    deleted_at: null,
+    author_id: 3,
+    is_read_only: true,
+    is_shared: true
+  },
+  {
+    id: 2,
+    name: 'Teacher',
+    description:
+      'A non-specific teacher, participating in a multi person scenario.',
+    color: '#3f59a9',
+    created_at: '2020-12-01T15:49:04.962Z',
+    updated_at: null,
+    deleted_at: null,
+    author_id: 3,
+    is_read_only: true,
+    is_shared: true
+  },
+  {
+    id: 3,
+    name: 'Student',
+    description:
+      'A non-specific student, participating in a multi person scenario.',
+    color: '#e59235',
+    created_at: '2020-12-01T15:49:04.962Z',
+    updated_at: null,
+    deleted_at: null,
+    author_id: 3,
+    is_read_only: true,
+    is_shared: true
+  }
+];
+
+scenario2.personas = personas;
+
 import CohortScenarios from '../../components/Cohorts/CohortScenarios.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
@@ -332,6 +375,7 @@ beforeEach(() => {
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -355,6 +399,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -377,6 +422,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -399,6 +445,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -421,6 +468,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -445,6 +493,7 @@ beforeEach(() => {
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -468,6 +517,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -490,6 +540,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -512,6 +563,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -534,6 +586,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -810,6 +863,7 @@ beforeEach(() => {
             scenario_id: 99,
             event_id: 1905,
             created_at: 1602454306144,
+            generic: 'arrived at a slide.',
             name: 'slide-arrival',
             url: 'http://localhost:3000/cohort/1/run/99/slide/1'
           }
@@ -837,6 +891,7 @@ beforeEach(() => {
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -860,6 +915,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -882,6 +938,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -904,6 +961,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -926,6 +984,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -1092,6 +1151,45 @@ test('No scenarios in cohort', async done => {
 });
 
 test('Facilitator has an option to open scenarios selector', async done => {
+  const Component = CohortScenarios;
+
+  const props = {
+    ...commonProps,
+    id: 1,
+    authority: {
+      isFacilitator: true,
+      isParticipant: true
+    }
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  state.scenariosById = state.scenarios.reduce((accum, scenario) => {
+    accum[scenario.id] = scenario;
+    return accum;
+  }, {});
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+  await screen.findByTestId('cohort-scenarios');
+  expect(asFragment()).toMatchSnapshot();
+
+  const button = await screen.findByRole('button', {
+    name: /edit selected scenarios/i
+  });
+  expect(asFragment()).toMatchSnapshot();
+
+  userEvent.click(button);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Scenarios have multi-participant/single-participant icons', async done => {
   const Component = CohortScenarios;
 
   const props = {
@@ -1334,6 +1432,30 @@ test('Click to see all response', async done => {
             "is_read_only": true,
             "is_shared": true,
             "name": "Participant",
+            "updated_at": null,
+          },
+          Object {
+            "author_id": 3,
+            "color": "#3f59a9",
+            "created_at": "2020-12-01T15:49:04.962Z",
+            "deleted_at": null,
+            "description": "A non-specific teacher, participating in a multi person scenario.",
+            "id": 2,
+            "is_read_only": true,
+            "is_shared": true,
+            "name": "Teacher",
+            "updated_at": null,
+          },
+          Object {
+            "author_id": 3,
+            "color": "#e59235",
+            "created_at": "2020-12-01T15:49:04.962Z",
+            "deleted_at": null,
+            "description": "A non-specific student, participating in a multi person scenario.",
+            "id": 3,
+            "is_read_only": true,
+            "is_shared": true,
+            "name": "Student",
             "updated_at": null,
           },
         ],

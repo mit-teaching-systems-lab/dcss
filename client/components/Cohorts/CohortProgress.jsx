@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
+import { sentenceCase } from 'change-case';
 import {
   Button,
   Card,
@@ -16,6 +17,7 @@ import { getCohort } from '@actions/cohort';
 import CohortParticipants from '@components/Cohorts/CohortParticipants';
 import Loading from '@components/Loading';
 import Username from '@components/User/Username';
+import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
 
@@ -210,7 +212,7 @@ export class CohortProgress extends React.Component {
         </Grid>
 
         <div className="c__participant-list">
-          {sourceParticipants.map((participant, index) => {
+          {sourceParticipants.map(participant => {
             /* istanbul ignore if */
             if (!participant) {
               return null;
@@ -233,6 +235,7 @@ export class CohortProgress extends React.Component {
             let lastAccessedAgo = null;
             let lastScenarioViewed = null;
             let lastUrlVisited = null;
+            let lastEventDescription = null;
             let lastSlideViewed = null;
             let statusText = isComplete ? 'Complete' : 'In progress';
             let statusIcon = isComplete ? 'check' : 'circle';
@@ -253,6 +256,7 @@ export class CohortProgress extends React.Component {
               lastSlideViewed = lastUrlVisited.slice(
                 lastUrlVisited.indexOf('/slide') + 7
               );
+              lastEventDescription = sentenceCase(lastEvent.description);
             }
 
             const lastAccessedDisplay = lastAccessedAt ? (
@@ -273,7 +277,10 @@ export class CohortProgress extends React.Component {
             };
 
             return (
-              <Card className="c__participant-card" key={`row-${index}`}>
+              <Card
+                className="c__participant-card"
+                key={Identity.key(participant)}
+              >
                 <Card.Content>
                   <Card.Header>
                     <Username {...participant} />
@@ -293,6 +300,12 @@ export class CohortProgress extends React.Component {
                             Current scenario
                           </span>
                           {lastScenarioViewed.title}
+                        </p>
+                        <p className="c__participant-completion__group">
+                          <span className="c__participant-completion__subhed">
+                            Last activity
+                          </span>
+                          {lastEventDescription}
                         </p>
                         <p className="c__participant-completion__group">
                           <span className="c__participant-completion__subhed">

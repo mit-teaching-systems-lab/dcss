@@ -139,6 +139,7 @@ beforeEach(() => {
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -162,6 +163,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -184,6 +186,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -206,6 +209,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -228,6 +232,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -252,6 +257,7 @@ beforeEach(() => {
               is_complete: true,
               event_id: 1909,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -275,6 +281,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1905,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -297,6 +304,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1904,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -319,6 +327,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1903,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -341,6 +350,7 @@ beforeEach(() => {
               scenario_id: 99,
               event_id: 1902,
               created_at: 1602454306144,
+              generic: 'arrived at a slide.',
               name: 'slide-arrival',
               url: 'http://localhost:3000/cohort/1/run/99/slide/1'
             }
@@ -830,6 +840,7 @@ test('Click to see all response', async done => {
             "1": Object {
               "created_at": 1602454306144,
               "event_id": 1909,
+              "generic": "arrived at a slide.",
               "is_complete": true,
               "name": "slide-arrival",
               "url": "http://localhost:3000/cohort/1/run/99/slide/1",
@@ -871,6 +882,7 @@ test('Click to see all response', async done => {
             "1": Object {
               "created_at": 1602454306144,
               "event_id": 1905,
+              "generic": "arrived at a slide.",
               "is_complete": false,
               "name": "slide-arrival",
               "scenario_id": 99,
@@ -914,6 +926,7 @@ test('Click to see all response', async done => {
             "1": Object {
               "created_at": 1602454306144,
               "event_id": 1904,
+              "generic": "arrived at a slide.",
               "is_complete": false,
               "name": "slide-arrival",
               "scenario_id": 99,
@@ -955,6 +968,7 @@ test('Click to see all response', async done => {
             "1": Object {
               "created_at": 1602454306144,
               "event_id": 1903,
+              "generic": "arrived at a slide.",
               "is_complete": false,
               "name": "slide-arrival",
               "scenario_id": 99,
@@ -995,6 +1009,7 @@ test('Click to see all response', async done => {
             "1": Object {
               "created_at": 1602454306144,
               "event_id": 1902,
+              "generic": "arrived at a slide.",
               "is_complete": false,
               "name": "slide-arrival",
               "scenario_id": 99,

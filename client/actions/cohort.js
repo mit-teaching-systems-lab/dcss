@@ -72,6 +72,10 @@ export let getCohortScenarios = id => async dispatch => {
 };
 
 export let setCohortScenarios = cohort => async dispatch => {
+  // Update the local cohort data immediately to ensure that
+  // no "flicker" occurs as a result of network latency.
+  dispatch({ type: SET_COHORT_SCENARIOS_SUCCESS, cohort });
+
   try {
     const { scenarios } = cohort;
     const body = JSON.stringify({

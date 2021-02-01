@@ -81,6 +81,31 @@ exports.saveRunEvent = async (run_id, name, context) => {
   });
 };
 
+let cachedEventTypesByName = {};
+
+exports.getRunEventTypesByName = async () => {
+  if (Object.entries(cachedEventTypesByName).length) {
+    return cachedEventTypesByName;
+  }
+
+  const result = await query(`
+    SELECT *
+    FROM event
+    WHERE is_relevant = true;
+  `);
+
+  cachedEventTypesByName = result.rows.reduce((accum, eventType) => {
+    const generic = eventType.template.replace(/^\{participant\}\s|\{|\}/g, '');
+    accum[eventType.name] = {
+      ...eventType,
+      generic
+    };
+    return accum;
+  }, {});
+
+  return cachedEventTypesByName;
+};
+
 async function updateResponse(id, data) {
   const result = await query(updateQuery('run_response', { id }, data));
   return result.rows[0];

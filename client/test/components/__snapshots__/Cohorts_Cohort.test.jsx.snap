@@ -4457,6 +4457,16 @@ exports[`Cohort is archived 1`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -4553,6 +4563,16 @@ exports[`Cohort is archived 1`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -4657,6 +4677,16 @@ exports[`Cohort is archived 1`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -4747,6 +4777,16 @@ exports[`Cohort is archived 1`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -9362,6 +9402,16 @@ exports[`Copy cohort url 1`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -9458,6 +9508,16 @@ exports[`Copy cohort url 1`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -9562,6 +9622,16 @@ exports[`Copy cohort url 1`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -9652,6 +9722,16 @@ exports[`Copy cohort url 1`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -10088,6 +10168,16 @@ exports[`Copy cohort url 2`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -10184,6 +10274,16 @@ exports[`Copy cohort url 2`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -10288,6 +10388,16 @@ exports[`Copy cohort url 2`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -10378,6 +10488,16 @@ exports[`Copy cohort url 2`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -10814,6 +10934,16 @@ exports[`Copy cohort url 3`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -10910,6 +11040,16 @@ exports[`Copy cohort url 3`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -11014,6 +11154,16 @@ exports[`Copy cohort url 3`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -11104,6 +11254,16 @@ exports[`Copy cohort url 3`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -15786,6 +15946,16 @@ exports[`Rename cohort 1`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -15882,6 +16052,16 @@ exports[`Rename cohort 1`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -15986,6 +16166,16 @@ exports[`Rename cohort 1`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -16076,6 +16266,16 @@ exports[`Rename cohort 1`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -16512,6 +16712,16 @@ exports[`Rename cohort 2`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -16608,6 +16818,16 @@ exports[`Rename cohort 2`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -16712,6 +16932,16 @@ exports[`Rename cohort 2`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -16802,6 +17032,16 @@ exports[`Rename cohort 2`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -17241,6 +17481,16 @@ exports[`Rename cohort 3`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -17337,6 +17587,16 @@ exports[`Rename cohort 3`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -17441,6 +17701,16 @@ exports[`Rename cohort 3`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -17531,6 +17801,16 @@ exports[`Rename cohort 3`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -18042,6 +18322,16 @@ exports[`Rename cohort 4`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -18138,6 +18428,16 @@ exports[`Rename cohort 4`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"
@@ -18242,6 +18542,16 @@ exports[`Rename cohort 4`] = `
                       <span
                         class=\\"c__participant-completion__subhed\\"
                       >
+                        Last activity
+                      </span>
+                      
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
                         Current slide
                       </span>
                       1
@@ -18332,6 +18642,16 @@ exports[`Rename cohort 4`] = `
                         Current scenario
                       </span>
                       Some Other Scenario
+                    </p>
+                    <p
+                      class=\\"c__participant-completion__group\\"
+                    >
+                      <span
+                        class=\\"c__participant-completion__subhed\\"
+                      >
+                        Last activity
+                      </span>
+                      
                     </p>
                     <p
                       class=\\"c__participant-completion__group\\"

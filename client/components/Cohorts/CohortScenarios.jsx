@@ -51,7 +51,7 @@ export class CohortScenarios extends React.Component {
   }
 
   /* istanbul ignore next */
-  async moveScenario(fromIndex, toIndex) {
+  moveScenario(fromIndex, toIndex) {
     const { cohort } = this.props;
     const scenarios = cohort.scenarios.slice();
     const moving = scenarios[fromIndex];
@@ -155,7 +155,7 @@ export class CohortScenarios extends React.Component {
               animation: 150
             }}
           >
-            {cohortScenarios.map((scenario, index) => {
+            {cohortScenarios.map(scenario => {
               if (!scenario) {
                 return null;
               }
@@ -217,80 +217,85 @@ export class CohortScenarios extends React.Component {
                   message: `Copied: ${url}`
                 });
               };
+              const isMultiParticipantScenario = scenario.personas.length > 1;
+
+              const cardHeaderIconClassName = isMultiParticipantScenario
+                ? 'users'
+                : 'user';
 
               const cardHeaderProps = !isFacilitator
                 ? { as: 'a', href: pathname }
                 : {};
 
+              cardHeaderProps['aria-label'] = isMultiParticipantScenario
+                ? `${scenario.title} is a group scenario`
+                : `${scenario.title} is a solo scenario`;
+
+              const key = Identity.key(scenario);
+
               return (
-                <Gate
-                  requiredPermission="view_scenarios_in_cohort"
-                  key={`confirm-${index}`}
+                <Card
+                  className="c__scenario-card"
+                  key={key}
+                  style={scenarioCursor}
                 >
-                  <Card
-                    className="c__scenario-card"
-                    key={`row-${index}`}
-                    style={scenarioCursor}
-                  >
-                    <Card.Content>
-                      <Card.Header {...cardHeaderProps}>
-                        {scenario.title}
-                      </Card.Header>
-                      <Card.Description>
-                        <Text.Truncate lines={2}>
-                          {isFacilitator
-                            ? scenario.description
-                            : endedAtDisplay}
-                        </Text.Truncate>
-                      </Card.Description>
-                      <Card.Meta>
-                        {isFacilitator ? null : startedAtDisplay}
-                        <Gate
-                          requiredPermission="view_all_data"
-                          isAuthorized={isFacilitator}
-                        >
-                          <Button
-                            size="tiny"
-                            data-testid="run-cohort-as-participant"
-                            onClick={() => {
-                              location.href = url;
-                            }}
-                          >
-                            <Icon className="primary" name="play" />
-                            Run scenario as a participant
-                          </Button>
-                          <Button
-                            size="tiny"
-                            data-testid="copy-cohort-scenario-link"
-                            onClick={onCohortScenarioUrlCopyClick}
-                          >
-                            <Icon
-                              className="primary"
-                              name="clipboard outline"
-                            />
-                            Copy scenario link to clipboard
-                          </Button>
-                        </Gate>
-                      </Card.Meta>
-                    </Card.Content>
-                    <div className="c__scenario-extra">
+                  <Card.Content>
+                    <Card.Header {...cardHeaderProps}>
+                      <Icon
+                        className="primary"
+                        name={cardHeaderIconClassName}
+                      />
+                      {scenario.title}
+                    </Card.Header>
+                    <Card.Description>
+                      <Text.Truncate lines={2}>
+                        {isFacilitator ? scenario.description : endedAtDisplay}
+                      </Text.Truncate>
+                    </Card.Description>
+                    <Card.Meta>
+                      {isFacilitator ? null : startedAtDisplay}
                       <Gate
                         requiredPermission="view_all_data"
                         isAuthorized={isFacilitator}
                       >
                         <Button
-                          primary
-                          size="large"
-                          data-testid="view-cohort-responses"
-                          name={scenario.title}
-                          onClick={onAddTabClick}
+                          size="tiny"
+                          data-testid="run-cohort-as-participant"
+                          onClick={() => {
+                            location.href = url;
+                          }}
                         >
-                          View reponses
+                          <Icon className="primary" name="play" />
+                          Run scenario as a participant
+                        </Button>
+                        <Button
+                          size="tiny"
+                          data-testid="copy-cohort-scenario-link"
+                          onClick={onCohortScenarioUrlCopyClick}
+                        >
+                          <Icon className="primary" name="clipboard outline" />
+                          Copy scenario link to clipboard
                         </Button>
                       </Gate>
-                    </div>
-                  </Card>
-                </Gate>
+                    </Card.Meta>
+                  </Card.Content>
+                  <div className="c__scenario-extra">
+                    <Gate
+                      requiredPermission="view_all_data"
+                      isAuthorized={isFacilitator}
+                    >
+                      <Button
+                        primary
+                        size="large"
+                        data-testid="view-cohort-responses"
+                        name={scenario.title}
+                        onClick={onAddTabClick}
+                      >
+                        View reponses
+                      </Button>
+                    </Gate>
+                  </div>
+                </Card>
               );
             })}
           </Sortable>
