@@ -74,7 +74,7 @@ class Username extends Component {
 
     fragmentCache[key] = (
       <Fragment>
-        <Text title={this.title}>{this.displayableName}</Text> {icon}
+        <Text key={key} title={this.title}>{this.displayableName}</Text> {icon}
       </Fragment>
     );
 
@@ -84,10 +84,12 @@ class Username extends Component {
 
 Username.propTypes = {
   id: PropTypes.number,
+  is_anonymous: PropTypes.bool,
   is_super: PropTypes.bool,
+  is_owner: PropTypes.bool,
   personalname: PropTypes.string,
   roles: PropTypes.array,
-  username: PropTypes.string
+  username: PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => {

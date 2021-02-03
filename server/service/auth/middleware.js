@@ -283,10 +283,19 @@ Cambridge, MA 02139
 
     const result = await sendMailMessage(message);
     reset = result.sent;
-    reason = result.reason;
+    if (!reset) {
+      reason = result.reason;
+    }
   } else {
     reset = false;
     reason = 'The email provided does not match any existing account.';
+  }
+
+  if (!reset) {
+    return res.status(401).json({
+      error: true,
+      message: reason
+    });
   }
 
   return res.json({ reset, reason });

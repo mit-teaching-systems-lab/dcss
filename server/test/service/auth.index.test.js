@@ -827,11 +827,16 @@ describe('/api/auth/*', () => {
           email: 'super@email.com'
         };
 
-        const response = await request({ path, body, method: 'post' });
+        const response = await request({
+          path,
+          body,
+          method: 'post',
+          status: 401
+        });
         expect(await response.json()).toMatchInlineSnapshot(`
           Object {
-            "reason": "something unexpected happened",
-            "reset": false,
+            "error": true,
+            "message": "something unexpected happened",
           }
         `);
 
@@ -942,11 +947,17 @@ describe('/api/auth/*', () => {
           email: 'super@email.com'
         };
 
-        const response = await request({ path, body, method: 'post' });
+        const response = await request({
+          path,
+          body,
+          method: 'post',
+          status: 401
+        });
+
         expect(await response.json()).toMatchInlineSnapshot(`
           Object {
-            "reason": "The email provided does not match any existing account.",
-            "reset": false,
+            "error": true,
+            "message": "The email provided does not match any existing account.",
           }
         `);
       });
@@ -954,7 +965,7 @@ describe('/api/auth/*', () => {
       test('failure', async () => {
         mw.resetUserPassword.mockImplementation(async (req, res) => {
           res.json({
-            reset: false,
+            error: true,
             reason: 'The email provided does not match any existing account.'
           });
         });
@@ -965,8 +976,8 @@ describe('/api/auth/*', () => {
         const response = await request({ path, body, method: 'post' });
         expect(await response.json()).toMatchInlineSnapshot(`
           Object {
+            "error": true,
             "reason": "The email provided does not match any existing account.",
-            "reset": false,
           }
         `);
       });
