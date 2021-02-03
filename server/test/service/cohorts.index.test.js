@@ -224,6 +224,8 @@ jest.mock('../../service/scenarios/db', () => {
   };
 });
 
+const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
+
 describe('/api/cohorts/*', () => {
   afterAll(() => {
     jest.restoreAllMocks();
@@ -293,7 +295,208 @@ describe('/api/cohorts/*', () => {
       const method = 'post';
       const body = { name: 'A New Cohort' };
       const response = await request({ path, method, body });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "cohort": Object {
+            "created_at": "2020-07-24T14:52:28.429Z",
+            "id": 1,
+            "name": "A New Cohort",
+            "roles": Array [
+              "owner",
+              "facilitator",
+              "participant",
+            ],
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-28T19:44:03.069Z",
+                "ended_at": "2020-07-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:01:43.139Z",
+                "user_id": 999,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-31T17:01:52.908Z",
+                "ended_at": "2020-07-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:02:00.309Z",
+                "user_id": 9,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-31T17:02:51.357Z",
+                "ended_at": "2020-07-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:02:57.054Z",
+                "user_id": 11,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "users": Array [
+              Object {
+                "email": null,
+                "id": 9,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "valuable-ram",
+              },
+              Object {
+                "email": null,
+                "id": 11,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "warmhearted-jackal",
+              },
+              Object {
+                "email": null,
+                "id": 12,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "super-insect",
+              },
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+              Object {
+                "email": "facilitator@email.com",
+                "id": 888,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Facilitator User",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "username": "facilitator",
+              },
+              Object {
+                "email": "participant@email.com",
+                "id": 777,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Participant User",
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "participant",
+              },
+            ],
+            "usersById": Object {
+              "11": Object {
+                "email": null,
+                "id": 11,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "warmhearted-jackal",
+              },
+              "12": Object {
+                "email": null,
+                "id": 12,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "super-insect",
+              },
+              "777": Object {
+                "email": "participant@email.com",
+                "id": 777,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Participant User",
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "participant",
+              },
+              "888": Object {
+                "email": "facilitator@email.com",
+                "id": 888,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Facilitator User",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "username": "facilitator",
+              },
+              "9": Object {
+                "email": null,
+                "id": 9,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "valuable-ram",
+              },
+              "999": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+            },
+          },
+        }
+      `);
       expect(db.createCohort.mock.calls.length).toBe(1);
       expect(db.createCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -311,7 +514,210 @@ describe('/api/cohorts/*', () => {
         });
 
         const response = await request({ path });
-        expect(await response.json()).toMatchSnapshot();
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "cohorts": Array [
+              Object {
+                "created_at": "2020-07-24T14:52:28.429Z",
+                "id": 1,
+                "name": "First Cohort",
+                "roles": Array [
+                  "owner",
+                  "facilitator",
+                  "participant",
+                ],
+                "runs": Array [
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-28T19:44:03.069Z",
+                    "ended_at": "2020-07-31T17:01:43.128Z",
+                    "id": 11,
+                    "referrer_params": null,
+                    "run_id": 11,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:01:43.139Z",
+                    "user_id": 999,
+                  },
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-31T17:01:52.908Z",
+                    "ended_at": "2020-07-31T17:02:00.296Z",
+                    "id": 28,
+                    "referrer_params": null,
+                    "run_id": 28,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:02:00.309Z",
+                    "user_id": 9,
+                  },
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-31T17:02:51.357Z",
+                    "ended_at": "2020-07-31T17:02:57.043Z",
+                    "id": 29,
+                    "referrer_params": null,
+                    "run_id": 29,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:02:57.054Z",
+                    "user_id": 11,
+                  },
+                ],
+                "scenarios": Array [
+                  7,
+                  1,
+                  9,
+                  8,
+                ],
+                "users": Array [
+                  Object {
+                    "email": null,
+                    "id": 9,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "valuable-ram",
+                  },
+                  Object {
+                    "email": null,
+                    "id": 11,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "warmhearted-jackal",
+                  },
+                  Object {
+                    "email": null,
+                    "id": 12,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "super-insect",
+                  },
+                  Object {
+                    "email": "super@email.com",
+                    "id": 999,
+                    "is_anonymous": false,
+                    "is_super": true,
+                    "personalname": "Super User",
+                    "roles": Array [
+                      "participant",
+                      "super_admin",
+                      "facilitator",
+                      "researcher",
+                    ],
+                    "username": "super",
+                  },
+                  Object {
+                    "email": "facilitator@email.com",
+                    "id": 888,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Facilitator User",
+                    "roles": Array [
+                      "participant",
+                      "facilitator",
+                    ],
+                    "username": "facilitator",
+                  },
+                  Object {
+                    "email": "participant@email.com",
+                    "id": 777,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Participant User",
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "participant",
+                  },
+                ],
+                "usersById": Object {
+                  "11": Object {
+                    "email": null,
+                    "id": 11,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "warmhearted-jackal",
+                  },
+                  "12": Object {
+                    "email": null,
+                    "id": 12,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "super-insect",
+                  },
+                  "777": Object {
+                    "email": "participant@email.com",
+                    "id": 777,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Participant User",
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "participant",
+                  },
+                  "888": Object {
+                    "email": "facilitator@email.com",
+                    "id": 888,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Facilitator User",
+                    "roles": Array [
+                      "participant",
+                      "facilitator",
+                    ],
+                    "username": "facilitator",
+                  },
+                  "9": Object {
+                    "email": null,
+                    "id": 9,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "valuable-ram",
+                  },
+                  "999": Object {
+                    "email": "super@email.com",
+                    "id": 999,
+                    "is_anonymous": false,
+                    "is_super": true,
+                    "personalname": "Super User",
+                    "roles": Array [
+                      "participant",
+                      "super_admin",
+                      "facilitator",
+                      "researcher",
+                    ],
+                    "username": "super",
+                  },
+                },
+              },
+            ],
+          }
+        `);
         expect(db.getCohorts.mock.calls.length).toBe(1);
         expect(db.getCohorts.mock.calls[0]).toMatchInlineSnapshot(`
           Array [
@@ -340,7 +746,210 @@ describe('/api/cohorts/*', () => {
         });
 
         const response = await request({ path });
-        expect(await response.json()).toMatchSnapshot();
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "cohorts": Array [
+              Object {
+                "created_at": "2020-07-24T14:52:28.429Z",
+                "id": 1,
+                "name": "First Cohort",
+                "roles": Array [
+                  "owner",
+                  "facilitator",
+                  "participant",
+                ],
+                "runs": Array [
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-28T19:44:03.069Z",
+                    "ended_at": "2020-07-31T17:01:43.128Z",
+                    "id": 11,
+                    "referrer_params": null,
+                    "run_id": 11,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:01:43.139Z",
+                    "user_id": 999,
+                  },
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-31T17:01:52.908Z",
+                    "ended_at": "2020-07-31T17:02:00.296Z",
+                    "id": 28,
+                    "referrer_params": null,
+                    "run_id": 28,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:02:00.309Z",
+                    "user_id": 9,
+                  },
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-31T17:02:51.357Z",
+                    "ended_at": "2020-07-31T17:02:57.043Z",
+                    "id": 29,
+                    "referrer_params": null,
+                    "run_id": 29,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:02:57.054Z",
+                    "user_id": 11,
+                  },
+                ],
+                "scenarios": Array [
+                  7,
+                  1,
+                  9,
+                  8,
+                ],
+                "users": Array [
+                  Object {
+                    "email": null,
+                    "id": 9,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "valuable-ram",
+                  },
+                  Object {
+                    "email": null,
+                    "id": 11,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "warmhearted-jackal",
+                  },
+                  Object {
+                    "email": null,
+                    "id": 12,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "super-insect",
+                  },
+                  Object {
+                    "email": "super@email.com",
+                    "id": 999,
+                    "is_anonymous": false,
+                    "is_super": true,
+                    "personalname": "Super User",
+                    "roles": Array [
+                      "participant",
+                      "super_admin",
+                      "facilitator",
+                      "researcher",
+                    ],
+                    "username": "super",
+                  },
+                  Object {
+                    "email": "facilitator@email.com",
+                    "id": 888,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Facilitator User",
+                    "roles": Array [
+                      "participant",
+                      "facilitator",
+                    ],
+                    "username": "facilitator",
+                  },
+                  Object {
+                    "email": "participant@email.com",
+                    "id": 777,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Participant User",
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "participant",
+                  },
+                ],
+                "usersById": Object {
+                  "11": Object {
+                    "email": null,
+                    "id": 11,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "warmhearted-jackal",
+                  },
+                  "12": Object {
+                    "email": null,
+                    "id": 12,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "super-insect",
+                  },
+                  "777": Object {
+                    "email": "participant@email.com",
+                    "id": 777,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Participant User",
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "participant",
+                  },
+                  "888": Object {
+                    "email": "facilitator@email.com",
+                    "id": 888,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Facilitator User",
+                    "roles": Array [
+                      "participant",
+                      "facilitator",
+                    ],
+                    "username": "facilitator",
+                  },
+                  "9": Object {
+                    "email": null,
+                    "id": 9,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "valuable-ram",
+                  },
+                  "999": Object {
+                    "email": "super@email.com",
+                    "id": 999,
+                    "is_anonymous": false,
+                    "is_super": true,
+                    "personalname": "Super User",
+                    "roles": Array [
+                      "participant",
+                      "super_admin",
+                      "facilitator",
+                      "researcher",
+                    ],
+                    "username": "super",
+                  },
+                },
+              },
+            ],
+          }
+        `);
         expect(db.getCohorts.mock.calls.length).toBe(1);
         expect(db.getCohorts.mock.calls[0]).toMatchInlineSnapshot(`
           Array [
@@ -367,7 +976,210 @@ describe('/api/cohorts/*', () => {
         });
 
         const response = await request({ path });
-        expect(await response.json()).toMatchSnapshot();
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "cohorts": Array [
+              Object {
+                "created_at": "2020-07-24T14:52:28.429Z",
+                "id": 1,
+                "name": "First Cohort",
+                "roles": Array [
+                  "owner",
+                  "facilitator",
+                  "participant",
+                ],
+                "runs": Array [
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-28T19:44:03.069Z",
+                    "ended_at": "2020-07-31T17:01:43.128Z",
+                    "id": 11,
+                    "referrer_params": null,
+                    "run_id": 11,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:01:43.139Z",
+                    "user_id": 999,
+                  },
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-31T17:01:52.908Z",
+                    "ended_at": "2020-07-31T17:02:00.296Z",
+                    "id": 28,
+                    "referrer_params": null,
+                    "run_id": 28,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:02:00.309Z",
+                    "user_id": 9,
+                  },
+                  Object {
+                    "cohort_id": 1,
+                    "consent_acknowledged_by_user": true,
+                    "consent_granted_by_user": true,
+                    "consent_id": 8,
+                    "created_at": "2020-07-31T17:02:51.357Z",
+                    "ended_at": "2020-07-31T17:02:57.043Z",
+                    "id": 29,
+                    "referrer_params": null,
+                    "run_id": 29,
+                    "scenario_id": 7,
+                    "updated_at": "2020-07-31T17:02:57.054Z",
+                    "user_id": 11,
+                  },
+                ],
+                "scenarios": Array [
+                  7,
+                  1,
+                  9,
+                  8,
+                ],
+                "users": Array [
+                  Object {
+                    "email": null,
+                    "id": 9,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "valuable-ram",
+                  },
+                  Object {
+                    "email": null,
+                    "id": 11,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "warmhearted-jackal",
+                  },
+                  Object {
+                    "email": null,
+                    "id": 12,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "super-insect",
+                  },
+                  Object {
+                    "email": "super@email.com",
+                    "id": 999,
+                    "is_anonymous": false,
+                    "is_super": true,
+                    "personalname": "Super User",
+                    "roles": Array [
+                      "participant",
+                      "super_admin",
+                      "facilitator",
+                      "researcher",
+                    ],
+                    "username": "super",
+                  },
+                  Object {
+                    "email": "facilitator@email.com",
+                    "id": 888,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Facilitator User",
+                    "roles": Array [
+                      "participant",
+                      "facilitator",
+                    ],
+                    "username": "facilitator",
+                  },
+                  Object {
+                    "email": "participant@email.com",
+                    "id": 777,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Participant User",
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "participant",
+                  },
+                ],
+                "usersById": Object {
+                  "11": Object {
+                    "email": null,
+                    "id": 11,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "warmhearted-jackal",
+                  },
+                  "12": Object {
+                    "email": null,
+                    "id": 12,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "super-insect",
+                  },
+                  "777": Object {
+                    "email": "participant@email.com",
+                    "id": 777,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Participant User",
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "participant",
+                  },
+                  "888": Object {
+                    "email": "facilitator@email.com",
+                    "id": 888,
+                    "is_anonymous": false,
+                    "is_super": false,
+                    "personalname": "Facilitator User",
+                    "roles": Array [
+                      "participant",
+                      "facilitator",
+                    ],
+                    "username": "facilitator",
+                  },
+                  "9": Object {
+                    "email": null,
+                    "id": 9,
+                    "is_anonymous": true,
+                    "is_owner": false,
+                    "roles": Array [
+                      "participant",
+                    ],
+                    "username": "valuable-ram",
+                  },
+                  "999": Object {
+                    "email": "super@email.com",
+                    "id": 999,
+                    "is_anonymous": false,
+                    "is_super": true,
+                    "personalname": "Super User",
+                    "roles": Array [
+                      "participant",
+                      "super_admin",
+                      "facilitator",
+                      "researcher",
+                    ],
+                    "username": "super",
+                  },
+                },
+              },
+            ],
+          }
+        `);
         expect(db.getCohorts.mock.calls.length).toBe(1);
         expect(db.getCohorts.mock.calls[0]).toMatchInlineSnapshot(`
           Array [
@@ -401,7 +1213,208 @@ describe('/api/cohorts/*', () => {
 
     test('get success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "cohort": Object {
+            "created_at": "2020-07-24T14:52:28.429Z",
+            "id": 1,
+            "name": "First Cohort",
+            "roles": Array [
+              "owner",
+              "facilitator",
+              "participant",
+            ],
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-28T19:44:03.069Z",
+                "ended_at": "2020-07-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:01:43.139Z",
+                "user_id": 999,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-31T17:01:52.908Z",
+                "ended_at": "2020-07-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:02:00.309Z",
+                "user_id": 9,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-31T17:02:51.357Z",
+                "ended_at": "2020-07-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:02:57.054Z",
+                "user_id": 11,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "users": Array [
+              Object {
+                "email": null,
+                "id": 9,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "valuable-ram",
+              },
+              Object {
+                "email": null,
+                "id": 11,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "warmhearted-jackal",
+              },
+              Object {
+                "email": null,
+                "id": 12,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "super-insect",
+              },
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+              Object {
+                "email": "facilitator@email.com",
+                "id": 888,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Facilitator User",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "username": "facilitator",
+              },
+              Object {
+                "email": "participant@email.com",
+                "id": 777,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Participant User",
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "participant",
+              },
+            ],
+            "usersById": Object {
+              "11": Object {
+                "email": null,
+                "id": 11,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "warmhearted-jackal",
+              },
+              "12": Object {
+                "email": null,
+                "id": 12,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "super-insect",
+              },
+              "777": Object {
+                "email": "participant@email.com",
+                "id": 777,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Participant User",
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "participant",
+              },
+              "888": Object {
+                "email": "facilitator@email.com",
+                "id": 888,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Facilitator User",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "username": "facilitator",
+              },
+              "9": Object {
+                "email": null,
+                "id": 9,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "valuable-ram",
+              },
+              "999": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+            },
+          },
+        }
+      `);
       expect(db.getCohort.mock.calls.length).toBe(1);
       expect(db.getCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -416,23 +1429,424 @@ describe('/api/cohorts/*', () => {
       test('has updates', async () => {
         const body = { name: 'x', deleted_at: 'y' };
         const response = await request({ path, method, body });
-        expect(await response.json()).toMatchSnapshot();
-        expect(db.getCohort.mock.calls.length).toBe(0);
-        expect(db.setCohort.mock.calls[0]).toMatchInlineSnapshot(`
-          Array [
-            1,
-            Object {
-              "deleted_at": "y",
-              "name": "x",
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "cohort": Object {
+              "created_at": "2020-07-24T14:52:28.429Z",
+              "id": 1,
+              "name": "First Cohort",
+              "roles": Array [
+                "owner",
+                "facilitator",
+                "participant",
+              ],
+              "runs": Array [
+                Object {
+                  "cohort_id": 1,
+                  "consent_acknowledged_by_user": true,
+                  "consent_granted_by_user": true,
+                  "consent_id": 8,
+                  "created_at": "2020-07-28T19:44:03.069Z",
+                  "ended_at": "2020-07-31T17:01:43.128Z",
+                  "id": 11,
+                  "referrer_params": null,
+                  "run_id": 11,
+                  "scenario_id": 7,
+                  "updated_at": "2020-07-31T17:01:43.139Z",
+                  "user_id": 999,
+                },
+                Object {
+                  "cohort_id": 1,
+                  "consent_acknowledged_by_user": true,
+                  "consent_granted_by_user": true,
+                  "consent_id": 8,
+                  "created_at": "2020-07-31T17:01:52.908Z",
+                  "ended_at": "2020-07-31T17:02:00.296Z",
+                  "id": 28,
+                  "referrer_params": null,
+                  "run_id": 28,
+                  "scenario_id": 7,
+                  "updated_at": "2020-07-31T17:02:00.309Z",
+                  "user_id": 9,
+                },
+                Object {
+                  "cohort_id": 1,
+                  "consent_acknowledged_by_user": true,
+                  "consent_granted_by_user": true,
+                  "consent_id": 8,
+                  "created_at": "2020-07-31T17:02:51.357Z",
+                  "ended_at": "2020-07-31T17:02:57.043Z",
+                  "id": 29,
+                  "referrer_params": null,
+                  "run_id": 29,
+                  "scenario_id": 7,
+                  "updated_at": "2020-07-31T17:02:57.054Z",
+                  "user_id": 11,
+                },
+              ],
+              "scenarios": Array [
+                7,
+                1,
+                9,
+                8,
+              ],
+              "users": Array [
+                Object {
+                  "email": null,
+                  "id": 9,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "valuable-ram",
+                },
+                Object {
+                  "email": null,
+                  "id": 11,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "warmhearted-jackal",
+                },
+                Object {
+                  "email": null,
+                  "id": 12,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "super-insect",
+                },
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "super",
+                },
+                Object {
+                  "email": "facilitator@email.com",
+                  "id": 888,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Facilitator User",
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "username": "facilitator",
+                },
+                Object {
+                  "email": "participant@email.com",
+                  "id": 777,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Participant User",
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "participant",
+                },
+              ],
+              "usersById": Object {
+                "11": Object {
+                  "email": null,
+                  "id": 11,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "warmhearted-jackal",
+                },
+                "12": Object {
+                  "email": null,
+                  "id": 12,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "super-insect",
+                },
+                "777": Object {
+                  "email": "participant@email.com",
+                  "id": 777,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Participant User",
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "participant",
+                },
+                "888": Object {
+                  "email": "facilitator@email.com",
+                  "id": 888,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Facilitator User",
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "username": "facilitator",
+                },
+                "9": Object {
+                  "email": null,
+                  "id": 9,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "valuable-ram",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "super",
+                },
+              },
             },
-          ]
+          }
         `);
+        expect(db.getCohort.mock.calls.length).toBe(0);
+        expect(db.setCohort.mock.calls[0]).toMatchObject([
+          1,
+          {
+            deleted_at: 'y',
+            name: 'x',
+            updated_at: expectDateString
+          }
+        ]);
       });
 
       test('no updates', async () => {
         const body = {};
         const response = await request({ path, method, body });
-        expect(await response.json()).toMatchSnapshot();
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "cohort": Object {
+              "created_at": "2020-07-24T14:52:28.429Z",
+              "id": 1,
+              "name": "First Cohort",
+              "roles": Array [
+                "owner",
+                "facilitator",
+                "participant",
+              ],
+              "runs": Array [
+                Object {
+                  "cohort_id": 1,
+                  "consent_acknowledged_by_user": true,
+                  "consent_granted_by_user": true,
+                  "consent_id": 8,
+                  "created_at": "2020-07-28T19:44:03.069Z",
+                  "ended_at": "2020-07-31T17:01:43.128Z",
+                  "id": 11,
+                  "referrer_params": null,
+                  "run_id": 11,
+                  "scenario_id": 7,
+                  "updated_at": "2020-07-31T17:01:43.139Z",
+                  "user_id": 999,
+                },
+                Object {
+                  "cohort_id": 1,
+                  "consent_acknowledged_by_user": true,
+                  "consent_granted_by_user": true,
+                  "consent_id": 8,
+                  "created_at": "2020-07-31T17:01:52.908Z",
+                  "ended_at": "2020-07-31T17:02:00.296Z",
+                  "id": 28,
+                  "referrer_params": null,
+                  "run_id": 28,
+                  "scenario_id": 7,
+                  "updated_at": "2020-07-31T17:02:00.309Z",
+                  "user_id": 9,
+                },
+                Object {
+                  "cohort_id": 1,
+                  "consent_acknowledged_by_user": true,
+                  "consent_granted_by_user": true,
+                  "consent_id": 8,
+                  "created_at": "2020-07-31T17:02:51.357Z",
+                  "ended_at": "2020-07-31T17:02:57.043Z",
+                  "id": 29,
+                  "referrer_params": null,
+                  "run_id": 29,
+                  "scenario_id": 7,
+                  "updated_at": "2020-07-31T17:02:57.054Z",
+                  "user_id": 11,
+                },
+              ],
+              "scenarios": Array [
+                7,
+                1,
+                9,
+                8,
+              ],
+              "users": Array [
+                Object {
+                  "email": null,
+                  "id": 9,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "valuable-ram",
+                },
+                Object {
+                  "email": null,
+                  "id": 11,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "warmhearted-jackal",
+                },
+                Object {
+                  "email": null,
+                  "id": 12,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "super-insect",
+                },
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "super",
+                },
+                Object {
+                  "email": "facilitator@email.com",
+                  "id": 888,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Facilitator User",
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "username": "facilitator",
+                },
+                Object {
+                  "email": "participant@email.com",
+                  "id": 777,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Participant User",
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "participant",
+                },
+              ],
+              "usersById": Object {
+                "11": Object {
+                  "email": null,
+                  "id": 11,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "warmhearted-jackal",
+                },
+                "12": Object {
+                  "email": null,
+                  "id": 12,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "super-insect",
+                },
+                "777": Object {
+                  "email": "participant@email.com",
+                  "id": 777,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Participant User",
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "participant",
+                },
+                "888": Object {
+                  "email": "facilitator@email.com",
+                  "id": 888,
+                  "is_anonymous": false,
+                  "is_super": false,
+                  "personalname": "Facilitator User",
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "username": "facilitator",
+                },
+                "9": Object {
+                  "email": null,
+                  "id": 9,
+                  "is_anonymous": true,
+                  "is_owner": false,
+                  "roles": Array [
+                    "participant",
+                  ],
+                  "username": "valuable-ram",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "username": "super",
+                },
+              },
+            },
+          }
+        `);
         expect(db.setCohort.mock.calls.length).toBe(0);
         expect(db.getCohort.mock.calls[0]).toMatchInlineSnapshot(`
           Array [
@@ -449,7 +1863,15 @@ describe('/api/cohorts/*', () => {
       test('put success', async () => {
         const body = { scenarios: [10, 20, 30] };
         const response = await request({ path, method, body });
-        expect(await response.json()).toMatchSnapshot();
+        expect(await response.json()).toMatchInlineSnapshot(`
+          Object {
+            "scenarios": Array [
+              10,
+              20,
+              30,
+            ],
+          }
+        `);
         expect(db.setCohortScenarios.mock.calls.length).toBe(1);
         expect(db.setCohortScenarios.mock.calls[0]).toMatchInlineSnapshot(`
           Array [
@@ -470,7 +1892,27 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "prompts": Array [
+            Object {
+              "id": "x",
+            },
+            Object {
+              "id": "y",
+            },
+            Object {
+              "id": "z",
+            },
+          ],
+          "responses": Array [
+            Object {
+              "response_id": 1,
+              "scenario_id": 42,
+            },
+          ],
+        }
+      `);
       expect(db.getCohortRunResponses.mock.calls.length).toBe(1);
       expect(db.getCohortRunResponses.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -494,7 +1936,27 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "prompts": Array [
+            Object {
+              "id": "x",
+            },
+            Object {
+              "id": "y",
+            },
+            Object {
+              "id": "z",
+            },
+          ],
+          "responses": Array [
+            Object {
+              "response_id": 1,
+              "scenario_id": 42,
+            },
+          ],
+        }
+      `);
       expect(db.getCohortRunResponses.mock.calls.length).toBe(1);
       expect(db.getCohortRunResponses.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -518,7 +1980,29 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "prompts": Object {
+            "42": Array [
+              Object {
+                "id": "x",
+              },
+              Object {
+                "id": "y",
+              },
+              Object {
+                "id": "z",
+              },
+            ],
+          },
+          "responses": Array [
+            Object {
+              "response_id": 1,
+              "scenario_id": 42,
+            },
+          ],
+        }
+      `);
       expect(db.getCohortRunResponses.mock.calls.length).toBe(1);
       expect(db.getCohortRunResponses.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -542,7 +2026,208 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "cohort": Object {
+            "created_at": "2020-07-24T14:52:28.429Z",
+            "id": 1,
+            "name": "First Cohort",
+            "roles": Array [
+              "owner",
+              "facilitator",
+              "participant",
+            ],
+            "runs": Array [
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-28T19:44:03.069Z",
+                "ended_at": "2020-07-31T17:01:43.128Z",
+                "id": 11,
+                "referrer_params": null,
+                "run_id": 11,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:01:43.139Z",
+                "user_id": 999,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-31T17:01:52.908Z",
+                "ended_at": "2020-07-31T17:02:00.296Z",
+                "id": 28,
+                "referrer_params": null,
+                "run_id": 28,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:02:00.309Z",
+                "user_id": 9,
+              },
+              Object {
+                "cohort_id": 1,
+                "consent_acknowledged_by_user": true,
+                "consent_granted_by_user": true,
+                "consent_id": 8,
+                "created_at": "2020-07-31T17:02:51.357Z",
+                "ended_at": "2020-07-31T17:02:57.043Z",
+                "id": 29,
+                "referrer_params": null,
+                "run_id": 29,
+                "scenario_id": 7,
+                "updated_at": "2020-07-31T17:02:57.054Z",
+                "user_id": 11,
+              },
+            ],
+            "scenarios": Array [
+              7,
+              1,
+              9,
+              8,
+            ],
+            "users": Array [
+              Object {
+                "email": null,
+                "id": 9,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "valuable-ram",
+              },
+              Object {
+                "email": null,
+                "id": 11,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "warmhearted-jackal",
+              },
+              Object {
+                "email": null,
+                "id": 12,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "super-insect",
+              },
+              Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+              Object {
+                "email": "facilitator@email.com",
+                "id": 888,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Facilitator User",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "username": "facilitator",
+              },
+              Object {
+                "email": "participant@email.com",
+                "id": 777,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Participant User",
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "participant",
+              },
+            ],
+            "usersById": Object {
+              "11": Object {
+                "email": null,
+                "id": 11,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "warmhearted-jackal",
+              },
+              "12": Object {
+                "email": null,
+                "id": 12,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "super-insect",
+              },
+              "777": Object {
+                "email": "participant@email.com",
+                "id": 777,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Participant User",
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "participant",
+              },
+              "888": Object {
+                "email": "facilitator@email.com",
+                "id": 888,
+                "is_anonymous": false,
+                "is_super": false,
+                "personalname": "Facilitator User",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "username": "facilitator",
+              },
+              "9": Object {
+                "email": null,
+                "id": 9,
+                "is_anonymous": true,
+                "is_owner": false,
+                "roles": Array [
+                  "participant",
+                ],
+                "username": "valuable-ram",
+              },
+              "999": Object {
+                "email": "super@email.com",
+                "id": 999,
+                "is_anonymous": false,
+                "is_super": true,
+                "personalname": "Super User",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "username": "super",
+              },
+            },
+          },
+        }
+      `);
       expect(db.linkCohortToRun.mock.calls.length).toBe(1);
       expect(db.linkCohortToRun.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -564,7 +2249,148 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "users": Array [
+            Object {
+              "email": null,
+              "id": 9,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "valuable-ram",
+            },
+            Object {
+              "email": null,
+              "id": 11,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "warmhearted-jackal",
+            },
+            Object {
+              "email": null,
+              "id": 12,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "super-insect",
+            },
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+            Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+            Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+          ],
+          "usersById": Object {
+            "11": Object {
+              "email": null,
+              "id": 11,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "warmhearted-jackal",
+            },
+            "12": Object {
+              "email": null,
+              "id": 12,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "super-insect",
+            },
+            "777": Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+            "888": Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+            "9": Object {
+              "email": null,
+              "id": 9,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "valuable-ram",
+            },
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+          },
+        }
+      `);
       expect(db.linkUserToCohort.mock.calls.length).toBe(1);
       expect(db.linkUserToCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -582,7 +2408,148 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "users": Array [
+            Object {
+              "email": null,
+              "id": 9,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "valuable-ram",
+            },
+            Object {
+              "email": null,
+              "id": 11,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "warmhearted-jackal",
+            },
+            Object {
+              "email": null,
+              "id": 12,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "super-insect",
+            },
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+            Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+            Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+          ],
+          "usersById": Object {
+            "11": Object {
+              "email": null,
+              "id": 11,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "warmhearted-jackal",
+            },
+            "12": Object {
+              "email": null,
+              "id": 12,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "super-insect",
+            },
+            "777": Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+            "888": Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+            "9": Object {
+              "email": null,
+              "id": 9,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "valuable-ram",
+            },
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+          },
+        }
+      `);
       expect(db.linkUserToCohort.mock.calls.length).toBe(1);
       expect(db.linkUserToCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -600,7 +2567,148 @@ describe('/api/cohorts/*', () => {
 
     test('success', async () => {
       const response = await request({ path });
-      expect(await response.json()).toMatchSnapshot();
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "users": Array [
+            Object {
+              "email": null,
+              "id": 9,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "valuable-ram",
+            },
+            Object {
+              "email": null,
+              "id": 11,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "warmhearted-jackal",
+            },
+            Object {
+              "email": null,
+              "id": 12,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "super-insect",
+            },
+            Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+            Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+            Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+          ],
+          "usersById": Object {
+            "11": Object {
+              "email": null,
+              "id": 11,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "warmhearted-jackal",
+            },
+            "12": Object {
+              "email": null,
+              "id": 12,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "super-insect",
+            },
+            "777": Object {
+              "email": "participant@email.com",
+              "id": 777,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Participant User",
+              "roles": Array [
+                "participant",
+              ],
+              "username": "participant",
+            },
+            "888": Object {
+              "email": "facilitator@email.com",
+              "id": 888,
+              "is_anonymous": false,
+              "is_super": false,
+              "personalname": "Facilitator User",
+              "roles": Array [
+                "participant",
+                "facilitator",
+              ],
+              "username": "facilitator",
+            },
+            "9": Object {
+              "email": null,
+              "id": 9,
+              "is_anonymous": true,
+              "is_owner": false,
+              "roles": Array [
+                "participant",
+              ],
+              "username": "valuable-ram",
+            },
+            "999": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+                "facilitator",
+                "researcher",
+              ],
+              "username": "super",
+            },
+          },
+        }
+      `);
       expect(db.linkUserToCohort.mock.calls.length).toBe(1);
       expect(db.linkUserToCohort.mock.calls[0]).toMatchInlineSnapshot(`
         Array [

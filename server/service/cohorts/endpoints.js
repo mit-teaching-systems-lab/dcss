@@ -124,7 +124,7 @@ async function setCohort(req, res) {
 
   let cohort;
 
-  if (Object.entries(updates).length) {
+  if (Object.entries(req.body).length && Object.entries(updates).length) {
     cohort = await db.setCohort(id, updates);
   } else {
     cohort = await db.getCohort(id);
