@@ -72,6 +72,7 @@ class Downloads extends Component {
     this.onDownloadSearchChange = this.onDownloadSearchChange.bind(this);
     this.onPageChange = this.onPageChange.bind(this);
     this.requestDownload = this.requestDownload.bind(this);
+    this.triggerDownload = this.triggerDownload.bind(this);
   }
 
   async componentDidMount() {
@@ -98,14 +99,14 @@ class Downloads extends Component {
     });
   }
 
-  async requestDownload({ cohort, scenarioId }) {
+  async requestDownload({ cohort, scenario }) {
     const { getHistoryForScenario } = this.props;
-    const scenarioIds = scenarioId
-      ? [scenarioId]
+    const scenarios = scenario
+      ? [scenario.id]
       : cohort.scenarios.map(v => (typeof v === 'number' ? v : v.id));
     const files = [];
 
-    for (let id of scenarioIds) {
+    for (let id of scenarios) {
       // TODO: change this to an object parameter
       const { prompts, responses } = await getHistoryForScenario(
         id,
@@ -113,65 +114,69 @@ class Downloads extends Component {
       );
 
       const records = responses.flat();
-      records.forEach(record => {
-        const {
-          is_skip,
-          response_id,
-          content = '',
-          transcript = '',
-          value = ''
-        } = record;
-        const prompt = prompts.find(
-          prompt => prompt.responseId === response_id
-        );
-        record.header = makeHeader(prompt, prompts);
-        record.content = content;
-        record.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
 
-        if (Media.isAudioFile(value)) {
-          record.content += ` (${location.origin}/api/media/${value})`;
-        }
+      if (records.length) {
+        records.forEach(record => {
+          const {
+            is_skip,
+            response_id,
+            content = '',
+            transcript = '',
+            value = ''
+          } = record;
+          const prompt = prompts.find(
+            prompt => prompt.responseId === response_id
+          );
+          record.header = makeHeader(prompt, prompts);
+          record.content = content;
+          record.content += is_skip ? '(skipped)' : ` ${transcript || value}`;
 
-        if (cohort) {
-          record.cohort_id = cohort.id;
-        }
-      });
+          if (Media.isAudioFile(value)) {
+            record.content += ` (${location.origin}/api/media/${value})`;
+          }
 
-      const fields = [
-        'username',
-        'header',
-        'content',
-        'is_skip',
-        'run_id',
-        'created_at',
-        'ended_at',
-        'type',
-        'referrer_params',
-        'consent_granted_by_user',
-        'cohort_id'
-      ];
+          if (cohort) {
+            record.cohort_id = cohort.id;
+          }
+        });
 
-      // if (cohort) {
-      //   fields.push('cohort_id');
-      // }
+        const fields = [
+          'username',
+          'header',
+          'content',
+          'is_skip',
+          'run_id',
+          'created_at',
+          'ended_at',
+          'type',
+          'referrer_params',
+          'consent_granted_by_user',
+          'cohort_id'
+        ];
 
-      const file = Identity.key({ cohort, id });
-      const parser = new Parser({ fields });
-      const csv = parser.parse(records);
+        const file = Identity.key({ cohort, id });
+        const parser = new Parser({ fields });
+        const csv = parser.parse(records);
 
-      files.push([`${file}.csv`, csv]);
+        files.push([`${file}.csv`, csv]);
+      }
     }
 
+    return files;
+  }
+
+  async triggerDownload(files) {
     if (Object.entries(files).length === 1) {
       const [file, csv] = files[0];
       CSV.download(file, csv);
     } else {
+
       CSV.downloadZipAsync(files);
     }
   }
 
   render() {
-    const { onDownloadSearchChange, onPageChange, requestDownload } = this;
+    const { onDownloadSearchChange, onPageChange, requestDownload, triggerDownload } = this;
     const { activePage, filter, isReady } = this.state;
     const {
       cohorts,
@@ -218,8 +223,8 @@ class Downloads extends Component {
     let rowCount = 0;
     const downloads = cohorts.reduce((accum, cohort, index) => {
       if (hasAccessToCohort(cohort)) {
-        const onDownloadByCohortClick = () => {
-          requestDownload({ cohort });
+        const onDownloadByCohortClick = async () => {
+          await triggerDownload(await requestDownload({ cohort }));
         };
 
         dropdownCohortSelectOptions.push({
@@ -235,8 +240,8 @@ class Downloads extends Component {
         accum.push(
           ...cohort.scenarios.map((id, index) => {
             const scenario = scenariosById[id];
-            const onDownloadByScenarioRunClick = () => {
-              requestDownload({ cohort, scenarioId: id });
+            const onDownloadByScenarioRunClick = async () => {
+              await triggerDownload(await requestDownload({ cohort, scenario }));
             };
 
             const stitle = (scenario && scenario.title) || '';
@@ -313,8 +318,8 @@ class Downloads extends Component {
 
       const scenarioRunDownloads = scenarios.reduce(
         (accum, scenario, index) => {
-          const onDownloadByScenarioRunClick = () => {
-            requestDownload({ scenarioId: scenario.id });
+          const onDownloadByScenarioRunClick = async () => {
+            await triggerDownload(await requestDownload({ scenario }));
           };
 
           dropdownScenarioSelectOptions.push({
@@ -379,8 +384,8 @@ class Downloads extends Component {
 
     const filterSubject = getFilterSubject(filter, this.props);
     const menuItemDownloadsFilterDisplay = filterSubject
-      ? `Showing downloads for ${filterSubject.type} "${filterSubject.label}"`
-      : 'Downloads';
+      ? `Showing downloads for ${filterSubject.type} "${filterSubject.label}". Click to download all.`
+      : 'Click to download all.';
 
     const menuItemDownloadsFilterClearLabel = filterSubject
       ? `Clear filter for ${filterSubject.type} "${filterSubject.label}", and see all downloads.`
@@ -396,9 +401,39 @@ class Downloads extends Component {
           this.setState({ filter: null });
         }}
       >
-        (See all)
+        {menuItemDownloadsFilterClearLabel}
       </Menu.Item.Tabbable>
     ) : null;
+
+    const menuItemDownloadsAll = (
+      <Menu.Item.Tabbable
+        key="menu-item-downloads-count"
+        aria-label={menuItemDownloadsFilterDisplay}
+        popup={menuItemDownloadsFilterDisplay}
+        onClick={async () => {
+          const downloads = [];
+
+          for (let cohort of cohorts) {
+            downloads.push(
+              ...(await requestDownload({ cohort }))
+            );
+          }
+
+          for (let scenario of scenarios) {
+            downloads.push(
+              ...(await requestDownload({ scenario }))
+            );
+          }
+
+          await triggerDownload(downloads);
+        }}
+      >
+        <Icon.Group className="em__icon-group-margin">
+          {downloadRunIcon.props.children}
+        </Icon.Group>
+        Download all ({downloads.length})
+      </Menu.Item.Tabbable>
+    );
 
     const menuItemDownloads = (
       <Menu.Item.Tabbable
@@ -511,8 +546,8 @@ class Downloads extends Component {
         items={{
           left: [
             // filter ? menuItemFilterDisplay : menuItemDownloadsCount,
-            menuItemDownloads,
-            menuItemDownloadsFilterClear
+            menuItemDownloadsAll,
+            menuItemDownloadsFilterClear,
           ],
           right: [
             // menuItemCohortSelect,
