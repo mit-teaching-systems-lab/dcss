@@ -104,6 +104,10 @@
   box-shadow: -1px 1px 5px 5px rgb(133 61 97 / 40%);
 }
 
+.react-draggable {
+  z-index: 1002 !important;
+}
+
 .react-draggable-dragging .c__size-handle div:not(:nth-child(n+5)) {
   background: rgba(133, 61, 97, 0.4);
   box-shadow: 1px 0px 5px 5px rgba(133, 61, 97, 0.4);
