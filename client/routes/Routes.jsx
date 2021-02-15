@@ -30,7 +30,6 @@ import {
   ScenariosListCommunity,
   ScenariosListOfficial
 } from './RouteComponents';
-import Sketch from '@components/Sketch';
 import UserSettings from '@components/User/UserSettings';
 import UserInvites from '@components/User/UserInvites';
 
@@ -56,7 +55,6 @@ const Routes = ({ isLoggedIn, user }) => {
   );
   const routeRenderDownloads = (props = {}) => <Downloads {...props} />;
   const routeRenderRun = (props = {}) => <Run {...props} />;
-  const routeRenderSketch = (props = {}) => <Sketch {...props} />;
   const routeRenderUserSettings = (props = {}) => (
     <UserSettings {...props} user={user} open={true} />
   );
@@ -90,10 +88,6 @@ const Routes = ({ isLoggedIn, user }) => {
 
       <InterceptAnonymizableRoute path="/chat" isLoggedIn={isLoggedIn}>
         <Route render={routeRenderChat} />
-      </InterceptAnonymizableRoute>
-
-      <InterceptAnonymizableRoute path="/sketch/:lobby" isLoggedIn={isLoggedIn}>
-        <Route render={routeRenderSketch} />
       </InterceptAnonymizableRoute>
 
       <InterceptAnonymizableRoute
