@@ -443,7 +443,7 @@ class Chat extends Component {
           ) : (
             <i aria-hidden="true" className="comments outline icon"></i>
           )}
-          <div className="content">scenario.title, slide.title</div>
+          <div className="content">Discussion</div>
         </div>
         <Ref innerRef={node => (this.cRef = node)}>
           <div tabIndex="0" className={innerMinMaxClassName}>
