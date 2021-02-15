@@ -11,48 +11,39 @@ exports.getRunById = async function(id) {
 
 exports.getRuns = async function(user_id) {
   const result = await query(sql`
-        SELECT
-            run.id as id,
-            run.id as run_id,
-            run.created_at as run_created_at,
-            run.ended_at as run_ended_at,
-            consent_acknowledged_by_user,
-            consent_granted_by_user,
-            cohort_run.cohort_id as cohort_id,
-            scenario.id as scenario_id,
-            scenario.title as scenario_title,
-            scenario.description as scenario_description,
-            scenario.id as scenario_id,
-            run.user_id as user_id
-        FROM run
-        JOIN scenario ON scenario.id = run.scenario_id
-        LEFT JOIN cohort_run ON cohort_run.run_id = run.id
-        WHERE run.user_id = ${user_id}
-        ORDER BY run.created_at DESC;
-    `);
+    SELECT *
+    FROM run_view
+    WHERE user_id = ${user_id}
+    ORDER BY created_at DESC;
+  `);
   return result.rows;
 };
 
 exports.getRunByIdentifiers = async function(
   user_id,
-  { scenario_id, cohort_id }
+  { scenario_id, cohort_id, chat_id }
 ) {
   let lookup = `
     SELECT * FROM run_view
     WHERE ended_at IS NULL
     AND user_id = ${user_id}
-    AND scenario_id = ${scenario_id}
-  `;
+    AND scenario_id = ${scenario_id}`;
 
   if (cohort_id) {
-    lookup += `AND cohort_id = ${cohort_id}`;
+    lookup += ` AND cohort_id = ${cohort_id}`;
   } else {
-    lookup += `AND cohort_id IS NULL`;
+    lookup += ` AND cohort_id IS NULL`;
+  }
+
+  if (chat_id) {
+    lookup += ` AND chat_id = ${chat_id}`;
+  } else {
+    lookup += ` AND chat_id IS NULL`;
   }
 
   const result = await query(lookup);
 
-  return result.rows[0];
+  return result.rows[0] || null;
 };
 
 exports.createRun = async function(user_id, scenario_id, consent_id) {
@@ -64,7 +55,7 @@ exports.createRun = async function(user_id, scenario_id, consent_id) {
   return result.rows[0];
 };
 
-exports.updateRun = async function(id, data) {
+exports.setRun = async function(id, data) {
   const result = await query(updateQuery('run', { id }, data));
   return result.rows[0];
 };
@@ -245,12 +236,35 @@ exports.getTranscriptionOutcome = async ({ run_id, response_id, user_id }) => {
   return result.rows[0];
 };
 
-exports.finishRun = async function(id) {
-  const result = await query(sql`
-    UPDATE run
-    SET ended_at = CURRENT_TIMESTAMP
-    WHERE id = ${id}
-    RETURNING *;
-  `);
-  return result.rows[0];
-};
+// Currently Unused.
+// exports.finishRun = async function(id) {
+//   const runEndedResult = await query(sql`
+//     UPDATE run
+//     SET ended_at = CURRENT_TIMESTAMP
+//     WHERE id = ${id}
+//     RETURNING *;
+//   `);
+
+//   if (runEndedResult.rowCount) {
+//     const run = runEndedResult.rows[0];
+
+//     const runChatResult = await query(sql`
+//       SELECT chat_id as id
+//       FROM run_chat
+//       WHERE run_id = ${id}
+//     `);
+
+//     if (runChatResult.rowCount) {
+//       const {
+//         chat_id,
+//         user_id
+//       } = runChatResult.rows[0];
+//       const runEndedResult = await query(sql`
+//         UPDATE chat_user
+//         SET ended_at = CURRENT_TIMESTAMP
+//         WHERE user_id = ${user_id} AND chat_id = ${chat_id}
+//       `);
+//     }
+//   }
+//   return runEndedResult;
+// };

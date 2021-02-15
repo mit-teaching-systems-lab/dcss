@@ -7,9 +7,9 @@ const oldQuery = Client.prototype.query;
 if (String(process.env.DEBUG).includes('sql') || process.env.SQL_DEBUG) {
   Client.prototype.query = function(...args) {
     // eslint-disable-next-line no-console
-    console.log('QUERY', new Date().toString());
+    // console.log('QUERY', new Date().toString());
     // eslint-disable-next-line no-console
-    console.log(...args.filter(f => typeof f !== 'function'));
+    // console.log(...args.filter(f => typeof f !== 'function'));
     return oldQuery.apply(this, args);
   };
 }
@@ -43,9 +43,14 @@ const notifier = new Emitter();
   }
 
   await client.query(`
-    LISTEN new_notification;
-    LISTEN new_chat_message;
+    LISTEN chat_created;
+    LISTEN chat_message_created;
+    LISTEN chat_message_updated;
     LISTEN join_or_part_chat;
+    LISTEN new_invitation;
+    LISTEN new_notification;
+    LISTEN run_chat_link;
+    LISTEN set_invitation;
   `);
 
   client.on('notification', ({ channel, payload }) => {

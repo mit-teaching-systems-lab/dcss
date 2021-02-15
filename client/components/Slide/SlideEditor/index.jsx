@@ -67,7 +67,7 @@ const MenuItemChatToggler = props => {
     slide,
     slide: { has_chat_enabled: isChatEnabled }
   } = props;
-  const color = isChatEnabled ? 'black' : 'green';
+  const color = isChatEnabled ? 'green' : 'black';
   const iconProps = {
     name: 'chat',
     color
@@ -432,8 +432,23 @@ export default class SlideEditor extends Component {
           disabled={scenario.personas.length === 1}
           slide={slide}
           onToggle={state => {
-            this.setState(state);
-            this.updateSlide();
+            console.log(state);
+            const index = state.slide.components.findIndex(({type}) =>
+              type === 'ChatPrompt'
+            );
+
+            console.log(index);
+            if (index >= 0) {
+              // onComponentDelete(index);
+            } else {
+              this.activateComponent(0, () =>
+                onComponentSelectClick('ChatPrompt')
+              );
+            }
+
+            this.setState(state, () => {
+              this.updateSlide();
+            });
           }}
         />
       ]
@@ -680,6 +695,7 @@ export default class SlideEditor extends Component {
                           };
 
                           return mode === 'edit' ? (
+
                             <Draggable
                               key={`draggable-key-${value.id}`}
                               draggableId={`draggable-id-${index}`}

@@ -1,7 +1,8 @@
 export const chatInitialState = {
   id: null,
-  lobby_id: null,
   host_id: null,
+  cohort_id: null,
+  scenario_id: null,
   created_at: null,
   updated_at: null,
   deleted_at: null,
@@ -26,6 +27,18 @@ export const cohortInitialState = {
 export const historyInitialState = {
   prompts: [],
   responses: []
+};
+
+export const inviteInitialState = {
+  id: null,
+  sender_id: null,
+  receiver_id: null,
+  status_id: null,
+  props: {},
+  code: '',
+  created_at: '',
+  updated_at: null,
+  expire_at: null
 };
 
 export const personaInitialState = {

@@ -3,16 +3,15 @@ const { validateRequestBody } = require('../../util/requestValidation');
 const { requireUser } = require('../auth/middleware');
 const { requireUserForRun } = require('./middleware');
 const {
-  finishRun,
   getRuns,
   getResponse,
   getTranscriptionOutcome,
   getReferrerParams,
   getRunData,
   newOrExistingRun,
-  saveRunEvent,
   revokeConsentForRun,
-  updateRun,
+  saveRunEvent,
+  setRun,
   upsertResponse
 } = require('./endpoints');
 
@@ -30,13 +29,16 @@ runs.get('/new-or-existing/scenario/:scenario_id/cohort/:cohort_id', [
   newOrExistingRun
 ]);
 
-runs.put('/:run_id/finish', [requireUser, requireUserForRun, finishRun]);
+runs.get('/new-or-existing/scenario/:scenario_id/cohort/:cohort_id/chat/:chat_id', [
+  requireUser,
+  newOrExistingRun
+]);
 
-runs.put('/:run_id/update', [
+runs.put('/:run_id', [
   requireUser,
   requireUserForRun,
   validateRequestBody,
-  updateRun
+  setRun
 ]);
 
 runs.get('/:run_id', [requireUser, getRunData]);

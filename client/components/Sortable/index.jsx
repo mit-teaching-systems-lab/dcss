@@ -112,7 +112,7 @@ class Sortable extends Component {
 
     const { className = 'sortable__draggable-outer-container' } = rest;
 
-    return (
+    return !disabled ? (
       <DragDropContext onDragEnd={onChange}>
         <Droppable droppableId="droppable">
           {(droppableProvided, droppableSnapshot) => (
@@ -165,7 +165,7 @@ class Sortable extends Component {
           )}
         </Droppable>
       </DragDropContext>
-    );
+    ) : children;
   }
 }
 

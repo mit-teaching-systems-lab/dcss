@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { joinChat, linkRunToChat } from '@actions/chat';
 import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
+import { getInvites } from '@actions/invite';
 import { getUser } from '@actions/user';
 import { getResponse, setResponses } from '@actions/response';
 import { getRun, setRun } from '@actions/run';
@@ -50,7 +52,6 @@ class Run extends Component {
 
   async componentDidMount() {
     const {
-      cohortId,
       location: { search },
       scenarioId
     } = this.props;
@@ -66,24 +67,55 @@ class Run extends Component {
       return;
     }
 
-    const run = await this.props.getRun(this.props.scenario.id, cohortId);
+    await this.props.getInvites();
+
+    const run = await this.props.getRun(
+      this.props.scenario.id,
+      this.props.cohortId,
+      this.props.chatId
+    );
+
 
     if (run) {
-      if (cohortId) {
-        const cohort = await this.props.linkRunToCohort(cohortId, run.id);
+      const {
+        user
+      } = this.props;
+
+      if (this.props.cohortId) {
+        const cohort = await this.props.linkRunToCohort(this.props.cohortId, run.id);
 
         if (cohort) {
-          const { id, users } = cohort;
-          const { user } = this.props;
 
-          if (!users.find(({ id }) => id === user.id)) {
+          if (!cohort.users.find(({ id }) => id === user.id)) {
             // For now we'll default all unknown
             // users as "participant".
-            await this.props.linkUserToCohort(id, 'participant');
+            await this.props.linkUserToCohort(cohort.id, 'participant');
           }
         }
       }
+
+      if (this.props.chatId) {
+        await this.props.linkRunToChat(this.props.chatId, run.id);
+        if (this.props.chat) {
+
+          const userInChat = this.props.chat.usersById[user.id];
+          const isUserInChat = !!isUserInChat;
+          const isUserRoleAssigned = isUserInChat && userInChat.persona_id != null;
+
+          if (!isUserRoleAssigned && this.props.invite) {
+            const persona = this.props.scenario.personas.find(persona =>
+              persona.id === this.props.invite.persona_id
+            );
+            await this.props.joinChat(
+              this.props.chat.id,
+              persona
+            );
+          }
+        }
+      }
+
       const referrer_params = Storage.get('app/referrer_params');
+
       if (search || referrer_params) {
         await this.props.setRun(run.id, {
           referrer_params: QueryString.parse(search || referrer_params)
@@ -170,6 +202,14 @@ class Run extends Component {
     return (
       <Fragment>
         <Title content={pageTitle} />
+        {this.props.user.is_super ? (
+          <div style={{zIndex: 9001, position: 'absolute'}}>
+            Run: {this.props.run.id}<br />
+            Scenario: {this.props.scenario.id}<br />
+            Cohort: {this.props.cohort.id || 'n/a'}<br />
+            Chat: {this.props.chat && this.props.chat.id || 'n/a'}<br />
+          </div>
+        ) : null}
         <Scenario
           baseurl={baseurl}
           cohortId={cohortId}
@@ -186,6 +226,8 @@ class Run extends Component {
 
 Run.propTypes = {
   activeRunSlideIndex: PropTypes.number,
+  chat: PropTypes.object,
+  chatId: PropTypes.node,
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
   getResponse: PropTypes.func,
@@ -193,6 +235,8 @@ Run.propTypes = {
   getScenario: PropTypes.func,
   getUser: PropTypes.func,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
+  joinChat: PropTypes.func,
+  linkRunToChat: PropTypes.func,
   linkRunToCohort: PropTypes.func,
   linkUserToCohort: PropTypes.func,
   location: PropTypes.shape({
@@ -219,20 +263,37 @@ Run.propTypes = {
 
 const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
-  const { cohort, responses, run, user } = state;
-
+  const { chatsById, cohort, invites, responses, run, user } = state;
   const cohortId = Identity.fromHashOrId(ownProps.cohortId || params.cohortId);
-  // TODO: convert to hash?
-  const scenarioId = Number(ownProps.scenarioId || params.scenarioId);
+  const scenarioId = Identity.fromHashOrId(ownProps.scenarioId || params.scenarioId);
+
+  let chatId = null;
+  let invite = null;
+
+  if (ownProps.chatId || params.chatId) {
+    chatId = Identity.fromHashOrId(ownProps.chatId || params.chatId);
+  } else {
+    const code = ownProps.code || params.code;
+    invite = invites.length
+      ? invites.find(invite => invite.code === code)
+      : null;
+    chatId = invite && invite.chat_id;
+  }
+
+  const chat = chatsById[chatId] || null;
   const scenario = state.scenariosById[scenarioId];
   return {
     activeRunSlideIndex: Number(
       ownProps.activeRunSlideIndex || params.activeRunSlideIndex
     ),
+    chat,
+    chatId,
+    cohort,
     cohortId,
     scenarioId,
     scenario,
-    cohort,
+    invite,
+    invites,
     responses,
     run,
     user
@@ -240,10 +301,13 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getInvites: () => dispatch(getInvites()),
   getResponse: params => dispatch(getResponse(params)),
   setResponses: (...params) => dispatch(setResponses(...params)),
   getRun: (...params) => dispatch(getRun(...params)),
   setRun: (...params) => dispatch(setRun(...params)),
+  joinChat: (...params) => dispatch(joinChat(...params)),
+  linkRunToChat: (...params) => dispatch(linkRunToChat(...params)),
   linkRunToCohort: (...params) => dispatch(linkRunToCohort(...params)),
   linkUserToCohort: (...params) => dispatch(linkUserToCohort(...params)),
   getScenario: params => dispatch(getScenario(params)),

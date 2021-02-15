@@ -38,3 +38,13 @@
     margin-left: unset;
   }
 }
+
+.u__invite-container {
+  height: 50vh !important;
+  max-height: 50vh !important;
+  overflow-y: auto !important;
+}
+
+.u__invite-html-container {
+  margin-bottom: 1em;
+}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { getUser, setUser } from '@actions/user';
 import { notify } from '@components/Notification';
 import {
   Button,
@@ -12,7 +13,6 @@ import {
   Modal,
   Text
 } from '@components/UI';
-import { getUser, setUser } from '@actions/user';
 import './User.css';
 
 const anonymousMode =

@@ -118,18 +118,18 @@ async function getScenarioUsers(scenario_id) {
       email,
       username,
       personalname,
-      roles,
-      '{owner}' && roles AS is_owner,
-      ('{owner}' && roles) OR ('{author}' && roles) AS is_author,
-      '{reviewer}' && roles AS is_reviewer
-    FROM users
+      sur.roles,
+      '{owner}' && sur.roles AS is_owner,
+      ('{owner}' && sur.roles) OR ('{author}' && sur.roles) AS is_author,
+      '{reviewer}' && sur.roles AS is_reviewer
+    FROM user_role_detail
     INNER JOIN (
       SELECT scenario_id, user_id, ARRAY_AGG(role) AS roles
       FROM (SELECT * FROM scenario_user_role ORDER BY created_at) sur1
       WHERE scenario_id = ${scenario_id} AND ended_at IS NULL
       GROUP BY scenario_id, user_id
     ) sur
-    ON users.id = sur.user_id;
+    ON user_role_detail.id = sur.user_id;
   `);
 
   return result.rows;
@@ -390,10 +390,10 @@ async function setScenario(scenarioId, scenario) {
 
 async function addScenarioCategory(scenarioId, category) {
   const insertedRow = await query(sql`
-        WITH t AS (SELECT id as tag_id FROM tag WHERE name=${category})
-        INSERT INTO scenario_tag (scenario_id, tag_id)
-        SELECT CAST(${scenarioId} as INTEGER) as scenario_id, tag_id from t;
-    `);
+    WITH t AS (SELECT id as tag_id FROM tag WHERE name=${category})
+    INSERT INTO scenario_tag (scenario_id, tag_id)
+    SELECT CAST(${scenarioId} as INTEGER) as scenario_id, tag_id from t;
+  `);
 
   return insertedRow;
 }
@@ -642,6 +642,7 @@ exports.getScenario = getScenario;
 exports.deleteScenario = deleteScenario;
 exports.softDeleteScenario = softDeleteScenario;
 exports.getHistoryForScenario = getHistoryForScenario;
+exports.getScenarioById = getScenario;
 exports.getScenarioByRun = getScenarioByRun;
 exports.getScenarioPrompts = getScenarioPrompts;
 

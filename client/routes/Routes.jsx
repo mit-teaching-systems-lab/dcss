@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
@@ -30,7 +30,9 @@ import {
   ScenariosListCommunity,
   ScenariosListOfficial
 } from './RouteComponents';
+import Sketch from '@components/Sketch';
 import UserSettings from '@components/User/UserSettings';
+import UserInvites from '@components/User/UserInvites';
 
 const makeEditorProps = (props = {}) => ({
   ...props,
@@ -54,8 +56,32 @@ const Routes = ({ isLoggedIn, user }) => {
   );
   const routeRenderDownloads = (props = {}) => <Downloads {...props} />;
   const routeRenderRun = (props = {}) => <Run {...props} />;
+  const routeRenderSketch = (props = {}) => <Sketch {...props} />;
   const routeRenderUserSettings = (props = {}) => (
     <UserSettings {...props} user={user} open={true} />
+  );
+
+  const routeRenderInvite = props => {
+    const {
+      redirect
+    } = props.location.state;
+    const {
+      status,
+      code
+    } = props.match.params;
+    return (
+      <UserInvites
+        status={status}
+        code={code}
+        open={false}
+        redirect={redirect}
+        user={user}
+      />
+    );
+  };
+
+  const routeRenderInvites = props => (
+    <UserInvites {...props} open={true} user={user} />
   );
 
   return (
@@ -64,6 +90,21 @@ const Routes = ({ isLoggedIn, user }) => {
 
       <InterceptAnonymizableRoute path="/chat" isLoggedIn={isLoggedIn}>
         <Route render={routeRenderChat} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute path="/sketch/:lobby" isLoggedIn={isLoggedIn}>
+        <Route render={routeRenderSketch} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        path="/invite/:status/:code"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderInvite} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute path="/invites" isLoggedIn={isLoggedIn}>
+        <Route render={routeRenderInvites} />
       </InterceptAnonymizableRoute>
 
       <Route exact path="/scenarios/" component={ScenariosListAll} />
@@ -106,6 +147,20 @@ const Routes = ({ isLoggedIn, user }) => {
       </RedirectRouteForInactiveSession>
 
       <InterceptAnonymizableRoute
+        path="/run/:scenarioId/code/:code/slide/:activeRunSlideIndex"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderRun} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        path="/run/:scenarioId/chat/:chatId/slide/:activeRunSlideIndex"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderRun} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
         path="/run/:scenarioId/slide/:activeRunSlideIndex"
         isLoggedIn={isLoggedIn}
       >
@@ -114,6 +169,20 @@ const Routes = ({ isLoggedIn, user }) => {
 
       <InterceptAnonymizableRoute
         path="/run/:scenarioId"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderRun} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        path="/cohort/:cohortId/run/:scenarioId/chat/:chatId/slide/:activeRunSlideIndex"
+        isLoggedIn={isLoggedIn}
+      >
+        <Route render={routeRenderRun} />
+      </InterceptAnonymizableRoute>
+
+      <InterceptAnonymizableRoute
+        path="/cohort/:cohortId/run/:scenarioId/code/:code/slide/:activeRunSlideIndex"
         isLoggedIn={isLoggedIn}
       >
         <Route render={routeRenderRun} />

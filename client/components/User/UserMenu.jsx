@@ -13,24 +13,24 @@ class UserMenu extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      openSettings: false,
-      openLogout: false
+      settingsIsOpen: false,
+      logoutIsOpen: false
     };
-    this.onSettingsClick = this.onSettingsClick.bind(this);
-    this.onLogoutClick = this.onLogoutClick.bind(this);
+    this.onSettingsOpenClick = this.onSettingsOpenClick.bind(this);
+    this.onLogoutOpenClick = this.onLogoutOpenClick.bind(this);
   }
 
-  onSettingsClick() {
-    this.setState({ openSettings: true });
+  onSettingsOpenClick() {
+    this.setState({ settingsIsOpen: true });
   }
 
-  onLogoutClick() {
-    this.setState({ openLogout: true });
+  onLogoutOpenClick() {
+    this.setState({ logoutIsOpen: true });
   }
 
   render() {
-    const { onSettingsClick, onLogoutClick } = this;
-    const { openSettings, openLogout } = this.state;
+    const { onSettingsOpenClick, onLogoutOpenClick } = this;
+    const { settingsIsOpen, logoutIsOpen } = this.state;
     const { user } = this.props;
 
     const dropdownProps = {
@@ -51,33 +51,33 @@ class UserMenu extends Component {
     if (Layout.isForMobile()) {
       dropdownProps.icon = 'user';
     } else {
-      dropdownProps.trigger = <Username {...user} />;
+      dropdownProps.trigger = <Username />;
     }
 
     return (
       <Fragment>
         <Dropdown {...dropdownProps}>
           <Dropdown.Menu>
-            <Dropdown.Item tabIndex="0" onClick={onSettingsClick}>
+            <Dropdown.Item tabIndex="0" onClick={onSettingsOpenClick}>
               Settings
             </Dropdown.Item>
-            <Dropdown.Item tabIndex="0" onClick={onLogoutClick}>
+            <Dropdown.Item tabIndex="0" onClick={onLogoutOpenClick}>
               Log out
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        {openSettings ? (
+        {settingsIsOpen ? (
           <UserSettings
             user={user}
-            open={openSettings}
-            onCancel={() => this.setState({ openSettings: false })}
+            open={settingsIsOpen}
+            onCancel={() => this.setState({ settingsIsOpen: false })}
           />
         ) : null}
-        {openLogout ? (
+        {logoutIsOpen ? (
           <ConfirmableLogout
             user={user}
-            open={openLogout}
-            onCancel={() => this.setState({ openLogout: false })}
+            open={logoutIsOpen}
+            onCancel={() => this.setState({ logoutIsOpen: false })}
           />
         ) : null}
       </Fragment>
@@ -86,13 +86,14 @@ class UserMenu extends Component {
 }
 
 UserMenu.propTypes = {
-  user: PropTypes.object
+  user: PropTypes.object,
+  invites: PropTypes.array
 };
 
 const mapStateToProps = state => {
   const { isLoggedIn } = state.session;
-  const { user } = state;
-  return { user, isLoggedIn };
+  const { invites, user } = state;
+  return { invites, user, isLoggedIn };
 };
 
 export default connect(mapStateToProps)(UserMenu);

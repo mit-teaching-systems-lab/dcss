@@ -246,8 +246,8 @@ import {
   SET_CHAT_ERROR,
   SET_CHAT_SUCCESS,
   SET_CHAT_USERS_SUCCESS,
-  LINK_CHAT_TO_RUN_ERROR,
-  LINK_CHAT_TO_RUN_SUCCESS
+  LINK_RUN_TO_CHAT_ERROR,
+  LINK_RUN_TO_CHAT_SUCCESS
 } from '../../actions/types';
 import * as chatActions from '../../actions/chat';
 import * as runActions from '../../actions/run';
@@ -326,7 +326,8 @@ beforeEach(() => {
 
   chat = {
     id: 1,
-    lobby_id: 1,
+    scenario_id: 42,
+    cohort_id: null,
     host_id: 999,
     created_at: '2020-12-08T21:51:33.659Z',
     updated_at: null,
@@ -401,7 +402,7 @@ beforeEach(() => {
 
   messages = [message1, message2, message3, message4, message5];
 
-  chatActions.getChat.mockImplementation(() => async dispatch => {
+  chatActions.getChatById.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
@@ -1627,12 +1628,13 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                 <Memo(Connect(ChatMessages))
                   chat={
                     Object {
+                      "cohort_id": null,
                       "created_at": "2020-12-08T21:51:33.659Z",
                       "deleted_at": null,
                       "ended_at": null,
                       "host_id": 2,
                       "id": 1,
-                      "lobby_id": 1,
+                      "scenario_id": 42,
                       "updated_at": null,
                       "users": Array [
                         Object {
@@ -1920,12 +1922,13 @@ test('Rnd: onDrag/onResize', async done => {
                 <Memo(Connect(ChatMessages))
                   chat={
                     Object {
+                      "cohort_id": null,
                       "created_at": "2020-12-08T21:51:33.659Z",
                       "deleted_at": null,
                       "ended_at": null,
                       "host_id": 2,
                       "id": 1,
-                      "lobby_id": 1,
+                      "scenario_id": 42,
                       "updated_at": null,
                       "users": Array [
                         Object {

@@ -5,8 +5,9 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Button, Icon } from '@components/UI';
 import { deleteScenario } from '@actions/scenario';
-import Storage from '@utils/Storage';
 import Gate from '@client/components/Gate';
+import Identity from '@utils/Identity';
+import Storage from '@utils/Storage';
 import './ScenariosList.css';
 
 class ScenarioCardActions extends Component {
@@ -27,7 +28,7 @@ class ScenarioCardActions extends Component {
       activeTab: 'slides',
       activeSlideIndex: 1
     });
-    const run = Storage.get(`run/${scenario.id}`, {
+    const run = Storage.get(`run/${Identity.toHash(scenario.id)}`, {
       // The title slide is slide 0
       activeRunSlideIndex: 0
     });
@@ -49,7 +50,7 @@ class ScenarioCardActions extends Component {
           size="tiny"
           icon
           as={Link}
-          to={`/run/${scenario.id}/slide/${run.activeRunSlideIndex}`}
+          to={`/run/${Identity.toHash(scenario.id)}/slide/${run.activeRunSlideIndex}`}
         >
           <Icon name="play" className="primary" />
           <span className={className}>Run</span>

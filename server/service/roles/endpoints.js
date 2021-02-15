@@ -2,23 +2,47 @@ const db = require('./db');
 const { asyncMiddleware } = require('../../util/api');
 const { getUserById } = require('../auth/db');
 
-exports.getAllUsersRoles = asyncMiddleware(async function getAllUserRolesAsync(
-  req,
-  res
-) {
-  const users = await db.getAllUsersRoles();
+async function getAllUsers(req, res) {
+  const users = await db.getAllUsers();
   if (!users) {
     const error = new Error('No users found');
     error.status = 409;
     throw error;
   }
   res.json({ users });
-});
+}
 
-exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
-  req,
-  res
-) {
+async function getAllUsersCount(req, res) {
+  const count = await db.getAllUsersCount();
+  if (!count) {
+    const error = new Error('No users found');
+    error.status = 409;
+    throw error;
+  }
+  res.json({ count });
+}
+
+async function getAvailableUsers(req, res) {
+  const users = await db.getAvailableUsers();
+  if (!users) {
+    const error = new Error('No users found');
+    error.status = 409;
+    throw error;
+  }
+  res.json({ users });
+}
+
+async function getAvailableUsersCount(req, res) {
+  const count = await db.getAvailableUsersCount();
+  if (!count) {
+    const error = new Error('No users found');
+    error.status = 409;
+    throw error;
+  }
+  res.json({ count });
+}
+
+async function getUserRoles(req, res) {
   const user = await db.getUserById(req.session.user.id);
 
   if (!user) {
@@ -29,28 +53,20 @@ exports.getUserRoles = asyncMiddleware(async function getUserRolesAsync(
 
   const userRoleData = await db.getUserRoles(user.id, req.body.roles);
   res.json(userRoleData);
-});
+}
 
-exports.getUserPermissions = asyncMiddleware(async function getUserPermissions(
-  req,
-  res
-) {
+async function getUserPermissions(req, res) {
   const userPermissions = await db.getUserPermissions(req.session.user.id);
   res.json(userPermissions);
-});
+}
 
-exports.getUsersByPermission = asyncMiddleware(
-  async function getUsersByPermission(req, res) {
-    const permission = req.params.permission;
-    const users = await db.getUsersByPermission(permission);
-    res.send({ users });
-  }
-);
+async function getUsersByPermission(req, res) {
+  const permission = req.params.permission;
+  const users = await db.getUsersByPermission(permission);
+  res.send({ users });
+}
 
-exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
-  req,
-  res
-) {
+async function addUserRoles(req, res) {
   const { user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
@@ -70,12 +86,9 @@ exports.addUserRoles = asyncMiddleware(async function addUserRolesAsync(
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
 
-exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
-  req,
-  res
-) {
+async function deleteUserRoles(req, res) {
   const { user_id, roles } = req.body;
   const user = await getUserById(user_id);
   if (!user.id || !roles.length) {
@@ -95,12 +108,9 @@ exports.deleteUserRoles = asyncMiddleware(async function deleteUserRolesAsync(
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
 
-exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
-  req,
-  res
-) {
+async function setUserRoles(req, res) {
   if (!req.session.user.id || !req.body.roles.length) {
     const error = new Error('User and roles must be defined');
     error.status = 409;
@@ -118,4 +128,15 @@ exports.setUserRoles = asyncMiddleware(async function setUserRolesAsync(
     error.stack = apiError.stack;
     throw error;
   }
-});
+}
+
+exports.getAllUsers = asyncMiddleware(getAllUsers);
+exports.getAllUsersCount = asyncMiddleware(getAllUsersCount);
+exports.getAvailableUsers = asyncMiddleware(getAvailableUsers);
+exports.getAvailableUsersCount = asyncMiddleware(getAvailableUsersCount);
+exports.getUserRoles = asyncMiddleware(getUserRoles);
+exports.getUserPermissions = asyncMiddleware(getUserPermissions);
+exports.getUsersByPermission = asyncMiddleware(getUsersByPermission);
+exports.addUserRoles = asyncMiddleware(addUserRoles);
+exports.deleteUserRoles = asyncMiddleware(deleteUserRoles);
+exports.setUserRoles = asyncMiddleware(setUserRoles);

@@ -11,101 +11,101 @@ const ICON_FACILITATOR = {
   title: 'Facilitator'
 };
 const ICON_RESEARCHER = { className: 'user graduate', title: 'Researcher' };
-
-const fragmentCache = {};
 const displayableNameCache = {};
+
+const makeDisplayables = ({ id, personalname, roles, username }) => {
+  const displayableName = personalname || username;
+  const title = personalname ? `${personalname} (${username})` : username;
+  let icon = null;
+
+  if (roles && roles.length) {
+    if (roles.includes('researcher')) {
+      icon = ICON_RESEARCHER;
+    }
+    if (roles.includes('facilitator')) {
+      icon = ICON_FACILITATOR;
+    }
+    if (roles.includes('admin')) {
+      icon = ICON_ADMIN;
+    }
+    if (roles.includes('super_admin')) {
+      icon = ICON_SUPER;
+    }
+  }
+
+  return {
+    displayableName,
+    icon,
+    id,
+    roles,
+    title
+  };
+};
 
 class Username extends Component {
   constructor(props) {
     super(props);
-    const { id, personalname, username } = this.props;
-
-    if (!displayableNameCache[id]) {
-      displayableNameCache[id] = personalname || username;
-    }
-
-    this.displayableName = displayableNameCache[id];
-    this.title = personalname ? `${personalname} (${username})` : username;
-
-    const { roles } = this.props;
-
-    let iconProps = null;
-
-    if (roles && roles.length) {
-      if (roles.includes('researcher')) {
-        iconProps = ICON_RESEARCHER;
-      }
-      if (roles.includes('facilitator')) {
-        iconProps = ICON_FACILITATOR;
-      }
-      if (roles.includes('admin')) {
-        iconProps = ICON_ADMIN;
-      }
-      if (roles.includes('super_admin')) {
-        iconProps = ICON_SUPER;
-      }
-    }
-
-    this.iconProps = iconProps;
+    this.displayableName = '';
+    this.title = '';
+    this.icon = null;
   }
   toString() {
     return this.displayableName;
   }
   render() {
-    const { id, roles } = this.props;
+    const { displayableName, id, icon, roles, title } = makeDisplayables(
+      this.props.user
+    );
     const key = Identity.key({ id, roles });
 
-    if (fragmentCache[key]) {
-      return fragmentCache[key];
+    if (!displayableNameCache[id]) {
+      displayableNameCache[id] = displayableName;
     }
 
-    const icon = this.iconProps ? (
-      <Icon
-        size="small"
-        {...this.iconProps}
-        style={{
-          marginRight: '0',
-          marginBottom: '0.3em',
-          marginLeft: '0.25em',
-          opacity: '0.25'
-        }}
-      />
-    ) : null;
+    this.displayableName = displayableNameCache[id];
+    this.title = title;
+    this.icon = icon ? icon : null;
 
-    fragmentCache[key] = (
+    return (
       <Fragment>
-        <Text key={key} title={this.title}>{this.displayableName}</Text> {icon}
+        <Text key={key} title={title}>
+          {displayableName}
+        </Text>{' '}
+        {this.icon ? (
+          <Icon
+            size="small"
+            {...this.icon}
+            style={{
+              marginRight: '0',
+              marginBottom: '0.3em',
+              marginLeft: '0.25em',
+              opacity: '0.25'
+            }}
+          />
+        ) : null}
       </Fragment>
     );
-
-    return fragmentCache[key];
   }
 }
 
 Username.propTypes = {
-  id: PropTypes.number,
-  is_anonymous: PropTypes.bool,
-  is_super: PropTypes.bool,
-  is_owner: PropTypes.bool,
-  personalname: PropTypes.string,
-  roles: PropTypes.array,
-  username: PropTypes.string,
+  user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { user, usersById } = state;
-
+  const intendedUser = ownProps.user || state.user;
   // Get the site-wide user because this component can
-  // be called with a Cohort User or Scenario User and
-  // those will have different roles.
-  const siteUser =
-    ownProps.id === user.id ? user : usersById[ownProps.id] || { roles: [] };
-
-  const mergedUser = Object.assign({}, ownProps, siteUser);
-  const roles = (ownProps.roles || []).concat(siteUser.roles);
-  return {
-    ...mergedUser,
+  // be called with a Cohort User or Scenario User.
+  const siteUser = state.usersById[intendedUser.id] || { roles: [] };
+  // Merge the roles (there can be no unintended collision here)
+  const roles = (intendedUser.roles || []).concat(siteUser.roles);
+  const user = {
+    ...siteUser,
+    ...intendedUser,
     roles
+  };
+  return {
+    user
   };
 };
 
@@ -120,6 +120,10 @@ WrappedComponent.from = user => {
 
 WrappedComponent.displayableName = user => {
   return displayableNameCache[user.id];
+};
+
+WrappedComponent.getDisplayables = user => {
+  return makeDisplayables(user);
 };
 
 export default WrappedComponent;

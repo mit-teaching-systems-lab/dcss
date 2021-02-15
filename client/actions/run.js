@@ -12,11 +12,20 @@ import {
   SET_RUN_ERROR
 } from './types';
 
-export let getRun = (scenario_id, cohort_id) => async dispatch => {
+export let getRun = (scenario_id, cohort_id, chat_id) => async dispatch => {
   try {
-    const url = cohort_id
-      ? `/api/runs/new-or-existing/scenario/${scenario_id}/cohort/${cohort_id}`
-      : `/api/runs/new-or-existing/scenario/${scenario_id}`;
+
+    const base = `/api/runs/new-or-existing/scenario/${scenario_id}`;
+    const cohort = cohort_id
+      ? `/cohort/${cohort_id}`
+      : '';
+    const chat = chat_id
+      ? `/chat/${chat_id}`
+      : '';
+
+    const url = `${base}${cohort}${chat}`;
+
+    console.log("url?", url);
 
     const res = await (await fetch(url)).json();
 
@@ -52,7 +61,7 @@ export let setRun = (id, data) => async dispatch => {
   dispatch({ type: SET_RUN, run: { id, ...data } });
   try {
     const body = JSON.stringify(data);
-    const res = await (await fetch(`/api/runs/${id}/update`, {
+    const res = await (await fetch(`/api/runs/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'

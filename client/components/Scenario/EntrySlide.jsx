@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Lobby from '@components/Lobby';
 import { Button, Card, Header, Message, Modal } from '@components/UI';
 import Identity from '@utils/Identity';
 import { IS_FIREFOX, IS_AUDIO_RECORDING_SUPPORTED } from '@utils/Media';
@@ -254,6 +255,16 @@ class EntrySlide extends React.Component {
         scenario
       });
     }
+
+    //
+    //
+    //
+    //
+    // TODO: Integrate "Lobby"
+    //
+    //
+    //
+    //
 
     return (
       <Card id="entry" key="entry" centered className={cardClass}>

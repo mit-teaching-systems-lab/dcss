@@ -26,7 +26,7 @@ export const signUp = params => async dispatch => {
 
     const body = JSON.stringify(data);
 
-    const res = await (await fetch('/api/auth/signup', {
+    const res = await (await fetch('/api/auth/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +49,7 @@ export const signUp = params => async dispatch => {
 
 export let getUser = () => async dispatch => {
   try {
-    const res = await (await fetch('/api/auth/me')).json();
+    const res = await (await fetch('/api/auth/')).json();
 
     if (res.error) {
       throw res;
@@ -75,7 +75,7 @@ export let setUser = params => async dispatch => {
         ).toString();
       }
       const body = JSON.stringify(params);
-      const res = await (await fetch('/api/auth/update', {
+      const res = await (await fetch('/api/auth/', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

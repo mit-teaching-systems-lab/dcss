@@ -1,15 +1,11 @@
 import {
-  GET_USERS_SUCCESS,
-  GET_USERS_ERROR,
+  GET_USERS_BY_PERMISSION_ERROR,
   GET_USERS_BY_PERMISSION_SUCCESS,
-  GET_USERS_BY_PERMISSION_ERROR
+  GET_USERS_COUNT_ERROR,
+  GET_USERS_COUNT_SUCCESS,
+  GET_USERS_ERROR,
+  GET_USERS_SUCCESS
 } from './types';
-
-// Previously...
-// export let setUsers = users => ({
-//   type: GET_USERS_SUCCESS,
-//   users
-// });
 
 export let setUsers = users => async dispatch => {
   dispatch({
@@ -18,9 +14,12 @@ export let setUsers = users => async dispatch => {
   });
 };
 
-export let getUsers = () => async dispatch => {
+export let getUsers = (limit = 'all') => async dispatch => {
+  /*
+    limit = "all" | "available"
+  */
   try {
-    const res = await (await fetch('/api/roles/all')).json();
+    const res = await (await fetch(`/api/roles/${limit}`)).json();
 
     if (res.error) {
       throw res;
@@ -31,6 +30,26 @@ export let getUsers = () => async dispatch => {
     return users;
   } catch (error) {
     dispatch({ type: GET_USERS_ERROR, error });
+    return null;
+  }
+};
+
+export let getUsersCount = (limit = 'all') => async dispatch => {
+  /*
+    limit = "all" | "available"
+  */
+  try {
+    const res = await (await fetch(`/api/roles/${limit}/count`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const count = Number(res.count);
+
+    dispatch({ type: GET_USERS_COUNT_SUCCESS, count });
+    return count;
+  } catch (error) {
+    dispatch({ type: GET_USERS_COUNT_ERROR, error });
     return null;
   }
 };

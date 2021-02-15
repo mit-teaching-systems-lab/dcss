@@ -198,7 +198,7 @@ exports[`Close 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -424,7 +424,7 @@ exports[`Deselect scenario 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -650,7 +650,7 @@ exports[`Deselect scenario 2`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -876,7 +876,7 @@ exports[`Deselect scenario 3`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -1102,7 +1102,7 @@ exports[`Has scenarios in state 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -1332,7 +1332,7 @@ exports[`Has stepGroup 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -1559,7 +1559,7 @@ exports[`No cohort in props 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -1785,7 +1785,7 @@ exports[`No scenarios in state 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -2015,7 +2015,7 @@ exports[`Save and Close Buttons 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -2241,7 +2241,7 @@ exports[`Save and Close Buttons 2`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -2467,7 +2467,7 @@ exports[`Save selected scenarios 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -2693,7 +2693,7 @@ exports[`Save selected scenarios 2`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -2919,7 +2919,7 @@ exports[`Search for scenarios 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -3110,7 +3110,7 @@ exports[`Search for scenarios 2`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -3336,7 +3336,7 @@ exports[`Search for scenarios 3`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -3562,7 +3562,7 @@ exports[`Search for scenarios 4`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -3788,7 +3788,7 @@ exports[`Search for scenarios 5`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -4014,7 +4014,7 @@ exports[`Select scenario 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -4241,7 +4241,7 @@ exports[`Select scenario 2`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"
@@ -4477,7 +4477,7 @@ exports[`User in scenario 1`] = `
         </div>
       </div>
       <div
-        class=\\"actions c-action-btns__scenario-selector\\"
+        class=\\"actions c__action-btns__scenario-selector\\"
       >
         <div
           class=\\"ui fluid buttons\\"

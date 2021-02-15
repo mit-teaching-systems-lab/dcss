@@ -45,12 +45,12 @@ afterEach(() => {
 });
 
 describe('GET_CHAT_SUCCESS', () => {
-  describe('getChat', () => {
+  describe('getChatById', () => {
     let chat = { ...state.chats[0] };
 
     test('Receives a chat', async () => {
       fetchImplementation(fetch, 200, { chat });
-      const returnValue = await store.dispatch(actions.getChat(1));
+      const returnValue = await store.dispatch(actions.getChatById(1));
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -59,7 +59,7 @@ describe('GET_CHAT_SUCCESS', () => {
       `);
       expect(returnValue).toEqual(chat);
 
-      await mockStore.dispatch(actions.getChat(1));
+      await mockStore.dispatch(actions.getChatById(1));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
@@ -75,7 +75,7 @@ describe('GET_CHAT_SUCCESS', () => {
         Array [
           "/api/chats",
           Object {
-            "body": "{\\"lobby_id\\":1}",
+            "body": "{\\"cohort_id\\":null,\\"scenario_id\\":1}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -104,10 +104,10 @@ describe('GET_CHAT_SUCCESS', () => {
 describe('GET_CHAT_ERROR', () => {
   let chat = { ...state.chats[0] };
 
-  describe('getChat', () => {
+  describe('getChatById', () => {
     test('Receives an error', async () => {
       fetchImplementation(fetch, 200, { error });
-      const returnValue = await store.dispatch(actions.getChat(1));
+      const returnValue = await store.dispatch(actions.getChatById(1));
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -116,7 +116,7 @@ describe('GET_CHAT_ERROR', () => {
       `);
       expect(returnValue).toEqual(null);
 
-      await mockStore.dispatch(actions.getChat(1));
+      await mockStore.dispatch(actions.getChatById(1));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
@@ -130,7 +130,7 @@ describe('GET_CHAT_ERROR', () => {
         Array [
           "/api/chats",
           Object {
-            "body": "{\\"lobby_id\\":1}",
+            "body": "{\\"cohort_id\\":null,\\"scenario_id\\":1}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -168,7 +168,7 @@ describe('SET_CHAT_SUCCESS', () => {
         Array [
           "/api/chats/1",
           Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
+            "body": "{\\"id\\":1,\\"scenario_id\\":42,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -196,7 +196,7 @@ describe('SET_CHAT_ERROR', () => {
         Array [
           "/api/chats/1",
           Object {
-            "body": "{\\"id\\":1,\\"lobby_id\\":1,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
+            "body": "{\\"id\\":1,\\"scenario_id\\":42,\\"host_id\\":2,\\"created_at\\":\\"2020-12-08T21:51:33.659Z\\",\\"updated_at\\":null,\\"deleted_at\\":null,\\"ended_at\\":null}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -261,7 +261,7 @@ describe('GET_CHATS_ERROR', () => {
   });
 });
 
-describe('LINK_CHAT_TO_RUN_SUCCESS', () => {
+describe('LINK_RUN_TO_CHAT_SUCCESS', () => {
   describe('linkChatToRun', () => {
     let chats = [...state.chats];
 
@@ -282,7 +282,7 @@ describe('LINK_CHAT_TO_RUN_SUCCESS', () => {
   });
 });
 
-describe('LINK_CHAT_TO_RUN_ERROR', () => {
+describe('LINK_RUN_TO_CHAT_ERROR', () => {
   describe('linkChatToRun', () => {
     test('Receives error', async () => {
       fetchImplementation(fetch, 200, { error });

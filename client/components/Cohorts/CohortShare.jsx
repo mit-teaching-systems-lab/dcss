@@ -42,7 +42,9 @@ export class CohortCreateNewForm extends React.Component {
     const onCohortUrlCopyClick = () => {
       copy(url);
       notify({
-        message: `Copied: ${url}`
+        message: url,
+        title: 'Copied',
+        icon: 'linkify'
       });
     };
 

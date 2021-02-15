@@ -243,7 +243,7 @@ class ScenarioEditor extends Component {
     } = this.props;
 
     const { isReady } = this.state;
-    const isNewScenario = scenarioId !== 'new';
+    const isNotNewScenario = scenarioId !== 'new';
 
     if (!isReady || !finish.components[0]) {
       return <Loading />;
@@ -287,7 +287,7 @@ class ScenarioEditor extends Component {
             autoComplete="off"
             id="description"
             name="description"
-            rows={1}
+            rows={2}
             value={descriptionDefaultValue}
             onChange={onChange}
           />
@@ -295,7 +295,7 @@ class ScenarioEditor extends Component {
       </Ref>
     );
 
-    const rteConsent = isNewScenario ? (
+    const rteConsent = isNotNewScenario ? (
       <Ref innerRef={node => innerRef(node, 'consentprose')}>
         <Form.Field required>
           <label htmlFor="consentprose">Consent Agreement</label>
@@ -317,7 +317,7 @@ class ScenarioEditor extends Component {
       </Ref>
     ) : null;
 
-    const rteFinish = isNewScenario ? (
+    const rteFinish = isNotNewScenario ? (
       <Ref innerRef={node => innerRef(node, 'finish')}>
         <Form.Field>
           <label htmlFor="finish">
@@ -345,7 +345,7 @@ class ScenarioEditor extends Component {
     const showCategoryDropdown =
       this.state.categories && this.state.categories.length;
 
-    const showLabelsDropdown = isNewScenario && user.is_super;
+    const showLabelsDropdown = isNotNewScenario;
 
     const dropdowns = (
       <Gate requiredPermission="edit_scenario">
@@ -382,7 +382,7 @@ class ScenarioEditor extends Component {
         ? { size: 'large', position: 'right center', hideOnScroll: true }
         : { disabled: true };
 
-    const leftColumnClassName = isNewScenario
+    const leftColumnClassName = isNotNewScenario
       ? 'se__grid-column-height-constraint se__grid-column-width-constraint'
       : '';
 
@@ -398,7 +398,7 @@ class ScenarioEditor extends Component {
       )
     );
 
-    const editorMenu = isNewScenario ? (
+    const editorMenu = isNotNewScenario ? (
       <EditorMenu
         text
         className="em__sticky se_em__sticky-special"
@@ -410,7 +410,7 @@ class ScenarioEditor extends Component {
     const styleHeight = {
       height: '500px'
     };
-    const leftColBottomStyle = isNewScenario ? styleHeight : {};
+    const leftColBottomStyle = isNotNewScenario ? styleHeight : {};
 
     return (
       <Form>
@@ -435,7 +435,7 @@ class ScenarioEditor extends Component {
 
                   {dropdowns}
 
-                  {isNewScenario ? (
+                  {isNotNewScenario ? (
                     <Fragment>
                       {rteConsent}
                       {rteFinish}
@@ -457,7 +457,7 @@ class ScenarioEditor extends Component {
                 className="se__grid-column-width-constraint"
                 width={8}
               >
-                {isNewScenario ? (
+                {isNotNewScenario ? (
                   <Fragment>
                     <ScenarioAuthors />
                     <ScenarioPersonas />

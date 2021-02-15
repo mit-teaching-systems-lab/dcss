@@ -33,12 +33,13 @@ describe('chat', () => {
   test('initial state', () => {
     expect(reducer.chat(undefined, {})).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -46,12 +47,13 @@ describe('chat', () => {
     `);
     expect(reducer.chat(undefined, {})).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -66,12 +68,13 @@ describe('chat', () => {
     };
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -79,12 +82,13 @@ describe('chat', () => {
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -98,12 +102,13 @@ describe('chat', () => {
     };
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -111,12 +116,13 @@ describe('chat', () => {
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -130,12 +136,13 @@ describe('chat', () => {
     };
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -143,12 +150,13 @@ describe('chat', () => {
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -162,12 +170,13 @@ describe('chat', () => {
     };
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -175,12 +184,13 @@ describe('chat', () => {
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -194,12 +204,13 @@ describe('chat', () => {
     };
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -207,12 +218,13 @@ describe('chat', () => {
     `);
     expect(reducer.chat(undefined, action)).toMatchInlineSnapshot(`
       Object {
+        "cohort_id": null,
         "created_at": null,
         "deleted_at": null,
         "ended_at": null,
         "host_id": null,
         "id": null,
-        "lobby_id": null,
+        "scenario_id": null,
         "updated_at": null,
         "users": Array [],
         "usersById": Object {},
@@ -249,7 +261,7 @@ describe('chats', () => {
           "ended_at": null,
           "host_id": 2,
           "id": 1,
-          "lobby_id": 1,
+          "scenario_id": 42,
           "updated_at": null,
           "users": Array [
             Object {
@@ -334,7 +346,7 @@ describe('chats', () => {
           "ended_at": null,
           "host_id": 2,
           "id": 1,
-          "lobby_id": 1,
+          "scenario_id": 42,
           "updated_at": null,
           "users": Array [
             Object {
@@ -447,7 +459,7 @@ describe('chatsById', () => {
           "ended_at": null,
           "host_id": 2,
           "id": 1,
-          "lobby_id": 1,
+          "scenario_id": 42,
           "updated_at": null,
           "users": Array [
             Object {
@@ -532,7 +544,7 @@ describe('chatsById', () => {
           "ended_at": null,
           "host_id": 2,
           "id": 1,
-          "lobby_id": 1,
+          "scenario_id": 42,
           "updated_at": null,
           "users": Array [
             Object {

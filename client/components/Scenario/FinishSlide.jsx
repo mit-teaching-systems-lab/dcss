@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -22,7 +22,11 @@ class FinishSlide extends React.Component {
   }
 
   get isCohortScenarioRun() {
-    return location.pathname.includes('/cohort/');
+    return window.location.pathname.includes('/cohort/');
+  }
+
+  get isMultiparticipantScenarioRun() {
+    return this.props.scenario.personas.length > 1;
   }
 
   async componentDidMount() {
@@ -56,7 +60,7 @@ class FinishSlide extends React.Component {
 
   render() {
     const { onCancel, onConfirm } = this;
-    const { cohortId, scenarioId, slide } = this.props;
+    const { cohortId, scenario, scenarioId, slide } = this.props;
     const { isConfirmBoxOpen } = this.state;
     const components = (slide && slide.components) || [{ html: '' }];
     const className = `scenario__slide-card${
@@ -93,6 +97,12 @@ class FinishSlide extends React.Component {
       </Button>
     );
 
+    const inCohortMultiparticipant = this.isMultiparticipantScenarioRun && this.isCohortScenarioRun;
+
+    const showRerunOption = inCohortMultiparticipant
+      ? false
+      : true;
+
     const ariaLabel = `Ready to finish this scenario? If you're ready to finish, click "I'm done!"`;
 
     return (
@@ -102,8 +112,13 @@ class FinishSlide extends React.Component {
             <Card.Header>
               <Button.Group fluid>
                 {returnToX}
-                <Button.Or />
-                {rerunThisX}
+                {showRerunOption ? (
+                  <Fragment>
+                    <Button.Or />
+                    {rerunThisX}
+                  </Fragment>
+
+                ) : null}
               </Button.Group>
             </Card.Header>
           </Card.Content>

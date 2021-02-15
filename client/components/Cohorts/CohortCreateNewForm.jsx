@@ -90,7 +90,7 @@ export class CohortCreateNewForm extends React.Component {
             <p>
               <Icon name="star" className="primary" />
               Use a label that makes it easy for you to locate it (e.g. CS 101:
-              Fall 2020). You may also change the name of your cohort any time
+              Fall {new Date().getFullYear()}). You may also change the name of your cohort any time
               after it has been created.
             </p>
             <Form onSubmit={createCohort}>

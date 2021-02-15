@@ -59,6 +59,12 @@ exports[`Render 1 1 1`] = `
     <div
       class="right menu"
     >
+      <a
+        class="item"
+        tabindex="0"
+      >
+        Invites
+      </a>
       <div
         aria-expanded="false"
         class="ui item simple dropdown"

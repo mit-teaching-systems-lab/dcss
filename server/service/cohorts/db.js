@@ -205,17 +205,16 @@ async function getCohortUsers(id) {
       email,
       username,
       personalname,
-      roles,
-      email = '' OR email IS NULL OR hash IS NULL AS is_anonymous,
-      '{owner}' && roles AS is_owner
-    FROM users
+      cur.roles,
+      '{owner}' && cur.roles AS is_owner
+    FROM user_role_detail
     INNER JOIN (
       SELECT cohort_id, user_id, ARRAY_AGG(role) AS roles
       FROM (SELECT * FROM cohort_user_role ORDER BY created_at) cur1
       WHERE cohort_id = ${id} AND ended_at IS NULL
       GROUP BY cohort_id, user_id
     ) cur
-    ON users.id = cur.user_id;
+    ON user_role_detail.id = cur.user_id;
   `);
   const usersById = result.rows.reduce((accum, user) => {
     const completed = completedByUserId[user.id] || [];
@@ -240,7 +239,6 @@ async function __getAggregatedCohort(cohort) {
   const runs = await getCohortRuns(cohort.id);
   const scenarios = await getCohortScenariosIdList(cohort.id);
   const cohortUsers = await getCohortUsers(cohort.id);
-  console.log(cohortUsers);
   return {
     ...cohort,
     ...cohortUsers,
@@ -646,6 +644,7 @@ async function deleteCohortUserRole(cohort_id, user_id, roles) {
 
 exports.createCohort = createCohort;
 exports.getCohort = getCohort;
+exports.getCohortById = getCohort;
 exports.getCohortScenarios = getCohortScenarios;
 exports.__getAggregatedCohort = __getAggregatedCohort;
 exports.__getCohorts = __getCohorts;

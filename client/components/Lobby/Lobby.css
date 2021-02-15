@@ -1,0 +1,96 @@
+.l__search-input > .input {
+  width: 100% !important;
+}
+
+.l__search-input > .input > input {
+  border-radius: .28571429rem !important;
+}
+
+.l__search-input > .results.visible {
+  overflow-y: scroll !important;
+  height: 200px;
+}
+
+.l__waitingroom-header {
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis !important;
+}
+
+.l__hidden {
+  visibility: hidden;
+}
+
+.result:hover .l__hidden,
+.active.result .l__hidden {
+  float: right;
+  visibility: visible;
+}
+
+.l__confirmation .row,
+.l__invite .row,
+.l__waiting .row {
+  padding-top: unset !important;
+}
+
+.l__confirmation .column,
+.l__invite .column,
+.l__waiting .column {
+  padding-left: unset !important;
+  padding-right: unset !important;
+}
+
+.l__confirmation {
+  /*font-size: 1.19rem !important;*/
+}
+
+.l__confirmation .card > .content:first-child,
+.l__invite .card > .content:first-child,
+.l__waiting .card > .content:first-child {
+  padding: unset !important;
+}
+
+.l__invite .card > .content:last-child {
+  padding: .50em .75em !important;
+  font-size: 1em !important;
+  line-height: 1.7em;
+}
+
+.l__confirmation .card .list .item > .content > .button,
+.l__invite .card .list .item > .content > .button {
+  margin-right: 1em;
+}
+
+.l__invite .ui.selection.dropdown {
+  /*min-height: 2em !important;*/
+  line-height: 2.5em ​!important;
+  /*padding: 0.585714em 3.2em 0.585714em 1em !important;*/
+}
+
+.l__invite.not-modal .ui.divided.selection.list > .item:first-child > .content:last-child {
+  padding-left: 0.25em;
+}
+
+.l__waiting.not-modal .ui.divided.selection.list > .item > .content:last-child {
+  padding-left: 0.25em;
+}
+
+.l__invite .ui.divided.selection.list > .item > .content:last-child,
+.l__waiting .ui.divided.selection.list > .item > .content:last-child {
+  line-height: 2.5em;
+}
+
+.l__invite ol,
+.l__waiting ol {
+  width: 80%;
+  padding-inline-start: 2em;
+}
+
+.l__invite ol li,
+.l__waiting ol li {
+  margin-bottom: 0.5rem;
+}
+
+.modal > .content > .l__invite.l__confirmation .card > .content {
+  padding: unset !important;
+}

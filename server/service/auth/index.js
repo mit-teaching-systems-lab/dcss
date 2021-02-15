@@ -17,21 +17,9 @@ const {
 
 const router = Router();
 
-router.get('/me', [requireUser, respondWithUser]);
+router.get('/', [requireUser, respondWithUser]);
 
-router.get('/session', [requireUser, refreshSession, respondWithUser]);
-
-router.post('/signup', [
-  validateRequestBody,
-  validateRequestUsernameAndEmail,
-  checkForDuplicate,
-  createUser,
-  respondWithUser
-]);
-
-router.post('/reset', [validateRequestBody, resetUserPassword]);
-
-router.put('/update', [
+router.put('/', [
   requireUser,
   validateRequestBody,
   checkForDuplicate,
@@ -39,7 +27,19 @@ router.put('/update', [
   respondWithUser
 ]);
 
-router.get('/signup/usernames/:username/exists', [
+router.post('/', [
+  validateRequestBody,
+  validateRequestUsernameAndEmail,
+  checkForDuplicate,
+  createUser,
+  respondWithUser
+]);
+
+router.get('/session', [requireUser, refreshSession, respondWithUser]);
+
+router.post('/reset', [validateRequestBody, resetUserPassword]);
+
+router.get('/usernames/:username/exists', [
   checkForDuplicate,
   (req, res) => {
     return res.json({ username: req.params.username });

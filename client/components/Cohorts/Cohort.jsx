@@ -179,7 +179,9 @@ export class Cohort extends React.Component {
     const onCohortUrlCopyClick = () => {
       copy(url);
       notify({
-        message: `Copied: ${url}`
+        message: url,
+        title: 'Copied',
+        icon: 'linkify',
       });
     };
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);
@@ -229,13 +231,13 @@ export class Cohort extends React.Component {
           ) : null}
           <Dropdown.Item
             text="Rename cohort"
-            icon="edit"
+            icon="edit outline"
             className="icon-primary"
             onClick={() => this.setState({ renameIsOpen: true })}
           />
           <Dropdown.Item
             text="Copy cohort"
-            icon="copy"
+            icon="copy outline"
             className="icon-primary"
             onClick={() => this.setState({ copyIsOpen: true })}
           />

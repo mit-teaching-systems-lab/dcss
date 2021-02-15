@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { paramCase } from 'change-case';
 import withSocket, {
   JOIN_OR_PART,
-  NEW_MESSAGE,
+  CHAT_MESSAGE_CREATED,
   USER_JOIN,
   USER_PART
   // USER_IS_TYPING,
@@ -18,7 +18,7 @@ import withSocket, {
 //   CHAT_MESSAGE
 // } from '@hoc/withRunEventCapturing';
 import {
-  getChat,
+  getChatById,
   getChatUsersByChatId,
   setChatUsersByChatId
 } from '@actions/chat';
@@ -104,9 +104,9 @@ class Chat extends Component {
 
     const { chat } = this.props;
 
-    this.storageKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
+    this.sessionKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
 
-    const { content } = Storage.get(this.storageKey, {
+    const { content } = Storage.get(this.sessionKey, {
       content: NEW_MESSAGE_CONTENT_HTML
     });
 
@@ -131,7 +131,7 @@ class Chat extends Component {
     this.onInput = this.onInput.bind(this);
     this.onJoinOrPart = this.onJoinOrPart.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-    this.onMessageReceive = this.onMessageReceive.bind(this);
+    this.onMessageReceived = this.onMessageReceived.bind(this);
     this.onMinMaxClick = this.onMinMaxClick.bind(this);
     this.onMount = this.onMount.bind(this);
     this.onQuote = this.onQuote.bind(this);
@@ -147,14 +147,16 @@ class Chat extends Component {
     //
     //
     if (!this.props.chat.id) {
-      await this.props.getChat(TEMPORARY_CHAT_ID);
+      await this.props.getChatById(TEMPORARY_CHAT_ID);
     }
     //
     //
     //
     //
 
-    this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
+    // TODO: determine if this is the best way to indicate that a
+    // user has joined
+    // this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
 
     await this.props.getChatUsersByChatId(this.props.chat.id);
 
@@ -184,7 +186,9 @@ class Chat extends Component {
   }
 
   onBeforeUnload() {
-    this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
+    // TODO: determine if this is the best way to indicate that a
+    // user has parted
+    // this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
 
     this.hasUnloaded = true;
 
@@ -217,7 +221,7 @@ class Chat extends Component {
 
   onChange(content) {
     this.content = content;
-    Storage.merge(this.storageKey, { content });
+    Storage.merge(this.sessionKey, { content });
 
     // This is impossible to reproduce programmatically. The
     // behavior being corrected is timing sensitive:
@@ -240,7 +244,7 @@ class Chat extends Component {
   clear() {
     const content = NEW_MESSAGE_CONTENT_HTML;
 
-    Storage.merge(this.storageKey, { content });
+    Storage.merge(this.sessionKey, { content });
 
     /* istanbul ignore else */
     if (this.rte) {
@@ -269,7 +273,7 @@ class Chat extends Component {
     // TODO: possibly send "typing" message?
   }
 
-  onMessageReceive() {
+  onMessageReceived() {
     if (this.state.isMinimized) {
       this.setState({
         isPulsing: true
@@ -296,7 +300,7 @@ class Chat extends Component {
     const { content } = this;
     if (isValidMessage(content)) {
       this.props.socket.emit(
-        NEW_MESSAGE,
+        CHAT_MESSAGE_CREATED,
         makeSocketPayload(this.props, {
           content
         })
@@ -331,7 +335,7 @@ class Chat extends Component {
       onChange,
       onInput,
       onKeyDown,
-      onMessageReceive,
+      onMessageReceived,
       onMinMaxClick,
       onMount,
       onQuote,
@@ -346,7 +350,7 @@ class Chat extends Component {
     }
 
     // Layout.isForMobile()?
-    const { dimensions, position } = Storage.get(this.storageKey, {
+    const { dimensions, position } = Storage.get(this.sessionKey, {
       dimensions: {
         width: 430,
         height: 410
@@ -362,7 +366,7 @@ class Chat extends Component {
         return;
       }
 
-      Storage.merge(this.storageKey, {
+      Storage.merge(this.sessionKey, {
         dimensions: { width, height },
         position: { x, y }
       });
@@ -400,7 +404,7 @@ class Chat extends Component {
       chat,
       isMinimized,
       onQuote,
-      onMessageReceive,
+      onMessageReceived,
       slice
     };
 
@@ -460,7 +464,7 @@ class Chat extends Component {
 Chat.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
-  getChat: PropTypes.func,
+  getChatById: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
   linkChatToRun: PropTypes.func,
@@ -483,7 +487,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChat: id => dispatch(getChat(id)),
+  getChatById: id => dispatch(getChatById(id)),
   getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   setChatUsersByChatId: (id, users) => dispatch(setChatUsersByChatId(id, users))
 });

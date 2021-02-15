@@ -92,7 +92,7 @@ exports[`Calls onQuote 3`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -162,7 +162,7 @@ exports[`Calls onQuote 3`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -235,7 +235,7 @@ exports[`Calls onQuote 3`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -405,7 +405,7 @@ exports[`Message can be deleted 3`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -571,7 +571,7 @@ exports[`Message can be deleted 4`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -737,7 +737,7 @@ exports[`Message can be deleted 5`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -903,7 +903,7 @@ exports[`Message can be deleted 6`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -1069,7 +1069,7 @@ exports[`Message can be deleted 7`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -5428,7 +5428,7 @@ exports[`Receives new message after scrolling 5`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -6328,7 +6328,7 @@ exports[`Receives new message after scrolling 6`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -6443,7 +6443,7 @@ exports[`Receives new message after scrolling without existing messages 5`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -6540,7 +6540,7 @@ exports[`Receives new message after scrolling without existing messages 6`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -8249,7 +8249,7 @@ exports[`Receives new message at end of messages 4`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/credible-lyrebird"
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -12415,7 +12415,7 @@ exports[`Receives new message, user does not exist yet. 4`] = `
           class="avatar"
         >
           <img
-            src="https://loremflickr.com/50/50/another-user"
+            src="https://robohash.org/another-user?bgset=bg1&size=50x50"
           />
         </div>
         <div
@@ -12426,11 +12426,11 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             tabindex="0"
           >
             <span
-              aria-label="Perfect Oryx (perfect-oryx)"
+              aria-label="another-user"
               class="ui medium text"
-              title="Perfect Oryx (perfect-oryx)"
+              title="another-user"
             >
-              Perfect Oryx
+              another-user
             </span>
              
             <i

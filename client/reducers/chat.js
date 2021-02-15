@@ -3,7 +3,7 @@ import {
   GET_CHAT_USERS_SUCCESS,
   GET_CHATS_SUCCESS,
   SET_CHAT_USERS_SUCCESS,
-  LINK_CHAT_TO_RUN_SUCCESS
+  LINK_RUN_TO_CHAT_SUCCESS
 } from '@actions/types';
 
 import { chatInitialState } from './initial-states';
@@ -25,7 +25,7 @@ export const chat = (state = chatInitialState, action) => {
       };
     }
     case GET_CHAT_SUCCESS:
-    case LINK_CHAT_TO_RUN_SUCCESS: {
+    case LINK_RUN_TO_CHAT_SUCCESS: {
       return {
         ...state,
         ...chat
@@ -37,7 +37,7 @@ export const chat = (state = chatInitialState, action) => {
 };
 
 export const chats = (state = [], action) => {
-  const { chats, type } = action;
+  const { chat, chats, type } = action;
 
   switch (type) {
     case GET_CHATS_SUCCESS: {
@@ -61,13 +61,33 @@ export const chats = (state = [], action) => {
         }, [])
         .sort((a, b) => a.id < b.id);
     }
+    case GET_CHAT_SUCCESS:
+    case LINK_RUN_TO_CHAT_SUCCESS: {
+      if (!chat || !chat.id) {
+        return [...state];
+      }
+
+      const index = state.findIndex(({ id }) => id === chat.id);
+
+      if (index !== -1) {
+        state[index] = {
+          ...state[index],
+          ...chat
+        };
+      } else {
+        state.push(chat);
+      }
+      return [...state].sort(
+        (a, b) => a.id < b.id
+      );
+    }
     default:
       return state;
   }
 };
 
 export const chatsById = (state = {}, action) => {
-  const { chats, type } = action;
+  const { chat, chats, type } = action;
 
   switch (type) {
     case GET_CHATS_SUCCESS: {
@@ -78,6 +98,21 @@ export const chatsById = (state = {}, action) => {
       return {
         ...state,
         ...chatsById
+      };
+    }
+    case GET_CHAT_SUCCESS:
+    case LINK_RUN_TO_CHAT_SUCCESS: {
+      if (!chat || !chat.id) {
+        return {
+          ...state
+        };
+      }
+      return {
+        ...state,
+        [chat.id]: {
+          ...(state[chat.id] || {}),
+          ...chat
+        }
       };
     }
     default:

@@ -46,7 +46,7 @@ export class CohortProgress extends React.Component {
       participants: []
     };
 
-    this.refreshInterval = null;
+    this.interval = null;
     this.onParticipantSearchChange = this.onParticipantSearchChange.bind(this);
   }
 
@@ -61,10 +61,10 @@ export class CohortProgress extends React.Component {
     }
   }
 
-  progressRefresh() {
-    this.refreshInterval = setInterval(async () => {
+  refresh() {
+    this.interval = setInterval(async () => {
       /* istanbul ignore else */
-      if (!this.state.search) {
+      if (!this.state.search && document.visibilityState === 'visible') {
         await this.fetchCohort();
       }
     }, 10000);
@@ -76,12 +76,12 @@ export class CohortProgress extends React.Component {
     /* istanbul ignore if */
     if (this.state.refresh) {
       // TODO: allow updating to paused.
-      this.progressRefresh();
+      this.refresh();
     }
   }
 
   async componentWillUnmount() {
-    clearInterval(this.refreshInterval);
+    clearInterval(this.interval);
   }
 
   onParticipantSearchChange(event, { value }) {
@@ -121,13 +121,13 @@ export class CohortProgress extends React.Component {
   }
 
   /* istanbul ignore next */
-  onProgressRefreshChange() {
+  onRefreshChange() {
     let refresh = !this.state.refresh;
     this.setState({ refresh }, () => {
       if (!refresh) {
-        clearInterval(this.refreshInterval);
+        clearInterval(this.interval);
       } else {
-        this.progressRefresh();
+        this.refresh();
       }
       Storage.set(this.sessionKey, this.state);
     });
@@ -161,7 +161,6 @@ export class CohortProgress extends React.Component {
       }
       return accum;
     }, 0);
-
 
     const usersInCohortHeader = (
       <p className="c__scenario-header-num">
@@ -285,7 +284,7 @@ export class CohortProgress extends React.Component {
               >
                 <Card.Content>
                   <Card.Header>
-                    <Username {...participant} />
+                    <Username user={participant} />
                   </Card.Header>
                   {lastAccessedDisplay}
                 </Card.Content>

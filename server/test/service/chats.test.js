@@ -47,8 +47,8 @@ const users = [
 
 const chat = {
   id: 1,
-  lobby_id: 1,
   host_id: 999,
+  scenario_id: 42,
   created_at: '2020-12-08T21:51:33.659Z',
   updated_at: null,
   deleted_at: null,
@@ -158,7 +158,7 @@ describe('/api/chats/*', () => {
               "ended_at": null,
               "host_id": 999,
               "id": 1,
-              "lobby_id": 1,
+              "scenario_id": 42,
               "updated_at": null,
             },
           ],
@@ -171,8 +171,7 @@ describe('/api/chats/*', () => {
     test('post success', async () => {
       const method = 'post';
       const body = {
-        host_id: 999,
-        lobby_id: 1
+        scenario_id: 1
       };
       const response = await request({ path, method, body });
       expect(await response.json()).toMatchInlineSnapshot(`
@@ -184,12 +183,13 @@ describe('/api/chats/*', () => {
       expect(db.createChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           999,
+          null,
           1,
         ]
       `);
     });
 
-    test('post failure, missing lobby_id', async () => {
+    test('post failure, missing scenario_id', async () => {
       db.createChat.mockImplementation(async props => null);
 
       const method = 'post';
@@ -199,7 +199,7 @@ describe('/api/chats/*', () => {
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating a chat requires a host and lobby.",
+          "message": "Creating a chat requires a host and a scenario.",
         }
       `);
       expect(db.createChat.mock.calls.length).toBe(0);
@@ -213,13 +213,13 @@ describe('/api/chats/*', () => {
 
       const method = 'post';
       const body = {
-        lobby_id: 1
+        scenario_id: 1
       };
       const response = await request({ path, method, body, status: 422 });
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
           "error": true,
-          "message": "Creating a chat requires a host and lobby.",
+          "message": "Creating a chat requires a host and a scenario.",
         }
       `);
       expect(db.createChat.mock.calls.length).toBe(0);
@@ -230,7 +230,7 @@ describe('/api/chats/*', () => {
 
       const method = 'post';
       const body = {
-        lobby_id: 1,
+        scenario_id: 1,
         host_id: 999
       };
       const response = await request({ path, method, body, status: 409 });
@@ -244,6 +244,7 @@ describe('/api/chats/*', () => {
       expect(db.createChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           999,
+          null,
           1,
         ]
       `);
@@ -265,7 +266,7 @@ describe('/api/chats/*', () => {
               "ended_at": null,
               "host_id": 999,
               "id": 1,
-              "lobby_id": 1,
+              "scenario_id": 42,
               "updated_at": null,
             },
           ],
@@ -295,7 +296,7 @@ describe('/api/chats/*', () => {
               "ended_at": null,
               "host_id": 999,
               "id": 1,
-              "lobby_id": 1,
+              "scenario_id": 42,
               "updated_at": null,
             },
           ],
@@ -325,7 +326,7 @@ describe('/api/chats/*', () => {
               "ended_at": null,
               "host_id": 999,
               "id": 1,
-              "lobby_id": 1,
+              "scenario_id": 42,
               "updated_at": null,
             },
           ],
@@ -354,7 +355,7 @@ describe('/api/chats/*', () => {
             "ended_at": null,
             "host_id": 999,
             "id": 1,
-            "lobby_id": 1,
+            "scenario_id": 42,
             "updated_at": null,
           },
         }
@@ -386,7 +387,7 @@ describe('/api/chats/*', () => {
             "ended_at": null,
             "host_id": 999,
             "id": 1,
-            "lobby_id": 1,
+            "scenario_id": 42,
             "updated_at": null,
           },
         }
@@ -444,7 +445,7 @@ describe('/api/chats/*', () => {
             "ended_at": null,
             "host_id": 999,
             "id": 1,
-            "lobby_id": 1,
+            "scenario_id": 42,
             "updated_at": null,
           },
         }

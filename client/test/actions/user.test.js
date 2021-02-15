@@ -65,7 +65,7 @@ describe('SET_USER_SUCCESS', () => {
     const returnValue = await store.dispatch(actions.setUser({ x: 1 }));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/update",
+        "/api/auth/",
         Object {
           "body": "{\\"x\\":1}",
           "headers": Object {
@@ -90,7 +90,7 @@ describe('SET_USER_SUCCESS', () => {
     );
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/update",
+        "/api/auth/",
         Object {
           "body": "{\\"password\\":\\"X\\"}",
           "headers": Object {
@@ -123,7 +123,7 @@ test('SET_USER_ERROR', async () => {
   const returnValue = await store.dispatch(actions.setUser({ x: 1 }));
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/auth/update",
+      "/api/auth/",
       Object {
         "body": "{\\"x\\":1}",
         "headers": Object {
@@ -149,7 +149,7 @@ describe('GET_USER_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/me",
+        "/api/auth/",
       ]
     `);
     expect(store.getState().user).toEqual(user);
@@ -171,7 +171,7 @@ describe('GET_USER_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/signup",
+        "/api/auth/",
         Object {
           "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"X\\"}",
           "headers": Object {
@@ -199,7 +199,7 @@ describe('GET_USER_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/signup",
+        "/api/auth/",
         Object {
           "body": "{\\"username\\":\\"username\\",\\"password\\":\\"X\\"}",
           "headers": Object {
@@ -227,7 +227,7 @@ describe('GET_USER_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/signup",
+        "/api/auth/",
         Object {
           "body": "{\\"email\\":\\"a@a.com\\",\\"password\\":\\"X\\"}",
           "headers": Object {
@@ -255,7 +255,7 @@ describe('GET_USER_SUCCESS', () => {
 
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/signup",
+        "/api/auth/",
         Object {
           "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\"}",
           "headers": Object {
@@ -277,7 +277,7 @@ describe('GET_USER_ERROR', () => {
     const returnValue = await store.dispatch(actions.getUser());
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/me",
+        "/api/auth/",
       ]
     `);
     expect(store.getState().errors.user.error).toMatchInlineSnapshot(
@@ -299,7 +299,7 @@ describe('GET_USER_ERROR', () => {
     const returnValue = await store.dispatch(actions.signUp(params));
     expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "/api/auth/signup",
+        "/api/auth/",
         Object {
           "body": "{\\"email\\":\\"a@a.com\\",\\"username\\":\\"username\\",\\"password\\":\\"X\\"}",
           "headers": Object {

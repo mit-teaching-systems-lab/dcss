@@ -1,4 +1,6 @@
 import {
+  CREATE_CHAT_INVITE_SUCCESS,
+  CREATE_CHAT_INVITE_ERROR,
   GET_CHAT_ERROR,
   GET_CHAT_SUCCESS,
   GET_CHAT_MESSAGES_ERROR,
@@ -14,13 +16,110 @@ import {
   SET_CHAT_MESSAGE_ERROR,
   SET_CHAT_MESSAGE_SUCCESS,
   SET_CHAT_USERS_SUCCESS,
-  LINK_CHAT_TO_RUN_ERROR,
-  LINK_CHAT_TO_RUN_SUCCESS
+  LINK_RUN_TO_CHAT_ERROR,
+  LINK_RUN_TO_CHAT_SUCCESS
 } from './types';
 
-export let getChat = id => async dispatch => {
+export let createChat = (scenario, cohort, isOpen) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      cohort_id: cohort ? cohort.id : null,
+      scenario_id: scenario.id,
+      is_open: isOpen
+    });
+    const res = await (await fetch(`/api/chats`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { chat } = res;
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_ERROR, error });
+    return null;
+  }
+};
+
+export let getChat = (scenario_id, cohort_id) => async dispatch => {
+  try {
+    const url = cohort_id
+      ? `/api/chats/new-or-existing/scenario/${scenario_id}/cohort/${cohort_id}`
+      : `/api/chats/new-or-existing/scenario/${scenario_id}`;
+
+    const res = await (await fetch(url)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { chat } = res;
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_ERROR, error });
+    return null;
+  }
+};
+
+export let createChatInvite = (id, selection) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      invite: selection
+    });
+    const res = await (await fetch(`/api/chats/${id}/invite`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { invite } = res;
+    dispatch({ type: CREATE_CHAT_INVITE_SUCCESS, invite });
+    return invite;
+  } catch (error) {
+    dispatch({ type: CREATE_CHAT_INVITE_ERROR, error });
+    return null;
+  }
+};
+
+export let getChatById = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/chats/${id}`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { chat } = res;
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_ERROR, error });
+    return null;
+  }
+};
+
+export let joinChat = (id, persona) => async dispatch => {
+  try {
+    const body = JSON.stringify({
+      persona
+    });
+    const res = await (await fetch(`/api/chats/${id}/join`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body
+    })).json();
 
     if (res.error) {
       throw res;
@@ -37,6 +136,22 @@ export let getChat = id => async dispatch => {
 export let getChatUsersByChatId = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/chats/${id}/users`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { users } = res;
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  } catch (error) {
+    dispatch({ type: GET_CHAT_USERS_ERROR, error });
+    return null;
+  }
+};
+
+export let getLinkedChatUsersByChatId = id => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/${id}/users/linked`)).json();
 
     if (res.error) {
       throw res;
@@ -136,35 +251,6 @@ export let setChat = (id, params) => async dispatch => {
   }
 };
 
-export let createChat = params => async dispatch => {
-  try {
-    if (Object.values(params).length) {
-      const { lobby_id } = params;
-      const body = JSON.stringify({
-        lobby_id
-      });
-      const res = await (await fetch(`/api/chats`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body
-      })).json();
-
-      if (res.error) {
-        throw res;
-      }
-      const { chat } = res;
-      dispatch({ type: GET_CHAT_SUCCESS, chat });
-      return chat;
-    }
-    return null;
-  } catch (error) {
-    dispatch({ type: GET_CHAT_ERROR, error });
-    return null;
-  }
-};
-
 export let getChats = () => async dispatch => {
   try {
     const res = await (await fetch('/api/chats')).json();
@@ -182,23 +268,62 @@ export let getChats = () => async dispatch => {
   }
 };
 
-export let linkChatToRun = (chat_id, run_id) => async dispatch => {
+export let getChatsByCohortId = (id) => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/chats/cohort/${id}`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+
+    const { chats = [] } = res;
+    dispatch({ type: GET_CHATS_SUCCESS, chats });
+    return chats;
+  } catch (error) {
+    dispatch({ type: GET_CHATS_ERROR, error });
+    return null;
+  }
+};
+
+export let linkRunToChat = (id, run_id) => async dispatch => {
   try {
     const res = await (await fetch(
-      `/api/chats/link/${chat_id}/run/${run_id}`
+      `/api/chats/link/${id}/run/${run_id}`
     )).json();
 
     if (res.error) {
       throw res;
     }
     const { chat } = res;
-    dispatch({ type: LINK_CHAT_TO_RUN_SUCCESS, chat });
+    dispatch({ type: LINK_RUN_TO_CHAT_SUCCESS, chat });
     return chat;
   } catch (error) {
-    dispatch({ type: LINK_CHAT_TO_RUN_ERROR, error });
+    dispatch({ type: LINK_RUN_TO_CHAT_ERROR, error });
     return null;
   }
 };
+
+// export let linkUserToChat = (chat_id, role) => async dispatch => {
+//   try {
+//     const res = await (await fetch(
+//       `/api/cohorts/${cohort_id}/join/${role}`
+//     )).json();
+//     if (res.error) {
+//       throw res;
+//     }
+
+//     const { users, usersById } = res;
+//     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, users, usersById });
+//     return {
+//       users,
+//       usersById
+//     };
+//   } catch (error) {
+//     dispatch({ type: SET_COHORT_USER_ROLE_ERROR, error });
+//     return null;
+//   }
+// };
+
 
 export let setMessageById = (id, params) => async dispatch => {
   try {

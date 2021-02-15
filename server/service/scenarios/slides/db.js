@@ -3,7 +3,7 @@ const { query } = require('../../../util/db');
 
 exports.getScenarioSlides = async scenarioId => {
   const results = await query(sql`
-        SELECT id, title, components, is_finish
+        SELECT id, title, components, is_finish, has_chat_enabled
         FROM slide
         WHERE scenario_id = ${scenarioId}
         ORDER BY "order";
@@ -34,19 +34,24 @@ exports.createSlide = async ({
   title,
   components,
   order,
-  is_finish = false
+  is_finish = false,
+  has_chat_enabled = false
 }) => {
   let q;
   if (!order) {
     q = sql`
-            INSERT INTO slide (scenario_id, title, components, is_finish)
-            VALUES (${scenario_id}, ${title}, ${components}, ${is_finish})
+            INSERT INTO slide
+              (scenario_id, title, components, is_finish, has_chat_enabled)
+            VALUES
+              (${scenario_id}, ${title}, ${components}, ${is_finish}, ${has_chat_enabled})
             RETURNING *;
         `;
   } else {
     q = sql`
-            INSERT INTO slide (scenario_id, title, components, "order", is_finish)
-            VALUES (${scenario_id}, ${title}, ${components}, ${order}, ${is_finish})
+            INSERT INTO slide
+              (scenario_id, title, components, "order", is_finish, has_chat_enabled)
+            VALUES
+              (${scenario_id}, ${title}, ${components}, ${order}, ${is_finish}, ${has_chat_enabled})
             RETURNING *;
         `;
   }
@@ -61,12 +66,24 @@ exports.setSlide = async (id, data) => {
 
 exports.setAllSlides = async (scenario_id, slides) => {
   const results = await query(sql`
-INSERT INTO slide (scenario_id, title, components, is_finish)
-    SELECT ${scenario_id} as scenario_id, s.title, s.components, s.is_finish FROM
-    jsonb_array_elements(${slides}) AS t(slide),
-    jsonb_to_record(t.slide) AS s (id int, title text, components jsonb, is_finish boolean)
+    INSERT INTO slide (scenario_id, title, components, is_finish, has_chat_enabled)
+      SELECT
+        ${scenario_id} as scenario_id,
+        s.title,
+        s.components,
+        s.is_finish,
+        s.has_chat_enabled
+      FROM
+        jsonb_array_elements(${slides}) AS t(slide),
+        jsonb_to_record(t.slide) AS s (
+          id int,
+          title text,
+          components jsonb,
+          is_finish boolean,
+          has_chat_enabled boolean
+        )
     ON CONFLICT DO NOTHING;
-    `);
+  `);
   return { addedCount: results.rowCount };
 };
 

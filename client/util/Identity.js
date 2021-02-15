@@ -21,12 +21,12 @@ let i = 1;
 
 const updateMaps = n => {
   /* SESSION_SECRET is "embedded" by webpack */
-  let h = objectHash({ n, SESSION_SECRET });
+  let h = objectHash({ n, SESSION_SECRET }).slice(0, 10);
   hashToIdMap[h] = n;
   idToHashMap[n] = h;
 };
 
-const rishash = /^[0-9a-f]{40}$/i;
+const rishash = /^[0-9a-f]{10}$/i;
 
 const Identity = {
   id() {

@@ -11,6 +11,7 @@ import {
 import { getRuns } from '@actions/run';
 import { getUsers } from '@actions/users';
 import CohortScenariosSelector from '@components/Cohorts/CohortScenariosSelector';
+import CohortRoomSelector from '@components/Cohorts/CohortRoomSelector';
 import Gate from '@components/Gate';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
@@ -28,7 +29,12 @@ export class CohortScenarios extends React.Component {
 
     this.state = {
       isReady: false,
-      editIsOpen: false,
+      edit: {
+        isOpen: false,
+      },
+      room: {
+        isOpen: false,
+      },
       visibleCount: 4
     };
     this.onEditScenariosClick = this.onEditScenariosClick.bind(this);
@@ -78,8 +84,11 @@ export class CohortScenarios extends React.Component {
   }
 
   onEditScenariosClick() {
+    const edit = {
+      isOpen: !this.state.edit.isOpen
+    };
     this.setState({
-      editIsOpen: !this.state.editIsOpen
+      edit
     });
   }
 
@@ -90,7 +99,7 @@ export class CohortScenarios extends React.Component {
     } = this;
     const { authority, cohort, onClick, runs } = this.props;
     const { isReady } = this.state;
-    const { isFacilitator /*, isParticipant */ } = authority;
+    const { isFacilitator, isParticipant } = authority;
 
     if (!isReady) {
       return <Loading />;
@@ -123,7 +132,11 @@ export class CohortScenarios extends React.Component {
     );
 
     const onCohortScenariosSelectorClose = () => {
-      this.setState({ editIsOpen: false });
+      this.setState({
+        edit: {
+          isOpen: false
+        }
+      });
     };
 
     const cohortScenariosSelectorProps = {
@@ -139,6 +152,25 @@ export class CohortScenarios extends React.Component {
       onClose: onCohortScenariosSelectorClose
     };
 
+    const onCohortRoomSelectorClose = () => {
+      this.setState({
+        room: {
+          isOpen: false
+        }
+      });
+    };
+
+    const cohortScenarioRoomProps = {
+      buttons: {
+        primary: {
+          onClick: () => {
+            onCohortRoomSelectorClose();
+          }
+        }
+      },
+      onClose: onCohortRoomSelectorClose
+    };
+
     return (
       <Container fluid className="c__scenario-container">
         {scenariosInCohortHeader}
@@ -146,7 +178,7 @@ export class CohortScenarios extends React.Component {
         {cohortScenarios.length ? (
           <Sortable
             className="c__scenario-list"
-            disabled={Layout.isForMobile()}
+            disabled={Layout.isForMobile() || !isFacilitator}
             isAuthorized={isFacilitator}
             onChange={onSortableChange}
             options={{
@@ -176,30 +208,30 @@ export class CohortScenarios extends React.Component {
               const run =
                 runs.find(run => run.scenario_id === scenario.id) || {};
 
-              const { run_created_at = null, run_ended_at = null } = run;
+              const { created_at = null, ended_at = null } = run;
 
-              const createdAt = run_created_at
-                ? Moment(run_created_at).fromNow()
+              const createdAt = created_at
+                ? Moment(created_at).fromNow()
                 : '';
 
-              const createdAtAlt = run_created_at
-                ? Moment(run_created_at).calendar()
+              const createdAtAlt = created_at
+                ? Moment(created_at).calendar()
                 : '';
 
-              const endedAt = run_ended_at
-                ? Moment(run_ended_at).fromNow()
+              const endedAt = ended_at
+                ? Moment(ended_at).fromNow()
                 : '';
 
-              const endedAtAlt = run_ended_at
-                ? Moment(run_ended_at).calendar()
+              const endedAtAlt = ended_at
+                ? Moment(ended_at).calendar()
                 : 'This scenario is not complete';
 
-              const startedAtDisplay = run_created_at
+              const startedAtDisplay = created_at
                 ? `${createdAt} (${createdAtAlt})`.trim()
                 : 'This scenario has not been started';
 
-              const endedAtCreatedAtAlt = run_created_at ? endedAtAlt : '';
-              const endedAtDisplay = run_ended_at
+              const endedAtCreatedAtAlt = created_at ? endedAtAlt : null;
+              const endedAtDisplay = ended_at
                 ? `${endedAt} (${endedAtAlt})`.trim()
                 : endedAtCreatedAtAlt;
 
@@ -214,7 +246,9 @@ export class CohortScenarios extends React.Component {
               const onCohortScenarioUrlCopyClick = () => {
                 copy(url);
                 notify({
-                  message: `Copied: ${url}`
+                  message: url,
+                  title: 'Copied',
+                  icon: 'linkify'
                 });
               };
               const isMultiParticipantScenario = scenario.personas.length > 1;
@@ -223,15 +257,65 @@ export class CohortScenarios extends React.Component {
                 ? 'users'
                 : 'user';
 
-              const cardHeaderProps = !isFacilitator
-                ? { as: 'a', href: pathname }
-                : {};
-
-              cardHeaderProps['aria-label'] = isMultiParticipantScenario
+              const cardHeaderAriaLabel = isMultiParticipantScenario
                 ? `${scenario.title} is a group scenario`
                 : `${scenario.title} is a solo scenario`;
 
+              const singleCardHeaderProps = {
+                as: 'a',
+                href: pathname
+              };
+
+              const multiCardHeaderProps = {
+                onClick: () => {
+                  this.setState({
+                    room: {
+                      isOpen: true
+                    }
+                  });
+                }
+              };
+
               const key = Identity.key(scenario);
+
+              const resolvedHeaderProps = isMultiParticipantScenario
+                ? multiCardHeaderProps
+                : singleCardHeaderProps;
+
+              let cardHeaderProps = {
+                'aria-label': cardHeaderAriaLabel,
+                ...resolvedHeaderProps
+              };
+
+              let finishButtonDisplay = isMultiParticipantScenario
+                ? 'Re-join to finish scenario'
+                : 'Finish scenario'
+
+              let runButtonDisplay = isMultiParticipantScenario
+                ? 'Create or join a room to run scenario'
+                : 'Run scenario'
+
+              let rerunButtonDisplay = isMultiParticipantScenario
+                ? 'Create or join a room to re-run scenario'
+                : 'Re-run scenario'
+
+              let startButtonDisplay = created_at
+                ? finishButtonDisplay
+                : runButtonDisplay;
+
+              let runScenarioDisplay = ended_at
+                ? rerunButtonDisplay
+                : startButtonDisplay;
+
+              let runStartedMaybeFinished = startedAtDisplay;
+
+              if (created_at && !ended_at) {
+                runStartedMaybeFinished = `Started ${startedAtDisplay}. ${endedAtDisplay}.`;
+              }
+
+              if (ended_at) {
+                runStartedMaybeFinished = `Finished ${endedAtDisplay}.`
+              }
 
               return (
                 <Card
@@ -240,7 +324,7 @@ export class CohortScenarios extends React.Component {
                   style={scenarioCursor}
                 >
                   <Card.Content>
-                    <Card.Header {...cardHeaderProps}>
+                    <Card.Header>
                       <Icon
                         className="primary"
                         name={cardHeaderIconClassName}
@@ -249,25 +333,35 @@ export class CohortScenarios extends React.Component {
                     </Card.Header>
                     <Card.Description>
                       <Text.Truncate lines={2}>
-                        {isFacilitator ? scenario.description : endedAtDisplay}
+                        {scenario.description}
                       </Text.Truncate>
                     </Card.Description>
+                    {!isFacilitator ? (
+                      <Card.Meta>
+                        {runStartedMaybeFinished}
+                      </Card.Meta>
+                    ) : null}
                     <Card.Meta>
-                      {isFacilitator ? null : startedAtDisplay}
-                      <Gate
-                        requiredPermission="view_all_data"
-                        isAuthorized={isFacilitator}
-                      >
-                        <Button
-                          size="tiny"
-                          data-testid="run-cohort-as-participant"
-                          onClick={() => {
+                      <Button
+                        size="tiny"
+                        data-testid="run-cohort-as-participant"
+                        onClick={() => {
+                          if (isMultiParticipantScenario) {
+                            this.setState({
+                              room: {
+                                isOpen: true,
+                                scenario
+                              }
+                            });
+                          } else {
                             location.href = url;
-                          }}
-                        >
-                          <Icon className="primary" name="play" />
-                          Run scenario as a participant
-                        </Button>
+                          }
+                        }}
+                      >
+                        <Icon className="primary" name="play" />
+                        {runScenarioDisplay}
+                      </Button>
+                      {/*isFacilitator ? (
                         <Button
                           size="tiny"
                           data-testid="copy-cohort-scenario-link"
@@ -276,7 +370,7 @@ export class CohortScenarios extends React.Component {
                           <Icon className="primary" name="clipboard outline" />
                           Copy scenario link to clipboard
                         </Button>
-                      </Gate>
+                      ) : null*/}
                     </Card.Meta>
                   </Card.Content>
                   <div className="c__scenario-extra">
@@ -305,8 +399,12 @@ export class CohortScenarios extends React.Component {
           </p>
         )}
 
-        {this.state.editIsOpen ? (
+        {this.state.edit.isOpen ? (
           <CohortScenariosSelector {...cohortScenariosSelectorProps} />
+        ) : null}
+
+        {this.state.room.isOpen ? (
+          <CohortRoomSelector {...cohortScenarioRoomProps} scenario={this.state.room.scenario} />
         ) : null}
 
         <div data-testid="cohort-scenarios" />

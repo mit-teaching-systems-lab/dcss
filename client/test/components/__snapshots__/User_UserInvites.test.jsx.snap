@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <a
+    class="item"
+    tabindex="0"
+  >
+    Invites
+  </a>
+</DocumentFragment>
+`;

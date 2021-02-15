@@ -1,33 +1,55 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Identity from '@utils/Identity';
 import objectPath from 'object-path';
+import { ToastContainer, notifier } from '@components/Toast';
+import { getInvites } from '@actions/invite';
 import { Button, Header, Modal } from '@components/UI';
-import { SemanticToastContainer, toast } from 'react-semantic-toasts';
-import withSocket, { NOTIFICATION } from '@hoc/withSocket';
+import withSocket, {
+  CREATE_USER_CHANNEL,
+  NOTIFICATION
+} from '@hoc/withSocket';
+import Identity from '@utils/Identity';
 
 import './Notification.css';
 
 const cache = new Set();
+const noOp = () => {};
+const checkNotificationRules = (state, rules) => {
+  return Object.entries(rules).every(([key, value]) => {
+    return objectPath.get(state, key) === value;
+  });
+};
 
-export function notify({
-  color,
-  icon = '',
-  message = '',
-  title = '',
-  size = 'tiny',
-  time = 2000,
-  type = 'info'
-}) {
+const createHTML = html => ({ __html: html });
+
+const notify = (configuration) => {
+  const {
+    className = 'n__container',
+    color,
+    icon = '',
+    message = '',
+    title = '',
+    size = 'large',
+    style = {},
+    time = 2000,
+    type = '',
+    onClick = noOp,
+    onClose = noOp,
+    onDismiss = noOp,
+  } = configuration;
+
   const description = message;
   const props = {
+    className,
     title,
     description,
     icon,
     size,
+    style,
     time,
-    type
+    type,
   };
 
   if (color) {
@@ -44,22 +66,28 @@ export function notify({
 
   if (!cache.has(key)) {
     cache.add(key);
-    toast(props, () => {
+    const wrappedOnClose = () => {
       cache.delete(key);
-    });
+      onClose();
+    };
+    notifier(
+      props,
+      wrappedOnClose,
+      onClick,
+      onDismiss
+    );
   }
 }
 
-function checkNotificationRules(state, rules) {
-  console.log(state);
-  return Object.entries(rules).every(([key, value]) => {
-    return objectPath.get(state, key) === value;
-  });
-}
+notify.queue = notifier.store;
 
-function createHTML(html) {
-  return { __html: html };
-}
+export {
+  checkNotificationRules,
+  createHTML,
+  notify,
+};
+
+
 
 class Notification extends Component {
   onMessage = notification => {
@@ -72,12 +100,46 @@ class Notification extends Component {
       return;
     }
 
-    if (notification.type === 'toast') {
-      notify(notification.props);
-    }
+    // if (notification.type === 'invite') {
+
+    //   let className = notification.props.className || '';
+    //   className += `n__container`;
+
+    //   notification.props.className = className.trim();
+
+    //   if (notification.props.html) {
+    //     const onClick = event => {
+    //       if (event.target.tagName === 'BUTTON') {
+    //         if (notifier.store.data.length) {
+    //           notifier.store.remove(notifier.store.data[0]);
+    //         }
+
+    //         this.props.history.push(event.target.dataset.href, {
+    //           redirect: window.location.href
+    //         });
+    //       }
+    //     };
+
+    //     notification.props.message = (
+    //       <div
+    //         onClick={onClick}
+    //         dangerouslySetInnerHTML={createHTML(notification.props.html)}
+    //       />
+    //     );
+    //   }
+
+    //   if (notification.props.time === 0) {
+    //     notification.props.onDismiss = () => {
+    //       console.log('onDismiss');
+    //     };
+    //   }
+
+    //   notify(notification.props);
+
+    //   this.props.getInvites();
+    // }
 
     if (notification.type === 'modal') {
-      console.log('do a modal');
       this.setState({ notification });
     }
   };
@@ -90,39 +152,12 @@ class Notification extends Component {
     };
   }
 
-  // componentDidUpdate() {
-  //   const {
-  //     notification,
-  //   } = this.state;
-
-  //   if (notification) {
-  //     console.log("State changed, which caused an update, which means we might have a notification to show");
-
-  //     const {
-  //       created_at,
-  //       starts_at,
-  //       expires_at,
-  //       props,
-  //       rules,
-  //       type
-  //     } = notification;
-
-  //     console.log(
-  //       created_at,
-  //       starts_at,
-  //       expires_at,
-  //       props,
-  //       rules,
-  //       type
-  //     );
-
-  //     notify({color: 'green', message: 'hi!'});
-
-  //   }
-  // }
-
   componentDidMount() {
     this.props.socket.on(NOTIFICATION, this.onMessage);
+
+    const { user } = this.props.state;
+
+    this.props.socket.emit(CREATE_USER_CHANNEL, { user });
   }
 
   componentWillUnmount() {
@@ -136,13 +171,9 @@ class Notification extends Component {
     let notificationProps = notification ? notification.props : null;
 
     const header = notificationProps ? notificationProps.header || '' : null;
-
     const icon = notificationProps ? notificationProps.icon || 'bell' : null;
-
     const size = notificationProps ? notificationProps.size || 'large' : null;
-
     const content = notificationProps ? notificationProps.content || '' : null;
-
     const html = notificationProps ? notificationProps.html || '' : null;
 
     const modalContent = html ? (
@@ -153,7 +184,7 @@ class Notification extends Component {
 
     return (
       <Fragment>
-        <SemanticToastContainer />
+        <ToastContainer />
         {notification ? (
           <Modal.Accessible open>
             <Modal
@@ -182,6 +213,7 @@ class Notification extends Component {
 }
 
 Notification.propTypes = {
+  history: PropTypes.object,
   socket: PropTypes.object,
   state: PropTypes.object
 };
@@ -191,11 +223,15 @@ const mapStateToProps = state => {
   return { state };
 };
 
-// const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  getInvites: () => dispatch(getInvites())
+});
 
 export default withSocket(
-  connect(
-    mapStateToProps,
-    null
-  )(Notification)
+  withRouter(
+    connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(Notification)
+  )
 );

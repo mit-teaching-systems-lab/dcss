@@ -1,7 +1,7 @@
 module.exports = {
   chat: {
     id: 1,
-    lobby_id: 1,
+    scenario_id: 42,
     host_id: 2,
     created_at: '2020-12-08T21:51:33.659Z',
     updated_at: null,
@@ -67,7 +67,7 @@ module.exports = {
   chats: [
     {
       id: 1,
-      lobby_id: 1,
+      scenario_id: 42,
       host_id: 2,
       created_at: '2020-12-08T21:51:33.659Z',
       updated_at: null,
@@ -78,7 +78,7 @@ module.exports = {
   chatsById: {
     '1': {
       id: 1,
-      lobby_id: 1,
+      scenario_id: 42,
       host_id: 2,
       created_at: '2020-12-08T21:51:33.659Z',
       updated_at: null,
@@ -394,6 +394,38 @@ module.exports = {
   history: {
     prompts: [],
     responses: []
+  },
+  invites: [
+    {
+      id: 1,
+      sender_id: 999,
+      receiver_id: 555,
+      status_id: 1,
+      props: {
+        chat_id: 8,
+        persona_id: null
+      },
+      code: 'b7f21ab4-aa95-4f48-aee8-19f7176bc595',
+      created_at: '2021-02-04T19:24:39.039Z',
+      updated_at: null,
+      expire_at: null
+    }
+  ],
+  invitesById: {
+    '1': {
+      id: 1,
+      sender_id: 999,
+      receiver_id: 555,
+      status_id: 1,
+      props: {
+        chat_id: 8,
+        persona_id: null
+      },
+      code: 'b7f21ab4-aa95-4f48-aee8-19f7176bc595',
+      created_at: '2021-02-04T19:24:39.039Z',
+      updated_at: null,
+      expire_at: null
+    }
   },
   session: {
     isLoggedIn: true,

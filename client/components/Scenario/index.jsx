@@ -321,6 +321,7 @@ class Scenario extends Component {
           onResponseChange={onResponseChange}
           saveRunEvent={saveRunEvent}
           scenarioId={scenarioId}
+          scenario={scenario}
           slide={slide}
         />
       );
@@ -335,6 +336,7 @@ class Scenario extends Component {
         onChange={onRunChange}
         saveRunEvent={saveRunEvent}
         scenarioId={scenarioId}
+        scenario={scenario}
         slide={finish}
       />
     );

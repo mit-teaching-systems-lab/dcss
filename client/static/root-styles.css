@@ -61,6 +61,11 @@ i.primary.icon.icon.icon.icon {
   margin-bottom: 0 !important;
 }
 
+.ui.modal .content * {
+  /* This is too generalized */
+  /*font-size: 1.14285714rem !important;*/
+}
+
 .ui.modal > .close {
   top: 1.0535rem !important;
   right: 1rem !important;
@@ -102,7 +107,11 @@ td .ui.fluid.selection.dropdown > .text {
 */
 @media only screen and (max-width: 767px) {
   #root {
-    width: calc(100vw - 21px) !important;
+    /*
+      This was commented out because cohorts had too much
+      white space on the left and right
+    */
+    /*width: calc(100vw - 21px) !important;*/
   }
 
   .ui.menu .item > .input input:not([type]),
@@ -202,6 +211,10 @@ td .ui.fluid.selection.dropdown > .text {
 
   .ui.grid {
     margin-top: 0rem !important;
+  }
+
+  .grid__menu-search > input {
+    width: 50%;
   }
 }
 

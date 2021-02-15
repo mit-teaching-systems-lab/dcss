@@ -44,7 +44,7 @@ const ActivityListItem = props => {
 
   const description = (
     <Fragment>
-      {<Username {...user} />}
+      {<Username user={user} />}
       made a <code>{method}</code> request to <code>{url}</code>{' '}
       {Moment(created_at).calendar()}
     </Fragment>

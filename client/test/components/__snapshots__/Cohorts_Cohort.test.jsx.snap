@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Archive cohort 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -38,7 +36,7 @@ exports[`Archive cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -104,7 +102,7 @@ exports[`Archive cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -118,7 +116,7 @@ exports[`Archive cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -649,9 +647,7 @@ exports[`Archive cohort 1`] = `
 `;
 
 exports[`Archive cohort 2`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -686,7 +682,7 @@ exports[`Archive cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -752,7 +748,7 @@ exports[`Archive cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -766,7 +762,7 @@ exports[`Archive cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -1301,6 +1297,7 @@ exports[`Archive cohort 3`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -1334,7 +1331,7 @@ exports[`Archive cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -1400,7 +1397,7 @@ exports[`Archive cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -1414,7 +1411,7 @@ exports[`Archive cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -2016,6 +2013,7 @@ exports[`Archive cohort 4`] = `
   class=\\"\\"
 >
   <div
+    aria-hidden=\\"false\\"
     id=\\"root\\"
   />
   <div>
@@ -2049,7 +2047,7 @@ exports[`Archive cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -2115,7 +2113,7 @@ exports[`Archive cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -2129,7 +2127,7 @@ exports[`Archive cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -2664,6 +2662,7 @@ exports[`Archive cohort 5`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -2697,7 +2696,7 @@ exports[`Archive cohort 5`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -2763,7 +2762,7 @@ exports[`Archive cohort 5`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -2777,7 +2776,7 @@ exports[`Archive cohort 5`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -3379,6 +3378,7 @@ exports[`Archive cohort 6`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -3412,7 +3412,7 @@ exports[`Archive cohort 6`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -3464,7 +3464,7 @@ exports[`Archive cohort 6`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -3478,7 +3478,7 @@ exports[`Archive cohort 6`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -4111,7 +4111,7 @@ exports[`Cohort is archived 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -4177,7 +4177,7 @@ exports[`Cohort is archived 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -4191,7 +4191,7 @@ exports[`Cohort is archived 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -4932,9 +4932,7 @@ exports[`Cohort is deleted, user is not super, direct to /cohorts 4`] = `
 `;
 
 exports[`Copy cohort 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -4969,7 +4967,7 @@ exports[`Copy cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -5035,7 +5033,7 @@ exports[`Copy cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -5049,7 +5047,7 @@ exports[`Copy cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -5580,9 +5578,7 @@ exports[`Copy cohort 1`] = `
 `;
 
 exports[`Copy cohort 2`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -5617,7 +5613,7 @@ exports[`Copy cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -5683,7 +5679,7 @@ exports[`Copy cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -5697,7 +5693,7 @@ exports[`Copy cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -6232,6 +6228,7 @@ exports[`Copy cohort 3`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -6265,7 +6262,7 @@ exports[`Copy cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -6331,7 +6328,7 @@ exports[`Copy cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -6345,7 +6342,7 @@ exports[`Copy cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -6947,6 +6944,7 @@ exports[`Copy cohort 4`] = `
   class=\\"\\"
 >
   <div
+    aria-hidden=\\"false\\"
     id=\\"root\\"
   />
   <div>
@@ -6980,7 +6978,7 @@ exports[`Copy cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -7046,7 +7044,7 @@ exports[`Copy cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -7060,7 +7058,7 @@ exports[`Copy cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -7595,6 +7593,7 @@ exports[`Copy cohort 5`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -7628,7 +7627,7 @@ exports[`Copy cohort 5`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -7694,7 +7693,7 @@ exports[`Copy cohort 5`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -7708,7 +7707,7 @@ exports[`Copy cohort 5`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -8310,6 +8309,7 @@ exports[`Copy cohort 6`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -8343,7 +8343,7 @@ exports[`Copy cohort 6`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6c4adee67adb9fe1835cdf941d55a72aa8e70434\\"
+                value=\\"undefined/cohort/6c4adee67a\\"
               />
             </div>
              
@@ -8409,7 +8409,7 @@ exports[`Copy cohort 6`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -8423,7 +8423,7 @@ exports[`Copy cohort 6`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -9056,7 +9056,7 @@ exports[`Copy cohort url 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -9122,7 +9122,7 @@ exports[`Copy cohort url 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -9136,7 +9136,7 @@ exports[`Copy cohort url 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -9822,7 +9822,7 @@ exports[`Copy cohort url 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -9888,7 +9888,7 @@ exports[`Copy cohort url 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -9902,7 +9902,7 @@ exports[`Copy cohort url 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -10588,7 +10588,7 @@ exports[`Copy cohort url 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -10654,7 +10654,7 @@ exports[`Copy cohort url 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -10668,7 +10668,7 @@ exports[`Copy cohort url 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -11319,9 +11319,7 @@ exports[`Copy cohort url 3`] = `
 `;
 
 exports[`Delete cohort 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -11356,7 +11354,7 @@ exports[`Delete cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -11422,7 +11420,7 @@ exports[`Delete cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -11436,7 +11434,7 @@ exports[`Delete cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -11967,9 +11965,7 @@ exports[`Delete cohort 1`] = `
 `;
 
 exports[`Delete cohort 2`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -12004,7 +12000,7 @@ exports[`Delete cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -12070,7 +12066,7 @@ exports[`Delete cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -12084,7 +12080,7 @@ exports[`Delete cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -12619,6 +12615,7 @@ exports[`Delete cohort 3`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -12652,7 +12649,7 @@ exports[`Delete cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -12718,7 +12715,7 @@ exports[`Delete cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -12732,7 +12729,7 @@ exports[`Delete cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -13334,6 +13331,7 @@ exports[`Delete cohort 4`] = `
   class=\\"\\"
 >
   <div
+    aria-hidden=\\"false\\"
     id=\\"root\\"
   />
   <div>
@@ -13367,7 +13365,7 @@ exports[`Delete cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -13433,7 +13431,7 @@ exports[`Delete cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -13447,7 +13445,7 @@ exports[`Delete cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -13982,6 +13980,7 @@ exports[`Delete cohort 5`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -14015,7 +14014,7 @@ exports[`Delete cohort 5`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -14081,7 +14080,7 @@ exports[`Delete cohort 5`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -14095,7 +14094,7 @@ exports[`Delete cohort 5`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -14697,6 +14696,7 @@ exports[`Delete cohort 6`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
+    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -14730,7 +14730,7 @@ exports[`Delete cohort 6`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"undefined/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"undefined/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -14796,7 +14796,7 @@ exports[`Delete cohort 6`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -14810,7 +14810,7 @@ exports[`Delete cohort 6`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -15600,7 +15600,7 @@ exports[`Rename cohort 1`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -15666,7 +15666,7 @@ exports[`Rename cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -15680,7 +15680,7 @@ exports[`Rename cohort 1`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -16366,7 +16366,7 @@ exports[`Rename cohort 2`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -16432,7 +16432,7 @@ exports[`Rename cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -16446,7 +16446,7 @@ exports[`Rename cohort 2`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -17135,7 +17135,7 @@ exports[`Rename cohort 3`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -17201,7 +17201,7 @@ exports[`Rename cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -17215,7 +17215,7 @@ exports[`Rename cohort 3`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -17976,7 +17976,7 @@ exports[`Rename cohort 4`] = `
               </div>
               <input
                 type=\\"text\\"
-                value=\\"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131\\"
+                value=\\"http://localhost/cohort/6e4213d8d3\\"
               />
             </div>
              
@@ -18042,7 +18042,7 @@ exports[`Rename cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"edit icon\\"
+                    class=\\"edit outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -18056,7 +18056,7 @@ exports[`Rename cohort 4`] = `
                 >
                   <i
                     aria-hidden=\\"true\\"
-                    class=\\"copy icon\\"
+                    class=\\"copy outline icon\\"
                   />
                   <span
                     class=\\"text\\"
@@ -18835,7 +18835,7 @@ exports[`Render 1 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
+              value="http://localhost/cohort/6e4213d8d3"
             />
           </div>
            
@@ -18901,7 +18901,7 @@ exports[`Render 1 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="edit icon"
+                  class="edit outline icon"
                 />
                 <span
                   class="text"
@@ -18915,7 +18915,7 @@ exports[`Render 1 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="copy icon"
+                  class="copy outline icon"
                 />
                 <span
                   class="text"
@@ -19477,7 +19477,7 @@ exports[`Render 2 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
+              value="http://localhost/cohort/6e4213d8d3"
             />
           </div>
            
@@ -19543,7 +19543,7 @@ exports[`Render 2 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="edit icon"
+                  class="edit outline icon"
                 />
                 <span
                   class="text"
@@ -19557,7 +19557,7 @@ exports[`Render 2 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="copy icon"
+                  class="copy outline icon"
                 />
                 <span
                   class="text"
@@ -20119,7 +20119,7 @@ exports[`Render 3 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
+              value="http://localhost/cohort/6e4213d8d3"
             />
           </div>
            
@@ -20185,7 +20185,7 @@ exports[`Render 3 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="edit icon"
+                  class="edit outline icon"
                 />
                 <span
                   class="text"
@@ -20199,7 +20199,7 @@ exports[`Render 3 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="copy icon"
+                  class="copy outline icon"
                 />
                 <span
                   class="text"
@@ -21121,7 +21121,7 @@ exports[`Render 9 1 3`] = `
             </div>
             <input
               type="text"
-              value="http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131"
+              value="http://localhost/cohort/6e4213d8d3"
             />
           </div>
            
@@ -21187,7 +21187,7 @@ exports[`Render 9 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="edit icon"
+                  class="edit outline icon"
                 />
                 <span
                   class="text"
@@ -21201,7 +21201,7 @@ exports[`Render 9 1 3`] = `
               >
                 <i
                   aria-hidden="true"
-                  class="copy icon"
+                  class="copy outline icon"
                 />
                 <span
                   class="text"

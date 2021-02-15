@@ -1,8 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import md5 from 'md5';
+// import { generateAvatar } from 'robohash-avatars';
 import { connect } from 'react-redux';
-import withSocket, { NEW_MESSAGE } from '@hoc/withSocket';
+import withSocket, {
+  CHAT_MESSAGE_CREATED,
+  CHAT_MESSAGE_UPDATED
+} from '@hoc/withSocket';
 import {
   getChatMessagesByChatId,
   getChatMessagesCountByChatId,
@@ -70,7 +74,8 @@ class ChatMessages extends Component {
     this.wasPreviouslyMinimized = false;
     this.isComponentMounted = false;
     this.onMessageDelete = this.onMessageDelete.bind(this);
-    this.onMessageReceive = this.onMessageReceive.bind(this);
+    this.onMessageReceived = this.onMessageReceived.bind(this);
+    this.onMessageUpdated = this.onMessageUpdated.bind(this);
   }
 
   shouldComponentUpdate(newProps) {
@@ -97,15 +102,17 @@ class ChatMessages extends Component {
     });
 
     this.isComponentMounted = true;
-    this.props.socket.on(NEW_MESSAGE, this.onMessageReceive);
+    this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
+    this.props.socket.on(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
   }
 
   componentWillUnmount() {
     this.isComponentMounted = false;
-    this.props.socket.off(NEW_MESSAGE, this.onMessageReceive);
+    this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
+    this.props.socket.off(CHAT_MESSAGE_UPDATED, this.onMessageUpdated);
   }
 
-  async onMessageReceive(data) {
+  async onMessageReceived(data) {
     if (!this.isComponentMounted) {
       return;
     }
@@ -142,9 +149,32 @@ class ChatMessages extends Component {
         messages
       });
 
-      if (this.props.onMessageReceive) {
-        this.props.onMessageReceive(data);
+      if (this.props.onMessageReceived) {
+        this.props.onMessageReceived(data);
       }
+    }
+  }
+
+  async onMessageUpdated(data) {
+    console.log("onMessageUpdated??????????????", data);
+    if (!this.isComponentMounted) {
+      return;
+    }
+
+    if (data.chat_id === this.props.chat.id) {
+      const messages = this.state.messages.slice().map(message => {
+        if (message.id === data.id) {
+          return {
+            ...message,
+            ...data,
+          };
+        }
+        return message;
+      });
+
+      this.setState({
+        messages
+      });
     }
   }
 
@@ -153,7 +183,7 @@ class ChatMessages extends Component {
       deleted_at: new Date().toISOString()
     });
 
-    await this.onMessageReceive(message);
+    await this.onMessageReceived(message);
   }
 
   render() {
@@ -239,123 +269,119 @@ class ChatMessages extends Component {
                 </Button>
               </Divider>
             ) : null}
-            <Ref innerRef={scrollIntoViewIfViewingNewest}>
-              <Comment.Group
-                size="large"
-                style={{ marginTop: '1.4em !important' }}
-              >
-                {!isMinimized
-                  ? messagesSlice.reduce((accum, message) => {
-                      const user = chat.usersById[message.user_id];
+            {!isMinimized ? (
+              <Ref innerRef={scrollIntoViewIfViewingNewest}>
+                <Comment.Group
+                  size="large"
+                  style={{ marginTop: '1.4em !important' }}
+                >
+                  {messagesSlice.reduce((accum, message) => {
+                    const user = chat.usersById[message.user_id];
 
-                      if (!user) {
-                        return accum;
-                      }
-
-                      if (message.deleted_at) {
-                        return accum;
-                      }
-
-                      const key = Identity.key(message);
-                      const defaultValue = message.content;
-                      const avatarKey = user.email
-                        ? md5(user.email.trim().toLowerCase())
-                        : user.username;
-
-                      const avatarUrl = user.email
-                        ? `https://www.gravatar.com/avatar/${avatarKey}?d=robohash`
-                        : `https://loremflickr.com/50/50/${avatarKey}`;
-
-                      const rteProps = {
-                        defaultValue,
-                        options: {
-                          width: '100%'
-                        }
-                      };
-
-                      //
-                      // NOTE: in this scope, "user" is the result of
-                      //       "chat.usersById[message.user_id]"
-                      //
-                      const isDeletable =
-                        message.is_quotable && user.id === this.props.user.id;
-                      const deleteTrigger = (
-                        <ChatMessageDeleteButton
-                          aria-label={deleteAriaLabel}
-                          onConfirm={() => {
-                            this.onMessageDelete(message);
-                          }}
-                        />
-                      );
-
-                      const isQuotable = message.is_quotable;
-                      const quoteTrigger = (
-                        <Button
-                          size="mini"
-                          icon="quote left"
-                          className="icon-primary"
-                          aria-label={quoteAriaLabel}
-                          onClick={() => {
-                            this.props.onQuote(message);
-                          }}
-                        />
-                      );
-
-                      //
-                      // NOTE: data-testid="comment" is used when testing
-                      // for the number of messages rendered before
-                      // and after pressing "See more" or receiving new
-                      // messages
-                      //
-                      accum.push(
-                        <Comment data-testid="comment" key={key}>
-                          <Comment.Avatar src={avatarUrl} />
-                          <Comment.Content className="cmm__content">
-                            <Comment.Author as="span" tabIndex="0">
-                              <Username {...user} />
-                            </Comment.Author>
-                            <Comment.Metadata>
-                              <span
-                                tabIndex="0"
-                                aria-label={message.created_at}
-                              >
-                                {Moment(message.created_at).format('LT')}
-                              </span>
-                            </Comment.Metadata>
-                            <Comment.Actions>
-                              <Button.Group size="mini">
-                                {isQuotable ? (
-                                  <Popup
-                                    inverted
-                                    position="top right"
-                                    size="tiny"
-                                    content={quoteAriaLabel}
-                                    trigger={quoteTrigger}
-                                  />
-                                ) : null}
-                                {isDeletable ? (
-                                  <Popup
-                                    inverted
-                                    position="top right"
-                                    size="tiny"
-                                    content={deleteAriaLabel}
-                                    trigger={deleteTrigger}
-                                  />
-                                ) : null}
-                              </Button.Group>
-                            </Comment.Actions>
-                            <Comment.Text>
-                              <RichTextRenderer {...rteProps} />
-                            </Comment.Text>
-                          </Comment.Content>
-                        </Comment>
-                      );
-
+                    if (!user) {
                       return accum;
-                    }, [])
-                  : null}
-              </Comment.Group>
-            </Ref>
+                    }
+
+                    if (message.deleted_at) {
+                      return accum;
+                    }
+
+                    const key = Identity.key(message);
+                    const defaultValue = message.content;
+                    const avatarKey = user.email
+                      ? md5(user.email.trim().toLowerCase())
+                      : user.username;
+
+                    const avatarUrl = user.email
+                      ? `https://www.gravatar.com/avatar/${avatarKey}?d=robohash`
+                      : `https://robohash.org/${avatarKey}?bgset=bg1&size=50x50`;
+
+                    const rteProps = {
+                      defaultValue,
+                      options: {
+                        width: '100%'
+                      }
+                    };
+
+                    //
+                    // NOTE: in this scope, "user" is the result of
+                    //       "chat.usersById[message.user_id]"
+                    //
+                    const isDeletable =
+                      message.is_quotable && user.id === this.props.user.id;
+                    const deleteTrigger = (
+                      <ChatMessageDeleteButton
+                        aria-label={deleteAriaLabel}
+                        onConfirm={() => {
+                          this.onMessageDelete(message);
+                        }}
+                      />
+                    );
+
+                    const isQuotable = message.is_quotable;
+                    const quoteTrigger = (
+                      <Button
+                        size="mini"
+                        icon="quote left"
+                        className="icon-primary"
+                        aria-label={quoteAriaLabel}
+                        onClick={() => {
+                          this.props.onQuote(message);
+                        }}
+                      />
+                    );
+
+                    //
+                    // NOTE: data-testid="comment" is used when testing
+                    // for the number of messages rendered before
+                    // and after pressing "See more" or receiving new
+                    // messages
+                    //
+                    accum.push(
+                      <Comment data-testid="comment" key={key}>
+                        <Comment.Avatar src={avatarUrl} />
+                        <Comment.Content className="cmm__content">
+                          <Comment.Author as="span" tabIndex="0">
+                            <Username user={user} />
+                          </Comment.Author>
+                          <Comment.Metadata>
+                            <span tabIndex="0" aria-label={message.created_at}>
+                              {Moment(message.created_at).format('LT')}
+                            </span>
+                          </Comment.Metadata>
+                          <Comment.Actions>
+                            <Button.Group size="mini">
+                              {isQuotable ? (
+                                <Popup
+                                  inverted
+                                  position="top right"
+                                  size="tiny"
+                                  content={quoteAriaLabel}
+                                  trigger={quoteTrigger}
+                                />
+                              ) : null}
+                              {isDeletable ? (
+                                <Popup
+                                  inverted
+                                  position="top right"
+                                  size="tiny"
+                                  content={deleteAriaLabel}
+                                  trigger={deleteTrigger}
+                                />
+                              ) : null}
+                            </Button.Group>
+                          </Comment.Actions>
+                          <Comment.Text>
+                            <RichTextRenderer {...rteProps} />
+                          </Comment.Text>
+                        </Comment.Content>
+                      </Comment>
+                    );
+                    return accum;
+                  }, [])}
+                </Comment.Group>
+              </Ref>
+            ) : null}
           </div>
         </ResizeDetector>
         {!this.state.isViewingNewest && hasNewMessages ? (
@@ -385,7 +411,7 @@ ChatMessages.propTypes = {
   getUser: PropTypes.func,
   isMinimized: PropTypes.bool,
   messages: PropTypes.array,
-  onMessageReceive: PropTypes.func,
+  onMessageReceived: PropTypes.func,
   onQuote: PropTypes.func,
   setMessageById: PropTypes.func,
   slice: PropTypes.number,

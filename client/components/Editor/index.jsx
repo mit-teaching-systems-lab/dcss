@@ -493,7 +493,7 @@ class Editor extends Component {
           content = (
             <Fragment>
               This scenario is currently being edited by{' '}
-              <Username {...lockHolder} />
+              <Username user={lockHolder} />
             </Fragment>
           );
           setTimeout(() => {

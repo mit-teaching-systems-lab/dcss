@@ -128,6 +128,21 @@
     margin-top: 1.5rem;
     text-align: left !important;
   }
+
+  .c__cohort-url > .ui.big.labeled.input {
+    width: 100% !important;
+  }
+
+  .c__cohort-url > .ui.big.labeled.input > input {
+    width: 64%;
+    border: 1px solid rgba(34, 36, 38, 0.15) !important;
+    border-radius: 4px !important;
+    font-size: 1rem !important;
+  }
+
+  .c__cohort-url > .ui.big.labeled.input > .ui.label.label {
+    display: none;
+  }
 }
 
 .c__table-thead-tbody-tr {
@@ -242,7 +257,7 @@
   margin-bottom: 1rem;
 }
 
-.c-action-btns__scenario-selector {
+.c__action-btns__scenario-selector {
   bottom: -1rem;
   position: sticky;
   z-index: 100;
@@ -320,4 +335,35 @@
   border: 0 !important;
   color: #853D61 !important;
   padding: 0 !important;
+}
+
+.c__grid-single-col-padding {
+  padding: unset !important;
+}
+
+.c__chat-cards {
+  padding-bottom: 0.5em !important;
+  /*height: calc(100vh / 3.75);*/
+  overflow-y: scroll;
+}
+
+.c__chat-cards > div {
+  margin-bottom: 0.5em !important;
+}
+
+.c__chat-card {
+  display: flex !important;
+  flex-direction: column;
+}
+
+.c__chat-card__meta {
+  margin-top: auto;
+}
+
+.c__chat-card__meta > .ui.active.visible.selection.dropdown {
+  z-index: 1001;
+}
+
+.c__chat-card__meta button {
+  text-align: unset !important;
 }

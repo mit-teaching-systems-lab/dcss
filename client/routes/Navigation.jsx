@@ -2,9 +2,10 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
-import { Dropdown, Menu } from '@components/UI';
 import { endScenarioLock } from '@actions/scenario';
+import { Dropdown, Label, Menu } from '@components/UI';
 import Gate from '@components/Gate';
+import UserInvites from '@components/User/UserInvites';
 import UserMenu from '@components/User/UserMenu';
 import Layout from '@utils/Layout';
 
@@ -108,9 +109,11 @@ class Navigation extends Component {
       <UserMenu user={user} />
     ) : (
       <Menu.Item.Tabbable to="/login" as={NavLink}>
-        Log in
+        Log in or Sign up
       </Menu.Item.Tabbable>
     );
+
+    const menuItemUserInvites = <UserInvites />;
 
     // const menuItemBugReport = (
     //   <Menu.Item.Tabbable to="https://form.asana.com?k=1usHUVJzjZAbjxDSZ1Wp6A&d=74607040975" as={NavLink}>
@@ -140,14 +143,20 @@ class Navigation extends Component {
                 {menuItemAuthorized}
               </Dropdown.Menu>
             </Dropdown>
-            <Menu.Menu position="right">{menuItemUserMenu}</Menu.Menu>
+            <Menu.Menu position="right">
+              {menuItemUserInvites}
+              {menuItemUserMenu}
+            </Menu.Menu>
           </Fragment>
         ) : (
           <Fragment>
             {menuItemBrandLogo}
             {menuItemScenarios}
             {menuItemAuthorized}
-            <Menu.Menu position="right">{menuItemUserMenu}</Menu.Menu>
+            <Menu.Menu position="right">
+              {menuItemUserInvites}
+              {menuItemUserMenu}
+            </Menu.Menu>
           </Fragment>
         )}
       </Menu>

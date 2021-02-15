@@ -82,7 +82,6 @@ exports[`Copy cohort scenario url 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -109,17 +108,7 @@ exports[`Copy cohort scenario url 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -389,7 +378,6 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -416,17 +404,7 @@ exports[`Facilitator has an option to open scenarios selector 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -483,7 +461,6 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -510,17 +487,7 @@ exports[`Facilitator has an option to open scenarios selector 3`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -577,7 +544,6 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -604,17 +570,7 @@ exports[`Facilitator has an option to open scenarios selector 4`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -870,7 +826,6 @@ exports[`Open Edit scenarios 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -897,17 +852,7 @@ exports[`Open Edit scenarios 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -964,7 +909,6 @@ exports[`Open Edit scenarios 3`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -991,17 +935,7 @@ exports[`Open Edit scenarios 3`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1058,7 +992,6 @@ exports[`Open Edit scenarios 4`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1085,17 +1018,7 @@ exports[`Open Edit scenarios 4`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1163,72 +1086,58 @@ exports[`Participant does not have an option to open scenarios selector 2`] = `
        scenario
     </p>
     <div
-      class="c__scenario-list"
+      class="ui card c__scenario-card"
+      style="cursor: auto;"
     >
-      <div>
+      <div
+        class="content"
+      >
         <div
-          class="ui card c__scenario-card"
-          style="cursor: auto;"
+          class="header"
         >
-          <div
-            class="content"
-          >
-            <a
-              aria-label="Some Other Scenario is a group scenario"
-              class="header"
-              href="/cohort/6e4213d8d326545c23b5a8b052641fb29b729131/run/99/slide/0"
-            >
-              <i
-                aria-hidden="true"
-                class="users icon primary"
-              />
-              Some Other Scenario
-            </a>
-            <div
-              class="description"
-            >
-              <p>
-                …
-              </p>
-            </div>
-            <div
-              class="meta"
-            >
-              This scenario has not been started
-              <button
-                class="ui tiny button"
-                data-testid="run-cohort-as-participant"
-              >
-                <i
-                  aria-hidden="true"
-                  class="play icon primary"
-                />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
-              </button>
-            </div>
-          </div>
-          <div
-            class="c__scenario-extra"
-          >
-            <button
-              class="ui large primary button"
-              data-testid="view-cohort-responses"
-              name="Some Other Scenario"
-            >
-              View reponses
-            </button>
-          </div>
+          <i
+            aria-hidden="true"
+            class="users icon primary"
+          />
+          Some Other Scenario
         </div>
+        <div
+          class="description"
+        >
+          <p>
+            This is the description of 'Some Other Scenario'…
+          </p>
+        </div>
+        <div
+          class="meta"
+        >
+          Finished 10 months ago (03/31/2020).
+        </div>
+        <div
+          class="meta"
+        >
+          <button
+            class="ui tiny button"
+            data-testid="run-cohort-as-participant"
+          >
+            <i
+              aria-hidden="true"
+              class="play icon primary"
+            />
+            Create or join a room to re-run scenario
+          </button>
+        </div>
+      </div>
+      <div
+        class="c__scenario-extra"
+      >
+        <button
+          class="ui large primary button"
+          data-testid="view-cohort-responses"
+          name="Some Other Scenario"
+        >
+          View reponses
+        </button>
       </div>
     </div>
     <div
@@ -1295,7 +1204,6 @@ exports[`Render 1 1 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1322,17 +1230,7 @@ exports[`Render 1 1 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to run scenario
               </button>
             </div>
           </div>
@@ -1414,7 +1312,6 @@ exports[`Render 2 1 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1441,17 +1338,7 @@ exports[`Render 2 1 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1533,7 +1420,6 @@ exports[`Run as participant 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1560,17 +1446,7 @@ exports[`Run as participant 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1627,7 +1503,6 @@ exports[`Run as participant 4`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1654,17 +1529,7 @@ exports[`Run as participant 4`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1746,7 +1611,6 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1773,17 +1637,7 @@ exports[`Scenarios have multi-participant/single-participant icons 2`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1840,7 +1694,6 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1867,17 +1720,7 @@ exports[`Scenarios have multi-participant/single-participant icons 3`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>
@@ -1934,7 +1777,6 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
             class="content"
           >
             <div
-              aria-label="Some Other Scenario is a group scenario"
               class="header"
             >
               <i
@@ -1961,17 +1803,7 @@ exports[`Scenarios have multi-participant/single-participant icons 4`] = `
                   aria-hidden="true"
                   class="play icon primary"
                 />
-                Run scenario as a participant
-              </button>
-              <button
-                class="ui tiny button"
-                data-testid="copy-cohort-scenario-link"
-              >
-                <i
-                  aria-hidden="true"
-                  class="clipboard outline icon primary"
-                />
-                Copy scenario link to clipboard
+                Create or join a room to re-run scenario
               </button>
             </div>
           </div>

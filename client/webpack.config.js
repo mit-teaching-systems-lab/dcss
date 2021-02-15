@@ -1,6 +1,8 @@
 const path = require('path');
 const { DefinePlugin, HotModuleReplacementPlugin } = require('webpack');
 // const CompressionPlugin = require('compression-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  // .BundleAnalyzerPlugin;
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MomentLocalesPlugin = require('moment-locales-webpack-plugin');
 const DCSS_BRAND_VARS = Object.entries(process.env).reduce(
@@ -86,6 +88,7 @@ module.exports = {
     }
   },
   plugins: [
+    // new BundleAnalyzerPlugin(),
     new HotModuleReplacementPlugin(),
     new CopyWebpackPlugin([
       {

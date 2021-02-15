@@ -122,7 +122,7 @@ export class CohortParticipants extends React.Component {
     const rows = participantsSlice.reduce((accum, cohortUser) => {
       // username will never be empty, but email might be.
       const key = Identity.key(cohortUser);
-      const username = <Username {...cohortUser} />;
+      const username = <Username user={cohortUser} />;
       const usernameCell = cohortUser.roles.includes('owner') ? (
         <Table.Cell key={`u-${key}`}>{username} (owner)</Table.Cell>
       ) : (

@@ -82,6 +82,14 @@ class ContentSlide extends React.Component {
     return window.location.pathname.includes('/run/');
   }
 
+  get isCohortScenarioRun() {
+    return window.location.pathname.includes('/cohort/');
+  }
+
+  get isMultiparticipantScenarioRun() {
+    return this.props.scenario.personas.length > 1;
+  }
+
   async componentDidMount() {
     if (!this.isScenarioRun) {
       this.setState({
@@ -414,6 +422,7 @@ ContentSlide.propTypes = {
   onResponseChange: PropTypes.func,
   responsesById: PropTypes.object,
   run: PropTypes.object,
+  scenario: PropTypes.object,
   slide: PropTypes.object,
   saveRunEvent: PropTypes.func
 };

@@ -10,6 +10,9 @@ export { ResponseRecall };
 import * as AudioPrompt from './AudioPrompt';
 export { AudioPrompt, AudioPrompt as AudioResponse };
 
+import * as ChatPrompt from './ChatPrompt';
+export { ChatPrompt };
+
 import * as ConversationPrompt from './ConversationPrompt';
 export { ConversationPrompt };
 

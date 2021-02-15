@@ -95,8 +95,8 @@ describe('/api/auth/*', () => {
     delete process.env.SENDGRID_API_KEY;
   });
 
-  describe('/api/auth/me', () => {
-    const path = '/api/auth/me';
+  describe('GET /api/auth/', () => {
+    const path = '/api/auth/';
 
     test('success', async () => {
       mockRespondWithUser(defaultSuperUser);
@@ -444,9 +444,9 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/signup', () => {
+  describe('POST /api/auth/', () => {
     const method = 'post';
-    const path = '/api/auth/signup';
+    const path = '/api/auth/';
 
     describe('success', () => {
       test('with password', async () => {
@@ -557,14 +557,14 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/signup/usernames/:username/exists', () => {
+  describe('/api/auth/usernames/:username/exists', () => {
     describe('success', () => {
       test('does not exist', async () => {
         mw.checkForDuplicate.mockImplementation(amw.checkForDuplicate);
         db.getUserByProps.mockImplementation(() => false);
 
         const response = await request({
-          path: `/api/auth/signup/usernames/whatever/exists`
+          path: `/api/auth/usernames/whatever/exists`
         });
         expect(await response.json()).toMatchInlineSnapshot(`
           Object {
@@ -582,7 +582,7 @@ describe('/api/auth/*', () => {
         db.getUserByProps.mockImplementation(() => true);
 
         const response = await request({
-          path: `/api/auth/signup/usernames/whatever/exists`,
+          path: `/api/auth/usernames/whatever/exists`,
           status: 409
         });
         expect(await response.json()).toMatchInlineSnapshot(`
@@ -984,9 +984,9 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/update', () => {
+  describe('PUT /api/auth/', () => {
     const method = 'put';
-    const path = '/api/auth/update';
+    const path = '/api/auth/';
 
     beforeEach(() => {
       mw.requireUser.mockImplementation(

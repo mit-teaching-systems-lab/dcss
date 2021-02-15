@@ -13,6 +13,10 @@ async function newOrExistingRun(req, res) {
     identifiers.cohort_id = Number(req.params.cohort_id);
   }
 
+  if (req.params.chat_id) {
+    identifiers.chat_id = Number(req.params.chat_id);
+  }
+
   try {
     let run = await db.getRunByIdentifiers(req.session.user.id, identifiers);
 
@@ -108,11 +112,11 @@ async function getRunData(req, res) {
   }
 }
 
-async function updateRun(req, res) {
+async function setRun(req, res) {
   const { id } = await runForRequest(req);
   const body = req.body;
   try {
-    const run = await db.updateRun(id, body);
+    const run = await db.setRun(id, body);
     res.json({ run });
   } catch (error) {
     res.status(500).json({ error });
@@ -122,7 +126,7 @@ async function updateRun(req, res) {
 async function revokeConsentForRun(req, res) {
   const { id } = await runForRequest(req);
   try {
-    const run = await db.updateRun(id, { consent_granted_by_user: false });
+    const run = await db.setRun(id, { consent_granted_by_user: false });
     res.json({ run });
   } catch (error) {
     res.status(500).json({ error });
@@ -138,7 +142,9 @@ async function getReferrerParams(req, res) {
   }
 }
 
+// TODO: determin if this is in use.
 async function finishRun(req, res) {
+
   try {
     const { id } = await runForRequest(req);
     res.json(await db.finishRun(id));
@@ -177,5 +183,5 @@ exports.getRuns = asyncMiddleware(getRuns);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRun);
 exports.saveRunEvent = asyncMiddleware(saveRunEvent);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRun);
-exports.updateRun = asyncMiddleware(updateRun);
+exports.setRun = asyncMiddleware(setRun);
 exports.upsertResponse = asyncMiddleware(upsertResponse);

@@ -32,7 +32,7 @@ class CreateAnonymousAccount extends Component {
     const username = anonymousUsername();
     // TODO: Move to own async action
     const { status } = await (await fetch(
-      `/api/auth/signup/usernames/${username}/exists`
+      `/api/auth/usernames/${username}/exists`
     )).json();
 
     if (status === 409) {

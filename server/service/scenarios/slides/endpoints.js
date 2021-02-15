@@ -63,13 +63,14 @@ async function orderSlidesAsync(req, res) {
 async function setSlideAsync(req, res) {
   // TODO: ensure slide id is part of scenario / author permissions / etc
   const { slide_id } = req.params;
-  const { title, order, components, is_finish = false } = req.body;
+  const { title, order, components, is_finish = false, has_chat_enabled = false } = req.body;
   res.json({
     result: await db.setSlide(slide_id, {
       title,
       order,
       components,
-      is_finish
+      is_finish,
+      has_chat_enabled
     })
   });
 }

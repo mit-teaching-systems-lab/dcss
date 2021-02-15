@@ -11,7 +11,7 @@ Array [
 ]
 `;
 
-exports[`GET_CHAT_ERROR getChat Receives an error 2`] = `
+exports[`GET_CHAT_ERROR getChatById Receives an error 2`] = `
 Array [
   Object {
     "error": Object {
@@ -73,7 +73,7 @@ Array [
       "ended_at": null,
       "host_id": 2,
       "id": 1,
-      "lobby_id": 1,
+      "scenario_id": 42,
       "updated_at": null,
     },
     "type": "GET_CHAT_SUCCESS",
@@ -81,7 +81,7 @@ Array [
 ]
 `;
 
-exports[`GET_CHAT_SUCCESS getChat Receives a chat 2`] = `
+exports[`GET_CHAT_SUCCESS getChatById Receives a chat 2`] = `
 Array [
   Object {
     "chat": Object {
@@ -90,7 +90,7 @@ Array [
       "ended_at": null,
       "host_id": 2,
       "id": 1,
-      "lobby_id": 1,
+      "scenario_id": 42,
       "updated_at": null,
     },
     "type": "GET_CHAT_SUCCESS",
@@ -174,7 +174,7 @@ Array [
         "ended_at": null,
         "host_id": 2,
         "id": 1,
-        "lobby_id": 1,
+        "scenario_id": 42,
         "updated_at": null,
       },
     ],
@@ -192,22 +192,22 @@ Array [
 ]
 `;
 
-exports[`LINK_CHAT_TO_RUN_ERROR linkChatToRun Receives error 2`] = `
+exports[`LINK_RUN_TO_CHAT_ERROR linkChatToRun Receives error 2`] = `
 Array [
   Object {
     "error": Object {
       "error": [Error: something unexpected happened on the server],
     },
-    "type": "LINK_CHAT_TO_RUN_ERROR",
+    "type": "LINK_RUN_TO_CHAT_ERROR",
   },
 ]
 `;
 
-exports[`LINK_CHAT_TO_RUN_SUCCESS linkChatToRun Receives chats for scenario 3`] = `
+exports[`LINK_RUN_TO_CHAT_SUCCESS linkChatToRun Receives chats for scenario 3`] = `
 Array [
   Object {
     "chat": undefined,
-    "type": "LINK_CHAT_TO_RUN_SUCCESS",
+    "type": "LINK_RUN_TO_CHAT_SUCCESS",
   },
 ]
 `;
@@ -258,7 +258,7 @@ Array [
       "ended_at": null,
       "host_id": 2,
       "id": 1,
-      "lobby_id": 1,
+      "scenario_id": 42,
       "updated_at": null,
     },
     "type": "SET_CHAT_SUCCESS",

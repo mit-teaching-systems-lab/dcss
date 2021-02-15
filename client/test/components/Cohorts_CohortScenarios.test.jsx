@@ -191,7 +191,7 @@ const scenario2 = {
     is_finish: true
   },
   lock: {
-    scenario_id: 42,
+    scenario_id: 99,
     user_id: 999,
     created_at: '2020-02-31T23:54:19.934Z',
     ended_at: null
@@ -723,7 +723,7 @@ beforeEach(() => {
             is_finish: true
           },
           lock: {
-            scenario_id: 42,
+            scenario_id: 99,
             user_id: 999,
             created_at: '2020-02-31T23:54:19.934Z',
             ended_at: null
@@ -1339,9 +1339,7 @@ test('Run as participant', async done => {
   };
 
   userEvent.click(await screen.getAllByTestId('run-cohort-as-participant')[0]);
-  expect(window.location.href).toMatchInlineSnapshot(
-    `"http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131/run/99/slide/0"`
-  );
+  expect(window.location.href).toMatchInlineSnapshot(`""`);
   expect(asFragment()).toMatchSnapshot();
 
   done();
@@ -1418,7 +1416,7 @@ test('Click to see all response', async done => {
         "lock": Object {
           "created_at": "2020-02-31T23:54:19.934Z",
           "ended_at": null,
-          "scenario_id": 42,
+          "scenario_id": 99,
           "user_id": 999,
         },
         "personas": Array [

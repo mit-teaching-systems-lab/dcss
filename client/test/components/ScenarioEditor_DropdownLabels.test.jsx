@@ -100,7 +100,7 @@ test('Render 1 1', async done => {
         is_finish: true
       },
       lock: {
-        scenario_id: 42,
+        scenario_id: 99,
         user_id: 999,
         created_at: '2020-02-31T23:54:19.934Z',
         ended_at: null

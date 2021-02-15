@@ -388,7 +388,9 @@ class ScenariosList extends Component {
       const url = location.href;
       copy(url);
       notify({
-        message: `Copied: ${url}`
+        message: url,
+        title: 'Copied',
+        icon: 'linkify'
       });
     };
 

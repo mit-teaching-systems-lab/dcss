@@ -205,7 +205,7 @@ const scenario2 = {
     is_finish: true
   },
   lock: {
-    scenario_id: 42,
+    scenario_id: 99,
     user_id: 999,
     created_at: '2020-02-31T23:54:19.934Z',
     ended_at: null
@@ -2939,7 +2939,7 @@ test('Copy cohort url', async done => {
   expect(copy.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131",
+        "http://localhost/cohort/6e4213d8d3",
       ],
     ]
   `);
@@ -2948,7 +2948,9 @@ test('Copy cohort url', async done => {
     Array [
       Array [
         Object {
-          "message": "Copied: http://localhost/cohort/6e4213d8d326545c23b5a8b052641fb29b729131",
+          "icon": "linkify",
+          "message": "http://localhost/cohort/6e4213d8d3",
+          "title": "Copied",
         },
       ],
     ]
@@ -3180,8 +3182,6 @@ test('Copy cohort', async done => {
     expect(cohortActions.copyCohort).toHaveBeenCalledTimes(1);
   });
 
-  expect(window.location.href).toMatchInlineSnapshot(
-    `"/cohort/6c4adee67adb9fe1835cdf941d55a72aa8e70434"`
-  );
+  expect(window.location.href).toMatchInlineSnapshot(`"/cohort/6c4adee67a"`);
   done();
 });

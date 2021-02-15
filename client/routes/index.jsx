@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
-
+import interval from 'interval-promise';
+import { getInvites } from '@actions/invite';
 import { getPermissions, getSession } from '@actions/session';
 import Notification from '@components/Notification';
+import withSocket, { HEART_BEAT } from '@hoc/withSocket';
 import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Routes from './Routes';
@@ -24,6 +26,8 @@ class App extends Component {
     this.state = {
       isReady: false
     };
+    this.heartBeat = this.heartBeat.bind(this);
+    this.heartBeat.cancel = () => {};
   }
 
   async componentDidMount() {
@@ -36,6 +40,16 @@ class App extends Component {
       // there is a valid, active session.
       if (this.props.user.id) {
         await this.props.getPermissions();
+        await this.props.getInvites();
+
+        interval(async (count, stop) => {
+          if (document.visibilityState === 'visible') {
+            this.heartBeat();
+          }
+          this.heartBeat.cancel = stop;
+        }, 60000);
+
+        this.heartBeat();
       }
       isReady = true;
     }
@@ -43,6 +57,17 @@ class App extends Component {
     this.setState({
       isReady
     });
+  }
+
+  componentWillUnmount() {
+    this.heartBeat.cancel();
+  }
+
+  heartBeat() {
+    const {
+      user: { id }
+    } = this.props;
+    this.props.socket.emit(HEART_BEAT, { id });
   }
 
   render() {
@@ -63,9 +88,11 @@ class App extends Component {
 }
 
 App.propTypes = {
-  getSession: PropTypes.func,
   isLoggedIn: PropTypes.bool,
+  getInvites: PropTypes.func,
   getPermissions: PropTypes.func,
+  getSession: PropTypes.func,
+  socket: PropTypes.object,
   user: PropTypes.object
 };
 
@@ -76,11 +103,14 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getInvites: () => dispatch(getInvites()),
   getSession: () => dispatch(getSession()),
   getPermissions: () => dispatch(getPermissions())
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default withSocket(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+);

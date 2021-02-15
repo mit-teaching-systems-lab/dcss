@@ -241,7 +241,7 @@ class ScenarioAuthors extends Component {
 
       accum[candidate.id] = [
         <Table.Cell className="users__col-large" key={`${key}-1`}>
-          <Username {...candidate} />
+          <Username user={candidate} />
         </Table.Cell>,
         <Table.Cell className="users__col-large" key={`${key}-2`}>
           {candidate.email ? (
