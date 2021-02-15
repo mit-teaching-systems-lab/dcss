@@ -237,6 +237,15 @@ Disables the Delete option in the Slide Component editor menu.
 Disables the Delete option in the Slide Component editor menu.
 
 
+### `disableEmbed`
+
+| Type | Integrity | Default |
+|------|------------|---------|
+| `Boolean` | writable | `false` |
+
+Disables embedding as a Previous Response.
+
+
 ### `disablePersona`
 
 | Type | Integrity | Default |

@@ -8,7 +8,7 @@ import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Media from '@utils/Media';
 
-class TextResponseEditor extends React.Component {
+class ChatPromptEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
@@ -116,8 +116,8 @@ console.log(timerString);
               <Grid.Column>
                 <Form.Field>
                 (NOT YET IMPLEMENTED)
-                  <label for="timer">Set a maximum time for discussion on this slide.</label>
-                  <div class="ui input">
+                  <label htmlFor="timer">Set a maximum time for discussion on this slide.</label>
+                  <div className="ui input">
                     <TimeField
                       showSeconds
                       colon=":"
@@ -149,7 +149,7 @@ console.log(timerString);
   }
 }
 
-TextResponseEditor.propTypes = {
+ChatPromptEditor.propTypes = {
   onChange: PropTypes.func.isRequired,
   slideIndex: PropTypes.any,
   scenario: PropTypes.object,
@@ -163,4 +163,4 @@ TextResponseEditor.propTypes = {
   })
 };
 
-export default TextResponseEditor;
+export default ChatPromptEditor;

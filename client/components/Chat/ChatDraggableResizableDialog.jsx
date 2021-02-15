@@ -202,10 +202,33 @@ class ChatDraggableResizableDialog extends Component {
     }
 
     const adjustPositionIfMinimized = node => {
-      if (node && isMinimized && Layout.isNotForMobile()) {
+      let styles = {};
+
+      if (node) {
+        if (Layout.isNotForMobile()) {
+          if (isMinimized) {
+            styles = {
+              position: 'absolute',
+              width: '500px',
+              top: '-54px'
+            };
+          }
+        } else {
+          if (isMinimized) {
+            styles = {
+              position: 'sticky',
+            };
+          } else {
+            styles = {
+              position: 'absolute',
+            };
+          }
+        }
+      }
+
+      for (let [key, value] of Object.entries(styles)) {
         node.style.setProperty(
-          'transform',
-          'translate(0px, calc(100vh - 62px))'
+          key, value
         );
       }
     };

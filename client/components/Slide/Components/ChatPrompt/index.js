@@ -7,6 +7,7 @@ export const defaultValue = ({ responseId }) => ({
   id: '',
   disableDelete: true,
   disableDuplicate: true,
+  disableEmbed: true,
   disablePersona: true,
   disableOrdering: true,
   required: false,

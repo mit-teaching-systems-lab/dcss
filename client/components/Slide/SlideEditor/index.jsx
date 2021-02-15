@@ -196,6 +196,10 @@ export default class SlideEditor extends Component {
         }
         callback();
       });
+    } else {
+      this.setState(updatedState, () => {
+        callback();
+      });
     }
   }
 
@@ -432,18 +436,23 @@ export default class SlideEditor extends Component {
           disabled={scenario.personas.length === 1}
           slide={slide}
           onToggle={state => {
-            console.log(state);
             const index = state.slide.components.findIndex(({type}) =>
               type === 'ChatPrompt'
             );
 
-            console.log(index);
-            if (index >= 0) {
-              // onComponentDelete(index);
+            if (index !== -1) {
+              onComponentDelete(index);
             } else {
-              this.activateComponent(0, () =>
-                onComponentSelectClick('ChatPrompt')
-              );
+
+              // this.setState({
+              //   activeComponentIndex: -1
+              // }, () => onComponentSelectClick('ChatPrompt'));
+
+              onComponentSelectClick('ChatPrompt');
+              onComponentOrderChange(1, 0);
+              // this.activateComponent(-1, () =>
+              //   onComponentSelectClick('ChatPrompt')
+              // );
             }
 
             this.setState(state, () => {
@@ -518,6 +527,15 @@ export default class SlideEditor extends Component {
                             Editor: ComponentEditor
                           } = Components[type];
 
+                          const {
+                            disableDelete = false,
+                            disableDuplicate = false,
+                            disableEmbed = false,
+                            disableOrdering = false,
+                            disablePersona = false,
+                          } = value;
+
+
                           const onConfirm = () => onComponentDelete(index);
                           const isActiveComponent =
                             activeComponentIndex === index;
@@ -525,7 +543,7 @@ export default class SlideEditor extends Component {
 
                           // "Duplicate Component" appears on every component,
                           // so is the next left most item after "Delete Component"
-                          const menuItemComponentDuplicate = (
+                          const menuItemComponentDuplicate = !disableDuplicate ? (
                             <Menu.Item.Tabbable
                               name="Duplicate this component"
                               aria-label="Duplicate this component"
@@ -535,7 +553,7 @@ export default class SlideEditor extends Component {
                             >
                               <Icon name="copy outline" />
                             </Menu.Item.Tabbable>
-                          );
+                          ) : null;
 
                           const right = [menuItemComponentDuplicate];
 
@@ -578,7 +596,7 @@ export default class SlideEditor extends Component {
                             const ariaLabel =
                               'Select which persona sees this content. Leave unselected if this content is for all scenario participants.';
 
-                            right.push(
+                            const personaSelectMenu = !disablePersona ? (
                               <ScenarioPersonaSelect
                                 key={Identity.key({
                                   personaSelectProps,
@@ -586,7 +604,9 @@ export default class SlideEditor extends Component {
                                 })}
                                 {...personaSelectProps}
                               />
-                            );
+                            ) : null;
+
+                            right.push(personaSelectMenu);
                           }
 
                           // "Require Component" is only present when the component is
@@ -642,7 +662,7 @@ export default class SlideEditor extends Component {
                             value.id = uuid();
                           }
 
-                          if (isActiveComponent) {
+                          if (isActiveComponent && !disableOrdering) {
                             right.push(
                               <Menu.Menu
                                 className="movers"
@@ -685,17 +705,20 @@ export default class SlideEditor extends Component {
                                 <ComponentCard />
                               </Menu.Item.Tabbable>
                             ],
-                            save: {
-                              onClick: updateSlide
-                            },
-                            delete: {
-                              onConfirm
-                            },
                             right
                           };
 
-                          return mode === 'edit' ? (
+                          if (!disableDelete) {
+                            componentEditorMenuItems.delete = {
+                              onConfirm
+                            };
+                            componentEditorMenuItems.save = {
+                              onClick: updateSlide
+                            };
+                          }
 
+
+                          const draggableOrNot = !disableOrdering ? (
                             <Draggable
                               key={`draggable-key-${value.id}`}
                               draggableId={`draggable-id-${index}`}
@@ -758,6 +781,45 @@ export default class SlideEditor extends Component {
                               }}
                             </Draggable>
                           ) : (
+                            <Ref
+                              key={`component-ref-${index}`}
+                              innerRef={node =>
+                                (this.componentRefs[index] = node)
+                              }
+                            >
+                              <Segment
+                                data-testid="on-component-click"
+                                key={`component-edit-${index}`}
+                                className={
+                                  index === activeComponentIndex
+                                    ? 'sortable__selected sortable__component'
+                                    : 'sortable__component'
+                                }
+                                onClick={onComponentClick}
+                              >
+                                <EditorMenu
+                                  type="component"
+                                  index={index}
+                                  items={componentEditorMenuItems}
+                                />
+
+                                <ComponentEditor
+                                  key={value.id}
+                                  id={value.id}
+                                  slideId={this.props.id}
+                                  slideIndex={this.props.index}
+                                  scenario={scenario}
+                                  value={value}
+                                  onChange={v =>
+                                    onComponentChange(index, v)
+                                  }
+                                />
+                              </Segment>
+                            </Ref>
+                          );
+
+
+                          return mode === 'edit' ? draggableOrNot : (
                             <Fragment key={`component-fragment-${value.id}`}>
                               <ComponentDisplay
                                 key={`component-preview-${value.id}`}
