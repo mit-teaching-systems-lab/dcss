@@ -436,25 +436,19 @@ export default class SlideEditor extends Component {
           disabled={scenario.personas.length === 1}
           slide={slide}
           onToggle={state => {
-            const index = state.slide.components.findIndex(({type}) =>
-              type === 'ChatPrompt'
+            const index = state.slide.components.findIndex(
+              ({ type }) => type === 'ChatPrompt'
             );
 
             if (index !== -1) {
               onComponentDelete(index);
             } else {
-
-              // this.setState({
-              //   activeComponentIndex: -1
-              // }, () => onComponentSelectClick('ChatPrompt'));
-
+              const shouldReorderComponents = state.slide.components.length > 0;
               onComponentSelectClick('ChatPrompt');
-              onComponentOrderChange(1, 0);
-              // this.activateComponent(-1, () =>
-              //   onComponentSelectClick('ChatPrompt')
-              // );
+              if (shouldReorderComponents) {
+                onComponentOrderChange(1, 0);
+              }
             }
-
             this.setState(state, () => {
               this.updateSlide();
             });
@@ -484,6 +478,7 @@ export default class SlideEditor extends Component {
       mode
     });
 
+    console.log(slide.components);
     return (
       <Grid>
         <Grid.Column stretched>
