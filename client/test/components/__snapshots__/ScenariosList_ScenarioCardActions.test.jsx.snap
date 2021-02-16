@@ -8,7 +8,7 @@ exports[`Render 1 1 1`] = `
     <a
       aria-label="Run scenario"
       class="ui tiny icon button sc__button"
-      href="/run/42/slide/0"
+      href="/run/a5c52e7b6f/slide/0"
       role="button"
       tabindex="0"
     >

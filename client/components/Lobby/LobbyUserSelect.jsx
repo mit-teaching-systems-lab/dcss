@@ -4,7 +4,11 @@ import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { createChatInvite, getLinkedChatUsersByChatId, joinChat } from '@actions/chat';
+import {
+  createChatInvite,
+  getLinkedChatUsersByChatId,
+  joinChat
+} from '@actions/chat';
 import { getInvites } from '@actions/invite';
 
 import LobbyConfirmationDialog from '@components/Lobby/LobbyConfirmationDialog';
@@ -88,9 +92,7 @@ class LobbyUserSelect extends Component {
   }
 
   async componentDidMount() {
-    const {
-      user
-    } = this.props;
+    const { user } = this.props;
 
     await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
 
@@ -145,8 +147,7 @@ class LobbyUserSelect extends Component {
       if (!userInChat) {
         accum.push(selection);
       } else {
-        if (!userInChat.persona_id ||
-            userInChat === host) {
+        if (!userInChat.persona_id || userInChat === host) {
           accum.push(selection);
         }
       }
@@ -391,18 +392,19 @@ class LobbyUserSelect extends Component {
     const content = (
       <Grid padded className="l__invite l__confirmation">
         <Grid.Row>
-          <Grid.Column>
-            Your role:
-          </Grid.Column>
+          <Grid.Column>Your role:</Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
             <Card fluid>
               <Card.Content>
                 <List divided selection>
-                  {selected.slice(0, 1).map(selection =>
-                    <ListItem key={Identity.key(selection)} selection={selection} />
-                  )}
+                  {selected.slice(0, 1).map(selection => (
+                    <ListItem
+                      key={Identity.key(selection)}
+                      selection={selection}
+                    />
+                  ))}
                 </List>
               </Card.Content>
             </Card>
@@ -418,9 +420,12 @@ class LobbyUserSelect extends Component {
             <Card fluid>
               <Card.Content>
                 <List divided selection>
-                  {participants.map(selection =>
-                    <ListItem key={Identity.key(selection)} selection={selection} />
-                  )}
+                  {participants.map(selection => (
+                    <ListItem
+                      key={Identity.key(selection)}
+                      selection={selection}
+                    />
+                  ))}
                 </List>
               </Card.Content>
             </Card>
@@ -538,9 +543,8 @@ class LobbyUserSelect extends Component {
     const { confirmation, search, selected, sent } = this.state;
     const selectedCount = selected.length;
     const availableCount = users.length - 1; // minus yourself.
-    const rolesAssigned = selected.filter(
-      selection => selection.persona.id
-    ).length;
+    const rolesAssigned = selected.filter(selection => selection.persona.id)
+      .length;
     const rolesCount = scenario.personas.length;
     const otherRoleCount = rolesCount - 1; // minus yourself.
     const remainingCount = rolesCount - rolesAssigned;
@@ -562,7 +566,7 @@ class LobbyUserSelect extends Component {
 
     // If the host is the only person in the list,
     // disable invite sending.
-    const disabled = (selectedCount !== rolesAssigned) || selectedCount <= 1;
+    const disabled = selectedCount !== rolesAssigned || selectedCount <= 1;
 
     let remainingMessage = `${remainingCount} ${pluralRemaining} unassigned.`;
     let remainingTextProps = {};
@@ -581,8 +585,7 @@ class LobbyUserSelect extends Component {
 
     let tally = (
       <Text {...remainingTextProps}>
-        {selected.length} {pluralSelected}{' '},{' '}
-        {remainingMessage}
+        {selected.length} {pluralSelected} , {remainingMessage}
       </Text>
     );
 
@@ -635,15 +638,15 @@ class LobbyUserSelect extends Component {
               <Grid.Column>
                 <Message onDismiss={onInstructionDismiss}>
                   <p>
-                    This scenario has <strong>{rolesCount}</strong> roles. As host,
-                    you will participate in the scenario by filling one of the
-                    available roles.
+                    This scenario has <strong>{rolesCount}</strong> roles. As
+                    host, you will participate in the scenario by filling one of
+                    the available roles.
                   </p>
                   <ol>
                     <li>Choose your role first.</li>
                     <li>
-                      Search and select participants that you want to invite, and
-                      assign their roles as you go.
+                      Search and select participants that you want to invite,
+                      and assign their roles as you go.
                     </li>
                     <li>
                       Once all of the available roles are filled, click the{' '}
@@ -657,9 +660,9 @@ class LobbyUserSelect extends Component {
             ) : (
               <Grid.Column>
                 <p>
-                  This scenario has <strong>{rolesCount}</strong> roles. As host,
-                  you will participate in the scenario by filling one of the
-                  available roles.
+                  This scenario has <strong>{rolesCount}</strong> roles. As
+                  host, you will participate in the scenario by filling one of
+                  the available roles.
                 </p>
                 <p>{headerContent}</p>
               </Grid.Column>
@@ -713,17 +716,15 @@ LobbyUserSelect.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const { user } = state;
 
-  const chat = state.chat && state.chat.id
-    ? state.chat
-    : (ownProps.chat || null);
+  const chat = state.chat && state.chat.id ? state.chat : ownProps.chat || null;
 
-  const cohort = state.cohort && state.cohort.id
-    ? state.cohort
-    : (ownProps.cohort || null);
+  const cohort =
+    state.cohort && state.cohort.id ? state.cohort : ownProps.cohort || null;
 
-  const scenario = state.scenario && state.scenario.id
-    ? state.scenario
-    : (ownProps.scenario || null);
+  const scenario =
+    state.scenario && state.scenario.id
+      ? state.scenario
+      : ownProps.scenario || null;
 
   const usersSource = cohort ? cohort.users : state.users;
   const users = usersSource.reduce((accum, user) => {
@@ -756,17 +757,20 @@ const mapStateToProps = (state, ownProps) => {
     {}
   );
 
-  const personasInUseById = chat.users.reduce((accum, user) => ({
-    ...accum,
-    [user.persona_id]: user
-  }), {});
+  const personasInUseById = chat.users.reduce(
+    (accum, user) => ({
+      ...accum,
+      [user.persona_id]: user
+    }),
+    {}
+  );
 
   return { chat, cohort, personasInUseById, scenario, user, users, usersById };
 };
 
 const mapDispatchToProps = dispatch => ({
   createChatInvite: (id, params) => dispatch(createChatInvite(id, params)),
-  getLinkedChatUsersByChatId: (id) => dispatch(getLinkedChatUsersByChatId(id)),
+  getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),
   joinChat: (id, persona) => dispatch(joinChat(id, persona))
 });

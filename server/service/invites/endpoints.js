@@ -21,7 +21,7 @@ const inviteStatus = {
   '1': 'pending',
   '2': 'canceled',
   '3': 'declined',
-  '4': 'accepted',
+  '4': 'accepted'
 };
 
 async function setInvite(req, res) {
@@ -39,9 +39,11 @@ async function setInvite(req, res) {
     const { status } = req.body;
     const updates = {};
 
-    if (status &&
-        inviteStatus[status] &&
-        inviteStatus[status] !== cached.status) {
+    if (
+      status &&
+      inviteStatus[status] &&
+      inviteStatus[status] !== cached.status
+    ) {
       updates.status_id = status;
     }
 

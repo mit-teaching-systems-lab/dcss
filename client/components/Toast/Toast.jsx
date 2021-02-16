@@ -11,13 +11,7 @@ const icons = {
 };
 
 function Toast(props) {
-  const {
-    className = '',
-    description,
-    title,
-    style = {},
-    ...rest
-  } = props;
+  const { className = '', description, title, style = {}, ...rest } = props;
 
   const onDismiss = e => {
     e.stopPropagation();
@@ -31,12 +25,8 @@ function Toast(props) {
     <Fragment>
       {header ? (
         <Header size="small">
-          {icon ? (
-            <Icon className={icon} />
-          ) : null}
-          <Header.Content>
-            {header}
-          </Header.Content>
+          {icon ? <Icon className={icon} /> : null}
+          <Header.Content>{header}</Header.Content>
         </Header>
       ) : null}
       {description || null}
@@ -50,7 +40,7 @@ function Toast(props) {
     ...type,
     onDismiss,
     content,
-    floating,
+    floating
   };
 
   // This is in the header
@@ -74,7 +64,7 @@ Toast.propTypes = {
   onDismiss: PropTypes.func,
   onClose: PropTypes.func,
   type: PropTypes.string,
-  title: PropTypes.node,
+  title: PropTypes.node
 };
 
 Toast.defaultProps = {

@@ -31,7 +31,7 @@ exports[`Calls onChange when RTE is cleared 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -115,7 +115,7 @@ exports[`Calls onChange when RTE is cleared 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -494,7 +494,7 @@ exports[`Calls onInput when RTE receives new content 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -578,7 +578,7 @@ exports[`Calls onInput when RTE receives new content 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -966,7 +966,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -1050,7 +1050,7 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -1429,7 +1429,7 @@ exports[`Click to Minimize and Maximize 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -1489,7 +1489,7 @@ exports[`Click to Minimize and Maximize 2`] = `
   />
   <div>
     <div
-      style=\\"transform: translate(0px, calc(100vh - 62px));\\"
+      style=\\"position: absolute; width: 500px; top: -54px;\\"
     >
       <div
         class=\\"ui modal transition visible active c__container-modal c__minimized\\"
@@ -1515,7 +1515,7 @@ exports[`Click to Minimize and Maximize 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -1587,7 +1587,7 @@ exports[`Click to Minimize and Maximize 3`] = `
   />
   <div>
     <div
-      style=\\"transform: translate(0px, calc(100vh - 62px));\\"
+      style=\\"position: absolute; width: 500px; top: -54px;\\"
     >
       <div
         class=\\"ui modal transition visible active c__container-modal resizable\\"
@@ -1613,7 +1613,7 @@ exports[`Click to Minimize and Maximize 3`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -1992,7 +1992,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -2076,7 +2076,7 @@ exports[`Empty, many {shift}{enter}, attempts to send, does not submit 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -2464,7 +2464,7 @@ exports[`Layout on desktop 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -2852,7 +2852,7 @@ exports[`Layout on mobile 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -3240,7 +3240,7 @@ exports[`Receives new message, minimized, mobile 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -3324,7 +3324,7 @@ exports[`Receives new message, minimized, mobile 3`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -4121,7 +4121,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
   />
   <div>
     <div
-      style=\\"transform: translate(0px, calc(100vh - 62px));\\"
+      style=\\"position: absolute; width: 500px; top: -54px;\\"
     >
       <div
         class=\\"ui modal transition visible active c__container-modal c__minimized\\"
@@ -4147,7 +4147,7 @@ exports[`Receives new message, minimized, mobile 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -4230,7 +4230,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
   />
   <div>
     <div
-      style=\\"transform: translate(0px, calc(100vh - 62px));\\"
+      style=\\"position: absolute; width: 500px; top: -54px;\\"
     >
       <div
         class=\\"ui modal transition visible active c__container-modal c__minimized\\"
@@ -4251,12 +4251,12 @@ exports[`Receives new message, minimized, mobile 5`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"icon c__pulse\\"
+            class=\\"comments outline icon\\"
           />
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -4363,7 +4363,7 @@ exports[`Receives new message, minimized, not mobile 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -4447,7 +4447,7 @@ exports[`Receives new message, minimized, not mobile 3`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -5305,7 +5305,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
   />
   <div>
     <div
-      style=\\"transform: translate(0px, calc(100vh - 62px));\\"
+      style=\\"position: absolute; width: 500px; top: -54px;\\"
     >
       <div
         class=\\"ui modal transition visible active c__container-modal c__minimized\\"
@@ -5331,7 +5331,7 @@ exports[`Receives new message, minimized, not mobile 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -5403,7 +5403,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
   />
   <div>
     <div
-      style=\\"transform: translate(0px, calc(100vh - 62px));\\"
+      style=\\"position: absolute; width: 500px; top: -54px;\\"
     >
       <div
         class=\\"ui modal transition visible active c__container-modal c__minimized\\"
@@ -5424,12 +5424,12 @@ exports[`Receives new message, minimized, not mobile 5`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"icon c__pulse\\"
+            class=\\"comments outline icon\\"
           />
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -5525,7 +5525,7 @@ exports[`Receives new message, not minimized 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -5609,7 +5609,7 @@ exports[`Receives new message, not minimized 3`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -7446,7 +7446,7 @@ exports[`Rnd: onDrag/onResize 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -7530,7 +7530,7 @@ exports[`Rnd: onDrag/onResize 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -7909,7 +7909,7 @@ exports[`Rnd: onDragStop/onResizeStop 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -7993,7 +7993,7 @@ exports[`Rnd: onDragStop/onResizeStop 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -8372,7 +8372,7 @@ exports[`Types, clicks Send Message 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -8456,7 +8456,7 @@ exports[`Types, clicks Send Message 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -8835,7 +8835,7 @@ exports[`Types, followed by {enter} 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -8919,7 +8919,7 @@ exports[`Types, followed by {enter} 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -9298,7 +9298,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 1`] = 
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -9387,7 +9387,7 @@ exports[`Types, followed by {shift}{enter}, attempts to send, does submit 3`] = 
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -9771,7 +9771,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -9855,7 +9855,7 @@ exports[`Types, followed by {shift}{enter}, does not submit 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -10234,7 +10234,7 @@ exports[`Types, then attempts to send empty string 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -10316,7 +10316,7 @@ exports[`Types, then attempts to send empty string 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -10693,7 +10693,7 @@ exports[`Types, then attempts to send string containing only a space character 1
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -10775,7 +10775,7 @@ exports[`Types, then attempts to send string containing only a space character 2
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -11152,7 +11152,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -11236,7 +11236,7 @@ exports[`componentDidMount Adds JOIN_OR_PART handler 3`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -11624,7 +11624,7 @@ exports[`componentDidMount Adds onbeforeunload handler 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -12436,7 +12436,7 @@ exports[`componentWillUnmount Removes onbeforeunload handler 2`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -12824,7 +12824,7 @@ exports[`onQuote 1`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -12908,7 +12908,7 @@ exports[`onQuote 3`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -13297,7 +13297,7 @@ exports[`onQuote 5`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div

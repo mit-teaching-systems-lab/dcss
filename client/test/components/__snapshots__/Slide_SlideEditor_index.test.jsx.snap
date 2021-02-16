@@ -5591,7 +5591,7 @@ exports[`Change title 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -5638,6 +5638,41 @@ exports[`Change title 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -5646,7 +5681,7 @@ exports[`Change title 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -5716,41 +5751,6 @@ exports[`Change title 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -6087,7 +6087,7 @@ exports[`Change title 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -6134,6 +6134,41 @@ exports[`Change title 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -6142,7 +6177,7 @@ exports[`Change title 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -6212,41 +6247,6 @@ exports[`Change title 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -6583,7 +6583,7 @@ exports[`Change title 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -6630,6 +6630,41 @@ exports[`Change title 3`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -6638,7 +6673,7 @@ exports[`Change title 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -6708,41 +6743,6 @@ exports[`Change title 3`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -7079,7 +7079,7 @@ exports[`Click to activate component 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -7126,6 +7126,41 @@ exports[`Click to activate component 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -7134,7 +7169,7 @@ exports[`Click to activate component 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -7204,41 +7239,6 @@ exports[`Click to activate component 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -7575,7 +7575,7 @@ exports[`Click to activate component 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -7622,6 +7622,41 @@ exports[`Click to activate component 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -7630,7 +7665,7 @@ exports[`Click to activate component 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -7700,41 +7735,6 @@ exports[`Click to activate component 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -8671,7 +8671,7 @@ exports[`Component is missing an id 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -8718,6 +8718,41 @@ exports[`Component is missing an id 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -8726,7 +8761,7 @@ exports[`Component is missing an id 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -8796,41 +8831,6 @@ exports[`Component is missing an id 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -14973,7 +14973,7 @@ exports[`Delete, no 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -15020,6 +15020,41 @@ exports[`Delete, no 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -15028,7 +15063,7 @@ exports[`Delete, no 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -15098,41 +15133,6 @@ exports[`Delete, no 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -15469,7 +15469,7 @@ exports[`Delete, no 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -15516,6 +15516,41 @@ exports[`Delete, no 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -15524,7 +15559,7 @@ exports[`Delete, no 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -15594,41 +15629,6 @@ exports[`Delete, no 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -15965,7 +15965,7 @@ exports[`Delete, no 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -16012,6 +16012,41 @@ exports[`Delete, no 3`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -16020,7 +16055,7 @@ exports[`Delete, no 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -16090,41 +16125,6 @@ exports[`Delete, no 3`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -16461,7 +16461,7 @@ exports[`Delete, yes 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -16508,6 +16508,41 @@ exports[`Delete, yes 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -16516,7 +16551,7 @@ exports[`Delete, yes 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -16586,41 +16621,6 @@ exports[`Delete, yes 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -16957,7 +16957,7 @@ exports[`Delete, yes 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -17004,6 +17004,41 @@ exports[`Delete, yes 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -17012,7 +17047,7 @@ exports[`Delete, yes 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -17082,41 +17117,6 @@ exports[`Delete, yes 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -17453,7 +17453,7 @@ exports[`Delete, yes 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -17500,6 +17500,41 @@ exports[`Delete, yes 3`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -17508,7 +17543,7 @@ exports[`Delete, yes 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -17578,41 +17613,6 @@ exports[`Delete, yes 3`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -17949,7 +17949,7 @@ exports[`Duplicate 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -17996,6 +17996,41 @@ exports[`Duplicate 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -18004,7 +18039,7 @@ exports[`Duplicate 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -18074,41 +18109,6 @@ exports[`Duplicate 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -18445,7 +18445,7 @@ exports[`Duplicate 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -18492,6 +18492,41 @@ exports[`Duplicate 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -18500,7 +18535,7 @@ exports[`Duplicate 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -18570,41 +18605,6 @@ exports[`Duplicate 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -32276,7 +32276,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -32477,237 +32477,6 @@ exports[`Multiple personas, toggle chat 3`] = `
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <textarea />
-                    </div>
-                  </div>
-                  <div
-                    style="opacity: 1;"
-                  >
-                    <div
-                      class="ui segment sortable__selected sortable__component draggable"
-                      data-testid="on-component-click"
-                    >
-                      <div
-                        class="ui borderless icon em__height menu"
-                        index="1"
-                      >
-                        <div
-                          class="item ser__component-card"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-label="Chat"
-                            class="chat icon"
-                          />
-                          Chat
-                        </div>
-                        <a
-                          aria-label="Save component"
-                          class="item"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="save outline icon"
-                          />
-                        </a>
-                        <a
-                          aria-label="Delete this component"
-                          class="item"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="trash alternate outline icon"
-                          />
-                        </a>
-                        <a
-                          aria-label="Duplicate this component"
-                          class="item"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="copy outline icon"
-                          />
-                        </a>
-                        <div
-                          aria-expanded="false"
-                          aria-label="Select a persona"
-                          class="ui item dropdown sp__dropdown"
-                          role="listbox"
-                          tabindex="0"
-                        >
-                          <div
-                            aria-atomic="true"
-                            aria-live="polite"
-                            class="divider default text"
-                            role="alert"
-                          >
-                            Select a persona
-                          </div>
-                          <i
-                            aria-hidden="true"
-                            class="dropdown icon"
-                          />
-                          <div
-                            class="menu transition"
-                          >
-                            <div
-                              aria-checked="false"
-                              aria-selected="true"
-                              class="selected item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <span
-                                class="text"
-                              >
-                                No persona restriction
-                              </span>
-                            </div>
-                            <div
-                              aria-checked="false"
-                              aria-selected="false"
-                              class="item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <table
-                                class="ui celled striped table"
-                              >
-                                <thead
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <th
-                                      class=""
-                                      style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"
-                                    >
-                                      Participant
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <td
-                                      class=""
-                                    >
-                                      The default user participating in a single person scenario.
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div
-                              aria-checked="false"
-                              aria-selected="false"
-                              class="item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <table
-                                class="ui celled striped table"
-                              >
-                                <thead
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <th
-                                      class=""
-                                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
-                                    >
-                                      Teacher
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <td
-                                      class=""
-                                    >
-                                      A non-specific teacher, participating in a multi person scenario.
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div
-                              aria-checked="false"
-                              aria-selected="false"
-                              class="item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <table
-                                class="ui celled striped table"
-                              >
-                                <thead
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <th
-                                      class=""
-                                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
-                                    >
-                                      Student
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <td
-                                      class=""
-                                    >
-                                      A non-specific student, participating in a multi person scenario.
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <a
-                          class="item"
-                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
-                          tabindex="0"
-                        >
-                          <div
-                            class="ui checkbox"
-                          >
-                            <input
-                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
-                              class="hidden"
-                              name="required"
-                              readonly=""
-                              tabindex="0"
-                              type="checkbox"
-                              value=""
-                            />
-                            <label>
-                              Required?
-                            </label>
-                          </div>
-                        </a>
                         <div
                           class="right menu movers"
                           name="Move component"
@@ -32723,8 +32492,8 @@ exports[`Multiple personas, toggle chat 3`] = `
                             />
                           </div>
                           <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
                             tabindex="0"
                           >
                             <i
@@ -32733,7 +32502,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                             />
                           </a>
                           <a
-                            aria-label="Move component 2,  down"
+                            aria-label="Move component 1,  down"
                             class="icon item"
                             tabindex="0"
                           >
@@ -32744,79 +32513,123 @@ exports[`Multiple personas, toggle chat 3`] = `
                           </a>
                         </div>
                       </div>
-                      <form
-                        class="ui form"
+                      <textarea />
+                    </div>
+                  </div>
+                  <div
+                    class="ui segment sortable__component"
+                    data-testid="on-component-click"
+                  >
+                    <div
+                      class="ui borderless icon em__height menu"
+                      index="1"
+                    >
+                      <div
+                        class="item ser__component-card"
+                        tabindex="0"
+                      >
+                        <i
+                          aria-label="Chat"
+                          class="chat icon"
+                        />
+                        Chat
+                      </div>
+                      <a
+                        class="item"
+                        id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
+                        tabindex="0"
                       >
                         <div
-                          class="ui fluid container"
+                          class="ui checkbox"
+                        >
+                          <input
+                            aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
+                            class="hidden"
+                            name="required"
+                            readonly=""
+                            tabindex="0"
+                            type="checkbox"
+                            value=""
+                          />
+                          <label>
+                            Required?
+                          </label>
+                        </div>
+                      </a>
+                    </div>
+                    <form
+                      class="ui form"
+                    >
+                      <div
+                        class="ui fluid container"
+                      >
+                        <div
+                          class="ui two column grid"
                         >
                           <div
-                            class="ui two column grid"
+                            class="row"
                           >
                             <div
-                              class="row"
+                              class="column"
                             >
                               <div
-                                class="column"
+                                class="field"
                               >
-                                <div
-                                  class="field"
+                                (NOT YET IMPLEMENTED)
+                                <label
+                                  for="timer"
                                 >
-                                  <label
-                                    for="timer"
-                                  >
-                                    Set a maximum time for discussion on this slide.
-                                  </label>
-                                  <div
-                                    class="ui input"
-                                  >
-                                    <input
-                                      aria-label="Set a maximum time for discussion on this slide."
-                                      id="timer"
-                                      name="timer"
-                                      style="width: 54px;"
-                                      type="text"
-                                      value="00:00:00"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                class="column"
-                              >
-                                0 hours  minutes  seconds 
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ui grey message"
-                          >
-                            <div
-                              class="content"
-                            >
-                              <div
-                                class="required field"
-                              >
-                                <label>
-                                  Data header
+                                  Set a maximum time for discussion on this slide.
                                 </label>
                                 <div
                                   class="ui input"
                                 >
                                   <input
-                                    name="header"
-                                    required=""
+                                    aria-label="Set a maximum time for discussion on this slide."
+                                    id="timer"
+                                    name="timer"
+                                    style="width: 54px;"
                                     type="text"
-                                    value="Slide 2-ChatPrompt-1"
+                                    value="00:00:00"
                                   />
                                 </div>
                               </div>
-                              This will only appear in data downloads, as the column header or row name.
+                            </div>
+                            <div
+                              class="column"
+                            >
+                              0 hours  minutes  seconds 
                             </div>
                           </div>
                         </div>
-                      </form>
-                    </div>
+                        <div
+                          class="ui grey message"
+                        >
+                          <div
+                            class="content"
+                          >
+                            <div
+                              class="required field"
+                            >
+                              <label>
+                                Data header
+                              </label>
+                              <div
+                                class="ui input"
+                              >
+                                <input
+                                  name="header"
+                                  required=""
+                                  type="text"
+                                  value="Slide 2-ChatPrompt-0"
+                                />
+                              </div>
+                            </div>
+                            This will only appear in data downloads, as the column header or row name.
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                   <div
                     style="opacity: 1;"
@@ -33546,7 +33359,7 @@ exports[`Multiple personas, toggle chat 4`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -33747,237 +33560,6 @@ exports[`Multiple personas, toggle chat 4`] = `
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <textarea />
-                    </div>
-                  </div>
-                  <div
-                    style="opacity: 1;"
-                  >
-                    <div
-                      class="ui segment sortable__selected sortable__component draggable"
-                      data-testid="on-component-click"
-                    >
-                      <div
-                        class="ui borderless icon em__height menu"
-                        index="1"
-                      >
-                        <div
-                          class="item ser__component-card"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-label="Chat"
-                            class="chat icon"
-                          />
-                          Chat
-                        </div>
-                        <a
-                          aria-label="Save component"
-                          class="item"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="save outline icon"
-                          />
-                        </a>
-                        <a
-                          aria-label="Delete this component"
-                          class="item"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="trash alternate outline icon"
-                          />
-                        </a>
-                        <a
-                          aria-label="Duplicate this component"
-                          class="item"
-                          tabindex="0"
-                        >
-                          <i
-                            aria-hidden="true"
-                            class="copy outline icon"
-                          />
-                        </a>
-                        <div
-                          aria-expanded="false"
-                          aria-label="Select a persona"
-                          class="ui item dropdown sp__dropdown"
-                          role="listbox"
-                          tabindex="0"
-                        >
-                          <div
-                            aria-atomic="true"
-                            aria-live="polite"
-                            class="divider default text"
-                            role="alert"
-                          >
-                            Select a persona
-                          </div>
-                          <i
-                            aria-hidden="true"
-                            class="dropdown icon"
-                          />
-                          <div
-                            class="menu transition"
-                          >
-                            <div
-                              aria-checked="false"
-                              aria-selected="true"
-                              class="selected item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <span
-                                class="text"
-                              >
-                                No persona restriction
-                              </span>
-                            </div>
-                            <div
-                              aria-checked="false"
-                              aria-selected="false"
-                              class="item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <table
-                                class="ui celled striped table"
-                              >
-                                <thead
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <th
-                                      class=""
-                                      style="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255);"
-                                    >
-                                      Participant
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <td
-                                      class=""
-                                    >
-                                      The default user participating in a single person scenario.
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div
-                              aria-checked="false"
-                              aria-selected="false"
-                              class="item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <table
-                                class="ui celled striped table"
-                              >
-                                <thead
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <th
-                                      class=""
-                                      style="color: rgb(255, 255, 255); background-color: rgb(63, 89, 169);"
-                                    >
-                                      Teacher
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <td
-                                      class=""
-                                    >
-                                      A non-specific teacher, participating in a multi person scenario.
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div
-                              aria-checked="false"
-                              aria-selected="false"
-                              class="item"
-                              role="option"
-                              style="pointer-events: all;"
-                            >
-                              <table
-                                class="ui celled striped table"
-                              >
-                                <thead
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <th
-                                      class=""
-                                      style="color: rgb(0, 0, 0); background-color: rgb(229, 146, 53);"
-                                    >
-                                      Student
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody
-                                  class=""
-                                >
-                                  <tr
-                                    class=""
-                                  >
-                                    <td
-                                      class=""
-                                    >
-                                      A non-specific student, participating in a multi person scenario.
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                        <a
-                          class="item"
-                          id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
-                          tabindex="0"
-                        >
-                          <div
-                            class="ui checkbox"
-                          >
-                            <input
-                              aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
-                              class="hidden"
-                              name="required"
-                              readonly=""
-                              tabindex="0"
-                              type="checkbox"
-                              value=""
-                            />
-                            <label>
-                              Required?
-                            </label>
-                          </div>
-                        </a>
                         <div
                           class="right menu movers"
                           name="Move component"
@@ -33993,8 +33575,8 @@ exports[`Multiple personas, toggle chat 4`] = `
                             />
                           </div>
                           <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
                             tabindex="0"
                           >
                             <i
@@ -34003,7 +33585,7 @@ exports[`Multiple personas, toggle chat 4`] = `
                             />
                           </a>
                           <a
-                            aria-label="Move component 2,  down"
+                            aria-label="Move component 1,  down"
                             class="icon item"
                             tabindex="0"
                           >
@@ -34014,79 +33596,123 @@ exports[`Multiple personas, toggle chat 4`] = `
                           </a>
                         </div>
                       </div>
-                      <form
-                        class="ui form"
+                      <textarea />
+                    </div>
+                  </div>
+                  <div
+                    class="ui segment sortable__component"
+                    data-testid="on-component-click"
+                  >
+                    <div
+                      class="ui borderless icon em__height menu"
+                      index="1"
+                    >
+                      <div
+                        class="item ser__component-card"
+                        tabindex="0"
+                      >
+                        <i
+                          aria-label="Chat"
+                          class="chat icon"
+                        />
+                        Chat
+                      </div>
+                      <a
+                        class="item"
+                        id="4b9b8ee599a358c925f4753ccde931546c0b64e2"
+                        tabindex="0"
                       >
                         <div
-                          class="ui fluid container"
+                          class="ui checkbox"
+                        >
+                          <input
+                            aria-labelledby="4b9b8ee599a358c925f4753ccde931546c0b64e2"
+                            class="hidden"
+                            name="required"
+                            readonly=""
+                            tabindex="0"
+                            type="checkbox"
+                            value=""
+                          />
+                          <label>
+                            Required?
+                          </label>
+                        </div>
+                      </a>
+                    </div>
+                    <form
+                      class="ui form"
+                    >
+                      <div
+                        class="ui fluid container"
+                      >
+                        <div
+                          class="ui two column grid"
                         >
                           <div
-                            class="ui two column grid"
+                            class="row"
                           >
                             <div
-                              class="row"
+                              class="column"
                             >
                               <div
-                                class="column"
+                                class="field"
                               >
-                                <div
-                                  class="field"
+                                (NOT YET IMPLEMENTED)
+                                <label
+                                  for="timer"
                                 >
-                                  <label
-                                    for="timer"
-                                  >
-                                    Set a maximum time for discussion on this slide.
-                                  </label>
-                                  <div
-                                    class="ui input"
-                                  >
-                                    <input
-                                      aria-label="Set a maximum time for discussion on this slide."
-                                      id="timer"
-                                      name="timer"
-                                      style="width: 54px;"
-                                      type="text"
-                                      value="00:00:00"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                class="column"
-                              >
-                                0 hours  minutes  seconds 
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="ui grey message"
-                          >
-                            <div
-                              class="content"
-                            >
-                              <div
-                                class="required field"
-                              >
-                                <label>
-                                  Data header
+                                  Set a maximum time for discussion on this slide.
                                 </label>
                                 <div
                                   class="ui input"
                                 >
                                   <input
-                                    name="header"
-                                    required=""
+                                    aria-label="Set a maximum time for discussion on this slide."
+                                    id="timer"
+                                    name="timer"
+                                    style="width: 54px;"
                                     type="text"
-                                    value="Slide 2-ChatPrompt-1"
+                                    value="00:00:00"
                                   />
                                 </div>
                               </div>
-                              This will only appear in data downloads, as the column header or row name.
+                            </div>
+                            <div
+                              class="column"
+                            >
+                              0 hours  minutes  seconds 
                             </div>
                           </div>
                         </div>
-                      </form>
-                    </div>
+                        <div
+                          class="ui grey message"
+                        >
+                          <div
+                            class="content"
+                          >
+                            <div
+                              class="required field"
+                            >
+                              <label>
+                                Data header
+                              </label>
+                              <div
+                                class="ui input"
+                              >
+                                <input
+                                  name="header"
+                                  required=""
+                                  type="text"
+                                  value="Slide 2-ChatPrompt-0"
+                                />
+                              </div>
+                            </div>
+                            This will only appear in data downloads, as the column header or row name.
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div>
                   <div
                     style="opacity: 1;"
@@ -36907,7 +36533,7 @@ exports[`Preview 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -36954,6 +36580,41 @@ exports[`Preview 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -36962,7 +36623,7 @@ exports[`Preview 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -37032,41 +36693,6 @@ exports[`Preview 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -37660,7 +37286,7 @@ exports[`Preview 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -37707,6 +37333,41 @@ exports[`Preview 3`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -37715,7 +37376,7 @@ exports[`Preview 3`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -37785,41 +37446,6 @@ exports[`Preview 3`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -38617,7 +38243,7 @@ exports[`Save 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -38664,6 +38290,41 @@ exports[`Save 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -38672,7 +38333,7 @@ exports[`Save 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -38742,41 +38403,6 @@ exports[`Save 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -39113,7 +38739,7 @@ exports[`Save 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -39160,6 +38786,41 @@ exports[`Save 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -39168,7 +38829,7 @@ exports[`Save 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -39238,41 +38899,6 @@ exports[`Save 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -39609,7 +39235,7 @@ exports[`Save, onChange is missing 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -39656,6 +39282,41 @@ exports[`Save, onChange is missing 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -39664,7 +39325,7 @@ exports[`Save, onChange is missing 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -39734,41 +39395,6 @@ exports[`Save, onChange is missing 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -40105,7 +39731,7 @@ exports[`Save, onChange is missing 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -40152,6 +39778,41 @@ exports[`Save, onChange is missing 2`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -40160,7 +39821,7 @@ exports[`Save, onChange is missing 2`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -40230,41 +39891,6 @@ exports[`Save, onChange is missing 2`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"
@@ -40601,7 +40227,7 @@ exports[`Single persona 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__component draggable"
+                      class="ui segment sortable__selected sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -40648,6 +40274,41 @@ exports[`Single persona 1`] = `
                             class="copy outline icon"
                           />
                         </a>
+                        <div
+                          class="right menu movers"
+                          name="Move component"
+                        >
+                          <div
+                            aria-label="Move component"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="move icon"
+                            />
+                          </div>
+                          <a
+                            aria-label="Move component 1,  up"
+                            class="disabled icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret up icon"
+                            />
+                          </a>
+                          <a
+                            aria-label="Move component 1,  down"
+                            class="icon item"
+                            tabindex="0"
+                          >
+                            <i
+                              aria-hidden="true"
+                              class="caret down icon"
+                            />
+                          </a>
+                        </div>
                       </div>
                       <textarea />
                     </div>
@@ -40656,7 +40317,7 @@ exports[`Single persona 1`] = `
                     style="opacity: 1;"
                   >
                     <div
-                      class="ui segment sortable__selected sortable__component draggable"
+                      class="ui segment sortable__component draggable"
                       data-testid="on-component-click"
                     >
                       <div
@@ -40726,41 +40387,6 @@ exports[`Single persona 1`] = `
                             </label>
                           </div>
                         </a>
-                        <div
-                          class="right menu movers"
-                          name="Move component"
-                        >
-                          <div
-                            aria-label="Move component"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="move icon"
-                            />
-                          </div>
-                          <a
-                            aria-label="Move component 2,  up"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret up icon"
-                            />
-                          </a>
-                          <a
-                            aria-label="Move component 2,  down"
-                            class="icon item"
-                            tabindex="0"
-                          >
-                            <i
-                              aria-hidden="true"
-                              class="caret down icon"
-                            />
-                          </a>
-                        </div>
                       </div>
                       <form
                         class="ui form"

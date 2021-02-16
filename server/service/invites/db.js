@@ -6,7 +6,7 @@ const INVITE_STATUS = {
   PENDING: 1,
   CANCELED: 2,
   DECLINED: 3,
-  ACCEPTED: 4,
+  ACCEPTED: 4
 };
 
 exports.INVITE_STATUS = INVITE_STATUS;
@@ -70,7 +70,7 @@ exports.getInvites = async user_id => {
   return invites;
 };
 
-exports.getInvitesForUser = async (user_id) => {
+exports.getInvitesForUser = async user_id => {
   const result = await query(`
     SELECT *
     FROM invite

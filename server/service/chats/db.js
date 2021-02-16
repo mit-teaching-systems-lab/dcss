@@ -1,8 +1,6 @@
 const { sql, updateQuery } = require('../../util/sqlHelpers');
 const { query, withClientTransaction } = require('../../util/db');
-const {
-  INVITE_STATUS
-} = require('../invites/db');
+const { INVITE_STATUS } = require('../invites/db');
 
 exports.getChatByIdentifiers = async (host_id, identifiers) => {
   const { scenario_id, cohort_id = null } = identifiers;
@@ -26,7 +24,12 @@ exports.getChatByIdentifiers = async (host_id, identifiers) => {
   return result.rows[0];
 };
 
-exports.createChat = async (host_id, scenario_id, cohort_id, is_open = false) => {
+exports.createChat = async (
+  host_id,
+  scenario_id,
+  cohort_id,
+  is_open = false
+) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO chat (host_id, scenario_id, cohort_id, is_open)
@@ -83,7 +86,6 @@ exports.createChatInvite = async (
     return result.rows[0];
   });
 };
-
 
 // CREATE UNIQUE INDEX run_id_response_id on run_response (run_id, response_id);
 
@@ -326,12 +328,11 @@ exports.deleteChatById = async id => {
 };
 
 exports.archiveChatMessagesByChatId = async id => {
-// WITH rows AS (
-//    DELETE FROM chat_message
-//    WHERE
-//       chat_id = ${id}
-//    RETURNING *
-// )
-// INSERT INTO chat_message_archive (SELECT * FROM rows);
+  // WITH rows AS (
+  //    DELETE FROM chat_message
+  //    WHERE
+  //       chat_id = ${id}
+  //    RETURNING *
+  // )
+  // INSERT INTO chat_message_archive (SELECT * FROM rows);
 };
-

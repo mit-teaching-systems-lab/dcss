@@ -1127,7 +1127,7 @@ test('Types, followed by {enter}', async done => {
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
         Object {
           "chat": Object {
             "id": 1,
@@ -1192,7 +1192,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
         Object {
           "chat": Object {
             "id": 1,
@@ -1294,7 +1294,7 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
         Object {
           "chat": Object {
             "id": 1,
@@ -1355,7 +1355,7 @@ test('Calls onInput when RTE receives new content', async done => {
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
         Object {
           "chat": Object {
             "id": 1,
@@ -1419,7 +1419,7 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
         Object {
           "chat": Object {
             "id": 1,
@@ -1483,7 +1483,7 @@ test('Types, clicks Send Message', async done => {
   expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
         Object {
           "chat": Object {
             "id": 1,
@@ -1607,7 +1607,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
             <div
               className="content"
             >
-              scenario.title, slide.title
+              Discussion
             </div>
           </div>
           <Ref
@@ -1699,38 +1699,19 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                     }
                   }
                   isMinimized={false}
-                  onMessageReceive={[Function]}
+                  onMessageReceived={[Function]}
                   onQuote={[Function]}
                   slice={-20}
                   socket={
                     Object {
                       "_events": Object {
+                        "chat-message-created": [Function],
+                        "chat-message-updated": [Function],
                         "join-or-part": [Function],
-                        "new-message": [Function],
                       },
-                      "_eventsCount": 2,
+                      "_eventsCount": 3,
                       "disconnect": [MockFunction],
-                      "emit": [MockFunction] {
-                        "calls": Array [
-                          Array [
-                            "user-join",
-                            Object {
-                              "chat": Object {
-                                "id": 1,
-                              },
-                              "user": Object {
-                                "id": null,
-                              },
-                            },
-                          ],
-                        ],
-                        "results": Array [
-                          Object {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "emit": [MockFunction],
                       "off": [MockFunction],
                       "on": [MockFunction] {
                         "calls": Array [
@@ -1739,11 +1720,19 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                             [Function],
                           ],
                           Array [
-                            "new-message",
+                            "chat-message-created",
+                            [Function],
+                          ],
+                          Array [
+                            "chat-message-updated",
                             [Function],
                           ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -1901,7 +1890,7 @@ test('Rnd: onDrag/onResize', async done => {
             <div
               className="content"
             >
-              scenario.title, slide.title
+              Discussion
             </div>
           </div>
           <Ref
@@ -1993,38 +1982,19 @@ test('Rnd: onDrag/onResize', async done => {
                     }
                   }
                   isMinimized={false}
-                  onMessageReceive={[Function]}
+                  onMessageReceived={[Function]}
                   onQuote={[Function]}
                   slice={-20}
                   socket={
                     Object {
                       "_events": Object {
+                        "chat-message-created": [Function],
+                        "chat-message-updated": [Function],
                         "join-or-part": [Function],
-                        "new-message": [Function],
                       },
-                      "_eventsCount": 2,
+                      "_eventsCount": 3,
                       "disconnect": [MockFunction],
-                      "emit": [MockFunction] {
-                        "calls": Array [
-                          Array [
-                            "user-join",
-                            Object {
-                              "chat": Object {
-                                "id": 1,
-                              },
-                              "user": Object {
-                                "id": null,
-                              },
-                            },
-                          ],
-                        ],
-                        "results": Array [
-                          Object {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      },
+                      "emit": [MockFunction],
                       "off": [MockFunction],
                       "on": [MockFunction] {
                         "calls": Array [
@@ -2033,11 +2003,19 @@ test('Rnd: onDrag/onResize', async done => {
                             [Function],
                           ],
                           Array [
-                            "new-message",
+                            "chat-message-created",
+                            [Function],
+                          ],
+                          Array [
+                            "chat-message-updated",
                             [Function],
                           ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -2223,7 +2201,11 @@ test('Receives new message, not minimized', async done => {
         [Function],
       ],
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -2315,7 +2297,11 @@ test('Receives new message, minimized, not mobile', async done => {
         [Function],
       ],
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -2418,7 +2404,11 @@ test('Receives new message, minimized, mobile', async done => {
         [Function],
       ],
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]

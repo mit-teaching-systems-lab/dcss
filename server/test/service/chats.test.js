@@ -77,7 +77,7 @@ jest.mock('../../service/chats/db', () => {
   return {
     ...jest.requireActual('../../service/chats/db'),
     createChat: jest.fn(),
-    linkChatToRun: jest.fn(),
+    linkRunToChat: jest.fn(),
     getChatById: jest.fn(),
     getChatUsersByChatId: jest.fn(),
     getChatMessagesByChatId: jest.fn(),
@@ -132,7 +132,7 @@ describe('/api/chats/*', () => {
       return chatsById[id];
     });
     db.deleteChatById.mockImplementation(async () => chat);
-    db.linkChatToRun.mockImplementation(async () => chat);
+    db.linkRunToChat.mockImplementation(async () => chat);
     db.getChats.mockImplementation(async () => chats);
     db.getChatsByUserId.mockImplementation(async () => chats);
     db.getChatMessagesByChatId.mockImplementation(async () => messages);
@@ -417,7 +417,7 @@ describe('/api/chats/*', () => {
     });
 
     test('put failure', async () => {
-      db.linkChatToRun.mockImplementation(async () => null);
+      db.linkRunToChat.mockImplementation(async () => null);
 
       const response = await request({ path, method, status: 500 });
 
@@ -450,8 +450,8 @@ describe('/api/chats/*', () => {
           },
         }
       `);
-      expect(db.linkChatToRun.mock.calls.length).toBe(1);
-      expect(db.linkChatToRun.mock.calls[0]).toMatchInlineSnapshot(`
+      expect(db.linkRunToChat.mock.calls.length).toBe(1);
+      expect(db.linkRunToChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           1,
           42,
@@ -459,8 +459,8 @@ describe('/api/chats/*', () => {
       `);
     });
 
-    test('get failure: linkChatToRun', async () => {
-      db.linkChatToRun.mockImplementation(async () => {
+    test('get failure: linkRunToChat', async () => {
+      db.linkRunToChat.mockImplementation(async () => {
         throw error;
       });
 
@@ -472,7 +472,7 @@ describe('/api/chats/*', () => {
           "message": "Chat could not be linked. something unexpected happened",
         }
       `);
-      expect(db.linkChatToRun.mock.calls.length).toBe(1);
+      expect(db.linkRunToChat.mock.calls.length).toBe(1);
       expect(db.getChatById.mock.calls.length).toBe(0);
     });
 
@@ -489,7 +489,7 @@ describe('/api/chats/*', () => {
           "message": "Chat could not be linked. something unexpected happened",
         }
       `);
-      expect(db.linkChatToRun.mock.calls.length).toBe(1);
+      expect(db.linkRunToChat.mock.calls.length).toBe(1);
       expect(db.getChatById.mock.calls.length).toBe(1);
     });
   });

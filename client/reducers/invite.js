@@ -1,7 +1,4 @@
-import {
-  GET_INVITES_SUCCESS,
-  SET_INVITE_SUCCESS
-} from '@actions/types';
+import { GET_INVITES_SUCCESS, SET_INVITE_SUCCESS } from '@actions/types';
 
 import { inviteInitialState } from './initial-states';
 

@@ -144,7 +144,6 @@ async function getReferrerParams(req, res) {
 
 // TODO: determin if this is in use.
 async function finishRun(req, res) {
-
   try {
     const { id } = await runForRequest(req);
     res.json(await db.finishRun(id));

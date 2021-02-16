@@ -29,10 +29,10 @@ runs.get('/new-or-existing/scenario/:scenario_id/cohort/:cohort_id', [
   newOrExistingRun
 ]);
 
-runs.get('/new-or-existing/scenario/:scenario_id/cohort/:cohort_id/chat/:chat_id', [
-  requireUser,
-  newOrExistingRun
-]);
+runs.get(
+  '/new-or-existing/scenario/:scenario_id/cohort/:cohort_id/chat/:chat_id',
+  [requireUser, newOrExistingRun]
+);
 
 runs.put('/:run_id', [
   requireUser,

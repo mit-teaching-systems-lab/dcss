@@ -141,10 +141,12 @@ class SocketManager {
       if (!notifier.listenerCount('new_invitation')) {
         notifier.on('new_invitation', async data => {
           // console.log('new_invitation', data);
-          socket.to(data.receiver_id).emit(
-            NEW_INVITATION,
-            await chatutil.makeChatInviteNotification(data)
-          );
+          socket
+            .to(data.receiver_id)
+            .emit(
+              NEW_INVITATION,
+              await chatutil.makeChatInviteNotification(data)
+            );
         });
         // console.log('chat_invite listener is registered');
       }
@@ -152,14 +154,18 @@ class SocketManager {
       if (!notifier.listenerCount('set_invitation')) {
         notifier.on('set_invitation', async data => {
           // console.log('set_invitation', data);
-          socket.to(data.receiver_id).emit(
-            SET_INVITATION,
-            await chatutil.makeChatInviteNotification(data)
-          );
-          socket.to(data.sender_id).emit(
-            SET_INVITATION,
-            await chatutil.makeChatInviteNotification(data)
-          );
+          socket
+            .to(data.receiver_id)
+            .emit(
+              SET_INVITATION,
+              await chatutil.makeChatInviteNotification(data)
+            );
+          socket
+            .to(data.sender_id)
+            .emit(
+              SET_INVITATION,
+              await chatutil.makeChatInviteNotification(data)
+            );
         });
         // console.log('chat_invite listener is registered');
       }

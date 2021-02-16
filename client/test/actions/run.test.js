@@ -95,7 +95,7 @@ test('SET_RUN_SUCCESS', async () => {
   const returnValue = await store.dispatch(actions.setRun(1, data));
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/runs/1/update",
+      "/api/runs/1",
       Object {
         "body": "{}",
         "headers": Object {
@@ -116,7 +116,7 @@ test('SET_RUN_ERROR', async () => {
   const returnValue = await store.dispatch(actions.setRun(1, {}));
   expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
     Array [
-      "/api/runs/1/update",
+      "/api/runs/1",
       Object {
         "body": "{}",
         "headers": Object {

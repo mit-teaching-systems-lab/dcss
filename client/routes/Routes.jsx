@@ -60,13 +60,8 @@ const Routes = ({ isLoggedIn, user }) => {
   );
 
   const routeRenderInvite = props => {
-    const {
-      redirect
-    } = props.location.state;
-    const {
-      status,
-      code
-    } = props.match.params;
+    const { redirect } = props.location.state;
+    const { status, code } = props.match.params;
     return (
       <UserInvites
         status={status}

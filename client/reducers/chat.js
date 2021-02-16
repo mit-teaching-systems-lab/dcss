@@ -77,9 +77,7 @@ export const chats = (state = [], action) => {
       } else {
         state.push(chat);
       }
-      return [...state].sort(
-        (a, b) => a.id < b.id
-      );
+      return [...state].sort((a, b) => a.id < b.id);
     }
     default:
       return state;

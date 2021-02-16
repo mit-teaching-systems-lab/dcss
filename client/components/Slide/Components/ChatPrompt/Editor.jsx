@@ -15,7 +15,7 @@ class ChatPromptEditor extends React.Component {
       header = '',
       timer = 0,
       required = false,
-      responseId = '',
+      responseId = ''
     } = props.value;
     this.state = {
       header,
@@ -97,17 +97,12 @@ class ChatPromptEditor extends React.Component {
     const { onChange, updateState } = this;
     const promptAriaLabel = 'Set a maximum time for discussion on this slide.';
 
-    const timerString = timer
-      ? Media.secToTime(timer)
-      : '';
-console.log(timerString);
+    const timerString = timer ? Media.secToTime(timer) : '';
+    console.log(timerString);
 
     const [hh, mm, ss] = timerString.split(':').map(v => Number(v));
 
-
-
-
-        // <div className="ui ">
+    // <div className="ui ">
     return (
       <Form>
         <Container fluid>
@@ -115,8 +110,10 @@ console.log(timerString);
             <Grid.Row>
               <Grid.Column>
                 <Form.Field>
-                (NOT YET IMPLEMENTED)
-                  <label htmlFor="timer">Set a maximum time for discussion on this slide.</label>
+                  (NOT YET IMPLEMENTED)
+                  <label htmlFor="timer">
+                    Set a maximum time for discussion on this slide.
+                  </label>
                   <div className="ui input">
                     <TimeField
                       showSeconds
@@ -132,9 +129,8 @@ console.log(timerString);
                 </Form.Field>
               </Grid.Column>
               <Grid.Column>
-                {hh}{' '}{pluralize('hour', hh)}{' '}
-                {mm}{' '}{pluralize('minute', mm)}{' '}
-                {ss}{' '}{pluralize('second', ss)}{' '}
+                {hh} {pluralize('hour', hh)} {mm} {pluralize('minute', mm)} {ss}{' '}
+                {pluralize('second', ss)}{' '}
               </Grid.Column>
             </Grid.Row>
           </Grid>

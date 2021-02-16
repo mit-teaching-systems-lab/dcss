@@ -532,9 +532,8 @@ export default class SlideEditor extends Component {
                             disableDuplicate = false,
                             disableEmbed = false,
                             disableOrdering = false,
-                            disablePersona = false,
+                            disablePersona = false
                           } = value;
-
 
                           const onConfirm = () => onComponentDelete(index);
                           const isActiveComponent =
@@ -717,7 +716,6 @@ export default class SlideEditor extends Component {
                             };
                           }
 
-
                           const draggableOrNot = !disableOrdering ? (
                             <Draggable
                               key={`draggable-key-${value.id}`}
@@ -810,16 +808,15 @@ export default class SlideEditor extends Component {
                                   slideIndex={this.props.index}
                                   scenario={scenario}
                                   value={value}
-                                  onChange={v =>
-                                    onComponentChange(index, v)
-                                  }
+                                  onChange={v => onComponentChange(index, v)}
                                 />
                               </Segment>
                             </Ref>
                           );
 
-
-                          return mode === 'edit' ? draggableOrNot : (
+                          return mode === 'edit' ? (
+                            draggableOrNot
+                          ) : (
                             <Fragment key={`component-fragment-${value.id}`}>
                               <ComponentDisplay
                                 key={`component-preview-${value.id}`}

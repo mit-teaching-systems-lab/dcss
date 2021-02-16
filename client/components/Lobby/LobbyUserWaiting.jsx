@@ -45,15 +45,13 @@ class LobbyUserWaiting extends Component {
   }
 
   async componentDidMount() {
-    const {
-      user
-    } = this.props;
+    const { user } = this.props;
 
     await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
 
     this.setState({
       isReady: true
-    })
+    });
 
     this.props.socket.emit(CREATE_USER_CHANNEL, { user });
     this.props.socket.on(RUN_CHAT_LINK, this.onRunChatLink);
@@ -68,11 +66,7 @@ class LobbyUserWaiting extends Component {
   }
 
   renderInviteeList() {
-    const {
-      scenario,
-      user,
-      usersById
-    } = this.props;
+    const { scenario, user, usersById } = this.props;
 
     const usersWaitingWithAssignedRoles = this.props.chat.users.filter(
       user => user.persona_id
@@ -85,21 +79,18 @@ class LobbyUserWaiting extends Component {
           const key = Identity.key({ chatUser, index, waiting: 1 });
           const isSelectedNotHost = chatUser.id !== user.id;
           const content = 'You are the host';
-          const persona = scenario.personas.find(persona =>
-            persona.id === chatUser.persona_id
+          const persona = scenario.personas.find(
+            persona => persona.id === chatUser.persona_id
           );
 
           const asPersona = persona ? (
-            <Fragment>
-              as {persona.name}
-            </Fragment>
+            <Fragment>as {persona.name}</Fragment>
           ) : null;
 
           return (
             <List.Item key={key}>
               <List.Content>
-                <Username user={waitingUser} />{' '}
-                {asPersona}
+                <Username user={waitingUser} /> {asPersona}
               </List.Content>
             </List.Item>
           );
@@ -108,32 +99,23 @@ class LobbyUserWaiting extends Component {
     ) : (
       <List divided selection data-testid="lobby-user-waiting-empty">
         <List.Item>
-          <List.Content>
-            There are no participants waiting yet.
-          </List.Content>
+          <List.Content>There are no participants waiting yet.</List.Content>
         </List.Item>
       </List>
     );
   }
 
   render() {
-    const {
-      isReady
-    } = this.state;
+    const { isReady } = this.state;
 
     if (!isReady) {
       return null;
     }
 
-    const {
-      chat,
-      scenario,
-      user
-    } = this.props;
+    const { chat, scenario, user } = this.props;
 
-
-    const isHostCounted = !!this.props.chat.users.find(({id}) =>
-      id === user.id
+    const isHostCounted = !!this.props.chat.users.find(
+      ({ id }) => id === user.id
     );
 
     const usersWaitingWithAssignedRoles = this.props.chat.users.filter(
@@ -168,9 +150,7 @@ class LobbyUserWaiting extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Card fluid>
-                  <Card.Content>
-                    {this.renderInviteeList()}
-                  </Card.Content>
+                  <Card.Content>{this.renderInviteeList()}</Card.Content>
                 </Card>
               </Grid.Column>
             </Grid.Row>
@@ -194,17 +174,15 @@ LobbyUserWaiting.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const { user } = state;
 
-  const chat = state.chat && state.chat.id
-    ? state.chat
-    : (ownProps.chat || null);
+  const chat = state.chat && state.chat.id ? state.chat : ownProps.chat || null;
 
-  const cohort = state.cohort && state.cohort.id
-    ? state.cohort
-    : (ownProps.cohort || null);
+  const cohort =
+    state.cohort && state.cohort.id ? state.cohort : ownProps.cohort || null;
 
-  const scenario = state.scenario && state.scenario.id
-    ? state.scenario
-    : (ownProps.scenario || null);
+  const scenario =
+    state.scenario && state.scenario.id
+      ? state.scenario
+      : ownProps.scenario || null;
 
   const users = cohort ? cohort.users : state.users;
   const usersById = users.reduce(
@@ -219,10 +197,10 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getChatById: (id) => dispatch(getChatById(id)),
-  getLinkedChatUsersByChatId: (id) => dispatch(getLinkedChatUsersByChatId(id)),
+  getChatById: id => dispatch(getChatById(id)),
+  getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),
-  getUsers: limit => dispatch(getUsers(limit)),
+  getUsers: limit => dispatch(getUsers(limit))
 });
 
 export default withSocket(

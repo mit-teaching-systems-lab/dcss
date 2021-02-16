@@ -938,7 +938,7 @@ test('Assigning roles enables Send Invites button', async done => {
   expect(serialize()).toMatchSnapshot();
 
   const sendInvitesButtons = await screen.getAllByText('Send invites');
-  expect(sendInvitesButtons.length).toBe(2);
+  expect(sendInvitesButtons.length).toBe(1);
   expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
   expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
 
@@ -1015,7 +1015,7 @@ test('Assign & unassign roles', async done => {
   expect(serialize()).toMatchSnapshot();
 
   const sendInvitesButtons = await screen.getAllByText('Send invites');
-  expect(sendInvitesButtons.length).toBe(2);
+  expect(sendInvitesButtons.length).toBe(1);
   expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
   expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
 
@@ -1080,7 +1080,7 @@ test('Select & unselect participant', async done => {
   expect(serialize()).toMatchSnapshot();
 
   const sendInvitesButtons = await screen.getAllByText('Send invites');
-  expect(sendInvitesButtons.length).toBe(2);
+  expect(sendInvitesButtons.length).toBe(1);
   expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
   expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
 

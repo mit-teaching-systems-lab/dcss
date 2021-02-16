@@ -372,7 +372,7 @@ export class Cohorts extends React.Component {
       notify({
         message: url,
         title: 'Copied',
-        icon: 'linkify',
+        icon: 'linkify'
       });
     };
 

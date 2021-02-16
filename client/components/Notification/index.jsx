@@ -6,10 +6,7 @@ import objectPath from 'object-path';
 import { ToastContainer, notifier } from '@components/Toast';
 import { getInvites } from '@actions/invite';
 import { Button, Header, Modal } from '@components/UI';
-import withSocket, {
-  CREATE_USER_CHANNEL,
-  NOTIFICATION
-} from '@hoc/withSocket';
+import withSocket, { CREATE_USER_CHANNEL, NOTIFICATION } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 
 import './Notification.css';
@@ -24,7 +21,7 @@ const checkNotificationRules = (state, rules) => {
 
 const createHTML = html => ({ __html: html });
 
-const notify = (configuration) => {
+const notify = configuration => {
   const {
     className = 'n__container',
     color,
@@ -37,7 +34,7 @@ const notify = (configuration) => {
     type = '',
     onClick = noOp,
     onClose = noOp,
-    onDismiss = noOp,
+    onDismiss = noOp
   } = configuration;
 
   const description = message;
@@ -49,7 +46,7 @@ const notify = (configuration) => {
     size,
     style,
     time,
-    type,
+    type
   };
 
   if (color) {
@@ -70,24 +67,13 @@ const notify = (configuration) => {
       cache.delete(key);
       onClose();
     };
-    notifier(
-      props,
-      wrappedOnClose,
-      onClick,
-      onDismiss
-    );
+    notifier(props, wrappedOnClose, onClick, onDismiss);
   }
-}
+};
 
 notify.queue = notifier.store;
 
-export {
-  checkNotificationRules,
-  createHTML,
-  notify,
-};
-
-
+export { checkNotificationRules, createHTML, notify };
 
 class Notification extends Component {
   onMessage = notification => {

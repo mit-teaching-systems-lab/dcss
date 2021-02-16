@@ -9,6 +9,7 @@ exports[`Default height and width when 0 1`] = `
     <div
       class=\\"ui modal transition visible active c__container-modal resizable\\"
       role=\\"dialog\\"
+      style=\\"position: absolute;\\"
     >
       <div>
         a
@@ -27,6 +28,7 @@ exports[`Default height and width when undefined 1`] = `
     <div
       class=\\"ui modal transition visible active c__container-modal resizable\\"
       role=\\"dialog\\"
+      style=\\"position: absolute;\\"
     >
       <div>
         a
@@ -45,6 +47,7 @@ exports[`No Rnd on mobile 2`] = `
     <div
       class=\\"ui modal transition visible active c__container-modal resizable\\"
       role=\\"dialog\\"
+      style=\\"position: absolute;\\"
     >
       <div>
         a
@@ -63,6 +66,7 @@ exports[`Render 1 1 1`] = `
     <div
       class=\\"ui modal transition visible active c__container-modal resizable\\"
       role=\\"dialog\\"
+      style=\\"position: absolute;\\"
     />
   </div>
 </body>"

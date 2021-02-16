@@ -50,7 +50,9 @@ class ScenarioCardActions extends Component {
           size="tiny"
           icon
           as={Link}
-          to={`/run/${Identity.toHash(scenario.id)}/slide/${run.activeRunSlideIndex}`}
+          to={`/run/${Identity.toHash(scenario.id)}/slide/${
+            run.activeRunSlideIndex
+          }`}
         >
           <Icon name="play" className="primary" />
           <span className={className}>Run</span>

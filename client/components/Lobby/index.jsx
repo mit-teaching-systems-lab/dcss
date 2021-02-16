@@ -58,14 +58,15 @@ class Lobby extends Component {
 
     if (!this.props.__UNSAFE_OVERRIDE_ID__) {
       if (!this.props.chat || !this.props.chat.id) {
-        await this.props.getChat(this.props.scenario.id, this.props?.cohort?.id);
+        await this.props.getChat(
+          this.props.scenario.id,
+          this.props?.cohort?.id
+        );
       } else {
         await this.props.getChatById(this.props.chat.id);
       }
     } else {
-      await this.props.getChatById(
-        this.props.__UNSAFE_OVERRIDE_ID__
-      );
+      await this.props.getChatById(this.props.__UNSAFE_OVERRIDE_ID__);
     }
 
     await this.fetchUsers();
@@ -94,7 +95,7 @@ class Lobby extends Component {
     const lobbyUserViewsProps = {
       chat,
       cohort,
-      scenario,
+      scenario
     };
 
     return this.props.asCard ? (
@@ -154,17 +155,15 @@ Lobby.propTypes = {
 const mapStateToProps = (state, ownProps) => {
   const { user, users } = state;
 
-  const chat = state.chat && state.chat.id
-    ? state.chat
-    : (ownProps.chat || null);
+  const chat = state.chat && state.chat.id ? state.chat : ownProps.chat || null;
 
-  const cohort = state.cohort && state.cohort.id
-    ? state.cohort
-    : (ownProps.cohort || null);
+  const cohort =
+    state.cohort && state.cohort.id ? state.cohort : ownProps.cohort || null;
 
-  const scenario = state.scenario && state.scenario.id
-    ? state.scenario
-    : (ownProps.scenario || null);
+  const scenario =
+    state.scenario && state.scenario.id
+      ? state.scenario
+      : ownProps.scenario || null;
 
   return { chat, cohort, scenario, user, users };
 };

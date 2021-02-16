@@ -75,17 +75,16 @@ class Run extends Component {
       this.props.chatId
     );
 
-
     if (run) {
-      const {
-        user
-      } = this.props;
+      const { user } = this.props;
 
       if (this.props.cohortId) {
-        const cohort = await this.props.linkRunToCohort(this.props.cohortId, run.id);
+        const cohort = await this.props.linkRunToCohort(
+          this.props.cohortId,
+          run.id
+        );
 
         if (cohort) {
-
           if (!cohort.users.find(({ id }) => id === user.id)) {
             // For now we'll default all unknown
             // users as "participant".
@@ -97,19 +96,16 @@ class Run extends Component {
       if (this.props.chatId) {
         await this.props.linkRunToChat(this.props.chatId, run.id);
         if (this.props.chat) {
-
           const userInChat = this.props.chat.usersById[user.id];
           const isUserInChat = !!isUserInChat;
-          const isUserRoleAssigned = isUserInChat && userInChat.persona_id != null;
+          const isUserRoleAssigned =
+            isUserInChat && userInChat.persona_id != null;
 
           if (!isUserRoleAssigned && this.props.invite) {
-            const persona = this.props.scenario.personas.find(persona =>
-              persona.id === this.props.invite.persona_id
+            const persona = this.props.scenario.personas.find(
+              persona => persona.id === this.props.invite.persona_id
             );
-            await this.props.joinChat(
-              this.props.chat.id,
-              persona
-            );
+            await this.props.joinChat(this.props.chat.id, persona);
           }
         }
       }
@@ -203,11 +199,15 @@ class Run extends Component {
       <Fragment>
         <Title content={pageTitle} />
         {this.props.user.is_super ? (
-          <div style={{zIndex: 9001, position: 'absolute'}}>
-            Run: {this.props.run.id}<br />
-            Scenario: {this.props.scenario.id}<br />
-            Cohort: {this.props.cohort.id || 'n/a'}<br />
-            Chat: {this.props.chat && this.props.chat.id || 'n/a'}<br />
+          <div style={{ zIndex: 9001, position: 'absolute' }}>
+            Run: {this.props.run.id}
+            <br />
+            Scenario: {this.props.scenario.id}
+            <br />
+            Cohort: {this.props.cohort.id || 'n/a'}
+            <br />
+            Chat: {(this.props.chat && this.props.chat.id) || 'n/a'}
+            <br />
           </div>
         ) : null}
         <Scenario
@@ -265,7 +265,9 @@ const mapStateToProps = (state, ownProps) => {
   const { params } = ownProps.match || { params: {} };
   const { chatsById, cohort, invites, responses, run, user } = state;
   const cohortId = Identity.fromHashOrId(ownProps.cohortId || params.cohortId);
-  const scenarioId = Identity.fromHashOrId(ownProps.scenarioId || params.scenarioId);
+  const scenarioId = Identity.fromHashOrId(
+    ownProps.scenarioId || params.scenarioId
+  );
 
   let chatId = null;
   let invite = null;

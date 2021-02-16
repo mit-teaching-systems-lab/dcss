@@ -467,7 +467,6 @@ Chat.propTypes = {
   getChatById: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
-  linkChatToRun: PropTypes.func,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,

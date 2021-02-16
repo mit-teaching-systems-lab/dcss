@@ -24,7 +24,7 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import __dropdown__LobbyUserSelect from '../../components/Lobby/__dropdown__LobbyUserSelect.jsx';
+import withTransition from '../../components/Toast/withTransition.jsx';
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -62,12 +62,12 @@ afterEach(() => {
   commonState = null;
 });
 
-test('__dropdown__LobbyUserSelect', () => {
-  expect(__dropdown__LobbyUserSelect).toBeDefined();
+test('withTransition', () => {
+  expect(withTransition).toBeDefined();
 });
 
 test('Render 1 1', async done => {
-  const Component = __dropdown__LobbyUserSelect;
+  const Component = withTransition;
 
   const props = {
     ...commonProps

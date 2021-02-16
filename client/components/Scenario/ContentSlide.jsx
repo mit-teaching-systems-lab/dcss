@@ -412,6 +412,7 @@ class ContentSlide extends React.Component {
 }
 
 ContentSlide.propTypes = {
+  chat: PropTypes.object,
   getResponse: PropTypes.func,
   isContextual: PropTypes.bool,
   isLastSlide: PropTypes.bool,
@@ -428,9 +429,9 @@ ContentSlide.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { run, responsesById } = state;
+  const { chat, run, responsesById } = state;
   const isContextual = ownProps.isContextual || false;
-  return { isContextual, run, responsesById };
+  return { chat, isContextual, run, responsesById };
 };
 
 const mapDispatchToProps = dispatch => ({

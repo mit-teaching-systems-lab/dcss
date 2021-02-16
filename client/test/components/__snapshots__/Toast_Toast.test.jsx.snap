@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    class="fade animating in visible transition"
+    role="presentation"
+    style="margin-bottom: 1em; animation-duration: 500ms;"
+  >
+    <div
+      class=""
+    >
+      <div
+        class="ui floating message"
+      >
+        <i
+          aria-hidden="true"
+          class="close icon"
+        />
+        <div
+          class="content"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

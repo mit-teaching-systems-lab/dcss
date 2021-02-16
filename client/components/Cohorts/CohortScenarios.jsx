@@ -30,10 +30,10 @@ export class CohortScenarios extends React.Component {
     this.state = {
       isReady: false,
       edit: {
-        isOpen: false,
+        isOpen: false
       },
       room: {
-        isOpen: false,
+        isOpen: false
       },
       visibleCount: 4
     };
@@ -210,17 +210,13 @@ export class CohortScenarios extends React.Component {
 
               const { created_at = null, ended_at = null } = run;
 
-              const createdAt = created_at
-                ? Moment(created_at).fromNow()
-                : '';
+              const createdAt = created_at ? Moment(created_at).fromNow() : '';
 
               const createdAtAlt = created_at
                 ? Moment(created_at).calendar()
                 : '';
 
-              const endedAt = ended_at
-                ? Moment(ended_at).fromNow()
-                : '';
+              const endedAt = ended_at ? Moment(ended_at).fromNow() : '';
 
               const endedAtAlt = ended_at
                 ? Moment(ended_at).calendar()
@@ -289,15 +285,15 @@ export class CohortScenarios extends React.Component {
 
               let finishButtonDisplay = isMultiParticipantScenario
                 ? 'Re-join to finish scenario'
-                : 'Finish scenario'
+                : 'Finish scenario';
 
               let runButtonDisplay = isMultiParticipantScenario
                 ? 'Create or join a room to run scenario'
-                : 'Run scenario'
+                : 'Run scenario';
 
               let rerunButtonDisplay = isMultiParticipantScenario
                 ? 'Create or join a room to re-run scenario'
-                : 'Re-run scenario'
+                : 'Re-run scenario';
 
               let startButtonDisplay = created_at
                 ? finishButtonDisplay
@@ -314,7 +310,7 @@ export class CohortScenarios extends React.Component {
               }
 
               if (ended_at) {
-                runStartedMaybeFinished = `Finished ${endedAtDisplay}.`
+                runStartedMaybeFinished = `Finished ${endedAtDisplay}.`;
               }
 
               return (
@@ -337,9 +333,7 @@ export class CohortScenarios extends React.Component {
                       </Text.Truncate>
                     </Card.Description>
                     {!isFacilitator ? (
-                      <Card.Meta>
-                        {runStartedMaybeFinished}
-                      </Card.Meta>
+                      <Card.Meta>{runStartedMaybeFinished}</Card.Meta>
                     ) : null}
                     <Card.Meta>
                       <Button
@@ -404,7 +398,10 @@ export class CohortScenarios extends React.Component {
         ) : null}
 
         {this.state.room.isOpen ? (
-          <CohortRoomSelector {...cohortScenarioRoomProps} scenario={this.state.room.scenario} />
+          <CohortRoomSelector
+            {...cohortScenarioRoomProps}
+            scenario={this.state.room.scenario}
+          />
         ) : null}
 
         <div data-testid="cohort-scenarios" />

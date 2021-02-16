@@ -97,11 +97,10 @@ class FinishSlide extends React.Component {
       </Button>
     );
 
-    const inCohortMultiparticipant = this.isMultiparticipantScenarioRun && this.isCohortScenarioRun;
+    const inCohortMultiparticipant =
+      this.isMultiparticipantScenarioRun && this.isCohortScenarioRun;
 
-    const showRerunOption = inCohortMultiparticipant
-      ? false
-      : true;
+    const showRerunOption = inCohortMultiparticipant ? false : true;
 
     const ariaLabel = `Ready to finish this scenario? If you're ready to finish, click "I'm done!"`;
 
@@ -117,7 +116,6 @@ class FinishSlide extends React.Component {
                     <Button.Or />
                     {rerunThisX}
                   </Fragment>
-
                 ) : null}
               </Button.Group>
             </Card.Header>

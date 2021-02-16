@@ -8,7 +8,11 @@ import { getInvites, setInvite } from '@actions/invite';
 import { getScenariosByStatus } from '@actions/scenario';
 import { getUsers } from '@actions/users';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
-import { checkNotificationRules, createHTML, notify } from '@components/Notification';
+import {
+  checkNotificationRules,
+  createHTML,
+  notify
+} from '@components/Notification';
 import {
   Button,
   Container,
@@ -40,11 +44,14 @@ const isParticipantOnly = user => {
 };
 
 const isMissingUsers = (invites, usersById) => {
-  const userIdMap = invites.reduce((accum, {receiver_id, sender_id}) => ({
-    ...accum,
-    [receiver_id]: true,
-    [sender_id]: true
-  }), {});
+  const userIdMap = invites.reduce(
+    (accum, { receiver_id, sender_id }) => ({
+      ...accum,
+      [receiver_id]: true,
+      [sender_id]: true
+    }),
+    {}
+  );
 
   return Object.keys(userIdMap).some(id => usersById[id] === undefined);
 };
@@ -57,7 +64,7 @@ class UserInvites extends Component {
 
     this.state = {
       isReady: false,
-      open,
+      open
     };
 
     this.onNewInvitation = this.onNewInvitation.bind(this);
@@ -84,25 +91,20 @@ class UserInvites extends Component {
     this.props.socket.on(NEW_INVITATION, this.onNewInvitation);
     this.props.socket.on(SET_INVITATION, this.onSetInvitation);
 
-    const {
-      code,
-      status
-    } = this.props;
+    const { code, status } = this.props;
 
     if (code && status) {
       if (!this.props.invitesByCode[code]) {
         await this.props.getInvites();
       }
 
-      await this.props.setInvite(
-        this.props.invitesByCode[code].id,
-        { status }
-      );
+      await this.props.setInvite(this.props.invitesByCode[code].id, { status });
 
-      if (status === INVITE_STATUS_PENDING ||
-          status === INVITE_STATUS_CANCEL ||
-          status === INVITE_STATUS_DECLINE) {
-
+      if (
+        status === INVITE_STATUS_PENDING ||
+        status === INVITE_STATUS_CANCEL ||
+        status === INVITE_STATUS_DECLINE
+      ) {
         this.props.history.push(this.props.redirect);
         return;
       }
@@ -134,7 +136,6 @@ class UserInvites extends Component {
   }
 
   async onNewInvitation(notification) {
-
     await this.refresh();
 
     if (this.state.open) {
@@ -151,15 +152,12 @@ class UserInvites extends Component {
     }
 
     if (notification.type === 'invite') {
-
       let className = notification.props.className || '';
       className += `n__container`;
 
       notification.props.className = className.trim();
 
-      const {
-        invite
-      } = notification;
+      const { invite } = notification;
 
       if (notification.props.html) {
         const onClick = async (event, { value: status }) => {
@@ -167,10 +165,7 @@ class UserInvites extends Component {
             notify.queue.remove(notify.queue.data[0]);
           }
 
-          await this.props.setInvite(
-            invite.id,
-            { status }
-          );
+          await this.props.setInvite(invite.id, { status });
 
           if (status === INVITE_STATUS_ACCEPT) {
             location.href = makeAcceptedInviteRedirectPath(invite);
@@ -231,7 +226,6 @@ class UserInvites extends Component {
   }
 
   render() {
-
     if (this.props.redirect) {
       return null;
     }
@@ -318,15 +312,18 @@ UserInvites.defaultProps = {
   code: '',
   open: false,
   redirect: '',
-  status: null,
+  status: null
 };
 
 const mapStateToProps = (state, ownProps) => {
   const { invites, personas, user, usersById } = state;
-  const invitesByCode = invites.reduce((accum, invite) => ({
-    ...accum,
-    [invite.code]: invite
-  }), {});
+  const invitesByCode = invites.reduce(
+    (accum, invite) => ({
+      ...accum,
+      [invite.code]: invite
+    }),
+    {}
+  );
 
   const status = Number(ownProps.status) || null;
 
@@ -336,9 +333,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
   getCohorts: () => dispatch(getCohorts()),
   getInvites: () => dispatch(getInvites()),
-  getScenariosByStatus: (status) => dispatch(getScenariosByStatus(status)),
+  getScenariosByStatus: status => dispatch(getScenariosByStatus(status)),
   getUsers: limit => dispatch(getUsers(limit)),
-  setInvite: (id, params) => dispatch(setInvite(id, params)),
+  setInvite: (id, params) => dispatch(setInvite(id, params))
 });
 
 export default withSocket(

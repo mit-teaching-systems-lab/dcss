@@ -268,7 +268,7 @@ export let getChats = () => async dispatch => {
   }
 };
 
-export let getChatsByCohortId = (id) => async dispatch => {
+export let getChatsByCohortId = id => async dispatch => {
   try {
     const res = await (await fetch(`/api/chats/cohort/${id}`)).json();
 
@@ -323,7 +323,6 @@ export let linkRunToChat = (id, run_id) => async dispatch => {
 //     return null;
 //   }
 // };
-
 
 export let setMessageById = (id, params) => async dispatch => {
   try {

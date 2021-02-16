@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Assign & unassign roles 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -54,7 +52,7 @@ exports[`Assign & unassign roles 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -96,7 +94,7 @@ exports[`Assign & unassign roles 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -112,90 +110,6 @@ exports[`Assign & unassign roles 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -336,7 +250,9 @@ exports[`Assign & unassign roles 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -344,7 +260,7 @@ exports[`Assign & unassign roles 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -1444,9 +1360,7 @@ exports[`Assign & unassign roles 4`] = `
 `;
 
 exports[`Assigning roles enables Send Invites button 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -1497,7 +1411,7 @@ exports[`Assigning roles enables Send Invites button 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -1539,7 +1453,7 @@ exports[`Assigning roles enables Send Invites button 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -1555,90 +1469,6 @@ exports[`Assigning roles enables Send Invites button 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -1779,7 +1609,9 @@ exports[`Assigning roles enables Send Invites button 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -1787,7 +1619,7 @@ exports[`Assigning roles enables Send Invites button 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -3246,7 +3078,7 @@ exports[`Both Send Invites buttons are disabled 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -3288,7 +3120,7 @@ exports[`Both Send Invites buttons are disabled 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -3304,90 +3136,6 @@ exports[`Both Send Invites buttons are disabled 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -3528,7 +3276,9 @@ exports[`Both Send Invites buttons are disabled 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -3536,7 +3286,7 @@ exports[`Both Send Invites buttons are disabled 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -3599,7 +3349,7 @@ exports[`Click in search shows default list of available users 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -3641,7 +3391,7 @@ exports[`Click in search shows default list of available users 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -3657,90 +3407,6 @@ exports[`Click in search shows default list of available users 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -3881,7 +3547,9 @@ exports[`Click in search shows default list of available users 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -3889,7 +3557,7 @@ exports[`Click in search shows default list of available users 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -4281,7 +3949,7 @@ exports[`Render 1 1 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -4323,7 +3991,7 @@ exports[`Render 1 1 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -4339,90 +4007,6 @@ exports[`Render 1 1 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -4563,7 +4147,9 @@ exports[`Render 1 1 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -4571,7 +4157,7 @@ exports[`Render 1 1 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -4634,7 +4220,7 @@ exports[`Render 2 1 1`] = `
             <p>
               There are 
               <strong>
-                3
+                0
               </strong>
                other 
               participants
@@ -4676,7 +4262,7 @@ exports[`Render 2 1 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin facilitator researcher  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -4691,72 +4277,6 @@ exports[`Render 2 1 1`] = `
                 class=\\"small icon chess queen\\"
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  null  credible-lyrebird  credible lyrebird  null  participant  \\"
-            >
-              <span
-                aria-label=\\"credible-lyrebird\\"
-                class=\\"ui medium text\\"
-                title=\\"credible-lyrebird\\"
-              >
-                credible-lyrebird
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Heartfull Cougar  heartfull-cougar  heartfull cougar  heartfull-cougar@email.com  participant facilitator  \\"
-            >
-              <span
-                aria-label=\\"Heartfull Cougar (heartfull-cougar)\\"
-                class=\\"ui medium text\\"
-                title=\\"Heartfull Cougar (heartfull-cougar)\\"
-              >
-                Heartfull Cougar
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Perfect Oryx  perfect-oryx  perfect oryx  perfect-oryx@email.com  participant facilitator  \\"
-            >
-              <span
-                aria-label=\\"Perfect Oryx (perfect-oryx)\\"
-                class=\\"ui medium text\\"
-                title=\\"Perfect Oryx (perfect-oryx)\\"
-              >
-                Perfect Oryx
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
               />
               <span
                 class=\\"l__hidden\\"
@@ -4898,7 +4418,9 @@ exports[`Render 2 1 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -4906,7 +4428,7 @@ exports[`Render 2 1 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -4918,9 +4440,7 @@ exports[`Render 2 1 1`] = `
 `;
 
 exports[`Select & unselect participant 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -4971,7 +4491,7 @@ exports[`Select & unselect participant 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -5013,7 +4533,7 @@ exports[`Select & unselect participant 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -5029,90 +4549,6 @@ exports[`Select & unselect participant 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -5253,7 +4689,9 @@ exports[`Select & unselect participant 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -5261,7 +4699,7 @@ exports[`Select & unselect participant 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -5949,7 +5387,7 @@ exports[`Selecting from search results adds a participant 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -5991,7 +5429,7 @@ exports[`Selecting from search results adds a participant 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -6007,90 +5445,6 @@ exports[`Selecting from search results adds a participant 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -6231,7 +5585,9 @@ exports[`Selecting from search results adds a participant 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -6239,7 +5595,7 @@ exports[`Selecting from search results adds a participant 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -6618,9 +5974,7 @@ exports[`Selecting from search results adds a participant 2`] = `
 `;
 
 exports[`Selecting too many shows a warning, discard selection 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -6671,7 +6025,7 @@ exports[`Selecting too many shows a warning, discard selection 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -6713,7 +6067,7 @@ exports[`Selecting too many shows a warning, discard selection 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -6729,90 +6083,6 @@ exports[`Selecting too many shows a warning, discard selection 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -6953,7 +6223,9 @@ exports[`Selecting too many shows a warning, discard selection 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -6961,7 +6233,7 @@ exports[`Selecting too many shows a warning, discard selection 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -6973,9 +6245,7 @@ exports[`Selecting too many shows a warning, discard selection 1`] = `
 `;
 
 exports[`Selecting too many shows a warning, discard selection 2`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -7026,7 +6296,7 @@ exports[`Selecting too many shows a warning, discard selection 2`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -7067,28 +6337,13 @@ exports[`Selecting too many shows a warning, discard selection 2`] = `
             class=\\"results transition visible\\"
           >
             <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+              class=\\"message empty\\"
             >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
+              <div
+                class=\\"header\\"
               >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
+                No results found.
+              </div>
             </div>
           </div>
         </div>
@@ -7224,7 +6479,9 @@ exports[`Selecting too many shows a warning, discard selection 2`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -7232,7 +6489,7 @@ exports[`Selecting too many shows a warning, discard selection 2`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -8897,7 +8154,7 @@ exports[`Selecting too many shows a warning, remove an invite 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -8939,7 +8196,7 @@ exports[`Selecting too many shows a warning, remove an invite 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -8955,90 +8212,6 @@ exports[`Selecting too many shows a warning, remove an invite 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -9179,7 +8352,9 @@ exports[`Selecting too many shows a warning, remove an invite 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -9187,7 +8362,7 @@ exports[`Selecting too many shows a warning, remove an invite 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -9250,7 +8425,7 @@ exports[`Selecting too many shows a warning, remove an invite 2`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -9291,28 +8466,13 @@ exports[`Selecting too many shows a warning, remove an invite 2`] = `
             class=\\"results transition visible\\"
           >
             <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
+              class=\\"message empty\\"
             >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
+              <div
+                class=\\"header\\"
               >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
+                No results found.
+              </div>
             </div>
           </div>
         </div>
@@ -9448,7 +8608,9 @@ exports[`Selecting too many shows a warning, remove an invite 2`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -9456,7 +8618,7 @@ exports[`Selecting too many shows a warning, remove an invite 2`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>
@@ -11232,7 +10394,7 @@ exports[`Typing in search shows filtered list of available users 1`] = `
             <p>
               There are 
               <strong>
-                4
+                0
               </strong>
                other 
               participants
@@ -11274,7 +10436,7 @@ exports[`Typing in search shows filtered list of available users 1`] = `
           >
             <div
               class=\\"result\\"
-              searchable=\\"  Super User  super  super  super@email.com  participant super_admin  \\"
+              searchable=\\"  undefined  super  super  super@email.com  super facilitator  \\"
             >
               <span
                 aria-label=\\"Super User (super)\\"
@@ -11290,90 +10452,6 @@ exports[`Typing in search shows filtered list of available users 1`] = `
                 style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
                 title=\\"Super\\"
               />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Facilitator User  facilitator  facilitator  facilitator@email.com  participant facilitator researcher owner  \\"
-            >
-              <span
-                aria-label=\\"Facilitator User (facilitator)\\"
-                class=\\"ui medium text\\"
-                title=\\"Facilitator User (facilitator)\\"
-              >
-                Facilitator User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon chalkboard teacher\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Facilitator\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Researcher User  researcher  researcher  researcher@email.com  participant researcher  \\"
-            >
-              <span
-                aria-label=\\"Researcher User (researcher)\\"
-                class=\\"ui medium text\\"
-                title=\\"Researcher User (researcher)\\"
-              >
-                Researcher User
-              </span>
-               
-              <i
-                aria-hidden=\\"true\\"
-                class=\\"small icon user graduate\\"
-                style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
-                title=\\"Researcher\\"
-              />
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  Participant User  participant  participant  participant@email.com  participant  \\"
-            >
-              <span
-                aria-label=\\"Participant User (participant)\\"
-                class=\\"ui medium text\\"
-                title=\\"Participant User (participant)\\"
-              >
-                Participant User
-              </span>
-               
-              <span
-                class=\\"l__hidden\\"
-              >
-                (Select to invite)
-              </span>
-            </div>
-            <div
-              class=\\"result\\"
-              searchable=\\"  anonymous  anonymous  participant  \\"
-            >
-              <span
-                aria-label=\\"anonymous\\"
-                class=\\"ui medium text\\"
-                title=\\"anonymous\\"
-              >
-                anonymous
-              </span>
-               
               <span
                 class=\\"l__hidden\\"
               >
@@ -11514,7 +10592,9 @@ exports[`Typing in search shows filtered list of available users 1`] = `
                 1
                  
                 participant
-                 selected, 
+                 
+                ,
+                 
                 2 roles unassigned.
               </span>
               <button
@@ -11522,7 +10602,7 @@ exports[`Typing in search shows filtered list of available users 1`] = `
                 disabled=\\"\\"
                 tabindex=\\"-1\\"
               >
-                Send invites
+                Set roles & send invites
               </button>
             </div>
           </div>

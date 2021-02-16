@@ -216,20 +216,18 @@ class ChatDraggableResizableDialog extends Component {
         } else {
           if (isMinimized) {
             styles = {
-              position: 'sticky',
+              position: 'sticky'
             };
           } else {
             styles = {
-              position: 'absolute',
+              position: 'absolute'
             };
           }
         }
       }
 
       for (let [key, value] of Object.entries(styles)) {
-        node.style.setProperty(
-          key, value
-        );
+        node.style.setProperty(key, value);
       }
     };
 

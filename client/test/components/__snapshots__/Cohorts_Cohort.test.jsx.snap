@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Archive cohort 1`] = `
-"<body>
+"<body
+  class=\\"\\"
+>
   <div
     id=\\"root\\"
   />
@@ -647,7 +649,9 @@ exports[`Archive cohort 1`] = `
 `;
 
 exports[`Archive cohort 2`] = `
-"<body>
+"<body
+  class=\\"\\"
+>
   <div
     id=\\"root\\"
   />
@@ -1297,7 +1301,6 @@ exports[`Archive cohort 3`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -2013,7 +2016,6 @@ exports[`Archive cohort 4`] = `
   class=\\"\\"
 >
   <div
-    aria-hidden=\\"false\\"
     id=\\"root\\"
   />
   <div>
@@ -2662,7 +2664,6 @@ exports[`Archive cohort 5`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -3378,7 +3379,6 @@ exports[`Archive cohort 6`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -4932,7 +4932,9 @@ exports[`Cohort is deleted, user is not super, direct to /cohorts 4`] = `
 `;
 
 exports[`Copy cohort 1`] = `
-"<body>
+"<body
+  class=\\"\\"
+>
   <div
     id=\\"root\\"
   />
@@ -5578,7 +5580,9 @@ exports[`Copy cohort 1`] = `
 `;
 
 exports[`Copy cohort 2`] = `
-"<body>
+"<body
+  class=\\"\\"
+>
   <div
     id=\\"root\\"
   />
@@ -6228,7 +6232,6 @@ exports[`Copy cohort 3`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -6944,7 +6947,6 @@ exports[`Copy cohort 4`] = `
   class=\\"\\"
 >
   <div
-    aria-hidden=\\"false\\"
     id=\\"root\\"
   />
   <div>
@@ -7593,7 +7595,6 @@ exports[`Copy cohort 5`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -8309,7 +8310,6 @@ exports[`Copy cohort 6`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -11319,7 +11319,9 @@ exports[`Copy cohort url 3`] = `
 `;
 
 exports[`Delete cohort 1`] = `
-"<body>
+"<body
+  class=\\"\\"
+>
   <div
     id=\\"root\\"
   />
@@ -11965,7 +11967,9 @@ exports[`Delete cohort 1`] = `
 `;
 
 exports[`Delete cohort 2`] = `
-"<body>
+"<body
+  class=\\"\\"
+>
   <div
     id=\\"root\\"
   />
@@ -12615,7 +12619,6 @@ exports[`Delete cohort 3`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -13331,7 +13334,6 @@ exports[`Delete cohort 4`] = `
   class=\\"\\"
 >
   <div
-    aria-hidden=\\"false\\"
     id=\\"root\\"
   />
   <div>
@@ -13980,7 +13982,6 @@ exports[`Delete cohort 5`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>
@@ -14696,7 +14697,6 @@ exports[`Delete cohort 6`] = `
   class=\\"dimmable dimmed\\"
 >
   <div
-    aria-hidden=\\"true\\"
     id=\\"root\\"
   />
   <div>

@@ -90,8 +90,8 @@ export class CohortCreateNewForm extends React.Component {
             <p>
               <Icon name="star" className="primary" />
               Use a label that makes it easy for you to locate it (e.g. CS 101:
-              Fall {new Date().getFullYear()}). You may also change the name of your cohort any time
-              after it has been created.
+              Fall {new Date().getFullYear()}). You may also change the name of
+              your cohort any time after it has been created.
             </p>
             <Form onSubmit={createCohort}>
               <Input fluid focus name="name" onChange={onChange} />

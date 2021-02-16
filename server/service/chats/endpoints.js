@@ -16,10 +16,13 @@ async function getChatsByCohortId(req, res) {
   const chats = [];
   for (const result of results) {
     const users = await db.getChatUsersByChatId(result.id);
-    const usersById = users.reduce((accum, user) => ({
-      ...accum,
-      [user.id]: user
-    }), {});
+    const usersById = users.reduce(
+      (accum, user) => ({
+        ...accum,
+        [user.id]: user
+      }),
+      {}
+    );
 
     chats.push({
       ...result,
@@ -90,11 +93,13 @@ async function newOrExistingChat(req, res) {
   //
   //
   const users = await db.getChatUsersByChatId(chat.id);
-  const usersById = users.reduce((accum, user) => ({
-    ...accum,
-    [user.id]: user
-  }), {});
-
+  const usersById = users.reduce(
+    (accum, user) => ({
+      ...accum,
+      [user.id]: user
+    }),
+    {}
+  );
 
   chat = {
     ...chat,
@@ -102,29 +107,24 @@ async function newOrExistingChat(req, res) {
     usersById
   };
 
-  console.log("..............................................");
+  console.log('..............................................');
   console.log();
   console.log();
   console.log();
-
 
   console.log(chat);
 
   console.log();
   console.log();
   console.log();
-  console.log("..............................................");
+  console.log('..............................................');
 
   res.json({ chat });
 }
 
 async function createChat(req, res) {
   const host_id = req.session.user.id;
-  const {
-    cohort_id = null,
-    is_open = false,
-    scenario_id
-  } = req.body;
+  const { cohort_id = null, is_open = false, scenario_id } = req.body;
 
   if (!req.session.user.id || !scenario_id) {
     const error = new Error('Creating a chat requires a host and a scenario.');
@@ -186,10 +186,13 @@ async function linkRunToChat(req, res) {
     // TODO: Consolidate the calls to getChatById && getChatUsersByChatId
     const result = await db.getChatById(id);
     const users = await db.getChatUsersByChatId(result.id);
-    const usersById = users.reduce((accum, user) => ({
-      ...accum,
-      [user.id]: user
-    }), {});
+    const usersById = users.reduce(
+      (accum, user) => ({
+        ...accum,
+        [user.id]: user
+      }),
+      {}
+    );
 
     const chat = {
       ...result,
@@ -308,7 +311,9 @@ exports.getChatMessagesCountByChatId = asyncMiddleware(
 // exports.getChatInvitesByReceiverId = asyncMiddleware(getChatInvitesByReceiverId);
 // exports.getChatInvitesBySenderId = asyncMiddleware(getChatInvitesBySenderId);
 exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
-exports.getLinkedChatUsersByChatId = asyncMiddleware(getLinkedChatUsersByChatId);
+exports.getLinkedChatUsersByChatId = asyncMiddleware(
+  getLinkedChatUsersByChatId
+);
 exports.newOrExistingChat = asyncMiddleware(newOrExistingChat);
 exports.createChat = asyncMiddleware(createChat);
 exports.createChatInvite = asyncMiddleware(createChatInvite);

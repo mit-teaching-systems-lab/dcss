@@ -14,14 +14,9 @@ import {
 
 export let getRun = (scenario_id, cohort_id, chat_id) => async dispatch => {
   try {
-
     const base = `/api/runs/new-or-existing/scenario/${scenario_id}`;
-    const cohort = cohort_id
-      ? `/cohort/${cohort_id}`
-      : '';
-    const chat = chat_id
-      ? `/chat/${chat_id}`
-      : '';
+    const cohort = cohort_id ? `/cohort/${cohort_id}` : '';
+    const chat = chat_id ? `/chat/${chat_id}` : '';
 
     const url = `${base}${cohort}${chat}`;
 

@@ -32,17 +32,14 @@ class Display extends Component {
 
   onBlur() {
     // const { value } = this.state;
-
     // if (this.defaultValue !== value) {
     //   this.props.saveRunEvent(TEXT_INPUT_CHANGE, {
     //     value
     //   });
     // }
-
     // this.props.saveRunEvent(TEXT_INPUT_EXIT, {
     //   value
     // });
-
     // this.defaultValue = value;
   }
 
@@ -58,7 +55,6 @@ class Display extends Component {
 
   onChange(event, { name, value }) {
     // const { created_at } = this;
-
     // this.props.onResponseChange(event, {
     //   created_at,
     //   ended_at: new Date().toISOString(),
@@ -66,24 +62,17 @@ class Display extends Component {
     //   type,
     //   value
     // });
-
     // this.setState({ value });
   }
 
   render() {
-    const {
-      chat,
-      isEmbeddedInSVG,
-      timer
-    } = this.props;
+    const { chat, isEmbeddedInSVG, timer } = this.props;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return null;
     }
 
-    return chat ? (
-      <Chat chat={chat} />
-    ) : null;
+    return chat ? <Chat chat={chat} /> : null;
   }
 }
 

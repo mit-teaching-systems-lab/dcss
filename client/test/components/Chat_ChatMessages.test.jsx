@@ -437,7 +437,11 @@ test('Receives message that was deleted', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -521,7 +525,11 @@ test('Receives new message at end of messages', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -626,7 +634,11 @@ test('Receives new message, user does not exist yet.', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -711,7 +723,11 @@ test('Receives new message after scrolling', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -800,7 +816,11 @@ test('Show hidden messages', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -895,7 +915,11 @@ test('Receives new message after scrolling without existing messages', async don
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -989,7 +1013,11 @@ test('Receives new message for different chat', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -1073,7 +1101,11 @@ test('Receives new message just before unmount', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -1123,7 +1155,11 @@ test('Calls onQuote', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]
@@ -1229,7 +1265,11 @@ test('Message can be deleted', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "new-message",
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
         [Function],
       ],
     ]

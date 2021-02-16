@@ -165,7 +165,9 @@ class Sortable extends Component {
           )}
         </Droppable>
       </DragDropContext>
-    ) : children;
+    ) : (
+      children
+    );
   }
 }
 

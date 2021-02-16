@@ -181,7 +181,7 @@ export class Cohort extends React.Component {
       notify({
         message: url,
         title: 'Copied',
-        icon: 'linkify',
+        icon: 'linkify'
       });
     };
     const source = tabs.find(tab => tab.menuItem.key === activeTabKey);

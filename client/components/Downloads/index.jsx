@@ -170,13 +170,17 @@ class Downloads extends Component {
       const [file, csv] = files[0];
       CSV.download(file, csv);
     } else {
-
       CSV.downloadZipAsync(files);
     }
   }
 
   render() {
-    const { onDownloadSearchChange, onPageChange, requestDownload, triggerDownload } = this;
+    const {
+      onDownloadSearchChange,
+      onPageChange,
+      requestDownload,
+      triggerDownload
+    } = this;
     const { activePage, filter, isReady } = this.state;
     const {
       cohorts,
@@ -241,7 +245,9 @@ class Downloads extends Component {
           ...cohort.scenarios.map((id, index) => {
             const scenario = scenariosById[id];
             const onDownloadByScenarioRunClick = async () => {
-              await triggerDownload(await requestDownload({ cohort, scenario }));
+              await triggerDownload(
+                await requestDownload({ cohort, scenario })
+              );
             };
 
             const stitle = (scenario && scenario.title) || '';
@@ -414,15 +420,11 @@ class Downloads extends Component {
           const downloads = [];
 
           for (let cohort of cohorts) {
-            downloads.push(
-              ...(await requestDownload({ cohort }))
-            );
+            downloads.push(...(await requestDownload({ cohort })));
           }
 
           for (let scenario of scenarios) {
-            downloads.push(
-              ...(await requestDownload({ scenario }))
-            );
+            downloads.push(...(await requestDownload({ scenario })));
           }
 
           await triggerDownload(downloads);
@@ -547,7 +549,7 @@ class Downloads extends Component {
           left: [
             // filter ? menuItemFilterDisplay : menuItemDownloadsCount,
             menuItemDownloadsAll,
-            menuItemDownloadsFilterClear,
+            menuItemDownloadsFilterClear
           ],
           right: [
             // menuItemCohortSelect,

@@ -5,7 +5,7 @@ const cohortdb = require('../cohorts/db');
 const notificationdb = require('../notifications/db');
 const scenariodb = require('../scenarios/db');
 
-exports.makeChatInviteNotification = async (invite) => {
+exports.makeChatInviteNotification = async invite => {
   const host = await authdb.getUserById(invite.sender_id);
   const chat = await db.getChatById(invite.chat_id);
   const scenario = await scenariodb.getScenarioById(chat.scenario_id);
@@ -14,7 +14,9 @@ exports.makeChatInviteNotification = async (invite) => {
     : null;
 
   const hostname = host.personalname || host.username;
-  const persona = scenario.personas.find(persona => persona.id === invite.persona_id);
+  const persona = scenario.personas.find(
+    persona => persona.id === invite.persona_id
+  );
   const inScenario = `the scenario <strong>${scenario.title}</strong>, as <strong>${persona.name}</strong>`;
   const place = cohort
     ? `${inScenario}, which is part of the cohort <strong>${cohort.name}</strong>`

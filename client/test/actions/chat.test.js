@@ -262,12 +262,12 @@ describe('GET_CHATS_ERROR', () => {
 });
 
 describe('LINK_RUN_TO_CHAT_SUCCESS', () => {
-  describe('linkChatToRun', () => {
+  describe('linkRunToChat', () => {
     let chats = [...state.chats];
 
     test('Receives chats for scenario', async () => {
       fetchImplementation(fetch, 200, { chats });
-      const returnValue = await store.dispatch(actions.linkChatToRun(1, 2));
+      const returnValue = await store.dispatch(actions.linkRunToChat(1, 2));
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -276,17 +276,17 @@ describe('LINK_RUN_TO_CHAT_SUCCESS', () => {
       `);
       expect(returnValue).toMatchInlineSnapshot(`undefined`);
 
-      await mockStore.dispatch(actions.linkChatToRun(1, 2));
+      await mockStore.dispatch(actions.linkRunToChat(1, 2));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });
 });
 
 describe('LINK_RUN_TO_CHAT_ERROR', () => {
-  describe('linkChatToRun', () => {
+  describe('linkRunToChat', () => {
     test('Receives error', async () => {
       fetchImplementation(fetch, 200, { error });
-      const returnValue = await store.dispatch(actions.linkChatToRun(1, 2));
+      const returnValue = await store.dispatch(actions.linkRunToChat(1, 2));
       expect(fetch.mock.calls.length).toBe(1);
       expect(fetch.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
@@ -295,7 +295,7 @@ describe('LINK_RUN_TO_CHAT_ERROR', () => {
       `);
       expect(returnValue).toEqual(null);
 
-      await mockStore.dispatch(actions.linkChatToRun(1, 2));
+      await mockStore.dispatch(actions.linkRunToChat(1, 2));
       expect(mockStore.getActions()).toMatchSnapshot();
     });
   });

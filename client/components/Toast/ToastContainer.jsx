@@ -18,13 +18,13 @@ class ToastContainer extends Component {
   static propTypes = {
     animation: PropTypes.string,
     className: PropTypes.string,
-    position: PropTypes.oneOf(Object.keys(closeAnimations)),
+    position: PropTypes.oneOf(Object.keys(closeAnimations))
   };
 
   static defaultProps = {
     animation: null,
     className: '',
-    position: 'top-right',
+    position: 'top-right'
   };
 
   state = {
@@ -79,7 +79,7 @@ class ToastContainer extends Component {
             size,
             time,
             title = '',
-            type = '',
+            type = ''
           } = toast;
 
           const key = Identity.key(toast);
@@ -101,12 +101,10 @@ class ToastContainer extends Component {
             size,
             time,
             title,
-            type,
+            type
           };
 
-          return (
-            <Toast {...toastProps} />
-          );
+          return <Toast {...toastProps} />;
         })}
       </div>
     ) : null;

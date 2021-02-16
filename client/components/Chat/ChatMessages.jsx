@@ -166,7 +166,7 @@ class ChatMessages extends Component {
         if (message.id === data.id) {
           return {
             ...message,
-            ...data,
+            ...data
           };
         }
         return message;
