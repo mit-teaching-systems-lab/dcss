@@ -156,7 +156,6 @@ class ChatMessages extends Component {
   }
 
   async onMessageUpdated(data) {
-    console.log("onMessageUpdated??????????????", data);
     if (!this.isComponentMounted) {
       return;
     }

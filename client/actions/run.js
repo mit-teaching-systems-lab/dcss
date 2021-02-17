@@ -17,11 +17,7 @@ export let getRun = (scenario_id, cohort_id, chat_id) => async dispatch => {
     const base = `/api/runs/new-or-existing/scenario/${scenario_id}`;
     const cohort = cohort_id ? `/cohort/${cohort_id}` : '';
     const chat = chat_id ? `/chat/${chat_id}` : '';
-
     const url = `${base}${cohort}${chat}`;
-
-    console.log("url?", url);
-
     const res = await (await fetch(url)).json();
 
     if (res.error) {
