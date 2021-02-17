@@ -65,3 +65,28 @@
 .ui.form .field > label {
   padding-left: 3px !important;
 }
+
+.ser__component-card {
+  padding: 0em 0.5em 0em 1em !important;
+}
+
+.ser__component-card > .ser__component-name {
+  display: block;
+}
+
+/* Hide Component Name */
+@media only screen and (max-width: 1264.98px) {
+  .ser__component-card i {
+    margin: 0 0 0 0 !important;
+  }
+  .ser__component-card > .ser__component-name {
+    display: none;
+  }
+}
+
+/* Hide Component Name */
+@media only screen and (max-width: 1100.98px) {
+  .ser__component-card {
+    display: none !important;
+  }
+}

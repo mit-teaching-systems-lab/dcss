@@ -10,8 +10,9 @@ const ScenarioPersonaSelectItem = ({
   color: backgroundColor
 }) => {
   const color = Color.foregroundColor(backgroundColor);
+
   return (
-    <Table celled striped>
+    <Table>
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell style={{ color, backgroundColor }}>
@@ -87,6 +88,7 @@ class ScenarioPersonaSelect extends Component {
       return accum.concat([option]);
     }, []);
 
+    const scrolling = true;
     const dropdownProps = {
       'aria-label': placeholder,
       defaultValue,
@@ -95,6 +97,7 @@ class ScenarioPersonaSelect extends Component {
       onChange,
       options,
       placeholder,
+      scrolling,
       search,
       selection,
       value

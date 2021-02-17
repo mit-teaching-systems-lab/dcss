@@ -34,3 +34,10 @@
   width: 11em;
   text-align: left !important;
 }
+
+.dropdown.sp__dropdown > .visible.menu.transition {
+  width: 200px !important;
+}
+.dropdown.sp__dropdown > .visible.menu.transition * {
+  white-space: unset !important;
+}

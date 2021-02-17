@@ -5,7 +5,7 @@ import { name } from './meta';
 const Card = () => (
   <React.Fragment>
     <Icon name="info" aria-label={name} />
-    {name}
+    <span className="ser__component-name">{name}</span>
   </React.Fragment>
 );
 
