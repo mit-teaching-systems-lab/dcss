@@ -250,6 +250,7 @@ class ContentSlide extends React.Component {
       onNextClick,
       run,
       saveRunEvent,
+      scenario,
       slide
     } = this.props;
     const { onInterceptResponseChange, onPointerUp, onSkip } = this;
@@ -257,6 +258,7 @@ class ContentSlide extends React.Component {
     if (!isReady) {
       return null;
     }
+
     const cardClass = this.isScenarioRun
       ? 'scenario__slide-card'
       : 'scenario__slide-card-preview';
@@ -425,13 +427,14 @@ ContentSlide.propTypes = {
   run: PropTypes.object,
   scenario: PropTypes.object,
   slide: PropTypes.object,
-  saveRunEvent: PropTypes.func
+  saveRunEvent: PropTypes.func,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const { chat, run, responsesById } = state;
+  const { chat, run, responsesById, scenario, user } = state;
   const isContextual = ownProps.isContextual || false;
-  return { chat, isContextual, run, responsesById };
+  return { chat, isContextual, run, responsesById, scenario, user };
 };
 
 const mapDispatchToProps = dispatch => ({

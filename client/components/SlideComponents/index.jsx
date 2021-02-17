@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Components from '@components/Slide/Components';
 import Storage from '@utils/Storage';
@@ -8,6 +9,7 @@ const SlideComponents = props => {
     asSVG = false,
     components,
     onResponseChange,
+    persona,
     run,
     saveRunEvent
   } = props;
@@ -61,9 +63,18 @@ const SlideComponents = props => {
       </svg>
     </div>
   ) : (
-    components.map((component, index) => {
+    components.reduce((accum, component, index) => {
       const { type, responseId = null } = component;
-      if (!Components[type]) return;
+      if (!Components[type]) {
+        return accum;
+      }
+      // If there is a persona assigned to this component,
+      // and it does not match the user's current role, do
+      // not render the component. Personas will not be checked
+      // in non-run renders.
+      if (persona && component.persona && component.persona.id !== persona.id) {
+        return accum;
+      }
 
       const { Display } = Components[type];
       const persisted = run
@@ -77,7 +88,8 @@ const SlideComponents = props => {
         });
       };
 
-      return (
+
+      accum.push(
         <Display
           key={`component-html-${index}`}
           persisted={persisted}
@@ -87,15 +99,42 @@ const SlideComponents = props => {
           {...component}
         />
       );
-    })
+
+      return accum;
+    }, [])
   );
 };
 
 SlideComponents.propTypes = {
   asSVG: PropTypes.bool,
+  chat: PropTypes.object,
   components: PropTypes.array,
   onResponseChange: PropTypes.func,
   run: PropTypes.object,
-  saveRunEvent: PropTypes.func
+  saveRunEvent: PropTypes.func,
+  scenario: PropTypes.object,
+  user: PropTypes.object,
 };
-export default SlideComponents;
+
+const mapStateToProps = (state, ownProps) => {
+  const chat = ownProps.chat || state.chat;
+  const run = location.href.includes('run/') && (ownProps.run || state.run);
+  const scenario = ownProps.scenario || state.scenario;
+  const user = ownProps.user || state.user;
+  const inActiveRun = run && run.id && !run.ended_at;
+  const inActiveChat = chat && chat.id && !chat.ended_at;
+  let persona = null;
+
+  if (inActiveRun && inActiveChat) {
+    const id = chat.usersById[user.id].persona_id;
+    persona = scenario.personas.find(persona => persona.id === id);
+  }
+
+  return { persona, scenario, user };
+};
+
+export default connect(
+  mapStateToProps,
+  null
+)(SlideComponents);
+
