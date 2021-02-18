@@ -309,8 +309,6 @@ export class CohortRoomSelector extends React.Component {
     let primaryButtonDisabled = false;
     let host = null;
 
-    console.log(this.state.lobby.chat);
-
     if (this.state.lobby.isOpen && this.state.lobby.chat) {
       console.log('in the lobby');
       const chat = this.props.chatsById[this.state.lobby.chat.id];

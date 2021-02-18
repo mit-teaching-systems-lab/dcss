@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { sentenceCase } from 'change-case';
 import { withRouter } from 'react-router-dom';
 import { getCohorts } from '@actions/cohort';
 import { getInvites, setInvite } from '@actions/invite';
@@ -63,7 +62,6 @@ class UserInvites extends Component {
     const { open = false } = this.props;
 
     this.state = {
-      isReady: false,
       open
     };
 
@@ -123,11 +121,6 @@ class UserInvites extends Component {
     }
 
     await this.refresh();
-
-    /* istanbul ignore else */
-    this.setState({
-      isReady: true
-    });
   }
 
   componentWillUnmount() {
@@ -297,15 +290,21 @@ class UserInvites extends Component {
 UserInvites.propTypes = {
   code: PropTypes.string,
   getInvites: PropTypes.func,
+  getScenariosByStatus: PropTypes.func,
+  getUsers: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
   invites: PropTypes.array,
+  invitesByCode: PropTypes.object,
   open: PropTypes.bool,
   redirect: PropTypes.string,
   setInvite: PropTypes.func,
+  socket: PropTypes.object,
+  state: PropTypes.object,
   status: PropTypes.number,
-  user: PropTypes.object
+  user: PropTypes.object,
+  usersById: PropTypes.object
 };
 
 UserInvites.defaultProps = {

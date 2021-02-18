@@ -2,16 +2,14 @@ import React, { Component, Fragment } from 'react';
 import md5 from 'md5';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { sentenceCase } from 'change-case';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { getInvites, setInvite } from '@actions/invite';
 import { getScenariosByStatus } from '@actions/scenario';
 import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
-import { Button, Comment, Dropdown, Icon, Text } from '@components/UI';
+import { Button, Comment, Text } from '@components/UI';
 import Username from '@components/User/Username';
 
 import Identity from '@utils/Identity';
-import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
 
 export const INVITE_STATUS_PENDING = 1;
@@ -73,8 +71,8 @@ export const makeAcceptedInviteRedirectPath = invite => {
   ].join('');
 };
 
-export const makeInviteExplanation = props => {
-  const { isRecipient, user, scenario, persona, cohort = null } = props;
+export const makeInviteExplanation = parts => {
+  const { isRecipient, user, scenario, persona, cohort = null } = parts;
 
   const theScenario = (
     <Fragment>
@@ -115,7 +113,6 @@ class UserInvitesList extends Component {
     this.state = {
       isReady: false
     };
-    this.updateInvite = this.updateInvite.bind(this);
     this.onInviteChange = this.onInviteChange.bind(this);
   }
 
@@ -123,12 +120,6 @@ class UserInvitesList extends Component {
     await this.props.getScenariosByStatus(SCENARIO_IS_PUBLIC);
     this.setState({
       isReady: true
-    });
-  }
-
-  async updateInvite(id, updates) {
-    await this.props.setInvite(value.id, {
-      status: INVITE_STATUS_MAP[value.status]
     });
   }
 
@@ -192,8 +183,6 @@ class UserInvitesList extends Component {
               persona,
               cohort
             });
-
-            const { code } = invite;
 
             const cancel = {
               ...invite,
@@ -311,7 +300,9 @@ class UserInvitesList extends Component {
 }
 
 UserInvitesList.propTypes = {
+  cohortsById: PropTypes.object,
   getInvites: PropTypes.func,
+  getScenariosByStatus: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
@@ -324,7 +315,7 @@ UserInvitesList.propTypes = {
   usersById: PropTypes.object
 };
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   const {
     cohortsById,
     invites,

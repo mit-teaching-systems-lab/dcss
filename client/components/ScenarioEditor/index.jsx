@@ -238,8 +238,7 @@ class ScenarioEditor extends Component {
     const {
       scenarioId,
       scenario,
-      scenario: { author, categories, consent, finish, title },
-      user
+      scenario: { author, categories, consent, finish, title }
     } = this.props;
 
     const { isReady } = this.state;

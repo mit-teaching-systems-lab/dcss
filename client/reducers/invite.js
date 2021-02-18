@@ -1,7 +1,5 @@
 import { GET_INVITES_SUCCESS, SET_INVITE_SUCCESS } from '@actions/types';
 
-import { inviteInitialState } from './initial-states';
-
 export const invites = (state = [], action) => {
   const { invite, invites, type } = action;
 

@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Chat from '@components/Chat';
-import { Form, Header, Segment } from '@components/UI';
-import {
-  TEXT_INPUT_CHANGE,
-  TEXT_INPUT_ENTER,
-  TEXT_INPUT_EXIT
-} from '@hoc/withRunEventCapturing';
 import { type } from './meta';
 
 class Display extends Component {
@@ -15,9 +9,6 @@ class Display extends Component {
     super(props);
 
     this.created_at = '';
-    this.onBlur = this.onBlur.bind(this);
-    this.onFocus = this.onFocus.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
   get isScenarioRun() {
@@ -72,6 +63,13 @@ class Display extends Component {
       return null;
     }
 
+    //
+    //
+    // TODO: need a way to trigger a timer
+    //
+    // - send an onSend?
+    //
+    //
     return chat ? <Chat chat={chat} /> : null;
   }
 }
@@ -96,9 +94,7 @@ const mapStateToProps = state => {
   return { chat, run };
 };
 
-const mapDispatchToProps = dispatch => ({
-  // getResponse: params => dispatch(getResponse(params))
-});
+const mapDispatchToProps = dispatch => ({});
 
 export default connect(
   mapStateToProps,

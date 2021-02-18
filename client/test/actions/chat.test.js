@@ -91,7 +91,7 @@ describe('GET_CHAT_SUCCESS', () => {
 
     test('Empty params', async () => {
       fetchImplementation(fetch, 200, { chat });
-      const returnValue = await store.dispatch(actions.createChat({}));
+      const returnValue = await store.dispatch(actions.createChat());
       expect(fetch.mock.calls.length).toBe(0);
       expect(returnValue).toEqual(null);
 

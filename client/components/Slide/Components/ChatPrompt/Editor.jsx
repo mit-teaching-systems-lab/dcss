@@ -80,7 +80,6 @@ class ChatPromptEditor extends React.Component {
   }
 
   onChange(event, value) {
-    console.log(typeof value, value);
     const update = {
       timer: Media.timeToSec(value)
     };
@@ -98,7 +97,6 @@ class ChatPromptEditor extends React.Component {
     const promptAriaLabel = 'Set a maximum time for discussion on this slide.';
 
     const timerString = timer ? Media.secToTime(timer) : '';
-    console.log(timerString);
 
     const [hh, mm, ss] = timerString.split(':').map(v => Number(v));
 

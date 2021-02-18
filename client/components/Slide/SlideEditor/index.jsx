@@ -478,7 +478,6 @@ export default class SlideEditor extends Component {
       mode
     });
 
-    console.log(slide.components);
     return (
       <Grid>
         <Grid.Column stretched>
@@ -525,7 +524,6 @@ export default class SlideEditor extends Component {
                           const {
                             disableDelete = false,
                             disableDuplicate = false,
-                            disableEmbed = false,
                             disableOrdering = false,
                             disablePersona = false
                           } = value;

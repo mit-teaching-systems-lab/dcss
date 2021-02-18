@@ -437,6 +437,7 @@ class Downloads extends Component {
       </Menu.Item.Tabbable>
     );
 
+    /*
     const menuItemDownloads = (
       <Menu.Item.Tabbable
         key="menu-item-downloads-count"
@@ -449,8 +450,6 @@ class Downloads extends Component {
         {menuItemDownloadsFilterDisplay} ({downloads.length})
       </Menu.Item.Tabbable>
     );
-
-    /*
     let filterDisplay = null;
     if (filter) {
       filterDisplay =

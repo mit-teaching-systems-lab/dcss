@@ -88,7 +88,6 @@ const SlideComponents = props => {
         });
       };
 
-
       accum.push(
         <Display
           key={`component-html-${index}`}
@@ -112,8 +111,9 @@ SlideComponents.propTypes = {
   onResponseChange: PropTypes.func,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
+  persona: PropTypes.object,
   scenario: PropTypes.object,
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -137,4 +137,3 @@ export default connect(
   mapStateToProps,
   null
 )(SlideComponents);
-

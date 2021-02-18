@@ -63,6 +63,7 @@ Toast.propTypes = {
   icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   onDismiss: PropTypes.func,
   onClose: PropTypes.func,
+  style: PropTypes.object,
   type: PropTypes.string,
   title: PropTypes.node
 };

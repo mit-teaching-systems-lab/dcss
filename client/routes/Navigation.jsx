@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom';
 import { endScenarioLock } from '@actions/scenario';
-import { Dropdown, Label, Menu } from '@components/UI';
+import { Dropdown, Menu } from '@components/UI';
 import Gate from '@components/Gate';
 import UserInvites from '@components/User/UserInvites';
 import UserMenu from '@components/User/UserMenu';

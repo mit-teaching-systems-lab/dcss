@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
@@ -60,7 +60,9 @@ const Routes = ({ isLoggedIn, user }) => {
   );
 
   const routeRenderInvite = props => {
+    // eslint-disable-next-line react/prop-types
     const { redirect } = props.location.state;
+    // eslint-disable-next-line react/prop-types
     const { status, code } = props.match.params;
     return (
       <UserInvites

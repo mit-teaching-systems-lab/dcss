@@ -250,7 +250,6 @@ class ContentSlide extends React.Component {
       onNextClick,
       run,
       saveRunEvent,
-      scenario,
       slide
     } = this.props;
     const { onInterceptResponseChange, onPointerUp, onSkip } = this;
@@ -428,7 +427,7 @@ ContentSlide.propTypes = {
   scenario: PropTypes.object,
   slide: PropTypes.object,
   saveRunEvent: PropTypes.func,
-  user: PropTypes.object,
+  user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {

@@ -79,7 +79,12 @@ class ResponseRecallEditor extends React.Component {
 
       // Don't include empty/incomplete prompts
       // Don't include prompts from THIS slide
-      if (!responseId || slideId === component.slide.id) {
+      // Don't include components with `disableEmbed: true`
+      if (
+        !responseId ||
+        slideId === component.slide.id ||
+        component.disableEmbed
+      ) {
         return accum;
       }
 

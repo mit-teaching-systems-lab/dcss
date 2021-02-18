@@ -1,27 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import escapeRegExp from 'lodash.escaperegexp';
 import pluralize from 'pluralize';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import { getChatById, getLinkedChatUsersByChatId } from '@actions/chat';
-import { getInvites } from '@actions/invite';
-import { getUsers } from '@actions/users';
-
-import LobbyConfirmationDialog from '@components/Lobby/LobbyConfirmationDialog';
 import { notify } from '@components/Notification';
-import {
-  Button,
-  Card,
-  Dropdown,
-  Grid,
-  Header,
-  Icon,
-  List,
-  Popup,
-  Search,
-  Text
-} from '@components/UI';
+import { Card, Grid, List } from '@components/UI';
 import Username from '@components/User/Username';
 
 import withSocket, {
@@ -29,8 +13,6 @@ import withSocket, {
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
-import Storage from '@utils/Storage';
-
 import './Lobby.css';
 
 class LobbyUserWaiting extends Component {
@@ -41,44 +23,42 @@ class LobbyUserWaiting extends Component {
       isReady: false
     };
     this.onRunChatLink = this.onRunChatLink.bind(this);
-    this.renderInviteeList = this.renderInviteeList.bind(this);
+    this.renderWaitingList = this.renderWaitingList.bind(this);
   }
 
   async componentDidMount() {
     const { user } = this.props;
 
-    await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
+    if (this.props.chat && this.props.chat.id) {
+      await this.props.getChatById(this.props.chat.id);
+      await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
 
-    this.setState({
-      isReady: true
-    });
+      this.setState({
+        isReady: true
+      });
 
-    this.props.socket.emit(CREATE_USER_CHANNEL, { user });
-    this.props.socket.on(RUN_CHAT_LINK, this.onRunChatLink);
+      this.props.socket.emit(CREATE_USER_CHANNEL, { user });
+      this.props.socket.on(RUN_CHAT_LINK, this.onRunChatLink);
+    }
   }
 
   componentWillUnmount() {
     this.props.socket.off(RUN_CHAT_LINK, this.onRunChatLink);
   }
 
-  async onRunChatLink(data) {
+  async onRunChatLink(/* data */) {
     await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
   }
 
-  renderInviteeList() {
+  renderWaitingList() {
     const { scenario, user, usersById } = this.props;
-
-    const usersWaitingWithAssignedRoles = this.props.chat.users.filter(
-      user => user.persona_id
-    );
-
-    return usersWaitingWithAssignedRoles.length ? (
+    return (
       <List divided selection data-testid="lobby-user-waiting-invitees">
-        {usersWaitingWithAssignedRoles.map((chatUser, index) => {
+        {this.props.chat.users.map((chatUser, index) => {
           const waitingUser = usersById[chatUser.id];
           const key = Identity.key({ chatUser, index, waiting: 1 });
-          const isSelectedNotHost = chatUser.id !== user.id;
-          const content = 'You are the host';
+          // const isSelectedNotHost = chatUser.id !== user.id;
+          // const content = 'You are the host';
           const persona = scenario.personas.find(
             persona => persona.id === chatUser.persona_id
           );
@@ -96,12 +76,6 @@ class LobbyUserWaiting extends Component {
           );
         })}
       </List>
-    ) : (
-      <List divided selection data-testid="lobby-user-waiting-empty">
-        <List.Item>
-          <List.Content>There are no participants waiting yet.</List.Content>
-        </List.Item>
-      </List>
     );
   }
 
@@ -112,28 +86,11 @@ class LobbyUserWaiting extends Component {
       return null;
     }
 
-    const { chat, scenario, user } = this.props;
-
-    const isHostCounted = !!this.props.chat.users.find(
-      ({ id }) => id === user.id
-    );
-
+    const { /* chat, scenario, */ user } = this.props;
     const usersWaitingWithAssignedRoles = this.props.chat.users.filter(
       user => user.persona_id
     );
-
     const totalWaiting = usersWaitingWithAssignedRoles.length;
-    const pluralParticipant = pluralize('participant', totalWaiting);
-    const haveHas = pluralize('has', totalWaiting);
-    // const tally = (
-    //   <Text>
-    //     {totalWaiting} {pluralParticipant} {haveHas} accepted your invite.
-    //   </Text>
-    // );
-    // <Card.Content extra>
-    //   {tally}
-    // </Card.Content>
-
     return (
       <Fragment>
         <Grid padded className="l__waiting not-modal">
@@ -150,7 +107,7 @@ class LobbyUserWaiting extends Component {
             <Grid.Row>
               <Grid.Column>
                 <Card fluid>
-                  <Card.Content>{this.renderInviteeList()}</Card.Content>
+                  <Card.Content>{this.renderWaitingList()}</Card.Content>
                 </Card>
               </Grid.Column>
             </Grid.Row>
@@ -164,8 +121,10 @@ class LobbyUserWaiting extends Component {
 LobbyUserWaiting.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
+  getChatById: PropTypes.func,
+  getLinkedChatUsersByChatId: PropTypes.func,
+  socket: PropTypes.object,
   scenario: PropTypes.object,
-  getUsers: PropTypes.func,
   user: PropTypes.object,
   users: PropTypes.array,
   usersById: PropTypes.object
@@ -198,9 +157,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   getChatById: id => dispatch(getChatById(id)),
-  getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
-  getInvites: () => dispatch(getInvites()),
-  getUsers: limit => dispatch(getUsers(limit))
+  getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id))
 });
 
 export default withSocket(

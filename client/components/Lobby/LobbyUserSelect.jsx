@@ -18,8 +18,6 @@ import {
   Card,
   Dropdown,
   Grid,
-  Header,
-  Icon,
   List,
   Message,
   Popup,
@@ -50,7 +48,8 @@ class LobbyUserSelect extends Component {
   constructor(props) {
     super(props);
 
-    this.sessionKey = `lobby/${this.props.chat.id}`;
+    const hasChat = !!(this.props.chat && this.props.chat.id);
+    this.sessionKey = hasChat ? `lobby/${this.props.chat.id}` : '';
 
     const user = this.props.user;
     const { instruction, selected } = Storage.get(this.sessionKey, {
@@ -94,21 +93,23 @@ class LobbyUserSelect extends Component {
   async componentDidMount() {
     const { user } = this.props;
 
-    await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
+    if (this.props.chat && this.props.chat.id) {
+      await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
 
-    this.setState({
-      isReady: true
-    });
+      this.setState({
+        isReady: true
+      });
 
-    this.props.socket.emit(CREATE_USER_CHANNEL, { user });
-    this.props.socket.on(RUN_CHAT_LINK, this.onRunChatLink);
+      this.props.socket.emit(CREATE_USER_CHANNEL, { user });
+      this.props.socket.on(RUN_CHAT_LINK, this.onRunChatLink);
+    }
   }
 
   componentWillUnmount() {
     this.props.socket.off(RUN_CHAT_LINK, this.onRunChatLink);
   }
 
-  async onRunChatLink(data) {
+  async onRunChatLink(/* data */) {
     await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
   }
 
@@ -193,7 +194,6 @@ class LobbyUserSelect extends Component {
             [selectedUser.id]: index,
             selected: index
           });
-          const others = selected.slice().splice(index, 1);
           const options = defaultOptions
             .slice()
             .filter(
@@ -260,13 +260,13 @@ class LobbyUserSelect extends Component {
           );
         })}
       </List>
-    ) : null;
+    ) : /* istanbul ignore next */
+    null;
   }
 
   onResultSelect(event, { result }) {
     const rolesCount = this.props.scenario.personas.length;
     const selectedCount = this.state.selected.length;
-    const remainingCount = rolesCount - selectedCount;
     const selection = {
       user: {
         id: result.id
@@ -278,7 +278,6 @@ class LobbyUserSelect extends Component {
 
     if (selectedCount >= rolesCount) {
       const pluralRole = pluralize('role', rolesCount);
-      const pluralSelected = pluralize('participant', selectedCount);
       const { scenario } = this.props;
       const header = 'Too many people!';
       const content = (
@@ -376,7 +375,6 @@ class LobbyUserSelect extends Component {
     const ListItem = ({ selection }) => {
       const user = usersById[selection.user.id];
       const key = Identity.key({ [user.key]: 2 });
-      const isSent = sent.includes(user.id);
       const persona = scenario.personas.find(
         persona => persona.id === selection.persona.id
       );
@@ -539,8 +537,13 @@ class LobbyUserSelect extends Component {
 
   render() {
     const { onResultSelect, onSearchChange, onSendInviteClick } = this;
-    const { scenario, users } = this.props;
-    const { confirmation, search, selected, sent } = this.state;
+    const { chat, scenario, users } = this.props;
+    const { confirmation, isReady, search, selected } = this.state;
+
+    if (!isReady || !scenario || !chat) {
+      return null;
+    }
+
     const selectedCount = selected.length;
     const availableCount = users.length - 1; // minus yourself.
     const rolesAssigned = selected.filter(selection => selection.persona.id)
@@ -636,7 +639,10 @@ class LobbyUserSelect extends Component {
           <Grid.Row>
             {this.state.instruction.isOpen ? (
               <Grid.Column>
-                <Message onDismiss={onInstructionDismiss}>
+                <Message
+                  data-testid="lobby-user-select-instructions"
+                  onDismiss={onInstructionDismiss}
+                >
                   <p>
                     This scenario has <strong>{rolesCount}</strong> roles. As
                     host, you will participate in the scenario by filling one of
@@ -706,7 +712,12 @@ class LobbyUserSelect extends Component {
 LobbyUserSelect.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
+  createChatInvite: PropTypes.func,
+  getLinkedChatUsersByChatId: PropTypes.func,
+  getInvites: PropTypes.func,
+  joinChat: PropTypes.func,
   personasInUseById: PropTypes.object,
+  socket: PropTypes.object,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
@@ -757,13 +768,15 @@ const mapStateToProps = (state, ownProps) => {
     {}
   );
 
-  const personasInUseById = chat.users.reduce(
-    (accum, user) => ({
-      ...accum,
-      [user.persona_id]: user
-    }),
-    {}
-  );
+  const personasInUseById = chat
+    ? chat.users.reduce(
+        (accum, user) => ({
+          ...accum,
+          [user.persona_id]: user
+        }),
+        {}
+      )
+    : {};
 
   return { chat, cohort, personasInUseById, scenario, user, users, usersById };
 };

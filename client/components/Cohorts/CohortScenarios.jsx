@@ -99,7 +99,7 @@ export class CohortScenarios extends React.Component {
     } = this;
     const { authority, cohort, onClick, runs } = this.props;
     const { isReady } = this.state;
-    const { isFacilitator, isParticipant } = authority;
+    const { isFacilitator } = authority;
 
     if (!isReady) {
       return <Loading />;
@@ -239,14 +239,14 @@ export class CohortScenarios extends React.Component {
                 ? { cursor: 'move' }
                 : { cursor: 'auto' };
 
-              const onCohortScenarioUrlCopyClick = () => {
-                copy(url);
-                notify({
-                  message: url,
-                  title: 'Copied',
-                  icon: 'linkify'
-                });
-              };
+              // const onCohortScenarioUrlCopyClick = () => {
+              //   copy(url);
+              //   notify({
+              //     message: url,
+              //     title: 'Copied',
+              //     icon: 'linkify'
+              //   });
+              // };
               const isMultiParticipantScenario = scenario.personas.length > 1;
 
               const cardHeaderIconClassName = isMultiParticipantScenario
@@ -278,10 +278,10 @@ export class CohortScenarios extends React.Component {
                 ? multiCardHeaderProps
                 : singleCardHeaderProps;
 
-              let cardHeaderProps = {
-                'aria-label': cardHeaderAriaLabel,
-                ...resolvedHeaderProps
-              };
+              // let cardHeaderProps = {
+              //   'aria-label': cardHeaderAriaLabel,
+              //   ...resolvedHeaderProps
+              // };
 
               let finishButtonDisplay = isMultiParticipantScenario
                 ? 'Re-join to finish scenario'

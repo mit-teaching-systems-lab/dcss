@@ -97,7 +97,7 @@ class Run extends Component {
         await this.props.linkRunToChat(this.props.chatId, run.id);
         if (this.props.chat) {
           const userInChat = this.props.chat.usersById[user.id];
-          const isUserInChat = !!isUserInChat;
+          const isUserInChat = !!userInChat;
           const isUserRoleAssigned =
             isUserInChat && userInChat.persona_id != null;
 
@@ -230,11 +230,13 @@ Run.propTypes = {
   chatId: PropTypes.node,
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
+  getInvites: PropTypes.func,
   getResponse: PropTypes.func,
   getRun: PropTypes.func,
   getScenario: PropTypes.func,
   getUser: PropTypes.func,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
+  invite: PropTypes.object,
   joinChat: PropTypes.func,
   linkRunToChat: PropTypes.func,
   linkRunToCohort: PropTypes.func,

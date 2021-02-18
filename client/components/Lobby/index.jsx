@@ -5,17 +5,13 @@ import { withRouter } from 'react-router-dom';
 import { getChat, getChatById } from '@actions/chat';
 import { getCohort } from '@actions/cohort';
 import { getScenario } from '@actions/scenario';
-import { getUser } from '@actions/user';
-import { getUsers, getUsersCount } from '@actions/users';
+import { getUsers } from '@actions/users';
 import Loading from '@components/Loading';
 import LobbyUserSelect from '@components/Lobby/LobbyUserSelect';
 import LobbyUserWaiting from '@components/Lobby/LobbyUserWaiting';
 import { notify } from '@components/Notification';
-import { Button, Card, Icon, Menu, Popup } from '@components/UI';
-
+import { Button, Card } from '@components/UI';
 import withSocket from '@hoc/withSocket';
-import Identity from '@utils/Identity';
-
 import './Lobby.css';
 
 const isParticipantOnly = user => {
@@ -56,7 +52,10 @@ class Lobby extends Component {
       await this.props.getScenario(this.props.scenario.id);
     }
 
-    if (!this.props.__UNSAFE_OVERRIDE_ID__) {
+    /* istanbul ignore if */
+    if (this.props.__UNSAFE_OVERRIDE_ID__) {
+      await this.props.getChatById(this.props.__UNSAFE_OVERRIDE_ID__);
+    } else {
       if (!this.props.chat || !this.props.chat.id) {
         await this.props.getChat(
           this.props.scenario.id,
@@ -65,8 +64,6 @@ class Lobby extends Component {
       } else {
         await this.props.getChatById(this.props.chat.id);
       }
-    } else {
-      await this.props.getChatById(this.props.__UNSAFE_OVERRIDE_ID__);
     }
 
     await this.fetchUsers();
@@ -118,6 +115,7 @@ class Lobby extends Component {
                 <Button positive>Continue to scenario</Button>
               </Button.Group>
             </Card.Content>
+            <div data-testid="lobby-main" />
           </Fragment>
         ) : (
           <Loading />
@@ -127,6 +125,7 @@ class Lobby extends Component {
       <Fragment>
         <LobbyUserSelect {...lobbyUserViewsProps} />
         <LobbyUserWaiting {...lobbyUserViewsProps} />
+        <div data-testid="lobby-main" />
       </Fragment>
     );
   }
@@ -144,9 +143,7 @@ Lobby.propTypes = {
   getChatById: PropTypes.func,
   getCohort: PropTypes.func,
   getScenario: PropTypes.func,
-  getUser: PropTypes.func,
   getUsers: PropTypes.func,
-  getUsersCount: PropTypes.func,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array
@@ -173,9 +170,7 @@ const mapDispatchToProps = dispatch => ({
   getChatById: (...args) => dispatch(getChatById(...args)),
   getCohort: id => dispatch(getCohort(id)),
   getScenario: id => dispatch(getScenario(id)),
-  getUser: id => dispatch(getUser(id)),
-  getUsers: limit => dispatch(getUsers(limit)),
-  getUsersCount: limit => dispatch(getUsersCount(limit))
+  getUsers: limit => dispatch(getUsers(limit))
 });
 
 export default withSocket(
