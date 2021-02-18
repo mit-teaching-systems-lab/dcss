@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 const personas = [
   {
     id: 1,
@@ -66,6 +68,7 @@ const personas = [
 ];
 
 import ScenarioPersonaSelect from '../../components/ScenarioEditor/ScenarioPersonaSelect.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -88,6 +91,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -108,8 +115,8 @@ test('ScenarioPersonaSelect', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioPersonaSelect;
-
   const props = {
     ...commonProps,
     personas,
@@ -121,6 +128,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();

@@ -24,12 +24,15 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import { List } from '@components/UI';
 import { GET_LOGS_SUCCESS } from '../../actions/types';
 import * as logsActions from '../../actions/logs';
 jest.mock('../../actions/logs');
 
 import Activity from '../../components/Admin/Activity.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -52,12 +55,17 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   logsActions.getLogs = jest.fn();
+
   logsActions.getLogs.mockImplementation(() => async dispatch => {
     const logs = JSON.parse(JSON.stringify(original.logs));
     dispatch({ type: GET_LOGS_SUCCESS, logs });
     return logs;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -79,8 +87,8 @@ test('Activity', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Activity;
-
   const props = {
     ...commonProps,
     logs: [],
@@ -92,6 +100,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -100,8 +109,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Activity;
-
   const props = {
     ...commonProps,
     user: null,
@@ -114,6 +123,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -132,8 +142,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Activity;
-
   const props = {
     ...commonProps,
     user: {
@@ -167,6 +177,7 @@ test('Render 3 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -175,8 +186,8 @@ test('Render 3 1', async done => {
 });
 
 test('Render 4 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Activity;
-
   const props = {
     ...commonProps,
     user: {
@@ -436,6 +447,7 @@ test('Render 4 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORT_SUCCESS,
   GET_LABELS_SUCCESS,
@@ -50,6 +52,7 @@ const labelC = { key: 3, text: 'c', value: 'c', count: 30 };
 let labelsByOccurrence;
 
 import ScenariosList from '../../components/ScenariosList/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -72,7 +75,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -336,6 +342,7 @@ beforeEach(() => {
     return cohort;
   });
   scenarioActions.getScenariosCount = jest.fn();
+
   scenarioActions.getScenariosCount.mockImplementation(() => async dispatch => {
     const count = 1;
     dispatch({ type: GET_SCENARIOS_COUNT_SUCCESS, count });
@@ -343,6 +350,7 @@ beforeEach(() => {
   });
 
   scenarioActions.getScenariosSlice = jest.fn();
+
   scenarioActions.getScenariosSlice.mockImplementation(() => async dispatch => {
     const scenarios = [
       {
@@ -450,6 +458,7 @@ beforeEach(() => {
     return scenarios;
   });
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -477,6 +486,7 @@ beforeEach(() => {
     return user;
   });
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
@@ -602,6 +612,7 @@ beforeEach(() => {
   labelsByOccurrence = [labelC, labelB, labelA];
 
   tagsActions.getLabelsByOccurrence = jest.fn();
+
   tagsActions.getLabelsByOccurrence.mockImplementation(() => async dispatch => {
     const labels = labelsByOccurrence;
     dispatch({ type: GET_LABELS_SUCCESS, labels });
@@ -609,10 +620,13 @@ beforeEach(() => {
   });
 
   tagsActions.setLabelsInUse = jest.fn();
+
   tagsActions.setLabelsInUse.mockImplementation(labels => async dispatch => {
     dispatch({ type: GET_LABELS_SUCCESS, labels });
     return labels;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -634,8 +648,8 @@ test('ScenariosList', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenariosList;
-
   const props = {
     ...commonProps,
     title: '',
@@ -649,6 +663,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -657,8 +672,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenariosList;
-
   const props = {
     ...commonProps,
     title: '',
@@ -774,6 +789,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import Notification from '@components/Notification';
 import BackButtonHistory from '@client/routes/BackButtonHistory';
 import Navigation from '@client/routes/Navigation';
@@ -42,6 +44,7 @@ jest.mock('@client/routes/Routes', () => {
 });
 
 import routes from '../../routes/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -64,6 +67,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -84,8 +91,8 @@ test('routes', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = routes;
-
   const props = {
     ...commonProps,
     isLoggedIn: true,
@@ -118,6 +125,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

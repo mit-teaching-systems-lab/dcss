@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORTS_SUCCESS,
   GET_RUN_HISTORY_SUCCESS,
@@ -42,6 +44,7 @@ jest.mock('../../actions/user');
 jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-01').getTime());
 
 import Downloads from '../../components/Downloads/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -64,7 +67,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   cohortActions.getCohorts = jest.fn();
+
   cohortActions.getCohorts.mockImplementation(() => async dispatch => {
     const cohorts = [
       {
@@ -330,6 +336,7 @@ beforeEach(() => {
     return cohorts;
   });
   historyActions.getHistoryForScenario = jest.fn();
+
   historyActions.getHistoryForScenario.mockImplementation(
     () => async dispatch => {
       const history = {
@@ -381,6 +388,7 @@ beforeEach(() => {
     }
   );
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -408,6 +416,7 @@ beforeEach(() => {
     return user;
   });
   scenarioActions.getScenariosIncrementally = jest.fn();
+
   scenarioActions.getScenariosIncrementally.mockImplementation(
     () => async dispatch => {
       const scenarios = [
@@ -613,6 +622,8 @@ beforeEach(() => {
     }
   );
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -633,8 +644,8 @@ test('Downloads', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Downloads;
-
   const props = {
     ...commonProps,
     onClick: jest.fn(() => {})
@@ -645,6 +656,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -670,8 +682,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Downloads;
-
   const props = {
     ...commonProps,
     onClick: jest.fn(() => {})
@@ -682,8 +694,10 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'facilitator',

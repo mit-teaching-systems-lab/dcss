@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORTS_SUCCESS,
   GET_RUNS_SUCCESS,
@@ -43,6 +45,7 @@ jest.mock('../../actions/user');
 jest.mock('../../actions/users');
 
 import History from '../../components/History/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -65,7 +68,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   cohortActions.getCohorts = jest.fn();
+
   cohortActions.getCohorts.mockImplementation(() => async dispatch => {
     const cohorts = [
       {
@@ -332,6 +338,7 @@ beforeEach(() => {
   });
 
   runActions.getRuns = jest.fn();
+
   runActions.getRuns.mockImplementation(() => async dispatch => {
     const runs = [
       {
@@ -392,6 +399,7 @@ beforeEach(() => {
   });
 
   scenarioActions.getScenariosIncrementally = jest.fn();
+
   scenarioActions.getScenariosIncrementally.mockImplementation(
     () => async dispatch => {
       const scenarios = [
@@ -502,6 +510,7 @@ beforeEach(() => {
   );
 
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -530,6 +539,7 @@ beforeEach(() => {
   });
 
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
@@ -652,6 +662,8 @@ beforeEach(() => {
     return users;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -672,8 +684,8 @@ test('History', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = History;
-
   const props = {
     ...commonProps,
     scenario: {
@@ -783,6 +795,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORTS_COUNT_SUCCESS,
   GET_COHORTS_SUCCESS,
@@ -41,6 +43,7 @@ jest.mock('../../actions/scenario');
 jest.mock('../../actions/user');
 
 import Cohorts from '../../components/Cohorts/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -63,13 +66,17 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   cohortActions.getCohortsCount = jest.fn();
+
   cohortActions.getCohortsCount.mockImplementation(() => async dispatch => {
     const count = 1;
     dispatch({ type: GET_COHORTS_COUNT_SUCCESS, count });
     return count;
   });
   cohortActions.getCohortsSlice = jest.fn();
+
   cohortActions.getCohortsSlice.mockImplementation(() => async dispatch => {
     const cohorts = [
       {
@@ -335,6 +342,7 @@ beforeEach(() => {
     return cohorts;
   });
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -598,6 +606,7 @@ beforeEach(() => {
     return cohort;
   });
   cohortActions.setCohortScenarios = jest.fn();
+
   cohortActions.setCohortScenarios.mockImplementation(
     cohort => async dispatch => {
       dispatch({ type: SET_COHORT_SUCCESS, cohort });
@@ -605,11 +614,13 @@ beforeEach(() => {
     }
   );
   cohortActions.createCohort = jest.fn();
+
   cohortActions.createCohort.mockImplementation(cohort => async dispatch => {
     dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
     return cohort;
   });
   scenarioActions.getScenariosByStatus = jest.fn();
+
   scenarioActions.getScenariosByStatus.mockImplementation(
     () => async dispatch => {
       const scenarios = [
@@ -815,6 +826,7 @@ beforeEach(() => {
     }
   );
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -842,6 +854,8 @@ beforeEach(() => {
     return user;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -862,8 +876,8 @@ test('Cohorts', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohorts;
-
   const props = {
     ...commonProps,
     authority: {}
@@ -874,6 +888,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -882,8 +897,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 1 2', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohorts;
-
   const props = {
     ...commonProps,
     authority: {}
@@ -921,6 +936,7 @@ test('Render 1 2', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

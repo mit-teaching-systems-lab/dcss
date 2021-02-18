@@ -35,9 +35,7 @@ exports[`Render 1 1 1`] = `
     <div
       class="content scenario__slide-card-content-preview"
       tabindex="0"
-    >
-      <p />
-    </div>
+    />
   </div>
 </DocumentFragment>
 `;

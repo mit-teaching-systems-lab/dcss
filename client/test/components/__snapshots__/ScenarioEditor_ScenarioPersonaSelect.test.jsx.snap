@@ -8,7 +8,7 @@ exports[`Render 1 1 1`] = `
   <div>
     <div
       aria-expanded=\\"false\\"
-      class=\\"ui dropdown sp__dropdown\\"
+      class=\\"ui scrolling dropdown sp__dropdown\\"
       role=\\"listbox\\"
       tabindex=\\"0\\"
     >
@@ -40,7 +40,7 @@ exports[`Render 1 1 1`] = `
           style=\\"pointer-events: all;\\"
         >
           <table
-            class=\\"ui celled striped table\\"
+            class=\\"ui table\\"
           >
             <thead
               class=\\"\\"
@@ -79,7 +79,7 @@ exports[`Render 1 1 1`] = `
           style=\\"pointer-events: all;\\"
         >
           <table
-            class=\\"ui celled striped table\\"
+            class=\\"ui table\\"
           >
             <thead
               class=\\"\\"
@@ -118,7 +118,7 @@ exports[`Render 1 1 1`] = `
           style=\\"pointer-events: all;\\"
         >
           <table
-            class=\\"ui celled striped table\\"
+            class=\\"ui table\\"
           >
             <thead
               class=\\"\\"

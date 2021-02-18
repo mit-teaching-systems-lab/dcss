@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORT_SUCCESS,
   SET_COHORT_SUCCESS,
@@ -72,6 +74,7 @@ jest.mock('@components/Notification', () => {
 });
 
 import CohortParticipants from '../../components/Cohorts/CohortParticipants.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -94,13 +97,18 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   Layout.isForMobile = jest.fn();
+
   Layout.isForMobile.mockImplementation(() => false);
 
   Layout.isNotForMobile = jest.fn();
+
   Layout.isNotForMobile.mockImplementation(() => true);
 
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -364,6 +372,7 @@ beforeEach(() => {
     return cohort;
   });
   usersActions.getUser = jest.fn();
+
   usersActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'facilitator',
@@ -393,6 +402,7 @@ beforeEach(() => {
     return user;
   });
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
@@ -519,6 +529,8 @@ beforeEach(() => {
     return null;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -539,8 +551,8 @@ test('CohortParticipants', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = CohortParticipants;
-
   const props = {
     ...commonProps,
     id: 1,
@@ -552,6 +564,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

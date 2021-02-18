@@ -24,11 +24,14 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 let scenario;
 let slideIndex;
 let value;
 
 import Editor from '../../components/Slide/Components/MultiButtonResponse/Editor.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -50,6 +53,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   scenario = {
     author: {
@@ -166,6 +171,8 @@ beforeEach(() => {
     type: 'MultiButtonResponse'
   };
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -186,8 +193,8 @@ test('Editor', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Editor;
-
   const props = {
     ...commonProps,
     scenario,
@@ -201,6 +208,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

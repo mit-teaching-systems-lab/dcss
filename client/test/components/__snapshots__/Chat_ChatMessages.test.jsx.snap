@@ -1138,6 +1138,1569 @@ exports[`Message can be deleted 7`] = `
 
 exports[`Message count is 0 1`] = `<DocumentFragment />`;
 
+exports[`Receives deleted message 1`] = `<DocumentFragment />`;
+
+exports[`Receives deleted message 3`] = `
+<DocumentFragment>
+  <div
+    class="cm__container-inner"
+    data-testid="scrolling-container-outer"
+  >
+    <div
+      class="ui large comments"
+    >
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Receives deleted message 4`] = `
+<DocumentFragment>
+  <div
+    class="cm__container-inner"
+    data-testid="scrolling-container-outer"
+  >
+    <div
+      class="ui large comments"
+    >
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Receives message that was deleted 1`] = `<DocumentFragment />`;
 
 exports[`Receives message that was deleted 3`] = `
@@ -12475,6 +14038,2463 @@ exports[`Receives new message, user does not exist yet. 4`] = `
             >
               <p>
                 A new message
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Receives new message, user missing (unloaded) 1`] = `<DocumentFragment />`;
+
+exports[`Receives new message, user missing (unloaded) 3`] = `
+<DocumentFragment>
+  <div
+    class="cm__container-inner"
+    data-testid="scrolling-container-outer"
+  >
+    <div
+      class="ui large comments"
+    >
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Receives new message, user missing (unloaded) 5`] = `<DocumentFragment />`;
+
+exports[`Receives updated message 1`] = `<DocumentFragment />`;
+
+exports[`Receives updated message 3`] = `
+<DocumentFragment>
+  <div
+    class="cm__container-inner"
+    data-testid="scrolling-container-outer"
+  >
+    <div
+      class="ui large comments"
+    >
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Receives updated message 4`] = `
+<DocumentFragment>
+  <div
+    class="cm__container-inner"
+    data-testid="scrolling-container-outer"
+  >
+    <div
+      class="ui large comments"
+    >
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://robohash.org/credible-lyrebird?bgset=bg1&size=50x50"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="credible-lyrebird"
+              class="ui medium text"
+              title="credible-lyrebird"
+            >
+              credible-lyrebird
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chalkboard teacher"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Facilitator"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-15T09:40:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                a new message
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="comment"
+        data-testid="comment"
+      >
+        <div
+          class="avatar"
+        >
+          <img
+            src="https://www.gravatar.com/avatar/386d1fcf0e6b4236c9d7064d7bb9af1a?d=robohash"
+          />
+        </div>
+        <div
+          class="cmm__content content"
+        >
+          <span
+            class="author"
+            tabindex="0"
+          >
+            <span
+              aria-label="Super User (super)"
+              class="ui medium text"
+              title="Super User (super)"
+            >
+              Super User
+            </span>
+             
+            <i
+              aria-hidden="true"
+              class="small icon chess queen"
+              style="margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;"
+              title="Super"
+            />
+          </span>
+          <div
+            class="metadata"
+          >
+            <span
+              aria-label="2020-12-09T16:39:10.359Z"
+              tabindex="0"
+            >
+              HH:mm A
+            </span>
+          </div>
+          <div
+            class="actions"
+          >
+            <div
+              class="ui mini buttons"
+            >
+              <button
+                aria-label="Quote this message"
+                class="ui mini icon button icon-primary"
+              >
+                <i
+                  aria-hidden="true"
+                  class="quote left icon"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="text"
+          >
+            <div
+              class="sun-editor-editable rt__container"
+            >
+              <p>
+                Hello
               </p>
             </div>
           </div>

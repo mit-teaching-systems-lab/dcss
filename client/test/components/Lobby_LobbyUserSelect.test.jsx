@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import Emitter from 'events';
 
 import withSocket, * as SOCKET_EVENT_TYPES from '@hoc/withSocket';
@@ -75,6 +77,8 @@ jest.mock('@utils/Storage', () => {
 
 import {
   CREATE_CHAT_INVITE_SUCCESS,
+  GET_CHAT_USERS_SUCCESS,
+  GET_CHAT_SUCCESS,
   GET_INVITES_SUCCESS,
   GET_USERS_SUCCESS
 } from '../../actions/types';
@@ -87,6 +91,10 @@ jest.mock('../../actions/users');
 
 let user;
 let superUser;
+let facilitatorUser;
+let researcherUser;
+let participantUser;
+let anonymousUser;
 let chat;
 let chats;
 let chatsById;
@@ -95,10 +103,12 @@ let invites;
 let invitesById;
 let scenario;
 let users;
+let usersById;
 
 const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 
 import LobbyUserSelect from '../../components/Lobby/LobbyUserSelect.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -121,6 +131,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   user = superUser = {
     username: 'super',
     personalname: 'Super User',
@@ -131,22 +143,115 @@ beforeEach(() => {
     is_super: true
   };
 
+  facilitatorUser = {
+    username: 'facilitator',
+    personalname: 'Facilitator User',
+    email: 'facilitator@email.com',
+    id: 555,
+    roles: ['participant', 'facilitator', 'researcher', 'owner'],
+    is_anonymous: false,
+    is_super: false,
+    is_owner: true,
+    progress: {
+      completed: [],
+      latestByScenarioId: {
+        1: {
+          is_complete: false,
+          scenario_id: 99,
+          event_id: 1905,
+          created_at: 1602454306144,
+          generic: 'arrived at a slide.',
+          name: 'slide-arrival',
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
+  };
+  researcherUser = {
+    username: 'researcher',
+    personalname: 'Researcher User',
+    email: 'researcher@email.com',
+    id: 444,
+    roles: ['participant', 'researcher'],
+    is_anonymous: false,
+    is_super: false,
+    progress: {
+      completed: [],
+      latestByScenarioId: {
+        1: {
+          is_complete: false,
+          scenario_id: 99,
+          event_id: 1904,
+          created_at: 1602454306144,
+          generic: 'arrived at a slide.',
+          name: 'slide-arrival',
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
+  };
+  participantUser = {
+    username: 'participant',
+    personalname: 'Participant User',
+    email: 'participant@email.com',
+    id: 333,
+    roles: ['participant'],
+    is_anonymous: false,
+    is_super: false,
+    progress: {
+      completed: [],
+      latestByScenarioId: {
+        1: {
+          is_complete: false,
+          scenario_id: 99,
+          event_id: 1903,
+          created_at: 1602454306144,
+          generic: 'arrived at a slide.',
+          name: 'slide-arrival',
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
+  };
+  anonymousUser = {
+    username: 'anonymous',
+    personalname: '',
+    email: '',
+    id: 222,
+    roles: ['participant'],
+    is_anonymous: true,
+    is_super: false,
+    progress: {
+      completed: [],
+      latestByScenarioId: {
+        1: {
+          is_complete: false,
+          scenario_id: 99,
+          event_id: 1902,
+          created_at: 1602454306144,
+          generic: 'arrived at a slide.',
+          name: 'slide-arrival',
+          url: 'http://localhost:3000/cohort/1/run/99/slide/1'
+        }
+      }
+    }
+  };
+
   users = [
     superUser,
-    {
-      id: 4,
-      username: 'credible-lyrebird',
-      personalname: null,
-      email: null,
-      is_anonymous: true,
-      single_use_password: false,
-      roles: ['participant', 'facilitator'],
-      is_super: false,
-      updated_at: '2020-12-10T17:50:19.074Z',
-      is_muted: false,
-      is_present: true
-    }
+    facilitatorUser,
+    researcherUser,
+    participantUser,
+    anonymousUser
   ];
+
+  usersById = users.reduce(
+    (accum, user) => ({
+      ...accum,
+      [user.id]: user
+    }),
+    {}
+  );
 
   chat = {
     id: 1,
@@ -157,7 +262,10 @@ beforeEach(() => {
     updated_at: null,
     deleted_at: null,
     ended_at: null,
-    users: users
+    users: [superUser],
+    usersById: {
+      [superUser.id]: superUser
+    }
   };
 
   chats = [chats];
@@ -575,9 +683,20 @@ beforeEach(() => {
   });
 
   chatActions.createChatInvite.mockImplementation(() => async dispatch => {
-    dispatch({ type: CREATE_CHAT_INVITE_SUCCESS, chat });
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
+
+  chatActions.getLinkedChatUsersByChatId.mockImplementation(
+    () => async dispatch => {
+      users = users.map(user => ({
+        ...user,
+        persona_id: null
+      }));
+      dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+      return users;
+    }
+  );
 
   chatActions.joinChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
@@ -595,7 +714,10 @@ beforeEach(() => {
   });
 
   Storage.get.mockImplementation((key, defaultValue) => defaultValue);
+
   Storage.merge.mockImplementation((key, defaultValue) => defaultValue);
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -617,8 +739,8 @@ test('LobbyUserSelect', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = LobbyUserSelect;
-
   const props = {
     ...commonProps,
     chat,
@@ -634,6 +756,8 @@ test('Render 1 1', async done => {
   state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
+  /** @GENERATED: END **/
+
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
@@ -641,8 +765,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = LobbyUserSelect;
-
   const props = {
     ...commonProps,
     chat
@@ -657,6 +781,8 @@ test('Render 2 1', async done => {
   state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
+  /** @GENERATED: END **/
+
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
@@ -664,441 +790,1628 @@ test('Render 2 1', async done => {
 });
 
 /* INJECTION STARTS HERE */
-
-test('Both Send Invites buttons are disabled', async done => {
+test('Fallbacks for state.chat, state.scenario, state.cohort (missing)', async done => {
   const Component = LobbyUserSelect;
 
   const props = {
     ...commonProps,
     chat,
     cohort,
-    scenario
+    scenario,
+    user
   };
 
   const state = {
-    ...commonState
+    ...commonState,
+    chat: null,
+    cohort: null,
+    scenario: null,
+    user,
+    users,
+    usersById
   };
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
-
-  const sendInvitesButtons = await screen.getAllByText('Send invites');
-
-  expect(sendInvitesButtons.length).toBe(2);
-
-  expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
-
   done();
 });
 
-test('Click in search shows default list of available users', async done => {
+test('Fallbacks for state.chat, state.scenario, state.cohort (unloaded)', async done => {
   const Component = LobbyUserSelect;
 
   const props = {
     ...commonProps,
     chat,
     cohort,
-    scenario
+    scenario,
+    user
   };
 
   const state = {
-    ...commonState
+    ...commonState,
+    chat: { id: null },
+    cohort: { id: null },
+    scenario: { id: null },
+    user,
+    users,
+    usersById
   };
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
-
-  const searchInput = await screen.getByRole('textbox');
-
-  userEvent.click(searchInput);
-
-  const participant = screen.getByLabelText(/Facilitator User/);
-  const resultsContainer = participant.parentNode.parentNode;
-
-  expect(resultsContainer.classList.contains('visible')).toBe(true);
-  expect(resultsContainer.children.length).toBe(4);
-  expect(serialize()).toMatchSnapshot();
-
   done();
 });
 
-test('Typing in search shows filtered list of available users', async done => {
+test('Fallbacks for state.chat, state.scenario, state.cohort (unavailable)', async done => {
   const Component = LobbyUserSelect;
 
   const props = {
     ...commonProps,
-    chat,
-    cohort,
-    scenario
+    chat: null,
+    cohort: null,
+    scenario: null,
+    user
   };
 
   const state = {
-    ...commonState
+    ...commonState,
+    chat: { id: null },
+    cohort: { id: null },
+    scenario: { id: null },
+    user,
+    users,
+    usersById
   };
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
-
-  const searchInput = await screen.getByRole('textbox');
-
-  userEvent.type(searchInput, 'facilitator');
-
-  const participant = screen.getByLabelText(/Facilitator User/);
-  const resultsContainer = participant.parentNode.parentNode;
-
-  expect(resultsContainer.classList.contains('visible')).toBe(true);
-  expect(resultsContainer.children.length).toBe(1);
-  expect(serialize()).toMatchSnapshot();
-
   done();
 });
 
-test('Selecting from search results adds a participant', async done => {
-  const Component = LobbyUserSelect;
+describe('With cohort', () => {
+  test('Both Send Invites buttons are disabled', async done => {
+    const Component = LobbyUserSelect;
 
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
 
-  const state = {
-    ...commonState
-  };
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  const selected = await screen.getByTestId('lobby-user-select-invitees');
-  const searchInput = await screen.getByRole('textbox');
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
 
-  userEvent.type(searchInput, 'facilitator');
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
 
-  expect(selected.children.length).toBe(1);
+    done();
+  });
 
-  const participant = screen.getByLabelText(/Facilitator User/);
-  const participantClick = participant.parentNode;
-  const resultsContainer = participant.parentNode.parentNode;
+  test('Click in search shows default list of available users', async done => {
+    const Component = LobbyUserSelect;
 
-  userEvent.click(participantClick);
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
 
-  expect(resultsContainer.classList.contains('visible')).toBe(false);
-  expect(serialize()).toMatchSnapshot();
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
 
-  expect(selected.children.length).toBe(2);
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  done();
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const searchInput = await screen.getByRole('textbox');
+
+    userEvent.click(searchInput);
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const resultsContainer = participant.parentNode.parentNode;
+
+    expect(resultsContainer.classList.contains('visible')).toBe(true);
+    expect(resultsContainer.children.length).toBe(4);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Typing in search shows filtered list of available users', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const searchInput = await screen.getByRole('textbox');
+
+    userEvent.type(searchInput, 'facilitator');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const resultsContainer = participant.parentNode.parentNode;
+
+    expect(resultsContainer.classList.contains('visible')).toBe(true);
+    expect(resultsContainer.children.length).toBe(1);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Selecting from search results adds a participant', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    userEvent.type(searchInput, 'facilitator');
+
+    expect(selected.children.length).toBe(1);
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+    const resultsContainer = participant.parentNode.parentNode;
+
+    userEvent.click(participantClick);
+
+    expect(resultsContainer.classList.contains('visible')).toBe(false);
+    expect(serialize()).toMatchSnapshot();
+
+    expect(selected.children.length).toBe(2);
+
+    done();
+  });
+
+  test('Selecting too many shows a warning, remove an invite', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Facilitator');
+    expect(serialize()).toMatchSnapshot();
+
+    const facilitator = screen.getByLabelText(/Facilitator User/);
+    userEvent.click(facilitator.parentNode);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Researcher');
+
+    const researcher = screen.getByLabelText(/Researcher User/);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(researcher.parentNode);
+    expect(serialize()).toMatchSnapshot();
+
+    const removeInviteButton = screen.getByText(/Remove a participant/);
+    userEvent.click(removeInviteButton);
+
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Selecting too many shows a warning, discard selection', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Facilitator');
+    expect(serialize()).toMatchSnapshot();
+
+    const facilitator = screen.getByLabelText(/Facilitator User/);
+    userEvent.click(facilitator.parentNode);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Researcher');
+
+    const researcher = screen.getByLabelText(/Researcher User/);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(researcher.parentNode);
+    expect(serialize()).toMatchSnapshot();
+
+    const removeInviteButton = screen.getByText(/Discard selection/);
+    userEvent.click(removeInviteButton);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Assigning roles enables Send Invites button', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(selected.children.length).toBe(2);
+
+    let roleSelectListboxes = await screen.getAllByRole('listbox');
+    expect(roleSelectListboxes.length).toBe(2);
+
+    expect(
+      roleSelectListboxes[0].lastElementChild.classList.contains('visible')
+    ).toBe(false);
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    const rolesSelectOptionsContainer0 =
+      roleSelectListboxes[0].lastElementChild;
+    expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer0.children.length).toBe(3);
+
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer0.children[1]);
+
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[1].firstElementChild);
+
+    const rolesSelectOptionsContainer1 =
+      roleSelectListboxes[1].lastElementChild;
+    expect(rolesSelectOptionsContainer1.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer1.children.length).toBe(2);
+
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer1.children[1]);
+
+    expect(serialize()).toMatchSnapshot();
+
+    expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
+
+    done();
+  });
+
+  test('Assign & unassign roles', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(selected.children.length).toBe(2);
+
+    let roleSelectListboxes = await screen.getAllByRole('listbox');
+    expect(roleSelectListboxes.length).toBe(2);
+
+    expect(
+      roleSelectListboxes[0].lastElementChild.classList.contains('visible')
+    ).toBe(false);
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    const rolesSelectOptionsContainer0 =
+      roleSelectListboxes[0].lastElementChild;
+    expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer0.children.length).toBe(3);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer0.children[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+    // Select the first option, which is empty.
+    userEvent.click(rolesSelectOptionsContainer0.children[0]);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Select & unselect participant', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+    expect(serialize()).toMatchSnapshot();
+
+    const buttons = await screen.getAllByLabelText(/Remove /);
+    expect(buttons.length).toBe(1);
+
+    userEvent.click(buttons[0]);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Select, Assign a role, then Set roles & send invites', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    let sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    let setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+    expect(serialize()).toMatchSnapshot();
+
+    let roleSelectListboxes = await screen.getAllByRole('listbox');
+    expect(roleSelectListboxes.length).toBe(2);
+
+    expect(
+      roleSelectListboxes[0].lastElementChild.classList.contains('visible')
+    ).toBe(false);
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    const rolesSelectOptionsContainer0 =
+      roleSelectListboxes[0].lastElementChild;
+    expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer0.children.length).toBe(3);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer0.children[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[1].firstElementChild);
+
+    const rolesSelectOptionsContainer1 =
+      roleSelectListboxes[1].lastElementChild;
+    expect(rolesSelectOptionsContainer1.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer1.children.length).toBe(2);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer1.children[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
+    expect(serialize()).toMatchSnapshot();
+
+    // Click the mini "Send invites" button
+    userEvent.click(sendInvitesButtons[0]);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() =>
+      expect(
+        screen.getByTestId('lobby-confirmation-dialog')
+      ).toBeInTheDocument()
+    );
+
+    // Then close the confirmation
+    const confirmationNoButton = await screen.findByRole('button', {
+      name: /no/i
+    });
+    userEvent.click(confirmationNoButton);
+    expect(serialize()).toMatchSnapshot();
+
+    sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
+    expect(serialize()).toMatchSnapshot();
+
+    // Click the "Set roles & send invites" button
+    userEvent.click(sendInvitesButtons[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    // Confirm "Yes"
+    const confirmationYesButton = await screen.findByRole('button', {
+      name: /yes/i
+    });
+    userEvent.click(confirmationYesButton);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() =>
+      expect(chatActions.createChatInvite).toHaveBeenCalled()
+    );
+
+    done();
+  });
+
+  test('Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatId', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const emitter = new Emitter();
+
+    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+    globalThis.mockSocket.on.mockImplementation(emitter.on);
+    globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+    expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "run-chat-link",
+          [Function],
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    globalThis.mockSocket.emit('run-chat-link', {});
+
+    await waitFor(() =>
+      expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
+    );
+
+    done();
+  });
+
+  test('Send CREATE_USER_CHANNEL', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const emitter = new Emitter();
+
+    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "create-user-channel",
+          Object {
+            "user": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+              ],
+              "username": "super",
+            },
+          },
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+    done();
+  });
+
+  test('Dismiss instructions', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const instructions = await screen.getByTestId(
+      'lobby-user-select-instructions'
+    );
+    const closeIcon = instructions.querySelector('.close.icon');
+    userEvent.click(closeIcon);
+    expect(serialize()).toMatchSnapshot();
+    done();
+  });
 });
 
-test('Selecting too many shows a warning, remove an invite', async done => {
-  const Component = LobbyUserSelect;
+describe('Without cohort', () => {
+  test('Both Send Invites buttons are disabled', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    done();
+  });
+
+  test('Click in search shows default list of available users', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
+    const searchInput = await screen.getByRole('textbox');
+
+    userEvent.click(searchInput);
 
-  const state = {
-    ...commonState
-  };
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const resultsContainer = participant.parentNode.parentNode;
+
+    expect(resultsContainer.classList.contains('visible')).toBe(true);
+    expect(resultsContainer.children.length).toBe(4);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Typing in search shows filtered list of available users', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+    const searchInput = await screen.getByRole('textbox');
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
-
-  const selected = await screen.getByTestId('lobby-user-select-invitees');
-  const searchInput = await screen.getByRole('textbox');
+    userEvent.type(searchInput, 'facilitator');
 
-  userEvent.click(searchInput);
-  userEvent.clear(searchInput);
-  userEvent.type(searchInput, 'Facilitator');
-  expect(serialize()).toMatchSnapshot();
-
-  const facilitator = screen.getByLabelText(/Facilitator User/);
-  userEvent.click(facilitator.parentNode);
-  expect(serialize()).toMatchSnapshot();
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const resultsContainer = participant.parentNode.parentNode;
 
-  userEvent.click(searchInput);
-  userEvent.clear(searchInput);
-  userEvent.type(searchInput, 'Researcher');
+    expect(resultsContainer.classList.contains('visible')).toBe(true);
+    expect(resultsContainer.children.length).toBe(1);
+    expect(serialize()).toMatchSnapshot();
 
-  const researcher = screen.getByLabelText(/Researcher User/);
-  expect(serialize()).toMatchSnapshot();
+    done();
+  });
 
-  userEvent.click(researcher.parentNode);
-  expect(serialize()).toMatchSnapshot();
+  test('Selecting from search results adds a participant', async done => {
+    const Component = LobbyUserSelect;
 
-  const removeInviteButton = screen.getByText(/Remove a participant/);
-  userEvent.click(removeInviteButton);
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
 
-  expect(serialize()).toMatchSnapshot();
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
 
-  done();
-});
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-test('Selecting too many shows a warning, discard selection', async done => {
-  const Component = LobbyUserSelect;
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
 
-  const state = {
-    ...commonState
-  };
+    userEvent.type(searchInput, 'facilitator');
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+    expect(selected.children.length).toBe(1);
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+    const resultsContainer = participant.parentNode.parentNode;
 
-  const selected = await screen.getByTestId('lobby-user-select-invitees');
-  const searchInput = await screen.getByRole('textbox');
+    userEvent.click(participantClick);
 
-  userEvent.click(searchInput);
-  userEvent.clear(searchInput);
-  userEvent.type(searchInput, 'Facilitator');
-  expect(serialize()).toMatchSnapshot();
+    expect(resultsContainer.classList.contains('visible')).toBe(false);
+    expect(serialize()).toMatchSnapshot();
 
-  const facilitator = screen.getByLabelText(/Facilitator User/);
-  userEvent.click(facilitator.parentNode);
-  expect(serialize()).toMatchSnapshot();
+    expect(selected.children.length).toBe(2);
 
-  userEvent.click(searchInput);
-  userEvent.clear(searchInput);
-  userEvent.type(searchInput, 'Researcher');
+    done();
+  });
 
-  const researcher = screen.getByLabelText(/Researcher User/);
-  expect(serialize()).toMatchSnapshot();
+  test('Selecting too many shows a warning, remove an invite', async done => {
+    const Component = LobbyUserSelect;
 
-  userEvent.click(researcher.parentNode);
-  expect(serialize()).toMatchSnapshot();
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
 
-  const removeInviteButton = screen.getByText(/Discard selection/);
-  userEvent.click(removeInviteButton);
-  expect(serialize()).toMatchSnapshot();
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
 
-  done();
-});
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-test('Assigning roles enables Send Invites button', async done => {
-  const Component = LobbyUserSelect;
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
 
-  const state = {
-    ...commonState
-  };
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Facilitator');
+    expect(serialize()).toMatchSnapshot();
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+    const facilitator = screen.getByLabelText(/Facilitator User/);
+    userEvent.click(facilitator.parentNode);
+    expect(serialize()).toMatchSnapshot();
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Researcher');
 
-  const sendInvitesButtons = await screen.getAllByText('Send invites');
-  expect(sendInvitesButtons.length).toBe(1);
-  expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    const researcher = screen.getByLabelText(/Researcher User/);
+    expect(serialize()).toMatchSnapshot();
 
-  const selected = await screen.getByTestId('lobby-user-select-invitees');
-  const searchInput = await screen.getByRole('textbox');
+    userEvent.click(researcher.parentNode);
+    expect(serialize()).toMatchSnapshot();
 
-  const participant = screen.getByLabelText(/Facilitator User/);
-  const participantClick = participant.parentNode;
+    const removeInviteButton = screen.getByText(/Remove a participant/);
+    userEvent.click(removeInviteButton);
 
-  userEvent.click(searchInput);
-  userEvent.click(participantClick);
+    expect(serialize()).toMatchSnapshot();
 
-  expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
-  expect(selected.children.length).toBe(2);
+    done();
+  });
 
-  let roleSelectListboxes = await screen.getAllByRole('listbox');
-  expect(roleSelectListboxes.length).toBe(2);
+  test('Selecting too many shows a warning, discard selection', async done => {
+    const Component = LobbyUserSelect;
 
-  expect(
-    roleSelectListboxes[0].lastElementChild.classList.contains('visible')
-  ).toBe(false);
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
 
-  userEvent.click(roleSelectListboxes[0].firstElementChild);
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
 
-  const rolesSelectOptionsContainer0 = roleSelectListboxes[0].lastElementChild;
-  expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(true);
-  expect(rolesSelectOptionsContainer0.children.length).toBe(3);
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  expect(serialize()).toMatchSnapshot();
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  userEvent.click(rolesSelectOptionsContainer0.children[1]);
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
 
-  expect(serialize()).toMatchSnapshot();
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Facilitator');
+    expect(serialize()).toMatchSnapshot();
 
-  userEvent.click(roleSelectListboxes[1].firstElementChild);
+    const facilitator = screen.getByLabelText(/Facilitator User/);
+    userEvent.click(facilitator.parentNode);
+    expect(serialize()).toMatchSnapshot();
 
-  const rolesSelectOptionsContainer1 = roleSelectListboxes[1].lastElementChild;
-  expect(rolesSelectOptionsContainer1.classList.contains('visible')).toBe(true);
-  expect(rolesSelectOptionsContainer1.children.length).toBe(2);
+    userEvent.click(searchInput);
+    userEvent.clear(searchInput);
+    userEvent.type(searchInput, 'Researcher');
 
-  expect(serialize()).toMatchSnapshot();
+    const researcher = screen.getByLabelText(/Researcher User/);
+    expect(serialize()).toMatchSnapshot();
 
-  userEvent.click(rolesSelectOptionsContainer1.children[1]);
+    userEvent.click(researcher.parentNode);
+    expect(serialize()).toMatchSnapshot();
 
-  expect(serialize()).toMatchSnapshot();
+    const removeInviteButton = screen.getByText(/Discard selection/);
+    userEvent.click(removeInviteButton);
+    expect(serialize()).toMatchSnapshot();
 
-  expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
+    done();
+  });
 
-  done();
-});
+  test('Assigning roles enables Send Invites button', async done => {
+    const Component = LobbyUserSelect;
 
-test('Assign & unassign roles', async done => {
-  const Component = LobbyUserSelect;
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
 
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
 
-  const state = {
-    ...commonState
-  };
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
 
-  const sendInvitesButtons = await screen.getAllByText('Send invites');
-  expect(sendInvitesButtons.length).toBe(1);
-  expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
 
-  const selected = await screen.getByTestId('lobby-user-select-invitees');
-  const searchInput = await screen.getByRole('textbox');
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
 
-  const participant = screen.getByLabelText(/Facilitator User/);
-  const participantClick = participant.parentNode;
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
 
-  userEvent.click(searchInput);
-  userEvent.click(participantClick);
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
 
-  expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
-  expect(selected.children.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(selected.children.length).toBe(2);
 
-  let roleSelectListboxes = await screen.getAllByRole('listbox');
-  expect(roleSelectListboxes.length).toBe(2);
+    let roleSelectListboxes = await screen.getAllByRole('listbox');
+    expect(roleSelectListboxes.length).toBe(2);
 
-  expect(
-    roleSelectListboxes[0].lastElementChild.classList.contains('visible')
-  ).toBe(false);
+    expect(
+      roleSelectListboxes[0].lastElementChild.classList.contains('visible')
+    ).toBe(false);
 
-  userEvent.click(roleSelectListboxes[0].firstElementChild);
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
 
-  const rolesSelectOptionsContainer0 = roleSelectListboxes[0].lastElementChild;
-  expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(true);
-  expect(rolesSelectOptionsContainer0.children.length).toBe(3);
-  expect(serialize()).toMatchSnapshot();
+    const rolesSelectOptionsContainer0 =
+      roleSelectListboxes[0].lastElementChild;
+    expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer0.children.length).toBe(3);
 
-  userEvent.click(rolesSelectOptionsContainer0.children[1]);
-  expect(serialize()).toMatchSnapshot();
+    expect(serialize()).toMatchSnapshot();
 
-  userEvent.click(roleSelectListboxes[0].firstElementChild);
-  // Select the first option, which is empty.
-  userEvent.click(rolesSelectOptionsContainer0.children[0]);
-  expect(serialize()).toMatchSnapshot();
+    userEvent.click(rolesSelectOptionsContainer0.children[1]);
 
-  done();
-});
+    expect(serialize()).toMatchSnapshot();
 
-test('Select & unselect participant', async done => {
-  const Component = LobbyUserSelect;
+    userEvent.click(roleSelectListboxes[1].firstElementChild);
 
-  const props = {
-    ...commonProps,
-    chat,
-    cohort,
-    scenario
-  };
+    const rolesSelectOptionsContainer1 =
+      roleSelectListboxes[1].lastElementChild;
+    expect(rolesSelectOptionsContainer1.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer1.children.length).toBe(2);
 
-  const state = {
-    ...commonState
-  };
+    expect(serialize()).toMatchSnapshot();
 
-  state.chat = chat;
-  state.scenario = scenario;
-  state.user = user;
-  const ConnectedRoutedComponent = reduxer(Component, props, state);
+    userEvent.click(rolesSelectOptionsContainer1.children[1]);
 
-  await render(<ConnectedRoutedComponent {...props} />);
-  expect(serialize()).toMatchSnapshot();
+    expect(serialize()).toMatchSnapshot();
 
-  const sendInvitesButtons = await screen.getAllByText('Send invites');
-  expect(sendInvitesButtons.length).toBe(1);
-  expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
-  expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
 
-  const selected = await screen.getByTestId('lobby-user-select-invitees');
-  const searchInput = await screen.getByRole('textbox');
+    done();
+  });
 
-  const participant = screen.getByLabelText(/Facilitator User/);
-  const participantClick = participant.parentNode;
+  test('Assign & unassign roles', async done => {
+    const Component = LobbyUserSelect;
 
-  userEvent.click(searchInput);
-  userEvent.click(participantClick);
-  expect(serialize()).toMatchSnapshot();
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
 
-  const buttons = await screen.getAllByLabelText(/Remove /);
-  expect(buttons.length).toBe(1);
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
 
-  userEvent.click(buttons[0]);
-  expect(serialize()).toMatchSnapshot();
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  done();
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(selected.children.length).toBe(2);
+
+    let roleSelectListboxes = await screen.getAllByRole('listbox');
+    expect(roleSelectListboxes.length).toBe(2);
+
+    expect(
+      roleSelectListboxes[0].lastElementChild.classList.contains('visible')
+    ).toBe(false);
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    const rolesSelectOptionsContainer0 =
+      roleSelectListboxes[0].lastElementChild;
+    expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer0.children.length).toBe(3);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer0.children[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+    // Select the first option, which is empty.
+    userEvent.click(rolesSelectOptionsContainer0.children[0]);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Select & unselect participant', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    const setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+    expect(serialize()).toMatchSnapshot();
+
+    const buttons = await screen.getAllByLabelText(/Remove /);
+    expect(buttons.length).toBe(1);
+
+    userEvent.click(buttons[0]);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Select, Assign a role, then Set roles & send invites', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    let sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+
+    let setRolesAndSendInvitesButton = await screen.getAllByText(
+      /Set roles & send invites/i
+    );
+    expect(setRolesAndSendInvitesButton.length).toBe(1);
+    expect(setRolesAndSendInvitesButton[0]).toHaveAttribute('disabled');
+
+    const selected = await screen.getByTestId('lobby-user-select-invitees');
+    const searchInput = await screen.getByRole('textbox');
+
+    const participant = screen.getByLabelText(/Facilitator User/);
+    const participantClick = participant.parentNode;
+
+    userEvent.click(searchInput);
+    userEvent.click(participantClick);
+    expect(serialize()).toMatchSnapshot();
+
+    let roleSelectListboxes = await screen.getAllByRole('listbox');
+    expect(roleSelectListboxes.length).toBe(2);
+
+    expect(
+      roleSelectListboxes[0].lastElementChild.classList.contains('visible')
+    ).toBe(false);
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    const rolesSelectOptionsContainer0 =
+      roleSelectListboxes[0].lastElementChild;
+    expect(rolesSelectOptionsContainer0.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer0.children.length).toBe(3);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer0.children[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[0].firstElementChild);
+
+    sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).toHaveAttribute('disabled');
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(roleSelectListboxes[1].firstElementChild);
+
+    const rolesSelectOptionsContainer1 =
+      roleSelectListboxes[1].lastElementChild;
+    expect(rolesSelectOptionsContainer1.classList.contains('visible')).toBe(
+      true
+    );
+    expect(rolesSelectOptionsContainer1.children.length).toBe(2);
+    expect(serialize()).toMatchSnapshot();
+
+    userEvent.click(rolesSelectOptionsContainer1.children[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
+    expect(serialize()).toMatchSnapshot();
+
+    // Click the mini "Send invites" button
+    userEvent.click(sendInvitesButtons[0]);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() =>
+      expect(
+        screen.getByTestId('lobby-confirmation-dialog')
+      ).toBeInTheDocument()
+    );
+
+    // Then close the confirmation
+    const confirmationNoButton = await screen.findByRole('button', {
+      name: /no/i
+    });
+    userEvent.click(confirmationNoButton);
+    expect(serialize()).toMatchSnapshot();
+
+    sendInvitesButtons = await screen.getAllByText(/send invites/i);
+    expect(sendInvitesButtons.length).toBe(2);
+    expect(sendInvitesButtons[0]).not.toHaveAttribute('disabled');
+    expect(sendInvitesButtons[1]).not.toHaveAttribute('disabled');
+    expect(serialize()).toMatchSnapshot();
+
+    // Click the "Set roles & send invites" button
+    userEvent.click(sendInvitesButtons[1]);
+    expect(serialize()).toMatchSnapshot();
+
+    // Confirm "Yes"
+    const confirmationYesButton = await screen.findByRole('button', {
+      name: /yes/i
+    });
+    userEvent.click(confirmationYesButton);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() =>
+      expect(chatActions.createChatInvite).toHaveBeenCalled()
+    );
+
+    done();
+  });
+
+  test('Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatId', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const emitter = new Emitter();
+
+    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+    globalThis.mockSocket.on.mockImplementation(emitter.on);
+    globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+    expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "run-chat-link",
+          [Function],
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    globalThis.mockSocket.emit('run-chat-link', {});
+
+    await waitFor(() =>
+      expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
+    );
+
+    done();
+  });
+
+  test('Send CREATE_USER_CHANNEL', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort,
+      scenario,
+      user
+    };
+
+    const emitter = new Emitter();
+
+    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
+    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "create-user-channel",
+          Object {
+            "user": Object {
+              "email": "super@email.com",
+              "id": 999,
+              "is_anonymous": false,
+              "is_super": true,
+              "personalname": "Super User",
+              "roles": Array [
+                "participant",
+                "super_admin",
+              ],
+              "username": "super",
+            },
+          },
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+    done();
+  });
+
+  test('Dismiss instructions', async done => {
+    const Component = LobbyUserSelect;
+
+    const props = {
+      ...commonProps,
+      chat,
+      cohort: null,
+      scenario,
+      user
+    };
+
+    const state = {
+      ...commonState,
+      chat,
+      cohort: null,
+      scenario,
+      user,
+      users
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+
+    const instructions = await screen.getByTestId(
+      'lobby-user-select-instructions'
+    );
+    const closeIcon = instructions.querySelector('.close.icon');
+    userEvent.click(closeIcon);
+    expect(serialize()).toMatchSnapshot();
+    done();
+  });
 });

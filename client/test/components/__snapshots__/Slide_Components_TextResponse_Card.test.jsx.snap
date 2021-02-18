@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Prompt: Text Input"
     class="keyboard icon"
   />
-  Prompt: Text Input
+  <span
+    class="ser__component-name"
+  >
+    Prompt: Text Input
+  </span>
 </DocumentFragment>
 `;

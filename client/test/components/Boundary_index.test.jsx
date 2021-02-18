@@ -24,7 +24,10 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import Boundary from '../../components/Boundary/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -47,6 +50,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -67,8 +74,8 @@ test('Boundary', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Boundary;
-
   const props = {
     ...commonProps,
     bottom: true
@@ -79,6 +86,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -87,8 +95,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Boundary;
-
   const props = {
     ...commonProps,
     top: true
@@ -99,6 +107,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -107,8 +116,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Boundary;
-
   const props = {
     ...commonProps
   };
@@ -118,6 +127,7 @@ test('Render 3 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -126,8 +136,8 @@ test('Render 3 1', async done => {
 });
 
 test('Render 4 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Boundary;
-
   const props = {
     ...commonProps,
     bottom: true,
@@ -139,6 +149,7 @@ test('Render 4 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

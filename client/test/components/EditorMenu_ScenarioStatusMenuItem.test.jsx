@@ -24,7 +24,10 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import ScenarioStatusMenuItem from '../../components/EditorMenu/ScenarioStatusMenuItem.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -47,6 +50,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   const statusOptions = [
     { id: 1, name: 'draft', description: 'Visible only to author' },
     { id: 2, name: 'public', description: 'Visible to everyone' },
@@ -54,6 +59,8 @@ beforeEach(() => {
   ];
 
   fetchImplementation(fetch, 200, statusOptions);
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -75,8 +82,8 @@ test('ScenarioStatusMenuItem', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioStatusMenuItem;
-
   const props = {
     ...commonProps,
     onChange: jest.fn(),
@@ -88,6 +95,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

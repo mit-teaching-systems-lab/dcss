@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Prompt: Choose Next Slide"
     class="fork clockwise rotated icon"
   />
-  Prompt: Choose Next Slide
+  <span
+    class="ser__component-name"
+  >
+    Prompt: Choose Next Slide
+  </span>
 </DocumentFragment>
 `;

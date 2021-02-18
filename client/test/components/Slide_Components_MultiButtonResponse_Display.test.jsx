@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_RESPONSE_SUCCESS,
   GET_TRANSCRIPTION_OUTCOME_SUCCESS,
@@ -41,6 +43,7 @@ let value;
 const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 
 import Display from '../../components/Slide/Components/MultiButtonResponse/Display.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -63,7 +66,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
-  responseActions.getTranscriptionOutcome = jest.fn();
+  /** @GENERATED: BEGIN **/
+
   responseActions.getTranscriptionOutcome.mockImplementation(
     () => async dispatch => {
       const outcome = {
@@ -74,7 +78,6 @@ beforeEach(() => {
       return outcome;
     }
   );
-  responseActions.getResponse = jest.fn();
   responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {
       id: 457,
@@ -96,7 +99,6 @@ beforeEach(() => {
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
     return response;
   });
-  runActions.saveRunEvent = jest.fn();
   runActions.saveRunEvent.mockImplementation(
     (run_id, name, data) => async dispatch => {
       const timestamp = Date.now();
@@ -226,6 +228,8 @@ beforeEach(() => {
     type: 'MultiButtonResponse'
   };
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -246,8 +250,8 @@ test('Display', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     ...value,
@@ -259,6 +263,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -267,8 +272,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     ...value,
@@ -280,6 +285,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {

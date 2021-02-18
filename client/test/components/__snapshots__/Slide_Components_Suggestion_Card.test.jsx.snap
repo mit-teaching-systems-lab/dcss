@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Participant Suggestion"
     class="info icon"
   />
-  Participant Suggestion
+  <span
+    class="ser__component-name"
+  >
+    Participant Suggestion
+  </span>
 </DocumentFragment>
 `;

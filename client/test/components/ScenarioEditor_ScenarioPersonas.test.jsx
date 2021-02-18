@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 import {
   GET_PERSONA_SUCCESS,
@@ -456,6 +458,7 @@ const users = [
 ];
 
 import ScenarioPersonas from '../../components/ScenarioEditor/ScenarioPersonas.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -478,19 +481,24 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   personaActions.createPersona = jest.fn();
+
   personaActions.createPersona.mockImplementation(persona => async dispatch => {
     dispatch({ type: GET_PERSONA_SUCCESS, persona });
     return persona;
   });
 
   personaActions.getPersonas = jest.fn();
+
   personaActions.getPersonas.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_PERSONAS_SUCCESS, personas });
     return personas;
   });
 
   personaActions.setPersona = jest.fn();
+
   personaActions.setPersona.mockImplementation(
     (id, persona) => async (dispatch, getState) => {
       const { scenario } = getState();
@@ -509,6 +517,7 @@ beforeEach(() => {
   );
 
   personaActions.linkPersonaToScenario = jest.fn();
+
   personaActions.linkPersonaToScenario.mockImplementation(
     (persona_id, scenario_id) => async (dispatch, getState) => {
       const { scenario } = getState();
@@ -519,6 +528,7 @@ beforeEach(() => {
   );
 
   personaActions.unlinkPersonaFromScenario = jest.fn();
+
   personaActions.unlinkPersonaFromScenario.mockImplementation(
     (persona_id, scenario_id) => async (dispatch, getState) => {
       const { scenario } = getState();
@@ -529,21 +539,26 @@ beforeEach(() => {
   );
 
   scenarioActions.setScenario = jest.fn();
+
   scenarioActions.setScenario.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
     return scenario;
   });
 
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   });
 
   usersActions.getUsersByPermission = jest.fn();
+
   usersActions.getUsersByPermission.mockImplementation(() => async dispatch => {
     return users;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -565,8 +580,8 @@ test('ScenarioPersonas', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioPersonas;
-
   const props = {
     ...commonProps,
     scenario
@@ -577,6 +592,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -585,8 +601,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioPersonas;
-
   const props = {
     ...commonProps,
     scenario
@@ -597,6 +613,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

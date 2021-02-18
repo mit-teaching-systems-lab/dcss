@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import Emitter from 'events';
 
 import Storage from '@utils/Storage';
@@ -221,6 +223,7 @@ jest.mock('react-rnd', () => {
       ...props
     };
 
+    // eslint-disable-next-line react/prop-types
     return <div>{props.children}</div>;
   }
 
@@ -270,6 +273,7 @@ let message5;
 let messages;
 
 import Chat from '../../components/Chat/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -291,6 +295,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   globalThis.rndProps = null;
 
@@ -406,12 +412,14 @@ beforeEach(() => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
+
   chatActions.getChatMessagesByChatId.mockImplementation(
     () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
+
   chatActions.getChatMessagesCountByChatId.mockImplementation(
     () => async dispatch => {
       const count = messages.length;
@@ -419,17 +427,20 @@ beforeEach(() => {
       return count;
     }
   );
+
   chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
     const users = chatUsers;
     dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
     return users;
   });
+
   chatActions.setChatUsersByChatId.mockImplementation(
     (id, users) => async dispatch => {
       dispatch({ type: SET_CHAT_USERS_SUCCESS, users });
       return users;
     }
   );
+
   runActions.saveRunEvent.mockImplementation(
     (run_id, name, data) => async dispatch => {
       const timestamp = Date.now();
@@ -443,11 +454,14 @@ beforeEach(() => {
       return event;
     }
   );
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = superUser;
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -469,8 +483,8 @@ test('Chat', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Chat;
-
   const props = {
     ...commonProps,
     chat
@@ -481,6 +495,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -1711,7 +1726,27 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                       },
                       "_eventsCount": 3,
                       "disconnect": [MockFunction],
-                      "emit": [MockFunction],
+                      "emit": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "user-join",
+                            Object {
+                              "chat": Object {
+                                "id": 1,
+                              },
+                              "user": Object {
+                                "id": null,
+                              },
+                            },
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
                       "off": [MockFunction],
                       "on": [MockFunction] {
                         "calls": Array [
@@ -1994,7 +2029,27 @@ test('Rnd: onDrag/onResize', async done => {
                       },
                       "_eventsCount": 3,
                       "disconnect": [MockFunction],
-                      "emit": [MockFunction],
+                      "emit": [MockFunction] {
+                        "calls": Array [
+                          Array [
+                            "user-join",
+                            Object {
+                              "chat": Object {
+                                "id": 1,
+                              },
+                              "user": Object {
+                                "id": null,
+                              },
+                            },
+                          ],
+                        ],
+                        "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
+                        ],
+                      },
                       "off": [MockFunction],
                       "on": [MockFunction] {
                         "calls": Array [
@@ -2212,7 +2267,7 @@ test('Receives new message, not minimized', async done => {
   `);
   expect(serialize()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -2315,7 +2370,7 @@ test('Receives new message, minimized, not mobile', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: `<p>A new message</p>`,
     created_at: '2020-12-15T09:40:10.359Z',
@@ -2422,7 +2477,7 @@ test('Receives new message, minimized, mobile', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: `<p>A new message</p>`,
     created_at: '2020-12-15T09:40:10.359Z',

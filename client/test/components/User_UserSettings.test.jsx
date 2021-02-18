@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_USER_SUCCESS,
   SET_USER_SUCCESS,
@@ -41,6 +43,7 @@ jest.mock('@components/Notification', () => {
 });
 
 import UserSettings from '../../components/User/UserSettings.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -63,7 +66,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -91,6 +97,7 @@ beforeEach(() => {
     return user;
   });
   userActions.setUser = jest.fn();
+
   userActions.setUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -118,6 +125,8 @@ beforeEach(() => {
     return user;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -138,8 +147,8 @@ test('UserSettings', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -176,6 +185,8 @@ test('Render 1 1', async done => {
       }
     }
   });
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -222,8 +233,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 222,
@@ -236,6 +247,7 @@ test('Render 2 1', async done => {
   };
 
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'anonymous',
@@ -264,6 +276,8 @@ test('Render 2 1', async done => {
     return user;
   });
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -310,8 +324,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -324,6 +338,8 @@ test('Render 3 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -366,8 +382,8 @@ test('Render 3 1', async done => {
 });
 
 test('Render 4 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -380,6 +396,8 @@ test('Render 4 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -417,8 +435,8 @@ test('Render 4 1', async done => {
 });
 
 test('Render 5 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -431,12 +449,15 @@ test('Render 5 1', async done => {
   };
 
   userActions.setUser = jest.fn();
+
   userActions.setUser.mockImplementation(() => async dispatch => {
     const error = { message: 'Username is already in use.' };
     dispatch({ type: SET_USER_ERROR, error });
     return null;
   });
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -483,8 +504,8 @@ test('Render 5 1', async done => {
 });
 
 test('Render 6 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -497,6 +518,8 @@ test('Render 6 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -538,8 +561,8 @@ test('Render 6 1', async done => {
 });
 
 test('Render 7 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -552,6 +575,8 @@ test('Render 7 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -592,8 +617,8 @@ test('Render 7 1', async done => {
 });
 
 test('Render 8 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -606,6 +631,8 @@ test('Render 8 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -643,8 +670,8 @@ test('Render 8 1', async done => {
 });
 
 test('Render 9 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     open: true,
@@ -656,6 +683,7 @@ test('Render 9 1', async done => {
   };
 
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'anonymous',
@@ -684,6 +712,8 @@ test('Render 9 1', async done => {
     return user;
   });
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -724,8 +754,8 @@ test('Render 9 1', async done => {
 });
 
 test('Render 10 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = UserSettings;
-
   const props = {
     ...commonProps,
     id: 999,
@@ -737,6 +767,8 @@ test('Render 10 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_PERSONA_SUCCESS,
   SET_SCENARIO,
@@ -454,6 +456,7 @@ const users = [
 ];
 
 import ScenarioPersonaEditor from '../../components/ScenarioEditor/ScenarioPersonaEditor.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -476,7 +479,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   personaActions.setPersona = jest.fn();
+
   personaActions.setPersona.mockImplementation(
     (id, persona) => async dispatch => {
       dispatch({ type: SET_PERSONA_SUCCESS, persona });
@@ -484,11 +490,13 @@ beforeEach(() => {
     }
   );
   personaActions.createPersona = jest.fn();
+
   personaActions.createPersona.mockImplementation(persona => async dispatch => {
     dispatch({ type: GET_PERSONA_SUCCESS, persona });
     return persona;
   });
   personaActions.linkPersonaToScenario = jest.fn();
+
   personaActions.linkPersonaToScenario.mockImplementation(
     (persona_id, scenario_id) => async (dispatch, getState) => {
       const { scenario } = getState();
@@ -498,6 +506,7 @@ beforeEach(() => {
     }
   );
   personaActions.unlinkPersonaFromScenario = jest.fn();
+
   personaActions.unlinkPersonaFromScenario.mockImplementation(
     (persona_id, scenario_id) => async (dispatch, getState) => {
       const { scenario } = getState();
@@ -506,6 +515,8 @@ beforeEach(() => {
       return scenario;
     }
   );
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -527,8 +538,8 @@ test('ScenarioPersonaEditor', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioPersonaEditor;
-
   const props = {
     ...commonProps,
     persona: {
@@ -552,6 +563,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();

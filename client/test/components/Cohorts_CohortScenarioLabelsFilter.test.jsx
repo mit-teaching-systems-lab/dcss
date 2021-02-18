@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 
 import { SET_FILTER_SCENARIOS_IN_USE } from '../../actions/types';
@@ -63,6 +65,7 @@ let scenariosById;
 let scenariosInUse;
 
 import CohortScenarioLabelsFilter from '../../components/Cohorts/CohortScenarioLabelsFilter.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -85,6 +88,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   scenarios = [s1, s2, s3];
   scenariosById = scenarios.reduce((accum, record) => {
     accum[record.id] = record;
@@ -94,6 +99,7 @@ beforeEach(() => {
   scenariosInUse = [2];
 
   filtersActions.setFilterScenariosInUse = jest.fn();
+
   filtersActions.setFilterScenariosInUse.mockImplementation(
     scenariosInUse => async dispatch => {
       dispatch({ type: SET_FILTER_SCENARIOS_IN_USE, scenariosInUse });
@@ -113,6 +119,8 @@ beforeEach(() => {
       search: ''
     };
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -134,8 +142,8 @@ test('CohortScenarioLabelsFilter', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = CohortScenarioLabelsFilter;
-
   const props = {
     ...commonProps
   };
@@ -145,6 +153,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

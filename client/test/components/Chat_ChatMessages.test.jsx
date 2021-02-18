@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import Emitter from 'events';
 
 import * as UI from '@components/UI';
@@ -124,6 +126,7 @@ let messages;
 const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 
 import ChatMessages from '../../components/Chat/ChatMessages.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -145,6 +148,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   user = superUser = {
     username: 'super',
@@ -255,12 +260,14 @@ beforeEach(() => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   });
+
   chatActions.getChatMessagesByChatId.mockImplementation(
     () => async dispatch => {
       dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
       return messages;
     }
   );
+
   chatActions.getChatMessagesCountByChatId.mockImplementation(
     () => async dispatch => {
       const count = messages.length;
@@ -268,11 +275,13 @@ beforeEach(() => {
       return count;
     }
   );
+
   chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
     const users = chatUsers;
     dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
     return users;
   });
+
   chatActions.setMessageById.mockImplementation(
     (id, params) => async dispatch => {
       const messageIndex = messages.findIndex(message => message.id === id);
@@ -284,6 +293,8 @@ beforeEach(() => {
       return message;
     }
   );
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -305,8 +316,8 @@ test('ChatMessages', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ChatMessages;
-
   const props = {
     ...commonProps,
     chat
@@ -317,6 +328,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -448,7 +460,7 @@ test('Receives message that was deleted', async done => {
   `);
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A deleted message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -536,7 +548,7 @@ test('Receives new message at end of messages', async done => {
   `);
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -645,7 +657,7 @@ test('Receives new message, user does not exist yet.', async done => {
   `);
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -741,7 +753,7 @@ test('Receives new message after scrolling', async done => {
   fireEvent.scroll(scrollingContainerOuter, { target: { scrollY: -200 } });
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -933,7 +945,7 @@ test('Receives new message after scrolling without existing messages', async don
   fireEvent.scroll(scrollingContainerOuter, { target: { scrollY: -200 } });
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -1025,7 +1037,7 @@ test('Receives new message for different chat', async done => {
   expect(screen.queryAllByTestId('comment').length).toBe(11);
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 2,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -1113,7 +1125,7 @@ test('Receives new message just before unmount', async done => {
   expect(screen.queryAllByTestId('comment').length).toBe(11);
   expect(asFragment()).toMatchSnapshot();
 
-  globalThis.mockSocket.emit('new-message', {
+  globalThis.mockSocket.emit('chat-message-created', {
     chat_id: 1,
     content: '<p>A new message</p>',
     created_at: '2020-12-15T09:40:10.359Z',
@@ -1351,6 +1363,279 @@ test('Does a corrective scroll when view is resized', async done => {
   globalThis.onResize();
 
   await waitFor(() => expect(scrollIntoView).toHaveBeenCalled());
+
+  done();
+});
+
+test('Receives new message, user missing (unloaded)', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment, unmount } = render(
+    <ConnectedRoutedComponent {...props} />
+  );
+  expect(asFragment()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(screen.queryAllByTestId('comment').length).toBe(11);
+  expect(asFragment()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-created', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: messages.length,
+    is_quotable: true,
+    updated_at: null,
+    user_id: 9001
+  });
+
+  unmount();
+
+  await waitFor(() =>
+    expect(chatActions.getChatUsersByChatId).toHaveBeenCalled()
+  );
+  expect(chatActions.getChatUsersByChatId.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        1,
+      ],
+    ]
+  `);
+  expect(asFragment()).toMatchSnapshot();
+
+  done();
+});
+
+test('Receives deleted message', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(asFragment()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-updated', {
+    chat_id: 1,
+    content: '<p>A new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: '2020-12-15T09:40:10.359Z',
+    id: 0,
+    is_quotable: true,
+    updated_at: '2020-12-15T09:40:10.359Z',
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    // 11 - 1 newly deleted message
+    expect(screen.queryAllByTestId('comment').length).toBe(10)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
+
+  done();
+});
+
+test('Receives updated message', async done => {
+  const Component = ChatMessages;
+
+  const props = {
+    ...(commonProps || {})
+  };
+
+  const state = {
+    ...commonState
+  };
+
+  const emitter = new Emitter();
+
+  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
+  globalThis.mockSocket.on.mockImplementation(emitter.on);
+  globalThis.mockSocket.off.mockImplementation(emitter.off);
+
+  const messages = Array.from({ length: 11 }, (v, i) => {
+    return {
+      chat_id: 1,
+      content: '<p>Hello</p>',
+      created_at: '2020-12-09T16:39:10.359Z',
+      deleted_at: null,
+      id: i,
+      is_quotable: true,
+      updated_at: null,
+      user_id: 999
+    };
+  });
+
+  chatActions.getChatMessagesByChatId.mockImplementation(
+    () => async dispatch => {
+      dispatch({ type: GET_CHAT_MESSAGES_SUCCESS, messages });
+      return messages;
+    }
+  );
+
+  chatActions.getChatMessagesCountByChatId.mockImplementation(
+    () => async dispatch => {
+      const count = messages.length;
+      dispatch({ type: GET_CHAT_MESSAGES_COUNT_SUCCESS, count });
+      return count;
+    }
+  );
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
+  expect(asFragment()).toMatchSnapshot();
+
+  await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
+  expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
+    Array [
+      Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "chat-message-updated",
+        [Function],
+      ],
+    ]
+  `);
+  expect(asFragment()).toMatchSnapshot();
+
+  globalThis.mockSocket.emit('chat-message-updated', {
+    chat_id: 1,
+    content: '<p>a new message</p>',
+    created_at: '2020-12-15T09:40:10.359Z',
+    deleted_at: null,
+    id: 0,
+    is_quotable: true,
+    updated_at: '2020-12-15T09:40:10.359Z',
+    user_id: 4
+  });
+
+  await waitFor(() =>
+    expect(screen.queryAllByTestId('comment').length).toBe(11)
+  );
+  expect(screen.queryByLabelText('See new message')).toBe(null);
+  expect(asFragment()).toMatchSnapshot();
+
+  expect(chatActions.getChatMessagesByChatId).toHaveBeenCalled();
+  expect(chatActions.getChatMessagesCountByChatId).toHaveBeenCalled();
 
   done();
 });

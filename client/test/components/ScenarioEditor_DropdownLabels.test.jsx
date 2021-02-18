@@ -24,10 +24,13 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tagsActions from '../../actions/tags';
 jest.mock('../../actions/tags');
 
 import DropdownLabels from '../../components/ScenarioEditor/DropdownLabels.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -50,11 +53,16 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   tagsActions.getLabels = jest.fn();
+
   tagsActions.getLabels.mockImplementation(() => async dispatch => {
     const labels = [{ id: 1, name: 'a' }, { id: 2, name: 'b' }];
     return labels;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -76,8 +84,8 @@ test('DropdownLabels', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = DropdownLabels;
-
   const props = {
     ...commonProps,
     scenario: {
@@ -184,6 +192,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

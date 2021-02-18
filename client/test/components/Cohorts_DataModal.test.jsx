@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 jest.mock('@components/Slide/Components/AudioPrompt/Transcript', () => {
   return props => {
     return <div>@components/Slide/Components/AudioPrompt/Transcript</div>;
@@ -31,6 +33,7 @@ jest.mock('@components/Slide/Components/AudioPrompt/Transcript', () => {
 });
 
 import DataModal from '../../components/Cohorts/DataModal.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -53,6 +56,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -73,8 +80,8 @@ test('DataModal', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = DataModal;
-
   const props = {
     ...commonProps,
     index: 0,
@@ -88,6 +95,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

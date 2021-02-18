@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   LOG_OUT,
   GET_USER_SUCCESS,
@@ -40,6 +42,7 @@ jest.mock('../../components/UI/ModalAccessible', () => {
 });
 
 import ResetRoutePromptModal from '../../components/Login/ResetRoutePromptModal.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -62,13 +65,17 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   sessionActions.logOut = jest.fn();
+
   sessionActions.logOut.mockImplementation(() => async dispatch => {
     dispatch({ type: LOG_OUT, session: null });
     dispatch({ type: SET_USER_SUCCESS, user: null });
   });
 
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -97,9 +104,12 @@ beforeEach(() => {
   });
 
   userActions.resetPassword = jest.fn();
+
   userActions.resetPassword.mockImplementation(() => async dispatch => {
     return true;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -121,8 +131,8 @@ test('ResetRoutePromptModal', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ResetRoutePromptModal;
-
   const props = {
     ...commonProps
   };
@@ -132,6 +142,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

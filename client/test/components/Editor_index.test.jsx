@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_SLIDES_SUCCESS,
   COPY_SCENARIO_SUCCESS,
@@ -60,6 +62,7 @@ jest.mock('@components/Editor/Slides', () => {
 });
 
 import Editor from '../../components/Editor/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -82,7 +85,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   scenarioActions.copyScenario = jest.fn();
+
   scenarioActions.copyScenario.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
@@ -188,6 +194,7 @@ beforeEach(() => {
     return scenario;
   });
   scenarioActions.deleteScenario = jest.fn();
+
   scenarioActions.deleteScenario.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
@@ -293,6 +300,7 @@ beforeEach(() => {
     return scenario;
   });
   scenarioActions.getSlides = jest.fn();
+
   scenarioActions.getSlides.mockImplementation(() => async dispatch => {
     const slides = [
       {
@@ -317,6 +325,7 @@ beforeEach(() => {
     return slides;
   });
   scenarioActions.getScenario = jest.fn();
+
   scenarioActions.getScenario.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
@@ -422,6 +431,7 @@ beforeEach(() => {
     return scenario;
   });
   scenarioActions.setScenario = jest.fn();
+
   scenarioActions.setScenario.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
@@ -527,6 +537,7 @@ beforeEach(() => {
     return scenario;
   });
   scenarioActions.endScenarioLock = jest.fn();
+
   scenarioActions.endScenarioLock.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
@@ -633,6 +644,7 @@ beforeEach(() => {
   });
 
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
@@ -756,6 +768,7 @@ beforeEach(() => {
   });
 
   usersActions.getUsersByPermission = jest.fn();
+
   usersActions.getUsersByPermission.mockImplementation(() => async dispatch => {
     return [
       {
@@ -877,6 +890,7 @@ beforeEach(() => {
   });
 
   tagsActions.getCategories = jest.fn();
+
   tagsActions.getCategories.mockImplementation(() => async dispatch => {
     const categories = [];
     dispatch({ type: GET_CATEGORIES_SUCCESS, categories });
@@ -888,6 +902,8 @@ beforeEach(() => {
   window.location = {
     href: ''
   };
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -909,8 +925,8 @@ test('Editor', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Editor;
-
   const props = {
     ...commonProps,
     scenario: {
@@ -1043,6 +1059,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

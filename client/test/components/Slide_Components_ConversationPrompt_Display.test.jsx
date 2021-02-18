@@ -24,9 +24,12 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import { mount, shallow } from 'enzyme';
 
 import Display from '../../components/Slide/Components/ConversationPrompt/Display.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -49,6 +52,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -69,8 +76,8 @@ test('Display', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'ConversationPrompt',
@@ -191,6 +198,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const component = shallow(<ConnectedRoutedComponent {...props} />);
   expect(snapshotter(component)).toMatchSnapshot();
@@ -199,8 +207,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'ConversationPrompt',
@@ -321,6 +329,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const component = shallow(<ConnectedRoutedComponent {...props} />);
   component.setProps({ html: 'something else' });
@@ -330,8 +339,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'ConversationPrompt',
@@ -452,6 +461,7 @@ test('Render 3 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {

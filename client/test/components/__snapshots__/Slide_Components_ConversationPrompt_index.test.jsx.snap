@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card 1`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i>Prompt: Conversation"`;
+exports[`Card 1`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i><span class=\\"ser__component-name\\">Prompt: Conversation</span>"`;
 
-exports[`Card 2`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i>Prompt: Conversation"`;
+exports[`Card 2`] = `"<i aria-label=\\"Prompt: Conversation\\" class=\\"conversation icon\\"></i><span class=\\"ser__component-name\\">Prompt: Conversation</span>"`;
 
 exports[`Card 3`] = `
 <DocumentFragment>
@@ -10,6 +10,10 @@ exports[`Card 3`] = `
     aria-label="Prompt: Conversation"
     class="conversation icon"
   />
-  Prompt: Conversation
+  <span
+    class="ser__component-name"
+  >
+    Prompt: Conversation
+  </span>
 </DocumentFragment>
 `;

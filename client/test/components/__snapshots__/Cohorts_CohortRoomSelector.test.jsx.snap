@@ -1,3 +1,326 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Has chats in state 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+        style=\\"height: 80vh;\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards c__chat-cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    aria-hidden=\\"true\\"
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+        style=\\"height: 80vh;\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards c__chat-cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 2 1 1`] = `
+"<body
+  class=\\"dimmable dimmed\\"
+>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+  <div
+    class=\\"ui top aligned page modals dimmer transition visible active\\"
+    style=\\"display: flex;\\"
+  >
+    <div
+      aria-modal=\\"true\\"
+      class=\\"ui modal transition visible active\\"
+      role=\\"dialog\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"close icon\\"
+      />
+      <div
+        class=\\"ui header\\"
+        tabindex=\\"0\\"
+      >
+        <i
+          aria-hidden=\\"true\\"
+          class=\\"group icon\\"
+        />
+        <div
+          class=\\"content\\"
+        >
+          Create or join a room for Some Other Scenario
+        </div>
+      </div>
+      <div
+        class=\\"content\\"
+        style=\\"height: 80vh;\\"
+      >
+        <button
+          class=\\"ui large button\\"
+          tabindex=\\"0\\"
+        >
+          <i
+            class=\\"icons\\"
+          >
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"group icon primary\\"
+            />
+            <i
+              aria-hidden=\\"true\\"
+              class=\\"plus top right corner icon\\"
+            />
+          </i>
+          Create a room for this scenario
+        </button>
+        <div
+          class=\\"ui padded grid\\"
+        >
+          <div
+            class=\\"row\\"
+          >
+            <div
+              class=\\"column c__grid-single-col-padding\\"
+            >
+              <p
+                tabindex=\\"0\\"
+              >
+                There 
+                are
+                 
+                <strong>
+                  0
+                </strong>
+                 open 
+                rooms
+                 
+                available.
+              </p>
+              <div
+                class=\\"ui three cards c__chat-cards\\"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=\\"actions c__action-btns__scenario-selector\\"
+      >
+        <div
+          class=\\"ui fluid buttons\\"
+        >
+          <button
+            class=\\"ui button\\"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+      <div
+        data-testid=\\"cohort-chat-selector\\"
+      />
+    </div>
+  </div>
+</body>"
+`;

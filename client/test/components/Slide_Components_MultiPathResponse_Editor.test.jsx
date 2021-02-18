@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 
 jest.mock(
@@ -41,6 +43,7 @@ let slideIndex;
 let value;
 
 import Editor from '../../components/Slide/Components/MultiPathResponse/Editor.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -62,6 +65,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   scenario = {
     author: {
@@ -235,6 +240,8 @@ beforeEach(() => {
     slides
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -255,8 +262,8 @@ test('Editor', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Editor;
-
   const props = {
     ...commonProps,
     scenario,
@@ -270,6 +277,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

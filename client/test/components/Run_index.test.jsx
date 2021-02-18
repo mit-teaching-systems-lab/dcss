@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_RUN_SUCCESS,
   SET_RUN_SUCCESS,
@@ -35,6 +37,7 @@ jest.mock('../../actions/run');
 jest.mock('../../actions/scenario');
 
 import Run from '../../components/Run/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -57,6 +60,8 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   const run = {
     id: 60,
     user_id: 999,
@@ -70,16 +75,19 @@ beforeEach(() => {
     referrer_params: null
   };
   runActions.getRun = jest.fn();
+
   runActions.getRun.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_RUN_SUCCESS, run });
     return run;
   });
   runActions.setRun = jest.fn();
+
   runActions.setRun.mockImplementation(() => async dispatch => {
     dispatch({ type: SET_RUN_SUCCESS, run });
     return run;
   });
   scenarioActions.getScenario = jest.fn();
+
   scenarioActions.getScenario.mockImplementation(() => async dispatch => {
     const scenario = {
       author: {
@@ -185,6 +193,8 @@ beforeEach(() => {
     return scenario;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -205,8 +215,8 @@ test('Run', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Run;
-
   const props = {
     ...commonProps,
     scenario: {
@@ -316,6 +326,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

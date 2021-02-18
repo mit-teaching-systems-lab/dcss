@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import Emitter from 'events';
 
 import Storage from '@utils/Storage';
@@ -50,6 +52,7 @@ jest.mock('react-rnd', () => {
       ...props
     };
 
+    // eslint-disable-next-line react/prop-types
     return <div>{props.children}</div>;
   }
 
@@ -60,6 +63,7 @@ jest.mock('react-rnd', () => {
 });
 
 import ChatDraggableResizableDialog from '../../components/Chat/ChatDraggableResizableDialog.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -82,9 +86,13 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   globalThis.rndProps = null;
   jest.spyOn(window, 'addEventListener');
   jest.spyOn(window, 'removeEventListener');
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -106,8 +114,8 @@ test('ChatDraggableResizableDialog', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ChatDraggableResizableDialog;
-
   const props = {
     ...commonProps,
     dimensions: {},
@@ -123,6 +131,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();

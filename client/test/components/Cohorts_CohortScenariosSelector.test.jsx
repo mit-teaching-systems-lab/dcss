@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORT_SUCCESS,
   GET_COHORT_SCENARIOS_SUCCESS,
@@ -312,6 +314,7 @@ let scenarios;
 let scenariosById;
 
 import CohortScenariosSelector from '../../components/Cohorts/CohortScenariosSelector.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -334,7 +337,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   Layout.isForMobile = jest.fn();
+
   Layout.isForMobile.mockImplementation(() => false);
 
   scenario.status = 2;
@@ -347,6 +353,7 @@ beforeEach(() => {
   }, {});
 
   scenarioActions.getScenariosByStatus = jest.fn();
+
   scenarioActions.getScenariosByStatus.mockImplementation(
     cohort => async dispatch => {
       dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
@@ -354,12 +361,14 @@ beforeEach(() => {
     }
   );
   cohortActions.getCohortScenarios = jest.fn();
+
   cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
     const scenarios = [scenario, scenario2];
     dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
   });
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -623,6 +632,7 @@ beforeEach(() => {
     return cohort;
   });
   cohortActions.setCohortScenarios = jest.fn();
+
   cohortActions.setCohortScenarios.mockImplementation(
     cohort => async dispatch => {
       dispatch({ type: SET_COHORT_SUCCESS, cohort });
@@ -630,6 +640,7 @@ beforeEach(() => {
     }
   );
   usersActions.getUser = jest.fn();
+
   usersActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'facilitator',
@@ -659,6 +670,7 @@ beforeEach(() => {
     return user;
   });
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
@@ -781,6 +793,8 @@ beforeEach(() => {
     return users;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -801,8 +815,8 @@ test('CohortScenariosSelector', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = CohortScenariosSelector;
-
   const props = {
     ...commonProps,
     id: 1,
@@ -814,6 +828,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

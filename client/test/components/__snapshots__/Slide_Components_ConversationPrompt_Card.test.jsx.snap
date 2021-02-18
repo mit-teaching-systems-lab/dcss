@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Prompt: Conversation"
     class="conversation icon"
   />
-  Prompt: Conversation
+  <span
+    class="ser__component-name"
+  >
+    Prompt: Conversation
+  </span>
 </DocumentFragment>
 `;

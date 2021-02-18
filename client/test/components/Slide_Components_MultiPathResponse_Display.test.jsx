@@ -24,9 +24,12 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import { mount, shallow } from 'enzyme';
 
 import Display from '../../components/Slide/Components/MultiPathResponse/Display.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -49,6 +52,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -69,8 +76,8 @@ test('Display', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
@@ -187,6 +194,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
   expect(snapshotter(component)).toMatchSnapshot();
@@ -195,8 +203,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
@@ -313,6 +321,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
   component.setProps({ paths: [{ display: 'Path 1', value: '1' }] });
@@ -322,8 +331,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
@@ -440,6 +449,7 @@ test('Render 3 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const component = mount(<ConnectedRoutedComponent {...props} />);
   component.setProps({ header: 'header' });
@@ -449,8 +459,8 @@ test('Render 3 1', async done => {
 });
 
 test('Render 4 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Display;
-
   const props = {
     ...commonProps,
     type: 'MultiPathResponse',
@@ -567,6 +577,7 @@ test('Render 4 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {

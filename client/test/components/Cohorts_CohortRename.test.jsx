@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import { SET_COHORT_SUCCESS } from '../../actions/types';
 import * as cohortActions from '../../actions/cohort';
 jest.mock('../../actions/cohort');
@@ -31,6 +33,7 @@ jest.mock('../../actions/cohort');
 let cohort;
 
 import CohortRename from '../../components/Cohorts/CohortRename.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -52,6 +55,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   cohort = {
     id: 1,
@@ -325,6 +330,8 @@ beforeEach(() => {
     return updatedCohort;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -345,8 +352,8 @@ test('CohortRename', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = CohortRename;
-
   const props = {
     ...commonProps,
     cohort,
@@ -358,6 +365,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

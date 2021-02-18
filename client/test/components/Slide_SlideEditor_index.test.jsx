@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 
 const expectUuidString = expect.stringMatching(
@@ -38,6 +40,7 @@ let usersById;
 let users;
 
 import SlideEditor from '../../components/Slide/SlideEditor/index.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -59,6 +62,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   personas = [
     {
@@ -105,160 +110,158 @@ beforeEach(() => {
     accum[persona.id] = persona;
     return accum;
   }, {});
-  scenario = JSON.parse(
-    JSON.stringify({
-      author: {
-        id: 999,
-        username: 'super',
-        personalname: 'Super User',
-        email: 'super@email.com',
-        is_anonymous: false,
-        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
-        is_super: true
-      },
-      categories: [],
-      consent: { id: 69, prose: '' },
-      description: "This is the description of 'Some Other Scenario'",
-      finish: {
+  scenario = {
+    author: {
+      id: 999,
+      username: 'super',
+      personalname: 'Super User',
+      email: 'super@email.com',
+      is_anonymous: false,
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_super: true
+    },
+    categories: [],
+    consent: { id: 69, prose: '' },
+    description: "This is the description of 'Some Other Scenario'",
+    finish: {
+      id: 11,
+      title: '',
+      components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
+      is_finish: true
+    },
+    lock: {
+      scenario_id: 99,
+      user_id: 999,
+      created_at: '2020-02-31T23:54:19.934Z',
+      ended_at: null
+    },
+    slides: [
+      {
         id: 11,
         title: '',
         components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
         is_finish: true
       },
-      lock: {
-        scenario_id: 99,
-        user_id: 999,
-        created_at: '2020-02-31T23:54:19.934Z',
-        ended_at: null
+      {
+        id: 22,
+        title: 'Slide 1',
+        components: [
+          {
+            id: '22-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
+            html: '<h1>Welcome to Slide 1</h1>',
+            type: 'Text'
+          },
+          {
+            id: '22-aede9380-c7a3-4ef7-add7-838fd5ec854f',
+            type: 'TextResponse',
+            header: 'TextResponse-1',
+            prompt: '',
+            timeout: 0,
+            recallId: '',
+            required: true,
+            responseId: '22-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+            placeholder: 'Your response'
+          },
+          {
+            id: '22-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+            html: '<p>?</p>',
+            type: 'Text'
+          }
+        ],
+        is_finish: false
       },
-      slides: [
-        {
-          id: 11,
-          title: '',
-          components: [{ html: '<h2>Bye!</h2>', type: 'Text' }],
-          is_finish: true
-        },
-        {
-          id: 22,
-          title: 'Slide 1',
-          components: [
-            {
-              id: '22-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
-              html: '<h1>Welcome to Slide 1</h1>',
-              type: 'Text'
-            },
-            {
-              id: '22-aede9380-c7a3-4ef7-add7-838fd5ec854f',
-              type: 'TextResponse',
-              header: 'TextResponse-1',
-              prompt: '',
-              timeout: 0,
-              recallId: '',
-              required: true,
-              responseId: '22-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
-            },
-            {
-              id: '22-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-              html: '<p>?</p>',
-              type: 'Text'
-            }
-          ],
-          is_finish: false
-        },
-        {
-          id: 33,
-          title: 'Slide 2',
-          components: [
-            {
-              id: '33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
-              html: '<h1>Welcome to Slide 2</h1>',
-              type: 'Text'
-            },
-            {
-              id: '33-aede9380-c7a3-4ef7-add7-838fd5ec854f',
-              type: 'TextResponse',
-              header: 'TextResponse-1',
-              prompt: '',
-              timeout: 0,
-              recallId: '',
-              required: true,
-              responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
-            },
-            {
-              id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-              html: '<p>?</p>',
-              type: 'Text'
-            }
-          ],
-          is_finish: false
-        },
-        {
-          id: 44,
-          title: 'Slide 3',
-          components: [
-            {
-              id: '44-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
-              html: '<h1>Welcome to Slide 3</h1>',
-              type: 'Text'
-            },
-            {
-              id: '44-aede9380-c7a3-4ef7-add7-838fd5ec854f',
-              type: 'TextResponse',
-              header: 'TextResponse-1',
-              prompt: '',
-              timeout: 0,
-              recallId: '',
-              required: true,
-              responseId: '44-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
-              placeholder: 'Your response'
-            },
-            {
-              id: '44-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
-              html: '<p>?</p>',
-              type: 'Text'
-            }
-          ],
-          is_finish: false
-        }
-      ],
-      status: 1,
-      title: 'Some Other Scenario',
-      users: [
-        {
-          id: 999,
-          email: 'super@email.com',
-          username: 'super',
-          personalname: 'Super User',
-          roles: ['super'],
-          is_super: true,
-          is_author: true,
-          is_reviewer: false
-        }
-      ],
-      id: 99,
-      created_at: '2020-07-31T17:50:28.089Z',
-      updated_at: null,
-      deleted_at: null,
-      labels: ['a'],
-      personas: [
-        {
-          id: 1,
-          name: 'Participant',
-          description:
-            'The default user participating in a single person scenario.',
-          color: '#FFFFFF',
-          created_at: '2020-12-01T15:49:04.962Z',
-          updated_at: null,
-          deleted_at: null,
-          author_id: 3,
-          is_read_only: true,
-          is_shared: true
-        }
-      ]
-    })
-  );
+      {
+        id: 33,
+        title: 'Slide 2',
+        components: [
+          {
+            id: '33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
+            html: '<h1>Welcome to Slide 2</h1>',
+            type: 'Text'
+          },
+          {
+            id: '33-aede9380-c7a3-4ef7-add7-838fd5ec854f',
+            type: 'TextResponse',
+            header: 'TextResponse-1',
+            prompt: '',
+            timeout: 0,
+            recallId: '',
+            required: true,
+            responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+            placeholder: 'Your response'
+          },
+          {
+            id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+            html: '<p>?</p>',
+            type: 'Text'
+          }
+        ],
+        is_finish: false
+      },
+      {
+        id: 44,
+        title: 'Slide 3',
+        components: [
+          {
+            id: '44-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f',
+            html: '<h1>Welcome to Slide 3</h1>',
+            type: 'Text'
+          },
+          {
+            id: '44-aede9380-c7a3-4ef7-add7-838fd5ec854f',
+            type: 'TextResponse',
+            header: 'TextResponse-1',
+            prompt: '',
+            timeout: 0,
+            recallId: '',
+            required: true,
+            responseId: '44-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+            placeholder: 'Your response'
+          },
+          {
+            id: '44-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+            html: '<p>?</p>',
+            type: 'Text'
+          }
+        ],
+        is_finish: false
+      }
+    ],
+    status: 1,
+    title: 'Some Other Scenario',
+    users: [
+      {
+        id: 999,
+        email: 'super@email.com',
+        username: 'super',
+        personalname: 'Super User',
+        roles: ['super'],
+        is_super: true,
+        is_author: true,
+        is_reviewer: false
+      }
+    ],
+    id: 99,
+    created_at: '2020-07-31T17:50:28.089Z',
+    updated_at: null,
+    deleted_at: null,
+    labels: ['a'],
+    personas: [
+      {
+        id: 1,
+        name: 'Participant',
+        description:
+          'The default user participating in a single person scenario.',
+        color: '#FFFFFF',
+        created_at: '2020-12-01T15:49:04.962Z',
+        updated_at: null,
+        deleted_at: null,
+        author_id: 3,
+        is_read_only: true,
+        is_shared: true
+      }
+    ]
+  };
   slides = JSON.parse(
     JSON.stringify(scenario.slides.filter(slide => !slide.is_finish))
   );
@@ -520,6 +523,8 @@ beforeEach(() => {
     }
   ];
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -540,8 +545,8 @@ test('SlideEditor', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = SlideEditor;
-
   const props = {
     ...commonProps,
     scenario,
@@ -560,6 +565,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -795,39 +801,50 @@ test('Multiple personas, toggle chat', async done => {
 
   expect(asFragment()).toMatchSnapshot();
 
-  expect(props.onChange).toHaveBeenCalledTimes(1);
-  expect(props.onChange.mock.calls[0]).toMatchInlineSnapshot(`
-    Array [
-      1,
-      Object {
-        "components": Array [
-          Object {
-            "html": "<h1>Welcome to Slide 2</h1>",
-            "id": "33-b7e7a3f1-eb4e-4afa-8569-838fd5ec854f",
-            "type": "Text",
-          },
-          Object {
-            "header": "TextResponse-1",
-            "id": "33-aede9380-c7a3-4ef7-add7-838fd5ec854f",
-            "placeholder": "Your response",
-            "prompt": "",
-            "recallId": "",
-            "required": true,
-            "responseId": "33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11",
-            "timeout": 0,
-            "type": "TextResponse",
-          },
-          Object {
-            "html": "<p>?</p>",
-            "id": "33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1",
-            "type": "Text",
-          },
-        ],
-        "has_chat_enabled": undefined,
-        "title": "Slide 2",
-      },
-    ]
-  `);
+  expect(props.onChange).toHaveBeenCalledTimes(3);
+  expect(props.onChange.mock.calls[0]).toMatchObject([
+    1,
+    {
+      components: [
+        {
+          html: '<h1>Welcome to Slide 2</h1>',
+          id: expectUuidString,
+          type: 'Text'
+        },
+        {
+          disableDelete: true,
+          disableDuplicate: true,
+          disableEmbed: true,
+          disableOrdering: true,
+          disablePersona: true,
+          header: 'Slide 2-ChatPrompt-0',
+          id: expectUuidString,
+          required: false,
+          responseId: expectUuidString,
+          timer: 0,
+          type: 'ChatPrompt'
+        },
+        {
+          header: 'TextResponse-1',
+          id: expectUuidString,
+          placeholder: 'Your response',
+          prompt: '',
+          recallId: '',
+          required: true,
+          responseId: '33-be99fe9b-fa0d-4ab7-8541-1bfd1ef0bf11',
+          timeout: 0,
+          type: 'TextResponse'
+        },
+        {
+          html: '<p>?</p>',
+          id: '33-f96ac6de-ac6b-4e06-bd97-d97e12fe72c1',
+          type: 'Text'
+        }
+      ],
+      has_chat_enabled: true,
+      title: 'Slide 2'
+    }
+  ]);
 
   done();
 });

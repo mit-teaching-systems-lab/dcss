@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 
 import {
@@ -44,6 +46,7 @@ let labels;
 let labelsByOccurrence;
 
 import ScenarioLabelsFilter from '../../components/ScenariosList/ScenarioLabelsFilter.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -66,22 +69,27 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   labels = [labelA, labelB, labelC];
 
   labelsByOccurrence = [labelC, labelB, labelA];
 
   tagsActions.getLabels = jest.fn();
+
   tagsActions.getLabels.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_LABELS_SUCCESS, labels });
     return labels;
   });
   tagsActions.getLabelsByOccurrence = jest.fn();
+
   tagsActions.getLabelsByOccurrence.mockImplementation(() => async dispatch => {
     const labels = labelsByOccurrence;
     dispatch({ type: GET_LABELS_SUCCESS, labels });
     return labels;
   });
   tagsActions.setLabelsInUse = jest.fn();
+
   tagsActions.setLabelsInUse.mockImplementation(labels => async dispatch => {
     dispatch({ type: SET_LABELS_IN_USE_SUCCESS, labels });
     return labels;
@@ -99,6 +107,8 @@ beforeEach(() => {
       search: 'x'
     };
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -120,8 +130,8 @@ test('ScenarioLabelsFilter', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioLabelsFilter;
-
   const props = {
     ...commonProps
   };
@@ -131,6 +141,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Embed Previous Response"
     class="comment alternate outline icon"
   />
-  Embed Previous Response
+  <span
+    class="ser__component-name"
+  >
+    Embed Previous Response
+  </span>
 </DocumentFragment>
 `;

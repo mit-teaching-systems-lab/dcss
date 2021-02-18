@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card 1`] = `"<i aria-label=\\"Embed Previous Response\\" class=\\"comment alternate outline icon\\"></i>Embed Previous Response"`;
+exports[`Card 1`] = `"<i aria-label=\\"Embed Previous Response\\" class=\\"comment alternate outline icon\\"></i><span class=\\"ser__component-name\\">Embed Previous Response</span>"`;
 
-exports[`Card 2`] = `"<i aria-label=\\"Embed Previous Response\\" class=\\"comment alternate outline icon\\"></i>Embed Previous Response"`;
+exports[`Card 2`] = `"<i aria-label=\\"Embed Previous Response\\" class=\\"comment alternate outline icon\\"></i><span class=\\"ser__component-name\\">Embed Previous Response</span>"`;
 
 exports[`Card 3`] = `
 <DocumentFragment>
@@ -10,6 +10,10 @@ exports[`Card 3`] = `
     aria-label="Embed Previous Response"
     class="comment alternate outline icon"
   />
-  Embed Previous Response
+  <span
+    class="ser__component-name"
+  >
+    Embed Previous Response
+  </span>
 </DocumentFragment>
 `;

@@ -24,11 +24,14 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import { GET_SLIDES_SUCCESS } from '../../actions/types';
 import * as scenarioActions from '../../actions/scenario';
 jest.mock('../../actions/scenario');
 
 import Slides from '../../components/Editor/Slides.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -51,7 +54,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   scenarioActions.getSlides = jest.fn();
+
   scenarioActions.getSlides.mockImplementation(() => async dispatch => {
     const slides = [
       {
@@ -76,6 +82,8 @@ beforeEach(() => {
     return slides;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -96,8 +104,8 @@ test('Slides', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Slides;
-
   const props = {
     ...commonProps,
     scenario: {
@@ -207,6 +215,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

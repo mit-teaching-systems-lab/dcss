@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 import { GET_SCENARIO_SUCCESS, GET_USERS_SUCCESS } from '../../actions/types';
 import * as scenarioActions from '../../actions/scenario';
@@ -387,6 +389,7 @@ const users = [
 ];
 
 import ScenarioAuthors from '../../components/ScenarioEditor/ScenarioAuthors.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -409,7 +412,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   scenarioActions.addScenarioUserRole = jest.fn();
+
   scenarioActions.addScenarioUserRole.mockImplementation(
     () => async dispatch => {
       dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
@@ -418,6 +424,7 @@ beforeEach(() => {
   );
 
   scenarioActions.endScenarioUserRole = jest.fn();
+
   scenarioActions.endScenarioUserRole.mockImplementation(
     () => async dispatch => {
       dispatch({ type: GET_SCENARIO_SUCCESS, scenario });
@@ -426,15 +433,19 @@ beforeEach(() => {
   );
 
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_USERS_SUCCESS, users });
     return users;
   });
 
   usersActions.getUsersByPermission = jest.fn();
+
   usersActions.getUsersByPermission.mockImplementation(() => async dispatch => {
     return users;
   });
+
+  /** @GENERATED: END **/
 
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
@@ -456,8 +467,8 @@ test('ScenarioAuthors', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioAuthors;
-
   const props = {
     ...commonProps,
     scenario
@@ -468,6 +479,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -476,8 +488,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = ScenarioAuthors;
-
   const props = {
     ...commonProps,
     scenario
@@ -488,6 +500,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

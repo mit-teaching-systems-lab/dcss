@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import {
   GET_COHORT_SUCCESS,
   GET_COHORT_SCENARIOS_PROGRESS_SUCCESS
@@ -73,6 +75,7 @@ let scenarios;
 let scenariosById;
 
 import CohortProgress from '../../components/Cohorts/CohortProgress.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -95,10 +98,14 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   Layout.isForMobile = jest.fn();
+
   Layout.isForMobile.mockImplementation(() => false);
 
   Layout.isNotForMobile = jest.fn();
+
   Layout.isNotForMobile.mockImplementation(() => true);
 
   cohort = {
@@ -567,6 +574,8 @@ beforeEach(() => {
     return cohort;
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -587,8 +596,8 @@ test('CohortProgress', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = CohortProgress;
-
   const props = {
     ...commonProps,
     id: 1,
@@ -600,6 +609,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();

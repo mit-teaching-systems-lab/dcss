@@ -4251,7 +4251,7 @@ exports[`Receives new message, minimized, mobile 5`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"icon c__pulse\\"
           />
           <div
             class=\\"content\\"
@@ -5424,7 +5424,7 @@ exports[`Receives new message, minimized, not mobile 5`] = `
         >
           <i
             aria-hidden=\\"true\\"
-            class=\\"comments outline icon\\"
+            class=\\"icon c__pulse\\"
           />
           <div
             class=\\"content\\"
@@ -6491,7 +6491,7 @@ exports[`Receives new message, not minimized 4`] = `
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div
@@ -12030,7 +12030,7 @@ exports[`componentWillUnmount Calls onbeforeunload handler when beforeunload occ
           <div
             class=\\"content\\"
           >
-            scenario.title, slide.title
+            Discussion
           </div>
         </div>
         <div

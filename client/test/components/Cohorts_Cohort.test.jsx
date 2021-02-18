@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import * as tlr from '@testing-library/react';
 
 import {
@@ -285,6 +287,7 @@ let scenarios;
 let scenariosById;
 
 import Cohort from '../../components/Cohorts/Cohort.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -306,6 +309,8 @@ beforeEach(() => {
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+
+  /** @GENERATED: BEGIN **/
 
   cohort = {
     id: 1,
@@ -576,11 +581,13 @@ beforeEach(() => {
   }, {});
 
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
   cohortActions.setCohort = jest.fn();
+
   cohortActions.setCohort.mockImplementation((id, params) => async dispatch => {
     const updatedCohort = {
       ...cohort,
@@ -595,6 +602,7 @@ beforeEach(() => {
   });
 
   cohortActions.copyCohort = jest.fn();
+
   cohortActions.copyCohort.mockImplementation(id => async dispatch => {
     const newCohort = {
       ...cohort
@@ -610,11 +618,13 @@ beforeEach(() => {
     return newCohort;
   });
   cohortActions.linkUserToCohort = jest.fn();
+
   cohortActions.linkUserToCohort.mockImplementation(() => async dispatch => {
     dispatch({ type: SET_COHORT_USER_ROLE_SUCCESS, cohort });
     return cohort;
   });
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -642,6 +652,7 @@ beforeEach(() => {
     return user;
   });
   usersActions.getUsers = jest.fn();
+
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
       {
@@ -771,6 +782,8 @@ beforeEach(() => {
     };
   });
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -791,8 +804,8 @@ test('Cohort', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -803,6 +816,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   // 0
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
@@ -824,8 +838,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -839,8 +853,11 @@ test('Render 2 1', async done => {
   state.cohorts = [];
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
+  /** @GENERATED: END **/
+
   // 1
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -1123,8 +1140,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -1140,7 +1157,10 @@ test('Render 3 1', async done => {
   state.cohort = { id: null, name: '' };
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
+  /** @GENERATED: END **/
+
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -1423,8 +1443,8 @@ test('Render 3 1', async done => {
 });
 
 test('Render 4 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -1435,9 +1455,11 @@ test('Render 4 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   // 3
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'invited',
@@ -1484,8 +1506,8 @@ test('Render 4 1', async done => {
 });
 
 test('Render 5 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -1496,9 +1518,11 @@ test('Render 5 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   // 4
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'invited',
@@ -1527,6 +1551,7 @@ test('Render 5 1', async done => {
     return user;
   });
   userActions.getCohort = jest.fn();
+
   userActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -1809,8 +1834,8 @@ test('Render 5 1', async done => {
 });
 
 test('Render 6 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -1825,8 +1850,11 @@ test('Render 6 1', async done => {
   };
   const ConnectedRoutedComponent = reduxer(Component, props, state, history);
 
+  /** @GENERATED: END **/
+
   // 5
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'invited',
@@ -1876,8 +1904,8 @@ test('Render 6 1', async done => {
 });
 
 test('Render 7 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -1888,9 +1916,11 @@ test('Render 7 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   // 6
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'facilitator',
@@ -1940,8 +1970,8 @@ test('Render 7 1', async done => {
 });
 
 test('Render 8 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -1952,9 +1982,11 @@ test('Render 8 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   // 8
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -2219,6 +2251,7 @@ test('Render 8 1', async done => {
     return cohort;
   });
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'facilitator',
@@ -2268,8 +2301,8 @@ test('Render 8 1', async done => {
 });
 
 test('Render 9 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = Cohort;
-
   const props = {
     ...commonProps,
     id: 1
@@ -2280,9 +2313,11 @@ test('Render 9 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   // 9
   cohortActions.getCohort = jest.fn();
+
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -2547,6 +2582,7 @@ test('Render 9 1', async done => {
     return cohort;
   });
   userActions.getUser = jest.fn();
+
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',

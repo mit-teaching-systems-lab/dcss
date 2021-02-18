@@ -24,6 +24,8 @@ import {
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
+/** @GENERATED: BEGIN **/
+
 import { mount, shallow } from 'enzyme';
 import {
   GET_RESPONSE_SUCCESS,
@@ -50,6 +52,7 @@ import Media, * as MediaConstants from '@utils/Media';
 let audioNode;
 
 import AudioRecorder from '../../components/Slide/Components/AudioPrompt/AudioRecorder.jsx';
+/** @GENERATED: END **/
 
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
@@ -72,7 +75,10 @@ beforeEach(() => {
 
   fetchImplementation(fetch);
 
+  /** @GENERATED: BEGIN **/
+
   responseActions.getResponse = jest.fn();
+
   responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {
       id: 457,
@@ -96,6 +102,7 @@ beforeEach(() => {
     return response;
   });
   responseActions.getTranscriptionOutcome = jest.fn();
+
   responseActions.getTranscriptionOutcome.mockImplementation(
     () => async dispatch => {
       const outcome = {
@@ -149,6 +156,8 @@ beforeEach(() => {
 
   jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-01').getTime());
 
+  /** @GENERATED: END **/
+
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
 });
@@ -169,8 +178,8 @@ test('AudioRecorder', () => {
 });
 
 test('Render 1 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     autostart: false,
@@ -192,6 +201,7 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -200,8 +210,8 @@ test('Render 1 1', async done => {
 });
 
 test('Render 2 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -225,6 +235,7 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -262,8 +273,8 @@ test('Render 2 1', async done => {
 });
 
 test('Render 3 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -287,6 +298,7 @@ test('Render 3 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -294,6 +306,7 @@ test('Render 3 1', async done => {
   };
 
   responseActions.getResponse = jest.fn();
+
   responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {};
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
@@ -336,8 +349,8 @@ test('Render 3 1', async done => {
 });
 
 test('Render 4 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -361,6 +374,7 @@ test('Render 4 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -368,6 +382,7 @@ test('Render 4 1', async done => {
   };
 
   responseActions.getResponse = jest.fn();
+
   responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {};
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
@@ -385,8 +400,8 @@ test('Render 4 1', async done => {
 });
 
 test('Render 5 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -410,6 +425,7 @@ test('Render 5 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -423,8 +439,8 @@ test('Render 5 1', async done => {
 });
 
 test('Render 6 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -448,6 +464,7 @@ test('Render 6 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -461,8 +478,8 @@ test('Render 6 1', async done => {
 });
 
 test('Render 7 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -486,6 +503,7 @@ test('Render 7 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -499,8 +517,8 @@ test('Render 7 1', async done => {
 });
 
 test('Render 8 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -524,6 +542,7 @@ test('Render 8 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -537,8 +556,8 @@ test('Render 8 1', async done => {
 });
 
 test('Render 9 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -562,6 +581,7 @@ test('Render 9 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -575,8 +595,8 @@ test('Render 9 1', async done => {
 });
 
 test('Render 10 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -600,6 +620,7 @@ test('Render 10 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -613,8 +634,8 @@ test('Render 10 1', async done => {
 });
 
 test('Render 11 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -638,6 +659,7 @@ test('Render 11 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -651,8 +673,8 @@ test('Render 11 1', async done => {
 });
 
 test('Render 12 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -676,6 +698,7 @@ test('Render 12 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -689,8 +712,8 @@ test('Render 12 1', async done => {
 });
 
 test('Render 13 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -714,6 +737,7 @@ test('Render 13 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -721,6 +745,7 @@ test('Render 13 1', async done => {
   };
 
   responseActions.getResponse = jest.fn();
+
   responseActions.getResponse.mockImplementation(() => async dispatch => {
     const response = {};
     dispatch({ type: GET_RESPONSE_SUCCESS, response });
@@ -738,8 +763,8 @@ test('Render 13 1', async done => {
 });
 
 test('Render 14 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -763,6 +788,7 @@ test('Render 14 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -776,8 +802,8 @@ test('Render 14 1', async done => {
 });
 
 test('Render 15 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -801,6 +827,7 @@ test('Render 15 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {
@@ -814,8 +841,8 @@ test('Render 15 1', async done => {
 });
 
 test('Render 16 1', async done => {
+  /** @GENERATED: BEGIN **/
   const Component = AudioRecorder;
-
   const props = {
     ...commonProps,
     audioNode,
@@ -837,6 +864,7 @@ test('Render 16 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
+  /** @GENERATED: END **/
 
   delete window.location;
   window.location = {

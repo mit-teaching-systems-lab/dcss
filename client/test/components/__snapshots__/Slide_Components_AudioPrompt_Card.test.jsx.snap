@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Prompt: Audio Input"
     class="microphone icon"
   />
-  Prompt: Audio Input
+  <span
+    class="ser__component-name"
+  >
+    Prompt: Audio Input
+  </span>
 </DocumentFragment>
 `;

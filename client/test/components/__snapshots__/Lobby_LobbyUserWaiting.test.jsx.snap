@@ -1,3 +1,1222 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render 1 1 1`] = `<DocumentFragment />`;
+exports[`Fallbacks for state.chat, state.scenario, state.cohort (missing) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Fallbacks for state.chat, state.scenario, state.cohort (unavailable) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Fallbacks for state.chat, state.scenario, state.cohort (unloaded) 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`On RUN_CHAT_LINK, receives list with waiting users, personas missing 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`On RUN_CHAT_LINK, receives list with waiting users, personas missing 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                  </div>
+                </div>
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Facilitator User (facilitator)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Facilitator User (facilitator)\\"
+                    >
+                      Facilitator User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`On RUN_CHAT_LINK, receives list with waiting users, personas missing 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`On RUN_CHAT_LINK, receives list with waiting users, personas missing 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Render 1 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Render 2 1 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`With cohort Chat has no users yet 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`With cohort Chat has no users yet 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort Chat has no users yet 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives empty list 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives empty list 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives empty list 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list with waiting users 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list with waiting users 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Facilitator User (facilitator)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Facilitator User (facilitator)\\"
+                    >
+                      Facilitator User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                     
+                    as 
+                    Student
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list with waiting users 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list with waiting users 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list, but no one is assigned yet 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list, but no one is assigned yet 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort On RUN_CHAT_LINK, receives list, but no one is assigned yet 6`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`With cohort Send CREATE_USER_CHANNEL 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`With cohort Send CREATE_USER_CHANNEL 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort Chat has no users yet 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Without cohort Chat has no users yet 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort Chat has no users yet 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives empty list 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives empty list 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives empty list 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list with waiting users 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list with waiting users 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Facilitator User (facilitator)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Facilitator User (facilitator)\\"
+                    >
+                      Facilitator User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chalkboard teacher\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Facilitator\\"
+                    />
+                     
+                    as 
+                    Student
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list with waiting users 4`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list with waiting users 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            Who is in the scenario room?
+          </p>
+        </div>
+      </div>
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <div
+            class=\\"ui fluid card\\"
+          >
+            <div
+              class=\\"content\\"
+            >
+              <div
+                class=\\"ui divided selection list\\"
+                data-testid=\\"lobby-user-waiting-invitees\\"
+                role=\\"list\\"
+              >
+                <div
+                  class=\\"item\\"
+                  role=\\"listitem\\"
+                >
+                  <div
+                    class=\\"content\\"
+                  >
+                    <span
+                      aria-label=\\"Super User (super)\\"
+                      class=\\"ui medium text\\"
+                      title=\\"Super User (super)\\"
+                    >
+                      Super User
+                    </span>
+                     
+                    <i
+                      aria-hidden=\\"true\\"
+                      class=\\"small icon chess queen\\"
+                      style=\\"margin-right: 0px; margin-bottom: 0.3em; margin-left: 0.25em; opacity: 0.25;\\"
+                      title=\\"Super\\"
+                    />
+                     
+                    as 
+                    Teacher
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list, but no one is assigned yet 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list, but no one is assigned yet 5`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort On RUN_CHAT_LINK, receives list, but no one is assigned yet 6`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;
+
+exports[`Without cohort Send CREATE_USER_CHANNEL 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
+exports[`Without cohort Send CREATE_USER_CHANNEL 3`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <div
+      class=\\"ui padded grid l__waiting not-modal\\"
+    >
+      <div
+        class=\\"row\\"
+      >
+        <div
+          class=\\"column\\"
+        >
+          <p>
+            There are no participants are in the scenario room yet.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>"
+`;

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <form
+    class="ui form"
+  >
+    <div
+      class="ui fluid container"
+    >
+      <div
+        class="ui two column grid"
+      >
+        <div
+          class="row"
+        >
+          <div
+            class="column"
+          >
+            <div
+              class="field"
+            >
+              (NOT YET IMPLEMENTED)
+              <label
+                for="timer"
+              >
+                Set a maximum time for discussion on this slide.
+              </label>
+              <div
+                class="ui input"
+              >
+                <input
+                  aria-label="Set a maximum time for discussion on this slide."
+                  id="timer"
+                  name="timer"
+                  style="width: 54px;"
+                  type="text"
+                  value="00:00:00"
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class="column"
+          >
+            0 hours  minutes  seconds 
+          </div>
+        </div>
+      </div>
+      <div
+        class="ui grey message"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="required field"
+          >
+            <label>
+              Data header
+            </label>
+            <div
+              class="ui input"
+            >
+              <input
+                name="header"
+                required=""
+                type="text"
+                value="xyz-header"
+              />
+            </div>
+          </div>
+          This will only appear in data downloads, as the column header or row name.
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

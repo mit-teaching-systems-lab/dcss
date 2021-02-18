@@ -6,6 +6,10 @@ exports[`Render 1 1 1`] = `
     aria-label="Rich Text Editor"
     class="edit icon"
   />
-  Rich Text Editor
+  <span
+    class="ser__component-name"
+  >
+    Rich Text Editor
+  </span>
 </DocumentFragment>
 `;
