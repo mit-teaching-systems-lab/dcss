@@ -1,5 +1,5 @@
 const { asyncMiddleware } = require('../../util/api');
-const { requireUser } = require('../auth/middleware');
+const { requireUser } = require('../session/middleware');
 const db = require('./db');
 
 const runCache = new WeakMap();

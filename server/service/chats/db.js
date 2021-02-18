@@ -173,8 +173,6 @@ exports.updateJoinPartMessages = async (chat_id, user_id, updates) => {
         updates
       )
     );
-
-    console.log(result);
     return result.rows;
   });
 };
@@ -266,7 +264,7 @@ exports.getLinkedChatUsersByChatId = async id => {
       chat_user.is_muted,
       chat_user.is_present
     FROM chat_user
-    JOIN run_chat ON run_chat.user_id = chat_user.user_id
+    JOIN run_chat ON run_chat.user_id = chat_user.user_id AND run_chat.chat_id = ${id}
     JOIN user_role_detail ON user_role_detail.id = chat_user.user_id
     WHERE chat_user.chat_id = ${id}
     AND chat_user.ended_at IS NULL;

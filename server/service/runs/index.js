@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { validateRequestBody } = require('../../util/requestValidation');
-const { requireUser } = require('../auth/middleware');
+const { requireUser } = require('../session/middleware');
 const { requireUserForRun } = require('./middleware');
 const {
   getRuns,
@@ -20,6 +20,11 @@ const runs = new Router();
 runs.get('/', [requireUser, getRuns]);
 
 runs.get('/new-or-existing/scenario/:scenario_id', [
+  requireUser,
+  newOrExistingRun
+]);
+
+runs.get('/new-or-existing/scenario/:scenario_id/chat/:chat_id', [
   requireUser,
   newOrExistingRun
 ]);

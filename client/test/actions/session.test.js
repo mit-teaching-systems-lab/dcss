@@ -105,7 +105,7 @@ test('GET_SESSION_SUCCESS', async () => {
   fetchImplementation(fetch, 200, { user });
 
   const returnValue = await store.dispatch(actions.getSession());
-  expect(fetch.mock.calls[0]).toEqual(['/api/auth/session']);
+  expect(fetch.mock.calls[0]).toEqual(['/api/session/session']);
   expect(returnValue).toEqual(user);
 });
 
@@ -113,7 +113,7 @@ test('GET_SESSION_ERROR', async () => {
   fetchImplementation(fetch, 200, { error });
 
   const returnValue = await store.dispatch(actions.getSession());
-  expect(fetch.mock.calls[0]).toEqual(['/api/auth/session']);
+  expect(fetch.mock.calls[0]).toEqual(['/api/session/session']);
   expect(store.getState().errors.session.error).toEqual(error);
   expect(returnValue).toBe(null);
 });
@@ -149,7 +149,7 @@ test('LOG_IN', async () => {
     actions.logIn({ username, password })
   );
   expect(fetch.mock.calls[0]).toEqual([
-    '/api/auth/login',
+    '/api/session/login',
     {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',
@@ -170,7 +170,7 @@ test('LOG_IN error', async () => {
     actions.logIn({ username, password })
   );
   expect(fetch.mock.calls[0]).toEqual([
-    '/api/auth/login',
+    '/api/session/login',
     {
       headers: { 'Content-Type': 'application/json' },
       method: 'POST',

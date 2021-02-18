@@ -1,5 +1,5 @@
-const { requireUser } = require('../auth/middleware');
-const { getUserRoles } = require('../auth/db');
+const { requireUser } = require('../session/middleware');
+const { getUserRoles } = require('../session/db');
 const { asyncMiddleware } = require('../../util/api');
 const { getScenario, getScenarioUserRoles } = require('./db');
 

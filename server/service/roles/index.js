@@ -2,7 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 const { validateRequestBody } = require('../../util/requestValidation');
-const { requireUser } = require('../auth/middleware');
+const { requireUser } = require('../session/middleware');
 const { requireUserRole, checkCanEditUserRoles } = require('./middleware');
 const {
   getAllUsers,

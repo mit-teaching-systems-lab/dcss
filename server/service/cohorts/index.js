@@ -3,7 +3,7 @@ const { validateRequestBody } = require('../../util/requestValidation');
 const {
   // Use for restricting access to only authed users.
   requireUser
-} = require('../auth/middleware');
+} = require('../session/middleware');
 const {
   // Use for restricting access to site-wide interactions
   requireUserRole

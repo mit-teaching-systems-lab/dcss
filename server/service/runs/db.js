@@ -3,8 +3,8 @@ const { query, withClientTransaction } = require('../../util/db');
 
 exports.getRunById = async function(id) {
   const result = await query(sql`
-        SELECT * FROM run
-        WHERE id=${id};
+        SELECT * FROM run_view
+        WHERE id = ${id};
     `);
   return result.rows[0];
 };
@@ -47,12 +47,25 @@ exports.getRunByIdentifiers = async function(
 };
 
 exports.createRun = async function(user_id, scenario_id, consent_id) {
-  const result = await query(sql`
-    INSERT INTO run (scenario_id, user_id, consent_id)
-    VALUES (${scenario_id}, ${user_id}, ${consent_id})
-    RETURNING *;
-  `);
-  return result.rows[0];
+  return await withClientTransaction(async client => {
+    const insert = await client.query(sql`
+      INSERT INTO run (scenario_id, user_id, consent_id)
+      VALUES (${scenario_id}, ${user_id}, ${consent_id})
+      RETURNING id;
+    `);
+
+    if (insert.rowCount) {
+      const id = insert.rows[0].id;
+      const result = await client.query(sql`
+        SELECT * FROM run_view WHERE id = ${id};
+      `);
+
+      if (result.rowCount) {
+        return result.rows[0];
+      }
+    }
+    return null;
+  });
 };
 
 exports.setRun = async function(id, data) {

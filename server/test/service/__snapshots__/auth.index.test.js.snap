@@ -21,3 +21,25 @@ Object {
   "port": 2525,
 }
 `;
+
+exports[`/api/session/* /api/session/reset failure Nodemailer 2`] = `
+Object {
+  "auth": Object {
+    "pass": Any<String>,
+    "user": Any<String>,
+  },
+  "host": "smtp.mailtrap.io",
+  "port": 2525,
+}
+`;
+
+exports[`/api/session/* /api/session/reset success Nodemailer 2`] = `
+Object {
+  "auth": Object {
+    "pass": Any<String>,
+    "user": Any<String>,
+  },
+  "host": "smtp.mailtrap.io",
+  "port": 2525,
+}
+`;

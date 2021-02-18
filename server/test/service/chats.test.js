@@ -91,9 +91,9 @@ jest.mock('../../service/chats/db', () => {
   };
 });
 
-import * as authmw from '../../service/auth/middleware';
-jest.mock('../../service/auth/middleware', () => {
-  const authmw = jest.requireActual('../../service/auth/middleware');
+import * as authmw from '../../service/session/middleware';
+jest.mock('../../service/session/middleware', () => {
+  const authmw = jest.requireActual('../../service/session/middleware');
   return {
     ...authmw,
     requireUser: jest.fn()
@@ -176,15 +176,89 @@ describe('/api/chats/*', () => {
       const response = await request({ path, method, body });
       expect(await response.json()).toMatchInlineSnapshot(`
         Object {
-          "chat": 999,
+          "chat": Object {
+            "users": Array [
+              Object {
+                "email": "rick@bocoup.com",
+                "id": 2,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Rick Waldron",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "rwaldron",
+              },
+              Object {
+                "email": "rick+free-trout@bocoup.com",
+                "id": 8,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": "Free Trout",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "free-trout",
+              },
+            ],
+            "usersById": Object {
+              "2": Object {
+                "email": "rick@bocoup.com",
+                "id": 2,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Rick Waldron",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "rwaldron",
+              },
+              "8": Object {
+                "email": "rick+free-trout@bocoup.com",
+                "id": 8,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": "Free Trout",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "free-trout",
+              },
+            },
+          },
         }
       `);
       expect(db.createChat.mock.calls.length).toBe(1);
       expect(db.createChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           999,
-          null,
           1,
+          null,
+          false,
         ]
       `);
     });
@@ -244,8 +318,9 @@ describe('/api/chats/*', () => {
       expect(db.createChat.mock.calls[0]).toMatchInlineSnapshot(`
         Array [
           999,
-          null,
           1,
+          null,
+          false,
         ]
       `);
     });
@@ -447,6 +522,78 @@ describe('/api/chats/*', () => {
             "id": 1,
             "scenario_id": 42,
             "updated_at": null,
+            "users": Array [
+              Object {
+                "email": "rick@bocoup.com",
+                "id": 2,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Rick Waldron",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "rwaldron",
+              },
+              Object {
+                "email": "rick+free-trout@bocoup.com",
+                "id": 8,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": "Free Trout",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "free-trout",
+              },
+            ],
+            "usersById": Object {
+              "2": Object {
+                "email": "rick@bocoup.com",
+                "id": 2,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": true,
+                "personalname": "Rick Waldron",
+                "roles": Array [
+                  "participant",
+                  "super_admin",
+                  "facilitator",
+                  "researcher",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T22:29:11.638Z",
+                "username": "rwaldron",
+              },
+              "8": Object {
+                "email": "rick+free-trout@bocoup.com",
+                "id": 8,
+                "is_anonymous": false,
+                "is_muted": false,
+                "is_present": true,
+                "is_super": false,
+                "personalname": "Free Trout",
+                "roles": Array [
+                  "participant",
+                  "facilitator",
+                ],
+                "single_use_password": false,
+                "updated_at": "2020-12-10T17:50:19.074Z",
+                "username": "free-trout",
+              },
+            },
           },
         }
       `);
@@ -455,6 +602,7 @@ describe('/api/chats/*', () => {
         Array [
           1,
           42,
+          999,
         ]
       `);
     });

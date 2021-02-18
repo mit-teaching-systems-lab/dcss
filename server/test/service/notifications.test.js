@@ -112,9 +112,9 @@ jest.mock('../../service/notifications/db', () => {
   };
 });
 
-import * as amw from '../../service/auth/middleware';
-jest.mock('../../service/auth/middleware', () => {
-  const amw = jest.requireActual('../../service/auth/middleware');
+import * as amw from '../../service/session/middleware';
+jest.mock('../../service/session/middleware', () => {
+  const amw = jest.requireActual('../../service/session/middleware');
   return {
     ...amw,
     requireUser: jest.fn()

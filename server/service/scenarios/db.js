@@ -9,7 +9,7 @@ const {
   linkPersonaToScenario
 } = require('../personas/db');
 const { getRunResponses } = require('../runs/db');
-const { getUserById } = require('../auth/db');
+const { getUserById } = require('../session/db');
 
 async function getScenarioCategories(id) {
   const result = await query(sql`

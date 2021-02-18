@@ -1,6 +1,6 @@
 const db = require('./db');
 const { asyncMiddleware } = require('../../util/api');
-const { getUserById } = require('../auth/db');
+const { getUserById } = require('../session/db');
 
 async function getAllUsers(req, res) {
   const users = await db.getAllUsers();

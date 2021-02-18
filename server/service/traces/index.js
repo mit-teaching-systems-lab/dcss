@@ -1,6 +1,6 @@
 const { Router } = require('express');
 // const { validateRequestBody } = require('../../util/requestValidation');
-const { requireUser } = require('../auth/middleware');
+const { requireUser } = require('../session/middleware');
 // const { requireUserForRun } = require('./middleware');
 const { getTraces } = require('./endpoints');
 

@@ -1,6 +1,6 @@
 const db = require('./db');
 const { asyncMiddleware } = require('../../util/api');
-// const { getUserById } = require('../auth/db');
+// const { getUserById } = require('../session/db');
 
 async function getAllCohortGrantsAsync(req, res) {
   const { user } = req.session;

@@ -1,6 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
-const authdb = require('../auth/db');
+const authdb = require('../session/db');
 const cohortdb = require('../cohorts/db');
 const notificationdb = require('../notifications/db');
 const scenariodb = require('../scenarios/db');

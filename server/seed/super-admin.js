@@ -1,4 +1,4 @@
-const { createUser } = require('../service/auth/db');
+const { createUser } = require('../service/session/db');
 const { addUserRoles } = require('../service/roles/db');
 
 async function seedSuperUser({ email, username, password }) {

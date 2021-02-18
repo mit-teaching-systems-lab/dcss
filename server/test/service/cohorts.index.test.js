@@ -148,17 +148,17 @@ const cohort = {
 
 const cohorts = [cohort];
 
-import * as amw from '../../service/auth/middleware';
-jest.mock('../../service/auth/middleware', () => {
-  const amw = jest.requireActual('../../service/auth/middleware');
+import * as amw from '../../service/session/middleware';
+jest.mock('../../service/session/middleware', () => {
+  const amw = jest.requireActual('../../service/session/middleware');
   return {
     ...amw,
     requireUser: jest.fn()
   };
 });
-import * as adb from '../../service/auth/db';
-jest.mock('../../service/auth/db', () => {
-  const adb = jest.requireActual('../../service/auth/db');
+import * as adb from '../../service/session/db';
+jest.mock('../../service/session/db', () => {
+  const adb = jest.requireActual('../../service/session/db');
   return {
     ...adb,
     getUserById: jest.fn()

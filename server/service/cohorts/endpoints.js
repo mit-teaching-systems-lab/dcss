@@ -1,6 +1,6 @@
 const { asyncMiddleware } = require('../../util/api');
 const db = require('./db');
-const { getUserById } = require('../auth/db');
+const { getUserById } = require('../session/db');
 const { getScenarioPrompts } = require('../scenarios/db');
 
 async function createCohort(req, res) {

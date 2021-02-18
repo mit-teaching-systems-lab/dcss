@@ -17,7 +17,7 @@ const {
   USER_JOIN,
   USER_PART
 } = require('./types');
-const authdb = require('../auth/db');
+const authdb = require('../session/db');
 const chatdb = require('../chats/db');
 const chatutil = require('../chats/util');
 

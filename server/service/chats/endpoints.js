@@ -34,21 +34,6 @@ async function getChatsByCohortId(req, res) {
   res.json({ chats });
 }
 
-// async function linkRunToChat(req, res) {
-//   const id = Number(req.params.id);
-//   const run_id = Number(req.params.run_id);
-
-//   try {
-//     await db.linkRunToChat(id, run_id);
-//     const chat = await db.getChatById(id);
-//     res.json({ chat });
-//   } catch (e) {
-//     const error = new Error(`Chat could not be linked. ${e.message}`);
-//     error.status = 409;
-//     throw error;
-//   }
-// }
-
 async function newOrExistingChat(req, res) {
   const host_id = req.session.user.id;
   const scenario_id = Number(req.params.scenario_id || req.body.scenario_id);
@@ -85,8 +70,6 @@ async function newOrExistingChat(req, res) {
     throw error;
   }
 
-  await db.joinChat(chat.id, host_id);
-
   //
   //
   // TODO: Determine if this should use `getLinkedChatUsersByChatId`
@@ -101,23 +84,15 @@ async function newOrExistingChat(req, res) {
     {}
   );
 
+  if (!usersById[host_id] || !usersById[host_id].persona_id) {
+    await db.joinChat(chat.id, host_id);
+  }
+
   chat = {
     ...chat,
     users,
     usersById
   };
-
-  console.log('..............................................');
-  console.log();
-  console.log();
-  console.log();
-
-  console.log(chat);
-
-  console.log();
-  console.log();
-  console.log();
-  console.log('..............................................');
 
   res.json({ chat });
 }
@@ -307,9 +282,6 @@ exports.getChatMessagesByChatId = asyncMiddleware(getChatMessagesByChatId);
 exports.getChatMessagesCountByChatId = asyncMiddleware(
   getChatMessagesCountByChatId
 );
-// exports.getChatInvitesByChatId = asyncMiddleware(getChatInvitesByChatId);
-// exports.getChatInvitesByReceiverId = asyncMiddleware(getChatInvitesByReceiverId);
-// exports.getChatInvitesBySenderId = asyncMiddleware(getChatInvitesBySenderId);
 exports.getChatUsersByChatId = asyncMiddleware(getChatUsersByChatId);
 exports.getLinkedChatUsersByChatId = asyncMiddleware(
   getLinkedChatUsersByChatId
@@ -317,7 +289,6 @@ exports.getLinkedChatUsersByChatId = asyncMiddleware(
 exports.newOrExistingChat = asyncMiddleware(newOrExistingChat);
 exports.createChat = asyncMiddleware(createChat);
 exports.createChatInvite = asyncMiddleware(createChatInvite);
-// exports.setChatInviteById = asyncMiddleware(setChatInviteById);
 exports.getChatById = asyncMiddleware(getChatById);
 exports.linkRunToChat = asyncMiddleware(linkRunToChat);
 exports.setChatById = asyncMiddleware(setChatById);

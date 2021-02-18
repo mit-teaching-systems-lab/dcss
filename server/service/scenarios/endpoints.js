@@ -1,7 +1,7 @@
 const uuid = require('uuid/v4');
 const { asyncMiddleware } = require('../../util/api');
 const { requestScenario } = require('./middleware');
-const { getUserById } = require('../auth/db');
+const { getUserById } = require('../session/db');
 // const {
 //   createSlide,
 //   deleteSlide,

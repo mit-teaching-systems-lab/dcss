@@ -24,9 +24,9 @@ jest.mock('../../service/mail/endpoints', () => {
   };
 });
 
-import * as mw from '../../service/auth/middleware';
-jest.mock('../../service/auth/middleware', () => {
-  const amw = jest.requireActual('../../service/auth/middleware');
+import * as mw from '../../service/session/middleware';
+jest.mock('../../service/session/middleware', () => {
+  const amw = jest.requireActual('../../service/session/middleware');
   return {
     ...amw,
     requireUser: jest.fn()

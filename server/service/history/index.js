@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { requireUser } = require('../auth/middleware');
+const { requireUser } = require('../session/middleware');
 const router = Router();
 
 const { getHistoryForScenario } = require('./endpoints.js');

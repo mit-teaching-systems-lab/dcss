@@ -1,5 +1,5 @@
 const { asyncMiddleware } = require('../../util/api');
-const { getUserRoles } = require('../auth/db');
+const { getUserRoles } = require('../session/db');
 const { getCohortUserRoles } = require('./db');
 
 // const rolesMap = new WeakMap();

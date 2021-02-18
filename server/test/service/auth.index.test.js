@@ -2,8 +2,8 @@ import Crypto from 'crypto-js';
 import { request } from '../';
 import { asyncMiddleware } from '../../util/api';
 
-import * as db from '../../service/auth/db';
-import * as mw from '../../service/auth/middleware';
+import * as db from '../../service/session/db';
+import * as mw from '../../service/session/middleware';
 
 import * as Sendgrid from '@sendgrid/mail';
 jest.mock('@sendgrid/mail', () => ({
@@ -29,9 +29,9 @@ let defaultSuperUser = {
   personalname: 'Super User'
 };
 
-jest.mock('../../service/auth/db', () => {
+jest.mock('../../service/session/db', () => {
   return {
-    ...jest.requireActual('../../service/auth/db'),
+    ...jest.requireActual('../../service/session/db'),
     createUser: jest.fn(),
     getUserById: jest.fn(),
     getUserByProps: jest.fn(),
@@ -41,10 +41,10 @@ jest.mock('../../service/auth/db', () => {
 });
 
 // This cannot be used inside the mock defined below
-let amw = jest.requireActual('../../service/auth/middleware');
+let amw = jest.requireActual('../../service/session/middleware');
 
-jest.mock('../../service/auth/middleware', () => {
-  const amw = jest.requireActual('../../service/auth/middleware');
+jest.mock('../../service/session/middleware', () => {
+  const amw = jest.requireActual('../../service/session/middleware');
   return {
     ...amw,
     createUser: jest.fn(),
@@ -71,7 +71,7 @@ function mockRespondWithUser(user) {
 
 jest.mock('password-generator', () => () => 'GENERATED PASSWORD');
 
-describe('/api/auth/*', () => {
+describe('/api/session/*', () => {
   let user;
 
   afterAll(() => {
@@ -95,8 +95,8 @@ describe('/api/auth/*', () => {
     delete process.env.SENDGRID_API_KEY;
   });
 
-  describe('GET /api/auth/', () => {
-    const path = '/api/auth/';
+  describe('GET /api/session/', () => {
+    const path = '/api/session/';
 
     test('success', async () => {
       mockRespondWithUser(defaultSuperUser);
@@ -147,8 +147,8 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/session', () => {
-    const path = '/api/auth/session';
+  describe('/api/session/session', () => {
+    const path = '/api/session/session';
     beforeEach(() => {
       mw.requireUser.mockImplementation(
         asyncMiddleware(async (req, res, next) => {
@@ -206,10 +206,10 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/logout', () => {
+  describe('/api/session/logout', () => {
     test('success', async () => {
       const response = await request({
-        path: '/api/auth/logout',
+        path: '/api/session/logout',
         method: 'post'
       });
       expect(await response.json()).toMatchInlineSnapshot(`
@@ -228,9 +228,9 @@ describe('/api/auth/*', () => {
   // ]);
   // Crypto.AES.encrypt(password, SESSION_SECRET).toString();
   //
-  describe('/api/auth/login', () => {
+  describe('/api/session/login', () => {
     const method = 'post';
-    const path = '/api/auth/login';
+    const path = '/api/session/login';
     const salt = 'b5a6b7c530735eba';
     const hash =
       '15e33cafdcbecf8b43c12887897411337c7085c80994cecbb36f91188aac9290e6004d1bc5e0bcd25e471f48a5f450458998bb02e663ea4963702623eb58f5d6';
@@ -444,9 +444,9 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('POST /api/auth/', () => {
+  describe('POST /api/session/', () => {
     const method = 'post';
-    const path = '/api/auth/';
+    const path = '/api/session/';
 
     describe('success', () => {
       test('with password', async () => {
@@ -557,14 +557,14 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/usernames/:username/exists', () => {
+  describe('/api/session/usernames/:username/exists', () => {
     describe('success', () => {
       test('does not exist', async () => {
         mw.checkForDuplicate.mockImplementation(amw.checkForDuplicate);
         db.getUserByProps.mockImplementation(() => false);
 
         const response = await request({
-          path: `/api/auth/usernames/whatever/exists`
+          path: `/api/session/usernames/whatever/exists`
         });
         expect(await response.json()).toMatchInlineSnapshot(`
           Object {
@@ -582,7 +582,7 @@ describe('/api/auth/*', () => {
         db.getUserByProps.mockImplementation(() => true);
 
         const response = await request({
-          path: `/api/auth/usernames/whatever/exists`,
+          path: `/api/session/usernames/whatever/exists`,
           status: 409
         });
         expect(await response.json()).toMatchInlineSnapshot(`
@@ -597,8 +597,8 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('/api/auth/reset', () => {
-    const path = '/api/auth/reset';
+  describe('/api/session/reset', () => {
+    const path = '/api/session/reset';
 
     describe('success', () => {
       test('success', async () => {
@@ -984,9 +984,9 @@ describe('/api/auth/*', () => {
     });
   });
 
-  describe('PUT /api/auth/', () => {
+  describe('PUT /api/session/', () => {
     const method = 'put';
-    const path = '/api/auth/';
+    const path = '/api/session/';
 
     beforeEach(() => {
       mw.requireUser.mockImplementation(

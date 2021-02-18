@@ -2,7 +2,7 @@ const { Router } = require('express');
 const {
   // Use for restricting access to only authed users.
   requireUser
-} = require('../auth/middleware');
+} = require('../session/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
 const { sendMailMessageAndRespond } = require('./endpoints');
 

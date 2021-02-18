@@ -99,9 +99,9 @@ jest.mock('../../service/scenarios/db', () => {
   };
 });
 
-import * as authmw from '../../service/auth/middleware';
-jest.mock('../../service/auth/middleware', () => {
-  const authmw = jest.requireActual('../../service/auth/middleware');
+import * as authmw from '../../service/session/middleware';
+jest.mock('../../service/session/middleware', () => {
+  const authmw = jest.requireActual('../../service/session/middleware');
   return {
     ...authmw,
     requireUser: jest.fn()
