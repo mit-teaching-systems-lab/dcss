@@ -130,10 +130,12 @@ class ChatMessages extends Component {
           ...data
         };
 
-        this.setState({
-          hasNewMessages: false,
-          messages
-        });
+        if (this.isComponentMounted) {
+          this.setState({
+            hasNewMessages: false,
+            messages
+          });
+        }
 
         return;
       }
@@ -144,10 +146,12 @@ class ChatMessages extends Component {
 
       messages.push(data);
 
-      this.setState({
-        hasNewMessages: true,
-        messages
-      });
+      if (this.isComponentMounted) {
+        this.setState({
+          hasNewMessages: true,
+          messages
+        });
+      }
 
       if (this.props.onMessageReceived) {
         this.props.onMessageReceived(data);
@@ -171,9 +175,11 @@ class ChatMessages extends Component {
         return message;
       });
 
-      this.setState({
-        messages
-      });
+      if (this.isComponentMounted) {
+        this.setState({
+          messages
+        });
+      }
     }
   }
 

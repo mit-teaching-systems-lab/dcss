@@ -156,19 +156,19 @@ class Chat extends Component {
 
     // TODO: determine if this is the best way to indicate that a
     // user has joined
-    // this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
+    this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
 
     await this.props.getChatUsersByChatId(this.props.chat.id);
-
-    this.setState({
-      isReady: true
-    });
 
     // Register Window events
     window.addEventListener('beforeunload', this.onBeforeUnload);
 
     // Register Socket events
     this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
+
+    this.setState({
+      isReady: true
+    });
   }
 
   componentWillUnmount() {
@@ -188,7 +188,7 @@ class Chat extends Component {
   onBeforeUnload() {
     // TODO: determine if this is the best way to indicate that a
     // user has parted
-    // this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
+    this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
 
     this.hasUnloaded = true;
 
