@@ -138,7 +138,7 @@ exports.createNewChatMessage = async (chat_id, user_id, content) => {
   });
 };
 
-exports.createNewUnquotableMessage = async (chat_id, user_id, content) => {
+exports.insertNewUnquotableMessage = async (chat_id, user_id, content) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO chat_message
@@ -148,6 +148,34 @@ exports.createNewUnquotableMessage = async (chat_id, user_id, content) => {
       RETURNING *;
     `);
     return result.rows[0];
+  });
+};
+
+exports.insertNewJoinPartMessage = async (chat_id, user_id, content) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(sql`
+      INSERT INTO chat_message
+        (chat_id, user_id, content, is_quotable, is_joinpart)
+      VALUES
+        (${chat_id}, ${user_id}, ${content}, FALSE, TRUE)
+      RETURNING *;
+    `);
+    return result.rows[0];
+  });
+};
+
+exports.updateJoinPartMessages = async (chat_id, user_id, updates) => {
+  return await withClientTransaction(async client => {
+    const result = await client.query(
+      updateQuery(
+        'chat_message',
+        { chat_id, user_id, is_joinpart: true },
+        updates
+      )
+    );
+
+    console.log(result);
+    return result.rows;
   });
 };
 

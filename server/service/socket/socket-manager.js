@@ -91,7 +91,7 @@ class SocketManager {
 
       if (!notifier.listenerCount('join_or_part_chat')) {
         notifier.on('join_or_part_chat', async data => {
-          // console.log('join_or_part_chat', data);
+          console.log('join_or_part_chat', data);
 
           const user = await chatdb.getChatUserByChatId(
             data.chat_id,
@@ -112,11 +112,11 @@ class SocketManager {
             <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
           `.trim();
 
-          chatdb.createNewUnquotableMessage(
-            data.chat_id,
-            data.user_id,
-            content
-          );
+          await chatdb.updateJoinPartMessages(data.chat_id, data.user_id, {
+            deleted_at: new Date().toISOString()
+          });
+
+          chatdb.insertNewJoinPartMessage(data.chat_id, data.user_id, content);
         });
 
         // console.log('join_or_part_chat listener is registered');
@@ -193,16 +193,14 @@ class SocketManager {
         });
       });
       // Chat
-      // socket.on(USER_JOIN, ({ chat, user }) => {
-      //   // socketlog(USER_JOIN, user);
-      //   chatdb.joinChat(chat.id, user.id);
-      // });
+      socket.on(USER_JOIN, ({ chat, user }) => {
+        chatdb.joinChat(chat.id, user.id);
+      });
 
-      // socket.on(USER_PART, ({ chat, user }) => {
-      //   // socketlog(USER_PART, user);
-      //   chatdb.partChat(chat.id, user.id);
-      // });
-      //
+      socket.on(USER_PART, ({ chat, user }) => {
+        chatdb.partChat(chat.id, user.id);
+      });
+
       socket.on(CHAT_MESSAGE_CREATED, ({ chat, user, content }) => {
         chatdb.createNewChatMessage(chat.id, user.id, content);
       });
