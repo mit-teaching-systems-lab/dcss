@@ -7,6 +7,7 @@ export const chatInitialState = {
   updated_at: null,
   deleted_at: null,
   ended_at: null,
+  is_open: false,
   users: [],
   usersById: {}
 };

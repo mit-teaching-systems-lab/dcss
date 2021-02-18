@@ -108,9 +108,9 @@ export default class SlideEditor extends Component {
     super(props);
     const { title = '', components = [], has_chat_enabled } = props;
 
-    this.sessionKey = `slideeditor/${props.id}`;
+    this.storageKey = `slideeditor/${props.id}`;
 
-    const { activeComponentIndex, mode } = Storage.get(this.sessionKey, {
+    const { activeComponentIndex, mode } = Storage.get(this.storageKey, {
       activeComponentIndex: -1,
       mode: 'edit'
     });
@@ -473,7 +473,7 @@ export default class SlideEditor extends Component {
       />
     ) : null;
 
-    Storage.set(this.sessionKey, {
+    Storage.set(this.storageKey, {
       activeComponentIndex,
       mode
     });

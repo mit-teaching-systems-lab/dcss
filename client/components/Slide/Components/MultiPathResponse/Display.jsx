@@ -32,14 +32,14 @@ class Display extends Component {
       return;
     }
 
-    let { getResponse, persisted = {}, responseId, run } = this.props;
+    let { persisted = {}, responseId, run } = this.props;
 
     let { value = '' } = persisted;
 
     if (!value && run.id) {
-      const previous = await getResponse({
+      const previous = await this.props.getResponse({
         id: run.id,
-        responseId
+        responseId,
       });
 
       if (previous && previous.response) {

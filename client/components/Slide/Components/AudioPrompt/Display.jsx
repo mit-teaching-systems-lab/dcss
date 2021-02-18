@@ -39,7 +39,6 @@ class Display extends Component {
       return;
     }
     let {
-      getResponse,
       onResponseChange,
       persisted = {},
       responseId,
@@ -53,7 +52,7 @@ class Display extends Component {
     };
 
     if (!value || !transcript) {
-      const previous = await getResponse({
+      const previous = await this.props.getResponse({
         id: run.id,
         responseId
       });

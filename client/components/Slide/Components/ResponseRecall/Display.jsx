@@ -40,7 +40,6 @@ class Display extends Component {
     }
 
     let {
-      getResponse,
       recallId: responseId,
       // eslint-disable-next-line no-unused-vars
       responsesById,
@@ -51,7 +50,7 @@ class Display extends Component {
       return;
     }
 
-    const { response } = await getResponse({ id, responseId });
+    const { response } = await this.props.getResponse({ id, responseId });
 
     if (!response) {
       return;
@@ -73,13 +72,12 @@ class Display extends Component {
       clearInterval(this.interval);
     }
     const {
-      getResponse,
       recallId: responseId,
       run: { id }
     } = this.props;
 
     this.interval = setInterval(async () => {
-      const previous = await getResponse({
+      const previous = await this.props.getResponse({
         id,
         responseId
       });
