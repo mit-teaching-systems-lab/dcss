@@ -36,7 +36,7 @@ export const logIn = params => async dispatch => {
       password
     });
 
-    const { error = '', message = '' } = await (await fetch('/api/auth/login', {
+    const { error = '', message = '' } = await (await fetch('/api/session/login', {
       headers: {
         'Content-Type': 'application/json'
       },
@@ -59,7 +59,7 @@ export const logOut = () => async dispatch => {
   dispatch({ type: LOG_OUT, session: null });
   dispatch({ type: SET_USER_SUCCESS, user: null });
   try {
-    await fetch('/api/auth/logout', {
+    await fetch('/api/session/logout', {
       method
     });
 
@@ -92,7 +92,7 @@ export let getPermissions = () => async dispatch => {
 
 export let getSession = () => async dispatch => {
   try {
-    const res = await (await fetch('/api/auth/session')).json();
+    const res = await (await fetch('/api/session/session')).json();
 
     if (res.error) {
       throw res;
