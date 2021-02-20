@@ -28,12 +28,25 @@ function getSocketOrCreate() {
 export default function(Component) {
   let socket = getSocketOrCreate();
   class withSocket extends React.Component {
-    // componentWillUnmount() {
-    //   if (socket) {
-    //     socket.disconnect();
-    //     socket = null;
-    //   }
-    // }
+    onVisibilityChange = () => {
+      if (document.visibilityState === 'visible' && socket.disconnected) {
+        socket.connect();
+      }
+    };
+    componentDidMount() {
+      document.addEventListener(
+        'visibilitychange',
+        this.onVisibilityChange,
+        false
+      );
+    }
+    componentWillUnmount() {
+      document.removeEventListener(
+        'visibilitychange',
+        this.onVisibilityChange,
+        false
+      );
+    }
     render() {
       return <Component {...this.props} socket={socket} />;
     }
