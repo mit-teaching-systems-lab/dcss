@@ -625,7 +625,7 @@ describe('componentDidMount', () => {
     await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
     expect(globalThis.mockSocket.on.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
-        "join-or-part",
+        "chat-ended",
         [Function],
       ]
     `);
@@ -682,9 +682,97 @@ describe('componentDidMount', () => {
     );
     expect(serialize()).toMatchSnapshot();
 
-    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "chat": Object {
+              "cohort_id": null,
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "is_open": false,
+              "scenario_id": 42,
+              "updated_at": null,
+              "users": Array [
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+                Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+              ],
+              "usersById": Object {
+                "4": Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+              },
+            },
+          },
+        ],
         Array [
           "user-join-slide",
           Object {
@@ -773,9 +861,97 @@ describe('componentWillUnmount', () => {
       )
     );
 
-    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "chat": Object {
+              "cohort_id": null,
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "is_open": false,
+              "scenario_id": 42,
+              "updated_at": null,
+              "users": Array [
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+                Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+              ],
+              "usersById": Object {
+                "4": Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+              },
+            },
+          },
+        ],
         Array [
           "user-join-slide",
           Object {
@@ -794,10 +970,98 @@ describe('componentWillUnmount', () => {
     window.dispatchEvent(new Event('beforeunload'));
 
     await waitFor(() =>
-      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1)
+      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2)
     );
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "chat": Object {
+              "cohort_id": null,
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "is_open": false,
+              "scenario_id": 42,
+              "updated_at": null,
+              "users": Array [
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+                Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+              ],
+              "usersById": Object {
+                "4": Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+              },
+            },
+          },
+        ],
         Array [
           "user-join-slide",
           Object {
@@ -846,9 +1110,97 @@ describe('componentWillUnmount', () => {
       )
     );
 
-    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1);
+    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "chat": Object {
+              "cohort_id": null,
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "is_open": false,
+              "scenario_id": 42,
+              "updated_at": null,
+              "users": Array [
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+                Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+              ],
+              "usersById": Object {
+                "4": Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+              },
+            },
+          },
+        ],
         Array [
           "user-join-slide",
           Object {
@@ -867,10 +1219,98 @@ describe('componentWillUnmount', () => {
     unmount();
 
     await waitFor(() =>
-      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1)
+      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2)
     );
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "chat": Object {
+              "cohort_id": null,
+              "created_at": "2020-12-08T21:51:33.659Z",
+              "deleted_at": null,
+              "ended_at": null,
+              "host_id": 2,
+              "id": 1,
+              "is_open": false,
+              "scenario_id": 42,
+              "updated_at": null,
+              "users": Array [
+                Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+                Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+              ],
+              "usersById": Object {
+                "4": Object {
+                  "email": null,
+                  "id": 4,
+                  "is_anonymous": true,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": false,
+                  "personalname": null,
+                  "roles": Array [
+                    "participant",
+                    "facilitator",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T17:50:19.074Z",
+                  "username": "credible-lyrebird",
+                },
+                "999": Object {
+                  "email": "super@email.com",
+                  "id": 999,
+                  "is_anonymous": false,
+                  "is_muted": false,
+                  "is_present": true,
+                  "is_super": true,
+                  "personalname": "Super User",
+                  "roles": Array [
+                    "participant",
+                    "super_admin",
+                    "facilitator",
+                    "researcher",
+                  ],
+                  "single_use_password": false,
+                  "updated_at": "2020-12-10T22:29:11.638Z",
+                  "username": "super",
+                },
+              },
+            },
+          },
+        ],
         Array [
           "user-join-slide",
           Object {
@@ -1724,6 +2164,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                   socket={
                     Object {
                       "_events": Object {
+                        "chat-ended": [Function],
                         "chat-message-created": Array [
                           [Function],
                           [Function],
@@ -1731,10 +2172,98 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                         "chat-message-updated": [Function],
                         "join-or-part": [Function],
                       },
-                      "_eventsCount": 3,
+                      "_eventsCount": 4,
                       "disconnect": [MockFunction],
                       "emit": [MockFunction] {
                         "calls": Array [
+                          Array [
+                            "create-chat-channel",
+                            Object {
+                              "chat": Object {
+                                "cohort_id": null,
+                                "created_at": "2020-12-08T21:51:33.659Z",
+                                "deleted_at": null,
+                                "ended_at": null,
+                                "host_id": 2,
+                                "id": 1,
+                                "is_open": false,
+                                "scenario_id": 42,
+                                "updated_at": null,
+                                "users": Array [
+                                  Object {
+                                    "email": "super@email.com",
+                                    "id": 999,
+                                    "is_anonymous": false,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": true,
+                                    "personalname": "Super User",
+                                    "roles": Array [
+                                      "participant",
+                                      "super_admin",
+                                      "facilitator",
+                                      "researcher",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T22:29:11.638Z",
+                                    "username": "super",
+                                  },
+                                  Object {
+                                    "email": null,
+                                    "id": 4,
+                                    "is_anonymous": true,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": false,
+                                    "personalname": null,
+                                    "roles": Array [
+                                      "participant",
+                                      "facilitator",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T17:50:19.074Z",
+                                    "username": "credible-lyrebird",
+                                  },
+                                ],
+                                "usersById": Object {
+                                  "4": Object {
+                                    "email": null,
+                                    "id": 4,
+                                    "is_anonymous": true,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": false,
+                                    "personalname": null,
+                                    "roles": Array [
+                                      "participant",
+                                      "facilitator",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T17:50:19.074Z",
+                                    "username": "credible-lyrebird",
+                                  },
+                                  "999": Object {
+                                    "email": "super@email.com",
+                                    "id": 999,
+                                    "is_anonymous": false,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": true,
+                                    "personalname": "Super User",
+                                    "roles": Array [
+                                      "participant",
+                                      "super_admin",
+                                      "facilitator",
+                                      "researcher",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T22:29:11.638Z",
+                                    "username": "super",
+                                  },
+                                },
+                              },
+                            },
+                          ],
                           Array [
                             "user-join-slide",
                             Object {
@@ -1753,17 +2282,25 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                             "type": "return",
                             "value": undefined,
                           },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                         ],
                       },
                       "off": [MockFunction],
                       "on": [MockFunction] {
                         "calls": Array [
                           Array [
-                            "join-or-part",
+                            "chat-ended",
                             [Function],
                           ],
                           Array [
                             "chat-message-created",
+                            [Function],
+                          ],
+                          Array [
+                            "join-or-part",
                             [Function],
                           ],
                           Array [
@@ -1776,6 +2313,10 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                           ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -2042,6 +2583,7 @@ test('Rnd: onDrag/onResize', async done => {
                   socket={
                     Object {
                       "_events": Object {
+                        "chat-ended": [Function],
                         "chat-message-created": Array [
                           [Function],
                           [Function],
@@ -2049,10 +2591,98 @@ test('Rnd: onDrag/onResize', async done => {
                         "chat-message-updated": [Function],
                         "join-or-part": [Function],
                       },
-                      "_eventsCount": 3,
+                      "_eventsCount": 4,
                       "disconnect": [MockFunction],
                       "emit": [MockFunction] {
                         "calls": Array [
+                          Array [
+                            "create-chat-channel",
+                            Object {
+                              "chat": Object {
+                                "cohort_id": null,
+                                "created_at": "2020-12-08T21:51:33.659Z",
+                                "deleted_at": null,
+                                "ended_at": null,
+                                "host_id": 2,
+                                "id": 1,
+                                "is_open": false,
+                                "scenario_id": 42,
+                                "updated_at": null,
+                                "users": Array [
+                                  Object {
+                                    "email": "super@email.com",
+                                    "id": 999,
+                                    "is_anonymous": false,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": true,
+                                    "personalname": "Super User",
+                                    "roles": Array [
+                                      "participant",
+                                      "super_admin",
+                                      "facilitator",
+                                      "researcher",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T22:29:11.638Z",
+                                    "username": "super",
+                                  },
+                                  Object {
+                                    "email": null,
+                                    "id": 4,
+                                    "is_anonymous": true,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": false,
+                                    "personalname": null,
+                                    "roles": Array [
+                                      "participant",
+                                      "facilitator",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T17:50:19.074Z",
+                                    "username": "credible-lyrebird",
+                                  },
+                                ],
+                                "usersById": Object {
+                                  "4": Object {
+                                    "email": null,
+                                    "id": 4,
+                                    "is_anonymous": true,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": false,
+                                    "personalname": null,
+                                    "roles": Array [
+                                      "participant",
+                                      "facilitator",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T17:50:19.074Z",
+                                    "username": "credible-lyrebird",
+                                  },
+                                  "999": Object {
+                                    "email": "super@email.com",
+                                    "id": 999,
+                                    "is_anonymous": false,
+                                    "is_muted": false,
+                                    "is_present": true,
+                                    "is_super": true,
+                                    "personalname": "Super User",
+                                    "roles": Array [
+                                      "participant",
+                                      "super_admin",
+                                      "facilitator",
+                                      "researcher",
+                                    ],
+                                    "single_use_password": false,
+                                    "updated_at": "2020-12-10T22:29:11.638Z",
+                                    "username": "super",
+                                  },
+                                },
+                              },
+                            },
+                          ],
                           Array [
                             "user-join-slide",
                             Object {
@@ -2071,17 +2701,25 @@ test('Rnd: onDrag/onResize', async done => {
                             "type": "return",
                             "value": undefined,
                           },
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                         ],
                       },
                       "off": [MockFunction],
                       "on": [MockFunction] {
                         "calls": Array [
                           Array [
-                            "join-or-part",
+                            "chat-ended",
                             [Function],
                           ],
                           Array [
                             "chat-message-created",
+                            [Function],
+                          ],
+                          Array [
+                            "join-or-part",
                             [Function],
                           ],
                           Array [
@@ -2094,6 +2732,10 @@ test('Rnd: onDrag/onResize', async done => {
                           ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -2283,11 +2925,15 @@ test('Receives new message, not minimized', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "join-or-part",
+        "chat-ended",
         [Function],
       ],
       Array [
         "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "join-or-part",
         [Function],
       ],
       Array [
@@ -2383,11 +3029,15 @@ test('Receives new message, minimized, not mobile', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "join-or-part",
+        "chat-ended",
         [Function],
       ],
       Array [
         "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "join-or-part",
         [Function],
       ],
       Array [
@@ -2494,11 +3144,15 @@ test('Receives new message, minimized, mobile', async done => {
   expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
     Array [
       Array [
-        "join-or-part",
+        "chat-ended",
         [Function],
       ],
       Array [
         "chat-message-created",
+        [Function],
+      ],
+      Array [
+        "join-or-part",
         [Function],
       ],
       Array [
