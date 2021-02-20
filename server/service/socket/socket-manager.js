@@ -226,23 +226,25 @@ class SocketManager {
       socket.on(USER_JOIN_SLIDE, async ({ chat, user, run }) => {
         console.log(USER_JOIN_SLIDE, chat, user, run);
 
-        const message = run.activeRunSlideIndex
-          ? `is on slide #${run.activeRunSlideIndex}`
-          : null;
+        if (run) {
+          const message = run.activeRunSlideIndex
+            ? `is on slide #${run.activeRunSlideIndex}`
+            : null;
 
-        if (!message) {
-          return;
+          if (!message) {
+            return;
+          }
+
+          const content = `
+            <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
+          `.trim();
+
+          await chatdb.updateJoinPartMessages(chat.id, user.id, {
+            deleted_at: new Date().toISOString()
+          });
+
+          await chatdb.insertNewJoinPartMessage(chat.id, user.id, content);
         }
-
-        const content = `
-          <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
-        `.trim();
-
-        await chatdb.updateJoinPartMessages(chat.id, user.id, {
-          deleted_at: new Date().toISOString()
-        });
-
-        await chatdb.insertNewJoinPartMessage(chat.id, user.id, content);
       });
 
       socket.on(USER_PART, ({ chat, user }) => {
