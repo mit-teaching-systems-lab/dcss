@@ -1,0 +1,10 @@
+.cp__timer {
+  width: 5em !important;
+}
+
+/* Mobile */
+@media only screen and (max-width: 767.98px) {
+  .cp__timer {
+    width: 5em !important;
+  }
+}

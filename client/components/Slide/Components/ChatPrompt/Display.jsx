@@ -1,8 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Chat from '@components/Chat';
+import { Button, Dropdown, Icon, Menu } from '@components/UI';
+import Identity from '@utils/Identity';
 import { type } from './meta';
+import './ChatPrompt.css';
 
 class Display extends Component {
   constructor(props) {
@@ -57,7 +60,7 @@ class Display extends Component {
   }
 
   render() {
-    const { chat, isEmbeddedInSVG, timer } = this.props;
+    const { chat, isEmbeddedInSVG, timer, user } = this.props;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return null;
@@ -70,7 +73,46 @@ class Display extends Component {
     // - send an onSend?
     //
     //
-    return chat ? <Chat chat={chat} /> : null;
+
+    const isUserHost = chat.host_id === user.id;
+    const timerValue = '00:00';
+
+    return (
+      <Fragment>
+        <Menu borderless>
+          {isUserHost ? (
+            <Dropdown
+              item
+              simple
+              text="Close discussion as..."
+              onChange={() => {
+                alert('Not implemented');
+              }}
+            >
+              <Dropdown.Menu>
+                <Dropdown.Item>Complete</Dropdown.Item>
+                <Dropdown.Item>Incomplete</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          ) : null}
+          <Menu.Item>
+            <div className="ui transparent icon input">
+              <input
+                className="prompt cp__timer"
+                type="text"
+                defaultValue={timerValue}
+              />
+              <i className="clock outline icon" />
+            </div>
+          </Menu.Item>
+          <Menu.Menu position="right">
+            {chat ? (
+              <Chat key={Identity.key(window.location.href)} chat={chat} />
+            ) : null}
+          </Menu.Menu>
+        </Menu>
+      </Fragment>
+    );
   }
 }
 
@@ -86,12 +128,13 @@ Display.propTypes = {
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   timer: PropTypes.number,
-  type: PropTypes.oneOf([type]).isRequired
+  type: PropTypes.oneOf([type]).isRequired,
+  user: PropTypes.object
 };
 
 const mapStateToProps = state => {
-  const { chat, run } = state;
-  return { chat, run };
+  const { chat, run, user } = state;
+  return { chat, run, user };
 };
 
 const mapDispatchToProps = dispatch => ({});
