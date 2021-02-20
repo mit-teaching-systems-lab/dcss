@@ -8,6 +8,8 @@ exports.DISCONNECT = 'disconnect';
 exports.HEART_BEAT = 'heart-beat';
 exports.USER_JOIN = 'user-join';
 exports.USER_PART = 'user-part';
+exports.USER_JOIN_SLIDE = 'user-join-slide';
+exports.USER_PART_SLIDE = 'user-part-slide';
 exports.USER_IS_TYPING = 'user-is-typing';
 exports.USER_NOT_TYPING = 'user-not-typing';
 

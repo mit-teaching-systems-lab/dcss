@@ -115,6 +115,26 @@ async function createChat(req, res) {
     throw error;
   }
 
+  await db.joinChat(chat.id, host_id);
+
+  const users = cohort_id
+    ? await db.getChatUsersByChatId(chat.id)
+    : await db.getLinkedChatUsersByChatId(chat.id);
+
+  const usersById = users.reduce(
+    (accum, user) => ({
+      ...accum,
+      [user.id]: user
+    }),
+    {}
+  );
+
+  chat = {
+    ...chat,
+    users,
+    usersById
+  };
+
   res.json({ chat });
 }
 

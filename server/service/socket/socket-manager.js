@@ -15,7 +15,9 @@ const {
   RUN_CHAT_LINK,
   SET_INVITATION,
   USER_JOIN,
-  USER_PART
+  USER_PART,
+  USER_JOIN_SLIDE,
+  USER_SLIDE_PART_SLIDE
 } = require('./types');
 const authdb = require('../session/db');
 const chatdb = require('../chats/db');
@@ -116,7 +118,7 @@ class SocketManager {
             deleted_at: new Date().toISOString()
           });
 
-          chatdb.insertNewJoinPartMessage(data.chat_id, data.user_id, content);
+          await chatdb.insertNewJoinPartMessage(data.chat_id, data.user_id, content);
         });
 
         // console.log('join_or_part_chat listener is registered');
@@ -171,9 +173,11 @@ class SocketManager {
       }
 
       if (!notifier.listenerCount('chat_created')) {
-        notifier.on('chat_created', async data => {
-          console.log('chat_created', data);
-          socket.to(data.cohort_id).emit(CHAT_CREATED);
+        notifier.on('chat_created', async chat => {
+          console.log('chat_created', chat);
+          socket.to(chat.cohort_id).emit(CHAT_CREATED, {
+            chat
+          });
         });
         // console.log('chat_invite listener is registered');
       }
@@ -192,9 +196,34 @@ class SocketManager {
           lastseen_at: new Date().toISOString()
         });
       });
+
       // Chat
-      socket.on(USER_JOIN, ({ chat, user }) => {
-        chatdb.joinChat(chat.id, user.id);
+      socket.on(USER_JOIN, async ({ chat, user }) => {
+        const chatUser = await chatdb.getChatUserByChatId(chat.id, user.id);
+        chatdb.joinChat(chat.id, user.id, chatUser.persona_id);
+      });
+
+      socket.on(USER_JOIN_SLIDE, async ({ chat, user, run }) => {
+        console.log(USER_JOIN_SLIDE, chat, user, run);
+
+        const message = run.activeRunSlideIndex
+          ? `is on slide #${run.activeRunSlideIndex}`
+          : null;
+
+        if (!message) {
+          return;
+        }
+
+        const content = `
+          <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
+        `.trim();
+
+
+        await chatdb.updateJoinPartMessages(chat.id, user.id, {
+          deleted_at: new Date().toISOString()
+        });
+
+        await chatdb.insertNewJoinPartMessage(chat.id, user.id, content);
       });
 
       socket.on(USER_PART, ({ chat, user }) => {
