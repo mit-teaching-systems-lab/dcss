@@ -20,7 +20,11 @@ import {
   LINK_RUN_TO_CHAT_SUCCESS
 } from './types';
 
-export let createChat = (scenario, cohort, isOpen) => async dispatch => {
+export let createChat = (
+  scenario,
+  cohort = null,
+  isOpen = false
+) => async dispatch => {
   try {
     const body = JSON.stringify({
       cohort_id: cohort ? cohort.id : null,
@@ -39,6 +43,7 @@ export let createChat = (scenario, cohort, isOpen) => async dispatch => {
       throw res;
     }
     const { chat } = res;
+
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
   } catch (error) {
@@ -47,11 +52,11 @@ export let createChat = (scenario, cohort, isOpen) => async dispatch => {
   }
 };
 
-export let getChat = (scenario_id, cohort_id) => async dispatch => {
+export let getChat = (scenario, cohort = null) => async dispatch => {
   try {
-    const url = cohort_id
-      ? `/api/chats/new-or-existing/scenario/${scenario_id}/cohort/${cohort_id}`
-      : `/api/chats/new-or-existing/scenario/${scenario_id}`;
+    const url = cohort
+      ? `/api/chats/new-or-existing/scenario/${scenario.id}/cohort/${cohort.id}`
+      : `/api/chats/new-or-existing/scenario/${scenario.id}`;
 
     const res = await (await fetch(url)).json();
 
