@@ -28,7 +28,7 @@ class ScenarioCardActions extends Component {
       activeTab: 'slides',
       activeSlideIndex: 1
     });
-    const run = Storage.get(`run/${Identity.toHash(scenario.id)}`, {
+    const run = Storage.get(`run/${scenario.id}`, {
       // The title slide is slide 0
       activeRunSlideIndex: 0
     });

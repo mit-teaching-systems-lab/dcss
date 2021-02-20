@@ -75,7 +75,7 @@ class FinishSlide extends React.Component {
       ? `/cohort/${Identity.toHash(cohortId)}`
       : '';
 
-    const rerunUrl = `/run/${scenarioId}/slide/0`;
+    const rerunUrl = `/run/${Identity.toHash(scenarioId)}/slide/0`;
 
     const returnToX = this.isCohortScenarioRun ? (
       <Button primary to={baseReturnToXUrl} as={NavLink}>

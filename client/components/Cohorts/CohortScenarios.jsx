@@ -193,9 +193,9 @@ export class CohortScenarios extends React.Component {
               }
 
               // TODO: check localstorage for more appropriate slide number to begin at
-              const pathname = `/cohort/${Identity.toHash(cohort.id)}/run/${
-                scenario.id
-              }/slide/0`;
+              const pathname = `/cohort/${Identity.toHash(
+                cohort.id
+              )}/run/${Identity.toHash(scenario.id)}/slide/0`;
               const url = `${location.origin}${pathname}`;
 
               const onAddTabClick = event => {

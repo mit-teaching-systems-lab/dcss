@@ -286,9 +286,12 @@ class History extends Component {
                   />
                 );
 
+                const scenarioIdHash = Identity.toHash(scenario_id);
                 const pathname = cohort_id
-                  ? `/cohort/${cohort_id}/run/${scenario_id}/slide/0`
-                  : `/run/${scenario_id}/slide/0`;
+                  ? `/cohort/${Identity.toHash(
+                      cohort_id
+                    )}/run/${scenarioIdHash}/slide/0`
+                  : `/run/${scenarioIdHash}/slide/0`;
 
                 const cohort = cohortsById[cohort_id];
                 const cohortPathname = cohort
