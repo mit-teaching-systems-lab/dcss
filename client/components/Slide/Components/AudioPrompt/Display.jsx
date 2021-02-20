@@ -38,12 +38,7 @@ class Display extends Component {
       });
       return;
     }
-    let {
-      onResponseChange,
-      persisted = {},
-      responseId,
-      run
-    } = this.props;
+    let { onResponseChange, persisted = {}, responseId, run } = this.props;
 
     let { name = responseId, transcript = '', value = '' } = persisted;
 

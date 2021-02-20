@@ -39,7 +39,7 @@ class Display extends Component {
     if (!value && run.id) {
       const previous = await this.props.getResponse({
         id: run.id,
-        responseId,
+        responseId
       });
 
       if (previous && previous.response) {
