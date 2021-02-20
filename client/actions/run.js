@@ -32,6 +32,24 @@ export let getRun = (scenario_id, cohort_id, chat_id) => async dispatch => {
   }
 };
 
+export let getRunByIdentifiers = (scenario_id, cohort_id, chat_id) => async dispatch => {
+  try {
+    const url = `/api/runs/by-identifiers/scenario/${scenario_id}/cohort/${cohort_id}/chat/${chat_id}`;
+    const res = await (await fetch(url)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { run } = res;
+    dispatch({ type: GET_RUN_SUCCESS, run });
+    return run;
+  } catch (error) {
+    dispatch({ type: GET_RUN_ERROR, error });
+    return null;
+  }
+};
+
+
 export let getRuns = () => async dispatch => {
   try {
     const res = await (await fetch('/api/runs')).json();

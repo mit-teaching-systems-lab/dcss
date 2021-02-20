@@ -4,6 +4,7 @@ const { requireUser } = require('../session/middleware');
 const { requireUserForRun } = require('./middleware');
 const {
   getRuns,
+  getRunByIdentifiers,
   getResponse,
   getTranscriptionOutcome,
   getReferrerParams,
@@ -18,6 +19,11 @@ const {
 const runs = new Router();
 
 runs.get('/', [requireUser, getRuns]);
+
+runs.get('/by-identifiers/scenario/:scenario_id/cohort/:cohort_id/chat/:chat_id', [
+  requireUser,
+  getRunByIdentifiers
+]);
 
 runs.get('/new-or-existing/scenario/:scenario_id', [
   requireUser,

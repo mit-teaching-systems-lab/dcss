@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { paramCase } from 'change-case';
 import withSocket, {
   JOIN_OR_PART,
+  CHAT_ENDED,
   CHAT_MESSAGE_CREATED,
+  CREATE_CHAT_CHANNEL,
   USER_JOIN,
   USER_PART,
   USER_JOIN_SLIDE,
@@ -30,7 +32,7 @@ import ChatComposer from '@components/Chat/ChatComposer';
 import ChatDraggableResizableDialog from '@components/Chat/ChatDraggableResizableDialog';
 import ChatMessages from '@components/Chat/ChatMessages';
 import ChatMinMax from '@components/Chat/ChatMinMax';
-import { Ref } from '@components/UI';
+import { Button, Ref } from '@components/UI';
 import Layout from '@utils/Layout';
 
 import './Chat.css';
@@ -114,6 +116,7 @@ class Chat extends Component {
 
     this.state = {
       id: Identity.id(),
+      isClosed: false,
       isMinimized: false,
       isPulsing: false,
       isReady: false,
@@ -130,6 +133,7 @@ class Chat extends Component {
 
     this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onChatEnded = this.onChatEnded.bind(this);
     this.onInput = this.onInput.bind(this);
     this.onJoinOrPart = this.onJoinOrPart.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -147,6 +151,23 @@ class Chat extends Component {
     if (this.props.chat.id && !this.props.chat.created_at) {
       await this.props.getChatById(this.props.chat.id);
     }
+
+    const {
+      chat
+    } = this.props;
+
+    // If this chat has been closed, then there is no
+    // further loading or registering to do.
+    if (this.props.chat.ended_at) {
+      this.setState({
+        isClosed: true,
+        isReady: true
+      });
+      return;
+    }
+
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, { chat });
+
     // TODO: determine if this is the best way to indicate that a
     // user has joined
     // this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
@@ -168,8 +189,9 @@ class Chat extends Component {
     window.addEventListener('beforeunload', this.onBeforeUnload);
 
     // Register Socket events
-    this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
+    this.props.socket.on(CHAT_ENDED, this.onChatEnded);
     this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
+    this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
 
     this.setState({
       isReady: true
@@ -279,6 +301,16 @@ class Chat extends Component {
     // TODO: possibly send "typing" message?
   }
 
+  onChatEnded() {
+    if (this.hasUnmounted) {
+      return;
+    }
+
+    this.setState({
+      isClosed: true
+    });
+  }
+
   onMessageReceived() {
     if (this.hasUnmounted) {
       return;
@@ -352,11 +384,24 @@ class Chat extends Component {
       sendNewMessage
     } = this;
     const { chat } = this.props;
-    const { id, isMinimized, isReady } = this.state;
+    const { id, isClosed, isMinimized, isReady } = this.state;
     const defaultValue = content || '';
 
     if (!isReady) {
       return null;
+    }
+
+    if (isClosed) {
+      return (
+        <Button
+          className="close c__container-modal-minmax"
+          aria-label="Chat is closed"
+          icon="comments outline"
+          onClick={() => {
+            alert('This chat is closed');
+          }}
+        />
+      );
     }
 
     // Layout.isForMobile()?
@@ -382,8 +427,6 @@ class Chat extends Component {
       });
 
       this.forceComposerHeightWithoutRerender({ width, height, x, y });
-
-      // scrollIntoView
     };
 
     const onDragResize = ({ width, height, x, y }) => {

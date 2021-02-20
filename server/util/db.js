@@ -44,6 +44,7 @@ const notifier = new Emitter();
 
   await client.query(`
     LISTEN chat_created;
+    LISTEN chat_ended;
     LISTEN chat_message_created;
     LISTEN chat_message_updated;
     LISTEN join_or_part_chat;

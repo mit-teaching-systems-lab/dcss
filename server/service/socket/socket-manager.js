@@ -3,8 +3,10 @@ const { notifier } = require('../../util/db');
 const {
   AGENT_JOIN,
   CHAT_CREATED,
+  CHAT_ENDED,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED,
+  CREATE_CHAT_CHANNEL,
   CREATE_COHORT_CHANNEL,
   CREATE_USER_CHANNEL,
   DISCONNECT,
@@ -186,9 +188,23 @@ class SocketManager {
         // console.log('chat_invite listener is registered');
       }
 
+      if (!notifier.listenerCount('chat_ended')) {
+        notifier.on('chat_ended', async chat => {
+          console.log('chat_ended', chat);
+          socket.to(chat.id).emit(CHAT_ENDED, {
+            chat
+          });
+        });
+        // console.log('chat_invite listener is registered');
+      }
+
       // Site
       socket.on(CREATE_USER_CHANNEL, ({ user }) => {
         socket.join(user.id);
+      });
+
+      socket.on(CREATE_CHAT_CHANNEL, ({ chat }) => {
+        socket.join(chat.id);
       });
 
       socket.on(CREATE_COHORT_CHANNEL, ({ cohort }) => {

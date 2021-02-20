@@ -30,6 +30,30 @@ async function newOrExistingRun(req, res) {
   }
 }
 
+async function getRunByIdentifiers(req, res) {
+  const host_id = req.session.user.id;
+  const scenario_id = Number(req.params.scenario_id || req.body.scenario_id);
+  const cohort_id = Number(req.params.cohort_id || req.body.cohort_id) || null;
+  const chat_id = Number(req.params.chat_id || req.body.chat_id) || null;
+
+  const identifiers = {
+    scenario_id
+  };
+
+  if (cohort_id) {
+    identifiers.cohort_id = cohort_id;
+  }
+
+  if (chat_id) {
+    identifiers.chat_id = chat_id;
+  }
+
+  let run = await db.getRunByIdentifiers(host_id, identifiers);
+
+  res.json({ run });
+}
+
+
 async function upsertResponse(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
@@ -179,6 +203,7 @@ exports.getResponse = asyncMiddleware(getResponse);
 exports.getRunData = asyncMiddleware(getRunData);
 exports.getTranscriptionOutcome = asyncMiddleware(getTranscriptionOutcome);
 exports.getRuns = asyncMiddleware(getRuns);
+exports.getRunByIdentifiers = asyncMiddleware(getRunByIdentifiers);
 exports.newOrExistingRun = asyncMiddleware(newOrExistingRun);
 exports.saveRunEvent = asyncMiddleware(saveRunEvent);
 exports.revokeConsentForRun = asyncMiddleware(revokeConsentForRun);

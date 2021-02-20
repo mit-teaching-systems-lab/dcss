@@ -13,7 +13,7 @@ import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
 import { getInvites } from '@actions/invite';
 import { getUser } from '@actions/user';
 import { setResponses } from '@actions/response';
-import { getRun, setRun } from '@actions/run';
+import { getRun, getRunByIdentifiers, setRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
 import Lobby from '@components/Lobby';
 import Scenario from '@components/Scenario';
@@ -77,7 +77,7 @@ class Run extends Component {
     const { lobby } = this.state;
 
     let chatId = this.props.chatId;
-    let cohortId = cohortId;
+    let cohortId = this.props.cohortId;
     let scenarioId = this.props.scenarioId;
 
     if (!this.props.scenario) {
@@ -100,9 +100,28 @@ class Run extends Component {
       await this.props.getChatById(chatId);
 
       if (this.props.chat.ended_at) {
+        const run = await this.props.getRunByIdentifiers(
+          scenarioId,
+          cohortId,
+          chatId
+        );
+
+        // If a run still exists, then we need to set its
+        // ended_at and redirect the user. This can happen
+        // when the host has left before the participant
+        // and the participant refreshes the browser.
+        if (run) {
+          await this.props.setRun(run.id, {
+            ended_at: new Date().toISOString()
+          });
+        }
+
+        // const url = cohortId
+        //   ? `/cohort/${Identity.toHash(cohortId)}`
+        //   : `/run/${Identity.toHash(scenarioId)}`;
         const url = cohortId
           ? `/cohort/${Identity.toHash(cohortId)}`
-          : `/run/${Identity.toHash(scenarioId)}`;
+          : `/scenarios`;
 
         location.href = url;
         return;
@@ -427,6 +446,7 @@ const mapDispatchToProps = dispatch => ({
   getInvites: () => dispatch(getInvites()),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   setResponses: (...params) => dispatch(setResponses(...params)),
+  getRunByIdentifiers: (...params) => dispatch(getRunByIdentifiers(...params)),
   getRun: (...params) => dispatch(getRun(...params)),
   setRun: (...params) => dispatch(setRun(...params)),
   joinChat: (...params) => dispatch(joinChat(...params)),

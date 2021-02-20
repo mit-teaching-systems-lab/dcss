@@ -2,6 +2,7 @@
 
 // Client -> Server
 exports.AGENT_JOINED = 'agent-joined';
+exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
 exports.CREATE_COHORT_CHANNEL = 'create-cohort-channel';
 exports.CREATE_USER_CHANNEL = 'create-user-channel';
 exports.DISCONNECT = 'disconnect';
@@ -20,6 +21,7 @@ exports.NOTIFICATION = 'notification';
 
 // Server -> Client
 exports.CHAT_CREATED = 'chat-created';
+exports.CHAT_ENDED = 'chat-ended';
 exports.JOIN_OR_PART = 'join-or-part';
 exports.RUN_CHAT_LINK = 'run-chat-link';
 // exports.AGENT_ADDED = 'agent-added';
