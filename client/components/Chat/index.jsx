@@ -503,11 +503,7 @@ class Chat extends Component {
       <ChatDraggableResizableDialog {...draggableResizableProps}>
         {minMaxButton}
         <div tabIndex="0" className={draggableClassName}>
-          {this.state.isPulsing ? (
-            <i aria-hidden="true" className="icon c__pulse"></i>
-          ) : (
-            <i aria-hidden="true" className="comments outline icon"></i>
-          )}
+          <i aria-hidden="true" className="comments outline icon"></i>
           <div className="content">Discussion</div>
         </div>
         <Ref innerRef={node => (this.cRef = node)}>
@@ -523,33 +519,6 @@ class Chat extends Component {
         <div data-testid="chat-main" />
       </ChatDraggableResizableDialog>
     );
-
-    // return (
-    //   <ChatDraggableResizableDialog {...draggableResizableProps}>
-    //     <ChatMinMax onChange={onMinMaxClick} />
-    //     <div tabIndex="0" className={draggableClassName}>
-    //       {this.state.isPulsing ? (
-    //         <i aria-hidden="true" className="icon c__pulse"></i>
-    //       ) : (
-    //         <i aria-hidden="true" className="comments outline icon"></i>
-    //       )}
-    //       <div className="content">Discussion</div>
-    //     </div>
-    //     {!isMinimized ? (
-    //       <Ref innerRef={node => (this.cRef = node)}>
-    //         <div tabIndex="0" className={innerMinMaxClassName}>
-    //           <div className="cm__container-outer" style={style}>
-    //             <ChatMessages {...cmProps} />
-    //           </div>
-    //           <div className="cc__container-outer" style={style}>
-    //             <ChatComposer {...ccProps} />
-    //           </div>
-    //         </div>
-    //       </Ref>
-    //     ) : null}
-    //     <div data-testid="chat-main" />
-    //   </ChatDraggableResizableDialog>
-    // );
   }
 }
 

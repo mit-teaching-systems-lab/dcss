@@ -1398,6 +1398,34 @@ exports[`Calls onKeyDown, responds when key is {enter} 4`] = `
 </body>"
 `;
 
+exports[`Chat has ended 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div>
+    <button
+      aria-label=\\"Chat is closed\\"
+      class=\\"ui icon button close c__container-modal-minmax\\"
+    >
+      <i
+        aria-hidden=\\"true\\"
+        class=\\"comments outline icon\\"
+      />
+    </button>
+  </div>
+</body>"
+`;
+
+exports[`Chat id provided via props, but not yet loaded 1`] = `
+"<body>
+  <div
+    id=\\"root\\"
+  />
+  <div />
+</body>"
+`;
+
 exports[`Click to Minimize and Maximize 1`] = `
 "<body>
   <div

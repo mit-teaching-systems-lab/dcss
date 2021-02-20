@@ -3193,3 +3193,59 @@ test('Receives new message, minimized, mobile', async done => {
 
   done();
 });
+
+test('Chat id provided via props, but not yet loaded', async done => {
+  const Component = Chat;
+
+  const props = {
+    ...commonProps
+  };
+
+  const state = {
+    ...commonState,
+    chat: {
+      id: 1,
+      created_at: null
+    }
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(() => expect(chatActions.getChatById).toHaveBeenCalled());
+  done();
+});
+
+test('Chat has ended', async done => {
+  const Component = Chat;
+
+  chat.ended_at = 'anything but null';
+
+  const props = {
+    ...commonProps,
+    chat
+  };
+
+  const state = {
+    ...commonState,
+    chat
+  };
+
+  const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+  await render(<ConnectedRoutedComponent {...props} />);
+  expect(serialize()).toMatchSnapshot();
+
+  await waitFor(async () =>
+    expect(await screen.getByLabelText('Chat is closed')).toBeInTheDocument()
+  );
+
+  window.alert = jest.fn();
+
+  userEvent.click(await screen.getByLabelText('Chat is closed'));
+
+  expect(window.alert).toHaveBeenCalled();
+  done();
+});
