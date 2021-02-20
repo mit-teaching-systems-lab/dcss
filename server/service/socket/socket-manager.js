@@ -118,7 +118,11 @@ class SocketManager {
             deleted_at: new Date().toISOString()
           });
 
-          await chatdb.insertNewJoinPartMessage(data.chat_id, data.user_id, content);
+          await chatdb.insertNewJoinPartMessage(
+            data.chat_id,
+            data.user_id,
+            content
+          );
         });
 
         // console.log('join_or_part_chat listener is registered');
@@ -217,7 +221,6 @@ class SocketManager {
         const content = `
           <p><span style="color: rgb(140, 140, 140);"><em>${message}</em></span><br></p>
         `.trim();
-
 
         await chatdb.updateJoinPartMessages(chat.id, user.id, {
           deleted_at: new Date().toISOString()
