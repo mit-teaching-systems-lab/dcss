@@ -99,16 +99,24 @@ class RichTextEditor extends Component {
 
       delete options.buttons;
 
-      options = Object.assign({}, defaultOptions, options, { buttonList });
-      options.plugins = plugins(buttonList || []);
+      buttonList = [...buttonList];
+      options = {
+        ...defaultOptions,
+        ...options,
+        buttonList
+      };
+
+      options.plugins = plugins(options.buttonList || []);
 
       if (customPlugins.length) {
         options.plugins.push(...customPlugins);
-
         options.buttonList[options.buttonList.length - 1].push(
           ...customPlugins.map(customPlugin => customPlugin.name)
         );
       }
+
+      // Make all button lists unique
+      options.buttonList = options.buttonList.map(list => [...new Set(list)]);
 
       // Enables image upload and storage
       options.imageMultipleFile = false;
