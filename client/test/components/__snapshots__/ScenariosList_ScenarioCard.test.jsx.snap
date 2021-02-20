@@ -20,11 +20,17 @@ exports[`Render 1 1 1`] = `
         Draft
       </div>
       <div
+        aria-label="Multiplayer Scenario 2 is a solo scenario."
         class="header sc sc__cursor-pointer"
         id="x1"
         tabindex="0"
+        title="Multiplayer Scenario 2 is a solo scenario."
       >
-         Multiplayer Scenario 2
+        <i
+          aria-hidden="true"
+          class="user icon primary"
+        />
+        Multiplayer Scenario 2
       </div>
       <div
         class="meta"

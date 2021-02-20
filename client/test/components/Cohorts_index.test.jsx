@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -45,38 +47,42 @@ jest.mock('../../actions/user');
 import Cohorts from '../../components/Cohorts/index.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
-
-  cohortActions.getCohortsCount = jest.fn();
 
   cohortActions.getCohortsCount.mockImplementation(() => async dispatch => {
     const count = 1;
     dispatch({ type: GET_COHORTS_COUNT_SUCCESS, count });
     return count;
   });
-  cohortActions.getCohortsSlice = jest.fn();
-
   cohortActions.getCohortsSlice.mockImplementation(() => async dispatch => {
     const cohorts = [
       {
@@ -341,8 +347,6 @@ beforeEach(() => {
     dispatch({ type: GET_COHORTS_SUCCESS, cohorts });
     return cohorts;
   });
-  cohortActions.getCohort = jest.fn();
-
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
       id: 1,
@@ -605,22 +609,16 @@ beforeEach(() => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
-  cohortActions.setCohortScenarios = jest.fn();
-
   cohortActions.setCohortScenarios.mockImplementation(
     cohort => async dispatch => {
       dispatch({ type: SET_COHORT_SUCCESS, cohort });
       return cohort;
     }
   );
-  cohortActions.createCohort = jest.fn();
-
   cohortActions.createCohort.mockImplementation(cohort => async dispatch => {
     dispatch({ type: CREATE_COHORT_SUCCESS, cohort });
     return cohort;
   });
-  scenarioActions.getScenariosByStatus = jest.fn();
-
   scenarioActions.getScenariosByStatus.mockImplementation(
     () => async dispatch => {
       const scenarios = [
@@ -825,8 +823,6 @@ beforeEach(() => {
       return scenarios;
     }
   );
-  userActions.getUser = jest.fn();
-
   userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'super',
@@ -856,11 +852,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -869,14 +868,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('Cohorts', () => {
   expect(Cohorts).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = Cohorts;
   const props = {
     ...commonProps,
@@ -888,16 +888,16 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
+/** @GENERATED: BEGIN **/
 test('Render 1 2', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = Cohorts;
   const props = {
     ...commonProps,
@@ -936,10 +936,10 @@ test('Render 1 2', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/

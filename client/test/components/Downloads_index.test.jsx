@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -46,30 +48,36 @@ jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-01').getTime());
 import Downloads from '../../components/Downloads/index.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
-
-  cohortActions.getCohorts = jest.fn();
 
   cohortActions.getCohorts.mockImplementation(() => async dispatch => {
     const cohorts = [
@@ -624,11 +632,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -637,14 +648,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('Downloads', () => {
   expect(Downloads).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = Downloads;
   const props = {
     ...commonProps,
@@ -656,7 +668,6 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -680,9 +691,10 @@ test('Render 1 1', async done => {
 
   done();
 });
+/** @GENERATED: END **/
 
+/** @GENERATED: BEGIN **/
 test('Render 2 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = Downloads;
   const props = {
     ...commonProps,
@@ -694,7 +706,6 @@ test('Render 2 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   userActions.getUser = jest.fn();
 
@@ -732,3 +743,4 @@ test('Render 2 1', async done => {
 
   done();
 });
+/** @GENERATED: END **/

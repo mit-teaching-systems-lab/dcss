@@ -75,7 +75,7 @@ describe('GET_CHAT_SUCCESS', () => {
         Array [
           "/api/chats",
           Object {
-            "body": "{\\"cohort_id\\":null,\\"scenario_id\\":1}",
+            "body": "{\\"cohort_id\\":null,\\"scenario_id\\":1,\\"is_open\\":false}",
             "headers": Object {
               "Content-Type": "application/json",
             },
@@ -130,7 +130,7 @@ describe('GET_CHAT_ERROR', () => {
         Array [
           "/api/chats",
           Object {
-            "body": "{\\"cohort_id\\":null,\\"scenario_id\\":1}",
+            "body": "{\\"cohort_id\\":null,\\"scenario_id\\":1,\\"is_open\\":false}",
             "headers": Object {
               "Content-Type": "application/json",
             },

@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -223,7 +225,6 @@ jest.mock('react-rnd', () => {
       ...props
     };
 
-    // eslint-disable-next-line react/prop-types
     return <div>{props.children}</div>;
   }
 
@@ -275,26 +276,34 @@ let messages;
 import Chat from '../../components/Chat/index.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
 
@@ -408,6 +417,11 @@ beforeEach(() => {
 
   messages = [message1, message2, message3, message4, message5];
 
+  chatActions.getChat.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  });
+
   chatActions.getChatById.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -463,11 +477,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -476,14 +493,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('Chat', () => {
   expect(Chat).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = Chat;
   const props = {
     ...commonProps,
@@ -495,13 +513,13 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
 /* INJECTION STARTS HERE */
 
@@ -668,11 +686,12 @@ describe('componentDidMount', () => {
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "user-join",
+          "user-join-slide",
           Object {
             "chat": Object {
               "id": 1,
             },
+            "run": null,
             "user": Object {
               "id": null,
             },
@@ -758,11 +777,12 @@ describe('componentWillUnmount', () => {
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "user-join",
+          "user-join-slide",
           Object {
             "chat": Object {
               "id": 1,
             },
+            "run": null,
             "user": Object {
               "id": null,
             },
@@ -774,27 +794,17 @@ describe('componentWillUnmount', () => {
     window.dispatchEvent(new Event('beforeunload'));
 
     await waitFor(() =>
-      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2)
+      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1)
     );
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "user-join",
+          "user-join-slide",
           Object {
             "chat": Object {
               "id": 1,
             },
-            "user": Object {
-              "id": null,
-            },
-          },
-        ],
-        Array [
-          "user-part",
-          Object {
-            "chat": Object {
-              "id": 1,
-            },
+            "run": null,
             "user": Object {
               "id": null,
             },
@@ -840,11 +850,12 @@ describe('componentWillUnmount', () => {
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "user-join",
+          "user-join-slide",
           Object {
             "chat": Object {
               "id": 1,
             },
+            "run": null,
             "user": Object {
               "id": null,
             },
@@ -856,27 +867,17 @@ describe('componentWillUnmount', () => {
     unmount();
 
     await waitFor(() =>
-      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2)
+      expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(1)
     );
     expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
       Array [
         Array [
-          "user-join",
+          "user-join-slide",
           Object {
             "chat": Object {
               "id": 1,
             },
-            "user": Object {
-              "id": null,
-            },
-          },
-        ],
-        Array [
-          "user-part",
-          Object {
-            "chat": Object {
-              "id": 1,
-            },
+            "run": null,
             "user": Object {
               "id": null,
             },
@@ -1609,6 +1610,8 @@ test('Rnd: onDragStop/onResizeStop', async done => {
           role="dialog"
         >
           <ChatMinMax
+            className=""
+            isMinimized={false}
             onChange={[Function]}
           />
           <div
@@ -1649,6 +1652,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                       "ended_at": null,
                       "host_id": 2,
                       "id": 1,
+                      "is_open": false,
                       "scenario_id": 42,
                       "updated_at": null,
                       "users": Array [
@@ -1720,7 +1724,10 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                   socket={
                     Object {
                       "_events": Object {
-                        "chat-message-created": [Function],
+                        "chat-message-created": Array [
+                          [Function],
+                          [Function],
+                        ],
                         "chat-message-updated": [Function],
                         "join-or-part": [Function],
                       },
@@ -1729,11 +1736,12 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                       "emit": [MockFunction] {
                         "calls": Array [
                           Array [
-                            "user-join",
+                            "user-join-slide",
                             Object {
                               "chat": Object {
                                 "id": 1,
                               },
+                              "run": null,
                               "user": Object {
                                 "id": null,
                               },
@@ -1759,11 +1767,19 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                             [Function],
                           ],
                           Array [
+                            "chat-message-created",
+                            [Function],
+                          ],
+                          Array [
                             "chat-message-updated",
                             [Function],
                           ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -1912,6 +1928,8 @@ test('Rnd: onDrag/onResize', async done => {
           role="dialog"
         >
           <ChatMinMax
+            className=""
+            isMinimized={false}
             onChange={[Function]}
           />
           <div
@@ -1952,6 +1970,7 @@ test('Rnd: onDrag/onResize', async done => {
                       "ended_at": null,
                       "host_id": 2,
                       "id": 1,
+                      "is_open": false,
                       "scenario_id": 42,
                       "updated_at": null,
                       "users": Array [
@@ -2023,7 +2042,10 @@ test('Rnd: onDrag/onResize', async done => {
                   socket={
                     Object {
                       "_events": Object {
-                        "chat-message-created": [Function],
+                        "chat-message-created": Array [
+                          [Function],
+                          [Function],
+                        ],
                         "chat-message-updated": [Function],
                         "join-or-part": [Function],
                       },
@@ -2032,11 +2054,12 @@ test('Rnd: onDrag/onResize', async done => {
                       "emit": [MockFunction] {
                         "calls": Array [
                           Array [
-                            "user-join",
+                            "user-join-slide",
                             Object {
                               "chat": Object {
                                 "id": 1,
                               },
+                              "run": null,
                               "user": Object {
                                 "id": null,
                               },
@@ -2062,11 +2085,19 @@ test('Rnd: onDrag/onResize', async done => {
                             [Function],
                           ],
                           Array [
+                            "chat-message-created",
+                            [Function],
+                          ],
+                          Array [
                             "chat-message-updated",
                             [Function],
                           ],
                         ],
                         "results": Array [
+                          Object {
+                            "type": "return",
+                            "value": undefined,
+                          },
                           Object {
                             "type": "return",
                             "value": undefined,
@@ -2260,6 +2291,10 @@ test('Receives new message, not minimized', async done => {
         [Function],
       ],
       Array [
+        "chat-message-created",
+        [Function],
+      ],
+      Array [
         "chat-message-updated",
         [Function],
       ],
@@ -2349,6 +2384,10 @@ test('Receives new message, minimized, not mobile', async done => {
     Array [
       Array [
         "join-or-part",
+        [Function],
+      ],
+      Array [
+        "chat-message-created",
         [Function],
       ],
       Array [
@@ -2456,6 +2495,10 @@ test('Receives new message, minimized, mobile', async done => {
     Array [
       Array [
         "join-or-part",
+        [Function],
+      ],
+      Array [
+        "chat-message-created",
         [Function],
       ],
       Array [

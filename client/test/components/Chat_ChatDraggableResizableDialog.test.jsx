@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -52,7 +54,6 @@ jest.mock('react-rnd', () => {
       ...props
     };
 
-    // eslint-disable-next-line react/prop-types
     return <div>{props.children}</div>;
   }
 
@@ -65,26 +66,34 @@ jest.mock('react-rnd', () => {
 import ChatDraggableResizableDialog from '../../components/Chat/ChatDraggableResizableDialog.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
 
@@ -94,11 +103,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -107,14 +119,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('ChatDraggableResizableDialog', () => {
   expect(ChatDraggableResizableDialog).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = ChatDraggableResizableDialog;
   const props = {
     ...commonProps,
@@ -131,13 +144,13 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
 /* INJECTION STARTS HERE */
 

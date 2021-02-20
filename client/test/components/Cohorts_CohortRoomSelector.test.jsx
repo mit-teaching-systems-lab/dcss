@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -118,26 +120,34 @@ const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 import CohortRoomSelector from '../../components/Cohorts/CohortRoomSelector.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
 
@@ -695,6 +705,11 @@ beforeEach(() => {
     return chat;
   });
 
+  chatActions.getChat.mockImplementation(() => async dispatch => {
+    dispatch({ type: GET_CHAT_SUCCESS, chat });
+    return chat;
+  });
+
   chatActions.getChatById.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -725,11 +740,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -738,14 +756,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('CohortRoomSelector', () => {
   expect(CohortRoomSelector).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = CohortRoomSelector;
   const props = {
     ...commonProps,
@@ -763,16 +782,15 @@ test('Render 1 1', async done => {
   state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  /** @GENERATED: END **/
-
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
+/** @GENERATED: BEGIN **/
 test('Render 2 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = CohortRoomSelector;
   const props = {
     ...commonProps,
@@ -789,13 +807,12 @@ test('Render 2 1', async done => {
   state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  /** @GENERATED: END **/
-
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
 /* INJECTION STARTS HERE */
 

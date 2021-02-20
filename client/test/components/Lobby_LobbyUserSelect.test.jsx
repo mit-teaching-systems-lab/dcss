@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -110,26 +112,34 @@ const expectDateString = expect.stringMatching(/[0-9]{4}-[0-9]{2}-[0-9]{2}.*/i);
 import LobbyUserSelect from '../../components/Lobby/LobbyUserSelect.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
 
@@ -244,6 +254,12 @@ beforeEach(() => {
     participantUser,
     anonymousUser
   ];
+
+  for (let user of users) {
+    user.persona_id = null;
+    user.is_present = true;
+    user.is_muted = false;
+  }
 
   usersById = users.reduce(
     (accum, user) => ({
@@ -698,6 +714,15 @@ beforeEach(() => {
     }
   );
 
+  chatActions.getChatUsersByChatId.mockImplementation(() => async dispatch => {
+    users = users.map(user => ({
+      ...user,
+      persona_id: null
+    }));
+    dispatch({ type: GET_CHAT_USERS_SUCCESS, users });
+    return users;
+  });
+
   chatActions.joinChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });
     return chat;
@@ -719,11 +744,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -732,14 +760,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('LobbyUserSelect', () => {
   expect(LobbyUserSelect).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = LobbyUserSelect;
   const props = {
     ...commonProps,
@@ -756,16 +785,15 @@ test('Render 1 1', async done => {
   state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  /** @GENERATED: END **/
-
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
+/** @GENERATED: BEGIN **/
 test('Render 2 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = LobbyUserSelect;
   const props = {
     ...commonProps,
@@ -781,13 +809,12 @@ test('Render 2 1', async done => {
   state.user = user;
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
-  /** @GENERATED: END **/
-
   await render(<ConnectedRoutedComponent {...props} />);
   expect(serialize()).toMatchSnapshot();
 
   done();
 });
+/** @GENERATED: END **/
 
 /* INJECTION STARTS HERE */
 test('Fallbacks for state.chat, state.scenario, state.cohort (missing)', async done => {
@@ -810,10 +837,6 @@ test('Fallbacks for state.chat, state.scenario, state.cohort (missing)', async d
     users,
     usersById
   };
-
-  const emitter = new Emitter();
-
-  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
@@ -843,10 +866,6 @@ test('Fallbacks for state.chat, state.scenario, state.cohort (unloaded)', async 
     usersById
   };
 
-  const emitter = new Emitter();
-
-  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
   await render(<ConnectedRoutedComponent {...props} />);
@@ -874,10 +893,6 @@ test('Fallbacks for state.chat, state.scenario, state.cohort (unavailable)', asy
     users,
     usersById
   };
-
-  const emitter = new Emitter();
-
-  globalThis.mockSocket.emit.mockImplementation(emitter.emit);
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
 
@@ -909,6 +924,10 @@ describe('With cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
@@ -948,6 +967,10 @@ describe('With cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const searchInput = await screen.getByRole('textbox');
 
@@ -986,6 +1009,10 @@ describe('With cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const searchInput = await screen.getByRole('textbox');
 
@@ -1023,6 +1050,10 @@ describe('With cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const selected = await screen.getByTestId('lobby-user-select-invitees');
@@ -1068,6 +1099,10 @@ describe('With cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const selected = await screen.getByTestId('lobby-user-select-invitees');
@@ -1123,6 +1158,10 @@ describe('With cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const selected = await screen.getByTestId('lobby-user-select-invitees');
     const searchInput = await screen.getByRole('textbox');
@@ -1175,6 +1214,10 @@ describe('With cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
@@ -1267,6 +1310,10 @@ describe('With cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
     expect(sendInvitesButtons.length).toBe(2);
@@ -1343,6 +1390,10 @@ describe('With cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
     expect(sendInvitesButtons.length).toBe(2);
@@ -1396,6 +1447,10 @@ describe('With cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     let sendInvitesButtons = await screen.getAllByText(/send invites/i);
@@ -1507,110 +1562,6 @@ describe('With cohort', () => {
     done();
   });
 
-  test('Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatId', async done => {
-    const Component = LobbyUserSelect;
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const emitter = new Emitter();
-
-    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-    globalThis.mockSocket.on.mockImplementation(emitter.on);
-    globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-    expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "run-chat-link",
-          [Function],
-        ],
-      ]
-    `);
-    expect(serialize()).toMatchSnapshot();
-
-    globalThis.mockSocket.emit('run-chat-link', {});
-
-    await waitFor(() =>
-      expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-    );
-
-    done();
-  });
-
-  test('Send CREATE_USER_CHANNEL', async done => {
-    const Component = LobbyUserSelect;
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const emitter = new Emitter();
-
-    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
-    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "create-user-channel",
-          Object {
-            "user": Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "participant",
-                "super_admin",
-              ],
-              "username": "super",
-            },
-          },
-        ],
-      ]
-    `);
-    expect(serialize()).toMatchSnapshot();
-    done();
-  });
-
   test('Dismiss instructions', async done => {
     const Component = LobbyUserSelect;
 
@@ -1633,6 +1584,10 @@ describe('With cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const instructions = await screen.getByTestId(
@@ -1670,6 +1625,10 @@ describe('Without cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
     expect(sendInvitesButtons.length).toBe(2);
@@ -1708,6 +1667,10 @@ describe('Without cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const searchInput = await screen.getByRole('textbox');
@@ -1748,6 +1711,10 @@ describe('Without cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const searchInput = await screen.getByRole('textbox');
 
@@ -1786,6 +1753,10 @@ describe('Without cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const selected = await screen.getByTestId('lobby-user-select-invitees');
@@ -1832,6 +1803,10 @@ describe('Without cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const selected = await screen.getByTestId('lobby-user-select-invitees');
@@ -1888,6 +1863,10 @@ describe('Without cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const selected = await screen.getByTestId('lobby-user-select-invitees');
     const searchInput = await screen.getByRole('textbox');
@@ -1941,6 +1920,10 @@ describe('Without cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
@@ -2034,6 +2017,10 @@ describe('Without cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
     expect(sendInvitesButtons.length).toBe(2);
@@ -2111,6 +2098,10 @@ describe('Without cohort', () => {
 
     await render(<ConnectedRoutedComponent {...props} />);
     expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
+    expect(serialize()).toMatchSnapshot();
 
     const sendInvitesButtons = await screen.getAllByText(/send invites/i);
     expect(sendInvitesButtons.length).toBe(2);
@@ -2165,6 +2156,10 @@ describe('Without cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     let sendInvitesButtons = await screen.getAllByText(/send invites/i);
@@ -2276,111 +2271,6 @@ describe('Without cohort', () => {
     done();
   });
 
-  test('Receives RUN_CHAT_LINK, calls getLinkedChatUsersByChatId', async done => {
-    const Component = LobbyUserSelect;
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort: null,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort: null,
-      scenario,
-      user,
-      users
-    };
-
-    const emitter = new Emitter();
-
-    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-    globalThis.mockSocket.on.mockImplementation(emitter.on);
-    globalThis.mockSocket.off.mockImplementation(emitter.off);
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    await waitFor(() => expect(globalThis.mockSocket.on).toHaveBeenCalled());
-    expect(globalThis.mockSocket.on.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "run-chat-link",
-          [Function],
-        ],
-      ]
-    `);
-    expect(serialize()).toMatchSnapshot();
-
-    globalThis.mockSocket.emit('run-chat-link', {});
-
-    await waitFor(() =>
-      expect(chatActions.getLinkedChatUsersByChatId).toHaveBeenCalled()
-    );
-
-    done();
-  });
-
-  test('Send CREATE_USER_CHANNEL', async done => {
-    const Component = LobbyUserSelect;
-
-    const props = {
-      ...commonProps,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const state = {
-      ...commonState,
-      chat,
-      cohort,
-      scenario,
-      user
-    };
-
-    const emitter = new Emitter();
-
-    globalThis.mockSocket.emit.mockImplementation(emitter.emit);
-
-    const ConnectedRoutedComponent = reduxer(Component, props, state);
-
-    await render(<ConnectedRoutedComponent {...props} />);
-    expect(serialize()).toMatchSnapshot();
-
-    await waitFor(() => expect(globalThis.mockSocket.emit).toHaveBeenCalled());
-    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
-      Array [
-        Array [
-          "create-user-channel",
-          Object {
-            "user": Object {
-              "email": "super@email.com",
-              "id": 999,
-              "is_anonymous": false,
-              "is_super": true,
-              "personalname": "Super User",
-              "roles": Array [
-                "participant",
-                "super_admin",
-              ],
-              "username": "super",
-            },
-          },
-        ],
-      ]
-    `);
-    expect(serialize()).toMatchSnapshot();
-    done();
-  });
-
   test('Dismiss instructions', async done => {
     const Component = LobbyUserSelect;
 
@@ -2404,6 +2294,10 @@ describe('Without cohort', () => {
     const ConnectedRoutedComponent = reduxer(Component, props, state);
 
     await render(<ConnectedRoutedComponent {...props} />);
+    expect(serialize()).toMatchSnapshot();
+    await waitFor(() =>
+      expect(screen.getByTestId('lobby-user-select')).toBeInTheDocument()
+    );
     expect(serialize()).toMatchSnapshot();
 
     const instructions = await screen.getByTestId(

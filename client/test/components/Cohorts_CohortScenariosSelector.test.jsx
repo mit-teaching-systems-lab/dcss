@@ -1,3 +1,4 @@
+/** @TEMPLATE: BEGIN **/
 import React from 'react';
 jest.mock('react', () => ({
   ...jest.requireActual('react'),
@@ -23,6 +24,7 @@ import {
   waitFor
 } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+/** @TEMPLATE: END **/
 
 /** @GENERATED: BEGIN **/
 
@@ -39,6 +41,7 @@ import * as scenarioActions from '../../actions/scenario';
 import * as userActions from '../../actions/user';
 import * as usersActions from '../../actions/users';
 jest.mock('../../actions/cohort');
+jest.mock('../../actions/scenario');
 jest.mock('../../actions/user');
 jest.mock('../../actions/users');
 
@@ -316,26 +319,34 @@ let scenariosById;
 import CohortScenariosSelector from '../../components/Cohorts/CohortScenariosSelector.jsx';
 /** @GENERATED: END **/
 
+/** @TEMPLATE: BEGIN **/
 const original = JSON.parse(JSON.stringify(state));
 let container = null;
 let commonProps = null;
 let commonState = null;
+/** @TEMPLATE: END **/
 
 beforeAll(() => {
+  /** @TEMPLATE: BEGIN **/
   (window || global).fetch = jest.fn();
+  /** @TEMPLATE: END **/
 });
 
 afterAll(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.restoreAllMocks();
+  /** @TEMPLATE: END **/
 });
 
 beforeEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.useFakeTimers();
   container = document.createElement('div');
   container.setAttribute('id', 'root');
   document.body.appendChild(container);
 
   fetchImplementation(fetch);
+  /** @TEMPLATE: END **/
 
   /** @GENERATED: BEGIN **/
 
@@ -352,22 +363,18 @@ beforeEach(() => {
     return accum;
   }, {});
 
-  scenarioActions.getScenariosByStatus = jest.fn();
-
   scenarioActions.getScenariosByStatus.mockImplementation(
     cohort => async dispatch => {
       dispatch({ type: GET_SCENARIOS_SUCCESS, scenarios });
       return cohort;
     }
   );
-  cohortActions.getCohortScenarios = jest.fn();
 
   cohortActions.getCohortScenarios.mockImplementation(() => async dispatch => {
     const scenarios = [scenario, scenario2];
     dispatch({ type: GET_COHORT_SCENARIOS_SUCCESS, scenarios });
     return scenarios;
   });
-  cohortActions.getCohort = jest.fn();
 
   cohortActions.getCohort.mockImplementation(() => async dispatch => {
     const cohort = {
@@ -631,7 +638,6 @@ beforeEach(() => {
     dispatch({ type: GET_COHORT_SUCCESS, cohort });
     return cohort;
   });
-  cohortActions.setCohortScenarios = jest.fn();
 
   cohortActions.setCohortScenarios.mockImplementation(
     cohort => async dispatch => {
@@ -639,9 +645,8 @@ beforeEach(() => {
       return cohort;
     }
   );
-  usersActions.getUser = jest.fn();
 
-  usersActions.getUser.mockImplementation(() => async dispatch => {
+  userActions.getUser.mockImplementation(() => async dispatch => {
     const user = {
       username: 'facilitator',
       personalname: 'Facilitator User',
@@ -669,7 +674,6 @@ beforeEach(() => {
     dispatch({ type: GET_USER_SUCCESS, user });
     return user;
   });
-  usersActions.getUsers = jest.fn();
 
   usersActions.getUsers.mockImplementation(() => async dispatch => {
     const users = [
@@ -795,11 +799,14 @@ beforeEach(() => {
 
   /** @GENERATED: END **/
 
+  /** @TEMPLATE: BEGIN **/
   commonProps = {};
   commonState = JSON.parse(JSON.stringify(original));
+  /** @TEMPLATE: END **/
 });
 
 afterEach(() => {
+  /** @TEMPLATE: BEGIN **/
   jest.runOnlyPendingTimers();
   jest.useRealTimers();
   jest.resetAllMocks();
@@ -808,14 +815,15 @@ afterEach(() => {
   container = null;
   commonProps = null;
   commonState = null;
+  /** @TEMPLATE: END **/
 });
 
 test('CohortScenariosSelector', () => {
   expect(CohortScenariosSelector).toBeDefined();
 });
 
+/** @GENERATED: BEGIN **/
 test('Render 1 1', async done => {
-  /** @GENERATED: BEGIN **/
   const Component = CohortScenariosSelector;
   const props = {
     ...commonProps,
@@ -828,7 +836,6 @@ test('Render 1 1', async done => {
   };
 
   const ConnectedRoutedComponent = reduxer(Component, props, state);
-  /** @GENERATED: END **/
 
   const { asFragment } = render(<ConnectedRoutedComponent {...props} />);
   expect(asFragment()).toMatchSnapshot();
@@ -837,6 +844,7 @@ test('Render 1 1', async done => {
 
   done();
 });
+/** @GENERATED: END **/
 
 /* INJECTION STARTS HERE */
 
