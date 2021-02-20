@@ -564,8 +564,14 @@ const mapStateToProps = state => {
   if (state.chats) {
     chats.push(
       ...state.chats.filter(
-        ({ ended_at, host_id, is_open }) =>
-          (is_open || host_id === user.id) && !ended_at
+        ({ cohort_id, ended_at, host_id, is_open }) => {
+          const isKeeper = (is_open || host_id === user.id) && !ended_at;
+          if (cohort && cohort.id) {
+            return isKeeper && cohort.id === cohort_id;
+          } else {
+            return isKeeper;
+          }
+        }
       )
     );
   }
