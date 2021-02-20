@@ -45,9 +45,9 @@ export class Cohort extends React.Component {
       Storage.set('app/referrer_params', location.search);
     }
 
-    this.sessionKey = `cohort/${id}`;
+    this.storageKey = `cohort/${id}`;
 
-    const { activeTabKey, tabs } = Storage.get(this.sessionKey, {
+    const { activeTabKey, tabs } = Storage.get(this.storageKey, {
       activeTabKey: 'cohort',
       tabs: []
     });
@@ -188,7 +188,7 @@ export class Cohort extends React.Component {
     const { isFacilitator } = authority;
 
     // Everytime there is a render, save the state.
-    Storage.set(this.sessionKey, { activeTabKey, tabs });
+    Storage.set(this.storageKey, { activeTabKey, tabs });
 
     const menuItemShowCohortUrl = (
       <Input

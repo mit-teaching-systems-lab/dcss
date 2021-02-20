@@ -71,9 +71,9 @@ class Editor extends Component {
     }
 
     if (!isCopyScenario && !isNewScenario) {
-      this.sessionKey = `editor/${scenarioId}`;
+      this.storageKey = `editor/${scenarioId}`;
 
-      let persisted = Storage.get(this.sessionKey, {
+      let persisted = Storage.get(this.storageKey, {
         activeTab: 'scenario',
         activeSlideIndex
       });
@@ -159,7 +159,7 @@ class Editor extends Component {
 
     this.props.history.push(pathname);
 
-    Storage.set(this.sessionKey, {
+    Storage.set(this.storageKey, {
       activeSlideIndex: activeNonZeroSlideIndex,
       activeTab
     });
@@ -443,7 +443,9 @@ class Editor extends Component {
         key="menu-item-scenario-run"
         name="Run this scenario"
         onClick={() => {
-          this.props.history.push(`/run/${scenarioId}/slide/0`);
+          this.props.history.push(
+            `/run/${Identity.toHash(scenarioId)}/slide/0`
+          );
         }}
       >
         <Icon name="play" />

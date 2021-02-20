@@ -27,13 +27,13 @@ export class CohortProgress extends React.Component {
   constructor(props) {
     super(props);
 
-    this.sessionKey = `cohort-progress/${this.props.id}`;
-    let persisted = Storage.get(this.sessionKey);
+    this.storageKey = `cohort-progress/${this.props.id}`;
+    let persisted = Storage.get(this.storageKey);
 
     /* istanbul ignore else */
     if (!persisted) {
       persisted = { refresh: true };
-      Storage.set(this.sessionKey, persisted);
+      Storage.set(this.storageKey, persisted);
     }
 
     const { refresh } = persisted;
@@ -129,7 +129,7 @@ export class CohortProgress extends React.Component {
       } else {
         this.refresh();
       }
-      Storage.set(this.sessionKey, this.state);
+      Storage.set(this.storageKey, this.state);
     });
   }
 

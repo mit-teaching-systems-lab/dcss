@@ -4,14 +4,12 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from '@components/UI';
 
-import scrollIntoView from '@utils/scrollIntoView';
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Boundary from '@components/Boundary';
 import Loading from '@components/Loading';
-import Media from '@utils/Media';
-import Storage from '@utils/Storage';
+import Lobby from '@components/Lobby';
 import { getSlides, getScenario, setScenario } from '@actions/scenario';
 import withRunEventCapturing, {
   SCENARIO_START,
@@ -19,6 +17,9 @@ import withRunEventCapturing, {
   SLIDE_NEXT,
   SLIDE_PREVIOUS
 } from '@hoc/withRunEventCapturing';
+import Media from '@utils/Media';
+import scrollIntoView from '@utils/scrollIntoView';
+import Storage from '@utils/Storage';
 import './Scenario.css';
 
 class Scenario extends Component {
@@ -55,11 +56,11 @@ class Scenario extends Component {
     this.activateSlide = this.activateSlide.bind(this);
 
     if (this.isScenarioRun) {
-      this.runKey = cohortId
+      this.storageKey = cohortId
         ? `cohort/${cohortId}/run/${scenarioId}`
         : `run/${scenarioId}`;
 
-      const { slideHistory } = Storage.merge(this.runKey, {
+      const { slideHistory } = Storage.merge(this.storageKey, {
         slideHistory: [0]
       });
 
@@ -82,7 +83,11 @@ class Scenario extends Component {
   }
 
   get isCohortScenarioRun() {
-    return this.isScenarioRun && location.pathname.includes('/cohort/');
+    return location.pathname.includes('/cohort/');
+  }
+
+  get isMultiparticipant() {
+    return this.props.scenario.personas.length > 1;
   }
 
   getOnClickHandler(type) {
@@ -147,7 +152,7 @@ class Scenario extends Component {
           // Set the former run slide to the value stored for the active run slide
           const formerRunSlideIndex = this.state.activeRunSlideIndex;
           slideHistory.push(formerRunSlideIndex);
-          Storage.merge(this.runKey, { slideHistory });
+          Storage.merge(this.storageKey, { slideHistory });
 
           // Set the active run slide to the next slide index + 1
           const nextSlideIndex = this.slides.findIndex(
@@ -386,10 +391,10 @@ class Scenario extends Component {
       // As long as this run is unfinished, update the
       // the local state with the latest slide.
       if (!run.ended_at) {
-        Storage.merge(this.runKey, { activeRunSlideIndex });
+        Storage.merge(this.storageKey, { activeRunSlideIndex });
       } else {
         // Otherwise, delete the local state
-        Storage.delete(this.runKey);
+        Storage.delete(this.storageKey);
       }
     }
 
@@ -441,8 +446,9 @@ Scenario.propTypes = {
   activeSlideIndex: PropTypes.number,
   baseurl: PropTypes.string,
   categories: PropTypes.array,
+  chat: PropTypes.object,
+  chatId: PropTypes.node,
   cohortId: PropTypes.node,
-  description: PropTypes.string,
   getScenario: PropTypes.func.isRequired,
   getSlides: PropTypes.func.isRequired,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),
@@ -468,16 +474,19 @@ Scenario.propTypes = {
   setScenario: PropTypes.func.isRequired,
   slides: PropTypes.array,
   status: PropTypes.number,
-  title: PropTypes.string,
   user: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
   const scenario =
-    state.scenariosById[ownProps.scenarioId] || state.scenario || {};
-  const { title, description, consent } = scenario;
+    ownProps.scenario ||
+    (ownProps.scenarioId && state.scenariosById[ownProps.scenarioId]) ||
+    state.scenario ||
+    {};
+  const chat =
+    (ownProps.chatId && state.chatsById[ownProps.chatId]) || state.chat;
   const { run, user } = state;
-  return { title, description, consent, run, scenario, user };
+  return { chat, run, scenario, user };
 };
 
 const mapDispatchToProps = dispatch => ({

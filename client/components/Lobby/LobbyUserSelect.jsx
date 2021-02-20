@@ -6,6 +6,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import {
   createChatInvite,
+  // This is used for cohort scenario runs
+  getChatUsersByChatId,
+  // This is used for standalone scenario runs
   getLinkedChatUsersByChatId,
   joinChat
 } from '@actions/chat';
@@ -49,10 +52,20 @@ class LobbyUserSelect extends Component {
     super(props);
 
     const hasChat = !!(this.props.chat && this.props.chat.id);
-    this.sessionKey = hasChat ? `lobby/${this.props.chat.id}` : '';
+    const hasCohort = !!(this.props.cohort && this.props.cohort.id);
+
+    this.storageKey = `lobby/`;
+
+    if (hasChat) {
+      this.storageKey += `${this.props.chat.id}/`;
+    }
+
+    if (hasCohort) {
+      this.storageKey += `${this.props.cohort.id}/`;
+    }
 
     const user = this.props.user;
-    const { instruction, selected } = Storage.get(this.sessionKey, {
+    const { instruction, selected } = Storage.get(this.storageKey, {
       instruction: {
         isOpen: true
       },
@@ -83,34 +96,54 @@ class LobbyUserSelect extends Component {
 
     this.onRemoveInviteeClick = this.onRemoveInviteeClick.bind(this);
     this.onResultSelect = this.onResultSelect.bind(this);
-    this.onRunChatLink = this.onRunChatLink.bind(this);
     this.onSearchChange = this.onSearchChange.bind(this);
     this.onSelectedPersonaChange = this.onSelectedPersonaChange.bind(this);
     this.onSendInviteClick = this.onSendInviteClick.bind(this);
     this.renderInviteeList = this.renderInviteeList.bind(this);
   }
 
-  async componentDidMount() {
-    const { user } = this.props;
-
-    if (this.props.chat && this.props.chat.id) {
+  async getChatUsers() {
+    if (!this.props.chat) {
+      return;
+    }
+    if (this.props.cohort) {
+      await this.props.getChatUsersByChatId(this.props.chat.id);
+    } else {
       await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
-
-      this.setState({
-        isReady: true
-      });
-
-      this.props.socket.emit(CREATE_USER_CHANNEL, { user });
-      this.props.socket.on(RUN_CHAT_LINK, this.onRunChatLink);
     }
   }
 
-  componentWillUnmount() {
-    this.props.socket.off(RUN_CHAT_LINK, this.onRunChatLink);
-  }
+  async componentDidMount() {
+    const { user } = this.props;
 
-  async onRunChatLink(/* data */) {
-    await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
+    await this.getChatUsers();
+
+    const selected = [];
+
+    if (this.props.chat) {
+      for (let selection of this.state.selected) {
+        const chatUser = this.props.chat.usersById[selection.user.id];
+        if (chatUser) {
+          selected.push({
+            ...selection,
+            persona: {
+              id: chatUser.persona_id
+            }
+          });
+        } else {
+          selected.push({
+            ...selection
+          });
+        }
+      }
+    }
+
+    Storage.merge(this.storageKey, { selected });
+
+    this.setState({
+      isReady: true,
+      selected
+    });
   }
 
   onRemoveInviteeClick(event, { id }) {
@@ -120,7 +153,7 @@ class LobbyUserSelect extends Component {
     this.setState({
       selected
     });
-    Storage.merge(this.sessionKey, { selected });
+    Storage.merge(this.storageKey, { selected });
   }
 
   onSelectedPersonaChange(event, { name: index, value: id }) {
@@ -134,7 +167,13 @@ class LobbyUserSelect extends Component {
     this.setState({
       selected
     });
-    Storage.merge(this.sessionKey, { selected });
+    Storage.merge(this.storageKey, { selected });
+
+    if (this.props.onSelect) {
+      if (selected[index].user.id === this.props.user.id) {
+        this.props.onSelect(selected[index]);
+      }
+    }
   }
 
   renderInviteeList() {
@@ -142,36 +181,34 @@ class LobbyUserSelect extends Component {
     const { chat, personasInUseById, scenario, user, usersById } = this.props;
     const host = chat.usersById[chat.host_id];
     const selected = this.state.selected.reduce((accum, selection) => {
-      // Don't include users that are already in the chat and waiting
       const userInChat = chat.usersById[selection.user.id];
 
-      if (!userInChat) {
-        accum.push(selection);
-      } else {
-        if (!userInChat.persona_id || userInChat === host) {
-          accum.push(selection);
-        }
+      if (userInChat && userInChat !== host) {
+        selection.assigned = scenario.personas.find(
+          persona => persona.id === userInChat.persona_id
+        );
       }
 
+      accum.push(selection);
       return accum;
     }, []);
     const defaultOptions = scenario.personas.reduce((accum, persona, index) => {
       // Don't include personas that are already accepted by users that
       // are in the chat and waiting.
-      if (!personasInUseById[persona.id]) {
-        accum.push({
-          key: Identity.key({ persona, default: index }),
-          value: persona.id,
-          text: persona.name,
-          content: (
-            <Fragment>
-              <Text>{persona.name}</Text>
-              <br />
-              <Text size="small">{persona.description}</Text>
-            </Fragment>
-          )
-        });
-      }
+      // if (!personasInUseById[persona.id]) {
+      accum.push({
+        key: Identity.key({ persona, default: index }),
+        value: persona.id,
+        text: persona.name,
+        content: (
+          <Fragment>
+            <Text>{persona.name}</Text>
+            <br />
+            <Text size="small">{persona.description}</Text>
+          </Fragment>
+        )
+      });
+      // }
       return accum;
     }, []);
 
@@ -226,7 +263,6 @@ class LobbyUserSelect extends Component {
           const articleOrPossessivePronoun = isSelectedNotHost ? 'a' : 'your';
 
           const placeholder = `${action} ${articleOrPossessivePronoun} role`;
-
           const dropdown = (
             <Dropdown
               selection
@@ -240,9 +276,19 @@ class LobbyUserSelect extends Component {
             />
           );
 
+          const assignedRole = selection.assigned ? (
+            <div style={{ padding: '0.7em 0.5em 0 0' }}>
+              {selection.assigned.name}
+            </div>
+          ) : null;
+
+          const rightFloatedContents = assignedRole || dropdown;
+
           return (
             <List.Item key={key}>
-              <List.Content floated="right">{dropdown}</List.Content>
+              <List.Content floated="right">
+                {rightFloatedContents}
+              </List.Content>
               <List.Content>
                 {isSelectedNotHost ? (
                   <Button
@@ -323,7 +369,7 @@ class LobbyUserSelect extends Component {
           selected
         });
 
-        Storage.merge(this.sessionKey, { selected });
+        Storage.merge(this.storageKey, { selected });
       };
 
       const secondaryOnClick = () => {
@@ -359,7 +405,7 @@ class LobbyUserSelect extends Component {
         selected
       });
 
-      Storage.merge(this.sessionKey, { selected });
+      Storage.merge(this.storageKey, { selected });
     }
   }
 
@@ -586,17 +632,25 @@ class LobbyUserSelect extends Component {
       };
     }
 
-    let tally = (
+    const tally = (
       <Text {...remainingTextProps}>
-        {selected.length} {pluralSelected} , {remainingMessage}
+        {selected.length} {pluralSelected}, {remainingMessage}
       </Text>
     );
 
-    let headerContent = (
+    const headerAdditional =
+      selectedCount === 1 ? (
+        <Fragment>
+          You must select at least <strong>1</strong> other participant and
+          assign them a role to continue.
+        </Fragment>
+      ) : null;
+
+    const headerContent = (
       <Fragment>
         There are <strong>{availableCount}</strong> other {pluralAvailable}{' '}
         available to fill the other <strong>{otherRoleCount}</strong>{' '}
-        {pluralRole}.
+        {pluralRole}. {headerAdditional}
       </Fragment>
     );
 
@@ -630,7 +684,7 @@ class LobbyUserSelect extends Component {
       this.setState({
         instruction
       });
-      Storage.merge(this.sessionKey, { instruction });
+      Storage.merge(this.storageKey, { instruction });
     };
 
     return (
@@ -704,6 +758,8 @@ class LobbyUserSelect extends Component {
         {confirmation.isOpen ? (
           <LobbyConfirmationDialog {...confirmation.props} />
         ) : null}
+
+        <div data-testid="lobby-user-select" />
       </Fragment>
     );
   }
@@ -713,11 +769,12 @@ LobbyUserSelect.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
   createChatInvite: PropTypes.func,
+  getChatUsersByChatId: PropTypes.func,
   getLinkedChatUsersByChatId: PropTypes.func,
   getInvites: PropTypes.func,
   joinChat: PropTypes.func,
+  onSelect: PropTypes.func,
   personasInUseById: PropTypes.object,
-  socket: PropTypes.object,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
@@ -783,16 +840,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   createChatInvite: (id, params) => dispatch(createChatInvite(id, params)),
+  getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
   getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getInvites: () => dispatch(getInvites()),
   joinChat: (id, persona) => dispatch(joinChat(id, persona))
 });
 
-export default withSocket(
-  withRouter(
-    connect(
-      mapStateToProps,
-      mapDispatchToProps
-    )(LobbyUserSelect)
-  )
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(LobbyUserSelect)
 );

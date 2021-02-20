@@ -33,10 +33,10 @@ class Slides extends React.Component {
     const activeNonZeroSlideIndex =
       Number(this.props.match.params.activeNonZeroSlideIndex) || 1;
 
-    this.sessionKey = `slides/${this.props.scenario.id}`;
+    this.storageKey = `slides/${this.props.scenario.id}`;
 
     const { activeSlideIndex, minimized } = Storage.merge(
-      this.sessionKey,
+      this.storageKey,
       persisted => {
         const {
           activeSlideIndex = activeNonZeroSlideIndex - 1,
@@ -98,7 +98,7 @@ class Slides extends React.Component {
 
   componentDidUpdate() {
     const { activeSlideIndex, minimized } = this.state;
-    Storage.set(this.sessionKey, { activeSlideIndex, minimized });
+    Storage.set(this.storageKey, { activeSlideIndex, minimized });
   }
 
   onSlideChange(activeSlideIndex, value) {
@@ -251,7 +251,7 @@ class Slides extends React.Component {
           this.props.setActiveSlide(activeSlideIndex);
         }
 
-        Storage.set(this.sessionKey, { activeSlideIndex, minimized });
+        Storage.set(this.storageKey, { activeSlideIndex, minimized });
         callback();
       });
     }
