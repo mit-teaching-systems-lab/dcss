@@ -92,7 +92,9 @@ class ChatDraggableResizableDialog extends Component {
     if (isMinimized) {
       rndStyle = {
         border: 'unset',
-        background: 'unset'
+        background: 'unset',
+        position: 'relative',
+        width: '100%'
         // display: 'none'
       };
     }
@@ -208,9 +210,13 @@ class ChatDraggableResizableDialog extends Component {
         if (Layout.isNotForMobile()) {
           if (isMinimized) {
             styles = {
-              position: 'absolute',
-              width: '500px',
-              top: '-54px'
+              // position: 'absolute',
+              // width: '500px',
+              // top: '-54px'
+              position: 'relative',
+              top: 'unset',
+              width: '100%',
+              zIndex: 'unset !important'
             };
           }
         } else {

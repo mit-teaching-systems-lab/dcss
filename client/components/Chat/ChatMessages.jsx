@@ -33,27 +33,19 @@ import scrollIntoView from '@utils/scrollIntoView';
 
 import './Chat.css';
 
-function isVisibleInScrollingContainer(element, isVisible, childRect) {
-  if (!element) {
-    return false;
-  }
-  /* istanbul ignore if */
-  if (element.tagName === 'HTML') {
+function isVisibleInScrollingContainer(container, element) {
+  if (!container || !element) {
     return true;
   }
-  const parentRect = element.parentNode.getBoundingClientRect();
-  const rect = childRect || element.getBoundingClientRect();
-  return (
-    (isVisible ? rect.top >= parentRect.top : rect.bottom > parentRect.top) &&
-    (isVisible ? rect.left >= parentRect.left : rect.right > parentRect.left) &&
-    (isVisible
-      ? rect.bottom <= parentRect.bottom
-      : rect.top < parentRect.bottom) &&
-    (isVisible
-      ? rect.right <= parentRect.right
-      : rect.left < parentRect.right) &&
-    isVisibleInScrollingContainer(element.parentNode, isVisible, rect)
-  );
+
+  let cTop = container.scrollTop;
+  let cBottom = cTop + container.clientHeight;
+  let eTop = element.offsetTop - container.offsetTop;
+  let eBottom = eTop + element.clientHeight;
+  let isTotal = eTop >= cTop && eBottom <= cBottom;
+  let isPartial =
+    (eTop < cTop && eBottom > cTop) || (eBottom > cBottom && eTop < cBottom);
+  return isTotal || isPartial;
 }
 
 const deleteAriaLabel = 'Delete this message';
@@ -202,17 +194,21 @@ class ChatMessages extends Component {
       if (!scrollingContainer && node) {
         scrollingContainer = node;
       }
-
       // This is NOT an "else" to the previous condition.
       /* istanbul ignore else */
       if (scrollingContainer) {
+        const isViewingNewest = isVisibleInScrollingContainer(
+          scrollingContainer,
+          scrollingContainer.lastElementChild
+        );
         if (
-          (this.state.isViewingNewest && this.state.hasNewMessages) ||
+          (isViewingNewest && this.state.hasNewMessages) ||
           this.wasPreviouslyMinimized
         ) {
           this.wasPreviouslyMinimized = false;
           scrollIntoView(scrollingContainer, false);
           this.setState({
+            isViewingNewest: true,
             hasNewMessages: false
           });
         }
@@ -234,6 +230,7 @@ class ChatMessages extends Component {
       /* istanbul ignore else */
       if (scrollingContainer) {
         let isViewingNewest = isVisibleInScrollingContainer(
+          scrollingContainer,
           scrollingContainer.lastElementChild
         );
         /* istanbul ignore else */

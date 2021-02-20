@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import * as HTMLParser from 'node-html-parser';
 import { connect } from 'react-redux';
@@ -7,7 +7,9 @@ import withSocket, {
   JOIN_OR_PART,
   CHAT_MESSAGE_CREATED,
   USER_JOIN,
-  USER_PART
+  USER_PART,
+  USER_JOIN_SLIDE,
+  USER_PART_SLIDE
   // USER_IS_TYPING,
   // USER_NOT_TYPING
 } from '@hoc/withSocket';
@@ -104,9 +106,9 @@ class Chat extends Component {
 
     const { chat } = this.props;
 
-    this.sessionKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
+    this.storageKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
 
-    const { content } = Storage.get(this.sessionKey, {
+    const { content } = Storage.get(this.storageKey, {
       content: NEW_MESSAGE_CONTENT_HTML
     });
 
@@ -142,21 +144,23 @@ class Chat extends Component {
   }
 
   async componentDidMount() {
-    // THIS IS ONLY NECESSARY FOR INITIAL DEVELOPMENT
-    //
-    //
-    //
-    if (!this.props.chat.id) {
-      await this.props.getChatById(TEMPORARY_CHAT_ID);
+    if (this.props.chat.id && !this.props.chat.created_at) {
+      await this.props.getChatById(this.props.chat.id);
     }
-    //
-    //
-    //
-    //
-
     // TODO: determine if this is the best way to indicate that a
     // user has joined
-    this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
+    // this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
+
+    const runStorageKey = this.props.cohort.id
+      ? `cohort/${this.props.cohort.id}/run/${this.props.scenario.id}`
+      : `run/${this.props.scenario.id}`;
+
+    this.props.socket.emit(
+      USER_JOIN_SLIDE,
+      makeSocketPayload(this.props, {
+        run: Storage.get(runStorageKey)
+      })
+    );
 
     await this.props.getChatUsersByChatId(this.props.chat.id);
 
@@ -165,6 +169,7 @@ class Chat extends Component {
 
     // Register Socket events
     this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
+    this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
 
     this.setState({
       isReady: true
@@ -174,6 +179,7 @@ class Chat extends Component {
   componentWillUnmount() {
     // Unregister Socket events
     this.props.socket.off(JOIN_OR_PART, this.onJoinOrPart);
+    this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
 
     this.hasUnmounted = true;
 
@@ -188,7 +194,7 @@ class Chat extends Component {
   onBeforeUnload() {
     // TODO: determine if this is the best way to indicate that a
     // user has parted
-    this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
+    // this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
 
     this.hasUnloaded = true;
 
@@ -221,7 +227,7 @@ class Chat extends Component {
 
   onChange(content) {
     this.content = content;
-    Storage.merge(this.sessionKey, { content });
+    Storage.merge(this.storageKey, { content });
 
     // This is impossible to reproduce programmatically. The
     // behavior being corrected is timing sensitive:
@@ -244,7 +250,7 @@ class Chat extends Component {
   clear() {
     const content = NEW_MESSAGE_CONTENT_HTML;
 
-    Storage.merge(this.sessionKey, { content });
+    Storage.merge(this.storageKey, { content });
 
     /* istanbul ignore else */
     if (this.rte) {
@@ -274,14 +280,18 @@ class Chat extends Component {
   }
 
   onMessageReceived() {
+    if (this.hasUnmounted) {
+      return;
+    }
+
     if (this.state.isMinimized) {
       this.setState({
         isPulsing: true
       });
 
-      if (Layout.isForMobile()) {
-        document.body.scrollIntoView(true);
-      }
+      // if (Layout.isForMobile()) {
+      //   document.body.scrollIntoView(true);
+      // }
     }
   }
 
@@ -350,7 +360,7 @@ class Chat extends Component {
     }
 
     // Layout.isForMobile()?
-    const { dimensions, position } = Storage.get(this.sessionKey, {
+    const { dimensions, position } = Storage.get(this.storageKey, {
       dimensions: {
         width: 430,
         height: 410
@@ -366,7 +376,7 @@ class Chat extends Component {
         return;
       }
 
-      Storage.merge(this.sessionKey, {
+      Storage.merge(this.storageKey, {
         dimensions: { width, height },
         position: { x, y }
       });
@@ -434,9 +444,21 @@ class Chat extends Component {
       ? 'ui header'
       : 'ui header c__drag-handle';
 
-    return (
+    const minMaxClassName = this.state.isPulsing ? 'c__notice' : '';
+
+    const minMaxButton = (
+      <ChatMinMax
+        className={minMaxClassName}
+        isMinimized={isMinimized}
+        onChange={onMinMaxClick}
+      />
+    );
+
+    return isMinimized ? (
+      minMaxButton
+    ) : (
       <ChatDraggableResizableDialog {...draggableResizableProps}>
-        <ChatMinMax onChange={onMinMaxClick} />
+        {minMaxButton}
         <div tabIndex="0" className={draggableClassName}>
           {this.state.isPulsing ? (
             <i aria-hidden="true" className="icon c__pulse"></i>
@@ -458,6 +480,33 @@ class Chat extends Component {
         <div data-testid="chat-main" />
       </ChatDraggableResizableDialog>
     );
+
+    // return (
+    //   <ChatDraggableResizableDialog {...draggableResizableProps}>
+    //     <ChatMinMax onChange={onMinMaxClick} />
+    //     <div tabIndex="0" className={draggableClassName}>
+    //       {this.state.isPulsing ? (
+    //         <i aria-hidden="true" className="icon c__pulse"></i>
+    //       ) : (
+    //         <i aria-hidden="true" className="comments outline icon"></i>
+    //       )}
+    //       <div className="content">Discussion</div>
+    //     </div>
+    //     {!isMinimized ? (
+    //       <Ref innerRef={node => (this.cRef = node)}>
+    //         <div tabIndex="0" className={innerMinMaxClassName}>
+    //           <div className="cm__container-outer" style={style}>
+    //             <ChatMessages {...cmProps} />
+    //           </div>
+    //           <div className="cc__container-outer" style={style}>
+    //             <ChatComposer {...ccProps} />
+    //           </div>
+    //         </div>
+    //       </Ref>
+    //     ) : null}
+    //     <div data-testid="chat-main" />
+    //   </ChatDraggableResizableDialog>
+    // );
   }
 }
 

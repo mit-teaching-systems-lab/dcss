@@ -10,8 +10,7 @@ const maxIcon = 'window maximize';
 const minIcon = 'window minimize';
 
 function ChatMinMax(props) {
-  const [isMinimized, setIsMinimized] = useState(false);
-
+  const [isMinimized, setIsMinimized] = useState(props.isMinimized);
   const onClick = () => {
     const newIsMinimized = !isMinimized;
     setIsMinimized(newIsMinimized);
@@ -19,14 +18,15 @@ function ChatMinMax(props) {
       props.onChange({ isMinimized: newIsMinimized });
     }
   };
-
   const minMaxIcon = isMinimized ? maxIcon : minIcon;
-
   const minMaxAriaLabel = isMinimized ? maxAriaLabel : minAriaLabel;
+  const className = isMinimized
+    ? `close c__container-modal-minmax ${props.className}`
+    : 'close c__container-modal-minmax';
 
   return (
     <Button
-      className="close c__container-modal-minmax"
+      className={className}
       aria-label={minMaxAriaLabel}
       icon={minMaxIcon}
       onClick={onClick}
@@ -35,6 +35,7 @@ function ChatMinMax(props) {
 }
 
 ChatMinMax.propTypes = {
+  className: PropTypes.string,
   onChange: PropTypes.func
 };
 
