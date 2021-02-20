@@ -52,6 +52,14 @@ class EntrySlide extends React.Component {
     return window.location.pathname.includes('/run/');
   }
 
+  get isCohortScenarioRun() {
+    return location.pathname.includes('/cohort/');
+  }
+
+  get isMultiparticipant() {
+    return this.props.scenario.personas.length > 1;
+  }
+
   onClick(event, data) {
     if (!this.isScenarioRun) {
       alert('Consent cannot be granted in Preview');
@@ -99,10 +107,6 @@ class EntrySlide extends React.Component {
     });
 
     window.scrollTo(0, 0);
-  }
-
-  onPermissionRequest() {
-    this.setState({ permissionsRequestOpen: true });
   }
 
   onContinueClick(scenario) {
@@ -325,8 +329,8 @@ EntrySlide.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { run } = state;
-  return { run };
+  const { chat, run } = state;
+  return { chat, run };
 };
 
 export default connect(mapStateToProps)(EntrySlide);

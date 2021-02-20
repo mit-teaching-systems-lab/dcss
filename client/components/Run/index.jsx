@@ -2,13 +2,20 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { joinChat, linkRunToChat } from '@actions/chat';
+import {
+  getChat,
+  getChatById,
+  getLinkedChatUsersByChatId,
+  joinChat,
+  linkRunToChat
+} from '@actions/chat';
 import { linkRunToCohort, linkUserToCohort } from '@actions/cohort';
 import { getInvites } from '@actions/invite';
 import { getUser } from '@actions/user';
-import { getResponse, setResponses } from '@actions/response';
+import { setResponses } from '@actions/response';
 import { getRun, setRun } from '@actions/run';
 import { getScenario } from '@actions/scenario';
+import Lobby from '@components/Lobby';
 import Scenario from '@components/Scenario';
 import { Title } from '@components/UI';
 import withRunEventCapturing, {
@@ -16,9 +23,9 @@ import withRunEventCapturing, {
   SCENARIO_ARRIVAL
 } from '@hoc/withRunEventCapturing';
 import withSocket from '@hoc/withSocket';
+import Identity from '@utils/Identity';
 import QueryString from '@utils/QueryString';
 import Storage from '@utils/Storage';
-import Identity from '@utils/Identity';
 
 class Run extends Component {
   constructor(props) {
@@ -30,7 +37,11 @@ class Run extends Component {
 
     this.state = {
       isReady: false,
-      baseurl: url.replace(/\/slide\/\d.*$/g, '')
+      baseurl: url.replace(/\/slide\/\d.*$/g, ''),
+      lobby: {
+        isOpen: false,
+        isUnassigned: false
+      }
     };
 
     this.responses = new Map();
@@ -50,39 +61,86 @@ class Run extends Component {
     window.removeEventListener('beforeunload', this.submitIfPendingResponses);
   }
 
+  get isCohortScenarioRun() {
+    return location.pathname.includes('/cohort/');
+  }
+
+  get isMultiparticipant() {
+    return this.props.scenario.personas.length > 1;
+  }
+
   async componentDidMount() {
     const {
-      location: { search },
-      scenarioId
+      location: { search }
     } = this.props;
+
+    const { lobby } = this.state;
+
+    let chatId = this.props.chatId;
+    let cohortId = cohortId;
+    let scenarioId = this.props.scenarioId;
 
     if (!this.props.scenario) {
       await this.props.getScenario(scenarioId);
     }
 
-    // When running via jest, it appears that mapStateToProps
-    // doesn't get called as part of the previous async
-    // operation's dispatch.
+    // If no scenario is found, there is nothing else to do.
     if (!this.props.scenario) {
       return;
     }
 
     await this.props.getInvites();
 
-    const run = await this.props.getRun(
-      this.props.scenario.id,
-      this.props.cohortId,
-      this.props.chatId
-    );
+    if (chatId) {
+      // To ensure that no run is created with an expired chat,
+      // we must always check the chat status first. If the
+      // chat has ended, then we send the user to an appropriate
+      // destination, which is either back to the cohort, or
+      // reloading this scenario run without an existing chat.
+      await this.props.getChatById(chatId);
+
+      if (this.props.chat.ended_at) {
+        const url = cohortId
+          ? `/cohort/${Identity.toHash(cohortId)}`
+          : `/run/${Identity.toHash(scenarioId)}`;
+
+        location.href = url;
+        return;
+      }
+    } else {
+      // If there is no chatId, we need to check the scenario
+      // and determine if this scenario requires a chat room
+      // to function properly. A scenario that has greater
+      // than one persona definition MUST have chat room.
+      //
+      // This path MUST NOT be taken if the scenario run is
+      // for a cohort. Multi-participant scenario runs that
+      // originate in a cohort are limited to that cohort's
+      // participant roster.
+      if (this.props.scenario.personas.length > 1 && !cohortId) {
+        // Use `getChat` which will look for an existing chat
+        // for this user (as host), running this scenario; and
+        // will create one if necessary.
+        const chat = await this.props.getChat(this.props.scenario);
+        // Assigning the new chat.id to chatId ensures that
+        // linkRunToChat is called.
+        chatId = chat.id;
+        // this.props.chat should now be populated by the chat that
+        // was returned from the server, whether it is a new chat or
+        // an existing chat.
+
+        // This will signal that Run should show the Lobby first.
+        lobby.isOpen = true;
+      }
+    }
+
+    const run = await this.props.getRun(scenarioId, cohortId, chatId);
 
     if (run) {
       const { user } = this.props;
 
-      if (this.props.cohortId) {
-        const cohort = await this.props.linkRunToCohort(
-          this.props.cohortId,
-          run.id
-        );
+      if (cohortId) {
+        const cohort = await this.props.linkRunToCohort(cohortId, run.id);
 
         if (cohort) {
           if (!cohort.users.find(({ id }) => id === user.id)) {
@@ -93,22 +151,36 @@ class Run extends Component {
         }
       }
 
-      if (this.props.chatId) {
-        await this.props.linkRunToChat(this.props.chatId, run.id);
+      if (chatId) {
+        await this.props.linkRunToChat(chatId, run.id);
         if (this.props.chat) {
           const userInChat = this.props.chat.usersById[user.id];
           const isUserInChat = !!userInChat;
           const isUserRoleAssigned =
             isUserInChat && userInChat.persona_id != null;
-
-          if (!isUserRoleAssigned && this.props.invite) {
-            const persona = this.props.scenario.personas.find(
-              persona => persona.id === this.props.invite.persona_id
-            );
-            await this.props.joinChat(this.props.chat.id, persona);
+          if (!isUserRoleAssigned) {
+            if (this.props.invite) {
+              const persona = this.props.scenario.personas.find(
+                persona => persona.id === this.props.invite.persona_id
+              );
+              await this.props.joinChat(this.props.chat.id, persona);
+            } else {
+              lobby.isUnassigned = true;
+            }
+          } else {
+            lobby.isUnassigned = false;
           }
         }
       }
+
+      this.setState({
+        isReady: true,
+        lobby
+      });
+
+      this.props.saveRunEvent(SCENARIO_ARRIVAL, {
+        scenario: this.props.scenario
+      });
 
       const referrer_params = Storage.get('app/referrer_params');
 
@@ -118,12 +190,6 @@ class Run extends Component {
         });
         Storage.delete('app/referrer_params');
       }
-
-      this.setState({ isReady: true });
-
-      this.props.saveRunEvent(SCENARIO_ARRIVAL, {
-        scenario: this.props.scenario
-      });
     }
 
     window.addEventListener('beforeunload', this.submitIfPendingResponses);
@@ -177,8 +243,15 @@ class Run extends Component {
 
   render() {
     const { onChange, onResponseChange, onSubmit } = this;
-    const { activeRunSlideIndex, cohortId, scenario } = this.props;
-    const { isReady, baseurl } = this.state;
+    const {
+      activeRunSlideIndex,
+      chat,
+      cohortId,
+      run,
+      scenario,
+      user
+    } = this.props;
+    const { isReady, baseurl, lobby } = this.state;
 
     if (!isReady || !this.props.run) {
       return null;
@@ -193,11 +266,56 @@ class Run extends Component {
       location.href = `${baseurl}/slide/0`;
     }
 
-    const pageTitle = `${this.props.scenario.title}, Slide #${activeRunSlideIndex}`;
+    let runViewTitle = `${this.props.scenario.title}, Slide #${activeRunSlideIndex}`;
+    let runViewContents = (
+      <Scenario
+        baseurl={baseurl}
+        cohortId={cohortId}
+        scenarioId={scenario.id}
+        onResponseChange={onResponseChange}
+        onRunChange={onChange}
+        onSubmit={onSubmit}
+        setActiveSlide={() => {}}
+      />
+    );
+
+    if (!this.isCohortScenarioRun && this.isMultiparticipant && lobby.isOpen) {
+      const onRoleSelect = async selected => {
+        if (selected.user.id === user.id) {
+          await this.props.joinChat(this.props.chat.id, selected.persona);
+          await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
+        }
+      };
+
+      const onContinueClick = () => {
+        this.setState({
+          lobby: {
+            isOpen: false,
+            isUnassigned: false
+          }
+        });
+        // If consent has been acknowledged,
+        // proceed to slide/1 from here.
+        if (run.consent_acknowledged_by_user) {
+          this.props.history.push(`${baseurl}/slide/1`);
+        }
+      };
+
+      runViewTitle = `${this.props.scenario.title} Lobby`;
+      runViewContents = (
+        <Lobby
+          asCard={true}
+          chat={chat}
+          onContinueClick={onContinueClick}
+          onRoleSelect={onRoleSelect}
+          scenario={scenario}
+        />
+      );
+    }
 
     return (
       <Fragment>
-        <Title content={pageTitle} />
+        <Title content={runViewTitle} />
         {this.props.user.is_super ? (
           <div style={{ zIndex: 9001, position: 'absolute' }}>
             Run: {this.props.run.id}
@@ -210,15 +328,7 @@ class Run extends Component {
             <br />
           </div>
         ) : null}
-        <Scenario
-          baseurl={baseurl}
-          cohortId={cohortId}
-          scenarioId={scenario.id}
-          onResponseChange={onResponseChange}
-          onRunChange={onChange}
-          onSubmit={onSubmit}
-          setActiveSlide={() => {}}
-        />
+        {runViewContents}
       </Fragment>
     );
   }
@@ -230,8 +340,9 @@ Run.propTypes = {
   chatId: PropTypes.node,
   cohort: PropTypes.object,
   cohortId: PropTypes.node,
+  getChat: PropTypes.func,
+  getChatById: PropTypes.func,
   getInvites: PropTypes.func,
-  getResponse: PropTypes.func,
   getRun: PropTypes.func,
   getScenario: PropTypes.func,
   getUser: PropTypes.func,
@@ -281,10 +392,16 @@ const mapStateToProps = (state, ownProps) => {
     invite = invites.length
       ? invites.find(invite => invite.code === code)
       : null;
-    chatId = invite && invite.chat_id;
+    chatId = (invite && invite.chat_id) || null;
   }
 
-  const chat = chatsById[chatId] || null;
+  const stateChat =
+    (state.chat.ended_at === null &&
+      state.chat.scenario_id === scenarioId &&
+      state.chat) ||
+    null;
+
+  const chat = chatsById[chatId] || stateChat || null;
   const scenario = state.scenariosById[scenarioId];
   return {
     activeRunSlideIndex: Number(
@@ -305,8 +422,10 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getChat: (...params) => dispatch(getChat(...params)),
+  getChatById: id => dispatch(getChatById(id)),
   getInvites: () => dispatch(getInvites()),
-  getResponse: params => dispatch(getResponse(params)),
+  getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   setResponses: (...params) => dispatch(setResponses(...params)),
   getRun: (...params) => dispatch(getRun(...params)),
   setRun: (...params) => dispatch(setRun(...params)),

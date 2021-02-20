@@ -7,6 +7,7 @@ import {
   createChat,
   getChatById,
   getChatsByCohortId,
+  getChatUsersByChatId,
   joinChat
 } from '@actions/chat';
 import { getScenariosByStatus } from '@actions/scenario';
@@ -74,13 +75,11 @@ export class CohortRoomSelector extends React.Component {
     this.onSelectChatClick = this.onSelectChatClick.bind(this);
   }
 
-  async fetchChats(data) {
-    // TODO: get linked users here!!
-    // if (data && data.)
-    // console.log(data);
-
+  async fetchChats(data = {}) {
     await this.props.getChatsByCohortId(this.props.cohort.id);
-
+    if (data.chat) {
+      await this.props.getChatUsersByChatId(data.chat.id);
+    }
     if (!this.state.isReady) {
       this.setState({
         isReady: true
@@ -105,12 +104,14 @@ export class CohortRoomSelector extends React.Component {
     this.props.socket.off(RUN_CHAT_LINK, this.fetchChats);
   }
 
-  async createChat(event) {
-    await this.props.createChat(
+  async createChat(/* event */) {
+    const chat = await this.props.createChat(
       this.props.scenario,
       this.props.cohort,
       this.state.isOpenToCohort
     );
+
+    await this.fetchChats({ chat });
   }
 
   onSelectChatClick(event, { chat }) {
@@ -190,7 +191,7 @@ export class CohortRoomSelector extends React.Component {
           compact
           className="primary"
           onClick={async () => {
-            await this.fetchChats();
+            await this.fetchChats({ chat });
 
             const chat = this.props.chatsById[memoChatId];
             this.setState({
@@ -310,7 +311,6 @@ export class CohortRoomSelector extends React.Component {
     let host = null;
 
     if (this.state.lobby.isOpen && this.state.lobby.chat) {
-      console.log('in the lobby');
       const chat = this.props.chatsById[this.state.lobby.chat.id];
       host = chat.usersById[this.props.user.id];
       primaryButtonDisabled = host.persona_id === null;
@@ -332,15 +332,20 @@ export class CohortRoomSelector extends React.Component {
         }
 
         if (this.state.create.isOpen) {
-          await this.createChat();
-          this.setState({
-            create: {
-              isOpen: false
+          this.setState(
+            {
+              isReady: false,
+              create: {
+                isOpen: false
+              },
+              lobby: {
+                isOpen: true
+              }
             },
-            lobby: {
-              isOpen: true
+            async () => {
+              await this.createChat();
             }
-          });
+          );
         }
       }
     };
@@ -544,6 +549,7 @@ CohortRoomSelector.propTypes = {
   }),
   createChat: PropTypes.func,
   getChatsByCohortId: PropTypes.func,
+  getChatUsersByChatId: PropTypes.func,
   header: PropTypes.any,
   joinChat: PropTypes.func,
   onClose: PropTypes.func,
@@ -571,7 +577,8 @@ const mapDispatchToProps = dispatch => ({
   joinChat: (...params) => dispatch(joinChat(...params)),
   createChat: (...params) => dispatch(createChat(...params)),
   getChatById: id => dispatch(getChatById(id)),
-  getChatsByCohortId: id => dispatch(getChatsByCohortId(id))
+  getChatsByCohortId: id => dispatch(getChatsByCohortId(id)),
+  getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id))
 });
 
 export default withSocket(

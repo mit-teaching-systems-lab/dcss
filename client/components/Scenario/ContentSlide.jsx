@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getChatById, getLinkedChatUsersByChatId } from '@actions/chat';
 import { getResponse } from '@actions/response';
 import SlideComponents from '@components/SlideComponents';
 import { Button, Card, Icon, Popup } from '@components/UI';
@@ -83,10 +84,10 @@ class ContentSlide extends React.Component {
   }
 
   get isCohortScenarioRun() {
-    return window.location.pathname.includes('/cohort/');
+    return this.isScenarioRun && window.location.pathname.includes('/cohort/');
   }
 
-  get isMultiparticipantScenarioRun() {
+  get isMultiparticipant() {
     return this.props.scenario.personas.length > 1;
   }
 
@@ -99,7 +100,6 @@ class ContentSlide extends React.Component {
     }
 
     let {
-      getResponse,
       responsesById,
       run: { id },
       slide,
@@ -108,13 +108,22 @@ class ContentSlide extends React.Component {
 
     for (let { responseId } of components) {
       if (responseId && !responsesById[responseId]) {
-        await getResponse({ id, responseId });
+        await this.props.getResponse({
+          id,
+          responseId,
+          source: 'ContentSlide'
+        });
       }
     }
 
     const pending = this.state.pending.filter(
       responseId => !this.props.responsesById[responseId]
     );
+
+    if (this.isMultiparticipant) {
+      await this.props.getChatById(this.props.chat.id);
+      await this.props.getLinkedChatUsersByChatId(this.props.chat.id);
+    }
 
     this.setState({
       isReady: true,
@@ -414,6 +423,8 @@ class ContentSlide extends React.Component {
 
 ContentSlide.propTypes = {
   chat: PropTypes.object,
+  getChatById: PropTypes.func,
+  getLinkedChatUsersByChatId: PropTypes.func,
   getResponse: PropTypes.func,
   isContextual: PropTypes.bool,
   isLastSlide: PropTypes.bool,
@@ -437,6 +448,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  getChatById: id => dispatch(getChatById(id)),
+  getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id)),
   getResponse: params => dispatch(getResponse(params))
 });
 

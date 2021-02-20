@@ -22,10 +22,10 @@ class FinishSlide extends React.Component {
   }
 
   get isCohortScenarioRun() {
-    return window.location.pathname.includes('/cohort/');
+    return this.isScenarioRun && window.location.pathname.includes('/cohort/');
   }
 
-  get isMultiparticipantScenarioRun() {
+  get isMultiparticipant() {
     return this.props.scenario.personas.length > 1;
   }
 
@@ -98,7 +98,7 @@ class FinishSlide extends React.Component {
     );
 
     const inCohortMultiparticipant =
-      this.isMultiparticipantScenarioRun && this.isCohortScenarioRun;
+      this.isCohortScenarioRun && this.isMultiparticipant;
 
     const showRerunOption = inCohortMultiparticipant ? false : true;
 

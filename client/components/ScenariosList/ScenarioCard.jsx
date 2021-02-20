@@ -93,6 +93,16 @@ class ScenarioCard extends React.Component {
       }
     };
 
+    const isMultiParticipantScenario = scenario.personas.length > 1;
+
+    const cardHeaderIconClassName = isMultiParticipantScenario
+      ? 'users'
+      : 'user';
+
+    const cardHeaderAriaLabel = isMultiParticipantScenario
+      ? `${title} is a multi-participant scenario.`
+      : `${title} is a solo scenario.`;
+
     return deleted_at ? (
       <Gate isAuthorized={isAuthorized}>
         <DeletedCard
@@ -125,10 +135,13 @@ class ScenarioCard extends React.Component {
           <Card.Header
             tabIndex="0"
             className="sc sc__cursor-pointer"
+            aria-label={cardHeaderAriaLabel}
+            title={cardHeaderAriaLabel}
             id={ariaLabelledby}
             {...clickables}
           >
-            {officialCheckmark} {title}
+            <Icon className="primary" name={cardHeaderIconClassName} />
+            {title}
           </Card.Header>
           <Card.Meta>{scenarioUpdatedOrCreatedTime}</Card.Meta>
           <Card.Description>
