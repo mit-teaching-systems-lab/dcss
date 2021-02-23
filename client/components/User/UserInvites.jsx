@@ -15,7 +15,6 @@ import {
 import {
   Button,
   Container,
-  Dropdown,
   Grid,
   Header,
   Label,
@@ -34,8 +33,6 @@ import withSocket, {
   NEW_INVITATION,
   SET_INVITATION
 } from '@hoc/withSocket';
-
-import Layout from '@utils/Layout';
 
 const isParticipantOnly = user => {
   const { roles = [] } = user;
@@ -195,11 +192,11 @@ class UserInvites extends Component {
         );
       }
 
-      if (notification.props.time === 0) {
-        notification.props.onDismiss = () => {
-          console.log('onDismiss');
-        };
-      }
+      // if (notification.props.time === 0) {
+      //   notification.props.onDismiss = () => {
+      //     console.log('onDismiss');
+      //   };
+      // }
 
       notify(notification.props);
     }
@@ -289,6 +286,7 @@ class UserInvites extends Component {
 
 UserInvites.propTypes = {
   code: PropTypes.string,
+  getCohorts: PropTypes.func,
   getInvites: PropTypes.func,
   getScenariosByStatus: PropTypes.func,
   getUsers: PropTypes.func,

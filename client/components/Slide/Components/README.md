@@ -94,7 +94,7 @@ All components must have an `id` property. The value is auto generated and must 
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Number`, `null` | writable | `null` |
+| `Number`, `null` | Writable | `null` |
 
 All components must have a `persona` property, but its value is only used in Multi-Participant scenarios. The `persona` property determines which participants see the content provided by the component. If the value is `null`, then all participants will see the content provided by the component. 
 
@@ -134,7 +134,7 @@ export const defaultValue = ({ responseId }) => ({
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `String` | writable | generated |
+| `String` | Writable | generated |
 
 All prompt components must have an `header` property. The value is assigned a default value, but can be changed by an author in the component editor. This is used in the data downloads to label participant response data, as the header value in the generated CSV files. 
 
@@ -174,7 +174,7 @@ All prompt components must have a `recallId` property. The value is assigned whe
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `true` |
+| `Boolean` | Writable | `true` |
 
 All prompt components must have a `required` property, which is assigned a default value of `true`. This is used by the scenario to indicate required prompt responses.
 
@@ -183,18 +183,185 @@ All prompt components must have a `required` property, which is assigned a defau
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Number` | writable | `0` |
+| `Number` | Writable | `0` |
 
 All prompt components must have a `timeout` property, which is assigned a default value of `0`. While currently unused, thie property is reserved for use as a prompt timeout in scenario runs. 
 
 
 ## Optional properties that affect the scenario run
 
+
+Optional properties may define a `Where` object for their value. `Where` objects can only access data within the component object. The following combinators and operators are available: 
+
+### Combinators
+
+Unary operators. Can appear at the top level, but not in the leading position. 
+
+- `$and`
+```js
+{
+  b: {
+    $gt: 0
+  }, 
+  $and: {
+    $lt: 100
+  }
+}
+```
+- `$or`
+```js
+{
+  b: {
+    $gt: 0
+  }, 
+  $and: {
+    $lt: 100
+  }
+}
+```
+
+
+### Operators 
+
+Binary operators
+
+Given data: 
+
+```js
+{
+  number: 9, 
+  string: 'Hello!', 
+  arrayA: [1, 2, 3],
+  arrayB: [0, 1, 2, 3, 4]
+  objectA: {x: 1, y: 1}, 
+  objectB: {x: 1}
+}
+```
+
+The following examples will all evaluate to `true`: 
+
+- `$between`
+```js
+{
+  number: {
+    $between: [0, 10]
+  }
+}
+```
+- `$includes`
+```js
+{
+  string: {
+    $includes: 'ello'
+  }
+}
+{
+  arrayA: {
+    $includes: [1, 2]
+  }
+}
+{
+  arrayA: {
+    $includes: 1
+  }
+}
+```
+- `$eq`
+```js
+{
+  string: {
+    $eq: 'Hello!'
+  }
+}
+
+{
+  number: {
+    $eq: 9
+  }
+}
+```
+- `$gt`
+```js
+{
+  number: {
+    $gt: 8
+  }
+}
+```
+- `$gte`
+```js
+{
+  number: {
+    $gte: 8
+  }
+}
+```
+- `$in`
+```js
+{
+  objectB: {
+    $in: 'objectA'
+  }
+}
+{
+  arrayA: {
+    $in: 'arrayB'
+  }
+}
+```
+- `$lt`
+```js
+{
+  number: {
+    $lt: 10
+  }
+}
+```
+- `$lte`
+```js
+{
+  number: {
+    $lte: 10
+  }
+}
+```
+- `$ne`
+```js
+{
+  number: {
+    $ne: 1
+  }
+}
+```
+- `$notBetween`
+```js
+{
+  number: {
+    $notBetween: [0, 5]
+  }
+}
+```
+
+### Special
+
+- `$value` Use `$value` to reference another path in the data object. It's value is an object path.
+```js
+{
+  b: {
+    $includes: {
+      $value: 'a'
+    }
+  }
+}
+```
+
+
 ### `disableDefaultNavigation`
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Components that set this to `true` will override the slide's default navigation by hiding the "Next" button. This is currently only used by the `MultiPathResponse` component, which takes control of navigation.
 
@@ -216,6 +383,30 @@ export const defaultValue = ({ responseId }) => ({
 });
 ```
 
+Example using a `Where` object: 
+
+```js
+export const defaultValue = ({ responseId }) => ({
+  disableRequireCheckbox: true,
+  disableDefaultNavigation: {
+    'paths.length': {
+      $eq: 0
+    }
+  },
+  header: '',
+  id: '',
+  paths: [],
+  persona: null,
+  recallId: '',
+  required: true,
+  responseId,
+  timeout: 0,
+  type
+});
+```
+This `Where` object will determine the boolean value of `disableDefaultNavigation` by checking that `path.length > 0`.
+
+
 ## Optional properties that affect the component editor
 
 
@@ -223,7 +414,8 @@ export const defaultValue = ({ responseId }) => ({
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Disables the Delete option in the Slide Component editor menu.
 
@@ -232,7 +424,8 @@ Disables the Delete option in the Slide Component editor menu.
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Disables the Delete option in the Slide Component editor menu.
 
@@ -241,7 +434,8 @@ Disables the Delete option in the Slide Component editor menu.
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Disables embedding as a Previous Response.
 
@@ -250,7 +444,8 @@ Disables embedding as a Previous Response.
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Disables the Persona selector option in the Slide Component editor menu.
 
@@ -259,7 +454,8 @@ Disables the Persona selector option in the Slide Component editor menu.
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Disables re-ordering of the component in the Slide editor. Hides Mover options in the Slide Component editor menu.
 
@@ -268,7 +464,8 @@ Disables re-ordering of the component in the Slide editor. Hides Mover options i
 
 | Type | Integrity | Default |
 |------|------------|---------|
-| `Boolean` | writable | `false` |
+| `Boolean` | Writable | `false` |
+| `Where` | Non-writable | n/a |
 
 Hides the checkbox that allows for toggling the `required`-ness of a prompt. The value given for `required`, in the `defaultValue(...)` function will be the constant value.
 

@@ -85,7 +85,10 @@ class Display extends Component {
     });
   }
 
-  onChange(event, { isOverride, isFulfilled, name, transcript = '', value }) {
+  onChange(
+    event,
+    { isFulfillmentOverride, isFulfilled, name, transcript = '', value }
+  ) {
     const { created_at } = this;
     const { recallId } = this.props;
     const ended_at = new Date().toISOString();
@@ -94,7 +97,7 @@ class Display extends Component {
       created_at,
       ended_at,
       isFulfilled,
-      isOverride,
+      isFulfillmentOverride,
       name,
       recallId,
       transcript,

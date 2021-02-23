@@ -60,7 +60,7 @@ class FinishSlide extends React.Component {
 
   render() {
     const { onCancel, onConfirm } = this;
-    const { cohortId, scenario, scenarioId, slide } = this.props;
+    const { cohortId, scenarioId, slide } = this.props;
     const { isConfirmBoxOpen } = this.state;
     const components = (slide && slide.components) || [{ html: '' }];
     const className = `scenario__slide-card${

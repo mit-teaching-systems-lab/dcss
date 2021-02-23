@@ -339,9 +339,10 @@ class MultiPathResponseEditor extends React.Component {
           />
 
           <Form.TextArea
-            label="Enter text content to display before the navigation buttons:"
-            aria-label="Enter text content to display before the navigation buttons:"
+            label="Optional prompt to display before the navigation buttons:"
+            aria-label="Optional prompt to display before the navigation buttons:"
             name="prompt"
+            rows={1}
             value={prompt}
             onChange={onChange}
             onBlur={updateState}

@@ -185,7 +185,7 @@ class ContentSlide extends React.Component {
   }
 
   onInterceptResponseChange(event, data) {
-    const { isOverride, name, value } = data;
+    const { isFulfillmentOverride, name, value } = data;
     const { pending, required } = this.state;
     if (!this.props.run || (this.props.run && !this.props.run.id)) {
       // TODO: implement some kind of feedback to
@@ -197,12 +197,12 @@ class ContentSlide extends React.Component {
 
     const { run } = this.props;
 
-    // console.log('isOverride', isOverride);
+    // console.log('isFulfillmentOverride', isFulfillmentOverride);
     // If we have a response change for a responseId that
     // was marked required, and the value isn't empty,
     // then it can be removed from the list.
     if (required.includes(name)) {
-      if (value !== '' || isOverride) {
+      if (value !== '' || isFulfillmentOverride) {
         if (pending.includes(name)) {
           pending.splice(pending.indexOf(name), 1);
         }

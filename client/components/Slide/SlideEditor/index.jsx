@@ -16,6 +16,7 @@ import EditorMenu from '@components/EditorMenu';
 import ScenarioPersonaSelect from '@components/ScenarioEditor/ScenarioPersonaSelect';
 import Sortable, { Draggable } from '@components/Sortable';
 import SlideComponentSelect from '@components/SlideComponentSelect';
+import Conditional from '@utils/Conditional';
 import scrollIntoView from '@utils/scrollIntoView';
 import Storage from '@utils/Storage';
 import * as Components from '../Components';
@@ -618,7 +619,12 @@ export default class SlideEditor extends Component {
                               ? 'Make this prompt optional.'
                               : 'Make this prompt required.';
 
-                            if (value.disableRequireCheckbox) {
+                            if (
+                              Conditional.evaluate(
+                                value,
+                                value.disableRequireCheckbox
+                              )
+                            ) {
                               props.disabled = true;
                               menuItemTip =
                                 'This prompt component cannot be made optional';
@@ -632,12 +638,12 @@ export default class SlideEditor extends Component {
                               >
                                 <Checkbox
                                   {...props}
-                                  onChange={(event, { checked }) =>
+                                  onChange={(event, { checked }) => {
                                     onComponentChange(index, {
                                       ...value,
                                       required: checked
-                                    })
-                                  }
+                                    });
+                                  }}
                                 />
                               </Menu.Item.Tabbable>
                             );
@@ -709,6 +715,18 @@ export default class SlideEditor extends Component {
                             };
                           }
 
+                          const componentEditor = (
+                            <ComponentEditor
+                              key={value.id}
+                              id={value.id}
+                              slideId={this.props.id}
+                              slideIndex={this.props.index}
+                              scenario={scenario}
+                              value={value}
+                              onChange={v => onComponentChange(index, v)}
+                            />
+                          );
+
                           const draggableOrNot = !disableOrdering ? (
                             <Draggable
                               key={`draggable-key-${value.id}`}
@@ -754,17 +772,7 @@ export default class SlideEditor extends Component {
                                           items={componentEditorMenuItems}
                                         />
 
-                                        <ComponentEditor
-                                          key={value.id}
-                                          id={value.id}
-                                          slideId={this.props.id}
-                                          slideIndex={this.props.index}
-                                          scenario={scenario}
-                                          value={value}
-                                          onChange={v =>
-                                            onComponentChange(index, v)
-                                          }
-                                        />
+                                        {componentEditor}
                                       </Segment>
                                     </Ref>
                                   </div>
@@ -794,15 +802,7 @@ export default class SlideEditor extends Component {
                                   items={componentEditorMenuItems}
                                 />
 
-                                <ComponentEditor
-                                  key={value.id}
-                                  id={value.id}
-                                  slideId={this.props.id}
-                                  slideIndex={this.props.index}
-                                  scenario={scenario}
-                                  value={value}
-                                  onChange={v => onComponentChange(index, v)}
-                                />
+                                {componentEditor}
                               </Segment>
                             </Ref>
                           );

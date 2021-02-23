@@ -1,10 +1,40 @@
 .cp__timer {
-  width: 5em !important;
+  width: 6.5em !important;
 }
 
 /* Mobile */
 @media only screen and (max-width: 767.98px) {
   .cp__timer {
-    width: 5em !important;
+    width: 6.5em !important;
   }
+}
+
+.cpe__paragraph {
+  margin-top: unset;
+  padding: 0 0.25em;
+}
+
+.cpe__displaytime-outer {
+  display: inline-block;
+}
+
+.cpd__timer-button {
+  background: unset !important;
+}
+
+.cpe__displaytime-outer span {
+  display: inline-block;
+  padding-top: 1.5em;
+}
+
+.dropdown.cpd__dropdown > .text {
+  width: 11em;
+  text-align: left !important;
+}
+
+.dropdown.cpd__dropdown > .visible.menu.transition {
+  width: 200px !important;
+}
+.dropdown.cpd__dropdown > .visible.menu.transition * {
+  white-space: unset !important;
 }

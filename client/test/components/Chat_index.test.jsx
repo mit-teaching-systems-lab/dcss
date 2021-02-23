@@ -779,6 +779,9 @@ describe('componentDidMount', () => {
             "chat": Object {
               "id": 1,
             },
+            "response": Object {
+              "id": null,
+            },
             "run": null,
             "user": Object {
               "id": null,
@@ -958,6 +961,9 @@ describe('componentWillUnmount', () => {
             "chat": Object {
               "id": 1,
             },
+            "response": Object {
+              "id": null,
+            },
             "run": null,
             "user": Object {
               "id": null,
@@ -1067,6 +1073,9 @@ describe('componentWillUnmount', () => {
           Object {
             "chat": Object {
               "id": 1,
+            },
+            "response": Object {
+              "id": null,
             },
             "run": null,
             "user": Object {
@@ -1207,6 +1216,9 @@ describe('componentWillUnmount', () => {
             "chat": Object {
               "id": 1,
             },
+            "response": Object {
+              "id": null,
+            },
             "run": null,
             "user": Object {
               "id": null,
@@ -1316,6 +1328,9 @@ describe('componentWillUnmount', () => {
           Object {
             "chat": Object {
               "id": 1,
+            },
+            "response": Object {
+              "id": null,
             },
             "run": null,
             "user": Object {
@@ -1589,6 +1604,9 @@ test('Types, followed by {enter}', async done => {
             "id": 1,
           },
           "content": "typing enter",
+          "response": Object {
+            "id": null,
+          },
           "user": Object {
             "id": null,
           },
@@ -1655,6 +1673,9 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
           },
           "content": "typing shift+enter
     ",
+          "response": Object {
+            "id": null,
+          },
           "user": Object {
             "id": null,
           },
@@ -1756,6 +1777,9 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
             "id": 1,
           },
           "content": "typing enter",
+          "response": Object {
+            "id": null,
+          },
           "user": Object {
             "id": null,
           },
@@ -1817,6 +1841,9 @@ test('Calls onInput when RTE receives new content', async done => {
             "id": 1,
           },
           "content": "<p><br></p>typing in the chat",
+          "response": Object {
+            "id": null,
+          },
           "user": Object {
             "id": null,
           },
@@ -1881,6 +1908,9 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
             "id": 1,
           },
           "content": "typing in the chat",
+          "response": Object {
+            "id": null,
+          },
           "user": Object {
             "id": null,
           },
@@ -1945,6 +1975,9 @@ test('Types, clicks Send Message', async done => {
             "id": 1,
           },
           "content": "typing in the chat",
+          "response": Object {
+            "id": null,
+          },
           "user": Object {
             "id": null,
           },
@@ -2042,6 +2075,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
 
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -2269,6 +2303,9 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                             Object {
                               "chat": Object {
                                 "id": 1,
+                              },
+                              "response": Object {
+                                "id": null,
                               },
                               "run": null,
                               "user": Object {
@@ -2461,6 +2498,7 @@ test('Rnd: onDrag/onResize', async done => {
 
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -2688,6 +2726,9 @@ test('Rnd: onDrag/onResize', async done => {
                             Object {
                               "chat": Object {
                                 "id": 1,
+                              },
+                              "response": Object {
+                                "id": null,
                               },
                               "run": null,
                               "user": Object {

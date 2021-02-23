@@ -12,11 +12,11 @@ exports[`Add a button empty fields 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -148,11 +148,11 @@ exports[`Add a button empty fields 2`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -284,11 +284,11 @@ exports[`Add a button empty fields 3`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -482,11 +482,11 @@ exports[`Add a button empty fields 5`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -680,11 +680,11 @@ exports[`Add a button empty fields 7`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -878,11 +878,11 @@ exports[`Add a button empty fields 10`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -1076,11 +1076,11 @@ exports[`Buttons empty 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -1212,11 +1212,11 @@ exports[`Delete single button 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -1484,11 +1484,11 @@ exports[`Delete single button 2`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -1756,11 +1756,11 @@ exports[`Delete single button 3`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -2028,11 +2028,11 @@ exports[`Delete single button 4`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -2227,11 +2227,11 @@ exports[`Delete single button 5`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -2426,11 +2426,11 @@ exports[`Missing props 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         />
       </div>
       <table
@@ -2560,11 +2560,11 @@ exports[`Prevent empty fields 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -2696,11 +2696,11 @@ exports[`Prevent empty fields 2`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -2832,11 +2832,11 @@ exports[`Prevent empty fields 3`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -3030,11 +3030,11 @@ exports[`Prevent empty fields 5`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -3228,11 +3228,11 @@ exports[`Prevent empty fields 7`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -3426,11 +3426,11 @@ exports[`Prevent empty fields 10`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -3624,11 +3624,11 @@ exports[`Render 1 1 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -3896,11 +3896,11 @@ exports[`Save single button 1`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -4168,11 +4168,11 @@ exports[`Save single button 2`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>
@@ -4440,11 +4440,11 @@ exports[`Save single button 3`] = `
         class="field"
       >
         <label>
-          Text to be displayed before buttons:
+          Optional prompt to display before buttons:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         >
           xyz-prompt
         </textarea>

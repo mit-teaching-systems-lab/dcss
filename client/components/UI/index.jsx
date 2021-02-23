@@ -37,4 +37,5 @@ Text.Truncate = Truncate;
  */
 export * from './ColorPickerAccessible';
 export * from './ResizeDetector';
+export * from './Responsive';
 export * from './Title';

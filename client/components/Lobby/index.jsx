@@ -16,13 +16,11 @@ import { getUsers } from '@actions/users';
 import Loading from '@components/Loading';
 import LobbyUserSelect from '@components/Lobby/LobbyUserSelect';
 import LobbyUserWaiting from '@components/Lobby/LobbyUserWaiting';
-import { notify } from '@components/Notification';
 import { Button, Card, Grid } from '@components/UI';
 import withSocket, {
   CREATE_USER_CHANNEL,
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
-import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
 import './Lobby.css';
 
@@ -264,6 +262,7 @@ Lobby.propTypes = {
   getUsers: PropTypes.func,
   onContinueClick: PropTypes.func,
   onRoleSelect: PropTypes.func,
+  socket: PropTypes.object,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array

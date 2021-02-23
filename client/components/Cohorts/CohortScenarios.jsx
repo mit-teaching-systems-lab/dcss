@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import copy from 'copy-text-to-clipboard';
 import pluralize from 'pluralize';
 import {
   getCohort,
@@ -262,21 +261,21 @@ export class CohortScenarios extends React.Component {
                 href: pathname
               };
 
-              const multiCardHeaderProps = {
-                onClick: () => {
-                  this.setState({
-                    room: {
-                      isOpen: true
-                    }
-                  });
-                }
-              };
+              // const multiCardHeaderProps = {
+              //   onClick: () => {
+              //     this.setState({
+              //       room: {
+              //         isOpen: true
+              //       }
+              //     });
+              //   }
+              // };
 
               const key = Identity.key(scenario);
 
-              const resolvedHeaderProps = isMultiParticipantScenario
-                ? multiCardHeaderProps
-                : singleCardHeaderProps;
+              // const resolvedHeaderProps = isMultiParticipantScenario
+              //   ? multiCardHeaderProps
+              //   : singleCardHeaderProps;
 
               // let cardHeaderProps = {
               //   'aria-label': cardHeaderAriaLabel,
@@ -320,7 +319,7 @@ export class CohortScenarios extends React.Component {
                   style={scenarioCursor}
                 >
                   <Card.Content>
-                    <Card.Header>
+                    <Card.Header aria-label={cardHeaderAriaLabel}>
                       <Icon
                         className="primary"
                         name={cardHeaderIconClassName}

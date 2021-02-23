@@ -194,8 +194,9 @@ class MultiButtonResponseEditor extends React.Component {
             onChange={onRecallChange}
           />
           <Form.TextArea
-            label="Text to be displayed before buttons:"
+            label="Optional prompt to display before buttons:"
             name="prompt"
+            rows={1}
             value={prompt}
             onChange={onChange}
             onBlur={updateState}

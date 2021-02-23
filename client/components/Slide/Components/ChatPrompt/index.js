@@ -8,8 +8,14 @@ export const defaultValue = ({ responseId }) => ({
   disableDelete: true,
   disableDuplicate: true,
   disableEmbed: true,
-  disablePersona: true,
   disableOrdering: true,
+  disablePersona: true,
+  disableRequireCheckbox: {
+    timer: {
+      $gt: 0
+    }
+  },
+  prompt: '',
   required: false,
   responseId,
   timer: 0,

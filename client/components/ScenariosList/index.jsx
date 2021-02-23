@@ -547,6 +547,7 @@ class ScenariosList extends Component {
     );
 
     this.timeout = null;
+
     return (
       <Fragment>
         <Title content={scenariosHeading} />
@@ -571,7 +572,7 @@ class ScenariosList extends Component {
               <Grid.Row>
                 <Grid.Column stretched>
                   <Responsive
-                    onUpdate={() => {
+                    onResize={() => {
                       if (this.timeout) {
                         clearTimeout(this.timeout);
                       }

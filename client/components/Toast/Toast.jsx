@@ -11,7 +11,12 @@ const icons = {
 };
 
 function Toast(props) {
-  const { className = '', description, title, style = {}, ...rest } = props;
+  const {
+    className = '',
+    description,
+    title,
+    /* style = {}, */ ...rest
+  } = props;
 
   const onDismiss = e => {
     e.stopPropagation();

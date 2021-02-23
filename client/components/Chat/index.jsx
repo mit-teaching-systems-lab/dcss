@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as HTMLParser from 'node-html-parser';
 import { connect } from 'react-redux';
@@ -12,8 +12,6 @@ import withSocket, {
   USER_PART,
   USER_JOIN_SLIDE,
   USER_PART_SLIDE
-  // USER_IS_TYPING,
-  // USER_NOT_TYPING
 } from '@hoc/withSocket';
 // This will be used when run event traces are added.
 // import withRunEventCapturing, {
@@ -68,10 +66,13 @@ function isValidMessage(message) {
 }
 
 function makeSocketPayload(props, data = {}) {
-  const { chat, user } = props;
+  const { chat, response, user } = props;
   return {
     chat: {
       id: chat.id
+    },
+    response: {
+      id: response.id
     },
     user: {
       id: user.id
@@ -152,9 +153,7 @@ class Chat extends Component {
       await this.props.getChatById(this.props.chat.id);
     }
 
-    const {
-      chat
-    } = this.props;
+    const { chat } = this.props;
 
     // If this chat has been closed, then there is no
     // further loading or registering to do.
@@ -528,6 +527,7 @@ Chat.propTypes = {
   getChatById: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
+  response: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
   scenario: PropTypes.object,
@@ -535,11 +535,15 @@ Chat.propTypes = {
   user: PropTypes.object
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { chat, cohort, run, scenario, user } = state;
+  const response = {
+    id: ownProps.responseId || null
+  };
   return {
     chat,
     cohort,
+    response,
     run,
     scenario,
     user

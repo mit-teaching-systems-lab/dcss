@@ -279,12 +279,12 @@ exports[`Add a non-response-prompt component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -819,12 +819,12 @@ exports[`Add a non-response-prompt component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -1359,12 +1359,12 @@ exports[`Add a non-response-prompt component 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -1864,12 +1864,12 @@ exports[`Add a non-response-prompt component at the end 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -2369,12 +2369,12 @@ exports[`Add a non-response-prompt component at the end 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -2874,12 +2874,12 @@ exports[`Add a non-response-prompt component at the end 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -3414,12 +3414,12 @@ exports[`Add a non-response-prompt component at the end 4`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -3954,12 +3954,12 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -4192,12 +4192,12 @@ exports[`Add a non-response-prompt component at the end 5`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -4638,12 +4638,12 @@ exports[`Add a response-prompt component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -5143,12 +5143,12 @@ exports[`Add a response-prompt component that has disableRequireCheckbox 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -5718,12 +5718,12 @@ exports[`Add a response-prompt component to a slide without a title 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -6258,12 +6258,12 @@ exports[`Change title 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -6798,12 +6798,12 @@ exports[`Change title 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -7338,12 +7338,12 @@ exports[`Change title 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -7878,12 +7878,12 @@ exports[`Click to activate component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -8418,12 +8418,12 @@ exports[`Click to activate component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -8958,12 +8958,12 @@ exports[`Click to activate component 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -9602,12 +9602,12 @@ exports[`Component is missing an id 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -10246,12 +10246,12 @@ exports[`Delete a component from the beginning 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -10786,12 +10786,12 @@ exports[`Delete a component from the beginning 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -11326,12 +11326,12 @@ exports[`Delete a component from the beginning 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -11807,12 +11807,12 @@ exports[`Delete a component from the beginning 4`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -12347,12 +12347,12 @@ exports[`Delete a component from the end 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -12887,12 +12887,12 @@ exports[`Delete a component from the end 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -13392,12 +13392,12 @@ exports[`Delete a component from the end 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -13967,12 +13967,12 @@ exports[`Delete a component from the end 4`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -14448,12 +14448,12 @@ exports[`Delete a component from the middle 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -14988,12 +14988,12 @@ exports[`Delete a component from the middle 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -15528,12 +15528,12 @@ exports[`Delete a component from the middle 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -16464,12 +16464,12 @@ exports[`Delete, no 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -17004,12 +17004,12 @@ exports[`Delete, no 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -17544,12 +17544,12 @@ exports[`Delete, no 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -18084,12 +18084,12 @@ exports[`Delete, yes 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -18624,12 +18624,12 @@ exports[`Delete, yes 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -19164,12 +19164,12 @@ exports[`Delete, yes 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -19704,12 +19704,12 @@ exports[`Duplicate 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -20244,12 +20244,12 @@ exports[`Duplicate 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -20784,12 +20784,12 @@ exports[`Duplicate a non-response-prompt component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -21383,12 +21383,12 @@ exports[`Duplicate a non-response-prompt component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -21923,12 +21923,12 @@ exports[`Duplicate a response-prompt component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -22463,12 +22463,12 @@ exports[`Duplicate a response-prompt component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -22607,12 +22607,12 @@ exports[`Duplicate a response-prompt component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -23112,12 +23112,12 @@ exports[`Edit a component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -23929,12 +23929,12 @@ exports[`Move a component down 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -24469,12 +24469,12 @@ exports[`Move a component down 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -24915,12 +24915,12 @@ exports[`Move a component down 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -25549,12 +25549,12 @@ exports[`Move a component up 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -26089,12 +26089,12 @@ exports[`Move a component up 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -26570,12 +26570,12 @@ exports[`Move a component up 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -27452,12 +27452,12 @@ exports[`Multiple personas 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -28429,12 +28429,12 @@ exports[`Multiple personas 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -29406,12 +29406,12 @@ exports[`Multiple personas, assign a persona to a component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -30383,12 +30383,12 @@ exports[`Multiple personas, assign a persona to a component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -31360,12 +31360,12 @@ exports[`Multiple personas, assign a persona to a component 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -32337,12 +32337,12 @@ exports[`Multiple personas, assign a persona to a component 4`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -33314,12 +33314,12 @@ exports[`Multiple personas, toggle chat 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -34291,12 +34291,12 @@ exports[`Multiple personas, toggle chat 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -35100,7 +35100,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                             value=""
                           />
                           <label>
-                            Required?
+                            Required
                           </label>
                         </div>
                       </a>
@@ -35112,10 +35112,10 @@ exports[`Multiple personas, toggle chat 3`] = `
                         class="ui fluid container"
                       >
                         <div
-                          class="ui two column grid"
+                          class="ui grid"
                         >
                           <div
-                            class="row"
+                            class="two column row"
                           >
                             <div
                               class="column"
@@ -35123,7 +35123,6 @@ exports[`Multiple personas, toggle chat 3`] = `
                               <div
                                 class="field"
                               >
-                                (NOT YET IMPLEMENTED)
                                 <label
                                   for="timer"
                                 >
@@ -35144,9 +35143,80 @@ exports[`Multiple personas, toggle chat 3`] = `
                               </div>
                             </div>
                             <div
+                              class="column cpe__displaytime-outer"
+                            >
+                              <span
+                                class="ui styl large text"
+                              >
+                                0 hours 0 minutes 0 seconds 
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="one column row"
+                          >
+                            <div
                               class="column"
                             >
-                              0 hours  minutes  seconds 
+                              <p
+                                class="cpe__paragraph"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                If the timer is set, the discussion will be marked 
+                                <strong>
+                                  Required
+                                </strong>
+                                . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timer.
+                              </p>
+                              <p
+                                class="cpe__paragraph"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                Set the timer to 00:00:00 for an unlimited discussion time.
+                              </p>
+                              <p
+                                class="cpe__paragraph"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                If no timer is set and this chat is set to 
+                                <strong>
+                                  Required
+                                </strong>
+                                , the host 
+                                <strong>
+                                  must
+                                </strong>
+                                 close the discussion before participants can proceed.
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            class="one column row"
+                          >
+                            <div
+                              class="column"
+                            >
+                              <div
+                                class="field"
+                              >
+                                <label>
+                                  Optional prompt to display for this discussion:
+                                </label>
+                                <textarea
+                                  aria-label="Optional prompt to display for this discussion:"
+                                  name="prompt"
+                                  rows="1"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -35422,12 +35492,12 @@ exports[`Multiple personas, toggle chat 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -36231,7 +36301,7 @@ exports[`Multiple personas, toggle chat 4`] = `
                             value=""
                           />
                           <label>
-                            Required?
+                            Required
                           </label>
                         </div>
                       </a>
@@ -36243,10 +36313,10 @@ exports[`Multiple personas, toggle chat 4`] = `
                         class="ui fluid container"
                       >
                         <div
-                          class="ui two column grid"
+                          class="ui grid"
                         >
                           <div
-                            class="row"
+                            class="two column row"
                           >
                             <div
                               class="column"
@@ -36254,7 +36324,6 @@ exports[`Multiple personas, toggle chat 4`] = `
                               <div
                                 class="field"
                               >
-                                (NOT YET IMPLEMENTED)
                                 <label
                                   for="timer"
                                 >
@@ -36275,9 +36344,80 @@ exports[`Multiple personas, toggle chat 4`] = `
                               </div>
                             </div>
                             <div
+                              class="column cpe__displaytime-outer"
+                            >
+                              <span
+                                class="ui styl large text"
+                              >
+                                0 hours 0 minutes 0 seconds 
+                              </span>
+                            </div>
+                          </div>
+                          <div
+                            class="one column row"
+                          >
+                            <div
                               class="column"
                             >
-                              0 hours  minutes  seconds 
+                              <p
+                                class="cpe__paragraph"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                If the timer is set, the discussion will be marked 
+                                <strong>
+                                  Required
+                                </strong>
+                                . This ensures that participants cannot move forward until completing the discussion. Hosts will be able to override the timer.
+                              </p>
+                              <p
+                                class="cpe__paragraph"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                Set the timer to 00:00:00 for an unlimited discussion time.
+                              </p>
+                              <p
+                                class="cpe__paragraph"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                If no timer is set and this chat is set to 
+                                <strong>
+                                  Required
+                                </strong>
+                                , the host 
+                                <strong>
+                                  must
+                                </strong>
+                                 close the discussion before participants can proceed.
+                              </p>
+                            </div>
+                          </div>
+                          <div
+                            class="one column row"
+                          >
+                            <div
+                              class="column"
+                            >
+                              <div
+                                class="field"
+                              >
+                                <label>
+                                  Optional prompt to display for this discussion:
+                                </label>
+                                <textarea
+                                  aria-label="Optional prompt to display for this discussion:"
+                                  name="prompt"
+                                  rows="1"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -36553,12 +36693,12 @@ exports[`Multiple personas, toggle chat 4`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -37530,12 +37670,12 @@ exports[`Multiple personas, with an assigned component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -38507,12 +38647,12 @@ exports[`Multiple personas, with an assigned component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -39468,12 +39608,12 @@ exports[`Preview 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -40297,12 +40437,12 @@ exports[`Preview 3`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -40802,12 +40942,12 @@ exports[`Render 1 1 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -41342,12 +41482,12 @@ exports[`Save 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -41882,12 +42022,12 @@ exports[`Save 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -42422,12 +42562,12 @@ exports[`Save, onChange is missing 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -42962,12 +43102,12 @@ exports[`Save, onChange is missing 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -43502,12 +43642,12 @@ exports[`Single persona 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -44042,12 +44182,12 @@ exports[`Toggle required on a prompt-response component 1`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -44581,12 +44721,12 @@ exports[`Toggle required on a prompt-response component 2`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div
@@ -45121,12 +45261,12 @@ exports[`Toggle required on a prompt-response component 4`] = `
                             class="field"
                           >
                             <label>
-                              Text to be displayed before the input:
+                              Optional prompt to display before the input:
                             </label>
                             <textarea
-                              aria-label="Text to be displayed before the input:"
+                              aria-label="Optional prompt to display before the input:"
                               name="prompt"
-                              rows="3"
+                              rows="1"
                             />
                           </div>
                           <div

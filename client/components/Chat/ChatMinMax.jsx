@@ -36,6 +36,7 @@ function ChatMinMax(props) {
 
 ChatMinMax.propTypes = {
   className: PropTypes.string,
+  isMinimized: PropTypes.bool,
   onChange: PropTypes.func
 };
 

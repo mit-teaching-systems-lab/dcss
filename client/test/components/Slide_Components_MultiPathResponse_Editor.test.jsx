@@ -445,7 +445,7 @@ test('Add prompt', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const prompt = await screen.findByLabelText(
-    'Enter text content to display before the navigation buttons:'
+    'Optional prompt to display before the navigation buttons:'
   );
   expect(asFragment()).toMatchSnapshot();
 

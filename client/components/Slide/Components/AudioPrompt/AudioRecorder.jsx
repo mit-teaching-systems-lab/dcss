@@ -172,7 +172,7 @@ class AudioRecorder extends Component {
 
       const { created_at } = this;
       const ended_at = new Date().toISOString();
-      const isOverride = true;
+      const isFulfillmentOverride = true;
 
       // This is necessary to "release" the hold made by required
       // response prompts. This will allow large audio files to
@@ -181,7 +181,7 @@ class AudioRecorder extends Component {
       this.props.onChange(
         {},
         {
-          isOverride,
+          isFulfillmentOverride,
           created_at,
           ended_at,
           name,

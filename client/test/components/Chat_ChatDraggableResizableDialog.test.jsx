@@ -227,6 +227,7 @@ test('Rnd', async done => {
 
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -329,6 +330,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
   expect(serialize()).toMatchSnapshot();
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -425,6 +427,7 @@ test('Rnd: onDragStop/onResizeStop without props.onDragResizeStop', async done =
   expect(serialize()).toMatchSnapshot();
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -511,6 +514,7 @@ test('Rnd: onDrag/onResize', async done => {
   expect(serialize()).toMatchSnapshot();
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -608,6 +612,7 @@ test('Rnd: onDrag/onResize without props.onDragResize', async done => {
   expect(serialize()).toMatchSnapshot();
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -694,6 +699,7 @@ test('Rnd: onDragStart/onResizeStart', async done => {
   expect(serialize()).toMatchSnapshot();
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >
@@ -783,6 +789,7 @@ test('Rnd: onDragStart/onResizeStart without props.onDragResizeStart', async don
   expect(serialize()).toMatchSnapshot();
   expect(globalThis.rndProps).toMatchInlineSnapshot(`
     Object {
+      "bounds": "window",
       "children": <Ref
         innerRef={[Function]}
       >

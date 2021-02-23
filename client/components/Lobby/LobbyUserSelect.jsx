@@ -15,7 +15,6 @@ import {
 import { getInvites } from '@actions/invite';
 
 import LobbyConfirmationDialog from '@components/Lobby/LobbyConfirmationDialog';
-import { notify } from '@components/Notification';
 import {
   Button,
   Card,
@@ -28,11 +27,6 @@ import {
   Text
 } from '@components/UI';
 import Username from '@components/User/Username';
-
-import withSocket, {
-  CREATE_USER_CHANNEL,
-  RUN_CHAT_LINK
-} from '@hoc/withSocket';
 import Identity from '@utils/Identity';
 import Storage from '@utils/Storage';
 
@@ -114,8 +108,6 @@ class LobbyUserSelect extends Component {
   }
 
   async componentDidMount() {
-    const { user } = this.props;
-
     await this.getChatUsers();
 
     const selected = [];
@@ -178,7 +170,12 @@ class LobbyUserSelect extends Component {
 
   renderInviteeList() {
     const { onRemoveInviteeClick, onSelectedPersonaChange } = this;
-    const { chat, personasInUseById, scenario, user, usersById } = this.props;
+    const {
+      chat,
+      /* personasInUseById, */ scenario,
+      user,
+      usersById
+    } = this.props;
     const host = chat.usersById[chat.host_id];
     const selected = this.state.selected.reduce((accum, selection) => {
       const userInChat = chat.usersById[selection.user.id];

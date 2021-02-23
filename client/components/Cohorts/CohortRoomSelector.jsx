@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
-import { getCohort } from '@actions/cohort';
 import {
   createChat,
   getChatById,
@@ -10,22 +9,18 @@ import {
   getChatUsersByChatId,
   joinChat
 } from '@actions/chat';
-import { getScenariosByStatus } from '@actions/scenario';
 import Lobby from '@components/Lobby';
 import {
   Button,
   Card,
-  Dropdown,
   Form,
   Grid,
   Header,
   Icon,
   Label,
   Modal,
-  Ref,
   Text
 } from '@components/UI';
-import { SCENARIO_IS_PUBLIC } from '@components/Scenario/constants';
 import Username from '@components/User/Username';
 import withSocket, {
   CHAT_CREATED,
@@ -33,7 +28,6 @@ import withSocket, {
   JOIN_OR_PART,
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
-import Events from '@utils/Events';
 import Identity from '@utils/Identity';
 import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
@@ -114,7 +108,7 @@ export class CohortRoomSelector extends React.Component {
     await this.fetchChats({ chat });
   }
 
-  onSelectChatClick(event, { chat }) {
+  onSelectChatClick(/* event, { chat } */) {
     console.log('Select a chat room');
   }
 
@@ -126,7 +120,7 @@ export class CohortRoomSelector extends React.Component {
   }
 
   render() {
-    const { createChat, onCloseClick, onSelectChatClick } = this;
+    const { onCloseClick } = this;
 
     const { chat, chats, cohort, scenario, user } = this.props;
     const { isReady } = this.state;
@@ -156,7 +150,6 @@ export class CohortRoomSelector extends React.Component {
 
     const cards = chats.reduce((accum, chat) => {
       const key = Identity.key(chat);
-      const updatedAgo = Moment(chat.updated_at).fromNow();
       const userInChat = chat.usersById[user.id];
       const host = chat.usersById[chat.host_id];
       const isUserNotHost = host.id !== user.id;
@@ -167,12 +160,12 @@ export class CohortRoomSelector extends React.Component {
         }
         return accum;
       }, []);
-      const unfilledRoles = scenario.personas.reduce((accum, persona) => {
-        if (!filledRoles.includes(persona.id)) {
-          accum.push(persona);
-        }
-        return accum;
-      }, []);
+      // const unfilledRoles = scenario.personas.reduce((accum, persona) => {
+      //   if (!filledRoles.includes(persona.id)) {
+      //     accum.push(persona);
+      //   }
+      //   return accum;
+      // }, []);
 
       // Skip the first option, since it's a placeholder.
       // Remove any options that are already
@@ -180,10 +173,6 @@ export class CohortRoomSelector extends React.Component {
       const options = defaultOptions.filter(
         option => !filledRoles.includes(option.value)
       );
-
-      const articleOrPossessivePronoun = isUserNotHost ? 'a' : 'your';
-      const placeholder = `Select ${articleOrPossessivePronoun} role`;
-
       const memoChatId = chat.id;
 
       const miniSendInvitesButton = (
@@ -537,6 +526,7 @@ export class CohortRoomSelector extends React.Component {
 
 CohortRoomSelector.propTypes = {
   buttons: PropTypes.object,
+  chat: PropTypes.object,
   chats: PropTypes.array,
   chatsById: PropTypes.object,
   cohort: PropTypes.shape({
@@ -554,6 +544,7 @@ CohortRoomSelector.propTypes = {
   joinChat: PropTypes.func,
   onClose: PropTypes.func,
   scenario: PropTypes.object,
+  socket: PropTypes.object,
   user: PropTypes.object
 };
 
@@ -563,16 +554,14 @@ const mapStateToProps = state => {
 
   if (state.chats) {
     chats.push(
-      ...state.chats.filter(
-        ({ cohort_id, ended_at, host_id, is_open }) => {
-          const isKeeper = (is_open || host_id === user.id) && !ended_at;
-          if (cohort && cohort.id) {
-            return isKeeper && cohort.id === cohort_id;
-          } else {
-            return isKeeper;
-          }
+      ...state.chats.filter(({ cohort_id, ended_at, host_id, is_open }) => {
+        const isKeeper = (is_open || host_id === user.id) && !ended_at;
+        if (cohort && cohort.id) {
+          return isKeeper && cohort.id === cohort_id;
+        } else {
+          return isKeeper;
         }
-      )
+      })
     );
   }
 

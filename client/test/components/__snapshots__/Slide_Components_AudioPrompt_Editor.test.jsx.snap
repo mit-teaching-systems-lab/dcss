@@ -12,11 +12,11 @@ exports[`Render 1 1 1`] = `
         class="field"
       >
         <label>
-          Enter text content to display before the audio recording controls:
+          Optional prompt to display before the audio recording controls:
         </label>
         <textarea
           name="prompt"
-          rows="3"
+          rows="1"
         />
       </div>
       <div

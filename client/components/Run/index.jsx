@@ -335,7 +335,7 @@ class Run extends Component {
     return (
       <Fragment>
         <Title content={runViewTitle} />
-        {this.props.user.is_super ? (
+        {this.props.user.is_super && false ? (
           <div style={{ zIndex: 9001, position: 'absolute' }}>
             Run: {this.props.run.id}
             <br />
@@ -361,8 +361,10 @@ Run.propTypes = {
   cohortId: PropTypes.node,
   getChat: PropTypes.func,
   getChatById: PropTypes.func,
+  getLinkedChatUsersByChatId: PropTypes.func,
   getInvites: PropTypes.func,
   getRun: PropTypes.func,
+  getRunByIdentifiers: PropTypes.func,
   getScenario: PropTypes.func,
   getUser: PropTypes.func,
   history: PropTypes.shape({ push: PropTypes.func.isRequired }),

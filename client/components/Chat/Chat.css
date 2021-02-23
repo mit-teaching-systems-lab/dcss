@@ -1,3 +1,15 @@
+/*
+  This is used by the chat application itself to
+  format non-conversation messages, ie.
+
+  join/part messages
+  "is on slide #n" messages
+*/
+.join-part-slide {
+  color: rgb(140, 140, 140) !important;
+  font-style: italic !important;
+}
+
 .c__container-modal {
   z-index: 1000 !important;
 }
@@ -158,10 +170,12 @@
 }
 
 /* Mobile */
-@media only screen and (max-width: 767.98px) {
+/*@media only screen and (max-width: 767.98px) {*/
+/* This is set to match the max width of the slide content pane */
+@media only screen and (max-width: 500px) {
 
   .resizable {
-    height: 60vh !important;
+    height: 40vh !important;
     width: 100% !important;
   }
 
@@ -173,13 +187,18 @@
 
   .c__container-modal {
     /*border: none !important;*/
+    border: 1px solid lightgrey !important;
     bottom: 0;
     box-shadow: unset !important;
-    left: -0.5em !important;
+    /* This ensures that the chat box fills the window*/
+    left: -0.75em !important;
+    width: 101vw !important;
+    top: calc(100vh - 521px) !important;
     margin-bottom: unset !important;
     min-width: unset !important;
-    top: unset !important;
-    width: 100vw !important;
+    /*left: -0.5em !important;*/
+    /*top: unset !important;*/
+    /*width: 100vw !important;*/
   }
 
   #root > div.ui.modal.transition.visible.active.c__container-modal.c__minimized {

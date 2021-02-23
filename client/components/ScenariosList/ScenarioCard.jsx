@@ -50,6 +50,7 @@ class ScenarioCard extends React.Component {
     const { onClick, showActions = true, user } = this.props;
     const { scenario } = this.state;
     const { categories = [], id, description, deleted_at, title } = scenario;
+    // eslint-disable-next-line no-unused-vars
     const officialCheckmark = categories.includes('official') ? (
       <Icon name="check" aria-label="Official" className="primary" />
     ) : null;

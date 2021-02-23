@@ -241,8 +241,9 @@ class ChatDraggableResizableDialog extends Component {
       <Ref innerRef={adjustPositionIfMinimized}>
         {Layout.isNotForMobile() ? (
           <Rnd
-            resizeHandleWrapperClass="c__size-handle"
+            bounds="window"
             dragHandleClassName="c__drag-handle"
+            resizeHandleWrapperClass="c__size-handle"
             disableDragging={isMinimized}
             minHeight={isMinimized ? 0 : BASE_HEIGHT}
             minWidth={BASE_WIDTH}

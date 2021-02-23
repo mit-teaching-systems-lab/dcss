@@ -3,13 +3,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Grid, Ref, Segment } from '@components/UI';
-
 import ContentSlide from './ContentSlide';
 import EntrySlide from './EntrySlide';
 import FinishSlide from './FinishSlide';
 import Boundary from '@components/Boundary';
 import Loading from '@components/Loading';
-import Lobby from '@components/Lobby';
 import { getSlides, getScenario, setScenario } from '@actions/scenario';
 import withRunEventCapturing, {
   SCENARIO_START,

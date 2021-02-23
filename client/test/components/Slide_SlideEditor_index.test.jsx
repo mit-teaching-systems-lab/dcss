@@ -1751,7 +1751,7 @@ test('Edit a component', async done => {
   expect(asFragment()).toMatchSnapshot();
 
   const textarea = await screen.findByRole('textbox', {
-    name: 'Text to be displayed before the input:'
+    name: 'Optional prompt to display before the input:'
   });
 
   const input = await screen.findByRole('textbox', {

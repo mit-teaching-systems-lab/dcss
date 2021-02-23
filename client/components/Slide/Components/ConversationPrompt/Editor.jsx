@@ -323,8 +323,9 @@ class ConversationPromptEditor extends Component {
           ) : null}
 
           <Form.TextArea
-            label="Enter text content to display before the audio recording controls:"
+            label="Optional prompt to display before the audio recording controls:"
             name="prompt"
+            rows={1}
             value={prompt}
             onChange={onChange}
             onBlur={updateState}

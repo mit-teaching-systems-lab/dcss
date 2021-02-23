@@ -32,7 +32,11 @@ export let getRun = (scenario_id, cohort_id, chat_id) => async dispatch => {
   }
 };
 
-export let getRunByIdentifiers = (scenario_id, cohort_id, chat_id) => async dispatch => {
+export let getRunByIdentifiers = (
+  scenario_id,
+  cohort_id,
+  chat_id
+) => async dispatch => {
   try {
     const url = `/api/runs/by-identifiers/scenario/${scenario_id}/cohort/${cohort_id}/chat/${chat_id}`;
     const res = await (await fetch(url)).json();
@@ -48,7 +52,6 @@ export let getRunByIdentifiers = (scenario_id, cohort_id, chat_id) => async disp
     return null;
   }
 };
-
 
 export let getRuns = () => async dispatch => {
   try {

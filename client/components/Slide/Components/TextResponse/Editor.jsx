@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Form } from '@components/UI';
-import { defaultValue } from './';
+// import { defaultValue } from './';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import ResponseRecall from '@components/Slide/Components/ResponseRecall/Editor';
@@ -33,17 +33,17 @@ class TextResponseEditor extends React.Component {
     this.timeout = null;
   }
 
-  shouldComponentUpdate(newProps) {
-    const fields = Object.getOwnPropertyNames(defaultValue({}));
+  // shouldComponentUpdate(newProps) {
+  //   const fields = Object.getOwnPropertyNames(defaultValue({}));
 
-    for (let field of fields) {
-      if (newProps.value[field] !== this.props.value[field]) {
-        return true;
-      }
-    }
+  //   for (let field of fields) {
+  //     if (newProps.value[field] !== this.props.value[field]) {
+  //       return true;
+  //     }
+  //   }
 
-    return true;
-  }
+  //   return true;
+  // }
 
   componentWillUnmount() {
     clearTimeout(this.timeout);
@@ -95,7 +95,7 @@ class TextResponseEditor extends React.Component {
     const { header, prompt, placeholder, recallId } = this.state;
     const { scenario, slideIndex } = this.props;
     const { onChange, onRecallChange, updateState } = this;
-    const promptAriaLabel = 'Text to be displayed before the input:';
+    const promptAriaLabel = 'Optional prompt to display before the input:';
     const placeholderAriaLabel = 'Placeholder text displayed inside the input:';
 
     return (
@@ -112,6 +112,7 @@ class TextResponseEditor extends React.Component {
             name="prompt"
             label={promptAriaLabel}
             aria-label={promptAriaLabel}
+            rows={1}
             value={prompt}
             onChange={onChange}
             onBlur={updateState}

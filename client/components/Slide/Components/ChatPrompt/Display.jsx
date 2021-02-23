@@ -1,17 +1,59 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Chat from '@components/Chat';
-import { Button, Dropdown, Icon, Menu } from '@components/UI';
-import Identity from '@utils/Identity';
+import { sentenceCase } from 'change-case';
 import { type } from './meta';
+import { getResponse } from '@actions/response';
+import Chat from '@components/Chat';
+import { Dropdown, Icon, Menu } from '@components/UI';
+import Identity from '@utils/Identity';
+import Media from '@utils/Media';
+import Timer from './Timer';
+
+import {
+  CHAT_CLOSE_COMPLETE,
+  CHAT_CLOSE_INCOMPLETE,
+  CHAT_CLOSE_TIMEOUT
+} from '@hoc/withRunEventCapturing';
+
+import withSocket, {
+  CHAT_CLOSED_FOR_SLIDE,
+  CREATE_CHAT_CHANNEL,
+  CREATE_CHAT_SLIDE_CHANNEL
+} from '@hoc/withSocket';
+
 import './ChatPrompt.css';
+
+const resultValues = ['complete', 'incomplete'];
+
+const resultToRunEventMap = {
+  complete: CHAT_CLOSE_COMPLETE,
+  incomplete: CHAT_CLOSE_INCOMPLETE,
+  timeout: CHAT_CLOSE_TIMEOUT
+};
+
+// This is used to fill in an expected event
+// argument, but is otherwise a no-op;
+const emptyEvent = {};
 
 class Display extends Component {
   constructor(props) {
     super(props);
 
-    this.created_at = '';
+    const { persisted = { value: '' } } = this.props;
+
+    this.state = {
+      isReady: false,
+      hasSubmittedResponse: false,
+      value: persisted.value
+    };
+
+    this.created_at = new Date().toISOString(); // Maps to a database column
+    this.ticks = 0;
+    this.slideIndex = Number(
+      location.href.slice(location.href.lastIndexOf('/') + 1)
+    );
+    this.onChange = this.onChange.bind(this);
   }
 
   get isScenarioRun() {
@@ -22,96 +64,206 @@ class Display extends Component {
     if (!this.isScenarioRun) {
       return;
     }
+
+    let { persisted = {}, responseId, run } = this.props;
+    let { name = responseId, value = '' } = persisted;
+    let hasSubmittedResponse = false;
+
+    if (!value && run.id) {
+      const previous = await this.props.getResponse({
+        id: run.id,
+        responseId
+      });
+
+      if (previous?.response?.value) {
+        hasSubmittedResponse = true;
+        value = previous.response.value;
+      }
+    }
+
+    if (value) {
+      this.props.onResponseChange(emptyEvent, {
+        name,
+        value,
+        isFulfilled: true
+      });
+      this.setState({ hasSubmittedResponse, value });
+    }
+
+    const { chat } = this.props;
+
+    const slide = {
+      index: this.slideIndex
+    };
+
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, { chat });
+    this.props.socket.emit(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
+    this.props.socket.once(CHAT_CLOSED_FOR_SLIDE, this.onChange);
+
+    this.setState({
+      isReady: true
+    });
   }
 
-  onBlur() {
-    // const { value } = this.state;
-    // if (this.defaultValue !== value) {
-    //   this.props.saveRunEvent(TEXT_INPUT_CHANGE, {
-    //     value
-    //   });
-    // }
-    // this.props.saveRunEvent(TEXT_INPUT_EXIT, {
-    //   value
-    // });
-    // this.defaultValue = value;
+  componentWillUnmount() {
+    this.props.socket.off(CHAT_CLOSED_FOR_SLIDE, this.onChange);
   }
 
-  onFocus() {
-    // if (!this.created_at) {
-    //   this.created_at = new Date().toISOString();
-    // }
-    // const { value } = this.state;
-    // this.props.saveRunEvent(TEXT_INPUT_ENTER, {
-    //   value
-    // });
-  }
+  onChange({ chat, slide, result }) {
+    console.log(result);
+    const { responseId: name } = this.props;
+    const { created_at } = this;
+    const ended_at = new Date().toISOString();
+    const time = this.ticks;
 
-  onChange(event, { name, value }) {
-    // const { created_at } = this;
-    // this.props.onResponseChange(event, {
-    //   created_at,
-    //   ended_at: new Date().toISOString(),
-    //   name,
-    //   type,
-    //   value
-    // });
-    // this.setState({ value });
+    const value = {
+      result,
+      time
+    };
+
+    this.props.saveRunEvent(resultToRunEventMap[result], {
+      prompt: this.props.prompt,
+      responseId: this.props.responseId,
+      content: chat,
+      value: slide
+    });
+
+    this.props.onResponseChange(emptyEvent, {
+      created_at,
+      ended_at,
+      name,
+      type,
+      value
+    });
+
+    this.setState({
+      value
+    });
   }
 
   render() {
-    const { chat, isEmbeddedInSVG, timer, user } = this.props;
+    const { chat, isEmbeddedInSVG, responseId, timer, user } = this.props;
+
+    const { isReady, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return null;
     }
 
-    //
-    //
-    // TODO: need a way to trigger a timer
-    //
-    // - send an onSend?
-    //
-    //
-
     const isUserHost = chat.host_id === user.id;
-    const timerValue = '00:00';
+    const key = Identity.key(chat);
+    const chatProps = {
+      chat,
+      key,
+      responseId
+    };
+
+    const timerProps = {
+      timer,
+      onTimerEnd: params => {
+        this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, params);
+      },
+      onTimerStart: () => {
+        this.created_at = new Date().toISOString();
+        this.setState({
+          value: {}
+        });
+      },
+      onTimerTick: () => {
+        this.ticks++;
+      }
+    };
+
+    const { result: defaultValue, time } = this.state.value;
+    const seconds = Number(time);
+    const options = resultValues.map(resultValue => {
+      let text = sentenceCase(resultValue);
+      if (defaultValue && seconds) {
+        text += ` (${Media.secToTime(seconds)})`;
+      }
+      return {
+        key: resultValue,
+        value: resultValue,
+        text
+      };
+    });
+
+    const slide = {
+      index: this.slideIndex
+    };
+
+    options.unshift({
+      key: '',
+      value: null,
+      text: ''
+    });
+
+    const onChatCompleteChange = (event, { name, value }) => {
+      const time = this.ticks;
+      if (value) {
+        this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, {
+          chat,
+          slide,
+          [name]: value
+        });
+        this.setState({
+          value: {
+            [name]: value,
+            time
+          }
+        });
+      }
+    };
+
+    const whatHappened =
+      defaultValue === 'timeout' ? 'ended in a' : 'was marked';
+
+    // Inexplicably, the usual "{' '}" is not working
+    // to create a space between {whatHappened} and
+    // <strong>{defaultValue}</strong>
+    const resultOfDiscussion = defaultValue ? (
+      <Menu.Item>
+        <Icon name="discussions" />
+        The discussion {whatHappened}&nbsp;
+        <strong>{defaultValue}</strong>.
+      </Menu.Item>
+    ) : null;
+
+    const dropdownOrResultOfDiscussion = !defaultValue ? (
+      <Dropdown
+        item
+        className="cpd__dropdown"
+        name="result"
+        placeholder="Close discussion as..."
+        closeOnChange={true}
+        defaultValue={defaultValue}
+        options={options}
+        onChange={onChatCompleteChange}
+      />
+    ) : (
+      resultOfDiscussion
+    );
+
+    const discussionIsOpen = !hasSubmittedResponse && !defaultValue;
 
     return (
-      <Fragment>
-        <Menu borderless>
-          {isUserHost ? (
-            <Dropdown
-              item
-              simple
-              text="Close discussion as..."
-              onChange={() => {
-                alert('Not implemented');
-              }}
-            >
-              <Dropdown.Menu>
-                <Dropdown.Item>Complete</Dropdown.Item>
-                <Dropdown.Item>Incomplete</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          ) : null}
-          <Menu.Item>
-            <div className="ui transparent icon input">
-              <input
-                className="prompt cp__timer"
-                type="text"
-                defaultValue={timerValue}
-              />
-              <i className="clock outline icon" />
-            </div>
-          </Menu.Item>
-          <Menu.Menu position="right">
-            {chat ? (
-              <Chat key={Identity.key(window.location.href)} chat={chat} />
-            ) : null}
-          </Menu.Menu>
-        </Menu>
-      </Fragment>
+      <Menu borderless>
+        {!hasSubmittedResponse && isUserHost && timer ? (
+          <Timer {...timerProps} />
+        ) : null}
+
+        {isUserHost ? dropdownOrResultOfDiscussion : null}
+
+        {!isUserHost ? resultOfDiscussion : null}
+
+        {!isUserHost && !defaultValue && timer ? (
+          <Timer {...timerProps} />
+        ) : null}
+
+        <Menu.Menu position="right">
+          {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
+        </Menu.Menu>
+      </Menu>
     );
   }
 }
@@ -122,11 +274,16 @@ Display.defaultProps = {
 
 Display.propTypes = {
   chat: PropTypes.object,
+  getResponse: PropTypes.func,
   isEmbeddedInSVG: PropTypes.bool,
+  onResponseChange: PropTypes.func,
+  persisted: PropTypes.object,
+  prompt: PropTypes.string,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
+  socket: PropTypes.object,
   timer: PropTypes.number,
   type: PropTypes.oneOf([type]).isRequired,
   user: PropTypes.object
@@ -137,9 +294,13 @@ const mapStateToProps = state => {
   return { chat, run, user };
 };
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  getResponse: params => dispatch(getResponse(params))
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Display);
+export default withSocket(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Display)
+);

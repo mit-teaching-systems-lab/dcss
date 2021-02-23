@@ -1,11 +1,11 @@
-import { type } from './meta';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { type } from './meta';
+import { getResponse } from '@actions/response';
+import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
 import { Form, Header, Segment } from '@components/UI';
 import PromptRequiredLabel from '../PromptRequiredLabel';
-import ResponseRecall from '@components/Slide/Components/ResponseRecall/Display';
-import { connect } from 'react-redux';
-import { getResponse } from '@actions/response';
 import {
   TEXT_INPUT_CHANGE,
   TEXT_INPUT_ENTER,

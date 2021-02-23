@@ -12803,13 +12803,17 @@ exports[`onQuote 3`] = `
     </div>
   </div>
   <div
-    class=\\"ui tiny inverted popup transition visible\\"
-    style=\\"left: 0px; position: absolute; top: 0px; opacity: 0; pointer-events: none;\\"
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
   >
     <div
-      class=\\"content\\"
+      class=\\"ui top right tiny inverted popup transition visible\\"
+      style=\\"position: initial;\\"
     >
-      Quote this message
+      <div
+        class=\\"content\\"
+      >
+        Quote this message
+      </div>
     </div>
   </div>
 </body>"
@@ -13192,13 +13196,17 @@ exports[`onQuote 5`] = `
     </div>
   </div>
   <div
-    class=\\"ui tiny inverted popup transition visible\\"
-    style=\\"left: 0px; position: absolute; top: 0px; opacity: 0; pointer-events: none;\\"
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
   >
     <div
-      class=\\"content\\"
+      class=\\"ui top right tiny inverted popup transition visible\\"
+      style=\\"position: initial;\\"
     >
-      Quote this message
+      <div
+        class=\\"content\\"
+      >
+        Quote this message
+      </div>
     </div>
   </div>
 </body>"

@@ -2,44 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import TimeField from 'react-simple-timefield';
-import { Container, Form, Grid } from '@components/UI';
-import { defaultValue } from './';
+import { Container, Form, Grid, Icon, Text } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Media from '@utils/Media';
+import './ChatPrompt.css';
 
 class ChatPromptEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
       header = '',
-      timer = 0,
+      prompt = '',
       required = false,
-      responseId = ''
+      responseId = '',
+      timer = 0
     } = props.value;
     this.state = {
       header,
-      timer,
-      required,
-      responseId
+      prompt,
+      required: timer ? true : required,
+      responseId,
+      timer
     };
 
+    this.enforceRequiredWhenTimerIsSet = this.enforceRequiredWhenTimerIsSet.bind(
+      this
+    );
     this.onChange = this.onChange.bind(this);
+    this.onTimerChange = this.onTimerChange.bind(this);
     this.updateState = this.updateState.bind(this);
     this.delayedUpdateState = this.delayedUpdateState.bind(this);
     this.timeout = null;
-  }
 
-  shouldComponentUpdate(newProps) {
-    const fields = Object.getOwnPropertyNames(defaultValue({}));
-
-    for (let field of fields) {
-      if (newProps.value[field] !== this.props.value[field]) {
-        return true;
-      }
+    if (required !== this.state.required) {
+      this.enforceRequiredWhenTimerIsSet();
     }
-
-    return true;
   }
 
   componentWillUnmount() {
@@ -47,7 +45,12 @@ class ChatPromptEditor extends React.Component {
 
     let shouldCallUpdateState = false;
 
-    const fields = ['header', 'timer', 'required'];
+    const fields = [
+      'header',
+      'prompt',
+      // 'required',
+      'timer'
+    ];
 
     for (let field of fields) {
       if (this.props.value[field] !== this.state[field]) {
@@ -69,46 +72,63 @@ class ChatPromptEditor extends React.Component {
   }
 
   updateState() {
-    const { header, timer, required, responseId } = this.state;
+    const { header, prompt, timer, required, responseId } = this.state;
     this.props.onChange({
       header,
-      timer,
+      prompt,
       required,
       responseId,
+      timer,
       type
     });
   }
 
-  onChange(event, value) {
+  onTimerChange(event, value) {
+    const timer = Media.timeToSec(value);
     const update = {
-      timer: Media.timeToSec(value)
+      timer
     };
 
-    if (value) {
+    if (timer) {
       update.required = true;
     }
+
     this.setState(update, this.delayedUpdateState);
   }
 
+  onChange(event, { name, value }) {
+    this.setState({ [name]: value }, this.delayedUpdateState);
+  }
+
+  enforceRequiredWhenTimerIsSet() {
+    this.props.onChange({
+      required: true
+    });
+    return null;
+  }
+
   render() {
-    const { header, timer } = this.state;
-    const { scenario, slideIndex } = this.props;
-    const { onChange, updateState } = this;
-    const promptAriaLabel = 'Set a maximum time for discussion on this slide.';
+    const { header, prompt, timer } = this.state;
+    const { onChange, onTimerChange, updateState } = this;
 
     const timerString = timer ? Media.secToTime(timer) : '';
 
-    const [hh, mm, ss] = timerString.split(':').map(v => Number(v));
+    const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
+
+    const promptAriaLabel = 'Optional prompt to display for this discussion:';
+    const timerAriaLabel = 'Set a maximum time for discussion on this slide.';
+
+    // console.log("required", required);
+    // console.log("timer", timer);
 
     // <div className="ui ">
     return (
       <Form>
         <Container fluid>
-          <Grid columns={2}>
-            <Grid.Row>
+          <Grid>
+            <Grid.Row columns={2}>
               <Grid.Column>
                 <Form.Field>
-                  (NOT YET IMPLEMENTED)
                   <label htmlFor="timer">
                     Set a maximum time for discussion on this slide.
                   </label>
@@ -118,17 +138,53 @@ class ChatPromptEditor extends React.Component {
                       colon=":"
                       name="timer"
                       id="timer"
-                      aria-label={promptAriaLabel}
-                      onChange={onChange}
+                      aria-label={timerAriaLabel}
+                      onChange={onTimerChange}
                       onBlur={updateState}
                       value={timerString}
                     />
                   </div>
                 </Form.Field>
               </Grid.Column>
+              <Grid.Column className="cpe__displaytime-outer">
+                <Text size="large" styl>
+                  {hh} {pluralize('hour', hh)} {mm} {pluralize('minute', mm)}{' '}
+                  {ss} {pluralize('second', ss)}{' '}
+                </Text>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns={1}>
               <Grid.Column>
-                {hh} {pluralize('hour', hh)} {mm} {pluralize('minute', mm)} {ss}{' '}
-                {pluralize('second', ss)}{' '}
+                <p className="cpe__paragraph">
+                  <Icon name="attention" />
+                  If the timer is set, the discussion will be marked{' '}
+                  <strong>Required</strong>. This ensures that participants
+                  cannot move forward until completing the discussion. Hosts
+                  will be able to override the timer.
+                </p>
+                <p className="cpe__paragraph">
+                  <Icon name="attention" />
+                  Set the timer to 00:00:00 for an unlimited discussion time.
+                </p>
+                <p className="cpe__paragraph">
+                  <Icon name="attention" />
+                  If no timer is set and this chat is set to{' '}
+                  <strong>Required</strong>, the host <strong>must</strong>{' '}
+                  close the discussion before participants can proceed.
+                </p>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row columns={1}>
+              <Grid.Column>
+                <Form.TextArea
+                  name="prompt"
+                  label={promptAriaLabel}
+                  aria-label={promptAriaLabel}
+                  rows={1}
+                  value={prompt}
+                  onChange={onChange}
+                  onBlur={updateState}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -150,9 +206,10 @@ ChatPromptEditor.propTypes = {
   value: PropTypes.shape({
     id: PropTypes.string,
     header: PropTypes.string,
-    timer: PropTypes.number,
+    prompt: PropTypes.string,
     required: PropTypes.bool,
     responseId: PropTypes.string,
+    timer: PropTypes.number,
     type: PropTypes.oneOf([type])
   })
 };

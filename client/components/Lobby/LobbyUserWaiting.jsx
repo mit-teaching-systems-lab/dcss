@@ -1,16 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import pluralize from 'pluralize';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-// import {
-//   getChatById,
-//   // This is used for cohort scenario runs
-//   getChatUsersByChatId,
-//   // This is used for standalone scenario runs
-//   getLinkedChatUsersByChatId,
-// } from '@actions/chat';
-import { notify } from '@components/Notification';
 import { Card, Grid, List } from '@components/UI';
 import Username from '@components/User/Username';
 import Identity from '@utils/Identity';
@@ -18,7 +9,7 @@ import './Lobby.css';
 
 class LobbyUserWaiting extends Component {
   renderListItems(list) {
-    const { scenario, user, usersById } = this.props;
+    const { scenario, usersById } = this.props;
 
     return list.map((chatUser, index) => {
       const waitingUser = usersById[chatUser.id];
@@ -42,7 +33,6 @@ class LobbyUserWaiting extends Component {
   }
 
   render() {
-    const { scenario, user, usersById } = this.props;
     const usersPresentWithAssignedRoles = this.props.chat.users.filter(
       user => user.persona_id
     );
@@ -113,9 +103,6 @@ class LobbyUserWaiting extends Component {
 LobbyUserWaiting.propTypes = {
   chat: PropTypes.object,
   cohort: PropTypes.object,
-  // getChatById: PropTypes.func,
-  // getChatUsersByChatId: PropTypes.func,
-  // getLinkedChatUsersByChatId: PropTypes.func,
   scenario: PropTypes.object,
   user: PropTypes.object,
   users: PropTypes.array,
@@ -147,15 +134,9 @@ const mapStateToProps = (state, ownProps) => {
   return { chat, cohort, scenario, user, users, usersById };
 };
 
-const mapDispatchToProps = dispatch => ({
-  // getChatById: id => dispatch(getChatById(id)),
-  // getChatUsersByChatId: id => dispatch(getChatUsersByChatId(id)),
-  // getLinkedChatUsersByChatId: id => dispatch(getLinkedChatUsersByChatId(id))
-});
-
 export default withRouter(
   connect(
     mapStateToProps,
-    mapDispatchToProps
+    null
   )(LobbyUserWaiting)
 );
