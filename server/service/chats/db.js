@@ -125,13 +125,18 @@ exports.getChatById = async id => {
   return result.rowCount ? result.rows[0] : null;
 };
 
-exports.createNewChatMessage = async (chat_id, user_id, content) => {
+exports.createNewChatMessage = async (
+  chat_id,
+  user_id,
+  content,
+  response_id
+) => {
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO chat_message
-        (chat_id, user_id, content)
+        (chat_id, user_id, content, response_id)
       VALUES
-        (${chat_id}, ${user_id}, ${content})
+        (${chat_id}, ${user_id}, ${content}, ${response_id})
       RETURNING *;
     `);
     return result.rows[0];
@@ -151,7 +156,11 @@ exports.insertNewUnquotableMessage = async (chat_id, user_id, content) => {
   });
 };
 
-exports.insertNewJoinPartMessage = async (chat_id, user_id, content) => {
+exports.insertNewJoinPartMessage = async (chat_id, user_id, message) => {
+  const content = `
+    <p class="join-part-slide">${message}</p>
+  `.trim();
+
   return await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO chat_message
@@ -218,6 +227,7 @@ exports.getChatMessagesByChatId = async id => {
     SELECT *
     FROM chat_message
     WHERE chat_id = ${id}
+    AND deleted_at IS NULL
     ORDER BY id ASC
   `);
   return result.rows;

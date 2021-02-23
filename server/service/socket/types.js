@@ -3,6 +3,7 @@
 // Client -> Server
 exports.AGENT_JOINED = 'agent-joined';
 exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
+exports.CREATE_CHAT_SLIDE_CHANNEL = 'create-chat-slide-channel';
 exports.CREATE_COHORT_CHANNEL = 'create-cohort-channel';
 exports.CREATE_USER_CHANNEL = 'create-user-channel';
 exports.DISCONNECT = 'disconnect';
@@ -29,5 +30,10 @@ exports.RUN_CHAT_LINK = 'run-chat-link';
 // exports.USER_REMOVED = 'user-removed';
 
 // Client -> Server -> Client
+exports.CHAT_CLOSED_FOR_SLIDE = 'chat-closed-for-slide';
 exports.CHAT_MESSAGE_CREATED = 'chat-message-created';
 exports.CHAT_MESSAGE_UPDATED = 'chat-message-updated';
+exports.TIMER_END = 'timer-end';
+exports.TIMER_START = 'timer-start';
+exports.TIMER_STOP = 'timer-stop';
+exports.TIMER_TICK = 'timer-tick';

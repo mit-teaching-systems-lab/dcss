@@ -20,10 +20,10 @@ const runs = new Router();
 
 runs.get('/', [requireUser, getRuns]);
 
-runs.get('/by-identifiers/scenario/:scenario_id/cohort/:cohort_id/chat/:chat_id', [
-  requireUser,
-  getRunByIdentifiers
-]);
+runs.get(
+  '/by-identifiers/scenario/:scenario_id/cohort/:cohort_id/chat/:chat_id',
+  [requireUser, getRunByIdentifiers]
+);
 
 runs.get('/new-or-existing/scenario/:scenario_id', [
   requireUser,

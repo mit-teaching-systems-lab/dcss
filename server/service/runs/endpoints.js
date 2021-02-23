@@ -53,7 +53,6 @@ async function getRunByIdentifiers(req, res) {
   res.json({ run });
 }
 
-
 async function upsertResponse(req, res) {
   const { id: run_id, user_id } = await runForRequest(req);
   const { response_id } = req.params;
