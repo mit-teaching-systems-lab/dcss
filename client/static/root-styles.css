@@ -66,6 +66,14 @@ i.primary.icon.icon.icon.icon {
   /*font-size: 1.14285714rem !important;*/
 }
 
+.ui.modal > .content {
+  padding: 1em !important;
+}
+
+.ui.modal > .header {
+  padding: 1.25rem 1rem !important;
+}
+
 .ui.modal > .close {
   top: 1.0535rem !important;
   right: 1rem !important;
