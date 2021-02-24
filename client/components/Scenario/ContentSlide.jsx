@@ -84,7 +84,7 @@ class ContentSlide extends React.Component {
   }
 
   get isCohortScenarioRun() {
-    return this.isScenarioRun && window.location.pathname.includes('/cohort/');
+    return window.location.pathname.includes('/cohort/');
   }
 
   get isMultiparticipant() {

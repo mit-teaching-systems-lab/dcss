@@ -52,7 +52,7 @@ class EntrySlide extends React.Component {
   }
 
   get isCohortScenarioRun() {
-    return location.pathname.includes('/cohort/');
+    return window.location.pathname.includes('/cohort/');
   }
 
   get isMultiparticipant() {
