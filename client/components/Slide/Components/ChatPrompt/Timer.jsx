@@ -112,7 +112,7 @@ class Timer extends Component {
       </Ref>
     );
 
-    const startOrClockText = !isStarted ? 'Start timer' : timerDisplay;
+    const startOrClockText = !isStarted ? 'Start discussion timer' : timerDisplay;
 
     const startOrStopButton = (
       <Menu.Item
