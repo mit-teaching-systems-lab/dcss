@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`/api/auth/* /api/auth/reset failure Nodemailer 2`] = `
-Object {
-  "auth": Object {
-    "pass": Any<String>,
-    "user": Any<String>,
-  },
-  "host": "smtp.mailtrap.io",
-  "port": 2525,
-}
-`;
-
-exports[`/api/auth/* /api/auth/reset success Nodemailer 2`] = `
-Object {
-  "auth": Object {
-    "pass": Any<String>,
-    "user": Any<String>,
-  },
-  "host": "smtp.mailtrap.io",
-  "port": 2525,
-}
-`;
-
 exports[`/api/session/* /api/session/reset failure Nodemailer 2`] = `
 Object {
   "auth": Object {
