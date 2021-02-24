@@ -92,7 +92,11 @@ exports[`Render 1 1 1`] = `
               <strong>
                 must
               </strong>
-               close the discussion before participants can proceed.
+               close the discussion before participants can proceed. If no timer is set and this chat is not 
+              <strong>
+                not Required
+              </strong>
+              , the discussion can be optionally closed.
             </p>
           </div>
         </div>

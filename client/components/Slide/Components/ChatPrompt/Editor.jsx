@@ -170,7 +170,10 @@ class ChatPromptEditor extends React.Component {
                   <Icon name="attention" />
                   If no timer is set and this chat is set to{' '}
                   <strong>Required</strong>, the host <strong>must</strong>{' '}
-                  close the discussion before participants can proceed.
+                  close the discussion before participants can proceed. If no
+                  timer is set and this chat is not{' '}
+                  <strong>not Required</strong>, the discussion can be
+                  optionally closed.
                 </p>
               </Grid.Column>
             </Grid.Row>

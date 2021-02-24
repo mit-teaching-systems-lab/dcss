@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import * as HTMLParser from 'node-html-parser';
 import { connect } from 'react-redux';
@@ -119,7 +119,7 @@ class Chat extends Component {
       id: Identity.id(),
       isClosed: false,
       isMinimized: false,
-      isPulsing: false,
+      isNotifying: false,
       isReady: false,
       tick: false
     };
@@ -317,7 +317,7 @@ class Chat extends Component {
 
     if (this.state.isMinimized) {
       this.setState({
-        isPulsing: true
+        isNotifying: true
       });
 
       // if (Layout.isForMobile()) {
@@ -329,7 +329,7 @@ class Chat extends Component {
   onMinMaxClick() {
     this.setState({
       isMinimized: !this.state.isMinimized,
-      isPulsing: false
+      isNotifying: false
     });
   }
 
@@ -411,7 +411,7 @@ class Chat extends Component {
       },
       position: {
         x: 0,
-        y: 100
+        y: 0
       }
     });
 
@@ -482,11 +482,7 @@ class Chat extends Component {
       width: 'calc(${dimensions.width}px)'
     };
 
-    const draggableClassName = isMinimized
-      ? 'ui header'
-      : 'ui header c__drag-handle';
-
-    const minMaxClassName = this.state.isPulsing ? 'c__notice' : '';
+    const minMaxClassName = this.state.isNotifying ? 'c__notice' : '';
 
     const minMaxButton = (
       <ChatMinMax
@@ -496,14 +492,32 @@ class Chat extends Component {
       />
     );
 
+    const defaultHeaderContents = (
+      <Fragment>
+        <i aria-hidden="true" className="comments outline icon"></i>
+        <div className="content">Discussion</div>
+      </Fragment>
+    );
+
+    const headerContents = this.props.header
+      ? this.props.header
+      : defaultHeaderContents;
+
+    const defaultDraggableClassName = isMinimized
+      ? 'ui header'
+      : 'ui header c__drag-handle';
+
+    const draggableClassName = this.props.header
+      ? `${defaultDraggableClassName} cpd__drag-handle`
+      : defaultDraggableClassName;
+
     return isMinimized ? (
       minMaxButton
     ) : (
       <ChatDraggableResizableDialog {...draggableResizableProps}>
         {minMaxButton}
         <div tabIndex="0" className={draggableClassName}>
-          <i aria-hidden="true" className="comments outline icon"></i>
-          <div className="content">Discussion</div>
+          {headerContents}
         </div>
         <Ref innerRef={node => (this.cRef = node)}>
           <div tabIndex="0" className={innerMinMaxClassName}>
@@ -527,6 +541,7 @@ Chat.propTypes = {
   getChatById: PropTypes.func,
   getChatUsersByChatId: PropTypes.func,
   setChatUsersByChatId: PropTypes.func,
+  header: PropTypes.node,
   response: PropTypes.object,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,

@@ -38,3 +38,9 @@
 .dropdown.cpd__dropdown > .visible.menu.transition * {
   white-space: unset !important;
 }
+
+.ui.header.cpd__drag-handle {
+  padding: 0.50rem 1rem 1rem 1rem !important;
+  /*padding: unset !important;*/
+  /*padding: 1.25rem 1rem !important;*/
+}

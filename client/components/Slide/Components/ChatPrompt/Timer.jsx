@@ -19,16 +19,13 @@ class Timer extends Component {
     this.state = {
       // true once the timer starts
       // changes when timer is paused/resumed
-      isActive: false,
-      // true once the timer starts
-      // only changes once
-      isStarted: false
+      isActive: false
     };
 
     this.slideIndex = Number(
       location.href.slice(location.href.lastIndexOf('/') + 1)
     );
-    this.timerNode = null;
+    this.timerNodes = [];
     this.timerStart = this.timerStart.bind(this);
     this.timerEnd = this.timerEnd.bind(this);
     this.timerTick = this.timerTick.bind(this);
@@ -43,28 +40,35 @@ class Timer extends Component {
       return;
     }
 
+    this.props.socket.on(TIMER_START, this.timerStart);
     this.props.socket.on(TIMER_END, this.timerEnd);
     this.props.socket.on(TIMER_TICK, this.timerTick);
+
+    if (this.props.isAutostart && !this.props.isComplete) {
+      const { chat, slide, timer } = this.props;
+
+      this.props.socket.emit(TIMER_START, { chat, slide, timer });
+    }
   }
 
   componentWillUnmount() {
+    this.props.socket.off(TIMER_START, this.timerStart);
     this.props.socket.off(TIMER_END, this.timerEnd);
     this.props.socket.off(TIMER_TICK, this.timerTick);
   }
 
   timerStart() {
-    if (this.state.isStarted) {
+    if (this.state.isActive) {
       return;
     }
-
     const { chat, timer } = this.props;
 
     const slide = {
       index: this.slideIndex
     };
-    this.props.socket.emit(TIMER_START, { chat, slide, timer });
+
     this.setState({
-      isStarted: true
+      isActive: true
     });
 
     if (this.props.onTimerStart) {
@@ -79,19 +83,27 @@ class Timer extends Component {
       index: this.slideIndex
     };
 
+    this.setState({
+      isActive: false
+    });
+
+    console.log('Timer: timerEnd');
     if (this.props.onTimerEnd) {
       this.props.onTimerEnd({ chat, slide, result });
     }
   }
 
-  timerTick(data) {
-    this.timerNode.innerText = Media.secToTime(data.timer);
+  timerTick({ timer }) {
+    console.log('?????????????');
+    this.timerNodes
+      .filter(Boolean)
+      .forEach(node => (node.innerText = Media.secToTime(timer)));
   }
 
   render() {
     const { timerStart, timerEnd } = this.props;
-    const { chat, timer, user } = this.props;
-    const { isStarted } = this.state;
+    const { chat, slide, timer, user } = this.props;
+    const { isActive } = this.state;
 
     if (!this.isScenarioRun) {
       return null;
@@ -100,26 +112,26 @@ class Timer extends Component {
     const isUserHost = chat.host_id === user.id;
     const timerValue = timer ? Media.secToTime(timer) : '';
 
-    const startOrClockIcon = isStarted ? (
+    const startOrClockIcon = isActive ? (
       <Icon className="icon-primary" name="clock outline" />
     ) : (
       <Icon className="icon-primary" name="play" />
     );
 
     const timerDisplay = (
-      <Ref innerRef={node => (this.timerNode = node)}>
+      <Ref innerRef={node => this.timerNodes.push(node)}>
         <span>{timerValue}</span>
       </Ref>
     );
 
-    const startOrClockText = !isStarted ? 'Start discussion timer' : timerDisplay;
+    const startOrClockText = isActive ? timerDisplay : 'Start discussion timer';
 
     const startOrStopButton = (
       <Menu.Item
-        className="icon-primary"
+        className="cpd__timer icon-primary"
         onClick={() => {
-          if (!isStarted) {
-            this.timerStart();
+          if (!isActive) {
+            this.props.socket.emit(TIMER_START, { chat, slide, timer });
           }
         }}
       >
@@ -130,7 +142,7 @@ class Timer extends Component {
     return isUserHost ? (
       startOrStopButton
     ) : (
-      <Menu.Item>
+      <Menu.Item className="cpd__timer">
         <Icon className="icon-primary" name="clock outline" />
         {timerDisplay}
       </Menu.Item>
@@ -140,6 +152,7 @@ class Timer extends Component {
 
 Timer.propTypes = {
   chat: PropTypes.object,
+  isAutostart: PropTypes.bool,
   required: PropTypes.bool,
   responseId: PropTypes.string,
   onTimerEnd: PropTypes.func,
@@ -147,6 +160,7 @@ Timer.propTypes = {
   onTimertick: PropTypes.func,
   run: PropTypes.object,
   socket: PropTypes.object,
+  slide: PropTypes.object,
   timer: PropTypes.number,
   timerStart: PropTypes.func,
   timerEnd: PropTypes.func,

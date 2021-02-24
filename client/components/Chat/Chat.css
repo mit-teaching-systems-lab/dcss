@@ -314,3 +314,14 @@
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
+
+.ui.header.c__drag-handle > .item.cpd__timer {
+  display: inline-block;
+  font-size: 0.8em !important;
+  padding: 0.9rem 0 0.1rem 0 !important;
+  width: 179px;
+}
+
+.ui.header.c__drag-handle > .item.cpd__timer:hover {
+  background: unset !important;
+}

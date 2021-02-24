@@ -43,7 +43,9 @@ class Display extends Component {
     const { persisted = { value: '' } } = this.props;
 
     this.state = {
+      isActive: false,
       isReady: false,
+      isRestart: false,
       hasSubmittedResponse: false,
       value: persisted.value
     };
@@ -98,7 +100,7 @@ class Display extends Component {
 
     this.props.socket.emit(CREATE_CHAT_CHANNEL, { chat });
     this.props.socket.emit(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
-    this.props.socket.once(CHAT_CLOSED_FOR_SLIDE, this.onChange);
+    this.props.socket.on(CHAT_CLOSED_FOR_SLIDE, this.onChange);
 
     this.setState({
       isReady: true
@@ -110,7 +112,6 @@ class Display extends Component {
   }
 
   onChange({ chat, slide, result }) {
-    console.log(result);
     const { responseId: name } = this.props;
     const { created_at } = this;
     const ended_at = new Date().toISOString();
@@ -137,14 +138,21 @@ class Display extends Component {
     });
 
     this.setState({
+      isActive: false,
       value
     });
   }
 
   render() {
-    const { chat, isEmbeddedInSVG, responseId, timer, user } = this.props;
-
-    const { isReady, hasSubmittedResponse } = this.state;
+    const {
+      chat,
+      isAutostart,
+      isEmbeddedInSVG,
+      responseId,
+      timer,
+      user
+    } = this.props;
+    const { isActive, isReady, isRestart, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return null;
@@ -152,13 +160,17 @@ class Display extends Component {
 
     const isUserHost = chat.host_id === user.id;
     const key = Identity.key(chat);
-    const chatProps = {
-      chat,
-      key,
-      responseId
+    const { result: defaultValue, time } = this.state.value;
+    const slide = {
+      index: this.slideIndex
     };
 
+    const isComplete = !!defaultValue;
     const timerProps = {
+      isAutostart,
+      isComplete,
+      isRestart,
+      slide,
       timer,
       onTimerEnd: params => {
         this.props.socket.emit(CHAT_CLOSED_FOR_SLIDE, params);
@@ -173,8 +185,19 @@ class Display extends Component {
         this.ticks++;
       }
     };
+    const timerRender = (
+      <Timer key={Identity.key(timerProps)} {...timerProps} />
+    );
 
-    const { result: defaultValue, time } = this.state.value;
+    const header = !defaultValue && timer ? timerRender : null;
+
+    const chatProps = {
+      chat,
+      header,
+      key,
+      responseId
+    };
+
     const seconds = Number(time);
     const options = resultValues.map(resultValue => {
       let text = sentenceCase(resultValue);
@@ -187,10 +210,6 @@ class Display extends Component {
         text
       };
     });
-
-    const slide = {
-      index: this.slideIndex
-    };
 
     options.unshift({
       key: '',
@@ -207,6 +226,7 @@ class Display extends Component {
           [name]: value
         });
         this.setState({
+          isActive: false,
           value: {
             [name]: value,
             time
@@ -248,7 +268,7 @@ class Display extends Component {
 
     return (
       <Menu borderless>
-        {!hasSubmittedResponse && isUserHost && timer ? (
+        {discussionIsOpen && isUserHost && timer ? (
           <Timer {...timerProps} />
         ) : null}
 
@@ -275,6 +295,7 @@ Display.defaultProps = {
 Display.propTypes = {
   chat: PropTypes.object,
   getResponse: PropTypes.func,
+  isAutostart: PropTypes.bool,
   isEmbeddedInSVG: PropTypes.bool,
   onResponseChange: PropTypes.func,
   persisted: PropTypes.object,

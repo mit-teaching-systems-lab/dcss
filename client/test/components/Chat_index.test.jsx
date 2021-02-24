@@ -2092,15 +2092,17 @@ test('Rnd: onDragStop/onResizeStop', async done => {
             className="ui header c__drag-handle"
             tabIndex="0"
           >
-            <i
-              aria-hidden="true"
-              className="comments outline icon"
-            />
-            <div
-              className="content"
-            >
-              Discussion
-            </div>
+            <React.Fragment>
+              <i
+                aria-hidden="true"
+                className="comments outline icon"
+              />
+              <div
+                className="content"
+              >
+                Discussion
+              </div>
+            </React.Fragment>
           </div>
           <Ref
             innerRef={[Function]}
@@ -2515,15 +2517,17 @@ test('Rnd: onDrag/onResize', async done => {
             className="ui header c__drag-handle"
             tabIndex="0"
           >
-            <i
-              aria-hidden="true"
-              className="comments outline icon"
-            />
-            <div
-              className="content"
-            >
-              Discussion
-            </div>
+            <React.Fragment>
+              <i
+                aria-hidden="true"
+                className="comments outline icon"
+              />
+              <div
+                className="content"
+              >
+                Discussion
+              </div>
+            </React.Fragment>
           </div>
           <Ref
             innerRef={[Function]}

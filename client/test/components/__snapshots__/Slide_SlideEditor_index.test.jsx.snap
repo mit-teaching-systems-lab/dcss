@@ -35195,7 +35195,11 @@ exports[`Multiple personas, toggle chat 3`] = `
                                 <strong>
                                   must
                                 </strong>
-                                 close the discussion before participants can proceed.
+                                 close the discussion before participants can proceed. If no timer is set and this chat is not 
+                                <strong>
+                                  not Required
+                                </strong>
+                                , the discussion can be optionally closed.
                               </p>
                             </div>
                           </div>
@@ -36396,7 +36400,11 @@ exports[`Multiple personas, toggle chat 4`] = `
                                 <strong>
                                   must
                                 </strong>
-                                 close the discussion before participants can proceed.
+                                 close the discussion before participants can proceed. If no timer is set and this chat is not 
+                                <strong>
+                                  not Required
+                                </strong>
+                                , the discussion can be optionally closed.
                               </p>
                             </div>
                           </div>

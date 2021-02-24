@@ -4,11 +4,14 @@ const {
   AGENT_JOIN,
   CHAT_CREATED,
   CHAT_CLOSED_FOR_SLIDE,
+  CHAT_CLOSED,
+  CHAT_OPENED,
   CHAT_ENDED,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED,
   CREATE_CHAT_CHANNEL,
   CREATE_CHAT_SLIDE_CHANNEL,
+  CREATE_CHAT_USER_CHANNEL,
   CREATE_COHORT_CHANNEL,
   CREATE_USER_CHANNEL,
   DISCONNECT,
@@ -85,8 +88,14 @@ class SocketManager {
 
       if (!notifier.listenerCount('chat_message_created')) {
         notifier.on('chat_message_created', data => {
-          // console.log('chat_message_created', data);
-          socket.broadcast.emit(CHAT_MESSAGE_CREATED, data);
+          console.log('chat_message_created', data);
+
+          // If the message is for a specific participant...
+          const room = data.recipient_id
+            ? `${data.chat_id}-${data.recipient_id}`
+            : data.chat_id;
+
+          this.io.to(room).emit(CHAT_MESSAGE_CREATED, data);
         });
         // console.log('chat_message_created listener is registered');
       }
@@ -102,8 +111,6 @@ class SocketManager {
       if (!notifier.listenerCount('join_or_part_chat')) {
         notifier.on('join_or_part_chat', async data => {
           console.log('join_or_part_chat', data);
-          console.log('join_or_part_chat', data);
-
           const user = await chatdb.getChatUserByChatId(
             data.chat_id,
             data.user_id
@@ -137,7 +144,6 @@ class SocketManager {
       if (!notifier.listenerCount('run_chat_link')) {
         notifier.on('run_chat_link', async data => {
           console.log('run_chat_link', data);
-          // console.log('run_chat_link', data);
           const chat = await chatdb.getChatById(data.chat_id);
           const user = await chatdb.getChatUserByChatId(
             data.chat_id,
@@ -154,7 +160,6 @@ class SocketManager {
       if (!notifier.listenerCount('new_invitation')) {
         notifier.on('new_invitation', async data => {
           console.log('new_invitation', data);
-          // console.log('new_invitation', data);
           socket
             .to(data.receiver_id)
             .emit(
@@ -168,7 +173,6 @@ class SocketManager {
       if (!notifier.listenerCount('set_invitation')) {
         notifier.on('set_invitation', async data => {
           console.log('set_invitation', data);
-          // console.log('set_invitation', data);
           socket
             .to(data.receiver_id)
             .emit(
@@ -188,7 +192,6 @@ class SocketManager {
       if (!notifier.listenerCount('chat_created')) {
         notifier.on('chat_created', async chat => {
           console.log('chat_created', chat);
-          console.log('chat_created', chat);
           socket.to(chat.cohort_id).emit(CHAT_CREATED, {
             chat
           });
@@ -198,7 +201,6 @@ class SocketManager {
 
       if (!notifier.listenerCount('chat_ended')) {
         notifier.on('chat_ended', async chat => {
-          console.log('chat_ended', chat);
           console.log('chat_ended', chat);
           socket.to(chat.id).emit(CHAT_ENDED, {
             chat
@@ -221,6 +223,13 @@ class SocketManager {
       socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ chat, slide }) => {
         console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
         const room = `${chat.id}-${slide.index}`;
+        socket.join(room);
+      });
+
+      // Used for sending messages to a specific user in the chat.
+      socket.on(CREATE_CHAT_USER_CHANNEL, ({ chat, user }) => {
+        console.log(CREATE_CHAT_USER_CHANNEL, { chat, user });
+        const room = `${chat.id}-${user.id}`;
         socket.join(room);
       });
 
@@ -283,11 +292,21 @@ class SocketManager {
 
       const timers = {};
 
-      socket.on(TIMER_START, ({ chat, user, slide, timer }) => {
-        // console.log(TIMER_START, { chat, user, slide, timer });
+      socket.on(TIMER_START, async ({ chat, user, slide, timer }) => {
+        console.log(TIMER_START, { chat, user, slide, timer });
         const room = `${chat.id}-${slide.index}`;
 
         if (!timers[room]) {
+          this.io.to(room).emit(TIMER_START, {
+            chat,
+            user,
+            slide,
+            timer
+          });
+
+          // wait until the next execution turn to start the timer
+          await 0;
+
           timers[room] = setInterval(() => {
             timer--;
 
@@ -300,6 +319,7 @@ class SocketManager {
             });
             if (!timer) {
               clearInterval(timers[room]);
+              timers[room] = null;
               const result = 'timeout';
               this.io.to(room).emit(TIMER_END, {
                 chat,
@@ -314,7 +334,10 @@ class SocketManager {
 
       // socket.on(TIMER_END, ({ chat, user, slide, result }) => {
       //   const room = `${chat.id}-${slide.index}`;
-      //   socket.broadcast.to(room).emit(TIMER_END, {
+
+      //   clearInterval(timers[room]);
+
+      //   this.io.to(room).emit(TIMER_END, {
       //     chat,
       //     slide,
       //     result
