@@ -29,8 +29,11 @@
     "prettier": "prettier --write '**/*.js'",
     "seed:super-admin": "node seed/super-admin.js",
     "ci:test": "DB_CONFIG=test jest --bail=1 --coverage",
-    "test": "yarn test:endpoints:setup; DB_CONFIG=test jest --bail=1 --coverage --forceExit --detectOpenHandles",
-    "watch": "yarn test:endpoints:setup; DB_CONFIG=test jest --watchAll --bail=1 --coverage",
+    "__test": "yarn test:endpoints:setup; DB_CONFIG=test jest --bail=1 --coverage --forceExit --detectOpenHandles",
+    "__watch": "yarn test:endpoints:setup; DB_CONFIG=test jest --watchAll --bail=1 --coverage",
+    "test": "jest --bail=1 --coverage --forceExit --detectOpenHandles",
+    "watch": "jest --watchAll --bail=1 --coverage",
+
     "test:endpoints:setup": "db-migrate --env init db:drop teachermoments-test; yarn db-init:test"
   },
   "dependencies": {
