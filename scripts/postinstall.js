@@ -8,6 +8,7 @@ const CLIENT_NMP = path.join(ROOT, 'client', 'node_modules');
 
 const files = [
   {
+    // SunEditor MUST be copied to client/node_modules so that webpack can find it.
     source: path.join(ROOT_NMP, 'suneditor'),
     destination: path.join(CLIENT_NMP)
   }
