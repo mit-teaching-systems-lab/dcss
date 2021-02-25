@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import { agent, agents, agentsById } from './agent';
 import { chat, chats, chatsById } from './chat';
 import { cohort, cohorts, cohortsById } from './cohort';
 import errors from './errors';
@@ -18,6 +19,9 @@ import { user } from './user';
 import { users, usersById } from './users';
 
 export default combineReducers({
+  agent,
+  agents,
+  agentsById,
   chat,
   chats,
   chatsById,

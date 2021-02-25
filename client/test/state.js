@@ -1,4 +1,134 @@
 module.exports = {
+  agent: {
+    id: 1,
+    created_at: '2021-02-25T17:31:33.826Z',
+    updated_at: '2021-02-25T20:09:04.999Z',
+    deleted_at: null,
+    is_active: true,
+    name: 'Emoji Analysis',
+    description: 'Detects the presense of an emoji character in your text',
+    endpoint: 'ws://emoji-analysis-production.herokuapp.com',
+    configuration: {
+      bar: '2',
+      baz: 'c',
+      foo: 'false'
+    },
+    interaction: {
+      id: 18,
+      name: 'ChatPrompt',
+      created_at: '2021-02-25T15:09:05.001302-05:00',
+      deleted_at: null,
+      updated_at: null
+    },
+    owner: {
+      id: 999,
+      email: 'super@email.com',
+      roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+      is_super: true,
+      username: 'superuser',
+      is_anonymous: false,
+      personalname: 'Super User'
+    },
+    self: {
+      id: 148,
+      email: null,
+      roles: null,
+      is_super: false,
+      username: 'ebe565050b31cbb4e7eacc39b23e2167',
+      lastseen_at: '2021-02-25T13:08:57.323-05:00',
+      is_anonymous: true,
+      personalname: 'Emoji Analysis',
+      single_use_password: false
+    }
+  },
+  agents: [
+    {
+      id: 1,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-25T20:09:04.999Z',
+      deleted_at: null,
+      is_active: true,
+      name: 'Emoji Analysis',
+      description: 'Detects the presense of an emoji character in your text',
+      endpoint: 'ws://emoji-analysis-production.herokuapp.com',
+      configuration: {
+        bar: '2',
+        baz: 'c',
+        foo: 'false'
+      },
+      interaction: {
+        id: 18,
+        name: 'ChatPrompt',
+        created_at: '2021-02-25T15:09:05.001302-05:00',
+        deleted_at: null,
+        updated_at: null
+      },
+      owner: {
+        id: 999,
+        email: 'super@email.com',
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        username: 'superuser',
+        is_anonymous: false,
+        personalname: 'Super User'
+      },
+      self: {
+        id: 148,
+        email: null,
+        roles: null,
+        is_super: false,
+        username: 'ebe565050b31cbb4e7eacc39b23e2167',
+        lastseen_at: '2021-02-25T13:08:57.323-05:00',
+        is_anonymous: true,
+        personalname: 'Emoji Analysis',
+        single_use_password: false
+      }
+    }
+  ],
+  agentsById: {
+    '1': {
+      id: 1,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-25T20:09:04.999Z',
+      deleted_at: null,
+      is_active: true,
+      name: 'Emoji Analysis',
+      description: 'Detects the presense of an emoji character in your text',
+      endpoint: 'ws://emoji-analysis-production.herokuapp.com',
+      configuration: {
+        bar: '2',
+        baz: 'c',
+        foo: 'false'
+      },
+      interaction: {
+        id: 18,
+        name: 'ChatPrompt',
+        created_at: '2021-02-25T15:09:05.001302-05:00',
+        deleted_at: null,
+        updated_at: null
+      },
+      owner: {
+        id: 999,
+        email: 'super@email.com',
+        roles: ['participant', 'super_admin', 'facilitator', 'researcher'],
+        is_super: true,
+        username: 'superuser',
+        is_anonymous: false,
+        personalname: 'Super User'
+      },
+      self: {
+        id: 148,
+        email: null,
+        roles: null,
+        is_super: false,
+        username: 'ebe565050b31cbb4e7eacc39b23e2167',
+        lastseen_at: '2021-02-25T13:08:57.323-05:00',
+        is_anonymous: true,
+        personalname: 'Emoji Analysis',
+        single_use_password: false
+      }
+    }
+  },
   chat: {
     id: 1,
     scenario_id: 42,

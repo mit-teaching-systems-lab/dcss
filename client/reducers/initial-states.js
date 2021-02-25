@@ -1,3 +1,18 @@
+export const agentInitialState = {
+  id: null,
+  created_at: null,
+  updated_at: null,
+  deleted_at: null,
+  is_active: false,
+  name: '',
+  description: '',
+  endpoint: '',
+  configuration: null,
+  interaction: null,
+  owner: null,
+  self: null,
+};
+
 export const chatInitialState = {
   id: null,
   host_id: null,

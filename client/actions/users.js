@@ -14,12 +14,12 @@ export let setUsers = users => async dispatch => {
   });
 };
 
-export let getUsers = (limit = 'all') => async dispatch => {
+export let getUsers = (filter = 'all') => async dispatch => {
   /*
-    limit = "all" | "available"
+    filter = "all" | "available"
   */
   try {
-    const res = await (await fetch(`/api/roles/${limit}`)).json();
+    const res = await (await fetch(`/api/roles/${filter}`)).json();
 
     if (res.error) {
       throw res;
@@ -34,12 +34,12 @@ export let getUsers = (limit = 'all') => async dispatch => {
   }
 };
 
-export let getUsersCount = (limit = 'all') => async dispatch => {
+export let getUsersCount = (filter = 'all') => async dispatch => {
   /*
-    limit = "all" | "available"
+    filter = "all" | "available"
   */
   try {
-    const res = await (await fetch(`/api/roles/${limit}/count`)).json();
+    const res = await (await fetch(`/api/roles/${filter}/count`)).json();
 
     if (res.error) {
       throw res;
