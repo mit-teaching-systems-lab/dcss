@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const { Pool } = require('pg');
 const pgSession = require('connect-pg-simple')(session);
 
+const agentsRouter = require('./service/agents');
 const chatsRouter = require('./service/chats');
 const cohortsRouter = require('./service/cohorts');
 const componentsRouter = require('./service/components');
@@ -48,7 +49,7 @@ app.use(
 
 app.use(logRequestAndResponse);
 
-app.use('/session', sessionRouter);
+app.use('/agents', agentsRouter);
 app.use('/chats', chatsRouter);
 app.use('/cohorts', cohortsRouter);
 app.use('/components', componentsRouter);
@@ -62,6 +63,7 @@ app.use('/personas', personasRouter);
 app.use('/roles', rolesRouter);
 app.use('/runs', runsRouter);
 app.use('/scenarios', scenariosRouter);
+app.use('/session', sessionRouter);
 app.use('/status', statusRouter);
 app.use('/tags', tagsRouter);
 app.use('/traces', tracesRouter);

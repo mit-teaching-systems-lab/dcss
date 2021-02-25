@@ -1,4 +1,4 @@
-function encodeValue(value) {
+const encodeValue = (value) => {
   if (Array.isArray(value) || (typeof value === 'object' && value !== null)) {
     const typecast = '::jsonb';
     return { typecast, value: JSON.stringify(value) };
@@ -10,7 +10,7 @@ function encodeValue(value) {
   };
 }
 
-exports.sql = function sql(textParts, ...values) {
+exports.sql = (textParts, ...values) => {
   const text = textParts.reduce((memo, string, index) => {
     if (index == 0) return string;
     const { typecast, value } = encodeValue(values[index - 1]);
@@ -20,7 +20,34 @@ exports.sql = function sql(textParts, ...values) {
   return { text, values };
 };
 
-exports.updateQuery = function updateQuery(table, where, update) {
+exports.whereClause = (where) => {
+  let returnValue = '';
+
+  if (typeof where === 'string') {
+    returnValue += `WHERE ${where}`;
+  } else if (typeof where === 'number') {
+    returnValue += `WHERE id = ${where}`;
+  } else if (typeof where === 'object') {
+    returnValue += 'WHERE';
+    const joiner = ' AND \n';
+    for (const [key, inputValue] of Object.entries(where)) {
+      if (inputValue === undefined) {
+        continue;
+      }
+      if (inputValue === null) {
+        returnValue += `  "${key}" IS NULL${joiner}`;
+        continue;
+      }
+      const { typecast, value } = encodeValue(inputValue);
+      returnValue += `  "${key}" = ${value}${typecast}${joiner}`;
+    }
+    returnValue = returnValue.substring(0, returnValue.length - joiner.length) + '\n';
+  }
+
+  return returnValue;
+};
+
+exports.updateQuery = (table, where, update) => {
   let query = `UPDATE "${table}"\nSET`;
   let positionalParam = 1;
   let values = [];
