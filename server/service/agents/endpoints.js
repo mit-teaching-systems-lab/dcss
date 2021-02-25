@@ -3,11 +3,15 @@ const db = require('./db');
 const { getUserById } = require('../session/db');
 
 async function createAgent(req, res) {
-  const params = {
-    ...req.body,
-    owner_id
-  };
-  const agent = await db.createAgent(params);
+  if (!req.body.name || !req.body.description || !req.body.owner) {
+    const error = new Error(
+      'Creating an agent requires an owner, name and description.'
+    );
+    error.status = 500;
+    throw error;
+  }
+
+  const agent = await db.createAgent(req.body);
   res.json({ agent });
 }
 
@@ -41,9 +45,7 @@ async function setAgent(req, res) {
     configuration
   } = req.body;
 
-  const updates = {
-    updated_at: new Date().toISOString()
-  };
+  const updates = {};
 
   if (name) {
     updates.name = name;

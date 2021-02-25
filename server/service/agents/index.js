@@ -21,15 +21,15 @@ router.get('/', [
   getAgents
 ]);
 
-router.get('/is_active', [
-  requireUser,
-  getAgents
-]);
-
 router.post('/', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
   validateRequestBody,
   createAgent
+]);
+
+router.get('/is_active', [
+  requireUser,
+  getAgents
 ]);
 
 router.put('/:id', [
