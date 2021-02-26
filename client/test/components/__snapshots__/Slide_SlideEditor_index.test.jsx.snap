@@ -35126,13 +35126,12 @@ exports[`Multiple personas, toggle chat 3`] = `
                                 <label
                                   for="timer"
                                 >
-                                  Set a maximum time for discussion on this slide.
+                                  Max duration for this discussion:
                                 </label>
                                 <div
                                   class="ui input"
                                 >
                                   <input
-                                    aria-label="Set a maximum time for discussion on this slide."
                                     id="timer"
                                     name="timer"
                                     style="width: 54px;"
@@ -35146,20 +35145,54 @@ exports[`Multiple personas, toggle chat 3`] = `
                               class="column cpe__displaytime-outer"
                             >
                               <span
-                                class="ui styl large text"
+                                class="ui large text"
                               >
-                                0 hours 0 minutes 0 seconds 
+                                  
                               </span>
                             </div>
                           </div>
                           <div
-                            class="one column row"
+                            class="one column row cpe__gridrow"
                           >
                             <div
                               class="column"
                             >
+                              <div
+                                class="field"
+                              >
+                                <div
+                                  class="ui checked checkbox"
+                                >
+                                  <input
+                                    checked=""
+                                    class="hidden"
+                                    id="auto"
+                                    name="auto"
+                                    readonly=""
+                                    tabindex="0"
+                                    type="checkbox"
+                                    value=""
+                                  />
+                                  <label
+                                    for="auto"
+                                  >
+                                    Automatically start the discussion timer when participants arrive?
+                                  </label>
+                                </div>
+                              </div>
                               <p
                                 class="cpe__paragraph"
+                                tabindex="0"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                Set the timer to 00:00:00 for an unlimited discussion time.
+                              </p>
+                              <p
+                                class="cpe__paragraph"
+                                tabindex="0"
                               >
                                 <i
                                   aria-hidden="true"
@@ -35173,15 +35206,7 @@ exports[`Multiple personas, toggle chat 3`] = `
                               </p>
                               <p
                                 class="cpe__paragraph"
-                              >
-                                <i
-                                  aria-hidden="true"
-                                  class="attention icon"
-                                />
-                                Set the timer to 00:00:00 for an unlimited discussion time.
-                              </p>
-                              <p
-                                class="cpe__paragraph"
+                                tabindex="0"
                               >
                                 <i
                                   aria-hidden="true"
@@ -36331,13 +36356,12 @@ exports[`Multiple personas, toggle chat 4`] = `
                                 <label
                                   for="timer"
                                 >
-                                  Set a maximum time for discussion on this slide.
+                                  Max duration for this discussion:
                                 </label>
                                 <div
                                   class="ui input"
                                 >
                                   <input
-                                    aria-label="Set a maximum time for discussion on this slide."
                                     id="timer"
                                     name="timer"
                                     style="width: 54px;"
@@ -36351,20 +36375,54 @@ exports[`Multiple personas, toggle chat 4`] = `
                               class="column cpe__displaytime-outer"
                             >
                               <span
-                                class="ui styl large text"
+                                class="ui large text"
                               >
-                                0 hours 0 minutes 0 seconds 
+                                  
                               </span>
                             </div>
                           </div>
                           <div
-                            class="one column row"
+                            class="one column row cpe__gridrow"
                           >
                             <div
                               class="column"
                             >
+                              <div
+                                class="field"
+                              >
+                                <div
+                                  class="ui checked checkbox"
+                                >
+                                  <input
+                                    checked=""
+                                    class="hidden"
+                                    id="auto"
+                                    name="auto"
+                                    readonly=""
+                                    tabindex="0"
+                                    type="checkbox"
+                                    value=""
+                                  />
+                                  <label
+                                    for="auto"
+                                  >
+                                    Automatically start the discussion timer when participants arrive?
+                                  </label>
+                                </div>
+                              </div>
                               <p
                                 class="cpe__paragraph"
+                                tabindex="0"
+                              >
+                                <i
+                                  aria-hidden="true"
+                                  class="attention icon"
+                                />
+                                Set the timer to 00:00:00 for an unlimited discussion time.
+                              </p>
+                              <p
+                                class="cpe__paragraph"
+                                tabindex="0"
                               >
                                 <i
                                   aria-hidden="true"
@@ -36378,15 +36436,7 @@ exports[`Multiple personas, toggle chat 4`] = `
                               </p>
                               <p
                                 class="cpe__paragraph"
-                              >
-                                <i
-                                  aria-hidden="true"
-                                  class="attention icon"
-                                />
-                                Set the timer to 00:00:00 for an unlimited discussion time.
-                              </p>
-                              <p
-                                class="cpe__paragraph"
+                                tabindex="0"
                               >
                                 <i
                                   aria-hidden="true"
