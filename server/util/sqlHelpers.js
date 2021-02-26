@@ -1,4 +1,4 @@
-const encodeValue = (value) => {
+const encodeValue = value => {
   if (Array.isArray(value) || (typeof value === 'object' && value !== null)) {
     const typecast = '::jsonb';
     return { typecast, value: JSON.stringify(value) };
@@ -8,7 +8,7 @@ const encodeValue = (value) => {
     typecast: '',
     value
   };
-}
+};
 
 exports.sql = (textParts, ...values) => {
   const text = textParts.reduce((memo, string, index) => {
@@ -20,7 +20,7 @@ exports.sql = (textParts, ...values) => {
   return { text, values };
 };
 
-exports.whereClause = (where) => {
+exports.whereClause = where => {
   let returnValue = '';
 
   if (typeof where === 'string') {
@@ -41,7 +41,8 @@ exports.whereClause = (where) => {
       const { typecast, value } = encodeValue(inputValue);
       returnValue += `  "${key}" = ${value}${typecast}${joiner}`;
     }
-    returnValue = returnValue.substring(0, returnValue.length - joiner.length) + '\n';
+    returnValue =
+      returnValue.substring(0, returnValue.length - joiner.length) + '\n';
   }
 
   return returnValue;

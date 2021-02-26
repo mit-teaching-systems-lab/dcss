@@ -4,7 +4,7 @@ import {
   GET_AGENTS_ERROR,
   GET_AGENTS_SUCCESS,
   SET_AGENT_ERROR,
-  SET_AGENT_SUCCESS,
+  SET_AGENT_SUCCESS
 } from './types';
 
 export let getAgent = id => async dispatch => {
@@ -76,11 +76,10 @@ export let createAgent = params => async dispatch => {
   }
 };
 
-export let getAgents = (filter) => async dispatch => {
+export let getAgents = filter => async dispatch => {
   try {
-    const url = filter === 'is_active'
-      ? '/api/agents/is_active'
-      : '/api/agents';
+    const url =
+      filter === 'is_active' ? '/api/agents/is_active' : '/api/agents';
 
     const res = await (await fetch('/api/agents')).json();
 
@@ -96,4 +95,3 @@ export let getAgents = (filter) => async dispatch => {
     return null;
   }
 };
-

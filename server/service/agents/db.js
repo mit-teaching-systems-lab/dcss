@@ -16,16 +16,21 @@ async function setAgentConfiguration(id, configuration) {
       WHERE agent_id = ${id};
     `);
 
-    const records = Object.entries(configuration).map(
-      ([key, value]) => [id, key, value]
-    );
+    const records = Object.entries(configuration).map(([key, value]) => [
+      id,
+      key,
+      value
+    ]);
 
-    const formattedQuery = format(`
+    const formattedQuery = format(
+      `
       INSERT INTO agent_configuration
         (agent_id, key, value)
       VALUES %L
       RETURNING *;
-    `, records);
+    `,
+      records
+    );
 
     const result = await client.query(formattedQuery);
 
@@ -121,7 +126,6 @@ async function getAgents(where) {
   `);
   return result.rows;
 }
-
 
 exports.createAgent = createAgent;
 exports.getAgent = getAgent;

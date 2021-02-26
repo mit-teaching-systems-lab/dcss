@@ -3,23 +3,13 @@ const {
   // Use for restricting access to only authed users.
   requireUser
 } = require('../session/middleware');
-const {
-  requireUserRole
-} = require('../roles/middleware');
+const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
-const {
-  createAgent,
-  getAgents,
-  getAgent,
-  setAgent,
-} = require('./endpoints');
+const { createAgent, getAgents, getAgent, setAgent } = require('./endpoints');
 
 const router = Router();
 
-router.get('/', [
-  requireUser,
-  getAgents
-]);
+router.get('/', [requireUser, getAgents]);
 
 router.post('/', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
@@ -27,10 +17,7 @@ router.post('/', [
   createAgent
 ]);
 
-router.get('/is_active', [
-  requireUser,
-  getAgents
-]);
+router.get('/is_active', [requireUser, getAgents]);
 
 router.put('/:id', [
   requireUserRole(['admin', 'super_admin', 'facilitator']),
@@ -38,9 +25,6 @@ router.put('/:id', [
   setAgent
 ]);
 
-router.get('/:id', [
-  requireUser,
-  getAgent
-]);
+router.get('/:id', [requireUser, getAgent]);
 
 module.exports = router;

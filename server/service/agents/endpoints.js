@@ -88,7 +88,9 @@ async function setAgent(req, res) {
     try {
       await db.setAgentConfiguration(id, configuration);
     } catch ({ message }) {
-      const error = new Error(`Agent configuration could not be set. ${message}`);
+      const error = new Error(
+        `Agent configuration could not be set. ${message}`
+      );
       error.status = 500;
       throw error;
     }
