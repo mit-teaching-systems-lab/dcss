@@ -20,7 +20,7 @@ const player = {
 player: Object.assign({}, player),
 */
 
-const configuration = {
+const defaultConfiguration = {
   duration: 0,
   kind: 'whole',
   start: 0,
@@ -28,7 +28,9 @@ const configuration = {
 };
 
 export const defaultValue = ({ responseId }) => ({
-  configuration: Object.assign({}, configuration),
+  configuration: {
+    ...defaultConfiguration
+  },
   header: '',
   id: '',
   persona: null,
