@@ -252,7 +252,7 @@ test('Rnd', async done => {
       "onResizeStop": [Function],
       "position": Object {
         "x": 0,
-        "y": 100,
+        "y": 0,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
@@ -354,8 +354,8 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       "onResizeStart": [Function],
       "onResizeStop": [Function],
       "position": Object {
-        "x": 0,
-        "y": 100,
+        "x": undefined,
+        "y": undefined,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
@@ -451,8 +451,8 @@ test('Rnd: onDragStop/onResizeStop without props.onDragResizeStop', async done =
       "onResizeStart": [Function],
       "onResizeStop": [Function],
       "position": Object {
-        "x": 0,
-        "y": 100,
+        "x": undefined,
+        "y": undefined,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
@@ -538,8 +538,8 @@ test('Rnd: onDrag/onResize', async done => {
       "onResizeStart": [Function],
       "onResizeStop": [Function],
       "position": Object {
-        "x": 0,
-        "y": 100,
+        "x": undefined,
+        "y": undefined,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
@@ -636,8 +636,8 @@ test('Rnd: onDrag/onResize without props.onDragResize', async done => {
       "onResizeStart": [Function],
       "onResizeStop": [Function],
       "position": Object {
-        "x": 0,
-        "y": 100,
+        "x": undefined,
+        "y": undefined,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
@@ -723,8 +723,8 @@ test('Rnd: onDragStart/onResizeStart', async done => {
       "onResizeStart": [Function],
       "onResizeStop": [Function],
       "position": Object {
-        "x": 0,
-        "y": 100,
+        "x": undefined,
+        "y": undefined,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
@@ -813,8 +813,8 @@ test('Rnd: onDragStart/onResizeStart without props.onDragResizeStart', async don
       "onResizeStart": [Function],
       "onResizeStop": [Function],
       "position": Object {
-        "x": 0,
-        "y": 100,
+        "x": undefined,
+        "y": undefined,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {

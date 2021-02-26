@@ -664,7 +664,7 @@ describe('componentDidMount', () => {
     done();
   });
 
-  test('Emits USER_JOIN on socket', async done => {
+  test('Emits CREATE_USER_CHANNEL on socket', async done => {
     const Component = Chat;
 
     const props = {
@@ -680,6 +680,11 @@ describe('componentDidMount', () => {
     const { asFragment, unmount } = render(
       <ConnectedRoutedComponent {...props} />
     );
+
+    await waitFor(() =>
+      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    );
+
     expect(serialize()).toMatchSnapshot();
 
     expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
@@ -689,100 +694,90 @@ describe('componentDidMount', () => {
           "create-chat-channel",
           Object {
             "chat": Object {
-              "cohort_id": null,
-              "created_at": "2020-12-08T21:51:33.659Z",
-              "deleted_at": null,
-              "ended_at": null,
               "host_id": 2,
-              "id": 1,
-              "is_open": false,
-              "scenario_id": 42,
-              "updated_at": null,
-              "users": Array [
-                Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-                Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-              ],
-              "usersById": Object {
-                "4": Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-                "999": Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-              },
-            },
-          },
-        ],
-        Array [
-          "user-join-slide",
-          Object {
-            "chat": Object {
               "id": 1,
             },
             "response": Object {
               "id": null,
             },
-            "run": null,
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+      ]
+    `);
+    expect(serialize()).toMatchSnapshot();
+
+    done();
+  });
+
+  test('Emits CREATE_CHAT_CHANNEL on socket', async done => {
+    const Component = Chat;
+
+    const props = {
+      ...commonProps
+    };
+
+    const state = {
+      ...commonState
+    };
+
+    const ConnectedRoutedComponent = reduxer(Component, props, state);
+
+    const { asFragment, unmount } = render(
+      <ConnectedRoutedComponent {...props} />
+    );
+
+    await waitFor(() =>
+      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    );
+
+    expect(serialize()).toMatchSnapshot();
+
+    expect(globalThis.mockSocket.emit).toHaveBeenCalledTimes(2);
+    expect(globalThis.mockSocket.emit.mock.calls).toMatchInlineSnapshot(`
+      Array [
+        Array [
+          "create-chat-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
             "user": Object {
               "id": null,
             },
@@ -813,6 +808,11 @@ describe('componentWillUnmount', () => {
     const { asFragment, unmount } = render(
       <ConnectedRoutedComponent {...props} />
     );
+
+    await waitFor(() =>
+      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    );
+
     expect(serialize()).toMatchSnapshot();
 
     await waitFor(() =>
@@ -855,6 +855,11 @@ describe('componentWillUnmount', () => {
     const { asFragment, unmount } = render(
       <ConnectedRoutedComponent {...props} />
     );
+
+    await waitFor(() =>
+      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    );
+
     expect(serialize()).toMatchSnapshot();
 
     await waitFor(() =>
@@ -871,100 +876,27 @@ describe('componentWillUnmount', () => {
           "create-chat-channel",
           Object {
             "chat": Object {
-              "cohort_id": null,
-              "created_at": "2020-12-08T21:51:33.659Z",
-              "deleted_at": null,
-              "ended_at": null,
               "host_id": 2,
-              "id": 1,
-              "is_open": false,
-              "scenario_id": 42,
-              "updated_at": null,
-              "users": Array [
-                Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-                Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-              ],
-              "usersById": Object {
-                "4": Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-                "999": Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-              },
-            },
-          },
-        ],
-        Array [
-          "user-join-slide",
-          Object {
-            "chat": Object {
               "id": 1,
             },
             "response": Object {
               "id": null,
             },
-            "run": null,
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
             "user": Object {
               "id": null,
             },
@@ -984,100 +916,27 @@ describe('componentWillUnmount', () => {
           "create-chat-channel",
           Object {
             "chat": Object {
-              "cohort_id": null,
-              "created_at": "2020-12-08T21:51:33.659Z",
-              "deleted_at": null,
-              "ended_at": null,
               "host_id": 2,
-              "id": 1,
-              "is_open": false,
-              "scenario_id": 42,
-              "updated_at": null,
-              "users": Array [
-                Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-                Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-              ],
-              "usersById": Object {
-                "4": Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-                "999": Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-              },
-            },
-          },
-        ],
-        Array [
-          "user-join-slide",
-          Object {
-            "chat": Object {
               "id": 1,
             },
             "response": Object {
               "id": null,
             },
-            "run": null,
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
             "user": Object {
               "id": null,
             },
@@ -1110,6 +969,11 @@ describe('componentWillUnmount', () => {
     const { asFragment, unmount } = render(
       <ConnectedRoutedComponent {...props} />
     );
+
+    await waitFor(() =>
+      expect(screen.queryAllByTestId('chat-main').length).toBe(1)
+    );
+
     expect(serialize()).toMatchSnapshot();
 
     await waitFor(() =>
@@ -1126,100 +990,27 @@ describe('componentWillUnmount', () => {
           "create-chat-channel",
           Object {
             "chat": Object {
-              "cohort_id": null,
-              "created_at": "2020-12-08T21:51:33.659Z",
-              "deleted_at": null,
-              "ended_at": null,
               "host_id": 2,
-              "id": 1,
-              "is_open": false,
-              "scenario_id": 42,
-              "updated_at": null,
-              "users": Array [
-                Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-                Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-              ],
-              "usersById": Object {
-                "4": Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-                "999": Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-              },
-            },
-          },
-        ],
-        Array [
-          "user-join-slide",
-          Object {
-            "chat": Object {
               "id": 1,
             },
             "response": Object {
               "id": null,
             },
-            "run": null,
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
             "user": Object {
               "id": null,
             },
@@ -1239,100 +1030,27 @@ describe('componentWillUnmount', () => {
           "create-chat-channel",
           Object {
             "chat": Object {
-              "cohort_id": null,
-              "created_at": "2020-12-08T21:51:33.659Z",
-              "deleted_at": null,
-              "ended_at": null,
               "host_id": 2,
-              "id": 1,
-              "is_open": false,
-              "scenario_id": 42,
-              "updated_at": null,
-              "users": Array [
-                Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-                Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-              ],
-              "usersById": Object {
-                "4": Object {
-                  "email": null,
-                  "id": 4,
-                  "is_anonymous": true,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": false,
-                  "personalname": null,
-                  "roles": Array [
-                    "participant",
-                    "facilitator",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T17:50:19.074Z",
-                  "username": "credible-lyrebird",
-                },
-                "999": Object {
-                  "email": "super@email.com",
-                  "id": 999,
-                  "is_anonymous": false,
-                  "is_muted": false,
-                  "is_present": true,
-                  "is_super": true,
-                  "personalname": "Super User",
-                  "roles": Array [
-                    "participant",
-                    "super_admin",
-                    "facilitator",
-                    "researcher",
-                  ],
-                  "single_use_password": false,
-                  "updated_at": "2020-12-10T22:29:11.638Z",
-                  "username": "super",
-                },
-              },
-            },
-          },
-        ],
-        Array [
-          "user-join-slide",
-          Object {
-            "chat": Object {
               "id": 1,
             },
             "response": Object {
               "id": null,
             },
-            "run": null,
+            "user": Object {
+              "id": null,
+            },
+          },
+        ],
+        Array [
+          "create-user-channel",
+          Object {
+            "chat": Object {
+              "host_id": 2,
+              "id": 1,
+            },
+            "response": Object {
+              "id": null,
+            },
             "user": Object {
               "id": null,
             },
@@ -1601,6 +1319,7 @@ test('Types, followed by {enter}', async done => {
         "chat-message-created",
         Object {
           "chat": Object {
+            "host_id": 2,
             "id": 1,
           },
           "content": "typing enter",
@@ -1669,6 +1388,7 @@ test('Types, followed by {shift}{enter}, does not submit', async done => {
         "chat-message-created",
         Object {
           "chat": Object {
+            "host_id": 2,
             "id": 1,
           },
           "content": "typing shift+enter
@@ -1774,6 +1494,7 @@ test('Types, followed by {shift}{enter}, attempts to send, does submit', async d
         "chat-message-created",
         Object {
           "chat": Object {
+            "host_id": 2,
             "id": 1,
           },
           "content": "typing enter",
@@ -1838,6 +1559,7 @@ test('Calls onInput when RTE receives new content', async done => {
         "chat-message-created",
         Object {
           "chat": Object {
+            "host_id": 2,
             "id": 1,
           },
           "content": "<p><br></p>typing in the chat",
@@ -1905,6 +1627,7 @@ test('Calls onKeyDown, responds when key is {enter}', async done => {
         "chat-message-created",
         Object {
           "chat": Object {
+            "host_id": 2,
             "id": 1,
           },
           "content": "typing in the chat",
@@ -1972,6 +1695,7 @@ test('Types, clicks Send Message', async done => {
         "chat-message-created",
         Object {
           "chat": Object {
+            "host_id": 2,
             "id": 1,
           },
           "content": "typing in the chat",
@@ -2216,100 +1940,27 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                             "create-chat-channel",
                             Object {
                               "chat": Object {
-                                "cohort_id": null,
-                                "created_at": "2020-12-08T21:51:33.659Z",
-                                "deleted_at": null,
-                                "ended_at": null,
                                 "host_id": 2,
-                                "id": 1,
-                                "is_open": false,
-                                "scenario_id": 42,
-                                "updated_at": null,
-                                "users": Array [
-                                  Object {
-                                    "email": "super@email.com",
-                                    "id": 999,
-                                    "is_anonymous": false,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": true,
-                                    "personalname": "Super User",
-                                    "roles": Array [
-                                      "participant",
-                                      "super_admin",
-                                      "facilitator",
-                                      "researcher",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T22:29:11.638Z",
-                                    "username": "super",
-                                  },
-                                  Object {
-                                    "email": null,
-                                    "id": 4,
-                                    "is_anonymous": true,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": false,
-                                    "personalname": null,
-                                    "roles": Array [
-                                      "participant",
-                                      "facilitator",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T17:50:19.074Z",
-                                    "username": "credible-lyrebird",
-                                  },
-                                ],
-                                "usersById": Object {
-                                  "4": Object {
-                                    "email": null,
-                                    "id": 4,
-                                    "is_anonymous": true,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": false,
-                                    "personalname": null,
-                                    "roles": Array [
-                                      "participant",
-                                      "facilitator",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T17:50:19.074Z",
-                                    "username": "credible-lyrebird",
-                                  },
-                                  "999": Object {
-                                    "email": "super@email.com",
-                                    "id": 999,
-                                    "is_anonymous": false,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": true,
-                                    "personalname": "Super User",
-                                    "roles": Array [
-                                      "participant",
-                                      "super_admin",
-                                      "facilitator",
-                                      "researcher",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T22:29:11.638Z",
-                                    "username": "super",
-                                  },
-                                },
-                              },
-                            },
-                          ],
-                          Array [
-                            "user-join-slide",
-                            Object {
-                              "chat": Object {
                                 "id": 1,
                               },
                               "response": Object {
                                 "id": null,
                               },
-                              "run": null,
+                              "user": Object {
+                                "id": null,
+                              },
+                            },
+                          ],
+                          Array [
+                            "create-user-channel",
+                            Object {
+                              "chat": Object {
+                                "host_id": 2,
+                                "id": 1,
+                              },
+                              "response": Object {
+                                "id": null,
+                              },
                               "user": Object {
                                 "id": null,
                               },
@@ -2388,7 +2039,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x23"
+                  id="x24"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
@@ -2396,10 +2047,10 @@ test('Rnd: onDragStop/onResizeStop', async done => {
                   onMount={[Function]}
                   options={
                     Object {
-                      "height": "NaNpx",
-                      "maxHeight": "NaNpx",
-                      "minHeight": "NaNpx",
-                      "width": "NaNpx",
+                      "height": "51.325px",
+                      "maxHeight": "51.325px",
+                      "minHeight": "51.325px",
+                      "width": "430px",
                     }
                   }
                   sendNewMessage={[Function]}
@@ -2424,11 +2075,11 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       "onResizeStop": [Function],
       "position": Object {
         "x": 0,
-        "y": 100,
+        "y": 0,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
-        "height": 590,
+        "height": 410,
         "width": 430,
       },
       "style": Object {
@@ -2459,7 +2110,7 @@ test('Rnd: onDragStop/onResizeStop', async done => {
       "chat/1",
       Object {
         "dimensions": Object {
-          "height": 590,
+          "height": 410,
           "width": 430,
         },
         "position": Object {
@@ -2641,100 +2292,27 @@ test('Rnd: onDrag/onResize', async done => {
                             "create-chat-channel",
                             Object {
                               "chat": Object {
-                                "cohort_id": null,
-                                "created_at": "2020-12-08T21:51:33.659Z",
-                                "deleted_at": null,
-                                "ended_at": null,
                                 "host_id": 2,
-                                "id": 1,
-                                "is_open": false,
-                                "scenario_id": 42,
-                                "updated_at": null,
-                                "users": Array [
-                                  Object {
-                                    "email": "super@email.com",
-                                    "id": 999,
-                                    "is_anonymous": false,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": true,
-                                    "personalname": "Super User",
-                                    "roles": Array [
-                                      "participant",
-                                      "super_admin",
-                                      "facilitator",
-                                      "researcher",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T22:29:11.638Z",
-                                    "username": "super",
-                                  },
-                                  Object {
-                                    "email": null,
-                                    "id": 4,
-                                    "is_anonymous": true,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": false,
-                                    "personalname": null,
-                                    "roles": Array [
-                                      "participant",
-                                      "facilitator",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T17:50:19.074Z",
-                                    "username": "credible-lyrebird",
-                                  },
-                                ],
-                                "usersById": Object {
-                                  "4": Object {
-                                    "email": null,
-                                    "id": 4,
-                                    "is_anonymous": true,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": false,
-                                    "personalname": null,
-                                    "roles": Array [
-                                      "participant",
-                                      "facilitator",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T17:50:19.074Z",
-                                    "username": "credible-lyrebird",
-                                  },
-                                  "999": Object {
-                                    "email": "super@email.com",
-                                    "id": 999,
-                                    "is_anonymous": false,
-                                    "is_muted": false,
-                                    "is_present": true,
-                                    "is_super": true,
-                                    "personalname": "Super User",
-                                    "roles": Array [
-                                      "participant",
-                                      "super_admin",
-                                      "facilitator",
-                                      "researcher",
-                                    ],
-                                    "single_use_password": false,
-                                    "updated_at": "2020-12-10T22:29:11.638Z",
-                                    "username": "super",
-                                  },
-                                },
-                              },
-                            },
-                          ],
-                          Array [
-                            "user-join-slide",
-                            Object {
-                              "chat": Object {
                                 "id": 1,
                               },
                               "response": Object {
                                 "id": null,
                               },
-                              "run": null,
+                              "user": Object {
+                                "id": null,
+                              },
+                            },
+                          ],
+                          Array [
+                            "create-user-channel",
+                            Object {
+                              "chat": Object {
+                                "host_id": 2,
+                                "id": 1,
+                              },
+                              "response": Object {
+                                "id": null,
+                              },
                               "user": Object {
                                 "id": null,
                               },
@@ -2813,7 +2391,7 @@ test('Rnd: onDrag/onResize', async done => {
               >
                 <ChatComposer
                   defaultValue="<p>credible-lyrebird wrote:<blockquote><p>Hi!</p></blockquote></p>"
-                  id="x24"
+                  id="x25"
                   name="content"
                   onChange={[Function]}
                   onInput={[Function]}
@@ -2821,10 +2399,10 @@ test('Rnd: onDrag/onResize', async done => {
                   onMount={[Function]}
                   options={
                     Object {
-                      "height": "NaNpx",
-                      "maxHeight": "NaNpx",
-                      "minHeight": "NaNpx",
-                      "width": "NaNpx",
+                      "height": "51.325px",
+                      "maxHeight": "51.325px",
+                      "minHeight": "51.325px",
+                      "width": "430px",
                     }
                   }
                   sendNewMessage={[Function]}
@@ -2849,11 +2427,11 @@ test('Rnd: onDrag/onResize', async done => {
       "onResizeStop": [Function],
       "position": Object {
         "x": 0,
-        "y": 100,
+        "y": 0,
       },
       "resizeHandleWrapperClass": "c__size-handle",
       "size": Object {
-        "height": 590,
+        "height": 410,
         "width": 430,
       },
       "style": Object {

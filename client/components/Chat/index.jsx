@@ -114,7 +114,15 @@ class Chat extends Component {
     this.storageKey = `chat/${chat.id || TEMPORARY_CHAT_ID}`;
 
     const { content } = Storage.get(this.storageKey, {
-      content: NEW_MESSAGE_CONTENT_HTML
+      content: NEW_MESSAGE_CONTENT_HTML,
+      dimensions: {
+        width: 430,
+        height: 410
+      },
+      position: {
+        x: 0,
+        y: 0
+      }
     });
 
     this.state = {
@@ -396,16 +404,7 @@ class Chat extends Component {
     }
 
     // Layout.isForMobile()?
-    const { dimensions, position } = Storage.get(this.storageKey, {
-      dimensions: {
-        width: 430,
-        height: 410
-      },
-      position: {
-        x: 0,
-        y: 0
-      }
-    });
+    const { dimensions, position } = Storage.get(this.storageKey);
 
     const onDragResizeStop = ({ width, height, x, y }) => {
       if (!width || !height) {
