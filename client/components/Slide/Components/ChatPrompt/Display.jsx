@@ -146,7 +146,7 @@ class Display extends Component {
   render() {
     const {
       chat,
-      isAutostart,
+      auto,
       isEmbeddedInSVG,
       responseId,
       timer,
@@ -167,7 +167,7 @@ class Display extends Component {
 
     const isComplete = !!defaultValue;
     const timerProps = {
-      isAutostart,
+      auto,
       isComplete,
       isRestart,
       slide,
@@ -295,7 +295,7 @@ Display.defaultProps = {
 Display.propTypes = {
   chat: PropTypes.object,
   getResponse: PropTypes.func,
-  isAutostart: PropTypes.bool,
+  auto: PropTypes.bool,
   isEmbeddedInSVG: PropTypes.bool,
   onResponseChange: PropTypes.func,
   persisted: PropTypes.object,
