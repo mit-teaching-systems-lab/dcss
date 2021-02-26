@@ -10,7 +10,7 @@ export const agentInitialState = {
   configuration: null,
   interaction: null,
   owner: null,
-  self: null,
+  self: null
 };
 
 export const chatInitialState = {
