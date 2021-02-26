@@ -10,6 +10,7 @@ import withSocket, { HEART_BEAT } from '@hoc/withSocket';
 import BackButtonHistory from './BackButtonHistory';
 import Navigation from './Navigation';
 import Routes from './Routes';
+import Layout from '@utils/Layout';
 
 // TODO: switch to this Router import when ready to migrate
 // import { Router } from 'react-router-dom';
@@ -28,9 +29,12 @@ class App extends Component {
     };
     this.heartBeat = this.heartBeat.bind(this);
     this.heartBeat.cancel = () => {};
+    this.onLoad = this.onLoad.bind(this);
   }
 
   async componentDidMount() {
+    window.addEventListener('load', this.onLoad);
+
     let { isReady } = this.state;
 
     if (!isReady) {
@@ -60,7 +64,14 @@ class App extends Component {
   }
 
   componentWillUnmount() {
+    window.removeEventListener('load', this.onLoad);
     this.heartBeat.cancel();
+  }
+
+  onLoad() {
+    if (Layout.isForMobile()) {
+      window.scrollTo(0, 1);
+    }
   }
 
   heartBeat() {
