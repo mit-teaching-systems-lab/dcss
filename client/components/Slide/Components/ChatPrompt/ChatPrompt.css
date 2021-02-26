@@ -9,6 +9,10 @@
   }
 }
 
+.cpe__gridrow {
+  padding-top: unset !important;
+}
+
 .cpe__paragraph {
   margin-top: unset;
   padding: 0 0.25em;

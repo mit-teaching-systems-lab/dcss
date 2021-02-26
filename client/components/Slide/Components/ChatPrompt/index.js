@@ -15,6 +15,7 @@ export const defaultValue = ({ responseId }) => ({
       $gt: 0
     }
   },
+  auto: true,
   prompt: '',
   required: false,
   responseId,

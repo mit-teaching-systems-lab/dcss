@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import pluralize from 'pluralize';
 import TimeField from 'react-simple-timefield';
-import { Container, Form, Grid, Icon, Text } from '@components/UI';
+import { Checkbox, Container, Form, Grid, Icon, Text } from '@components/UI';
 import { type } from './meta';
 import DataHeader from '@components/Slide/Components/DataHeader';
 import Media from '@utils/Media';
@@ -12,6 +12,7 @@ class ChatPromptEditor extends React.Component {
   constructor(props) {
     super(props);
     const {
+      auto = true,
       header = '',
       prompt = '',
       required = false,
@@ -19,6 +20,7 @@ class ChatPromptEditor extends React.Component {
       timer = 0
     } = props.value;
     this.state = {
+      auto,
       header,
       prompt,
       required: timer ? true : required,
@@ -46,6 +48,7 @@ class ChatPromptEditor extends React.Component {
     let shouldCallUpdateState = false;
 
     const fields = [
+      'auto',
       'header',
       'prompt',
       // 'required',
@@ -72,8 +75,9 @@ class ChatPromptEditor extends React.Component {
   }
 
   updateState() {
-    const { header, prompt, timer, required, responseId } = this.state;
+    const { auto, header, prompt, timer, required, responseId } = this.state;
     this.props.onChange({
+      auto,
       header,
       prompt,
       required,
@@ -91,13 +95,16 @@ class ChatPromptEditor extends React.Component {
 
     if (timer) {
       update.required = true;
+    } else {
+      update.auto = false;
     }
+
 
     this.setState(update, this.delayedUpdateState);
   }
 
   onChange(event, { name, value }) {
-    this.setState({ [name]: value }, this.delayedUpdateState);
+    this.setState({ [name]: value }, this.updateState);
   }
 
   enforceRequiredWhenTimerIsSet() {
@@ -108,20 +115,19 @@ class ChatPromptEditor extends React.Component {
   }
 
   render() {
-    const { header, prompt, timer } = this.state;
+    const { auto, header, prompt, timer } = this.state;
     const { onChange, onTimerChange, updateState } = this;
-
     const timerString = timer ? Media.secToTime(timer) : '';
-
     const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
-
     const promptAriaLabel = 'Optional prompt to display for this discussion:';
-    const timerAriaLabel = 'Set a maximum time for discussion on this slide.';
+    const timerAriaLabel = 'Max duration for this discussion:';
+    const autoAriaLabel = 'Automatically start the discussion timer when participants arrive?';
+    const timeDisplay = [
+      hh ? `${hh} ${pluralize('hour', hh)}` : '',
+      mm ? `${mm} ${pluralize('minute', mm)}` : '',
+      ss ? `${ss} ${pluralize('second', ss)}` : ''
+    ].join(' ');
 
-    // console.log("required", required);
-    // console.log("timer", timer);
-
-    // <div className="ui ">
     return (
       <Form>
         <Container fluid>
@@ -130,7 +136,7 @@ class ChatPromptEditor extends React.Component {
               <Grid.Column>
                 <Form.Field>
                   <label htmlFor="timer">
-                    Set a maximum time for discussion on this slide.
+                    {timerAriaLabel}
                   </label>
                   <div className="ui input">
                     <TimeField
@@ -138,7 +144,6 @@ class ChatPromptEditor extends React.Component {
                       colon=":"
                       name="timer"
                       id="timer"
-                      aria-label={timerAriaLabel}
                       onChange={onTimerChange}
                       onBlur={updateState}
                       value={timerString}
@@ -147,26 +152,38 @@ class ChatPromptEditor extends React.Component {
                 </Form.Field>
               </Grid.Column>
               <Grid.Column className="cpe__displaytime-outer">
-                <Text size="large" styl>
-                  {hh} {pluralize('hour', hh)} {mm} {pluralize('minute', mm)}{' '}
-                  {ss} {pluralize('second', ss)}{' '}
+                <Text size="large">
+                  {timeDisplay}
                 </Text>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row columns={1}>
+            <Grid.Row
+              className="cpe__gridrow"
+              columns={1}
+            >
               <Grid.Column>
-                <p className="cpe__paragraph">
+                <Form.Field>
+                  <Checkbox
+                    name="auto"
+                    id="auto"
+                    checked={auto}
+                    label={autoAriaLabel}
+                    onChange={onChange}
+                    onBlur={updateState}
+                  />
+                </Form.Field>
+                <p tabIndex="0" className="cpe__paragraph">
+                  <Icon name="attention" />
+                  Set the timer to 00:00:00 for an unlimited discussion time.
+                </p>
+                <p tabIndex="0" className="cpe__paragraph">
                   <Icon name="attention" />
                   If the timer is set, the discussion will be marked{' '}
                   <strong>Required</strong>. This ensures that participants
                   cannot move forward until completing the discussion. Hosts
                   will be able to override the timer.
                 </p>
-                <p className="cpe__paragraph">
-                  <Icon name="attention" />
-                  Set the timer to 00:00:00 for an unlimited discussion time.
-                </p>
-                <p className="cpe__paragraph">
+                <p tabIndex="0" className="cpe__paragraph">
                   <Icon name="attention" />
                   If no timer is set and this chat is set to{' '}
                   <strong>Required</strong>, the host <strong>must</strong>{' '}
