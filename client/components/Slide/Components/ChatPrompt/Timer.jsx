@@ -43,12 +43,6 @@ class Timer extends Component {
     this.props.socket.on(TIMER_START, this.timerStart);
     this.props.socket.on(TIMER_END, this.timerEnd);
     this.props.socket.on(TIMER_TICK, this.timerTick);
-
-    if (this.props.auto && !this.props.isComplete) {
-      const { chat, slide, timer } = this.props;
-
-      this.props.socket.emit(TIMER_START, { chat, slide, timer });
-    }
   }
 
   componentWillUnmount() {
@@ -157,7 +151,7 @@ Timer.propTypes = {
   responseId: PropTypes.string,
   onTimerEnd: PropTypes.func,
   onTimerStart: PropTypes.func,
-  onTimertick: PropTypes.func,
+  onTimerTick: PropTypes.func,
   run: PropTypes.object,
   socket: PropTypes.object,
   slide: PropTypes.object,

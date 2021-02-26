@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import { sentenceCase } from 'change-case';
 import { type } from './meta';
 import { getResponse } from '@actions/response';
-import Chat from '@components/Chat';
+import Chat, { makeSocketPayload } from '@components/Chat';
 import { Dropdown, Icon, Menu } from '@components/UI';
 import Identity from '@utils/Identity';
 import Media from '@utils/Media';
+import Storage from '@utils/Storage';
 import Timer from './Timer';
 
 import {
@@ -18,8 +19,14 @@ import {
 
 import withSocket, {
   CHAT_CLOSED_FOR_SLIDE,
+  CHAT_QUORUM_FOR_SLIDE,
   CREATE_CHAT_CHANNEL,
-  CREATE_CHAT_SLIDE_CHANNEL
+  CREATE_CHAT_SLIDE_CHANNEL,
+  CREATE_CHAT_USER_CHANNEL,
+  CREATE_USER_CHANNEL,
+  TIMER_START,
+  USER_JOIN_SLIDE,
+  USER_PART_SLIDE
 } from '@hoc/withSocket';
 
 import './ChatPrompt.css';
@@ -55,7 +62,17 @@ class Display extends Component {
     this.slideIndex = Number(
       location.href.slice(location.href.lastIndexOf('/') + 1)
     );
+
+    this.hasUnmounted = false;
+    this.hasUnloaded = false;
+
+    this.onBeforeUnload = this.onBeforeUnload.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onQuorum = this.onQuorum.bind(this);
+
+    this.storageKey = this.props.cohort.id
+      ? `cohort/${this.props.cohort.id}/run/${this.props.scenario.id}`
+      : `run/${this.props.scenario.id}`;
   }
 
   get isScenarioRun() {
@@ -92,15 +109,34 @@ class Display extends Component {
       this.setState({ hasSubmittedResponse, value });
     }
 
-    const { chat } = this.props;
+    const { chat, user } = this.props;
 
     const slide = {
       index: this.slideIndex
     };
 
-    this.props.socket.emit(CREATE_CHAT_CHANNEL, { chat });
-    this.props.socket.emit(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
+    // Register Window events
+    window.addEventListener('beforeunload', this.onBeforeUnload);
+
     this.props.socket.on(CHAT_CLOSED_FOR_SLIDE, this.onChange);
+    this.props.socket.on(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
+
+    this.props.socket.emit(CREATE_USER_CHANNEL, makeSocketPayload(this.props));
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, makeSocketPayload(this.props));
+    this.props.socket.emit(
+      CREATE_CHAT_SLIDE_CHANNEL,
+      makeSocketPayload(this.props, { slide })
+    );
+    this.props.socket.emit(
+      CREATE_CHAT_USER_CHANNEL,
+      makeSocketPayload(this.props)
+    );
+    this.props.socket.emit(
+      USER_JOIN_SLIDE,
+      makeSocketPayload(this.props, {
+        run: Storage.get(this.storageKey)
+      })
+    );
 
     this.setState({
       isReady: true
@@ -109,6 +145,41 @@ class Display extends Component {
 
   componentWillUnmount() {
     this.props.socket.off(CHAT_CLOSED_FOR_SLIDE, this.onChange);
+    this.props.socket.off(CHAT_QUORUM_FOR_SLIDE, this.onQuorum);
+
+    this.hasUnmounted = true;
+
+    if (this.hasUnloaded) {
+      // Unregister Window events
+      window.removeEventListener('beforeunload', this.onBeforeUnload);
+    } else {
+      this.onBeforeUnload();
+    }
+  }
+
+  onBeforeUnload() {
+    this.props.socket.emit(
+      USER_PART_SLIDE,
+      makeSocketPayload(this.props, {
+        run: Storage.get(this.storageKey)
+      })
+    );
+
+    this.hasUnloaded = true;
+
+    if (this.hasUnmounted) {
+      window.removeEventListener('beforeunload', this.onBeforeUnload);
+    }
+  }
+
+  onQuorum() {
+    const { chat, timer } = this.props;
+
+    const slide = {
+      index: this.slideIndex
+    };
+
+    this.props.socket.emit(TIMER_START, { chat, slide, timer });
   }
 
   onChange({ chat, slide, result }) {
@@ -144,14 +215,7 @@ class Display extends Component {
   }
 
   render() {
-    const {
-      chat,
-      auto,
-      isEmbeddedInSVG,
-      responseId,
-      timer,
-      user
-    } = this.props;
+    const { chat, auto, isEmbeddedInSVG, responseId, timer, user } = this.props;
     const { isActive, isReady, isRestart, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
@@ -268,17 +332,13 @@ class Display extends Component {
 
     return (
       <Menu borderless>
-        {discussionIsOpen && isUserHost && timer ? (
-          <Timer {...timerProps} />
-        ) : null}
+        {discussionIsOpen && isUserHost && timer ? timerRender : null}
 
         {isUserHost ? dropdownOrResultOfDiscussion : null}
 
         {!isUserHost ? resultOfDiscussion : null}
 
-        {!isUserHost && !defaultValue && timer ? (
-          <Timer {...timerProps} />
-        ) : null}
+        {!isUserHost && !defaultValue && timer ? timerRender : null}
 
         <Menu.Menu position="right">
           {discussionIsOpen && chat && isReady ? <Chat {...chatProps} /> : null}
@@ -294,6 +354,7 @@ Display.defaultProps = {
 
 Display.propTypes = {
   chat: PropTypes.object,
+  cohort: PropTypes.object,
   getResponse: PropTypes.func,
   auto: PropTypes.bool,
   isEmbeddedInSVG: PropTypes.bool,
@@ -304,6 +365,7 @@ Display.propTypes = {
   responseId: PropTypes.string,
   run: PropTypes.object,
   saveRunEvent: PropTypes.func,
+  scenario: PropTypes.object,
   socket: PropTypes.object,
   timer: PropTypes.number,
   type: PropTypes.oneOf([type]).isRequired,
@@ -311,8 +373,8 @@ Display.propTypes = {
 };
 
 const mapStateToProps = state => {
-  const { chat, run, user } = state;
-  return { chat, run, user };
+  const { cohort, chat, run, scenario, user } = state;
+  return { cohort, chat, run, scenario, user };
 };
 
 const mapDispatchToProps = dispatch => ({

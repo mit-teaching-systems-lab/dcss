@@ -5,8 +5,9 @@ const {
   CHAT_CREATED,
   CHAT_CLOSED_FOR_SLIDE,
   CHAT_CLOSED,
-  CHAT_OPENED,
   CHAT_ENDED,
+  CHAT_OPENED,
+  CHAT_QUORUM_FOR_SLIDE,
   CHAT_MESSAGE_CREATED,
   CHAT_MESSAGE_UPDATED,
   CREATE_CHAT_CHANNEL,
@@ -28,7 +29,7 @@ const {
   USER_JOIN,
   USER_PART,
   USER_JOIN_SLIDE,
-  USER_SLIDE_PART_SLIDE
+  USER_PART_SLIDE
 } = require('./types');
 const authdb = require('../session/db');
 const chatdb = require('../chats/db');
@@ -47,7 +48,20 @@ function socketlog(...args) {
 
 const cache = {
   notifications: [],
-  messages: []
+  messages: [],
+  //
+  // Track user presence in rooms
+  //
+  //  - Used for "announcing" participants in channel.
+  //  - Used for triggering automatic timers.
+  //
+  rolls: {
+    /*
+      [room key]: [
+        user.id
+      ]
+    */
+  }
 };
 
 class SocketManager {
@@ -92,7 +106,7 @@ class SocketManager {
 
           // If the message is for a specific participant...
           const room = data.recipient_id
-            ? `${data.chat_id}-${data.recipient_id}`
+            ? `${data.chat_id}-user-${data.recipient_id}`
             : data.chat_id;
 
           this.io.to(room).emit(CHAT_MESSAGE_CREATED, data);
@@ -222,14 +236,14 @@ class SocketManager {
 
       socket.on(CREATE_CHAT_SLIDE_CHANNEL, ({ chat, slide }) => {
         console.log(CREATE_CHAT_SLIDE_CHANNEL, { chat, slide });
-        const room = `${chat.id}-${slide.index}`;
+        const room = `${chat.id}-slide-${slide.index}`;
         socket.join(room);
       });
 
       // Used for sending messages to a specific user in the chat.
       socket.on(CREATE_CHAT_USER_CHANNEL, ({ chat, user }) => {
         console.log(CREATE_CHAT_USER_CHANNEL, { chat, user });
-        const room = `${chat.id}-${user.id}`;
+        const room = `${chat.id}-user-${user.id}`;
         socket.join(room);
       });
 
@@ -269,6 +283,51 @@ class SocketManager {
           });
 
           await chatdb.insertNewJoinPartMessage(chat.id, user.id, message);
+
+          const rollKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
+
+          if (!cache.rolls[rollKey]) {
+            cache.rolls[rollKey] = [];
+          }
+
+          if (!cache.rolls[rollKey].includes(user.id)) {
+            cache.rolls[rollKey].push(user.id);
+          }
+
+          const users = await chatdb.getLinkedChatUsersByChatId(chat.id);
+          const quorum = users.every(({ id }) =>
+            cache.rolls[rollKey].includes(id)
+          );
+
+          if (quorum) {
+            const room = `${chat.id}-user-${chat.host_id}`;
+            this.io.to(room).emit(CHAT_QUORUM_FOR_SLIDE, {
+              chat,
+              user: {
+                id: chat.host_id
+              }
+            });
+          }
+        }
+      });
+
+      socket.on(USER_PART_SLIDE, async ({ chat, user, run }) => {
+        console.log(USER_PART_SLIDE, chat, user, run);
+
+        if (run) {
+          const rollKey = `${chat.id}-slide-${run.activeRunSlideIndex}`;
+
+          if (!cache.rolls[rollKey]) {
+            cache.rolls[rollKey] = [];
+          }
+
+          if (cache.rolls[rollKey].includes(user.id)) {
+            cache.rolls[rollKey].splice(
+              cache.rolls[rollKey].indexOf(user.id),
+              1
+            );
+            console.log('UPDATED ROLLS: ', cache.rolls[rollKey]);
+          }
         }
       });
 
@@ -282,7 +341,8 @@ class SocketManager {
 
       socket.on(CHAT_CLOSED_FOR_SLIDE, ({ chat, user, slide, result }) => {
         console.log(CHAT_CLOSED_FOR_SLIDE, { chat, user, slide, result });
-        const room = `${chat.id}-${slide.index}`;
+        const room = `${chat.id}-slide-${slide.index}`;
+        cache.rolls[room] = null;
         this.io.to(room).emit(CHAT_CLOSED_FOR_SLIDE, {
           chat,
           slide,
@@ -294,7 +354,7 @@ class SocketManager {
 
       socket.on(TIMER_START, async ({ chat, user, slide, timer }) => {
         console.log(TIMER_START, { chat, user, slide, timer });
-        const room = `${chat.id}-${slide.index}`;
+        const room = `${chat.id}-slide-${slide.index}`;
 
         if (!timers[room]) {
           this.io.to(room).emit(TIMER_START, {

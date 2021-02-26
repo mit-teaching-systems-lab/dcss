@@ -8,6 +8,7 @@ import withSocket, {
   CHAT_ENDED,
   CHAT_MESSAGE_CREATED,
   CREATE_CHAT_CHANNEL,
+  CREATE_USER_CHANNEL,
   USER_JOIN,
   USER_PART,
   USER_JOIN_SLIDE,
@@ -65,11 +66,12 @@ function isValidMessage(message) {
   return true;
 }
 
-function makeSocketPayload(props, data = {}) {
-  const { chat, response, user } = props;
+export function makeSocketPayload(props, data = {}) {
+  const { chat = {}, response = {}, user = {} } = props;
   return {
     chat: {
-      id: chat.id
+      id: chat.id,
+      host_id: chat.host_id
     },
     response: {
       id: response.id
@@ -153,7 +155,7 @@ class Chat extends Component {
       await this.props.getChatById(this.props.chat.id);
     }
 
-    const { chat } = this.props;
+    const { chat, user } = this.props;
 
     // If this chat has been closed, then there is no
     // further loading or registering to do.
@@ -165,22 +167,9 @@ class Chat extends Component {
       return;
     }
 
-    this.props.socket.emit(CREATE_CHAT_CHANNEL, { chat });
-
     // TODO: determine if this is the best way to indicate that a
     // user has joined
     // this.props.socket.emit(USER_JOIN, makeSocketPayload(this.props));
-
-    const runStorageKey = this.props.cohort.id
-      ? `cohort/${this.props.cohort.id}/run/${this.props.scenario.id}`
-      : `run/${this.props.scenario.id}`;
-
-    this.props.socket.emit(
-      USER_JOIN_SLIDE,
-      makeSocketPayload(this.props, {
-        run: Storage.get(runStorageKey)
-      })
-    );
 
     await this.props.getChatUsersByChatId(this.props.chat.id);
 
@@ -192,6 +181,9 @@ class Chat extends Component {
     this.props.socket.on(CHAT_MESSAGE_CREATED, this.onMessageReceived);
     this.props.socket.on(JOIN_OR_PART, this.onJoinOrPart);
 
+    this.props.socket.emit(CREATE_CHAT_CHANNEL, makeSocketPayload(this.props));
+    this.props.socket.emit(CREATE_USER_CHANNEL, makeSocketPayload(this.props));
+
     this.setState({
       isReady: true
     });
@@ -199,8 +191,9 @@ class Chat extends Component {
 
   componentWillUnmount() {
     // Unregister Socket events
-    this.props.socket.off(JOIN_OR_PART, this.onJoinOrPart);
+    this.props.socket.off(CHAT_ENDED, this.onChatEnded);
     this.props.socket.off(CHAT_MESSAGE_CREATED, this.onMessageReceived);
+    this.props.socket.off(JOIN_OR_PART, this.onJoinOrPart);
 
     this.hasUnmounted = true;
 
@@ -216,7 +209,6 @@ class Chat extends Component {
     // TODO: determine if this is the best way to indicate that a
     // user has parted
     // this.props.socket.emit(USER_PART, makeSocketPayload(this.props));
-
     this.hasUnloaded = true;
 
     if (this.hasUnmounted) {

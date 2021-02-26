@@ -95,15 +95,15 @@ class ChatPromptEditor extends React.Component {
 
     if (timer) {
       update.required = true;
-    } else {
-      update.auto = false;
     }
-
 
     this.setState(update, this.delayedUpdateState);
   }
 
-  onChange(event, { name, value }) {
+  onChange(event, { name, value, checked }) {
+    if (name === 'auto') {
+      value = checked;
+    }
     this.setState({ [name]: value }, this.updateState);
   }
 
@@ -121,7 +121,8 @@ class ChatPromptEditor extends React.Component {
     const [hh = 0, mm = 0, ss = 0] = timerString.split(':').map(v => Number(v));
     const promptAriaLabel = 'Optional prompt to display for this discussion:';
     const timerAriaLabel = 'Max duration for this discussion:';
-    const autoAriaLabel = 'Automatically start the discussion timer when participants arrive?';
+    const autoAriaLabel =
+      'Automatically start the discussion timer when participants arrive?';
     const timeDisplay = [
       hh ? `${hh} ${pluralize('hour', hh)}` : '',
       mm ? `${mm} ${pluralize('minute', mm)}` : '',
@@ -135,9 +136,7 @@ class ChatPromptEditor extends React.Component {
             <Grid.Row columns={2}>
               <Grid.Column>
                 <Form.Field>
-                  <label htmlFor="timer">
-                    {timerAriaLabel}
-                  </label>
+                  <label htmlFor="timer">{timerAriaLabel}</label>
                   <div className="ui input">
                     <TimeField
                       showSeconds
@@ -152,21 +151,16 @@ class ChatPromptEditor extends React.Component {
                 </Form.Field>
               </Grid.Column>
               <Grid.Column className="cpe__displaytime-outer">
-                <Text size="large">
-                  {timeDisplay}
-                </Text>
+                <Text size="large">{timeDisplay}</Text>
               </Grid.Column>
             </Grid.Row>
-            <Grid.Row
-              className="cpe__gridrow"
-              columns={1}
-            >
+            <Grid.Row className="cpe__gridrow" columns={1}>
               <Grid.Column>
                 <Form.Field>
                   <Checkbox
                     name="auto"
                     id="auto"
-                    checked={auto}
+                    defaultChecked={auto}
                     label={autoAriaLabel}
                     onChange={onChange}
                     onBlur={updateState}
@@ -225,6 +219,7 @@ ChatPromptEditor.propTypes = {
   scenario: PropTypes.object,
   value: PropTypes.shape({
     id: PropTypes.string,
+    auto: PropTypes.bool,
     header: PropTypes.string,
     prompt: PropTypes.string,
     required: PropTypes.bool,

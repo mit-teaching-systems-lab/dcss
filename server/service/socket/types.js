@@ -2,7 +2,6 @@
 
 // Client -> Server
 exports.AGENT_JOINED = 'agent-joined';
-exports.CHAT_CLOSED_FOR_SLIDE = 'chat-closed-for-slide';
 exports.CREATE_CHAT_CHANNEL = 'create-chat-channel';
 exports.CREATE_CHAT_SLIDE_CHANNEL = 'create-chat-slide-channel';
 exports.CREATE_CHAT_USER_CHANNEL = 'create-chat-user-channel';
@@ -23,17 +22,16 @@ exports.SET_INVITATION = 'set-invitation';
 exports.NOTIFICATION = 'notification';
 
 // Server -> Client
+exports.CHAT_QUORUM_FOR_SLIDE = 'chat-quorum-for-slide';
 exports.CHAT_CREATED = 'chat-created';
 exports.CHAT_CLOSED = 'chat-closed';
 exports.CHAT_ENDED = 'chat-ended';
 exports.CHAT_OPENED = 'chat-opened';
 exports.JOIN_OR_PART = 'join-or-part';
 exports.RUN_CHAT_LINK = 'run-chat-link';
-// exports.AGENT_ADDED = 'agent-added';
-// exports.USER_ADDED = 'user-added';
-// exports.USER_REMOVED = 'user-removed';
 
 // Client -> Server -> Client
+exports.CHAT_CLOSED_FOR_SLIDE = 'chat-closed-for-slide';
 exports.CHAT_MESSAGE_CREATED = 'chat-message-created';
 exports.CHAT_MESSAGE_UPDATED = 'chat-message-updated';
 exports.TIMER_END = 'timer-end';
