@@ -9,6 +9,41 @@ async function setAgent(id, updates) {
   });
 }
 
+async function setAgentSocketConfiguration(id, configuration) {
+  const result = await withClientTransaction(async client => {
+    await client.query(`
+      DELETE FROM agent_socket_configuration
+      WHERE agent_id = ${id};
+    `);
+
+    const records = Object.entries(configuration).map(([key, value]) => [
+      id,
+      key,
+      value
+    ]);
+
+    const formattedQuery = format(
+      `
+      INSERT INTO agent_socket_configuration
+        (agent_id, key, value)
+      VALUES %L
+      RETURNING *;
+    `,
+      records
+    );
+
+    const result = await client.query(formattedQuery);
+
+    return result.rows[0] || null;
+  });
+
+  if (!result) {
+    throw new Error(`Could not set agent configuration`);
+  }
+
+  return result;
+}
+
 async function setAgentConfiguration(id, configuration) {
   const result = await withClientTransaction(async client => {
     await client.query(`
@@ -59,7 +94,6 @@ async function setAgentInteraction(id, interaction) {
       RETURNING *
     `);
 
-    console.log(result);
     return result.rows[0] || null;
   });
 
@@ -77,7 +111,8 @@ async function createAgent(params) {
     endpoint,
     owner,
     interaction,
-    configuration
+    configuration,
+    socket
   } = params;
 
   if (!(name && owner.id)) {
@@ -99,8 +134,9 @@ async function createAgent(params) {
     throw new Error(`Could not create agent`);
   }
 
-  await setAgentInteraction(agentCreated.id, interaction);
+  await setAgentSocketConfiguration(agentCreated.id, socket);
   await setAgentConfiguration(agentCreated.id, configuration);
+  await setAgentInteraction(agentCreated.id, interaction);
 
   const agent = await query(sql`
     SELECT *
@@ -131,5 +167,6 @@ exports.createAgent = createAgent;
 exports.getAgent = getAgent;
 exports.getAgents = getAgents;
 exports.setAgent = setAgent;
+exports.setAgentSocketConfiguration = setAgentSocketConfiguration;
 exports.setAgentConfiguration = setAgentConfiguration;
 exports.setAgentInteraction = setAgentInteraction;

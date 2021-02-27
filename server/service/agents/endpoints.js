@@ -42,7 +42,8 @@ async function setAgent(req, res) {
     deleted_at,
     endpoint,
     interaction,
-    configuration
+    configuration,
+    socket
   } = req.body;
 
   const updates = {};
@@ -79,6 +80,16 @@ async function setAgent(req, res) {
       await db.setAgentInteraction(id, interaction);
     } catch ({ message }) {
       const error = new Error(`Agent interaction could not be set. ${message}`);
+      error.status = 500;
+      throw error;
+    }
+  }
+
+  if (socket) {
+    try {
+      await db.setAgentSocketConfiguration(id, socket);
+    } catch ({ message }) {
+      const error = new Error(`Agent socket configuration could not be set. ${message}`);
       error.status = 500;
       throw error;
     }

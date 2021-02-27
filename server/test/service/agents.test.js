@@ -30,6 +30,9 @@ const agent = {
     baz: 'c',
     foo: 'false'
   },
+  socket: {
+    path: '/foo/bar/baz'
+  },
   interaction: {
     id: 18,
     name: 'ChatPrompt',
@@ -68,7 +71,8 @@ jest.mock('../../service/agents/db', () => {
     getAgents: jest.fn(),
     setAgent: jest.fn(),
     setAgentInteraction: jest.fn(),
-    setAgentConfiguration: jest.fn()
+    setAgentConfiguration: jest.fn(),
+    setAgentSocketConfiguration: jest.fn()
   };
 });
 
@@ -111,6 +115,9 @@ describe('/api/agents/*', () => {
     db.setAgent.mockImplementation(async props => props);
     db.setAgentInteraction.mockImplementation(async (id, props) => props);
     db.setAgentConfiguration.mockImplementation(async (id, props) => props);
+    db.setAgentSocketConfiguration.mockImplementation(
+      async (id, props) => props
+    );
 
     rolesmw.requireUserRole.mockImplementation(() => [
       (req, res, next) => next()
@@ -173,6 +180,9 @@ describe('/api/agents/*', () => {
                 "roles": null,
                 "single_use_password": false,
                 "username": "ebe565050b31cbb4e7eacc39b23e2167",
+              },
+              "socket": Object {
+                "path": "/foo/bar/baz",
               },
               "updated_at": "2021-02-25T20:09:04.999Z",
             },
@@ -242,6 +252,9 @@ describe('/api/agents/*', () => {
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
             },
+            "socket": Object {
+              "path": "/foo/bar/baz",
+            },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -293,6 +306,9 @@ describe('/api/agents/*', () => {
               "roles": null,
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
+            },
+            "socket": Object {
+              "path": "/foo/bar/baz",
             },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
@@ -390,6 +406,9 @@ describe('/api/agents/*', () => {
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
             },
+            "socket": Object {
+              "path": "/foo/bar/baz",
+            },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -459,6 +478,9 @@ describe('/api/agents/*', () => {
               "roles": null,
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
+            },
+            "socket": Object {
+              "path": "/foo/bar/baz",
             },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
@@ -531,6 +553,9 @@ describe('/api/agents/*', () => {
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
             },
+            "socket": Object {
+              "path": "/foo/bar/baz",
+            },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -602,6 +627,9 @@ describe('/api/agents/*', () => {
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
             },
+            "socket": Object {
+              "path": "/foo/bar/baz",
+            },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -664,6 +692,9 @@ describe('/api/agents/*', () => {
               "roles": null,
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
+            },
+            "socket": Object {
+              "path": "/foo/bar/baz",
             },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
@@ -728,6 +759,9 @@ describe('/api/agents/*', () => {
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
             },
+            "socket": Object {
+              "path": "/foo/bar/baz",
+            },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -787,6 +821,9 @@ describe('/api/agents/*', () => {
               "roles": null,
               "single_use_password": false,
               "username": "ebe565050b31cbb4e7eacc39b23e2167",
+            },
+            "socket": Object {
+              "path": "/foo/bar/baz",
             },
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
@@ -912,6 +949,9 @@ describe('/api/agents/*', () => {
                 "roles": null,
                 "single_use_password": false,
                 "username": "ebe565050b31cbb4e7eacc39b23e2167",
+              },
+              "socket": Object {
+                "path": "/foo/bar/baz",
               },
               "updated_at": "2021-02-25T20:09:04.999Z",
             },
