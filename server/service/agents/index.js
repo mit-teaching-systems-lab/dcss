@@ -5,7 +5,7 @@ const {
 } = require('../session/middleware');
 const { requireUserRole } = require('../roles/middleware');
 const { validateRequestBody } = require('../../util/requestValidation');
-const { createAgent, getAgents, getAgent, setAgent } = require('./endpoints');
+const { createAgent, getAgents, getAgent, getInteractions, setAgent } = require('./endpoints');
 
 const router = Router();
 
@@ -17,6 +17,7 @@ router.post('/', [
   createAgent
 ]);
 
+router.get('/interactions', [requireUser, getInteractions]);
 router.get('/is_active', [requireUser, getAgents]);
 
 router.put('/:id', [

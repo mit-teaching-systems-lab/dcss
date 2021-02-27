@@ -63,6 +63,30 @@ const agentsById = agents.reduce(
   {}
 );
 
+const interactions = [
+  {
+    id: 1,
+    created_at: '2021-02-25T17:31:33.826Z',
+    updated_at: null,
+    deleted_at: null,
+    name: 'ChatPrompt'
+  },
+  {
+    id: 2,
+    created_at: '2021-02-25T17:31:33.826Z',
+    updated_at: null,
+    deleted_at: null,
+    name: 'AudioPrompt'
+  },
+  {
+    id: 3,
+    created_at: '2021-02-25T17:31:33.826Z',
+    updated_at: null,
+    deleted_at: null,
+    name: 'TextPrompt'
+  }
+];
+
 jest.mock('../../service/agents/db', () => {
   return {
     ...jest.requireActual('../../service/agents/db'),
@@ -72,7 +96,8 @@ jest.mock('../../service/agents/db', () => {
     setAgent: jest.fn(),
     setAgentInteraction: jest.fn(),
     setAgentConfiguration: jest.fn(),
-    setAgentSocketConfiguration: jest.fn()
+    setAgentSocketConfiguration: jest.fn(),
+    getInteractions: jest.fn()
   };
 });
 
@@ -118,6 +143,7 @@ describe('/api/agents/*', () => {
     db.setAgentSocketConfiguration.mockImplementation(
       async (id, props) => props
     );
+    db.getInteractions.mockImplementation(async () => interactions);
 
     rolesmw.requireUserRole.mockImplementation(() => [
       (req, res, next) => next()
@@ -991,6 +1017,64 @@ describe('/api/agents/*', () => {
           },
         ]
       `);
+    });
+  });
+
+  describe('/api/agents/interactions', () => {
+    const path = '/api/agents/interactions';
+
+    test('get success', async () => {
+      const response = await request({ path });
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "interactions": Array [
+            Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "id": 1,
+              "name": "ChatPrompt",
+              "updated_at": null,
+            },
+            Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "id": 2,
+              "name": "AudioPrompt",
+              "updated_at": null,
+            },
+            Object {
+              "created_at": "2021-02-25T17:31:33.826Z",
+              "deleted_at": null,
+              "id": 3,
+              "name": "TextPrompt",
+              "updated_at": null,
+            },
+          ],
+        }
+      `);
+      expect(authmw.requireUser.mock.calls.length).toBe(1);
+      expect(db.getInteractions.mock.calls.length).toBe(1);
+      expect(db.getInteractions.mock.calls[0]).toMatchInlineSnapshot(
+        `Array []`
+      );
+    });
+
+    test('get failure', async () => {
+      const status = 500;
+
+      db.getInteractions.mockImplementation(async () => {
+        throw error;
+      });
+
+      const response = await request({ path, status });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "error": true,
+          "message": "something unexpected happened",
+        }
+      `);
+      expect(db.getInteractions.mock.calls.length).toBe(1);
     });
   });
 });

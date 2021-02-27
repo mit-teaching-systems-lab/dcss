@@ -20,6 +20,11 @@ async function getAgent(req, res) {
   res.json({ agent });
 }
 
+async function getInteractions(req, res) {
+  const interactions = await db.getInteractions();
+  res.json({ interactions });
+}
+
 async function getAgents(req, res) {
   const is_active = req.url.endsWith('is_active');
   let where = {};
@@ -116,3 +121,4 @@ exports.createAgent = asyncMiddleware(createAgent);
 exports.getAgent = asyncMiddleware(getAgent);
 exports.getAgents = asyncMiddleware(getAgents);
 exports.setAgent = asyncMiddleware(setAgent);
+exports.getInteractions = asyncMiddleware(getInteractions);
