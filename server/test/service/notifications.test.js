@@ -177,6 +177,10 @@ describe('/api/notifications/*', () => {
       notificationBand
     ]);
 
+    db.getNotificationsStartedNotExpired.mockImplementation(async () => [
+      notificationBand
+    ]);
+
     rolesmw.requireUserRole.mockImplementation(() => [
       (req, res, next) => next()
     ]);
@@ -462,7 +466,7 @@ describe('/api/notifications/*', () => {
 
   describe('/api/notifications/:start_at/:expire_at', () => {
     test('get success', async () => {
-      const path = `/api/notifications/author/777`;
+      const path = `/api/notifications/2020-11-19T20:12:39.400Z/2020-11-19T20:12:39.400Z`;
       const response = await request({ path });
 
       expect(await response.json()).toMatchInlineSnapshot(`
@@ -494,11 +498,11 @@ describe('/api/notifications/*', () => {
           ],
         }
       `);
-      expect(db.getNotificationsByAuthorId.mock.calls.length).toBe(1);
-      expect(db.getNotificationsByAuthorId.mock.calls[0])
+      expect(db.getNotificationsStartedNotExpired.mock.calls.length).toBe(1);
+      expect(db.getNotificationsStartedNotExpired.mock.calls[0])
         .toMatchInlineSnapshot(`
         Array [
-          999,
+          NaN,
         ]
       `);
     });

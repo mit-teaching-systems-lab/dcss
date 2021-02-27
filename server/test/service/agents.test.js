@@ -852,6 +852,29 @@ describe('/api/agents/*', () => {
         }
       `);
       expect(db.setAgent.mock.calls.length).toBe(1);
+      expect(db.setAgentInteraction.mock.calls.length).toBe(1);
+    });
+
+    test('put failure (set socket configuration fails)', async () => {
+      const status = 500;
+      const body = {
+        ...agent
+      };
+
+      db.setAgentSocketConfiguration.mockImplementation(async () => {
+        throw error;
+      });
+
+      const response = await request({ path, method, body, status });
+
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "error": true,
+          "message": "Agent socket configuration could not be set. something unexpected happened",
+        }
+      `);
+      expect(db.setAgent.mock.calls.length).toBe(1);
+      expect(db.setAgentSocketConfiguration.mock.calls.length).toBe(1);
     });
 
     test('put failure (set configuration fails)', async () => {
@@ -873,6 +896,7 @@ describe('/api/agents/*', () => {
         }
       `);
       expect(db.setAgent.mock.calls.length).toBe(1);
+      expect(db.setAgentConfiguration.mock.calls.length).toBe(1);
     });
 
     test('put failure (set agent fails)', async () => {
