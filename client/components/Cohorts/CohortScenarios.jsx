@@ -19,6 +19,7 @@ import { Button, Card, Container, Icon, Text } from '@components/UI';
 import Identity from '@utils/Identity';
 import Layout from '@utils/Layout';
 import Moment from '@utils/Moment';
+import Storage from '@utils/Storage';
 
 import './Cohort.css';
 
@@ -192,9 +193,28 @@ export class CohortScenarios extends React.Component {
               }
 
               // TODO: check localstorage for more appropriate slide number to begin at
-              const pathname = `/cohort/${Identity.toHash(
-                cohort.id
-              )}/run/${Identity.toHash(scenario.id)}/slide/0`;
+              const run =
+                runs.find(run => run.scenario_id === scenario.id) || {};
+
+              const storageKey = `cohort/${cohort.id}/run/${scenario.id}`;
+
+              const progress = Storage.get(storageKey);
+              const slideIndex = progress
+                ? progress.activeRunSlideIndex
+                : 0;
+
+              const hashCohortId = Identity.toHash(cohort.id);
+              const hashScenarioId = Identity.toHash(scenario.id);
+              const hashChatId = run.chat_id ? Identity.toHash(run.chat_id) : null;
+
+              let pathname = `/cohort/${hashCohortId}/run/${hashScenarioId}`;
+
+              if (hashChatId) {
+                pathname += `/chat/${hashChatId}`;
+              }
+
+              pathname += `/${slideIndex}`;
+
               const url = `${location.origin}${pathname}`;
 
               const onAddTabClick = event => {
@@ -203,9 +223,6 @@ export class CohortScenarios extends React.Component {
                   source: scenario
                 });
               };
-
-              const run =
-                runs.find(run => run.scenario_id === scenario.id) || {};
 
               const { created_at = null, ended_at = null } = run;
 
@@ -256,10 +273,10 @@ export class CohortScenarios extends React.Component {
                 ? `${scenario.title} is a group scenario`
                 : `${scenario.title} is a solo scenario`;
 
-              const singleCardHeaderProps = {
-                as: 'a',
-                href: pathname
-              };
+              // const singleCardHeaderProps = {
+              //   as: 'a',
+              //   href: pathname
+              // };
 
               // const multiCardHeaderProps = {
               //   onClick: () => {
@@ -340,12 +357,16 @@ export class CohortScenarios extends React.Component {
                         data-testid="run-cohort-as-participant"
                         onClick={() => {
                           if (isMultiParticipantScenario) {
-                            this.setState({
-                              room: {
-                                isOpen: true,
-                                scenario
-                              }
-                            });
+                            if (created_at && !ended_at) {
+                              location.href = url;
+                            } else {
+                              this.setState({
+                                room: {
+                                  isOpen: true,
+                                  scenario
+                                }
+                              });
+                            }
                           } else {
                             location.href = url;
                           }

@@ -2,10 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import escapeRegExp from 'lodash.escaperegexp';
-import objectPath from 'object-path';
-import pluralize from 'pluralize';
 import PropTypes from 'prop-types';
-import JSONTree from 'react-json-tree';
 import { sentenceCase } from 'change-case';
 import {
   createAgent,
@@ -18,13 +15,10 @@ import AgentInterationSelect from './AgentInterationSelect';
 import EditorMenu from '@components/EditorMenu';
 import Loading from '@components/Loading';
 import { notify } from '@components/Notification';
-import Username from '@components/User/Username';
 import {
   Button,
   Checkbox,
-  Container,
   Divider,
-  Dropdown,
   Grid,
   Form,
   Header,
@@ -35,15 +29,11 @@ import {
   Message,
   Modal,
   Pagination,
-  Ref,
-  Segment,
-  Text,
-  Table
+  Text
 } from '@components/UI';
 import { agentInitialState } from '@reducers/initial-states';
 import Identity from '@utils/Identity';
 import { computeItemsRowsPerPage } from '@utils/Layout';
-import Moment from '@utils/Moment';
 import QueryString from '@utils/QueryString';
 import './Agents.css';
 
@@ -54,22 +44,20 @@ function makeHistoryEntry(location, keyVals) {
 const AgentListItem = props => {
   const {
     active,
-    agent: { name, description, id },
+    agent: { title, description, id },
     onClick
   } = props;
-
-  const ariaLabel = `${props.name}`;
 
   return (
     <List.Item
       as="a"
-      aria-label={name}
+      aria-label={title}
       active={active}
       id={id}
       onClick={onClick}
     >
       <List.Content>
-        <List.Header>{name}</List.Header>
+        <List.Header>{title}</List.Header>
         <List.Description>{description}</List.Description>
       </List.Content>
     </List.Item>
@@ -353,7 +341,6 @@ class Agent extends Component {
       onSearchChange,
       onSubmit
     } = this;
-    const { interactions } = this.props;
     const {
       agent,
       confirmDelete,
@@ -891,6 +878,7 @@ class Agent extends Component {
                         object and must correspond to the options documented in{' '}
                         <a
                           href="https://socket.io/docs/v3/client-initialization/#Options"
+                          rel="noreferrer"
                           target="_blank"
                         >
                           Socket.io&apos;s Client Initialization Options
@@ -1031,16 +1019,6 @@ class Agent extends Component {
                   )}
                 </Grid.Column>
               </Grid.Row>
-              {agent ? (
-                <Grid.Row>
-                  <JSONTree
-                    theme="monokai"
-                    key={Identity.key({ agent, display: true })}
-                    data={agent}
-                    invertTheme={true}
-                  />
-                </Grid.Row>
-              ) : null}
 
               {agent ? (
                 <Grid.Row className="a__agentviewer-actions">

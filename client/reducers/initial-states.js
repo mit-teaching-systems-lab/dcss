@@ -5,12 +5,16 @@ export const agentInitialState = {
   deleted_at: null,
   is_active: false,
   name: '',
+  title: '',
   description: '',
   endpoint: '',
-  configuration: null,
-  interaction: null,
-  owner: null,
-  self: null
+  configuration: {},
+  interaction: {
+    id: null
+  },
+  owner: {},
+  self: null,
+  socket: {}
 };
 
 export const chatInitialState = {

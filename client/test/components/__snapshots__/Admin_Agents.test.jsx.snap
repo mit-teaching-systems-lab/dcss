@@ -75,7 +75,7 @@ exports[`Add a new agent 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -86,7 +86,7 @@ exports[`Add a new agent 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -6590,9 +6590,7 @@ exports[`Add a new agent 8`] = `
 `;
 
 exports[`Add a socket configuration 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -6666,7 +6664,7 @@ exports[`Add a socket configuration 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -6677,7 +6675,7 @@ exports[`Add a socket configuration 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -9667,9 +9665,7 @@ exports[`Add a socket configuration 4`] = `
 `;
 
 exports[`Add an agent configuration 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -9743,7 +9739,7 @@ exports[`Add an agent configuration 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -9754,7 +9750,7 @@ exports[`Add an agent configuration 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -12745,9 +12741,7 @@ exports[`Add an agent configuration 4`] = `
 `;
 
 exports[`Change a socket configuration 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -12821,7 +12815,7 @@ exports[`Change a socket configuration 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -12832,7 +12826,7 @@ exports[`Change a socket configuration 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -20058,9 +20052,7 @@ exports[`Change a socket configuration 6`] = `
 `;
 
 exports[`Change an agent configuration 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -20134,7 +20126,7 @@ exports[`Change an agent configuration 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -20145,7 +20137,7 @@ exports[`Change an agent configuration 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -27453,7 +27445,7 @@ exports[`Delete an agent 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -27464,7 +27456,7 @@ exports[`Delete an agent 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -34761,9 +34753,7 @@ exports[`Delete an agent 6`] = `
 `;
 
 exports[`Duplicate an agent 1`] = `
-"<body
-  class=\\"\\"
->
+"<body>
   <div
     id=\\"root\\"
   />
@@ -34837,7 +34827,7 @@ exports[`Duplicate an agent 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -34848,7 +34838,7 @@ exports[`Duplicate an agent 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -36429,7 +36419,7 @@ exports[`Load with an activePage 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -36440,7 +36430,7 @@ exports[`Load with an activePage 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -38019,7 +38009,7 @@ exports[`Load without activePage 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -38030,7 +38020,7 @@ exports[`Load without activePage 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -38196,7 +38186,7 @@ exports[`Load without agents 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -38207,7 +38197,7 @@ exports[`Load without agents 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -39786,7 +39776,7 @@ exports[`Load without interactions 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -39797,7 +39787,7 @@ exports[`Load without interactions 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -39963,7 +39953,7 @@ exports[`Search agents 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -39974,7 +39964,7 @@ exports[`Search agents 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -40153,7 +40143,7 @@ exports[`Search agents 2`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -40164,7 +40154,7 @@ exports[`Search agents 2`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -40357,7 +40347,7 @@ exports[`Search agents 3`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -40368,7 +40358,7 @@ exports[`Search agents 3`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -40548,7 +40538,7 @@ exports[`Search agents 4`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -40559,7 +40549,7 @@ exports[`Search agents 4`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -40648,7 +40638,7 @@ exports[`Search agents 4`] = `
     />
   </div>
   <div
-    style=\\"display: flex; position: absolute; left: 0px; top: 0px; bottom: 0px; transform: translate(0px, 0px);\\"
+    style=\\"display: flex; position: absolute; left: 0px; top: 0px;\\"
   >
     <div
       class=\\"ui top left tiny inverted popup transition visible\\"
@@ -40752,7 +40742,7 @@ exports[`Search agents 5`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -40763,7 +40753,7 @@ exports[`Search agents 5`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -40943,7 +40933,7 @@ exports[`Select an agent 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -40954,7 +40944,7 @@ exports[`Select an agent 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"
@@ -42710,7 +42700,7 @@ exports[`Select and edit an agent 1`] = `
             role=\\"list\\"
           >
             <a
-              aria-label=\\"emoji-analysis\\"
+              aria-label=\\"Emoji Analysis\\"
               class=\\"item\\"
               id=\\"1\\"
               role=\\"listitem\\"
@@ -42721,7 +42711,7 @@ exports[`Select and edit an agent 1`] = `
                 <div
                   class=\\"header\\"
                 >
-                  emoji-analysis
+                  Emoji Analysis
                 </div>
                 <div
                   class=\\"description\\"

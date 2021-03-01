@@ -11,8 +11,6 @@ import Agents from './Agents';
 import Users from './Users';
 import './Admin.css';
 
-const IS_LOCAL_DEV = location.href.includes('localhost');
-
 class Admin extends Component {
   constructor(props) {
     super(props);

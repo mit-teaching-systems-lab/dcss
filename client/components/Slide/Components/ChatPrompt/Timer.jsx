@@ -55,11 +55,6 @@ class Timer extends Component {
     if (this.state.isActive) {
       return;
     }
-    const { chat, timer } = this.props;
-
-    const slide = {
-      index: this.slideIndex
-    };
 
     this.setState({
       isActive: true
@@ -81,21 +76,18 @@ class Timer extends Component {
       isActive: false
     });
 
-    console.log('Timer: timerEnd');
     if (this.props.onTimerEnd) {
       this.props.onTimerEnd({ chat, slide, result });
     }
   }
 
   timerTick({ timer }) {
-    console.log('?????????????');
     this.timerNodes
       .filter(Boolean)
       .forEach(node => (node.innerText = Media.secToTime(timer)));
   }
 
   render() {
-    const { timerStart, timerEnd } = this.props;
     const { chat, slide, timer, user } = this.props;
     const { isActive } = this.state;
 

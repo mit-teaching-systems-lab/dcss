@@ -105,9 +105,7 @@ class Navigation extends Component {
       </Menu.Item.Tabbable>
     );
 
-    const loginOrSignUp = Layout.isForMobile()
-      ? 'Log in or Sign up'
-      : 'Log in';
+    const loginOrSignUp = Layout.isForMobile() ? 'Log in or Sign up' : 'Log in';
 
     const menuItemUserMenu = isLoggedIn ? (
       <UserMenu user={user} />

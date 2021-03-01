@@ -34,7 +34,7 @@ exports[`Archive cohort 1`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -682,7 +682,7 @@ exports[`Archive cohort 2`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -1330,7 +1330,7 @@ exports[`Archive cohort 3`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -2045,7 +2045,7 @@ exports[`Archive cohort 4`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -2693,7 +2693,7 @@ exports[`Archive cohort 5`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -3408,7 +3408,7 @@ exports[`Archive cohort 6`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -4107,7 +4107,7 @@ exports[`Cohort is archived 1`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -4965,7 +4965,7 @@ exports[`Copy cohort 1`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -5613,7 +5613,7 @@ exports[`Copy cohort 2`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -6261,7 +6261,7 @@ exports[`Copy cohort 3`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -6976,7 +6976,7 @@ exports[`Copy cohort 4`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -7624,7 +7624,7 @@ exports[`Copy cohort 5`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -8339,7 +8339,7 @@ exports[`Copy cohort 6`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -9052,7 +9052,7 @@ exports[`Copy cohort url 1`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -9818,7 +9818,7 @@ exports[`Copy cohort url 2`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -10584,7 +10584,7 @@ exports[`Copy cohort url 3`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -11352,7 +11352,7 @@ exports[`Delete cohort 1`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -12000,7 +12000,7 @@ exports[`Delete cohort 2`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -12648,7 +12648,7 @@ exports[`Delete cohort 3`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -13363,7 +13363,7 @@ exports[`Delete cohort 4`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -14011,7 +14011,7 @@ exports[`Delete cohort 5`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -14726,7 +14726,7 @@ exports[`Delete cohort 6`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -15596,7 +15596,7 @@ exports[`Rename cohort 1`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -16362,7 +16362,7 @@ exports[`Rename cohort 2`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -17131,7 +17131,7 @@ exports[`Rename cohort 3`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -17972,7 +17972,7 @@ exports[`Rename cohort 4`] = `
               <div
                 class=\\"ui label label\\"
               >
-                Copy cohort url
+                Cohort link
               </div>
               <input
                 type=\\"text\\"
@@ -18831,7 +18831,7 @@ exports[`Render 1 1 3`] = `
             <div
               class="ui label label"
             >
-              Copy cohort url
+              Cohort link
             </div>
             <input
               type="text"
@@ -19473,7 +19473,7 @@ exports[`Render 2 1 3`] = `
             <div
               class="ui label label"
             >
-              Copy cohort url
+              Cohort link
             </div>
             <input
               type="text"
@@ -20115,7 +20115,7 @@ exports[`Render 3 1 3`] = `
             <div
               class="ui label label"
             >
-              Copy cohort url
+              Cohort link
             </div>
             <input
               type="text"
@@ -21117,7 +21117,7 @@ exports[`Render 9 1 3`] = `
             <div
               class="ui label label"
             >
-              Copy cohort url
+              Cohort link
             </div>
             <input
               type="text"

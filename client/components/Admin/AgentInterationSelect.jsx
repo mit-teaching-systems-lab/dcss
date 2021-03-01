@@ -41,7 +41,6 @@ class AgentInteractionSelect extends Component {
   render() {
     const { onChange } = this;
     const {
-      defaultValue,
       emptyText = 'No selection',
       fluid,
       item,

@@ -191,12 +191,7 @@ export class Cohort extends React.Component {
     Storage.set(this.storageKey, { activeTabKey, tabs });
 
     const menuItemShowCohortUrl = (
-      <Input
-        label="Copy cohort url"
-        size="big"
-        type="text"
-        defaultValue={url}
-      />
+      <Input label="Cohort link" size="big" type="text" defaultValue={url} />
     );
 
     const menuItemCopyCohortUrl = (

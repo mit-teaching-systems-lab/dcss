@@ -222,7 +222,7 @@ class UserInvites extends Component {
 
     const { onClose, onOpen } = this;
     const { open } = this.state;
-    const { invites, user } = this.props;
+    const { invites } = this.props;
     const pendingCount = invites.reduce((accum, invite) => {
       if (invite.status === 'pending') {
         accum++;

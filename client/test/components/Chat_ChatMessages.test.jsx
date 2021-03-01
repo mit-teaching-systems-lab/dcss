@@ -200,12 +200,12 @@ beforeEach(() => {
     users: chatUsers
   };
 
-  chats = [chats];
+  chats = [chat];
 
   chatsById = chats.reduce((accum, chat) => {
     accum[chat.id] = chat;
     return accum;
-  });
+  }, {});
 
   message1 = {
     chat_id: 1,

@@ -50,7 +50,6 @@ class Display extends Component {
     const { persisted = { value: '' } } = this.props;
 
     this.state = {
-      isActive: false,
       isReady: false,
       isRestart: false,
       hasSubmittedResponse: false,
@@ -108,8 +107,6 @@ class Display extends Component {
       });
       this.setState({ hasSubmittedResponse, value });
     }
-
-    const { chat, user } = this.props;
 
     const slide = {
       index: this.slideIndex
@@ -209,14 +206,13 @@ class Display extends Component {
     });
 
     this.setState({
-      isActive: false,
       value
     });
   }
 
   render() {
     const { chat, auto, isEmbeddedInSVG, responseId, timer, user } = this.props;
-    const { isActive, isReady, isRestart, hasSubmittedResponse } = this.state;
+    const { isReady, isRestart, hasSubmittedResponse } = this.state;
 
     if (isEmbeddedInSVG || !this.isScenarioRun) {
       return null;
@@ -290,7 +286,6 @@ class Display extends Component {
           [name]: value
         });
         this.setState({
-          isActive: false,
           value: {
             [name]: value,
             time

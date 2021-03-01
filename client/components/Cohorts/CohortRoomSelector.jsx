@@ -29,7 +29,6 @@ import withSocket, {
   RUN_CHAT_LINK
 } from '@hoc/withSocket';
 import Identity from '@utils/Identity';
-import Moment from '@utils/Moment';
 import Storage from '@utils/Storage';
 import './Cohort.css';
 
@@ -66,7 +65,6 @@ export class CohortRoomSelector extends React.Component {
     this.createChat = this.createChat.bind(this);
     this.fetchChats = this.fetchChats.bind(this);
     this.onCloseClick = this.onCloseClick.bind(this);
-    this.onSelectChatClick = this.onSelectChatClick.bind(this);
   }
 
   async fetchChats(data = {}) {
@@ -106,10 +104,6 @@ export class CohortRoomSelector extends React.Component {
     );
 
     await this.fetchChats({ chat });
-  }
-
-  onSelectChatClick(/* event, { chat } */) {
-    console.log('Select a chat room');
   }
 
   onCloseClick() {
@@ -181,11 +175,11 @@ export class CohortRoomSelector extends React.Component {
           className="primary"
           onClick={async () => {
             await this.fetchChats({ chat });
-
-            const chat = this.props.chatsById[memoChatId];
             this.setState({
               lobby: {
-                chat,
+                chat: {
+                  ...this.props.chatsById[memoChatId]
+                },
                 isOpen: true
               }
             });
@@ -219,10 +213,13 @@ export class CohortRoomSelector extends React.Component {
 
       const userRoleDisplay = isUserRoleAssigned ? (
         <Fragment>
-          You are participating as <strong>{userPersona.name}</strong>
+          You are participating as <strong>{userPersona.name}</strong>. Click <strong>Join Room</strong> to run the scenario.
+          <br />
+          <br />
+          The following roles are not yet assigned.
         </Fragment>
       ) : (
-        'You must select a role'
+        'You must select a role to join this chat. To select a role, click on one of these roles:'
       );
 
       const { displayableName } = Username.getDisplayables(host);
@@ -249,7 +246,7 @@ export class CohortRoomSelector extends React.Component {
               </Button.Group>
             </Card.Meta>
             <Card.Description className="c__chat-card__meta">
-              <p>{userRoleDisplay}. The following roles are available:</p>
+              <p>{userRoleDisplay}</p>
               <Label.Group>
                 {options.reduce((accum, option, index) => {
                   const { content, persona } = option;
@@ -490,6 +487,14 @@ export class CohortRoomSelector extends React.Component {
                 <Grid padded>
                   <Grid.Row>
                     <Grid.Column className="c__grid-single-col-padding">
+                      <p>
+                        This is a multi-participant scenario and requires at least <strong>2</strong> participants to commence.
+                      </p>
+                      <p>
+                        This view shows chat rooms that are open for you to join. If there are no rooms here, you can click <strong>Create a room for this scenario</strong> to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+                      </p>
+
+
                       {availableDisplay}
                       <Card.Group className="c__chat-cards" itemsPerRow={3}>
                         {cards}

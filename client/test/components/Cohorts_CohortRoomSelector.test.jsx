@@ -286,12 +286,12 @@ beforeEach(() => {
     }
   };
 
-  chats = [chats];
+  chats = [chat];
 
   chatsById = chats.reduce((accum, chat) => {
     accum[chat.id] = chat;
     return accum;
-  });
+  }, {});
 
   cohort = {
     id: 1,
@@ -698,7 +698,7 @@ beforeEach(() => {
   invitesById = invites.reduce((accum, invite) => {
     accum[invite.id] = invite;
     return accum;
-  });
+  }, {});
 
   chatActions.createChat.mockImplementation(() => async dispatch => {
     dispatch({ type: GET_CHAT_SUCCESS, chat });

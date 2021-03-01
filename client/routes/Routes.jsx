@@ -32,6 +32,7 @@ import {
 } from './RouteComponents';
 import UserSettings from '@components/User/UserSettings';
 import UserInvites from '@components/User/UserInvites';
+import QueryString from '@utils/QueryString';
 
 const makeEditorProps = (props = {}) => ({
   ...props,
@@ -40,9 +41,19 @@ const makeEditorProps = (props = {}) => ({
 });
 
 const Routes = ({ isLoggedIn, user }) => {
-  const routeRenderAdmin = (props = {}) => (
-    <Admin {...props} isLoggedIn={isLoggedIn} />
-  );
+  const routeRenderAdmin = (props = {}) => {
+    const { page: activePage = 1, id = null } = QueryString.parse(
+      props.location.search
+    );
+    const activeTab = props?.match?.params?.activeTab || 'access';
+    const adminProps = {
+      ...props,
+      activePage,
+      activeTab,
+      id
+    };
+    return <Admin {...adminProps} isLoggedIn={isLoggedIn} />;
+  };
   const routeRenderChat = (props = {}) => <Chat {...props} />;
   const routeRenderCohorts = (props = {}) => (
     <Cohorts {...props} activeTab="cohorts" />
@@ -192,6 +203,15 @@ const Routes = ({ isLoggedIn, user }) => {
       >
         <Route render={routeRenderRun} />
       </InterceptAnonymizableRoute>
+
+      <RedirectRouteForInactiveSession
+        path="/admin/:activeTab"
+        isLoggedIn={isLoggedIn}
+      >
+        <Gate path="/admin/:activeTab" requiredPermission="edit_permissions">
+          <Route render={routeRenderAdmin} />
+        </Gate>
+      </RedirectRouteForInactiveSession>
 
       <RedirectRouteForInactiveSession path="/admin" isLoggedIn={isLoggedIn}>
         <Gate path="/admin" requiredPermission="edit_permissions">

@@ -14,9 +14,6 @@ const outerMaxClassName = `${outerBaseClassNames} resizable`;
 const BASE_HEIGHT = 590;
 const BASE_WIDTH = 430;
 
-const BASE_X = 0;
-const BASE_Y = 100;
-
 const rndStyleUserSelectNone = {
   WebkitUserSelect: 'none',
   WebkitTouchCallout: 'none',

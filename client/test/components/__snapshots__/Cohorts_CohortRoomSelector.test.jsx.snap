@@ -66,6 +66,20 @@ exports[`Has chats in state 1`] = `
             <div
               class=\\"column c__grid-single-col-padding\\"
             >
+              <p>
+                This is a multi-participant scenario and requires at least 
+                <strong>
+                  2
+                </strong>
+                 participants to commence.
+              </p>
+              <p>
+                This view shows chat rooms that are open for you to join. If there are no rooms here, you can click 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
               <p
                 tabindex=\\"0\\"
               >
@@ -175,6 +189,20 @@ exports[`Render 1 1 1`] = `
             <div
               class=\\"column c__grid-single-col-padding\\"
             >
+              <p>
+                This is a multi-participant scenario and requires at least 
+                <strong>
+                  2
+                </strong>
+                 participants to commence.
+              </p>
+              <p>
+                This view shows chat rooms that are open for you to join. If there are no rooms here, you can click 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
               <p
                 tabindex=\\"0\\"
               >
@@ -283,6 +311,20 @@ exports[`Render 2 1 1`] = `
             <div
               class=\\"column c__grid-single-col-padding\\"
             >
+              <p>
+                This is a multi-participant scenario and requires at least 
+                <strong>
+                  2
+                </strong>
+                 participants to commence.
+              </p>
+              <p>
+                This view shows chat rooms that are open for you to join. If there are no rooms here, you can click 
+                <strong>
+                  Create a room for this scenario
+                </strong>
+                 to host your own room. You will be able to invite other participants directly, or allow all members of this cohort to join freely.
+              </p>
               <p
                 tabindex=\\"0\\"
               >

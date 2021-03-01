@@ -485,9 +485,9 @@ test('Select an agent', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listIems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listIems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -525,9 +525,9 @@ test('Select and edit an agent', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -1156,9 +1156,9 @@ test('Delete an agent', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -1268,9 +1268,9 @@ test('Duplicate an agent', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -1373,9 +1373,9 @@ test('Change a socket configuration', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -1563,9 +1563,9 @@ test('Add a socket configuration', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -1739,9 +1739,9 @@ test('Change an agent configuration', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()
@@ -1927,9 +1927,9 @@ test('Add an agent configuration', async done => {
   );
   expect(serialize()).toMatchSnapshot();
 
-  const agents = await screen.findAllByRole('listitem');
+  const listItems = await screen.findAllByRole('listitem');
 
-  userEvent.click(agents[0]);
+  userEvent.click(listItems[0]);
 
   await waitFor(() =>
     expect(screen.getByTestId('agents-detail')).toBeInTheDocument()

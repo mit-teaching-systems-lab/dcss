@@ -41,7 +41,7 @@ class UserSettings extends Component {
       }
     };
 
-    this.validateFormInput = this.validateFormInput.bind(this);
+    this.validateInput = this.validateInput.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -53,7 +53,7 @@ class UserSettings extends Component {
     }
   }
 
-  validateFormInput() {
+  validateInput() {
     const { confirmPassword, email, password, username } = this.state;
     let field = '';
     let message = '';
@@ -93,7 +93,7 @@ class UserSettings extends Component {
   }
 
   async onSubmit() {
-    if (!this.validateFormInput()) {
+    if (!this.validateInput()) {
       return;
     }
 

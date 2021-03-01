@@ -40,8 +40,12 @@ class ScenarioPersonas extends Component {
         message: null
       },
       isReady: false,
-      openPersonaConfirmation: false,
-      openPersonaEditor: false,
+      personaConfirmation: {
+        isOpen: false
+      },
+      personaEditor: {
+        isOpen: false
+      },
       persona: null
     };
 
@@ -63,26 +67,25 @@ class ScenarioPersonas extends Component {
 
   onPersonaConfirmationComplete() {
     this.setState({
-      openPersonaConfirmation: false,
-      persona: null
+      persona: null,
+      personaConfirmation: {
+        isOpen: false
+      }
     });
   }
 
   onPersonaEditorClose() {
     this.setState({
-      openPersonaEditor: false,
-      persona: null
+      persona: null,
+      personaEditor: {
+        isOpen: false
+      }
     });
   }
 
   render() {
     const { createPersona, linkPersonaToScenario, scenario } = this.props;
-    const {
-      isReady,
-      openPersonaConfirmation,
-      openPersonaEditor,
-      persona
-    } = this.state;
+    const { isReady, personaConfirmation, personaEditor, persona } = this.state;
     const { onPersonaConfirmationComplete, onPersonaEditorClose } = this;
 
     if (!isReady) {
@@ -129,8 +132,10 @@ class ScenarioPersonas extends Component {
                   tabIndex={0}
                   onClick={() => {
                     this.setState({
-                      openPersonaEditor: true,
-                      persona
+                      persona,
+                      personaEditor: {
+                        isOpen: true
+                      }
                     });
                   }}
                 >
@@ -184,8 +189,10 @@ class ScenarioPersonas extends Component {
       onSelect: persona => {
         if (persona) {
           this.setState({
-            openPersonaConfirmation: true,
-            persona
+            persona,
+            personaConfirmation: {
+              isOpen: true
+            }
           });
         }
       },
@@ -216,8 +223,10 @@ class ScenarioPersonas extends Component {
             size="medium"
             onClick={() => {
               this.setState({
-                openPersonaEditor: true,
-                persona: null
+                persona: null,
+                personaEditor: {
+                  isOpen: true
+                }
               });
             }}
           />
@@ -274,11 +283,11 @@ class ScenarioPersonas extends Component {
           Personas define the roles that participants will play in a scenario.
         </Container>
 
-        {openPersonaEditor ? (
+        {personaEditor.isOpen ? (
           <ScenarioPersonaEditor {...scenarioPersonaEditorProps} />
         ) : null}
 
-        {openPersonaConfirmation ? (
+        {personaConfirmation.isOpen ? (
           <ScenarioPersonaConfirmation {...scenarioPersonaConfirmationProps} />
         ) : null}
       </Fragment>
