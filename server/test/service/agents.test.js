@@ -22,7 +22,8 @@ const agent = {
   updated_at: '2021-02-25T20:09:04.999Z',
   deleted_at: null,
   is_active: true,
-  name: 'Emoji Analysis',
+  title: 'Emoji Analysis',
+  name: 'emoji-analysis',
   description: 'Detects the presense of an emoji character in your text',
   endpoint: 'ws://emoji-analysis-production.herokuapp.com',
   configuration: {
@@ -34,7 +35,7 @@ const agent = {
     path: '/foo/bar/baz'
   },
   interaction: {
-    id: 18,
+    id: 1,
     name: 'ChatPrompt',
     created_at: '2021-02-25T15:09:05.001302-05:00',
     deleted_at: null,
@@ -176,12 +177,12 @@ describe('/api/agents/*', () => {
               "interaction": Object {
                 "created_at": "2021-02-25T15:09:05.001302-05:00",
                 "deleted_at": null,
-                "id": 18,
+                "id": 1,
                 "name": "ChatPrompt",
                 "updated_at": null,
               },
               "is_active": true,
-              "name": "Emoji Analysis",
+              "name": "emoji-analysis",
               "owner": Object {
                 "email": "super@email.com",
                 "id": 999,
@@ -210,6 +211,7 @@ describe('/api/agents/*', () => {
               "socket": Object {
                 "path": "/foo/bar/baz",
               },
+              "title": "Emoji Analysis",
               "updated_at": "2021-02-25T20:09:04.999Z",
             },
           ],
@@ -228,7 +230,7 @@ describe('/api/agents/*', () => {
       const method = 'post';
       const body = {
         ...agent,
-        name: 'Secret Agent'
+        name: 'secret-agent'
       };
       const response = await request({ path, method, body });
       expect(await response.json()).toMatchInlineSnapshot(`
@@ -247,12 +249,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Secret Agent",
+            "name": "secret-agent",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -281,6 +283,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -302,12 +305,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Secret Agent",
+            "name": "secret-agent",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -336,17 +339,36 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         ]
       `);
     });
 
-    test('post failure, missing requirements', async () => {
+    test('post failure, missing requirements (title)', async () => {
       db.createAgent.mockImplementation(async props => null);
 
       const method = 'post';
       const body = {
+        title: ''
+      };
+      const response = await request({ path, method, body, status: 500 });
+      expect(await response.json()).toMatchInlineSnapshot(`
+        Object {
+          "error": true,
+          "message": "Creating an agent requires an owner, name and description.",
+        }
+      `);
+      expect(db.createAgent.mock.calls.length).toBe(0);
+    });
+
+    test('post failure, missing requirements (name)', async () => {
+      db.createAgent.mockImplementation(async props => null);
+
+      const method = 'post';
+      const body = {
+        title: 'Secret Agent',
         name: ''
       };
       const response = await request({ path, method, body, status: 500 });
@@ -365,7 +387,8 @@ describe('/api/agents/*', () => {
       const method = 'post';
       const body = {
         ...agent,
-        name: 'Secret Agent',
+        title: 'Secret Agent',
+        name: 'secret-agent',
         owner: null
       };
       const response = await request({ path, method, body, status: 500 });
@@ -401,12 +424,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -435,6 +458,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -474,12 +498,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -508,6 +532,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -520,7 +545,8 @@ describe('/api/agents/*', () => {
             "deleted_at": null,
             "description": "Detects the presense of an emoji character in your text",
             "endpoint": "ws://emoji-analysis-production.herokuapp.com",
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
+            "title": "Emoji Analysis",
           },
         ]
       `);
@@ -548,12 +574,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -582,6 +608,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -622,12 +649,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -656,6 +683,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -688,12 +716,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -722,6 +750,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -754,12 +783,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -788,6 +817,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -817,12 +847,12 @@ describe('/api/agents/*', () => {
             "interaction": Object {
               "created_at": "2021-02-25T15:09:05.001302-05:00",
               "deleted_at": null,
-              "id": 18,
+              "id": 1,
               "name": "ChatPrompt",
               "updated_at": null,
             },
             "is_active": true,
-            "name": "Emoji Analysis",
+            "name": "emoji-analysis",
             "owner": Object {
               "email": "super@email.com",
               "id": 999,
@@ -851,6 +881,7 @@ describe('/api/agents/*', () => {
             "socket": Object {
               "path": "/foo/bar/baz",
             },
+            "title": "Emoji Analysis",
             "updated_at": "2021-02-25T20:09:04.999Z",
           },
         }
@@ -969,12 +1000,12 @@ describe('/api/agents/*', () => {
               "interaction": Object {
                 "created_at": "2021-02-25T15:09:05.001302-05:00",
                 "deleted_at": null,
-                "id": 18,
+                "id": 1,
                 "name": "ChatPrompt",
                 "updated_at": null,
               },
               "is_active": true,
-              "name": "Emoji Analysis",
+              "name": "emoji-analysis",
               "owner": Object {
                 "email": "super@email.com",
                 "id": 999,
@@ -1003,6 +1034,7 @@ describe('/api/agents/*', () => {
               "socket": Object {
                 "path": "/foo/bar/baz",
               },
+              "title": "Emoji Analysis",
               "updated_at": "2021-02-25T20:09:04.999Z",
             },
           ],

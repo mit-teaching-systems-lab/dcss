@@ -3,7 +3,12 @@ const db = require('./db');
 const { getUserById } = require('../session/db');
 
 async function createAgent(req, res) {
-  if (!req.body.name || !req.body.description || !req.body.owner) {
+  if (
+    !req.body.title ||
+    !req.body.name ||
+    !req.body.description ||
+    !req.body.owner
+  ) {
     const error = new Error(
       'Creating an agent requires an owner, name and description.'
     );
@@ -42,6 +47,7 @@ async function getAgents(req, res) {
 async function setAgent(req, res) {
   const id = Number(req.params.id);
   const {
+    title,
     name,
     description,
     deleted_at,
@@ -52,6 +58,10 @@ async function setAgent(req, res) {
   } = req.body;
 
   const updates = {};
+
+  if (title) {
+    updates.title = title;
+  }
 
   if (name) {
     updates.name = name;
@@ -94,7 +104,9 @@ async function setAgent(req, res) {
     try {
       await db.setAgentSocketConfiguration(id, socket);
     } catch ({ message }) {
-      const error = new Error(`Agent socket configuration could not be set. ${message}`);
+      const error = new Error(
+        `Agent socket configuration could not be set. ${message}`
+      );
       error.status = 500;
       throw error;
     }

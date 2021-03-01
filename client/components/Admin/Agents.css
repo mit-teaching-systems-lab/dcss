@@ -1,0 +1,82 @@
+.a__agentviewer-outer {
+  /* subtracts the unavailable space in the viewport */
+  height: calc(100vh - 244px);
+}
+
+.a__agentviewer-outer > .row {
+  height: 100%;
+}
+
+.a__agentviewer-inner {
+  height: inherit;
+  overflow-y: scroll;
+  padding-bottom: 0 !important;
+}
+.a__agentviewer-inner .ui.horizontal.divider {
+  margin-top: 3em !important;
+}
+
+.a__agentviewer-editormenu {
+  margin-bottom: 1em !important;
+}
+
+.a__agentviewer-configuration {
+  /*height: calc(100% - 4.5em) !important;*/
+  display: grid !important;
+  grid-template-rows: 1fr;
+  grid-template-columns: calc((100% - 4.6em) / 2) calc((100% - 4.6em) / 2) 2.6em;
+  grid-gap: 1em;
+  grid-template-areas:
+    "a__config-key"
+    "a__config-value"
+    "a__config-action";
+}
+
+.a__agentviewer-configuration > .a__config-key:nth-child(1),
+.a__agentviewer-configuration > .a__config-value:nth-child(2),
+.a__agentviewer-configuration > .a__config-action:nth-child(3) {
+  padding-left: 3px;
+  font-size: .92857143em;
+}
+
+.a__agentviewer-actions {
+  background: white;
+  margin: 0 0 0 0 !important;
+  padding: 0 0 1em 0 !important;
+  width: 100%;
+  position: sticky;
+  bottom: 0;
+}
+
+.a__codeoption {
+  background: lightgray;
+  padding: 0.25em;
+  border-radius: 0.25em;
+  margin: 0 0.25em;
+}
+
+.a__tableoptioncell {
+  width: 45% !important;
+  max-width: 45% !important;
+  min-width: 45% !important;
+}
+
+.a__tablebuttoncell {
+  min-width: 10% !important;
+  max-width: 10% !important;
+  width: 10% !important;
+}
+
+.a__tablebuttonicon {
+  padding-left: 0.9em !important;
+  padding-right: 0.5em !important;
+}
+
+.a__tableheader {
+  padding-left: 1.25em ​!important;
+}
+
+.a__textpadding {
+  padding-left: 3px;
+}
+

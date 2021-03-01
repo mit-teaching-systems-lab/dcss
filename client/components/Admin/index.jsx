@@ -6,8 +6,9 @@ import { Menu, Segment, Title } from '@components/UI';
 
 import { getUser } from '@actions/user';
 import Loading from '@components/Loading';
-import Users from './Users';
 import Activity from './Activity';
+import Agents from './Agents';
+import Users from './Users';
 import './Admin.css';
 
 const IS_LOCAL_DEV = location.href.includes('localhost');
@@ -16,14 +17,16 @@ class Admin extends Component {
   constructor(props) {
     super(props);
 
-    const { activeTab = 'users' } = this.props;
+    const { activePage = 1, activeTab = 'access' } = this.props;
 
     this.state = {
       isReady: false,
+      activePage,
       activeTab,
       tabs: {
         activity: this.getTab('activity'),
-        users: this.getTab('users')
+        agents: this.getTab('agents'),
+        access: this.getTab('access')
       }
     };
 
@@ -44,15 +47,18 @@ class Admin extends Component {
   }
 
   onClick(e, { name: activeTab }) {
+    this.props.history.push(`/admin/${activeTab}?page=1`);
     this.setState({ activeTab });
   }
 
   getTab(name) {
     switch (name) {
-      case 'users':
+      case 'access':
         return <Users {...this.props} />;
       case 'activity':
         return <Activity {...this.props} />;
+      case 'agents':
+        return <Agents {...this.props} />;
       default:
         return null;
     }
@@ -67,18 +73,22 @@ class Admin extends Component {
         <Menu attached="top" tabular>
           <Menu.Item.Tabbable
             content="Access Control"
-            name="users"
-            active={activeTab === 'users'}
+            name="access"
+            active={activeTab === 'access'}
             onClick={onClick}
           />
-          {IS_LOCAL_DEV ? (
-            <Menu.Item.Tabbable
-              content="Activity Viewer"
-              name="activity"
-              active={activeTab === 'activity'}
-              onClick={onClick}
-            />
-          ) : null}
+          <Menu.Item.Tabbable
+            content="Agent Manager"
+            name="agents"
+            active={activeTab === 'agents'}
+            onClick={onClick}
+          />
+          <Menu.Item.Tabbable
+            content="Activity Viewer"
+            name="activity"
+            active={activeTab === 'activity'}
+            onClick={onClick}
+          />
         </Menu>
         <Segment attached="bottom" className="facilitator__content-pane">
           {this.state.tabs[this.state.activeTab]}
@@ -91,10 +101,12 @@ class Admin extends Component {
 }
 
 Admin.propTypes = {
+  activePage: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   activeTab: PropTypes.string,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   getUser: PropTypes.func,
   user: PropTypes.object
 };

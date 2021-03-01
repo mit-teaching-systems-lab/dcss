@@ -3,6 +3,8 @@ import {
   GET_AGENT_SUCCESS,
   GET_AGENTS_ERROR,
   GET_AGENTS_SUCCESS,
+  GET_INTERACTIONS_ERROR,
+  GET_INTERACTIONS_SUCCESS,
   SET_AGENT_ERROR,
   SET_AGENT_SUCCESS
 } from './types';
@@ -92,6 +94,23 @@ export let getAgents = filter => async dispatch => {
     return agents;
   } catch (error) {
     dispatch({ type: GET_AGENTS_ERROR, error });
+    return null;
+  }
+};
+
+export let getInteractions = () => async dispatch => {
+  try {
+    const res = await (await fetch(`/api/agents/interactions`)).json();
+
+    if (res.error) {
+      throw res;
+    }
+    const { interactions } = res;
+
+    dispatch({ type: GET_INTERACTIONS_SUCCESS, interactions });
+    return interactions;
+  } catch (error) {
+    dispatch({ type: GET_INTERACTIONS_ERROR, error });
     return null;
   }
 };

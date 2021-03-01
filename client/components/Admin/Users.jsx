@@ -19,12 +19,13 @@ class Users extends Component {
   constructor(props) {
     super(props);
 
-    const { users } = this.props;
+    const activePage = Number(this.props.activePage);
 
     this.state = {
+      activePage,
       isReady: false,
-      activePage: 1,
-      users
+      id: null,
+      results: []
     };
 
     // This is used as a back up copy of
@@ -36,16 +37,13 @@ class Users extends Component {
   }
 
   async componentDidMount() {
-    let { users } = this.state;
-
-    if (!users.length) {
-      users = await this.props.getUsers();
+    if (!this.props.users.length) {
+      await this.props.getUsers();
     }
 
-    this.users = users.slice();
+    this.users = this.props.users.slice();
     this.setState({
-      isReady: true,
-      users
+      isReady: true
     });
   }
 
@@ -57,11 +55,10 @@ class Users extends Component {
   }
 
   onUserSearchChange(event, { value }) {
-    const users = this.users.slice();
-
     if (value === '') {
       this.setState({
-        users
+        activePage: 1,
+        results: []
       });
       return;
     }
@@ -71,7 +68,7 @@ class Users extends Component {
     }
 
     const escapedRegExp = new RegExp(escapeRegExp(value), 'i');
-    const results = users.filter(({ username, email, roles }) => {
+    const results = this.props.users.filter(({ username, email, roles }) => {
       if (escapedRegExp.test(username)) {
         return true;
       }
@@ -86,13 +83,9 @@ class Users extends Component {
       return false;
     });
 
-    if (results.length === 0) {
-      results.push(...users);
-    }
-
     this.setState({
       activePage: 1,
-      users: results
+      results
     });
   }
 
@@ -114,10 +107,14 @@ class Users extends Component {
       itemsRowHeight
     });
 
-    const totalUserCount = this.state.users.length;
+    const sourceUsers = this.state.results.length
+      ? this.state.results
+      : this.props.users;
+
+    const totalUserCount = sourceUsers.length;
     const pages = Math.ceil(totalUserCount / rowsPerPage);
     const index = (activePage - 1) * rowsPerPage;
-    const users = this.state.users.slice(index, index + rowsPerPage);
+    const users = sourceUsers.slice(index, index + rowsPerPage);
     const columns = {
       username: {
         className: 'users__col-large',
@@ -206,22 +203,21 @@ class Users extends Component {
 }
 
 Users.propTypes = {
+  activePage: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  getUsers: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   user: PropTypes.object,
-  users: PropTypes.array,
-  getUsers: PropTypes.func
+  users: PropTypes.array
 };
 
 const mapStateToProps = (state, ownProps) => {
-  let users = state.users;
-
-  if (ownProps.users) {
-    users = ownProps.users;
-  }
   const { user } = state;
-  return { user, users };
+  const users = ownProps.users || state.users;
+  const activePage = ownProps.activePage || 1;
+  return { activePage, user, users };
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -1,0 +1,148 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render 1 1 1`] = `
+<DocumentFragment>
+  <div
+    aria-expanded="false"
+    class="ui scrolling dropdown sp__dropdown"
+    role="listbox"
+    tabindex="0"
+  >
+    <i
+      aria-hidden="true"
+      class="dropdown icon"
+    />
+    <div
+      class="menu transition"
+    >
+      <div
+        aria-checked="true"
+        aria-selected="true"
+        class="active selected item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <span
+          class="text"
+        >
+          No selection
+        </span>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <table
+          class="ui table"
+        >
+          <thead
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <th
+                class=""
+              >
+                ChatPrompt
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <td
+                class=""
+              >
+                It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <table
+          class="ui table"
+        >
+          <thead
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <th
+                class=""
+              >
+                AudioPrompt
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <td
+                class=""
+              >
+                It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        aria-checked="false"
+        aria-selected="false"
+        class="item"
+        role="option"
+        style="pointer-events: all;"
+      >
+        <table
+          class="ui table"
+        >
+          <thead
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <th
+                class=""
+              >
+                TextPrompt
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <td
+                class=""
+              >
+                It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -80,13 +80,12 @@ class Activity extends Component {
   constructor(props) {
     super(props);
 
-    const { logs } = this.props;
+    const activePage = this.props.activePage;
 
     this.state = {
+      activePage,
       isReady: false,
-      activePage: 1,
-      id: null,
-      logs
+      id: null
     };
 
     // This is used as a back up copy of
@@ -99,20 +98,18 @@ class Activity extends Component {
   }
 
   async componentDidMount() {
-    let { logs } = this.state;
-
-    if (!logs.length) {
-      logs = await this.props.getLogs({});
+    if (!this.props.logs.length) {
+      await this.props.getLogs({});
     }
 
-    this.logs = logs.slice();
+    this.logs = this.props.logs.slice();
     this.setState({
-      isReady: true,
-      logs
+      isReady: true
     });
   }
 
   onPageChange(event, { activePage }) {
+    this.props.history.push(`/admin/activity/${activePage}`);
     this.setState({
       ...this.state,
       activePage
@@ -172,7 +169,7 @@ class Activity extends Component {
 
     const defaultRowCount = 10;
     // known total height of all ui that is not a table row
-    const totalUnavailableHeight = 459;
+    const totalUnavailableHeight = 559;
     const itemsRowHeight = 44;
     const itemsPerRow = 1;
 
@@ -183,10 +180,10 @@ class Activity extends Component {
       itemsRowHeight
     });
 
-    const totalLogsCount = this.state.logs.length;
+    const totalLogsCount = this.props.logs.length;
     const pages = Math.ceil(totalLogsCount / rowsPerPage);
     const index = (activePage - 1) * rowsPerPage;
-    const logs = this.state.logs.slice(index, index + rowsPerPage);
+    const logs = this.props.logs.slice(index, index + rowsPerPage);
 
     const json = id ? this.props.logsById[id] : null;
 
@@ -297,18 +294,21 @@ class Activity extends Component {
 }
 
 Activity.propTypes = {
+  activePage: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  getLogs: PropTypes.func,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired
   }).isRequired,
-  user: PropTypes.object,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   logs: PropTypes.array,
   logsById: PropTypes.object,
-  getLogs: PropTypes.func
+  user: PropTypes.object
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   const { user, logs, logsById } = state;
-  return { user, logs, logsById };
+  const activePage = ownProps.activePage || 1;
+  return { activePage, logs, logsById, user };
 };
 
 const mapDispatchToProps = dispatch => ({

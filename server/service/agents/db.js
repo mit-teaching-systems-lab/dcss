@@ -106,6 +106,7 @@ async function setAgentInteraction(id, interaction) {
 
 async function createAgent(params) {
   const {
+    title,
     name,
     description,
     endpoint,
@@ -115,16 +116,12 @@ async function createAgent(params) {
     socket
   } = params;
 
-  if (!(name && owner.id)) {
-    throw new Error('Creating an agent requires a user');
-  }
-
   const agentCreated = await withClientTransaction(async client => {
     const result = await client.query(sql`
       INSERT INTO agent
-        (name, description, endpoint, owner_id)
+        (title, name, description, endpoint, owner_id)
       VALUES
-        (${name}, ${description}, ${endpoint}, ${owner.id})
+        (${title}, ${name}, ${description}, ${endpoint}, ${owner.id})
       RETURNING *
     `);
     return result.rows[0] || null;

@@ -5,17 +5,23 @@ module.exports = {
     updated_at: '2021-02-25T20:09:04.999Z',
     deleted_at: null,
     is_active: true,
-    name: 'Emoji Analysis',
+    title: 'Emoji Analysis',
+    name: 'emoji-analysis',
     description: 'Detects the presense of an emoji character in your text',
     endpoint: 'ws://emoji-analysis-production.herokuapp.com',
+    socket: {
+      path: '/path/to/foo'
+    },
     configuration: {
       bar: '2',
       baz: 'c',
       foo: 'false'
     },
     interaction: {
-      id: 18,
+      id: 1,
       name: 'ChatPrompt',
+      description:
+        'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
       created_at: '2021-02-25T15:09:05.001302-05:00',
       deleted_at: null,
       updated_at: null
@@ -48,7 +54,8 @@ module.exports = {
       updated_at: '2021-02-25T20:09:04.999Z',
       deleted_at: null,
       is_active: true,
-      name: 'Emoji Analysis',
+      title: 'Emoji Analysis',
+      name: 'emoji-analysis',
       description: 'Detects the presense of an emoji character in your text',
       endpoint: 'ws://emoji-analysis-production.herokuapp.com',
       configuration: {
@@ -57,8 +64,10 @@ module.exports = {
         foo: 'false'
       },
       interaction: {
-        id: 18,
+        id: 1,
         name: 'ChatPrompt',
+        description:
+          'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
         created_at: '2021-02-25T15:09:05.001302-05:00',
         deleted_at: null,
         updated_at: null
@@ -92,7 +101,8 @@ module.exports = {
       updated_at: '2021-02-25T20:09:04.999Z',
       deleted_at: null,
       is_active: true,
-      name: 'Emoji Analysis',
+      title: 'Emoji Analysis',
+      name: 'emoji-analysis',
       description: 'Detects the presense of an emoji character in your text',
       endpoint: 'ws://emoji-analysis-production.herokuapp.com',
       configuration: {
@@ -101,8 +111,10 @@ module.exports = {
         foo: 'false'
       },
       interaction: {
-        id: 18,
+        id: 1,
         name: 'ChatPrompt',
+        description:
+          'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.',
         created_at: '2021-02-25T15:09:05.001302-05:00',
         deleted_at: null,
         updated_at: null
@@ -524,6 +536,64 @@ module.exports = {
   history: {
     prompts: [],
     responses: []
+  },
+  interactions: [
+    {
+      id: 1,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-27T20:38:53.774Z',
+      deleted_at: null,
+      name: 'ChatPrompt',
+      description:
+        'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.'
+    },
+    {
+      id: 2,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-27T20:38:53.774Z',
+      deleted_at: null,
+      name: 'AudioPrompt',
+      description:
+        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.'
+    },
+    {
+      id: 3,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-27T20:38:53.774Z',
+      deleted_at: null,
+      name: 'TextPrompt',
+      description:
+        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.'
+    }
+  ],
+  interactionsById: {
+    '1': {
+      id: 1,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-27T20:38:53.774Z',
+      deleted_at: null,
+      name: 'ChatPrompt',
+      description:
+        'It will appear as an option for scenario authors to include in chat discussions within multi-participant scenarios. It receives participant chat messages.'
+    },
+    '2': {
+      id: 2,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-27T20:38:53.774Z',
+      deleted_at: null,
+      name: 'AudioPrompt',
+      description:
+        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Audio Prompt Responses.'
+    },
+    '3': {
+      id: 3,
+      created_at: '2021-02-25T17:31:33.826Z',
+      updated_at: '2021-02-27T20:38:53.774Z',
+      deleted_at: null,
+      name: 'TextPrompt',
+      description:
+        'It will appear as an option for scenario authors to use in conditional content components within scenarios. It receives participant Text Prompt Responses.'
+    }
   },
   invites: [
     {
