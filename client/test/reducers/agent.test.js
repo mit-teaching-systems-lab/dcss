@@ -80,33 +80,41 @@ describe('agents', () => {
     const second = reducer.agent(undefined, action);
     expect(first).toMatchInlineSnapshot(`
       Object {
-        "configuration": null,
+        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": null,
+        "interaction": Object {
+          "id": null,
+        },
         "is_active": false,
         "name": "ABC",
-        "owner": null,
+        "owner": Object {},
         "self": null,
+        "socket": Object {},
+        "title": "",
         "updated_at": null,
       }
     `);
     expect(second).toMatchInlineSnapshot(`
       Object {
-        "configuration": null,
+        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": null,
+        "interaction": Object {
+          "id": null,
+        },
         "is_active": false,
         "name": "ABC",
-        "owner": null,
+        "owner": Object {},
         "self": null,
+        "socket": Object {},
+        "title": "",
         "updated_at": null,
       }
     `);
@@ -195,33 +203,41 @@ describe('agents', () => {
     const second = reducer.agent(undefined, action);
     expect(first).toMatchInlineSnapshot(`
       Object {
-        "configuration": null,
+        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": null,
+        "interaction": Object {
+          "id": null,
+        },
         "is_active": false,
         "name": "ABC",
-        "owner": null,
+        "owner": Object {},
         "self": null,
+        "socket": Object {},
+        "title": "",
         "updated_at": null,
       }
     `);
     expect(second).toMatchInlineSnapshot(`
       Object {
-        "configuration": null,
+        "configuration": Object {},
         "created_at": null,
         "deleted_at": null,
         "description": "This is a bot",
         "endpoint": "ws://",
         "id": 1,
-        "interaction": null,
+        "interaction": Object {
+          "id": null,
+        },
         "is_active": false,
         "name": "ABC",
-        "owner": null,
+        "owner": Object {},
         "self": null,
+        "socket": Object {},
+        "title": "",
         "updated_at": null,
       }
     `);
